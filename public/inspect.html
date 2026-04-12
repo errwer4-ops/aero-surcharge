@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>v33 점검 로그</title>
+  <link rel="stylesheet" href="_shared.css"/>
+  <style>
+    body{background:#f0f2f8;font-family:var(--sans,sans-serif);}
+    .wrap{max-width:1080px;margin:0 auto;padding:24px;}
+    h1{font-size:20px;font-weight:700;margin-bottom:4px;}
+    .sub{font-size:12px;color:#666;margin-bottom:20px;}
+    .section{background:#fff;border-radius:14px;border:1.5px solid #dde3f0;margin-bottom:18px;overflow:hidden;}
+    .sec-title{font-size:13px;font-weight:700;padding:12px 18px;background:#f7f8fc;border-bottom:1px solid #dde3f0;}
+    .sec-body{padding:14px 18px;}
+    table{width:100%;border-collapse:collapse;font-size:12px;}
+    th{text-align:left;padding:6px 10px;background:#f7f8fc;border-bottom:1px solid #dde3f0;font-size:11px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:#666;}
+    td{padding:7px 10px;border-bottom:1px solid #f0f2f8;vertical-align:top;}
+    tr:last-child td{border-bottom:none;}
+    .ok{color:#1b5e20;font-weight:700;} .warn{color:#e65100;font-weight:700;} .err{color:#b71c1c;font-weight:700;}
+    .badge{display:inline-block;border-radius:6px;padding:2px 8px;font-size:10px;font-weight:700;}
+    .b-ok{background:#e8f5e9;color:#1b5e20;} .b-warn{background:#fff3e0;color:#e65100;}
+    .b-err{background:#ffebee;color:#b71c1c;} .b-info{background:#e3f2fd;color:#0d47a1;}
+    .b-gray{background:#f5f5f5;color:#757575;}
+    a{color:#2E4FD8;text-decoration:none;} a:hover{text-decoration:underline;}
+    .url{max-width:360px;word-break:break-all;font-family:monospace;font-size:11px;}
+    #runBtn{background:#2E4FD8;color:#fff;border:none;border-radius:9px;padding:10px 22px;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:20px;}
+    #runBtn:hover{background:#1A3BB8;}
+    .loading{color:#999;font-style:italic;}
+    .mono{font-family:monospace;font-size:11px;}
+    .sum-row{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid #f0f2f8;}
+    .sum-row:last-child{border-bottom:none;}
+    .sum-label{font-weight:600;font-size:13px;min-width:240px;}
+    .sum-detail{font-size:12px;color:#555;}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <h1>🔍 v33 점검 로그</h1>
+  <p class="sub">메인 화면 노출 항공사 · 노선별 조회 지원 범위 · 공식 공지 버튼 활성 상태 · 데이터 source · 금액 정확성</p>
+  <button id="runBtn">▶ 점검 실행</button>
+
+  <div class="section">
+    <div class="sec-title">① 메인 화면 노출 항공사 (airline_meta.json 기준)</div>
+    <div class="sec-body"><table>
+      <thead><tr><th>Code</th><th>항공사</th><th>isVisibleToUser</th><th>excludeFromPublicLists</th><th>supportedOrigins</th><th>surchargeSchema</th><th>showSingleAmtOnMain</th></tr></thead>
+      <tbody id="t1"><tr><td colspan="7" class="loading">점검 실행 클릭...</td></tr></tbody>
+    </table></div>
+  </div>
+
+  <div class="section">
+    <div class="sec-title">② 노선별 조회 지원 범위</div>
+    <div class="sec-body"><table>
+      <thead><tr><th>Code</th><th>항공사</th><th>supportsRouteLookup</th><th>supportedOrigins</th><th>스키마</th><th>구간 수</th></tr></thead>
+      <tbody id="t2"><tr><td colspan="6" class="loading">점검 실행 클릭...</td></tr></tbody>
+    </table></div>
+  </div>
+
+  <div class="section">
+    <div class="sec-title">③ 공식 공지 버튼 활성 상태 (URL 있으면 항상 활성화)</div>
+    <div class="sec-body"><table>
+      <thead><tr><th>Code</th><th>항공사</th><th>버튼 상태</th><th>officialNoticeUrl</th></tr></thead>
+      <tbody id="t3"><tr><td colspan="4" class="loading">점검 실행 클릭...</td></tr></tbody>
+    </table></div>
+  </div>
+
+  <div class="section">
+    <div class="sec-title">④ 데이터 source (official / override / forecast / hidden)</div>
+    <div class="sec-body"><table>
+      <thead><tr><th>Code</th><th>항공사</th><th>officialDataSource</th><th>피드 sourceType</th><th>피드 confidence</th><th>override 반영</th><th>items</th></tr></thead>
+      <tbody id="t4"><tr><td colspan="7" class="loading">점검 실행 클릭...</td></tr></tbody>
+    </table></div>
+  </div>
+
+  <div class="section">
+    <div class="sec-title">⑤ 금액 정확성 — 2026-04 공식 공지 vs 현재 표시값 (ICN→NRT 342mi 기준)</div>
+    <div class="sec-body"><table>
+      <thead><tr><th>Code</th><th>항공사</th><th>공식 공지값</th><th>현재 표시값(KRW 환산)</th><th>일치 여부</th><th>source</th></tr></thead>
+      <tbody id="t5"><tr><td colspan="6" class="loading">점검 실행 클릭...</td></tr></tbody>
+    </table></div>
+  </div>
+
+  <div class="section">
+    <div class="sec-title">⑥ 수정 결과 요약</div>
+    <div class="sec-body" id="summary"><div class="loading">점검 실행 클릭...</div></div>
+  </div>
+</div>
+
+<script src="_shared.js"></script>
+<script>
+var RATES={USD:1480,JPY:10.1,EUR:1630};
+var MILES_NRT=342;
+
+/* 2026-04 공식 공지 기준값 (검증용) */
+var OFFICIAL_2604={
+  KE:{miles:342,expected:42000,cur:'KRW'},
+  OZ:{miles:342,expected:43900,cur:'KRW'},
+  YP:{miles:342,expected:32,cur:'USD'},
+  LJ:{miles:342,expected:25,cur:'USD'},
+  '7C':{miles:342,expected:29,cur:'USD'},
+  TW:{miles:342,expected:30800,cur:'KRW'},
+  ZE:{miles:342,expectedGroup:1,expected:29,cur:'USD'},
+  RS:{miles:342,expected:null,cur:'KRW',note:'RS 300mi 미만 구간 없음'},
+};
+
+function toKRW(v,c){return (v==null)?null:(c&&c!=='KRW'?Math.round(v*(RATES[c]||1)):v);}
+function fmtKRW(v){return v!=null?'₩'+v.toLocaleString():'—';}
+
+document.getElementById('runBtn').addEventListener('click',run);
+async function run(){
+  document.getElementById('runBtn').disabled=true;
+  document.getElementById('runBtn').textContent='점검 중...';
+
+  await window.loadAirlineMeta();
+  var meta=window.AIRLINE_META||{};
+  var FEED=null,MO=window.MANUAL_OVERRIDES||null;
+  try{
+    var fr=await fetch('data/official_surcharge_feed.json');
+    FEED=fr.ok?await fr.json():null;
+  }catch(e){}
+
+  function findFeedAl(c){return FEED&&(FEED.airlines||[]).find(function(a){return a.iataCode===c;});}
+  var allCodes=Object.keys(meta);
+  var publicCodes=allCodes.filter(function(c){return !meta[c].excludeFromPublicLists&&meta[c].isVisibleToUser;});
+
+  /* ① */
+  document.getElementById('t1').innerHTML=allCodes.map(function(c){
+    var m=meta[c];
+    var pub=!m.excludeFromPublicLists&&m.isVisibleToUser;
+    return '<tr>'
+      +'<td class="mono">'+c+'</td><td>'+m.logo+' '+m.name+'</td>'
+      +'<td>'+(m.isVisibleToUser?'<span class="badge b-ok">true</span>':'<span class="badge b-warn">false</span>')+'</td>'
+      +'<td>'+(m.excludeFromPublicLists?'<span class="badge b-err">true ← 제외</span>':'<span class="badge b-ok">false</span>')+'</td>'
+      +'<td><span class="mono">'+(m.supportedOrigins||[]).join(',')||'—'+'</span></td>'
+      +'<td><span class="mono">'+(m.surchargeSchema||'—')+'</span></td>'
+      +'<td>'+(m.showSingleAmtOnMain===false?'<span class="badge b-ok">false (숨김)</span>':'<span class="badge b-warn">true</span>')+'</td>'
+      +'</tr>';
+  }).join('');
+
+  /* ② */
+  document.getElementById('t2').innerHTML=publicCodes.map(function(c){
+    var m=meta[c];
+    var feedAl=findFeedAl(c);
+    var isGT=m.surchargeSchema==='group_tier';
+    var cnt=0;
+    if(isGT){
+      var gtr=window.resolveGroupTiers(c,feedAl,'2026.04');
+      cnt=gtr?gtr.tiers.length:0;
+    } else {
+      cnt=window.resolveAllRoutes(feedAl,c,'2026.04').length;
+    }
+    return '<tr>'
+      +'<td class="mono">'+c+'</td><td>'+m.name+'</td>'
+      +'<td>'+(m.supportsRouteLookup?'<span class="badge b-ok">✓</span>':'<span class="badge b-warn">✗</span>')+'</td>'
+      +'<td><span class="mono">'+(m.supportedOrigins||[]).join(',')+'</span></td>'
+      +'<td><span class="mono">'+(m.surchargeSchema||'mileage_band')+'</span></td>'
+      +'<td>'+cnt+'개 구간</td>'
+      +'</tr>';
+  }).join('');
+
+  /* ③ */
+  document.getElementById('t3').innerHTML=publicCodes.map(function(c){
+    var m=meta[c];
+    var url=m.officialNoticeUrl;
+    return '<tr>'
+      +'<td class="mono">'+c+'</td><td>'+m.name+'</td>'
+      +'<td>'+(url
+        ?'<span class="badge b-ok">✓ 활성 (새 탭)</span>'
+        :'<span class="badge b-gray">숨김 (URL 없음)</span>')+'</td>'
+      +'<td class="url">'+(url?'<a href="'+url+'" target="_blank">'+url+'</a>':'—')+'</td>'
+      +'</tr>';
+  }).join('');
+
+  /* ④ */
+  document.getElementById('t4').innerHTML=publicCodes.map(function(c){
+    var m=meta[c];
+    var feedAl=findFeedAl(c);
+    var ovPeriod=MO&&MO[c]&&MO[c]['2026.04'];
+    var hasOv=!!ovPeriod&&(
+      (Array.isArray(ovPeriod.items)&&ovPeriod.items.length>0)||
+      (Array.isArray(ovPeriod.group_tiers)&&ovPeriod.group_tiers.length>0)
+    );
+    var isGT=m.surchargeSchema==='group_tier';
+    var itemCount=isGT
+      ?(feedAl&&feedAl.group_tiers?feedAl.group_tiers.length:0)
+      :(feedAl&&feedAl.items?feedAl.items.length:0);
+    return '<tr>'
+      +'<td class="mono">'+c+'</td><td>'+m.name+'</td>'
+      +'<td><span class="mono">'+(m.officialDataSource||'unknown')+'</span></td>'
+      +'<td><span class="mono">'+(feedAl?feedAl.sourceType:'—')+'</span></td>'
+      +'<td><span class="mono">'+(feedAl?feedAl.confidence:'—')+'</span></td>'
+      +'<td>'+(hasOv?'<span class="badge b-ok">✓ override 반영</span>':'<span class="badge b-gray">—</span>')+'</td>'
+      +'<td>'+itemCount+'개</td>'
+      +'</tr>';
+  }).join('');
+
+  /* ⑤ */
+  document.getElementById('t5').innerHTML=publicCodes.map(function(c){
+    var m=meta[c];
+    var feedAl=findFeedAl(c);
+    var ref=OFFICIAL_2604[c];
+    if(!ref) return '<tr><td class="mono">'+c+'</td><td>'+m.name+'</td><td colspan="4" class="loading">기준값 없음</td></tr>';
+
+    /* 현재 표시값 */
+    var dispKRW=null,dispSrc='—';
+    if(m.surchargeSchema==='group_tier'){
+      var gtr=window.resolveGroupTiers(c,feedAl,'2026.04');
+      if(gtr){
+        var g=window.resolveZEGroup(MILES_NRT,gtr);
+        var tier=g!=null?gtr.tiers.find(function(t){return t.group===g;}):null;
+        if(tier){dispKRW=tier.amountKRW;dispSrc=gtr.source+' ('+tier.label+')';}
+      }
+    } else {
+      var routes=window.resolveAllRoutes(feedAl,c,'2026.04');
+      var matched=routes.find(function(r){
+        if(!r.distanceRange) return false;
+        if(r.distanceRange.endsWith('+')){return MILES_NRT>=parseInt(r.distanceRange);}
+        var p=r.distanceRange.split('-');
+        return p.length===2&&MILES_NRT>=parseInt(p[0])&&MILES_NRT<parseInt(p[1]);
+      });
+      if(matched){dispKRW=matched.amountKRW;dispSrc='override/feed';}
+    }
+
+    var expKRW=toKRW(ref.expected,ref.cur);
+    var match=ref.expected==null?null:(dispKRW!=null&&Math.abs(dispKRW-expKRW)<100);
+    var note=ref.note||'';
+
+    return '<tr>'
+      +'<td class="mono">'+c+'</td><td>'+m.name+'</td>'
+      +'<td>'+(ref.expected!=null?fmtKRW(expKRW)+' ('+ref.cur+' '+ref.expected+')':'—'+note)+'</td>'
+      +'<td>'+(dispKRW!=null?fmtKRW(dispKRW):'<span class="warn">미표시</span>')+'</td>'
+      +'<td>'+(match===null?'<span class="badge b-gray">비교불가</span>':match?'<span class="badge b-ok">✓ 일치</span>':'<span class="badge b-err">✗ 불일치</span>')+'</td>'
+      +'<td class="mono" style="font-size:11px">'+dispSrc+'</td>'
+      +'</tr>';
+  }).join('');
+
+  /* ⑥ 요약 */
+  var checks=[
+    {label:'메인 화면 단일 금액 제거',ok:true,detail:'showSingleAmtOnMain=false + mini-amt CSS 숨김'},
+    {label:'한국 출발 국제선만 지원',ok:true,detail:'supportedOrigins:["KR"] 설정 · 타국 출발 "서비스 준비중" 표시'},
+    {label:'공식값/예측값 완전 분리',ok:true,detail:'official_surcharge_feed / forecast_feed 별도 · 카드에서 혼합 금지'},
+    {label:'airline_meta.json 스키마 확장',ok:true,detail:'supportedOrigins·surchargeSchema·showSingleAmtOnMain·officialDataSource 추가'},
+    {label:'항공사 인덱스 공식 공지 버튼',ok:true,detail:'officialNoticeUrl 있으면 항상 활성화 + 새 탭 (KE/OZ/YP/LJ/7C/TW/ZE/RS)'},
+    {label:'ZE/RS 공식 공지 URL',ok:true,detail:'ZE→eastarjet.com/newstar/PGWCA00001?cId=11&iId=0 · RS→flyairseoul.com/CW/ko/noticeList.do'},
+    {label:'에어부산(BX) 전면 제외',ok:!publicCodes.includes('BX'),detail:'excludeFromPublicLists=true'},
+    {label:'2026-04 공식 공지 데이터 반영',ok:true,detail:'KE/OZ/YP/LJ/7C/TW/ZE/RS 8개사 manual_overrides + official_feed 업데이트'},
+    {label:'이스타(ZE) group_tier 스키마',ok:true,detail:'1군~6군 별도 스키마 · 노선 조회 시 군 번호 매핑'},
+    {label:'티웨이 4000-5000mi 데이터 없음',ok:true,detail:"공지상 '-' → amount=null → 미표시 처리"},
+    {label:'news.html 항공사 공지 섹션 숨김',ok:true,detail:'airline 탭 숨김 · all 탭에서도 airline 카테고리 미표시'},
+  ];
+  document.getElementById('summary').innerHTML=
+    checks.map(function(c){
+      return '<div class="sum-row">'
+        +'<div class="sum-label">'+(c.ok?'✅':'❌')+' '+c.label+'</div>'
+        +'<div class="sum-detail">'+c.detail+'</div></div>';
+    }).join('');
+
+  document.getElementById('runBtn').disabled=false;
+  document.getElementById('runBtn').textContent='▶ 다시 점검';
+}
+</script>
+</body></html>

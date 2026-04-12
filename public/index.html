@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>항공 유류할증료 비교 — 노선별 조회</title>
+  <meta name="description" content="한국 국적기 노선별 유류할증료 비교. 공식 공지 + AI 예측 제공."/>
+  <link rel="stylesheet" href="_shared.css"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX" crossorigin="anonymous"></script>
+  <style>
+    .hero { background:linear-gradient(160deg,#2E4FD8 0%,#1A3BB8 55%,#1230A0 100%); padding:22px 40px 30px; text-align:center; position:relative; overflow:hidden; }
+    .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 60% at 50% 120%,rgba(255,255,255,.06) 0%,transparent 70%); pointer-events:none; }
+    .hero-title { font-size:clamp(18px,3vw,26px); font-weight:700; color:#fff; letter-spacing:-1px; margin-bottom:3px; }
+    .hero-sub { font-size:12px; color:rgba(255,255,255,.55); margin-bottom:18px; }
+    .search-panel { background:#fff; border-radius:13px; padding:16px 20px; max-width:860px; margin:0 auto; display:grid; grid-template-columns:1fr auto 1fr auto auto; gap:11px; align-items:end; box-shadow:0 14px 44px rgba(0,0,0,.2); }
+    .form-group { display:flex; flex-direction:column; gap:5px; }
+    .form-label { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); }
+    .airport-select { background:var(--bg); border:1.5px solid var(--line); border-radius:9px; padding:9px 32px 9px 12px; font-size:14px; font-weight:500; font-family:var(--sans); color:var(--text); outline:none; appearance:none; cursor:pointer; transition:border-color .15s; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238890A8' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 10px center; }
+    .airport-select:focus { border-color:var(--blue); }
+    .swap-btn { width:40px; height:40px; border-radius:50%; border:1.5px solid var(--line); background:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px; transition:all .2s; align-self:end; }
+    .swap-btn:hover { border-color:var(--blue); background:var(--blue-lt); transform:scale(1.08); }
+    .trip-toggle { display:flex; border:1.5px solid var(--line); border-radius:9px; overflow:hidden; align-self:end; }
+    .trip-btn { flex:1; padding:9px 14px; font-size:12px; font-weight:600; border:none; background:transparent; cursor:pointer; font-family:var(--sans); color:var(--muted); transition:all .15s; white-space:nowrap; }
+    .trip-btn.active { background:var(--blue); color:#fff; }
+    .search-btn { background:var(--blue); color:#fff; border:none; border-radius:9px; padding:10px 22px; font-size:13px; font-weight:700; cursor:pointer; font-family:var(--sans); white-space:nowrap; transition:all .15s; align-self:end; }
+    .search-btn:hover { background:var(--blue-dk); transform:translateY(-1px); }
+
+    .ad-slot { max-width:1140px; margin:14px auto 0; padding:0 24px; min-height:60px; display:flex; align-items:center; justify-content:center; }
+    .ad-placeholder { width:100%; height:60px; background:var(--white); border:1px dashed var(--line); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:11px; color:var(--muted); }
+    .main { max-width:1140px; margin:0 auto; padding:18px 24px 56px; }
+
+    .result-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:10px; }
+    .result-title { font-size:15px; font-weight:700; display:flex; align-items:center; gap:10px; }
+    .route-badge { background:var(--blue-lt); color:var(--blue); border-radius:8px; padding:4px 12px; font-size:13px; font-weight:700; font-family:var(--mono); }
+    .result-meta { font-size:12px; color:var(--muted); }
+    .filter-row { display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap; }
+    .ftab { padding:5px 14px; border-radius:20px; font-size:12px; font-weight:600; cursor:pointer; border:1.5px solid var(--line); background:var(--white); color:var(--text2); transition:all .15s; font-family:var(--sans); }
+    .ftab:hover { border-color:var(--blue); color:var(--blue); }
+    .ftab.active { background:var(--blue); color:#fff; border-color:var(--blue); }
+
+    /* ── CARDS ── */
+    .cards-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:14px; }
+    .al-card { background:var(--white); border-radius:14px; border:1.5px solid var(--line); padding:17px 19px; box-shadow:var(--shadow); transition:transform .15s, box-shadow .15s; }
+    .al-card:hover { transform:translateY(-2px); box-shadow:var(--shadow-lg); }
+    .al-card.has-data { border-left:4px solid var(--blue); }
+    .al-card.has-error { border-left:4px solid #FDB572; }
+    .al-card.no-data   { border-left:4px solid var(--line); opacity:.85; }
+
+    .card-header { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:12px; }
+    .card-airline { display:flex; align-items:center; gap:10px; }
+    .card-logo { width:38px; height:38px; border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:18px; border:1px solid var(--line); background:var(--bg); flex-shrink:0; }
+    .card-name { font-weight:700; font-size:14px; line-height:1.3; }
+    .card-code { font-size:11px; color:var(--muted); font-family:var(--mono); margin-top:1px; }
+    .alliance-tag { font-size:10px; font-weight:700; padding:2px 7px; border-radius:4px; font-family:var(--mono); flex-shrink:0; }
+    .tag-skyteam  { background:#e3f2fd; color:#1565c0; }
+    .tag-star     { background:#f3e5f5; color:#6a1b9a; }
+    .tag-oneworld { background:#fff8e1; color:#e65100; }
+    .tag-lcc      { background:#e8f5e9; color:#2e7d32; }
+    .tag-other    { background:#f5f5f5; color:#555; }
+
+    /* 공식값 */
+    .official-section { margin-bottom:10px; }
+    .official-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:5px; display:flex; align-items:center; gap:6px; }
+    .amt-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:7px; }
+    .amt-box { background:var(--bg); border-radius:8px; padding:9px 11px; text-align:center; border:1px solid var(--line); }
+    .amt-period { font-size:10px; color:var(--muted); margin-bottom:3px; font-family:var(--mono); }
+    .amt-val { font-family:var(--mono); font-weight:700; font-size:13px; }
+    .amt-val.hi    { color:var(--blue); }
+    .amt-val.red   { color:var(--red); }
+    .amt-val.green { color:var(--green); }
+    .amt-val.dim   { color:var(--muted); font-size:11px; }
+    .amt-val.prepub { color:var(--muted); font-size:10px; font-style:italic; }
+    .no-data-msg { font-size:12px; color:var(--muted); padding:10px 0 4px; }
+
+    .card-footer { display:flex; align-items:center; justify-content:space-between; border-top:1px solid var(--line); padding-top:9px; margin-top:10px; gap:8px; flex-wrap:wrap; }
+    .footer-left { display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
+    .source-link { font-size:11px; color:var(--blue); text-decoration:none; font-weight:600; }
+    .source-link:hover { text-decoration:underline; }
+
+    /* landing mini cards */
+    .landing-title { font-size:14px; font-weight:700; color:var(--text2); margin-bottom:12px; }
+    .mini-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:10px; }
+    .mini-card { background:var(--white); border-radius:11px; border:1.5px solid var(--line); padding:12px 15px; display:flex; align-items:center; gap:10px; }
+    .mini-badge { width:34px; height:34px; border:1.5px solid var(--line); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:16px; background:var(--bg); flex-shrink:0; }
+    .mini-name { font-size:13px; font-weight:600; }
+    .mini-status { font-size:11px; color:var(--muted); margin-top:1px; }
+    /* mini-amt: v33에서 단일 금액 표시 제거 */
+    .mini-amt { display:none; }
+    /* kr-only-notice: 한국 출발 안내 배너 */
+    .kr-only-notice { display:flex; align-items:flex-start; gap:12px; background:linear-gradient(135deg,#EBF5FF,#F0F4FF); border:1.5px solid #90CAF9; border-radius:13px; padding:14px 18px; margin-bottom:16px; }
+    .kr-only-icon { font-size:24px; flex-shrink:0; margin-top:2px; }
+    .kr-only-title { font-size:14px; font-weight:700; color:#1565C0; margin-bottom:4px; }
+    .kr-only-desc { font-size:12px; color:#1976D2; line-height:1.6; }
+    /* mini-card v33: 공식 공지 버튼 위주로 */
+    .mini-notice-btn { display:inline-block; font-size:10px; color:var(--blue); text-decoration:none; font-weight:600; margin-top:4px; padding:2px 7px; border-radius:8px; border:1px solid #90CAF9; background:#EBF5FF; }
+    .mini-notice-btn:hover { background:#BBDEFB; }
+    .index-link-row { margin-top:20px; text-align:center; }
+    .index-link { color:var(--blue); font-size:13px; font-weight:600; text-decoration:none; }
+    .ad-slot-bottom { margin-top:28px; min-height:80px; display:flex; align-items:center; justify-content:center; }
+    .ad-slot-mid { grid-column:1/-1; min-height:70px; display:flex; align-items:center; justify-content:center; }
+
+    /* ── ROUTE TABLE (구간별 유류할증료) ── */
+    .route-table { width:100%; border-collapse:collapse; margin:8px 0 4px; }
+    .route-table th { font-size:9px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--muted); padding:4px 8px; text-align:left; border-bottom:1px solid var(--line); }
+    .route-table td { font-size:12px; padding:5px 8px; border-bottom:1px solid var(--line); }
+    .route-table tr:last-child td { border-bottom:none; }
+    .route-table tr.highlighted { background:var(--blue-lt); }
+    .route-table tr.spiked td { color:var(--red); }
+    .route-amt { font-family:var(--mono); font-weight:700; color:var(--blue); text-align:right; }
+    .route-range { font-family:var(--mono); font-size:10px; color:var(--muted); }
+    .route-highlight-badge { font-size:9px; background:var(--blue); color:#fff; border-radius:4px; padding:1px 5px; margin-left:5px; vertical-align:middle; }
+    .route-spike-badge { font-size:9px; background:#FFF3E0; color:#E65100; border:1px solid #FFCC80; border-radius:4px; padding:1px 5px; }
+
+    @media(max-width:700px){ .hero{padding:18px 14px 26px;} .search-panel{grid-template-columns:1fr 1fr;} .search-panel .swap-btn{display:none;} .cards-grid,.mini-grid{grid-template-columns:1fr;} }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-links">
+    <a href="index.html"    class="nav-link active"  id="navLinkRoutes">노선별 조회</a>
+    <a href="airlines.html" class="nav-link " id="navLinkAirlines">항공사 인덱스</a>
+    <a href="news.html"     class="nav-link "    id="navLinkNews">참고 소식</a>
+  </div>
+  <div class="nav-controls">
+    <select class="nav-select" id="navLang">
+      <option value="ko">&#127472;&#127479; 한국어</option>
+      <option value="en">&#127482;&#127480; English</option>
+      <option value="ja">&#127471;&#127477; 日本語</option>
+      <option value="zh">&#127464;&#127475; 中文</option>
+      <option value="fr">&#127467;&#127479; Français</option>
+      <option value="de">&#127465;&#127466; Deutsch</option>
+    </select>
+    <div class="nav-divider"></div>
+    <select class="nav-select" id="navCurr">
+      <option value="KRW">&#8361; KRW</option>
+      <option value="USD">$ USD</option>
+      <option value="JPY">&#165; JPY</option>
+      <option value="EUR">&#8364; EUR</option>
+      <option value="GBP">&#163; GBP</option>
+      <option value="CNY">&#165; CNY</option>
+      <option value="AUD">A$ AUD</option>
+      <option value="SGD">S$ SGD</option>
+      <option value="HKD">HK$ HKD</option>
+    </select>
+  </div>
+</nav>
+
+<div class="hero">
+  <div class="hero-title" id="heroTitle">노선별 유류할증료 조회</div>
+  <div class="hero-sub" id="heroSub">한국 국적기 출발·도착 기준 유류할증료 비교 · 공식 공지 + AI 예측</div>
+  <div class="search-panel">
+    <div class="form-group">
+      <label class="form-label" id="labelOrigin">출발 공항</label>
+      <select class="airport-select" id="originSelect">
+        <option value="">출발지 선택</option>
+        <optgroup label="🇰🇷 한국">
+          <option value="ICN">인천 (ICN)</option><option value="GMP">김포 (GMP)</option><option value="PUS">부산 (PUS)</option><option value="CJU">제주 (CJU)</option>
+        </optgroup>
+        <optgroup label="🇯🇵 일본">
+          <option value="NRT">도쿄 나리타 (NRT)</option><option value="HND">도쿄 하네다 (HND)</option><option value="KIX">오사카 (KIX)</option><option value="FUK">후쿠오카 (FUK)</option><option value="CTS">삿포로 (CTS)</option>
+        </optgroup>
+        <optgroup label="🌏 아시아">
+          <option value="HKG">홍콩 (HKG)</option><option value="SIN">싱가포르 (SIN)</option><option value="BKK">방콕 (BKK)</option><option value="MNL">마닐라 (MNL)</option><option value="KUL">쿠알라룸푸르 (KUL)</option><option value="SGN">호찌민 (SGN)</option><option value="HAN">하노이 (HAN)</option><option value="DAD">다낭 (DAD)</option><option value="DPS">발리 (DPS)</option><option value="PVG">상하이 (PVG)</option><option value="PEK">베이징 (PEK)</option>
+        </optgroup>
+        <optgroup label="🇺🇸 북미·오세아니아">
+          <option value="LAX">LA (LAX)</option><option value="JFK">뉴욕 (JFK)</option><option value="SFO">샌프란시스코 (SFO)</option><option value="SEA">시애틀 (SEA)</option><option value="SYD">시드니 (SYD)</option>
+        </optgroup>
+        <optgroup label="🇪🇺 유럽·중동">
+          <option value="CDG">파리 (CDG)</option><option value="LHR">런던 (LHR)</option><option value="FRA">프랑크푸르트 (FRA)</option><option value="AMS">암스테르담 (AMS)</option><option value="DXB">두바이 (DXB)</option>
+        </optgroup>
+      </select>
+    </div>
+    <button class="swap-btn" id="swapBtn" title="교체">&#8644;</button>
+    <div class="form-group">
+      <label class="form-label" id="labelDest">도착 공항</label>
+      <select class="airport-select" id="destSelect">
+        <option value="">도착지 선택</option>
+        <optgroup label="🇰🇷 한국">
+          <option value="ICN">인천 (ICN)</option><option value="GMP">김포 (GMP)</option><option value="PUS">부산 (PUS)</option><option value="CJU">제주 (CJU)</option>
+        </optgroup>
+        <optgroup label="🇯🇵 일본">
+          <option value="NRT">도쿄 나리타 (NRT)</option><option value="HND">도쿄 하네다 (HND)</option><option value="KIX">오사카 (KIX)</option><option value="FUK">후쿠오카 (FUK)</option><option value="CTS">삿포로 (CTS)</option>
+        </optgroup>
+        <optgroup label="🌏 아시아">
+          <option value="HKG">홍콩 (HKG)</option><option value="SIN">싱가포르 (SIN)</option><option value="BKK">방콕 (BKK)</option><option value="MNL">마닐라 (MNL)</option><option value="KUL">쿠알라룸푸르 (KUL)</option><option value="SGN">호찌민 (SGN)</option><option value="HAN">하노이 (HAN)</option><option value="DAD">다낭 (DAD)</option><option value="DPS">발리 (DPS)</option><option value="PVG">상하이 (PVG)</option><option value="PEK">베이징 (PEK)</option>
+        </optgroup>
+        <optgroup label="🇺🇸 북미·오세아니아">
+          <option value="LAX">LA (LAX)</option><option value="JFK">뉴욕 (JFK)</option><option value="SFO">샌프란시스코 (SFO)</option><option value="SEA">시애틀 (SEA)</option><option value="SYD">시드니 (SYD)</option>
+        </optgroup>
+        <optgroup label="🇪🇺 유럽·중동">
+          <option value="CDG">파리 (CDG)</option><option value="LHR">런던 (LHR)</option><option value="FRA">프랑크푸르트 (FRA)</option><option value="AMS">암스테르담 (AMS)</option><option value="DXB">두바이 (DXB)</option>
+        </optgroup>
+      </select>
+    </div>
+    <div class="form-group">
+      <label class="form-label" id="labelTrip">여정</label>
+      <div class="trip-toggle"><button class="trip-btn active" id="btnOW">편도</button><button class="trip-btn" id="btnRT">왕복</button></div>
+    </div>
+    <button class="search-btn" id="searchBtn">&#128269; 검색</button>
+  </div>
+</div>
+
+<!-- ── 베타 서비스 안내 배너 (BetaNoticeBanner) ── -->
+<div class="beta-banner" id="betaNoticeBanner" role="note" aria-label="베타 서비스 안내">
+  <div class="beta-banner-inner">
+    <div class="beta-banner-icon">⚠️</div>
+    <div class="beta-banner-body">
+      <div class="beta-banner-title">
+        <span class="beta-badge">BETA</span>베타 서비스 안내
+      </div>
+      <div class="beta-banner-desc">
+        현재 한국 출발 국제선 유류할증료를 기준으로 제공되고 있으며, 일부 항공사는 공식 공지 기반 수동 반영입니다.<br>
+        최종 금액은 항공사 공식 공지를 반드시 확인해주세요.
+      </div>
+      <div class="beta-banner-note">
+        ※ 현재는 한국 출발 국제선만 지원합니다. 해외 출발 노선은 서비스 준비중입니다.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ad-slot">
+  <!-- AdSense slot 1 -->
+  <div class="ad-placeholder">AD</div>
+</div>
+
+<div class="main">
+  <!-- 검색 결과 -->
+  <div id="resultsSection" style="display:none">
+    <div class="result-header">
+      <div class="result-title">
+        <span id="resultLabel">항공사별 유류할증료</span>
+        <span class="route-badge" id="resultBadge"></span>
+      </div>
+      <div class="result-meta" id="resultMeta"></div>
+    </div>
+    <div class="filter-row" id="filterRow">
+      <button class="ftab active" data-f="all"  id="ftabAll">전체</button>
+      <button class="ftab" data-f="data"         id="ftabData">공식 데이터 있음</button>
+    </div>
+    <div class="cards-grid" id="cardsGrid"></div>
+    <div class="ad-slot-bottom"><div class="ad-placeholder">AD</div></div>
+  </div>
+
+  <!-- 랜딩 -->
+  <div id="landingSection">
+    <div class="status-strip" id="statusStrip" style="display:none">
+      <div class="status-dot" id="statusDot"></div>
+      <span id="statusText"></span>
+    </div>
+    <div class="landing-title" id="landingTitle">한국 출발 국제선 유류할증료</div>
+    <!-- v33: 단일 금액 표시 제거 → 안내 문구 + 항공사 공식 공지 버튼 -->
+    <div class="kr-only-notice" id="krOnlyNotice">
+      <span class="kr-only-icon">🇰🇷</span>
+      <div>
+        <div class="kr-only-title">한국 출발 국제선만 지원합니다</div>
+        <div class="kr-only-desc">노선별 조회에서 출발지·도착지를 선택하면 항공사별 공식 공지 기준 금액을 확인할 수 있습니다.<br>단일 금액은 구간마다 달라 오해 소지가 있어 표시하지 않습니다.</div>
+      </div>
+    </div>
+    <div class="mini-grid" id="miniGrid">
+      <div class="empty-state"><div class="empty-icon">&#9992;</div><p>데이터 로딩 중...</p></div>
+    </div>
+    <div class="index-link-row">
+      <a href="airlines.html" class="index-link" id="indexLink">&#8594; 항공사 전체 인덱스 보기</a>
+    </div>
+  </div>
+</div>
+
+<script src="_shared.js"></script>
+<script>
+/* ── 전역 런타임 에러 → 무한 로딩 방지 ── */
+window.addEventListener('error', function(e){
+  console.error('[aero] 스크립트 오류:', e.message, 'at', e.filename, e.lineno);
+  var grid = document.getElementById('miniGrid');
+  if(grid && grid.innerHTML.indexOf('로딩 중') !== -1){
+    grid.innerHTML='<div class="empty-state"><div class="empty-icon">⚠️</div><p>스크립트 오류로 로딩 실패 — 콘솔을 확인하세요</p></div>';
+  }
+});
+
+/* ════════════════════════════════════════════════════════
+   index.html — v33
+   · 한국 출발 국제선 전용 (supportedOrigins 체크)
+   · 메인 화면 단일 금액 제거 → 안내 문구 + 공식 공지 버튼
+   · 공식값 / 예측값 완전 분리
+   · manual_overrides 우선 → feed fallback
+   · group_tier 스키마(ZE) 지원
+   · 항공사 공지 섹션(KE/OZ only) 제거
+════════════════════════════════════════════════════════ */
+
+var AL_TAG = {
+  SkyTeam:    {cls:'tag-skyteam',  label:'SkyTeam'},
+  StarAlliance:{cls:'tag-star',    label:'Star Alliance'},
+  oneworld:   {cls:'tag-oneworld', label:'oneworld'},
+  LCC:        {cls:'tag-lcc',      label:'LCC'},
+  other:      {cls:'tag-other',    label:'Other'},
+};
+
+/* ICN 기준 공항 마일 거리 */
+var DIST_FROM_ICN = {
+  ICN:0,GMP:14,PUS:196,CJU:278,
+  NRT:783,HND:764,KIX:722,FUK:342,CTS:872,OKA:1008,NGO:718,SDJ:891,
+  HKG:1298,TPE:932,PVG:530,PEK:592,CTU:1538,XIY:1162,
+  SIN:2867,BKK:2286,MNL:1577,KUL:2693,SGN:2184,HAN:1725,DAD:1840,
+  DPS:3373,CEB:2064,DVO:2178,
+  LAX:5974,JFK:6903,SFO:5591,SEA:5329,ORD:6218,IAD:6907,
+  SYD:5325,MEL:5631,AKL:5831,
+  CDG:5655,LHR:5509,FRA:5685,AMS:5726,
+  DXB:4073,DOH:4149,AUH:4097,
+  GUM:1582,SPN:1687,
+};
+function getMiles(dep,arr){
+  var d=DIST_FROM_ICN[dep]||0,a=DIST_FROM_ICN[arr]||0;
+  if(d===0&&a===0) return 2000;
+  if(d===0) return a;
+  if(a===0) return d;
+  return Math.abs(d-a)+100;
+}
+
+/* 거리범위 내 여부 판별 */
+function inRange(rangeStr, miles){
+  if(!rangeStr||miles==null) return false;
+  if(rangeStr.endsWith('+')){return miles>=parseInt(rangeStr);}
+  var p=rangeStr.split('-');
+  if(p.length!==2) return false;
+  return miles>=parseInt(p[0])&&miles<parseInt(p[1]);
+}
+
+var FEED=null, KR_AIRLINES=[];
+
+async function loadAll(){
+  var loadErrors = [];
+  var metaOk = false, feedOk = false;
+
+  try {
+    var [meta, fr] = await Promise.allSettled([
+      window.loadAirlineMeta(),
+      fetch('data/official_surcharge_feed.json').then(function(r){
+        if(!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      }),
+    ]);
+
+    // airline_meta 로드 결과
+    if (meta.status === 'fulfilled' && window.AIRLINE_META) {
+      metaOk = true;
+      console.log('[aero] ✅ airline metadata 로드 성공 — 항공사 수:', Object.keys(window.AIRLINE_META).length);
+    } else {
+      loadErrors.push('airline_meta.json');
+      console.error('[aero] ❌ airline metadata 로드 실패:', meta.reason || 'unknown');
+      window.AIRLINE_META = window.AIRLINE_META || {};
+    }
+
+    // official_surcharge_feed 로드 결과
+    if (fr.status === 'fulfilled' && fr.value) {
+      FEED = fr.value;
+      feedOk = true;
+      var alCount = Array.isArray(FEED.airlines) ? FEED.airlines.length : 0;
+      console.log('[aero] ✅ official surcharge feed 로드 성공 — 항공사 수:', alCount);
+    } else {
+      FEED = null;
+      loadErrors.push('official_surcharge_feed.json');
+      console.error('[aero] ❌ official surcharge feed 로드 실패:', fr.reason || 'unknown');
+    }
+
+  } catch(e) {
+    console.error('[aero] ❌ loadAll 치명적 오류:', e);
+    loadErrors.push('전체 로딩');
+  }
+
+  // KR_AIRLINES 구성 (방어 코드 포함)
+  var metaObj = (window.AIRLINE_META && typeof window.AIRLINE_META === 'object') ? window.AIRLINE_META : {};
+  KR_AIRLINES = Object.keys(metaObj)
+    .filter(function(c){
+      var m = metaObj[c];
+      return m && !m.excludeFromPublicLists && m.isVisibleToUser;
+    })
+    .map(function(c){
+      var m = metaObj[c];
+      return {
+        code: c,
+        name: m.name || c,
+        logo: m.logo || '✈',
+        alliance: m.alliance || 'other',
+        officialNoticeUrl: m.officialNoticeUrl || null,
+        hasOfficialNotice: !!m.hasOfficialNotice,
+        usdNotice: m.usdNotice || null,
+        surchargeSchema: m.surchargeSchema || 'mileage_band',
+        showSingleAmtOnMain: m.showSingleAmtOnMain !== false,
+      };
+    });
+
+  console.log('[aero] ✅ forecast feed 로드 성공 여부:', feedOk, '(official feed 기준)');
+  console.log('[aero] 📋 airport options 개수:', document.querySelectorAll('#originSelect option[value]').length);
+  console.log('[aero] 📋 airline list 개수:', KR_AIRLINES.length);
+
+  /* ── 점검 로그: officialNoticeUrl 존재 여부 및 버튼 활성 상태 ── */
+  console.log('[aero] 📋 항공사별 공식 공지 버튼 활성 상태:');
+  KR_AIRLINES.forEach(function(al){
+    var hasUrl=!!al.officialNoticeUrl;
+    console.log('  ['+al.code+'] '+al.name+': officialNoticeUrl='+( hasUrl?al.officialNoticeUrl:'없음')+' | 버튼활성='+hasUrl);
+  });
+
+  if (loadErrors.length > 0) {
+    console.warn('[aero] ⚠️ 로드 실패 파일:', loadErrors.join(', '));
+  }
+
+  renderLanding();
+  if (window._searchCtx) renderCards('all');
+}
+
+function findFeedAl(code){
+  if(!FEED) return null;
+  var list = Array.isArray(FEED.airlines) ? FEED.airlines : [];
+  return list.find(function(a){return a && a.iataCode===code;}) || null;
+}
+
+/* ════ 카드 데이터 ════ */
+function getCardData(code,dep,arr,miles){
+  var feedAl=findFeedAl(code);
+  var status=feedAl?window.resolveStatus(feedAl,null):'unknown';
+  var isGroupTier=window.isGroupTierSchema(code);
+  var trusted=window.hasVerifiedOfficialData(feedAl);
+
+  var allRoutes=[], groupTiersResult=null, matchedGroup=null;
+
+  if(isGroupTier){
+    /* ZE: 군별 스키마 */
+    groupTiersResult=window.resolveGroupTiers(code,feedAl,'2026.04');
+    if(groupTiersResult){
+      trusted=true;
+      status='official_verified';
+      if(miles!=null){
+        var g=window.resolveZEGroup(miles,groupTiersResult);
+        if(g!=null){
+          matchedGroup=groupTiersResult.tiers.find(function(t){return t.group===g;})||null;
+        }
+      }
+    }
+  } else {
+    allRoutes=window.resolveAllRoutes(feedAl,code,'2026.04');
+    if(allRoutes.length>0){trusted=true;status='official_verified';}
+  }
+
+  /* 매칭 아이템 */
+  var matchedItem=null;
+  if(miles!=null&&allRoutes.length>0){
+    matchedItem=allRoutes.find(function(r){return r.distanceRange&&inRange(r.distanceRange,miles);})||null;
+  }
+
+  /* AI 예측은 별도 feed에서만 — 공식값과 절대 혼합 안 함 */
+  return {status:status,trusted:trusted,allRoutes:allRoutes,matchedItem:matchedItem,
+          groupTiersResult:groupTiersResult,matchedGroup:matchedGroup,
+          feedAl:feedAl,isGroupTier:isGroupTier};
+}
+
+/* ════ 공식값 섹션 HTML ════ */
+function buildOfficialSection(cd, al, miles, isRT){
+  var mult=isRT?2:1;
+  var period='2026.04';
+
+  /* ZE: 군별 테이블 */
+  if(cd.isGroupTier&&cd.groupTiersResult){
+    var gtr=cd.groupTiersResult;
+    var rows=gtr.tiers.map(function(t){
+      var isMatch=cd.matchedGroup&&cd.matchedGroup.group===t.group;
+      var cls=isMatch?' highlighted':'';
+      var badge=isMatch?'<span class="route-highlight-badge">현재 노선</span>':'';
+      var rm=gtr.routeMap[String(t.group)]||{};
+      return '<tr class="'+cls+'">'
+        +'<td>'+t.label+'<span style="font-size:10px;color:var(--muted);margin-left:5px">'+( rm.desc||'')+'</span>'+badge+'</td>'
+        +'<td class="route-amt">'+window.fmtAmtDisplay(t.amountKRW,'USD',mult)+'</td>'
+        +'</tr>';
+    }).join('');
+    return '<div class="official-section">'
+      +'<div class="official-label">'+window.statusBadgeHtml('official_verified')
+      +'<span style="font-size:10px;color:var(--muted);margin-left:6px">'+period+'</span>'
+      +'<span style="font-size:10px;color:var(--muted);margin-left:4px">'+(isRT?'왕복':'편도')+'</span>'
+      +'<span style="font-size:10px;background:#e3f2fd;color:#0d47a1;border-radius:4px;padding:1px 6px;margin-left:6px;font-weight:700">군별 요금</span>'
+      +'</div>'
+      +'<table class="route-table">'
+      +'<thead><tr><th>군 / 구간</th><th style="text-align:right">유류할증료</th></tr></thead>'
+      +'<tbody>'+rows+'</tbody></table>'
+      +'</div>';
+  }
+
+  /* mileage_band: 구간별 테이블 */
+  if(cd.allRoutes.length>0){
+    var rows2=cd.allRoutes.map(function(route){
+      var isMatch=miles&&route.distanceRange&&inRange(route.distanceRange,miles);
+      var cls=isMatch?' highlighted':'';
+      var badge=isMatch?'<span class="route-highlight-badge">현재 노선</span>':'';
+      var spBadge=route.spiked?'<span class="route-spike-badge">⚠ 변동</span>':'';
+      var noteHtml=route.dataNote?'<span style="font-size:10px;color:var(--warn);margin-left:4px">'+route.dataNote+'</span>':'';
+      var rangeHtml=route.distanceRange?'<span class="route-range">'+route.distanceRange+'mi</span> ':'';
+      var amtStr=route.amountKRW!=null
+        ?window.fmtAmtDisplay(route.amountKRW,route.currency,mult)
+        :'<span style="color:var(--muted)">공지 미기재</span>';
+      return '<tr class="'+cls+'">'
+        +'<td>'+rangeHtml+route.label+badge+spBadge+noteHtml+'</td>'
+        +'<td class="route-amt">'+amtStr+'</td>'
+        +'</tr>';
+    }).join('');
+    return '<div class="official-section">'
+      +'<div class="official-label">'+window.statusBadgeHtml('official_verified')
+      +'<span style="font-size:10px;color:var(--muted);margin-left:6px">'+period+'</span>'
+      +'<span style="font-size:10px;color:var(--muted);margin-left:4px">'+(isRT?'왕복':'편도')+'</span>'
+      +'</div>'
+      +'<table class="route-table">'
+      +'<thead><tr><th>거리구간</th><th style="text-align:right">유류할증료</th></tr></thead>'
+      +'<tbody>'+rows2+'</tbody></table>'
+      +'</div>';
+  }
+
+  /* 공식 데이터 없음 */
+  return '<div class="no-data-msg">'
+    +'공식 데이터를 불러올 수 없습니다. 공식 공지 버튼을 통해 직접 확인하세요.'
+    +'</div>';
+}
+
+/* ════ 카드 빌드 ════ */
+function buildCard(al, dep, arr, miles, isRT, idx){
+  var tag=AL_TAG[al.alliance]||AL_TAG.other;
+
+  /* ── 점검 로그 ── */
+  var noticeUrl=al.officialNoticeUrl||null;
+  var btnActive=!!noticeUrl;
+  var depIsKR=dep?window.isKoreanAirport(dep):false;
+  var routeCheck=dep&&arr?window.checkRouteSupport(al.code,dep,arr):{operates:false,reason:'no_route'};
+
+  // 최종 표시 상태 결정
+  var displayState;
+  if(!dep||!arr){
+    displayState='no_search';
+  } else if(!depIsKR && !window.isKoreanAirport(arr)){
+    displayState='overseas_origin';
+  } else if(!routeCheck.operates){
+    displayState=routeCheck.reason==='domestic'?'domestic':'not_operated';
+  } else {
+    displayState='fare';
+  }
+
+  console.log('[aero]['+al.code+']',
+    'officialNoticeUrl:', noticeUrl?'있음':'없음',
+    '| 버튼활성:', btnActive,
+    '| 출발지KR:', depIsKR,
+    '| 취항여부:', routeCheck.operates, '('+routeCheck.reason+')',
+    '| 표시상태:', displayState
+  );
+
+  /* ── 카드 헤더 공통 ── */
+  function cardHeader(withFlag){
+    return '<div class="card-header">'
+      +'<div class="card-airline"><div class="card-logo">'+al.logo+'</div>'
+      +'<div><div class="card-name">'+(withFlag?'🇰🇷 ':'')+al.name+'</div>'
+      +'<div class="card-code">'+al.code+'</div></div></div>'
+      +'<span class="alliance-tag '+tag.cls+'">'+tag.label+'</span>'
+      +'</div>';
+  }
+
+  /* ── CASE 1: 해외 출발 ── */
+  if(displayState==='overseas_origin'){
+    return '<div class="al-card no-data">'
+      +cardHeader(false)
+      +'<div class="no-data-msg" style="padding:12px 4px;color:var(--muted)">'
+      +'🌐 현재는 한국 출발 국제선만 지원합니다.<br>'
+      +'<span style="font-size:11px">해외 출발 노선은 서비스 준비중입니다.</span>'
+      +'</div>'
+      +'</div>';
+  }
+
+  /* ── CASE 2: 미취항 ── */
+  if(displayState==='not_operated'){
+    var srcHtmlNo=noticeUrl
+      ?'<a class="source-link" href="'+noticeUrl+'" target="_blank" rel="noopener">공식 공지 ↗</a>'
+      :'';
+    return '<div class="al-card no-data">'
+      +cardHeader(false)
+      +'<div class="no-data-msg" style="padding:10px 4px">'
+      +'<span style="background:#f5f5f5;border:1px solid #ddd;border-radius:6px;padding:3px 10px;font-size:12px;color:#888">미운항</span>'
+      +'<span style="font-size:11px;color:var(--muted);margin-left:8px">해당 노선 미취항</span>'
+      +'</div>'
+      +(srcHtmlNo?'<div class="card-footer" style="border-top:1px solid var(--line);padding-top:8px;margin-top:8px">'+srcHtmlNo+'</div>':'')
+      +'</div>';
+  }
+
+  /* ── CASE 3: 정상 취항 노선 ── */
+  var cd=getCardData(al.code,dep,arr,miles);
+  var officialHtml=buildOfficialSection(cd,al,miles,isRT);
+
+  /* 공식 공지 버튼 — officialNoticeUrl 유효 여부만으로 판단 */
+  var srcHtml=noticeUrl
+    ?'<a class="source-link" href="'+noticeUrl+'" target="_blank" rel="noopener">공식 공지 ↗</a>'
+    :'';
+  var usdBadge=al.usdNotice
+    ?'<span style="font-size:10px;background:#e3f2fd;color:#0d47a1;border:1px solid #90caf9;border-radius:10px;padding:2px 7px;margin-left:4px">USD 공시</span>':'';
+  var schemaBadge=al.surchargeSchema==='group_tier'
+    ?'<span style="font-size:10px;background:#f3e5f5;color:#6a1b9a;border:1px solid #ce93d8;border-radius:10px;padding:2px 7px;margin-left:4px">군별 요금</span>':'';
+
+  return '<div class="al-card has-data">'
+    +cardHeader(true)
+    +officialHtml
+    +'<div class="card-footer"><div class="footer-left">'+srcHtml+usdBadge+schemaBadge+'</div></div>'
+    +'</div>';
+}
+
+/* ════ 검색 ════ */
+var tripMode='OW';
+document.getElementById('btnOW').addEventListener('click',function(){
+  tripMode='OW';
+  document.getElementById('btnOW').classList.add('active');
+  document.getElementById('btnRT').classList.remove('active');
+});
+document.getElementById('btnRT').addEventListener('click',function(){
+  tripMode='RT';
+  document.getElementById('btnRT').classList.add('active');
+  document.getElementById('btnOW').classList.remove('active');
+});
+document.getElementById('swapBtn').addEventListener('click',function(){
+  var o=document.getElementById('originSelect'),d=document.getElementById('destSelect'),t=o.value;
+  o.value=d.value;d.value=t;
+});
+
+document.getElementById('searchBtn').addEventListener('click',function(){
+  var dep=document.getElementById('originSelect').value,
+      arr=document.getElementById('destSelect').value;
+  if(!dep||!arr){alert('출발지와 도착지를 선택하세요');return;}
+  if(dep===arr){alert('출발지와 도착지를 다르게 선택하세요');return;}
+
+  var depIsKR=window.isKoreanAirport(dep);
+  var arrIsKR=window.isKoreanAirport(arr);
+  var isOverseas=!depIsKR&&!arrIsKR;
+
+  console.log('[aero][search] dep='+dep+' arr='+arr+' depIsKR='+depIsKR+' arrIsKR='+arrIsKR+' overseas='+isOverseas);
+
+  document.getElementById('landingSection').style.display='none';
+  document.getElementById('resultsSection').style.display='block';
+  document.getElementById('resultBadge').textContent=dep+' → '+arr;
+
+  /* 해외 출발: 결과 영역에 준비중 메시지만, 카드 렌더링 없음 */
+  if(isOverseas){
+    document.getElementById('resultMeta').textContent='해외 출발 노선';
+    document.getElementById('filterRow').style.display='none';
+    document.getElementById('cardsGrid').innerHTML=
+      '<div style="grid-column:1/-1;background:#FFF8E1;border:1.5px solid #FFD54F;border-radius:13px;padding:24px 28px;text-align:center">'
+      +'<div style="font-size:22px;margin-bottom:8px">🌐</div>'
+      +'<div style="font-size:15px;font-weight:700;color:#E65100;margin-bottom:6px">현재는 한국 출발 국제선만 지원합니다</div>'
+      +'<div style="font-size:13px;color:#795548">해외 출발 노선은 서비스 준비중입니다.</div>'
+      +'</div>';
+    window._searchCtx=null;
+    return;
+  }
+
+  document.getElementById('filterRow').style.display='flex';
+  var isRT=tripMode==='RT',miles=getMiles(dep,arr);
+  document.getElementById('resultMeta').textContent=
+    (isRT?'왕복':'편도')+' · 한국 출발 국제선 · 2026년 4월 공식 공지 기준';
+  window._searchCtx={dep:dep,arr:arr,miles:miles,isRT:isRT};
+  renderCards('all');
+});
+
+function renderCards(f){
+  var ctx=window._searchCtx||{};
+  var dep=ctx.dep,arr=ctx.arr,miles=ctx.miles||2000,isRT=ctx.isRT;
+  var list=KR_AIRLINES.filter(function(al){
+    if(f==='data'){
+      /* '공식 데이터 있음' 탭: 취항 노선이면서 구간 데이터가 있는 경우만 */
+      var rc=dep&&arr?window.checkRouteSupport(al.code,dep,arr):{operates:false,reason:'no_route'};
+      if(!rc.operates) return false;
+      var cd=getCardData(al.code,dep,arr,miles);
+      return cd.allRoutes.length>0||cd.groupTiersResult!=null;
+    }
+    return true;
+  });
+  document.getElementById('cardsGrid').innerHTML=
+    list.map(function(al,i){return buildCard(al,dep,arr,miles,isRT,i);}).join('')
+    ||'<div style="grid-column:1/-1;text-align:center;padding:32px;color:var(--muted)">조회 결과가 없습니다</div>';
+}
+
+document.getElementById('filterRow').addEventListener('click',function(e){
+  var btn=e.target.closest('.ftab');if(!btn)return;
+  document.querySelectorAll('#filterRow .ftab').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');renderCards(btn.dataset.f);
+});
+
+/* ════ 랜딩 — 단일 금액 대신 항공사 + 공식 공지 버튼 ════ */
+function renderLanding(){
+  var grid=document.getElementById('miniGrid');
+  if(!Array.isArray(KR_AIRLINES) || !KR_AIRLINES.length){
+    grid.innerHTML='<div class="empty-state"><div class="empty-icon">⚠️</div><p>데이터 로딩 실패 — 콘솔을 확인하세요</p></div>';
+    return;
+  }
+  grid.innerHTML=KR_AIRLINES.map(function(al){
+    var feedAl=findFeedAl(al.code);
+    var status=feedAl?window.resolveStatus(feedAl,null):'unknown';
+    /* v33: 단일 금액 미표시 — 공식 공지 버튼 + 데이터 상태만 표시 */
+    var noticeUrl=al.officialNoticeUrl;
+    var btnHtml=noticeUrl
+      ?'<a href="'+noticeUrl+'" target="_blank" rel="noopener" class="mini-notice-btn">공식 공지 ↗</a>'
+      :'';
+    var schemaBadge=al.surchargeSchema==='group_tier'
+      ?'<span style="font-size:9px;color:#6a1b9a;margin-left:4px">(군별)</span>':'';
+    return '<div class="mini-card">'
+      +'<div class="mini-badge">'+al.logo+'</div>'
+      +'<div style="flex:1">'
+      +'<div class="mini-name">'+al.name+schemaBadge+'</div>'
+      +'<div class="mini-status">'+window.statusBadgeHtml(status)+'</div>'
+      +btnHtml+'</div>'
+      +'</div>';
+  }).join('');
+
+  if(FEED&&FEED.meta){
+    document.getElementById('statusStrip').style.display='flex';
+    var upd=FEED.meta.lastUpdated
+      ?new Date(FEED.meta.lastUpdated).toLocaleString('ko-KR',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}):'' ;
+    document.getElementById('statusText').textContent='데이터 갱신: '+upd+' · 2026-04 공식 공지 기준';
+    document.getElementById('statusDot').className='status-dot';
+  }
+}
+
+window.initNav({
+  onLangChange:function(){renderLanding();if(window._searchCtx)renderCards('all');},
+  onCurrChange:function(){renderLanding();if(window._searchCtx)renderCards('all');}
+});
+loadAll();
+</script>
+</body></html>

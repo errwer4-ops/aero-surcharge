@@ -1,0 +1,2750 @@
+{
+  "meta": {
+    "lastUpdated": "2026-04-12T00:00:00.000Z",
+    "source": "official-multi-airline",
+    "schemaVersion": "2.2.0",
+    "regulatoryAssist": true,
+    "stats": {
+      "fresh": 2,
+      "stale": 0,
+      "error": 35,
+      "unsupported": 29
+    },
+    "pipelineRun": "2026-04-04T10:55:24.399Z",
+    "_v33note": "2026-04 공식 공지 기준 전면 반영. group_tier 스키마(ZE) 추가."
+  },
+  "airlines": [
+    {
+      "airlineId": "korean_air",
+      "airlineName": "대한항공",
+      "iataCode": "KE",
+      "supported": true,
+      "confidence": "fresh",
+      "sourceType": "official_notice",
+      "unitType": null,
+      "reason": "KE: 2026-04 공식 공지 반영",
+      "sources": {
+        "infoUrl": "https://www.koreanair.com/",
+        "regulationUrls": [],
+        "noticeUrl": "https://www.koreanair.com/contents/footer/customer-support/notice"
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "KR",
+        "items": [
+          {
+            "code": "KR",
+            "authority": "국토교통부",
+            "ruleType": "distance_band_guideline",
+            "usage": "secondary_validation",
+            "summary": "한국 출발 국제선은 유가/거리 구간 기준의 가이드라인을 보조 검증 근거로 활용 가능.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-04T06:20:27.707Z",
+      "note": "국가 규정 보조 참고 적용 (KR:한국 출발 국제선은 유가/거리 구간 기준의 가이드라인을 보조 검증 근거로 활용 가능.)",
+      "currentPeriod": "2026.04",
+      "items": [
+        {
+          "label": "~499마일",
+          "distanceRange": "0-500",
+          "current": 42000,
+          "currency": "KRW",
+          "key": "KE_0-500",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "500~999마일",
+          "distanceRange": "500-1000",
+          "current": 57000,
+          "currency": "KRW",
+          "key": "KE_500-1000",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "1,000~1,499마일",
+          "distanceRange": "1000-1500",
+          "current": 78000,
+          "currency": "KRW",
+          "key": "KE_1000-1500",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "1,500~1,999마일",
+          "distanceRange": "1500-2000",
+          "current": 97500,
+          "currency": "KRW",
+          "key": "KE_1500-2000",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "2,000~2,999마일",
+          "distanceRange": "2000-3000",
+          "current": 123000,
+          "currency": "KRW",
+          "key": "KE_2000-3000",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "3,000~3,999마일",
+          "distanceRange": "3000-4000",
+          "current": 126000,
+          "currency": "KRW",
+          "key": "KE_3000-4000",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "4,000~4,999마일",
+          "distanceRange": "4000-5000",
+          "current": 199500,
+          "currency": "KRW",
+          "key": "KE_4000-5000",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "5,000~6,499마일",
+          "distanceRange": "5000-6500",
+          "current": 276000,
+          "currency": "KRW",
+          "key": "KE_5000-6500",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "6,500~9,999마일",
+          "distanceRange": "6500+",
+          "current": 303000,
+          "currency": "KRW",
+          "key": "KE_6500+",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        }
+      ],
+      "aiSummary": "[mock] KE: 9개 구간 추출",
+      "currency": "KRW",
+      "candidatesSummary": [
+        {
+          "sourceType": "official_notice",
+          "valid": true,
+          "routeCount": 9,
+          "reason": "2026-04 공식 공지 직접 반영"
+        }
+      ],
+      "lastPipelineRun": "2026-04-04T10:55:24.399Z",
+      "noticeUrl": "https://www.koreanair.com/contents/footer/customer-support/notice",
+      "officialCurrencyNote": "KRW",
+      "officialSourceUrl": "https://www.koreanair.com/contents/footer/customer-support/notice"
+    },
+    {
+      "airlineId": "asiana",
+      "airlineName": "아시아나항공",
+      "iataCode": "OZ",
+      "supported": true,
+      "confidence": "fresh",
+      "sourceType": "official_notice",
+      "unitType": null,
+      "reason": "OZ: 2026-04 공식 공지 반영",
+      "sources": {
+        "infoUrl": "https://flyasiana.com/",
+        "regulationUrls": [],
+        "noticeUrl": "https://flyasiana.com/C/KR/KO/customer/notice/list"
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "KR",
+        "items": [
+          {
+            "code": "KR",
+            "authority": "국토교통부",
+            "ruleType": "distance_band_guideline",
+            "usage": "secondary_validation",
+            "summary": "한국 출발 국제선은 유가/거리 구간 기준의 가이드라인을 보조 검증 근거로 활용 가능.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-04T06:20:27.707Z",
+      "note": "국가 규정 보조 참고 적용 (KR:한국 출발 국제선은 유가/거리 구간 기준의 가이드라인을 보조 검증 근거로 활용 가능.)",
+      "currentPeriod": "2026.04",
+      "currency": "KRW",
+      "items": [
+        {
+          "label": "~499마일",
+          "distanceRange": "0-500",
+          "current": 43900,
+          "currency": "KRW",
+          "key": "OZ_0-500",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "500~999마일",
+          "distanceRange": "500-1000",
+          "current": 65900,
+          "currency": "KRW",
+          "key": "OZ_500-1000",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "1,000~1,499마일",
+          "distanceRange": "1000-1500",
+          "current": 86400,
+          "currency": "KRW",
+          "key": "OZ_1000-1500",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "1,500~1,999마일",
+          "distanceRange": "1500-2000",
+          "current": 106900,
+          "currency": "KRW",
+          "key": "OZ_1500-2000",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "2,000~2,499마일",
+          "distanceRange": "2000-2500",
+          "current": 127400,
+          "currency": "KRW",
+          "key": "OZ_2000-2500",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "2,500~2,999마일",
+          "distanceRange": "2500-3000",
+          "current": 147900,
+          "currency": "KRW",
+          "key": "OZ_2500-3000",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "3,000~3,999마일",
+          "distanceRange": "3000-4000",
+          "current": 169900,
+          "currency": "KRW",
+          "key": "OZ_3000-4000",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "4,000~4,999마일",
+          "distanceRange": "4000-5000",
+          "current": 210900,
+          "currency": "KRW",
+          "key": "OZ_4000-5000",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "5,000마일 이상",
+          "distanceRange": "5000+",
+          "current": 251900,
+          "currency": "KRW",
+          "key": "OZ_5000+",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        }
+      ],
+      "aiSummary": "[mock] OZ: 4개 구간 추출",
+      "candidatesSummary": [
+        {
+          "sourceType": "official_notice",
+          "valid": true,
+          "routeCount": 9,
+          "reason": "2026-04 공식 공지 직접 반영"
+        }
+      ],
+      "lastPipelineRun": "2026-04-04T10:55:24.399Z",
+      "noticeUrl": "https://flyasiana.com/C/KR/KO/customer/notice/list",
+      "officialCurrencyNote": "KRW",
+      "officialSourceUrl": "https://flyasiana.com/C/KR/KO/customer/notice/list"
+    },
+    {
+      "airlineId": "air_premia",
+      "airlineName": "에어프레미아",
+      "iataCode": "YP",
+      "supported": true,
+      "confidence": "fresh",
+      "sourceType": "official_notice",
+      "unitType": null,
+      "reason": "YP: 2026-04 공식 공지 반영",
+      "sources": {
+        "infoUrl": "https://www.airpremia.com/",
+        "regulationUrls": [],
+        "noticeUrl": "https://www.airpremia.com/a/ko/customer/notice"
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "KR",
+        "items": [
+          {
+            "code": "KR",
+            "authority": "국토교통부",
+            "ruleType": "distance_band_guideline",
+            "usage": "secondary_validation",
+            "summary": "한국 출발 국제선은 유가/거리 구간 기준의 가이드라인을 보조 검증 근거로 활용 가능.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-04T06:20:27.707Z",
+      "note": "국가 규정 보조 참고 적용 (KR:한국 출발 국제선은 유가/거리 구간 기준의 가이드라인을 보조 검증 근거로 활용 가능.)",
+      "currentPeriod": "2026.04",
+      "currency": "USD",
+      "items": [
+        {
+          "label": "~999마일",
+          "distanceRange": "0-1000",
+          "current": 32,
+          "currency": "USD",
+          "key": "YP_0-1000",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "1,000~1,499마일",
+          "distanceRange": "1000-1500",
+          "current": 42,
+          "currency": "USD",
+          "key": "YP_1000-1500",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "1,500~1,999마일",
+          "distanceRange": "1500-2000",
+          "current": 54,
+          "currency": "USD",
+          "key": "YP_1500-2000",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "2,000~2,499마일",
+          "distanceRange": "2000-2500",
+          "current": 71,
+          "currency": "USD",
+          "key": "YP_2000-2500",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "4,000~4,999마일",
+          "distanceRange": "4000-5000",
+          "current": 123,
+          "currency": "USD",
+          "key": "YP_4000-5000",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "5,000~6,499마일",
+          "distanceRange": "5000-6500",
+          "current": 155,
+          "currency": "USD",
+          "key": "YP_5000-6500",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "6,500마일 이상",
+          "distanceRange": "6500+",
+          "current": 194,
+          "currency": "USD",
+          "key": "YP_6500+",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        }
+      ],
+      "aiSummary": "[mock] YP: 2개 구간 추출",
+      "candidatesSummary": [
+        {
+          "sourceType": "official_notice",
+          "valid": true,
+          "routeCount": 7,
+          "reason": "2026-04 공식 공지 직접 반영"
+        }
+      ],
+      "lastPipelineRun": "2026-04-04T10:55:24.399Z",
+      "officialCurrencyNote": "USD",
+      "noticeUrl": "https://www.airpremia.com/a/ko/customer/notice",
+      "officialSourceUrl": "https://www.airpremia.com/a/ko/customer/notice"
+    },
+    {
+      "airlineId": "jin_air",
+      "airlineName": "진에어",
+      "iataCode": "LJ",
+      "supported": true,
+      "confidence": "fresh",
+      "sourceType": "official_notice",
+      "unitType": null,
+      "reason": "LJ: 2026-04 공식 공지 반영",
+      "sources": {
+        "infoUrl": "https://www.jinair.com/",
+        "regulationUrls": [],
+        "noticeUrl": "https://www.jinair.com/company/announce/announceList"
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "KR",
+        "items": [
+          {
+            "code": "KR",
+            "authority": "국토교통부",
+            "ruleType": "distance_band_guideline",
+            "usage": "secondary_validation",
+            "summary": "한국 출발 국제선은 유가/거리 구간 기준의 가이드라인을 보조 검증 근거로 활용 가능.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-04T06:20:27.707Z",
+      "note": "국가 규정 보조 참고 적용 (KR:한국 출발 국제선은 유가/거리 구간 기준의 가이드라인을 보조 검증 근거로 활용 가능.)",
+      "currentPeriod": "2026.04",
+      "currency": "USD",
+      "items": [
+        {
+          "label": "1~599마일",
+          "distanceRange": "0-600",
+          "current": 25,
+          "currency": "USD",
+          "key": "LJ_0-600",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "600~1,199마일",
+          "distanceRange": "600-1200",
+          "current": 35,
+          "currency": "USD",
+          "key": "LJ_600-1200",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "1,200~1,799마일",
+          "distanceRange": "1200-1800",
+          "current": 58,
+          "currency": "USD",
+          "key": "LJ_1200-1800",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "1,800~2,399마일",
+          "distanceRange": "1800-2400",
+          "current": 63,
+          "currency": "USD",
+          "key": "LJ_1800-2400",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "2,400~3,599마일",
+          "distanceRange": "2400-3600",
+          "current": 76,
+          "currency": "USD",
+          "key": "LJ_2400-3600",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        }
+      ],
+      "aiSummary": "[mock] LJ: 4개 구간 추출",
+      "candidatesSummary": [
+        {
+          "sourceType": "official_notice",
+          "valid": true,
+          "routeCount": 5,
+          "reason": "2026-04 공식 공지 직접 반영"
+        }
+      ],
+      "lastPipelineRun": "2026-04-04T10:55:24.399Z",
+      "officialCurrencyNote": "USD",
+      "noticeUrl": "https://www.jinair.com/company/announce/announceList",
+      "officialSourceUrl": "https://www.jinair.com/company/announce/announceList"
+    },
+    {
+      "airlineId": "jeju_air",
+      "airlineName": "제주항공",
+      "iataCode": "7C",
+      "supported": true,
+      "confidence": "fresh",
+      "sourceType": "official_notice",
+      "unitType": null,
+      "reason": "7C: 2026-04 공식 공지 반영",
+      "sources": {
+        "infoUrl": "https://www.jejuair.net/",
+        "regulationUrls": [],
+        "noticeUrl": "https://www.jejuair.net/ko/customerServiceCenter/notice.do"
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "KR",
+        "items": [
+          {
+            "code": "KR",
+            "authority": "국토교통부",
+            "ruleType": "distance_band_guideline",
+            "usage": "secondary_validation",
+            "summary": "한국 출발 국제선은 유가/거리 구간 기준의 가이드라인을 보조 검증 근거로 활용 가능.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-04T06:20:27.707Z",
+      "note": "국가 규정 보조 참고 적용 (KR:한국 출발 국제선은 유가/거리 구간 기준의 가이드라인을 보조 검증 근거로 활용 가능.)",
+      "currentPeriod": "2026.04",
+      "currency": "USD",
+      "items": [
+        {
+          "label": "1~500마일 미만",
+          "distanceRange": "0-500",
+          "current": 29,
+          "currency": "USD",
+          "key": "7C_0-500",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "500~1,000마일 미만",
+          "distanceRange": "500-1000",
+          "current": 37,
+          "currency": "USD",
+          "key": "7C_500-1000",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "1,000~1,500마일 미만",
+          "distanceRange": "1000-1500",
+          "current": 44,
+          "currency": "USD",
+          "key": "7C_1000-1500",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "1,500~2,000마일 미만",
+          "distanceRange": "1500-2000",
+          "current": 53,
+          "currency": "USD",
+          "key": "7C_1500-2000",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "2,000~2,500마일 미만",
+          "distanceRange": "2000-2500",
+          "current": 60,
+          "currency": "USD",
+          "key": "7C_2000-2500",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "2,500마일 이상",
+          "distanceRange": "2500+",
+          "current": 68,
+          "currency": "USD",
+          "key": "7C_2500+",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        }
+      ],
+      "aiSummary": "[mock] 7C: 4개 구간 추출",
+      "candidatesSummary": [
+        {
+          "sourceType": "official_notice",
+          "valid": true,
+          "routeCount": 6,
+          "reason": "2026-04 공식 공지 직접 반영"
+        }
+      ],
+      "lastPipelineRun": "2026-04-04T10:55:24.399Z",
+      "officialCurrencyNote": "USD",
+      "noticeUrl": "https://www.jejuair.net/ko/customerServiceCenter/notice.do",
+      "officialSourceUrl": "https://www.jejuair.net/ko/customerServiceCenter/notice.do"
+    },
+    {
+      "airlineId": "tway",
+      "airlineName": "티웨이항공",
+      "iataCode": "TW",
+      "supported": true,
+      "confidence": "fresh",
+      "sourceType": "official_notice",
+      "unitType": null,
+      "reason": "TW: 2026-04 공식 공지 반영",
+      "sources": {
+        "infoUrl": "https://www.twayair.com/",
+        "regulationUrls": [],
+        "noticeUrl": "https://www.twayair.com/app/customerCenter/notice"
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "KR",
+        "items": [
+          {
+            "code": "KR",
+            "authority": "국토교통부",
+            "ruleType": "distance_band_guideline",
+            "usage": "secondary_validation",
+            "summary": "한국 출발 국제선은 유가/거리 구간 기준의 가이드라인을 보조 검증 근거로 활용 가능.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-04T06:20:27.707Z",
+      "note": "국가 규정 보조 참고 적용 (KR:한국 출발 국제선은 유가/거리 구간 기준의 가이드라인을 보조 검증 근거로 활용 가능.)",
+      "currentPeriod": "2026.04",
+      "items": [
+        {
+          "label": "~599마일",
+          "distanceRange": "0-600",
+          "current": 30800,
+          "currency": "KRW",
+          "key": "TW_0-600",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "600~1,199마일",
+          "distanceRange": "600-1200",
+          "current": 54200,
+          "currency": "KRW",
+          "key": "TW_600-1200",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "1,200~1,799마일",
+          "distanceRange": "1200-1800",
+          "current": 67400,
+          "currency": "KRW",
+          "key": "TW_1200-1800",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "1,800~2,399마일",
+          "distanceRange": "1800-2400",
+          "current": 87900,
+          "currency": "KRW",
+          "key": "TW_1800-2400",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "2,400~3,999마일",
+          "distanceRange": "2400-4000",
+          "current": 95200,
+          "currency": "KRW",
+          "key": "TW_2400-4000",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "4,000~4,999마일",
+          "distanceRange": "4000-5000",
+          "current": null,
+          "currency": "KRW",
+          "key": "TW_4000-5000",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified",
+          "_note": "공지상 '-' — 데이터 없음"
+        },
+        {
+          "label": "5,000마일 이상",
+          "distanceRange": "5000+",
+          "current": 213900,
+          "currency": "KRW",
+          "key": "TW_5000+",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        }
+      ],
+      "aiSummary": "[mock] TW: 3개 구간 추출",
+      "currency": "KRW",
+      "candidatesSummary": [
+        {
+          "sourceType": "official_notice",
+          "valid": true,
+          "routeCount": 7,
+          "reason": "2026-04 공식 공지 직접 반영"
+        }
+      ],
+      "lastPipelineRun": "2026-04-04T10:55:24.399Z",
+      "noticeUrl": "https://www.twayair.com/app/customerCenter/notice",
+      "officialCurrencyNote": "KRW",
+      "officialSourceUrl": "https://www.twayair.com/app/customerCenter/notice"
+    },
+    {
+      "airlineId": "air_busan",
+      "airlineName": "에어부산",
+      "iataCode": "BX",
+      "supported": false,
+      "confidence": "no_data",
+      "sourceType": "no_official_notice",
+      "unitType": null,
+      "reason": "에어부산은 현재 유류할증료 공식 공지를 별도로 제공하지 않습니다.",
+      "sources": {
+        "infoUrl": "https://www.airbusan.com/",
+        "regulationUrls": [],
+        "noticeUrl": null
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "KR",
+        "items": [
+          {
+            "code": "KR",
+            "authority": "국토교통부",
+            "ruleType": "distance_band_guideline",
+            "usage": "secondary_validation",
+            "summary": "한국 출발 국제선은 유가/거리 구간 기준의 가이드라인을 보조 검증 근거로 활용 가능.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-04T06:20:27.707Z",
+      "note": "국가 규정 보조 참고 적용 (KR:한국 출발 국제선은 유가/거리 구간 기준의 가이드라인을 보조 검증 근거로 활용 가능.)",
+      "currentPeriod": "2026.05",
+      "currency": null,
+      "items": [],
+      "aiSummary": "[mock] BX: 3개 구간 추출",
+      "candidatesSummary": [
+        {
+          "sourceType": "carry_over",
+          "confidence": 0.6,
+          "valid": true,
+          "routeCount": 3,
+          "reason": "이전 피드 유지 (3구간)"
+        }
+      ],
+      "lastPipelineRun": "2026-04-04T10:55:24.399Z",
+      "noticeUrl": null,
+      "officialCurrencyNote": null
+    },
+    {
+      "airlineId": "eastar",
+      "airlineName": "이스타항공",
+      "iataCode": "ZE",
+      "supported": true,
+      "confidence": "fresh",
+      "sourceType": "official_notice",
+      "unitType": null,
+      "reason": "ZE: 2026-04 공식 공지 반영",
+      "sources": {
+        "infoUrl": "https://www.eastarjet.com/",
+        "regulationUrls": [],
+        "noticeUrl": "https://www.eastarjet.com/planinfo/paymentGuideFuelTax.do"
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "KR",
+        "items": [
+          {
+            "code": "KR",
+            "authority": "국토교통부",
+            "ruleType": "distance_band_guideline",
+            "usage": "secondary_validation",
+            "summary": "한국 출발 국제선은 유가/거리 구간 기준의 가이드라인을 보조 검증 근거로 활용 가능.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:16.403Z",
+      "note": "국가 규정 보조 참고 적용 (KR:한국 출발 국제선은 유가/거리 구간 기준의 가이드라인을 보조 검증 근거로 활용 가능.)",
+      "noticeUrl": "https://www.eastarjet.com/planinfo/paymentGuideFuelTax.do",
+      "officialCurrencyNote": "USD",
+      "currency": "USD",
+      "items": [],
+      "currentPeriod": "2026.04",
+      "officialSourceUrl": "https://www.eastarjet.com/newstar/PGWCA00001?cId=11&iId=0",
+      "candidatesSummary": [
+        {
+          "sourceType": "official_notice",
+          "valid": true,
+          "routeCount": 0,
+          "reason": "2026-04 공식 공지 직접 반영"
+        }
+      ],
+      "surchargeSchema": "group_tier",
+      "group_tiers": [
+        {
+          "group": 1,
+          "label": "1군",
+          "current": 29,
+          "currency": "USD"
+        },
+        {
+          "group": 2,
+          "label": "2군",
+          "current": 37,
+          "currency": "USD"
+        },
+        {
+          "group": 3,
+          "label": "3군",
+          "current": 44,
+          "currency": "USD"
+        },
+        {
+          "group": 4,
+          "label": "4군",
+          "current": 53,
+          "currency": "USD"
+        },
+        {
+          "group": 5,
+          "label": "5군",
+          "current": 60,
+          "currency": "USD"
+        },
+        {
+          "group": 6,
+          "label": "6군",
+          "current": 68,
+          "currency": "USD"
+        }
+      ],
+      "group_route_map": {
+        "1": {
+          "miles_range": "0-500",
+          "examples": [
+            "GMP",
+            "PUS",
+            "CJU",
+            "FUK",
+            "OKA"
+          ],
+          "desc": "일본 근거리"
+        },
+        "2": {
+          "miles_range": "500-1000",
+          "examples": [
+            "NRT",
+            "HND",
+            "KIX",
+            "CTS",
+            "NGO"
+          ],
+          "desc": "일본 원거리"
+        },
+        "3": {
+          "miles_range": "1000-1500",
+          "examples": [
+            "PVG",
+            "PEK",
+            "HKG",
+            "MNL",
+            "TPE"
+          ],
+          "desc": "중국/홍콩"
+        },
+        "4": {
+          "miles_range": "1500-2000",
+          "examples": [
+            "SGN",
+            "HAN",
+            "BKK",
+            "KUL"
+          ],
+          "desc": "동남아 근거리"
+        },
+        "5": {
+          "miles_range": "2000-3000",
+          "examples": [
+            "SIN",
+            "DPS",
+            "MNL"
+          ],
+          "desc": "동남아 원거리"
+        },
+        "6": {
+          "miles_range": "3000+",
+          "examples": [
+            "SYD",
+            "MEL",
+            "AKL"
+          ],
+          "desc": "대양주"
+        }
+      }
+    },
+    {
+      "airlineId": "air_seoul",
+      "airlineName": "에어서울",
+      "iataCode": "RS",
+      "supported": true,
+      "confidence": "fresh",
+      "sourceType": "official_notice",
+      "unitType": null,
+      "reason": "RS: 2026-04 공식 공지 반영",
+      "sources": {
+        "infoUrl": "https://flyairseoul.com/",
+        "regulationUrls": [],
+        "noticeUrl": "https://flyairseoul.com/CW/ko/customer/notice.do"
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "KR",
+        "items": [
+          {
+            "code": "KR",
+            "authority": "국토교통부",
+            "ruleType": "distance_band_guideline",
+            "usage": "secondary_validation",
+            "summary": "한국 출발 국제선은 유가/거리 구간 기준의 가이드라인을 보조 검증 근거로 활용 가능.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:16.967Z",
+      "note": "국가 규정 보조 참고 적용 (KR:한국 출발 국제선은 유가/거리 구간 기준의 가이드라인을 보조 검증 근거로 활용 가능.)",
+      "noticeUrl": "https://flyairseoul.com/CW/ko/customer/notice.do",
+      "officialCurrencyNote": "USD",
+      "currency": "KRW",
+      "items": [
+        {
+          "label": "300~699마일",
+          "distanceRange": "300-700",
+          "current": 46800,
+          "currency": "KRW",
+          "key": "RS_300-700",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "700~1,099마일",
+          "distanceRange": "700-1100",
+          "current": 54100,
+          "currency": "KRW",
+          "key": "RS_700-1100",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "1,100~1,499마일",
+          "distanceRange": "1100-1500",
+          "current": 68700,
+          "currency": "KRW",
+          "key": "RS_1100-1500",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "1,500~1,899마일",
+          "distanceRange": "1500-1900",
+          "current": 77500,
+          "currency": "KRW",
+          "key": "RS_1500-1900",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        },
+        {
+          "label": "1,900~2,299마일",
+          "distanceRange": "1900-2300",
+          "current": 80500,
+          "currency": "KRW",
+          "key": "RS_1900-2300",
+          "next": null,
+          "diff": null,
+          "spiked": false,
+          "verifiedAt": "2026-04-01T00:00:00.000Z",
+          "period": "2026.04",
+          "dataQuality": "official_verified"
+        }
+      ],
+      "currentPeriod": "2026.04",
+      "officialSourceUrl": "https://flyairseoul.com/CW/ko/noticeList.do",
+      "candidatesSummary": [
+        {
+          "sourceType": "official_notice",
+          "valid": true,
+          "routeCount": 5,
+          "reason": "2026-04 공식 공지 직접 반영"
+        }
+      ]
+    },
+    {
+      "airlineId": "jal",
+      "airlineName": "일본항공(JAL)",
+      "iataCode": "JL",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "read ECONNRESET",
+      "sources": {
+        "infoUrl": "https://www.jal.co.jp/en/",
+        "regulationUrls": []
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "JP",
+        "items": [
+          {
+            "code": "JP",
+            "authority": "일본 국토교통성(MLIT) + 항공사 고시 체계",
+            "ruleType": "fuel_price_zone_table",
+            "usage": "secondary_validation",
+            "summary": "일본 출발은 항공유 평균가격 구간과 존(zone) 체계를 보조 기준으로 활용 가능.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:56:34.690Z",
+      "note": "국가 규정 보조 참고 적용 (JP:일본 출발은 항공유 평균가격 구간과 존(zone) 체계를 보조 기준으로 활용 가능.)"
+    },
+    {
+      "airlineId": "ana",
+      "airlineName": "전일본공수(ANA)",
+      "iataCode": "NH",
+      "supported": true,
+      "confidence": "fresh",
+      "sourceType": "dedicated_page",
+      "unitType": "zone_group",
+      "currency": "JPY",
+      "currentPeriod": "Fare amount (From April 1, 2025)",
+      "nextPeriod": "Fare amount (From April 1, 2026)",
+      "items_by_origin": {},
+      "items": [],
+      "sources": {
+        "main": "https://www.ana.co.jp/en/jp/guide/plan/charge/fuelsurcharge-info/",
+        "regulationUrls": []
+      },
+      "note": "ANA 단일페이지 파싱. origins:  | 국가 규정 보조 참고 적용 (JP:일본 출발은 항공유 평균가격 구간과 존(zone) 체계를 보조 기준으로 활용 가능.)",
+      "regulatoryContext": {
+        "primaryCountryCode": "JP",
+        "items": [
+          {
+            "code": "JP",
+            "authority": "일본 국토교통성(MLIT) + 항공사 고시 체계",
+            "ruleType": "fuel_price_zone_table",
+            "usage": "secondary_validation",
+            "summary": "일본 출발은 항공유 평균가격 구간과 존(zone) 체계를 보조 기준으로 활용 가능.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:24.007Z"
+    },
+    {
+      "airlineId": "cathay",
+      "airlineName": "캐세이퍼시픽",
+      "iataCode": "CX",
+      "supported": true,
+      "confidence": "fresh",
+      "sourceType": "dedicated_page",
+      "unitType": "sector_type",
+      "currency": "USD",
+      "currentPeriod": "31 Mar 2026",
+      "nextPeriod": "Tickets purchased in: (Refer to table below for journeys originating from Japan)",
+      "items_by_origin": {
+        "JP": [
+          {
+            "key": "JP_JPY15500",
+            "label": "JPY 15500",
+            "current": 11500,
+            "next": null,
+            "diff": null,
+            "currency": "JPY"
+          },
+          {
+            "key": "JP_JPY7500",
+            "label": "JPY 7500",
+            "current": 5500,
+            "next": null,
+            "diff": null,
+            "currency": "JPY"
+          },
+          {
+            "key": "JP_SectorsbetweenJapanandHongKongorTaipei",
+            "label": "Sectors between Japan and Hong Kong or Taipei",
+            "current": 8000,
+            "next": 6900,
+            "diff": -1100,
+            "currency": "JPY"
+          },
+          {
+            "key": "JP_JPY4000",
+            "label": "JPY 4000",
+            "current": 3000,
+            "next": null,
+            "diff": null,
+            "currency": "JPY"
+          }
+        ],
+        "CN": [
+          {
+            "key": "CN_SectorsfromChineseMainlandtoHongKong",
+            "label": "Sectors from Chinese Mainland to Hong Kong",
+            "current": 135,
+            "next": 135,
+            "diff": 0,
+            "currency": "CNY"
+          },
+          {
+            "key": "CN_HKD165",
+            "label": "HKD 165",
+            "current": 165,
+            "next": null,
+            "diff": null,
+            "currency": "CNY"
+          }
+        ],
+        "PH": [
+          {
+            "key": "PH_SectorsbetweenPhilippinesandHongKong",
+            "label": "Sectors between Philippines and Hong Kong",
+            "current": 386,
+            "next": 835,
+            "diff": 449,
+            "currency": "PHP"
+          },
+          {
+            "key": "PH_USD18.20",
+            "label": "USD 18.20",
+            "current": 50,
+            "next": null,
+            "diff": null,
+            "currency": "PHP"
+          }
+        ],
+        "KR": [
+          {
+            "key": "KR_SectorsbetweenSouthKoreaandHongKong",
+            "label": "Sectors between South Korea and Hong Kong",
+            "current": 18.2,
+            "next": 37,
+            "diff": 18.8,
+            "currency": "USD"
+          },
+          {
+            "key": "KR_USD37.20",
+            "label": "USD 37.20",
+            "current": 50,
+            "next": null,
+            "diff": null,
+            "currency": "USD"
+          }
+        ]
+      },
+      "items": [
+        {
+          "key": "JP_JPY15500",
+          "label": "JPY 15500",
+          "current": 11500,
+          "next": null,
+          "diff": null,
+          "currency": "JPY"
+        },
+        {
+          "key": "JP_JPY7500",
+          "label": "JPY 7500",
+          "current": 5500,
+          "next": null,
+          "diff": null,
+          "currency": "JPY"
+        },
+        {
+          "key": "JP_SectorsbetweenJapanandHongKongorTaipei",
+          "label": "Sectors between Japan and Hong Kong or Taipei",
+          "current": 8000,
+          "next": 6900,
+          "diff": -1100,
+          "currency": "JPY"
+        },
+        {
+          "key": "JP_JPY4000",
+          "label": "JPY 4000",
+          "current": 3000,
+          "next": null,
+          "diff": null,
+          "currency": "JPY"
+        }
+      ],
+      "sources": {
+        "main": "https://www.cathaypacific.com/cx/en_US/latest-news/other-news/fuel-surcharge-updates.html",
+        "regulationUrls": []
+      },
+      "note": "CX 단일페이지 파싱. origins: JP, CN, PH, KR | 국가 규정 보조 참고 적용 (HK:홍콩 출발은 규제기관 승인/고시 체계를 보조 근거로 활용 가능. / JP:일본 출발은 항공유 평균가격 구간과 존(zone) 체계를 보조 기준으로 활용 가능. / CN:중국 출발은 CAAC 체계의 통제/조정 규정을 보조 검증 근거로 활용 가능. / PH:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼. / KR:한국 출발 국제선은 유가/거리 구간 기준의 가이드라인을 보조 검증 근거로 활용 가능.)",
+      "regulatoryContext": {
+        "primaryCountryCode": "HK",
+        "items": [
+          {
+            "code": "HK",
+            "authority": "Hong Kong Civil Aviation Department",
+            "ruleType": "regulatory_approval",
+            "usage": "secondary_validation",
+            "summary": "홍콩 출발은 규제기관 승인/고시 체계를 보조 근거로 활용 가능.",
+            "urls": []
+          },
+          {
+            "code": "JP",
+            "authority": "일본 국토교통성(MLIT) + 항공사 고시 체계",
+            "ruleType": "fuel_price_zone_table",
+            "usage": "secondary_validation",
+            "summary": "일본 출발은 항공유 평균가격 구간과 존(zone) 체계를 보조 기준으로 활용 가능.",
+            "urls": []
+          },
+          {
+            "code": "CN",
+            "authority": "CAAC",
+            "ruleType": "government_controlled_adjustment",
+            "usage": "secondary_validation",
+            "summary": "중국 출발은 CAAC 체계의 통제/조정 규정을 보조 검증 근거로 활용 가능.",
+            "urls": []
+          },
+          {
+            "code": "PH",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          },
+          {
+            "code": "KR",
+            "authority": "국토교통부",
+            "ruleType": "distance_band_guideline",
+            "usage": "secondary_validation",
+            "summary": "한국 출발 국제선은 유가/거리 구간 기준의 가이드라인을 보조 검증 근거로 활용 가능.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:15.493Z"
+    },
+    {
+      "airlineId": "hk_airlines",
+      "airlineName": "홍콩항공",
+      "iataCode": "HX",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "HX: 유류할증료 공지 없음",
+      "sources": {
+        "infoUrl": "https://www.hkairlines.com/",
+        "regulationUrls": []
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "HK",
+        "items": [
+          {
+            "code": "HK",
+            "authority": "Hong Kong Civil Aviation Department",
+            "ruleType": "regulatory_approval",
+            "usage": "secondary_validation",
+            "summary": "홍콩 출발은 규제기관 승인/고시 체계를 보조 근거로 활용 가능.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:17.842Z",
+      "note": "국가 규정 보조 참고 적용 (HK:홍콩 출발은 규제기관 승인/고시 체계를 보조 근거로 활용 가능.)"
+    },
+    {
+      "airlineId": "singapore_airlines",
+      "airlineName": "싱가포르항공",
+      "iataCode": "SQ",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "fare_embedded",
+      "unitType": null,
+      "reason": "2017년 3월부터 유류할증료 폐지. 운임 포함. 어워드 발권도 무료.",
+      "sources": {
+        "infoUrl": "https://www.singaporeair.com/",
+        "regulationUrls": []
+      },
+      "note": "국가 규정 보조 참고 적용 (SG:싱가포르 계열 일부 항공사는 유류할증료를 폐지하거나 운임에 포함해 별도 공시가 없을 수 있음.)",
+      "regulatoryContext": {
+        "primaryCountryCode": "SG",
+        "items": [
+          {
+            "code": "SG",
+            "authority": "Carrier pricing practice",
+            "ruleType": "fare_embedded_or_removed",
+            "usage": "pricing_model_reference",
+            "summary": "싱가포르 계열 일부 항공사는 유류할증료를 폐지하거나 운임에 포함해 별도 공시가 없을 수 있음.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:14.721Z"
+    },
+    {
+      "airlineId": "thai_airways",
+      "airlineName": "타이항공",
+      "iataCode": "TG",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "TG: 수집된 origin 없음",
+      "sources": {
+        "infoUrl": "https://www.thaiairways.com/",
+        "regulationUrls": []
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "TH",
+        "items": [
+          {
+            "code": "TH",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:16.957Z",
+      "note": "국가 규정 보조 참고 적용 (TH:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.)"
+    },
+    {
+      "airlineId": "malaysia_airlines",
+      "airlineName": "말레이시아항공",
+      "iataCode": "MH",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "MH: 수집된 origin 없음",
+      "sources": {
+        "infoUrl": "https://www.malaysiaairlines.com/",
+        "regulationUrls": []
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "MY",
+        "items": [
+          {
+            "code": "MY",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:16.839Z",
+      "note": "국가 규정 보조 참고 적용 (MY:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.)"
+    },
+    {
+      "airlineId": "garuda",
+      "airlineName": "가루다인도네시아",
+      "iataCode": "GA",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "GA: 수집된 origin 없음",
+      "sources": {
+        "infoUrl": "https://www.garuda-indonesia.com/",
+        "regulationUrls": []
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "ID",
+        "items": [
+          {
+            "code": "ID",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:16.974Z",
+      "note": "국가 규정 보조 참고 적용 (ID:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.)"
+    },
+    {
+      "airlineId": "philippine_airlines",
+      "airlineName": "필리핀항공",
+      "iataCode": "PR",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "PR: 수집된 origin 없음",
+      "sources": {
+        "infoUrl": "https://www.philippineairlines.com/",
+        "regulationUrls": []
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "PH",
+        "items": [
+          {
+            "code": "PH",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:16.994Z",
+      "note": "국가 규정 보조 참고 적용 (PH:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.)"
+    },
+    {
+      "airlineId": "vietnam_airlines",
+      "airlineName": "베트남항공",
+      "iataCode": "VN",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "VN: 수집된 origin 없음",
+      "sources": {
+        "infoUrl": "https://www.vietnamairlines.com/",
+        "regulationUrls": []
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "VN",
+        "items": [
+          {
+            "code": "VN",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:17.383Z",
+      "note": "국가 규정 보조 참고 적용 (VN:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.)"
+    },
+    {
+      "airlineId": "air_asia",
+      "airlineName": "에어아시아",
+      "iataCode": "AK",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "fare_embedded",
+      "unitType": null,
+      "reason": "LCC. 유류할증료 별도 부과 없음 (운임 포함).",
+      "sources": {
+        "infoUrl": "https://www.airasia.com/",
+        "regulationUrls": []
+      },
+      "note": "국가 규정 보조 참고 적용 (MY:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.)",
+      "regulatoryContext": {
+        "primaryCountryCode": "MY",
+        "items": [
+          {
+            "code": "MY",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:14.732Z"
+    },
+    {
+      "airlineId": "lion_air",
+      "airlineName": "라이언에어(인도네시아)",
+      "iataCode": "JT",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "fare_embedded",
+      "unitType": null,
+      "reason": "LCC. 공개 유류할증료 테이블 없음.",
+      "sources": {
+        "infoUrl": "https://www.lionair.co.id/",
+        "regulationUrls": []
+      },
+      "note": "국가 규정 보조 참고 적용 (ID:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.)",
+      "regulatoryContext": {
+        "primaryCountryCode": "ID",
+        "items": [
+          {
+            "code": "ID",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:14.732Z"
+    },
+    {
+      "airlineId": "air_china",
+      "airlineName": "중국국제항공",
+      "iataCode": "CA",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "CA: 수집된 origin 없음",
+      "sources": {
+        "infoUrl": "https://www.airchina.com.cn/",
+        "regulationUrls": []
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "CN",
+        "items": [
+          {
+            "code": "CN",
+            "authority": "CAAC",
+            "ruleType": "government_controlled_adjustment",
+            "usage": "secondary_validation",
+            "summary": "중국 출발은 CAAC 체계의 통제/조정 규정을 보조 검증 근거로 활용 가능.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:59.071Z",
+      "note": "국가 규정 보조 참고 적용 (CN:중국 출발은 CAAC 체계의 통제/조정 규정을 보조 검증 근거로 활용 가능.)"
+    },
+    {
+      "airlineId": "china_eastern",
+      "airlineName": "중국동방항공",
+      "iataCode": "MU",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "MU: 수집된 origin 없음",
+      "sources": {
+        "infoUrl": "https://www.ceair.com/",
+        "regulationUrls": []
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "CN",
+        "items": [
+          {
+            "code": "CN",
+            "authority": "CAAC",
+            "ruleType": "government_controlled_adjustment",
+            "usage": "secondary_validation",
+            "summary": "중국 출발은 CAAC 체계의 통제/조정 규정을 보조 검증 근거로 활용 가능.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:15.128Z",
+      "note": "국가 규정 보조 참고 적용 (CN:중국 출발은 CAAC 체계의 통제/조정 규정을 보조 검증 근거로 활용 가능.)"
+    },
+    {
+      "airlineId": "china_southern",
+      "airlineName": "중국남방항공",
+      "iataCode": "CZ",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "CZ: 수집된 origin 없음",
+      "sources": {
+        "infoUrl": "https://www.csair.com/",
+        "regulationUrls": []
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "CN",
+        "items": [
+          {
+            "code": "CN",
+            "authority": "CAAC",
+            "ruleType": "government_controlled_adjustment",
+            "usage": "secondary_validation",
+            "summary": "중국 출발은 CAAC 체계의 통제/조정 규정을 보조 검증 근거로 활용 가능.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:18.836Z",
+      "note": "국가 규정 보조 참고 적용 (CN:중국 출발은 CAAC 체계의 통제/조정 규정을 보조 검증 근거로 활용 가능.)"
+    },
+    {
+      "airlineId": "emirates",
+      "airlineName": "에미레이트항공",
+      "iataCode": "EK",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "booking_only",
+      "unitType": null,
+      "reason": "공개 유류할증료 테이블 없음. 예약 단계 YQ 코드로만 확인. 출발국에 따라 부과 금지 국가 있음.",
+      "sources": {
+        "infoUrl": "https://www.emirates.com/"
+      },
+      "note": null,
+      "regulatoryContext": null,
+      "fetchedAt": "2026-04-01T13:55:14.740Z"
+    },
+    {
+      "airlineId": "qatar_airways",
+      "airlineName": "카타르항공",
+      "iataCode": "QR",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "booking_only",
+      "unitType": null,
+      "reason": "2024년 Privilege Club 거리 기반 전환 후 공개 테이블 없음. 예약 단계 YQ만 확인 가능.",
+      "sources": {
+        "infoUrl": "https://www.qatarairways.com/"
+      },
+      "note": null,
+      "regulatoryContext": null,
+      "fetchedAt": "2026-04-01T13:55:14.740Z"
+    },
+    {
+      "airlineId": "etihad",
+      "airlineName": "에티하드항공",
+      "iataCode": "EY",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "booking_only",
+      "unitType": null,
+      "reason": "공개 공시 없음.",
+      "sources": {
+        "infoUrl": "https://www.etihad.com/"
+      },
+      "note": null,
+      "regulatoryContext": null,
+      "fetchedAt": "2026-04-01T13:55:14.740Z"
+    },
+    {
+      "airlineId": "turkish_airlines",
+      "airlineName": "터키항공",
+      "iataCode": "TK",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "TK: 수집된 origin 없음",
+      "sources": {
+        "infoUrl": "https://www.turkishairlines.com/",
+        "regulationUrls": []
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "TR",
+        "items": [
+          {
+            "code": "TR",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:56:06.309Z",
+      "note": "국가 규정 보조 참고 적용 (TR:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.)"
+    },
+    {
+      "airlineId": "lufthansa",
+      "airlineName": "루프트한자",
+      "iataCode": "LH",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "manual",
+      "unitType": "route_group",
+      "reason": "글로벌 단일 공시 테이블 없음. 일본 시장 JPY 페이지만 존재. 환경부담금(ECS)과 혼재되어 파싱 어려움.",
+      "sources": {
+        "infoUrl": "https://www.lufthansa.com/"
+      },
+      "note": null,
+      "regulatoryContext": null,
+      "fetchedAt": "2026-04-01T13:55:14.741Z"
+    },
+    {
+      "airlineId": "british_airways",
+      "airlineName": "영국항공",
+      "iataCode": "BA",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "booking_only",
+      "unitType": null,
+      "reason": "공개 테이블 없음. 예약 단계 YQ 코드 확인만 가능.",
+      "sources": {
+        "infoUrl": "https://www.britishairways.com/",
+        "regulationUrls": []
+      },
+      "note": "국가 규정 보조 참고 적용 (GB:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.)",
+      "regulatoryContext": {
+        "primaryCountryCode": "GB",
+        "items": [
+          {
+            "code": "GB",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:14.741Z"
+    },
+    {
+      "airlineId": "air_france",
+      "airlineName": "에어프랑스",
+      "iataCode": "AF",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "AF: 수집된 origin 없음",
+      "sources": {
+        "infoUrl": "https://www.airfrance.com/",
+        "regulationUrls": []
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "FR",
+        "items": [
+          {
+            "code": "FR",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:56:06.317Z",
+      "note": "국가 규정 보조 참고 적용 (FR:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.)"
+    },
+    {
+      "airlineId": "klm",
+      "airlineName": "KLM네덜란드항공",
+      "iataCode": "KL",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "KL: 수집된 origin 없음",
+      "sources": {
+        "infoUrl": "https://www.klm.com/",
+        "regulationUrls": []
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "NL",
+        "items": [
+          {
+            "code": "NL",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:56:06.325Z",
+      "note": "국가 규정 보조 참고 적용 (NL:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.)"
+    },
+    {
+      "airlineId": "swiss",
+      "airlineName": "스위스국제항공",
+      "iataCode": "LX",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "booking_only",
+      "unitType": null,
+      "reason": "루프트한자 그룹 계열. 공시 없음.",
+      "sources": {
+        "infoUrl": "https://www.swiss.com/",
+        "regulationUrls": []
+      },
+      "note": "국가 규정 보조 참고 적용 (CH:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.)",
+      "regulatoryContext": {
+        "primaryCountryCode": "CH",
+        "items": [
+          {
+            "code": "CH",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:14.749Z"
+    },
+    {
+      "airlineId": "austrian",
+      "airlineName": "오스트리아항공",
+      "iataCode": "OS",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "booking_only",
+      "unitType": null,
+      "reason": "루프트한자 그룹 계열. 공시 없음.",
+      "sources": {
+        "infoUrl": "https://www.austrian.com/",
+        "regulationUrls": []
+      },
+      "note": "국가 규정 보조 참고 적용 (AT:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.)",
+      "regulatoryContext": {
+        "primaryCountryCode": "AT",
+        "items": [
+          {
+            "code": "AT",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:14.749Z"
+    },
+    {
+      "airlineId": "finnair",
+      "airlineName": "핀에어",
+      "iataCode": "AY",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "AY: 수집된 origin 없음",
+      "sources": {
+        "infoUrl": "https://www.finnair.com/",
+        "regulationUrls": []
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "FI",
+        "items": [
+          {
+            "code": "FI",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:17.968Z",
+      "note": "국가 규정 보조 참고 적용 (FI:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.)"
+    },
+    {
+      "airlineId": "virgin_atlantic",
+      "airlineName": "버진애틀랜틱",
+      "iataCode": "VS",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "booking_only",
+      "unitType": null,
+      "reason": "공개 공시 없음.",
+      "sources": {
+        "infoUrl": "https://www.virginatlantic.com/",
+        "regulationUrls": []
+      },
+      "note": "국가 규정 보조 참고 적용 (GB:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.)",
+      "regulatoryContext": {
+        "primaryCountryCode": "GB",
+        "items": [
+          {
+            "code": "GB",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:14.754Z"
+    },
+    {
+      "airlineId": "iberia",
+      "airlineName": "이베리아항공",
+      "iataCode": "IB",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "booking_only",
+      "unitType": null,
+      "reason": "IAG 계열. 공시 없음.",
+      "sources": {
+        "infoUrl": "https://www.iberia.com/",
+        "regulationUrls": []
+      },
+      "note": "국가 규정 보조 참고 적용 (ES:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.)",
+      "regulatoryContext": {
+        "primaryCountryCode": "ES",
+        "items": [
+          {
+            "code": "ES",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:14.754Z"
+    },
+    {
+      "airlineId": "sas",
+      "airlineName": "스칸디나비아항공",
+      "iataCode": "SK",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "manual",
+      "unitType": null,
+      "reason": "2026년 3월 임시 fuel-related adjustment 도입. 공개 테이블 없음.",
+      "sources": {
+        "infoUrl": "https://www.flysas.com/"
+      },
+      "note": null,
+      "regulatoryContext": null,
+      "fetchedAt": "2026-04-01T13:55:14.754Z"
+    },
+    {
+      "airlineId": "lot",
+      "airlineName": "LOT폴란드항공",
+      "iataCode": "LO",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "booking_only",
+      "unitType": null,
+      "reason": "공개 공시 없음.",
+      "sources": {
+        "infoUrl": "https://www.lot.com/",
+        "regulationUrls": []
+      },
+      "note": "국가 규정 보조 참고 적용 (PL:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.)",
+      "regulatoryContext": {
+        "primaryCountryCode": "PL",
+        "items": [
+          {
+            "code": "PL",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:14.754Z"
+    },
+    {
+      "airlineId": "delta",
+      "airlineName": "델타항공",
+      "iataCode": "DL",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "booking_only",
+      "unitType": null,
+      "reason": "미국 항공사는 별도 유류할증료 명목 부과 없음. 운임 포함.",
+      "sources": {
+        "infoUrl": "https://ko.delta.com/",
+        "regulationUrls": []
+      },
+      "note": "국가 규정 보조 참고 적용 (US:미국 출발은 총액표시 중심이며 별도 YQ/YR 공시가 없는 경우가 많아 운임포함형 참고 기준으로 활용.)",
+      "regulatoryContext": {
+        "primaryCountryCode": "US",
+        "items": [
+          {
+            "code": "US",
+            "authority": "U.S. DOT",
+            "ruleType": "fare_inclusive_pricing",
+            "usage": "pricing_model_reference",
+            "summary": "미국 출발은 총액표시 중심이며 별도 YQ/YR 공시가 없는 경우가 많아 운임포함형 참고 기준으로 활용.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:14.754Z"
+    },
+    {
+      "airlineId": "united",
+      "airlineName": "유나이티드항공",
+      "iataCode": "UA",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "fare_embedded",
+      "unitType": null,
+      "reason": "별도 유류할증료 없음. 어워드 발권도 무료.",
+      "sources": {
+        "infoUrl": "https://www.united.com/",
+        "regulationUrls": []
+      },
+      "note": "국가 규정 보조 참고 적용 (US:미국 출발은 총액표시 중심이며 별도 YQ/YR 공시가 없는 경우가 많아 운임포함형 참고 기준으로 활용.)",
+      "regulatoryContext": {
+        "primaryCountryCode": "US",
+        "items": [
+          {
+            "code": "US",
+            "authority": "U.S. DOT",
+            "ruleType": "fare_inclusive_pricing",
+            "usage": "pricing_model_reference",
+            "summary": "미국 출발은 총액표시 중심이며 별도 YQ/YR 공시가 없는 경우가 많아 운임포함형 참고 기준으로 활용.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:14.754Z"
+    },
+    {
+      "airlineId": "american",
+      "airlineName": "아메리칸항공",
+      "iataCode": "AA",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "fare_embedded",
+      "unitType": null,
+      "reason": "별도 유류할증료 없음.",
+      "sources": {
+        "infoUrl": "https://www.aa.com/",
+        "regulationUrls": []
+      },
+      "note": "국가 규정 보조 참고 적용 (US:미국 출발은 총액표시 중심이며 별도 YQ/YR 공시가 없는 경우가 많아 운임포함형 참고 기준으로 활용.)",
+      "regulatoryContext": {
+        "primaryCountryCode": "US",
+        "items": [
+          {
+            "code": "US",
+            "authority": "U.S. DOT",
+            "ruleType": "fare_inclusive_pricing",
+            "usage": "pricing_model_reference",
+            "summary": "미국 출발은 총액표시 중심이며 별도 YQ/YR 공시가 없는 경우가 많아 운임포함형 참고 기준으로 활용.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:14.754Z"
+    },
+    {
+      "airlineId": "air_canada",
+      "airlineName": "에어캐나다",
+      "iataCode": "AC",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "fare_embedded",
+      "unitType": null,
+      "reason": "유류할증료 없음. Aeroplan 어워드도 무료.",
+      "sources": {
+        "infoUrl": "https://www.aircanada.com/",
+        "regulationUrls": []
+      },
+      "note": "국가 규정 보조 참고 적용 (CA:캐나다 출발은 별도 공개 테이블보다 운임 포함형 가격 구조 참고용.)",
+      "regulatoryContext": {
+        "primaryCountryCode": "CA",
+        "items": [
+          {
+            "code": "CA",
+            "authority": "Canadian transportation / carrier pricing practice",
+            "ruleType": "fare_inclusive_pricing",
+            "usage": "pricing_model_reference",
+            "summary": "캐나다 출발은 별도 공개 테이블보다 운임 포함형 가격 구조 참고용.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:14.754Z"
+    },
+    {
+      "airlineId": "qantas",
+      "airlineName": "콴타스항공",
+      "iataCode": "QF",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "QF: 수집된 origin 없음",
+      "sources": {
+        "infoUrl": "https://www.qantas.com/",
+        "regulationUrls": []
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "AU",
+        "items": [
+          {
+            "code": "AU",
+            "authority": "Carrier pricing practice",
+            "ruleType": "carrier_published_surcharge",
+            "usage": "secondary_validation",
+            "summary": "호주 출발은 항공사 공시를 1차 기준으로 두고 규정/시장 관행은 보조 참고.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:18.933Z",
+      "note": "국가 규정 보조 참고 적용 (AU:호주 출발은 항공사 공시를 1차 기준으로 두고 규정/시장 관행은 보조 참고.)"
+    },
+    {
+      "airlineId": "air_new_zealand",
+      "airlineName": "에어뉴질랜드",
+      "iataCode": "NZ",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "booking_only",
+      "unitType": null,
+      "reason": "공개 테이블 없음. 2026년 3월 이후 운임 인상 방식으로 반영.",
+      "sources": {
+        "infoUrl": "https://www.airnewzealand.com/",
+        "regulationUrls": []
+      },
+      "note": "국가 규정 보조 참고 적용 (NZ:호주 출발은 항공사 공시를 1차 기준으로 두고 규정/시장 관행은 보조 참고.)",
+      "regulatoryContext": {
+        "primaryCountryCode": "NZ",
+        "items": [
+          {
+            "code": "NZ",
+            "authority": "Carrier pricing practice",
+            "ruleType": "carrier_published_surcharge",
+            "usage": "secondary_validation",
+            "summary": "호주 출발은 항공사 공시를 1차 기준으로 두고 규정/시장 관행은 보조 참고.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:14.756Z"
+    },
+    {
+      "airlineId": "air_india",
+      "airlineName": "에어인디아",
+      "iataCode": "AI",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "AI: 수집된 origin 없음",
+      "sources": {
+        "infoUrl": "https://www.airindia.com/",
+        "regulationUrls": []
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "IN",
+        "items": [
+          {
+            "code": "IN",
+            "authority": "DGCA",
+            "ruleType": "regulated_surcharge_window",
+            "usage": "secondary_validation",
+            "summary": "인도 출발은 DGCA 규정 범위 안에서 적용 여부를 보조 판단 가능.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:56:06.329Z",
+      "note": "국가 규정 보조 참고 적용 (IN:인도 출발은 DGCA 규정 범위 안에서 적용 여부를 보조 판단 가능.)"
+    },
+    {
+      "airlineId": "indigo",
+      "airlineName": "인디고(인도)",
+      "iataCode": "6E",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "booking_only",
+      "unitType": null,
+      "reason": "공개 국제선 유류할증료 테이블 없음.",
+      "sources": {
+        "infoUrl": "https://www.goindigo.in/",
+        "regulationUrls": []
+      },
+      "note": "국가 규정 보조 참고 적용 (IN:인도 출발은 DGCA 규정 범위 안에서 적용 여부를 보조 판단 가능.)",
+      "regulatoryContext": {
+        "primaryCountryCode": "IN",
+        "items": [
+          {
+            "code": "IN",
+            "authority": "DGCA",
+            "ruleType": "regulated_surcharge_window",
+            "usage": "secondary_validation",
+            "summary": "인도 출발은 DGCA 규정 범위 안에서 적용 여부를 보조 판단 가능.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:14.759Z"
+    },
+    {
+      "airlineId": "ethiopian",
+      "airlineName": "에티오피아항공",
+      "iataCode": "ET",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "booking_only",
+      "unitType": null,
+      "reason": "공개 공시 없음.",
+      "sources": {
+        "infoUrl": "https://www.ethiopianairlines.com/"
+      },
+      "note": null,
+      "regulatoryContext": null,
+      "fetchedAt": "2026-04-01T13:55:14.759Z"
+    },
+    {
+      "airlineId": "south_african",
+      "airlineName": "남아프리카항공",
+      "iataCode": "SA",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "booking_only",
+      "unitType": null,
+      "reason": "공개 공시 없음.",
+      "sources": {
+        "infoUrl": "https://www.flysaa.com/"
+      },
+      "note": null,
+      "regulatoryContext": null,
+      "fetchedAt": "2026-04-01T13:55:14.759Z"
+    },
+    {
+      "airlineId": "aeromexico",
+      "airlineName": "아에로멕시코",
+      "iataCode": "AM",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "booking_only",
+      "unitType": null,
+      "reason": "공개 유류할증료 테이블 없음. 미국/멕시코 규제 구간별 운임 포함 방식.",
+      "sources": {
+        "infoUrl": "https://www.aeromexico.com/"
+      },
+      "note": null,
+      "regulatoryContext": null,
+      "fetchedAt": "2026-04-01T13:55:14.759Z"
+    },
+    {
+      "airlineId": "aerolineas",
+      "airlineName": "아르헨티나항공",
+      "iataCode": "AR",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "booking_only",
+      "unitType": null,
+      "reason": "공개 유류할증료 테이블 없음. ANAC 규정 적용, 예약 단계 확인만 가능.",
+      "sources": {
+        "infoUrl": "https://www.aerolineas.com.ar/"
+      },
+      "note": null,
+      "regulatoryContext": null,
+      "fetchedAt": "2026-04-01T13:55:14.759Z"
+    },
+    {
+      "airlineId": "air_europa",
+      "airlineName": "에어유로파",
+      "iataCode": "UX",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "UX: 수집된 origin 없음",
+      "sources": {
+        "infoUrl": "https://www.aireuropa.com/",
+        "regulationUrls": []
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "ES",
+        "items": [
+          {
+            "code": "ES",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:16.984Z",
+      "note": "국가 규정 보조 참고 적용 (ES:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.)"
+    },
+    {
+      "airlineId": "china_airlines",
+      "airlineName": "중화항공(대만)",
+      "iataCode": "CI",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "CI: 수집된 origin 없음",
+      "sources": {
+        "infoUrl": "https://www.china-airlines.com/"
+      },
+      "regulatoryContext": null,
+      "fetchedAt": "2026-04-01T13:55:17.991Z"
+    },
+    {
+      "airlineId": "czech_airlines",
+      "airlineName": "체코항공",
+      "iataCode": "OK",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "booking_only",
+      "unitType": null,
+      "reason": "2024년 운항 대부분 중단. 공개 유류할증료 공시 없음.",
+      "sources": {
+        "infoUrl": "https://www.csa.cz/",
+        "regulationUrls": []
+      },
+      "note": "국가 규정 보조 참고 적용 (CZ:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.)",
+      "regulatoryContext": {
+        "primaryCountryCode": "CZ",
+        "items": [
+          {
+            "code": "CZ",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:14.763Z"
+    },
+    {
+      "airlineId": "kenya_airways",
+      "airlineName": "케냐항공",
+      "iataCode": "KQ",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "Request failed with status code 404",
+      "sources": {
+        "infoUrl": "https://www.kenya-airways.com/"
+      },
+      "regulatoryContext": null,
+      "fetchedAt": "2026-04-01T13:55:20.553Z"
+    },
+    {
+      "airlineId": "middle_east_airlines",
+      "airlineName": "미들이스트항공(MEA)",
+      "iataCode": "ME",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "Request failed with status code 403",
+      "sources": {
+        "infoUrl": "https://www.mea.com.lb/"
+      },
+      "regulatoryContext": null,
+      "fetchedAt": "2026-04-01T13:55:18.001Z"
+    },
+    {
+      "airlineId": "saudia",
+      "airlineName": "사우디아항공",
+      "iataCode": "SV",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "SV: 수집된 origin 없음",
+      "sources": {
+        "infoUrl": "https://www.saudia.com/"
+      },
+      "regulatoryContext": null,
+      "fetchedAt": "2026-04-01T13:55:16.782Z"
+    },
+    {
+      "airlineId": "aegean",
+      "airlineName": "에게안항공",
+      "iataCode": "A3",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "Request failed with status code 403",
+      "sources": {
+        "infoUrl": "https://en.aegeanair.com/",
+        "regulationUrls": []
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "GR",
+        "items": [
+          {
+            "code": "GR",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:18.387Z",
+      "note": "국가 규정 보조 참고 적용 (GR:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.)"
+    },
+    {
+      "airlineId": "avianca",
+      "airlineName": "아비앙카",
+      "iataCode": "AV",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "fare_embedded",
+      "unitType": null,
+      "reason": "별도 유류할증료 없음. Lifemiles 어워드 발권 시도 무료.",
+      "sources": {
+        "infoUrl": "https://www.avianca.com/"
+      },
+      "note": null,
+      "regulatoryContext": null,
+      "fetchedAt": "2026-04-01T13:55:14.767Z"
+    },
+    {
+      "airlineId": "brussels_airlines",
+      "airlineName": "브뤼셀항공",
+      "iataCode": "SN",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "booking_only",
+      "unitType": null,
+      "reason": "루프트한자 그룹 계열. 공시 테이블 없음.",
+      "sources": {
+        "infoUrl": "https://www.brusselsairlines.com/",
+        "regulationUrls": []
+      },
+      "note": "국가 규정 보조 참고 적용 (BE:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.)",
+      "regulatoryContext": {
+        "primaryCountryCode": "BE",
+        "items": [
+          {
+            "code": "BE",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:14.767Z"
+    },
+    {
+      "airlineId": "copa_airlines",
+      "airlineName": "코파항공",
+      "iataCode": "CM",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "fare_embedded",
+      "unitType": null,
+      "reason": "파나마 규정상 별도 유류할증료 없음. 운임 포함.",
+      "sources": {
+        "infoUrl": "https://www.copaair.com/"
+      },
+      "note": null,
+      "regulatoryContext": null,
+      "fetchedAt": "2026-04-01T13:55:14.767Z"
+    },
+    {
+      "airlineId": "croatia_airlines",
+      "airlineName": "크로아티아항공",
+      "iataCode": "OU",
+      "supported": false,
+      "confidence": "unsupported",
+      "sourceType": "booking_only",
+      "unitType": null,
+      "reason": "유럽 역내 소형 항공사. 공개 공시 없음.",
+      "sources": {
+        "infoUrl": "https://www.croatiaairlines.com/",
+        "regulationUrls": []
+      },
+      "note": "국가 규정 보조 참고 적용 (HR:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.)",
+      "regulatoryContext": {
+        "primaryCountryCode": "HR",
+        "items": [
+          {
+            "code": "HR",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:14.767Z"
+    },
+    {
+      "airlineId": "egyptair",
+      "airlineName": "이집트항공",
+      "iataCode": "MS",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "Request failed with status code 403",
+      "sources": {
+        "infoUrl": "https://www.egyptair.com/"
+      },
+      "regulatoryContext": null,
+      "fetchedAt": "2026-04-01T13:55:19.030Z"
+    },
+    {
+      "airlineId": "eva_air",
+      "airlineName": "에바항공",
+      "iataCode": "BR",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "BR: 수집된 origin 없음",
+      "sources": {
+        "infoUrl": "https://www.evaair.com/"
+      },
+      "regulatoryContext": null,
+      "fetchedAt": "2026-04-01T13:55:18.392Z"
+    },
+    {
+      "airlineId": "shenzhen_airlines",
+      "airlineName": "선전항공",
+      "iataCode": "ZH",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "read ECONNRESET",
+      "sources": {
+        "infoUrl": "https://www.shenzhenair.com/",
+        "regulationUrls": []
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "CN",
+        "items": [
+          {
+            "code": "CN",
+            "authority": "CAAC",
+            "ruleType": "government_controlled_adjustment",
+            "usage": "secondary_validation",
+            "summary": "중국 출발은 CAAC 체계의 통제/조정 규정을 보조 검증 근거로 활용 가능.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:57.020Z",
+      "note": "국가 규정 보조 참고 적용 (CN:중국 출발은 CAAC 체계의 통제/조정 규정을 보조 검증 근거로 활용 가능.)"
+    },
+    {
+      "airlineId": "tap_portugal",
+      "airlineName": "TAP포르투갈항공",
+      "iataCode": "TP",
+      "supported": false,
+      "confidence": "error",
+      "sourceType": "error",
+      "unitType": null,
+      "reason": "Request failed with status code 404",
+      "sources": {
+        "infoUrl": "https://www.flytap.com/",
+        "regulationUrls": []
+      },
+      "regulatoryContext": {
+        "primaryCountryCode": "PT",
+        "items": [
+          {
+            "code": "PT",
+            "authority": "EU/EEA price transparency framework",
+            "ruleType": "price_transparency",
+            "usage": "display_rule_reference",
+            "summary": "유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.",
+            "urls": []
+          }
+        ]
+      },
+      "fetchedAt": "2026-04-01T13:55:23.169Z",
+      "note": "국가 규정 보조 참고 적용 (PT:유럽은 가격표시 투명성 규정은 강하지만, 유류할증료 금액 자체는 항공사 정책 의존도가 큼.)"
+    }
+  ]
+}

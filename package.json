@@ -1,0 +1,17 @@
+{
+  "name": "fuel-surcharge-pipeline",
+  "version": "0.25.0",
+  "description": "항공 유류할증료 데이터 수집·파싱·검증 파이프라인 (MVP) (v23: TW/OZ/YP/KE 상세 진입 로직 복구)",
+  "main": "scripts/run_pipeline.js",
+  "scripts": {
+    "pipeline": "node scripts/run_pipeline.js",
+    "pipeline:mock": "node scripts/run_pipeline.js --mock",
+    "pipeline:dry": "node scripts/run_pipeline.js --mock --dry-run",
+    "pipeline:ke": "node scripts/run_pipeline.js --mock --only KE"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

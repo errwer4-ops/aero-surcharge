@@ -1,0 +1,201 @@
+/* ── 항공 유류할증료 — Shared CSS ── */
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+
+:root {
+  --blue:    #2E4FD8;
+  --blue-dk: #1E3AA8;
+  --blue-lt: #E8EEFF;
+  --bg:      #F0F2F8;
+  --white:   #FFFFFF;
+  --card2:   #F8FAFD;
+  --text:    #0D1120;
+  --text2:   #4A5068;
+  --muted:   #8890A8;
+  --line:    #DDE0EC;
+  --red:     #D42B2B;
+  --red-lt:  #FEF0F0;
+  --orange:  #E07000;
+  --green:   #0B7A4A;
+  --green-lt:#E8F7EF;
+  --mono:    'DM Mono', monospace;
+  --sans:    'DM Sans', sans-serif;
+  --shadow:  0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.05);
+  --shadow-lg: 0 4px 24px rgba(0,0,0,.10);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--sans); background: var(--bg); color: var(--text); min-height: 100vh; }
+
+
+
+/* ── AI 예측 배지 / 블록 공통 스타일 ── */
+.ai-predict-badge {
+  display:inline-flex; align-items:center; gap:4px;
+  font-size:10px; font-weight:700; padding:3px 8px; border-radius:20px;
+  background:#EDE7F6; color:#4527A0; border:1px solid #B39DDB;
+  letter-spacing:.2px; white-space:nowrap;
+}
+.ai-dot { width:6px; height:6px; border-radius:50%; background:#7C4DFF; opacity:.8; }
+
+.ai-predict-block {
+  margin-top:10px; padding:10px 14px;
+  background:linear-gradient(135deg,#F3E5F5,#EDE7F6);
+  border:1px solid #CE93D8; border-radius:10px; font-size:12px;
+}
+.ai-predict-block.unavail {
+  background:var(--bg); border:1px dashed var(--line); color:var(--muted);
+  display:flex; align-items:center; gap:8px;
+}
+.ai-unavail-text { font-size:11px; color:var(--muted); font-style:italic; }
+.ai-predict-header { display:flex; align-items:center; gap:8px; margin-bottom:6px; flex-wrap:wrap; }
+.ai-predict-period { font-size:11px; font-weight:700; font-family:var(--mono); color:#4527A0; }
+.ai-conf-badge { font-size:10px; font-weight:700; padding:2px 7px; border-radius:4px; }
+.ai-conf-badge.high   { background:#C8E6C9; color:#1B5E20; }
+.ai-conf-badge.medium { background:#FFF9C4; color:#827717; }
+.ai-conf-badge.low    { background:#FFCDD2; color:#B71C1C; }
+.ai-predict-range {
+  font-family:var(--mono); font-size:15px; font-weight:700;
+  color:#4527A0; display:flex; align-items:center; gap:4px; margin-bottom:6px;
+}
+.ai-range-sep { color:#9C27B0; margin:0 2px; font-size:12px; }
+.ai-dir { font-size:12px; font-weight:700; padding:1px 5px; border-radius:4px; margin-left:4px; }
+.ai-dir.dir-up   { color:#C62828; background:#FFEBEE; }
+.ai-dir.dir-down { color:#1565C0; background:#E3F2FD; }
+.ai-dir.dir-flat { color:#616161; background:#F5F5F5; }
+.ai-drivers { display:flex; flex-wrap:wrap; gap:4px; margin-bottom:6px; }
+.ai-driver-chip {
+  font-size:10px; padding:2px 7px; border-radius:4px;
+  border:1px solid var(--line); background:rgba(255,255,255,.7); color:var(--text2);
+}
+.ai-driver-chip.positive { border-color:#FFCDD2; background:#FFF5F5; color:#B33; }
+.ai-driver-chip.negative { border-color:#C7D5FF; background:#F5F8FF; color:#339; }
+.ai-basis-label { font-size:10px; font-weight:700; color:#7C4DFF; letter-spacing:.5px; text-transform:uppercase; margin-bottom:4px; opacity:.8; }
+.ai-predict-note { font-size:9.5px; color:#6A1B9A; font-style:italic; margin-top:4px; opacity:.8; }
+
+/* ── 공식값 / AI 색상 체계 ── */
+.status-badge { display:inline-flex; align-items:center; gap:4px; font-size:10px; font-weight:700; padding:3px 8px; border-radius:20px; letter-spacing:.2px; white-space:nowrap; flex-shrink:0; }
+.sb-official   { background:#EBF5FF; color:#1565C0; border:1px solid #90CAF9; }
+.sb-blocked    { background:#FFF8E1; color:#E65100; border:1px solid #FFCC80; }
+.sb-missing    { background:#F3E5F5; color:#6A1B9A; border:1px solid #CE93D8; }
+.sb-regulation { background:#F5F5F5; color:#424242; border:1px solid #BDBDBD; }
+.sb-stale      { background:#FFF9C4; color:#827717; border:1px solid #F9A825; }
+.sb-breakdown  { background:#E8F5E9; color:#1B5E20; border:1px solid #A5D6A7; }
+.sb-unknown    { background:#ECEFF1; color:#546E7A; border:1px solid #B0BEC5; }
+.sb-dot { width:6px; height:6px; border-radius:50%; background:currentColor; opacity:.7; }
+
+/* YQ/YR */
+.yqyr-block { margin-top:8px; padding:7px 10px; border-radius:8px; font-size:11px; border:1px solid var(--line); background:var(--bg); display:flex; flex-wrap:wrap; gap:4px; align-items:center; }
+.yqyr-block.match  { border-color:#A5D6A7; background:#F1F8E9; }
+.yqyr-block.minor  { border-color:#FFE082; background:#FFF8E1; }
+.yqyr-block.major  { border-color:#EF9A9A; background:#FFF0F0; }
+.yqyr-block.unavail{ display:none; }
+.yq-lbl { color:var(--muted); font-size:10px; }
+.yq-val { font-family:var(--mono); font-weight:600; }
+.yq-status { font-weight:700; padding:1px 6px; border-radius:4px; font-size:10px; }
+.yq-status.match  { color:#1B5E20; background:#C8E6C9; }
+.yq-status.minor  { color:#827717; background:#FFF9C4; }
+.yq-status.major  { color:#B71C1C; background:#FFCDD2; }
+.yq-note { width:100%; font-size:10px; color:var(--muted); font-style:italic; }
+
+/* ── NAV v3 ── */
+nav {
+  background: var(--blue);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px; height: 52px;
+  position: sticky; top: 0; z-index: 200;
+  box-shadow: 0 2px 12px rgba(0,0,0,.15);
+}
+.nav-links { display:flex; gap:4px; align-items:center; }
+.nav-link {
+  color: rgba(255,255,255,.65); text-decoration: none;
+  font-size: 13px; font-weight: 600; padding: 6px 14px;
+  border-radius: 7px; transition: background .15s, color .15s; white-space:nowrap;
+}
+.nav-link:hover  { background: rgba(255,255,255,.12); color: #fff; }
+.nav-link.active { background: rgba(255,255,255,.18); color: #fff; }
+.nav-controls { display: flex; align-items: center; gap: 8px; }
+.nav-select {
+  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22);
+  border-radius: 8px; padding: 5px 24px 5px 10px; font-size: 12px;
+  font-weight: 600; color: #fff; font-family: var(--sans);
+  cursor: pointer; outline: none; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='rgba(255,255,255,.55)' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat:no-repeat; background-position:right 7px center;
+}
+.nav-select:hover  { background-color: rgba(255,255,255,.2); }
+.nav-select option { background: #1E3AA8; color: #fff; }
+.nav-divider { width: 1px; height: 20px; background: rgba(255,255,255,.2); }
+@media(max-width:600px) { nav { padding: 0 14px; } .nav-link { padding:5px 8px; font-size:11px; } }
+
+/* ══════════════════════════════════════════
+   BetaNoticeBanner — 베타 서비스 안내 배너
+   · 항상 레이아웃 흐름 안에 배치 (static)
+   · index.html: hero 섹션 바로 아래 (.ad-slot 앞)
+   · 다른 페이지: .main 최상단
+   ══════════════════════════════════════════ */
+.beta-banner {
+  max-width: 1140px;
+  margin: 14px auto 0;
+  padding: 0 24px;
+}
+.beta-banner-inner {
+  background: #FFFBEB;
+  border: 1.5px solid #F5C842;
+  border-left: 5px solid #E8A800;
+  border-radius: 8px;
+  padding: 13px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 11px;
+  line-height: 1.6;
+}
+.beta-banner-icon {
+  font-size: 17px;
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+.beta-banner-body {
+  flex: 1;
+  min-width: 0;
+}
+.beta-banner-title {
+  font-size: 13px;
+  font-weight: 700;
+  color: #7A4F00;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  flex-wrap: wrap;
+}
+.beta-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  background: #E8A800;
+  color: #fff;
+  border-radius: 5px;
+  padding: 2px 7px;
+  vertical-align: middle;
+}
+.beta-banner-desc {
+  font-size: 12px;
+  color: #5C3C00;
+  margin-bottom: 4px;
+}
+.beta-banner-note {
+  font-size: 11px;
+  color: #7A5800;
+  margin-top: 5px;
+  padding-top: 5px;
+  border-top: 1px dashed #F5C842;
+}
+@media (max-width: 700px) {
+  .beta-banner { padding: 0 14px; }
+  .beta-banner-inner { padding: 12px 14px; gap: 9px; }
+  .beta-banner-title { font-size: 12px; }
+  .beta-banner-desc { font-size: 11px; }
+  .beta-banner-note { font-size: 10px; }
+}

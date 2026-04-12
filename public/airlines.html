@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>항공사 인덱스 — 유류할증료 현황</title>
+  <link rel="stylesheet" href="_shared.css"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX" crossorigin="anonymous"></script>
+  <style>
+    .page-header{background:linear-gradient(160deg,#2E4FD8 0%,#1A3BB8 55%,#1230A0 100%);padding:16px 36px 20px;}
+    .page-header::before{content:'';position:absolute;inset:0;}
+    .page-title{font-size:clamp(16px,2.5vw,22px);font-weight:700;color:#fff;letter-spacing:-.5px;}
+    .page-sub{font-size:12px;color:rgba(255,255,255,.55);margin-top:3px;}
+    .main{max-width:1060px;margin:0 auto;padding:18px 24px 56px;}
+    .ad-slot{min-height:60px;display:flex;align-items:center;justify-content:center;margin:12px 0;}
+    .ad-placeholder{width:100%;height:60px;background:var(--white);border:1px dashed var(--line);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--muted);}
+    .toolbar{display:flex;align-items:center;gap:12px;margin-bottom:14px;flex-wrap:wrap;}
+    .search-input{background:var(--white);border:1.5px solid var(--line);border-radius:9px;padding:8px 14px;font-size:13px;font-family:var(--sans);outline:none;width:200px;transition:border-color .15s;}
+    .search-input:focus{border-color:var(--blue);}
+    .filter-tabs{display:flex;gap:6px;flex-wrap:wrap;}
+    .ftab{padding:5px 13px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;border:1.5px solid var(--line);background:var(--white);color:var(--text2);transition:all .15s;font-family:var(--sans);}
+    .ftab:hover{border-color:var(--blue);color:var(--blue);}
+    .ftab.active{background:var(--blue);color:#fff;border-color:var(--blue);}
+    .count-label{font-size:12px;color:var(--muted);margin-left:auto;}
+    .table-wrap{background:var(--white);border-radius:14px;border:1.5px solid var(--line);overflow:hidden;}
+    .table-head{display:grid;grid-template-columns:48px 2fr 1.2fr 1.4fr 1.6fr 1.4fr;padding:10px 20px;border-bottom:1px solid var(--line);background:var(--bg);}
+    .th{font-size:10px;font-weight:700;letter-spacing:1.3px;text-transform:uppercase;color:var(--muted);}
+    .airline-row{border-top:1px solid var(--line);padding:13px 20px;transition:background .12s;}
+    .airline-row:hover{background:#FAFBFF;}
+    .row-main{display:grid;grid-template-columns:48px 2fr 1.2fr 1.4fr 1.6fr 1.4fr;align-items:center;gap:8px;}
+    .cell-code{font-family:var(--mono);font-size:11px;font-weight:700;color:var(--text2);background:var(--bg);border:1.5px solid var(--line);border-radius:7px;padding:4px 6px;text-align:center;width:36px;}
+    .al-name-cell .al-name{font-size:13px;font-weight:600;} .al-name-cell .al-id{font-size:11px;color:var(--muted);font-family:var(--mono);}
+    .cell-amt-hi{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--blue);}
+    .cell-amt-dim{font-family:var(--mono);font-size:12px;color:var(--muted);}
+    .cell-period{font-size:12px;color:var(--muted);font-family:var(--mono);}
+    .cell-src-link{font-size:11px;color:var(--blue);text-decoration:none;font-weight:600;}
+    .cell-src-link:hover{text-decoration:underline;}
+    .cell-note{font-size:10px;color:var(--muted);margin-top:2px;}
+    .kr-only-note{font-size:11px;color:var(--muted);background:var(--blue-lt);border:1px solid #C5D4FC;border-radius:8px;padding:6px 14px;margin-bottom:14px;display:inline-flex;align-items:center;gap:6px;}
+    @media(max-width:780px){.table-head,.row-main{grid-template-columns:36px 1fr auto;} .table-head .th:nth-child(n+4),.row-main>*:nth-child(n+4){display:none;} .main{padding:14px;}}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-links">
+    <a href="index.html"    class="nav-link "  id="navLinkRoutes">노선별 조회</a>
+    <a href="airlines.html" class="nav-link active" id="navLinkAirlines">항공사 인덱스</a>
+    <a href="news.html"     class="nav-link "    id="navLinkNews">참고 소식</a>
+  </div>
+  <div class="nav-controls">
+    <select class="nav-select" id="navLang">
+      <option value="ko">&#127472;&#127479; 한국어</option>
+      <option value="en">&#127482;&#127480; English</option>
+      <option value="ja">&#127471;&#127477; 日本語</option>
+      <option value="zh">&#127464;&#127475; 中文</option>
+      <option value="fr">&#127467;&#127479; Français</option>
+      <option value="de">&#127465;&#127466; Deutsch</option>
+    </select>
+    <div class="nav-divider"></div>
+    <select class="nav-select" id="navCurr">
+      <option value="KRW">&#8361; KRW</option>
+      <option value="USD">$ USD</option>
+      <option value="JPY">&#165; JPY</option>
+      <option value="EUR">&#8364; EUR</option>
+      <option value="GBP">&#163; GBP</option>
+      <option value="CNY">&#165; CNY</option>
+      <option value="AUD">A$ AUD</option>
+      <option value="SGD">S$ SGD</option>
+      <option value="HKD">HK$ HKD</option>
+    </select>
+  </div>
+</nav>
+<div class="page-header">
+  <div class="page-title" id="pageTitle">항공사 인덱스</div>
+  <div class="page-sub">유류할증료 데이터 현황 및 출처 참고 · 현재 한국 국적기 우선 표시</div>
+</div>
+
+<!-- ── 베타 서비스 안내 배너 (BetaNoticeBanner) ── -->
+<div class="beta-banner" id="betaNoticeBanner" role="note" aria-label="베타 서비스 안내">
+  <div class="beta-banner-inner">
+    <div class="beta-banner-icon">⚠️</div>
+    <div class="beta-banner-body">
+      <div class="beta-banner-title">
+        <span class="beta-badge">BETA</span>베타 서비스 안내
+      </div>
+      <div class="beta-banner-desc">
+        현재 한국 출발 국제선 유류할증료를 기준으로 제공되고 있으며, 일부 항공사는 공식 공지 기반 수동 반영입니다.<br>
+        최종 금액은 항공사 공식 공지를 반드시 확인해주세요.
+      </div>
+      <div class="beta-banner-note">
+        ※ 현재는 한국 출발 국제선만 지원합니다. 해외 출발 노선은 서비스 준비중입니다.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="ad-slot"><div class="ad-placeholder">AD</div></div>
+  <div class="status-strip" id="statusStrip" style="display:none">
+    <div class="status-dot" id="statusDot"></div><span id="statusText"></span>
+  </div>
+  <div class="kr-only-note">&#128681; 현재 <strong>한국 국적기 8개사 (에어부산 공식 공지 미제공)</strong>를 우선 표시합니다. 에어부산(BX)은 공식 공지 미제공으로 제외. 외항사는 추후 활성화 예정입니다.</div>
+  <div class="toolbar">
+    <input class="search-input" id="searchInput" type="text" placeholder="항공사명 또는 IATA 코드 검색..."/>
+    <div class="filter-tabs">
+      <button class="ftab active" data-f="all">전체</button>
+      <button class="ftab" data-f="official">공식 확인</button>
+      <button class="ftab" data-f="missing">공시 없음</button>
+      <button class="ftab" data-f="blocked">접근 제한</button>
+    </div>
+    <span class="count-label" id="countLabel"></span>
+  </div>
+  <div class="table-wrap">
+    <div class="table-head">
+      <div class="th">IATA</div><div class="th">항공사</div>
+      <div class="th">공식 현재값</div><div class="th">기준 월</div>
+      <div class="th">데이터 상태</div><div class="th">공식 출처</div>
+    </div>
+    <div id="tableBody"><div style="padding:32px;text-align:center;color:var(--muted)">데이터 로딩 중...</div></div>
+  </div>
+  <div class="ad-slot"><div class="ad-placeholder">AD</div></div>
+</div>
+<script src="_shared.js"></script>
+<script>
+/* ════════════════════════════════════════════════════════
+   airlines.html — v36 항공사 인덱스
+   · officialNoticeUrl 유효 여부만으로 버튼 활성화 (단순화)
+   · 콘솔 로그: officialNoticeUrl 존재, 버튼 활성 여부
+   · BX 제외, ZE 군별 스키마 표시
+════════════════════════════════════════════════════════ */
+
+var FEED=null, KR_AIRLINES=[];
+var currentF='all', searchQ='';
+
+async function loadData(){
+  var[meta,fr]=await Promise.allSettled([
+    window.loadAirlineMeta(),
+    fetch('data/official_surcharge_feed.json').then(function(r){return r.ok?r.json():null;}),
+  ]);
+  FEED=fr.status==='fulfilled'?fr.value:null;
+
+  var metaObj=window.AIRLINE_META||{};
+  KR_AIRLINES=Object.keys(metaObj)
+    .filter(function(c){return !metaObj[c].excludeFromPublicLists&&metaObj[c].isVisibleToUser;})
+    .map(function(c){var m=metaObj[c];return{
+      code:c,name:m.name,logo:m.logo,
+      officialNoticeUrl:m.officialNoticeUrl||null,
+      hasOfficialNotice:!!m.hasOfficialNotice,
+      usdNotice:m.usdNotice,
+      surchargeSchema:m.surchargeSchema||'mileage_band',
+      officialDataSource:m.officialDataSource||'unknown',
+    };});
+
+  /* ── 점검 로그: 버튼 활성 여부 ── */
+  console.log('[aero][airlines] 항공사 인덱스 로드 완료. 버튼 활성 상태:');
+  KR_AIRLINES.forEach(function(al){
+    var hasUrl=!!al.officialNoticeUrl;
+    console.log('  ['+al.code+'] officialNoticeUrl:', hasUrl?al.officialNoticeUrl:'없음',
+      '| 버튼활성:', hasUrl);
+  });
+
+  renderTable();
+}
+
+function findFeedAl(code){
+  return FEED&&(FEED.airlines||[]).find(function(a){return a.iataCode===code;});
+}
+
+/* 대표 금액: ICN→NRT(342mi) 기준으로 조회 */
+var REP_MILES=342;
+
+function getRepAmount(code, feedAl){
+  if(window.isGroupTierSchema(code)){
+    var gtr=window.resolveGroupTiers(code,feedAl,'2026.04');
+    if(!gtr) return null;
+    /* 342mi → 군 1 (일본 근거리) */
+    var g=window.resolveZEGroup(REP_MILES,gtr);
+    var tier=g!=null?gtr.tiers.find(function(t){return t.group===g;}):gtr.tiers[0];
+    return tier?{amountKRW:tier.amountKRW,currency:tier.currency,label:tier.label+' (일본 근거리 기준)'}:null;
+  }
+  var routes=window.resolveAllRoutes(feedAl,code,'2026.04');
+  if(!routes.length) return null;
+  var matched=routes.find(function(r){
+    if(!r.distanceRange) return false;
+    if(r.distanceRange.endsWith('+')){return REP_MILES>=parseInt(r.distanceRange);}
+    var p=r.distanceRange.split('-');
+    return p.length===2&&REP_MILES>=parseInt(p[0])&&REP_MILES<parseInt(p[1]);
+  })||routes[0];
+  return matched?{amountKRW:matched.amountKRW,currency:matched.currency,label:matched.label}:null;
+}
+
+function renderTable(){
+  var meta=FEED&&FEED.meta;
+  if(meta){
+    document.getElementById('statusStrip').style.display='flex';
+    var upd=meta.lastUpdated
+      ?new Date(meta.lastUpdated).toLocaleString('ko-KR',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}):'' ;
+    document.getElementById('statusText').textContent='갱신: '+upd+' · 2026-04 공식 공지 기준';
+    document.getElementById('statusDot').className='status-dot';
+  }
+
+  var list=KR_AIRLINES.filter(function(al){
+    /* currentF==='blocked' 조건이 미정의이면 mF=false로 전 항공사가 숨겨지는 버그 수정 */
+    var mF=currentF==='all'
+      ||(currentF==='official'&&al.hasOfficialNotice)
+      ||(currentF==='missing'&&!al.hasOfficialNotice)
+      ||(currentF==='blocked'&&al.officialDataSource==='blocked');
+    var mS=!searchQ||al.name.includes(searchQ)||al.code.toLowerCase().includes(searchQ);
+    return mF&&mS;
+  });
+  document.getElementById('countLabel').textContent=list.length+'/'+KR_AIRLINES.length;
+
+  document.getElementById('tableBody').innerHTML=list.map(function(al){
+    var feedAl=findFeedAl(al.code);
+    var status=feedAl?window.resolveStatus(feedAl,null):'unknown';
+
+    /* 데이터 source 판별 */
+    var src=al.officialDataSource||'unknown';
+    var srcLabel={
+      manual_override:'<span style="font-size:11px;background:#e8f5e9;color:#1b5e20;border-radius:6px;padding:2px 7px;font-weight:700">✓ 공식 공지 반영</span>',
+      official_notice:'<span style="font-size:11px;background:#e3f2fd;color:#0d47a1;border-radius:6px;padding:2px 7px">피드 자동수집</span>',
+      no_data:'<span style="font-size:11px;background:#fafafa;color:#999;border-radius:6px;padding:2px 7px">데이터 없음</span>',
+    }[src]||'<span style="font-size:11px;color:var(--muted)">'+src+'</span>';
+
+    /* 대표 금액 (ICN→NRT 기준) */
+    var rep=getRepAmount(al.code,feedAl);
+    var amtHtml=rep&&rep.amountKRW!=null
+      ?window.fmtAmtDisplay(rep.amountKRW,rep.currency,1)
+        +'<div style="font-size:10px;color:var(--muted);margin-top:2px">'+rep.label+'</div>'
+      :(al.surchargeSchema==='group_tier'
+        ?'<span style="font-size:11px;color:#6a1b9a">군별 요금</span>'
+        :'<span style="color:var(--muted)">—</span>');
+
+    /* 구간 수 */
+    var routeCount=0;
+    if(al.surchargeSchema==='group_tier'){
+      var gtr=window.resolveGroupTiers(al.code,feedAl,'2026.04');
+      routeCount=gtr?gtr.tiers.length:0;
+    } else {
+      var routes=window.resolveAllRoutes(feedAl,al.code,'2026.04');
+      routeCount=routes.length;
+    }
+    var countHtml=routeCount>0?'<div style="font-size:10px;color:var(--muted);margin-top:2px">'+routeCount+'개 구간</div>':'';
+
+    var period='2026.04';
+
+    /* 공식 공지 버튼 — URL 있으면 항상 활성화, 새 탭 */
+    var noticeUrl=al.officialNoticeUrl;
+    var srcHtml=noticeUrl
+      ?'<a class="cell-src-link" href="'+noticeUrl+'" target="_blank" rel="noopener">공식 공지 ↗</a>'
+      :'<span style="color:var(--muted);font-size:12px">공식 공지 없음</span>';
+
+    var usdNote=al.usdNotice
+      ?'<span style="font-size:11px;color:#0d47a1;margin-left:6px">USD 공시</span>':'';
+    var schemaNote=al.surchargeSchema==='group_tier'
+      ?'<span style="font-size:11px;color:#6a1b9a;margin-left:6px">군별 요금</span>':'';
+
+    return '<div class="airline-row"><div class="row-main">'
+      +'<div><span class="cell-code">'+al.code+'</span></div>'
+      +'<div class="al-name-cell">'
+      +'<div class="al-name">'+al.logo+' '+al.name+'</div>'
+      +'<div class="al-id">'+al.code+'</div></div>'
+      +'<div>'+amtHtml+countHtml+'</div>'
+      +'<div><span class="cell-period">'+period+'</span></div>'
+      +'<div>'+window.statusBadgeHtml(status)+'</div>'
+      +'<div>'+srcHtml+usdNote+schemaNote+'<div style="margin-top:4px">'+srcLabel+'</div></div>'
+      +'</div></div>';
+  }).join('')
+  ||'<div style="padding:28px;text-align:center;color:var(--muted)">해당하는 항공사가 없습니다</div>';
+}
+
+document.querySelector('.filter-tabs').addEventListener('click',function(e){
+  var btn=e.target.closest('.ftab');if(!btn)return;
+  document.querySelectorAll('.ftab').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');currentF=btn.dataset.f;renderTable();
+});
+document.getElementById('searchInput').addEventListener('input',function(e){
+  searchQ=e.target.value.trim();renderTable();
+});
+window.initNav({onLangChange:function(){renderTable();},onCurrChange:function(){renderTable();}});
+loadData();
+</script>
+</body></html>

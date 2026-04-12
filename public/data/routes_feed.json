@@ -1,0 +1,1160 @@
+{
+  "meta": {
+    "lastUpdated": "2026-04-01T13:56:58.297Z",
+    "source": "scrape+fallback",
+    "scrapedAirlines": [],
+    "fallbackAirlines": [
+      "7C",
+      "BX",
+      "KE",
+      "LJ",
+      "OZ",
+      "RS",
+      "TW",
+      "YP",
+      "ZE"
+    ]
+  },
+  "routes": {
+    "AMS-NRT": {
+      "airlines": [
+        "KL",
+        "NH"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ATL-ICN": {
+      "airlines": [
+        "DL"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ATL-NRT": {
+      "airlines": [
+        "DL"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "BKK-HND": {
+      "airlines": [
+        "JL",
+        "NH"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "BKK-NRT": {
+      "airlines": [
+        "JL",
+        "NH"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "CDG-HND": {
+      "airlines": [
+        "AF",
+        "JL",
+        "NH"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "CDG-NRT": {
+      "airlines": [
+        "AF",
+        "JL",
+        "NH"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "CEB-ICN": {
+      "airlines": [
+        "7C",
+        "KE",
+        "LJ",
+        "OZ",
+        "TW",
+        "ZE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "CTS-ICN": {
+      "airlines": [
+        "7C",
+        "KE",
+        "LJ",
+        "OZ",
+        "TW"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "DAD-ICN": {
+      "airlines": [
+        "7C",
+        "KE",
+        "LJ",
+        "OZ",
+        "TW",
+        "ZE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "FRA-HND": {
+      "airlines": [
+        "LH",
+        "NH"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "FRA-NRT": {
+      "airlines": [
+        "LH",
+        "NH"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "FUK-ICN": {
+      "airlines": [
+        "7C",
+        "BX",
+        "KE",
+        "LJ",
+        "OZ",
+        "RS",
+        "TW",
+        "ZE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "GMP-HND": {
+      "airlines": [
+        "JL",
+        "KE",
+        "NH",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "GMP-KIX": {
+      "airlines": [
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "GMP-NGO": {
+      "airlines": [
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "GMP-SHA": {
+      "airlines": [
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "GMP-TPE": {
+      "airlines": [
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "GUM-ICN": {
+      "airlines": [
+        "7C",
+        "KE",
+        "LJ",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "HAN-ICN": {
+      "airlines": [
+        "7C",
+        "KE",
+        "LJ",
+        "OZ",
+        "TW",
+        "ZE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "HND-ICN": {
+      "airlines": [
+        "7C",
+        "JL",
+        "KE",
+        "NH",
+        "OZ",
+        "TW"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "HND-JFK": {
+      "airlines": [
+        "JL",
+        "NH"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "HND-LAX": {
+      "airlines": [
+        "DL",
+        "JL",
+        "NH"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "HND-SIN": {
+      "airlines": [
+        "JL",
+        "NH",
+        "SQ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "IAD-ICN": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-ADD": {
+      "airlines": [
+        "ET"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-AKL": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-ALA": {
+      "airlines": [
+        "KE",
+        "OZ",
+        "TW"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-AMS": {
+      "airlines": [
+        "KE",
+        "KL"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-AOJ": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-BCN": {
+      "airlines": [
+        "KE",
+        "TW"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-BKI": {
+      "airlines": [
+        "7C",
+        "KE",
+        "LJ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-BKK": {
+      "airlines": [
+        "7C",
+        "KE",
+        "LJ",
+        "OZ",
+        "TW",
+        "YP",
+        "ZE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-BNE": {
+      "airlines": [
+        "JQ",
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-BOM": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-BOS": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-BUD": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-BWN": {
+      "airlines": [
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-CAI": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-CAN": {
+      "airlines": [
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-CDG": {
+      "airlines": [
+        "AF",
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-CGK": {
+      "airlines": [
+        "GA",
+        "KE",
+        "OZ",
+        "TW"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-CGO": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-CKG": {
+      "airlines": [
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-CNX": {
+      "airlines": [
+        "7C",
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-CPH": {
+      "airlines": [
+        "KE",
+        "SK"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-CRK": {
+      "airlines": [
+        "7C"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-CSX": {
+      "airlines": [
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-CTU": {
+      "airlines": [
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-CXR": {
+      "airlines": [
+        "7C",
+        "KE",
+        "LJ",
+        "OZ",
+        "TW"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-DEL": {
+      "airlines": [
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-DFW": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-DLC": {
+      "airlines": [
+        "7C",
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-DOH": {
+      "airlines": [
+        "KE",
+        "QR"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-DPS": {
+      "airlines": [
+        "7C",
+        "KE",
+        "LJ",
+        "TW"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-DXB": {
+      "airlines": [
+        "EK",
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-DYG": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-FCO": {
+      "airlines": [
+        "KE",
+        "OZ",
+        "TW"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-FOC": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-FRA": {
+      "airlines": [
+        "KE",
+        "LH",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-FRU": {
+      "airlines": [
+        "TW"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-HFE": {
+      "airlines": [
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-HGH": {
+      "airlines": [
+        "KE",
+        "OZ",
+        "TW"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-HIJ": {
+      "airlines": [
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-HKG": {
+      "airlines": [
+        "CX",
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-HKT": {
+      "airlines": [
+        "7C",
+        "KE",
+        "LJ",
+        "OZ",
+        "TW"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-HNL": {
+      "airlines": [
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-HRB": {
+      "airlines": [
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-IST": {
+      "airlines": [
+        "KE",
+        "OZ",
+        "TK"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-JFK": {
+      "airlines": [
+        "DL",
+        "KE",
+        "OZ",
+        "YP"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-KIJ": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-KIX": {
+      "airlines": [
+        "7C",
+        "BX",
+        "JL",
+        "KE",
+        "LJ",
+        "NH",
+        "OZ",
+        "TW",
+        "ZE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-KLO": {
+      "airlines": [
+        "7C",
+        "LJ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-KMG": {
+      "airlines": [
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-KMJ": {
+      "airlines": [
+        "KE",
+        "TW"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-KOJ": {
+      "airlines": [
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-KUL": {
+      "airlines": [
+        "7C",
+        "KE",
+        "LJ",
+        "OZ",
+        "TW"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-LAS": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-LAX": {
+      "airlines": [
+        "DL",
+        "KE",
+        "LJ",
+        "OZ",
+        "YP"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-LHR": {
+      "airlines": [
+        "KE",
+        "OZ",
+        "VS"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-LIS": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-MAD": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-MEL": {
+      "airlines": [
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-MFM": {
+      "airlines": [
+        "7C",
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-MNL": {
+      "airlines": [
+        "7C",
+        "BX",
+        "KE",
+        "LJ",
+        "OZ",
+        "TW",
+        "ZE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-MUC": {
+      "airlines": [
+        "KE",
+        "LH"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-NBO": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-NGO": {
+      "airlines": [
+        "7C",
+        "KE",
+        "LJ",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-NGS": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-NKG": {
+      "airlines": [
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-NRT": {
+      "airlines": [
+        "7C",
+        "JL",
+        "KE",
+        "LJ",
+        "NH",
+        "OZ",
+        "TW",
+        "ZE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-OKA": {
+      "airlines": [
+        "7C",
+        "KE",
+        "LJ",
+        "OZ",
+        "TW"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-ORD": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-PEK": {
+      "airlines": [
+        "7C",
+        "KE",
+        "LJ",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-PNH": {
+      "airlines": [
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-PQC": {
+      "airlines": [
+        "7C",
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-PRG": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-PVG": {
+      "airlines": [
+        "7C",
+        "KE",
+        "LJ",
+        "OZ",
+        "TW"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-REP": {
+      "airlines": [
+        "7C",
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-RGN": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-RUH": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-SDJ": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-SEA": {
+      "airlines": [
+        "DL",
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-SFO": {
+      "airlines": [
+        "DL",
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-SGN": {
+      "airlines": [
+        "7C",
+        "KE",
+        "LJ",
+        "OZ",
+        "TW",
+        "ZE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-SHA": {
+      "airlines": [
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-SHE": {
+      "airlines": [
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-SIN": {
+      "airlines": [
+        "7C",
+        "KE",
+        "LJ",
+        "OZ",
+        "SQ",
+        "TW"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-SPN": {
+      "airlines": [
+        "7C",
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-SYD": {
+      "airlines": [
+        "KE",
+        "OZ",
+        "TW"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-SZX": {
+      "airlines": [
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-TAO": {
+      "airlines": [
+        "7C",
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-TAS": {
+      "airlines": [
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-TLV": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-TPE": {
+      "airlines": [
+        "7C",
+        "KE",
+        "LJ",
+        "OZ",
+        "TW"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-TSN": {
+      "airlines": [
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-ULN": {
+      "airlines": [
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-VIE": {
+      "airlines": [
+        "KE",
+        "OS"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-VTE": {
+      "airlines": [
+        "7C",
+        "LJ",
+        "TW"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-WAW": {
+      "airlines": [
+        "KE",
+        "LO"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-WUH": {
+      "airlines": [
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-XIY": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-XMN": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-YNJ": {
+      "airlines": [
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-YVR": {
+      "airlines": [
+        "AC",
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-YYZ": {
+      "airlines": [
+        "AC",
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "ICN-ZRH": {
+      "airlines": [
+        "KE",
+        "LX"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "JFK-AMS": {
+      "airlines": [
+        "DL",
+        "KL"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "JFK-CDG": {
+      "airlines": [
+        "AF",
+        "DL"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "JFK-FRA": {
+      "airlines": [
+        "DL",
+        "LH"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "JFK-LHR": {
+      "airlines": [
+        "DL",
+        "VS"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "JFK-NRT": {
+      "airlines": [
+        "DL",
+        "JL",
+        "NH"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "JFK-SIN": {
+      "airlines": [
+        "SQ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "KIX-SFO": {
+      "airlines": [
+        "NH"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "LAX-AMS": {
+      "airlines": [
+        "KL"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "LAX-CDG": {
+      "airlines": [
+        "AF",
+        "DL"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "LAX-FRA": {
+      "airlines": [
+        "LH"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "LAX-LHR": {
+      "airlines": [
+        "DL",
+        "VS"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "LAX-NRT": {
+      "airlines": [
+        "DL",
+        "JL",
+        "NH"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "LAX-SIN": {
+      "airlines": [
+        "SQ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "LHR-NRT": {
+      "airlines": [
+        "JL",
+        "NH"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "NRT-ORD": {
+      "airlines": [
+        "JL",
+        "NH"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "NRT-SEA": {
+      "airlines": [
+        "DL",
+        "NH"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "NRT-SFO": {
+      "airlines": [
+        "DL",
+        "JL",
+        "NH"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "NRT-SIN": {
+      "airlines": [
+        "JL",
+        "NH",
+        "SQ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "PUS-FUK": {
+      "airlines": [
+        "BX",
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "PUS-HND": {
+      "airlines": [
+        "BX"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "PUS-KIX": {
+      "airlines": [
+        "BX",
+        "KE",
+        "OZ"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "PUS-NRT": {
+      "airlines": [
+        "BX",
+        "KE"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "SFO-CDG": {
+      "airlines": [
+        "AF"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "SFO-FRA": {
+      "airlines": [
+        "LH"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    },
+    "SFO-NRT": {
+      "airlines": [
+        "DL",
+        "JL",
+        "NH"
+      ],
+      "scrapedAt": "2026-04-01T13:56:58.297Z"
+    }
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "meta": {
+    "generatedAt": "2026-04-04T10:55:24.402Z",
+    "modelVersion": "rule-engine-v1",
+    "basePeriod": "2026.04",
+    "forecastTargetPeriod": "2026.05",
+    "sourceAirlines": 9,
+    "inputs": {
+      "brentUSD": 82.5,
+      "wtiUSD": 78.3,
+      "jetFuelSpread": 14.2,
+      "usdKrw": 1480,
+      "usdJpy": 149.2,
+      "geopoliticalRiskScore": 0.35,
+      "baselineBrentUSD": 75,
+      "marketDataSource": "mock",
+      "marketFetchedAt": "2026-04-04T10:55:24.388Z"
+    },
+    "disclaimer": "이 예측은 공식 항공사 공시를 대체하지 않습니다. 공시 전 참고용 추정치이며, 실제 유류할증료는 반드시 항공사 공식 공지를 확인하세요."
+  },
+  "forecasts": [
+    {
+      "airlineCode": "KE",
+      "airlineName": "대한항공",
+      "basePeriod": "2026.04",
+      "targetPeriod": "2026.05",
+      "distanceBand": "단거리",
+      "distanceLabel": "단거리 노선 (예: ICN-NRT, ICN-PVG)",
+      "currentKRW": 57000,
+      "predictedMin": 55000,
+      "predictedMax": 63000,
+      "direction": "flat",
+      "confidence": 0.52,
+      "volatility": "medium",
+      "drivers": [
+        {
+          "factor": "국제유가 소폭 상승 (Brent $82.5)",
+          "impact": "positive",
+          "weight": 0.11
+        },
+        {
+          "factor": "원달러 환율 변동성 확대",
+          "impact": "positive",
+          "weight": 0.07
+        },
+        {
+          "factor": "항공사 공지 흐름 반영",
+          "impact": "neutral",
+          "weight": 0.03
+        }
+      ],
+      "disclaimer": "공식 공시 전 추정치 — 실제 값과 다를 수 있음"
+    },
+    {
+      "airlineCode": "KE",
+      "airlineName": "대한항공",
+      "basePeriod": "2026.04",
+      "targetPeriod": "2026.05",
+      "distanceBand": "장거리",
+      "distanceLabel": "장거리 노선 (예: ICN-LAX, ICN-LHR)",
+      "currentKRW": 276000,
+      "predictedMin": 265000,
+      "predictedMax": 295000,
+      "direction": "flat",
+      "confidence": 0.5,
+      "volatility": "medium",
+      "drivers": [
+        {
+          "factor": "국제유가 소폭 상승 (Brent $82.5)",
+          "impact": "positive",
+          "weight": 0.11
+        },
+        {
+          "factor": "원달러 환율 변동성 확대",
+          "impact": "positive",
+          "weight": 0.07
+        },
+        {
+          "factor": "항공사 공지 흐름 반영",
+          "impact": "neutral",
+          "weight": 0.03
+        }
+      ],
+      "disclaimer": "공식 공시 전 추정치 — 실제 값과 다를 수 있음"
+    },
+    {
+      "airlineCode": "OZ",
+      "airlineName": "아시아나항공",
+      "basePeriod": "2026.04",
+      "targetPeriod": "2026.05",
+      "currentKRW": null,
+      "predictedMin": null,
+      "predictedMax": null,
+      "direction": "unknown",
+      "confidence": 0,
+      "volatility": "unknown",
+      "drivers": [],
+      "unavailableReason": "데이터 부족",
+      "disclaimer": "공식 데이터 수집 불가 — 예측 불가"
+    },
+    {
+      "airlineCode": "LJ",
+      "airlineName": "진에어",
+      "basePeriod": "2026.04",
+      "targetPeriod": "2026.05",
+      "currentKRW": null,
+      "predictedMin": null,
+      "predictedMax": null,
+      "direction": "unknown",
+      "confidence": 0,
+      "volatility": "unknown",
+      "drivers": [],
+      "unavailableReason": "데이터 부족",
+      "disclaimer": "공식 데이터 수집 불가 — 예측 불가"
+    },
+    {
+      "airlineCode": "7C",
+      "airlineName": "제주항공",
+      "basePeriod": "2026.04",
+      "targetPeriod": "2026.05",
+      "currentKRW": null,
+      "predictedMin": null,
+      "predictedMax": null,
+      "direction": "unknown",
+      "confidence": 0,
+      "volatility": "unknown",
+      "drivers": [],
+      "unavailableReason": "데이터 부족",
+      "disclaimer": "공식 데이터 수집 불가 — 예측 불가"
+    },
+    {
+      "airlineCode": "TW",
+      "airlineName": "티웨이항공",
+      "basePeriod": "2026.04",
+      "targetPeriod": "2026.05",
+      "currentKRW": null,
+      "predictedMin": null,
+      "predictedMax": null,
+      "direction": "unknown",
+      "confidence": 0,
+      "volatility": "unknown",
+      "drivers": [],
+      "unavailableReason": "데이터 부족",
+      "disclaimer": "공식 데이터 수집 불가 — 예측 불가"
+    },
+    {
+      "airlineCode": "BX",
+      "airlineName": "에어부산",
+      "basePeriod": "2026.04",
+      "targetPeriod": "2026.05",
+      "currentKRW": null,
+      "predictedMin": null,
+      "predictedMax": null,
+      "direction": "unknown",
+      "confidence": 0,
+      "volatility": "unknown",
+      "drivers": [],
+      "unavailableReason": "데이터 부족",
+      "disclaimer": "공식 데이터 수집 불가 — 예측 불가"
+    },
+    {
+      "airlineCode": "YP",
+      "airlineName": "에어프레미아",
+      "basePeriod": "2026.04",
+      "targetPeriod": "2026.05",
+      "currentKRW": null,
+      "predictedMin": null,
+      "predictedMax": null,
+      "direction": "unknown",
+      "confidence": 0,
+      "volatility": "unknown",
+      "drivers": [],
+      "unavailableReason": "데이터 부족",
+      "disclaimer": "공식 데이터 수집 불가 — 예측 불가"
+    },
+    {
+      "airlineCode": "ZE",
+      "airlineName": "이스타항공",
+      "basePeriod": "2026.04",
+      "targetPeriod": "2026.05",
+      "currentKRW": null,
+      "predictedMin": null,
+      "predictedMax": null,
+      "direction": "unknown",
+      "confidence": 0,
+      "volatility": "unknown",
+      "drivers": [],
+      "unavailableReason": "데이터 부족",
+      "disclaimer": "공식 데이터 수집 불가 — 예측 불가"
+    },
+    {
+      "airlineCode": "RS",
+      "airlineName": "에어서울",
+      "basePeriod": "2026.04",
+      "targetPeriod": "2026.05",
+      "currentKRW": null,
+      "predictedMin": null,
+      "predictedMax": null,
+      "direction": "unknown",
+      "confidence": 0,
+      "volatility": "unknown",
+      "drivers": [],
+      "unavailableReason": "데이터 부족",
+      "disclaimer": "공식 데이터 수집 불가 — 예측 불가"
+    }
+  ]
+}

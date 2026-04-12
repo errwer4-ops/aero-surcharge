@@ -1,0 +1,60 @@
+{
+  "meta": {
+    "lastUpdated": "2026-04-09T00:00:00.000Z",
+    "note": "참고 소식 데이터. 공식 공지 및 시장 지표 기반 참고용 정보입니다."
+  },
+  "items": [
+    {
+      "id": "news-001",
+      "category": "airline",
+      "title": "대한항공 2026년 4월 국제선 유류할증료 공지",
+      "summary": "대한항공은 2026년 4월 1일~30일 발권분 인천 출발 국제선 유류할증료를 공지했습니다. 거리구간별 42,000원~303,000원(편도 기준)이 적용됩니다.",
+      "sourceUrl": "https://www.koreanair.com/contents/footer/customer-support/notice",
+      "sourceName": "대한항공 공지사항",
+      "date": "2026-03-20",
+      "priority": 1,
+      "tags": ["KE", "공식공지", "유류할증료"],
+      "aiSummary": false,
+      "relevanceScore": 1.0
+    },
+    {
+      "id": "news-002",
+      "category": "airline",
+      "title": "아시아나항공 2026년 4월 국제선 유류할증료 공지",
+      "summary": "아시아나항공은 2026년 4월 국제선 유류할증료를 공지했습니다. 공식 공지 페이지에서 거리 구간별 원화 기준 금액을 확인할 수 있습니다.",
+      "sourceUrl": "https://flyasiana.com/C/KR/KO/customer/notice/list",
+      "sourceName": "아시아나항공 공지사항",
+      "date": "2026-03-20",
+      "priority": 1,
+      "tags": ["OZ", "공식공지", "유류할증료"],
+      "aiSummary": false,
+      "relevanceScore": 0.95
+    },
+    {
+      "id": "news-003",
+      "category": "market",
+      "title": "국제유가(Brent) 4월 배럴당 $83~85 수준",
+      "summary": "중동 지정학 리스크와 OPEC+ 감산 기조 유지로 Brent 원유는 배럴당 $83~85 구간을 유지하고 있습니다. 이는 5월 유류할증료 수준에 영향을 줄 수 있습니다.",
+      "sourceUrl": null,
+      "sourceName": "시장 지표 참고",
+      "date": "2026-04-01",
+      "priority": 2,
+      "tags": ["유가", "Brent", "시장"],
+      "aiSummary": true,
+      "relevanceScore": 0.85
+    },
+    {
+      "id": "news-004",
+      "category": "market",
+      "title": "원달러 환율 1,460~1,500원 구간 변동 지속",
+      "summary": "미 연준 금리 동결 가능성과 국내 정치 불확실성으로 원달러 환율이 1,460~1,500원 구간에서 등락 중입니다. 환율 상승은 달러 기준 유류할증료의 원화 환산액 증가로 이어질 수 있습니다.",
+      "sourceUrl": null,
+      "sourceName": "외환시장 참고",
+      "date": "2026-04-01",
+      "priority": 3,
+      "tags": ["환율", "원달러", "시장"],
+      "aiSummary": true,
+      "relevanceScore": 0.80
+    }
+  ]
+}

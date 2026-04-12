@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>참고 소식 — 항공 유류할증료</title>
+  <meta name="description" content="항공 유류할증료 관련 국가/기관/항공사/시장 참고 소식. 데이터 기반 AI 요약 제공."/>
+  <link rel="stylesheet" href="_shared.css"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX" crossorigin="anonymous"></script>
+  <style>
+    .page-header{background:linear-gradient(160deg,#2E4FD8 0%,#1A3BB8 55%,#1230A0 100%);padding:16px 36px 20px;position:relative;}
+    .page-title{font-size:clamp(16px,2.5vw,22px);font-weight:700;color:#fff;letter-spacing:-.5px;}
+    .page-sub{font-size:12px;color:rgba(255,255,255,.55);margin-top:3px;}
+    .main{max-width:900px;margin:0 auto;padding:18px 24px 56px;}
+    .ad-slot{min-height:60px;display:flex;align-items:center;justify-content:center;margin:12px 0;}
+    .ad-placeholder{width:100%;height:60px;background:var(--white);border:1px dashed var(--line);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--muted);}
+
+    .ai-notice{background:linear-gradient(135deg,#EDE7F6,#F3E5F5);border:1px solid #CE93D8;border-radius:10px;padding:12px 16px;margin-bottom:18px;font-size:12px;color:#4527A0;display:flex;align-items:center;gap:8px;}
+    .ai-notice strong{font-weight:700;}
+
+    .filter-row{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;}
+    .ftab{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;border:1.5px solid var(--line);background:var(--white);color:var(--text2);transition:all .15s;font-family:var(--sans);}
+    .ftab:hover{border-color:var(--blue);color:var(--blue);}
+    .ftab.active{background:var(--blue);color:#fff;border-color:var(--blue);}
+
+    .news-list{display:flex;flex-direction:column;gap:12px;}
+    .news-card{background:var(--white);border-radius:13px;border:1.5px solid var(--line);padding:16px 20px;transition:box-shadow .15s;}
+    .news-card:hover{box-shadow:var(--shadow-lg);}
+    .news-card.priority-1{border-left:4px solid var(--blue);}
+    .news-card.priority-2{border-left:4px solid #F0A020;}
+    .news-card.priority-3{border-left:4px solid var(--line);}
+
+    .news-meta{display:flex;align-items:center;gap:8px;margin-bottom:8px;flex-wrap:wrap;}
+    .cat-badge{font-size:10px;font-weight:700;padding:2px 8px;border-radius:12px;}
+    .cat-airline    {background:#EBF5FF;color:#1565C0;border:1px solid #90CAF9;}
+    .cat-institution{background:#E8F5E9;color:#1B5E20;border:1px solid #A5D6A7;}
+    .cat-market     {background:#FFF8E1;color:#E65100;border:1px solid #FFCC80;}
+    .cat-general    {background:#F5F5F5;color:#424242;border:1px solid #BDBDBD;}
+    .news-date{font-size:11px;color:var(--muted);font-family:var(--mono);}
+    .ai-summary-tag{font-size:10px;font-weight:700;padding:2px 7px;border-radius:12px;background:#EDE7F6;color:#4527A0;border:1px solid #CE93D8;}
+
+    .news-title{font-size:15px;font-weight:700;margin-bottom:6px;color:var(--text);}
+    .news-summary{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:10px;}
+    .news-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;}
+    .news-link{font-size:12px;color:var(--blue);text-decoration:none;font-weight:600;}
+    .news-link:hover{text-decoration:underline;}
+    .news-tags{display:flex;gap:5px;flex-wrap:wrap;}
+    .news-tag{font-size:10px;padding:2px 7px;border-radius:10px;background:var(--bg);border:1px solid var(--line);color:var(--muted);}
+    .relevance-bar{display:flex;align-items:center;gap:5px;}
+    .rel-dot{width:7px;height:7px;border-radius:50%;background:var(--blue);}
+    .rel-dot.dim{background:var(--line);}
+
+    .empty-news{text-align:center;padding:48px;color:var(--muted);}
+    .empty-news .icon{font-size:40px;margin-bottom:12px;opacity:.35;}
+
+    .predict-basis-box{background:linear-gradient(135deg,#F3E5F5,#EDE7F6);border:1px solid #CE93D8;border-radius:12px;padding:16px 18px;margin-bottom:20px;}
+    .predict-basis-title{font-size:13px;font-weight:700;color:#4527A0;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+    .predict-factor-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;}
+    .predict-factor{background:rgba(255,255,255,.7);border-radius:8px;padding:8px 12px;border:1px solid #CE93D8;}
+    .pf-label{font-size:10px;color:var(--muted);margin-bottom:3px;}
+    .pf-val{font-size:13px;font-weight:700;color:#4527A0;}
+    .pf-val.up{color:var(--red);}
+    .pf-val.down{color:var(--green);}
+
+    @media(max-width:600px){.main{padding:14px;} .news-card{padding:12px 14px;}}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-links">
+    <a href="index.html"    class="nav-link "  id="navLinkRoutes">노선별 조회</a>
+    <a href="airlines.html" class="nav-link " id="navLinkAirlines">항공사 인덱스</a>
+    <a href="news.html"     class="nav-link active"    id="navLinkNews">참고 소식</a>
+  </div>
+  <div class="nav-controls">
+    <select class="nav-select" id="navLang">
+      <option value="ko">&#127472;&#127479; 한국어</option>
+      <option value="en">&#127482;&#127480; English</option>
+      <option value="ja">&#127471;&#127477; 日本語</option>
+      <option value="zh">&#127464;&#127475; 中文</option>
+      <option value="fr">&#127467;&#127479; Français</option>
+      <option value="de">&#127465;&#127466; Deutsch</option>
+    </select>
+    <div class="nav-divider"></div>
+    <select class="nav-select" id="navCurr">
+      <option value="KRW">&#8361; KRW</option>
+      <option value="USD">$ USD</option>
+      <option value="JPY">&#165; JPY</option>
+      <option value="EUR">&#8364; EUR</option>
+      <option value="GBP">&#163; GBP</option>
+      <option value="CNY">&#165; CNY</option>
+      <option value="AUD">A$ AUD</option>
+      <option value="SGD">S$ SGD</option>
+      <option value="HKD">HK$ HKD</option>
+    </select>
+  </div>
+</nav>
+<div class="page-header">
+  <div class="page-title">참고 소식</div>
+  <div class="page-sub">유류할증료 관련 국가·기관·항공사·시장 참고 정보 · 데이터 기반 AI 요약 · 예측 근거 연결</div>
+</div>
+
+<!-- ── 베타 서비스 안내 배너 (BetaNoticeBanner) ── -->
+<div class="beta-banner" id="betaNoticeBanner" role="note" aria-label="베타 서비스 안내">
+  <div class="beta-banner-inner">
+    <div class="beta-banner-icon">⚠️</div>
+    <div class="beta-banner-body">
+      <div class="beta-banner-title">
+        <span class="beta-badge">BETA</span>베타 서비스 안내
+      </div>
+      <div class="beta-banner-desc">
+        현재 한국 출발 국제선 유류할증료를 기준으로 제공되고 있으며, 일부 항공사는 공식 공지 기반 수동 반영입니다.<br>
+        최종 금액은 항공사 공식 공지를 반드시 확인해주세요.
+      </div>
+      <div class="beta-banner-note">
+        ※ 현재는 한국 출발 국제선만 지원합니다. 해외 출발 노선은 서비스 준비중입니다.
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="main">
+  <div class="ad-slot"><div class="ad-placeholder">AD</div></div>
+
+  <!-- AI 예측 근거 요약 박스 -->
+  <div class="predict-basis-box">
+    <div class="predict-basis-title"><span style="font-size:18px">📊</span> AI 예측 참고 지표 현황 <span style="font-size:10px;font-weight:400;color:#7E57C2">데이터 기반 추정</span></div>
+    <div class="predict-factor-grid" id="predictFactors">
+      <div class="predict-factor"><div class="pf-label">Brent 유가</div><div class="pf-val up">$83~85 / 배럴</div></div>
+      <div class="predict-factor"><div class="pf-label">원달러 환율</div><div class="pf-val up">1,460~1,500원</div></div>
+      <div class="predict-factor"><div class="pf-label">지정학 리스크</div><div class="pf-val up">높음 (중동)</div></div>
+      <div class="predict-factor"><div class="pf-label">5월 surcharge 방향</div><div class="pf-val up">소폭 상승 가능</div></div>
+    </div>
+    <div style="font-size:10px;color:#9C27B0;margin-top:10px;font-style:italic">* 이 지표들은 AI 예측의 근거로 활용됩니다. 공식 발표 전 참고용입니다.</div>
+  </div>
+
+  <div class="ai-notice">
+    <span style="font-size:16px">📋</span>
+    <div><strong>AI 요약 콘텐츠</strong> — 이 페이지의 내용은 공개된 정보를 바탕으로 AI가 정리한 참고용 자료입니다. 원문 기반 요약이며, 공식 정보가 아닙니다. 중요한 결정 전에 각 항공사 및 기관의 공식 채널을 반드시 확인하세요.</div>
+  </div>
+
+  <div class="filter-row" id="filterRow">
+    <button class="ftab active" data-f="all">전체</button>
+    <button class="ftab" data-f="institution">기관</button>
+    <!-- v33: 항공사 공지 탭 일시 숨김 — 전 항공사 지원 시 "공식 공지 모음" 페이지로 별도 구현 예정 -->
+    <!-- <button class="ftab" data-f="airline">항공사</button> -->
+    <button class="ftab" data-f="market">시장</button>
+  </div>
+
+  <div class="news-list" id="newsList">
+    <div style="text-align:center;padding:32px;color:var(--muted)">소식 데이터 로딩 중...</div>
+  </div>
+
+  <div class="ad-slot"><div class="ad-placeholder">AD</div></div>
+</div>
+
+<script src="_shared.js"></script>
+<script>
+var NEWS_DATA=null,FORECAST_DATA=null,currentF='all';
+
+async function loadNews(){
+  var[nr,fr]=await Promise.allSettled([
+    fetch('data/news_feed.json').then(function(r){return r.ok?r.json():null;}),
+    fetch('data/forecast_feed.json').then(function(r){return r.ok?r.json():null;}),
+  ]);
+  NEWS_DATA   = nr.status==='fulfilled'?nr.value:null;
+  FORECAST_DATA = fr.status==='fulfilled'?fr.value:null;
+  renderPredictBasis();
+  renderNews();
+}
+
+/* predict-basis-box를 forecast_feed.json inputs 기준으로 동적 렌더링 */
+function renderPredictBasis(){
+  var box = document.getElementById('predictFactors');
+  if(!box) return;
+  var inp = FORECAST_DATA && FORECAST_DATA.meta && FORECAST_DATA.meta.inputs;
+  var targetPeriod = FORECAST_DATA && FORECAST_DATA.meta && FORECAST_DATA.meta.forecastTargetPeriod;
+
+  if(!inp){
+    box.innerHTML='<div class="predict-factor" style="grid-column:1/-1"><div class="pf-label">상태</div><div class="pf-val" style="color:var(--muted)">데이터 없음</div></div>';
+    return;
+  }
+
+  /* surcharge 방향: KE 단거리 forecast에서 가져옴 */
+  var forecasts = FORECAST_DATA && FORECAST_DATA.forecasts || [];
+  var keShort = forecasts.find(function(f){return f.airlineCode==='KE' && (f.distanceBand||'').indexOf('단거리')!==-1;});
+  var dirLabel = '—';
+  if(keShort && keShort.predictedMin != null){
+    var dir = keShort.direction || 'flat';
+    dirLabel = {up:'소폭 상승 가능', down:'소폭 하락 가능', flat:'현 수준 유지'}[dir] || '—';
+  }
+
+  /* 지정학 리스크 텍스트 */
+  var geoScore = inp.geopoliticalRiskScore || 0;
+  var geoLabel = geoScore >= 0.5 ? '높음' : geoScore >= 0.3 ? '중간' : '낮음';
+  var geoSuffix = geoScore >= 0.3 ? ' (중동)' : '';
+
+  /* 환율 표시 */
+  var fxLabel = inp.usdKrw ? inp.usdKrw.toLocaleString() + '원 내외' : '—';
+
+  /* 대상 월 */
+  var periodLabel = targetPeriod || '공시 전';
+
+  box.innerHTML =
+    '<div class="predict-factor"><div class="pf-label">Brent 유가</div><div class="pf-val up">$' + (inp.brentUSD||'—') + ' / 배럴</div></div>'
+   +'<div class="predict-factor"><div class="pf-label">원달러 환율</div><div class="pf-val up">' + fxLabel + '</div></div>'
+   +'<div class="predict-factor"><div class="pf-label">지정학 리스크</div><div class="pf-val up">' + geoLabel + geoSuffix + '</div></div>'
+   +'<div class="predict-factor"><div class="pf-label">' + periodLabel + ' surcharge 방향</div><div class="pf-val up">' + dirLabel + '</div></div>';
+}
+
+var CAT_MAP = {
+  airline:'항공사', institution:'기관', market:'시장', general:'일반'
+};
+var CAT_CLS = {airline:'cat-airline',institution:'cat-institution',market:'cat-market',general:'cat-general'};
+var CAT_ICON = {airline:'✈️',institution:'🏛',market:'📊',general:'ℹ️'};
+
+function renderNews(){
+  var items=(NEWS_DATA&&NEWS_DATA.items)||[];
+  if(!items.length){
+    document.getElementById('newsList').innerHTML='<div class="empty-news"><div class="icon">📭</div><div>현재 표시할 주요 소식이 없습니다</div><div style="font-size:12px;margin-top:6px">수집 데이터 준비 중입니다</div></div>';
+    return;
+  }
+  /* v33: 항공사 공지는 전 항공사 미지원 상태이므로 기본 뷰에서 제외.
+     airline 탭 자체는 숨김 처리됨. all 탭에서도 airline 카테고리 미표시. */
+  var filtered=(currentF==='all'
+    ?items.filter(function(it){return it.category!=='airline';})
+    :items.filter(function(it){return it.category===currentF;}));
+  /* 정렬: priority asc, date desc */
+  filtered.sort(function(a,b){
+    if(a.priority!==b.priority)return a.priority-b.priority;
+    return (b.date||'').localeCompare(a.date||'');
+  });
+  if(!filtered.length){
+    document.getElementById('newsList').innerHTML='<div class="empty-news"><div class="icon">🔍</div><div>해당 분류의 소식이 없습니다</div></div>';
+    return;
+  }
+  document.getElementById('newsList').innerHTML=filtered.map(function(it){
+    var catCls=CAT_CLS[it.category]||CAT_CLS.general;
+    var catLabel=CAT_MAP[it.category]||'일반';
+    var catIcon=CAT_ICON[it.category]||'ℹ️';
+    var relevanceDots='';
+    for(var i=0;i<5;i++){
+      var filled=(it.relevanceScore||0)>=(i+1)*0.2;
+      relevanceDots+='<span class="rel-dot'+(filled?'':' dim')+'"></span>';
+    }
+    var tagsHtml=(it.tags||[]).map(function(t){return'<span class="news-tag">'+t+'</span>';}).join('');
+    var srcHtml=it.sourceUrl?'<a class="news-link" href="'+it.sourceUrl+'" target="_blank" rel="noopener">'+it.sourceName+' ↗</a>':'<span style="font-size:11px;color:var(--muted)">'+it.sourceName+'</span>';
+    return '<div class="news-card priority-'+(it.priority||3)+'">'
+      +'<div class="news-meta">'
+      +'<span class="cat-badge '+catCls+'">'+catIcon+' '+catLabel+'</span>'
+      +(it.aiSummary?'<span class="ai-summary-tag">🤖 AI 요약</span>':'')
+      +'<span class="news-date">'+it.date+'</span>'
+      +'<div class="relevance-bar">'+relevanceDots+'</div>'
+      +'</div>'
+      +'<div class="news-title">'+it.title+'</div>'
+      +'<div class="news-summary">'+it.summary+'</div>'
+      +'<div class="news-footer">'+srcHtml+'<div class="news-tags">'+tagsHtml+'</div></div>'
+      +'</div>';
+  }).join('');
+}
+
+document.getElementById('filterRow').addEventListener('click',function(e){
+  var btn=e.target.closest('.ftab');if(!btn)return;
+  document.querySelectorAll('#filterRow .ftab').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active'); currentF=btn.dataset.f; renderNews();
+});
+
+window.initNav({onLangChange:function(){},onCurrChange:function(){}});
+loadNews();
+</script>
+</body></html>
