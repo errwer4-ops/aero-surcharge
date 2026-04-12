@@ -740,10 +740,12 @@ document.getElementById('searchBtn').addEventListener('click',function(){
   if(dep===arr){alert('출발지와 도착지를 다르게 선택하세요');return;}
 
   /* ══ GATE: 해외 출발 완전 차단 — 계산 전 ══
-     isKoreanDeparture()가 false이면
+     depIsKR이 false이면
      거리 계산, 구간 매핑, 금액 계산 일체 실행하지 않음 */
-  var depIsKR = window.isKoreanDeparture(dep);
-  console.log('[aero][search] dep='+dep+' arr='+arr+' depIsKR='+depIsKR);
+  var depIsKR  = window.isKoreanAirport(dep);
+  var arrIsKR  = window.isKoreanAirport(arr);
+  var isOverseas = !depIsKR && !arrIsKR;
+  console.log('[aero][search] dep='+dep+' arr='+arr+' depIsKR='+depIsKR+' arrIsKR='+arrIsKR+' isOverseas='+isOverseas);
 
   /* 결과 영역 표시 (랜딩 숨김) */
   document.getElementById('landingSection').style.display='none';
