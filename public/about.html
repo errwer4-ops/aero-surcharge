@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About — 항공 유류할증료 비교 서비스 소개</title>
+  <meta name="description" content="한국 출발 국제선 항공 유류할증료 비교 서비스 소개. 데이터 출처, 운영 목적, 이용 방법, 문의처를 안내합니다."/>
+  <link rel="stylesheet" href="_shared.css"/>
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-76T4QJPY4L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-76T4QJPY4L');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510"
+    crossorigin="anonymous"></script>
+  <style>
+    /* 페이지 헤더 */
+    .page-header {
+      background: linear-gradient(160deg, #2E4FD8 0%, #1A3BB8 55%, #1230A0 100%);
+      padding: 28px 40px 32px;
+      position: relative;
+    }
+    .page-header::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 120%, rgba(255,255,255,.06) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .page-title {
+      font-size: clamp(18px, 3vw, 26px);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.5px;
+      margin-bottom: 4px;
+    }
+    .page-sub {
+      font-size: 13px;
+      color: rgba(255,255,255,.6);
+    }
+
+    /* 본문 */
+    .about-wrap {
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 36px 24px 80px;
+    }
+
+    /* 섹션 카드 */
+    .about-section {
+      background: var(--white);
+      border-radius: 16px;
+      border: 1.5px solid var(--line);
+      padding: 28px 32px;
+      margin-bottom: 20px;
+      box-shadow: 0 2px 10px rgba(0,0,0,.04);
+    }
+    .about-section-icon {
+      font-size: 28px;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .about-section h2 {
+      font-size: 17px;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 14px;
+      padding-bottom: 10px;
+      border-bottom: 1.5px solid var(--line);
+    }
+    .about-section p {
+      font-size: 14px;
+      color: var(--text2);
+      line-height: 1.85;
+      margin: 0 0 12px;
+    }
+    .about-section p:last-child {
+      margin-bottom: 0;
+    }
+    .about-section ul {
+      padding-left: 20px;
+      margin: 0 0 12px;
+    }
+    .about-section li {
+      font-size: 14px;
+      color: var(--text2);
+      line-height: 1.85;
+      margin-bottom: 6px;
+    }
+
+    /* 데이터 출처 테이블 */
+    .source-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: 14px;
+    }
+    .source-table th {
+      text-align: left;
+      padding: 8px 12px;
+      background: var(--bg);
+      border-bottom: 1.5px solid var(--line);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .source-table td {
+      padding: 9px 12px;
+      border-bottom: 1px solid var(--line);
+      color: var(--text2);
+      vertical-align: top;
+    }
+    .source-table tr:last-child td {
+      border-bottom: none;
+    }
+    .source-table a {
+      color: var(--blue);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    .source-table a:hover { text-decoration: underline; }
+
+    /* 연락처 박스 */
+    .contact-box {
+      background: linear-gradient(135deg, #EBF5FF, #F0F4FF);
+      border: 1.5px solid #90CAF9;
+      border-radius: 12px;
+      padding: 20px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: 6px;
+    }
+    .contact-box-icon { font-size: 28px; flex-shrink: 0; }
+    .contact-box-title { font-size: 14px; font-weight: 700; color: #1565C0; margin-bottom: 4px; }
+    .contact-box-body { font-size: 13px; color: #1976D2; line-height: 1.65; }
+    .contact-box-body a { color: #1565C0; font-weight: 700; }
+
+    /* footer */
+    .site-footer {
+      background: var(--white);
+      border-top: 1px solid var(--line);
+      padding: 20px 40px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+    .footer-notice { font-size: 12px; color: var(--muted); max-width: 580px; line-height: 1.6; margin: 0; }
+    .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+    .footer-links a { font-size: 12px; color: var(--muted); text-decoration: none; }
+    .footer-links a:hover { color: var(--blue); }
+
+    @media(max-width: 600px) {
+      .page-header { padding: 20px 18px 24px; }
+      .about-wrap { padding: 20px 14px 60px; }
+      .about-section { padding: 20px 18px; }
+      .contact-box { flex-direction: column; gap: 10px; }
+      .site-footer { padding: 16px 18px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-links">
+    <a href="index.html"    class="nav-link" id="navLinkRoutes">노선별 조회</a>
+    <a href="airlines.html" class="nav-link" id="navLinkAirlines">항공사 인덱스</a>
+    <a href="news.html"     class="nav-link" id="navLinkNews">참고 소식</a>
+  </div>
+  <div class="nav-controls">
+    <select class="nav-select">
+      <option value="ko">🇰🇷 한국어</option>
+    </select>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-title">서비스 소개</div>
+  <div class="page-sub">한국 출발 국제선 유류할증료 비교 서비스 — About</div>
+</div>
+
+<div class="about-wrap">
+
+  <!-- 서비스 목적 -->
+  <div class="about-section">
+    <span class="about-section-icon">✈️</span>
+    <h2>이 서비스는 무엇인가요?</h2>
+    <p>
+      <strong>aero-surcharge</strong>는 한국 출발 국제선 항공권에 부과되는 유류할증료(Fuel Surcharge)를
+      항공사별·노선별로 비교할 수 있는 정보 서비스입니다.
+      인천(ICN), 김포(GMP), 부산(PUS) 등 국내 공항에서 출발하는 국제선을 기준으로,
+      대한항공·아시아나·제주항공 등 국내 주요 항공사의 공식 공지 금액을 한 화면에서 확인할 수 있습니다.
+    </p>
+    <p>
+      유류할증료는 항공권 총 가격의 상당 부분을 차지하지만, 항공사마다 금액 및 구간 기준이 달라
+      개별 공지를 하나씩 확인하는 번거로움이 있습니다. 이 서비스는 여러 항공사의 공식 공지를
+      한 화면에 모아 실질적인 비교가 가능하도록 설계되었습니다.
+    </p>
+    <p>
+      현재는 <strong>한국 출발 국제선</strong>만 지원하며, 해외 출발 노선은 서비스 준비 중입니다.
+      모든 데이터는 참고용이며, 실제 발권 전 해당 항공사 공식 사이트에서 최종 금액을 반드시 확인하시기 바랍니다.
+    </p>
+  </div>
+
+  <!-- 유류할증료 개념 -->
+  <div class="about-section">
+    <span class="about-section-icon">💡</span>
+    <h2>유류할증료란 무엇인가요?</h2>
+    <p>
+      유류할증료(Fuel Surcharge)는 국제유가 변동에 연동해 항공사가 기본 운임 외에 별도로 부과하는 요금입니다.
+      국제 원유 가격이 오르면 할증료도 높아지고, 유가가 내리면 감소하거나 면제되기도 합니다.
+    </p>
+    <p>
+      국내 항공사들은 국토교통부 가이드라인에 따라 매월 초 다음 달 적용 금액을 공식 공지합니다.
+      금액은 비행 거리구간(단거리·중거리·장거리)에 따라 구간별로 다르게 적용되며,
+      같은 노선이라도 항공사마다 기준 구간과 금액이 다릅니다.
+    </p>
+    <p>
+      예를 들어 인천에서 도쿄(약 780마일)는 단거리 구간, 인천에서 런던(약 5,500마일)은 장거리 구간으로
+      구분되며, 왕복 항공권 구매 시에는 편도 금액의 2배가 부과됩니다.
+    </p>
+  </div>
+
+  <!-- 데이터 출처 -->
+  <div class="about-section">
+    <span class="about-section-icon">📋</span>
+    <h2>데이터 출처</h2>
+    <p>
+      이 서비스에서 제공하는 유류할증료 데이터는 각 항공사가 공식 홈페이지에 공지한 내용을 기반으로 합니다.
+      공식 공지가 확인된 항공사에는 <strong>'공식 확인'</strong> 표시가 함께 노출됩니다.
+    </p>
+    <table class="source-table">
+      <thead>
+        <tr>
+          <th>항공사</th>
+          <th>IATA</th>
+          <th>데이터 기준</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>대한항공</td><td>KE</td><td>공식 유류할증료 공지 (월별 업데이트)</td></tr>
+        <tr><td>아시아나항공</td><td>OZ</td><td>공식 유류할증료 공지 (월별 업데이트)</td></tr>
+        <tr><td>제주항공</td><td>7C</td><td>공식 유류할증료 공지 (USD 공시)</td></tr>
+        <tr><td>진에어</td><td>LJ</td><td>공식 유류할증료 공지 (USD 공시)</td></tr>
+        <tr><td>티웨이항공</td><td>TW</td><td>공식 유류할증료 공지 (KRW 공시)</td></tr>
+        <tr><td>이스타항공</td><td>ZE</td><td>공식 유류할증료 공지 (군별 요금)</td></tr>
+        <tr><td>에어서울</td><td>RS</td><td>공식 유류할증료 공지 (KRW 공시)</td></tr>
+        <tr><td>에어프레미아</td><td>YP</td><td>공식 유류할증료 공지 (USD 공시)</td></tr>
+      </tbody>
+    </table>
+    <p style="margin-top:14px; font-size:13px;">
+      데이터는 매월 항공사 공식 공지를 기준으로 업데이트됩니다.
+      공지 변경 후 즉시 반영되지 않을 수 있으므로, 최신 정보는 각 항공사 공식 채널에서 직접 확인해 주세요.
+    </p>
+  </div>
+
+  <!-- 이용 안내 -->
+  <div class="about-section">
+    <span class="about-section-icon">🗺️</span>
+    <h2>이용 방법</h2>
+    <ul>
+      <li><strong>노선별 조회</strong> — 출발 공항과 도착 공항을 선택하면 항공사별 유류할증료를 한눈에 비교할 수 있습니다.</li>
+      <li><strong>편도/왕복 선택</strong> — 편도와 왕복 여정 중 하나를 선택해 실제 부과 금액을 확인하세요.</li>
+      <li><strong>항공사 인덱스</strong> — 항공사별 공식 공지 링크와 데이터 현황을 확인할 수 있습니다.</li>
+      <li><strong>통화 선택</strong> — 우측 상단에서 KRW·USD·JPY 등 원하는 통화로 금액을 변환해 볼 수 있습니다.</li>
+      <li><strong>공식 공지 확인</strong> — 각 카드 하단의 '공식 공지 ↗' 버튼으로 해당 항공사 원문 공지 페이지로 이동할 수 있습니다.</li>
+    </ul>
+    <p>
+      모든 조회 결과는 참고용이며, 실제 발권 시에는 항공사 예약 시스템 또는 공식 공지에서 최종 금액을 반드시 재확인하시기 바랍니다.
+    </p>
+  </div>
+
+  <!-- 면책 안내 -->
+  <div class="about-section">
+    <span class="about-section-icon">⚠️</span>
+    <h2>정보 정확성 및 면책 안내</h2>
+    <p>
+      이 서비스에서 제공하는 모든 유류할증료 정보는 <strong>참고 목적</strong>으로만 제공됩니다.
+      실제 적용 금액은 항공사 정책, 발권 시점, 출발 국가, 항공권 종류에 따라 달라질 수 있으며,
+      본 서비스는 정보의 정확성 및 최신성을 보장하지 않습니다.
+    </p>
+    <p>
+      항공사의 공식 공지가 변경된 후 본 서비스에 즉시 반영되지 않을 수 있습니다.
+      중요한 여행 비용 계획 수립 시에는 반드시 해당 항공사의 공식 사이트 또는 발권처를 통해 최종 확인하시기 바랍니다.
+    </p>
+  </div>
+
+  <!-- 문의 -->
+  <div class="about-section">
+    <span class="about-section-icon">📬</span>
+    <h2>문의</h2>
+    <div class="contact-box">
+      <div class="contact-box-icon">✉️</div>
+      <div>
+        <div class="contact-box-title">운영자에게 문의하기</div>
+        <div class="contact-box-body">
+          데이터 오류, 서비스 개선 제안, 저작권 관련 문의 등은 아래 이메일로 연락해 주세요.<br>
+          <a href="mailto:jiwoo7475@gmail.com">jiwoo7475@gmail.com</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /.about-wrap -->
+
+<footer class="site-footer">
+  <p class="footer-notice">
+    이 사이트는 항공사 공식 공지 기반의 유류할증료 정보를 참고용으로 제공합니다.
+    실제 발권 금액은 항공사 또는 발권처에서 반드시 확인하세요.<br>
+    문의: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>
+  </p>
+  <nav class="footer-links">
+    <a href="about.html">About</a>
+    <a href="privacy.html">Privacy Policy</a>
+    <a href="terms.html">Terms of Service</a>
+  </nav>
+</footer>
+
+</body>
+</html>

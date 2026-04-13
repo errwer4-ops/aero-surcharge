@@ -3,11 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>개인정보처리방침 — 항공 유류할증료</title>
-  <meta name="description" content="항공 유류할증료 비교 사이트의 개인정보처리방침입니다." />
+  <title>개인정보처리방침 — 항공 유류할증료 비교</title>
+  <meta name="description" content="항공 유류할증료 비교 사이트의 개인정보처리방침. 쿠키, Google AdSense, 수집 정보 등을 안내합니다." />
   <link rel="stylesheet" href="_shared.css" />
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-76T4QJPY4L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-76T4QJPY4L');
+  </script>
   <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX"
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510"
           crossorigin="anonymous"></script>
   <style>
     .policy-wrap {
@@ -51,14 +59,13 @@
 
 <!-- NAV -->
 <nav>
-  <div class="nav-left">
-    <div class="nav-page-links">
-      <a href="index.html" class="nav-page-link">항공사 인덱스</a>
-      <a href="routes.html" class="nav-page-link">노선별 조회</a>
-    </div>
+  <div class="nav-links">
+    <a href="index.html"    class="nav-link" id="navLinkRoutes">노선별 조회</a>
+    <a href="airlines.html" class="nav-link" id="navLinkAirlines">항공사 인덱스</a>
+    <a href="news.html"     class="nav-link" id="navLinkNews">참고 소식</a>
   </div>
   <div class="nav-controls">
-    <select class="nav-select" onchange="location.href=this.value=='ko'?'privacy.html':'privacy.html'">
+    <select class="nav-select">
       <option value="ko">🇰🇷 한국어</option>
     </select>
   </div>
@@ -136,10 +143,12 @@
 
 <footer class="site-footer">
   <p class="footer-notice">
-    This site provides fuel surcharge information based on official airline announcements.
-    Final pricing may vary depending on airline policy and ticketing date. All data is for reference only.
+    이 사이트는 항공사 공식 공지 기반의 유류할증료 정보를 참고용으로 제공합니다.
+    실제 발권 금액은 항공사 또는 발권처에서 반드시 확인하세요.<br>
+    문의: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>
   </p>
   <nav class="footer-links">
+    <a href="about.html">About</a>
     <a href="privacy.html">Privacy Policy</a>
     <a href="terms.html">Terms of Service</a>
   </nav>

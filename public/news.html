@@ -2,10 +2,19 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>참고 소식 — 항공 유류할증료</title>
-  <meta name="description" content="항공 유류할증료 관련 국가/기관/항공사/시장 참고 소식. 데이터 기반 AI 요약 제공."/>
+  <title>참고 소식 — 항공 유류할증료 동향 | 국제유가·환율·정책</title>
+  <meta name="description" content="항공 유류할증료에 영향을 주는 국제유가, 환율, 정책 동향 정보. 국가·기관·시장 관련 참고 소식을 AI 요약으로 제공합니다."/>
   <link rel="stylesheet" href="_shared.css"/>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXX" crossorigin="anonymous"></script>
+  <!-- Google Analytics (GA4) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-76T4QJPY4L"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-76T4QJPY4L');
+  </script>
+  <!-- Google AdSense -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
   <style>
     .page-header{background:linear-gradient(160deg,#2E4FD8 0%,#1A3BB8 55%,#1230A0 100%);padding:16px 36px 20px;position:relative;}
     .page-title{font-size:clamp(16px,2.5vw,22px);font-weight:700;color:#fff;letter-spacing:-.5px;}
@@ -119,7 +128,8 @@
 </div>
 
 <div class="main">
-  <div class="ad-slot"><div class="ad-placeholder">AD</div></div>
+  <!-- 광고 슬롯 1 (AdSense 승인 후 ins 태그 삽입) -->
+  <div class="ad-slot" id="adSlot1"></div>
 
   <!-- AI 예측 근거 요약 박스 -->
   <div class="predict-basis-box">
@@ -150,7 +160,8 @@
     <div style="text-align:center;padding:32px;color:var(--muted)">소식 데이터 로딩 중...</div>
   </div>
 
-  <div class="ad-slot"><div class="ad-placeholder">AD</div></div>
+  <!-- 광고 슬롯 2 (AdSense 승인 후 ins 태그 삽입) -->
+  <div class="ad-slot" id="adSlot2"></div>
 </div>
 
 <script src="_shared.js"></script>
@@ -267,4 +278,15 @@ document.getElementById('filterRow').addEventListener('click',function(e){
 window.initNav({onLangChange:function(){},onCurrChange:function(){}});
 loadNews();
 </script>
+<footer style="background:var(--white);border-top:1px solid var(--line);padding:20px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;">
+  <p style="font-size:12px;color:var(--muted);max-width:580px;line-height:1.6;margin:0;">
+    이 페이지의 소식은 공개 정보 기반 참고용 자료입니다. 중요한 결정 전 공식 채널을 확인하세요.<br>
+    문의: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>
+  </p>
+  <nav style="display:flex;gap:16px;flex-wrap:wrap;">
+    <a href="about.html" style="font-size:12px;color:var(--muted);text-decoration:none;">About</a>
+    <a href="privacy.html" style="font-size:12px;color:var(--muted);text-decoration:none;">Privacy Policy</a>
+    <a href="terms.html" style="font-size:12px;color:var(--muted);text-decoration:none;">Terms of Service</a>
+  </nav>
+</footer>
 </body></html>
