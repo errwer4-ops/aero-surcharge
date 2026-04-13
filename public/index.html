@@ -3,10 +3,11 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>항공 유류할증료 비교 — 노선별 조회</title>
-  <meta name="description" content="한국 국적기 노선별 유류할증료 비교. 공식 공지 + AI 예측 제공."/>
+  <title>유류할증료 조회 — 한국 출발 국제선 항공사별 비교</title>
+  <meta name="description" content="한국 출발 국제선 항공사별 유류할증료를 노선·거리구간별로 비교합니다. 대한항공, 아시아나, 제주항공 등 국내외 항공사 공식 공지 기준 금액을 한눈에 확인하세요."/>
   <link rel="stylesheet" href="_shared.css"/>
-    <!-- GA (먼저) -->
+
+  <!-- Google Analytics (GA4) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-76T4QJPY4L"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
@@ -15,9 +16,10 @@
     gtag('config', 'G-76T4QJPY4L');
   </script>
 
-    <!-- 애드센스 -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770833510"
-  crossorigin="anonymous"></script>
+  <!-- Google AdSense-->
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510"
+     crossorigin="anonymous"></script>
+
   <style>
     .hero { background:linear-gradient(160deg,#2E4FD8 0%,#1A3BB8 55%,#1230A0 100%); padding:22px 40px 30px; text-align:center; position:relative; overflow:hidden; }
     .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 60% at 50% 120%,rgba(255,255,255,.06) 0%,transparent 70%); pointer-events:none; }
@@ -36,8 +38,11 @@
     .search-btn { background:var(--blue); color:#fff; border:none; border-radius:9px; padding:10px 22px; font-size:13px; font-weight:700; cursor:pointer; font-family:var(--sans); white-space:nowrap; transition:all .15s; align-self:end; }
     .search-btn:hover { background:var(--blue-dk); transform:translateY(-1px); }
 
-    .ad-slot { max-width:1140px; margin:14px auto 0; padding:0 24px; min-height:60px; display:flex; align-items:center; justify-content:center; }
-    .ad-placeholder { width:100%; height:60px; background:var(--white); border:1px dashed var(--line); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:11px; color:var(--muted); }
+    /* 광고 슬롯 — 승인 전: 실제 광고 단위만 삽입, placeholder 없음 */
+    .ad-slot { max-width:1140px; margin:14px auto 0; padding:0 24px; }
+    .ad-slot-bottom { margin-top:28px; }
+    .ad-slot-mid { grid-column:1/-1; }
+
     .main { max-width:1140px; margin:0 auto; padding:18px 24px 56px; }
 
     .result-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:10px; }
@@ -95,22 +100,18 @@
     .mini-badge { width:34px; height:34px; border:1.5px solid var(--line); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:16px; background:var(--bg); flex-shrink:0; }
     .mini-name { font-size:13px; font-weight:600; }
     .mini-status { font-size:11px; color:var(--muted); margin-top:1px; }
-    /* mini-amt: v33에서 단일 금액 표시 제거 */
     .mini-amt { display:none; }
-    /* kr-only-notice: 한국 출발 안내 배너 */
+    /* kr-only-notice */
     .kr-only-notice { display:flex; align-items:flex-start; gap:12px; background:linear-gradient(135deg,#EBF5FF,#F0F4FF); border:1.5px solid #90CAF9; border-radius:13px; padding:14px 18px; margin-bottom:16px; }
     .kr-only-icon { font-size:24px; flex-shrink:0; margin-top:2px; }
     .kr-only-title { font-size:14px; font-weight:700; color:#1565C0; margin-bottom:4px; }
     .kr-only-desc { font-size:12px; color:#1976D2; line-height:1.6; }
-    /* mini-card v33: 공식 공지 버튼 위주로 */
     .mini-notice-btn { display:inline-block; font-size:10px; color:var(--blue); text-decoration:none; font-weight:600; margin-top:4px; padding:2px 7px; border-radius:8px; border:1px solid #90CAF9; background:#EBF5FF; }
     .mini-notice-btn:hover { background:#BBDEFB; }
     .index-link-row { margin-top:20px; text-align:center; }
     .index-link { color:var(--blue); font-size:13px; font-weight:600; text-decoration:none; }
-    .ad-slot-bottom { margin-top:28px; min-height:80px; display:flex; align-items:center; justify-content:center; }
-    .ad-slot-mid { grid-column:1/-1; min-height:70px; display:flex; align-items:center; justify-content:center; }
 
-    /* ── ROUTE TABLE (구간별 유류할증료) ── */
+    /* ── ROUTE TABLE ── */
     .route-table { width:100%; border-collapse:collapse; margin:8px 0 4px; }
     .route-table th { font-size:9px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--muted); padding:4px 8px; text-align:left; border-bottom:1px solid var(--line); }
     .route-table td { font-size:12px; padding:5px 8px; border-bottom:1px solid var(--line); }
@@ -122,122 +123,110 @@
     .route-highlight-badge { font-size:9px; background:var(--blue); color:#fff; border-radius:4px; padding:1px 5px; margin-left:5px; vertical-align:middle; }
     .route-spike-badge { font-size:9px; background:#FFF3E0; color:#E65100; border:1px solid #FFCC80; border-radius:4px; padding:1px 5px; }
 
-    /* ── CHECKBOX ROW 안정화 ── */
+    /* ── CHECKBOX ROW ── */
     .checkbox-row { display:flex; align-items:flex-start; gap:8px; }
     input[type="checkbox"] { flex-shrink:0; }
 
+    /* ══════════════════════════════════
+       서비스 소개 섹션 (intro-section)
+       ══════════════════════════════════ */
+    .intro-section {
+      max-width:1140px;
+      margin:0 auto;
+      padding:28px 24px 0;
+    }
+    .intro-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
+      gap:14px;
+      margin-bottom:10px;
+    }
+    .intro-card {
+      background:var(--white);
+      border-radius:14px;
+      border:1.5px solid var(--line);
+      padding:20px 22px;
+      box-shadow:var(--shadow);
+    }
+    .intro-card-icon {
+      font-size:26px;
+      margin-bottom:10px;
+      display:block;
+    }
+    .intro-card-title {
+      font-size:14px;
+      font-weight:700;
+      color:var(--text);
+      margin-bottom:7px;
+      line-height:1.4;
+    }
+    .intro-card-body {
+      font-size:13px;
+      color:var(--text2);
+      line-height:1.7;
+    }
+
+    /* ── 유류할증료 안내 블록 (guide-block) ── */
+    .guide-block {
+      background:linear-gradient(135deg,#F8FAFF,#EEF2FF);
+      border:1.5px solid #C5CAE9;
+      border-radius:14px;
+      padding:20px 24px;
+      margin-bottom:18px;
+    }
+    .guide-block-title {
+      font-size:14px;
+      font-weight:700;
+      color:#283593;
+      margin-bottom:10px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .guide-block-body {
+      font-size:13px;
+      color:#37474F;
+      line-height:1.75;
+    }
+    .guide-block-body p { margin:0 0 8px; }
+    .guide-block-body p:last-child { margin:0; }
+
     /* ════════════════════════════════════════
-       모바일 UX 완성 (700px 이하)
-       원칙: grid 충돌 해소 + 폼 완성도 + 터치 UX
+       모바일 UX (700px 이하)
        ════════════════════════════════════════ */
     @media(max-width:700px){
-
-      /* ── hero ── */
-      .hero {
-        padding: 20px 16px 28px;
-      }
-      .hero-title {
-        font-size: 20px;
-        letter-spacing: -.5px;
-        margin-bottom: 5px;
-      }
-      .hero-sub {
-        font-size: 12px;
-        margin-bottom: 20px;
-      }
-
-      /* ── search-panel: grid 충돌 해소 → 1열 폼 ── */
-      .search-panel {
-        grid-template-columns: 1fr;
-        gap: 12px;
-        padding: 18px 16px 20px;
-        border-radius: 14px;
-      }
-
-      /* ── form-group: label + input 간격 정리 ── */
-      .form-group {
-        gap: 6px;
-        width: 100%;
-      }
-      .form-label {
-        font-size: 11px;
-        letter-spacing: 1px;
-      }
-
-      /* ── airport-select: 모바일 터치 친화 ── */
-      .airport-select {
-        width: 100%;
-        padding: 11px 36px 11px 13px;
-        font-size: 15px;
-        border-radius: 10px;
-      }
-
-      /* ── swap-btn: 세로 흐름에서 불필요 ── */
+      .hero { padding: 20px 16px 28px; }
+      .hero-title { font-size: 20px; letter-spacing: -.5px; margin-bottom: 5px; }
+      .hero-sub { font-size: 12px; margin-bottom: 20px; }
+      .search-panel { grid-template-columns: 1fr; gap: 12px; padding: 18px 16px 20px; border-radius: 14px; }
+      .form-group { gap: 6px; width: 100%; }
+      .form-label { font-size: 11px; letter-spacing: 1px; }
+      .airport-select { width: 100%; padding: 11px 36px 11px 13px; font-size: 15px; border-radius: 10px; }
       .swap-btn { display: none; }
-
-      /* ── trip-toggle: 전체 너비 + 충분한 탭 높이 ── */
-      .trip-toggle {
-        width: 100%;
-        border-radius: 10px;
-      }
-      .trip-btn {
-        flex: 1;
-        padding: 11px 14px;
-        font-size: 13px;
-      }
-
-      /* ── search-btn: 전체 너비 CTA ── */
-      .search-btn {
-        width: 100%;
-        padding: 13px 22px;
-        font-size: 14px;
-        border-radius: 10px;
-        text-align: center;
-        letter-spacing: .2px;
-      }
-
-      /* ── main 패딩 축소 ── */
+      .trip-toggle { width: 100%; border-radius: 10px; }
+      .trip-btn { flex: 1; padding: 11px 14px; font-size: 13px; }
+      .search-btn { width: 100%; padding: 13px 22px; font-size: 14px; border-radius: 10px; text-align: center; letter-spacing: .2px; }
       .main { padding: 16px 14px 48px; }
-
-      /* ── result-header: 세로 흐름 ── */
-      .result-header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-      }
-
-      /* ── filter-row: 스크롤 가능 한 줄 ── */
-      .filter-row {
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        padding-bottom: 4px;
-        gap: 6px;
-      }
+      .result-header { flex-direction: column; align-items: flex-start; gap: 8px; }
+      .filter-row { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; gap: 6px; }
       .filter-row::-webkit-scrollbar { display: none; }
-      .ftab {
-        white-space: nowrap;
-        flex-shrink: 0;
-        padding: 6px 14px;
-      }
-
-      /* ── cards-grid / mini-grid: 1열 ── */
+      .ftab { white-space: nowrap; flex-shrink: 0; padding: 6px 14px; }
       .cards-grid, .mini-grid { grid-template-columns: 1fr; }
-
-      /* ── al-card: 모바일 여백 ── */
       .al-card { padding: 15px 15px; }
-
-      /* ── amt-grid: 3열 유지하되 셀 패딩 축소 ── */
       .amt-grid { gap: 5px; }
       .amt-box { padding: 8px 8px; }
       .amt-val { font-size: 12px; }
-
-      /* ── kr-only-notice ── */
       .kr-only-notice { padding: 12px 14px; gap: 10px; }
       .kr-only-desc { font-size: 11px; }
-
-      /* ── ad-slot ── */
       .ad-slot { padding: 0 14px; }
+
+      /* intro / guide 모바일 */
+      .intro-section { padding: 20px 14px 0; }
+      .intro-grid { grid-template-columns: 1fr; gap: 10px; }
+      .intro-card { padding: 16px 16px; }
+      .intro-card-body { font-size: 12px; }
+      .guide-block { padding: 16px 16px; }
+      .guide-block-body { font-size: 12px; }
     }
   </style>
 </head>
@@ -328,7 +317,7 @@
   </div>
 </div>
 
-<!-- ── 베타 서비스 안내 배너 (BetaNoticeBanner) ── -->
+<!-- ── 베타 서비스 안내 배너 ── -->
 <div class="beta-banner" id="betaNoticeBanner" role="note" aria-label="베타 서비스 안내">
   <div class="beta-banner-inner">
     <div class="beta-banner-icon">⚠️</div>
@@ -347,9 +336,47 @@
   </div>
 </div>
 
-<div class="ad-slot">
-  <!-- AdSense slot 1 -->
-  <div class="ad-placeholder">AD</div>
+<!-- ══ 서비스 소개 섹션 (hero 바로 아래 — AdSense 심사용 콘텐츠 보강) ══ -->
+<section class="intro-section" aria-label="서비스 소개">
+  <div class="intro-grid">
+    <div class="intro-card">
+      <span class="intro-card-icon">✈️</span>
+      <div class="intro-card-title">한국 출발 국제선 유류할증료 비교</div>
+      <div class="intro-card-body">
+        이 서비스는 인천(ICN), 김포(GMP), 부산(PUS) 등 한국 출발 국제선의 항공사별 유류할증료를 노선·거리구간별로 비교합니다.
+        대한항공, 아시아나항공, 제주항공 등 국내외 항공사의 공식 공지를 기반으로 한 데이터를 제공합니다.
+      </div>
+    </div>
+    <div class="intro-card">
+      <span class="intro-card-icon">📋</span>
+      <div class="intro-card-title">항공사 공식 공지 기반 정보 제공</div>
+      <div class="intro-card-body">
+        각 항공사가 매월 발표하는 공식 유류할증료 공지를 우선으로 반영합니다.
+        공식 공지가 확인된 항공사에는 '공식 확인' 표시가 함께 노출되며, 각 카드에서 항공사 공지 원문 링크를 바로 확인할 수 있습니다.
+      </div>
+    </div>
+    <div class="intro-card">
+      <span class="intro-card-icon">⚡</span>
+      <div class="intro-card-title">노선·시점에 따라 달라지는 금액</div>
+      <div class="intro-card-body">
+        유류할증료는 항공사, 비행 거리구간, 적용 월에 따라 달라집니다. 조회 결과는 참고용이며,
+        실제 발권 전 반드시 해당 항공사의 공식 공지 또는 예약 화면에서 최종 금액을 확인하시기 바랍니다.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 광고 슬롯 1 (AdSense 승인 후 ins 태그 삽입 위치) ── -->
+<div class="ad-slot" id="adSlot1">
+  <!-- 승인 완료 후 아래 주석을 실제 AdSense ins 코드로 교체하세요
+  <ins class="adsbygoogle"
+       style="display:block"
+       data-ad-client="ca-pub-4285114770383510"
+       data-ad-slot="XXXXXXXXXX"
+       data-ad-format="auto"
+       data-full-width-responsive="true"></ins>
+  <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+  -->
 </div>
 
 <div class="main">
@@ -366,8 +393,23 @@
       <button class="ftab active" data-f="all"  id="ftabAll">전체</button>
       <button class="ftab" data-f="data"         id="ftabData">공식 데이터 있음</button>
     </div>
+
+    <!-- ── 유류할증료 안내 블록 (결과 상단) ── -->
+    <div class="guide-block">
+      <div class="guide-block-title">💡 유류할증료란 무엇인가요?</div>
+      <div class="guide-block-body">
+        <p>유류할증료(Fuel Surcharge)는 항공유 가격 변동에 따라 항공사가 기본 운임 외에 별도로 부과하는 요금입니다. 국제유가가 오르면 할증료도 높아지고, 유가가 내리면 감소하거나 면제되기도 합니다.</p>
+        <p>금액은 항공사마다 다르며, 같은 항공사라도 비행 거리구간(단거리·중거리·장거리)에 따라 구간별로 다르게 적용됩니다. 매월 초 항공사가 다음 달 적용 금액을 공식 공지합니다.</p>
+        <p>아래 결과는 공식 공지 기준이며, 최종 결제 금액은 항공사 예약 화면 또는 공식 공지에서 반드시 재확인하시기 바랍니다.</p>
+      </div>
+    </div>
+
     <div class="cards-grid" id="cardsGrid"></div>
-    <div class="ad-slot-bottom"><div class="ad-placeholder">AD</div></div>
+
+    <!-- 광고 슬롯 2 (결과 하단, 승인 후 교체) -->
+    <div class="ad-slot-bottom" id="adSlot2">
+      <!-- 승인 완료 후 실제 AdSense ins 코드로 교체하세요 -->
+    </div>
   </div>
 
   <!-- 랜딩 -->
@@ -376,8 +418,17 @@
       <div class="status-dot" id="statusDot"></div>
       <span id="statusText"></span>
     </div>
+
+    <!-- ── 유류할증료 안내 블록 (랜딩 상단) ── -->
+    <div class="guide-block">
+      <div class="guide-block-title">💡 유류할증료란 무엇인가요?</div>
+      <div class="guide-block-body">
+        <p>유류할증료(Fuel Surcharge)는 국제유가 변동에 연동해 항공사가 기본 운임과 별도로 부과하는 요금입니다. 비행 거리가 멀수록, 유가가 높을수록 금액이 높아지는 구조입니다.</p>
+        <p>국내 항공사들은 국토교통부 기준에 따라 매월 다음 달 적용 금액을 공식 공지합니다. 출발지·도착지를 선택해 검색하면 항공사별 공식 공지 기준 금액을 노선별로 비교할 수 있습니다.</p>
+      </div>
+    </div>
+
     <div class="landing-title" id="landingTitle">한국 출발 국제선 유류할증료</div>
-    <!-- v33: 단일 금액 표시 제거 → 안내 문구 + 항공사 공식 공지 버튼 -->
     <div class="kr-only-notice" id="krOnlyNotice">
       <span class="kr-only-icon">🇰🇷</span>
       <div>
@@ -468,7 +519,6 @@ async function loadAll(){
       }),
     ]);
 
-    // airline_meta 로드 결과
     if (meta.status === 'fulfilled' && window.AIRLINE_META) {
       metaOk = true;
       console.log('[aero] ✅ airline metadata 로드 성공 — 항공사 수:', Object.keys(window.AIRLINE_META).length);
@@ -478,7 +528,6 @@ async function loadAll(){
       window.AIRLINE_META = window.AIRLINE_META || {};
     }
 
-    // official_surcharge_feed 로드 결과
     if (fr.status === 'fulfilled' && fr.value) {
       FEED = fr.value;
       feedOk = true;
@@ -495,7 +544,6 @@ async function loadAll(){
     loadErrors.push('전체 로딩');
   }
 
-  // KR_AIRLINES 구성 (방어 코드 포함)
   var metaObj = (window.AIRLINE_META && typeof window.AIRLINE_META === 'object') ? window.AIRLINE_META : {};
   KR_AIRLINES = Object.keys(metaObj)
     .filter(function(c){
@@ -521,7 +569,6 @@ async function loadAll(){
   console.log('[aero] 📋 airport options 개수:', document.querySelectorAll('#originSelect option[value]').length);
   console.log('[aero] 📋 airline list 개수:', KR_AIRLINES.length);
 
-  /* ── 점검 로그: officialNoticeUrl 존재 여부 및 버튼 활성 상태 ── */
   console.log('[aero] 📋 항공사별 공식 공지 버튼 활성 상태:');
   KR_AIRLINES.forEach(function(al){
     var hasUrl=!!al.officialNoticeUrl;
@@ -552,7 +599,6 @@ function getCardData(code,dep,arr,miles){
   var allRoutes=[], groupTiersResult=null, matchedGroup=null;
 
   if(isGroupTier){
-    /* ZE: 군별 스키마 */
     groupTiersResult=window.resolveGroupTiers(code,feedAl,'2026.04');
     if(groupTiersResult){
       trusted=true;
@@ -569,13 +615,11 @@ function getCardData(code,dep,arr,miles){
     if(allRoutes.length>0){trusted=true;status='official_verified';}
   }
 
-  /* 매칭 아이템 */
   var matchedItem=null;
   if(miles!=null&&allRoutes.length>0){
     matchedItem=allRoutes.find(function(r){return r.distanceRange&&inRange(r.distanceRange,miles);})||null;
   }
 
-  /* AI 예측은 별도 feed에서만 — 공식값과 절대 혼합 안 함 */
   return {status:status,trusted:trusted,allRoutes:allRoutes,matchedItem:matchedItem,
           groupTiersResult:groupTiersResult,matchedGroup:matchedGroup,
           feedAl:feedAl,isGroupTier:isGroupTier};
@@ -586,7 +630,6 @@ function buildOfficialSection(cd, al, miles, isRT){
   var mult=isRT?2:1;
   var period='2026.04';
 
-  /* ZE: 군별 테이블 */
   if(cd.isGroupTier&&cd.groupTiersResult){
     var gtr=cd.groupTiersResult;
     var rows=gtr.tiers.map(function(t){
@@ -611,7 +654,6 @@ function buildOfficialSection(cd, al, miles, isRT){
       +'</div>';
   }
 
-  /* mileage_band: 구간별 테이블 */
   if(cd.allRoutes.length>0){
     var rows2=cd.allRoutes.map(function(route){
       var isMatch=miles&&route.distanceRange&&inRange(route.distanceRange,miles);
@@ -639,28 +681,20 @@ function buildOfficialSection(cd, al, miles, isRT){
       +'</div>';
   }
 
-  /* 공식 데이터 없음 */
   return '<div class="no-data-msg">'
     +'공식 데이터를 불러올 수 없습니다. 공식 공지 버튼을 통해 직접 확인하세요.'
     +'</div>';
 }
 
-/* ════ 카드 빌드 ════
-   이 함수가 호출되는 시점에는 dep는 반드시 한국 공항.
-   (해외 출발은 검색 핸들러에서 이미 return으로 차단됨)
-════ */
+/* ════ 카드 빌드 ════ */
 function buildCard(al, dep, arr, miles, isRT, idx){
   var tag=AL_TAG[al.alliance]||AL_TAG.other;
   var noticeUrl=al.officialNoticeUrl||null;
 
-  /* ── 취항 여부 확인 (공항쌍 기반) ── */
   var routeCheck=dep&&arr
     ? window.checkRouteSupport(al.code,dep,arr)
     : {operates:false,reason:'no_route'};
 
-  /* 최종 표시 상태
-     buildCard 진입 시 dep는 항상 한국 공항이므로
-     overseas_origin 케이스는 여기서 발생하지 않음 */
   var displayState;
   if(!dep||!arr){
     displayState='no_search';
@@ -679,7 +713,6 @@ function buildCard(al, dep, arr, miles, isRT, idx){
     '| display:', displayState
   );
 
-  /* ── 카드 헤더 공통 ── */
   function cardHeader(withFlag){
     return '<div class="card-header">'
       +'<div class="card-airline"><div class="card-logo">'+al.logo+'</div>'
@@ -689,7 +722,6 @@ function buildCard(al, dep, arr, miles, isRT, idx){
       +'</div>';
   }
 
-  /* ── CASE: 미취항 ── */
   if(displayState==='not_operated'){
     var srcHtmlNo=noticeUrl
       ?'<a class="source-link" href="'+noticeUrl+'" target="_blank" rel="noopener">공식 공지 ↗</a>'
@@ -706,7 +738,6 @@ function buildCard(al, dep, arr, miles, isRT, idx){
       +'</div>';
   }
 
-  /* ── CASE: 정상 취항 → 거리/군 매핑 후 금액 표시 ── */
   var cd=getCardData(al.code,dep,arr,miles);
   var officialHtml=buildOfficialSection(cd,al,miles,isRT);
 
@@ -750,25 +781,19 @@ document.getElementById('searchBtn').addEventListener('click',function(){
   if(!dep||!arr){alert('출발지와 도착지를 선택하세요');return;}
   if(dep===arr){alert('출발지와 도착지를 다르게 선택하세요');return;}
 
-  /* ══ GATE: 해외 출발 완전 차단 — 계산 전 ══
-     depIsKR이 false이면
-     거리 계산, 구간 매핑, 금액 계산 일체 실행하지 않음 */
   var depIsKR  = window.isKoreanAirport(dep);
   var arrIsKR  = window.isKoreanAirport(arr);
   var isOverseas = !depIsKR && !arrIsKR;
   console.log('[aero][search] dep='+dep+' arr='+arr+' depIsKR='+depIsKR+' arrIsKR='+arrIsKR+' isOverseas='+isOverseas);
 
-  /* 결과 영역 표시 (랜딩 숨김) */
   document.getElementById('landingSection').style.display='none';
   document.getElementById('resultsSection').style.display='block';
   document.getElementById('resultBadge').textContent=dep+' → '+arr;
 
-  /* 기존 결과 초기화 */
   window._searchCtx=null;
   document.getElementById('cardsGrid').innerHTML='';
 
   if(!depIsKR){
-    /* 해외 출발: 메시지만 표시, 항공사 목록·금액·버튼 일체 없음 */
     console.log('[aero][search] 해외 출발 차단 — 계산 중단');
     document.getElementById('resultMeta').textContent='해외 출발 노선';
     document.getElementById('filterRow').style.display='none';
@@ -781,10 +806,9 @@ document.getElementById('searchBtn').addEventListener('click',function(){
       +'<div style="font-size:13px;color:#795548;line-height:1.6">'
       +'해외 출발 노선은 서비스 준비중입니다.</div>'
       +'</div>';
-    return; /* ← 여기서 완전 종료, 이하 코드 실행 없음 */
+    return;
   }
 
-  /* ══ 한국 출발 — 정상 처리 ══ */
   document.getElementById('filterRow').style.display='flex';
   var isRT=tripMode==='RT';
   var miles=getMiles(dep,arr);
@@ -799,7 +823,6 @@ function renderCards(f){
   var dep=ctx.dep,arr=ctx.arr,miles=ctx.miles||2000,isRT=ctx.isRT;
   var list=KR_AIRLINES.filter(function(al){
     if(f==='data'){
-      /* '공식 데이터 있음' 탭: 취항 노선이면서 구간 데이터가 있는 경우만 */
       var rc=dep&&arr?window.checkRouteSupport(al.code,dep,arr):{operates:false,reason:'no_route'};
       if(!rc.operates) return false;
       var cd=getCardData(al.code,dep,arr,miles);
@@ -818,7 +841,7 @@ document.getElementById('filterRow').addEventListener('click',function(e){
   btn.classList.add('active');renderCards(btn.dataset.f);
 });
 
-/* ════ 랜딩 — 단일 금액 대신 항공사 + 공식 공지 버튼 ════ */
+/* ════ 랜딩 ════ */
 function renderLanding(){
   var grid=document.getElementById('miniGrid');
   if(!Array.isArray(KR_AIRLINES) || !KR_AIRLINES.length){
@@ -828,7 +851,6 @@ function renderLanding(){
   grid.innerHTML=KR_AIRLINES.map(function(al){
     var feedAl=findFeedAl(al.code);
     var status=feedAl?window.resolveStatus(feedAl,null):'unknown';
-    /* v33: 단일 금액 미표시 — 공식 공지 버튼 + 데이터 상태만 표시 */
     var noticeUrl=al.officialNoticeUrl;
     var btnHtml=noticeUrl
       ?'<a href="'+noticeUrl+'" target="_blank" rel="noopener" class="mini-notice-btn">공식 공지 ↗</a>'
