@@ -123,6 +123,24 @@
     .route-highlight-badge { font-size:9px; background:var(--blue); color:#fff; border-radius:4px; padding:1px 5px; margin-left:5px; vertical-align:middle; }
     .route-spike-badge { font-size:9px; background:#FFF3E0; color:#E65100; border:1px solid #FFCC80; border-radius:4px; padding:1px 5px; }
 
+    /* ── 4월/5월 비교표 전용 ── */
+    .route-table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    .route-table th.th-apr { color:var(--muted); text-align:right; white-space:nowrap; }
+    .route-table th.th-may { color:#B71C1C; text-align:right; white-space:nowrap; }
+    .route-amt-apr { font-family:var(--mono); font-size:11px; font-weight:500;
+                     color:var(--muted); text-align:right; }
+    .route-amt-may-up  { font-family:var(--mono); font-size:13px; font-weight:700;
+                         color:#C62828; text-align:right; }
+    .route-amt-may-eq  { font-family:var(--mono); font-size:13px; font-weight:700;
+                         color:var(--blue); text-align:right; }
+    .route-amt-may-dn  { font-family:var(--mono); font-size:13px; font-weight:700;
+                         color:#1565C0; text-align:right; }
+    @media(max-width:700px){
+      .route-table td, .route-table th { padding:4px 5px; font-size:10px; }
+      .route-amt-apr { font-size:10px; }
+      .route-amt-may-up,.route-amt-may-eq,.route-amt-may-dn { font-size:11px; }
+    }
+
     /* ── CHECKBOX ROW ── */
     .checkbox-row { display:flex; align-items:flex-start; gap:8px; }
     input[type="checkbox"] { flex-shrink:0; }
@@ -506,6 +524,72 @@ function inRange(rangeStr, miles){
 
 var FEED=null, KR_AIRLINES=[];
 
+/* ════════════════════════════════════════════════════════════════
+   공식 유류할증료 테이블 — 4월 / 5월 비교 (편도 KRW)
+   ─ KE: 대한항공 공식 공지 (이미지 기준, 9구간)
+   ─ OZ: 아시아나항공 공식 공지 (PDF 기준, 9구간, KE와 완전 분리)
+   ─ 다른 항공사 추가 시 동일 구조로 확장 가능
+   range 포맷: "min-max" (미만) 또는 "N+" (이상), inRange() 호환
+════════════════════════════════════════════════════════════════ */
+var _OFFICIAL_AMT = {
+  KE: { rows: [
+    { range:'0-499',    label:'~499mi',        apr: 42000, may:  75000 },
+    { range:'500-999',  label:'500~999mi',      apr: 57000, may: 102000 },
+    { range:'1000-1499',label:'1,000~1,499mi',  apr: 78000, may: 144000 },
+    { range:'1500-1999',label:'1,500~1,999mi',  apr: 97500, may: 180000 },
+    { range:'2000-2999',label:'2,000~2,999mi',  apr:123000, may: 253500 },
+    { range:'3000-3999',label:'3,000~3,999mi',  apr:126000, may: 256500 },
+    { range:'4000-4999',label:'4,000~4,999mi',  apr:199500, may: 345000 },
+    { range:'5000-6499',label:'5,000~6,499mi',  apr:276000, may: 501000 },
+    { range:'6500+',    label:'6,500mi~',       apr:303000, may: 564000 }
+  ]},
+  OZ: { rows: [
+    { range:'0-499',    label:'~499mi',        apr: 43900, may:  85400 },
+    { range:'500-999',  label:'500~999mi',      apr: 65900, may: 125800 },
+    { range:'1000-1499',label:'1,000~1,499mi',  apr: 86400, may: 164700 },
+    { range:'1500-1999',label:'1,500~1,999mi',  apr:106900, may: 203700 },
+    { range:'2000-2499',label:'2,000~2,499mi',  apr:127400, may: 242600 },
+    { range:'2500-2999',label:'2,500~2,999mi',  apr:147900, may: 281500 },
+    { range:'3000-3999',label:'3,000~3,999mi',  apr:169900, may: 320500 },
+    { range:'4000-4999',label:'4,000~4,999mi',  apr:210900, may: 398300 },
+    { range:'5000+',    label:'5,000mi~',       apr:251900, may: 476200 }
+  ]}
+};
+
+/* 최소 변동률 계산 (랜딩 배지용) */
+function _calcMinRate(code){
+  var d=_OFFICIAL_AMT[code]; if(!d||!d.rows||!d.rows.length) return null;
+  var rates=d.rows
+    .filter(function(r){return r.apr>0;})
+    .map(function(r){return ((r.may-r.apr)/r.apr)*100;});
+  if(!rates.length) return null;
+  var allUp=rates.every(function(r){return r>=0;});
+  var allDn=rates.every(function(r){return r<=0;});
+  if(allUp) return Math.min.apply(null,rates);
+  if(allDn) return Math.max.apply(null,rates);
+  return rates.reduce(function(a,b){return a+b;},0)/rates.length;
+}
+
+/* 랜딩 mini-card + card-footer 배지 HTML */
+function _trendBadgeHtml(code){
+  var rate=_calcMinRate(code); if(rate===null) return '';
+  var arrow,sign,color,bg,border;
+  if(rate>0){
+    arrow='▲'; sign='+'+rate.toFixed(1)+'%';
+    color='#D32F2F'; bg='#FFF0F0'; border='#FFCDD2';
+  } else if(rate<0){
+    arrow='▼'; sign=rate.toFixed(1)+'%';
+    color='#1565C0'; bg='#EFF5FF'; border='#BBDEFB';
+  } else { return ''; }
+  return '<span style="display:inline-flex;align-items:center;font-size:11px;font-weight:700;'
+    +'color:'+color+';background:'+bg+';border:1px solid '+border+';'
+    +'border-radius:10px;padding:2px 8px;white-space:nowrap;flex-shrink:0;">'
+    +arrow+' 5월 최소 '+sign+'</span>';
+}
+
+
+
+
 async function loadAll(){
   var loadErrors = [];
   var metaOk = false, feedOk = false;
@@ -625,65 +709,200 @@ function getCardData(code,dep,arr,miles){
           feedAl:feedAl,isGroupTier:isGroupTier};
 }
 
-/* ════ 공식값 섹션 HTML ════ */
+/* ════ 공식값 섹션 HTML ════
+ *
+ * CASE 1 (_OFFICIAL_AMT 있음 — KE·OZ):
+ *   거리구간 | 2026.04 | 2026.05  의 3열 비교표
+ *   현재 노선 하이라이트 + 5월 인상시 빨강 강조
+ *
+ * CASE 2 (group_tier — ZE 등):
+ *   feed 5월 데이터가 있으면 비교, 없으면 단열 (향후 확장 구조)
+ *
+ * CASE 3 (일반 feed — 기타 항공사 fallback):
+ *   feed 5월 데이터가 있으면 비교, 없으면 단열
+ * ═══════════════════════════════════════════════════════════════ */
 function buildOfficialSection(cd, al, miles, isRT){
-  var mult=isRT?2:1;
-  var period='2026.04';
+  var mult = isRT ? 2 : 1;
 
-  if(cd.isGroupTier&&cd.groupTiersResult){
-    var gtr=cd.groupTiersResult;
-    var rows=gtr.tiers.map(function(t){
-      var isMatch=cd.matchedGroup&&cd.matchedGroup.group===t.group;
-      var cls=isMatch?' highlighted':'';
-      var badge=isMatch?'<span class="route-highlight-badge">현재 노선</span>':'';
-      var rm=gtr.routeMap[String(t.group)]||{};
-      return '<tr class="'+cls+'">'
-        +'<td>'+t.label+'<span style="font-size:10px;color:var(--muted);margin-left:5px">'+( rm.desc||'')+'</span>'+badge+'</td>'
-        +'<td class="route-amt">'+window.fmtAmtDisplay(t.amountKRW,'USD',mult)+'</td>'
-        +'</tr>';
-    }).join('');
-    return '<div class="official-section">'
-      +'<div class="official-label">'+window.statusBadgeHtml('official_verified')
-      +'<span style="font-size:10px;color:var(--muted);margin-left:6px">'+period+'</span>'
-      +'<span style="font-size:10px;color:var(--muted);margin-left:4px">'+(isRT?'왕복':'편도')+'</span>'
-      +'<span style="font-size:10px;background:#e3f2fd;color:#0d47a1;border-radius:4px;padding:1px 6px;margin-left:6px;font-weight:700">군별 요금</span>'
-      +'</div>'
-      +'<table class="route-table">'
-      +'<thead><tr><th>군 / 구간</th><th style="text-align:right">유류할증료</th></tr></thead>'
-      +'<tbody>'+rows+'</tbody></table>'
-      +'</div>';
+  /* 금액 포맷 헬퍼 */
+  function fmt(krw, currency){ return window.fmtAmtDisplay(krw, currency||'KRW', mult); }
+
+  /* ── 라벨 헤더 ── */
+  function sectionHeader(showMay, extraBadge){
+    return '<div class="official-label">'
+      + window.statusBadgeHtml('official_verified')
+      + (showMay
+          ? '<span style="font-size:10px;color:var(--muted);margin-left:6px">04→05 비교</span>'
+          : '<span style="font-size:10px;color:var(--muted);margin-left:6px">2026.04</span>')
+      + '<span style="font-size:10px;color:var(--muted);margin-left:4px">' + (isRT?'왕복':'편도') + '</span>'
+      + (extraBadge||'')
+      + '</div>';
   }
 
-  if(cd.allRoutes.length>0){
-    var rows2=cd.allRoutes.map(function(route){
-      var isMatch=miles&&route.distanceRange&&inRange(route.distanceRange,miles);
-      var cls=isMatch?' highlighted':'';
-      var badge=isMatch?'<span class="route-highlight-badge">현재 노선</span>':'';
-      var spBadge=route.spiked?'<span class="route-spike-badge">⚠ 변동</span>':'';
-      var noteHtml=route.dataNote?'<span style="font-size:10px;color:var(--warn);margin-left:4px">'+route.dataNote+'</span>':'';
-      var rangeHtml=route.distanceRange?'<span class="route-range">'+route.distanceRange+'mi</span> ':'';
-      var amtStr=route.amountKRW!=null
-        ?window.fmtAmtDisplay(route.amountKRW,route.currency,mult)
-        :'<span style="color:var(--muted)">공지 미기재</span>';
+  /* ══════════════════════════════════════════════
+   * CASE 1: _OFFICIAL_AMT 배열 보유 항공사 (KE·OZ)
+   *   → 4월/5월 실제 공식 금액 비교표 직접 렌더링
+   * ══════════════════════════════════════════════ */
+  var offData = _OFFICIAL_AMT[al.code];
+  if(offData && offData.rows && offData.rows.length){
+
+    /* inRange 호환 — "min-max"(미만), "N+"(이상) 모두 처리 */
+    function matchRange(rangeStr, mi){
+      if(!rangeStr || mi==null) return false;
+      if(rangeStr.endsWith('+')){
+        var base=parseInt(rangeStr); return mi>=base;
+      }
+      var p=rangeStr.split('-');
+      if(p.length!==2) return false;
+      return mi>=parseInt(p[0]) && mi<parseInt(p[1]);
+    }
+
+    var rows = offData.rows.map(function(r){
+      var isMatch = miles!=null && matchRange(r.range, miles);
+      var cls    = isMatch ? ' highlighted' : '';
+      var badge  = isMatch ? '<span class="route-highlight-badge">현재 노선</span>' : '';
+
+      /* 4월: 취소선 muted */
+      var aprCell = r.apr!=null
+        ? '<td class="route-amt-apr">' + fmt(r.apr) + '</td>'
+        : '<td class="route-amt-apr" style="color:var(--muted)">-</td>';
+
+      /* 5월: 인상·동일·인하별 색상 */
+      var mayClass = 'route-amt-may-eq';
+      var mayPrefix = '';
+      if(r.may!=null && r.apr!=null){
+        if(r.may > r.apr){ mayClass='route-amt-may-up'; mayPrefix='▲ '; }
+        else if(r.may < r.apr){ mayClass='route-amt-may-dn'; mayPrefix='▼ '; }
+      }
+      var mayCell = r.may!=null
+        ? '<td class="'+mayClass+'">'+mayPrefix+fmt(r.may)+'</td>'
+        : '<td style="color:var(--muted);text-align:right;font-size:11px">미공지</td>';
+
       return '<tr class="'+cls+'">'
-        +'<td>'+rangeHtml+route.label+badge+spBadge+noteHtml+'</td>'
-        +'<td class="route-amt">'+amtStr+'</td>'
-        +'</tr>';
+        + '<td><span class="route-range">'+r.label+'</span>'+badge+'</td>'
+        + aprCell
+        + mayCell
+        + '</tr>';
     }).join('');
+
     return '<div class="official-section">'
-      +'<div class="official-label">'+window.statusBadgeHtml('official_verified')
-      +'<span style="font-size:10px;color:var(--muted);margin-left:6px">'+period+'</span>'
-      +'<span style="font-size:10px;color:var(--muted);margin-left:4px">'+(isRT?'왕복':'편도')+'</span>'
-      +'</div>'
-      +'<table class="route-table">'
-      +'<thead><tr><th>거리구간</th><th style="text-align:right">유류할증료</th></tr></thead>'
-      +'<tbody>'+rows2+'</tbody></table>'
-      +'</div>';
+      + sectionHeader(true)
+      + '<div class="route-table-wrap">'
+      + '<table class="route-table">'
+      + '<thead><tr>'
+      + '<th>거리구간</th>'
+      + '<th class="th-apr">2026.04</th>'
+      + '<th class="th-may">2026.05</th>'
+      + '</tr></thead>'
+      + '<tbody>' + rows + '</tbody>'
+      + '</table></div></div>';
+  }
+
+  /* ══════════════════════════════════════════════
+   * CASE 2: group_tier 스키마 (ZE 등)
+   *   feed에 2026.05 기간 데이터가 있으면 비교, 없으면 단열
+   * ══════════════════════════════════════════════ */
+  if(cd.isGroupTier && cd.groupTiersResult){
+    var gtr   = cd.groupTiersResult;
+    var gtr05 = null;
+    try{ gtr05=window.resolveGroupTiers(al.code,cd.feedAl,'2026.05'); }catch(e){}
+    var isOfficialCompare = (al.code === 'KE' || al.code === 'OZ');
+    var hasMay = isOfficialCompare && !!(gtr05 && gtr05.tiers && gtr05.tiers.length);
+    var gBadge = '<span style="font-size:10px;background:#e3f2fd;color:#0d47a1;border-radius:4px;padding:1px 6px;margin-left:6px;font-weight:700">군별 요금</span>';
+
+    var rows = gtr.tiers.map(function(t){
+      var isMatch = cd.matchedGroup && cd.matchedGroup.group===t.group;
+      var cls     = isMatch ? ' highlighted' : '';
+      var badge   = isMatch ? '<span class="route-highlight-badge">현재 노선</span>' : '';
+      var rm      = gtr.routeMap[String(t.group)]||{};
+      var aprCell = '<td class="'+(isOfficialCompare?'route-amt-apr':'route-amt')+'">'+fmt(t.amountKRW,'USD')+'</td>';
+      var mayCell = '';
+      if(hasMay){
+        /* KE·OZ + feed 5월 데이터 있음 — 실제 금액 */
+        var t05 = gtr05.tiers.find(function(x){return x.group===t.group;});
+        var mc  = (t05&&t05.amountKRW>t.amountKRW)?'route-amt-may-up':'route-amt-may-eq';
+        mayCell = t05
+          ? '<td class="'+mc+'">'+fmt(t05.amountKRW,'USD')+'</td>'
+          : '<td style="color:var(--muted);text-align:right;font-size:11px">-</td>';
+      } else if(isOfficialCompare){
+        /* KE·OZ이지만 feed 5월 없음 — 공시전 */
+        mayCell = '<td style="color:var(--muted);text-align:right;font-size:11px">공시전</td>';
+      }
+      return '<tr class="'+cls+'">'
+        + '<td>'+t.label+'<span style="font-size:10px;color:var(--muted);margin-left:5px">'+(rm.desc||'')+'</span>'+badge+'</td>'
+        + aprCell + mayCell
+        + '</tr>';
+    }).join('');
+
+    return '<div class="official-section">'
+      + sectionHeader(isOfficialCompare, gBadge)
+      + '<div class="route-table-wrap"><table class="route-table">'
+      + '<thead><tr><th>군 / 구간</th>'
+      + (isOfficialCompare ? '<th class="th-apr">2026.04</th><th class="th-may">2026.05</th>' : '<th style="text-align:right">유류할증료</th>')
+      + '</tr></thead>'
+      + '<tbody>'+rows+'</tbody></table></div></div>';
+  }
+
+  /* ══════════════════════════════════════════════
+   * CASE 3: 일반 mileage_band — feed 기반 (기타 항공사)
+   *   5월 비교표는 KE·OZ 전용. 나머지는 4월 단열 + 5월 "공시전" 표시.
+   * ══════════════════════════════════════════════ */
+  if(cd.allRoutes.length > 0){
+    /* KE·OZ만 5월 비교 활성 — 나머지는 feed에 데이터가 있어도 표시하지 않음 */
+    var isOfficialCompare = (al.code === 'KE' || al.code === 'OZ');
+    var routes05 = [];
+    try{ routes05=window.resolveAllRoutes(cd.feedAl,al.code,'2026.05')||[]; }catch(e){}
+    var hasMay = isOfficialCompare && routes05.length > 0;
+
+    var rows = cd.allRoutes.map(function(route){
+      var isMatch   = miles && route.distanceRange && inRange(route.distanceRange,miles);
+      var cls       = isMatch ? ' highlighted' : '';
+      var badge     = isMatch ? '<span class="route-highlight-badge">현재 노선</span>' : '';
+      var spBadge   = route.spiked ? '<span class="route-spike-badge">⚠ 변동</span>' : '';
+      var noteHtml  = route.dataNote ? '<span style="font-size:10px;color:var(--warn);margin-left:4px">'+route.dataNote+'</span>' : '';
+      var rangeHtml = route.distanceRange ? '<span class="route-range">'+route.distanceRange+'mi</span> ' : '';
+      var aprAmt    = route.amountKRW!=null ? fmt(route.amountKRW,route.currency) : '<span style="color:var(--muted)">공지 미기재</span>';
+
+      if(hasMay){
+        /* KE·OZ: 실제 5월 금액 */
+        var r05    = routes05.find(function(x){return x.distanceRange===route.distanceRange;});
+        var mc     = (r05&&r05.amountKRW>route.amountKRW)?'route-amt-may-up':'route-amt-may-eq';
+        var mayAmt = r05&&r05.amountKRW!=null ? fmt(r05.amountKRW,r05.currency) : '<span style="color:var(--muted)">-</span>';
+        return '<tr class="'+cls+'">'
+          + '<td>'+rangeHtml+route.label+badge+spBadge+noteHtml+'</td>'
+          + '<td class="route-amt-apr">'+aprAmt+'</td>'
+          + '<td class="'+mc+'">'+mayAmt+'</td>'
+          + '</tr>';
+      }
+      if(isOfficialCompare){
+        /* KE·OZ이지만 feed 5월 데이터 없음 — "공시전" */
+        return '<tr class="'+cls+'">'
+          + '<td>'+rangeHtml+route.label+badge+spBadge+noteHtml+'</td>'
+          + '<td class="route-amt-apr">'+aprAmt+'</td>'
+          + '<td style="text-align:right;font-size:11px;color:var(--muted)">공시전</td>'
+          + '</tr>';
+      }
+      /* 기타 항공사: 4월 단열만 표시 */
+      return '<tr class="'+cls+'">'
+        + '<td>'+rangeHtml+route.label+badge+spBadge+noteHtml+'</td>'
+        + '<td class="route-amt">'+aprAmt+'</td>'
+        + '</tr>';
+    }).join('');
+
+    /* 헤더: KE·OZ면 비교형, 나머지는 단열 */
+    var showMayHeader = isOfficialCompare;
+    return '<div class="official-section">'
+      + sectionHeader(showMayHeader)
+      + '<div class="route-table-wrap"><table class="route-table">'
+      + '<thead><tr><th>거리구간</th>'
+      + (showMayHeader ? '<th class="th-apr">2026.04</th><th class="th-may">2026.05</th>' : '<th style="text-align:right">유류할증료</th>')
+      + '</tr></thead>'
+      + '<tbody>'+rows+'</tbody></table></div></div>';
   }
 
   return '<div class="no-data-msg">'
-    +'공식 데이터를 불러올 수 없습니다. 공식 공지 버튼을 통해 직접 확인하세요.'
-    +'</div>';
+    + '공식 데이터를 불러올 수 없습니다. 공식 공지 버튼을 통해 직접 확인하세요.'
+    + '</div>';
 }
 
 /* ════ 카드 빌드 ════ */
@@ -712,6 +931,30 @@ function buildCard(al, dep, arr, miles, isRT, idx){
     '| operates:', routeCheck.operates, '('+routeCheck.reason+')',
     '| display:', displayState
   );
+
+  /*
+   * ── 4월→5월 공식 금액 기반 변동률 배지 ──────────────────────────────
+   *
+   * [왜 이전 코드가 화면에 보이지 않았나?]
+   *
+   * 1) buildCard()는 검색 결과 카드 전용 함수.
+   *    메인 랜딩의 항공사 목록은 renderLanding() → mini-card 구조로 렌더링되므로
+   *    buildCard()가 아예 호출되지 않아 배지가 등장할 기회 자체가 없었음.
+   *
+   * 2) 검색 결과 카드에서도, card-header 오른쪽 wrapper에 align-self:center를
+   *    주었지만 card-header 자체가 align-items:flex-start → flex 정렬 기준 불일치.
+   *    결과적으로 badge span이 렌더링은 되나 상단에 붙어 시각적으로 얼라이언스 태그와
+   *    겹쳐 보이거나 레이아웃 붕괴처럼 느껴졌음.
+   *
+   * 3) 데이터가 { apr:1, may:2 } 더미값이라 실제 % 수치를 계산하지 못함.
+   *
+   * [이번 수정]
+   * - 실제 공식 공지 금액을 전역 _OFFICIAL_AMT에 정의 (buildCard·renderLanding 공유)
+   * - 배치 위치를 card-footer의 공식 공지 버튼 바로 옆으로 이동
+   *   → footer-left가 display:flex + flex-wrap:wrap 이라 반드시 보임
+   * ─────────────────────────────────────────────────────────────────── */
+
+  function trendBadgeHtml(code){ return _trendBadgeHtml(code); }
 
   function cardHeader(withFlag){
     return '<div class="card-header">'
@@ -751,10 +994,12 @@ function buildCard(al, dep, arr, miles, isRT, idx){
     ?'<span style="font-size:10px;background:#f3e5f5;color:#6a1b9a;border:1px solid #ce93d8;'
     +'border-radius:10px;padding:2px 7px;margin-left:4px">군별 요금</span>':'';
 
+  var trendHtml = trendBadgeHtml(al.code);
+
   return '<div class="al-card has-data">'
     +cardHeader(true)
     +officialHtml
-    +'<div class="card-footer"><div class="footer-left">'+srcHtml+usdBadge+schemaBadge+'</div></div>'
+    +'<div class="card-footer"><div class="footer-left">'+srcHtml+trendHtml+usdBadge+schemaBadge+'</div></div>'
     +'</div>';
 }
 
@@ -854,7 +1099,8 @@ function renderLanding(){
     var noticeUrl=al.officialNoticeUrl;
     var btnHtml=noticeUrl
       ?'<a href="'+noticeUrl+'" target="_blank" rel="noopener" class="mini-notice-btn">공식 공지 ↗</a>'
-      :'';
+        +_trendBadgeHtml(al.code)
+      :_trendBadgeHtml(al.code);
     var schemaBadge=al.surchargeSchema==='group_tier'
       ?'<span style="font-size:9px;color:#6a1b9a;margin-left:4px">(군별)</span>':'';
     return '<div class="mini-card">'

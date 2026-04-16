@@ -1,6 +1,167 @@
 {
   "runs": [
     {
+      "runAt": "2026-04-16T14:15:52.409Z",
+      "opts": {
+        "mock": false,
+        "dryRun": false,
+        "skipLlm": false,
+        "only": null
+      },
+      "steps": {
+        "market": {
+          "source": "live",
+          "usdKrw": 1475,
+          "fxError": null
+        },
+        "collect": [
+          {
+            "code": "KE",
+            "detected": true,
+            "source": "fallback",
+            "error": "playwright 미설치 — npm install playwright 필요"
+          },
+          {
+            "code": "OZ",
+            "detected": true,
+            "source": "fallback",
+            "error": "playwright 미설치 — npm install playwright 필요"
+          },
+          {
+            "code": "TW",
+            "detected": true,
+            "source": "fallback",
+            "error": "playwright 실패: playwright 미설치 — npm install playwright 필요"
+          },
+          {
+            "code": "LJ",
+            "detected": true,
+            "source": "fallback",
+            "error": "playwright 실패: playwright 미설치 — npm install playwright 필요"
+          },
+          {
+            "code": "7C",
+            "detected": false,
+            "source": "live",
+            "error": null
+          },
+          {
+            "code": "BX",
+            "detected": true,
+            "source": "fallback",
+            "error": "playwright 실패: playwright 미설치 — npm install playwright 필요"
+          },
+          {
+            "code": "YP",
+            "detected": true,
+            "source": "fallback",
+            "error": "playwright 실패: playwright 미설치 — npm install playwright 필요"
+          }
+        ],
+        "aiSearch": {
+          "autoRegistered": [],
+          "stillFallback": [
+            "KE",
+            "OZ",
+            "TW",
+            "LJ",
+            "BX",
+            "YP"
+          ]
+        },
+        "parse": [
+          {
+            "code": "KE",
+            "routeCount": 9,
+            "usedMock": false
+          },
+          {
+            "code": "OZ",
+            "routeCount": 4,
+            "usedMock": false
+          },
+          {
+            "code": "TW",
+            "routeCount": 3,
+            "usedMock": false
+          },
+          {
+            "code": "LJ",
+            "routeCount": 4,
+            "usedMock": false
+          },
+          {
+            "code": "7C",
+            "routeCount": 0,
+            "usedMock": false
+          },
+          {
+            "code": "BX",
+            "routeCount": 3,
+            "usedMock": false
+          },
+          {
+            "code": "YP",
+            "routeCount": 2,
+            "usedMock": false
+          }
+        ],
+        "validate": [
+          {
+            "code": "KE",
+            "passed": true,
+            "spikeDetected": false,
+            "validRoutes": 9,
+            "rejectedRoutes": 0
+          },
+          {
+            "code": "OZ",
+            "passed": false,
+            "spikeDetected": false,
+            "validRoutes": 0,
+            "rejectedRoutes": 4
+          },
+          {
+            "code": "TW",
+            "passed": true,
+            "spikeDetected": false,
+            "validRoutes": 3,
+            "rejectedRoutes": 0
+          },
+          {
+            "code": "LJ",
+            "passed": true,
+            "spikeDetected": false,
+            "validRoutes": 4,
+            "rejectedRoutes": 0
+          },
+          {
+            "code": "7C",
+            "passed": false,
+            "spikeDetected": false,
+            "validRoutes": 0,
+            "rejectedRoutes": 0
+          },
+          {
+            "code": "BX",
+            "passed": true,
+            "spikeDetected": false,
+            "validRoutes": 3,
+            "rejectedRoutes": 0
+          },
+          {
+            "code": "YP",
+            "passed": true,
+            "spikeDetected": false,
+            "validRoutes": 2,
+            "rejectedRoutes": 0
+          }
+        ]
+      },
+      "success": true,
+      "durationMs": 51806
+    },
+    {
       "runAt": "2026-04-04T10:55:24.376Z",
       "opts": {
         "mock": true,
@@ -2816,63 +2977,6 @@
       },
       "success": true,
       "durationMs": 54
-    },
-    {
-      "runAt": "2026-04-03T13:59:17.244Z",
-      "opts": {
-        "mock": true,
-        "dryRun": false,
-        "only": null
-      },
-      "steps": {
-        "market": {
-          "source": "mock"
-        },
-        "collect": [
-          {
-            "code": "KE",
-            "detected": true,
-            "usedMock": true,
-            "error": null
-          },
-          {
-            "code": "TW",
-            "detected": true,
-            "usedMock": true,
-            "error": null
-          }
-        ],
-        "parse": [
-          {
-            "code": "KE",
-            "itemCount": 1,
-            "usedMock": true
-          },
-          {
-            "code": "TW",
-            "itemCount": 1,
-            "usedMock": true
-          }
-        ],
-        "validate": [
-          {
-            "code": "KE",
-            "passed": true,
-            "spikeDetected": false,
-            "validCount": 1,
-            "rejectedCount": 0
-          },
-          {
-            "code": "TW",
-            "passed": true,
-            "spikeDetected": false,
-            "validCount": 1,
-            "rejectedCount": 0
-          }
-        ]
-      },
-      "success": true,
-      "durationMs": 31
     }
   ]
 }

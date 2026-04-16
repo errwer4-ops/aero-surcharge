@@ -70,6 +70,76 @@
     .pf-val.up{color:var(--red);}
     .pf-val.down{color:var(--green);}
 
+    .official-summary-box{
+      background:#FFF3E0;
+      border:1px solid #FFCC80;
+      border-radius:12px;
+      padding:14px 16px;
+      margin-bottom:18px;
+    }
+    .official-title{
+      font-weight:700;
+      margin-bottom:8px;
+    }
+    .official-item{
+      font-size:13px;
+      margin-bottom:4px;
+    }
+    .official-desc{
+      font-size:11px;
+      color:#777;
+      margin-top:6px;
+    }
+
+    .compare-box{
+      background:#E3F2FD;
+      border:1px solid #90CAF9;
+      border-radius:12px;
+      padding:14px 16px;
+      margin-bottom:18px;
+    }
+    .compare-title{
+      font-weight:700;
+      margin-bottom:8px;
+    }
+    .compare-box ul{
+      margin:0;padding-left:18px;
+    }
+    .compare-box li{
+      font-size:13px;
+      margin-bottom:4px;
+      color:var(--text2);
+    }
+
+    .market-brief-box{
+      background:#F1F8E9;
+      border:1px solid #AED581;
+      border-radius:12px;
+      padding:14px 16px;
+      margin-bottom:18px;
+    }
+    .mb-title{
+      font-weight:700;
+      margin-bottom:8px;
+    }
+    .mb-item{
+      font-size:13px;
+      margin-bottom:4px;
+      color:var(--text2);
+    }
+    .mb-summary{
+      font-size:12px;
+      font-weight:700;
+      color:#33691E;
+      margin-top:8px;
+    }
+
+    .news-impact{
+      font-size:11px;
+      color:#D84315;
+      margin-bottom:6px;
+    }
+
     @media(max-width:600px){.main{padding:14px;} .news-card{padding:12px 14px;}}
   </style>
 </head>
@@ -138,9 +208,32 @@
       <div class="predict-factor"><div class="pf-label">Brent 유가</div><div class="pf-val up">$83~85 / 배럴</div></div>
       <div class="predict-factor"><div class="pf-label">원달러 환율</div><div class="pf-val up">1,460~1,500원</div></div>
       <div class="predict-factor"><div class="pf-label">지정학 리스크</div><div class="pf-val up">높음 (중동)</div></div>
-      <div class="predict-factor"><div class="pf-label">5월 surcharge 방향</div><div class="pf-val up">소폭 상승 가능</div></div>
+      <div class="predict-factor"><div class="pf-label">6월 surcharge 전망</div><div class="pf-val up">상승 가능성 높음</div></div>
     </div>
-    <div style="font-size:10px;color:#9C27B0;margin-top:10px;font-style:italic">* 이 지표들은 AI 예측의 근거로 활용됩니다. 공식 발표 전 참고용입니다.</div>
+    <div style="font-size:10px;color:#9C27B0;margin-top:10px;font-style:italic">* 5월 유류할증료는 공식 공지 기준 확정. 6월 전망은 시장 데이터 기반 참고용입니다.</div>
+  </div>
+
+  <div class="official-summary-box">
+    <div class="official-title">📢 5월 유류할증료 공식 공지 요약</div>
+    <div class="official-item"><strong>대한항공</strong> — 4월 대비 전 구간 인상</div>
+    <div class="official-item"><strong>아시아나항공</strong> — 4월 대비 전 구간 인상</div>
+    <div class="official-desc">* 단거리~장거리 전 구간 상승, 장거리 인상폭 큼</div>
+  </div>
+
+  <div class="compare-box">
+    <div class="compare-title">📊 4월 vs 5월 변화</div>
+    <ul>
+      <li>대한항공: 전 구간 인상 (최대 약 2배)</li>
+      <li>아시아나: 전 구간 인상</li>
+      <li>공통: 장거리 노선 인상폭 더 큼</li>
+    </ul>
+  </div>
+
+  <div class="market-brief-box">
+    <div class="mb-title">🌍 시장 브리핑</div>
+    <div class="mb-item">⛽ 브렌트유: 중동 리스크로 상승 압력</div>
+    <div class="mb-item">💱 원달러 환율: 1,480~1,500원대 변동성</div>
+    <div class="mb-summary">→ 유류할증료 상승 압력 지속</div>
   </div>
 
   <div class="ai-notice">
@@ -197,7 +290,7 @@ function renderPredictBasis(){
   var dirLabel = '—';
   if(keShort && keShort.predictedMin != null){
     var dir = keShort.direction || 'flat';
-    dirLabel = {up:'소폭 상승 가능', down:'소폭 하락 가능', flat:'현 수준 유지'}[dir] || '—';
+    dirLabel = {up:'상승 가능성 높음', down:'하락 가능성 높음', flat:'현 수준 유지'}[dir] || '—';
   }
 
   /* 지정학 리스크 텍스트 */
@@ -208,14 +301,16 @@ function renderPredictBasis(){
   /* 환율 표시 */
   var fxLabel = inp.usdKrw ? inp.usdKrw.toLocaleString() + '원 내외' : '—';
 
-  /* 대상 월 */
-  var periodLabel = targetPeriod || '공시 전';
+  /* 대상 월: 5월은 확정이므로 전망은 6월로 표시 */
+  var periodLabel = targetPeriod
+    ? (targetPeriod.indexOf('5월') !== -1 ? '6월' : targetPeriod)
+    : '6월';
 
   box.innerHTML =
     '<div class="predict-factor"><div class="pf-label">Brent 유가</div><div class="pf-val up">$' + (inp.brentUSD||'—') + ' / 배럴</div></div>'
    +'<div class="predict-factor"><div class="pf-label">원달러 환율</div><div class="pf-val up">' + fxLabel + '</div></div>'
    +'<div class="predict-factor"><div class="pf-label">지정학 리스크</div><div class="pf-val up">' + geoLabel + geoSuffix + '</div></div>'
-   +'<div class="predict-factor"><div class="pf-label">' + periodLabel + ' surcharge 방향</div><div class="pf-val up">' + dirLabel + '</div></div>';
+   +'<div class="predict-factor"><div class="pf-label">' + periodLabel + ' surcharge 전망</div><div class="pf-val up">' + dirLabel + '</div></div>';
 }
 
 var CAT_MAP = {
@@ -224,8 +319,18 @@ var CAT_MAP = {
 var CAT_CLS = {airline:'cat-airline',institution:'cat-institution',market:'cat-market',general:'cat-general'};
 var CAT_ICON = {airline:'✈️',institution:'🏛',market:'📊',general:'ℹ️'};
 
+var FIXED_NEWS = [{
+  category: 'market',
+  priority: 1,
+  date: '2026-04-16',
+  title: '중동 긴장으로 유가 상승 압력 지속',
+  summary: '호르무즈 해협 리스크로 원유 공급 불안정 지속. 항공 유류비 상승 요인.',
+  sourceName: 'Market Summary',
+  tags: ['유가', '중동', '유류할증료']
+}];
+
 function renderNews(){
-  var items=(NEWS_DATA&&NEWS_DATA.items)||[];
+  var items=[...FIXED_NEWS, ...((NEWS_DATA&&NEWS_DATA.items)||[])];
   if(!items.length){
     document.getElementById('newsList').innerHTML='<div class="empty-news"><div class="icon">📭</div><div>현재 표시할 주요 소식이 없습니다</div><div style="font-size:12px;margin-top:6px">수집 데이터 준비 중입니다</div></div>';
     return;
@@ -264,6 +369,7 @@ function renderNews(){
       +'</div>'
       +'<div class="news-title">'+it.title+'</div>'
       +'<div class="news-summary">'+it.summary+'</div>'
+      +'<div class="news-impact">→ 유류할증료 영향: 상승 압력</div>'
       +'<div class="news-footer">'+srcHtml+'<div class="news-tags">'+tagsHtml+'</div></div>'
       +'</div>';
   }).join('');
