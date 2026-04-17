@@ -553,6 +553,21 @@ var _OFFICIAL_AMT = {
     { range:'3000-3999',label:'3,000~3,999mi',  apr:169900, may: 320500 },
     { range:'4000-4999',label:'4,000~4,999mi',  apr:210900, may: 398300 },
     { range:'5000+',    label:'5,000mi~',       apr:251900, may: 476200 }
+  ]},
+  "7C": { currency:'USD', rows: [
+    { range:'0-499',    label:'~499mi',        apr:  29, may:  52 },
+    { range:'500-999',  label:'500~999mi',      apr:  37, may:  66 },
+    { range:'1000-1499',label:'1,000~1,499mi',  apr:  44, may:  80 },
+    { range:'1500-1999',label:'1,500~1,999mi',  apr:  53, may:  95 },
+    { range:'2000-2499',label:'2,000~2,499mi',  apr:  60, may: 107 },
+    { range:'2500+',    label:'2,500mi~',       apr:  68, may: 126 }
+  ]},
+  LJ: { currency:'USD', rows: [
+    { range:'0-599',    label:'~599mi',        apr:  25, may:  42 },
+    { range:'600-1199', label:'600~1,199mi',    apr:  35, may:  66 },
+    { range:'1200-1799',label:'1,200~1,799mi',  apr:  58, may: 107 },
+    { range:'1800-2399',label:'1,800~2,399mi',  apr:  63, may: 117 },
+    { range:'2400+',    label:'2,400mi~',       apr:  76, may: 140 }
   ]}
 };
 
@@ -725,7 +740,7 @@ function buildOfficialSection(cd, al, miles, isRT){
   var mult = isRT ? 2 : 1;
 
   /* 금액 포맷 헬퍼 */
-  function fmt(krw, currency){ return window.fmtAmtDisplay(krw, currency||'KRW', mult); }
+  function fmt(krw, currency){ return window.fmtAmtDisplay(krw * mult, currency || 'KRW'); }
 
   /* ── 라벨 헤더 ── */
   function sectionHeader(showMay, extraBadge){
@@ -746,6 +761,13 @@ function buildOfficialSection(cd, al, miles, isRT){
   var offData = _OFFICIAL_AMT[al.code];
   if(offData && offData.rows && offData.rows.length){
 
+    /* 공시 원통화 — KE/OZ는 KRW, 7C/LJ 등 USD 공시 항공사는 USD */
+    var offCurr = offData.currency || 'KRW';
+
+    /* USD 등 비KRW 공시값을 KRW로 환산 (fmtAmtDisplay는 KRW 입력 가정) */
+    var _OFF_RATES = {USD:1480,JPY:10.1,EUR:1630,GBP:1870,CNY:204,HKD:190,AUD:950,SGD:1110};
+    function toKRW(v){ return (offCurr !== 'KRW') ? Math.round(v * (_OFF_RATES[offCurr] || 1)) : v; }
+
     /* inRange 호환 — "min-max"(미만), "N+"(이상) 모두 처리 */
     function matchRange(rangeStr, mi){
       if(!rangeStr || mi==null) return false;
@@ -764,7 +786,7 @@ function buildOfficialSection(cd, al, miles, isRT){
 
       /* 4월: 취소선 muted */
       var aprCell = r.apr!=null
-        ? '<td class="route-amt-apr">' + fmt(r.apr) + '</td>'
+        ? '<td class="route-amt-apr">' + fmt(toKRW(r.apr), offCurr) + '</td>'
         : '<td class="route-amt-apr" style="color:var(--muted)">-</td>';
 
       /* 5월: 인상·동일·인하별 색상 */
@@ -775,7 +797,7 @@ function buildOfficialSection(cd, al, miles, isRT){
         else if(r.may < r.apr){ mayClass='route-amt-may-dn'; mayPrefix='▼ '; }
       }
       var mayCell = r.may!=null
-        ? '<td class="'+mayClass+'">'+mayPrefix+fmt(r.may)+'</td>'
+        ? '<td class="'+mayClass+'">'+mayPrefix+fmt(toKRW(r.may), offCurr)+'</td>'
         : '<td style="color:var(--muted);text-align:right;font-size:11px">미공지</td>';
 
       return '<tr class="'+cls+'">'
