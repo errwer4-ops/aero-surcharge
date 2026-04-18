@@ -292,29 +292,36 @@ function renderPredictBasis(){
   var forecasts = FORECAST_DATA && FORECAST_DATA.forecasts || [];
   var keShort = forecasts.find(function(f){return f.airlineCode==='KE' && (f.distanceBand||'').indexOf('단거리')!==-1;});
   var dir = 'flat';
-  var dirLabel = '변동성 확대 (하락 가능성)';
+  var dirLabel = '유지 ~ 소폭 인하 가능성';
   if(keShort && keShort.predictedMin != null){
     dir = keShort.direction || 'flat';
     dirLabel = {
       up: '상승 가능성 높음',
       down: '하락 가능성 높음',
-      flat: '변동성 확대 (하락 가능성)'
-    }[dir] || '변동성 확대 (하락 가능성)';
+      flat: '유지 ~ 소폭 인하 가능성'
+    }[dir] || '유지 ~ 소폭 인하 가능성';
   }
   var dirClass = dir === 'up' ? 'up' : 'down';
 
   /* 지정학 리스크: 완화 조짐 고정 반영 */
 
-  /* 환율 표시 */
-  var fxLabel = inp.usdKrw ? inp.usdKrw.toLocaleString() + '원 내외' : '—';
+  /* 환율 표시: 기준값 → 현재값 */
+  var FX_BASE = 1500;       /* 표시용 기준 상수 */
+  var BRENT_BASE = 90;      /* 표시용 기준 상수 */
+  var fxLabel = inp.usdKrw
+    ? FX_BASE.toLocaleString() + '원 → ' + inp.usdKrw.toLocaleString() + '원'
+    : '—';
+  var brentLabel = inp.brentUSD
+    ? '$' + BRENT_BASE + ' → $' + inp.brentUSD + ' / 배럴'
+    : '—';
 
-  /* 대상 월: 5월은 확정이므로 전망은 6월로 표시 */
-  var periodLabel = targetPeriod
-    ? (targetPeriod.indexOf('5월') !== -1 ? '6월' : targetPeriod)
-    : '6월';
+  /* 대상 월: 항상 다음달(6월) 기준으로 고정 표시 */
+  var periodLabel = '6월';
 
+  /* 렌더 순서: Brent → MOPS → 환율 → 지정학 → surcharge */
   box.innerHTML =
-    '<div class="predict-factor"><div class="pf-label">Brent 유가</div><div class="pf-val down">$' + (inp.brentUSD||'—') + ' / 배럴 (급락 반영)</div></div>'
+    '<div class="predict-factor"><div class="pf-label">Brent 유가</div><div class="pf-val down">' + brentLabel + '</div></div>'
+   +'<div class="predict-factor"><div class="pf-label">싱가포르 항공유 (MOPS)</div><div class="pf-val down">최근 평균 하락 전환</div></div>'
    +'<div class="predict-factor"><div class="pf-label">원달러 환율</div><div class="pf-val up">' + fxLabel + '</div></div>'
    +'<div class="predict-factor"><div class="pf-label">지정학 리스크</div><div class="pf-val">중간 (완화 조짐)</div></div>'
    +'<div class="predict-factor"><div class="pf-label">' + periodLabel + ' surcharge 전망</div><div class="pf-val ' + dirClass + '">' + dirLabel + '</div></div>';
