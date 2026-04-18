@@ -42,8 +42,10 @@
     .cell-amt-hi{font-family:var(--mono);font-size:14px;font-weight:700;color:var(--blue);}
     .cell-amt-dim{font-family:var(--mono);font-size:12px;color:var(--muted);}
     .cell-period{font-size:12px;color:var(--muted);font-family:var(--mono);}
-    .cell-src-link{font-size:11px;color:var(--blue);text-decoration:none;font-weight:600;}
+    .cell-src-link{font-size:11px;color:var(--blue);text-decoration:none;font-weight:600;position:relative;z-index:10;pointer-events:auto;}
     .cell-src-link:hover{text-decoration:underline;}
+    .airline-row{position:relative;z-index:1;}
+    .row-main{position:relative;z-index:1;}
     .cell-note{font-size:10px;color:var(--muted);margin-top:2px;}
     .kr-only-note{font-size:11px;color:var(--muted);background:var(--blue-lt);border:1px solid #C5D4FC;border-radius:8px;padding:6px 14px;margin-bottom:14px;display:inline-flex;align-items:center;gap:6px;}
     @media(max-width:780px){.table-head,.row-main{grid-template-columns:36px 1fr auto;} .table-head .th:nth-child(n+4),.row-main>*:nth-child(n+4){display:none;} .main{padding:14px;}}
@@ -163,17 +165,30 @@ async function loadData(){
   ]);
   FEED=fr.status==='fulfilled'?fr.value:null;
 
+  /* ── 공식 공지 URL fallback 패치 (AIRLINE_META에 URL 누락 시 보완) ── */
+  var NOTICE_URL_PATCH={
+    KE:'https://www.koreanair.com/kr/ko/footer/site-info/fuel-surcharge',
+    OZ:'https://flyasiana.com/C/KR/KO/info/fuel-surcharge-info',
+    YP:'https://www.airpremia.com/ko/support/fuel-surcharge',
+    '7C':'https://www.jejuair.net/ko/jp/support/fuel-surcharge.do',
+    LJ:'https://www.jinair.com/booking/fuelSurcharge',
+    TW:'https://www.twayair.com/app/page/fuel_surcharge',
+    RS:'https://www.airseoul.com/kor/portal/info/fuelSurcharge.do',
+  };
+
   var metaObj=window.AIRLINE_META||{};
   KR_AIRLINES=Object.keys(metaObj)
     .filter(function(c){return !metaObj[c].excludeFromPublicLists&&metaObj[c].isVisibleToUser;})
-    .map(function(c){var m=metaObj[c];return{
-      code:c,name:m.name,logo:m.logo,
-      officialNoticeUrl:m.officialNoticeUrl||null,
-      hasOfficialNotice:!!m.hasOfficialNotice,
-      usdNotice:m.usdNotice,
-      surchargeSchema:m.surchargeSchema||'mileage_band',
-      officialDataSource:m.officialDataSource||'unknown',
-    };});
+    .map(function(c){var m=metaObj[c];
+      var noticeUrl=m.officialNoticeUrl||NOTICE_URL_PATCH[c]||null;
+      return{
+        code:c,name:m.name,logo:m.logo,
+        officialNoticeUrl:noticeUrl,
+        hasOfficialNotice:!!m.hasOfficialNotice,
+        usdNotice:m.usdNotice,
+        surchargeSchema:m.surchargeSchema||'mileage_band',
+        officialDataSource:m.officialDataSource||'unknown',
+      };});
 
   /* ── 점검 로그: 버튼 활성 여부 ── */
   console.log('[aero][airlines] 항공사 인덱스 로드 완료. 버튼 활성 상태:');
@@ -226,10 +241,11 @@ function renderTable(){
   var list=KR_AIRLINES.filter(function(al){
     /* currentF==='blocked' 조건이 미정의이면 mF=false로 전 항공사가 숨겨지는 버그 수정 */
     var mF=currentF==='all'
-      ||(currentF==='official'&&al.hasOfficialNotice)
-      ||(currentF==='missing'&&!al.hasOfficialNotice)
+      ||(currentF==='official'&&!!al.officialNoticeUrl)
+      ||(currentF==='missing'&&!al.officialNoticeUrl)
       ||(currentF==='blocked'&&al.officialDataSource==='blocked');
-    var mS=!searchQ||al.name.includes(searchQ)||al.code.toLowerCase().includes(searchQ);
+    var q=(searchQ||'').trim().toLowerCase();
+    var mS=!q||al.name.toLowerCase().includes(q)||al.code.toLowerCase().includes(q);
     return mF&&mS;
   });
   document.getElementById('countLabel').textContent=list.length+'/'+KR_AIRLINES.length;
