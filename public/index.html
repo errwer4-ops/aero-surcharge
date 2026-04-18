@@ -329,7 +329,7 @@
 </div>
 
 <!-- 서비스 소개 섹션 -->
-<section class="intro-section" aria-label="intro">
+<section class="intro-section" id="introSection" aria-label="intro">
   <div class="intro-grid">
     <div class="intro-card">
       <span class="intro-card-icon">✈️</span>
@@ -367,8 +367,10 @@
       <button class="ftab"        data-f="data" id="ftabData" data-i18n="index.filter.hasOfficialData">공식 데이터 있음</button>
     </div>
 
+    <div class="cards-grid" id="cardsGrid"></div>
+
     <!-- 유류할증료 안내 블록 (결과) -->
-    <div class="guide-block" id="guideBlockResult">
+    <div class="guide-block" id="guideBlockResult" style="margin-top:18px">
       <div class="guide-block-title" data-i18n="index.guide.title">💡 유류할증료란 무엇인가요?</div>
       <div class="guide-block-body">
         <p data-i18n="index.guide.p1">유류할증료(Fuel Surcharge)는 항공유 가격 변동에 따라 항공사가 기본 운임 외에 별도로 부과하는 요금입니다.</p>
@@ -376,8 +378,6 @@
         <p data-i18n="index.guide.p3">아래 결과는 공식 공지 기준이며, 최종 결제 금액은 항공사 예약 화면 또는 공식 공지에서 반드시 재확인하시기 바랍니다.</p>
       </div>
     </div>
-
-    <div class="cards-grid" id="cardsGrid"></div>
     <div class="ad-slot-bottom" id="adSlot2"></div>
   </div>
 
@@ -1016,6 +1016,7 @@ document.getElementById('searchBtn').addEventListener('click',function(){
 
   document.getElementById('landingSection').style.display='none';
   document.getElementById('resultsSection').style.display='block';
+  document.getElementById('introSection').style.display='none';
   document.getElementById('resultBadge').textContent=dep+' → '+arr;
 
   window._searchCtx=null;
