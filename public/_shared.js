@@ -815,3 +815,579 @@ window.krwRefHtml = function(amount, currency, mult) {
   var krw = Math.round(amount * (mult || 1) * rate);
   return '<span style="font-size:10px;color:var(--muted);margin-left:4px">(≈' + Math.round(krw/1000) + '천원)</span>';
 };
+
+/* ═══════════════════════════════════════════════════════════════════
+   i18n 레이어 — aero-surcharge v34
+   window.I18N  딕셔너리 (ko/en/ja/zh/fr/de)
+   getCurrentLang / setCurrentLang / t(key) / applyLanguage()
+   buildAirportOptions(selectEl, type)  — select 옵션 재구성
+   initNav() 래핑 — 언어변경 시 applyLanguage 자동 호출
+═══════════════════════════════════════════════════════════════════ */
+(function(){
+
+/* ─── 공항 데이터 ─── */
+var AIRPORT_GROUPS = [
+  { key:'index.region.korea',    codes:['ICN','GMP','PUS','CJU'] },
+  { key:'index.region.japan',    codes:['NRT','HND','KIX','FUK','CTS'] },
+  { key:'index.region.asia',     codes:['HKG','SIN','BKK','MNL','KUL','SGN','HAN','DAD','DPS','PVG','PEK'] },
+  { key:'index.region.naOceania',codes:['LAX','JFK','SFO','SEA','SYD'] },
+  { key:'index.region.europeMiddleEast', codes:['CDG','LHR','FRA','AMS','DXB'] },
+];
+
+/* ─── 번역 딕셔너리 ─── */
+window.I18N = {
+
+/* ══════ 한국어 ══════ */
+ko:{
+  /* nav */
+  'nav.routes':'노선별 조회','nav.airlines':'항공사 인덱스','nav.news':'참고 소식',
+  /* footer */
+  'footer.notice':'표시된 유류할증료는 항공사 공식 공지 기반 참고용 정보입니다. 최종 금액은 항공사 공식 사이트 또는 발권처에서 반드시 확인하세요.',
+  'footer.about':'About','footer.privacy':'Privacy Policy','footer.terms':'Terms of Service',
+  /* page meta */
+  'index.title':'유류할증료 조회 — 한국 출발 국제선 항공사별 비교',
+  'index.metaDesc':'한국 출발 국제선 항공사별 유류할증료를 노선·거리구간별로 비교합니다.',
+  /* hero */
+  'index.heroTitle':'노선별 유류할증료 조회',
+  'index.heroSub':'한국 국적기 출발·도착 기준 유류할증료 비교 · 공식 공지 + AI 예측',
+  /* form */
+  'index.labelOrigin':'출발 공항','index.labelDest':'도착 공항','index.labelTrip':'여정',
+  'index.trip.oneWay':'편도','index.trip.roundTrip':'왕복',
+  'index.search':'🔍 검색',
+  'index.airport.selectOrigin':'출발지 선택','index.airport.selectDest':'도착지 선택',
+  /* regions */
+  'index.region.korea':'🇰🇷 한국','index.region.japan':'🇯🇵 일본',
+  'index.region.asia':'🌏 아시아','index.region.naOceania':'🇺🇸 북미·오세아니아',
+  'index.region.europeMiddleEast':'🇪🇺 유럽·중동',
+  /* airport names */
+  'airport.ICN':'인천','airport.GMP':'김포','airport.PUS':'부산','airport.CJU':'제주',
+  'airport.NRT':'도쿄 나리타','airport.HND':'도쿄 하네다','airport.KIX':'오사카',
+  'airport.FUK':'후쿠오카','airport.CTS':'삿포로',
+  'airport.HKG':'홍콩','airport.SIN':'싱가포르','airport.BKK':'방콕','airport.MNL':'마닐라',
+  'airport.KUL':'쿠알라룸푸르','airport.SGN':'호찌민','airport.HAN':'하노이',
+  'airport.DAD':'다낭','airport.DPS':'발리','airport.PVG':'상하이','airport.PEK':'베이징',
+  'airport.LAX':'LA','airport.JFK':'뉴욕','airport.SFO':'샌프란시스코',
+  'airport.SEA':'시애틀','airport.SYD':'시드니',
+  'airport.CDG':'파리','airport.LHR':'런던','airport.FRA':'프랑크푸르트',
+  'airport.AMS':'암스테르담','airport.DXB':'두바이',
+  /* beta banner */
+  'beta.title':'베타 서비스 안내',
+  'beta.desc':'현재 한국 출발 국제선 유류할증료를 기준으로 제공되고 있으며, 일부 항공사는 공식 공지 기반 수동 반영입니다. 최종 금액은 항공사 공식 공지를 반드시 확인해주세요.',
+  'beta.note':'※ 현재는 한국 출발 국제선만 지원합니다. 해외 출발 노선은 서비스 준비중입니다.',
+  /* intro cards */
+  'index.intro1.title':'한국 출발 국제선 유류할증료 비교',
+  'index.intro1.body':'이 서비스는 인천(ICN), 김포(GMP), 부산(PUS) 등 한국 출발 국제선의 항공사별 유류할증료를 노선·거리구간별로 비교합니다. 대한항공, 아시아나항공, 제주항공 등 국내외 항공사의 공식 공지를 기반으로 한 데이터를 제공합니다.',
+  'index.intro2.title':'항공사 공식 공지 기반 정보 제공',
+  'index.intro2.body':'각 항공사가 매월 발표하는 공식 유류할증료 공지를 우선으로 반영합니다. 공식 공지가 확인된 항공사에는 \'공식 확인\' 표시가 함께 노출되며, 각 카드에서 항공사 공지 원문 링크를 바로 확인할 수 있습니다.',
+  'index.intro3.title':'왜 이 서비스가 필요한가요?',
+  'index.intro3.body':'유류할증료는 항공권 총 비용의 상당 부분을 차지하지만, 각 항공사 공지를 개별 확인해야 해 비교가 번거롭습니다. 이 서비스는 여러 항공사의 공식 공지를 한 화면에서 비교해 실제 비용 차이를 빠르게 파악할 수 있도록 돕습니다.',
+  /* guide block */
+  'index.guide.title':'💡 유류할증료란 무엇인가요?',
+  'index.guide.p1':'유류할증료(Fuel Surcharge)는 항공유 가격 변동에 따라 항공사가 기본 운임 외에 별도로 부과하는 요금입니다. 국제유가가 오르면 할증료도 높아지고, 유가가 내리면 감소하거나 면제되기도 합니다.',
+  'index.guide.p2':'금액은 항공사마다 다르며, 같은 항공사라도 비행 거리구간(단거리·중거리·장거리)에 따라 구간별로 다르게 적용됩니다. 매월 초 항공사가 다음 달 적용 금액을 공식 공지합니다.',
+  'index.guide.p3':'아래 결과는 공식 공지 기준이며, 최종 결제 금액은 항공사 예약 화면 또는 공식 공지에서 반드시 재확인하시기 바랍니다.',
+  'index.guide.p1Landing':'유류할증료(Fuel Surcharge)는 국제유가 변동에 연동해 항공사가 기본 운임과 별도로 부과하는 요금입니다. 비행 거리가 멀수록, 유가가 높을수록 금액이 높아지는 구조입니다.',
+  'index.guide.p2Landing':'국내 항공사들은 국토교통부 기준에 따라 매월 다음 달 적용 금액을 공식 공지합니다. 출발지·도착지를 선택해 검색하면 항공사별 공식 공지 기준 금액을 노선별로 비교할 수 있습니다.',
+  /* landing */
+  'index.landingTitle':'한국 출발 국제선 유류할증료',
+  'index.krOnly.title':'한국 출발 국제선만 지원합니다',
+  'index.krOnly.desc':'노선별 조회에서 출발지·도착지를 선택하면 항공사별 공식 공지 기준 금액을 확인할 수 있습니다. 단일 금액은 구간마다 달라 오해 소지가 있어 표시하지 않습니다.',
+  'index.indexLink':'→ 항공사 전체 인덱스 보기',
+  /* status */
+  'index.status.loading':'데이터 로딩 중...',
+  'index.status.loadError':'데이터 로딩 실패 — 콘솔을 확인하세요',
+  'index.status.scriptError':'스크립트 오류로 로딩 실패 — 콘솔을 확인하세요',
+  'index.status.updated':'데이터 갱신: ','index.status.updatedSuffix':' · 2026-04 공식 공지 기준',
+  /* filters */
+  'index.filter.all':'전체','index.filter.hasOfficialData':'공식 데이터 있음',
+  /* result */
+  'index.result.label':'항공사별 유류할증료',
+  'index.result.noResults':'조회 결과가 없습니다',
+  'index.result.onlyKoreaDeparture':'현재는 한국 출발 국제선만 지원합니다',
+  'index.result.overseasComingSoon':'해외 출발 노선은 서비스 준비중입니다.',
+  'index.result.overseasMeta':'해외 출발 노선',
+  /* alerts */
+  'index.alert.selectAirports':'출발지와 도착지를 선택하세요',
+  'index.alert.differentAirports':'출발지와 도착지를 다르게 선택하세요',
+  /* meta suffix */
+  'index.meta.oneWay':'편도','index.meta.roundTrip':'왕복',
+  'index.meta.suffix':'한국 출발 국제선 · 2026년 4월 공식 공지 기준',
+  /* card strings */
+  'index.card.currentRoute':'현재 노선',
+  'index.card.notPublished':'미공지',
+  'index.card.preAnnouncement':'공시전',
+  'index.card.groupTier':'군별 요금',
+  'index.card.usdNotice':'USD 공시',
+  'index.card.notOperated':'미운항',
+  'index.card.routeNotServed':'해당 노선 미취항',
+  'index.card.viewOfficialNotice':'공식 공지 ↗',
+  'index.card.noData':'공식 데이터를 불러올 수 없습니다. 공식 공지 버튼을 통해 직접 확인하세요.',
+  'index.card.compare':'04→05 비교',
+  'index.card.period':'2026.04',
+  'index.card.periodMay':'2026.05',
+  'index.card.fare':'유류할증료',
+  'index.card.distanceBand':'거리구간',
+  'index.card.mayTrend':'5월 최소',
+  'index.card.groupTierShort':'군별',
+  'index.card.notListed':'공지 미기재',
+  'index.card.miniNotice':'공식 공지 ↗',
+},
+
+/* ══════ English ══════ */
+en:{
+  'nav.routes':'Route Search','nav.airlines':'Airline Index','nav.news':'Market News',
+  'footer.notice':'Fuel surcharge data is provided for reference only. Always confirm the final amount with the airline or ticketing agent.',
+  'footer.about':'About','footer.privacy':'Privacy Policy','footer.terms':'Terms of Service',
+  'index.title':'Fuel Surcharge Search — Korea Departure International Flights',
+  'index.metaDesc':'Compare fuel surcharges by airline for international flights departing Korea.',
+  'index.heroTitle':'Fuel Surcharge by Route',
+  'index.heroSub':'Compare fuel surcharges for Korea departure routes · Official notices + AI forecast',
+  'index.labelOrigin':'Departure Airport','index.labelDest':'Arrival Airport','index.labelTrip':'Trip Type',
+  'index.trip.oneWay':'One-way','index.trip.roundTrip':'Round-trip',
+  'index.search':'🔍 Search',
+  'index.airport.selectOrigin':'Select origin','index.airport.selectDest':'Select destination',
+  'index.region.korea':'🇰🇷 Korea','index.region.japan':'🇯🇵 Japan',
+  'index.region.asia':'🌏 Asia','index.region.naOceania':'🇺🇸 N. America & Oceania',
+  'index.region.europeMiddleEast':'🇪🇺 Europe & Middle East',
+  'airport.ICN':'Seoul Incheon','airport.GMP':'Seoul Gimpo','airport.PUS':'Busan','airport.CJU':'Jeju',
+  'airport.NRT':'Tokyo Narita','airport.HND':'Tokyo Haneda','airport.KIX':'Osaka',
+  'airport.FUK':'Fukuoka','airport.CTS':'Sapporo',
+  'airport.HKG':'Hong Kong','airport.SIN':'Singapore','airport.BKK':'Bangkok','airport.MNL':'Manila',
+  'airport.KUL':'Kuala Lumpur','airport.SGN':'Ho Chi Minh City','airport.HAN':'Hanoi',
+  'airport.DAD':'Da Nang','airport.DPS':'Bali','airport.PVG':'Shanghai','airport.PEK':'Beijing',
+  'airport.LAX':'Los Angeles','airport.JFK':'New York','airport.SFO':'San Francisco',
+  'airport.SEA':'Seattle','airport.SYD':'Sydney',
+  'airport.CDG':'Paris','airport.LHR':'London','airport.FRA':'Frankfurt',
+  'airport.AMS':'Amsterdam','airport.DXB':'Dubai',
+  'beta.title':'Beta Service Notice',
+  'beta.desc':'Currently covering fuel surcharges for international flights departing Korea. Some airlines reflect manually updated official notices. Always confirm the final amount with the airline.',
+  'beta.note':'※ Only Korea departure routes are currently supported. Overseas departure routes are coming soon.',
+  'index.intro1.title':'Fuel Surcharge Comparison for Korea Departures',
+  'index.intro1.body':'This service compares fuel surcharges by airline and distance band for international flights from Korean airports (ICN, GMP, PUS). Data is based on official notices from Korean Air, Asiana, Jeju Air, and more.',
+  'index.intro2.title':'Official Airline Notice Based Data',
+  'index.intro2.body':'Monthly official fuel surcharge notices from each airline are prioritized. Airlines with verified notices are labeled "Official Verified," and a direct link to the notice is shown on each card.',
+  'index.intro3.title':'Why This Service?',
+  'index.intro3.body':'Fuel surcharges are a significant part of airfare, but comparing each airline\'s notice individually is cumbersome. This service aggregates official notices on one screen.',
+  'index.guide.title':'💡 What is a Fuel Surcharge?',
+  'index.guide.p1':'A fuel surcharge is an additional fee charged by airlines on top of the base fare, tied to aviation fuel price fluctuations. When oil prices rise, surcharges increase; when they fall, surcharges decrease or may be waived.',
+  'index.guide.p2':'Amounts vary by airline and distance band (short/medium/long haul). Airlines publish the following month\'s amounts in official notices at the beginning of each month.',
+  'index.guide.p3':'Results shown are based on official notices. Always reconfirm the final amount via the airline\'s reservation system or official notice.',
+  'index.guide.p1Landing':'A fuel surcharge is linked to international oil prices and is charged separately from the base fare. The further the distance and the higher the oil price, the greater the surcharge.',
+  'index.guide.p2Landing':'Korean airlines publish next-month amounts in official notices each month. Select origin and destination to compare official notice amounts by airline.',
+  'index.landingTitle':'Fuel Surcharges — Korea Departures',
+  'index.krOnly.title':'Korea Departures Only',
+  'index.krOnly.desc':'Select origin and destination in Route Search to compare official surcharge amounts by airline. Per-segment amounts vary, so a single figure is not shown.',
+  'index.indexLink':'→ View Full Airline Index',
+  'index.status.loading':'Loading data...','index.status.loadError':'Failed to load data — check console',
+  'index.status.scriptError':'Script error — check console',
+  'index.status.updated':'Data updated: ','index.status.updatedSuffix':' · Based on Apr 2026 official notice',
+  'index.filter.all':'All','index.filter.hasOfficialData':'Has Official Data',
+  'index.result.label':'Fuel Surcharge by Airline',
+  'index.result.noResults':'No results found',
+  'index.result.onlyKoreaDeparture':'Only Korea departure routes are currently supported',
+  'index.result.overseasComingSoon':'Overseas departure routes are coming soon.',
+  'index.result.overseasMeta':'Overseas departure route',
+  'index.alert.selectAirports':'Please select origin and destination',
+  'index.alert.differentAirports':'Origin and destination must be different',
+  'index.meta.oneWay':'One-way','index.meta.roundTrip':'Round-trip',
+  'index.meta.suffix':'Korea Departure · Based on April 2026 Official Notice',
+  'index.card.currentRoute':'This Route',
+  'index.card.notPublished':'N/A','index.card.preAnnouncement':'Pending',
+  'index.card.groupTier':'Group Tier','index.card.usdNotice':'USD Quoted',
+  'index.card.notOperated':'Not Operated','index.card.routeNotServed':'This airline does not serve this route',
+  'index.card.viewOfficialNotice':'Official Notice ↗',
+  'index.card.noData':'Official data unavailable. Please check via the official notice button.',
+  'index.card.compare':'04→05 Comparison',
+  'index.card.period':'2026.04','index.card.periodMay':'2026.05',
+  'index.card.fare':'Surcharge','index.card.distanceBand':'Distance Band',
+  'index.card.mayTrend':'May Min.',
+  'index.card.groupTierShort':'Group',
+  'index.card.notListed':'Not listed','index.card.miniNotice':'Official Notice ↗',
+},
+
+/* ══════ 日本語 ══════ */
+ja:{
+  'nav.routes':'路線別検索','nav.airlines':'航空会社一覧','nav.news':'参考ニュース',
+  'footer.notice':'燃油サーチャージ情報は参考用です。最終金額は必ず航空会社公式サイトでご確認ください。',
+  'footer.about':'About','footer.privacy':'プライバシーポリシー','footer.terms':'利用規約',
+  'index.title':'燃油サーチャージ照会 — 韓国出発国際線',
+  'index.metaDesc':'韓国出発国際線の航空会社別燃油サーチャージを比較。',
+  'index.heroTitle':'路線別燃油サーチャージ照会',
+  'index.heroSub':'韓国出発路線の燃油サーチャージ比較 · 公式通知 + AI予測',
+  'index.labelOrigin':'出発空港','index.labelDest':'到着空港','index.labelTrip':'旅程',
+  'index.trip.oneWay':'片道','index.trip.roundTrip':'往復',
+  'index.search':'🔍 検索',
+  'index.airport.selectOrigin':'出発地を選択','index.airport.selectDest':'目的地を選択',
+  'index.region.korea':'🇰🇷 韓国','index.region.japan':'🇯🇵 日本',
+  'index.region.asia':'🌏 アジア','index.region.naOceania':'🇺🇸 北米・オセアニア',
+  'index.region.europeMiddleEast':'🇪🇺 欧州・中東',
+  'airport.ICN':'ソウル仁川','airport.GMP':'ソウル金浦','airport.PUS':'釜山','airport.CJU':'済州',
+  'airport.NRT':'東京成田','airport.HND':'東京羽田','airport.KIX':'大阪',
+  'airport.FUK':'福岡','airport.CTS':'札幌',
+  'airport.HKG':'香港','airport.SIN':'シンガポール','airport.BKK':'バンコク','airport.MNL':'マニラ',
+  'airport.KUL':'クアラルンプール','airport.SGN':'ホーチミン','airport.HAN':'ハノイ',
+  'airport.DAD':'ダナン','airport.DPS':'バリ','airport.PVG':'上海','airport.PEK':'北京',
+  'airport.LAX':'ロサンゼルス','airport.JFK':'ニューヨーク','airport.SFO':'サンフランシスコ',
+  'airport.SEA':'シアトル','airport.SYD':'シドニー',
+  'airport.CDG':'パリ','airport.LHR':'ロンドン','airport.FRA':'フランクフルト',
+  'airport.AMS':'アムステルダム','airport.DXB':'ドバイ',
+  'beta.title':'ベータサービスのご案内',
+  'beta.desc':'韓国出発国際線の燃油サーチャージを提供中。最終金額は必ず公式通知をご確認ください。',
+  'beta.note':'※ 現在は韓国出発国際線のみ対応。海外出発路線は準備中です。',
+  'index.intro1.title':'韓国出発国際線の燃油サーチャージ比較',
+  'index.intro1.body':'ICN・GMP・PUS等の韓国出発国際線を対象に、航空会社別・距離帯別の燃油サーチャージを比較するサービスです。',
+  'index.intro2.title':'公式通知に基づくデータ提供',
+  'index.intro2.body':'各航空会社が毎月発表する公式燃油サーチャージ通知を優先反映。公式確認済の航空会社には「公式確認」表示が付きます。',
+  'index.intro3.title':'なぜこのサービスが必要？',
+  'index.intro3.body':'燃油サーチャージは航空券総額の多くを占めますが、各社通知を個別確認するのは手間がかかります。このサービスで一画面での比較が可能です。',
+  'index.guide.title':'💡 燃油サーチャージとは？',
+  'index.guide.p1':'燃油サーチャージは、航空燃料価格の変動に応じて航空会社が基本運賃とは別に徴収する追加料金です。',
+  'index.guide.p2':'金額は航空会社ごと、距離帯（短距離・中距離・長距離）ごとに異なります。毎月初めに翌月分が公式発表されます。',
+  'index.guide.p3':'以下の結果は公式通知基準です。最終金額は予約画面または公式通知で必ずご確認ください。',
+  'index.guide.p1Landing':'燃油サーチャージは国際油価に連動して航空会社が基本運賃と別途徴収する料金です。',
+  'index.guide.p2Landing':'国内航空会社は毎月翌月分の金額を公式通知します。出発・目的地を選択して検索すると航空会社別の公式通知金額が確認できます。',
+  'index.landingTitle':'韓国出発国際線燃油サーチャージ',
+  'index.krOnly.title':'韓国出発のみ対応','index.krOnly.desc':'路線別検索で出発・目的地を選択すると航空会社別の公式通知金額を確認できます。',
+  'index.indexLink':'→ 航空会社一覧を見る',
+  'index.status.loading':'データ読み込み中...','index.status.loadError':'データ読み込み失敗',
+  'index.status.scriptError':'スクリプトエラー',
+  'index.status.updated':'データ更新: ','index.status.updatedSuffix':' · 2026年4月公式通知基準',
+  'index.filter.all':'すべて','index.filter.hasOfficialData':'公式データあり',
+  'index.result.label':'航空会社別燃油サーチャージ',
+  'index.result.noResults':'検索結果がありません',
+  'index.result.onlyKoreaDeparture':'現在は韓国出発国際線のみ対応しています',
+  'index.result.overseasComingSoon':'海外出発路線は準備中です。',
+  'index.result.overseasMeta':'海外出発路線',
+  'index.alert.selectAirports':'出発地と目的地を選択してください',
+  'index.alert.differentAirports':'出発地と目的地を別々に選択してください',
+  'index.meta.oneWay':'片道','index.meta.roundTrip':'往復',
+  'index.meta.suffix':'韓国出発 · 2026年4月公式通知基準',
+  'index.card.currentRoute':'現在の路線',
+  'index.card.notPublished':'未公示','index.card.preAnnouncement':'公示前',
+  'index.card.groupTier':'群別料金','index.card.usdNotice':'USD建て',
+  'index.card.notOperated':'未就航','index.card.routeNotServed':'該当路線は未就航です',
+  'index.card.viewOfficialNotice':'公式通知 ↗',
+  'index.card.noData':'公式データが取得できません。公式通知ボタンからご確認ください。',
+  'index.card.compare':'04→05比較',
+  'index.card.period':'2026.04','index.card.periodMay':'2026.05',
+  'index.card.fare':'サーチャージ','index.card.distanceBand':'距離帯',
+  'index.card.mayTrend':'5月最小',
+  'index.card.groupTierShort':'群別',
+  'index.card.notListed':'公示なし','index.card.miniNotice':'公式通知 ↗',
+},
+
+/* ══════ 中文 ══════ */
+zh:{
+  'nav.routes':'按航线查询','nav.airlines':'航空公司一览','nav.news':'参考资讯',
+  'footer.notice':'燃油附加费信息仅供参考。最终金额请以航空公司官方公告为准。',
+  'footer.about':'About','footer.privacy':'隐私政策','footer.terms':'服务条款',
+  'index.title':'燃油附加费查询 — 韩国出发国际航班',
+  'index.metaDesc':'比较韩国出发国际航班各航空公司燃油附加费。',
+  'index.heroTitle':'按航线查询燃油附加费',
+  'index.heroSub':'韩国出发航线燃油附加费比较 · 官方公告 + AI预测',
+  'index.labelOrigin':'出发机场','index.labelDest':'到达机场','index.labelTrip':'行程类型',
+  'index.trip.oneWay':'单程','index.trip.roundTrip':'往返',
+  'index.search':'🔍 搜索',
+  'index.airport.selectOrigin':'选择出发地','index.airport.selectDest':'选择目的地',
+  'index.region.korea':'🇰🇷 韩国','index.region.japan':'🇯🇵 日本',
+  'index.region.asia':'🌏 亚洲','index.region.naOceania':'🇺🇸 北美·大洋洲',
+  'index.region.europeMiddleEast':'🇪🇺 欧洲·中东',
+  'airport.ICN':'首尔仁川','airport.GMP':'首尔金浦','airport.PUS':'釜山','airport.CJU':'济州',
+  'airport.NRT':'东京成田','airport.HND':'东京羽田','airport.KIX':'大阪',
+  'airport.FUK':'福冈','airport.CTS':'札幌',
+  'airport.HKG':'香港','airport.SIN':'新加坡','airport.BKK':'曼谷','airport.MNL':'马尼拉',
+  'airport.KUL':'吉隆坡','airport.SGN':'胡志明市','airport.HAN':'河内',
+  'airport.DAD':'岘港','airport.DPS':'巴厘岛','airport.PVG':'上海','airport.PEK':'北京',
+  'airport.LAX':'洛杉矶','airport.JFK':'纽约','airport.SFO':'旧金山',
+  'airport.SEA':'西雅图','airport.SYD':'悉尼',
+  'airport.CDG':'巴黎','airport.LHR':'伦敦','airport.FRA':'法兰克福',
+  'airport.AMS':'阿姆斯特丹','airport.DXB':'迪拜',
+  'beta.title':'Beta服务说明',
+  'beta.desc':'目前提供韩国出发国际航班燃油附加费信息。最终金额请以航空公司官方公告为准。',
+  'beta.note':'※ 目前仅支持韩国出发国际航班，海外出发航线即将上线。',
+  'index.intro1.title':'韩国出发国际航班燃油附加费比较',
+  'index.intro1.body':'本服务比较从ICN、GMP、PUS等韩国机场出发的国际航班各航空公司燃油附加费。',
+  'index.intro2.title':'基于官方公告的数据',
+  'index.intro2.body':'优先反映各航空公司每月发布的官方燃油附加费公告。经过官方确认的航空公司标有"官方确认"标识。',
+  'index.intro3.title':'为什么需要这项服务？',
+  'index.intro3.body':'燃油附加费占机票总价相当一部分，但逐一查看各家公告十分繁琐。本服务将多家航空公司的官方公告汇聚于一个页面。',
+  'index.guide.title':'💡 什么是燃油附加费？',
+  'index.guide.p1':'燃油附加费是航空公司根据航空燃料价格变动，在基本票价之外额外收取的费用。',
+  'index.guide.p2':'各航空公司金额不同，同一航空公司也按飞行距离段有所区别。每月初公布下月适用金额。',
+  'index.guide.p3':'以下结果基于官方公告，最终金额请在预订界面或官方公告中确认。',
+  'index.guide.p1Landing':'燃油附加费与国际油价联动，由航空公司在基本票价之外单独收取。',
+  'index.guide.p2Landing':'韩国航空公司每月发布下月适用金额的官方公告。选择出发地和目的地即可比较各航空公司的官方公告金额。',
+  'index.landingTitle':'韩国出发国际航班燃油附加费',
+  'index.krOnly.title':'仅支持韩国出发','index.krOnly.desc':'在航线查询中选择出发地和目的地，即可查看各航空公司官方公告金额。',
+  'index.indexLink':'→ 查看完整航空公司一览',
+  'index.status.loading':'数据加载中...','index.status.loadError':'数据加载失败',
+  'index.status.scriptError':'脚本错误',
+  'index.status.updated':'数据更新: ','index.status.updatedSuffix':' · 2026年4月官方公告基准',
+  'index.filter.all':'全部','index.filter.hasOfficialData':'有官方数据',
+  'index.result.label':'各航空公司燃油附加费',
+  'index.result.noResults':'无搜索结果',
+  'index.result.onlyKoreaDeparture':'目前仅支持韩国出发国际航班',
+  'index.result.overseasComingSoon':'海外出发航线即将上线。',
+  'index.result.overseasMeta':'海外出发航线',
+  'index.alert.selectAirports':'请选择出发地和目的地',
+  'index.alert.differentAirports':'出发地和目的地请选择不同机场',
+  'index.meta.oneWay':'单程','index.meta.roundTrip':'往返',
+  'index.meta.suffix':'韩国出发 · 2026年4月官方公告基准',
+  'index.card.currentRoute':'当前航线',
+  'index.card.notPublished':'未公布','index.card.preAnnouncement':'待公布',
+  'index.card.groupTier':'组别费率','index.card.usdNotice':'USD报价',
+  'index.card.notOperated':'未开通','index.card.routeNotServed':'该航空公司未运营此航线',
+  'index.card.viewOfficialNotice':'官方公告 ↗',
+  'index.card.noData':'无法获取官方数据，请通过官方公告按钮直接查看。',
+  'index.card.compare':'04→05对比',
+  'index.card.period':'2026.04','index.card.periodMay':'2026.05',
+  'index.card.fare':'燃油附加费','index.card.distanceBand':'距离段',
+  'index.card.mayTrend':'5月最低',
+  'index.card.groupTierShort':'组别',
+  'index.card.notListed':'未公布','index.card.miniNotice':'官方公告 ↗',
+},
+
+/* ══════ Français ══════ */
+fr:{
+  'nav.routes':'Recherche route','nav.airlines':'Index compagnies','nav.news':'Actualités',
+  'footer.notice':'Les données de surcharge carburant sont fournies à titre indicatif. Confirmez toujours le montant final auprès de la compagnie aérienne.',
+  'footer.about':'À propos','footer.privacy':'Confidentialité','footer.terms':'Conditions',
+  'index.title':'Surcharge carburant — Vols internationaux depuis la Corée',
+  'index.metaDesc':'Comparez les surcharges carburant par compagnie pour les vols au départ de Corée.',
+  'index.heroTitle':'Surcharge carburant par route',
+  'index.heroSub':'Comparaison des surcharges pour Korea-départs · Avis officiels + prévisions IA',
+  'index.labelOrigin':'Aéroport départ','index.labelDest':'Aéroport arrivée','index.labelTrip':'Type voyage',
+  'index.trip.oneWay':'Aller simple','index.trip.roundTrip':'Aller-retour',
+  'index.search':'🔍 Rechercher',
+  'index.airport.selectOrigin':'Sélectionner départ','index.airport.selectDest':'Sélectionner arrivée',
+  'index.region.korea':'🇰🇷 Corée','index.region.japan':'🇯🇵 Japon',
+  'index.region.asia':'🌏 Asie','index.region.naOceania':'🇺🇸 Amér. du Nord & Océanie',
+  'index.region.europeMiddleEast':'🇪🇺 Europe & Moyen-Orient',
+  'airport.ICN':'Séoul Incheon','airport.GMP':'Séoul Gimpo','airport.PUS':'Busan','airport.CJU':'Jeju',
+  'airport.NRT':'Tokyo Narita','airport.HND':'Tokyo Haneda','airport.KIX':'Osaka',
+  'airport.FUK':'Fukuoka','airport.CTS':'Sapporo',
+  'airport.HKG':'Hong Kong','airport.SIN':'Singapour','airport.BKK':'Bangkok','airport.MNL':'Manille',
+  'airport.KUL':'Kuala Lumpur','airport.SGN':'Hô Chi Minh-Ville','airport.HAN':'Hanoï',
+  'airport.DAD':'Da Nang','airport.DPS':'Bali','airport.PVG':'Shanghai','airport.PEK':'Pékin',
+  'airport.LAX':'Los Angeles','airport.JFK':'New York','airport.SFO':'San Francisco',
+  'airport.SEA':'Seattle','airport.SYD':'Sydney',
+  'airport.CDG':'Paris','airport.LHR':'Londres','airport.FRA':'Francfort',
+  'airport.AMS':'Amsterdam','airport.DXB':'Dubaï',
+  'beta.title':'Avis bêta','beta.desc':'Surcharges pour vols Korea-départs. Confirmez le montant final avec la compagnie.','beta.note':'※ Seuls les départs depuis la Corée sont pris en charge.',
+  'index.intro1.title':'Comparaison surcharges Korea-départs',
+  'index.intro1.body':'Ce service compare les surcharges carburant par compagnie pour les vols internationaux au départ des aéroports coréens.',
+  'index.intro2.title':'Données basées sur les avis officiels',
+  'index.intro2.body':'Les avis officiels mensuels sont prioritaires. Les compagnies vérifiées sont labelisées "Officiel confirmé".',
+  'index.intro3.title':'Pourquoi ce service ?',
+  'index.intro3.body':'Les surcharges représentent une part importante du billet. Ce service regroupe tous les avis sur une seule page.',
+  'index.guide.title':'💡 Qu\'est-ce qu\'une surcharge carburant ?',
+  'index.guide.p1':'Une surcharge carburant est une redevance additionnelle liée aux fluctuations du carburant d\'aviation.',
+  'index.guide.p2':'Les montants varient selon les compagnies et tranches de distance. Publiés début de mois pour le mois suivant.',
+  'index.guide.p3':'Résultats basés sur les avis officiels. Confirmez toujours le montant final avant de réserver.',
+  'index.guide.p1Landing':'La surcharge carburant est liée aux prix du pétrole et facturée séparément du tarif de base.',
+  'index.guide.p2Landing':'Sélectionnez l\'origine et la destination pour comparer les montants officiels par compagnie.',
+  'index.landingTitle':'Surcharges carburant — Départs Corée',
+  'index.krOnly.title':'Départs Corée uniquement',
+  'index.krOnly.desc':'Sélectionnez départ et arrivée pour voir les montants officiels par compagnie.',
+  'index.indexLink':'→ Voir l\'index complet des compagnies',
+  'index.status.loading':'Chargement...','index.status.loadError':'Erreur de chargement',
+  'index.status.scriptError':'Erreur de script',
+  'index.status.updated':'Mis à jour: ','index.status.updatedSuffix':' · Avis officiel avr. 2026',
+  'index.filter.all':'Tout','index.filter.hasOfficialData':'Données officielles disponibles',
+  'index.result.label':'Surcharge par compagnie',
+  'index.result.noResults':'Aucun résultat',
+  'index.result.onlyKoreaDeparture':'Seuls les départs depuis la Corée sont pris en charge',
+  'index.result.overseasComingSoon':'Les départs hors Corée arrivent bientôt.',
+  'index.result.overseasMeta':'Route hors Corée',
+  'index.alert.selectAirports':'Veuillez sélectionner départ et destination',
+  'index.alert.differentAirports':'Le départ et la destination doivent être différents',
+  'index.meta.oneWay':'Aller simple','index.meta.roundTrip':'Aller-retour',
+  'index.meta.suffix':'Départ Corée · Avis officiel avril 2026',
+  'index.card.currentRoute':'Cette route',
+  'index.card.notPublished':'N/D','index.card.preAnnouncement':'En attente',
+  'index.card.groupTier':'Tarif groupe','index.card.usdNotice':'USD coté',
+  'index.card.notOperated':'Non desservie','index.card.routeNotServed':'La compagnie ne dessert pas cette route',
+  'index.card.viewOfficialNotice':'Avis officiel ↗',
+  'index.card.noData':'Données indisponibles. Consultez le bouton avis officiel.',
+  'index.card.compare':'Comparaison 04→05',
+  'index.card.period':'2026.04','index.card.periodMay':'2026.05',
+  'index.card.fare':'Surcharge','index.card.distanceBand':'Tranche distance',
+  'index.card.mayTrend':'Min. mai',
+  'index.card.groupTierShort':'Groupe',
+  'index.card.notListed':'Non publié','index.card.miniNotice':'Avis officiel ↗',
+},
+
+/* ══════ Deutsch ══════ */
+de:{
+  'nav.routes':'Streckensuche','nav.airlines':'Airline-Index','nav.news':'Nachrichten',
+  'footer.notice':'Treibstoffzuschlag-Daten dienen nur als Referenz. Bitte bestätigen Sie den endgültigen Betrag bei der Fluggesellschaft.',
+  'footer.about':'Über uns','footer.privacy':'Datenschutz','footer.terms':'Nutzungsbedingungen',
+  'index.title':'Treibstoffzuschlag — Internationale Flüge ab Korea',
+  'index.metaDesc':'Vergleichen Sie Treibstoffzuschläge nach Fluggesellschaft für internationale Flüge ab Korea.',
+  'index.heroTitle':'Treibstoffzuschlag nach Strecke',
+  'index.heroSub':'Vergleich der Treibstoffzuschläge für Korea-Abflüge · Offizielle Hinweise + KI-Prognose',
+  'index.labelOrigin':'Abflughafen','index.labelDest':'Ankunftsflughafen','index.labelTrip':'Reiseart',
+  'index.trip.oneWay':'Einfach','index.trip.roundTrip':'Hin und zurück',
+  'index.search':'🔍 Suchen',
+  'index.airport.selectOrigin':'Abflug wählen','index.airport.selectDest':'Ziel wählen',
+  'index.region.korea':'🇰🇷 Korea','index.region.japan':'🇯🇵 Japan',
+  'index.region.asia':'🌏 Asien','index.region.naOceania':'🇺🇸 Nordamerika & Ozeanien',
+  'index.region.europeMiddleEast':'🇪🇺 Europa & Naher Osten',
+  'airport.ICN':'Seoul Incheon','airport.GMP':'Seoul Gimpo','airport.PUS':'Busan','airport.CJU':'Jeju',
+  'airport.NRT':'Tokio Narita','airport.HND':'Tokio Haneda','airport.KIX':'Osaka',
+  'airport.FUK':'Fukuoka','airport.CTS':'Sapporo',
+  'airport.HKG':'Hongkong','airport.SIN':'Singapur','airport.BKK':'Bangkok','airport.MNL':'Manila',
+  'airport.KUL':'Kuala Lumpur','airport.SGN':'Ho-Chi-Minh-Stadt','airport.HAN':'Hanoi',
+  'airport.DAD':'Da Nang','airport.DPS':'Bali','airport.PVG':'Shanghai','airport.PEK':'Peking',
+  'airport.LAX':'Los Angeles','airport.JFK':'New York','airport.SFO':'San Francisco',
+  'airport.SEA':'Seattle','airport.SYD':'Sydney',
+  'airport.CDG':'Paris','airport.LHR':'London','airport.FRA':'Frankfurt',
+  'airport.AMS':'Amsterdam','airport.DXB':'Dubai',
+  'beta.title':'Beta-Service Hinweis',
+  'beta.desc':'Treibstoffzuschläge für internationale Flüge ab Korea. Endgültigen Betrag bei der Fluggesellschaft bestätigen.',
+  'beta.note':'※ Derzeit nur Korea-Abflüge unterstützt. Auslandsabflüge folgen bald.',
+  'index.intro1.title':'Treibstoffzuschlag-Vergleich für Korea-Abflüge',
+  'index.intro1.body':'Dieser Service vergleicht Treibstoffzuschläge nach Fluggesellschaft für internationale Flüge ab koreanischen Flughäfen.',
+  'index.intro2.title':'Daten basierend auf offiziellen Mitteilungen',
+  'index.intro2.body':'Monatliche offizielle Mitteilungen werden priorisiert. Verifizierte Airlines werden mit "Offiziell bestätigt" gekennzeichnet.',
+  'index.intro3.title':'Warum dieser Service?',
+  'index.intro3.body':'Treibstoffzuschläge sind ein erheblicher Teil des Flugpreises. Dieser Service aggregiert offizielle Mitteilungen auf einer Seite.',
+  'index.guide.title':'💡 Was ist ein Treibstoffzuschlag?',
+  'index.guide.p1':'Ein Treibstoffzuschlag ist eine zusätzliche Gebühr, die Fluggesellschaften neben dem Grundtarif erheben.',
+  'index.guide.p2':'Beträge variieren je nach Fluggesellschaft und Distanzbereich. Für den Folgemonat werden sie zu Beginn jeden Monats veröffentlicht.',
+  'index.guide.p3':'Ergebnisse basieren auf offiziellen Mitteilungen. Bestätigen Sie immer den endgültigen Betrag vor der Buchung.',
+  'index.guide.p1Landing':'Der Treibstoffzuschlag ist an internationale Ölpreise gebunden und wird separat vom Grundtarif erhoben.',
+  'index.guide.p2Landing':'Wählen Sie Abflug und Ziel, um offizielle Beträge nach Fluggesellschaft zu vergleichen.',
+  'index.landingTitle':'Treibstoffzuschläge — Korea-Abflüge',
+  'index.krOnly.title':'Nur Korea-Abflüge',
+  'index.krOnly.desc':'Wählen Sie Abflug und Ziel in der Streckensuche, um offizielle Beträge zu sehen.',
+  'index.indexLink':'→ Vollständigen Airline-Index ansehen',
+  'index.status.loading':'Daten werden geladen...','index.status.loadError':'Fehler beim Laden',
+  'index.status.scriptError':'Skriptfehler',
+  'index.status.updated':'Aktualisiert: ','index.status.updatedSuffix':' · Offizielle Mitteilung Apr. 2026',
+  'index.filter.all':'Alle','index.filter.hasOfficialData':'Offizielle Daten vorhanden',
+  'index.result.label':'Treibstoffzuschlag nach Fluggesellschaft',
+  'index.result.noResults':'Keine Ergebnisse',
+  'index.result.onlyKoreaDeparture':'Derzeit werden nur Korea-Abflüge unterstützt',
+  'index.result.overseasComingSoon':'Abflüge aus dem Ausland folgen bald.',
+  'index.result.overseasMeta':'Route mit Auslandsabflug',
+  'index.alert.selectAirports':'Bitte Abflug und Ziel auswählen',
+  'index.alert.differentAirports':'Abflug und Ziel müssen unterschiedlich sein',
+  'index.meta.oneWay':'Einfach','index.meta.roundTrip':'Hin und zurück',
+  'index.meta.suffix':'Korea-Abflug · Offizielle Mitteilung April 2026',
+  'index.card.currentRoute':'Diese Strecke',
+  'index.card.notPublished':'Nicht veröffentlicht','index.card.preAnnouncement':'Ausstehend',
+  'index.card.groupTier':'Gruppenpreis','index.card.usdNotice':'USD-notiert',
+  'index.card.notOperated':'Nicht betrieben','index.card.routeNotServed':'Diese Fluggesellschaft betreibt diese Strecke nicht',
+  'index.card.viewOfficialNotice':'Offizielle Mitteilung ↗',
+  'index.card.noData':'Offizielle Daten nicht verfügbar. Bitte über den offiziellen Hinweis-Button prüfen.',
+  'index.card.compare':'Vergleich 04→05',
+  'index.card.period':'2026.04','index.card.periodMay':'2026.05',
+  'index.card.fare':'Zuschlag','index.card.distanceBand':'Distanzbereich',
+  'index.card.mayTrend':'Mai Min.',
+  'index.card.groupTierShort':'Gruppe',
+  'index.card.notListed':'Nicht veröff.','index.card.miniNotice':'Offizielle Mitteilung ↗',
+},
+}; /* end I18N */
+
+/* ─── 언어 관리 ─── */
+window.getCurrentLang = function(){
+  return localStorage.getItem('aero_lang') || 'ko';
+};
+window.setCurrentLang = function(lang){
+  localStorage.setItem('aero_lang', lang);
+  window.SHARED_STATE.lang = lang;
+  document.documentElement.lang = lang;
+};
+
+/* ─── 번역 함수 ─── */
+window.t = function(key){
+  var lang = window.getCurrentLang();
+  var dict = window.I18N[lang];
+  if(dict && dict[key] !== undefined) return dict[key];
+  var ko = window.I18N['ko'];
+  if(ko && ko[key] !== undefined) return ko[key];
+  return key;
+};
+
+/* ─── 공항 select 재구성 ─── */
+window.buildAirportOptions = function(selectEl, type){
+  /* type: 'origin' | 'dest' */
+  var saved = selectEl.value;
+  selectEl.innerHTML = '';
+  /* placeholder */
+  var ph = document.createElement('option');
+  ph.value = '';
+  ph.textContent = window.t(type === 'origin' ? 'index.airport.selectOrigin' : 'index.airport.selectDest');
+  selectEl.appendChild(ph);
+
+  AIRPORT_GROUPS.forEach(function(grp){
+    var og = document.createElement('optgroup');
+    og.label = window.t(grp.key);
+    grp.codes.forEach(function(code){
+      var opt = document.createElement('option');
+      opt.value = code;
+      opt.textContent = window.t('airport.' + code) + ' (' + code + ')';
+      og.appendChild(opt);
+    });
+    selectEl.appendChild(og);
+  });
+  /* 선택값 복원 */
+  if(saved) selectEl.value = saved;
+};
+
+/* ─── DOM 일괄 applyLanguage ─── */
+window.applyLanguage = function(){
+  var lang = window.getCurrentLang();
+  document.documentElement.lang = lang;
+  /* data-i18n */
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    el.textContent = window.t(el.getAttribute('data-i18n'));
+  });
+  /* data-i18n-html */
+  document.querySelectorAll('[data-i18n-html]').forEach(function(el){
+    el.innerHTML = window.t(el.getAttribute('data-i18n-html'));
+  });
+  /* data-i18n-placeholder */
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){
+    el.placeholder = window.t(el.getAttribute('data-i18n-placeholder'));
+  });
+  /* data-i18n-title */
+  document.querySelectorAll('[data-i18n-title]').forEach(function(el){
+    el.title = window.t(el.getAttribute('data-i18n-title'));
+  });
+  /* airport selects */
+  var orig = document.getElementById('originSelect');
+  var dest = document.getElementById('destSelect');
+  if(orig) window.buildAirportOptions(orig, 'origin');
+  if(dest) window.buildAirportOptions(dest, 'dest');
+  /* document.title */
+  var titleKey = document.querySelector('meta[data-i18n-page-title]');
+  if(titleKey) document.title = window.t(titleKey.getAttribute('data-i18n-page-title'));
+  /* meta description */
+  var descEl = document.querySelector('meta[name="description"][data-i18n-page-desc]');
+  if(descEl) descEl.setAttribute('content', window.t(descEl.getAttribute('data-i18n-page-desc')));
+};
+
+/* ─── initNav 래핑 ─── */
+var _origInitNav = window.initNav;
+window.initNav = function(opts){
+  opts = opts || {};
+  var origLang = opts.onLangChange;
+  opts.onLangChange = function(val){
+    window.setCurrentLang(val);
+    window.applyLanguage();
+    if(origLang) origLang(val);
+  };
+  /* 저장된 언어 복원 */
+  var saved = window.getCurrentLang();
+  window.SHARED_STATE.lang = saved;
+  var navLang = document.getElementById('navLang');
+  if(navLang && saved) navLang.value = saved;
+  /* 원래 initNav 호출 */
+  if(_origInitNav) _origInitNav(opts);
+  /* 최초 적용 */
+  window.applyLanguage();
+};
+
+})();
