@@ -174,8 +174,8 @@
   </div>
 </nav>
 <div class="page-header">
-  <div class="page-title">참고 소식</div>
-  <div class="page-sub">유류할증료 관련 국가·기관·항공사·시장 참고 정보 · 데이터 기반 AI 요약 · 예측 근거 연결</div>
+  <div class="page-title" data-i18n="news.pageTitle">참고 소식</div>
+  <div class="page-sub" data-i18n="news.pageSub">유류할증료 관련 국가·기관·항공사·시장 참고 정보 · 데이터 기반 AI 요약 · 예측 근거 연결</div>
 </div>
 
 <!-- ── 베타 서비스 안내 배너 (BetaNoticeBanner) ── -->
@@ -203,18 +203,18 @@
 
   <!-- AI 예측 근거 요약 박스 -->
   <div class="predict-basis-box">
-    <div class="predict-basis-title"><span style="font-size:18px">📊</span> AI 예측 참고 지표 현황 <span style="font-size:10px;font-weight:400;color:#7E57C2">데이터 기반 추정</span></div>
+    <div class="predict-basis-title"><span style="font-size:18px">📊</span> <span data-i18n="news.predictTitle">AI 예측 참고 지표 현황</span> <span style="font-size:10px;font-weight:400;color:#7E57C2">데이터 기반 추정</span></div>
     <div class="predict-factor-grid" id="predictFactors">
       <div class="predict-factor"><div class="pf-label">Brent 유가</div><div class="pf-val down">$90 → $82 (급락 전환)</div></div>
       <div class="predict-factor"><div class="pf-label">원달러 환율</div><div class="pf-val up">1,470~1,480원</div></div>
       <div class="predict-factor"><div class="pf-label">지정학 리스크</div><div class="pf-val">중간 (완화 조짐)</div></div>
-      <div class="predict-factor"><div class="pf-label">6월 surcharge 전망</div><div class="pf-val down">변동성 확대 (하락 가능성)</div></div>
+      <div class="predict-factor"><div class="pf-label">6월 surcharge 전망</div><div class="pf-val down">유지 ~ 소폭 인하 가능성 (하락 우세)</div></div>
     </div>
     <div style="font-size:10px;color:#9C27B0;margin-top:10px;font-style:italic">* 5월 유류할증료는 공식 공지 기준 확정. 6월 전망은 시장 데이터 기반 참고용입니다.</div>
   </div>
 
   <div class="official-summary-box">
-    <div class="official-title">📢 5월 유류할증료 공식 공지 요약</div>
+    <div class="official-title" data-i18n="news.officialTitle">📢 5월 유류할증료 공식 공지 요약</div>
     <div class="official-item"><strong>대한항공</strong> — 4월 대비 전 구간 인상</div>
     <div class="official-item"><strong>아시아나항공</strong> — 4월 대비 전 구간 인상</div>
     <div class="official-item"><strong>진에어</strong> — 전 구간 인상 (예: USD 25 → 42, USD 76 → 140)</div>
@@ -223,7 +223,7 @@
   </div>
 
   <div class="compare-box">
-    <div class="compare-title">📊 4월 vs 5월 변화</div>
+    <div class="compare-title" data-i18n="news.compareTitle">📊 4월 vs 5월 변화</div>
     <ul>
       <li>대한항공: 전 구간 인상 (최대 약 2배)</li>
       <li>아시아나: 전 구간 인상</li>
@@ -234,26 +234,48 @@
   </div>
 
   <div class="market-brief-box">
-    <div class="mb-title">🌍 시장 브리핑</div>
-    <div class="mb-item">⛽ 브렌트유: 4/18 기준 $82대 급락 (고점 $90 → 하락 전환)</div>
-    <div class="mb-item">💱 원달러 환율: 1,470~1,480원대 높은 수준 유지</div>
-    <div class="mb-summary">→ 5월 유류할증료는 고점 반영 완료, 6월은 유가 급락 영향으로 변동성 확대 예상</div>
+    <div class="mb-title" data-i18n="news.marketTitle">🌍 시장 브리핑</div>
+    <div class="mb-item" data-i18n="news.brent">⛽ 브렌트유: $82 → $79~81 추가 하락 (하락 흐름 유지)</div>
+    <div class="mb-item" data-i18n="news.fx">💱 원달러 환율: 1,470 → 1,460원대 소폭 하락 (여전히 높은 수준)</div>
+    <div class="mb-item" data-i18n="news.geo">🌍 지정학: 중동 긴장 완화 유지 (추가 리스크 없음)</div>
+    <div class="mb-summary" data-i18n="news.marketSummary">→ 5월 유류할증료는 고점 반영 완료, 6월은 하락 압력 발생 구간 진입</div>
+  </div>
+
+  <div style="
+    background:#FFF8E1;
+    border:1px solid #FFD54F;
+    border-radius:12px;
+    padding:14px 16px;
+    margin-bottom:18px;
+    font-size:13px;
+    font-weight:600;
+    color:#5D4037;
+  ">
+    <span data-i18n="news.decisionTitle">📌 현재 판단 기준</span><br>
+    <span data-i18n="news.decisionLine1">→ 5월은 이미 고점 반영 완료</span><br>
+    <span data-i18n="news.decisionLine2">→ 6월은 유가 하락 영향으로 인하 가능성 존재</span><br><br>
+
+    <strong data-i18n="news.decisionShort">👉 단기 여행(1~2개월): 지금 예약이 유리</strong><br>
+    <strong data-i18n="news.decisionLong">👉 여유 있는 일정: 6월 추이 확인 후 예약 고려</strong>
   </div>
 
   <div class="ai-notice">
     <span style="font-size:16px">📋</span>
-    <div><strong>AI 요약 콘텐츠</strong> — 이 페이지의 내용은 공개된 정보를 바탕으로 AI가 정리한 참고용 자료입니다. 원문 기반 요약이며, 공식 정보가 아닙니다. 중요한 결정 전에 각 항공사 및 기관의 공식 채널을 반드시 확인하세요.</div>
+    <div data-i18n="news.aiNotice"><strong>AI 요약 콘텐츠</strong> — 이 페이지의 내용은 공개된 정보를 바탕으로 AI가 정리한 참고용 자료입니다. 원문 기반 요약이며, 공식 정보가 아닙니다. 중요한 결정 전에 각 항공사 및 기관의 공식 채널을 반드시 확인하세요.</div>
   </div>
 
   <div class="filter-row" id="filterRow">
-    <button class="ftab active" data-f="all">전체</button>
-    <button class="ftab" data-f="institution">기관</button>
+    <button class="ftab active" data-f="all" data-i18n="news.filterAll">전체</button>
+    <button class="ftab" data-f="institution" data-i18n="news.filterInstitution">기관</button>
     <!-- v33: 항공사 공지 탭 일시 숨김 — 전 항공사 지원 시 "공식 공지 모음" 페이지로 별도 구현 예정 -->
     <!-- <button class="ftab" data-f="airline">항공사</button> -->
-    <button class="ftab" data-f="market">시장</button>
+    <button class="ftab" data-f="market" data-i18n="news.filterMarket">시장</button>
   </div>
 
   <div class="news-list" id="newsList">
+    <div style="font-size:12px;color:#777;margin-bottom:10px;" data-i18n="news.disclaimer">
+      ※ 유류할증료는 예약 시점 기준으로 적용됩니다. 변동 전에 예약 여부를 반드시 확인하세요.
+    </div>
     <div style="text-align:center;padding:32px;color:var(--muted)">소식 데이터 로딩 중...</div>
   </div>
 
@@ -327,13 +349,25 @@ function renderPredictBasis(){
    +'<div class="predict-factor"><div class="pf-label">' + periodLabel + ' surcharge 전망</div><div class="pf-val ' + dirClass + '">' + dirLabel + '</div></div>';
 }
 
-var CAT_MAP = {
-  airline:'항공사', institution:'기관', market:'시장', general:'일반'
-};
 var CAT_CLS = {airline:'cat-airline',institution:'cat-institution',market:'cat-market',general:'cat-general'};
 var CAT_ICON = {airline:'✈️',institution:'🏛',market:'📊',general:'ℹ️'};
+function getCatLabel(cat){
+  return (window.t && window.t('news.cat.'+cat)) || ({airline:'항공사',institution:'기관',market:'시장',general:'일반'}[cat]||cat);
+}
+function getImpactPrefix(){
+  return (window.t && window.t('news.impact.prefix')) || '→ 유류할증료 영향: ';
+}
 
 var FIXED_NEWS = [{
+  category: 'market',
+  priority: 1,
+  date: '2026-04-20',
+  title: '유가 하락 지속, 6월 유류할증료 인하 가능성 확대',
+  summary: '브렌트유가 80달러 초반까지 하락한 이후 추가 하락 흐름을 유지하고 있다. 환율은 여전히 높은 수준이지만 소폭 안정세를 보이며, 6월 유류할증료는 하락 또는 유지 가능성이 커지고 있다.',
+  impact: '하락 압력 강화',
+  tags: ['유가','유류할증료','전망'],
+  sourceName: 'Market Update'
+},{
   category: 'market',
   priority: 1,
   date: '2026-04-17',
@@ -400,9 +434,9 @@ function renderNews(){
     document.getElementById('newsList').innerHTML='<div class="empty-news"><div class="icon">🔍</div><div>해당 분류의 소식이 없습니다</div></div>';
     return;
   }
-  document.getElementById('newsList').innerHTML=filtered.map(function(it){
+  document.getElementById('newsList').innerHTML='<div style="font-size:12px;color:#777;margin-bottom:10px;" data-i18n="news.disclaimer">※ 유류할증료는 예약 시점 기준으로 적용됩니다. 변동 전에 예약 여부를 반드시 확인하세요.</div>'+filtered.map(function(it){
     var catCls=CAT_CLS[it.category]||CAT_CLS.general;
-    var catLabel=CAT_MAP[it.category]||'일반';
+    var catLabel=getCatLabel(it.category);
     var catIcon=CAT_ICON[it.category]||'ℹ️';
     var relevanceDots='';
     for(var i=0;i<5;i++){
@@ -420,7 +454,7 @@ function renderNews(){
       +'</div>'
       +'<div class="news-title">'+it.title+'</div>'
       +'<div class="news-summary">'+it.summary+'</div>'
-      +'<div class="news-impact">→ 유류할증료 영향: '+(it.impact||'참고')+'</div>'
+      +'<div class="news-impact">'+getImpactPrefix()+(it.impact||'참고')+'</div>'
       +'<div class="news-footer">'+srcHtml+'<div class="news-tags">'+tagsHtml+'</div></div>'
       +'</div>';
   }).join('');
@@ -432,7 +466,12 @@ document.getElementById('filterRow').addEventListener('click',function(e){
   btn.classList.add('active'); currentF=btn.dataset.f; renderNews();
 });
 
-window.initNav({onLangChange:function(){},onCurrChange:function(){}});
+window.initNav({
+  onLangChange:function(lang){
+    renderNews();
+  },
+  onCurrChange:function(){}
+});
 loadNews();
 </script>
 <footer style="background:var(--white);border-top:1px solid var(--line);padding:20px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;">
