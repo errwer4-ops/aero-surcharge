@@ -1,6 +1,167 @@
 {
   "runs": [
     {
+      "runAt": "2026-04-21T00:48:35.699Z",
+      "opts": {
+        "mock": false,
+        "dryRun": false,
+        "skipLlm": false,
+        "only": null
+      },
+      "steps": {
+        "market": {
+          "source": "live",
+          "usdKrw": 1471,
+          "fxError": null
+        },
+        "collect": [
+          {
+            "code": "KE",
+            "detected": true,
+            "source": "fallback",
+            "error": "KE: hard timeout 60s"
+          },
+          {
+            "code": "OZ",
+            "detected": true,
+            "source": "fallback",
+            "error": "OZ: hard timeout 60s"
+          },
+          {
+            "code": "TW",
+            "detected": true,
+            "source": "fallback",
+            "error": "HTTP 403"
+          },
+          {
+            "code": "LJ",
+            "detected": true,
+            "source": "fallback",
+            "error": "LJ: override/API/direct/Playwright 모두 실패"
+          },
+          {
+            "code": "7C",
+            "detected": false,
+            "source": "live",
+            "error": null
+          },
+          {
+            "code": "BX",
+            "detected": true,
+            "source": "fallback",
+            "error": "BX: override/API/direct/Playwright 모두 실패"
+          },
+          {
+            "code": "YP",
+            "detected": true,
+            "source": "fallback",
+            "error": "YP: override/API/direct/Playwright 모두 실패"
+          }
+        ],
+        "aiSearch": {
+          "autoRegistered": [],
+          "stillFallback": [
+            "KE",
+            "OZ",
+            "TW",
+            "LJ",
+            "BX",
+            "YP"
+          ]
+        },
+        "parse": [
+          {
+            "code": "KE",
+            "routeCount": 9,
+            "usedMock": true
+          },
+          {
+            "code": "OZ",
+            "routeCount": 4,
+            "usedMock": true
+          },
+          {
+            "code": "TW",
+            "routeCount": 3,
+            "usedMock": true
+          },
+          {
+            "code": "LJ",
+            "routeCount": 4,
+            "usedMock": true
+          },
+          {
+            "code": "7C",
+            "routeCount": 0,
+            "usedMock": false
+          },
+          {
+            "code": "BX",
+            "routeCount": 3,
+            "usedMock": true
+          },
+          {
+            "code": "YP",
+            "routeCount": 2,
+            "usedMock": true
+          }
+        ],
+        "validate": [
+          {
+            "code": "KE",
+            "passed": true,
+            "spikeDetected": false,
+            "validRoutes": 9,
+            "rejectedRoutes": 0
+          },
+          {
+            "code": "OZ",
+            "passed": false,
+            "spikeDetected": false,
+            "validRoutes": 0,
+            "rejectedRoutes": 4
+          },
+          {
+            "code": "TW",
+            "passed": true,
+            "spikeDetected": false,
+            "validRoutes": 3,
+            "rejectedRoutes": 0
+          },
+          {
+            "code": "LJ",
+            "passed": true,
+            "spikeDetected": false,
+            "validRoutes": 4,
+            "rejectedRoutes": 0
+          },
+          {
+            "code": "7C",
+            "passed": false,
+            "spikeDetected": false,
+            "validRoutes": 0,
+            "rejectedRoutes": 0
+          },
+          {
+            "code": "BX",
+            "passed": true,
+            "spikeDetected": false,
+            "validRoutes": 3,
+            "rejectedRoutes": 0
+          },
+          {
+            "code": "YP",
+            "passed": true,
+            "spikeDetected": false,
+            "validRoutes": 2,
+            "rejectedRoutes": 0
+          }
+        ]
+      },
+      "success": true,
+      "durationMs": 66767
+    },
+    {
       "runAt": "2026-04-20T01:51:45.312Z",
       "opts": {
         "mock": false,
@@ -2900,153 +3061,6 @@
       },
       "success": true,
       "durationMs": 41
-    },
-    {
-      "runAt": "2026-04-04T06:11:12.893Z",
-      "opts": {
-        "mock": true,
-        "dryRun": false,
-        "only": null
-      },
-      "steps": {
-        "market": {
-          "source": "mock"
-        },
-        "collect": [
-          {
-            "code": "KE",
-            "detected": true,
-            "usedMock": true,
-            "error": null
-          },
-          {
-            "code": "OZ",
-            "detected": true,
-            "usedMock": true,
-            "error": null
-          },
-          {
-            "code": "YP",
-            "detected": true,
-            "usedMock": true,
-            "error": null
-          },
-          {
-            "code": "LJ",
-            "detected": true,
-            "usedMock": true,
-            "error": null
-          },
-          {
-            "code": "7C",
-            "detected": true,
-            "usedMock": true,
-            "error": null
-          },
-          {
-            "code": "TW",
-            "detected": true,
-            "usedMock": true,
-            "error": null
-          },
-          {
-            "code": "BX",
-            "detected": true,
-            "usedMock": true,
-            "error": null
-          }
-        ],
-        "parse": [
-          {
-            "code": "KE",
-            "routeCount": 9,
-            "usedMock": true
-          },
-          {
-            "code": "OZ",
-            "routeCount": 4,
-            "usedMock": true
-          },
-          {
-            "code": "YP",
-            "routeCount": 2,
-            "usedMock": true
-          },
-          {
-            "code": "LJ",
-            "routeCount": 4,
-            "usedMock": true
-          },
-          {
-            "code": "7C",
-            "routeCount": 4,
-            "usedMock": true
-          },
-          {
-            "code": "TW",
-            "routeCount": 3,
-            "usedMock": true
-          },
-          {
-            "code": "BX",
-            "routeCount": 3,
-            "usedMock": true
-          }
-        ],
-        "validate": [
-          {
-            "code": "KE",
-            "passed": true,
-            "spikeDetected": false,
-            "validRoutes": 9,
-            "rejectedRoutes": 0
-          },
-          {
-            "code": "OZ",
-            "passed": true,
-            "spikeDetected": false,
-            "validRoutes": 4,
-            "rejectedRoutes": 0
-          },
-          {
-            "code": "YP",
-            "passed": true,
-            "spikeDetected": false,
-            "validRoutes": 2,
-            "rejectedRoutes": 0
-          },
-          {
-            "code": "LJ",
-            "passed": true,
-            "spikeDetected": false,
-            "validRoutes": 4,
-            "rejectedRoutes": 0
-          },
-          {
-            "code": "7C",
-            "passed": true,
-            "spikeDetected": false,
-            "validRoutes": 4,
-            "rejectedRoutes": 0
-          },
-          {
-            "code": "TW",
-            "passed": true,
-            "spikeDetected": false,
-            "validRoutes": 3,
-            "rejectedRoutes": 0
-          },
-          {
-            "code": "BX",
-            "passed": true,
-            "spikeDetected": false,
-            "validRoutes": 3,
-            "rejectedRoutes": 0
-          }
-        ]
-      },
-      "success": true,
-      "durationMs": 42
     }
   ]
 }
