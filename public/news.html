@@ -266,6 +266,7 @@ async function loadNews(){
   renderOfficialSummary();
   renderCompareBox();
   renderNews();
+  patchFilterTabs();   /* 필터 버튼 key 노출 방지 */
 }
 
 /* ════════════════════════════════════════════════════════
@@ -696,8 +697,30 @@ function renderCompareBox(){
 /* FIXED_NEWS — 키 기반 구조 */
 var CAT_CLS  = {airline:'cat-airline',institution:'cat-institution',market:'cat-market',general:'cat-general'};
 var CAT_ICON = {airline:'✈️',institution:'🏛',market:'📊',general:'ℹ️'};
+
+/* ── getCatLabel ──────────────────────────────────────────
+   구조적 버그 수정:
+   window.t() 실패 시 key 문자열("news.cat.airline")을 반환하는데
+   이 값이 truthy라서 || 뒤 fallback으로 내려가지 않고
+   key 원문이 그대로 화면에 출력되는 문제.
+   → v !== key 검사로 진짜 번역 성공 여부를 구분.
+   언어별 fallback map도 포함해 6개 언어 모두 커버.
+   ──────────────────────────────────────────────────────── */
+var CAT_LABEL_FALLBACK = {
+  ko: {airline:'항공사', institution:'기관',      market:'시장',   general:'일반'},
+  en: {airline:'Airline', institution:'Institution', market:'Market', general:'General'},
+  ja: {airline:'航空会社', institution:'機関',      market:'市場',   general:'一般'},
+  zh: {airline:'航空公司', institution:'机构',      market:'市场',   general:'综合'},
+  fr: {airline:'Compagnie', institution:'Institution', market:'Marché', general:'Général'},
+  de: {airline:'Airline',   institution:'Institution', market:'Markt',  general:'Allgemein'}
+};
 function getCatLabel(cat){
-  return window.t('news.cat.'+cat) || ({airline:'항공사',institution:'기관',market:'시장',general:'일반'}[cat]||cat);
+  var key = 'news.cat.' + cat;
+  var v   = window.t(key);
+  if(v && v !== key) return v;                          /* t() 성공 */
+  var lang = getCurrentLang();                          /* 현재 언어 */
+  var map  = CAT_LABEL_FALLBACK[lang] || CAT_LABEL_FALLBACK['en'];
+  return map[cat] || cat;
 }
 
 /* ════════════════════════════════════════════════════════
@@ -939,12 +962,50 @@ function renderNews(){
   }).join('');
 }
 
+/* ════════════════════════════════════════════════════════
+   patchFilterTabs — 필터 버튼 i18n key 노출 방지
+   ─────────────────────────────────────────────────────────
+   _shared.js의 applyLanguage()가 data-i18n 속성을 처리하지만
+   번역 테이블에 해당 키(news.filterAirline 등)가 없는 언어에서는
+   key 문자열이 그대로 버튼 텍스트로 노출된다.
+   이 함수는 applyLanguage() 이후 호출되어 버튼 텍스트를 점검하고
+   key 원문이 남아 있으면 자체 fallback 맵으로 교체한다.
+   ════════════════════════════════════════════════════════ */
+var FILTER_LABEL_FALLBACK = {
+  ko: { 'news.filterAll':'전체',       'news.filterAirline':'항공사 공시',
+        'news.filterInstitution':'기관', 'news.filterMarket':'시장' },
+  en: { 'news.filterAll':'All',        'news.filterAirline':'Airline Notices',
+        'news.filterInstitution':'Institution', 'news.filterMarket':'Market' },
+  ja: { 'news.filterAll':'すべて',      'news.filterAirline':'公示',
+        'news.filterInstitution':'機関',  'news.filterMarket':'市場' },
+  zh: { 'news.filterAll':'全部',        'news.filterAirline':'航空公告',
+        'news.filterInstitution':'机构',  'news.filterMarket':'市场' },
+  fr: { 'news.filterAll':'Tout',        'news.filterAirline':'Compagnies',
+        'news.filterInstitution':'Institution', 'news.filterMarket':'Marché' },
+  de: { 'news.filterAll':'Alle',        'news.filterAirline':'Airlines',
+        'news.filterInstitution':'Institution', 'news.filterMarket':'Markt' }
+};
+function patchFilterTabs(){
+  var lang = getCurrentLang();
+  var map  = FILTER_LABEL_FALLBACK[lang] || FILTER_LABEL_FALLBACK['en'];
+  document.querySelectorAll('#filterRow .ftab').forEach(function(btn){
+    var i18nKey = btn.getAttribute('data-i18n');
+    if(!i18nKey) return;
+    /* 텍스트가 key 원문이거나 비어 있으면 fallback 적용 */
+    var txt = btn.textContent.trim();
+    if(!txt || txt === i18nKey){
+      btn.textContent = map[i18nKey] || (FILTER_LABEL_FALLBACK['ko'][i18nKey] || txt);
+    }
+  });
+}
+
 /* 언어 변경 시 JS 렌더 함수 전부 재실행 */
 function reRenderAll(){
   renderPredictBasis();
   renderOfficialSummary();
   renderCompareBox();
   renderNews();
+  patchFilterTabs();   /* 필터 버튼 key 노출 방지 */
 }
 
 document.getElementById('filterRow').addEventListener('click',function(e){
