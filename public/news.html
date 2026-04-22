@@ -154,7 +154,8 @@
     <div class="official-item" id="official7c"><strong>제주항공</strong> — 전 구간 인상 (예: USD 29 → 52, USD 68 → 126)</div>
     <div class="official-item" id="officialZe"><strong>이스타항공</strong> — 전 구간 인상 (예: 1군 USD 29 → 52, 6군 USD 68 → 126)</div>
     <div class="official-item" id="officialRs"><strong>에어서울</strong> — 전 구간 인상 (예: 300~700mi 46,800원 → 94,500원)</div>
-    <div class="official-desc"  id="officialDesc">* 단거리~장거리 전 구간 상승, 장거리 인상폭 큼 · 이스타항공·에어서울 5월 공시 확인 (2026.04.21)</div>
+    <div class="official-item" id="officialTw"><strong>티웨이항공</strong> — 전 구간 인상 (예: 1군 30,800원 → 58,600원, 7군 213,900원 → 406,900원)</div>
+    <div class="official-desc"  id="officialDesc">* 단거리~장거리 전 구간 상승, 장거리 인상폭 큼 · 티웨이·이스타항공·에어서울 5월 공시 확인 (2026.04.21~22)</div>
   </div>
 
   <!-- 비교 박스 -->
@@ -167,6 +168,7 @@
       <li>제주항공: 전 구간 인상, 최대 USD 68 → 126</li>
       <li>이스타항공: 전 구간 인상, 1군 USD 29 → 52 / 6군 USD 68 → 126</li>
       <li>에어서울: 전 구간 인상, 300~700mi 46,800원 → 94,500원 / 1,900~2,300mi 80,500원 → 165,000원</li>
+      <li>티웨이항공: 전 구간 약 2배 인상, 1군 30,800원 → 58,600원 / 7군 213,900원 → 406,900원</li>
       <li>공통: 현재까지 확인된 주요 한국발 국제선 항공사 전반에서 4월 대비 5월 인상 흐름</li>
     </ul>
   </div>
@@ -499,17 +501,17 @@ function renderOfficialSummary(){
   /* ── 언어별 항공사명 ── */
   var AIRLINE_NAMES = {
     ko: { officialKe:'대한항공',   officialOz:'아시아나항공', officialLj:'진에어',
-          'official7c':'제주항공', officialZe:'이스타항공',   officialRs:'에어서울' },
+          'official7c':'제주항공', officialZe:'이스타항공',   officialRs:'에어서울', officialTw:'티웨이항공' },
     en: { officialKe:'Korean Air', officialOz:'Asiana Airlines', officialLj:'Jin Air',
-          'official7c':'Jeju Air', officialZe:'Eastar Jet',      officialRs:'Air Seoul' },
+          'official7c':'Jeju Air', officialZe:'Eastar Jet',      officialRs:'Air Seoul', officialTw:"T'way Air" },
     ja: { officialKe:'大韓航空',   officialOz:'アシアナ航空',     officialLj:'ジンエアー',
-          'official7c':'チェジュ航空', officialZe:'イースター航空', officialRs:'エアソウル' },
+          'official7c':'チェジュ航空', officialZe:'イースター航空', officialRs:'エアソウル', officialTw:'ティーウェイ航空' },
     zh: { officialKe:'大韩航空',   officialOz:'韩亚航空',         officialLj:'真航空',
-          'official7c':'济州航空', officialZe:'易斯达航空',        officialRs:'首尔航空' },
+          'official7c':'济州航空', officialZe:'易斯达航空',        officialRs:'首尔航空',  officialTw:'德威航空' },
     fr: { officialKe:'Korean Air', officialOz:'Asiana Airlines', officialLj:'Jin Air',
-          'official7c':'Jeju Air', officialZe:'Eastar Jet',      officialRs:'Air Seoul' },
+          'official7c':'Jeju Air', officialZe:'Eastar Jet',      officialRs:'Air Seoul', officialTw:"T'way Air" },
     de: { officialKe:'Korean Air', officialOz:'Asiana Airlines', officialLj:'Jin Air',
-          'official7c':'Jeju Air', officialZe:'Eastar Jet',      officialRs:'Air Seoul' }
+          'official7c':'Jeju Air', officialZe:'Eastar Jet',      officialRs:'Air Seoul', officialTw:"T'way Air" }
   };
   var nameRow = AIRLINE_NAMES[lang] || AIRLINE_NAMES['en'];
 
@@ -522,7 +524,8 @@ function renderOfficialSummary(){
       'news.official.7c':   '전 구간 인상 (예: USD 29 → 52, USD 68 → 126)',
       'news.official.ze':   '전 구간 인상 (예: 1군 USD 29 → 52, 6군 USD 68 → 126)',
       'news.official.rs':   '전 구간 인상 (예: 300~700mi 46,800원 → 94,500원)',
-      'news.official.desc': '* 단거리~장거리 전 구간 상승, 장거리 인상폭 큼 · 이스타항공·에어서울 5월 공시 확인 (2026.04.21)'
+      'news.official.tw':   '전 구간 약 2배 인상 (예: 1군 30,800원 → 58,600원, 7군 213,900원 → 406,900원)',
+      'news.official.desc': '* 단거리~장거리 전 구간 상승, 장거리 인상폭 큼 · 티웨이·이스타항공·에어서울 5월 공시 확인 (2026.04.21~22)'
     },
     en: {
       'news.official.ke':   'All routes raised vs April',
@@ -531,7 +534,8 @@ function renderOfficialSummary(){
       'news.official.7c':   'All routes raised (e.g. USD 29 → 52, USD 68 → 126)',
       'news.official.ze':   'All routes raised (e.g. Band 1 USD 29 → 52, Band 6 USD 68 → 126)',
       'news.official.rs':   'All routes raised (e.g. 300–700mi KRW 46,800 → 94,500)',
-      'news.official.desc': '* Short- to long-haul all up; long-haul hike largest · Eastar Jet and Air Seoul May notices confirmed (2026.04.21)'
+      'news.official.tw':   'All routes raised ~2× (e.g. Band 1 KRW 30,800 → 58,600, Band 7 KRW 213,900 → 406,900)',
+      'news.official.desc': '* Short- to long-haul all up; long-haul hike largest · T\'way, Eastar Jet and Air Seoul May notices confirmed (2026.04.21–22)'
     },
     ja: {
       'news.official.ke':   '4月比で全区間値上げ',
@@ -540,7 +544,8 @@ function renderOfficialSummary(){
       'news.official.7c':   '全区間値上げ（例: USD 29 → 52, USD 68 → 126）',
       'news.official.ze':   '全区間値上げ（例: 1区間 USD 29 → 52, 6区間 USD 68 → 126）',
       'news.official.rs':   '全区間値上げ（例: 300〜700mi 46,800ウォン → 94,500ウォン）',
-      'news.official.desc': '* 短距離〜長距離まで全区間上昇、長距離の上げ幅が大きい · イースター航空とエアソウルの5月公告を確認 (2026.04.21)'
+      'news.official.tw':   '全区間約2倍値上げ（例: 1区間 30,800ウォン → 58,600ウォン、7区間 213,900ウォン → 406,900ウォン）',
+      'news.official.desc': '* 短距離〜長距離まで全区間上昇 · ティーウェイ・イースター航空・エアソウルの5月公告を確認 (2026.04.21〜22)'
     },
     zh: {
       'news.official.ke':   '较4月全区间上调',
@@ -549,7 +554,8 @@ function renderOfficialSummary(){
       'news.official.7c':   '全区间上调（例: USD 29 → 52, USD 68 → 126）',
       'news.official.ze':   '全区间上调（例: 第1档 USD 29 → 52, 第6档 USD 68 → 126）',
       'news.official.rs':   '全区间上调（例: 300–700英里 46,800韩元 → 94,500韩元）',
-      'news.official.desc': '* 短途至长途全部上涨，长途涨幅更大 · 易斯达航空与首尔航空5月公告已确认 (2026.04.21)'
+      'news.official.tw':   '全区间约2倍上调（例: 第1档 30,800韩元 → 58,600韩元，第7档 213,900韩元 → 406,900韩元）',
+      'news.official.desc': '* 短途至长途全部上涨 · 德威·易斯达航空与首尔航空5月公告已确认 (2026.04.21–22)'
     },
     fr: {
       'news.official.ke':   'Hausse sur toutes les liaisons vs avril',
@@ -558,7 +564,8 @@ function renderOfficialSummary(){
       'news.official.7c':   'Hausse sur toutes les liaisons (ex. USD 29 → 52, USD 68 → 126)',
       'news.official.ze':   'Hausse sur toutes les liaisons (ex. zone 1 USD 29 → 52, zone 6 USD 68 → 126)',
       'news.official.rs':   'Hausse sur toutes les liaisons (ex. 300–700mi 46 800 KRW → 94 500 KRW)',
-      'news.official.desc': '* Hausse sur tous les trajets court à long-courrier · Avis de mai Eastar Jet et Air Seoul confirmés (2026.04.21)'
+      'news.official.tw':   'Hausse ~2× sur toutes les liaisons (ex. zone 1 30 800 KRW → 58 600 KRW, zone 7 213 900 KRW → 406 900 KRW)',
+      'news.official.desc': '* Hausse sur tous les trajets · Avis de mai T\'way, Eastar Jet et Air Seoul confirmés (2026.04.21–22)'
     },
     de: {
       'news.official.ke':   'Alle Strecken gegenüber April erhöht',
@@ -567,7 +574,8 @@ function renderOfficialSummary(){
       'news.official.7c':   'Alle Strecken erhöht (z. B. USD 29 → 52, USD 68 → 126)',
       'news.official.ze':   'Alle Strecken erhöht (z. B. Band 1 USD 29 → 52, Band 6 USD 68 → 126)',
       'news.official.rs':   'Alle Strecken erhöht (z. B. 300–700mi 46.800 KRW → 94.500 KRW)',
-      'news.official.desc': '* Kurz- bis Langstrecke durchgehend höher · Mai-Mitteilungen von Eastar Jet und Air Seoul bestätigt (2026.04.21)'
+      'news.official.tw':   'Alle Strecken ~2× erhöht (z. B. Band 1 30.800 KRW → 58.600 KRW, Band 7 213.900 KRW → 406.900 KRW)',
+      'news.official.desc': '* Kurz- bis Langstrecke durchgehend höher · Mai-Mitteilungen von T\'way, Eastar Jet und Air Seoul bestätigt (2026.04.21–22)'
     }
   };
 
@@ -583,12 +591,13 @@ function renderOfficialSummary(){
   }
 
   var AIRLINE_KEYS = [
-    'officialKe','officialOz','officialLj','official7c','officialZe','officialRs'
+    'officialKe','officialOz','officialLj','official7c','officialZe','officialRs','officialTw'
   ];
   var CONTENT_KEYS = {
     officialKe:'news.official.ke', officialOz:'news.official.oz',
     officialLj:'news.official.lj', 'official7c':'news.official.7c',
-    officialZe:'news.official.ze', officialRs:'news.official.rs'
+    officialZe:'news.official.ze', officialRs:'news.official.rs',
+    officialTw:'news.official.tw'
   };
 
   AIRLINE_KEYS.forEach(function(id){
@@ -761,7 +770,73 @@ var FIXED_NEWS_FALLBACK = {
     'news.fixed.20260421d.impact':  '5월 국제선 항공권 유류할증료 예산 반영 필요. 단, 6월 이후 방향은 유가·환율 추이에 따라 변동 가능.',
     'news.fixed.20260421d.source':  '각 항공사 공식 공지 종합',
     'news.fixed.20260421d.tag1': '유류할증료', 'news.fixed.20260421d.tag2': '5월',
-    'news.fixed.20260421d.tag3': '인상흐름',   'news.fixed.20260421d.tag4': '전망참고'
+    'news.fixed.20260421d.tag3': '인상흐름',   'news.fixed.20260421d.tag4': '전망참고',
+
+    /* ── 2026-04-22 티웨이항공 카드뉴스 시리즈 ── */
+
+    /* 카드 1: 메인 타이틀 — 시장 전반 상승 원인 */
+    'news.fixed.20260422tw0.title':   '2026년 5월 유류할증료 왜 이렇게 올랐나? — 원인 분석',
+    'news.fixed.20260422tw0.summary': '2026년 5월 한국 출발 국제선 유류할증료가 전 항공사에 걸쳐 4월 대비 큰 폭으로 인상됐습니다. 브렌트유 83~86달러 박스권 횡보, 원달러 환율 1,370~1,390원대 원화 약세, 중동 지정학 리스크 미해소가 복합 작용한 결과입니다. 5월 유류할증료 조회 및 계산 시 이 배경을 함께 확인하는 것이 중요합니다.',
+    'news.fixed.20260422tw0.impact':  '3가지 복합 요인(유가·환율·지정학)이 동시에 작용해 5월 전 항공사 국제선 유류할증료가 고점 반영. 예산 편성 필수.',
+    'news.fixed.20260422tw0.source':  '시장 데이터 종합 (2026.04.22)',
+    'news.fixed.20260422tw0.tag1': '유류할증료', 'news.fixed.20260422tw0.tag2': '2026 유류할증료',
+    'news.fixed.20260422tw0.tag3': '유가환율',    'news.fixed.20260422tw0.tag4': '국제선 유류할증료',
+
+    /* 카드 2: 핵심 요약 — 전 항공사 인상 + 최대 2배 */
+    'news.fixed.20260422tw1.title':   '5월 항공사 유류할증료 비교 — 전 항공사 인상, 최대 약 2배',
+    'news.fixed.20260422tw1.summary': '2026년 5월, 대한항공·아시아나항공·진에어·제주항공·이스타항공·에어서울·티웨이항공 등 한국 출발 국제선 항공사 전체에서 4월 대비 유류할증료 인상이 확인됐습니다. 항공사 유류할증료 비교 시 단거리 구간에서도 최대 약 2배 수준의 인상이 발생했으며, 장거리일수록 절대 금액 상승폭이 큽니다. 항공권 유류할증료 조회 전 반드시 최신 공시를 확인하세요.',
+    'news.fixed.20260422tw1.impact':  '5월 전체 인상 확정. 항공권 구매 시 유류할증료 계산에 5월 공시 금액 반영 필수.',
+    'news.fixed.20260422tw1.source':  '각 항공사 공식 공지 종합 (2026.04.22)',
+    'news.fixed.20260422tw1.tag1': '항공사 유류할증료 비교', 'news.fixed.20260422tw1.tag2': '유류할증료 조회',
+    'news.fixed.20260422tw1.tag3': '항공권 유류할증료',       'news.fixed.20260422tw1.tag4': '전 구간 인상',
+
+    /* 카드 3: 시장 원인 — 유가·환율·지정학 */
+    'news.fixed.20260422tw2.title':   '5월 유류할증료 인상 배경 — 브렌트유 횡보·원화약세·지정학 리스크',
+    'news.fixed.20260422tw2.summary': '2026년 5월 국제선 유류할증료 인상의 주요 원인은 세 가지입니다. ① 브렌트유 83~86달러 박스권 유지(완전 하락 없음), ② 원달러 환율 1,370~1,390원대 원화 약세 지속(KRW 공시 항공사에 직접 영향), ③ 중동 지정학 리스크 미완전 해소. 세 요인이 동시에 작용하면서 5월 유류할증료 전망이 고점 구간에 진입했습니다. 유류할증료 계산 시 환율과 유가를 함께 참고하세요.',
+    'news.fixed.20260422tw2.impact':  '유가 단독이 아닌 환율+지정학 복합 요인. 6월에는 유가 하락 반영 여부가 핵심 변수.',
+    'news.fixed.20260422tw2.source':  '시장 데이터 기반 참고 분석 (2026.04.22)',
+    'news.fixed.20260422tw2.tag1': '브렌트유', 'news.fixed.20260422tw2.tag2': '환율',
+    'news.fixed.20260422tw2.tag3': '유류할증료 전망', 'news.fixed.20260422tw2.tag4': '2026 유류할증료',
+
+    /* 카드 4: 티웨이 사례 — 핵심 카드 */
+    'news.fixed.20260422tw3.title':   '티웨이항공 5월 유류할증료 공시 — 전 구간 약 2배 인상 (4월 vs 5월)',
+    'news.fixed.20260422tw3.summary': '티웨이항공(TW) 2026년 5월 유류할증료 공시 내역 (편도/발권일 기준, KRW): 1군 30,800원 → 58,600원(+90%) / 2군 54,200원 → 103,600원(+91%) / 3군 67,400원 → 129,100원(+92%) / 4군 87,900원 → 168,200원(+91%) / 5군 95,200원 → 180,200원(+89%) / 7군 213,900원 → 406,900원(+90%). 6군은 이번 공시에서 해당 없음(-). 적용 기간: 2026년 5월 1일~31일(발권일 기준). 유류할증료 조회 시 반드시 발권일 기준 적용임을 확인하세요.',
+    'news.fixed.20260422tw3.impact':  '전 구간 약 89~92% 인상, 사실상 약 2배 수준. 장거리(7군) 절대 금액 406,900원으로 예산 영향 큼.',
+    'news.fixed.20260422tw3.source':  '티웨이항공 공식 공지 (2026.04.21)',
+    'news.fixed.20260422tw3.tag1': '티웨이항공', 'news.fixed.20260422tw3.tag2': '유류할증료 조회',
+    'news.fixed.20260422tw3.tag3': '5월',         'news.fixed.20260422tw3.tag4': '항공권 유류할증료',
+
+    /* 카드 5: 전체 항공사 흐름 */
+    'news.fixed.20260422tw4.title':   '2026년 5월 항공사 유류할증료 비교 — 대한항공·아시아나·LCC 전반',
+    'news.fixed.20260422tw4.summary': '2026년 5월 한국 출발 국제선 유류할증료 항공사별 흐름 (편도 기준 참고): 대한항공(KE) — 최대 구간(6,500mi~) 303,000원 → 564,000원. 아시아나(OZ) — 최대 구간(5,000mi~) 251,900원 → 476,200원. LCC 전반(진에어·제주항공·이스타항공) — USD 단위 공시, 단거리 약 68~90% 인상. 에어서울(RS) — KRW 공시, 전 구간 인상. 티웨이(TW) — KRW 공시, 전 구간 약 2배. 항공사 유류할증료 비교는 노선(거리)과 통화 기준을 함께 확인하세요.',
+    'news.fixed.20260422tw4.impact':  'FSC(대형사)·LCC 구분 없이 전방위 인상. 노선별 유류할증료 조회로 실제 부담 금액 확인 필수.',
+    'news.fixed.20260422tw4.source':  '각 항공사 공식 공지 종합 (2026.04.22)',
+    'news.fixed.20260422tw4.tag1': '항공사 유류할증료 비교', 'news.fixed.20260422tw4.tag2': '대한항공',
+    'news.fixed.20260422tw4.tag3': '국제선 유류할증료',       'news.fixed.20260422tw4.tag4': 'LCC',
+
+    /* 카드 6: 현재 상황 해석 */
+    'news.fixed.20260422tw5.title':   '5월 유류할증료 고점 반영 — 추가 상승 가능성은?',
+    'news.fixed.20260422tw5.summary': '2026년 5월 유류할증료는 브렌트유 고점과 원화 약세가 동시 반영된 수준으로, 시장에서는 이를 "고점 반영 완료" 구간으로 해석하는 시각이 있습니다. 다만 중동 리스크가 완전히 해소되지 않았고, 환율도 여전히 1,370원대를 유지 중이어서 추가 상승 가능성을 완전히 배제하기는 어렵습니다. 이 분석은 시장 데이터 기반 참고용이며 공식 전망이 아닙니다. 최신 유류할증료 조회는 각 항공사 공식 공지를 확인하세요.',
+    'news.fixed.20260422tw5.impact':  '5월은 고점 반영 가능성 높으나, 지정학·환율 변수로 6월 추가 인상 리스크 잔존. 확정 예약 시 현 공시 기준 계산 권장.',
+    'news.fixed.20260422tw5.source':  '시장 데이터 기반 참고 분석 (2026.04.22)',
+    'news.fixed.20260422tw5.tag1': '유류할증료 전망', 'news.fixed.20260422tw5.tag2': '2026 유류할증료',
+    'news.fixed.20260422tw5.tag3': '고점',             'news.fixed.20260422tw5.tag4': '유류할증료 계산',
+
+    /* 카드 7: 6월 전망 */
+    'news.fixed.20260422tw6.title':   '6월 유류할증료 전망 — 동결 또는 소폭 인하 가능성',
+    'news.fixed.20260422tw6.summary': '시장 데이터 기반 6월 유류할증료 전망(참고용): 브렌트유가 현 박스권(83~86달러)에서 추가 하락 시 6월 유류할증료 동결 또는 소폭 인하 가능성이 있습니다. 반면 환율 1,370원대가 유지되거나 중동 리스크가 재확산되면 인하 폭이 제한될 수 있습니다. 6월 공시는 5월 중 각 항공사 공식 채널에서 확인 가능합니다. 국제선 유류할증료 전망은 참고용이며 확정 수치가 아닙니다.',
+    'news.fixed.20260422tw6.impact':  '6월 동결 ~ 소폭 인하 가능성 있으나 확정 전까지 미확인. 공시 후 유류할증료 조회로 실제 금액 반드시 확인.',
+    'news.fixed.20260422tw6.source':  '시장 데이터 기반 참고 전망 (2026.04.22)',
+    'news.fixed.20260422tw6.tag1': '유류할증료 전망', 'news.fixed.20260422tw6.tag2': '6월',
+    'news.fixed.20260422tw6.tag3': '2026 유류할증료', 'news.fixed.20260422tw6.tag4': '국제선 유류할증료',
+
+    /* 카드 8: 행동 가이드 */
+    'news.fixed.20260422tw7.title':   '지금 예약 vs 기다릴까 — 5월 유류할증료 기준 항공권 구매 가이드',
+    'news.fixed.20260422tw7.summary': '5월 유류할증료가 전 항공사 고점 수준으로 확정된 상황에서 예약 타이밍 참고 가이드(공식 조언 아님): ① 1~2개월 내 여행 예정자: 현 5월 공시 기준으로 유류할증료 계산 후 지금 예약하는 것이 유리할 수 있습니다. ② 3개월 이상 여유 있는 일정: 6월 공시 확인 후 예약 고려. 브렌트유 하락 시 소폭 인하 가능성 있음. ③ 노선별 유류할증료 조회는 항공사 공식 사이트 또는 이 사이트 노선 조회 메뉴를 활용하세요. 최종 금액은 반드시 항공사 공식 채널에서 확인하세요.',
+    'news.fixed.20260422tw7.impact':  '단기 여행: 지금 예약 유리 / 여유 일정: 6월 추이 확인 후 결정. 유류할증료 계산 후 총 항공권 비용 비교 권장.',
+    'news.fixed.20260422tw7.source':  '공식 공지 기반 참고 가이드 (2026.04.22)',
+    'news.fixed.20260422tw7.tag1': '유류할증료 조회', 'news.fixed.20260422tw7.tag2': '항공권 유류할증료',
+    'news.fixed.20260422tw7.tag3': '예약 가이드',      'news.fixed.20260422tw7.tag4': '유류할증료 계산'
   },
   en: {
     /* ── 2026-04-21a ── */
@@ -794,7 +869,64 @@ var FIXED_NEWS_FALLBACK = {
     'news.fixed.20260421d.impact':  'Travel budgets for May international tickets should reflect higher surcharges. Direction after June may still vary with oil and FX.',
     'news.fixed.20260421d.source':  'Compiled from official airline notices',
     'news.fixed.20260421d.tag1': 'fuel surcharge', 'news.fixed.20260421d.tag2': 'May',
-    'news.fixed.20260421d.tag3': 'upward trend',    'news.fixed.20260421d.tag4': 'reference'
+    'news.fixed.20260421d.tag3': 'upward trend',    'news.fixed.20260421d.tag4': 'reference',
+
+    /* ── 2026-04-22 T'way card news (EN fallback) ── */
+    'news.fixed.20260422tw0.title':   'Why did fuel surcharges surge in May 2026? — Market analysis',
+    'news.fixed.20260422tw0.summary': 'Korea-origin international fuel surcharges rose sharply across all carriers in May 2026. Three factors combined: Brent crude holding at USD 83–86 (range-bound), KRW weakening to the 1,370–1,390 range, and unresolved Middle East geopolitical risk. Check fuel surcharge lookup tools before booking.',
+    'news.fixed.20260422tw0.impact':  'Three simultaneous drivers (oil, FX, geopolitics) pushed May surcharges to a peak-reflected level across all airlines.',
+    'news.fixed.20260422tw0.source':  'Market data summary (2026.04.22)',
+    'news.fixed.20260422tw0.tag1': 'fuel surcharge', 'news.fixed.20260422tw0.tag2': '2026 fuel surcharge',
+    'news.fixed.20260422tw0.tag3': 'oil price FX',    'news.fixed.20260422tw0.tag4': 'international surcharge',
+
+    'news.fixed.20260422tw1.title':   'May airline fuel surcharge comparison — All carriers up, max ~2×',
+    'news.fixed.20260422tw1.summary': 'In May 2026, Korean Air, Asiana, Jin Air, Jeju Air, Eastar Jet, Air Seoul, and T\'way Air all confirmed increases versus April. Even short-haul bands rose by up to around 2×. Always verify the latest official notice before calculating airline ticket fuel surcharges.',
+    'news.fixed.20260422tw1.impact':  'May increases confirmed for all carriers. Use updated surcharge amounts when calculating ticket costs.',
+    'news.fixed.20260422tw1.source':  'Official notices compiled (2026.04.22)',
+    'news.fixed.20260422tw1.tag1': 'airline surcharge comparison', 'news.fixed.20260422tw1.tag2': 'surcharge lookup',
+    'news.fixed.20260422tw1.tag3': 'ticket fuel surcharge',         'news.fixed.20260422tw1.tag4': 'all bands raised',
+
+    'news.fixed.20260422tw2.title':   'May surcharge hike drivers — Brent range-bound, weak KRW, geopolitical risk',
+    'news.fixed.20260422tw2.summary': 'Three key factors behind May 2026 surcharge increases: ① Brent crude at USD 83–86 (no significant drop), ② USD/KRW at 1,370–1,390 (sustained KRW weakness affecting KRW-denominated notices directly), ③ Middle East risk not fully resolved. Factor these in when estimating future international surcharge levels.',
+    'news.fixed.20260422tw2.impact':  'Not just oil — a compound of FX and geopolitics. Whether oil falls in June is the key variable for the next revision.',
+    'news.fixed.20260422tw2.source':  'Market data reference analysis (2026.04.22)',
+    'news.fixed.20260422tw2.tag1': 'Brent crude', 'news.fixed.20260422tw2.tag2': 'exchange rate',
+    'news.fixed.20260422tw2.tag3': 'surcharge outlook', 'news.fixed.20260422tw2.tag4': '2026 fuel surcharge',
+
+    'news.fixed.20260422tw3.title':   'T\'way Air May surcharge notice — All bands ~2× (April vs May)',
+    'news.fixed.20260422tw3.summary': 'T\'way Air (TW) May 2026 fuel surcharge notice (one-way / booking-date basis, KRW): Band 1 KRW 30,800 → 58,600 (+90%) / Band 2 KRW 54,200 → 103,600 (+91%) / Band 3 KRW 67,400 → 129,100 (+92%) / Band 4 KRW 87,900 → 168,200 (+91%) / Band 5 KRW 95,200 → 180,200 (+89%) / Band 7 KRW 213,900 → 406,900 (+90%). Band 6 not applicable this period. Effective May 1–31, 2026 (booking-date basis).',
+    'news.fixed.20260422tw3.impact':  'All bands up ~89–92% — effectively ~2×. Band 7 (long-haul) at KRW 406,900 represents a significant budget impact.',
+    'news.fixed.20260422tw3.source':  'T\'way Air official notice (2026.04.21)',
+    'news.fixed.20260422tw3.tag1': 'T\'way Air', 'news.fixed.20260422tw3.tag2': 'surcharge lookup',
+    'news.fixed.20260422tw3.tag3': 'May',          'news.fixed.20260422tw3.tag4': 'ticket fuel surcharge',
+
+    'news.fixed.20260422tw4.title':   'May 2026 airline fuel surcharge comparison — Korean Air, Asiana, LCCs',
+    'news.fixed.20260422tw4.summary': 'May 2026 Korea-origin surcharge overview (one-way reference): Korean Air — up to KRW 564,000 for 6,500mi+. Asiana — up to KRW 476,200 for 5,000mi+. LCCs (Jin Air, Jeju Air, Eastar Jet) — USD-denominated, short-haul up ~68–90%. Air Seoul — KRW-denominated, all bands raised. T\'way — KRW-denominated, all bands ~2×. Always check the distance band and currency denomination when comparing airline surcharges.',
+    'news.fixed.20260422tw4.impact':  'Increases span both FSCs and LCCs. Route-specific surcharge lookup is essential to understand actual cost impact.',
+    'news.fixed.20260422tw4.source':  'Official notices compiled (2026.04.22)',
+    'news.fixed.20260422tw4.tag1': 'airline surcharge comparison', 'news.fixed.20260422tw4.tag2': 'Korean Air',
+    'news.fixed.20260422tw4.tag3': 'international surcharge',       'news.fixed.20260422tw4.tag4': 'LCC',
+
+    'news.fixed.20260422tw5.title':   'May surcharge peak reflection — Further hike risk?',
+    'news.fixed.20260422tw5.summary': 'May 2026 surcharges appear to reflect a peak driven by high Brent and weak KRW simultaneously. Some market observers interpret this as "peak-reflected," but with Middle East risk unresolved and KRW still in the 1,370 range, the possibility of further increases cannot be fully ruled out. This is a reference analysis, not an official forecast. Always verify current surcharges through official airline channels.',
+    'news.fixed.20260422tw5.impact':  'May likely reflects a peak, but June upside risk remains due to geopolitics and FX. Recommended to calculate at current published rates when confirming bookings.',
+    'news.fixed.20260422tw5.source':  'Market data reference analysis (2026.04.22)',
+    'news.fixed.20260422tw5.tag1': 'surcharge outlook', 'news.fixed.20260422tw5.tag2': '2026 fuel surcharge',
+    'news.fixed.20260422tw5.tag3': 'peak',               'news.fixed.20260422tw5.tag4': 'surcharge calculation',
+
+    'news.fixed.20260422tw6.title':   'June surcharge outlook — Stable or slight decrease possible',
+    'news.fixed.20260422tw6.summary': 'Reference outlook for June 2026 surcharges: if Brent drops below the current USD 83–86 range, a flat or modest decrease in June surcharges is possible. However, if KRW stays in the 1,370s or Middle East risk re-escalates, the downside may be limited. June notices will be published by each airline during May. This is a reference view only — not a confirmed forecast.',
+    'news.fixed.20260422tw6.impact':  'Flat to slight downside possible in June, but unconfirmed until official notice. Verify via surcharge lookup once published.',
+    'news.fixed.20260422tw6.source':  'Market data reference forecast (2026.04.22)',
+    'news.fixed.20260422tw6.tag1': 'surcharge outlook', 'news.fixed.20260422tw6.tag2': 'June',
+    'news.fixed.20260422tw6.tag3': '2026 fuel surcharge', 'news.fixed.20260422tw6.tag4': 'international surcharge',
+
+    'news.fixed.20260422tw7.title':   'Book now vs wait? — Booking guide based on May surcharge data',
+    'news.fixed.20260422tw7.summary': 'Reference guide based on May 2026 confirmed surcharges (not official advice): ① Traveling within 1–2 months: Booking now at current May rates may be the safer choice. ② Flexible schedule of 3+ months: Consider waiting to check June notices — a mild decrease is possible if Brent declines. ③ Use the route-based fuel surcharge lookup on this site or official airline pages for exact amounts. Always confirm final surcharge with the airline before purchasing.',
+    'news.fixed.20260422tw7.impact':  'Short-term travelers: booking now may be favorable. Flexible schedules: check June rates first. Calculate total ticket cost including surcharge before deciding.',
+    'news.fixed.20260422tw7.source':  'Reference guide based on official notices (2026.04.22)',
+    'news.fixed.20260422tw7.tag1': 'surcharge lookup', 'news.fixed.20260422tw7.tag2': 'ticket fuel surcharge',
+    'news.fixed.20260422tw7.tag3': 'booking guide',     'news.fixed.20260422tw7.tag4': 'surcharge calculation'
   }
 };
 
@@ -829,6 +961,63 @@ var FIXED_NEWS = [
    impactKey:'news.fixed.20260421d.impact', sourceNameKey:'news.fixed.20260421d.source',
    tagKeys:['news.fixed.20260421d.tag1','news.fixed.20260421d.tag2',
             'news.fixed.20260421d.tag3','news.fixed.20260421d.tag4'],
+   relevanceScore:0.8},
+
+  /* ── 2026-04-22 티웨이 카드뉴스 시리즈 (8장) ── */
+  {category:'market',  priority:1, date:'2026-04-22', aiSummary:true,
+   titleKey:'news.fixed.20260422tw0.title', summaryKey:'news.fixed.20260422tw0.summary',
+   impactKey:'news.fixed.20260422tw0.impact', sourceNameKey:'news.fixed.20260422tw0.source',
+   tagKeys:['news.fixed.20260422tw0.tag1','news.fixed.20260422tw0.tag2',
+            'news.fixed.20260422tw0.tag3','news.fixed.20260422tw0.tag4'],
+   relevanceScore:1.0},
+
+  {category:'airline', priority:1, date:'2026-04-22', aiSummary:true,
+   titleKey:'news.fixed.20260422tw1.title', summaryKey:'news.fixed.20260422tw1.summary',
+   impactKey:'news.fixed.20260422tw1.impact', sourceNameKey:'news.fixed.20260422tw1.source',
+   tagKeys:['news.fixed.20260422tw1.tag1','news.fixed.20260422tw1.tag2',
+            'news.fixed.20260422tw1.tag3','news.fixed.20260422tw1.tag4'],
+   relevanceScore:1.0},
+
+  {category:'market',  priority:1, date:'2026-04-22', aiSummary:true,
+   titleKey:'news.fixed.20260422tw2.title', summaryKey:'news.fixed.20260422tw2.summary',
+   impactKey:'news.fixed.20260422tw2.impact', sourceNameKey:'news.fixed.20260422tw2.source',
+   tagKeys:['news.fixed.20260422tw2.tag1','news.fixed.20260422tw2.tag2',
+            'news.fixed.20260422tw2.tag3','news.fixed.20260422tw2.tag4'],
+   relevanceScore:1.0},
+
+  {category:'airline', priority:1, date:'2026-04-22', aiSummary:true,
+   titleKey:'news.fixed.20260422tw3.title', summaryKey:'news.fixed.20260422tw3.summary',
+   impactKey:'news.fixed.20260422tw3.impact', sourceNameKey:'news.fixed.20260422tw3.source',
+   tagKeys:['news.fixed.20260422tw3.tag1','news.fixed.20260422tw3.tag2',
+            'news.fixed.20260422tw3.tag3','news.fixed.20260422tw3.tag4'],
+   relevanceScore:1.0},
+
+  {category:'airline', priority:1, date:'2026-04-22', aiSummary:true,
+   titleKey:'news.fixed.20260422tw4.title', summaryKey:'news.fixed.20260422tw4.summary',
+   impactKey:'news.fixed.20260422tw4.impact', sourceNameKey:'news.fixed.20260422tw4.source',
+   tagKeys:['news.fixed.20260422tw4.tag1','news.fixed.20260422tw4.tag2',
+            'news.fixed.20260422tw4.tag3','news.fixed.20260422tw4.tag4'],
+   relevanceScore:0.9},
+
+  {category:'market',  priority:2, date:'2026-04-22', aiSummary:true,
+   titleKey:'news.fixed.20260422tw5.title', summaryKey:'news.fixed.20260422tw5.summary',
+   impactKey:'news.fixed.20260422tw5.impact', sourceNameKey:'news.fixed.20260422tw5.source',
+   tagKeys:['news.fixed.20260422tw5.tag1','news.fixed.20260422tw5.tag2',
+            'news.fixed.20260422tw5.tag3','news.fixed.20260422tw5.tag4'],
+   relevanceScore:0.9},
+
+  {category:'market',  priority:2, date:'2026-04-22', aiSummary:true,
+   titleKey:'news.fixed.20260422tw6.title', summaryKey:'news.fixed.20260422tw6.summary',
+   impactKey:'news.fixed.20260422tw6.impact', sourceNameKey:'news.fixed.20260422tw6.source',
+   tagKeys:['news.fixed.20260422tw6.tag1','news.fixed.20260422tw6.tag2',
+            'news.fixed.20260422tw6.tag3','news.fixed.20260422tw6.tag4'],
+   relevanceScore:0.8},
+
+  {category:'general', priority:2, date:'2026-04-22', aiSummary:true,
+   titleKey:'news.fixed.20260422tw7.title', summaryKey:'news.fixed.20260422tw7.summary',
+   impactKey:'news.fixed.20260422tw7.impact', sourceNameKey:'news.fixed.20260422tw7.source',
+   tagKeys:['news.fixed.20260422tw7.tag1','news.fixed.20260422tw7.tag2',
+            'news.fixed.20260422tw7.tag3','news.fixed.20260422tw7.tag4'],
    relevanceScore:0.8},
 
   /* ── 기존 항목 유지 ── */
