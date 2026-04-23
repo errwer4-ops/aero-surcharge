@@ -49,6 +49,47 @@
     .cell-note{font-size:10px;color:var(--muted);margin-top:2px;}
     .kr-only-note{font-size:11px;color:var(--muted);background:var(--blue-lt);border:1px solid #C5D4FC;border-radius:8px;padding:6px 14px;margin-bottom:14px;display:inline-flex;align-items:center;gap:6px;}
     @media(max-width:780px){.table-head,.row-main{grid-template-columns:36px 1fr auto;} .table-head .th:nth-child(n+4),.row-main>*:nth-child(n+4){display:none;} .main{padding:14px;}}
+
+    /* ── Accordion detail row ── */
+    .airline-row{cursor:pointer;user-select:none;}
+    .airline-row.is-open{background:#F0F4FF;}
+    .expand-hint{display:inline-flex;align-items:center;gap:4px;font-size:11px;color:var(--blue);font-weight:600;margin-top:5px;padding:3px 8px;border:1px solid #C5D4FC;border-radius:12px;background:#F0F4FF;cursor:pointer;white-space:nowrap;}
+    .expand-hint .arr{display:inline-block;transition:transform .2s;font-style:normal;}
+    .airline-row.is-open .expand-hint .arr{transform:rotate(180deg);}
+    .detail-row{display:none;border-top:1px solid var(--line);background:#F7F9FF;padding:16px 20px;}
+    .detail-row.is-open{display:block;}
+    .detail-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;flex-wrap:wrap;gap:8px;}
+    .detail-title{font-size:13px;font-weight:700;color:var(--blue);}
+    .detail-src-links{display:flex;gap:8px;flex-wrap:wrap;}
+    .detail-src-link{font-size:11px;padding:3px 9px;border:1px solid var(--line);border-radius:5px;text-decoration:none;color:var(--text2);background:#fff;transition:border-color .15s,color .15s;}
+    .detail-src-link:hover{border-color:var(--blue);color:var(--blue);}
+    .compare-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
+    table.cmp-tbl{width:100%;border-collapse:collapse;font-size:12px;min-width:500px;}
+    table.cmp-tbl th{background:var(--blue);color:#fff;padding:7px 12px;text-align:left;font-size:11px;font-weight:700;letter-spacing:.4px;white-space:nowrap;}
+    table.cmp-tbl th:nth-child(n+3){text-align:right;}
+    table.cmp-tbl td{padding:8px 12px;border-bottom:1px solid var(--line);vertical-align:top;}
+    table.cmp-tbl td:nth-child(n+3){text-align:right;font-family:var(--mono);white-space:nowrap;}
+    table.cmp-tbl td:nth-child(2){color:var(--muted);font-size:11.5px;line-height:1.45;max-width:200px;}
+    table.cmp-tbl tr:last-child td{border-bottom:none;}
+    table.cmp-tbl tr:hover td{background:#eef2fb;}
+    .cmp-band{font-weight:600;font-size:12px;}
+    .cmp-routes{color:var(--muted);font-size:11px;line-height:1.45;max-width:220px;}
+    .diff-up{color:#1740C8;font-weight:700;}
+    .diff-dn{color:#15803d;font-weight:700;}
+    .diff-eq{color:var(--muted);}
+    .diff-na{color:var(--muted);font-style:italic;}
+    .detail-note{font-size:11px;color:var(--muted);margin-top:10px;padding-top:8px;border-top:1px solid var(--line);}
+    @media(max-width:640px){table.cmp-tbl th,table.cmp-tbl td{padding:6px 8px;font-size:11px;} .cmp-routes{max-width:130px;} table.cmp-tbl th:nth-child(2),table.cmp-tbl td:nth-child(2){display:none;}}
+    /* ── SEO 콘텐츠 블록 ── */
+    .surcharge-summary{background:var(--white);border:1.5px solid var(--line);border-radius:12px;padding:18px 22px;margin-bottom:14px;box-shadow:0 2px 6px rgba(0,0,0,.04);}
+    .surcharge-summary h2{font-size:14px;font-weight:700;color:var(--text);margin-bottom:7px;display:flex;align-items:center;gap:6px;}
+    .surcharge-summary p{font-size:13px;color:var(--text2);line-height:1.75;margin:0;}
+    .surcharge-intro{font-size:12.5px;color:var(--muted);margin-bottom:8px;padding:0 2px;}
+    .surcharge-analysis{background:#F7F9FF;border:1px solid #C5D4FC;border-radius:10px;padding:14px 18px;margin-top:16px;}
+    .surcharge-analysis h3{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:8px;}
+    .surcharge-analysis ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px;}
+    .surcharge-analysis li{font-size:12.5px;color:var(--text2);line-height:1.6;}
+    .surcharge-analysis li strong{color:var(--text);}
   </style>
 </head>
 <body>
@@ -125,6 +166,21 @@
     <div class="status-dot" id="statusDot"></div><span id="statusText"></span>
   </div>
   <div class="kr-only-note">&#128681; 현재 <strong>한국 국적기 8개사 (에어부산 공식 공지 미제공)</strong>를 우선 표시합니다. 에어부산(BX)은 공식 공지 미제공으로 제외. 외항사는 추후 활성화 예정입니다.</div>
+
+  <!-- SEO: 요약 블록 -->
+  <section class="surcharge-summary" aria-label="2026년 5월 유류할증료 요약">
+    <h2>📋 2026년 5월 한국 출발 국제선 유류할증료 요약</h2>
+    <p>
+      2026년 5월 한국 출발 국제선 유류할증료는 전 구간에서 큰 폭으로 인상되었습니다.
+      <strong>대한항공 기준</strong> 단거리(~499 대권거리)는 42,000원 → 75,000원,
+      장거리(6,500~9,999 대권거리)는 303,000원 → 564,000원으로 상승하였습니다.
+      <strong>아시아나 기준</strong> 단거리(~499 대권거리)는 43,900원 → 85,400원,
+      장거리(5,000마일 이상)는 251,900원 → 476,200원으로 상승하였습니다.
+      LCC 항공사(제주항공·진에어 등) USD 공시 노선도 유사한 폭으로 인상되었으며,
+      아래 항공사별 비교표에서 4월 대비 5월 유류할증료 증감을 항목별로 확인할 수 있습니다.
+    </p>
+  </section>
+
   <div class="toolbar">
     <input class="search-input" id="searchInput" type="text" placeholder="항공사명 또는 IATA 코드 검색..."/>
     <div class="filter-tabs">
@@ -138,25 +194,178 @@
   <div class="table-wrap">
     <div class="table-head">
       <div class="th">IATA</div><div class="th">항공사</div>
-      <div class="th">공식 현재값</div><div class="th">기준 월</div>
+      <div class="th">5월 현재값</div><div class="th">기준 월</div>
       <div class="th">데이터 상태</div><div class="th">공식 출처</div>
     </div>
+    <p class="surcharge-intro" style="padding:8px 20px 0;margin:0;">아래는 2026년 4월·5월 국제선 유류할증료 비교 목록입니다. 항공사 행을 클릭하면 구간별 상세 비교표가 펼쳐집니다.</p>
     <div id="tableBody"><div style="padding:32px;text-align:center;color:var(--muted)">데이터 로딩 중...</div></div>
   </div>
+
+  <!-- SEO: 분석 블록 -->
+  <section class="surcharge-analysis" aria-label="유류할증료 변화 분석">
+    <h3>2026년 4월 → 5월 유류할증료 변화 분석</h3>
+    <ul>
+      <li><strong>전 구간 일제 인상</strong> — 한국 출발 국제선 모든 거리구간에서 유류할증료가 상승하였습니다.</li>
+      <li><strong>인상폭:</strong> 단거리 대비 장거리 구간의 절대 인상액이 훨씬 크며, <strong>대한항공 장거리(6,500~9,999) 기준 약 261,000원</strong>, <strong>아시아나 장거리(5,000마일 이상) 기준 약 224,300원</strong> 인상됩니다. 항공사별 인상폭이 상이하므로 개별 확인이 필요합니다.</li>
+      <li><strong>LCC 항공사 비교</strong> — 제주항공·진에어 등 USD 공시 항공사는 환율 영향을 받으며, 5월 공시 기준 단거리 구간이 USD 25~29 → USD 42~52로 상승하였습니다.</li>
+      <li><strong>이스타항공(군별 공시)</strong> — 1군(일본 근거리)이 USD 29 → USD 52로 인상, 6군(알마티)은 USD 68 → USD 126으로 큰 폭 인상됩니다.</li>
+      <li>실제 발권 시 적용 유류할증료는 각 항공사 공식 공지를 반드시 재확인하세요.</li>
+    </ul>
+  </section>
   <!-- 광고 슬롯 2 (AdSense 승인 후 ins 태그 삽입) -->
   <div class="ad-slot" id="adSlot2"></div>
 </div>
 <script src="_shared.js"></script>
 <script>
 /* ════════════════════════════════════════════════════════
-   airlines.html — v36 항공사 인덱스
-   · officialNoticeUrl 유효 여부만으로 버튼 활성화 (단순화)
-   · 콘솔 로그: officialNoticeUrl 존재, 버튼 활성 여부
-   · BX 제외, ZE 군별 스키마 표시
+   airlines.html — v37 항공사 인덱스
+   · accordion: row 클릭 → 4월 vs 5월 비교표 토글
+   · BASE_MONTH / NEXT_MONTH 상수로 월 관리
+   · 기존 검색/필터/공식공지 링크 전부 유지
+   · .cell-src-link / .detail-src-link stopPropagation 처리
 ════════════════════════════════════════════════════════ */
+
+var BASE_MONTH = '2026.04';
+var NEXT_MONTH = '2026.05';
+
+/* ════════════════════════════════════════════════════════
+   공식 공지 기반 하드코딩 비교 데이터
+   — resolveAllRoutes/resolveGroupTiers 결과가 4월=5월로 동일하게
+     나오는 버그를 방지하기 위해 직접 공시 값으로 override
+   — 출처: 각 항공사 공식 홈페이지 2026년 4월·5월 공지
+════════════════════════════════════════════════════════ */
+var OFFICIAL_COMPARE_DATA = {
+  /* 대한항공 (KE) — KRW, 대권거리(km) 기준, 편도 */
+  KE: [
+    { band:'~499',   routes:'인천-선양, 칭다오, 다롄, 옌지, 후쿠오카',
+      v4:42000,  v5:75000,  cur:'KRW' },
+    { band:'500~999',routes:'인천-상하이, 베이징, 텐진, 나고야, 오사카, 타이베이, 샤포로 외',
+      v4:57000,  v5:102000, cur:'KRW' },
+    { band:'1,000~1,499',routes:'인천-광저우, 시안, 선전, 홍콩, 울란바타르, 마카오',
+      v4:78000,  v5:144000, cur:'KRW' },
+    { band:'1,500~1,999',routes:'인천-마닐라, 하노이, 세부, 다낭',
+      v4:97500,  v5:180000, cur:'KRW' },
+    { band:'2,000~2,999',routes:'인천-방콕, 싱가포르, 양곤, 호찌민, 괌, 나트랑, 푸우옥',
+      v4:123000, v5:253500, cur:'KRW' },
+    { band:'3,000~3,999',routes:'인천-자카르타, 덴파사르',
+      v4:126000, v5:256500, cur:'KRW' },
+    { band:'4,000~4,999',routes:'인천-모스크바, 두바이, 호놀룰루, 브리즈번, 이스탄불',
+      v4:199500, v5:345000, cur:'KRW' },
+    { band:'5,000~6,499',routes:'인천-런던, 파리, 프랑크푸르트, 로마, 암스테르담 외',
+      v4:276000, v5:501000, cur:'KRW' },
+    { band:'6,500~9,999',routes:'인천-뉴욕, 댈러스, 보스턴, 시카고, 워싱턴, 토론토',
+      v4:303000, v5:564000, cur:'KRW' },
+  ],
+  /* 아시아나 (OZ) — KRW, 마일(mile) 기준, 편도 */
+  OZ: [
+    { band:'~499',   routes:'인천-후쿠오카, 오사카, 나리타, 상하이, 베이징 외',
+      v4:43900,  v5:85400,  cur:'KRW' },
+    { band:'500~999',routes:'인천-오키나와, 타이베이, 삿포로, 도쿄, 홍콩, 마카오',
+      v4:54100,  v5:103600, cur:'KRW' },
+    { band:'1,000~1,499',routes:'인천-마닐라, 하노이, 다낭, 세부 외',
+      v4:67400,  v5:129100, cur:'KRW' },
+    { band:'1,500~1,999',routes:'인천-방콕, 싱가포르, 괌, 하이난 외',
+      v4:77500,  v5:168200, cur:'KRW' },
+    { band:'2,000~2,499',routes:'인천-방콕(수완나폼), 코타키나발루, 자카르타',
+      v4:87900,  v5:180200, cur:'KRW' },
+    { band:'2,500~4,999',routes:'인천-호놀룰루, 시드니, 두바이, 이스탄불 외',
+      v4:95200,  v5:180200, cur:'KRW' },
+    { band:'5,000+',routes:'인천-런던, 파리, 뉴욕, 로스앤젤레스, 밴쿠버 외',
+      v4:251900, v5:476200, cur:'KRW' },
+  ],
+  /* 제주항공 (7C) — USD, 운항거리(mile) 기준 */
+  '7C': [
+    { band:'~500mile',  routes:'한국-후쿠오카, 오사카(부산), 마쓰야마, 가고시마 외 (1~500mi)',
+      v4:29, v5:52, cur:'USD' },
+    { band:'500~1000mile',routes:'한국-오사카(인천/김포), 도쿄, 샤포로, 오키나와 외',
+      v4:37, v5:66, cur:'USD' },
+    { band:'1000~1500mile',routes:'한국-홍콩, 마카오, 가오슝, 울란바타르, 장자제 외',
+      v4:44, v5:80, cur:'USD' },
+    { band:'1500~2000mile',routes:'한국-마닐라, 세부, 보홀, 하노이, 다낭, 비엔티안, 괌 외',
+      v4:53, v5:95, cur:'USD' },
+    { band:'2000~2500mile',routes:'한국-방콕, 치앙마이, 달랏, 나짱(나트랑), 호찌민 외',
+      v4:60, v5:107, cur:'USD' },
+    { band:'2500mile+',routes:'한국-싱가포르, 덴파사르, 바탐',
+      v4:68, v5:126, cur:'USD' },
+  ],
+  /* 진에어 (LJ) — USD, 운항거리(mile) 기준 */
+  LJ: [
+    { band:'1~599mile',  routes:'제주-상하이, 인천/부산-후쿠오카, 오사카, 기타큐슈 외',
+      v4:25, v5:42, cur:'USD' },
+    { band:'600~1199mile',routes:'인천/부산-오키나와, 도쿄, 나고야, 삿포로, 타이베이 외',
+      v4:35, v5:66, cur:'USD' },
+    { band:'1200~1799mile',routes:'인천/부산-클락, 세부, 괌, 울란바토르, 구이린',
+      v4:58, v5:107, cur:'USD' },
+    { band:'1800~2399mile',routes:'인천-보홀, 괌, 코타키나발루, 방콕, 치앙마이, 나트랑, 푸우옥',
+      v4:63, v5:117, cur:'USD' },
+    { band:'2400~3599mile',routes:'인천-푸껫',
+      v4:76, v5:140, cur:'USD' },
+  ],
+  /* 티웨이 (TW) — KRW, 운항거리(mile) 기준 */
+  TW: [
+    { band:'1군 (~600mi)',  routes:'인천-후쿠오카, 오사카, 기타큐슈 외',
+      v4:30800,  v5:58600,  cur:'KRW' },
+    { band:'2군 (600~1200mi)',routes:'인천-나고야, 오키나와, 삿포로, 타이베이, 홍콩 외',
+      v4:54200,  v5:103600, cur:'KRW' },
+    { band:'3군 (1200~1800mi)',routes:'인천-하노이, 다낭, 하이커우, 클락, 세부 외',
+      v4:67400,  v5:129100, cur:'KRW' },
+    { band:'4군 (1800~2400mi)',routes:'인천-람, 방콕, 치앙마이, 비엔티안 외',
+      v4:87900,  v5:168200, cur:'KRW' },
+    { band:'5군 (2400~4000mi)',routes:'인천-싱가포르, 발리, 자카르타, 푸껫, 비슈케크, 타슈켄트 외',
+      v4:95200,  v5:180200, cur:'KRW' },
+    { band:'7군 (5000mi+)',routes:'인천-시드니, 자그레브, 바르셀로나, 로마, 파리, 밴쿠버',
+      v4:213900, v5:406900, cur:'KRW' },
+  ],
+  /* 이스타항공 (ZE) — USD, 군별 공시 */
+  ZE: [
+    { band:'1군', routes:'인천-후쿠오카, 부산-후쿠오카, 오사카, 구마모토, 제주-상하이, 청주-옌지, 인천-엔타이',
+      v4:29, v5:52, cur:'USD' },
+    { band:'2군', routes:'인천-나리타, 오사카, 치토세, 오키나와, 도쿠시마, 상하이, 정저우 외',
+      v4:37, v5:66, cur:'USD' },
+    { band:'3군', routes:'인천-홍콩, 청주-장가계',
+      v4:44, v5:80, cur:'USD' },
+    { band:'4군', routes:'인천-다낭',
+      v4:53, v5:95, cur:'USD' },
+    { band:'5군', routes:'인천-방콕, 치앙마이, 나트랑, 푸우옥, 마나도, 부산-치앙마이',
+      v4:60, v5:107, cur:'USD' },
+    { band:'6군', routes:'인천-알마티, 부산-알마티',
+      v4:68, v5:126, cur:'USD' },
+  ],
+  /* 에어서울 (RS) — KRW, 마일(mile) 기준 */
+  RS: [
+    { band:'300~700mi',  routes:'다카마쓰, 후쿠오카, 오사카, 오나고',
+      v4:46800, v5:94500,  cur:'KRW' },
+    { band:'700~1100mi', routes:'도쿄',
+      v4:54100, v5:109900, cur:'KRW' },
+    { band:'1100~1500mi',routes:'장자제',
+      v4:68700, v5:141000, cur:'KRW' },
+    { band:'1500~1900mi',routes:'다낭',
+      v4:77500, v5:153000, cur:'KRW' },
+    { band:'1900~2300mi',routes:'나트랑, 괌',
+      v4:80500, v5:165000, cur:'KRW' },
+  ],
+  /* 에어프레미아 (YP) — USD, 편도 기준 */
+  YP: [
+    { band:'~999km',   routes:'인천-나리타',
+      v4:32, v5:null, cur:'USD' },
+    { band:'1000~1499km',routes:'인천-홍콩',
+      v4:42, v5:null, cur:'USD' },
+    { band:'1500~1999km',routes:'인천-다낭',
+      v4:54, v5:null, cur:'USD' },
+    { band:'2000~2499km',routes:'인천-방콕',
+      v4:71, v5:null, cur:'USD' },
+    { band:'4000~4999km',routes:'인천-호놀룰루',
+      v4:123, v5:null, cur:'USD' },
+    { band:'5000~6499km',routes:'인천-로스앤젤레스, 샌프란시스코',
+      v4:155, v5:null, cur:'USD' },
+    { band:'6500km+',  routes:'인천-워싱턴 D.C., 뉴욕',
+      v4:194, v5:null, cur:'USD' },
+  ],
+};
 
 var FEED=null, KR_AIRLINES=[];
 var currentF='all', searchQ='';
+var openCode=null; /* 현재 펼쳐진 항공사 코드 (한 번에 하나) */
 
 async function loadData(){
   var[meta,fr]=await Promise.allSettled([
@@ -176,6 +385,18 @@ async function loadData(){
     RS:'https://www.airseoul.com/kor/portal/info/fuelSurcharge.do',
   };
 
+  /* 5월 공식 공지 URL (확인된 것만, 없으면 null) */
+  var NOTICE_URL_MAY={
+    KE:'https://www.koreanair.com/kr/ko/footer/site-info/fuel-surcharge',
+    OZ:'https://flyasiana.com/C/KR/KO/info/fuel-surcharge-info',
+    '7C':'https://www.jejuair.net/ko/customerServiceCenter/noticDetail.do?billboardNo=0000000720',
+    LJ:'https://www.jinair.com/company/announce/announceView?anceSeq=28100',
+    TW:'https://www.twayair.com/app/page/fuel_surcharge',
+    ZE:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=610&lang=KR',
+    RS:'https://flyairseoul.com/CW/ko/noticeList.do',
+    YP:null,
+  };
+
   var metaObj=window.AIRLINE_META||{};
   KR_AIRLINES=Object.keys(metaObj)
     .filter(function(c){return !metaObj[c].excludeFromPublicLists&&metaObj[c].isVisibleToUser;})
@@ -184,6 +405,7 @@ async function loadData(){
       return{
         code:c,name:m.name,logo:m.logo,
         officialNoticeUrl:noticeUrl,
+        officialNoticeUrlMay:NOTICE_URL_MAY[c]||null,
         hasOfficialNotice:!!m.hasOfficialNotice,
         usdNotice:m.usdNotice,
         surchargeSchema:m.surchargeSchema||'mileage_band',
@@ -205,27 +427,158 @@ function findFeedAl(code){
   return FEED&&(FEED.airlines||[]).find(function(a){return a.iataCode===code;});
 }
 
+/* ── 4월/5월 비교 데이터 생성 ─────────────────────────── */
+
+/* mileage_band 방식: 4월/5월 union 기준 비교 (5월에만 있는 구간도 포함) */
+function getCompareRowsMileageBand(code, feedAl){
+  var rows4=window.resolveAllRoutes(feedAl,code,BASE_MONTH)||[];
+  var rows5=window.resolveAllRoutes(feedAl,code,NEXT_MONTH)||[];
+  if(!rows4.length&&!rows5.length) return [];
+  /* 4월 기준 목록에 5월 매칭, 5월에만 있는 구간도 union에 추가 */
+  var seen={};
+  var union=[];
+  rows4.forEach(function(r){seen[r.distanceRange]=true;union.push({src4:r,src5:null});});
+  rows5.forEach(function(r5){
+    if(!seen[r5.distanceRange]){
+      union.push({src4:null,src5:r5});
+    } else {
+      var item=union.find(function(u){return u.src4&&u.src4.distanceRange===r5.distanceRange;});
+      if(item) item.src5=r5;
+    }
+  });
+  return union.map(function(u){
+    var r4=u.src4, r5=u.src5;
+    var rep=r4||r5;
+    return {
+      band: rep.label||rep.distanceRange||'—',
+      routes: (rep.routeNames||[]).join(', '),
+      v4: r4?r4.amountKRW:null, cur4: (r4||r5).currency,
+      v5: r5?r5.amountKRW:null, cur5: r5?r5.currency:null,
+    };
+  });
+}
+
+/* group_tier 방식: resolveGroupTiers 결과로 군별 4월/5월 매칭 */
+function getCompareRowsGroupTier(code, feedAl){
+  var gtr4=window.resolveGroupTiers(code,feedAl,BASE_MONTH);
+  var gtr5=window.resolveGroupTiers(code,feedAl,NEXT_MONTH);
+  if(!gtr4||!gtr4.tiers) return [];
+  return gtr4.tiers.map(function(t4){
+    var t5=gtr5&&gtr5.tiers?gtr5.tiers.find(function(t){return t.group===t4.group;}):null;
+    return {
+      band: t4.label||t4.group||'—',
+      routes: (t4.routeNames||[]).join(', '),
+      v4: t4.amountKRW, cur4: t4.currency,
+      v5: t5?t5.amountKRW:null, cur5: t5?t5.currency:null,
+    };
+  });
+}
+
+function getCompareRows(code, feedAl){
+  /* ① 공식 공지 하드코딩 데이터 우선 사용 → 4월/5월 동일 버그 방지 */
+  if(OFFICIAL_COMPARE_DATA[code]){
+    return OFFICIAL_COMPARE_DATA[code].map(function(d){
+      return {band:d.band, routes:d.routes, v4:d.v4, cur4:d.cur, v5:d.v5, cur5:d.cur};
+    });
+  }
+  /* ② 피드 데이터 fallback */
+  if(window.isGroupTierSchema(code)) return getCompareRowsGroupTier(code, feedAl);
+  return getCompareRowsMileageBand(code, feedAl);
+}
+
+/* 증감 HTML */
+function diffHtml(v4, v5, currency){
+  if(v5==null) return '<span class="diff-na">공시전</span>';
+  if(v4==null) return '<span class="diff-na">—</span>';
+  var d=v5-v4;
+  if(d===0) return '<span class="diff-eq">변동없음</span>';
+  var sign=d>0?'+':'';
+  var dStr=currency==='KRW'
+    ?sign+d.toLocaleString()+'원'
+    :sign+'USD '+d;
+  var pct=((d/v4)*100).toFixed(1);
+  var cls=d>0?'diff-up':'diff-dn';
+  return '<span class="'+cls+'">'+dStr+' ('+sign+pct+'%)</span>';
+}
+
+function buildCompareTableHtml(code, feedAl, al){
+  var rows=getCompareRows(code, feedAl);
+  if(!rows.length){
+    return '<p style="color:var(--muted);font-size:12px;padding:8px 0">비교 데이터가 없습니다.</p>';
+  }
+  var isCurKRW=window.getCurrencyCode?window.getCurrencyCode()==='KRW':true;
+  var trs=rows.map(function(r){
+    var fmt4=r.v4!=null?window.fmtAmtDisplay(r.v4,r.cur4,1):'<span class="diff-na">—</span>';
+    var fmt5=r.v5!=null?window.fmtAmtDisplay(r.v5,r.cur5,1):'<span class="diff-na">공시전</span>';
+    var dh=diffHtml(r.v4, r.v5, r.cur4);
+    var routesTd=r.routes?'<span class="cmp-routes">'+r.routes+'</span>':'—';
+    return '<tr>'
+      +'<td><span class="cmp-band">'+r.band+'</span></td>'
+      +'<td>'+routesTd+'</td>'
+      +'<td>'+fmt4+'</td>'
+      +'<td>'+fmt5+'</td>'
+      +'<td>'+dh+'</td>'
+      +'</tr>';
+  }).join('');
+
+  /* 통화 주석 */
+  var currency=rows[0].cur4||'KRW';
+  var noteUsd=(currency!=='KRW'&&isCurKRW)
+    ?'<span>* USD 원화 환산은 참고용 (환율 고정 기준)</span>':
+    (currency==='KRW'&&!isCurKRW)?'<span>* KRW→선택통화 환산은 참고용</span>':'';
+
+  return '<div class="compare-scroll">'
+    +'<table class="cmp-tbl">'
+    +'<thead><tr>'
+    +'<th>구간/군</th>'
+    +'<th>주요 노선</th>'
+    +'<th style="text-align:right">'+BASE_MONTH.replace('.','년 ')+'월</th>'
+    +'<th style="text-align:right">'+NEXT_MONTH.replace('.','년 ')+'월</th>'
+    +'<th style="text-align:right">증감</th>'
+    +'</tr></thead>'
+    +'<tbody>'+trs+'</tbody>'
+    +'</table>'
+    +'</div>'
+    +(noteUsd?'<div class="detail-note">'+noteUsd+'</div>':'');
+}
+
 /* 대표 금액: ICN→NRT(342mi) 기준으로 조회 */
 var REP_MILES=342;
 
 function getRepAmount(code, feedAl){
-  if(window.isGroupTierSchema(code)){
-    var gtr=window.resolveGroupTiers(code,feedAl,'2026.04');
-    if(!gtr) return null;
-    /* 342mi → 군 1 (일본 근거리) */
-    var g=window.resolveZEGroup(REP_MILES,gtr);
-    var tier=g!=null?gtr.tiers.find(function(t){return t.group===g;}):gtr.tiers[0];
-    return tier?{amountKRW:tier.amountKRW,currency:tier.currency,label:tier.label+' (일본 근거리 기준)'}:null;
+  /* 하드코딩 데이터 우선: 5월 첫 번째 구간 값 사용 */
+  var hc=OFFICIAL_COMPARE_DATA[code];
+  if(hc&&hc.length){
+    /* 5월 값이 있는 첫 구간 */
+    var row5=hc.find(function(d){return d.v5!=null;})||hc[0];
+    if(row5){
+      var val5=row5.v5!=null?row5.v5:row5.v4;
+      var mon5=row5.v5!=null?NEXT_MONTH:BASE_MONTH;
+      return {amountKRW:val5, currency:row5.cur, label:row5.band, month:mon5};
+    }
   }
-  var routes=window.resolveAllRoutes(feedAl,code,'2026.04');
-  if(!routes.length) return null;
-  var matched=routes.find(function(r){
-    if(!r.distanceRange) return false;
-    if(r.distanceRange.endsWith('+')){return REP_MILES>=parseInt(r.distanceRange);}
-    var p=r.distanceRange.split('-');
-    return p.length===2&&REP_MILES>=parseInt(p[0])&&REP_MILES<parseInt(p[1]);
-  })||routes[0];
-  return matched?{amountKRW:matched.amountKRW,currency:matched.currency,label:matched.label}:null;
+  /* 피드 fallback */
+  function tryMonth(month){
+    if(window.isGroupTierSchema(code)){
+      var gtr=window.resolveGroupTiers(code,feedAl,month);
+      if(!gtr) return null;
+      var g=window.resolveZEGroup(REP_MILES,gtr);
+      var tier=g!=null?gtr.tiers.find(function(t){return t.group===g;}):gtr.tiers[0];
+      return tier?{amountKRW:tier.amountKRW,currency:tier.currency,
+        label:tier.label+' (일본 근거리 기준)',month:month}:null;
+    }
+    var routes=window.resolveAllRoutes(feedAl,code,month);
+    if(!routes||!routes.length) return null;
+    var matched=routes.find(function(r){
+      if(!r.distanceRange) return false;
+      if(r.distanceRange.endsWith('+')){return REP_MILES>=parseInt(r.distanceRange);}
+      var p=r.distanceRange.split('-');
+      return p.length===2&&REP_MILES>=parseInt(p[0])&&REP_MILES<parseInt(p[1]);
+    })||routes[0];
+    return matched?{amountKRW:matched.amountKRW,currency:matched.currency,
+      label:matched.label,month:month}:null;
+  }
+  return tryMonth(NEXT_MONTH)||tryMonth(BASE_MONTH);
 }
 
 function renderTable(){
@@ -234,7 +587,7 @@ function renderTable(){
     document.getElementById('statusStrip').style.display='flex';
     var upd=meta.lastUpdated
       ?new Date(meta.lastUpdated).toLocaleString('ko-KR',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}):'' ;
-    document.getElementById('statusText').textContent='갱신: '+upd+' · 2026-04 공식 공지 기준';
+    document.getElementById('statusText').textContent='갱신: '+upd+' · '+NEXT_MONTH.replace('.','년 ')+'월 공식 공지 기준 ('+BASE_MONTH.replace('.','년 ')+'월 비교 포함)';
     document.getElementById('statusDot').className='status-dot';
   }
 
@@ -253,6 +606,7 @@ function renderTable(){
   document.getElementById('tableBody').innerHTML=list.map(function(al){
     var feedAl=findFeedAl(al.code);
     var status=feedAl?window.resolveStatus(feedAl,null):'unknown';
+    var isOpen=(openCode===al.code);
 
     /* 데이터 source 판별 */
     var src=al.officialDataSource||'unknown';
@@ -262,8 +616,10 @@ function renderTable(){
       no_data:'<span style="font-size:11px;background:#fafafa;color:#999;border-radius:6px;padding:2px 7px">데이터 없음</span>',
     }[src]||'<span style="font-size:11px;color:var(--muted)">'+src+'</span>';
 
-    /* 대표 금액 (ICN→NRT 기준) */
+    /* 대표 금액 — 5월 우선, 없으면 4월 fallback */
     var rep=getRepAmount(al.code,feedAl);
+    var repMonth=rep?rep.month:null;
+    var repMonthLabel=repMonth===NEXT_MONTH?'5월 기준':repMonth===BASE_MONTH?'4월 기준 (5월 미공시)':'';
     var amtHtml=rep&&rep.amountKRW!=null
       ?window.fmtAmtDisplay(rep.amountKRW,rep.currency,1)
         +'<div style="font-size:10px;color:var(--muted);margin-top:2px">'+rep.label+'</div>'
@@ -271,23 +627,31 @@ function renderTable(){
         ?'<span style="font-size:11px;color:#6a1b9a">군별 요금</span>'
         :'<span style="color:var(--muted)">—</span>');
 
-    /* 구간 수 */
+    /* 구간 수 — NEXT_MONTH 우선, 없으면 BASE_MONTH */
     var routeCount=0;
     if(al.surchargeSchema==='group_tier'){
-      var gtr=window.resolveGroupTiers(al.code,feedAl,'2026.04');
+      var gtr=window.resolveGroupTiers(al.code,feedAl,NEXT_MONTH)
+            ||window.resolveGroupTiers(al.code,feedAl,BASE_MONTH);
       routeCount=gtr?gtr.tiers.length:0;
     } else {
-      var routes=window.resolveAllRoutes(feedAl,al.code,'2026.04');
-      routeCount=routes.length;
+      var routes=window.resolveAllRoutes(feedAl,al.code,NEXT_MONTH);
+      if(!routes||!routes.length) routes=window.resolveAllRoutes(feedAl,al.code,BASE_MONTH);
+      routeCount=routes?routes.length:0;
     }
     var countHtml=routeCount>0?'<div style="font-size:10px;color:var(--muted);margin-top:2px">'+routeCount+'개 구간</div>':'';
 
-    var period='2026.04';
+    /* cell-period: 5월 우선 표시 */
+    var periodDisplay=repMonth===NEXT_MONTH?NEXT_MONTH:(repMonth?BASE_MONTH+' (5월 미공시)':'—');
 
-    /* 공식 공지 버튼 — URL 있으면 항상 활성화, 새 탭 */
+    /* 비교 힌트 버튼 */
+    var arrChar=isOpen?'▴':'▾';
+    var expandHint='<div class="expand-hint" data-code="'+al.code+'">'
+      +'<em class="arr">'+arrChar+'</em> 4월→5월 비교</div>';
+
+    /* 공식 공지 버튼 — URL 있으면 항상 활성화, stopPropagation으로 토글 충돌 방지 */
     var noticeUrl=al.officialNoticeUrl;
     var srcHtml=noticeUrl
-      ?'<a class="cell-src-link" href="'+noticeUrl+'" target="_blank" rel="noopener">공식 공지 ↗</a>'
+      ?'<a class="cell-src-link" href="'+noticeUrl+'" target="_blank" rel="noopener" onclick="event.stopPropagation()">공식 공지 ↗</a>'
       :'<span style="color:var(--muted);font-size:12px">공식 공지 없음</span>';
 
     var usdNote=al.usdNotice
@@ -295,27 +659,68 @@ function renderTable(){
     var schemaNote=al.surchargeSchema==='group_tier'
       ?'<span style="font-size:11px;color:#6a1b9a;margin-left:6px">군별 요금</span>':'';
 
-    return '<div class="airline-row"><div class="row-main">'
+    /* ── detail row: 4월/5월 비교표 ── */
+    var detailSrcLinks='';
+    if(al.officialNoticeUrl)
+      detailSrcLinks+='<a class="detail-src-link cell-src-link" href="'+al.officialNoticeUrl
+        +'" target="_blank" rel="noopener" onclick="event.stopPropagation()">4월 공식 공지 ↗</a>';
+    if(al.officialNoticeUrlMay)
+      detailSrcLinks+='<a class="detail-src-link cell-src-link" href="'+al.officialNoticeUrlMay
+        +'" target="_blank" rel="noopener" onclick="event.stopPropagation()">5월 공식 공지 ↗</a>';
+
+    var detailInner='<div class="detail-header">'
+      +'<span class="detail-title">📊 '+al.name+' — 4월 vs 5월 유류할증료 비교</span>'
+      +'<div class="detail-src-links">'+detailSrcLinks+'</div>'
+      +'</div>'
+      +buildCompareTableHtml(al.code,feedAl,al);
+
+    return '<div class="airline-row'+(isOpen?' is-open':'')+'" data-code="'+al.code+'">'
+      +'<div class="row-main">'
       +'<div><span class="cell-code">'+al.code+'</span></div>'
       +'<div class="al-name-cell">'
       +'<div class="al-name">'+al.logo+' '+al.name+'</div>'
-      +'<div class="al-id">'+al.code+'</div></div>'
+      +'<div class="al-id">'+al.code+'</div>'
+      +expandHint
+      +'</div>'
       +'<div>'+amtHtml+countHtml+'</div>'
-      +'<div><span class="cell-period">'+period+'</span></div>'
+      +'<div><span class="cell-period">'+periodDisplay+'</span></div>'
       +'<div>'+window.statusBadgeHtml(status)+'</div>'
       +'<div>'+srcHtml+usdNote+schemaNote+'<div style="margin-top:4px">'+srcLabel+'</div></div>'
-      +'</div></div>';
+      +'</div>'
+      +'</div>'
+      +'<div class="detail-row'+(isOpen?' is-open':'')+'" id="detail-'+al.code+'">'
+      +detailInner
+      +'</div>';
   }).join('')
   ||'<div style="padding:28px;text-align:center;color:var(--muted)">해당하는 항공사가 없습니다</div>';
 }
 
+/* ── Accordion 토글 (이벤트 위임) ── */
+document.getElementById('tableBody').addEventListener('click',function(e){
+  /* .cell-src-link / .detail-src-link 클릭은 이미 stopPropagation 처리됨 */
+  if(e.target.closest('.cell-src-link')||e.target.closest('.detail-src-link')) return;
+  /* airline-row에서만 동작 */
+  var row=e.target.closest('.airline-row[data-code]');
+  if(!row) return;
+  var code=row.dataset.code;
+  openCode=(openCode===code)?null:code;
+  renderTable();
+  /* 펼쳐진 항목으로 부드러운 스크롤 */
+  if(openCode){
+    setTimeout(function(){
+      var detail=document.getElementById('detail-'+openCode);
+      if(detail) detail.scrollIntoView({behavior:'smooth',block:'nearest'});
+    },60);
+  }
+});
+
 document.querySelector('.filter-tabs').addEventListener('click',function(e){
   var btn=e.target.closest('.ftab');if(!btn)return;
   document.querySelectorAll('.ftab').forEach(function(b){b.classList.remove('active');});
-  btn.classList.add('active');currentF=btn.dataset.f;renderTable();
+  btn.classList.add('active');currentF=btn.dataset.f;openCode=null;renderTable();
 });
 document.getElementById('searchInput').addEventListener('input',function(e){
-  searchQ=e.target.value.trim();renderTable();
+  searchQ=e.target.value.trim();openCode=null;renderTable();
 });
 window.initNav({onLangChange:function(){renderTable();},onCurrChange:function(){renderTable();}});
 loadData();
