@@ -2,8 +2,8 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>참고 소식 — 항공 유류할증료 동향 | 국제유가·환율·정책</title>
-  <meta name="description" content="항공 유류할증료에 영향을 주는 국제유가, 환율, 정책 동향 정보. 국가·기관·시장 관련 참고 소식을 AI 요약으로 제공합니다."
+  <title>2026년 5월 유류할증료 인상 정리 | 항공사별 비교와 6월 전망</title>
+  <meta name="description" content="2026년 5월 항공사별 유류할증료 인상 현황과 4월 대비 변화, 6월 전망까지 한눈에 정리. 대한항공, 아시아나, 제주항공, 티웨이항공 등 최신 공시 데이터 확인."
         data-i18n-page-desc="news.metaDesc"/>
   <meta data-i18n-page-title="news.metaTitle"/>
   <link rel="stylesheet" href="_shared.css"/>
@@ -81,7 +81,20 @@
     .klook-inline{font-size:12px;margin-bottom:12px;color:#666;line-height:1.6;}
     .klook-inline a{color:var(--blue);font-weight:600;text-decoration:none;}
     .klook-inline a:hover{text-decoration:underline;}
-    @media(max-width:600px){.main{padding:14px;} .news-card{padding:12px 14px;}}
+    /* CTA 내비게이션 박스 */
+    .cta-nav-box{background:linear-gradient(135deg,#E8F0FE,#EEF2FF);border:1.5px solid #90CAF9;border-radius:13px;padding:16px 20px;margin-bottom:18px;display:flex;flex-direction:column;gap:10px;}
+    .cta-nav-desc{font-size:13px;font-weight:700;color:#1A237E;margin-bottom:2px;}
+    .cta-nav-btns{display:flex;gap:8px;flex-wrap:wrap;}
+    .cta-nav-btn{display:inline-block;padding:7px 16px;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none;transition:opacity .15s;}
+    .cta-nav-btn.primary{background:var(--blue);color:#fff;}
+    .cta-nav-btn.secondary{background:#fff;color:var(--blue);border:1.5px solid var(--blue);}
+    .cta-nav-btn:hover{opacity:.85;}
+    /* 핵심 요약 카드 */
+    .summary-card{background:#FFF3E0;border:1.5px solid #FFCC80;border-left:4px solid #FF6F00;border-radius:13px;padding:14px 18px;margin-bottom:18px;}
+    .summary-card-title{font-size:13px;font-weight:700;color:#E65100;margin-bottom:8px;}
+    .summary-card ul{margin:0;padding-left:18px;}
+    .summary-card li{font-size:13px;color:var(--text2);margin-bottom:4px;line-height:1.6;}
+    @media(max-width:600px){.main{padding:14px;} .news-card{padding:12px 14px;} .cta-nav-btns{flex-direction:column;} .cta-nav-btn{text-align:center;}}
   </style>
 </head>
 <body>
@@ -137,20 +150,24 @@
 <div class="main">
   <div class="ad-slot" id="adSlot1"></div>
 
-  <!-- AI 예측 박스 -->
-  <div class="predict-basis-box">
-    <div class="predict-basis-title">
-      <span style="font-size:18px">📊</span>
-      <span data-i18n="news.predictTitle">AI 예측 참고 지표 현황</span>
-      <span style="font-size:10px;font-weight:400;color:#7E57C2" data-i18n="news.predict.subtitle">데이터 기반 추정</span>
+  <!-- [2] CTA 내비게이션 박스 — index 유입 유도 -->
+  <div class="cta-nav-box">
+    <div class="cta-nav-desc">📍 노선별 실제 유류할증료를 바로 확인하세요</div>
+    <div class="cta-nav-btns">
+      <a href="index.html"    class="cta-nav-btn primary">👉 유류할증료 조회하기</a>
+      <a href="airlines.html" class="cta-nav-btn secondary">👉 항공사별 비교 보기</a>
     </div>
-    <div class="predict-factor-grid" id="predictFactors">
-      <div class="predict-factor" style="grid-column:1/-1">
-        <div class="pf-label" data-i18n="common.status">상태</div>
-        <div class="pf-val" style="color:var(--muted)" data-i18n="common.loading">소식 데이터 로딩 중...</div>
-      </div>
-    </div>
-    <div style="font-size:10px;color:#9C27B0;margin-top:10px;font-style:italic" data-i18n="news.predict.footnote">* 5월 유류할증료는 공식 공지 기준 확정. 6월 전망은 시장 데이터 기반 참고용입니다.</div>
+  </div>
+
+  <!-- [4] 핵심 요약 카드 -->
+  <div class="summary-card">
+    <div class="summary-card-title">📌 2026년 5월 핵심 요약</div>
+    <ul>
+      <li>전 항공사 유류할증료 인상 — 대한항공·아시아나·진에어·제주항공·이스타·에어서울·티웨이 모두 확정</li>
+      <li>일부 구간 최대 약 2배 수준 상승 (예: 티웨이 7군 213,900원 → 406,900원)</li>
+      <li>브렌트유 $99~100 안팎 + 고환율 지속으로 현재 고점 구간 유지 중</li>
+      <li>6월은 유가·환율·지정학 변수에 따라 유지 또는 변동 가능 — 인하 단정 어려움</li>
+    </ul>
   </div>
 
   <!-- 공식 공지 요약 -->
@@ -190,11 +207,11 @@
     <div class="mb-summary" data-i18n="news.marketSummary">→ 5월 인상 반영 완료 상태이나, 6월은 유가·환율·지정학 변수에 따라 유지 또는 추가 부담 가능성도 열려 있음</div>
   </div>
 
-  <!-- Klook 제휴 — 여행 비용 참고 (1차) -->
+  <!-- [5] Klook 제휴 — 하드코딩 텍스트로 키 노출 방지 (1차) -->
   <div class="klook-box">
-    <div class="klook-title" data-i18n="klook.title">✈️ 여행 비용, 항공권만이 아닙니다</div>
-    <div class="klook-desc"  data-i18n="klook.desc">유류할증료 부담이 크다면, 현지 투어·액티비티 비용도 미리 파악해두는 것이 전체 여행 예산 관리에 도움이 됩니다.</div>
-    <a href="http://app.ac/JjCiEja23" target="_blank" rel="noopener sponsored" class="klook-btn" data-i18n="klook.btn">여행 비용 줄이는 방법 보기 →</a>
+    <div class="klook-title">✈️ 여행 비용은 항공권만이 아닙니다</div>
+    <div class="klook-desc">유류할증료 부담이 큰 만큼, 현지 투어·액티비티 비용도 함께 확인하세요. 미리 파악해두면 전체 여행 예산 관리에 도움이 됩니다.</div>
+    <a href="http://app.ac/JjCiEja23" target="_blank" rel="noopener sponsored" class="klook-btn">여행 비용 줄이는 방법 보기 →</a>
   </div>
 
   <!-- 판단 기준 박스 -->
@@ -206,16 +223,31 @@
     <strong data-i18n="news.decisionLong">👉 여유 있는 일정: 5월 중 6월 공시 추이 추가 확인 권장</strong>
   </div>
 
+  <!-- AI 예측 박스 (하단으로 이동) -->
+  <div class="predict-basis-box">
+    <div class="predict-basis-title">
+      <span style="font-size:18px">📊</span>
+      <span data-i18n="news.predictTitle">AI 예측 참고 지표 현황</span>
+      <span style="font-size:10px;font-weight:400;color:#7E57C2" data-i18n="news.predict.subtitle">데이터 기반 추정</span>
+    </div>
+    <div class="predict-factor-grid" id="predictFactors">
+      <div class="predict-factor" style="grid-column:1/-1">
+        <div class="pf-label" data-i18n="common.status">상태</div>
+        <div class="pf-val" style="color:var(--muted)" data-i18n="common.loading">소식 데이터 로딩 중...</div>
+      </div>
+    </div>
+    <div style="font-size:10px;color:#9C27B0;margin-top:10px;font-style:italic" data-i18n="news.predict.footnote">* 5월 유류할증료는 공식 공지 기준 확정. 6월 전망은 시장 데이터 기반 참고용입니다.</div>
+  </div>
+
   <!-- AI 안내 -->
   <div class="ai-notice">
     <span style="font-size:16px">📋</span>
     <div data-i18n="news.aiNotice">AI 요약 콘텐츠 — 이 페이지의 내용은 공개된 정보를 바탕으로 AI가 정리한 참고용 자료입니다. 원문 기반 요약이며, 공식 정보가 아닙니다. 중요한 결정 전에 각 항공사 및 기관의 공식 채널을 반드시 확인하세요.</div>
   </div>
 
-  <!-- Klook 제휴 — 인라인 CTA (2차) -->
+  <!-- [6] Klook 제휴 — 인라인 CTA 하드코딩 (2차) -->
   <div class="klook-inline">
-    ✈️ <span data-i18n="klook.inline">항공권 가격이 부담된다면 여행 비용을 낮출 수 있는 방법도 확인해보세요</span>
-    → <a href="http://app.ac/JjCiEja23" target="_blank" rel="noopener sponsored" data-i18n="klook.inlineLink">여행 비용 줄이는 방법 보기</a>
+    👉 <a href="http://app.ac/JjCiEja23" target="_blank" rel="noopener sponsored">여행 비용 줄이는 방법 보기</a>
   </div>
 
   <!-- 필터 탭 -->
