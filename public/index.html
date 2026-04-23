@@ -248,6 +248,66 @@
       .guide-block { padding: 16px 16px; }
       .guide-block-body { font-size: 12px; }
     }
+
+    /* ── 제휴 링크 버튼 ── */
+    .affiliate-links {
+      display:flex;
+      gap:6px;
+      flex-wrap:wrap;
+      margin-left:6px;
+    }
+    .aff-btn {
+      font-size:11px;
+      font-weight:600;
+      padding:3px 8px;
+      border-radius:8px;
+      text-decoration:none;
+      transition:all .15s;
+      border:1px solid var(--line);
+    }
+    .aff-btn.primary {
+      background:#1976D2;
+      color:#fff;
+      border-color:#1976D2;
+    }
+    .aff-btn.primary:hover {
+      background:#0D47A1;
+    }
+    .aff-btn.secondary {
+      background:#fff;
+      color:#1976D2;
+      border-color:#90CAF9;
+    }
+    .aff-btn.secondary:hover {
+      background:#E3F2FD;
+    }
+    .aff-btn.subtle {
+      background:#f5f5f5;
+      color:#555;
+    }
+    .aff-btn.subtle:hover {
+      background:#e0e0e0;
+    }
+
+    /* ── 결과 하단 제휴 섹션 ── */
+    .affiliate-section {
+      margin-top:20px;
+      padding:16px;
+      border:1px solid var(--line);
+      border-radius:12px;
+      background:#fafafa;
+    }
+    .affiliate-title {
+      font-size:13px;
+      font-weight:700;
+      margin-bottom:10px;
+      color:var(--text2);
+    }
+    .affiliate-box {
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
     </style>
 </head>
 <body>
@@ -378,6 +438,13 @@
         <p data-i18n="index.guide.p3">아래 결과는 공식 공지 기준이며, 최종 결제 금액은 항공사 예약 화면 또는 공식 공지에서 반드시 재확인하시기 바랍니다.</p>
       </div>
     </div>
+    <div class="affiliate-section" id="affiliateSection">
+      <div class="affiliate-title" data-i18n="index.aff.title">여행 준비</div>
+      <div class="affiliate-box">
+        <a href="http://app.ac/H36cgSJ53" target="_blank" rel="noopener" class="aff-btn primary" data-i18n="index.aff.hotel">숙소 예약</a>
+        <a href="http://app.ac/TtGIMEM53" target="_blank" rel="noopener" class="aff-btn subtle" data-i18n="index.aff.esim">eSIM 준비</a>
+      </div>
+    </div>
     <div class="ad-slot-bottom" id="adSlot2"></div>
   </div>
 
@@ -426,6 +493,28 @@ window.addEventListener('error', function(e){
     grid.innerHTML='<div class="empty-state"><div class="empty-icon">⚠️</div><p>'+window.t('index.status.scriptError')+'</p></div>';
   }
 });
+
+/* ── 제휴 i18n 키 주입 (다국어 지원) ── */
+(function(){
+  var AFF_I18N = {
+    ko: { compare:'가격 비교', hotel:'숙소 예약', esim:'eSIM 준비', title:'여행 준비' },
+    en: { compare:'Compare prices', hotel:'Book hotel', esim:'Get eSIM', title:'Plan your trip' },
+    ja: { compare:'価格比較', hotel:'ホテル予約', esim:'eSIM準備', title:'旅行の準備' },
+    zh: { compare:'比较价格', hotel:'预订住宿', esim:'购买eSIM', title:'旅行准备' },
+    fr: { compare:'Comparer les prix', hotel:'Réserver un hôtel', esim:'Obtenir eSIM', title:'Préparer le voyage' },
+    de: { compare:'Preise vergleichen', hotel:'Hotel buchen', esim:'eSIM holen', title:'Reise planen' }
+  };
+  var _origT = window.t;
+  window.t = function(key){
+    if(key && key.indexOf('index.aff.') === 0){
+      var sub = key.replace('index.aff.','');
+      var lang = (document.documentElement.lang || 'ko').slice(0,2);
+      var map = AFF_I18N[lang] || AFF_I18N['ko'];
+      if(map[sub]) return map[sub];
+    }
+    return _origT ? _origT.apply(this, arguments) : key;
+  };
+})();
 
 /* ════════════════════════════════════════════════════════
    index.html — v33
@@ -1002,10 +1091,18 @@ function buildCard(al, dep, arr, miles, isRT, idx){
 
   var trendHtml = trendBadgeHtml(al.code);
 
+  var affiliateHtml = '';
+  if(idx < 2){
+    var affLabel = (window.t && window.t('index.aff.compare')) || '가격 비교';
+    affiliateHtml = '<div class="affiliate-links">'
+      +'<a href="http://app.ac/JtGIMaM63" target="_blank" rel="noopener" class="aff-btn secondary">'+affLabel+'</a>'
+      +'</div>';
+  }
+
   return '<div class="al-card has-data">'
     +cardHeader(true)
     +officialHtml
-    +'<div class="card-footer"><div class="footer-left">'+srcHtml+trendHtml+usdBadge+schemaBadge+'</div></div>'
+    +'<div class="card-footer"><div class="footer-left">'+srcHtml+trendHtml+usdBadge+schemaBadge+affiliateHtml+'</div></div>'
     +'</div>';
 }
 
@@ -1137,7 +1234,16 @@ function renderLanding(){
 }
 
 window.initNav({
-  onLangChange:function(){renderLanding();if(window._searchCtx)renderCards('all');},
+  onLangChange:function(){
+    renderLanding();
+    if(window._searchCtx)renderCards('all');
+    /* 제휴 섹션 정적 텍스트 갱신 */
+    document.querySelectorAll('[data-i18n^="index.aff."]').forEach(function(el){
+      var key=el.getAttribute('data-i18n');
+      var txt=window.t(key);
+      if(txt) el.textContent=txt;
+    });
+  },
   onCurrChange:function(){renderLanding();if(window._searchCtx)renderCards('all');}
 });
 loadAll();
