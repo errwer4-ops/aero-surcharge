@@ -307,8 +307,8 @@ function renderPredictBasis(){
       geoLabel:     '지정학 리스크',
       geoVal:       '긴장 완전 해소 아님 (중동 리스크 잔존)',
       geoClass:     'up',
-      outlookLabel: '6월 surcharge 전망',
-      outlookVal:   '유지 ~ 부담 지속 가능성 (추가 변동 열려 있음)',
+      outlookLabel: 'surcharge 전망',
+      outlookVal:   '유지 또는 변동 가능성 (유가·환율 영향)',
       outlookClass: 'up'
     },
     en: {
@@ -324,8 +324,8 @@ function renderPredictBasis(){
       geoLabel:     'Geopolitical Risk',
       geoVal:       'Not fully resolved (Middle East risk remains)',
       geoClass:     'up',
-      outlookLabel: 'June surcharge outlook',
-      outlookVal:   'Stable to continued pressure (further move possible)',
+      outlookLabel: 'surcharge outlook',
+      outlookVal:   'Stable or variable (oil & FX dependent)',
       outlookClass: 'up'
     },
     ja: {
@@ -341,8 +341,8 @@ function renderPredictBasis(){
       geoLabel:     '地政学リスク',
       geoVal:       '完全解消されず（中東リスク残存）',
       geoClass:     'up',
-      outlookLabel: '6月サーチャージ見通し',
-      outlookVal:   '維持〜負担継続の可能性（追加変動あり得る）',
+      outlookLabel: 'サーチャージ見通し',
+      outlookVal:   '維持または変動の可能性（原油・為替次第）',
       outlookClass: 'up'
     },
     zh: {
@@ -358,8 +358,8 @@ function renderPredictBasis(){
       geoLabel:     '地缘政治风险',
       geoVal:       '尚未完全解除（中东风险持续）',
       geoClass:     'up',
-      outlookLabel: '6月燃油附加费展望',
-      outlookVal:   '维持 ~ 压力持续可能（进一步变动可能性开放）',
+      outlookLabel: '燃油附加费展望',
+      outlookVal:   '维持或变动可能（受油价·汇率影响）',
       outlookClass: 'up'
     },
     fr: {
@@ -375,8 +375,8 @@ function renderPredictBasis(){
       geoLabel:     'Risque géopolitique',
       geoVal:       'Non pleinement résolu (risque Moyen-Orient persistant)',
       geoClass:     'up',
-      outlookLabel: 'Surcharge juin : prévision',
-      outlookVal:   'Stable à pression continue (variation possible)',
+      outlookLabel: 'surcharge : prévision',
+      outlookVal:   'Stable ou variable (pétrole & change)',
       outlookClass: 'up'
     },
     de: {
@@ -392,8 +392,8 @@ function renderPredictBasis(){
       geoLabel:     'Geopolitisches Risiko',
       geoVal:       'Nicht vollständig gelöst (Nahost-Risiko bleibt)',
       geoClass:     'up',
-      outlookLabel: 'Juni-Zuschlag: Prognose',
-      outlookVal:   'Stabil bis anhaltend belastet (weitere Bewegung möglich)',
+      outlookLabel: 'Zuschlag: Prognose',
+      outlookVal:   'Stabil oder variabel (Öl- & Wechselkursabhängig)',
       outlookClass: 'up'
     }
   };
@@ -428,7 +428,7 @@ function renderPredictBasis(){
     fxCls = (inp.usdKrw < 1450) ? 'down' : (inp.usdKrw > 1480 ? 'up' : 'up');
   }
 
-  /* 5월 전망 방향 — feed 값이 있으면 참조, 없으면 fallback */
+  /* 전망 방향 — feed 값이 있으면 참조, 없으면 fallback */
   var forecasts = (FORECAST_DATA && FORECAST_DATA.forecasts) || [];
   var keShort   = forecasts.find(function(f){
     return f.airlineCode==='KE' && (f.distanceBand||'').indexOf('단거리')!==-1;
@@ -441,15 +441,55 @@ function renderPredictBasis(){
     if(tVal){ outlookVal = tVal; outlookCls = dir==='up'?'up':'down'; }
   }
 
-  /* 5월 전망 레이블에 월 이름 포함 */
+  /* ── 전망 레이블: 항상 "확정월 다음달" 기준으로 계산 ──────────
+     [수정 이유]
+       이전 코드는 forecastTargetPeriod(예: 2026.05)를 그대로 월 번호로
+       사용했기 때문에, feed에 5월이 들어오면 화면도 "5월 전망"으로 표시됐음.
+       그러나 targetPeriod는 이미 공시가 확정된 달이므로, 화면에 표시할
+       "전망월"은 그 다음달이어야 함.
+
+     [계산 우선순위 — 모두 확정월 기준 +1]
+       1) forecastTargetPeriod → 해당 월 + 1  (확정월 → 다음 전망월)
+       2) basePeriod           → 해당 월 + 2  (기준월 → 확정월 → 전망월)
+       3) feed 없음            → 현재 월 + 2  (오늘 기준 동일 논리)
+     예: 4월 기준, 5월 확정 → 전망 표시 = 6월
+
+     outlookLabel suffix는 언어별 OUTLOOK_SUFFIX 테이블에서 조합.
+  ─────────────────────────────────────────────────────── */
   var targetPeriod = FORECAST_DATA && FORECAST_DATA.meta && FORECAST_DATA.meta.forecastTargetPeriod;
   var basePeriod   = FORECAST_DATA && FORECAST_DATA.meta && FORECAST_DATA.meta.basePeriod;
-  var periodName   = '';
-  if(targetPeriod){ var mo=extractMonth(targetPeriod); periodName=mo?monthLabel(mo):''; }
-  else if(basePeriod){ var bmo=extractMonth(basePeriod); if(bmo){bmo++;if(bmo>12)bmo=1;} periodName=bmo?monthLabel(bmo):''; }
-  var outlookLabel = periodName
-    ? periodName+' '+pt('news.predict.outlookLabel', fb.outlookLabel)
-    : pt('news.predict.outlookLabel', fb.outlookLabel);
+
+  var OUTLOOK_SUFFIX = {
+    ko: 'surcharge 전망',
+    en: 'surcharge outlook',
+    ja: 'サーチャージ見通し',
+    zh: '燃油附加费展望',
+    fr: 'surcharge : prévision',
+    de: 'Zuschlag: Prognose'
+  };
+  var suffix = OUTLOOK_SUFFIX[lang] || OUTLOOK_SUFFIX['en'];
+
+  /* 월 번호에 +1 적용하는 헬퍼 (12 → 1 처리) */
+  function nextMo(mo){ return (mo % 12) + 1; }
+
+  var nextMonthNo = 0;
+  if(targetPeriod){
+    /* targetPeriod = 이미 확정된 공시월이므로 +1 해서 전망월로 변환 */
+    var tmo = extractMonth(targetPeriod);
+    if(tmo) nextMonthNo = nextMo(tmo);
+  } else if(basePeriod){
+    /* basePeriod = 기준월, +1이 확정월, +2가 전망월 */
+    var bmo2 = extractMonth(basePeriod);
+    if(bmo2){ nextMonthNo = nextMo(nextMo(bmo2)); }
+  }
+  if(!nextMonthNo){
+    /* feed 없음: 현재 월 기준 +2 (현재월 +1 = 확정월, +2 = 전망월) */
+    var nowMo = new Date().getMonth() + 1; /* 1-based */
+    nextMonthNo = nextMo(nextMo(nowMo));
+  }
+
+  var nextMonthName = monthLabel(nextMonthNo);
+  var outlookLabel  = nextMonthName + ' ' + suffix;
 
   /* 'plain' 클래스는 CSS에 없으므로 빈 문자열로 처리 */
   function cls(c){ return c && c!=='plain' ? c : ''; }
