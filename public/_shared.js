@@ -1025,6 +1025,12 @@ ko:{
   /* footer */
   'news.footer.notice':'이 페이지의 소식은 공개 정보 기반 참고용 자료입니다. 중요한 결정 전 공식 채널을 확인하세요.',
   'news.footer.contact':'문의',
+  /* klook affiliate */
+  'klook.title':'✈️ 여행 비용, 항공권만이 아닙니다',
+  'klook.desc':'유류할증료 부담이 크다면, 현지 투어·액티비티 비용도 미리 파악해두는 것이 전체 여행 예산 관리에 도움이 됩니다.',
+  'klook.btn':'여행 비용 줄이는 방법 보기 →',
+  'klook.inline':'항공권 가격이 부담된다면 여행 비용을 낮출 수 있는 방법도 확인해보세요',
+  'klook.inlineLink':'여행 비용 줄이는 방법 보기',
 },
 
 /* ══════ English ══════ */
@@ -1191,9 +1197,13 @@ en:{
   /* footer */
   'news.footer.notice':'Content on this page is reference information based on public data. Confirm with official channels before important decisions.',
   'news.footer.contact':'Contact',
+  /* klook affiliate */
+  'klook.title':'✈️ Travel costs go beyond airfare',
+  'klook.desc':'If fuel surcharges are weighing on your budget, checking local tours and activity costs in advance can help manage your total travel spend.',
+  'klook.btn':'Find ways to lower travel costs →',
+  'klook.inline':'If airfare is stretching your budget, check out ways to reduce your overall travel costs',
+  'klook.inlineLink':'Find ways to lower travel costs',
 },
-
-/* ══════ 日本語 ══════ */
 ja:{
   'nav.routes':'路線別検索','nav.airlines':'航空会社一覧','nav.news':'参考ニュース',
   'footer.notice':'燃油サーチャージ情報は参考用です。最終金額は必ず航空会社公式サイトでご確認ください。',
@@ -1356,9 +1366,13 @@ ja:{
   /* footer */
   'news.footer.notice':'このページの情報は公開データ基準の参考資料です。重要な決定前は公式チャンネルをご確認ください。',
   'news.footer.contact':'お問い合わせ',
+  /* klook affiliate */
+  'klook.title':'✈️ 旅行費用は航空券だけではありません',
+  'klook.desc':'燃油サーチャージが負担なら、現地ツアー・アクティビティの費用も事前に把握しておくと旅行全体の予算管理に役立ちます。',
+  'klook.btn':'旅行費用を抑える方法を見る →',
+  'klook.inline':'航空券の費用が気になる方は、旅行全体のコストを下げる方法もチェックしてみてください',
+  'klook.inlineLink':'旅行費用を抑える方法を見る',
 },
-
-/* ══════ 中文 ══════ */
 zh:{
   'nav.routes':'按航线查询','nav.airlines':'航空公司一览','nav.news':'参考资讯',
   'footer.notice':'燃油附加费信息仅供参考。最终金额请以航空公司官方公告为准。',
@@ -1521,9 +1535,13 @@ zh:{
   /* footer */
   'news.footer.notice':'本页内容为公开信息基准的参考资料。重要决策前请确认官方渠道。',
   'news.footer.contact':'联系方式',
+  /* klook affiliate */
+  'klook.title':'✈️ 旅行费用不只是机票',
+  'klook.desc':'如果燃油附加费让您感到压力，提前了解当地观光和活动费用，有助于整体旅行预算管理。',
+  'klook.btn':'查看降低旅行费用的方法 →',
+  'klook.inline':'如果机票费用让您担忧，不妨了解一下降低整体旅行费用的方法',
+  'klook.inlineLink':'查看降低旅行费用的方法',
 },
-
-/* ══════ Français ══════ */
 fr:{
   'nav.routes':'Recherche route','nav.airlines':'Index compagnies','nav.news':'Actualités',
   'footer.notice':'Les données de surcharge carburant sont fournies à titre indicatif. Confirmez toujours le montant final auprès de la compagnie aérienne.',
@@ -1685,9 +1703,13 @@ fr:{
   /* footer */
   'news.footer.notice':'Le contenu de cette page est une référence basée sur des données publiques. Vérifiez les canaux officiels avant toute décision importante.',
   'news.footer.contact':'Contact',
+  /* klook affiliate */
+  'klook.title':'✈️ Les coûts du voyage vont au-delà du billet',
+  'klook.desc':'Si les surcharges carburant pèsent sur votre budget, anticiper les coûts des tours et activités locaux peut vous aider à mieux gérer vos dépenses globales.',
+  'klook.btn':'Voir comment réduire les coûts de voyage →',
+  'klook.inline':'Si le prix du billet vous préoccupe, découvrez des moyens de réduire vos coûts de voyage globaux',
+  'klook.inlineLink':'Voir comment réduire les coûts de voyage',
 },
-
-/* ══════ Deutsch ══════ */
 de:{
   'nav.routes':'Streckensuche','nav.airlines':'Airline-Index','nav.news':'Nachrichten',
   'footer.notice':'Treibstoffzuschlag-Daten dienen nur als Referenz. Bitte bestätigen Sie den endgültigen Betrag bei der Fluggesellschaft.',
@@ -1851,6 +1873,12 @@ de:{
   /* footer */
   'news.footer.notice':'Inhalte dieser Seite sind Referenzinformationen auf Basis öffentlicher Daten. Bitte offizielle Kanäle vor wichtigen Entscheidungen prüfen.',
   'news.footer.contact':'Kontakt',
+  /* klook affiliate */
+  'klook.title':'✈️ Reisekosten sind mehr als nur das Ticket',
+  'klook.desc':'Wenn Treibstoffzuschläge Ihr Budget belasten, hilft es, die Kosten für lokale Touren und Aktivitäten im Voraus zu kennen – für eine bessere Gesamtplanung.',
+  'klook.btn':'Wege zur Kostensenkung entdecken →',
+  'klook.inline':'Wenn der Ticketpreis zu hoch erscheint, entdecken Sie Möglichkeiten, Ihre Gesamtreisekosten zu senken',
+  'klook.inlineLink':'Wege zur Kostensenkung entdecken',
 },
 }; /* end I18N */
 

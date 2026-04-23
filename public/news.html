@@ -73,6 +73,14 @@
     .mb-item{font-size:13px;margin-bottom:4px;color:var(--text2);}
     .mb-summary{font-size:12px;font-weight:700;color:#33691E;margin-top:8px;}
     .news-impact{font-size:11px;color:#D84315;margin-bottom:6px;}
+    .klook-box{background:linear-gradient(135deg,#FFF8E1,#FFECB3);border:1px solid #FFD54F;border-radius:12px;padding:14px 16px;margin-bottom:18px;}
+    .klook-title{font-size:13px;font-weight:700;margin-bottom:6px;color:#3E2723;}
+    .klook-desc{font-size:12px;color:#555;margin-bottom:10px;line-height:1.6;}
+    .klook-btn{display:inline-block;background:#FF5722;color:#fff;font-size:12px;padding:6px 14px;border-radius:6px;text-decoration:none;font-weight:600;transition:opacity .15s;}
+    .klook-btn:hover{opacity:.88;}
+    .klook-inline{font-size:12px;margin-bottom:12px;color:#666;line-height:1.6;}
+    .klook-inline a{color:var(--blue);font-weight:600;text-decoration:none;}
+    .klook-inline a:hover{text-decoration:underline;}
     @media(max-width:600px){.main{padding:14px;} .news-card{padding:12px 14px;}}
   </style>
 </head>
@@ -182,6 +190,13 @@
     <div class="mb-summary" data-i18n="news.marketSummary">→ 5월 인상 반영 완료 상태이나, 6월은 유가·환율·지정학 변수에 따라 유지 또는 추가 부담 가능성도 열려 있음</div>
   </div>
 
+  <!-- Klook 제휴 — 여행 비용 참고 (1차) -->
+  <div class="klook-box">
+    <div class="klook-title" data-i18n="klook.title">✈️ 여행 비용, 항공권만이 아닙니다</div>
+    <div class="klook-desc"  data-i18n="klook.desc">유류할증료 부담이 크다면, 현지 투어·액티비티 비용도 미리 파악해두는 것이 전체 여행 예산 관리에 도움이 됩니다.</div>
+    <a href="http://app.ac/JjCiEja23" target="_blank" rel="noopener sponsored" class="klook-btn" data-i18n="klook.btn">여행 비용 줄이는 방법 보기 →</a>
+  </div>
+
   <!-- 판단 기준 박스 -->
   <div style="background:#FFF8E1;border:1px solid #FFD54F;border-radius:12px;padding:14px 16px;margin-bottom:18px;font-size:13px;font-weight:600;color:#5D4037;">
     <span data-i18n="news.decisionTitle">📌 현재 판단 기준</span><br>
@@ -195,6 +210,12 @@
   <div class="ai-notice">
     <span style="font-size:16px">📋</span>
     <div data-i18n="news.aiNotice">AI 요약 콘텐츠 — 이 페이지의 내용은 공개된 정보를 바탕으로 AI가 정리한 참고용 자료입니다. 원문 기반 요약이며, 공식 정보가 아닙니다. 중요한 결정 전에 각 항공사 및 기관의 공식 채널을 반드시 확인하세요.</div>
+  </div>
+
+  <!-- Klook 제휴 — 인라인 CTA (2차) -->
+  <div class="klook-inline">
+    ✈️ <span data-i18n="klook.inline">항공권 가격이 부담된다면 여행 비용을 낮출 수 있는 방법도 확인해보세요</span>
+    → <a href="http://app.ac/JjCiEja23" target="_blank" rel="noopener sponsored" data-i18n="klook.inlineLink">여행 비용 줄이는 방법 보기</a>
   </div>
 
   <!-- 필터 탭 -->
