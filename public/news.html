@@ -73,6 +73,7 @@
     .mb-item{font-size:13px;margin-bottom:4px;color:var(--text2);}
     .mb-summary{font-size:12px;font-weight:700;color:#33691E;margin-top:8px;}
     .news-impact{font-size:11px;color:#D84315;margin-bottom:6px;}
+    .summary-updated{font-size:11px;color:#9A6A00;margin-bottom:8px;}
     .klook-box{background:linear-gradient(135deg,#FFF8E1,#FFECB3);border:1px solid #FFD54F;border-radius:12px;padding:14px 16px;margin-bottom:18px;}
     .klook-title{font-size:13px;font-weight:700;margin-bottom:6px;color:#3E2723;}
     .klook-desc{font-size:12px;color:#555;margin-bottom:10px;line-height:1.6;}
@@ -162,11 +163,12 @@
   <!-- [4] 핵심 요약 카드 -->
   <div class="summary-card">
     <div class="summary-card-title">📌 2026년 5월 핵심 요약</div>
+    <div class="summary-updated">🕐 2026.04.24 기준 시장 지표 반영</div>
     <ul>
       <li>전 항공사 유류할증료 인상 — 대한항공·아시아나·진에어·제주항공·이스타·에어서울·티웨이 모두 확정</li>
       <li>일부 구간 최대 약 2배 수준 상승 (예: 티웨이 7군 213,900원 → 406,900원)</li>
-      <li>브렌트유 $99~100 안팎 + 고환율 지속으로 현재 고점 구간 유지 중</li>
-      <li>6월은 유가·환율·지정학 변수에 따라 유지 또는 변동 가능 — 인하 단정 어려움</li>
+      <li>브렌트유 $105~106 안팎 + 원달러 환율 1,470원대 후반으로 고비용 구간 유지</li>
+      <li>6월은 하락 압력 일부 발생 가능하나, 환율·지정학 변수로 인하 폭 제한 가능성</li>
     </ul>
   </div>
 
@@ -201,10 +203,11 @@
   <!-- 시장 브리핑 -->
   <div class="market-brief-box">
     <div class="mb-title"   data-i18n="news.marketTitle">🌍 시장 브리핑</div>
-    <div class="mb-item"    data-i18n="news.brent">⛽ 브렌트유: $99~100 안팎 / 배럴 (상승 압력 확대)</div>
-    <div class="mb-item"    data-i18n="news.fx">💱 원달러 환율: 고환율 구간 지속 / 변동성 경계</div>
+    <div class="mb-item"    data-i18n="news.brent">⛽ 브렌트유: $105~106 안팎 / 배럴</div>
+    <div class="mb-item"    data-i18n="news.fx">💱 원달러 환율: 1,470원대 후반</div>
+    <div class="mb-item"    data-i18n="news.mops">✈️ 항공유/MOPS: 최근 고점 → 하락 전환 / 여전히 고가권</div>
     <div class="mb-item"    data-i18n="news.geo">🌍 지정학: 중동 리스크 완전 해소 아님 (호르무즈·중동 긴장 지속)</div>
-    <div class="mb-summary" data-i18n="news.marketSummary">→ 5월 인상 반영 완료 상태이나, 6월은 유가·환율·지정학 변수에 따라 유지 또는 추가 부담 가능성도 열려 있음</div>
+    <div class="mb-summary" data-i18n="news.marketSummary">→ 5월 유류할증료는 고점 반영 완료, 6월은 하락 압력 일부 발생 가능하나 환율·지정학 변수로 인하 폭 제한 가능</div>
   </div>
 
   <!-- [5] Klook 제휴 — 하드코딩 텍스트로 키 노출 방지 (1차) -->
@@ -325,13 +328,30 @@ async function loadNews(){
 }
 
 /* ════════════════════════════════════════════════════════
-   renderPredictBasis — 2026-04-21 09:00 기준 시장 데이터 반영
+   TODAY_MARKET — 2026.04.24 기준 단일 시장 지표 기준값
+   핵심 요약 · 시장 브리핑 · AI 예측 참고 지표 세 구역이
+   동일한 수치를 참조하도록 한 곳에서 관리.
+   FORECAST_DATA feed 값이 오더라도 이 값으로 고정.
+   ════════════════════════════════════════════════════════ */
+var TODAY_MARKET = {
+  brent:   '$105~106 / 배럴',
+  brentEn: '$105–106 / bbl',
+  fx:      '1,470원대 후반',
+  fxEn:    'KRW 1,470s (late)',
+  mops:    '최근 고점 → 하락 전환 / 여전히 고가권',
+  mopsEn:  'Recent peak → turning lower / still elevated',
+  geo:     '긴장 완전 해소 아님 (중동 리스크 잔존)',
+  geoEn:   'Not fully resolved (Middle East risk remains)',
+  outlook: '동결 또는 제한적 인하 가능성',
+  outlookEn: 'Flat or limited cut possible'
+};
+
+/* ════════════════════════════════════════════════════════
+   renderPredictBasis — 2026-04-24 기준 시장 데이터 반영
    ─────────────────────────────────────────────────────────
-   [설계 원칙]
-   · FORECAST_DATA feed 의존을 최소화 — feed 없이도 최신 수치 표시
-   · 번역 키(news.predict.*) 실패 시 언어별 PREDICT_FALLBACK으로 fallback
+   · TODAY_MARKET 기준값 고정 사용 — feed 값으로 덮어쓰지 않음
+   · PREDICT_FALLBACK은 TODAY_MARKET과 동일 수치로 통일
    · _forecastLoaded 플래그로 이중 렌더/깜빡임 방지(기존 유지)
-   · 값 표시 CSS 클래스: down(하락/완화), up(상승/긴장), plain(횡보)
    ════════════════════════════════════════════════════════ */
 function renderPredictBasis(){
   var box = document.getElementById('predictFactors');
@@ -341,113 +361,111 @@ function renderPredictBasis(){
   if(!_forecastLoaded) return;
 
   /* ── 언어별 레이블·값 fallback 테이블 ──────────────────
-     번역 키가 있으면 t()를 우선 사용하고,
-     없거나 키 원문이 그대로 반환되면 이 테이블에서 가져옴.
-     수치 문자열(brentVal, fxVal)은 언어 무관하게 동일하되
-     단위 표현만 언어별로 분기.
+     모든 수치는 TODAY_MARKET 기준으로 통일.
+     feed(FORECAST_DATA.meta.inputs) 값은 사용하지 않음.
   ─────────────────────────────────────────────────────── */
   var PREDICT_FALLBACK = {
     ko: {
       brentLabel:   'Brent 유가',
-      brentVal:     '$99~100 안팎 / 배럴 (상승 압력 확대)',
+      brentVal:     TODAY_MARKET.brent,
       brentClass:   'up',
       mopsLabel:    '싱가포르 항공유 (MOPS)',
-      mopsVal:      '고유가 환경 지속 — 약세 전환 미확인',
-      mopsClass:    'up',
+      mopsVal:      TODAY_MARKET.mops,
+      mopsClass:    'down',
       fxLabel:      '원달러 환율',
-      fxVal:        '고환율 구간 지속 / 변동성 경계',
+      fxVal:        TODAY_MARKET.fx,
       fxClass:      'up',
       geoLabel:     '지정학 리스크',
-      geoVal:       '긴장 완전 해소 아님 (중동 리스크 잔존)',
+      geoVal:       TODAY_MARKET.geo,
       geoClass:     'up',
       outlookLabel: 'surcharge 전망',
-      outlookVal:   '유지 또는 변동 가능성 (유가·환율 영향)',
-      outlookClass: 'up'
+      outlookVal:   TODAY_MARKET.outlook,
+      outlookClass: 'down'
     },
     en: {
       brentLabel:   'Brent Crude',
-      brentVal:     '~$99–100 / bbl (upward pressure building)',
+      brentVal:     TODAY_MARKET.brentEn,
       brentClass:   'up',
       mopsLabel:    'Singapore Jet (MOPS)',
-      mopsVal:      'Elevated — no confirmed softening',
-      mopsClass:    'up',
+      mopsVal:      TODAY_MARKET.mopsEn,
+      mopsClass:    'down',
       fxLabel:      'USD / KRW',
-      fxVal:        'High-FX zone persists / volatility watch',
+      fxVal:        TODAY_MARKET.fxEn,
       fxClass:      'up',
       geoLabel:     'Geopolitical Risk',
-      geoVal:       'Not fully resolved (Middle East risk remains)',
+      geoVal:       TODAY_MARKET.geoEn,
       geoClass:     'up',
       outlookLabel: 'surcharge outlook',
-      outlookVal:   'Stable or variable (oil & FX dependent)',
-      outlookClass: 'up'
+      outlookVal:   TODAY_MARKET.outlookEn,
+      outlookClass: 'down'
     },
     ja: {
       brentLabel:   'ブレント原油',
-      brentVal:     '$99〜100 前後 / バレル（上昇圧力拡大）',
+      brentVal:     '$105〜106 / バレル',
       brentClass:   'up',
       mopsLabel:    'シンガポール航空燃料（MOPS）',
-      mopsVal:      '高値圏継続 — 軟化未確認',
-      mopsClass:    'up',
+      mopsVal:      '直近ピーク → 下落転換 / 依然高値圏',
+      mopsClass:    'down',
       fxLabel:      'ウォンドル相場',
-      fxVal:        '高為替レート圏継続 / 変動性に注意',
+      fxVal:        '1,470ウォン台後半',
       fxClass:      'up',
       geoLabel:     '地政学リスク',
       geoVal:       '完全解消されず（中東リスク残存）',
       geoClass:     'up',
       outlookLabel: 'サーチャージ見通し',
-      outlookVal:   '維持または変動の可能性（原油・為替次第）',
-      outlookClass: 'up'
+      outlookVal:   '据え置きまたは限定的引き下げの可能性',
+      outlookClass: 'down'
     },
     zh: {
       brentLabel:   '布伦特原油',
-      brentVal:     '$99–100 / 桶前后（上涨压力扩大）',
+      brentVal:     '$105–106 / 桶',
       brentClass:   'up',
       mopsLabel:    '新加坡航空燃油（MOPS）',
-      mopsVal:      '高位持续 — 走软未确认',
-      mopsClass:    'up',
+      mopsVal:      '近期见顶 → 转跌 / 仍处高位',
+      mopsClass:    'down',
       fxLabel:      '韩元/美元汇率',
-      fxVal:        '高汇率区间持续 / 波动性警戒',
+      fxVal:        '1,470韩元后段',
       fxClass:      'up',
       geoLabel:     '地缘政治风险',
       geoVal:       '尚未完全解除（中东风险持续）',
       geoClass:     'up',
       outlookLabel: '燃油附加费展望',
-      outlookVal:   '维持或变动可能（受油价·汇率影响）',
-      outlookClass: 'up'
+      outlookVal:   '维持或有限下调可能',
+      outlookClass: 'down'
     },
     fr: {
       brentLabel:   'Pétrole Brent',
-      brentVal:     '~99–100 $/baril (pression haussière)',
+      brentVal:     '~105–106 $/baril',
       brentClass:   'up',
       mopsLabel:    'Kérosène Singapour (MOPS)',
-      mopsVal:      'Niveau élevé persistant — assouplissement non confirmé',
-      mopsClass:    'up',
+      mopsVal:      'Pic récent → retournement baissier / toujours élevé',
+      mopsClass:    'down',
       fxLabel:      'USD / KRW',
-      fxVal:        'Zone de KRW élevé / vigilance sur la volatilité',
+      fxVal:        'KRW 1 470s (fin de fourchette)',
       fxClass:      'up',
       geoLabel:     'Risque géopolitique',
       geoVal:       'Non pleinement résolu (risque Moyen-Orient persistant)',
       geoClass:     'up',
       outlookLabel: 'surcharge : prévision',
-      outlookVal:   'Stable ou variable (pétrole & change)',
-      outlookClass: 'up'
+      outlookVal:   'Stable ou légère baisse possible',
+      outlookClass: 'down'
     },
     de: {
       brentLabel:   'Brent-Rohöl',
-      brentVal:     '~99–100 $/Barrel (Aufwärtsdruck)',
+      brentVal:     '~105–106 $/Barrel',
       brentClass:   'up',
       mopsLabel:    'Singapur Kerosin (MOPS)',
-      mopsVal:      'Hohes Niveau anhaltend — keine Abschwächung bestätigt',
-      mopsClass:    'up',
+      mopsVal:      'Jüngster Höchststand → Rückgang / weiterhin hoch',
+      mopsClass:    'down',
       fxLabel:      'USD / KRW',
-      fxVal:        'Hohes KRW-Niveau hält an / Volatilität beobachten',
+      fxVal:        'KRW 1.470er Bereich (oberes Ende)',
       fxClass:      'up',
       geoLabel:     'Geopolitisches Risiko',
       geoVal:       'Nicht vollständig gelöst (Nahost-Risiko bleibt)',
       geoClass:     'up',
       outlookLabel: 'Zuschlag: Prognose',
-      outlookVal:   'Stabil oder variabel (Öl- & Wechselkursabhängig)',
-      outlookClass: 'up'
+      outlookVal:   'Stabil oder begrenzte Senkung möglich',
+      outlookClass: 'down'
     }
   };
 
@@ -460,55 +478,30 @@ function renderPredictBasis(){
     return (v && v !== key) ? v : fbVal;
   }
 
-  /* feed에서 수치를 읽을 수 있으면 Brent/FX는 feed 값 우선 사용
-     (feed 없으면 위 fallback 수치 사용) */
-  var inp = FORECAST_DATA && FORECAST_DATA.meta && FORECAST_DATA.meta.inputs;
+  /* ── feed 값은 사용하지 않음 ──────────────────────────
+     FORECAST_DATA.meta.inputs가 있더라도 TODAY_MARKET으로
+     고정된 fb.brentVal / fb.fxVal을 그대로 사용.
+     "$99 → $82.5" 또는 "1,480 → 1,478" 같은 과거 feed
+     형태가 화면에 출력되는 것을 방지.
+  ──────────────────────────────────────────────────── */
   var brentDisplay = fb.brentVal;
   var fxDisplay    = fb.fxVal;
   var brentCls     = fb.brentClass;
   var fxCls        = fb.fxClass;
 
-  if(inp && inp.brentUSD){
-    /* feed 값이 있으면 "기준 → feed값 / 단위" 형태 유지, 단 횡보 메모 제거 */
-    var brentUnit = pt('news.predict.brentUnit', lang==='ko'?'/ 배럴':'/ bbl');
-    brentDisplay = '$99 \u2192 $'+inp.brentUSD+' '+brentUnit;
-    brentCls = (inp.brentUSD < 95) ? 'down' : (inp.brentUSD > 100 ? 'up' : 'up');
-  }
-  if(inp && inp.usdKrw){
-    var fxUnit  = pt('news.predict.fxUnit', lang==='ko'?'원':'KRW');
-    var fxArrow = '\u2192';
-    fxDisplay = '1,480 '+fxArrow+' '+inp.usdKrw.toLocaleString()+(fxUnit?' '+fxUnit:'');
-    fxCls = (inp.usdKrw < 1450) ? 'down' : (inp.usdKrw > 1480 ? 'up' : 'up');
-  }
-
-  /* 전망 방향 — feed 값이 있으면 참조, 없으면 fallback */
+  /* 전망 방향 — feed의 direction이 있으면 방향 참조만, 수치는 TODAY_MARKET 고정 */
   var forecasts = (FORECAST_DATA && FORECAST_DATA.forecasts) || [];
   var keShort   = forecasts.find(function(f){
     return f.airlineCode==='KE' && (f.distanceBand||'').indexOf('단거리')!==-1;
   });
   var outlookVal = fb.outlookVal;
   var outlookCls = fb.outlookClass;
-  if(keShort && keShort.direction){
-    var dir = keShort.direction;
-    var tVal = pt('news.predict.outlook.'+dir, '');
-    if(tVal){ outlookVal = tVal; outlookCls = dir==='up'?'up':'down'; }
+  /* feed direction이 있으면 레이블 방향만 참조 — 값은 TODAY_MARKET 유지 */
+  if(keShort && keShort.direction === 'up'){
+    outlookCls = 'up';
   }
 
-  /* ── 전망 레이블: 항상 "확정월 다음달" 기준으로 계산 ──────────
-     [수정 이유]
-       이전 코드는 forecastTargetPeriod(예: 2026.05)를 그대로 월 번호로
-       사용했기 때문에, feed에 5월이 들어오면 화면도 "5월 전망"으로 표시됐음.
-       그러나 targetPeriod는 이미 공시가 확정된 달이므로, 화면에 표시할
-       "전망월"은 그 다음달이어야 함.
-
-     [계산 우선순위 — 모두 확정월 기준 +1]
-       1) forecastTargetPeriod → 해당 월 + 1  (확정월 → 다음 전망월)
-       2) basePeriod           → 해당 월 + 2  (기준월 → 확정월 → 전망월)
-       3) feed 없음            → 현재 월 + 2  (오늘 기준 동일 논리)
-     예: 4월 기준, 5월 확정 → 전망 표시 = 6월
-
-     outlookLabel suffix는 언어별 OUTLOOK_SUFFIX 테이블에서 조합.
-  ─────────────────────────────────────────────────────── */
+  /* ── 전망 레이블: 항상 "확정월 다음달" 기준으로 계산 ── */
   var targetPeriod = FORECAST_DATA && FORECAST_DATA.meta && FORECAST_DATA.meta.forecastTargetPeriod;
   var basePeriod   = FORECAST_DATA && FORECAST_DATA.meta && FORECAST_DATA.meta.basePeriod;
 
@@ -522,29 +515,24 @@ function renderPredictBasis(){
   };
   var suffix = OUTLOOK_SUFFIX[lang] || OUTLOOK_SUFFIX['en'];
 
-  /* 월 번호에 +1 적용하는 헬퍼 (12 → 1 처리) */
   function nextMo(mo){ return (mo % 12) + 1; }
 
   var nextMonthNo = 0;
   if(targetPeriod){
-    /* targetPeriod = 이미 확정된 공시월이므로 +1 해서 전망월로 변환 */
     var tmo = extractMonth(targetPeriod);
     if(tmo) nextMonthNo = nextMo(tmo);
   } else if(basePeriod){
-    /* basePeriod = 기준월, +1이 확정월, +2가 전망월 */
     var bmo2 = extractMonth(basePeriod);
     if(bmo2){ nextMonthNo = nextMo(nextMo(bmo2)); }
   }
   if(!nextMonthNo){
-    /* feed 없음: 현재 월 기준 +2 (현재월 +1 = 확정월, +2 = 전망월) */
-    var nowMo = new Date().getMonth() + 1; /* 1-based */
+    var nowMo = new Date().getMonth() + 1;
     nextMonthNo = nextMo(nextMo(nowMo));
   }
 
   var nextMonthName = monthLabel(nextMonthNo);
   var outlookLabel  = nextMonthName + ' ' + suffix;
 
-  /* 'plain' 클래스는 CSS에 없으므로 빈 문자열로 처리 */
   function cls(c){ return c && c!=='plain' ? c : ''; }
 
   box.innerHTML =
@@ -554,7 +542,7 @@ function renderPredictBasis(){
     +'</div>'
     +'<div class="predict-factor">'
       +'<div class="pf-label">'+pt('news.predict.mopsLabel', fb.mopsLabel)+'</div>'
-      +'<div class="pf-val '+cls(fb.mopsClass)+'">'+pt('news.predict.mopsValue', fb.mopsVal)+'</div>'
+      +'<div class="pf-val '+cls(fb.mopsClass)+'">'+fb.mopsVal+'</div>'
     +'</div>'
     +'<div class="predict-factor">'
       +'<div class="pf-label">'+pt('news.predict.fxLabel', fb.fxLabel)+'</div>'
@@ -979,7 +967,41 @@ var FIXED_NEWS_FALLBACK = {
     'news.fixed.20260423m5.impact':  '단기 여행자: 현 공시 기준 확인 후 판단. 여유 일정: 6월 공시 추이 확인 권장. 발권 전 공식 공지 최종 확인 필수.',
     'news.fixed.20260423m5.source':  '공식 공지 기반 참고 가이드 (2026.04.23)',
     'news.fixed.20260423m5.tag1': '항공권 유류할증료', 'news.fixed.20260423m5.tag2': '유류할증료 조회',
-    'news.fixed.20260423m5.tag3': '예약가이드',         'news.fixed.20260423m5.tag4': '유류할증료 계산'
+    'news.fixed.20260423m5.tag3': '예약가이드',         'news.fixed.20260423m5.tag4': '유류할증료 계산',
+
+    /* ── 2026-04-24 신규 카드뉴스 시리즈 (a~d) ── */
+
+    /* 카드 a: 전체 요약 */
+    'news.fixed.20260424a.title':   '5월 유류할증료 인상 확정 — 전 항공사 반영 완료',
+    'news.fixed.20260424a.summary': '대한항공, 아시아나, 진에어, 제주항공, 이스타항공, 에어서울, 티웨이항공 등 주요 한국 출발 국제선 항공사 모두 2026년 5월 유류할증료 공시가 완료되었습니다. 전 항공사에서 4월 대비 인상이 확인되었으며, 일부 구간은 최대 약 2배 수준 상승했습니다.',
+    'news.fixed.20260424a.impact':  '5월 유류할증료는 이미 확정된 상태. 추가 확인이 아닌 실제 비용 반영 단계.',
+    'news.fixed.20260424a.source':  '각 항공사 공식 공지 종합 (2026.04.24)',
+    'news.fixed.20260424a.tag1': '유류할증료', 'news.fixed.20260424a.tag2': '5월공시',
+    'news.fixed.20260424a.tag3': '항공사',     'news.fixed.20260424a.tag4': '인상',
+
+    /* 카드 b: 인상 수준 강조 */
+    'news.fixed.20260424b.title':   '최대 약 2배 인상 — 단거리·장거리 모두 상승',
+    'news.fixed.20260424b.summary': '티웨이, 에어서울, 이스타항공 등 LCC 중심으로 약 70~100% 수준의 인상이 발생했습니다. 단거리 구간도 큰 폭 상승했으며, 장거리 구간은 절대 금액 기준 부담이 크게 증가했습니다.',
+    'news.fixed.20260424b.impact':  '단순 인상이 아니라 구조적으로 상단 구간 진입.',
+    'news.fixed.20260424b.source':  '각 항공사 공식 공지 종합 (2026.04.24)',
+    'news.fixed.20260424b.tag1': '유류할증료 비교', 'news.fixed.20260424b.tag2': '인상률',
+    'news.fixed.20260424b.tag3': 'LCC',              'news.fixed.20260424b.tag4': '국제선',
+
+    /* 카드 c: 시장 해석 */
+    'news.fixed.20260424c.title':   '유가·환율 영향 반영 — 현재 고점 구간 진입',
+    'news.fixed.20260424c.summary': '브렌트유는 하락하지 않고 유지되고 있으며, 원달러 환율도 높은 수준을 유지하고 있습니다. 두 요소가 동시에 반영되면서 5월 유류할증료는 사실상 고점 구간에 진입한 상태로 해석됩니다.',
+    'news.fixed.20260424c.impact':  '하락 조건 부재 → 유지 가능성 높음',
+    'news.fixed.20260424c.source':  '시장 데이터 기반 참고 (2026.04.24)',
+    'news.fixed.20260424c.tag1': '브렌트유', 'news.fixed.20260424c.tag2': '환율',
+    'news.fixed.20260424c.tag3': '유류할증료 전망', 'news.fixed.20260424c.tag4': '시장',
+
+    /* 카드 d: 6월 전망 */
+    'news.fixed.20260424d.title':   '6월 유류할증료 전망 — 인하 가능성 낮음',
+    'news.fixed.20260424d.summary': '현재 시장 구조에서는 유류할증료가 급격히 하락할 가능성은 낮습니다. 유가 하락이나 환율 안정이 동반되지 않는 이상, 6월은 유지 또는 소폭 변동 가능성이 높은 구간입니다.',
+    'news.fixed.20260424d.impact':  '인하 기대보다는 유지 시나리오 우세',
+    'news.fixed.20260424d.source':  '시장 데이터 기반 참고 (2026.04.24)',
+    'news.fixed.20260424d.tag1': '6월', 'news.fixed.20260424d.tag2': '유류할증료 전망',
+    'news.fixed.20260424d.tag3': '유지', 'news.fixed.20260424d.tag4': '항공권'
   },
   en: {
     /* ── 2026-04-21a ── */
@@ -1112,11 +1134,69 @@ var FIXED_NEWS_FALLBACK = {
     'news.fixed.20260423m5.impact':  'Short-term travelers: check current notices then decide. Flexible schedules: monitor June notices. Always verify official surcharge before ticketing.',
     'news.fixed.20260423m5.source':  'Reference guide based on official notices (2026.04.23)',
     'news.fixed.20260423m5.tag1': 'ticket fuel surcharge', 'news.fixed.20260423m5.tag2': 'surcharge lookup',
-    'news.fixed.20260423m5.tag3': 'booking guide',          'news.fixed.20260423m5.tag4': 'surcharge calculation'
+    'news.fixed.20260423m5.tag3': 'booking guide',          'news.fixed.20260423m5.tag4': 'surcharge calculation',
+
+    /* ── 2026-04-24 new series EN fallback (a~d) ── */
+    'news.fixed.20260424a.title':   'May fuel surcharge hike confirmed — All carriers reflected',
+    'news.fixed.20260424a.summary': 'Korean Air, Asiana, Jin Air, Jeju Air, Eastar Jet, Air Seoul, and T\'way Air have all completed their May 2026 Korea-origin international fuel surcharge notices. Increases versus April are confirmed across all carriers, with some bands rising up to approximately 2×.',
+    'news.fixed.20260424a.impact':  'May surcharges are already confirmed — no longer a matter of checking; it is time to factor them into actual costs.',
+    'news.fixed.20260424a.source':  'Official notices compiled (2026.04.24)',
+    'news.fixed.20260424a.tag1': 'fuel surcharge', 'news.fixed.20260424a.tag2': 'May notice',
+    'news.fixed.20260424a.tag3': 'airline',          'news.fixed.20260424a.tag4': 'increase',
+
+    'news.fixed.20260424b.title':   'Up to ~2× increase — Short-haul and long-haul both up',
+    'news.fixed.20260424b.summary': 'LCCs including T\'way Air, Air Seoul, and Eastar Jet have recorded increases of approximately 70–100%. Short-haul bands also rose significantly, while long-haul bands carry a substantially higher absolute cost burden.',
+    'news.fixed.20260424b.impact':  'Not a simple incremental hike — structurally entering the upper surcharge tier.',
+    'news.fixed.20260424b.source':  'Official notices compiled (2026.04.24)',
+    'news.fixed.20260424b.tag1': 'surcharge comparison', 'news.fixed.20260424b.tag2': 'hike rate',
+    'news.fixed.20260424b.tag3': 'LCC',                   'news.fixed.20260424b.tag4': 'international',
+
+    'news.fixed.20260424c.title':   'Oil and FX factors reflected — Current peak zone entered',
+    'news.fixed.20260424c.summary': 'Brent crude remains elevated without a meaningful drop, and USD/KRW continues to hold at a high level. With both factors reflected simultaneously, May fuel surcharges are interpreted as having entered a de facto peak zone.',
+    'news.fixed.20260424c.impact':  'No conditions for a decline present → high likelihood of sustained levels.',
+    'news.fixed.20260424c.source':  'Market data reference (2026.04.24)',
+    'news.fixed.20260424c.tag1': 'Brent crude', 'news.fixed.20260424c.tag2': 'exchange rate',
+    'news.fixed.20260424c.tag3': 'surcharge outlook', 'news.fixed.20260424c.tag4': 'market',
+
+    'news.fixed.20260424d.title':   'June surcharge outlook — Cut unlikely',
+    'news.fixed.20260424d.summary': 'Under the current market structure, a sharp decline in fuel surcharges is unlikely. Absent a meaningful oil price drop or FX stabilisation, June is expected to see either stable surcharges or only minor fluctuation.',
+    'news.fixed.20260424d.impact':  'Stable scenario prevails over cut expectations.',
+    'news.fixed.20260424d.source':  'Market data reference (2026.04.24)',
+    'news.fixed.20260424d.tag1': 'June', 'news.fixed.20260424d.tag2': 'surcharge outlook',
+    'news.fixed.20260424d.tag3': 'stable', 'news.fixed.20260424d.tag4': 'airline ticket'
   }
 };
 
 var FIXED_NEWS = [
+  /* ── 2026-04-24 신규 카드뉴스 시리즈 (a~d) ── */
+  {category:'airline', priority:1, date:'2026-04-24', aiSummary:true,
+   titleKey:'news.fixed.20260424a.title', summaryKey:'news.fixed.20260424a.summary',
+   impactKey:'news.fixed.20260424a.impact', sourceNameKey:'news.fixed.20260424a.source',
+   tagKeys:['news.fixed.20260424a.tag1','news.fixed.20260424a.tag2',
+            'news.fixed.20260424a.tag3','news.fixed.20260424a.tag4'],
+   relevanceScore:1.0},
+
+  {category:'airline', priority:1, date:'2026-04-24', aiSummary:true,
+   titleKey:'news.fixed.20260424b.title', summaryKey:'news.fixed.20260424b.summary',
+   impactKey:'news.fixed.20260424b.impact', sourceNameKey:'news.fixed.20260424b.source',
+   tagKeys:['news.fixed.20260424b.tag1','news.fixed.20260424b.tag2',
+            'news.fixed.20260424b.tag3','news.fixed.20260424b.tag4'],
+   relevanceScore:1.0},
+
+  {category:'market', priority:2, date:'2026-04-24', aiSummary:true,
+   titleKey:'news.fixed.20260424c.title', summaryKey:'news.fixed.20260424c.summary',
+   impactKey:'news.fixed.20260424c.impact', sourceNameKey:'news.fixed.20260424c.source',
+   tagKeys:['news.fixed.20260424c.tag1','news.fixed.20260424c.tag2',
+            'news.fixed.20260424c.tag3','news.fixed.20260424c.tag4'],
+   relevanceScore:0.9},
+
+  {category:'market', priority:2, date:'2026-04-24', aiSummary:true,
+   titleKey:'news.fixed.20260424d.title', summaryKey:'news.fixed.20260424d.summary',
+   impactKey:'news.fixed.20260424d.impact', sourceNameKey:'news.fixed.20260424d.source',
+   tagKeys:['news.fixed.20260424d.tag1','news.fixed.20260424d.tag2',
+            'news.fixed.20260424d.tag3','news.fixed.20260424d.tag4'],
+   relevanceScore:0.9},
+
   /* ── 2026-04-21 신규 공시 반영 — titleKey 구조로 다국어 지원 ── */
   {category:'airline', priority:1, date:'2026-04-21',
    titleKey:'news.fixed.20260421a.title', summaryKey:'news.fixed.20260421a.summary',
