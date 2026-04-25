@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://aero-surcharge.vercel.app/sitemap.xml

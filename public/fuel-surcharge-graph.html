@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>유류할증료 변동 그래프 — 2026년 4월·5월 항공사별 비교</title>
+  <meta name="description" content="2026년 4월·5월 한국 출발 국제선 유류할증료를 항공사별로 비교하는 인터랙티브 그래프입니다." data-i18n-page-desc="graph.metaDesc"/>
+  <meta data-i18n-page-title="graph.metaTitle"/>
+  <link rel="canonical" href="https://aero-surcharge.vercel.app/fuel-surcharge-graph.html"/>
+  <meta property="og:title" content="유류할증료 변동 그래프 — 2026년 4월·5월 항공사별 비교"/>
+  <meta property="og:description" content="2026년 4월·5월 한국 출발 국제선 유류할증료를 항공사별로 비교하는 인터랙티브 그래프입니다."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://aero-surcharge.vercel.app/fuel-surcharge-graph.html"/>
+  <link rel="stylesheet" href="_shared.css"/>
+  <link rel="stylesheet" href="_seo_pages.css"/>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-76T4QJPY4L"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-76T4QJPY4L');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
+  <style>
+    .graph-filter-bar {
+      display: flex; flex-wrap: wrap; gap: 10px; align-items: center;
+      background: var(--white,#fff); border: 1px solid var(--line,#e5e7eb);
+      border-radius: 12px; padding: 14px 18px; margin-bottom: 18px;
+    }
+    .graph-filter-bar label { font-size:12px; color:var(--muted,#888); font-weight:600; white-space:nowrap; }
+    .graph-filter-bar select {
+      font-size:13px; border:1px solid var(--line,#e5e7eb); border-radius:7px;
+      padding:5px 10px; background:#f9fafb; color:var(--text,#111); cursor:pointer;
+    }
+    .graph-filter-sep { flex:1 1 auto; }
+    .chart-wrap {
+      position:relative; background:var(--white,#fff);
+      border:1px solid var(--line,#e5e7eb); border-radius:14px;
+      padding:20px 16px 12px; margin-bottom:8px;
+    }
+    .chart-wrap canvas { display:block; width:100% !important; }
+    #graphTooltip {
+      position:fixed; background:rgba(15,23,42,.93); color:#fff;
+      font-size:12px; line-height:1.65; padding:9px 13px; border-radius:9px;
+      pointer-events:none; z-index:9999; display:none; white-space:nowrap;
+      box-shadow:0 4px 20px rgba(0,0,0,.28);
+    }
+    .tt-head { font-weight:700; font-size:13px; margin-bottom:3px; }
+    .tt-usd  { font-size:11px; color:#93c5fd; }
+    .chart-legend { display:flex; flex-wrap:wrap; gap:6px 14px; margin-top:12px; padding:0 4px; }
+    .legend-item {
+      display:flex; align-items:center; gap:6px; font-size:12px;
+      cursor:pointer; user-select:none; padding:3px 8px; border-radius:6px;
+      transition:background .15s;
+    }
+    .legend-item:hover { background:#f3f4f6; }
+    .legend-item.dimmed { opacity:.3; }
+    .legend-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
+    .legend-tag {
+      font-size:10px; color:#1d4ed8; border:1px solid #bfdbfe;
+      border-radius:3px; padding:0 3px; line-height:1.5;
+      background:#dbeafe;
+    }
+    .graph-data-table { overflow-x:auto; margin-bottom:20px; }
+    .graph-data-table table { width:100%; border-collapse:collapse; font-size:12px; }
+    .graph-data-table th {
+      background:#f8faff; border-bottom:2px solid #e0e7ff;
+      padding:8px 10px; text-align:left; font-weight:700; color:#3730a3; white-space:nowrap;
+    }
+    .graph-data-table td { padding:7px 10px; border-bottom:1px solid #f1f5f9; vertical-align:middle; }
+    .graph-data-table tr:hover td { background:#f8faff; }
+    .usd-badge {
+      display:inline-block; background:#dbeafe; color:#1d4ed8;
+      font-size:9px; font-weight:700; border-radius:3px; padding:1px 4px;
+      margin-left:3px; vertical-align:middle;
+    }
+    .change-up   { color:#dc2626; font-weight:700; }
+    .change-note { font-size:10px; color:var(--muted,#888); }
+    .null-cell   { color:var(--muted,#aaa); font-size:11px; }
+    .graph-notice { font-size:11px; color:var(--muted,#888); margin-bottom:18px; line-height:1.7; }
+    @media(max-width:640px){
+      .graph-filter-bar{padding:10px 12px;}
+      .chart-wrap{padding:12px 6px 8px;}
+    }
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-links">
+    <a href="index.html"    class="nav-link" data-i18n="nav.routes">노선별 조회</a>
+    <a href="airlines.html" class="nav-link" data-i18n="nav.airlines">항공사 인덱스</a>
+    <a href="news.html"     class="nav-link" data-i18n="nav.news">참고 소식</a>
+  </div>
+  <div class="nav-controls">
+    <select class="nav-select" id="navLang">
+      <option value="ko">🇰🇷 한국어</option>
+      <option value="en">🇺🇸 English</option>
+      <option value="ja">🇯🇵 日本語</option>
+      <option value="zh">🇨🇳 中文</option>
+    </select>
+    <div class="nav-divider"></div>
+    <select class="nav-select" id="navCurr">
+      <option value="KRW">₩ KRW</option>
+      <option value="USD">$ USD</option>
+      <option value="JPY">¥ JPY</option>
+      <option value="EUR">€ EUR</option>
+    </select>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-title" data-i18n="graph.pageTitle">📈 유류할증료 변동 그래프</div>
+  <div class="page-sub"   data-i18n="graph.pageSub">2026년 4월 · 5월 항공사별 비교 — 실제 공식 공지 데이터 기반</div>
+</div>
+
+<main class="seo-main">
+  <h1 style="font-size:20px;font-weight:700;color:var(--text);margin-bottom:12px;" data-i18n="graph.h1">2026년 4·5월 유류할증료 변동 그래프</h1>
+
+  <div class="seo-lang-notice">
+    ⚠️&nbsp;<span data-i18n-html="graph.notice"></span>
+  </div>
+
+  <div class="seo-intro" data-i18n="graph.intro"></div>
+
+  <div class="summary-cards">
+    <div class="summary-card">
+      <div class="summary-card-icon">📈</div>
+      <div class="summary-card-title" data-i18n="graph.card1.title">월별 변동 추이</div>
+      <div class="summary-card-body"  data-i18n="graph.card1.body">유류할증료는 국제유가 상승 시 인상, 하락 시 인하 경향을 보입니다.</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-card-icon">🛢️</div>
+      <div class="summary-card-title" data-i18n="graph.card2.title">유가 연동 구조</div>
+      <div class="summary-card-body"  data-i18n="graph.card2.body">항공사 유류할증료는 전월 평균 WTI 및 두바이유 가격을 기준으로 산정됩니다.</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-card-icon">💱</div>
+      <div class="summary-card-title" data-i18n="graph.card3.title">환율 영향</div>
+      <div class="summary-card-body"  data-i18n="graph.card3.body">원/달러 환율이 높을수록 원화 환산 유류할증료가 높아질 수 있습니다.</div>
+    </div>
+  </div>
+
+  <!-- Filter -->
+  <div class="graph-filter-bar">
+    <label data-i18n="graph.filter.airline">항공사</label>
+    <select id="filterAirline"></select>
+    <label data-i18n="graph.filter.month">월</label>
+    <select id="filterMonth"></select>
+    <label data-i18n="graph.filter.view">표시 기준</label>
+    <select id="filterView"></select>
+    <div class="graph-filter-sep"></div>
+    <span style="font-size:11px;color:var(--muted);" data-i18n="graph.filter.currHint">통화: 상단 navCurr 기준</span>
+  </div>
+
+  <!-- Chart -->
+  <div class="chart-wrap">
+    <canvas id="graphCanvas" height="380"></canvas>
+    <div class="chart-legend" id="chartLegend"></div>
+  </div>
+  <p class="graph-notice" data-i18n-html="graph.chartNote"></p>
+
+  <!-- Table -->
+  <div class="seo-section-title" data-i18n="graph.tableTitle">📋 항공사별 유류할증료 상세 데이터</div>
+  <div class="graph-data-table">
+    <table><thead id="dataTableHead"></thead><tbody id="dataTableBody"></tbody></table>
+  </div>
+  <p class="graph-notice" data-i18n-html="graph.tableNote"></p>
+
+  <!-- Official links -->
+  <div class="official-link-box">
+    <div class="official-link-title" data-i18n="graph.official.title">🔗 항공사 공식 유류할증료 공지 바로가기</div>
+    <div class="official-link-list" id="officialLinks"></div>
+  </div>
+
+  <!-- Related -->
+  <div class="related-links">
+    <div class="related-title" data-i18n="graph.relatedTitle">🔗 관련 페이지</div>
+    <div class="related-grid">
+      <a class="related-item" href="index.html"                           data-i18n="graph.related.main">🔍 메인 유류할증료 조회</a>
+      <a class="related-item" href="airlines.html"                        data-i18n="graph.related.airlines">✈️ 항공사별 유류할증료</a>
+      <a class="related-item" href="news.html"                            data-i18n="graph.related.news">📰 유류할증료 뉴스</a>
+      <a class="related-item" href="fuel-surcharge-graph.html"            data-i18n="graph.related.graph">📈 변동 그래프</a>
+      <a class="related-item" href="fuel-surcharge-calculator.html"       data-i18n="graph.related.calc">🧮 계산 방법 안내</a>
+      <a class="related-item" href="fuel-surcharge-2026-05.html"          data-i18n="graph.related.may">📅 2026년 5월</a>
+      <a class="related-item" href="fuel-surcharge-2026-06-forecast.html" data-i18n="graph.related.june">🔮 2026년 6월 전망</a>
+      <a class="related-item" href="fuel-surcharge-korea.html"            data-i18n="graph.related.korea">🇰🇷 한국 출발 유류할증료</a>
+    </div>
+  </div>
+</main>
+
+<footer style="background:var(--white);border-top:1px solid var(--line);padding:20px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;">
+  <p style="font-size:12px;color:var(--muted);max-width:600px;line-height:1.6;margin:0;" data-i18n-html="graph.footnote"></p>
+  <nav style="display:flex;gap:16px;flex-wrap:wrap;">
+    <a href="about.html"   style="font-size:12px;color:var(--muted);text-decoration:none;">About</a>
+    <a href="privacy.html" style="font-size:12px;color:var(--muted);text-decoration:none;">Privacy Policy</a>
+    <a href="terms.html"   style="font-size:12px;color:var(--muted);text-decoration:none;">Terms of Service</a>
+  </nav>
+</footer>
+
+<div id="graphTooltip"></div>
+
+<script src="_shared.js"></script>
+<script>
+/* ═══════════════════════════════════════
+   PAGE i18n
+═══════════════════════════════════════ */
+var GRAPH_I18N = {
+  ko: {
+    'graph.metaTitle': '유류할증료 변동 그래프 — 2026년 4·5월 항공사별 비교',
+    'graph.metaDesc':  '2026년 4월·5월 한국 출발 국제선 유류할증료를 항공사별로 비교하는 인터랙티브 그래프입니다.',
+    'graph.pageTitle': '📈 유류할증료 변동 그래프',
+    'graph.pageSub':   '2026년 4월 · 5월 항공사별 비교 — 실제 공식 공지 데이터 기반',
+    'graph.h1':        '2026년 4·5월 유류할증료 변동 그래프',
+    'graph.notice':    '<strong>안내:</strong> 이 페이지의 금액은 항공사 공식 공시 통화 기준이며, 상단 통화 선택 시 기준 환율로 자동 환산됩니다. USD 공시 항공사는 원본 USD 금액을 함께 표시합니다.',
+    'graph.intro':     '2026년 4월과 5월에 적용된 항공사별 유류할증료를 인터랙티브 그래프와 표로 비교합니다. 대한항공·아시아나항공·티웨이·에어서울은 원화(KRW) 공시, 제주항공·진에어·이스타·에어프레미아는 달러(USD) 공시입니다. 통화 선택 시 기준 환율(USD 1 = KRW 1,480)로 자동 환산됩니다.',
+    'graph.card1.title': '월별 변동 추이',
+    'graph.card1.body':  '유류할증료는 국제유가 상승 시 인상, 하락 시 인하 경향을 보입니다. 분기 단위로 트렌드를 파악하면 여행 계획 수립에 유용합니다.',
+    'graph.card2.title': '유가 연동 구조',
+    'graph.card2.body':  '항공사 유류할증료는 전월 평균 WTI 및 두바이유 가격을 기준으로 산정됩니다. 유가가 구간을 넘어서면 할증료 단계가 변경됩니다.',
+    'graph.card3.title': '환율 영향',
+    'graph.card3.body':  '원/달러 환율이 높을수록 동일 유가 수준에서도 원화 환산 유류할증료가 높아질 수 있습니다.',
+    'graph.filter.airline': '항공사', 'graph.filter.month': '월',
+    'graph.filter.view': '표시 기준', 'graph.filter.currHint': '통화: 상단 navCurr 기준',
+    'graph.filter.all': '전체', 'graph.filter.apr': '2026년 4월',
+    'graph.filter.may': '2026년 5월', 'graph.filter.amount': '금액',
+    'graph.filter.change': '상승률 (%)',
+    'graph.chartNote': '※ 그래프는 각 항공사의 구간 데이터를 구간 인덱스 순서로 표시합니다. 실선: 5월, 점선: 4월. USD 공시 항공사(7C·LJ·ZE·YP)는 선택 통화 기준으로 환산됩니다. 기준 환율: USD 1 = KRW 1,480. 범례 클릭 시 항공사 라인을 숨길 수 있습니다.',
+    'graph.tableTitle': '📋 항공사별 유류할증료 상세 데이터',
+    'graph.tableNote':  '※ 데이터는 각 항공사 공식 공지(2026년 4월·5월) 기반입니다. — 은 해당 구간 공시 없음을 의미합니다.',
+    'graph.th.airline': '항공사', 'graph.th.currency': '공시 통화',
+    'graph.th.band': '구간', 'graph.th.apr': '4월',
+    'graph.th.may': '5월', 'graph.th.change': '4월 대비',
+    'graph.official.title': '🔗 항공사 공식 유류할증료 공지 바로가기',
+    'graph.official.suffix': '공식 공지 확인 ↗',
+    'graph.relatedTitle': '🔗 관련 페이지',
+    'graph.related.main': '🔍 메인 유류할증료 조회', 'graph.related.airlines': '✈️ 항공사별 유류할증료',
+    'graph.related.news': '📰 유류할증료 뉴스', 'graph.related.graph': '📈 변동 그래프',
+    'graph.related.calc': '🧮 계산 방법 안내', 'graph.related.may': '📅 2026년 5월',
+    'graph.related.june': '🔮 2026년 6월 전망', 'graph.related.korea': '🇰🇷 한국 출발 유류할증료',
+    'graph.usdBadge': 'USD공시', 'graph.noData': '—',
+    'graph.footnote': '표시된 유류할증료는 항공사 공식 공지 기반 참고용 정보입니다. 최종 금액은 항공사 공식 사이트 또는 발권처에서 반드시 확인하세요.<br>문의: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+    'airline.KE': '대한항공 (KE)', 'airline.OZ': '아시아나항공 (OZ)',
+    'airline.YP': '에어프레미아 (YP)', 'airline.7C': '제주항공 (7C)',
+    'airline.LJ': '진에어 (LJ)', 'airline.ZE': '이스타항공 (ZE)',
+    'airline.TW': '티웨이항공 (TW)', 'airline.RS': '에어서울 (RS)',
+  },
+  en: {
+    'graph.metaTitle': 'Fuel Surcharge Trend Graph — April & May 2026 by Airline',
+    'graph.metaDesc':  'Interactive graph comparing April and May 2026 Korea-departure fuel surcharges by airline.',
+    'graph.pageTitle': '📈 Fuel Surcharge Trend Graph',
+    'graph.pageSub':   'April · May 2026 Airline Comparison — Based on Official Announcements',
+    'graph.h1':        'April & May 2026 Fuel Surcharge Trend Graph',
+    'graph.notice':    '<strong>Notice:</strong> Amounts are based on each airline\'s official filing currency. Selecting a currency above converts amounts at the reference rate. USD-filing airlines show the original USD alongside.',
+    'graph.intro':     'Compare April and May 2026 fuel surcharges by airline via an interactive graph and data table. Korean Air, Asiana, T\'way Air, and Air Seoul file in KRW; Jeju Air, Jin Air, Eastar Jet, and Air Premia file in USD. Reference rate: USD 1 = KRW 1,480.',
+    'graph.card1.title': 'Monthly Trend', 'graph.card1.body': 'Fuel surcharges tend to rise when oil prices increase and fall when they decrease.',
+    'graph.card2.title': 'Oil Price Linkage', 'graph.card2.body': 'Surcharges are calculated based on the prior month\'s average WTI and Dubai crude.',
+    'graph.card3.title': 'Exchange Rate Effect', 'graph.card3.body': 'A higher USD/KRW rate can push KRW-equivalent surcharges higher at the same oil price level.',
+    'graph.filter.airline': 'Airline', 'graph.filter.month': 'Month',
+    'graph.filter.view': 'View', 'graph.filter.currHint': 'Currency: set via nav above',
+    'graph.filter.all': 'All', 'graph.filter.apr': 'April 2026',
+    'graph.filter.may': 'May 2026', 'graph.filter.amount': 'Amount',
+    'graph.filter.change': 'Change (%)',
+    'graph.chartNote': '※ Graph shows each airline\'s band data in index order. Solid: May, Dashed: April. USD-filing airlines (7C·LJ·ZE·YP) are converted to the selected currency. Ref rate: USD 1 = KRW 1,480. Click legend to toggle lines.',
+    'graph.tableTitle': '📋 Detailed Fuel Surcharge Data by Airline',
+    'graph.tableNote':  '※ Data sourced from each airline\'s official announcement (April & May 2026). — means no filing for that band.',
+    'graph.th.airline': 'Airline', 'graph.th.currency': 'Filing Currency',
+    'graph.th.band': 'Band', 'graph.th.apr': 'April',
+    'graph.th.may': 'May', 'graph.th.change': 'vs. April',
+    'graph.official.title': '🔗 Official Airline Surcharge Announcements',
+    'graph.official.suffix': 'Official Notice ↗',
+    'graph.relatedTitle': '🔗 Related Pages',
+    'graph.related.main': '🔍 Main Search', 'graph.related.airlines': '✈️ By Airline',
+    'graph.related.news': '📰 News', 'graph.related.graph': '📈 Trend Graph',
+    'graph.related.calc': '🧮 Calculation Guide', 'graph.related.may': '📅 May 2026',
+    'graph.related.june': '🔮 June 2026 Forecast', 'graph.related.korea': '🇰🇷 Korea-Departure',
+    'graph.usdBadge': 'USD Filing', 'graph.noData': '—',
+    'graph.footnote': 'Data is for reference only, based on official airline announcements. Always confirm final amounts at the airline\'s official site.<br>Contact: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+    'airline.KE': 'Korean Air (KE)', 'airline.OZ': 'Asiana Airlines (OZ)',
+    'airline.YP': 'Air Premia (YP)', 'airline.7C': 'Jeju Air (7C)',
+    'airline.LJ': 'Jin Air (LJ)', 'airline.ZE': 'Eastar Jet (ZE)',
+    'airline.TW': "T'way Air (TW)", 'airline.RS': 'Air Seoul (RS)',
+  },
+  ja: {
+    'graph.metaTitle': '燃油サーチャージ推移グラフ — 2026年4月・5月 航空会社別比較',
+    'graph.metaDesc':  '2026年4月・5月の韓国発国際線燃油サーチャージを航空会社別に比較するグラフです。',
+    'graph.pageTitle': '📈 燃油サーチャージ推移グラフ',
+    'graph.pageSub':   '2026年4月・5月 航空会社別比較 — 公式案内データ基準',
+    'graph.h1':        '2026年4月・5月 燃油サーチャージ推移グラフ',
+    'graph.notice':    '<strong>お知らせ:</strong> 金額は各航空会社の公式申告通貨基準です。上部で通貨を選択すると基準レートで自動換算されます。USD申告航空会社は元のUSD金額も併記します。',
+    'graph.intro':     '2026年4月・5月の燃油サーチャージをグラフと表で比較します。大韓航空・アシアナ・ティーウェイ・エアソウルはKRW申告、済州・ジンエアー・イースター・エアプレミアはUSD申告。換算レート: USD 1 = KRW 1,480。',
+    'graph.card1.title': '月別変動推移', 'graph.card1.body': '燃油サーチャージは油価変動に連動して毎月再算定されます。',
+    'graph.card2.title': '油価連動構造', 'graph.card2.body': '前月平均のWTI・ドバイ原油価格を基準に区間ごとに決定されます。',
+    'graph.card3.title': '為替レートの影響', 'graph.card3.body': 'ウォン/ドル為替レートが高いほどウォン換算サーチャージが高くなります。',
+    'graph.filter.airline': '航空会社', 'graph.filter.month': '月',
+    'graph.filter.view': '表示基準', 'graph.filter.currHint': '通貨: 上部navCurr基準',
+    'graph.filter.all': '全て', 'graph.filter.apr': '2026年4月',
+    'graph.filter.may': '2026年5月', 'graph.filter.amount': '金額',
+    'graph.filter.change': '上昇率 (%)',
+    'graph.chartNote': '※ グラフは各航空会社の区間データをインデックス順に表示します。実線: 5月、点線: 4月。USD申告航空会社は選択通貨に換算されます。基準レート: USD 1 = KRW 1,480。凡例クリックでラインを非表示にできます。',
+    'graph.tableTitle': '📋 航空会社別燃油サーチャージ詳細データ',
+    'graph.tableNote':  '※ データは各航空会社公式案内(2026年4月・5月)基準。— は該当区間の公示なしを意味します。',
+    'graph.th.airline': '航空会社', 'graph.th.currency': '申告通貨',
+    'graph.th.band': '区間', 'graph.th.apr': '4月',
+    'graph.th.may': '5月', 'graph.th.change': '4月比',
+    'graph.official.title': '🔗 航空会社公式燃油サーチャージ案内へ',
+    'graph.official.suffix': '公式案内を確認 ↗',
+    'graph.relatedTitle': '🔗 関連ページ',
+    'graph.related.main': '🔍 メイン検索', 'graph.related.airlines': '✈️ 航空会社別',
+    'graph.related.news': '📰 ニュース', 'graph.related.graph': '📈 推移グラフ',
+    'graph.related.calc': '🧮 計算方法', 'graph.related.may': '📅 2026年5月',
+    'graph.related.june': '🔮 2026年6月予測', 'graph.related.korea': '🇰🇷 韓国発',
+    'graph.usdBadge': 'USD申告', 'graph.noData': '—',
+    'graph.footnote': '表示された燃油サーチャージは参考情報です。最終金額は各航空会社の公式サイトでご確認ください。<br>お問い合わせ: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+    'airline.KE': '大韓航空 (KE)', 'airline.OZ': 'アシアナ航空 (OZ)',
+    'airline.YP': 'エアプレミア (YP)', 'airline.7C': '済州航空 (7C)',
+    'airline.LJ': 'ジンエアー (LJ)', 'airline.ZE': 'イースター航空 (ZE)',
+    'airline.TW': 'ティーウェイ航空 (TW)', 'airline.RS': 'エアソウル (RS)',
+  },
+  zh: {
+    'graph.metaTitle': '燃油附加费趋势图 — 2026年4月·5月航空公司比较',
+    'graph.metaDesc':  '以交互式图表比较2026年4月和5月韩国出发国际航班各航空公司燃油附加费。',
+    'graph.pageTitle': '📈 燃油附加费趋势图',
+    'graph.pageSub':   '2026年4月·5月航空公司比较 — 基于官方公告数据',
+    'graph.h1':        '2026年4·5月燃油附加费趋势图',
+    'graph.notice':    '<strong>说明:</strong> 金额以各航空公司官方申报币种为准。在顶部选择货币后将按基准汇率自动换算。USD申报航空公司同时显示原始USD金额。',
+    'graph.intro':     '以图表和表格比较2026年4月和5月各航空公司燃油附加费。大韩·韩亚·德威·首尔航空以KRW申报，济州·真·易斯达·高丽航空以USD申报。换算基准: USD 1 = KRW 1,480。',
+    'graph.card1.title': '月度变化趋势', 'graph.card1.body': '燃油附加费随油价波动每月重新计算。',
+    'graph.card2.title': '油价联动结构', 'graph.card2.body': '以上月平均WTI和迪拜原油价格为基准按档位决定。',
+    'graph.card3.title': '汇率影响', 'graph.card3.body': '韩元/美元汇率越高，韩元换算附加费可能越高。',
+    'graph.filter.airline': '航空公司', 'graph.filter.month': '月份',
+    'graph.filter.view': '显示基准', 'graph.filter.currHint': '货币: 以顶部navCurr为准',
+    'graph.filter.all': '全部', 'graph.filter.apr': '2026年4月',
+    'graph.filter.may': '2026年5月', 'graph.filter.amount': '金额',
+    'graph.filter.change': '涨幅 (%)',
+    'graph.chartNote': '※ 图表按区间索引顺序显示各航空公司数据。实线: 5月，虚线: 4月。USD申报航空公司换算为所选货币。基准汇率: USD 1 = KRW 1,480。点击图例可隐藏对应航线。',
+    'graph.tableTitle': '📋 各航空公司燃油附加费详细数据',
+    'graph.tableNote':  '※ 数据来源于各航空公司官方公告(2026年4月·5月)。— 表示该区间无公告。',
+    'graph.th.airline': '航空公司', 'graph.th.currency': '申报货币',
+    'graph.th.band': '区间', 'graph.th.apr': '4月',
+    'graph.th.may': '5月', 'graph.th.change': '对比4月',
+    'graph.official.title': '🔗 各航空公司官方燃油附加费公告',
+    'graph.official.suffix': '查看官方公告 ↗',
+    'graph.relatedTitle': '🔗 相关页面',
+    'graph.related.main': '🔍 主页查询', 'graph.related.airlines': '✈️ 各航空公司',
+    'graph.related.news': '📰 资讯', 'graph.related.graph': '📈 趋势图',
+    'graph.related.calc': '🧮 计算方法', 'graph.related.may': '📅 2026年5月',
+    'graph.related.june': '🔮 2026年6月预测', 'graph.related.korea': '🇰🇷 韩国出发',
+    'graph.usdBadge': 'USD申报', 'graph.noData': '—',
+    'graph.footnote': '所示燃油附加费为参考信息，基于各航空公司官方公告。最终金额请在各航空公司官网确认。<br>联系: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+    'airline.KE': '大韩航空 (KE)', 'airline.OZ': '韩亚航空 (OZ)',
+    'airline.YP': '高丽航空 (YP)', 'airline.7C': '济州航空 (7C)',
+    'airline.LJ': '真航空 (LJ)', 'airline.ZE': '易斯达航空 (ZE)',
+    'airline.TW': '德威航空 (TW)', 'airline.RS': '首尔航空 (RS)',
+  },
+};
+
+/* window.I18N 병합 */
+(function() {
+  if (!window.I18N) window.I18N = {};
+  ['ko','en','ja','zh'].forEach(function(lang) {
+    if (!window.I18N[lang]) window.I18N[lang] = {};
+    var src = GRAPH_I18N[lang] || {};
+    Object.keys(src).forEach(function(k) { window.I18N[lang][k] = src[k]; });
+  });
+})();
+
+/* ═══════════════════════════════════════
+   RAW DATA
+═══════════════════════════════════════ */
+var USD_TO_KRW = 1480;
+var AIRLINES = [
+  { code:'KE', currency:'KRW', url:'https://www.koreanair.com', domain:'koreanair.com',
+    bands:['~499','500~999','1000~1499','1500~1999','2000~2999','3000~3999','4000~4999','5000~6499','6500~9999'],
+    apr:[42000,57000,78000,97500,123000,126000,199500,276000,303000],
+    may:[75000,102000,144000,180000,253500,256500,345000,501000,564000] },
+  { code:'OZ', currency:'KRW', url:'https://www.flyasiana.com', domain:'flyasiana.com',
+    bands:['1','2','3','4','5','6','7','8','9'],
+    apr:[43900,65900,86400,106900,127400,147900,169900,210900,251900],
+    may:[85400,125800,164700,203700,242600,281500,320500,398300,476200] },
+  { code:'YP', currency:'USD', url:'https://www.airpremia.com', domain:'airpremia.com',
+    bands:['~999','1000~1499','1500~1999','2000~2499','4000~4999','5000~6499','6500+'],
+    apr:[32,42,54,71,123,155,194],
+    may:[59,78,102,131,229,291,365] },
+  { code:'7C', currency:'USD', url:'https://www.jejuair.net', domain:'jejuair.net',
+    bands:['1','2','3','4','5','6'],
+    apr:[29,37,44,53,60,68],
+    may:[52,66,80,95,107,126] },
+  { code:'LJ', currency:'USD', url:'https://www.jinair.com', domain:'jinair.com',
+    bands:['1~599','600~1199','1200~1799','1800~2399','2400~3599'],
+    apr:[25,35,58,63,76],
+    may:[42,66,107,117,140] },
+  { code:'ZE', currency:'USD', url:'https://www.eastarjet.com', domain:'eastarjet.com',
+    bands:['1','2','3','4','5','6'],
+    apr:[29,37,44,53,60,68],
+    may:[52,66,80,95,107,126] },
+  { code:'TW', currency:'KRW', url:'https://www.twayair.com', domain:'twayair.com',
+    bands:['1','2','3','4','5','6','7'],
+    apr:[30800,54200,67400,87900,95200,null,213900],
+    may:[58600,103600,129100,168200,180200,null,406900] },
+  { code:'RS', currency:'KRW', url:'https://www.airseoul.com', domain:'airseoul.com',
+    bands:['1','2','3','4','5'],
+    apr:[46800,54100,68700,77500,80500],
+    may:[94000,114000,141000,160000,166000] },
+];
+
+var COLORS = {
+  KE:'#1d4ed8', OZ:'#0891b2', YP:'#7c3aed',
+  '7C':'#dc2626', LJ:'#16a34a', ZE:'#d97706',
+  TW:'#db2777', RS:'#64748b'
+};
+
+/* ═══════════════════════════════════════
+   통화 변환
+═══════════════════════════════════════ */
+function toKRW(amt, origCurrency) {
+  if (amt == null) return null;
+  return origCurrency === 'USD' ? amt * USD_TO_KRW : amt;
+}
+function fromKRW(krw) {
+  if (krw == null) return null;
+  var c = (window.SHARED_STATE && window.SHARED_STATE.curr) || 'KRW';
+  var rates = window.RATES || { KRW:1, USD:1/1480, JPY:1/10.1, EUR:1/1630 };
+  return krw * (rates[c] || 1);
+}
+function convertAmt(amt, origCurrency) {
+  return fromKRW(toKRW(amt, origCurrency));
+}
+function fmtMoney(amt, origCurrency) {
+  if (amt == null) return tg('graph.noData');
+  var c = (window.SHARED_STATE && window.SHARED_STATE.curr) || 'KRW';
+  var v = convertAmt(amt, origCurrency);
+  var dec = (window.CURR_DEC && window.CURR_DEC[c] != null) ? window.CURR_DEC[c] : 0;
+  var sym = (window.CURR_SYM && window.CURR_SYM[c]) || c;
+  return sym + v.toLocaleString('en-US', {minimumFractionDigits:dec, maximumFractionDigits:dec});
+}
+function tg(key) { return (window.t && window.t(key)) || key; }
+function airlineName(code) { return tg('airline.' + code); }
+
+/* ═══════════════════════════════════════
+   필터 상태
+═══════════════════════════════════════ */
+var filterState = { airline:'all', month:'all', view:'amount' };
+var dimmedAirlines = {};
+
+function getVisibleAirlines() {
+  return AIRLINES.filter(function(a) {
+    return filterState.airline === 'all' || filterState.airline === a.code;
+  });
+}
+function calcChange(aprV, mayV) {
+  if (aprV == null || mayV == null || aprV === 0) return null;
+  return ((mayV - aprV) / aprV) * 100;
+}
+
+/* ═══════════════════════════════════════
+   필터 UI
+═══════════════════════════════════════ */
+function buildFilters() {
+  var fA = document.getElementById('filterAirline');
+  var fM = document.getElementById('filterMonth');
+  var fV = document.getElementById('filterView');
+  if (!fA) return;
+
+  fA.innerHTML = '<option value="all">' + tg('graph.filter.all') + '</option>';
+  AIRLINES.forEach(function(a) {
+    var o = document.createElement('option');
+    o.value = a.code; o.textContent = airlineName(a.code);
+    if (filterState.airline === a.code) o.selected = true;
+    fA.appendChild(o);
+  });
+
+  fM.innerHTML = [['all','graph.filter.all'],['apr','graph.filter.apr'],['may','graph.filter.may']]
+    .map(function(p){return '<option value="'+p[0]+'"'+(filterState.month===p[0]?' selected':'')+'>'+tg(p[1])+'</option>';}).join('');
+
+  fV.innerHTML = [['amount','graph.filter.amount'],['change','graph.filter.change']]
+    .map(function(p){return '<option value="'+p[0]+'"'+(filterState.view===p[0]?' selected':'')+'>'+tg(p[1])+'</option>';}).join('');
+}
+
+/* ═══════════════════════════════════════
+   공식 링크
+═══════════════════════════════════════ */
+function buildOfficialLinks() {
+  var el = document.getElementById('officialLinks');
+  if (!el) return;
+  var suf = tg('graph.official.suffix');
+  el.innerHTML = AIRLINES.map(function(a) {
+    return '<div class="official-link-item">✈️ '+airlineName(a.code)+': <a href="'+a.url+'" target="_blank" rel="noopener">'+a.domain+' '+suf+'</a></div>';
+  }).join('');
+}
+
+/* ═══════════════════════════════════════
+   CANVAS CHART
+═══════════════════════════════════════ */
+var tooltip = document.getElementById('graphTooltip');
+var _hitAreas = [];
+
+function drawChart() {
+  var canvas = document.getElementById('graphCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var dpr = window.devicePixelRatio || 1;
+  var W = Math.max(canvas.parentElement.clientWidth - 32, 200);
+  var H = 380;
+  canvas.width = W * dpr; canvas.height = H * dpr;
+  canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+  ctx.scale(dpr, dpr);
+  ctx.clearRect(0, 0, W, H);
+
+  var airlines = getVisibleAirlines();
+  var isChange = filterState.view === 'change';
+  var showApr  = filterState.month === 'all' || filterState.month === 'apr';
+  var showMay  = filterState.month === 'all' || filterState.month === 'may';
+  var PAD = {top:24, right:24, bottom:50, left:82};
+  var gW = W - PAD.left - PAD.right;
+  var gH = H - PAD.top - PAD.bottom;
+
+  /* max bands */
+  var maxBands = 0;
+  airlines.forEach(function(a){ if(a.bands.length > maxBands) maxBands = a.bands.length; });
+
+  /* Y range */
+  var allVals = [];
+  airlines.forEach(function(a) {
+    a.apr.forEach(function(v, i) {
+      if (v == null) return;
+      if (isChange) {
+        var ch = calcChange(v, a.may[i]);
+        if (ch != null) allVals.push(ch);
+      } else {
+        if (showApr) allVals.push(convertAmt(v, a.currency));
+        if (showMay && a.may[i] != null) allVals.push(convertAmt(a.may[i], a.currency));
+      }
+    });
+  });
+  var yMin = 0;
+  var yMax = allVals.length ? Math.max.apply(null, allVals) * 1.12 : 100;
+  if (yMax <= 0) yMax = 100;
+
+  /* grid */
+  var STEPS = 5;
+  ctx.strokeStyle = '#e5e7eb'; ctx.lineWidth = 1;
+  for (var gi = 0; gi <= STEPS; gi++) {
+    var gy = PAD.top + gH - (gi/STEPS)*gH;
+    ctx.beginPath(); ctx.moveTo(PAD.left, gy); ctx.lineTo(PAD.left+gW, gy); ctx.stroke();
+    var yVal = yMin + (gi/STEPS)*(yMax-yMin);
+    ctx.fillStyle = '#9ca3af'; ctx.font = '10px system-ui'; ctx.textAlign = 'right';
+    var yLabel = isChange ? yVal.toFixed(0)+'%' : (function(){
+      var c = (window.SHARED_STATE && window.SHARED_STATE.curr)||'KRW';
+      var sym = (window.CURR_SYM && window.CURR_SYM[c])||'';
+      var dec = (window.CURR_DEC && window.CURR_DEC[c]!=null)?window.CURR_DEC[c]:0;
+      return sym + yVal.toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec});
+    })();
+    ctx.fillText(yLabel, PAD.left-6, gy+4);
+  }
+
+  /* X labels */
+  ctx.fillStyle='#9ca3af'; ctx.font='10px system-ui'; ctx.textAlign='center';
+  for (var xi=0; xi<maxBands; xi++) {
+    var xp = PAD.left + (xi/Math.max(maxBands-1,1))*gW;
+    ctx.fillText(xi+1, xp, H-PAD.bottom+16);
+  }
+  ctx.fillText(tg('graph.th.band'), PAD.left+gW/2, H-PAD.bottom+30);
+
+  /* axes */
+  ctx.strokeStyle='#d1d5db'; ctx.lineWidth=1;
+  ctx.beginPath(); ctx.moveTo(PAD.left,PAD.top); ctx.lineTo(PAD.left,PAD.top+gH); ctx.lineTo(PAD.left+gW,PAD.top+gH); ctx.stroke();
+
+  _hitAreas = [];
+
+  function toY(v){ return PAD.top + gH - ((v-yMin)/(yMax-yMin))*gH; }
+  function toX(a, i){ return PAD.left + (i/Math.max(a.bands.length-1,1))*gW; }
+
+  airlines.forEach(function(a) {
+    var isDimmed = dimmedAirlines[a.code];
+    var color = COLORS[a.code] || '#6366f1';
+
+    var series = [];
+    if (isChange) {
+      series.push({ label:'change', vals:a.apr.map(function(v,i){ return calcChange(v,a.may[i]); }), dash:false });
+    } else {
+      if (showMay) series.push({ label:'may', vals:a.may, dash:false });
+      if (showApr) series.push({ label:'apr', vals:a.apr, dash:true });
+    }
+
+    series.forEach(function(s) {
+      ctx.save();
+      ctx.globalAlpha = isDimmed ? 0.1 : 1;
+      ctx.strokeStyle = color;
+      ctx.lineWidth   = s.dash ? 1.5 : 2.5;
+      ctx.setLineDash(s.dash ? [5,4] : []);
+
+      var started = false;
+      s.vals.forEach(function(v, i) {
+        if (v == null) return;
+        var dv = isChange ? v : convertAmt(v, a.currency);
+        var x = toX(a,i), y = toY(dv);
+        if (!started) { ctx.beginPath(); ctx.moveTo(x,y); started=true; }
+        else          { ctx.lineTo(x,y); }
+      });
+      if (started) ctx.stroke();
+
+      /* dots */
+      s.vals.forEach(function(v, i) {
+        if (v == null) return;
+        var dv = isChange ? v : convertAmt(v, a.currency);
+        var x = toX(a,i), y = toY(dv);
+        ctx.beginPath(); ctx.arc(x,y, s.dash?3:4, 0, Math.PI*2);
+        if (s.dash) { ctx.strokeStyle=color; ctx.fillStyle='#fff'; ctx.fill(); ctx.stroke(); }
+        else        { ctx.fillStyle=color; ctx.fill(); }
+        if (!isDimmed) {
+          _hitAreas.push({x:x, y:y, r:12, airline:a, month:s.label, bandIdx:i, origVal:v, displayVal:dv});
+        }
+      });
+      ctx.restore();
+    });
+  });
+}
+
+/* tooltip */
+function handleMouseMove(e) {
+  var canvas = document.getElementById('graphCanvas');
+  if (!canvas) return;
+  var rect = canvas.getBoundingClientRect();
+  var mx = e.clientX - rect.left, my = e.clientY - rect.top;
+  var hit=null, best=Infinity;
+  _hitAreas.forEach(function(h) {
+    var d = Math.sqrt((h.x-mx)*(h.x-mx)+(h.y-my)*(h.y-my));
+    if (d<h.r && d<best) { best=d; hit=h; }
+  });
+  if (!hit) { tooltip.style.display='none'; return; }
+  var a = hit.airline;
+  var isChange = filterState.view==='change';
+  var c = (window.SHARED_STATE && window.SHARED_STATE.curr)||'KRW';
+  var sym = (window.CURR_SYM && window.CURR_SYM[c])||'';
+  var dec = (window.CURR_DEC && window.CURR_DEC[c]!=null)?window.CURR_DEC[c]:0;
+  var mLabel = hit.month==='may'?tg('graph.filter.may'):hit.month==='apr'?tg('graph.filter.apr'):tg('graph.filter.apr')+'→'+tg('graph.filter.may');
+  var valStr = isChange ? hit.displayVal.toFixed(1)+'%' : sym+hit.displayVal.toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec});
+  var origStr = (!isChange && a.currency==='USD' && c!=='USD') ? '<div class="tt-usd">($'+hit.origVal+' USD)</div>' : '';
+  tooltip.innerHTML = '<div class="tt-head">'+airlineName(a.code)+'</div>'
+    +'<div>'+mLabel+' · '+tg('graph.th.band')+' '+(hit.bandIdx+1)+'</div>'
+    +'<div>'+valStr+'</div>'+origStr;
+  tooltip.style.display='block';
+  tooltip.style.left=(e.clientX+14)+'px';
+  tooltip.style.top=(e.clientY-10)+'px';
+}
+function handleMouseLeave() { tooltip.style.display='none'; }
+
+/* ═══════════════════════════════════════
+   범례
+═══════════════════════════════════════ */
+function buildLegend() {
+  var el = document.getElementById('chartLegend');
+  if (!el) return;
+  var airlines = getVisibleAirlines();
+  el.innerHTML = '';
+  airlines.forEach(function(a) {
+    var color = COLORS[a.code]||'#6366f1';
+    var isDimmed = dimmedAirlines[a.code];
+    var item = document.createElement('div');
+    item.className = 'legend-item' + (isDimmed?' dimmed':'');
+    var usdTag = a.currency==='USD' ? '<span class="legend-tag">'+tg('graph.usdBadge')+'</span>' : '';
+    item.innerHTML = '<span class="legend-dot" style="background:'+color+'"></span>'+airlineName(a.code)+usdTag;
+    item.addEventListener('click', function() {
+      dimmedAirlines[a.code] = !dimmedAirlines[a.code];
+      drawChart(); buildLegend();
+    });
+    el.appendChild(item);
+  });
+  /* 4월/5월 구분 표시 */
+  if (filterState.month==='all' && filterState.view!=='change') {
+    var sep = document.createElement('div'); sep.style.width='100%'; el.appendChild(sep);
+    ['may','apr'].forEach(function(m) {
+      var lbl = document.createElement('div');
+      lbl.className='legend-item'; lbl.style.cursor='default';
+      var style = m==='may'
+        ? 'display:inline-block;width:18px;height:0;border-top:2.5px solid #9ca3af;'
+        : 'display:inline-block;width:18px;height:0;border-top:2px dashed #9ca3af;';
+      lbl.innerHTML = '<span style="'+style+'"></span><span style="font-size:11px;color:var(--muted)">'+(m==='may'?tg('graph.filter.may'):tg('graph.filter.apr'))+'</span>';
+      el.appendChild(lbl);
+    });
+  }
+}
+
+/* ═══════════════════════════════════════
+   데이터 테이블
+═══════════════════════════════════════ */
+function buildTable() {
+  var thead = document.getElementById('dataTableHead');
+  var tbody = document.getElementById('dataTableBody');
+  if (!thead||!tbody) return;
+  thead.innerHTML = '<tr>'
+    +'<th>'+tg('graph.th.airline')+'</th>'
+    +'<th>'+tg('graph.th.currency')+'</th>'
+    +'<th>'+tg('graph.th.band')+'</th>'
+    +'<th>'+tg('graph.th.apr')+'</th>'
+    +'<th>'+tg('graph.th.may')+'</th>'
+    +'<th>'+tg('graph.th.change')+'</th>'
+    +'</tr>';
+
+  var airlines = getVisibleAirlines();
+  var c = (window.SHARED_STATE && window.SHARED_STATE.curr)||'KRW';
+  var uBadge = '<span class="usd-badge">'+tg('graph.usdBadge')+'</span>';
+  var rows = '';
+
+  airlines.forEach(function(a) {
+    var isUSD = a.currency==='USD';
+    var rowspan = a.bands.length;
+    a.bands.forEach(function(band, i) {
+      var av = a.apr[i], mv = a.may[i];
+      var aFmt = av!=null ? fmtMoney(av,a.currency) : '<span class="null-cell">'+tg('graph.noData')+'</span>';
+      var mFmt = mv!=null ? fmtMoney(mv,a.currency) : '<span class="null-cell">'+tg('graph.noData')+'</span>';
+      /* KRW 표시 시 USD 원본 보조 */
+      if (isUSD && c==='KRW') {
+        if (av!=null) aFmt += '<span class="change-note"> ($'+av+')</span>';
+        if (mv!=null) mFmt += '<span class="change-note"> ($'+mv+')</span>';
+      }
+      var ch = calcChange(av,mv);
+      var chStr = ch!=null ? '<span class="change-up">+'+ch.toFixed(0)+'%</span>' : '<span class="null-cell">—</span>';
+      rows += '<tr>'
+        +(i===0 ? '<td rowspan="'+rowspan+'"><strong>'+airlineName(a.code)+'</strong></td>'
+                 +'<td rowspan="'+rowspan+'">'+a.currency+(isUSD?uBadge:'')+'</td>' : '')
+        +'<td>'+band+'</td>'
+        +'<td>'+aFmt+'</td>'
+        +'<td>'+mFmt+'</td>'
+        +'<td>'+chStr+'</td>'
+        +'</tr>';
+    });
+  });
+  tbody.innerHTML = rows;
+}
+
+/* ═══════════════════════════════════════
+   전체 렌더링
+═══════════════════════════════════════ */
+function renderPage() {
+  if (window.applyLanguage) window.applyLanguage();
+  buildFilters();
+  buildLegend();
+  drawChart();
+  buildTable();
+  buildOfficialLinks();
+}
+
+/* ═══════════════════════════════════════
+   이벤트
+═══════════════════════════════════════ */
+(function bindEvents() {
+  var canvas = document.getElementById('graphCanvas');
+  if (canvas) {
+    canvas.addEventListener('mousemove', handleMouseMove);
+    canvas.addEventListener('mouseleave', handleMouseLeave);
+  }
+  ['filterAirline','filterMonth','filterView'].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (!el) return;
+    el.addEventListener('change', function() {
+      filterState.airline = document.getElementById('filterAirline').value;
+      filterState.month   = document.getElementById('filterMonth').value;
+      filterState.view    = document.getElementById('filterView').value;
+      dimmedAirlines = {};
+      buildLegend(); drawChart(); buildTable();
+    });
+  });
+  window.addEventListener('resize', function() { drawChart(); });
+})();
+
+/* ═══════════════════════════════════════
+   initNav
+═══════════════════════════════════════ */
+window.initNav({
+  onLangChange: function() { renderPage(); },
+  onCurrChange: function() { drawChart(); buildTable(); },
+});
+
+renderPage();
+</script>
+</body>
+</html>

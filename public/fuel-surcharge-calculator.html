@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>유류할증료 계산 방법 안내 — 항공사별 산정 기준 설명</title>
+  <meta name="description" content="항공권 유류할증료가 어떻게 산정되는지 설명하고, 항공사별 공시 기준과 확인 방법을 안내합니다." data-i18n-page-desc="calc.metaDesc"/>
+  <meta data-i18n-page-title="calc.metaTitle"/>
+  <link rel="canonical" href="https://aero-surcharge.vercel.app/fuel-surcharge-calculator.html"/>
+  <meta property="og:title" content="유류할증료 계산 방법 안내 — 항공사별 산정 기준 설명"/>
+  <meta property="og:description" content="항공권 유류할증료가 어떻게 산정되는지 설명하고, 항공사별 공시 기준과 확인 방법을 안내합니다."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://aero-surcharge.vercel.app/fuel-surcharge-calculator.html"/>
+  <link rel="stylesheet" href="_shared.css"/>
+  <link rel="stylesheet" href="_seo_pages.css"/>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-76T4QJPY4L"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-76T4QJPY4L');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
+  <style>
+    .guide-block{background:linear-gradient(135deg,#F8FAFF,#EEF2FF);border:1.5px solid #C5CAE9;border-radius:14px;padding:20px 24px;margin-bottom:20px;}
+    .guide-block-title{font-size:14px;font-weight:700;color:#283593;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+    .guide-block-body{font-size:13px;color:#37474F;line-height:1.8;}
+    .guide-block-body p{margin:0 0 10px;}
+    .guide-block-body p:last-child{margin:0;}
+    .guide-block-body ol{margin:8px 0;padding-left:20px;display:flex;flex-direction:column;gap:6px;}
+    .guide-block-body li{font-size:13px;line-height:1.6;}
+    @media(max-width:700px){.guide-block{padding:16px;}}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-links">
+    <a href="index.html"    class="nav-link" id="navLinkRoutes"   data-i18n="nav.routes">노선별 조회</a>
+    <a href="airlines.html" class="nav-link" id="navLinkAirlines" data-i18n="nav.airlines">항공사 인덱스</a>
+    <a href="news.html"     class="nav-link" id="navLinkNews"     data-i18n="nav.news">참고 소식</a>
+  </div>
+  <div class="nav-controls">
+    <select class="nav-select" id="navLang">
+      <option value="ko">🇰🇷 한국어</option>
+      <option value="en">🇺🇸 English</option>
+      <option value="ja">🇯🇵 日本語</option>
+      <option value="zh">🇨🇳 中文</option>
+    </select>
+    <div class="nav-divider"></div>
+    <select class="nav-select" id="navCurr">
+      <option value="KRW">₩ KRW</option>
+      <option value="USD">$ USD</option>
+      <option value="JPY">¥ JPY</option>
+      <option value="EUR">€ EUR</option>
+    </select>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-title" data-i18n="calc.pageTitle">🧮 유류할증료 계산 방법 안내</div>
+  <div class="page-sub"   data-i18n="calc.pageSub">항공사별 산정 기준 설명 · 확인 방법 안내 — 직접 계산기가 아닌 설명 페이지입니다</div>
+</div>
+
+<main class="seo-main">
+  <h1 style="font-size:20px;font-weight:700;color:var(--text);margin-bottom:12px;" data-i18n="calc.h1">유류할증료 계산 방법 안내</h1>
+
+  <div class="seo-lang-notice">
+    ⚠️&nbsp;<span data-i18n-html="calc.notice"></span>
+  </div>
+
+  <div style="display:flex;align-items:flex-start;gap:10px;background:#FFF3E0;border:1.5px solid #FFCC80;border-radius:10px;padding:10px 15px;margin-bottom:20px;font-size:12px;color:#5D4037;line-height:1.6;">
+    📌&nbsp;<span data-i18n-html="calc.alert"></span>
+  </div>
+
+  <div class="seo-intro" data-i18n="calc.intro"></div>
+
+  <div class="summary-cards">
+    <div class="summary-card">
+      <div class="summary-card-icon">🛢️</div>
+      <div class="summary-card-title" data-i18n="calc.card1.title">유가 연동 구조</div>
+      <div class="summary-card-body"  data-i18n="calc.card1.body">유류할증료는 전월 평균 국제유가(WTI·두바이유)를 기준으로 산정됩니다. 유가가 특정 구간을 넘으면 할증료 단계가 올라갑니다.</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-card-icon">✈️</div>
+      <div class="summary-card-title" data-i18n="calc.card2.title">거리 구간별 차등</div>
+      <div class="summary-card-body"  data-i18n="calc.card2.body">단거리(일본·중국·동남아)와 장거리(미주·유럽) 노선에 따라 유류할증료 금액이 다르게 적용됩니다.</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-card-icon">🎟️</div>
+      <div class="summary-card-title" data-i18n="calc.card3.title">발권 시점 기준</div>
+      <div class="summary-card-body"  data-i18n="calc.card3.body">유류할증료는 탑승일이 아닌 발권일 기준 공시 금액이 적용됩니다. 미래 탑승 일정도 발권 시점의 할증료가 부과됩니다.</div>
+    </div>
+  </div>
+
+  <div class="seo-section-title" data-i18n="calc.section.structure">📖 유류할증료 산정 구조 설명</div>
+
+  <div class="guide-block">
+    <div class="guide-block-title" data-i18n="calc.guide.what.title">💡 유류할증료란?</div>
+    <div class="guide-block-body">
+      <p data-i18n="calc.guide.what.body">유류할증료(Fuel Surcharge)는 항공기 운항에 필요한 연료비(항공유) 상승분을 항공권 요금에 별도 부과하는 요금입니다. 항공사는 기본 운임 외에 유류할증료를 별도 공시하며, 예약·발권 시 항공권 구성 요소 중 하나로 청구됩니다.</p>
+    </div>
+  </div>
+
+  <div class="guide-block">
+    <div class="guide-block-title" data-i18n="calc.guide.how.title">📋 산정 방식 요약 (일반 원리)</div>
+    <div class="guide-block-body">
+      <ol>
+        <li data-i18n-html="calc.guide.how.step1"><strong>기준 유가 확인:</strong> 전월 WTI 또는 두바이유 평균 가격을 산출합니다.</li>
+        <li data-i18n-html="calc.guide.how.step2"><strong>구간 판단:</strong> 유가가 어느 단계 구간에 해당하는지 판단합니다.</li>
+        <li data-i18n-html="calc.guide.how.step3"><strong>할증료 결정:</strong> 구간에 따라 단거리·장거리별 원화 할증료가 결정됩니다.</li>
+        <li data-i18n-html="calc.guide.how.step4"><strong>공시 및 적용:</strong> 해당 월 1일부터 발권분에 공시 금액이 적용됩니다.</li>
+        <li data-i18n-html="calc.guide.how.step5"><strong>편도/왕복:</strong> 왕복 항공권은 유류할증료도 편도의 2배가 됩니다.</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="seo-section-title" data-i18n="calc.section.airline">🔍 항공사별 공시 기준 안내</div>
+
+  <div class="data-table-wrap">
+    <table class="seo-tbl">
+      <thead>
+        <tr>
+          <th data-i18n="calc.th.airline">항공사</th>
+          <th data-i18n="calc.th.method">구분 방식</th>
+          <th data-i18n="calc.th.channel">공시 채널</th>
+          <th data-i18n="calc.th.note">비고</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong data-i18n="airline.KE">대한항공 (KE)</strong></td>
+          <td data-i18n="calc.row.ke.method">단거리/장거리 구간별</td>
+          <td><a href="https://www.koreanair.com" target="_blank" rel="noopener" style="color:var(--blue);font-size:11px;" data-i18n="calc.official.suffix">공식 사이트 ↗</a></td>
+          <td style="font-size:12px;color:var(--muted);" data-i18n="calc.note.monthly">매월 공시</td>
+        </tr>
+        <tr>
+          <td><strong data-i18n="airline.OZ">아시아나항공 (OZ)</strong></td>
+          <td data-i18n="calc.row.oz.method">단거리/장거리 구간별</td>
+          <td><a href="https://www.flyasiana.com" target="_blank" rel="noopener" style="color:var(--blue);font-size:11px;" data-i18n="calc.official.suffix">공식 사이트 ↗</a></td>
+          <td style="font-size:12px;color:var(--muted);" data-i18n="calc.note.monthly">매월 공시</td>
+        </tr>
+        <tr>
+          <td><strong data-i18n="airline.7C">제주항공 (7C)</strong></td>
+          <td data-i18n="calc.row.lcc.method">노선별 단일/구간</td>
+          <td><a href="https://www.jejuair.net" target="_blank" rel="noopener" style="color:var(--blue);font-size:11px;" data-i18n="calc.official.suffix">공식 사이트 ↗</a></td>
+          <td style="font-size:12px;color:var(--muted);" data-i18n="calc.note.monthly">매월 공시</td>
+        </tr>
+        <tr>
+          <td><strong data-i18n="airline.LJ">진에어 (LJ)</strong></td>
+          <td data-i18n="calc.row.lcc.method">노선별 단일/구간</td>
+          <td><a href="https://www.jinair.com" target="_blank" rel="noopener" style="color:var(--blue);font-size:11px;" data-i18n="calc.official.suffix">공식 사이트 ↗</a></td>
+          <td style="font-size:12px;color:var(--muted);" data-i18n="calc.note.monthly">매월 공시</td>
+        </tr>
+        <tr>
+          <td><strong data-i18n="airline.TW">티웨이항공 (TW)</strong></td>
+          <td data-i18n="calc.row.lcc.method">노선별 단일/구간</td>
+          <td><a href="https://www.twayair.com" target="_blank" rel="noopener" style="color:var(--blue);font-size:11px;" data-i18n="calc.official.suffix">공식 사이트 ↗</a></td>
+          <td style="font-size:12px;color:var(--muted);" data-i18n="calc.note.monthly">매월 공시</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p style="font-size:11px;color:var(--muted);margin-top:-16px;margin-bottom:20px;" data-i18n="calc.tableFootnote">※ 정확한 구간 기준과 금액은 각 항공사 공식 공지를 반드시 확인하세요.</p>
+
+  <div class="official-link-box">
+    <div class="official-link-title" data-i18n="calc.official.title">🔗 항공사 공식 유류할증료 공지 바로가기</div>
+    <div class="official-link-list">
+      <div class="official-link-item" data-i18n-html="calc.official.item.ke"></div>
+      <div class="official-link-item" data-i18n-html="calc.official.item.oz"></div>
+      <div class="official-link-item" data-i18n-html="calc.official.item.7c"></div>
+      <div class="official-link-item" data-i18n-html="calc.official.item.lj"></div>
+      <div class="official-link-item" data-i18n-html="calc.official.item.tw"></div>
+    </div>
+  </div>
+
+  <div class="related-links">
+    <div class="related-title" data-i18n="calc.related.title">🔗 관련 페이지</div>
+    <div class="related-grid">
+      <a class="related-item" href="index.html"                          data-i18n="calc.related.main">🔍 메인 유류할증료 조회</a>
+      <a class="related-item" href="airlines.html"                       data-i18n="calc.related.airlines">✈️ 항공사별 유류할증료</a>
+      <a class="related-item" href="news.html"                           data-i18n="calc.related.news">📰 유류할증료 뉴스</a>
+      <a class="related-item" href="fuel-surcharge-graph.html"           data-i18n="calc.related.graph">📈 변동 그래프</a>
+      <a class="related-item" href="fuel-surcharge-calculator.html"      data-i18n="calc.related.calc">🧮 계산 방법 안내</a>
+      <a class="related-item" href="fuel-surcharge-2026-05.html"         data-i18n="calc.related.may">📅 2026년 5월</a>
+      <a class="related-item" href="fuel-surcharge-2026-06-forecast.html" data-i18n="calc.related.june">🔮 2026년 6월 전망</a>
+      <a class="related-item" href="fuel-surcharge-korea.html"           data-i18n="calc.related.korea">🇰🇷 한국 출발 유류할증료</a>
+    </div>
+  </div>
+</main>
+
+<footer style="background:var(--white);border-top:1px solid var(--line);padding:20px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;">
+  <p style="font-size:12px;color:var(--muted);max-width:600px;line-height:1.6;margin:0;" data-i18n-html="calc.footnote"></p>
+  <nav style="display:flex;gap:16px;flex-wrap:wrap;">
+    <a href="about.html"   style="font-size:12px;color:var(--muted);text-decoration:none;">About</a>
+    <a href="privacy.html" style="font-size:12px;color:var(--muted);text-decoration:none;">Privacy Policy</a>
+    <a href="terms.html"   style="font-size:12px;color:var(--muted);text-decoration:none;">Terms of Service</a>
+  </nav>
+</footer>
+
+<script src="_shared.js"></script>
+<script>
+/* ── 페이지 전용 i18n ── */
+var PAGE_I18N = {
+  ko: {
+    'calc.metaTitle':  '유류할증료 계산 방법 안내 — 항공사별 산정 기준 설명',
+    'calc.metaDesc':   '항공권 유류할증료가 어떻게 산정되는지 설명하고, 항공사별 공시 기준과 확인 방법을 안내합니다.',
+    'calc.pageTitle':  '🧮 유류할증료 계산 방법 안내',
+    'calc.pageSub':    '항공사별 산정 기준 설명 · 확인 방법 안내 — 직접 계산기가 아닌 설명 페이지입니다',
+    'calc.h1':         '유류할증료 계산 방법 안내',
+    'calc.notice':     '<strong>안내:</strong> 이 페이지는 유류할증료 산정 구조를 설명하는 안내 페이지입니다. 실제 금액은 각 항공사 공식 공지를 확인하세요.',
+    'calc.alert':      '이 페이지는 <strong>실시간 자동 계산기가 아닙니다.</strong> 유류할증료 산정 구조와 항공사별 공시 기준을 설명하는 <strong>안내 페이지</strong>입니다. 실제 금액은 각 항공사 공식 공지에서 직접 확인하세요.',
+    'calc.intro':      '항공권 유류할증료(Fuel Surcharge)는 국제유가 변동에 따른 연료비 부담을 승객에게 분담시키는 부대 요금입니다. 항공사마다 산정 기준과 구간 구분 방식이 다르며, 매월 공시를 통해 금액이 결정됩니다. 이 페이지에서는 유류할증료가 어떻게 산정되는지, 항공사별 공시 기준과 확인 방법을 안내합니다.',
+    'calc.card1.title':'유가 연동 구조',
+    'calc.card1.body': '유류할증료는 전월 평균 국제유가(WTI·두바이유)를 기준으로 산정됩니다. 유가가 특정 구간을 넘으면 할증료 단계가 올라갑니다.',
+    'calc.card2.title':'거리 구간별 차등',
+    'calc.card2.body': '단거리(일본·중국·동남아)와 장거리(미주·유럽) 노선에 따라 유류할증료 금액이 다르게 적용됩니다.',
+    'calc.card3.title':'발권 시점 기준',
+    'calc.card3.body': '유류할증료는 탑승일이 아닌 발권일 기준 공시 금액이 적용됩니다. 미래 탑승 일정도 발권 시점의 할증료가 부과됩니다.',
+    'calc.section.structure': '📖 유류할증료 산정 구조 설명',
+    'calc.guide.what.title':  '💡 유류할증료란?',
+    'calc.guide.what.body':   '유류할증료(Fuel Surcharge)는 항공기 운항에 필요한 연료비(항공유) 상승분을 항공권 요금에 별도 부과하는 요금입니다. 항공사는 기본 운임 외에 유류할증료를 별도 공시하며, 예약·발권 시 항공권 구성 요소 중 하나로 청구됩니다.',
+    'calc.guide.how.title':   '📋 산정 방식 요약 (일반 원리)',
+    'calc.guide.how.step1':   '<strong>기준 유가 확인:</strong> 전월 WTI 또는 두바이유 평균 가격을 산출합니다.',
+    'calc.guide.how.step2':   '<strong>구간 판단:</strong> 유가가 어느 단계 구간에 해당하는지 판단합니다.',
+    'calc.guide.how.step3':   '<strong>할증료 결정:</strong> 구간에 따라 단거리·장거리별 원화 할증료가 결정됩니다.',
+    'calc.guide.how.step4':   '<strong>공시 및 적용:</strong> 해당 월 1일부터 발권분에 공시 금액이 적용됩니다.',
+    'calc.guide.how.step5':   '<strong>편도/왕복:</strong> 왕복 항공권은 유류할증료도 편도의 2배가 됩니다.',
+    'calc.section.airline':   '🔍 항공사별 공시 기준 안내',
+    'calc.th.airline':        '항공사',
+    'calc.th.method':         '구분 방식',
+    'calc.th.channel':        '공시 채널',
+    'calc.th.note':           '비고',
+    'calc.row.ke.method':     '단거리/장거리 구간별',
+    'calc.row.oz.method':     '단거리/장거리 구간별',
+    'calc.row.lcc.method':    '노선별 단일/구간',
+    'calc.note.monthly':      '매월 공시',
+    'calc.official.suffix':   '공식 사이트 ↗',
+    'calc.tableFootnote':     '※ 정확한 구간 기준과 금액은 각 항공사 공식 공지를 반드시 확인하세요.',
+    'calc.official.title':    '🔗 항공사 공식 유류할증료 공지 바로가기',
+    'calc.official.ke':       'koreanair.com 공식 공지 확인 ↗',
+    'calc.official.oz':       'flyasiana.com 공식 공지 확인 ↗',
+    'calc.official.7c':       'jejuair.net 공식 공지 확인 ↗',
+    'calc.official.lj':       'jinair.com 공식 공지 확인 ↗',
+    'calc.official.tw':       'twayair.com 공식 공지 확인 ↗',
+    'calc.related.title':     '🔗 관련 페이지',
+    'calc.related.main':      '🔍 메인 유류할증료 조회',
+    'calc.related.airlines':  '✈️ 항공사별 유류할증료',
+    'calc.related.news':      '📰 유류할증료 뉴스',
+    'calc.related.graph':     '📈 변동 그래프',
+    'calc.related.calc':      '🧮 계산 방법 안내',
+    'calc.related.may':       '📅 2026년 5월',
+    'calc.related.june':      '🔮 2026년 6월 전망',
+    'calc.related.korea':     '🇰🇷 한국 출발 유류할증료',
+    'calc.footnote':          '표시된 유류할증료는 항공사 공식 공지 기반 참고용 정보입니다. 최종 금액은 항공사 공식 사이트 또는 발권처에서 반드시 확인하세요.<br>문의: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+    'airline.KE': '대한항공 (KE)',
+    'airline.OZ': '아시아나항공 (OZ)',
+    'airline.7C': '제주항공 (7C)',
+    'airline.LJ': '진에어 (LJ)',
+    'airline.TW': '티웨이항공 (TW)',
+    'calc.official.item.ke': '✈️ 대한항공: <a href="https://www.koreanair.com" target="_blank" rel="noopener">koreanair.com 공식 공지 확인 ↗</a>',
+    'calc.official.item.oz': '✈️ 아시아나항공: <a href="https://www.flyasiana.com" target="_blank" rel="noopener">flyasiana.com 공식 공지 확인 ↗</a>',
+    'calc.official.item.7c': '✈️ 제주항공: <a href="https://www.jejuair.net" target="_blank" rel="noopener">jejuair.net 공식 공지 확인 ↗</a>',
+    'calc.official.item.lj': '✈️ 진에어: <a href="https://www.jinair.com" target="_blank" rel="noopener">jinair.com 공식 공지 확인 ↗</a>',
+    'calc.official.item.tw': '✈️ 티웨이항공: <a href="https://www.twayair.com" target="_blank" rel="noopener">twayair.com 공식 공지 확인 ↗</a>',
+  },
+  en: {
+    'calc.metaTitle':  'Fuel Surcharge Calculation Guide — How Airlines Calculate Surcharges',
+    'calc.metaDesc':   'Learn how airline fuel surcharges are calculated, and how to check each airline\'s official filing criteria.',
+    'calc.pageTitle':  '🧮 Fuel Surcharge Calculation Guide',
+    'calc.pageSub':    'How airlines calculate surcharges · How to check — this is a guide page, not a live calculator',
+    'calc.h1':         'Fuel Surcharge Calculation Guide',
+    'calc.notice':     '<strong>Notice:</strong> This page explains how fuel surcharges are calculated. For actual amounts, please check each airline\'s official announcement.',
+    'calc.alert':      'This page is <strong>not a live calculator.</strong> It explains the fuel surcharge calculation structure and each airline\'s filing criteria. Check each airline\'s official announcement for actual amounts.',
+    'calc.intro':      'An airline fuel surcharge is an additional fee charged on top of the base fare to help offset rising jet fuel costs due to fluctuating international oil prices. Each airline uses its own calculation criteria and distance bands, and publishes amounts monthly. This page explains how fuel surcharges are calculated and how to verify them.',
+    'calc.card1.title':'Oil Price Linkage',
+    'calc.card1.body': 'Fuel surcharges are calculated based on the prior month\'s average international oil price (WTI or Dubai crude). When the price crosses a threshold band, the surcharge tier increases.',
+    'calc.card2.title':'Distance-Based Tiers',
+    'calc.card2.body': 'Different amounts apply for short-haul routes (Japan, China, Southeast Asia) versus long-haul routes (Americas, Europe).',
+    'calc.card3.title':'Ticketing Date Applies',
+    'calc.card3.body': 'The surcharge is determined by the ticketing date, not the travel date. Even future departures are charged at the surcharge rate in effect on the day of purchase.',
+    'calc.section.structure': '📖 Surcharge Calculation Structure',
+    'calc.guide.what.title':  '💡 What Is a Fuel Surcharge?',
+    'calc.guide.what.body':   'A fuel surcharge (also called a fuel levy) is an add-on fee charged separately from the base airfare to recover the cost of rising jet fuel prices. Airlines announce it monthly, and it appears as a distinct line item when you book or purchase a ticket.',
+    'calc.guide.how.title':   '📋 Calculation Method Summary (General Principles)',
+    'calc.guide.how.step1':   '<strong>Reference oil price:</strong> The prior month\'s average WTI or Dubai crude price is calculated.',
+    'calc.guide.how.step2':   '<strong>Band determination:</strong> The oil price is matched to a surcharge tier band.',
+    'calc.guide.how.step3':   '<strong>Surcharge set:</strong> The applicable short-haul and long-haul amounts are determined for that band.',
+    'calc.guide.how.step4':   '<strong>Publication and application:</strong> The announced amount applies to all tickets issued from the 1st of that month.',
+    'calc.guide.how.step5':   '<strong>One-way / round-trip:</strong> Round-trip tickets incur twice the one-way surcharge amount.',
+    'calc.section.airline':   '🔍 Airline Filing Criteria',
+    'calc.th.airline':        'Airline',
+    'calc.th.method':         'Method',
+    'calc.th.channel':        'Official Channel',
+    'calc.th.note':           'Note',
+    'calc.row.ke.method':     'Short-haul / long-haul bands',
+    'calc.row.oz.method':     'Short-haul / long-haul bands',
+    'calc.row.lcc.method':    'Per-route single / tiered',
+    'calc.note.monthly':      'Monthly',
+    'calc.official.suffix':   'Official site ↗',
+    'calc.tableFootnote':     '※ Always confirm exact bands and amounts via each airline\'s official notice.',
+    'calc.official.title':    '🔗 Official Airline Surcharge Announcements',
+    'calc.official.ke':       'koreanair.com — Official Notice ↗',
+    'calc.official.oz':       'flyasiana.com — Official Notice ↗',
+    'calc.official.7c':       'jejuair.net — Official Notice ↗',
+    'calc.official.lj':       'jinair.com — Official Notice ↗',
+    'calc.official.tw':       'twayair.com — Official Notice ↗',
+    'calc.related.title':     '🔗 Related Pages',
+    'calc.related.main':      '🔍 Main Surcharge Search',
+    'calc.related.airlines':  '✈️ Surcharge by Airline',
+    'calc.related.news':      '📰 Surcharge News',
+    'calc.related.graph':     '📈 Trend Graph',
+    'calc.related.calc':      '🧮 Calculation Guide',
+    'calc.related.may':       '📅 May 2026',
+    'calc.related.june':      '🔮 June 2026 Forecast',
+    'calc.related.korea':     '🇰🇷 Korea-Departure Surcharge',
+    'calc.footnote':          'Fuel surcharge information is for reference only, based on official airline announcements. Always confirm the final amount at the airline\'s official site or point of ticketing.<br>Contact: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+    'airline.KE': 'Korean Air (KE)',
+    'airline.OZ': 'Asiana Airlines (OZ)',
+    'airline.7C': 'Jeju Air (7C)',
+    'airline.LJ': 'Jin Air (LJ)',
+    'airline.TW': "T'way Air (TW)",
+    'calc.official.item.ke': '✈️ Korean Air: <a href="https://www.koreanair.com" target="_blank" rel="noopener">koreanair.com — Official Notice ↗</a>',
+    'calc.official.item.oz': '✈️ Asiana Airlines: <a href="https://www.flyasiana.com" target="_blank" rel="noopener">flyasiana.com — Official Notice ↗</a>',
+    'calc.official.item.7c': '✈️ Jeju Air: <a href="https://www.jejuair.net" target="_blank" rel="noopener">jejuair.net — Official Notice ↗</a>',
+    'calc.official.item.lj': '✈️ Jin Air: <a href="https://www.jinair.com" target="_blank" rel="noopener">jinair.com — Official Notice ↗</a>',
+    'calc.official.item.tw': "✈️ T'way Air: <a href=\"https://www.twayair.com\" target=\"_blank\" rel=\"noopener\">twayair.com — Official Notice ↗</a>",
+  },
+  ja: {
+    'calc.metaTitle':  '燃油サーチャージ計算方法ガイド — 航空会社別算定基準説明',
+    'calc.metaDesc':   '航空券の燃油サーチャージがどのように算定されるか説明し、航空会社別の公示基準と確認方法を案内します。',
+    'calc.pageTitle':  '🧮 燃油サーチャージ計算方法ガイド',
+    'calc.pageSub':    '航空会社別算定基準説明・確認方法案内 — リアルタイム計算機ではなく説明ページです',
+    'calc.h1':         '燃油サーチャージ計算方法ガイド',
+    'calc.notice':     '<strong>お知らせ:</strong> このページは燃油サーチャージの算定構造を説明するガイドページです。実際の金額は各航空会社の公式案内でご確認ください。',
+    'calc.alert':      'このページは<strong>リアルタイム自動計算機ではありません。</strong>燃油サーチャージの算定構造と航空会社別公示基準を説明する<strong>ガイドページ</strong>です。実際の金額は各航空会社の公式案内で直接ご確認ください。',
+    'calc.intro':      '航空券の燃油サーチャージ（Fuel Surcharge）は、国際油価変動による燃料費負担を乗客に分担させる付加料金です。航空会社ごとに算定基準と距離区分方式が異なり、毎月公示によって金額が決定されます。このページでは、燃油サーチャージの算定方法と航空会社別の公示基準・確認方法を案内します。',
+    'calc.card1.title':'油価連動構造',
+    'calc.card1.body': '燃油サーチャージは前月平均の国際油価（WTI・ドバイ原油）を基準に算定されます。油価が特定の区間を超えると、サーチャージの段階が上がります。',
+    'calc.card2.title':'距離区分別差等',
+    'calc.card2.body': '短距離（日本・中国・東南アジア）と長距離（米州・欧州）で適用金額が異なります。',
+    'calc.card3.title':'発券日基準',
+    'calc.card3.body': '燃油サーチャージは搭乗日ではなく発券日の公示金額が適用されます。将来の搭乗予定も発券時点のサーチャージが課されます。',
+    'calc.section.structure': '📖 燃油サーチャージ算定構造の説明',
+    'calc.guide.what.title':  '💡 燃油サーチャージとは？',
+    'calc.guide.what.body':   '燃油サーチャージは、航空機運航に必要な燃料費（航空燃料）の上昇分を航空券料金に別途課す料金です。航空会社は基本運賃とは別に燃油サーチャージを毎月公示し、予約・発券時に航空券の構成要素の一つとして請求されます。',
+    'calc.guide.how.title':   '📋 算定方式まとめ（一般原理）',
+    'calc.guide.how.step1':   '<strong>基準油価の確認:</strong> 前月のWTIまたはドバイ原油の平均価格を算出します。',
+    'calc.guide.how.step2':   '<strong>区間判定:</strong> 油価がどの段階の区間に該当するか判断します。',
+    'calc.guide.how.step3':   '<strong>サーチャージ決定:</strong> 区間に応じて短距離・長距離のサーチャージ金額が決定します。',
+    'calc.guide.how.step4':   '<strong>公示および適用:</strong> 当該月1日から発券分に公示金額が適用されます。',
+    'calc.guide.how.step5':   '<strong>片道/往復:</strong> 往復航空券の燃油サーチャージは片道の2倍になります。',
+    'calc.section.airline':   '🔍 航空会社別公示基準案内',
+    'calc.th.airline':        '航空会社',
+    'calc.th.method':         '区分方式',
+    'calc.th.channel':        '公示チャンネル',
+    'calc.th.note':           '備考',
+    'calc.row.ke.method':     '短距離/長距離区間別',
+    'calc.row.oz.method':     '短距離/長距離区間別',
+    'calc.row.lcc.method':    '路線別単一/区間',
+    'calc.note.monthly':      '毎月公示',
+    'calc.official.suffix':   '公式サイト ↗',
+    'calc.tableFootnote':     '※ 正確な区間基準と金額は各航空会社の公式案内で必ずご確認ください。',
+    'calc.official.title':    '🔗 航空会社公式燃油サーチャージ案内へ',
+    'calc.official.ke':       'koreanair.com 公式案内を確認 ↗',
+    'calc.official.oz':       'flyasiana.com 公式案内を確認 ↗',
+    'calc.official.7c':       'jejuair.net 公式案内を確認 ↗',
+    'calc.official.lj':       'jinair.com 公式案内を確認 ↗',
+    'calc.official.tw':       'twayair.com 公式案内を確認 ↗',
+    'calc.related.title':     '🔗 関連ページ',
+    'calc.related.main':      '🔍 燃油サーチャージ検索',
+    'calc.related.airlines':  '✈️ 航空会社別サーチャージ',
+    'calc.related.news':      '📰 燃油サーチャージニュース',
+    'calc.related.graph':     '📈 推移グラフ',
+    'calc.related.calc':      '🧮 計算方法ガイド',
+    'calc.related.may':       '📅 2026年5月',
+    'calc.related.june':      '🔮 2026年6月予測',
+    'calc.related.korea':     '🇰🇷 韓国発燃油サーチャージ',
+    'calc.footnote':          '表示された燃油サーチャージは各航空会社の公式案内に基づく参考情報です。最終金額は各航空会社の公式サイトまたは発券窓口でご確認ください。<br>お問い合わせ: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+    'airline.KE': '大韓航空 (KE)',
+    'airline.OZ': 'アシアナ航空 (OZ)',
+    'airline.7C': 'チェジュ航空 (7C)',
+    'airline.LJ': 'ジンエアー (LJ)',
+    'airline.TW': 'ティーウェイ航空 (TW)',
+    'calc.official.item.ke': '✈️ 大韓航空: <a href="https://www.koreanair.com" target="_blank" rel="noopener">koreanair.com 公式案内を確認 ↗</a>',
+    'calc.official.item.oz': '✈️ アシアナ航空: <a href="https://www.flyasiana.com" target="_blank" rel="noopener">flyasiana.com 公式案内を確認 ↗</a>',
+    'calc.official.item.7c': '✈️ チェジュ航空: <a href="https://www.jejuair.net" target="_blank" rel="noopener">jejuair.net 公式案内を確認 ↗</a>',
+    'calc.official.item.lj': '✈️ ジンエアー: <a href="https://www.jinair.com" target="_blank" rel="noopener">jinair.com 公式案内を確認 ↗</a>',
+    'calc.official.item.tw': '✈️ ティーウェイ航空: <a href="https://www.twayair.com" target="_blank" rel="noopener">twayair.com 公式案内を確認 ↗</a>',
+  },
+  zh: {
+    'calc.metaTitle':  '燃油附加费计算方法指南 — 各航空公司算定标准说明',
+    'calc.metaDesc':   '说明航空票务燃油附加费的计算方式，介绍各航空公司的公告标准与查询方法。',
+    'calc.pageTitle':  '🧮 燃油附加费计算方法指南',
+    'calc.pageSub':    '各航空公司算定标准说明 · 查询方法介绍 — 本页为说明页，非实时计算器',
+    'calc.h1':         '燃油附加费计算方法指南',
+    'calc.notice':     '<strong>说明:</strong> 本页用于解释燃油附加费的计算结构。实际金额请查看各航空公司官方公告。',
+    'calc.alert':      '本页<strong>不是实时自动计算器。</strong>本页为说明燃油附加费计算结构及各航空公司公告标准的<strong>指南页面</strong>。实际金额请直接查看各航空公司官方公告。',
+    'calc.intro':      '航空票务燃油附加费（Fuel Surcharge）是因国际油价波动导致燃料成本上升而向旅客分摊的附加费用。各航空公司的计算标准和距离分档方式不同，每月通过公告确定金额。本页介绍燃油附加费的计算方式及各航空公司的公告标准与查询方法。',
+    'calc.card1.title':'油价联动结构',
+    'calc.card1.body': '燃油附加费以上月平均国际油价（WTI或迪拜原油）为基准计算。当油价超过某一档位时，附加费等级上升。',
+    'calc.card2.title':'按距离分档差异',
+    'calc.card2.body': '短途（日本、中国、东南亚）与长途（美洲、欧洲）航线适用不同金额。',
+    'calc.card3.title':'以购票日期为准',
+    'calc.card3.body': '燃油附加费以购票日而非出行日的公告金额为准。即使是未来的行程，也按购票时的附加费标准收取。',
+    'calc.section.structure': '📖 燃油附加费计算结构说明',
+    'calc.guide.what.title':  '💡 什么是燃油附加费？',
+    'calc.guide.what.body':   '燃油附加费是在基本票价之外单独收取的费用，用于弥补航空燃油价格上涨带来的成本增加。航空公司每月单独公告此费用，购票时作为机票组成部分之一收取。',
+    'calc.guide.how.title':   '📋 计算方式概要（一般原则）',
+    'calc.guide.how.step1':   '<strong>确认基准油价:</strong> 计算上月WTI或迪拜原油平均价格。',
+    'calc.guide.how.step2':   '<strong>判断档位:</strong> 确定油价属于哪一个档位区间。',
+    'calc.guide.how.step3':   '<strong>确定附加费:</strong> 根据档位确定短途和长途的附加费金额。',
+    'calc.guide.how.step4':   '<strong>公告与适用:</strong> 公告金额自当月1日起适用于所有已购票。',
+    'calc.guide.how.step5':   '<strong>单程/往返:</strong> 往返机票的燃油附加费为单程的两倍。',
+    'calc.section.airline':   '🔍 各航空公司公告标准介绍',
+    'calc.th.airline':        '航空公司',
+    'calc.th.method':         '分档方式',
+    'calc.th.channel':        '官方渠道',
+    'calc.th.note':           '备注',
+    'calc.row.ke.method':     '短途/长途分档',
+    'calc.row.oz.method':     '短途/长途分档',
+    'calc.row.lcc.method':    '按航线单一/分档',
+    'calc.note.monthly':      '每月公告',
+    'calc.official.suffix':   '官方网站 ↗',
+    'calc.tableFootnote':     '※ 具体档位标准和金额请务必查阅各航空公司官方公告。',
+    'calc.official.title':    '🔗 各航空公司官方燃油附加费公告',
+    'calc.official.ke':       'koreanair.com 查看官方公告 ↗',
+    'calc.official.oz':       'flyasiana.com 查看官方公告 ↗',
+    'calc.official.7c':       'jejuair.net 查看官方公告 ↗',
+    'calc.official.lj':       'jinair.com 查看官方公告 ↗',
+    'calc.official.tw':       'twayair.com 查看官方公告 ↗',
+    'calc.related.title':     '🔗 相关页面',
+    'calc.related.main':      '🔍 燃油附加费查询',
+    'calc.related.airlines':  '✈️ 各航空公司附加费',
+    'calc.related.news':      '📰 燃油附加费资讯',
+    'calc.related.graph':     '📈 变化趋势图',
+    'calc.related.calc':      '🧮 计算方法说明',
+    'calc.related.may':       '📅 2026年5月',
+    'calc.related.june':      '🔮 2026年6月预测',
+    'calc.related.korea':     '🇰🇷 韩国出发附加费',
+    'calc.footnote':          '所示燃油附加费为参考信息，基于各航空公司官方公告。最终金额请在各航空公司官网或购票处确认。<br>联系: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+    'airline.KE': '大韩航空 (KE)',
+    'airline.OZ': '韩亚航空 (OZ)',
+    'airline.7C': '济州航空 (7C)',
+    'airline.LJ': '真航空 (LJ)',
+    'airline.TW': '德威航空 (TW)',
+    'calc.official.item.ke': '✈️ 大韩航空: <a href="https://www.koreanair.com" target="_blank" rel="noopener">koreanair.com 查看官方公告 ↗</a>',
+    'calc.official.item.oz': '✈️ 韩亚航空: <a href="https://www.flyasiana.com" target="_blank" rel="noopener">flyasiana.com 查看官方公告 ↗</a>',
+    'calc.official.item.7c': '✈️ 济州航空: <a href="https://www.jejuair.net" target="_blank" rel="noopener">jejuair.net 查看官方公告 ↗</a>',
+    'calc.official.item.lj': '✈️ 真航空: <a href="https://www.jinair.com" target="_blank" rel="noopener">jinair.com 查看官方公告 ↗</a>',
+    'calc.official.item.tw': '✈️ 德威航空: <a href="https://www.twayair.com" target="_blank" rel="noopener">twayair.com 查看官方公告 ↗</a>',
+  },
+};
+
+/* window.I18N에 병합 */
+(function() {
+  if (!window.I18N) window.I18N = {};
+  ['ko','en','ja','zh'].forEach(function(lang) {
+    if (!window.I18N[lang]) window.I18N[lang] = {};
+    var src = PAGE_I18N[lang] || {};
+    Object.keys(src).forEach(function(k) { window.I18N[lang][k] = src[k]; });
+  });
+})();
+
+window.initNav({});
+</script>
+</body>
+</html>
