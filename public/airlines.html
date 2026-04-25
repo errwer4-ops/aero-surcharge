@@ -720,13 +720,13 @@ var OFFICIAL_COMPARE_DATA = {
     { band:'1900~2300mi', routes:'나트랑, 괌',                          v4:80500, v5:165000, cur:'KRW' },
   ],
   YP: [
-    { band:'~999km',      routes:'인천-나리타',                         v4:32,  v5:null, cur:'USD' },
-    { band:'1000~1499km', routes:'인천-홍콩',                           v4:42,  v5:null, cur:'USD' },
-    { band:'1500~1999km', routes:'인천-다낭',                           v4:54,  v5:null, cur:'USD' },
-    { band:'2000~2499km', routes:'인천-방콕',                           v4:71,  v5:null, cur:'USD' },
-    { band:'4000~4999km', routes:'인천-호놀룰루',                       v4:123, v5:null, cur:'USD' },
-    { band:'5000~6499km', routes:'인천-로스앤젤레스, 샌프란시스코',     v4:155, v5:null, cur:'USD' },
-    { band:'6500km+',     routes:'인천-워싱턴 D.C., 뉴욕',             v4:194, v5:null, cur:'USD' },
+    { band:'~999mi',        routes:'인천-나리타',                                   v4:32,  v5:59,  cur:'USD' },
+    { band:'1,000~1,499mi', routes:'인천-홍콩',                                     v4:42,  v5:78,  cur:'USD' },
+    { band:'1,500~1,999mi', routes:'인천-다낭',                                     v4:54,  v5:102, cur:'USD' },
+    { band:'2,000~2,499mi', routes:'인천-방콕',                                     v4:71,  v5:131, cur:'USD' },
+    { band:'4,000~4,999mi', routes:'인천-호놀룰루',                                 v4:123, v5:229, cur:'USD' },
+    { band:'5,000~6,499mi', routes:'인천-로스앤젤레스, 인천-샌프란시스코',         v4:155, v5:291, cur:'USD' },
+    { band:'6,500mi~',      routes:'인천-워싱턴 D.C., 인천-뉴욕',                  v4:194, v5:365, cur:'USD' },
   ],
 };
 
@@ -745,23 +745,24 @@ async function loadData(){
   FEED=fr.status==='fulfilled'?fr.value:null;
 
   var NOTICE_URL_PATCH={
-    KE:'https://www.koreanair.com/kr/ko/footer/site-info/fuel-surcharge',
-    OZ:'https://flyasiana.com/C/KR/KO/info/fuel-surcharge-info',
-    YP:'https://www.airpremia.com/ko/support/fuel-surcharge',
-    '7C':'https://www.jejuair.net/ko/jp/support/fuel-surcharge.do',
-    LJ:'https://www.jinair.com/booking/fuelSurcharge',
-    TW:'https://www.twayair.com/app/page/fuel_surcharge',
-    RS:'https://www.airseoul.com/kor/portal/info/fuelSurcharge.do',
+    KE:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2604-infuel?pageNum=2',
+    OZ:'https://flyasiana.com/C/KR/KO/customer/notice/list?id=&dispCt=&page=2&searchOption=0&searchText=#CM202603160002528531',
+    YP:'https://www.airpremia.com/a/ko/customer/notice/668',
+    '7C':'https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000690',
+    LJ:'https://www.jinair.com/company/announce/announceView?anceSeq=27858&searchWord=&searchKey=titlCtn&page=1',
+    TW:'https://www.twayair.com/app/customerCenter/notice/retrieve/12577',
+    ZE:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=566&lang=KR&searchWord=&searchIndex=1',
+    RS:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=10587&pageNo=1',
   };
   var NOTICE_URL_MAY={
-    KE:'https://www.koreanair.com/kr/ko/footer/site-info/fuel-surcharge',
-    OZ:'https://flyasiana.com/C/KR/KO/info/fuel-surcharge-info',
-    '7C':'https://www.jejuair.net/ko/customerServiceCenter/noticDetail.do?billboardNo=0000000720',
-    LJ:'https://www.jinair.com/company/announce/announceView?anceSeq=28100',
-    TW:'https://www.twayair.com/app/page/fuel_surcharge',
-    ZE:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=610&lang=KR',
-    RS:'https://flyairseoul.com/CW/ko/noticeList.do',
-    YP:null,
+    KE:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2605-infuel?pageNum=1',
+    OZ:'https://flyasiana.com/C/KR/KO/customer/notice/list?id=&dispCt=&page=1&searchOption=0&searchText=#CM202604160002528823',
+    YP:'https://www.airpremia.com/a/ko/customer/notice/693',
+    '7C':'https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000703',
+    LJ:'https://www.jinair.com/company/announce/announceView?anceSeq=27948&searchWord=&searchKey=titlCtn&page=1',
+    TW:'https://www.twayair.com/app/customerCenter/notice/retrieve/12611',
+    ZE:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=578&lang=KR&searchWord=&searchIndex=1',
+    RS:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=10702&pageNo=1',
   };
 
   var metaObj=window.AIRLINE_META||{};

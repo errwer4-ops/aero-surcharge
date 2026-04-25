@@ -96,6 +96,12 @@
     .summary-card ul{margin:0;padding-left:18px;}
     .summary-card li{font-size:13px;color:var(--text2);margin-bottom:4px;line-height:1.6;}
     @media(max-width:600px){.main{padding:14px;} .news-card{padding:12px 14px;} .cta-nav-btns{flex-direction:column;} .cta-nav-btn{text-align:center;}}
+    /* 페이지네이션 */
+    .pg-btn{padding:5px 11px;border-radius:7px;font-size:13px;font-weight:600;cursor:pointer;border:1.5px solid var(--line);background:var(--white);color:var(--text2);font-family:var(--sans);transition:all .15s;min-width:34px;text-align:center;}
+    .pg-btn:hover{border-color:var(--blue);color:var(--blue);}
+    .pg-btn.active{background:var(--blue);color:#fff;border-color:var(--blue);}
+    .pg-btn:disabled{opacity:.38;cursor:default;}
+    @media(max-width:400px){.pg-btn{padding:4px 8px;font-size:12px;min-width:28px;}}
   </style>
 </head>
 <body>
@@ -163,12 +169,15 @@
   <!-- [4] 핵심 요약 카드 -->
   <div class="summary-card">
     <div class="summary-card-title">📌 2026년 5월 핵심 요약</div>
-    <div class="summary-updated">🕐 2026.04.24 기준 시장 지표 반영</div>
+    <div class="summary-updated">🕐 2026.04.25 기준 시장 지표 반영</div>
     <ul>
-      <li>전 항공사 유류할증료 인상 — 대한항공·아시아나·진에어·제주항공·이스타·에어서울·티웨이 모두 확정</li>
-      <li>일부 구간 최대 약 2배 수준 상승 (예: 티웨이 7군 213,900원 → 406,900원)</li>
-      <li>브렌트유 $105~106 안팎 + 원달러 환율 1,470원대 후반으로 고비용 구간 유지</li>
-      <li>6월은 하락 압력 일부 발생 가능하나, 환율·지정학 변수로 인하 폭 제한 가능성</li>
+      <li>5월 유류할증료는 주요 한국 출발 국제선 항공사 기준 공시 반영 완료</li>
+      <li>대한항공·아시아나·진에어·제주항공·이스타·에어서울·티웨이·에어프레미아 모두 4월 대비 인상 확정</li>
+      <li>일부 구간은 최대 약 2배 수준 상승, 장거리 구간은 절대 금액 부담 확대</li>
+      <li>브렌트유는 $102~105 / 배럴 구간에서 반등 후 횡보</li>
+      <li>원달러 환율은 1,465~1,480원 고점 유지 구간</li>
+      <li>6월 유류할증료는 인하보다 동결 또는 제한적 상승 가능성이 우세</li>
+      <li>💡 현재 구간에서는 유가보다 환율이 유류할증료에 더 큰 영향을 주는 구조</li>
     </ul>
   </div>
 
@@ -182,7 +191,8 @@
     <div class="official-item" id="officialZe"><strong>이스타항공</strong> — 전 구간 인상 (예: 1군 USD 29 → 52, 6군 USD 68 → 126)</div>
     <div class="official-item" id="officialRs"><strong>에어서울</strong> — 전 구간 인상 (예: 300~700mi 46,800원 → 94,500원)</div>
     <div class="official-item" id="officialTw"><strong>티웨이항공</strong> — 전 구간 인상 (예: 1군 30,800원 → 58,600원, 7군 213,900원 → 406,900원)</div>
-    <div class="official-desc"  id="officialDesc">* 현재까지 확인된 주요 한국발 국제선 항공사 기준 · 단거리~장거리 전 구간 상승, 장거리 인상폭 큼 · 최종 적용 금액은 발권일 기준 공식 공지 확인 필요 (티웨이 2026.04.21 / 에어서울 2026.04.20 공지)</div>
+    <div class="official-item" id="officialYp"><strong>에어프레미아</strong> — 전 구간 인상 (단거리 USD 59 / 장거리 최대 USD 365), 장거리 기준 약 2배 수준</div>
+    <div class="official-desc"  id="officialDesc">* 현재까지 확인된 주요 한국발 국제선 항공사 기준 · 단거리~장거리 전 구간 상승, 장거리 인상폭 큼 · 최종 적용 금액은 발권일 기준 공식 공지 확인 필요 (에어프레미아 2026.04.24 / 티웨이 2026.04.21 / 에어서울 2026.04.20 공지)</div>
   </div>
 
   <!-- 비교 박스 -->
@@ -196,6 +206,7 @@
       <li>이스타항공: 전 구간 인상, 1군 USD 29 → 52 / 6군 USD 68 → 126</li>
       <li>에어서울: 전 구간 인상, 300~700mi 46,800원 → 94,500원 / 1,900~2,300mi 80,500원 → 165,000원</li>
       <li>티웨이항공: 전 구간 약 2배 인상, 1군 30,800원 → 58,600원 / 7군 213,900원 → 406,900원</li>
+      <li>에어프레미아: 전 구간 인상, 단거리 USD 59 / 장거리 약 194 USD → 365 USD (장거리 기준 약 2배 수준 인상)</li>
       <li>공통: 현재까지 확인된 주요 한국발 국제선 항공사 전반에서 4월 대비 5월 인상 흐름</li>
     </ul>
   </div>
@@ -203,11 +214,12 @@
   <!-- 시장 브리핑 -->
   <div class="market-brief-box">
     <div class="mb-title"   data-i18n="news.marketTitle">🌍 시장 브리핑</div>
-    <div class="mb-item"    data-i18n="news.brent">⛽ 브렌트유: $105~106 안팎 / 배럴</div>
-    <div class="mb-item"    data-i18n="news.fx">💱 원달러 환율: 1,470원대 후반</div>
-    <div class="mb-item"    data-i18n="news.mops">✈️ 항공유/MOPS: 최근 고점 → 하락 전환 / 여전히 고가권</div>
-    <div class="mb-item"    data-i18n="news.geo">🌍 지정학: 중동 리스크 완전 해소 아님 (호르무즈·중동 긴장 지속)</div>
-    <div class="mb-summary" data-i18n="news.marketSummary">→ 5월 유류할증료는 고점 반영 완료, 6월은 하락 압력 일부 발생 가능하나 환율·지정학 변수로 인하 폭 제한 가능</div>
+    <div class="mb-item"    data-i18n="news.brent">⛽ 브렌트유: $102~105 / 배럴 — 최근 반등 이후 횡보 흐름</div>
+    <div class="mb-item"    data-i18n="news.fx">💱 원달러 환율: 1,465~1,480원 — 고점 유지 구간</div>
+    <div class="mb-item"    data-i18n="news.mops">✈️ 항공유/MOPS: 고점 형성 후 제한적 조정, 여전히 고가 영역 유지</div>
+    <div class="mb-item"    data-i18n="news.geo">🌍 지정학: 중동 긴장 지속 (리스크 완전 해소 아님)</div>
+    <div class="mb-summary" data-i18n="news.marketSummary">→ 5월 유류할증료는 고점 반영 완료, 6월은 유가 안정에도 환율·지정학 변수로 상승 압력이 유지되는 구조</div>
+    <div class="mb-summary" style="margin-top:6px;color:#558B2F;" data-i18n="news.fxDominance">💡 현재 구간에서는 유가보다 환율이 유류할증료에 더 큰 영향을 주는 구조입니다.</div>
   </div>
 
   <!-- [5] Klook 제휴 — 하드코딩 텍스트로 키 노출 방지 (1차) -->
@@ -221,7 +233,7 @@
   <div style="background:#FFF8E1;border:1px solid #FFD54F;border-radius:12px;padding:14px 16px;margin-bottom:18px;font-size:13px;font-weight:600;color:#5D4037;">
     <span data-i18n="news.decisionTitle">📌 현재 판단 기준</span><br>
     <span data-i18n="news.decisionLine1">→ 5월은 주요 항공사 인상 반영 완료</span><br>
-    <span data-i18n="news.decisionLine2">→ 6월은 유가·환율·지정학 변수에 따라 유지 또는 변동 가능</span><br><br>
+    <span data-i18n="news.decisionLine2">→ 6월은 유가 안정에도 불구하고 환율 및 지정학 리스크로 상승 압력이 유지되는 구조</span><br><br>
     <strong data-i18n="news.decisionShort">👉 단기 여행(1~2개월): 현재 공시 기준 총액 확인 후 예약 판단</strong><br>
     <strong data-i18n="news.decisionLong">👉 여유 있는 일정: 5월 중 6월 공시 추이 추가 확인 권장</strong>
   </div>
@@ -266,6 +278,26 @@
     <div style="text-align:center;padding:32px;color:var(--muted)" data-i18n="common.loading">소식 데이터 로딩 중...</div>
   </div>
 
+  <!-- 페이지네이션 -->
+  <div id="pagination" style="display:flex;justify-content:center;align-items:center;gap:6px;flex-wrap:wrap;margin:16px 0 8px;"></div>
+
+  <!-- 유류할증료 결정 핵심 변수 섹션 -->
+  <div style="background:#E8F5E9;border:1px solid #A5D6A7;border-radius:12px;padding:14px 16px;margin-bottom:18px;margin-top:12px;">
+    <div style="font-weight:700;margin-bottom:10px;color:#1B5E20;">🔑 유류할증료 결정 핵심 변수</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px;">
+      <div style="background:rgba(255,255,255,.75);border:1px solid #A5D6A7;border-radius:8px;padding:8px 14px;font-size:13px;color:#2E7D32;font-weight:600;">⛽ 국제 유가 (Brent)</div>
+      <div style="background:rgba(255,255,255,.75);border:1px solid #A5D6A7;border-radius:8px;padding:8px 14px;font-size:13px;color:#2E7D32;font-weight:600;">✈️ 항공유 가격 (MOPS)</div>
+      <div style="background:rgba(255,255,255,.75);border:1px solid #A5D6A7;border-radius:8px;padding:8px 14px;font-size:13px;color:#2E7D32;font-weight:600;">💱 환율 (USD/KRW)</div>
+      <div style="background:rgba(255,255,255,.75);border:1px solid #A5D6A7;border-radius:8px;padding:8px 14px;font-size:13px;color:#2E7D32;font-weight:600;">🏢 항공사 정책</div>
+    </div>
+  </div>
+
+  <!-- 6월 유류할증료 반영 기준 안내 -->
+  <div style="background:#E3F2FD;border:1px solid #90CAF9;border-radius:12px;padding:12px 16px;margin-bottom:18px;font-size:13px;color:#1565C0;">
+    <span style="font-weight:700;">📅 6월 유류할증료 반영 기준</span><br>
+    <span style="font-weight:400;margin-top:4px;display:inline-block;">6월 유류할증료는 4월 평균 유가 및 환율을 기준으로 산정됩니다.</span>
+  </div>
+
   <div class="ad-slot" id="adSlot2"></div>
 </div>
 
@@ -284,7 +316,8 @@
 
 <script src="_shared.js"></script>
 <script>
-var NEWS_DATA=null, FORECAST_DATA=null, currentF='all';
+var NEWS_DATA=null, FORECAST_DATA=null, currentF='all', currentPage=1;
+var PAGE_SIZE = 10;
 
 /* ── fix4: FORECAST_DATA 로드 완료 여부 플래그 ──
    initNav → applyLanguage → reRenderAll 경로에서
@@ -334,16 +367,16 @@ async function loadNews(){
    FORECAST_DATA feed 값이 오더라도 이 값으로 고정.
    ════════════════════════════════════════════════════════ */
 var TODAY_MARKET = {
-  brent:   '$105~106 / 배럴',
-  brentEn: '$105–106 / bbl',
-  fx:      '1,470원대 후반',
-  fxEn:    'KRW 1,470s (late)',
-  mops:    '최근 고점 → 하락 전환 / 여전히 고가권',
-  mopsEn:  'Recent peak → turning lower / still elevated',
-  geo:     '긴장 완전 해소 아님 (중동 리스크 잔존)',
-  geoEn:   'Not fully resolved (Middle East risk remains)',
-  outlook: '동결 또는 제한적 인하 가능성',
-  outlookEn: 'Flat or limited cut possible'
+  brent:   '$102~105 / 배럴',
+  brentEn: '$102–105 / bbl',
+  fx:      '1,465~1,480원 (고점 유지 구간)',
+  fxEn:    'KRW 1,465–1,480 (high range)',
+  mops:    '고점 형성 후 제한적 조정, 여전히 고가 영역 유지',
+  mopsEn:  'Limited pullback from peak, still in elevated range',
+  geo:     '중동 긴장 지속 (리스크 완전 해소 아님)',
+  geoEn:   'Middle East tensions ongoing (risk not fully resolved)',
+  outlook: '동결 또는 제한적 상승 가능성 우세',
+  outlookEn: 'Flat or limited increase likely'
 };
 
 /* ════════════════════════════════════════════════════════
@@ -368,10 +401,10 @@ function renderPredictBasis(){
     ko: {
       brentLabel:   'Brent 유가',
       brentVal:     TODAY_MARKET.brent,
-      brentClass:   'up',
+      brentClass:   'plain',
       mopsLabel:    '싱가포르 항공유 (MOPS)',
       mopsVal:      TODAY_MARKET.mops,
-      mopsClass:    'down',
+      mopsClass:    'plain',
       fxLabel:      '원달러 환율',
       fxVal:        TODAY_MARKET.fx,
       fxClass:      'up',
@@ -380,15 +413,15 @@ function renderPredictBasis(){
       geoClass:     'up',
       outlookLabel: 'surcharge 전망',
       outlookVal:   TODAY_MARKET.outlook,
-      outlookClass: 'down'
+      outlookClass: 'up'
     },
     en: {
       brentLabel:   'Brent Crude',
       brentVal:     TODAY_MARKET.brentEn,
-      brentClass:   'up',
+      brentClass:   'plain',
       mopsLabel:    'Singapore Jet (MOPS)',
       mopsVal:      TODAY_MARKET.mopsEn,
-      mopsClass:    'down',
+      mopsClass:    'plain',
       fxLabel:      'USD / KRW',
       fxVal:        TODAY_MARKET.fxEn,
       fxClass:      'up',
@@ -397,75 +430,75 @@ function renderPredictBasis(){
       geoClass:     'up',
       outlookLabel: 'surcharge outlook',
       outlookVal:   TODAY_MARKET.outlookEn,
-      outlookClass: 'down'
+      outlookClass: 'up'
     },
     ja: {
       brentLabel:   'ブレント原油',
-      brentVal:     '$105〜106 / バレル',
-      brentClass:   'up',
+      brentVal:     '$102〜105 / バレル',
+      brentClass:   'plain',
       mopsLabel:    'シンガポール航空燃料（MOPS）',
-      mopsVal:      '直近ピーク → 下落転換 / 依然高値圏',
-      mopsClass:    'down',
+      mopsVal:      '高値圏での限定的調整、依然高値圏維持',
+      mopsClass:    'plain',
       fxLabel:      'ウォンドル相場',
-      fxVal:        '1,470ウォン台後半',
+      fxVal:        '1,465〜1,480ウォン（高値維持）',
       fxClass:      'up',
       geoLabel:     '地政学リスク',
-      geoVal:       '完全解消されず（中東リスク残存）',
+      geoVal:       '中東緊張継続（リスク解消されず）',
       geoClass:     'up',
       outlookLabel: 'サーチャージ見通し',
-      outlookVal:   '据え置きまたは限定的引き下げの可能性',
-      outlookClass: 'down'
+      outlookVal:   '据え置きまたは限定的引き上げの可能性',
+      outlookClass: 'up'
     },
     zh: {
       brentLabel:   '布伦特原油',
-      brentVal:     '$105–106 / 桶',
-      brentClass:   'up',
+      brentVal:     '$102–105 / 桶',
+      brentClass:   'plain',
       mopsLabel:    '新加坡航空燃油（MOPS）',
-      mopsVal:      '近期见顶 → 转跌 / 仍处高位',
-      mopsClass:    'down',
+      mopsVal:      '高点形成后有限回调，仍处高位区间',
+      mopsClass:    'plain',
       fxLabel:      '韩元/美元汇率',
-      fxVal:        '1,470韩元后段',
+      fxVal:        '1,465~1,480韩元（高位维持）',
       fxClass:      'up',
       geoLabel:     '地缘政治风险',
-      geoVal:       '尚未完全解除（中东风险持续）',
+      geoVal:       '中东紧张持续（风险未完全消除）',
       geoClass:     'up',
       outlookLabel: '燃油附加费展望',
-      outlookVal:   '维持或有限下调可能',
-      outlookClass: 'down'
+      outlookVal:   '维持或有限上调可能性较大',
+      outlookClass: 'up'
     },
     fr: {
       brentLabel:   'Pétrole Brent',
-      brentVal:     '~105–106 $/baril',
-      brentClass:   'up',
+      brentVal:     '~102–105 $/baril',
+      brentClass:   'plain',
       mopsLabel:    'Kérosène Singapour (MOPS)',
-      mopsVal:      'Pic récent → retournement baissier / toujours élevé',
-      mopsClass:    'down',
+      mopsVal:      'Repli limité depuis le pic, toujours en zone élevée',
+      mopsClass:    'plain',
       fxLabel:      'USD / KRW',
-      fxVal:        'KRW 1 470s (fin de fourchette)',
+      fxVal:        'KRW 1 465–1 480 (haut de fourchette)',
       fxClass:      'up',
       geoLabel:     'Risque géopolitique',
-      geoVal:       'Non pleinement résolu (risque Moyen-Orient persistant)',
+      geoVal:       'Tensions au Moyen-Orient persistantes (risque non résolu)',
       geoClass:     'up',
       outlookLabel: 'surcharge : prévision',
-      outlookVal:   'Stable ou légère baisse possible',
-      outlookClass: 'down'
+      outlookVal:   'Stable ou légère hausse probable',
+      outlookClass: 'up'
     },
     de: {
       brentLabel:   'Brent-Rohöl',
-      brentVal:     '~105–106 $/Barrel',
-      brentClass:   'up',
+      brentVal:     '~102–105 $/Barrel',
+      brentClass:   'plain',
       mopsLabel:    'Singapur Kerosin (MOPS)',
-      mopsVal:      'Jüngster Höchststand → Rückgang / weiterhin hoch',
-      mopsClass:    'down',
+      mopsVal:      'Begrenzte Korrektur vom Hoch, weiterhin hohes Preisniveau',
+      mopsClass:    'plain',
       fxLabel:      'USD / KRW',
-      fxVal:        'KRW 1.470er Bereich (oberes Ende)',
+      fxVal:        'KRW 1.465–1.480 (hohes Niveau)',
       fxClass:      'up',
       geoLabel:     'Geopolitisches Risiko',
-      geoVal:       'Nicht vollständig gelöst (Nahost-Risiko bleibt)',
+      geoVal:       'Spannungen im Nahen Osten anhaltend (nicht vollständig gelöst)',
       geoClass:     'up',
       outlookLabel: 'Zuschlag: Prognose',
-      outlookVal:   'Stabil oder begrenzte Senkung möglich',
-      outlookClass: 'down'
+      outlookVal:   'Stabil oder begrenzte Erhöhung wahrscheinlich',
+      outlookClass: 'up'
     }
   };
 
@@ -582,17 +615,17 @@ function renderOfficialSummary(){
   /* ── 언어별 항공사명 ── */
   var AIRLINE_NAMES = {
     ko: { officialKe:'대한항공',   officialOz:'아시아나항공', officialLj:'진에어',
-          'official7c':'제주항공', officialZe:'이스타항공',   officialRs:'에어서울', officialTw:'티웨이항공' },
+          'official7c':'제주항공', officialZe:'이스타항공',   officialRs:'에어서울', officialTw:'티웨이항공', officialYp:'에어프레미아' },
     en: { officialKe:'Korean Air', officialOz:'Asiana Airlines', officialLj:'Jin Air',
-          'official7c':'Jeju Air', officialZe:'Eastar Jet',      officialRs:'Air Seoul', officialTw:"T'way Air" },
+          'official7c':'Jeju Air', officialZe:'Eastar Jet',      officialRs:'Air Seoul', officialTw:"T'way Air", officialYp:'Air Premia' },
     ja: { officialKe:'大韓航空',   officialOz:'アシアナ航空',     officialLj:'ジンエアー',
-          'official7c':'チェジュ航空', officialZe:'イースター航空', officialRs:'エアソウル', officialTw:'ティーウェイ航空' },
+          'official7c':'チェジュ航空', officialZe:'イースター航空', officialRs:'エアソウル', officialTw:'ティーウェイ航空', officialYp:'エアプレミア' },
     zh: { officialKe:'大韩航空',   officialOz:'韩亚航空',         officialLj:'真航空',
-          'official7c':'济州航空', officialZe:'易斯达航空',        officialRs:'首尔航空',  officialTw:'德威航空' },
+          'official7c':'济州航空', officialZe:'易斯达航空',        officialRs:'首尔航空',  officialTw:'德威航空', officialYp:'韩亚宇宙航空' },
     fr: { officialKe:'Korean Air', officialOz:'Asiana Airlines', officialLj:'Jin Air',
-          'official7c':'Jeju Air', officialZe:'Eastar Jet',      officialRs:'Air Seoul', officialTw:"T'way Air" },
+          'official7c':'Jeju Air', officialZe:'Eastar Jet',      officialRs:'Air Seoul', officialTw:"T'way Air", officialYp:'Air Premia' },
     de: { officialKe:'Korean Air', officialOz:'Asiana Airlines', officialLj:'Jin Air',
-          'official7c':'Jeju Air', officialZe:'Eastar Jet',      officialRs:'Air Seoul', officialTw:"T'way Air" }
+          'official7c':'Jeju Air', officialZe:'Eastar Jet',      officialRs:'Air Seoul', officialTw:"T'way Air", officialYp:'Air Premia' }
   };
   var nameRow = AIRLINE_NAMES[lang] || AIRLINE_NAMES['en'];
 
@@ -606,7 +639,8 @@ function renderOfficialSummary(){
       'news.official.ze':   '전 구간 인상 (예: 1군 USD 29 → 52, 6군 USD 68 → 126)',
       'news.official.rs':   '전 구간 인상 (예: 300~700mi 46,800원 → 94,500원)',
       'news.official.tw':   '전 구간 약 2배 인상 (예: 1군 30,800원 → 58,600원, 7군 213,900원 → 406,900원)',
-      'news.official.desc': '* 현재까지 확인된 주요 한국발 국제선 항공사 기준 · 단거리~장거리 전 구간 상승, 장거리 인상폭 큼 · 최종 적용 금액은 발권일 기준 공식 공지 확인 필요 (티웨이 2026.04.21 / 에어서울 2026.04.20 공지)'
+      'news.official.yp':   '전 구간 인상 (단거리 USD 59 / 중거리 USD 78~131 / 장거리 USD 229~365), 장거리 기준 약 2배 수준',
+      'news.official.desc': '* 현재까지 확인된 주요 한국발 국제선 항공사 기준 · 단거리~장거리 전 구간 상승, 장거리 인상폭 큼 · 최종 적용 금액은 발권일 기준 공식 공지 확인 필요 (에어프레미아 2026.04.24 / 티웨이 2026.04.21 / 에어서울 2026.04.20 공지)'
     },
     en: {
       'news.official.ke':   'All routes raised vs April',
@@ -616,7 +650,8 @@ function renderOfficialSummary(){
       'news.official.ze':   'All routes raised (e.g. Band 1 USD 29 → 52, Band 6 USD 68 → 126)',
       'news.official.rs':   'All routes raised (e.g. 300–700mi KRW 46,800 → 94,500)',
       'news.official.tw':   'All routes raised ~2× (e.g. Band 1 KRW 30,800 → 58,600, Band 7 KRW 213,900 → 406,900)',
-      'news.official.desc': '* Based on major Korea-origin international airlines confirmed to date · Short- to long-haul all up; long-haul hike largest · Final surcharge must be verified on each airline\'s official notice at time of ticketing (T\'way 2026.04.21 / Air Seoul 2026.04.20)'
+      'news.official.yp':   'All routes raised (short USD 59 / mid USD 78–131 / long USD 229–365), long-haul approx. 2× increase',
+      'news.official.desc': '* Based on major Korea-origin international airlines confirmed to date · Short- to long-haul all up; long-haul hike largest · Final surcharge must be verified on each airline\'s official notice at time of ticketing (Air Premia 2026.04.24 / T\'way 2026.04.21 / Air Seoul 2026.04.20)'
     },
     ja: {
       'news.official.ke':   '4月比で全区間値上げ',
@@ -626,7 +661,8 @@ function renderOfficialSummary(){
       'news.official.ze':   '全区間値上げ（例: 1区間 USD 29 → 52, 6区間 USD 68 → 126）',
       'news.official.rs':   '全区間値上げ（例: 300〜700mi 46,800ウォン → 94,500ウォン）',
       'news.official.tw':   '全区間約2倍値上げ（例: 1区間 30,800ウォン → 58,600ウォン、7区間 213,900ウォン → 406,900ウォン）',
-      'news.official.desc': '* 短距離〜長距離まで全区間上昇 · ティーウェイ・イースター航空・エアソウルの5月公告を確認 (2026.04.21〜22)'
+      'news.official.yp':   '全区間値上げ（短距離 USD 59 / 中距離 USD 78〜131 / 長距離 USD 229〜365）、長距離約2倍水準',
+      'news.official.desc': '* 短距離〜長距離まで全区間上昇 · エアプレミア・ティーウェイ・イースター航空・エアソウルの5月公告を確認 (2026.04.24〜21)'
     },
     zh: {
       'news.official.ke':   '较4月全区间上调',
@@ -636,7 +672,8 @@ function renderOfficialSummary(){
       'news.official.ze':   '全区间上调（例: 第1档 USD 29 → 52, 第6档 USD 68 → 126）',
       'news.official.rs':   '全区间上调（例: 300–700英里 46,800韩元 → 94,500韩元）',
       'news.official.tw':   '全区间约2倍上调（例: 第1档 30,800韩元 → 58,600韩元，第7档 213,900韩元 → 406,900韩元）',
-      'news.official.desc': '* 短途至长途全部上涨 · 德威·易斯达航空与首尔航空5月公告已确认 (2026.04.21–22)'
+      'news.official.yp':   '全区间上调（短途 USD 59 / 中途 USD 78–131 / 长途 USD 229–365），长途约2倍水平',
+      'news.official.desc': '* 短途至长途全部上涨 · 航空奖励·德威·易斯达航空与首尔航空5月公告已确认 (2026.04.24–20)'
     },
     fr: {
       'news.official.ke':   'Hausse sur toutes les liaisons vs avril',
@@ -646,7 +683,8 @@ function renderOfficialSummary(){
       'news.official.ze':   'Hausse sur toutes les liaisons (ex. zone 1 USD 29 → 52, zone 6 USD 68 → 126)',
       'news.official.rs':   'Hausse sur toutes les liaisons (ex. 300–700mi 46 800 KRW → 94 500 KRW)',
       'news.official.tw':   'Hausse ~2× sur toutes les liaisons (ex. zone 1 30 800 KRW → 58 600 KRW, zone 7 213 900 KRW → 406 900 KRW)',
-      'news.official.desc': '* Hausse sur tous les trajets · Avis de mai T\'way, Eastar Jet et Air Seoul confirmés (2026.04.21–22)'
+      'news.official.yp':   'Hausse sur toutes les liaisons (court-courrier USD 59 / moyen-courrier USD 78–131 / long-courrier USD 229–365), long-courrier ~2×',
+      'news.official.desc': '* Hausse sur tous les trajets · Avis de mai Air Premia, T\'way, Eastar Jet et Air Seoul confirmés (2026.04.24–20)'
     },
     de: {
       'news.official.ke':   'Alle Strecken gegenüber April erhöht',
@@ -656,7 +694,8 @@ function renderOfficialSummary(){
       'news.official.ze':   'Alle Strecken erhöht (z. B. Band 1 USD 29 → 52, Band 6 USD 68 → 126)',
       'news.official.rs':   'Alle Strecken erhöht (z. B. 300–700mi 46.800 KRW → 94.500 KRW)',
       'news.official.tw':   'Alle Strecken ~2× erhöht (z. B. Band 1 30.800 KRW → 58.600 KRW, Band 7 213.900 KRW → 406.900 KRW)',
-      'news.official.desc': '* Kurz- bis Langstrecke durchgehend höher · Mai-Mitteilungen von T\'way, Eastar Jet und Air Seoul bestätigt (2026.04.21–22)'
+      'news.official.yp':   'Alle Strecken erhöht (Kurzstrecke USD 59 / Mittelstrecke USD 78–131 / Langstrecke USD 229–365), Langstrecke ~2×',
+      'news.official.desc': '* Kurz- bis Langstrecke durchgehend höher · Mai-Mitteilungen von Air Premia, T\'way, Eastar Jet und Air Seoul bestätigt (2026.04.24–20)'
     }
   };
 
@@ -672,13 +711,13 @@ function renderOfficialSummary(){
   }
 
   var AIRLINE_KEYS = [
-    'officialKe','officialOz','officialLj','official7c','officialZe','officialRs','officialTw'
+    'officialKe','officialOz','officialLj','official7c','officialZe','officialRs','officialTw','officialYp'
   ];
   var CONTENT_KEYS = {
     officialKe:'news.official.ke', officialOz:'news.official.oz',
     officialLj:'news.official.lj', 'official7c':'news.official.7c',
     officialZe:'news.official.ze', officialRs:'news.official.rs',
-    officialTw:'news.official.tw'
+    officialTw:'news.official.tw', officialYp:'news.official.yp'
   };
 
   AIRLINE_KEYS.forEach(function(id){
@@ -719,7 +758,9 @@ function renderCompareBox(){
       'news.compare.li4': '제주항공: 전 구간 인상, 최대 USD 68 → 126',
       'news.compare.li5': '이스타항공: 전 구간 인상, 1군 USD 29 → 52 / 6군 USD 68 → 126',
       'news.compare.li6': '에어서울: 전 구간 인상, 300~700mi 46,800원 → 94,500원 / 1,900~2,300mi 80,500원 → 165,000원',
-      'news.compare.li7': '공통: 현재까지 확인된 주요 한국발 국제선 항공사 전반에서 4월 대비 5월 인상 흐름'
+      'news.compare.li7': '티웨이항공: 전 구간 약 2배 인상, 1군 30,800원 → 58,600원 / 7군 213,900원 → 406,900원',
+      'news.compare.li8': '에어프레미아: 전 구간 인상, 단거리 USD 59 / 장거리 약 194 USD → 365 USD (장거리 기준 약 2배 수준 인상)',
+      'news.compare.li9': '공통: 현재까지 확인된 주요 한국발 국제선 항공사 전반에서 4월 대비 5월 인상 흐름'
     },
     en: {
       'news.compare.li1': 'Korean Air: all routes up (up to ~2×)',
@@ -728,7 +769,9 @@ function renderCompareBox(){
       'news.compare.li4': 'Jeju Air: all routes up, max USD 68 → 126',
       'news.compare.li5': 'Eastar Jet: all routes up, Band 1 USD 29 → 52 / Band 6 USD 68 → 126',
       'news.compare.li6': 'Air Seoul: all routes up, 300–700mi KRW 46,800 → 94,500 / 1,900–2,300mi KRW 80,500 → 165,000',
-      'news.compare.li7': 'Overall: major Korea-origin international airlines confirmed an upward move from April to May'
+      'news.compare.li7': "T'way Air: all routes ~2×, Band 1 KRW 30,800 → 58,600 / Band 7 KRW 213,900 → 406,900",
+      'news.compare.li8': 'Air Premia: all routes up, short-haul USD 59 / long-haul ~USD 194 → 365 (~2× increase for long-haul)',
+      'news.compare.li9': 'Overall: major Korea-origin international airlines confirmed an upward move from April to May'
     },
     ja: {
       'news.compare.li1': '大韓航空: 全区間値上げ（最大約2倍）',
@@ -737,7 +780,9 @@ function renderCompareBox(){
       'news.compare.li4': 'チェジュ航空: 全区間値上げ、最大 USD 68 → 126',
       'news.compare.li5': 'イースター航空: 全区間値上げ、1区間 USD 29 → 52 / 6区間 USD 68 → 126',
       'news.compare.li6': 'エアソウル: 全区間値上げ、300〜700mi 46,800ウォン → 94,500ウォン / 1,900〜2,300mi 80,500ウォン → 165,000ウォン',
-      'news.compare.li7': '共通: 現在確認された主要な韓国発国際線航空会社全体で4月比5月上昇の流れ'
+      'news.compare.li7': 'ティーウェイ航空: 全区間約2倍値上げ、1区間 30,800ウォン → 58,600ウォン / 7区間 213,900ウォン → 406,900ウォン',
+      'news.compare.li8': 'エアプレミア: 全区間値上げ、短距離 USD 59 / 長距離 約194 USD → 365 USD（長距離約2倍水準）',
+      'news.compare.li9': '共通: 現在確認された主要な韓国発国際線航空会社全体で4月比5月上昇の流れ'
     },
     zh: {
       'news.compare.li1': '大韩航空：全区间上调（最高约2倍）',
@@ -746,7 +791,9 @@ function renderCompareBox(){
       'news.compare.li4': '济州航空：全区间上调，最高 USD 68 → 126',
       'news.compare.li5': '易斯达航空：全区间上调，第1档 USD 29 → 52 / 第6档 USD 68 → 126',
       'news.compare.li6': '首尔航空：全区间上调，300–700英里 46,800韩元 → 94,500韩元 / 1,900–2,300英里 80,500韩元 → 165,000韩元',
-      'news.compare.li7': '总体：目前确认的主要韩国出发国际航司在4月至5月期间整体呈上调趋势'
+      'news.compare.li7': '德威航空：全区间约2倍上调，第1档 30,800韩元 → 58,600韩元 / 第7档 213,900韩元 → 406,900韩元',
+      'news.compare.li8': '韩亚宇宙航空：全区间上调，短途 USD 59 / 长途 约194 USD → 365 USD（长途约2倍水平）',
+      'news.compare.li9': '总体：目前确认的主要韩国出发国际航司在4月至5月期间整体呈上调趋势'
     },
     fr: {
       'news.compare.li1': 'Korean Air\u00a0: toutes les liaisons en hausse (jusqu\u2019\u00e0\u00a0~2\u00d7)',
@@ -755,7 +802,9 @@ function renderCompareBox(){
       'news.compare.li4': 'Jeju Air\u00a0: toutes les liaisons en hausse, max USD 68 \u2192 126',
       'news.compare.li5': 'Eastar Jet\u00a0: toutes les liaisons en hausse, zone 1 USD 29 \u2192 52 / zone 6 USD 68 \u2192 126',
       'news.compare.li6': 'Air Seoul\u00a0: toutes les liaisons en hausse, 300\u2013700mi 46\u00a0800 KRW \u2192 94\u00a0500 KRW / 1\u00a0900\u20132\u00a0300mi 80\u00a0500 KRW \u2192 165\u00a0000 KRW',
-      'news.compare.li7': 'Ensemble\u00a0: les principales compagnies internationales au d\u00e9part de Cor\u00e9e montrent une hausse entre avril et mai'
+      'news.compare.li7': "T'way Air\u00a0: hausse ~2\u00d7, zone 1 30\u00a0800 KRW \u2192 58\u00a0600 KRW / zone 7 213\u00a0900 KRW \u2192 406\u00a0900 KRW",
+      'news.compare.li8': 'Air Premia\u00a0: toutes les liaisons en hausse, court-courrier USD 59 / long-courrier ~194 USD \u2192 365 USD (~2\u00d7)',
+      'news.compare.li9': 'Ensemble\u00a0: les principales compagnies internationales au d\u00e9part de Cor\u00e9e montrent une hausse entre avril et mai'
     },
     de: {
       'news.compare.li1': 'Korean Air: alle Strecken h\u00f6her (bis zu\u00a0~2\u00d7)',
@@ -764,12 +813,14 @@ function renderCompareBox(){
       'news.compare.li4': 'Jeju Air: alle Strecken h\u00f6her, max.\u00a0USD 68 \u2192 126',
       'news.compare.li5': 'Eastar Jet: alle Strecken h\u00f6her, Band\u00a01 USD 29 \u2192 52 / Band\u00a06 USD 68 \u2192 126',
       'news.compare.li6': 'Air Seoul: alle Strecken h\u00f6her, 300\u2013700mi 46.800\u00a0KRW \u2192 94.500\u00a0KRW / 1.900\u20132.300mi 80.500\u00a0KRW \u2192 165.000\u00a0KRW',
-      'news.compare.li7': 'Insgesamt: bei den wichtigsten internationalen Airlines ab Korea zeigt sich von April auf Mai ein Aufw\u00e4rtstrend'
+      'news.compare.li7': "T'way Air: alle Strecken ~2\u00d7, Band\u00a01 30.800\u00a0KRW \u2192 58.600\u00a0KRW / Band\u00a07 213.900\u00a0KRW \u2192 406.900\u00a0KRW",
+      'news.compare.li8': 'Air Premia: alle Strecken h\u00f6her, Kurzstrecke USD 59 / Langstrecke ~194 USD \u2192 365 USD (~2\u00d7)',
+      'news.compare.li9': 'Insgesamt: bei den wichtigsten internationalen Airlines ab Korea zeigt sich von April auf Mai ein Aufw\u00e4rtstrend'
     }
   };
 
   ul.innerHTML = ['news.compare.li1','news.compare.li2','news.compare.li3','news.compare.li4',
-                  'news.compare.li5','news.compare.li6','news.compare.li7']
+                  'news.compare.li5','news.compare.li6','news.compare.li7','news.compare.li8','news.compare.li9']
     .map(function(k){
       var v = window.t(k);
       /* t() 실패(키 원문 그대로)면 현재언어 → en → ko 순 fallback */
@@ -1001,7 +1052,49 @@ var FIXED_NEWS_FALLBACK = {
     'news.fixed.20260424d.impact':  '인하 기대보다는 유지 시나리오 우세',
     'news.fixed.20260424d.source':  '시장 데이터 기반 참고 (2026.04.24)',
     'news.fixed.20260424d.tag1': '6월', 'news.fixed.20260424d.tag2': '유류할증료 전망',
-    'news.fixed.20260424d.tag3': '유지', 'news.fixed.20260424d.tag4': '항공권'
+    'news.fixed.20260424d.tag3': '유지', 'news.fixed.20260424d.tag4': '항공권',
+
+    /* ── 2026-04-25 신규 카드뉴스 시리즈 ── */
+
+    /* 카드 p1: 시장 점검 */
+    'news.fixed.20260425p1.title':   '2026.04.25 유류할증료 시장 점검 — 고환율 부담 지속',
+    'news.fixed.20260425p1.summary': '2026년 4월 25일 기준, 5월 유류할증료는 주요 한국 출발 국제선 항공사 기준 공시 반영이 완료된 상태입니다. 시장 변수는 여전히 안정적이지 않습니다. 브렌트유는 $102~105 / 배럴 구간에서 반등 후 횡보하고 있으며, 원달러 환율은 1,465~1,480원 고점 유지 구간에 머물고 있습니다. 이 조합은 6월 유류할증료 인하보다는 동결 또는 제한적 상승 가능성을 높이는 요인입니다.',
+    'news.fixed.20260425p1.impact':  '고환율이 유지되면서 6월 유류할증료 하락 여건은 제한적입니다.',
+    'news.fixed.20260425p1.source':  '시장 데이터 기반 참고 분석 (2026.04.25)',
+    'news.fixed.20260425p1.tag1': '유류할증료 전망', 'news.fixed.20260425p1.tag2': '환율',
+    'news.fixed.20260425p1.tag3': '브렌트유',         'news.fixed.20260425p1.tag4': '6월 유류할증료',
+
+    /* 카드 p2: 6월 전망 */
+    'news.fixed.20260425p2.title':   '6월 유류할증료 전망 — 동결 또는 제한적 상승 가능성 우세',
+    'news.fixed.20260425p2.summary': '6월 유류할증료는 4월 평균 유가 및 환율 흐름을 기준으로 산정됩니다. 현재 유가는 급등보다는 고점권 횡보에 가깝지만, 원달러 환율이 높은 수준을 유지하고 있어 항공사 비용 부담은 쉽게 낮아지지 않는 구조입니다. 특히 KRW 기준으로 공시되는 항공사의 경우 환율 영향이 실제 공시 금액에 크게 반영될 수 있습니다.',
+    'news.fixed.20260425p2.impact':  '유가 안정만으로는 인하를 단정하기 어렵고, 환율이 핵심 변수입니다.',
+    'news.fixed.20260425p2.source':  '시장 데이터 기반 참고 전망 (2026.04.25)',
+    'news.fixed.20260425p2.tag1': '6월', 'news.fixed.20260425p2.tag2': '유류할증료 예상',
+    'news.fixed.20260425p2.tag3': '유류할증료 추이', 'news.fixed.20260425p2.tag4': '환율',
+
+    /* 카드 p3: 핵심 변수 */
+    'news.fixed.20260425p3.title':   '유류할증료 결정 핵심 변수 — 유가보다 환율 영향 확대',
+    'news.fixed.20260425p3.summary': '유류할증료는 국제 유가, 항공유 가격(MOPS), 원달러 환율, 항공사별 정책이 함께 반영됩니다. 현재 구간에서는 브렌트유보다 원달러 환율의 영향이 더 크게 작용하는 구조입니다. 유가가 일부 안정되더라도 환율이 1,465~1,480원 구간에 머물 경우, 항공사별 유류할증료 인하 폭은 제한될 수 있습니다.',
+    'news.fixed.20260425p3.impact':  '유류할증료 조회 시 유가뿐 아니라 환율 흐름도 함께 확인해야 합니다.',
+    'news.fixed.20260425p3.source':  '유류할증료 산정 변수 기반 참고 분석 (2026.04.25)',
+    'news.fixed.20260425p3.tag1': '유류할증료 확인', 'news.fixed.20260425p3.tag2': '유류할증료 조회',
+    'news.fixed.20260425p3.tag3': 'MOPS',             'news.fixed.20260425p3.tag4': 'USDKRW',
+
+    /* 카드 p4: 발권일 주의 */
+    'news.fixed.20260425p4.title':   '5월 유류할증료 확인 시 주의점 — 발권일 기준 적용',
+    'news.fixed.20260425p4.summary': '2026년 5월 유류할증료는 주요 항공사 기준 이미 공시가 완료되었습니다. 다만 유류할증료는 탑승일이 아니라 발권일 기준으로 적용되는 경우가 많기 때문에, 항공권 구매 전 반드시 항공사 공식 공지와 최종 결제 화면을 함께 확인해야 합니다. 노선, 항공사, 거리 구간, 공시 통화에 따라 실제 부담 금액이 달라질 수 있습니다.',
+    'news.fixed.20260425p4.impact':  '항공권 구매 전 유류할증료 조회와 공식 공지 확인이 필요합니다.',
+    'news.fixed.20260425p4.source':  '각 항공사 공식 공지 기준 참고 가이드 (2026.04.25)',
+    'news.fixed.20260425p4.tag1': '유류할증료 조회', 'news.fixed.20260425p4.tag2': '유류할증료 확인',
+    'news.fixed.20260425p4.tag3': '항공권 유류할증료', 'news.fixed.20260425p4.tag4': '발권일',
+
+    /* 에어프레미아 2026-04-24 공식 공지 카드 */
+    'news.fixed.20260424yp.title':   '에어프레미아 5월 유류할증료 공시 — 전 구간 인상 (장거리 최대 USD 365)',
+    'news.fixed.20260424yp.summary': '에어프레미아(YP)가 2026년 5월 국제선 유류할증료를 공시했습니다. 적용 기준: 2026년 5월 탑승, 통화: USD. 구간별 공시 내역 — 단거리: USD 59 / 중거리: USD 78~131 / 장거리: USD 229~365. 4월 대비 전 구간 인상이 확인되었으며, 장거리 기준으로는 4월 약 194 USD 대비 약 365 USD로 약 80~90% 상승, 사실상 2배 수준입니다. 최종 적용 금액은 항공사 공식 공지와 발권일 기준을 반드시 확인하세요.',
+    'news.fixed.20260424yp.impact':  '장거리 기준 약 2배 수준 인상. 에어프레미아 이용 시 5월 유류할증료 총액 반드시 확인 필요.',
+    'news.fixed.20260424yp.source':  '에어프레미아 공식 공지 (2026.04.24)',
+    'news.fixed.20260424yp.tag1': '에어프레미아', 'news.fixed.20260424yp.tag2': '유류할증료 조회',
+    'news.fixed.20260424yp.tag3': '5월공시',       'news.fixed.20260424yp.tag4': '항공권 유류할증료'
   },
   en: {
     /* ── 2026-04-21a ── */
@@ -1163,11 +1256,85 @@ var FIXED_NEWS_FALLBACK = {
     'news.fixed.20260424d.impact':  'Stable scenario prevails over cut expectations.',
     'news.fixed.20260424d.source':  'Market data reference (2026.04.24)',
     'news.fixed.20260424d.tag1': 'June', 'news.fixed.20260424d.tag2': 'surcharge outlook',
-    'news.fixed.20260424d.tag3': 'stable', 'news.fixed.20260424d.tag4': 'airline ticket'
+    'news.fixed.20260424d.tag3': 'stable', 'news.fixed.20260424d.tag4': 'airline ticket',
+
+    /* ── 2026-04-25 new series EN fallback ── */
+    'news.fixed.20260425p1.title':   'Apr 25 market check — High FX pressure continues',
+    'news.fixed.20260425p1.summary': 'As of April 25, 2026, May fuel surcharges have been confirmed across major Korea-origin international carriers. Market conditions remain unsettled. Brent crude is moving sideways after a rebound in the $102–105/bbl range, and USD/KRW is holding near recent highs at 1,465–1,480. This combination points toward a flat or limited increase in June surcharges rather than a reduction.',
+    'news.fixed.20260425p1.impact':  'With FX remaining elevated, conditions for a June surcharge decline are limited.',
+    'news.fixed.20260425p1.source':  'Market data reference (2026.04.25)',
+    'news.fixed.20260425p1.tag1': 'surcharge outlook', 'news.fixed.20260425p1.tag2': 'exchange rate',
+    'news.fixed.20260425p1.tag3': 'Brent crude',        'news.fixed.20260425p1.tag4': 'June surcharge',
+
+    'news.fixed.20260425p2.title':   'June surcharge outlook — Flat or limited increase likely',
+    'news.fixed.20260425p2.summary': 'June fuel surcharges will be calculated based on April average oil prices and FX rates. While oil is range-bound rather than surging, the persistently high USD/KRW rate keeps airline cost burdens elevated. Carriers publishing in KRW are especially sensitive to FX movements.',
+    'news.fixed.20260425p2.impact':  'FX is the key variable — oil stability alone is not enough to confirm a cut.',
+    'news.fixed.20260425p2.source':  'Market data reference (2026.04.25)',
+    'news.fixed.20260425p2.tag1': 'June', 'news.fixed.20260425p2.tag2': 'surcharge forecast',
+    'news.fixed.20260425p2.tag3': 'surcharge trend', 'news.fixed.20260425p2.tag4': 'exchange rate',
+
+    'news.fixed.20260425p3.title':   'Key surcharge drivers — FX impact now exceeds oil',
+    'news.fixed.20260425p3.summary': 'Fuel surcharges are determined by a combination of international oil prices, jet fuel (MOPS), USD/KRW, and individual airline policy. In the current environment, the KRW exchange rate is having a larger influence than Brent crude. Even if oil stabilises, surcharges for carriers publishing in KRW may stay elevated if FX remains in the 1,465–1,480 range.',
+    'news.fixed.20260425p3.impact':  'Check both oil and FX trends when reviewing fuel surcharge levels.',
+    'news.fixed.20260425p3.source':  'Reference analysis (2026.04.25)',
+    'news.fixed.20260425p3.tag1': 'surcharge check', 'news.fixed.20260425p3.tag2': 'surcharge lookup',
+    'news.fixed.20260425p3.tag3': 'MOPS',             'news.fixed.20260425p3.tag4': 'USDKRW',
+
+    'news.fixed.20260425p4.title':   'May surcharge reminder — Booking-date basis applies',
+    'news.fixed.20260425p4.summary': 'May 2026 fuel surcharges have already been confirmed by major airlines. However, surcharges are typically applied based on ticketing date, not travel date. Before purchasing, always verify both the airline\'s official notice and the final checkout amount. Actual charges vary by route, carrier, distance band, and currency.',
+    'news.fixed.20260425p4.impact':  'Verify surcharge amounts via both lookup tools and official airline notices before ticketing.',
+    'news.fixed.20260425p4.source':  'Reference guide based on official notices (2026.04.25)',
+    'news.fixed.20260425p4.tag1': 'surcharge lookup', 'news.fixed.20260425p4.tag2': 'surcharge check',
+    'news.fixed.20260425p4.tag3': 'ticket fuel surcharge', 'news.fixed.20260425p4.tag4': 'ticketing date',
+
+    /* Air Premia 2026-04-24 official notice card EN */
+    'news.fixed.20260424yp.title':   'Air Premia May surcharge notice — All routes raised (long-haul up to USD 365)',
+    'news.fixed.20260424yp.summary': 'Air Premia (YP) has published its May 2026 international fuel surcharge. Basis: May 2026 travel date, currency: USD. Published rates by band — Short-haul: USD 59 / Mid-haul: USD 78–131 / Long-haul: USD 229–365. All bands are up versus April. Long-haul rises from approximately USD 194 in April to USD 365, an increase of roughly 80–90% — effectively around 2×. Final amounts must be verified on the official airline notice at time of ticketing.',
+    'news.fixed.20260424yp.impact':  'Long-haul approx. 2× increase. Verify May surcharge total before purchasing Air Premia tickets.',
+    'news.fixed.20260424yp.source':  'Air Premia official notice (2026.04.24)',
+    'news.fixed.20260424yp.tag1': 'Air Premia', 'news.fixed.20260424yp.tag2': 'surcharge lookup',
+    'news.fixed.20260424yp.tag3': 'May notice',  'news.fixed.20260424yp.tag4': 'ticket fuel surcharge'
   }
 };
 
 var FIXED_NEWS = [
+  /* ── 에어프레미아 2026-04-24 공식 공지 ── */
+  {category:'airline', priority:1, date:'2026-04-24', aiSummary:true,
+   titleKey:'news.fixed.20260424yp.title', summaryKey:'news.fixed.20260424yp.summary',
+   impactKey:'news.fixed.20260424yp.impact', sourceNameKey:'news.fixed.20260424yp.source',
+   tagKeys:['news.fixed.20260424yp.tag1','news.fixed.20260424yp.tag2',
+            'news.fixed.20260424yp.tag3','news.fixed.20260424yp.tag4'],
+   relevanceScore:1.0},
+
+  /* ── 2026-04-25 신규 카드뉴스 시리즈 ── */
+  {category:'market',  priority:1, date:'2026-04-25', aiSummary:true,
+   titleKey:'news.fixed.20260425p1.title', summaryKey:'news.fixed.20260425p1.summary',
+   impactKey:'news.fixed.20260425p1.impact', sourceNameKey:'news.fixed.20260425p1.source',
+   tagKeys:['news.fixed.20260425p1.tag1','news.fixed.20260425p1.tag2',
+            'news.fixed.20260425p1.tag3','news.fixed.20260425p1.tag4'],
+   relevanceScore:1.0},
+
+  {category:'market',  priority:1, date:'2026-04-25', aiSummary:true,
+   titleKey:'news.fixed.20260425p2.title', summaryKey:'news.fixed.20260425p2.summary',
+   impactKey:'news.fixed.20260425p2.impact', sourceNameKey:'news.fixed.20260425p2.source',
+   tagKeys:['news.fixed.20260425p2.tag1','news.fixed.20260425p2.tag2',
+            'news.fixed.20260425p2.tag3','news.fixed.20260425p2.tag4'],
+   relevanceScore:1.0},
+
+  {category:'general', priority:2, date:'2026-04-25', aiSummary:true,
+   titleKey:'news.fixed.20260425p3.title', summaryKey:'news.fixed.20260425p3.summary',
+   impactKey:'news.fixed.20260425p3.impact', sourceNameKey:'news.fixed.20260425p3.source',
+   tagKeys:['news.fixed.20260425p3.tag1','news.fixed.20260425p3.tag2',
+            'news.fixed.20260425p3.tag3','news.fixed.20260425p3.tag4'],
+   relevanceScore:0.9},
+
+  {category:'airline', priority:2, date:'2026-04-25', aiSummary:true,
+   titleKey:'news.fixed.20260425p4.title', summaryKey:'news.fixed.20260425p4.summary',
+   impactKey:'news.fixed.20260425p4.impact', sourceNameKey:'news.fixed.20260425p4.source',
+   tagKeys:['news.fixed.20260425p4.tag1','news.fixed.20260425p4.tag2',
+            'news.fixed.20260425p4.tag3','news.fixed.20260425p4.tag4'],
+   relevanceScore:0.9},
+
   /* ── 2026-04-24 신규 카드뉴스 시리즈 (a~d) ── */
   {category:'airline', priority:1, date:'2026-04-24', aiSummary:true,
    titleKey:'news.fixed.20260424a.title', summaryKey:'news.fixed.20260424a.summary',
@@ -1400,6 +1567,7 @@ function renderNews(){
       '<div class="empty-news"><div class="icon">📭</div>'
       +'<div>'+window.t('common.emptyAll')+'</div>'
       +'<div style="font-size:12px;margin-top:6px">'+window.t('common.emptyAllSub')+'</div></div>';
+    renderPagination(0, 0);
     return;
   }
 
@@ -1416,35 +1584,37 @@ function renderNews(){
     document.getElementById('newsList').innerHTML = disclaimer
       +'<div class="empty-news"><div class="icon">🔍</div>'
       +'<div>'+window.t('common.emptyFilter')+'</div></div>';
+    renderPagination(0, 0);
     return;
   }
+
+  /* 페이지네이션 계산 */
+  var totalPages = Math.ceil(filtered.length / PAGE_SIZE);
+  if(currentPage > totalPages) currentPage = totalPages;
+  if(currentPage < 1) currentPage = 1;
+  var startIdx = (currentPage - 1) * PAGE_SIZE;
+  var pageItems = filtered.slice(startIdx, startIdx + PAGE_SIZE);
 
   var impactPrefix   = window.t('news.impact.prefix');
   var aiSummaryBadge = window.t('common.aiSummaryBadge');
 
-  document.getElementById('newsList').innerHTML = disclaimer + filtered.map(function(it){
-    /* titleKey가 있으면 getNewsText(fallback 포함), 없으면 직접 문자열 */
+  function renderCard(it){
     var title   = it.titleKey      ? getNewsText(it.titleKey)      : (it.title   ||'');
     var summary = it.summaryKey    ? getNewsText(it.summaryKey)    : (it.summary ||'');
     var impact  = it.impactKey     ? getNewsText(it.impactKey)     : (it.impact  ||'');
     var srcName = it.sourceNameKey ? getNewsText(it.sourceNameKey) : (it.sourceName||'');
-
-    /* tags: tagKeys 배열이 있으면 다국어 렌더, 없으면 기존 tags 배열 그대로 */
     var tagList = it.tagKeys
       ? it.tagKeys.map(function(k){ return getNewsText(k); }).filter(Boolean)
       : (it.tags || []);
-
     var catCls   = CAT_CLS[it.category]  || CAT_CLS.general;
     var catIcon  = CAT_ICON[it.category] || 'ℹ️';
     var catLabel = getCatLabel(it.category);
-
     var dots='';
     for(var i=0;i<5;i++) dots+='<span class="rel-dot'+(((it.relevanceScore||0)>=(i+1)*0.2)?'':' dim')+'"></span>';
     var tagsHtml=tagList.map(function(tg){return'<span class="news-tag">'+tg+'</span>';}).join('');
     var srcHtml=it.sourceUrl
       ?'<a class="news-link" href="'+it.sourceUrl+'" target="_blank" rel="noopener">'+srcName+' ↗</a>'
       :'<span style="font-size:11px;color:var(--muted)">'+srcName+'</span>';
-
     return '<div class="news-card priority-'+(it.priority||3)+'">'
       +'<div class="news-meta">'
       +'<span class="cat-badge '+catCls+'">'+catIcon+' '+catLabel+'</span>'
@@ -1457,7 +1627,53 @@ function renderNews(){
       +'<div class="news-impact">'+impactPrefix+impact+'</div>'
       +'<div class="news-footer">'+srcHtml+'<div class="news-tags">'+tagsHtml+'</div></div>'
       +'</div>';
-  }).join('');
+  }
+
+  document.getElementById('newsList').innerHTML = (currentPage===1 ? disclaimer : '') + pageItems.map(renderCard).join('');
+  renderPagination(totalPages, filtered.length);
+}
+
+/* ════════════════════════════════════════════════════════
+   renderPagination — 페이지네이션 버튼 렌더
+   ════════════════════════════════════════════════════════ */
+function renderPagination(totalPages, totalItems){
+  var box = document.getElementById('pagination');
+  if(!box) return;
+  if(totalPages <= 1){ box.innerHTML=''; return; }
+
+  var html = '';
+  /* 이전 버튼 */
+  html += '<button class="pg-btn" onclick="goPage('+(currentPage-1)+')" '+(currentPage<=1?'disabled':'')+'>‹ 이전</button>';
+
+  /* 페이지 번호 (최대 7개 표시, 앞뒤 생략) */
+  var SHOW = 5;
+  var half = Math.floor(SHOW/2);
+  var start = Math.max(1, currentPage - half);
+  var end   = Math.min(totalPages, start + SHOW - 1);
+  if(end - start < SHOW - 1) start = Math.max(1, end - SHOW + 1);
+
+  if(start > 1){ html += '<button class="pg-btn" onclick="goPage(1)">1</button>'; }
+  if(start > 2){ html += '<span style="padding:0 4px;color:var(--muted);font-size:13px;">…</span>'; }
+
+  for(var p=start; p<=end; p++){
+    html += '<button class="pg-btn'+(p===currentPage?' active':'')+'" onclick="goPage('+p+')">'+p+'</button>';
+  }
+
+  if(end < totalPages-1){ html += '<span style="padding:0 4px;color:var(--muted);font-size:13px;">…</span>'; }
+  if(end < totalPages)  { html += '<button class="pg-btn" onclick="goPage('+totalPages+')">'+totalPages+'</button>'; }
+
+  /* 다음 버튼 */
+  html += '<button class="pg-btn" onclick="goPage('+(currentPage+1)+')" '+(currentPage>=totalPages?'disabled':'')+'>다음 ›</button>';
+
+  box.innerHTML = html;
+}
+
+function goPage(p){
+  currentPage = p;
+  renderNews();
+  /* 필터 탭 위로 스크롤 */
+  var fr = document.getElementById('filterRow');
+  if(fr) fr.scrollIntoView({behavior:'smooth', block:'start'});
 }
 
 /* ════════════════════════════════════════════════════════
@@ -1509,7 +1725,7 @@ function reRenderAll(){
 document.getElementById('filterRow').addEventListener('click',function(e){
   var btn=e.target.closest('.ftab');if(!btn)return;
   document.querySelectorAll('#filterRow .ftab').forEach(function(b){b.classList.remove('active');});
-  btn.classList.add('active'); currentF=btn.dataset.f; renderNews();
+  btn.classList.add('active'); currentF=btn.dataset.f; currentPage=1; renderNews();
 });
 
 window.initNav({

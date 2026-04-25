@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-04-24T00:40:39.305Z",
+    "generatedAt": "2026-04-25T05:17:07.572Z",
     "modelVersion": "rule-engine-v1",
     "basePeriod": "2026.04",
     "forecastTargetPeriod": "2026.05",
@@ -9,12 +9,12 @@
       "brentUSD": 82.5,
       "wtiUSD": 78.3,
       "jetFuelSpread": 14.2,
-      "usdKrw": 1481,
-      "usdJpy": 159.62,
+      "usdKrw": 1478,
+      "usdJpy": 159.45,
       "geopoliticalRiskScore": 0.35,
       "baselineBrentUSD": 75,
       "marketDataSource": "live",
-      "marketFetchedAt": "2026-04-24T00:39:33.734Z"
+      "marketFetchedAt": "2026-04-25T05:16:02.002Z"
     },
     "disclaimer": "이 예측은 공식 항공사 공시를 대체하지 않습니다. 공시 전 참고용 추정치이며, 실제 유류할증료는 반드시 항공사 공식 공지를 확인하세요."
   },
