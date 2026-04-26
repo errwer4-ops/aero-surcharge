@@ -3,11 +3,13 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>2026년 6월 유류할증료 전망</title>
-  <meta name="description" content="국제유가, 환율, 항공사 공시 흐름을 바탕으로 2026년 6월 유류할증료 변동 가능성을 정리합니다."/>
+  <title>2026년 6월 유류할증료 전망 | 유가·환율 기반 항공권 유류할증료 예측</title>
+  <meta name="description" content="2026년 6월 국제선 유류할증료 전망을 브렌트유, 원달러 환율, 항공유/MOPS, 중동 리스크 기준으로 정리합니다. 한국 출발 국제선 항공권 유류할증료 변동 가능성을 확인하세요."
+        data-i18n-page-desc="fore.metaDesc"/>
+  <meta data-i18n-page-title="fore.metaTitle"/>
   <link rel="canonical" href="https://aero-surcharge.vercel.app/fuel-surcharge-2026-06-forecast.html"/>
-  <meta property="og:title" content="2026년 6월 유류할증료 전망"/>
-  <meta property="og:description" content="국제유가, 환율, 항공사 공시 흐름을 바탕으로 2026년 6월 유류할증료 변동 가능성을 정리합니다."/>
+  <meta property="og:title" content="2026년 6월 유류할증료 전망 | 유가·환율 기반 항공권 유류할증료 예측"/>
+  <meta property="og:description" content="2026년 6월 국제선 유류할증료 전망을 브렌트유, 원달러 환율, 항공유/MOPS, 중동 리스크 기준으로 정리합니다."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.vercel.app/fuel-surcharge-2026-06-forecast.html"/>
   <link rel="stylesheet" href="_shared.css"/>
@@ -15,6 +17,65 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-76T4QJPY4L"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-76T4QJPY4L');</script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
+  <style>
+    /* ── news.html 공용 스타일 (동일 패턴) ── */
+    .ai-notice{background:linear-gradient(135deg,#EDE7F6,#F3E5F5);border:1px solid #CE93D8;border-radius:10px;padding:12px 16px;margin-bottom:18px;font-size:12px;color:#4527A0;display:flex;align-items:center;gap:8px;}
+    .predict-basis-box{background:linear-gradient(135deg,#F3E5F5,#EDE7F6);border:1px solid #CE93D8;border-radius:12px;padding:16px 18px;margin-bottom:20px;}
+    .predict-basis-title{font-size:13px;font-weight:700;color:#4527A0;margin-bottom:10px;display:flex;align-items:center;gap:8px;}
+    .predict-factor-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;}
+    .predict-factor{background:rgba(255,255,255,.7);border-radius:8px;padding:8px 12px;border:1px solid #CE93D8;}
+    .pf-label{font-size:10px;color:var(--muted);margin-bottom:3px;}
+    .pf-val{font-size:13px;font-weight:700;color:#4527A0;}
+    .pf-val.up{color:var(--red,#dc2626);}
+    .pf-val.down{color:var(--green,#16a34a);}
+    .market-brief-box{background:#F1F8E9;border:1px solid #AED581;border-radius:12px;padding:14px 16px;margin-bottom:18px;}
+    .mb-title{font-weight:700;margin-bottom:8px;}
+    .mb-item{font-size:13px;margin-bottom:4px;color:var(--text2,#555);}
+    .mb-summary{font-size:12px;font-weight:700;color:#33691E;margin-top:8px;}
+    .forecast-verdict-box{background:#FFF3E0;border:1px solid #FFD54F;border-radius:12px;padding:14px 16px;margin-bottom:18px;font-size:13px;font-weight:600;color:#5D4037;}
+    .verdict-title{font-size:13px;font-weight:700;color:#E65100;margin-bottom:8px;}
+    /* 핵심 요약 카드 — news.html 동일 패턴 */
+    .news-summary-card{background:#FFF3E0;border:1.5px solid #FFCC80;border-left:4px solid #FF6F00;border-radius:13px;padding:14px 18px;margin-bottom:18px;}
+    .nsc-title{font-size:13px;font-weight:700;color:#E65100;margin-bottom:8px;}
+    .nsc-updated{font-size:11px;color:#9A6A00;margin-bottom:8px;}
+    .news-summary-card ul{margin:0;padding-left:18px;}
+    .news-summary-card li{font-size:13px;color:var(--text2,#555);margin-bottom:4px;line-height:1.6;}
+    /* 예약 가이드 */
+    .booking-guide-box{background:#E3F2FD;border:1px solid #90CAF9;border-radius:12px;padding:14px 16px;margin-bottom:18px;}
+    .bg-title{font-weight:700;margin-bottom:8px;color:#1565C0;}
+    .bg-item{font-size:13px;margin-bottom:5px;color:var(--text2,#555);}
+    /* 핵심 변수 카드 */
+    .key-vars-box{background:#E8F5E9;border:1px solid #A5D6A7;border-radius:12px;padding:14px 16px;margin-bottom:18px;}
+    .kv-title{font-weight:700;margin-bottom:10px;color:#1B5E20;}
+    .kv-grid{display:flex;flex-wrap:wrap;gap:8px;}
+    .kv-chip{background:rgba(255,255,255,.75);border:1px solid #A5D6A7;border-radius:8px;padding:8px 14px;font-size:13px;color:#2E7D32;font-weight:600;}
+    /* 6월 기준 안내 */
+    .basis-box{background:#E3F2FD;border:1px solid #90CAF9;border-radius:12px;padding:12px 16px;margin-bottom:18px;font-size:13px;color:#1565C0;}
+    /* 데이터 기준 표 */
+    .fore-tbl{width:100%;border-collapse:collapse;font-size:13px;}
+    .fore-tbl th{background:#f8faff;border-bottom:2px solid #e0e7ff;padding:8px 12px;text-align:left;font-weight:700;color:#3730a3;white-space:nowrap;}
+    .fore-tbl td{padding:8px 12px;border-bottom:1px solid #f1f5f9;vertical-align:top;}
+    .fore-tbl tr:hover td{background:#f8faff;}
+    .impact-up{color:#dc2626;font-weight:700;}
+    .impact-hold{color:#d97706;font-weight:700;}
+    .impact-note{font-size:11px;color:var(--muted,#888);}
+    /* klook */
+    .klook-box{background:linear-gradient(135deg,#FFF8E1,#FFECB3);border:1px solid #FFD54F;border-radius:12px;padding:14px 16px;margin-bottom:18px;}
+    .klook-title{font-size:13px;font-weight:700;margin-bottom:6px;color:#3E2723;}
+    .klook-desc{font-size:12px;color:#555;margin-bottom:10px;line-height:1.6;}
+    .klook-btn{display:inline-block;background:#FF5722;color:#fff;font-size:12px;padding:6px 14px;border-radius:6px;text-decoration:none;font-weight:600;transition:opacity .15s;}
+    .klook-btn:hover{opacity:.88;}
+    /* related 링크 박스 */
+    .related-box{background:var(--white,#fff);border:1.5px solid var(--line,#e5e7eb);border-radius:12px;padding:18px 20px;margin-bottom:18px;}
+    .related-box-title{font-size:14px;font-weight:700;color:var(--text,#111);margin-bottom:14px;}
+    .related-grid-inner{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;}
+    .related-link-item{display:block;padding:10px 14px;border-radius:9px;font-size:12px;font-weight:700;text-decoration:none;transition:opacity .15s;}
+    .related-link-item:hover{opacity:.8;}
+    @media(max-width:600px){
+      .fore-tbl th,.fore-tbl td{padding:7px 8px;font-size:12px;}
+      .predict-factor-grid{grid-template-columns:1fr;}
+    }
+  </style>
 </head>
 <body>
 <nav>
@@ -39,69 +100,636 @@
     </select>
   </div>
 </nav>
+
 <div class="page-header">
-  <div class="page-title">🔮 2026년 6월 유류할증료 전망</div>
-  <div class="page-sub">국제유가·환율 흐름 기반 변동 가능성 정리 — 참고용 안내</div>
+  <div class="page-title" data-i18n="fore.pageTitle">🔮 2026년 6월 유류할증료 전망</div>
+  <div class="page-sub"   data-i18n="fore.pageSub">유가·환율 흐름 기반 변동 가능성 정리 — 2026.04.27 07:30 기준 · 참고용</div>
 </div>
+
 <main class="seo-main">
-  <h1 style="font-size:20px;font-weight:700;color:var(--text);margin-bottom:12px;">2026년 6월 유류할증료 전망</h1>
-  <div class="seo-lang-notice">⚠️&nbsp;<span><strong>안내:</strong> 이 페이지의 본문 금액 및 표는 <strong>한국어(한국어) · KRW(원화) 기준</strong>으로 작성된 안내 페이지입니다. 상단의 언어·통화 선택은 내비게이션 공통 UI이며, 이 페이지 본문 내용을 실시간으로 변환하지 않습니다. 정확한 금액은 각 항공사 공식 공지를 확인하세요.</span></div>
-  <div class="seo-intro">
-    2026년 6월 한국 출발 국제선 유류할증료가 어떻게 변동될지 전망합니다. 유류할증료는 전월 평균 국제유가(WTI·두바이유)와 원/달러 환율에 연동되어 산정되므로, 5월 시장 흐름이 6월 공시에 직접 영향을 미칩니다. 아래 내용은 참고용 전망이며, 확정 금액은 항공사 공식 발표를 반드시 확인하시기 바랍니다.
+  <h1 style="font-size:20px;font-weight:700;color:var(--text);margin-bottom:12px;" data-i18n="fore.h1">2026년 6월 유류할증료 전망</h1>
+
+  <div class="seo-lang-notice">
+    ⚠️&nbsp;<span data-i18n-html="fore.notice"></span>
   </div>
-  <div class="summary-cards">
-    <div class="summary-card"><div class="summary-card-icon">📊</div><div class="summary-card-title">전망 기준 지표</div><div class="summary-card-body">국제유가(WTI·두바이유) 및 원/달러 환율 월평균 수준이 6월 유류할증료 산정의 핵심 변수입니다.</div></div>
-    <div class="summary-card"><div class="summary-card-icon">✈️</div><div class="summary-card-title">항공사 공시 일정</div><div class="summary-card-body">각 항공사는 통상 전월 말~당월 초 6월 적용 유류할증료를 공식 채널에 공시합니다.</div></div>
-    <div class="summary-card"><div class="summary-card-icon">⚠️</div><div class="summary-card-title">주의 사항</div><div class="summary-card-body">이 페이지의 전망은 참고용입니다. 확정 금액은 각 항공사 공식 공지를 반드시 확인하세요.</div></div>
+
+  <div class="seo-intro" data-i18n="fore.intro"></div>
+
+  <!-- 핵심 요약 카드 (news.html 동일 패턴) -->
+  <div class="news-summary-card" id="summaryCard"><!-- JS 렌더 --></div>
+
+  <!-- CTA 내비게이션 -->
+  <div style="background:linear-gradient(135deg,#E8F0FE,#EEF2FF);border:1.5px solid #90CAF9;border-radius:13px;padding:16px 20px;margin-bottom:18px;display:flex;flex-direction:column;gap:10px;">
+    <div style="font-size:13px;font-weight:700;color:#1A237E;" data-i18n="fore.cta.desc">📍 현재 발권 가능한 유류할증료를 노선별로 확인하세요</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;">
+      <a href="index.html"    style="display:inline-block;padding:7px 16px;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none;background:var(--blue);color:#fff;transition:opacity .15s;" data-i18n="fore.cta.main">👉 유류할증료 조회하기</a>
+      <a href="fuel-surcharge-2026-05.html" style="display:inline-block;padding:7px 16px;border-radius:8px;font-size:12px;font-weight:700;text-decoration:none;background:#fff;color:var(--blue);border:1.5px solid var(--blue);transition:opacity .15s;" data-i18n="fore.cta.may">👉 5월 공시 데이터 확인</a>
+    </div>
   </div>
-  <div class="seo-section-title">📈 2026년 6월 유류할증료 전망 참고 지표</div>
-  <div class="data-table-wrap">
-    <table class="seo-tbl">
-      <thead><tr><th>항목</th><th>현황</th><th>6월 영향</th></tr></thead>
-      <tbody>
-        <tr><td><strong>국제유가(WTI)</strong></td><td style="color:var(--muted)">업데이트 예정</td><td style="font-size:12px;color:var(--muted)">공식 공지 확인 필요</td></tr>
-        <tr><td><strong>원/달러 환율</strong></td><td style="color:var(--muted)">업데이트 예정</td><td style="font-size:12px;color:var(--muted)">공식 공지 확인 필요</td></tr>
-        <tr><td><strong>5월 대비 방향</strong></td><td colspan="2" style="color:var(--muted);font-size:12px;">항공사 공식 공지 발표 후 확인 가능</td></tr>
-      </tbody>
+
+  <!-- 시장 브리핑 (news.html 동일 패턴) -->
+  <div class="market-brief-box" id="marketBriefBox"><!-- JS 렌더 --></div>
+
+  <!-- 시장 지표 표 -->
+  <div class="seo-section-title" data-i18n="fore.section.indicators">📊 2026년 6월 전망 참고 지표</div>
+  <div class="data-table-wrap" style="margin-bottom:20px;">
+    <table class="fore-tbl">
+      <thead id="indicatorThead"><!-- JS 렌더 --></thead>
+      <tbody id="indicatorTbody"><!-- JS 렌더 --></tbody>
     </table>
   </div>
-  <p style="font-size:11px;color:var(--muted);margin-top:-16px;margin-bottom:20px;">※ 전망 수치는 공식 공시 이전 참고용입니다. 확정 금액은 항공사 공식 채널에서 확인하세요.</p>
-  <div class="official-link-box">
-    <div class="official-link-title">🔗 항공사 공식 유류할증료 공지 바로가기</div>
-    <div class="official-link-list">
-      <div class="official-link-item">✈️ 대한항공: <a href="https://www.koreanair.com" target="_blank" rel="noopener">koreanair.com 공식 공지 확인 ↗</a></div>
-      <div class="official-link-item">✈️ 아시아나항공: <a href="https://www.flyasiana.com" target="_blank" rel="noopener">flyasiana.com 공식 공지 확인 ↗</a></div>
-      <div class="official-link-item">✈️ 제주항공: <a href="https://www.jejuair.net" target="_blank" rel="noopener">jejuair.net 공식 공지 확인 ↗</a></div>
-      <div class="official-link-item">✈️ 진에어: <a href="https://www.jinair.com" target="_blank" rel="noopener">jinair.com 공식 공지 확인 ↗</a></div>
-      <div class="official-link-item">✈️ 티웨이항공: <a href="https://www.twayair.com" target="_blank" rel="noopener">twayair.com 공식 공지 확인 ↗</a></div>
-    </div>
+  <p style="font-size:11px;color:var(--muted);margin-top:-14px;margin-bottom:20px;" data-i18n="fore.indicator.footnote">※ 전망 수치는 2026.04.27 07:30 기준 참고용입니다. 확정 금액은 항공사 공식 채널에서 확인하세요.</p>
+
+  <!-- 6월 전망 판단 박스 (news.html 판단 기준 동일 패턴) -->
+  <div class="forecast-verdict-box" id="verdictBox"><!-- JS 렌더 --></div>
+
+  <!-- Klook 제휴 -->
+  <div class="klook-box">
+    <div class="klook-title" data-i18n="fore.klook.title">✈️ 여행 비용은 항공권만이 아닙니다</div>
+    <div class="klook-desc"  data-i18n="fore.klook.desc">유류할증료 부담이 큰 만큼, 현지 투어·액티비티 비용도 함께 확인하세요. 미리 파악해두면 전체 여행 예산 관리에 도움이 됩니다.</div>
+    <a href="http://app.ac/JjCiEja23" target="_blank" rel="noopener sponsored" class="klook-btn" data-i18n="fore.klook.btn">여행 비용 줄이는 방법 보기 →</a>
   </div>
-  <div class="related-links">
-    <div class="related-title">🔗 관련 페이지</div>
-    <div class="related-grid">
-      <a class="related-item" href="index.html">🔍 메인 유류할증료 조회</a>
-      <a class="related-item" href="airlines.html">✈️ 항공사별 유류할증료</a>
-      <a class="related-item" href="news.html">📰 유류할증료 뉴스</a>
-      <a class="related-item" href="fuel-surcharge-graph.html">📈 변동 그래프</a>
-      <a class="related-item" href="fuel-surcharge-calculator.html">🧮 계산 방법 안내</a>
-      <a class="related-item" href="fuel-surcharge-2026-05.html">📅 2026년 5월</a>
-      <a class="related-item" href="fuel-surcharge-2026-06-forecast.html">🔮 2026년 6월 전망</a>
-      <a class="related-item" href="fuel-surcharge-korea.html">🇰🇷 한국 출발 유류할증료</a>
+
+  <!-- AI 예측 참고 지표 (news.html 동일 패턴) -->
+  <div class="predict-basis-box">
+    <div class="predict-basis-title">
+      <span style="font-size:18px">📊</span>
+      <span data-i18n="fore.predict.title">AI 예측 참고 지표 현황</span>
+      <span style="font-size:10px;font-weight:400;color:#7E57C2" data-i18n="fore.predict.subtitle">데이터 기반 추정</span>
     </div>
+    <div class="predict-factor-grid" id="predictFactors"><!-- JS 렌더 --></div>
+    <div style="font-size:10px;color:#9C27B0;margin-top:10px;font-style:italic" data-i18n="fore.predict.footnote">* 5월 유류할증료는 공식 공지 기준 확정. 6월 전망은 시장 데이터 기반 참고용입니다.</div>
+  </div>
+
+  <!-- 예약 판단 가이드 -->
+  <div class="booking-guide-box" id="bookingGuideBox"><!-- JS 렌더 --></div>
+
+  <!-- 유류할증료 결정 핵심 변수 -->
+  <div class="key-vars-box">
+    <div class="kv-title" data-i18n="fore.keyvars.title">🔑 유류할증료 결정 핵심 변수</div>
+    <div class="kv-grid" id="keyVarsGrid"><!-- JS 렌더 --></div>
+  </div>
+
+  <!-- 6월 기준 안내 -->
+  <div class="basis-box">
+    <span style="font-weight:700;" data-i18n="fore.basis.title">📅 6월 유류할증료 반영 기준</span><br>
+    <span style="font-weight:400;margin-top:4px;display:inline-block;" data-i18n="fore.basis.body">6월 유류할증료는 5월 평균 유가 및 환율을 기준으로 산정됩니다.</span>
+  </div>
+
+  <!-- AI 안내 -->
+  <div class="ai-notice">
+    <span style="font-size:16px">📋</span>
+    <div data-i18n="fore.aiNotice">AI 요약 콘텐츠 — 이 페이지의 내용은 공개된 정보를 바탕으로 AI가 정리한 참고용 자료입니다. 원문 기반 요약이며, 공식 정보가 아닙니다. 중요한 결정 전에 각 항공사 및 기관의 공식 채널을 반드시 확인하세요.</div>
+  </div>
+
+  <!-- 공식 링크 -->
+  <div class="official-link-box">
+    <div class="official-link-title" data-i18n="fore.official.title">🔗 항공사 공식 유류할증료 공지 바로가기</div>
+    <div class="official-link-list" id="officialLinks"><!-- JS 렌더 --></div>
+  </div>
+
+  <!-- 관련 페이지 -->
+  <div class="related-box">
+    <div class="related-box-title" data-i18n="fore.related.title">🔗 관련 유류할증료 정보</div>
+    <div class="related-grid-inner" id="relatedLinks"><!-- JS 렌더 --></div>
   </div>
 </main>
+
 <footer style="background:var(--white);border-top:1px solid var(--line);padding:20px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;">
-  <p style="font-size:12px;color:var(--muted);max-width:600px;line-height:1.6;margin:0;">
-    표시된 유류할증료는 항공사 공식 공지 기반 참고용 정보입니다. 최종 금액은 항공사 공식 사이트 또는 발권처에서 반드시 확인하세요.<br>
-    문의: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>
-  </p>
+  <p style="font-size:12px;color:var(--muted);max-width:600px;line-height:1.6;margin:0;" data-i18n-html="fore.footnote"></p>
   <nav style="display:flex;gap:16px;flex-wrap:wrap;">
-    <a href="about.html"   style="font-size:12px;color:var(--muted);text-decoration:none;">About</a>
-    <a href="privacy.html" style="font-size:12px;color:var(--muted);text-decoration:none;">Privacy Policy</a>
-    <a href="terms.html"   style="font-size:12px;color:var(--muted);text-decoration:none;">Terms of Service</a>
+    <a href="about.html"   style="font-size:12px;color:var(--muted);text-decoration:none;" data-i18n="footer.about">About</a>
+    <a href="privacy.html" style="font-size:12px;color:var(--muted);text-decoration:none;" data-i18n="footer.privacy">Privacy Policy</a>
+    <a href="terms.html"   style="font-size:12px;color:var(--muted);text-decoration:none;" data-i18n="footer.terms">Terms of Service</a>
   </nav>
 </footer>
+
 <script src="_shared.js"></script>
-<script>window.initNav({});</script>
+<script>
+/* ═══════════════════════════════════════════════════
+   PAGE i18n
+═══════════════════════════════════════════════════ */
+var FORE_I18N = {
+  ko: {
+    'fore.metaTitle':  '2026년 6월 유류할증료 전망 | 유가·환율 기반 항공권 유류할증료 예측',
+    'fore.metaDesc':   '2026년 6월 국제선 유류할증료 전망을 브렌트유, 원달러 환율, 항공유/MOPS, 중동 리스크 기준으로 정리합니다. 한국 출발 국제선 항공권 유류할증료 변동 가능성을 확인하세요.',
+    'fore.pageTitle':  '🔮 2026년 6월 유류할증료 전망',
+    'fore.pageSub':    '유가·환율 흐름 기반 변동 가능성 정리 — 2026.04.27 07:30 기준 · 참고용',
+    'fore.h1':         '2026년 6월 유류할증료 전망',
+    'fore.notice':     '<strong>안내:</strong> 이 페이지는 2026.04.27 07:30 기준 시장 지표를 바탕으로 작성된 <strong>참고용 전망</strong> 페이지입니다. 확정 금액은 각 항공사 공식 공지를 반드시 확인하세요.',
+    'fore.intro':      '2026년 6월 한국 출발 국제선 유류할증료가 어떻게 변동될지 전망합니다. 유류할증료는 전월 평균 국제유가(WTI·두바이유)와 원/달러 환율에 연동되어 산정되므로, 5월 시장 흐름이 6월 공시에 직접 영향을 미칩니다. 아래 내용은 참고용 전망이며, 확정 금액은 항공사 공식 발표를 반드시 확인하시기 바랍니다.',
+    'fore.cta.desc':   '📍 현재 발권 가능한 유류할증료를 노선별로 확인하세요',
+    'fore.cta.main':   '👉 유류할증료 조회하기',
+    'fore.cta.may':    '👉 5월 공시 데이터 확인',
+    'fore.section.indicators': '📊 2026년 6월 전망 참고 지표',
+    'fore.indicator.footnote': '※ 전망 수치는 2026.04.27 07:30 기준 참고용입니다. 확정 금액은 항공사 공식 채널에서 확인하세요.',
+    'fore.predict.title':    'AI 예측 참고 지표 현황',
+    'fore.predict.subtitle': '데이터 기반 추정',
+    'fore.predict.footnote': '* 5월 유류할증료는 공식 공지 기준 확정. 6월 전망은 시장 데이터 기반 참고용입니다.',
+    'fore.klook.title': '✈️ 여행 비용은 항공권만이 아닙니다',
+    'fore.klook.desc':  '유류할증료 부담이 큰 만큼, 현지 투어·액티비티 비용도 함께 확인하세요. 미리 파악해두면 전체 여행 예산 관리에 도움이 됩니다.',
+    'fore.klook.btn':   '여행 비용 줄이는 방법 보기 →',
+    'fore.keyvars.title': '🔑 유류할증료 결정 핵심 변수',
+    'fore.basis.title': '📅 6월 유류할증료 반영 기준',
+    'fore.basis.body':  '6월 유류할증료는 5월 평균 유가 및 환율을 기준으로 산정됩니다.',
+    'fore.aiNotice':    'AI 요약 콘텐츠 — 이 페이지의 내용은 공개된 정보를 바탕으로 AI가 정리한 참고용 자료입니다. 원문 기반 요약이며, 공식 정보가 아닙니다. 중요한 결정 전에 각 항공사 및 기관의 공식 채널을 반드시 확인하세요.',
+    'fore.official.title': '🔗 항공사 공식 유류할증료 공지 바로가기',
+    'fore.related.title':  '🔗 관련 유류할증료 정보',
+    'fore.footnote':    '표시된 유류할증료 전망은 참고용 정보입니다. 최종 금액은 항공사 공식 사이트 또는 발권처에서 반드시 확인하세요.<br>문의: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+    /* JS 렌더 콘텐츠 키 */
+    'fore.summary.title':   '📌 2026년 6월 핵심 전망 요약',
+    'fore.summary.updated': '🕐 2026.04.27 07:30 기준 시장 지표 반영',
+    'fore.summary.items': [
+      '5월 유류할증료 — 주요 한국 출발 국제선 항공사 전 구간 4월 대비 인상 확정',
+      '브렌트유: $86~89 / 배럴 — 단기 반등 후 횡보',
+      '원달러 환율: 1,460~1,480원 — 고점 대비 소폭 하락했지만 여전히 고환율',
+      '항공유/MOPS: 고점 대비 일부 조정 후 재상승 시도, 여전히 높은 구간',
+      '지정학: 중동 리스크와 공급 불안 지속',
+      '6월 유류할증료: 인하보다 동결 또는 제한적 상승 가능성 우세',
+      '💡 핵심 신호: 하락 신호 없음 · 환율 부담 지속 · 여름 수요 반영 시작',
+    ],
+    'fore.indicator.th': ['항목', '현황 (2026.04.27 기준)', '6월 영향'],
+    'fore.indicator.rows': [
+      ['⛽ 브렌트유', '$86~89 / 배럴 — 단기 반등 후 횡보', '급락 신호가 약해 6월 인하 요인은 제한적'],
+      ['💱 원달러 환율', '1,460~1,480원 — 여전히 고환율', '환율이 유류할증료 하락을 제한하는 주요 요인'],
+      ['✈️ 항공유/MOPS', '일부 조정 후 재상승 시도, 여전히 높은 구간', '실질 항공유 원가 부담 지속'],
+      ['🌍 지정학 리스크', '중동 리스크와 공급 불안 지속', '유가 하방을 지지하는 요인'],
+      ['📅 6월 방향', '동결 또는 제한적 상승 가능성 우세', '인하 가능성은 낮은 구조로 판단'],
+    ],
+    'fore.market.title':   '🌍 시장 브리핑',
+    'fore.market.brent':   '⛽ 브렌트유: $86~89 / 배럴 — 단기 반등 후 횡보',
+    'fore.market.fx':      '💱 원달러 환율: 1,460~1,480원 — 고점 대비 소폭 하락했지만 여전히 고환율',
+    'fore.market.mops':    '✈️ 항공유/MOPS: 고점 대비 일부 조정 후 재상승 시도, 여전히 높은 구간',
+    'fore.market.geo':     '🌍 지정학: 중동 리스크와 공급 불안 지속',
+    'fore.market.summary': '→ 유가가 급등하는 국면은 아니지만 환율과 항공유 가격이 높은 수준을 유지해 6월 유류할증료 인하 신호는 약한 구조',
+    'fore.market.fx2':     '💡 핵심 신호: 하락 신호 없음 · 환율 부담 지속 · 여름 수요 반영 시작',
+    'fore.verdict.title':  '📌 6월 전망 판단',
+    'fore.verdict.line1':  '→ 5월은 주요 항공사 인상 반영 완료',
+    'fore.verdict.line2':  '→ 6월은 유가 급락 신호가 약하고, 환율 및 항공유 가격 부담이 유지되는 구조',
+    'fore.verdict.short':  '👉 단기 여행(1~2개월): 현재 공시 기준 총액 확인 후 예약 판단',
+    'fore.verdict.long':   '👉 여유 있는 일정: 5월 중 6월 공시 추이 추가 확인 권장',
+    'fore.booking.title':  '🗓️ 예약 판단 가이드',
+    'fore.booking.items': [
+      '단기 여행 (1~2개월 내 출발): 현재 5월 공시 기준으로 총 발권 비용을 확인하고 예약을 결정하세요.',
+      '중장기 계획 (3개월 이상): 5월 중 발표될 6월 공시 확인 후 결정을 권장합니다.',
+      '장거리 노선 (미주·유럽): 절대 금액이 크므로 공시 발표 직후 비교가 유리합니다.',
+      '환율 민감 구간: 원달러 1,460~1,480원 구간이 유지되면 USD 공시 항공사의 원화 환산 부담이 이어질 수 있습니다.',
+    ],
+    'fore.keyvars.items': ['⛽ 국제 유가 (Brent)', '✈️ 항공유 가격 (MOPS)', '💱 환율 (USD/KRW)', '🏢 항공사 정책', '🌍 지정학 리스크'],
+    'fore.predict.items': [
+      { label:'Brent 유가', val:'$86~89 / 배럴', cls:'plain' },
+      { label:'싱가포르 항공유 (MOPS)', val:'일부 조정 후 재상승 시도, 고가 유지', cls:'plain' },
+      { label:'원달러 환율', val:'1,460~1,480원 (고환율 유지)', cls:'up' },
+      { label:'지정학 리스크', val:'중동 리스크와 공급 불안 지속', cls:'up' },
+      { label:'6월 surcharge 전망', val:'동결 또는 제한적 상승', cls:'up' },
+    ],
+    'fore.official.items': [
+      { name:'대한항공',      url:'https://www.koreanair.com',  domain:'koreanair.com' },
+      { name:'아시아나항공',  url:'https://www.flyasiana.com',  domain:'flyasiana.com' },
+      { name:'제주항공',      url:'https://www.jejuair.net',    domain:'jejuair.net' },
+      { name:'진에어',        url:'https://www.jinair.com',     domain:'jinair.com' },
+      { name:'티웨이항공',    url:'https://www.twayair.com',    domain:'twayair.com' },
+      { name:'이스타항공',    url:'https://www.eastarjet.com',  domain:'eastarjet.com' },
+      { name:'에어서울',      url:'https://www.airseoul.com',   domain:'airseoul.com' },
+      { name:'에어프레미아',  url:'https://www.airpremia.com',  domain:'airpremia.com' },
+    ],
+    'fore.related.items': [
+      { href:'fuel-surcharge-2026-05.html',        label:'📅 2026년 5월 유류할증료 공시',       color:'#F3E8FF', border:'#CE93D8', textColor:'#4527A0' },
+      { href:'fuel-surcharge-graph.html',           label:'📈 유류할증료 변동 그래프',            color:'#E0F2FE', border:'#7DD3FC', textColor:'#0369A1' },
+      { href:'fuel-surcharge-korea.html',           label:'🇰🇷 한국 출발 유류할증료',            color:'#FEF9C3', border:'#FDE047', textColor:'#713F12' },
+      { href:'news.html',                            label:'📰 유류할증료 뉴스 & 시장 브리핑',   color:'#F1F5F9', border:'#CBD5E1', textColor:'#334155' },
+      { href:'fuel-surcharge-calculator.html',       label:'🧮 유류할증료 계산 방법 안내',        color:'#F0FDF4', border:'#86EFAC', textColor:'#166534' },
+      { href:'index.html',                           label:'🔍 노선별 실시간 조회',               color:'#EFF6FF', border:'#93C5FD', textColor:'#1E40AF' },
+    ],
+  },
+  en: {
+    'fore.metaTitle':  '2026 June Fuel Surcharge Forecast | Oil & Exchange Rate Based Prediction',
+    'fore.metaDesc':   'Forecast for June 2026 Korea-departure international fuel surcharges based on Brent crude, USD/KRW exchange rate, jet fuel/MOPS, and Middle East risk.',
+    'fore.pageTitle':  '🔮 June 2026 Fuel Surcharge Forecast',
+    'fore.pageSub':    'Oil & exchange rate trend analysis — as of 2026.04.27 07:30 KST · For reference',
+    'fore.h1':         'June 2026 Fuel Surcharge Forecast',
+    'fore.notice':     '<strong>Notice:</strong> This is a <strong>reference forecast</strong> based on market indicators as of 2026.04.27 07:30 KST. Always confirm final amounts via each airline\'s official announcement.',
+    'fore.intro':      'This page forecasts how fuel surcharges for Korea-departure international flights may change in June 2026. Since surcharges are calculated based on the prior month\'s average oil prices (WTI/Dubai crude) and USD/KRW exchange rate, May market conditions directly influence June\'s filing. Content below is for reference only.',
+    'fore.cta.desc':   '📍 Check current fuel surcharges by route',
+    'fore.cta.main':   '👉 Search Fuel Surcharges',
+    'fore.cta.may':    '👉 May 2026 Official Data',
+    'fore.section.indicators': '📊 June 2026 Reference Indicators',
+    'fore.indicator.footnote': '※ Forecast figures are for reference as of 2026.04.27 07:30 KST. Always confirm final amounts via official airline channels.',
+    'fore.predict.title':    'AI Forecast Reference Indicators',
+    'fore.predict.subtitle': 'Data-based estimate',
+    'fore.predict.footnote': '* May surcharges are confirmed via official filings. June outlook is a reference estimate based on market data.',
+    'fore.klook.title': '✈️ Travel costs go beyond just airfare',
+    'fore.klook.desc':  'With fuel surcharges adding up, check local tour and activity costs in advance to better manage your total travel budget.',
+    'fore.klook.btn':   'Explore ways to reduce travel costs →',
+    'fore.keyvars.title': '🔑 Key Variables for Fuel Surcharge',
+    'fore.basis.title': '📅 June Surcharge Calculation Basis',
+    'fore.basis.body':  'June fuel surcharges are calculated based on May\'s average oil prices and exchange rates.',
+    'fore.aiNotice':    'AI-summarized content — This page is compiled by AI based on publicly available information for reference purposes. It is not official information. Always check official airline and institution channels before making important decisions.',
+    'fore.official.title': '🔗 Official Airline Surcharge Announcements',
+    'fore.related.title':  '🔗 Related Fuel Surcharge Info',
+    'fore.footnote':    'Fuel surcharge forecasts are for reference only. Always confirm final amounts at the airline\'s official site or point of ticketing.<br>Contact: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+    'fore.summary.title':   '📌 June 2026 Key Forecast Summary',
+    'fore.summary.updated': '🕐 Market indicators as of 2026.04.27 07:30 KST',
+    'fore.summary.items': [
+      'May surcharges — all major Korea-departure airlines confirmed higher vs. April',
+      'Brent crude: $86–89/bbl — sideways after short-term rebound',
+      'USD/KRW: 1,460–1,480 — slightly off peak but still elevated',
+      'Jet fuel/MOPS: attempting to rebound after limited pullback, still elevated',
+      'Geopolitics: Middle East risk and supply concerns remain',
+      'June outlook: flat or limited increase more likely than a decrease',
+      '💡 Key signals: No decline signal · FX pressure ongoing · Summer demand starting to be priced in',
+    ],
+    'fore.indicator.th': ['Indicator', 'Status (as of 2026.04.27)', 'June Impact'],
+    'fore.indicator.rows': [
+      ['⛽ Brent Crude', '$86–89 / bbl — sideways after rebound', 'Weak signal for a June decrease'],
+      ['💱 USD/KRW Rate', 'KRW 1,460–1,480 — still elevated', 'Primary limiting factor for surcharge cuts'],
+      ['✈️ Jet Fuel/MOPS', 'Rebounding after limited pullback, still elevated', 'Actual jet fuel cost burden continues'],
+      ['🌍 Geopolitical Risk', 'Middle East risk and supply concerns remain', 'Supports oil price floor'],
+      ['📅 June Direction', 'Flat or limited increase more likely', 'Decrease scenario is low probability'],
+    ],
+    'fore.market.title':   '🌍 Market Briefing',
+    'fore.market.brent':   '⛽ Brent crude: $86–89 / bbl — sideways after short-term rebound',
+    'fore.market.fx':      '💱 USD/KRW: KRW 1,460–1,480 — slightly off peak but still elevated',
+    'fore.market.mops':    '✈️ Jet fuel/MOPS: attempting to rebound after limited pullback, still elevated',
+    'fore.market.geo':     '🌍 Geopolitics: Middle East risk and supply concerns remain',
+    'fore.market.summary': '→ No surge underway, but FX and jet fuel costs remain elevated — weak signal for a June surcharge cut',
+    'fore.market.fx2':     '💡 Key signals: No decline signal · FX pressure ongoing · Summer demand starting to be priced in',
+    'fore.verdict.title':  '📌 June Forecast Judgment',
+    'fore.verdict.line1':  '→ May: all major airlines confirmed higher surcharges vs. April',
+    'fore.verdict.line2':  '→ June: weak signal for an oil price drop; FX and jet fuel cost pressure continues',
+    'fore.verdict.short':  '👉 Near-term travel (1–2 months): confirm total cost at current filing, then decide',
+    'fore.verdict.long':   '👉 Flexible schedule: monitor June filings when published in May',
+    'fore.booking.title':  '🗓️ Booking Decision Guide',
+    'fore.booking.items': [
+      'Near-term travel (departing within 1–2 months): Review total ticketing cost at May filing rates and decide.',
+      'Mid/long-term plans (3+ months away): Recommended to re-check after June filing announcement (during May).',
+      'Long-haul routes (Americas, Europe): High absolute amounts — worth comparing immediately after filing.',
+      'Exchange rate sensitivity: If USD/KRW stays in the 1,460–1,480 range, USD-filing airlines remain costlier in KRW terms.',
+    ],
+    'fore.keyvars.items': ['⛽ Int\'l Crude (Brent)', '✈️ Jet Fuel (MOPS)', '💱 Exchange Rate (USD/KRW)', '🏢 Airline Policy', '🌍 Geopolitical Risk'],
+    'fore.predict.items': [
+      { label:'Brent Crude',       val:'$86–89 / bbl', cls:'plain' },
+      { label:'Singapore Jet (MOPS)', val:'Rebounding after partial pullback, still elevated', cls:'plain' },
+      { label:'USD / KRW',         val:'KRW 1,460–1,480 (still elevated)', cls:'up' },
+      { label:'Geopolitical Risk', val:'Middle East risk and supply concerns remain', cls:'up' },
+      { label:'June Surcharge Outlook', val:'Flat or limited increase likely', cls:'up' },
+    ],
+    'fore.official.items': [
+      { name:'Korean Air',      url:'https://www.koreanair.com',  domain:'koreanair.com' },
+      { name:'Asiana Airlines', url:'https://www.flyasiana.com',  domain:'flyasiana.com' },
+      { name:'Jeju Air',        url:'https://www.jejuair.net',    domain:'jejuair.net' },
+      { name:'Jin Air',         url:'https://www.jinair.com',     domain:'jinair.com' },
+      { name:"T'way Air",       url:'https://www.twayair.com',    domain:'twayair.com' },
+      { name:'Eastar Jet',      url:'https://www.eastarjet.com',  domain:'eastarjet.com' },
+      { name:'Air Seoul',       url:'https://www.airseoul.com',   domain:'airseoul.com' },
+      { name:'Air Premia',      url:'https://www.airpremia.com',  domain:'airpremia.com' },
+    ],
+    'fore.related.items': [
+      { href:'fuel-surcharge-2026-05.html',        label:'📅 May 2026 Official Surcharge Data',      color:'#F3E8FF', border:'#CE93D8', textColor:'#4527A0' },
+      { href:'fuel-surcharge-graph.html',           label:'📈 Surcharge Trend Graph',                 color:'#E0F2FE', border:'#7DD3FC', textColor:'#0369A1' },
+      { href:'fuel-surcharge-korea.html',           label:'🇰🇷 Korea-Departure Surcharge',           color:'#FEF9C3', border:'#FDE047', textColor:'#713F12' },
+      { href:'news.html',                            label:'📰 News & Market Briefing',               color:'#F1F5F9', border:'#CBD5E1', textColor:'#334155' },
+      { href:'fuel-surcharge-calculator.html',       label:'🧮 Calculation Guide',                    color:'#F0FDF4', border:'#86EFAC', textColor:'#166534' },
+      { href:'index.html',                           label:'🔍 Live Route Search',                    color:'#EFF6FF', border:'#93C5FD', textColor:'#1E40AF' },
+    ],
+  },
+  ja: {
+    'fore.metaTitle':  '2026年6月 燃油サーチャージ予測 | 油価・為替ベースの予測',
+    'fore.metaDesc':   'ブレント原油・ウォン/ドル為替・航空燃油/MOPS・中東リスクを基準に2026年6月燃油サーチャージ変動見通しを整理します。',
+    'fore.pageTitle':  '🔮 2026年6月 燃油サーチャージ予測',
+    'fore.pageSub':    '油価・為替動向ベースの変動可能性整理 — 2026.04.27 07:30 KST基準 · 参考用',
+    'fore.h1':         '2026年6月 燃油サーチャージ予測',
+    'fore.notice':     '<strong>お知らせ:</strong> このページは2026.04.27 07:30 KST基準の市場指標に基づく<strong>参考用予測</strong>ページです。確定金額は各航空会社の公式案内で必ずご確認ください。',
+    'fore.intro':      '2026年6月の韓国発国際線燃油サーチャージの動向を予測します。サーチャージは前月平均の国際油価（WTI・ドバイ原油）とウォン/ドル為替に連動して算定されるため、5月市場の動きが6月公示に直接影響します。以下は参考用予測です。',
+    'fore.cta.desc':   '📍 路線別に現在の燃油サーチャージを確認できます',
+    'fore.cta.main':   '👉 燃油サーチャージを検索',
+    'fore.cta.may':    '👉 5月公示データを確認',
+    'fore.section.indicators': '📊 2026年6月予測 参考指標',
+    'fore.indicator.footnote': '※ 予測数値は2026.04.27 07:30 KST基準の参考用です。確定金額は各航空会社の公式チャンネルでご確認ください。',
+    'fore.predict.title':    'AI予測参考指標現況',
+    'fore.predict.subtitle': 'データ基準推定',
+    'fore.predict.footnote': '* 5月燃油サーチャージは公式公示基準確定。6月予測は市場データ基準の参考用です。',
+    'fore.klook.title': '✈️ 旅行費用は航空券だけではありません',
+    'fore.klook.desc':  '燃油サーチャージの負担が大きいため、現地ツアー・アクティビティ費用も事前に確認しましょう。',
+    'fore.klook.btn':   '旅行費用を抑える方法を見る →',
+    'fore.keyvars.title': '🔑 燃油サーチャージ決定の主要変数',
+    'fore.basis.title': '📅 6月サーチャージの算定基準',
+    'fore.basis.body':  '6月の燃油サーチャージは5月平均の油価と為替レートを基準に算定されます。',
+    'fore.aiNotice':    'AIまとめコンテンツ — このページの内容は公開情報をもとにAIが整理した参考用資料です。公式情報ではありません。重要な判断の前に各航空会社・機関の公式チャンネルを必ずご確認ください。',
+    'fore.official.title': '🔗 航空会社公式燃油サーチャージ案内へ',
+    'fore.related.title':  '🔗 関連燃油サーチャージ情報',
+    'fore.footnote':    '表示された燃油サーチャージ予測は参考情報です。最終金額は各航空会社の公式サイトまたは発券窓口でご確認ください。<br>お問い合わせ: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+    'fore.summary.title':   '📌 2026年6月 主要予測まとめ',
+    'fore.summary.updated': '🕐 2026.04.27 07:30 KST基準市場指標反映',
+    'fore.summary.items': [
+      '5月サーチャージ — 主要韓国発国際線航空会社が全区間で4月比引き上げ確定',
+      'ブレント原油: $86~89/バレル — 短期反発後横ばい',
+      'ウォン/ドル: 1,460~1,480ウォン — 高値からわずかに下落も依然高水準',
+      '航空燃油/MOPS: 高値から一部調整後に再上昇を試みる動き、依然高値圏',
+      '地政学: 中東リスクと供給不安が継続',
+      '6月サーチャージ: 引き下げより据え置きまたは限定的引き上げの可能性が優勢',
+      '💡 キーシグナル: 下落シグナルなし · 為替負担継続 · 夏需要の先取りが始まる',
+    ],
+    'fore.indicator.th': ['項目', '現況 (2026.04.27基準)', '6月への影響'],
+    'fore.indicator.rows': [
+      ['⛽ ブレント原油', '$86~89/バレル — 短期反発後横ばい', '6月引き下げシグナルが弱い'],
+      ['💱 ウォン/ドル', '1,460~1,480ウォン — 依然高水準', 'サーチャージ下落を制限する主要因'],
+      ['✈️ 航空燃油/MOPS', '一部調整後に再上昇を試みる動き、依然高値圏', '実質航空燃油コスト負担が継続'],
+      ['🌍 地政学リスク', '中東リスクと供給不安が継続', '油価の下限を支える要因'],
+      ['📅 6月方向', '据え置きまたは限定的引き上げ優勢', '引き下げ可能性は低い構造'],
+    ],
+    'fore.market.title':   '🌍 市場ブリーフィング',
+    'fore.market.brent':   '⛽ ブレント原油: $86~89/バレル — 短期反発後横ばい',
+    'fore.market.fx':      '💱 ウォン/ドル: 1,460~1,480ウォン — 高値からわずかに下落も依然高水準',
+    'fore.market.mops':    '✈️ 航空燃油/MOPS: 高値から一部調整後に再上昇を試みる動き、依然高値圏',
+    'fore.market.geo':     '🌍 地政学: 中東リスクと供給不安が継続',
+    'fore.market.summary': '→ 急騰局面ではないが為替と航空燃料価格が高水準を維持しており、6月引き下げシグナルは弱い構造',
+    'fore.market.fx2':     '💡 キーシグナル: 下落シグナルなし · 為替負担継続 · 夏需要の先取りが始まる',
+    'fore.verdict.title':  '📌 6月予測判断',
+    'fore.verdict.line1':  '→ 5月: 主要航空会社の引き上げ反映完了',
+    'fore.verdict.line2':  '→ 6月: 原油急落シグナルが弱く、為替および航空燃料価格の負担が継続する構造',
+    'fore.verdict.short':  '👉 近距離旅行(1~2ヶ月内): 現在公示基準の総額確認後に予約判断',
+    'fore.verdict.long':   '👉 余裕ある日程: 5月中の6月公示動向を追加確認推奨',
+    'fore.booking.title':  '🗓️ 予約判断ガイド',
+    'fore.booking.items': [
+      '近距離旅行（1~2ヶ月以内出発）: 5月公示基準で総発券費用を確認の上、予約を判断してください。',
+      '中長期計画（3ヶ月以上先）: 5月中に発表される6月公示確認後の判断を推奨します。',
+      '長距離路線（米州・欧州）: 絶対金額が大きいため、公示直後の比較が有利です。',
+      '為替感応区間: ウォン/ドルが1,460~1,480ウォン維持の場合、USD公示航空会社のウォン換算負担が継続。',
+    ],
+    'fore.keyvars.items': ['⛽ 国際原油 (Brent)', '✈️ 航空燃油 (MOPS)', '💱 為替 (USD/KRW)', '🏢 航空会社方針', '🌍 地政学リスク'],
+    'fore.predict.items': [
+      { label:'ブレント原油',      val:'$86~89/バレル', cls:'plain' },
+      { label:'シンガポール航空燃油(MOPS)', val:'一部調整後に再上昇を試みる動き、高値維持', cls:'plain' },
+      { label:'ウォン/ドル',       val:'1,460~1,480ウォン（高値継続）', cls:'up' },
+      { label:'地政学リスク',      val:'中東リスクと供給不安が継続', cls:'up' },
+      { label:'6月サーチャージ見通し', val:'据え置きまたは限定的引き上げ', cls:'up' },
+    ],
+    'fore.official.items': [
+      { name:'大韓航空',          url:'https://www.koreanair.com',  domain:'koreanair.com' },
+      { name:'アシアナ航空',      url:'https://www.flyasiana.com',  domain:'flyasiana.com' },
+      { name:'済州航空',          url:'https://www.jejuair.net',    domain:'jejuair.net' },
+      { name:'ジンエアー',        url:'https://www.jinair.com',     domain:'jinair.com' },
+      { name:'ティーウェイ航空',  url:'https://www.twayair.com',    domain:'twayair.com' },
+      { name:'イースター航空',    url:'https://www.eastarjet.com',  domain:'eastarjet.com' },
+      { name:'エアソウル',        url:'https://www.airseoul.com',   domain:'airseoul.com' },
+      { name:'エアプレミア',      url:'https://www.airpremia.com',  domain:'airpremia.com' },
+    ],
+    'fore.related.items': [
+      { href:'fuel-surcharge-2026-05.html',        label:'📅 2026年5月公示データ',         color:'#F3E8FF', border:'#CE93D8', textColor:'#4527A0' },
+      { href:'fuel-surcharge-graph.html',           label:'📈 サーチャージ推移グラフ',       color:'#E0F2FE', border:'#7DD3FC', textColor:'#0369A1' },
+      { href:'fuel-surcharge-korea.html',           label:'🇰🇷 韓国発燃油サーチャージ',     color:'#FEF9C3', border:'#FDE047', textColor:'#713F12' },
+      { href:'news.html',                            label:'📰 ニュース & 市場ブリーフィング', color:'#F1F5F9', border:'#CBD5E1', textColor:'#334155' },
+      { href:'fuel-surcharge-calculator.html',       label:'🧮 計算方法ガイド',              color:'#F0FDF4', border:'#86EFAC', textColor:'#166534' },
+      { href:'index.html',                           label:'🔍 路線別リアルタイム検索',       color:'#EFF6FF', border:'#93C5FD', textColor:'#1E40AF' },
+    ],
+  },
+  zh: {
+    'fore.metaTitle':  '2026年6月燃油附加费预测 | 基于油价·汇率的预测',
+    'fore.metaDesc':   '以布伦特原油、韩元/美元汇率、航空燃油/MOPS、中东风险为基准，整理2026年6月国际线燃油附加费变动展望。',
+    'fore.pageTitle':  '🔮 2026年6月燃油附加费预测',
+    'fore.pageSub':    '基于油价·汇率动向的变动可能性整理 — 2026.04.27 07:30 KST基准 · 参考用',
+    'fore.h1':         '2026年6月燃油附加费预测',
+    'fore.notice':     '<strong>说明:</strong> 本页是基于2026.04.27 07:30 KST市场指标的<strong>参考预测</strong>页面。确定金额请务必查看各航空公司官方公告。',
+    'fore.intro':      '预测2026年6月韩国出发国际航班燃油附加费的变动趋势。由于附加费以上月平均国际油价（WTI/迪拜原油）和韩元/美元汇率为基准计算，5月市场走势将直接影响6月公告。以下内容仅供参考。',
+    'fore.cta.desc':   '📍 按航线查看当前可购票的燃油附加费',
+    'fore.cta.main':   '👉 查询燃油附加费',
+    'fore.cta.may':    '👉 查看5月公告数据',
+    'fore.section.indicators': '📊 2026年6月预测参考指标',
+    'fore.indicator.footnote': '※ 预测数值为2026.04.27 07:30 KST基准参考用。确定金额请查看各航空公司官方渠道。',
+    'fore.predict.title':    'AI预测参考指标现状',
+    'fore.predict.subtitle': '基于数据的估算',
+    'fore.predict.footnote': '* 5月燃油附加费已按官方公告确定。6月预测为基于市场数据的参考。',
+    'fore.klook.title': '✈️ 旅行费用不只是机票',
+    'fore.klook.desc':  '燃油附加费负担较重，建议提前了解当地旅游·活动费用，有助于整体旅行预算管理。',
+    'fore.klook.btn':   '了解降低旅行费用的方法 →',
+    'fore.keyvars.title': '🔑 燃油附加费决定关键变量',
+    'fore.basis.title': '📅 6月燃油附加费计算基准',
+    'fore.basis.body':  '6月燃油附加费以5月平均油价及汇率为基准计算。',
+    'fore.aiNotice':    'AI摘要内容 — 本页内容是AI根据公开信息整理的参考资料，非官方信息。在做出重要决定之前，请务必查看各航空公司及机构的官方渠道。',
+    'fore.official.title': '🔗 各航空公司官方燃油附加费公告',
+    'fore.related.title':  '🔗 相关燃油附加费信息',
+    'fore.footnote':    '所示燃油附加费预测为参考信息。最终金额请在各航空公司官网或购票处确认。<br>联系: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+    'fore.summary.title':   '📌 2026年6月核心预测摘要',
+    'fore.summary.updated': '🕐 反映2026.04.27 07:30 KST市场指标',
+    'fore.summary.items': [
+      '5月附加费 — 主要韩国出发国际线航空公司全区间较4月上涨确认',
+      '布伦特原油: $86~89/桶 — 短期反弹后横盘',
+      '韩元/美元: 1,460~1,480韩元 — 高点小幅回落但仍处高位',
+      '航空燃油/MOPS: 高点后小幅回调，再次尝试反弹，仍处高位区间',
+      '地缘政治: 中东风险与供应不安持续',
+      '6月附加费: 下调可能性低，维持或有限上调可能性较大',
+      '💡 核心信号: 无下调信号 · 汇率压力持续 · 夏季需求开始提前反映',
+    ],
+    'fore.indicator.th': ['项目', '现状 (2026.04.27基准)', '6月影响'],
+    'fore.indicator.rows': [
+      ['⛽ 布伦特原油', '$86~89/桶 — 短期反弹后横盘', '6月下调信号偏弱'],
+      ['💱 韩元/美元', '1,460~1,480韩元 — 仍处高位', '限制附加费下调的主要因素'],
+      ['✈️ 航空燃油/MOPS', '高点后小幅回调再反弹，高位维持', '实际航空燃油成本负担持续'],
+      ['🌍 地缘政治风险', '中东风险与供应不安持续', '支撑油价下限的因素'],
+      ['📅 6月方向', '维持或有限上调可能性较大', '下调概率较低'],
+    ],
+    'fore.market.title':   '🌍 市场简报',
+    'fore.market.brent':   '⛽ 布伦特原油: $86~89/桶 — 短期反弹后横盘',
+    'fore.market.fx':      '💱 韩元/美元: 1,460~1,480韩元 — 高点小幅回落但仍处高位',
+    'fore.market.mops':    '✈️ 航空燃油/MOPS: 高点后小幅回调，再次尝试反弹，仍处高位区间',
+    'fore.market.geo':     '🌍 地缘政治: 中东风险与供应不安持续',
+    'fore.market.summary': '→ 油价未出现急涨，但汇率与航空燃油价格维持高位，6月下调信号偏弱',
+    'fore.market.fx2':     '💡 核心信号: 无下调信号 · 汇率压力持续 · 夏季需求开始提前反映',
+    'fore.verdict.title':  '📌 6月预测判断',
+    'fore.verdict.line1':  '→ 5月: 主要航空公司涨价反映完成',
+    'fore.verdict.line2':  '→ 6月: 油价急跌信号偏弱，汇率及航空燃油价格压力持续',
+    'fore.verdict.short':  '👉 近期出行(1~2个月): 按当前公告确认总额后决定',
+    'fore.verdict.long':   '👉 时间充裕: 建议5月中持续关注6月公告动态',
+    'fore.booking.title':  '🗓️ 预订决策指南',
+    'fore.booking.items': [
+      '近期出行（1~2个月内出发）: 按5月公告基准确认总出票费用后决定预订。',
+      '中长期计划（3个月以上）: 建议等待5月中6月公告发布后再做决定。',
+      '长途航线（美洲·欧洲）: 绝对金额较大，建议公告发布后立即比较。',
+      '汇率敏感区间: 如韩元/美元维持在1,460~1,480，USD申报航空公司的韩元换算负担将持续。',
+    ],
+    'fore.keyvars.items': ['⛽ 国际原油 (Brent)', '✈️ 航空燃油 (MOPS)', '💱 汇率 (USD/KRW)', '🏢 航空公司政策', '🌍 地缘政治风险'],
+    'fore.predict.items': [
+      { label:'布伦特原油',       val:'$86~89/桶', cls:'plain' },
+      { label:'新加坡航空燃油(MOPS)', val:'高点后小幅回调再反弹，高位维持', cls:'plain' },
+      { label:'韩元/美元',        val:'1,460~1,480韩元（高位维持）', cls:'up' },
+      { label:'地缘政治风险',     val:'中东风险与供应不安持续', cls:'up' },
+      { label:'6月附加费展望',    val:'维持或有限上调可能性较大', cls:'up' },
+    ],
+    'fore.official.items': [
+      { name:'大韩航空',    url:'https://www.koreanair.com',  domain:'koreanair.com' },
+      { name:'韩亚航空',    url:'https://www.flyasiana.com',  domain:'flyasiana.com' },
+      { name:'济州航空',    url:'https://www.jejuair.net',    domain:'jejuair.net' },
+      { name:'真航空',      url:'https://www.jinair.com',     domain:'jinair.com' },
+      { name:'德威航空',    url:'https://www.twayair.com',    domain:'twayair.com' },
+      { name:'易斯达航空',  url:'https://www.eastarjet.com',  domain:'eastarjet.com' },
+      { name:'首尔航空',    url:'https://www.airseoul.com',   domain:'airseoul.com' },
+      { name:'高丽航空',    url:'https://www.airpremia.com',  domain:'airpremia.com' },
+    ],
+    'fore.related.items': [
+      { href:'fuel-surcharge-2026-05.html',        label:'📅 2026年5月公告数据',         color:'#F3E8FF', border:'#CE93D8', textColor:'#4527A0' },
+      { href:'fuel-surcharge-graph.html',           label:'📈 附加费趋势图',               color:'#E0F2FE', border:'#7DD3FC', textColor:'#0369A1' },
+      { href:'fuel-surcharge-korea.html',           label:'🇰🇷 韩国出发附加费',           color:'#FEF9C3', border:'#FDE047', textColor:'#713F12' },
+      { href:'news.html',                            label:'📰 资讯 & 市场简报',           color:'#F1F5F9', border:'#CBD5E1', textColor:'#334155' },
+      { href:'fuel-surcharge-calculator.html',       label:'🧮 计算方法指南',              color:'#F0FDF4', border:'#86EFAC', textColor:'#166534' },
+      { href:'index.html',                           label:'🔍 按航线实时查询',            color:'#EFF6FF', border:'#93C5FD', textColor:'#1E40AF' },
+    ],
+  },
+};
+
+/* ── window.I18N 병합 ── */
+(function() {
+  if (!window.I18N) window.I18N = {};
+  ['ko','en','ja','zh'].forEach(function(lang) {
+    if (!window.I18N[lang]) window.I18N[lang] = {};
+    var src = FORE_I18N[lang] || {};
+    Object.keys(src).forEach(function(k) { window.I18N[lang][k] = src[k]; });
+  });
+})();
+
+/* ── 번역 헬퍼 ── */
+function tf(key) { return (window.t && window.t(key)) || key; }
+function td(key) {
+  var lang = (window.SHARED_STATE && window.SHARED_STATE.lang) || 'ko';
+  var d = FORE_I18N[lang] || FORE_I18N.ko;
+  return d[key] !== undefined ? d[key] : (FORE_I18N.ko[key] !== undefined ? FORE_I18N.ko[key] : key);
+}
+
+/* ═══════════════════════════════════════════════════
+   JS 렌더 함수들
+═══════════════════════════════════════════════════ */
+
+/* 핵심 요약 카드 */
+function renderSummaryCard() {
+  var el = document.getElementById('summaryCard');
+  if (!el) return;
+  var items = td('fore.summary.items');
+  var liHtml = Array.isArray(items)
+    ? items.map(function(s) { return '<li>' + s + '</li>'; }).join('')
+    : '';
+  el.innerHTML = '<div class="nsc-title">' + td('fore.summary.title') + '</div>'
+    + '<div class="nsc-updated">' + td('fore.summary.updated') + '</div>'
+    + '<ul>' + liHtml + '</ul>';
+}
+
+/* 시장 브리핑 박스 */
+function renderMarketBrief() {
+  var el = document.getElementById('marketBriefBox');
+  if (!el) return;
+  el.innerHTML = '<div class="mb-title">' + td('fore.market.title') + '</div>'
+    + '<div class="mb-item">' + td('fore.market.brent') + '</div>'
+    + '<div class="mb-item">' + td('fore.market.fx') + '</div>'
+    + '<div class="mb-item">' + td('fore.market.mops') + '</div>'
+    + '<div class="mb-item">' + td('fore.market.geo') + '</div>'
+    + '<div class="mb-summary">' + td('fore.market.summary') + '</div>'
+    + '<div class="mb-summary" style="margin-top:6px;color:#558B2F;">' + td('fore.market.fx2') + '</div>';
+}
+
+/* 지표 테이블 */
+function renderIndicatorTable() {
+  var thead = document.getElementById('indicatorThead');
+  var tbody = document.getElementById('indicatorTbody');
+  if (!thead || !tbody) return;
+  var th = td('fore.indicator.th');
+  thead.innerHTML = '<tr>' + (Array.isArray(th) ? th.map(function(h){ return '<th>' + h + '</th>'; }).join('') : '') + '</tr>';
+  var rows = td('fore.indicator.rows');
+  tbody.innerHTML = Array.isArray(rows) ? rows.map(function(r) {
+    return '<tr><td><strong>' + r[0] + '</strong></td><td>' + r[1] + '</td><td class="impact-up">' + r[2] + '</td></tr>';
+  }).join('') : '';
+}
+
+/* 판단 박스 */
+function renderVerdictBox() {
+  var el = document.getElementById('verdictBox');
+  if (!el) return;
+  el.innerHTML = '<div class="verdict-title">' + td('fore.verdict.title') + '</div>'
+    + td('fore.verdict.line1') + '<br>'
+    + td('fore.verdict.line2') + '<br><br>'
+    + '<strong>' + td('fore.verdict.short') + '</strong><br>'
+    + '<strong>' + td('fore.verdict.long') + '</strong>';
+}
+
+/* AI 예측 지표 */
+function renderPredictFactors() {
+  var el = document.getElementById('predictFactors');
+  if (!el) return;
+  var items = td('fore.predict.items');
+  if (!Array.isArray(items)) return;
+  el.innerHTML = items.map(function(it) {
+    return '<div class="predict-factor">'
+      + '<div class="pf-label">' + it.label + '</div>'
+      + '<div class="pf-val ' + (it.cls || '') + '">' + it.val + '</div>'
+      + '</div>';
+  }).join('');
+}
+
+/* 예약 가이드 */
+function renderBookingGuide() {
+  var el = document.getElementById('bookingGuideBox');
+  if (!el) return;
+  var items = td('fore.booking.items');
+  var liHtml = Array.isArray(items)
+    ? items.map(function(s){ return '<div class="bg-item">• ' + s + '</div>'; }).join('')
+    : '';
+  el.innerHTML = '<div class="bg-title">' + td('fore.booking.title') + '</div>' + liHtml;
+}
+
+/* 핵심 변수 칩 */
+function renderKeyVars() {
+  var el = document.getElementById('keyVarsGrid');
+  if (!el) return;
+  var items = td('fore.keyvars.items');
+  el.innerHTML = Array.isArray(items)
+    ? items.map(function(s){ return '<div class="kv-chip">' + s + '</div>'; }).join('')
+    : '';
+}
+
+/* 공식 링크 */
+function renderOfficialLinks() {
+  var el = document.getElementById('officialLinks');
+  if (!el) return;
+  var items = td('fore.official.items');
+  var suffix = tf('fore.official.title').indexOf('↗') > -1 ? '' : ' ↗';
+  el.innerHTML = Array.isArray(items) ? items.map(function(it) {
+    return '<div class="official-link-item">✈️ ' + it.name + ': '
+      + '<a href="' + it.url + '" target="_blank" rel="noopener">'
+      + it.domain + ' 공식 공지 확인 ↗</a></div>';
+  }).join('') : '';
+}
+
+/* 관련 링크 */
+function renderRelatedLinks() {
+  var el = document.getElementById('relatedLinks');
+  if (!el) return;
+  var items = td('fore.related.items');
+  el.innerHTML = Array.isArray(items) ? items.map(function(it) {
+    return '<a href="' + it.href + '" class="related-link-item" style="background:' + it.color
+      + ';border:1.5px solid ' + it.border + ';color:' + it.textColor + ';">'
+      + it.label + '</a>';
+  }).join('') : '';
+}
+
+/* ── 전체 재렌더 ── */
+function renderForecastPage() {
+  if (window.applyLanguage) window.applyLanguage();
+  renderSummaryCard();
+  renderMarketBrief();
+  renderIndicatorTable();
+  renderVerdictBox();
+  renderPredictFactors();
+  renderBookingGuide();
+  renderKeyVars();
+  renderOfficialLinks();
+  renderRelatedLinks();
+}
+
+/* ── initNav ── */
+window.initNav({
+  onLangChange: function() { renderForecastPage(); },
+  onCurrChange: function() { /* 이 페이지는 금액 직접 변환 없음 */ },
+});
+
+renderForecastPage();
+</script>
 </body>
 </html>
