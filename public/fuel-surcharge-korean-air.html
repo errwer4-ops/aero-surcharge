@@ -4,7 +4,8 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>대한항공 유류할증료 조회</title>
-  <meta name="description" content="대한항공 국제선 유류할증료의 월별 적용 금액과 공식 공지 정보를 확인할 수 있습니다."/>
+  <meta name="description" content="대한항공 국제선 유류할증료의 월별 적용 금액과 공식 공지 정보를 확인할 수 있습니다." data-i18n-page-desc="ke.metaDesc"/>
+  <meta data-i18n-page-title="ke.metaTitle"/>
   <link rel="canonical" href="https://aero-surcharge.vercel.app/fuel-surcharge-korean-air.html"/>
   <meta property="og:title" content="대한항공 유류할증료 조회"/>
   <meta property="og:description" content="대한항공 국제선 유류할증료의 월별 적용 금액과 공식 공지 정보를 확인할 수 있습니다."/>
@@ -15,13 +16,21 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-76T4QJPY4L"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-76T4QJPY4L');</script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
+  <style>
+    .affiliate-box{border-radius:12px;padding:14px 16px;margin-bottom:18px;box-sizing:border-box;}
+    .hotelcombine-box{background:linear-gradient(135deg,#E3F2FD,#EFF8FF);border:1px solid #90CAF9;}
+    .affiliate-title{font-size:13px;font-weight:700;margin-bottom:6px;color:#0D47A1;}
+    .affiliate-desc{font-size:12px;color:#555;margin-bottom:10px;line-height:1.6;}
+    .affiliate-btn{display:inline-block;background:#1565C0;color:#fff;font-size:12px;padding:6px 14px;border-radius:6px;text-decoration:none;font-weight:600;transition:opacity .15s;}
+    .affiliate-btn:hover{opacity:.88;}
+  </style>
 </head>
 <body>
 <nav>
   <div class="nav-links">
-    <a href="index.html"    class="nav-link" id="navLinkRoutes"   data-i18n="nav.routes">노선별 조회</a>
-    <a href="airlines.html" class="nav-link" id="navLinkAirlines" data-i18n="nav.airlines">항공사 인덱스</a>
-    <a href="news.html"     class="nav-link" id="navLinkNews"     data-i18n="nav.news">참고 소식</a>
+    <a href="index.html"    class="nav-link" data-i18n="nav.routes">노선별 조회</a>
+    <a href="airlines.html" class="nav-link" data-i18n="nav.airlines">항공사 인덱스</a>
+    <a href="news.html"     class="nav-link" data-i18n="nav.news">참고 소식</a>
   </div>
   <div class="nav-controls">
     <select class="nav-select" id="navLang">
@@ -40,58 +49,224 @@
   </div>
 </nav>
 <div class="page-header">
-  <div class="page-title">✈️ 대한항공 유류할증료</div>
-  <div class="page-sub">KE — 월별 적용 금액 및 공식 공지 안내 (KRW 기준)</div>
+  <div class="page-title" data-i18n="ke.pageTitle">✈️ 대한항공 유류할증료</div>
+  <div class="page-sub"   data-i18n="ke.pageSub">KE — 월별 적용 금액 및 공식 공지 안내</div>
 </div>
 <main class="seo-main">
-  <h1 style="font-size:20px;font-weight:700;color:var(--text);margin-bottom:12px;">대한항공 유류할증료</h1>
-  <div class="seo-lang-notice">⚠️&nbsp;<span><strong>안내:</strong> 이 페이지의 본문 금액 및 표는 <strong>한국어(한국어) · KRW(원화) 기준</strong>으로 작성된 안내 페이지입니다. 상단의 언어·통화 선택은 내비게이션 공통 UI이며, 이 페이지 본문 내용을 실시간으로 변환하지 않습니다. 정확한 금액은 각 항공사 공식 공지를 확인하세요.</span></div>
-  <div class="seo-intro">대한항공(KE)은 매월 국토교통부 기준에 따라 국제선 유류할증료를 공시합니다. 단거리·장거리 등 비행 거리 구간별로 차등 적용되며, 공식 공지는 대한항공 홈페이지에서 확인할 수 있습니다. 이 페이지는 한국어·원화(KRW) 기준 안내 페이지이며, 공식 확정 금액은 반드시 공식 채널을 확인하세요.</div>
-  <div class="summary-cards"><div class="summary-card"><div class="summary-card-icon">🛫</div><div class="summary-card-title">노선 구간별 차등</div><div class="summary-card-body">단거리·장거리 구간별로 다른 유류할증료가 적용됩니다. 노선에 따라 금액 차이가 있습니다.</div></div><div class="summary-card"><div class="summary-card-icon">📋</div><div class="summary-card-title">매월 공시</div><div class="summary-card-body">매월 초 다음 달 유류할증료를 공식 채널에 공시합니다.</div></div><div class="summary-card"><div class="summary-card-icon">🔗</div><div class="summary-card-title">공식 확인</div><div class="summary-card-body">정확한 금액은 koreanair.com에서 반드시 확인하세요.</div></div></div>
-  <div class="seo-section-title">📊 월별 유류할증료 공시 현황 (KRW 기준)</div>
+  <h1 style="font-size:20px;font-weight:700;color:var(--text);margin-bottom:12px;" data-i18n="ke.h1">대한항공 유류할증료</h1>
+  <div class="seo-lang-notice">⚠️&nbsp;<span data-i18n="ke.notice">상단의 언어·통화 선택에 따라 본문 표시 언어와 참고 환산 금액이 변경됩니다. 단, 실제 청구 기준 통화는 항공사 공식 공지를 우선합니다.</span></div>
+  <div class="seo-intro" data-i18n="ke.intro">대한항공(KE)은 매월 국토교통부 기준에 따라 국제선 유류할증료를 공시합니다. 단거리·장거리 등 비행 거리 구간별로 차등 적용됩니다.</div>
+  <div class="summary-cards">
+    <div class="summary-card"><div class="summary-card-icon">🛫</div><div class="summary-card-title" data-i18n="ke.card1.title">노선 구간별 차등</div><div class="summary-card-body" data-i18n="ke.card1.body">단거리·장거리 구간별로 다른 유류할증료가 적용됩니다.</div></div>
+    <div class="summary-card"><div class="summary-card-icon">📋</div><div class="summary-card-title" data-i18n="ke.card2.title">매월 공시</div><div class="summary-card-body" data-i18n="ke.card2.body">매월 초 다음 달 유류할증료를 공식 채널에 공시합니다.</div></div>
+    <div class="summary-card"><div class="summary-card-icon">🔗</div><div class="summary-card-title" data-i18n="ke.card3.title">공식 확인</div><div class="summary-card-body" data-i18n="ke.card3.body">정확한 금액은 koreanair.com에서 반드시 확인하세요.</div></div>
+  </div>
+  <div class="seo-section-title" id="sectionTitle">📊 월별 유류할증료 공시 현황</div>
   <div class="data-table-wrap">
     <table class="seo-tbl">
-      <thead><tr><th>구분</th><th>노선 예시</th><th>2026년 4월</th><th>2026년 5월</th><th>비고</th></tr></thead>
-      <tbody>
-        <tr><td>단거리</td><td>일본·중국·동남아</td><td style="color:var(--muted);font-size:12px;">공식 공지 확인 필요</td><td style="color:var(--muted);font-size:12px;">공식 공지 확인 필요</td><td style="font-size:11px;color:var(--muted);">업데이트 예정</td></tr>
-        <tr><td>장거리</td><td>미주·유럽·대양주</td><td style="color:var(--muted);font-size:12px;">공식 공지 확인 필요</td><td style="color:var(--muted);font-size:12px;">공식 공지 확인 필요</td><td style="font-size:11px;color:var(--muted);">업데이트 예정</td></tr>
-      </tbody>
+      <thead><tr id="tableHead"></tr></thead>
+      <tbody id="surchargeTableBody"></tbody>
     </table>
   </div>
-  <p style="font-size:11px;color:var(--muted);margin-top:-16px;margin-bottom:20px;">※ 정확한 금액은 공식 공지를 반드시 확인하세요.</p>
+  <p style="font-size:11px;color:var(--muted);margin-top:-16px;margin-bottom:20px;" id="tableFootnote"></p>
+  <div class="affiliate-box hotelcombine-box">
+    <div class="affiliate-title" data-i18n="affiliate.hotel.title">✈️ 항공권·호텔 가격도 함께 비교하세요</div>
+    <div class="affiliate-desc"  data-i18n="affiliate.hotel.desc">유류할증료가 높아질수록 항공권 총액과 숙박비를 함께 확인하는 것이 중요합니다. 예약 전 항공권과 호텔 가격을 같이 비교해보세요.</div>
+    <a href="http://app.ac/xjCXQLa23" target="_blank" rel="noopener sponsored" class="affiliate-btn" data-i18n="affiliate.hotel.btn">항공권·호텔 가격 비교하기 →</a>
+  </div>
   <div class="official-link-box">
-    <div class="official-link-title">🔗 공식 유류할증료 공지 바로가기</div>
+    <div class="official-link-title" data-i18n="ke.officialTitle">🔗 공식 유류할증료 공지 바로가기</div>
     <div class="official-link-list">
-      <div class="official-link-item">✈️ 공식 사이트: <a href="https://www.koreanair.com" target="_blank" rel="noopener">koreanair.com 공식 공지 확인 ↗</a></div>
+      <div class="official-link-item">✈️ <span data-i18n="ke.officialSite">공식 사이트</span>: <a href="https://www.koreanair.com" target="_blank" rel="noopener">koreanair.com ↗</a></div>
     </div>
   </div>
   <div class="related-links">
-    <div class="related-title">🔗 관련 페이지</div>
+    <div class="related-title" data-i18n="ke.relatedTitle">🔗 관련 페이지</div>
     <div class="related-grid">
-      <a class="related-item" href="index.html">🔍 메인 유류할증료 조회</a>
-      <a class="related-item" href="airlines.html">✈️ 항공사별 유류할증료</a>
-      <a class="related-item" href="news.html">📰 유류할증료 뉴스</a>
-      <a class="related-item" href="fuel-surcharge-graph.html">📈 변동 그래프</a>
-      <a class="related-item" href="fuel-surcharge-calculator.html">🧮 계산 방법 안내</a>
-      <a class="related-item" href="fuel-surcharge-2026-05.html">📅 2026년 5월</a>
-      <a class="related-item" href="fuel-surcharge-2026-06-forecast.html">🔮 2026년 6월 전망</a>
-      <a class="related-item" href="fuel-surcharge-korea.html">🇰🇷 한국 출발 유류할증료</a>
-      <a class="related-item" href="fuel-surcharge-asiana.html">✈️ 아시아나항공</a>
+      <a class="related-item" href="index.html"                           data-i18n="ke.rel.main">🔍 메인 유류할증료 조회</a>
+      <a class="related-item" href="airlines.html"                        data-i18n="ke.rel.airlines">✈️ 항공사별 유류할증료</a>
+      <a class="related-item" href="news.html"                            data-i18n="ke.rel.news">📰 유류할증료 뉴스</a>
+      <a class="related-item" href="fuel-surcharge-graph.html"            data-i18n="ke.rel.graph">📈 변동 그래프</a>
+      <a class="related-item" href="fuel-surcharge-calculator.html"       data-i18n="ke.rel.calc">🧮 계산 방법 안내</a>
+      <a class="related-item" href="fuel-surcharge-2026-05.html"          data-i18n="ke.rel.may">📅 2026년 5월</a>
+      <a class="related-item" href="fuel-surcharge-2026-06-forecast.html" data-i18n="ke.rel.jun">🔮 2026년 6월 전망</a>
+      <a class="related-item" href="fuel-surcharge-korea.html"            data-i18n="ke.rel.korea">🇰🇷 한국 출발 유류할증료</a>
+      <a class="related-item" href="fuel-surcharge-asiana.html"           data-i18n="ke.rel.asiana">✈️ 아시아나항공</a>
     </div>
   </div>
 </main>
 <footer style="background:var(--white);border-top:1px solid var(--line);padding:20px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;">
-  <p style="font-size:12px;color:var(--muted);max-width:600px;line-height:1.6;margin:0;">
+  <p style="font-size:12px;color:var(--muted);max-width:600px;line-height:1.6;margin:0;" data-i18n-html="ke.footer">
     표시된 유류할증료는 항공사 공식 공지 기반 참고용 정보입니다. 최종 금액은 항공사 공식 사이트 또는 발권처에서 반드시 확인하세요.<br>
     문의: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>
   </p>
   <nav style="display:flex;gap:16px;flex-wrap:wrap;">
-    <a href="about.html"   style="font-size:12px;color:var(--muted);text-decoration:none;">About</a>
-    <a href="privacy.html" style="font-size:12px;color:var(--muted);text-decoration:none;">Privacy Policy</a>
-    <a href="terms.html"   style="font-size:12px;color:var(--muted);text-decoration:none;">Terms of Service</a>
+    <a href="about.html"   style="font-size:12px;color:var(--muted);text-decoration:none;" data-i18n="footer.about">About</a>
+    <a href="privacy.html" style="font-size:12px;color:var(--muted);text-decoration:none;" data-i18n="footer.privacy">Privacy Policy</a>
+    <a href="terms.html"   style="font-size:12px;color:var(--muted);text-decoration:none;" data-i18n="footer.terms">Terms of Service</a>
   </nav>
 </footer>
 <script src="_shared.js"></script>
-<script>window.initNav({});</script>
+<script>
+/* ── i18n 등록 ── */
+(function(){
+  var D = {
+    ko:{
+      'ke.metaTitle':'대한항공 유류할증료 조회 | KE 국제선 월별 공시 금액',
+      'ke.metaDesc':'대한항공 국제선 유류할증료의 월별 적용 금액과 공식 공지 정보를 확인할 수 있습니다.',
+      'ke.pageTitle':'✈️ 대한항공 유류할증료','ke.pageSub':'KE — 월별 적용 금액 및 공식 공지 안내','ke.h1':'대한항공 유류할증료',
+      'ke.notice':'상단의 언어·통화 선택에 따라 본문 표시 언어와 참고 환산 금액이 변경됩니다. 단, 실제 청구 기준 통화는 항공사 공식 공지를 우선합니다.',
+      'ke.intro':'대한항공(KE)은 매월 국토교통부 기준에 따라 국제선 유류할증료를 공시합니다. 비행 거리 구간별로 차등 적용됩니다.',
+      'ke.card1.title':'노선 구간별 차등','ke.card1.body':'단거리·장거리 구간별로 다른 유류할증료가 적용됩니다.',
+      'ke.card2.title':'매월 공시','ke.card2.body':'매월 초 다음 달 유류할증료를 공식 채널에 공시합니다.',
+      'ke.card3.title':'공식 확인','ke.card3.body':'정확한 금액은 koreanair.com에서 반드시 확인하세요.',
+      'ke.sectionTitle':'📊 월별 유류할증료 공시 현황 (KRW 공시)',
+      'ke.th.range':'대권거리 (km)','ke.th.route':'노선 예시','ke.th.apr':'2026년 4월','ke.th.may':'2026년 5월','ke.th.diff':'변동',
+      'ke.footnote':'※ KRW 공시 기준, 편도. 적용 기간: 2026.05.01~05.31 (발권일 기준). 출처: 대한항공 공식 공지(2026.04.16). 통화 선택 시 참고 환산값이 표시됩니다.',
+      'ke.officialTitle':'🔗 공식 유류할증료 공지 바로가기','ke.officialSite':'공식 사이트','ke.relatedTitle':'🔗 관련 페이지',
+      'ke.rel.main':'🔍 메인 유류할증료 조회','ke.rel.airlines':'✈️ 항공사별 유류할증료','ke.rel.news':'📰 유류할증료 뉴스',
+      'ke.rel.graph':'📈 변동 그래프','ke.rel.calc':'🧮 계산 방법 안내','ke.rel.may':'📅 2026년 5월',
+      'ke.rel.jun':'🔮 2026년 6월 전망','ke.rel.korea':'🇰🇷 한국 출발 유류할증료','ke.rel.asiana':'✈️ 아시아나항공',
+      'ke.footer':'표시된 유류할증료는 항공사 공식 공지 기반 참고용 정보입니다. 최종 금액은 항공사 공식 사이트 또는 발권처에서 반드시 확인하세요.<br>문의: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+    'affiliate.hotel.title': '✈️ 一起比较机票和酒店价格',
+    'affiliate.hotel.desc':  '当燃油附加费上涨时，同时确认机票总额和住宿费用更加重要。预订前可以一起比较机票和酒店价格。',
+    'affiliate.hotel.btn':   '比较机票和酒店价格 →',
+    'affiliate.hotel.title': '✈️ 航空券とホテル料金を一緒に比較しましょう',
+    'affiliate.hotel.desc':  '燃油サーチャージが高い時期は、航空券の総額と宿泊費を一緒に確認することが重要です。予約前に航空券とホテル料金を比較してみましょう。',
+    'affiliate.hotel.btn':   '航空券・ホテル料金を比較する →',
+    'affiliate.hotel.title': '✈️ Compare flight and hotel prices together',
+    'affiliate.hotel.desc':  'When fuel surcharges rise, it becomes more important to check both airfare totals and accommodation costs. Compare flight and hotel prices before booking.',
+    'affiliate.hotel.btn':   'Compare flights and hotels →',
+    'affiliate.hotel.title': '✈️ 항공권·호텔 가격도 함께 비교하세요',
+    'affiliate.hotel.desc':  '유류할증료가 높아질수록 항공권 총액과 숙박비를 함께 확인하는 것이 중요합니다. 예약 전 항공권과 호텔 가격을 같이 비교해보세요.',
+    'affiliate.hotel.btn':   '항공권·호텔 가격 비교하기 →',
+    },
+    en:{
+      'ke.metaTitle':'Korean Air Fuel Surcharge | KE International Monthly Filing',
+      'ke.metaDesc':'Check Korean Air international fuel surcharge monthly amounts and official filing information.',
+      'ke.pageTitle':'✈️ Korean Air Fuel Surcharge','ke.pageSub':'KE — Monthly filing amounts & official notice','ke.h1':'Korean Air Fuel Surcharge',
+      'ke.notice':'Language and currency selections will change the display language and reference conversion amounts. Official billing currency follows the airline\'s formal filing.',
+      'ke.intro':'Korean Air (KE) publishes international fuel surcharges monthly per Ministry of Land guidelines. Amounts vary by flight distance band.',
+      'ke.card1.title':'Distance-based tiers','ke.card1.body':'Different surcharge rates apply by short-haul or long-haul distance.',
+      'ke.card2.title':'Monthly filing','ke.card2.body':'Next month\'s surcharge is published on official channels each month.',
+      'ke.card3.title':'Official confirmation','ke.card3.body':'Always confirm exact amounts at koreanair.com.',
+      'ke.sectionTitle':'📊 Monthly Surcharge Filing (KRW filing)',
+      'ke.th.range':'Distance (km)','ke.th.route':'Route examples','ke.th.apr':'Apr 2026','ke.th.may':'May 2026','ke.th.diff':'Change',
+      'ke.footnote':'※ KRW filing, one-way. Period: 2026.05.01–05.31 (ticketing date). Source: Korean Air official notice (2026.04.16). Currency selector shows reference conversion.',
+      'ke.officialTitle':'🔗 Official Surcharge Announcement','ke.officialSite':'Official site','ke.relatedTitle':'🔗 Related pages',
+      'ke.rel.main':'🔍 Main surcharge search','ke.rel.airlines':'✈️ Airlines index','ke.rel.news':'📰 Surcharge news',
+      'ke.rel.graph':'📈 Trend graph','ke.rel.calc':'🧮 Calculation guide','ke.rel.may':'📅 May 2026',
+      'ke.rel.jun':'🔮 June 2026 forecast','ke.rel.korea':'🇰🇷 Korea-departure surcharge','ke.rel.asiana':'✈️ Asiana Airlines',
+      'ke.footer':'Surcharge data shown is reference information based on official filings. Always confirm final amounts at the airline\'s official site.<br>Contact: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+    },
+    ja:{
+      'ke.metaTitle':'大韓航空 燃油サーチャージ | KE 国際線月別公示',
+      'ke.metaDesc':'大韓航空の国際線燃油サーチャージの月別適用金額と公式公示情報を確認できます。',
+      'ke.pageTitle':'✈️ 大韓航空 燃油サーチャージ','ke.pageSub':'KE — 月別適用金額・公式公示案内','ke.h1':'大韓航空 燃油サーチャージ',
+      'ke.notice':'言語・通貨の選択により、本文の表示言語と参考換算額が変わります。実際の請求通貨は航空会社の公式公示が優先されます。',
+      'ke.intro':'大韓航空(KE)は毎月、国土交通部基準に従い国際線燃油サーチャージを公示します。飛行距離区間ごとに異なる金額が適用されます。',
+      'ke.card1.title':'区間別差等','ke.card1.body':'短距離・長距離区間によって異なるサーチャージが適用されます。',
+      'ke.card2.title':'月次公示','ke.card2.body':'毎月初め、翌月のサーチャージを公式チャンネルで公示します。',
+      'ke.card3.title':'公式確認','ke.card3.body':'正確な金額はkoreanair.comで必ずご確認ください。',
+      'ke.sectionTitle':'📊 月別燃油サーチャージ公示 (KRW公示)',
+      'ke.th.range':'大圏距離 (km)','ke.th.route':'主要路線例','ke.th.apr':'2026年4月','ke.th.may':'2026年5月','ke.th.diff':'変動',
+      'ke.footnote':'※ KRW公示・片道基準。適用期間: 2026.05.01〜05.31（発券日基準）。出典: 大韓航空公式公示(2026.04.16)。通貨選択で参考換算額を表示。',
+      'ke.officialTitle':'🔗 公式燃油サーチャージ公示','ke.officialSite':'公式サイト','ke.relatedTitle':'🔗 関連ページ',
+      'ke.rel.main':'🔍 メイン検索','ke.rel.airlines':'✈️ 航空会社一覧','ke.rel.news':'📰 ニュース',
+      'ke.rel.graph':'📈 推移グラフ','ke.rel.calc':'🧮 計算方法','ke.rel.may':'📅 2026年5月',
+      'ke.rel.jun':'🔮 2026年6月予測','ke.rel.korea':'🇰🇷 韓国発サーチャージ','ke.rel.asiana':'✈️ アシアナ航空',
+      'ke.footer':'表示されたサーチャージは参考情報です。最終金額は各航空会社の公式サイトまたは発券窓口でご確認ください。<br>お問い合わせ: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+    },
+    zh:{
+      'ke.metaTitle':'大韩航空燃油附加费 | KE国际线月度公告',
+      'ke.metaDesc':'查看大韩航空国际线燃油附加费月度适用金额和官方公告信息。',
+      'ke.pageTitle':'✈️ 大韩航空燃油附加费','ke.pageSub':'KE — 月度适用金额及官方公告说明','ke.h1':'大韩航空燃油附加费',
+      'ke.notice':'语言和货币选择将更改页面显示语言及参考换算金额。实际计费货币以航空公司官方公告为准。',
+      'ke.intro':'大韩航空(KE)每月依据韩国国土交通部标准公告国际线燃油附加费，按飞行距离区间差异化收取。',
+      'ke.card1.title':'距离区间差异','ke.card1.body':'短途和长途航线适用不同的燃油附加费标准。',
+      'ke.card2.title':'每月公告','ke.card2.body':'每月初在官方渠道公布下月燃油附加费。',
+      'ke.card3.title':'官方确认','ke.card3.body':'请务必在koreanair.com确认准确金额。',
+      'ke.sectionTitle':'📊 月度燃油附加费公告 (KRW公告)',
+      'ke.th.range':'大圈距离 (km)','ke.th.route':'主要航线示例','ke.th.apr':'2026年4月','ke.th.may':'2026年5月','ke.th.diff':'变动',
+      'ke.footnote':'※ KRW公告，单程基准。适用期间: 2026.05.01~05.31（出票日基准）。来源: 大韩航空官方公告(2026.04.16)。选择货币将显示参考换算金额。',
+      'ke.officialTitle':'🔗 官方燃油附加费公告','ke.officialSite':'官方网站','ke.relatedTitle':'🔗 相关页面',
+      'ke.rel.main':'🔍 主页查询','ke.rel.airlines':'✈️ 航空公司索引','ke.rel.news':'📰 附加费资讯',
+      'ke.rel.graph':'📈 趋势图','ke.rel.calc':'🧮 计算说明','ke.rel.may':'📅 2026年5月',
+      'ke.rel.jun':'🔮 2026年6月预测','ke.rel.korea':'🇰🇷 韩国出发附加费','ke.rel.asiana':'✈️ 韩亚航空',
+      'ke.footer':'所示燃油附加费为参考信息。最终金额请在航空公司官网或购票处确认。<br>联系: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+    },
+  };
+  if (!window.I18N) window.I18N = {};
+  ['ko','en','ja','zh'].forEach(function(l){
+    if (!window.I18N[l]) window.I18N[l] = {};
+    Object.keys(D[l]).forEach(function(k){ window.I18N[l][k] = D[l][k]; });
+  });
+})();
+
+/* ── 데이터 ── */
+var AIRLINE_PAGE_DATA = {
+  carrier:'KE', baseCurrency:'KRW',
+  rows:[
+    {range:'~499',        routeKo:'후쿠오카·선양·다롄·옌지',                            routeEn:'Fukuoka · Shenyang · Dalian · Yanji',                                routeJa:'福岡・瀋陽・大連・延吉',                                  routeZh:'福冈·沈阳·大连·延吉',              apr:42000,  may:75000  },
+    {range:'500~999',     routeKo:'상하이·베이징·나리타·오사카·타이베이·삿포로',          routeEn:'Shanghai · Beijing · Narita · Osaka · Taipei · Sapporo',             routeJa:'上海・北京・成田・大阪・台北・札幌',                       routeZh:'上海·北京·成田·大阪·台北·札幌',    apr:57000,  may:102000 },
+    {range:'1,000~1,499', routeKo:'광저우·시안·홍콩·울란바타르·마카오',                  routeEn:'Guangzhou · Xi\'an · Hong Kong · Ulaanbaatar · Macau',               routeJa:'広州・西安・香港・ウランバートル・マカオ',                   routeZh:'广州·西安·香港·乌兰巴托·澳门',      apr:78000,  may:144000 },
+    {range:'1,500~1,999', routeKo:'마닐라·하노이·세부·다낭',                             routeEn:'Manila · Hanoi · Cebu · Da Nang',                                    routeJa:'マニラ・ハノイ・セブ・ダナン',                             routeZh:'马尼拉·河内·宿务·岘港',             apr:97500,  may:180000 },
+    {range:'2,000~2,999', routeKo:'방콕·싱가포르·쿠알라룸푸르·호찌민·델리·푸껫',        routeEn:'Bangkok · Singapore · Kuala Lumpur · Ho Chi Minh · Delhi · Phuket',  routeJa:'バンコク・シンガポール・クアラルンプール・ホーチミン・デリー・プーケット', routeZh:'曼谷·新加坡·吉隆坡·胡志明·德里·普吉', apr:123000, may:253500 },
+    {range:'3,000~3,999', routeKo:'자카르타·덴파사르',                                  routeEn:'Jakarta · Denpasar',                                                routeJa:'ジャカルタ・デンパサール',                                  routeZh:'雅加达·登巴萨',                     apr:126000, may:256500 },
+    {range:'4,000~4,999', routeKo:'모스크바·두바이·호놀룰루·브리즈번·이스탄불',          routeEn:'Moscow · Dubai · Honolulu · Brisbane · Istanbul',                    routeJa:'モスクワ・ドバイ・ホノルル・ブリスベン・イスタンブール',     routeZh:'莫斯科·迪拜·火奴鲁鲁·布里斯班·伊斯坦布尔', apr:199500, may:345000 },
+    {range:'5,000~6,499', routeKo:'런던·파리·프랑크푸르트·로마·시드니·LA·샌프란시스코',  routeEn:'London · Paris · Frankfurt · Rome · Sydney · LA · San Francisco',    routeJa:'ロンドン・パリ・フランクフルト・ローマ・シドニー・LA・SF', routeZh:'伦敦·巴黎·法兰克福·罗马·悉尼·洛杉矶·旧金山', apr:276000, may:501000 },
+    {range:'6,500~9,999', routeKo:'뉴욕·달라스·보스턴·시카고·애틀랜타·워싱턴·토론토',   routeEn:'New York · Dallas · Boston · Chicago · Atlanta · Washington · Toronto', routeJa:'ニューヨーク・ダラス・ボストン・シカゴ・アトランタ・ワシントン・トロント', routeZh:'纽约·达拉斯·波士顿·芝加哥·亚特兰大·华盛顿·多伦多', apr:303000, may:564000 },
+  ]
+};
+
+/* ── 공통 유틸 ── */
+function toKRW(amt, base) {
+  if (amt == null) return null;
+  if (base === 'KRW') return amt;
+  return Math.round(amt * ({USD:1480,JPY:10.1,EUR:1630}[base] || 1));
+}
+function fmtFS(amt, base) {
+  if (amt == null) return '—';
+  return window.fmtAmtDisplay(toKRW(amt, base), base, 1);
+}
+function fmtDiff(apr, may, base) {
+  if (apr == null || may == null) return '—';
+  return '+' + window.fmtAmtDisplay(toKRW(may - apr, base), base, 1);
+}
+
+/* ── 테이블 렌더 ── */
+function renderSurchargeTable() {
+  var lang = window.SHARED_STATE.lang || 'ko';
+  var thead = document.getElementById('tableHead');
+  var tbody = document.getElementById('surchargeTableBody');
+  if (!thead || !tbody) return;
+  var prefix = 'ke';
+  thead.innerHTML = ['th.range','th.route','th.apr','th.may','th.diff'].map(function(k){
+    return '<th>' + window.t(prefix + '.' + k) + '</th>';
+  }).join('');
+  tbody.innerHTML = AIRLINE_PAGE_DATA.rows.map(function(r) {
+    var route = lang==='en'?r.routeEn : lang==='ja'?r.routeJa : lang==='zh'?r.routeZh : r.routeKo;
+    return '<tr><td>' + r.range + '</td><td>' + route + '</td>'
+      + '<td>' + fmtFS(r.apr, AIRLINE_PAGE_DATA.baseCurrency) + '</td>'
+      + '<td><strong>' + fmtFS(r.may, AIRLINE_PAGE_DATA.baseCurrency) + '</strong></td>'
+      + '<td style="font-size:11px;color:var(--muted);">' + fmtDiff(r.apr, r.may, AIRLINE_PAGE_DATA.baseCurrency) + '</td></tr>';
+  }).join('');
+  var st = document.getElementById('sectionTitle');
+  if (st) st.textContent = window.t(prefix + '.sectionTitle');
+  var fn = document.getElementById('tableFootnote');
+  if (fn) fn.textContent = window.t(prefix + '.footnote');
+}
+
+function renderAirlinePage() {
+  if (window.applyLanguage) window.applyLanguage();
+  renderSurchargeTable();
+}
+
+window.initNav({
+  onLangChange: function() { renderAirlinePage(); },
+  onCurrChange: function()  { renderSurchargeTable(); },
+});
+renderAirlinePage();
+</script>
 </body>
 </html>

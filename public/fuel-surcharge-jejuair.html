@@ -4,7 +4,8 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>제주항공 유류할증료 조회</title>
-  <meta name="description" content="제주항공 국제선 유류할증료의 월별 적용 금액과 공식 공지 정보를 확인할 수 있습니다."/>
+  <meta name="description" content="제주항공 국제선 유류할증료의 월별 적용 금액과 공식 공지 정보를 확인할 수 있습니다." data-i18n-page-desc="jj.metaDesc"/>
+  <meta data-i18n-page-title="jj.metaTitle"/>
   <link rel="canonical" href="https://aero-surcharge.vercel.app/fuel-surcharge-jejuair.html"/>
   <meta property="og:title" content="제주항공 유류할증료 조회"/>
   <meta property="og:description" content="제주항공 국제선 유류할증료의 월별 적용 금액과 공식 공지 정보를 확인할 수 있습니다."/>
@@ -15,13 +16,21 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-76T4QJPY4L"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-76T4QJPY4L');</script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
+  <style>
+    .affiliate-box{border-radius:12px;padding:14px 16px;margin-bottom:18px;box-sizing:border-box;}
+    .hotelcombine-box{background:linear-gradient(135deg,#E3F2FD,#EFF8FF);border:1px solid #90CAF9;}
+    .affiliate-title{font-size:13px;font-weight:700;margin-bottom:6px;color:#0D47A1;}
+    .affiliate-desc{font-size:12px;color:#555;margin-bottom:10px;line-height:1.6;}
+    .affiliate-btn{display:inline-block;background:#1565C0;color:#fff;font-size:12px;padding:6px 14px;border-radius:6px;text-decoration:none;font-weight:600;transition:opacity .15s;}
+    .affiliate-btn:hover{opacity:.88;}
+  </style>
 </head>
 <body>
 <nav>
   <div class="nav-links">
-    <a href="index.html"    class="nav-link" id="navLinkRoutes"   data-i18n="nav.routes">노선별 조회</a>
-    <a href="airlines.html" class="nav-link" id="navLinkAirlines" data-i18n="nav.airlines">항공사 인덱스</a>
-    <a href="news.html"     class="nav-link" id="navLinkNews"     data-i18n="nav.news">참고 소식</a>
+    <a href="index.html"    class="nav-link" data-i18n="nav.routes">노선별 조회</a>
+    <a href="airlines.html" class="nav-link" data-i18n="nav.airlines">항공사 인덱스</a>
+    <a href="news.html"     class="nav-link" data-i18n="nav.news">참고 소식</a>
   </div>
   <div class="nav-controls">
     <select class="nav-select" id="navLang">
@@ -40,58 +49,296 @@
   </div>
 </nav>
 <div class="page-header">
-  <div class="page-title">🟢 제주항공 유류할증료</div>
-  <div class="page-sub">7C — 월별 적용 금액 및 공식 공지 안내 (KRW 기준)</div>
+  <div class="page-title" data-i18n="jj.pageTitle">🟢 제주항공 유류할증료</div>
+  <div class="page-sub"   data-i18n="jj.pageSub">7C — 월별 적용 금액 및 공식 공지 안내 (USD 공시)</div>
 </div>
 <main class="seo-main">
-  <h1 style="font-size:20px;font-weight:700;color:var(--text);margin-bottom:12px;">제주항공 유류할증료</h1>
-  <div class="seo-lang-notice">⚠️&nbsp;<span><strong>안내:</strong> 이 페이지의 본문 금액 및 표는 <strong>한국어(한국어) · KRW(원화) 기준</strong>으로 작성된 안내 페이지입니다. 상단의 언어·통화 선택은 내비게이션 공통 UI이며, 이 페이지 본문 내용을 실시간으로 변환하지 않습니다. 정확한 금액은 각 항공사 공식 공지를 확인하세요.</span></div>
-  <div class="seo-intro">제주항공(7C)은 국내 대표 저비용항공사(LCC)로, 매월 국제선 유류할증료를 공시합니다. LCC 특성상 운항 노선이 단거리 중심이며, 유류할증료 공시 내용은 제주항공 공식 홈페이지에서 확인할 수 있습니다. 이 페이지는 한국어·원화(KRW) 기준 안내 페이지입니다.</div>
-  <div class="summary-cards"><div class="summary-card"><div class="summary-card-icon">🟢</div><div class="summary-card-title">LCC 노선 중심</div><div class="summary-card-body">일본·동남아·중국 등 단거리 국제선을 주로 운항합니다.</div></div><div class="summary-card"><div class="summary-card-icon">📋</div><div class="summary-card-title">공시 주기</div><div class="summary-card-body">매월 국토교통부 기준에 따라 다음 달 적용 유류할증료를 공시합니다.</div></div><div class="summary-card"><div class="summary-card-icon">🔗</div><div class="summary-card-title">공식 확인</div><div class="summary-card-body">정확한 금액은 jejuair.net에서 반드시 확인하세요.</div></div></div>
-  <div class="seo-section-title">📊 월별 유류할증료 공시 현황 (KRW 기준)</div>
+  <h1 style="font-size:20px;font-weight:700;color:var(--text);margin-bottom:12px;" data-i18n="jj.h1">제주항공 유류할증료</h1>
+  <div class="seo-lang-notice">⚠️&nbsp;<span data-i18n="jj.notice">상단의 언어·통화 선택에 따라 본문 표시 언어와 참고 환산 금액이 변경됩니다. 단, 실제 청구 기준 통화는 항공사 공식 공지를 우선합니다.</span></div>
+  <div class="seo-intro" data-i18n="jj.intro">제주항공(7C)은 국내 대표 저비용항공사(LCC)로, 매월 국제선 유류할증료를 USD 기준으로 공시합니다.</div>
+  <div class="summary-cards">
+    <div class="summary-card"><div class="summary-card-icon">🟢</div><div class="summary-card-title" data-i18n="jj.card1.title">LCC 노선 중심</div><div class="summary-card-body" data-i18n="jj.card1.body">일본·동남아·중국 등 단거리 국제선을 주로 운항합니다.</div></div>
+    <div class="summary-card"><div class="summary-card-icon">📋</div><div class="summary-card-title" data-i18n="jj.card2.title">공시 주기</div><div class="summary-card-body" data-i18n="jj.card2.body">매월 국토교통부 기준에 따라 다음 달 적용 유류할증료를 공시합니다.</div></div>
+    <div class="summary-card"><div class="summary-card-icon">🔗</div><div class="summary-card-title" data-i18n="jj.card3.title">공식 확인</div><div class="summary-card-body" data-i18n="jj.card3.body">정확한 금액은 jejuair.net에서 반드시 확인하세요.</div></div>
+  </div>
+  <div class="seo-section-title" id="sectionTitle">📊 월별 유류할증료 공시 현황 (USD 공시)</div>
   <div class="data-table-wrap">
     <table class="seo-tbl">
-      <thead><tr><th>구분</th><th>노선 예시</th><th>2026년 4월</th><th>2026년 5월</th><th>비고</th></tr></thead>
-      <tbody>
-        <tr><td>단거리</td><td>일본·중국·동남아</td><td style="color:var(--muted);font-size:12px;">공식 공지 확인 필요</td><td style="color:var(--muted);font-size:12px;">공식 공지 확인 필요</td><td style="font-size:11px;color:var(--muted);">업데이트 예정</td></tr>
-        <tr><td>장거리</td><td>미주·유럽·대양주</td><td style="color:var(--muted);font-size:12px;">공식 공지 확인 필요</td><td style="color:var(--muted);font-size:12px;">공식 공지 확인 필요</td><td style="font-size:11px;color:var(--muted);">업데이트 예정</td></tr>
-      </tbody>
+      <thead><tr id="tableHead"></tr></thead>
+      <tbody id="surchargeTableBody"></tbody>
     </table>
   </div>
-  <p style="font-size:11px;color:var(--muted);margin-top:-16px;margin-bottom:20px;">※ 정확한 금액은 공식 공지를 반드시 확인하세요.</p>
+  <p style="font-size:11px;color:var(--muted);margin-top:-16px;margin-bottom:20px;" id="tableFootnote">※ USD 공시 기준, 편도. 적용 기간: 2026.05.01~05.31 (발권일 기준). 출처: 제주항공 공식 공지(2026.04.13). 통화 선택 시 참고 환산값이 표시됩니다.</p>
+  <div class="affiliate-box hotelcombine-box">
+    <div class="affiliate-title" data-i18n="affiliate.hotel.title">✈️ 항공권·호텔 가격도 함께 비교하세요</div>
+    <div class="affiliate-desc"  data-i18n="affiliate.hotel.desc">유류할증료가 높아질수록 항공권 총액과 숙박비를 함께 확인하는 것이 중요합니다. 예약 전 항공권과 호텔 가격을 같이 비교해보세요.</div>
+    <a href="http://app.ac/xjCXQLa23" target="_blank" rel="noopener sponsored" class="affiliate-btn" data-i18n="affiliate.hotel.btn">항공권·호텔 가격 비교하기 →</a>
+  </div>
   <div class="official-link-box">
-    <div class="official-link-title">🔗 공식 유류할증료 공지 바로가기</div>
+    <div class="official-link-title" data-i18n="jj.officialTitle">🔗 공식 유류할증료 공지 바로가기</div>
     <div class="official-link-list">
-      <div class="official-link-item">✈️ 공식 사이트: <a href="https://www.jejuair.net" target="_blank" rel="noopener">jejuair.net 공식 공지 확인 ↗</a></div>
+      <div class="official-link-item">✈️ <span data-i18n="jj.officialSite">공식 사이트</span>: <a href="https://www.jejuair.net" target="_blank" rel="noopener">jejuair.net ↗</a></div>
     </div>
   </div>
   <div class="related-links">
-    <div class="related-title">🔗 관련 페이지</div>
+    <div class="related-title" data-i18n="jj.relatedTitle">🔗 관련 페이지</div>
     <div class="related-grid">
-      <a class="related-item" href="index.html">🔍 메인 유류할증료 조회</a>
-      <a class="related-item" href="airlines.html">✈️ 항공사별 유류할증료</a>
-      <a class="related-item" href="news.html">📰 유류할증료 뉴스</a>
-      <a class="related-item" href="fuel-surcharge-graph.html">📈 변동 그래프</a>
-      <a class="related-item" href="fuel-surcharge-calculator.html">🧮 계산 방법 안내</a>
-      <a class="related-item" href="fuel-surcharge-2026-05.html">📅 2026년 5월</a>
-      <a class="related-item" href="fuel-surcharge-2026-06-forecast.html">🔮 2026년 6월 전망</a>
-      <a class="related-item" href="fuel-surcharge-korea.html">🇰🇷 한국 출발 유류할증료</a>
-      <a class="related-item" href="fuel-surcharge-jinair.html">🟢 진에어</a>
+      <a class="related-item" href="index.html"                           data-i18n="jj.rel.main">🔍 메인 유류할증료 조회</a>
+      <a class="related-item" href="airlines.html"                        data-i18n="jj.rel.airlines">✈️ 항공사별 유류할증료</a>
+      <a class="related-item" href="news.html"                            data-i18n="jj.rel.news">📰 유류할증료 뉴스</a>
+      <a class="related-item" href="fuel-surcharge-graph.html"            data-i18n="jj.rel.graph">📈 변동 그래프</a>
+      <a class="related-item" href="fuel-surcharge-calculator.html"       data-i18n="jj.rel.calc">🧮 계산 방법 안내</a>
+      <a class="related-item" href="fuel-surcharge-2026-05.html"          data-i18n="jj.rel.may">📅 2026년 5월</a>
+      <a class="related-item" href="fuel-surcharge-2026-06-forecast.html" data-i18n="jj.rel.jun">🔮 2026년 6월 전망</a>
+      <a class="related-item" href="fuel-surcharge-korea.html"            data-i18n="jj.rel.korea">🇰🇷 한국 출발 유류할증료</a>
+      <a class="related-item" href="fuel-surcharge-jinair.html"                           data-i18n="jj.rel.other">🟢 진에어</a>
     </div>
   </div>
 </main>
 <footer style="background:var(--white);border-top:1px solid var(--line);padding:20px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;">
-  <p style="font-size:12px;color:var(--muted);max-width:600px;line-height:1.6;margin:0;">
+  <p style="font-size:12px;color:var(--muted);max-width:600px;line-height:1.6;margin:0;" data-i18n-html="jj.footer">
     표시된 유류할증료는 항공사 공식 공지 기반 참고용 정보입니다. 최종 금액은 항공사 공식 사이트 또는 발권처에서 반드시 확인하세요.<br>
     문의: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>
   </p>
   <nav style="display:flex;gap:16px;flex-wrap:wrap;">
-    <a href="about.html"   style="font-size:12px;color:var(--muted);text-decoration:none;">About</a>
-    <a href="privacy.html" style="font-size:12px;color:var(--muted);text-decoration:none;">Privacy Policy</a>
-    <a href="terms.html"   style="font-size:12px;color:var(--muted);text-decoration:none;">Terms of Service</a>
+    <a href="about.html"   style="font-size:12px;color:var(--muted);text-decoration:none;" data-i18n="footer.about">About</a>
+    <a href="privacy.html" style="font-size:12px;color:var(--muted);text-decoration:none;" data-i18n="footer.privacy">Privacy Policy</a>
+    <a href="terms.html"   style="font-size:12px;color:var(--muted);text-decoration:none;" data-i18n="footer.terms">Terms of Service</a>
   </nav>
 </footer>
 <script src="_shared.js"></script>
-<script>window.initNav({});</script>
+<script>
+/* ── i18n 등록 ── */
+(function(){
+  var D = {
+    ko:{
+      'jj.pageTitle':'🟢 제주항공 유류할증료',
+      'jj.pageSub':'7C — 월별 적용 금액 및 공식 공지 안내 (USD 공시)',
+      'jj.h1':'제주항공 유류할증료',
+      'jj.notice':'상단의 언어·통화 선택에 따라 본문 표시 언어와 참고 환산 금액이 변경됩니다. 단, 실제 청구 기준 통화는 항공사 공식 공지를 우선합니다.',
+      'jj.intro':'제주항공(7C)은 국내 대표 저비용항공사(LCC)로, 매월 국제선 유류할증료를 USD 기준으로 공시합니다.',
+      'jj.card1.title':'LCC 노선 중심',
+      'jj.card1.body':'일본·동남아·중국 등 단거리 국제선을 주로 운항합니다.',
+      'jj.card2.title':'공시 주기',
+      'jj.card2.body':'매월 국토교통부 기준에 따라 다음 달 적용 유류할증료를 공시합니다.',
+      'jj.card3.title':'공식 확인',
+      'jj.card3.body':'정확한 금액은 jejuair.net에서 반드시 확인하세요.',
+      'jj.sectionTitle':'📊 월별 유류할증료 공시 현황 (USD 공시)',
+      'jj.th.range':'구분/거리',
+      'jj.th.route':'노선 예시',
+      'jj.th.apr':'2026년 4월',
+      'jj.th.may':'2026년 5월',
+      'jj.th.diff':'변동',
+      'jj.footnote':'※ USD 공시 기준, 편도. 적용 기간: 2026.05.01~05.31 (발권일 기준). 출처: 제주항공 공식 공지(2026.04.13). 통화 선택 시 참고 환산값이 표시됩니다.',
+      'jj.officialTitle':'🔗 공식 유류할증료 공지 바로가기',
+      'jj.officialSite':'공식 사이트',
+      'jj.relatedTitle':'🔗 관련 페이지',
+      'jj.rel.main':'🔍 메인 유류할증료 조회',
+      'jj.rel.airlines':'✈️ 항공사별 유류할증료',
+      'jj.rel.news':'📰 유류할증료 뉴스',
+      'jj.rel.graph':'📈 변동 그래프',
+      'jj.rel.calc':'🧮 계산 방법 안내',
+      'jj.rel.may':'📅 2026년 5월',
+      'jj.rel.jun':'🔮 2026년 6월 전망',
+      'jj.rel.korea':'🇰🇷 한국 출발 유류할증료',
+      'jj.rel.other':'🟢 진에어',
+      'jj.footer':'표시된 유류할증료는 항공사 공식 공지 기반 참고용 정보입니다. 최종 금액은 항공사 공식 사이트 또는 발권처에서 반드시 확인하세요.<br>문의: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+    /* affiliate CTA */
+    'affiliate.hotel.title': '✈️ 항공권·호텔 가격도 함께 비교하세요',
+    'affiliate.hotel.desc':  '유류할증료가 높아질수록 항공권 총액과 숙박비를 함께 확인하는 것이 중요합니다. 예약 전 항공권과 호텔 가격을 같이 비교해보세요.',
+    'affiliate.hotel.btn':   '항공권·호텔 가격 비교하기 →',
+      'jj.metaTitle':'제주항공 유류할증료 조회 | 7C 국제선 월별 공시 금액',
+      'jj.metaDesc':'제주항공 국제선 유류할증료의 월별 적용 금액과 공식 공지 정보를 확인할 수 있습니다.',
+      'jj.noService':'—',
+    },
+    en:{
+      'jj.pageTitle':'🟢 Jeju Air Fuel Surcharge',
+      'jj.pageSub':'7C — Monthly filing amounts & official notice (USD filing)',
+      'jj.h1':'Jeju Air Fuel Surcharge',
+      'jj.notice':'Language and currency selections will change the display language and reference conversion amounts. Official billing currency follows the airline\'s formal filing.',
+      'jj.intro':'Jeju Air (7C) is Korea\'s leading LCC, publishing international fuel surcharges monthly in USD.',
+      'jj.card1.title':'LCC route focus',
+      'jj.card1.body':'Mainly operates short-haul routes to Japan, Southeast Asia, and China.',
+      'jj.card2.title':'Filing cycle',
+      'jj.card2.body':'Next month\'s surcharge is published monthly per Ministry of Land guidelines.',
+      'jj.card3.title':'Official confirmation',
+      'jj.card3.body':'Always confirm exact amounts at jejuair.net.',
+      'jj.sectionTitle':'📊 Monthly Surcharge Filing (USD filing)',
+      'jj.th.range':'Distance/Zone',
+      'jj.th.route':'Route examples',
+      'jj.th.apr':'Apr 2026',
+      'jj.th.may':'May 2026',
+      'jj.th.diff':'Change',
+      'jj.footnote':'※ USD filing, one-way. Period: 2026.05.01–05.31 (ticketing date). Source: Jeju Air official notice (2026.04.13). Currency selector shows reference conversion.',
+      'jj.officialTitle':'🔗 Official Surcharge Announcement',
+      'jj.officialSite':'Official site',
+      'jj.relatedTitle':'🔗 Related pages',
+      'jj.rel.main':'🔍 Main surcharge search',
+      'jj.rel.airlines':'✈️ Airlines index',
+      'jj.rel.news':'📰 Surcharge news',
+      'jj.rel.graph':'📈 Trend graph',
+      'jj.rel.calc':'🧮 Calculation guide',
+      'jj.rel.may':'📅 May 2026',
+      'jj.rel.jun':'🔮 June 2026 forecast',
+      'jj.rel.korea':'🇰🇷 Korea-departure surcharge',
+      'jj.rel.other':'🟢 Jin Air',
+      'jj.footer':'Surcharge data shown is reference information based on official filings. Always confirm final amounts at the airline\'s official site.<br>Contact: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+    'affiliate.hotel.title': '✈️ Compare flight and hotel prices together',
+    'affiliate.hotel.desc':  'When fuel surcharges rise, it becomes more important to check both airfare totals and accommodation costs. Compare flight and hotel prices before booking.',
+    'affiliate.hotel.btn':   'Compare flights and hotels →',
+      'jj.metaTitle':'Jeju Air Fuel Surcharge | 7C International Monthly Filing',
+      'jj.metaDesc':'Check Jeju Air international fuel surcharge monthly amounts and official filing information.',
+      'jj.noService':'—',
+    },
+    ja:{
+      'jj.pageTitle':'🟢 チェジュ航空 燃油サーチャージ',
+      'jj.pageSub':'7C — 月別適用金額・公式公示案内 (USD公示)',
+      'jj.h1':'チェジュ航空 燃油サーチャージ',
+      'jj.notice':'言語・通貨の選択により、本文の表示言語と参考換算額が変わります。実際の請求通貨は航空会社の公式公示が優先されます。',
+      'jj.intro':'チェジュ航空(7C)は韓国の代表的LCCで、毎月USD基準で国際線燃油サーチャージを公示します。',
+      'jj.card1.title':'LCC路線中心',
+      'jj.card1.body':'日本・東南アジア・中国などの短距離路線を中心に運航します。',
+      'jj.card2.title':'公示サイクル',
+      'jj.card2.body':'毎月、翌月の適用サーチャージを公示します。',
+      'jj.card3.title':'公式確認',
+      'jj.card3.body':'正確な金額はjejuair.netで必ずご確認ください。',
+      'jj.sectionTitle':'📊 月別燃油サーチャージ公示 (USD公示)',
+      'jj.th.range':'区間/距離',
+      'jj.th.route':'主要路線例',
+      'jj.th.apr':'2026年4月',
+      'jj.th.may':'2026年5月',
+      'jj.th.diff':'変動',
+      'jj.footnote':'※ USD公示・片道基準。適用期間: 2026.05.01〜05.31（発券日基準）。出典: チェジュ航空公式公示(2026.04.13)。',
+      'jj.officialTitle':'🔗 公式燃油サーチャージ公示',
+      'jj.officialSite':'公式サイト',
+      'jj.relatedTitle':'🔗 関連ページ',
+      'jj.rel.main':'🔍 メイン検索',
+      'jj.rel.airlines':'✈️ 航空会社一覧',
+      'jj.rel.news':'📰 ニュース',
+      'jj.rel.graph':'📈 推移グラフ',
+      'jj.rel.calc':'🧮 計算方法',
+      'jj.rel.may':'📅 2026年5月',
+      'jj.rel.jun':'🔮 2026年6月予測',
+      'jj.rel.korea':'🇰🇷 韓国発サーチャージ',
+      'jj.rel.other':'🟢 ジンエアー',
+      'jj.footer':'表示されたサーチャージは参考情報です。最終金額は各航空会社の公式サイトまたは発券窓口でご確認ください。<br>お問い合わせ: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+    'affiliate.hotel.title': '✈️ 航空券とホテル料金を一緒に比較しましょう',
+    'affiliate.hotel.desc':  '燃油サーチャージが高い時期は、航空券の総額と宿泊費を一緒に確認することが重要です。予約前に航空券とホテル料金を比較してみましょう。',
+    'affiliate.hotel.btn':   '航空券・ホテル料金を比較する →',
+      'jj.metaTitle':'チェジュ航空 燃油サーチャージ | 7C 国際線月別公示',
+      'jj.metaDesc':'チェジュ航空の国際線燃油サーチャージの月別適用金額と公式公示情報を確認できます。',
+      'jj.noService':'—',
+    },
+    zh:{
+      'jj.pageTitle':'🟢 济州航空燃油附加费',
+      'jj.pageSub':'7C — 月度适用金额及官方公告说明 (USD公告)',
+      'jj.h1':'济州航空燃油附加费',
+      'jj.notice':'语言和货币选择将更改页面显示语言及参考换算金额。实际计费货币以航空公司官方公告为准。',
+      'jj.intro':'济州航空(7C)是韩国代表性廉价航空，每月以USD为基准公告国际线燃油附加费。',
+      'jj.card1.title':'LCC航线为主',
+      'jj.card1.body':'主要运营日本、东南亚、中国等短途国际线。',
+      'jj.card2.title':'公告周期',
+      'jj.card2.body':'每月公布下月适用的燃油附加费。',
+      'jj.card3.title':'官方确认',
+      'jj.card3.body':'请务必在jejuair.net确认准确金额。',
+      'jj.sectionTitle':'📊 月度燃油附加费公告 (USD公告)',
+      'jj.th.range':'区间/距离',
+      'jj.th.route':'主要航线示例',
+      'jj.th.apr':'2026年4月',
+      'jj.th.may':'2026年5月',
+      'jj.th.diff':'变动',
+      'jj.footnote':'※ USD公告，单程基准。适用期间: 2026.05.01~05.31（出票日基准）。来源: 济州航空官方公告(2026.04.13)。',
+      'jj.officialTitle':'🔗 官方燃油附加费公告',
+      'jj.officialSite':'官方网站',
+      'jj.relatedTitle':'🔗 相关页面',
+      'jj.rel.main':'🔍 主页查询',
+      'jj.rel.airlines':'✈️ 航空公司索引',
+      'jj.rel.news':'📰 附加费资讯',
+      'jj.rel.graph':'📈 趋势图',
+      'jj.rel.calc':'🧮 计算说明',
+      'jj.rel.may':'📅 2026年5月',
+      'jj.rel.jun':'🔮 2026年6月预测',
+      'jj.rel.korea':'🇰🇷 韩国出发附加费',
+      'jj.rel.other':'🟢 真航空',
+      'jj.footer':'所示燃油附加费为参考信息。最终金额请在航空公司官网或购票处确认。<br>联系: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+    'affiliate.hotel.title': '✈️ 一起比较机票和酒店价格',
+    'affiliate.hotel.desc':  '当燃油附加费上涨时，同时确认机票总额和住宿费用更加重要。预订前可以一起比较机票和酒店价格。',
+    'affiliate.hotel.btn':   '比较机票和酒店价格 →',
+      'jj.metaTitle':'济州航空燃油附加费 | 7C国际线月度公告',
+      'jj.metaDesc':'查看济州航空国际线燃油附加费月度适用金额和官方公告信息。',
+      'jj.noService':'—',
+    }
+  };
+  if (!window.I18N) window.I18N = {};
+  ['ko','en','ja','zh'].forEach(function(l){
+    if (!window.I18N[l]) window.I18N[l] = {};
+    Object.keys(D[l]).forEach(function(k){ window.I18N[l][k] = D[l][k]; });
+  });
+})();
+
+/* ── 데이터 ── */
+var AIRLINE_PAGE_DATA = {
+  carrier:'7C', baseCurrency:'USD', i18nPrefix:'jj',
+  rows:[
+    {range:"1~500",routeKo:"후쿠오카·오사카·나고야·상하이",routeEn:"Fukuoka · Osaka · Nagoya · Shanghai",routeJa:"福岡・大阪・名古屋・上海",routeZh:"福冈·大阪·名古屋·上海",apr:29,may:52},
+    {range:"500~1,000",routeKo:"도쿄·삿포로·타이베이·하얼빈",routeEn:"Tokyo · Sapporo · Taipei · Harbin",routeJa:"東京・札幌・台北・ハルビン",routeZh:"东京·札幌·台北·哈尔滨",apr:37,may:66},
+    {range:"1,000~1,500",routeKo:"홍콩·마카오·울란바타르·장자제",routeEn:"Hong Kong · Macau · Ulaanbaatar · Zhangjiajie",routeJa:"香港・マカオ・ウランバートル・張家界",routeZh:"香港·澳门·乌兰巴托·张家界",apr:44,may:80},
+    {range:"1,500~2,000",routeKo:"마닐라·세부·클락·하노이·다낭·비엔티안",routeEn:"Manila · Cebu · Clark · Hanoi · Da Nang · Vientiane",routeJa:"マニラ・セブ・クラーク・ハノイ・ダナン・ビエンチャン",routeZh:"马尼拉·宿务·克拉克·河内·岘港·万象",apr:53,may:95},
+    {range:"2,000~2,500",routeKo:"방콕·치앙마이·달랏·코타키나발루·호찌민",routeEn:"Bangkok · Chiang Mai · Da Lat · Kota Kinabalu · Ho Chi Minh",routeJa:"バンコク・チェンマイ・ダラット・コタキナバル・ホーチミン",routeZh:"曼谷·清迈·大叻·亚庇·胡志明",apr:60,may:107},
+    {range:"2,500 이상",routeKo:"싱가포르·덴파사르·바탐",routeEn:"Singapore · Denpasar · Batam",routeJa:"シンガポール・デンパサール・バタム",routeZh:"新加坡·登巴萨·民丹岛",apr:68,may:126},
+  ]
+};
+
+/* ── 공통 유틸 ── */
+function toKRW(amt, base) {
+  if (amt == null) return null;
+  if (base === 'KRW') return amt;
+  return Math.round(amt * ({USD:1480,JPY:10.1,EUR:1630}[base] || 1));
+}
+function fmtFS(amt, base) {
+  if (amt == null) return '—';
+  return window.fmtAmtDisplay(toKRW(amt, base), base, 1);
+}
+function fmtDiff(apr, may, base) {
+  if (apr == null || may == null) return '—';
+  return '+' + window.fmtAmtDisplay(toKRW(may - apr, base), base, 1);
+}
+
+/* ── 테이블 렌더 ── */
+function renderSurchargeTable() {
+  var lang = window.SHARED_STATE.lang || 'ko';
+  var thead = document.getElementById('tableHead');
+  var tbody = document.getElementById('surchargeTableBody');
+  if (!thead || !tbody) return;
+  var px = AIRLINE_PAGE_DATA.i18nPrefix;
+  thead.innerHTML = ['th.range','th.route','th.apr','th.may','th.diff'].map(function(k){
+    return '<th>' + window.t(px + '.' + k) + '</th>';
+  }).join('');
+  tbody.innerHTML = AIRLINE_PAGE_DATA.rows.map(function(r) {
+    var route = lang==='en'?r.routeEn : lang==='ja'?r.routeJa : lang==='zh'?r.routeZh : r.routeKo;
+    var aprCell = r.apr == null ? '<td>—</td>' : '<td>' + fmtFS(r.apr, AIRLINE_PAGE_DATA.baseCurrency) + '</td>';
+    var mayCell = r.may == null ? '<td><strong>—</strong></td>' : '<td><strong>' + fmtFS(r.may, AIRLINE_PAGE_DATA.baseCurrency) + '</strong></td>';
+    var diffCell = (r.apr == null || r.may == null)
+      ? '<td style="font-size:11px;color:var(--muted);">' + window.t(px + '.noService') + '</td>'
+      : '<td style="font-size:11px;color:var(--muted);">' + fmtDiff(r.apr, r.may, AIRLINE_PAGE_DATA.baseCurrency) + '</td>';
+    return '<tr><td>' + r.range + '</td><td>' + route + '</td>' + aprCell + mayCell + diffCell + '</tr>';
+  }).join('');
+  var st = document.getElementById('sectionTitle');
+  if (st) st.textContent = window.t(px + '.sectionTitle');
+  var fn = document.getElementById('tableFootnote');
+  if (fn) fn.textContent = window.t(px + '.footnote');
+}
+
+function renderAirlinePage() {
+  if (window.applyLanguage) window.applyLanguage();
+  renderSurchargeTable();
+}
+
+window.initNav({
+  onLangChange: function() { renderAirlinePage(); },
+  onCurrChange: function()  { renderSurchargeTable(); },
+});
+renderAirlinePage();
+</script>
 </body>
 </html>

@@ -4,7 +4,8 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>티웨이항공 유류할증료 조회</title>
-  <meta name="description" content="티웨이항공 국제선 유류할증료의 월별 적용 금액과 공식 공지 정보를 확인할 수 있습니다."/>
+  <meta name="description" content="티웨이항공 국제선 유류할증료의 월별 적용 금액과 공식 공지 정보를 확인할 수 있습니다." data-i18n-page-desc="tw.metaDesc"/>
+  <meta data-i18n-page-title="tw.metaTitle"/>
   <link rel="canonical" href="https://aero-surcharge.vercel.app/fuel-surcharge-tway.html"/>
   <meta property="og:title" content="티웨이항공 유류할증료 조회"/>
   <meta property="og:description" content="티웨이항공 국제선 유류할증료의 월별 적용 금액과 공식 공지 정보를 확인할 수 있습니다."/>
@@ -15,13 +16,21 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-76T4QJPY4L"></script>
   <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-76T4QJPY4L');</script>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
+  <style>
+    .affiliate-box{border-radius:12px;padding:14px 16px;margin-bottom:18px;box-sizing:border-box;}
+    .hotelcombine-box{background:linear-gradient(135deg,#E3F2FD,#EFF8FF);border:1px solid #90CAF9;}
+    .affiliate-title{font-size:13px;font-weight:700;margin-bottom:6px;color:#0D47A1;}
+    .affiliate-desc{font-size:12px;color:#555;margin-bottom:10px;line-height:1.6;}
+    .affiliate-btn{display:inline-block;background:#1565C0;color:#fff;font-size:12px;padding:6px 14px;border-radius:6px;text-decoration:none;font-weight:600;transition:opacity .15s;}
+    .affiliate-btn:hover{opacity:.88;}
+  </style>
 </head>
 <body>
 <nav>
   <div class="nav-links">
-    <a href="index.html"    class="nav-link" id="navLinkRoutes"   data-i18n="nav.routes">노선별 조회</a>
-    <a href="airlines.html" class="nav-link" id="navLinkAirlines" data-i18n="nav.airlines">항공사 인덱스</a>
-    <a href="news.html"     class="nav-link" id="navLinkNews"     data-i18n="nav.news">참고 소식</a>
+    <a href="index.html"    class="nav-link" data-i18n="nav.routes">노선별 조회</a>
+    <a href="airlines.html" class="nav-link" data-i18n="nav.airlines">항공사 인덱스</a>
+    <a href="news.html"     class="nav-link" data-i18n="nav.news">참고 소식</a>
   </div>
   <div class="nav-controls">
     <select class="nav-select" id="navLang">
@@ -40,58 +49,297 @@
   </div>
 </nav>
 <div class="page-header">
-  <div class="page-title">🟢 티웨이항공 유류할증료</div>
-  <div class="page-sub">TW — 월별 적용 금액 및 공식 공지 안내 (KRW 기준)</div>
+  <div class="page-title" data-i18n="tw.pageTitle">🟢 티웨이항공 유류할증료</div>
+  <div class="page-sub"   data-i18n="tw.pageSub">TW — 월별 적용 금액 및 공식 공지 안내 (KRW 공시)</div>
 </div>
 <main class="seo-main">
-  <h1 style="font-size:20px;font-weight:700;color:var(--text);margin-bottom:12px;">티웨이항공 유류할증료</h1>
-  <div class="seo-lang-notice">⚠️&nbsp;<span><strong>안내:</strong> 이 페이지의 본문 금액 및 표는 <strong>한국어(한국어) · KRW(원화) 기준</strong>으로 작성된 안내 페이지입니다. 상단의 언어·통화 선택은 내비게이션 공통 UI이며, 이 페이지 본문 내용을 실시간으로 변환하지 않습니다. 정확한 금액은 각 항공사 공식 공지를 확인하세요.</span></div>
-  <div class="seo-intro">티웨이항공(TW)은 한국 저비용항공사로, 매월 국제선 유류할증료를 공시합니다. 주로 동북아·동남아·호주 등 중단거리 노선을 운항하며, 유류할증료 공시 내용은 티웨이항공 공식 홈페이지에서 확인할 수 있습니다. 이 페이지는 한국어·원화(KRW) 기준 안내 페이지입니다.</div>
-  <div class="summary-cards"><div class="summary-card"><div class="summary-card-icon">🟢</div><div class="summary-card-title">중단거리 LCC</div><div class="summary-card-body">일본·중국·동남아 등 중단거리 국제선을 운항합니다.</div></div><div class="summary-card"><div class="summary-card-icon">📋</div><div class="summary-card-title">월별 공시 기준</div><div class="summary-card-body">매월 국토교통부 기준에 따라 유류할증료를 산정하여 공시합니다.</div></div><div class="summary-card"><div class="summary-card-icon">🔗</div><div class="summary-card-title">공식 확인</div><div class="summary-card-body">정확한 금액은 twayair.com에서 반드시 확인하세요.</div></div></div>
-  <div class="seo-section-title">📊 월별 유류할증료 공시 현황 (KRW 기준)</div>
+  <h1 style="font-size:20px;font-weight:700;color:var(--text);margin-bottom:12px;" data-i18n="tw.h1">티웨이항공 유류할증료</h1>
+  <div class="seo-lang-notice">⚠️&nbsp;<span data-i18n="tw.notice">상단의 언어·통화 선택에 따라 본문 표시 언어와 참고 환산 금액이 변경됩니다. 단, 실제 청구 기준 통화는 항공사 공식 공지를 우선합니다.</span></div>
+  <div class="seo-intro" data-i18n="tw.intro">티웨이항공(TW)은 한국 저비용항공사로, 매월 국제선 유류할증료를 공시합니다. 주로 동북아·동남아·호주 등 중단거리 노선을 운항합니다.</div>
+  <div class="summary-cards">
+    <div class="summary-card"><div class="summary-card-icon">🟢</div><div class="summary-card-title" data-i18n="tw.card1.title">중단거리 LCC</div><div class="summary-card-body" data-i18n="tw.card1.body">일본·중국·동남아 등 중단거리 국제선을 운항합니다.</div></div>
+    <div class="summary-card"><div class="summary-card-icon">📋</div><div class="summary-card-title" data-i18n="tw.card2.title">월별 공시 기준</div><div class="summary-card-body" data-i18n="tw.card2.body">매월 국토교통부 기준에 따라 유류할증료를 산정하여 공시합니다.</div></div>
+    <div class="summary-card"><div class="summary-card-icon">🔗</div><div class="summary-card-title" data-i18n="tw.card3.title">공식 확인</div><div class="summary-card-body" data-i18n="tw.card3.body">정확한 금액은 twayair.com에서 반드시 확인하세요.</div></div>
+  </div>
+  <div class="seo-section-title" id="sectionTitle">📊 월별 유류할증료 공시 현황 (KRW 공시)</div>
   <div class="data-table-wrap">
     <table class="seo-tbl">
-      <thead><tr><th>구분</th><th>노선 예시</th><th>2026년 4월</th><th>2026년 5월</th><th>비고</th></tr></thead>
-      <tbody>
-        <tr><td>단거리</td><td>일본·중국·동남아</td><td style="color:var(--muted);font-size:12px;">공식 공지 확인 필요</td><td style="color:var(--muted);font-size:12px;">공식 공지 확인 필요</td><td style="font-size:11px;color:var(--muted);">업데이트 예정</td></tr>
-        <tr><td>장거리</td><td>미주·유럽·대양주</td><td style="color:var(--muted);font-size:12px;">공식 공지 확인 필요</td><td style="color:var(--muted);font-size:12px;">공식 공지 확인 필요</td><td style="font-size:11px;color:var(--muted);">업데이트 예정</td></tr>
-      </tbody>
+      <thead><tr id="tableHead"></tr></thead>
+      <tbody id="surchargeTableBody"></tbody>
     </table>
   </div>
-  <p style="font-size:11px;color:var(--muted);margin-top:-16px;margin-bottom:20px;">※ 정확한 금액은 공식 공지를 반드시 확인하세요.</p>
+  <p style="font-size:11px;color:var(--muted);margin-top:-16px;margin-bottom:20px;" id="tableFootnote">※ KRW 공시 기준, 편도 (USD 고지 금액을 평균 환율로 환산). 적용 기간: 2026.05.01~05.31 (발권일 기준). 출처: 티웨이항공 공식 공지(2026.04.21). 통화 선택 시 참고 환산값이 표시됩니다.</p>
+  <div class="affiliate-box hotelcombine-box">
+    <div class="affiliate-title" data-i18n="affiliate.hotel.title">✈️ 항공권·호텔 가격도 함께 비교하세요</div>
+    <div class="affiliate-desc"  data-i18n="affiliate.hotel.desc">유류할증료가 높아질수록 항공권 총액과 숙박비를 함께 확인하는 것이 중요합니다. 예약 전 항공권과 호텔 가격을 같이 비교해보세요.</div>
+    <a href="http://app.ac/xjCXQLa23" target="_blank" rel="noopener sponsored" class="affiliate-btn" data-i18n="affiliate.hotel.btn">항공권·호텔 가격 비교하기 →</a>
+  </div>
   <div class="official-link-box">
-    <div class="official-link-title">🔗 공식 유류할증료 공지 바로가기</div>
+    <div class="official-link-title" data-i18n="tw.officialTitle">🔗 공식 유류할증료 공지 바로가기</div>
     <div class="official-link-list">
-      <div class="official-link-item">✈️ 공식 사이트: <a href="https://www.twayair.com" target="_blank" rel="noopener">twayair.com 공식 공지 확인 ↗</a></div>
+      <div class="official-link-item">✈️ <span data-i18n="tw.officialSite">공식 사이트</span>: <a href="https://www.twayair.com" target="_blank" rel="noopener">twayair.com ↗</a></div>
     </div>
   </div>
   <div class="related-links">
-    <div class="related-title">🔗 관련 페이지</div>
+    <div class="related-title" data-i18n="tw.relatedTitle">🔗 관련 페이지</div>
     <div class="related-grid">
-      <a class="related-item" href="index.html">🔍 메인 유류할증료 조회</a>
-      <a class="related-item" href="airlines.html">✈️ 항공사별 유류할증료</a>
-      <a class="related-item" href="news.html">📰 유류할증료 뉴스</a>
-      <a class="related-item" href="fuel-surcharge-graph.html">📈 변동 그래프</a>
-      <a class="related-item" href="fuel-surcharge-calculator.html">🧮 계산 방법 안내</a>
-      <a class="related-item" href="fuel-surcharge-2026-05.html">📅 2026년 5월</a>
-      <a class="related-item" href="fuel-surcharge-2026-06-forecast.html">🔮 2026년 6월 전망</a>
-      <a class="related-item" href="fuel-surcharge-korea.html">🇰🇷 한국 출발 유류할증료</a>
-      <a class="related-item" href="fuel-surcharge-jinair.html">🟢 진에어</a>
+      <a class="related-item" href="index.html"                           data-i18n="tw.rel.main">🔍 메인 유류할증료 조회</a>
+      <a class="related-item" href="airlines.html"                        data-i18n="tw.rel.airlines">✈️ 항공사별 유류할증료</a>
+      <a class="related-item" href="news.html"                            data-i18n="tw.rel.news">📰 유류할증료 뉴스</a>
+      <a class="related-item" href="fuel-surcharge-graph.html"            data-i18n="tw.rel.graph">📈 변동 그래프</a>
+      <a class="related-item" href="fuel-surcharge-calculator.html"       data-i18n="tw.rel.calc">🧮 계산 방법 안내</a>
+      <a class="related-item" href="fuel-surcharge-2026-05.html"          data-i18n="tw.rel.may">📅 2026년 5월</a>
+      <a class="related-item" href="fuel-surcharge-2026-06-forecast.html" data-i18n="tw.rel.jun">🔮 2026년 6월 전망</a>
+      <a class="related-item" href="fuel-surcharge-korea.html"            data-i18n="tw.rel.korea">🇰🇷 한국 출발 유류할증료</a>
+      <a class="related-item" href="fuel-surcharge-jinair.html"                           data-i18n="tw.rel.other">🟢 진에어</a>
     </div>
   </div>
 </main>
 <footer style="background:var(--white);border-top:1px solid var(--line);padding:20px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;">
-  <p style="font-size:12px;color:var(--muted);max-width:600px;line-height:1.6;margin:0;">
+  <p style="font-size:12px;color:var(--muted);max-width:600px;line-height:1.6;margin:0;" data-i18n-html="tw.footer">
     표시된 유류할증료는 항공사 공식 공지 기반 참고용 정보입니다. 최종 금액은 항공사 공식 사이트 또는 발권처에서 반드시 확인하세요.<br>
     문의: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>
   </p>
   <nav style="display:flex;gap:16px;flex-wrap:wrap;">
-    <a href="about.html"   style="font-size:12px;color:var(--muted);text-decoration:none;">About</a>
-    <a href="privacy.html" style="font-size:12px;color:var(--muted);text-decoration:none;">Privacy Policy</a>
-    <a href="terms.html"   style="font-size:12px;color:var(--muted);text-decoration:none;">Terms of Service</a>
+    <a href="about.html"   style="font-size:12px;color:var(--muted);text-decoration:none;" data-i18n="footer.about">About</a>
+    <a href="privacy.html" style="font-size:12px;color:var(--muted);text-decoration:none;" data-i18n="footer.privacy">Privacy Policy</a>
+    <a href="terms.html"   style="font-size:12px;color:var(--muted);text-decoration:none;" data-i18n="footer.terms">Terms of Service</a>
   </nav>
 </footer>
 <script src="_shared.js"></script>
-<script>window.initNav({});</script>
+<script>
+/* ── i18n 등록 ── */
+(function(){
+  var D = {
+    ko:{
+      'tw.pageTitle':'🟢 티웨이항공 유류할증료',
+      'tw.pageSub':'TW — 월별 적용 금액 및 공식 공지 안내 (KRW 공시)',
+      'tw.h1':'티웨이항공 유류할증료',
+      'tw.notice':'상단의 언어·통화 선택에 따라 본문 표시 언어와 참고 환산 금액이 변경됩니다. 단, 실제 청구 기준 통화는 항공사 공식 공지를 우선합니다.',
+      'tw.intro':'티웨이항공(TW)은 한국 저비용항공사로, 매월 국제선 유류할증료를 공시합니다. 주로 동북아·동남아·호주 등 중단거리 노선을 운항합니다.',
+      'tw.card1.title':'중단거리 LCC',
+      'tw.card1.body':'일본·중국·동남아 등 중단거리 국제선을 운항합니다.',
+      'tw.card2.title':'월별 공시 기준',
+      'tw.card2.body':'매월 국토교통부 기준에 따라 유류할증료를 산정하여 공시합니다.',
+      'tw.card3.title':'공식 확인',
+      'tw.card3.body':'정확한 금액은 twayair.com에서 반드시 확인하세요.',
+      'tw.sectionTitle':'📊 월별 유류할증료 공시 현황 (KRW 공시)',
+      'tw.th.range':'구분/거리',
+      'tw.th.route':'노선 예시',
+      'tw.th.apr':'2026년 4월',
+      'tw.th.may':'2026년 5월',
+      'tw.th.diff':'변동',
+      'tw.footnote':'※ KRW 공시 기준, 편도 (USD 고지 금액을 평균 환율로 환산). 적용 기간: 2026.05.01~05.31 (발권일 기준). 출처: 티웨이항공 공식 공지(2026.04.21). 통화 선택 시 참고 환산값이 표시됩니다.',
+      'tw.officialTitle':'🔗 공식 유류할증료 공지 바로가기',
+      'tw.officialSite':'공식 사이트',
+      'tw.relatedTitle':'🔗 관련 페이지',
+      'tw.rel.main':'🔍 메인 유류할증료 조회',
+      'tw.rel.airlines':'✈️ 항공사별 유류할증료',
+      'tw.rel.news':'📰 유류할증료 뉴스',
+      'tw.rel.graph':'📈 변동 그래프',
+      'tw.rel.calc':'🧮 계산 방법 안내',
+      'tw.rel.may':'📅 2026년 5월',
+      'tw.rel.jun':'🔮 2026년 6월 전망',
+      'tw.rel.korea':'🇰🇷 한국 출발 유류할증료',
+      'tw.rel.other':'🟢 진에어',
+      'tw.footer':'표시된 유류할증료는 항공사 공식 공지 기반 참고용 정보입니다. 최종 금액은 항공사 공식 사이트 또는 발권처에서 반드시 확인하세요.<br>문의: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+    'affiliate.hotel.title': '✈️ 一起比较机票和酒店价格',
+    'affiliate.hotel.desc':  '当燃油附加费上涨时，同时确认机票总额和住宿费用更加重要。预订前可以一起比较机票和酒店价格。',
+    'affiliate.hotel.btn':   '比较机票和酒店价格 →',
+    'affiliate.hotel.title': '✈️ 航空券とホテル料金を一緒に比較しましょう',
+    'affiliate.hotel.desc':  '燃油サーチャージが高い時期は、航空券の総額と宿泊費を一緒に確認することが重要です。予約前に航空券とホテル料金を比較してみましょう。',
+    'affiliate.hotel.btn':   '航空券・ホテル料金を比較する →',
+    'affiliate.hotel.title': '✈️ Compare flight and hotel prices together',
+    'affiliate.hotel.desc':  'When fuel surcharges rise, it becomes more important to check both airfare totals and accommodation costs. Compare flight and hotel prices before booking.',
+    'affiliate.hotel.btn':   'Compare flights and hotels →',
+    'affiliate.hotel.title': '✈️ 항공권·호텔 가격도 함께 비교하세요',
+    'affiliate.hotel.desc':  '유류할증료가 높아질수록 항공권 총액과 숙박비를 함께 확인하는 것이 중요합니다. 예약 전 항공권과 호텔 가격을 같이 비교해보세요.',
+    'affiliate.hotel.btn':   '항공권·호텔 가격 비교하기 →',
+      'tw.metaTitle':'티웨이항공 유류할증료 조회 | TW 국제선 월별 공시 금액',
+      'tw.metaDesc':'티웨이항공 국제선 유류할증료의 월별 적용 금액과 공식 공지 정보를 확인할 수 있습니다.',
+      'tw.noService':'미운항',
+    },
+    en:{
+      'tw.pageTitle':'🟢 T\'way Air Fuel Surcharge',
+      'tw.pageSub':'TW — Monthly filing amounts & official notice (KRW filing)',
+      'tw.h1':'T\'way Air Fuel Surcharge',
+      'tw.notice':'Language and currency selections will change the display language and reference conversion amounts. Official billing currency follows the airline\'s formal filing.',
+      'tw.intro':'T\'way Air (TW) is a Korean LCC publishing international fuel surcharges monthly. Mainly operates short/medium-haul routes to Northeast and Southeast Asia.',
+      'tw.card1.title':'Mid-range LCC',
+      'tw.card1.body':'Operates international routes to Japan, China, Southeast Asia, and Australia.',
+      'tw.card2.title':'Monthly filing',
+      'tw.card2.body':'Surcharges are calculated and published monthly per Ministry of Land guidelines.',
+      'tw.card3.title':'Official confirmation',
+      'tw.card3.body':'Always confirm exact amounts at twayair.com.',
+      'tw.sectionTitle':'📊 Monthly Surcharge Filing (KRW filing)',
+      'tw.th.range':'Distance/Zone',
+      'tw.th.route':'Route examples',
+      'tw.th.apr':'Apr 2026',
+      'tw.th.may':'May 2026',
+      'tw.th.diff':'Change',
+      'tw.footnote':'※ KRW filing, one-way (USD-denominated amounts converted at average exchange rate). Period: 2026.05.01–05.31 (ticketing date). Source: T\'way Air official notice (2026.04.21).',
+      'tw.officialTitle':'🔗 Official Surcharge Announcement',
+      'tw.officialSite':'Official site',
+      'tw.relatedTitle':'🔗 Related pages',
+      'tw.rel.main':'🔍 Main surcharge search',
+      'tw.rel.airlines':'✈️ Airlines index',
+      'tw.rel.news':'📰 Surcharge news',
+      'tw.rel.graph':'📈 Trend graph',
+      'tw.rel.calc':'🧮 Calculation guide',
+      'tw.rel.may':'📅 May 2026',
+      'tw.rel.jun':'🔮 June 2026 forecast',
+      'tw.rel.korea':'🇰🇷 Korea-departure surcharge',
+      'tw.rel.other':'🟢 Jin Air',
+      'tw.footer':'Surcharge data shown is reference information based on official filings. Always confirm final amounts at the airline\'s official site.<br>Contact: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+      'tw.metaTitle':'T\'way Air Fuel Surcharge | TW International Monthly Filing',
+      'tw.metaDesc':'Check T\'way Air international fuel surcharge monthly amounts and official filing information.',
+      'tw.noService':'No service',
+    },
+    ja:{
+      'tw.pageTitle':'🟢 ティーウェイ航空 燃油サーチャージ',
+      'tw.pageSub':'TW — 月別適用金額・公式公示案内 (KRW公示)',
+      'tw.h1':'ティーウェイ航空 燃油サーチャージ',
+      'tw.notice':'言語・通貨の選択により、本文の表示言語と参考換算額が変わります。実際の請求通貨は航空会社の公式公示が優先されます。',
+      'tw.intro':'ティーウェイ航空(TW)は韓国のLCCで、毎月国際線燃油サーチャージを公示します。主に東北アジア・東南アジア・オーストラリア路線を運航します。',
+      'tw.card1.title':'中短距離LCC',
+      'tw.card1.body':'日本・中国・東南アジアなどの中短距離国際線を運航します。',
+      'tw.card2.title':'月別公示基準',
+      'tw.card2.body':'毎月、国土交通部基準に従いサーチャージを算定して公示します。',
+      'tw.card3.title':'公式確認',
+      'tw.card3.body':'正確な金額はtwayair.comで必ずご確認ください。',
+      'tw.sectionTitle':'📊 月別燃油サーチャージ公示 (KRW公示)',
+      'tw.th.range':'区間/距離',
+      'tw.th.route':'主要路線例',
+      'tw.th.apr':'2026年4月',
+      'tw.th.may':'2026年5月',
+      'tw.th.diff':'変動',
+      'tw.footnote':'※ KRW公示・片道基準（USD金額を平均為替レートで換算）。適用期間: 2026.05.01〜05.31（発券日基準）。出典: ティーウェイ航空公式公示(2026.04.21)。',
+      'tw.officialTitle':'🔗 公式燃油サーチャージ公示',
+      'tw.officialSite':'公式サイト',
+      'tw.relatedTitle':'🔗 関連ページ',
+      'tw.rel.main':'🔍 メイン検索',
+      'tw.rel.airlines':'✈️ 航空会社一覧',
+      'tw.rel.news':'📰 ニュース',
+      'tw.rel.graph':'📈 推移グラフ',
+      'tw.rel.calc':'🧮 計算方法',
+      'tw.rel.may':'📅 2026年5月',
+      'tw.rel.jun':'🔮 2026年6月予測',
+      'tw.rel.korea':'🇰🇷 韓国発サーチャージ',
+      'tw.rel.other':'🟢 ジンエアー',
+      'tw.footer':'表示されたサーチャージは参考情報です。最終金額は各航空会社の公式サイトまたは発券窓口でご確認ください。<br>お問い合わせ: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+      'tw.metaTitle':'ティーウェイ航空 燃油サーチャージ | TW 国際線月別公示',
+      'tw.metaDesc':'ティーウェイ航空の国際線燃油サーチャージの月別適用金額と公式公示情報を確認できます。',
+      'tw.noService':'運航なし',
+    },
+    zh:{
+      'tw.pageTitle':'🟢 德威航空燃油附加费',
+      'tw.pageSub':'TW — 月度适用金额及官方公告说明 (KRW公告)',
+      'tw.h1':'德威航空燃油附加费',
+      'tw.notice':'语言和货币选择将更改页面显示语言及参考换算金额。实际计费货币以航空公司官方公告为准。',
+      'tw.intro':'德威航空(TW)是韩国廉价航空，每月公告国际线燃油附加费。主要运营东北亚、东南亚、澳大利亚等中短途航线。',
+      'tw.card1.title':'中短途LCC',
+      'tw.card1.body':'主要运营日本、中国、东南亚等中短途国际线。',
+      'tw.card2.title':'每月公告标准',
+      'tw.card2.body':'每月依据国土交通部标准核算并公告燃油附加费。',
+      'tw.card3.title':'官方确认',
+      'tw.card3.body':'请务必在twayair.com确认准确金额。',
+      'tw.sectionTitle':'📊 月度燃油附加费公告 (KRW公告)',
+      'tw.th.range':'区间/距离',
+      'tw.th.route':'主要航线示例',
+      'tw.th.apr':'2026年4月',
+      'tw.th.may':'2026年5月',
+      'tw.th.diff':'变动',
+      'tw.footnote':'※ KRW公告，单程基准（USD金额按平均汇率换算）。适用期间: 2026.05.01~05.31（出票日基准）。来源: 德威航空官方公告(2026.04.21)。',
+      'tw.officialTitle':'🔗 官方燃油附加费公告',
+      'tw.officialSite':'官方网站',
+      'tw.relatedTitle':'🔗 相关页面',
+      'tw.rel.main':'🔍 主页查询',
+      'tw.rel.airlines':'✈️ 航空公司索引',
+      'tw.rel.news':'📰 附加费资讯',
+      'tw.rel.graph':'📈 趋势图',
+      'tw.rel.calc':'🧮 计算说明',
+      'tw.rel.may':'📅 2026年5月',
+      'tw.rel.jun':'🔮 2026年6月预测',
+      'tw.rel.korea':'🇰🇷 韩国出发附加费',
+      'tw.rel.other':'🟢 真航空',
+      'tw.footer':'所示燃油附加费为参考信息。最终金额请在航空公司官网或购票处确认。<br>联系: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
+      'tw.metaTitle':'德威航空燃油附加费 | TW国际线月度公告',
+      'tw.metaDesc':'查看德威航空国际线燃油附加费月度适用金额和官方公告信息。',
+      'tw.noService':'无运营',
+    }
+  };
+  if (!window.I18N) window.I18N = {};
+  ['ko','en','ja','zh'].forEach(function(l){
+    if (!window.I18N[l]) window.I18N[l] = {};
+    Object.keys(D[l]).forEach(function(k){ window.I18N[l][k] = D[l][k]; });
+  });
+})();
+
+/* ── 데이터 ── */
+var AIRLINE_PAGE_DATA = {
+  carrier:'TW', baseCurrency:'KRW', i18nPrefix:'tw',
+  rows:[
+    {rangeKo:"1군 (~600mi)",rangeEn:"Zone 1 (~600mi)",rangeJa:"1群 (~600mi)",rangeZh:"1区 (~600mi)",routeKo:"후쿠오카·오사카·상하이 등",routeEn:"Fukuoka · Osaka · Shanghai etc.",routeJa:"福岡・大阪・上海 等",routeZh:"福冈·大阪·上海 等",apr:30800,may:58600},
+    {rangeKo:"2군 (600~1,200mi)",rangeEn:"Zone 2 (600–1,200mi)",rangeJa:"2群 (600~1,200mi)",rangeZh:"2区 (600~1,200mi)",routeKo:"삿포로·타이베이·홍콩 등",routeEn:"Sapporo · Taipei · Hong Kong etc.",routeJa:"札幌・台北・香港 等",routeZh:"札幌·台北·香港 等",apr:54200,may:103600},
+    {rangeKo:"3군 (1,200~1,800mi)",rangeEn:"Zone 3 (1,200–1,800mi)",rangeJa:"3群 (1,200~1,800mi)",rangeZh:"3区 (1,200~1,800mi)",routeKo:"하노이·세부·클락·울란바타르 등",routeEn:"Hanoi · Cebu · Clark · Ulaanbaatar etc.",routeJa:"ハノイ・セブ・クラーク・ウランバートル 等",routeZh:"河内·宿务·克拉克·乌兰巴托 等",apr:67400,may:129100},
+    {rangeKo:"4군 (1,800~2,400mi)",rangeEn:"Zone 4 (1,800–2,400mi)",rangeJa:"4群 (1,800~2,400mi)",rangeZh:"4区 (1,800~2,400mi)",routeKo:"방콕·코타키나발루·람 등",routeEn:"Bangkok · Kota Kinabalu · Lam etc.",routeJa:"バンコク・コタキナバル・ラム 等",routeZh:"曼谷·亚庇·兰姆 等",apr:87900,may:168200},
+    {rangeKo:"5군 (2,400~4,000mi)",rangeEn:"Zone 5 (2,400–4,000mi)",rangeJa:"5群 (2,400~4,000mi)",rangeZh:"5区 (2,400~4,000mi)",routeKo:"싱가포르·발리·자카르타·비슈케크 등",routeEn:"Singapore · Bali · Jakarta · Bishkek etc.",routeJa:"シンガポール・バリ・ジャカルタ・ビシュケク 等",routeZh:"新加坡·巴厘岛·雅加达·比什凯克 等",apr:95200,may:180200},
+    {rangeKo:"6군 (4,000~5,000mi)",rangeEn:"Zone 6 (4,000–5,000mi)",rangeJa:"6群 (4,000~5,000mi)",rangeZh:"6区 (4,000~5,000mi)",routeKo:"미운항",routeEn:"No service",routeJa:"運航なし",routeZh:"无运営",apr:null,may:null},
+    {rangeKo:"7군 (5,000mi+)",rangeEn:"Zone 7 (5,000mi+)",rangeJa:"7群 (5,000mi+)",rangeZh:"7区 (5,000mi+)",routeKo:"시드니·자그레브·바르셀로나·로마·파리·밴쿠버 등",routeEn:"Sydney · Zagreb · Barcelona · Rome · Paris · Vancouver etc.",routeJa:"シドニー・ザグレブ・バルセロナ・ローマ・パリ・バンクーバー 等",routeZh:"悉尼·萨格勒布·巴塞罗那·罗马·巴黎·温哥华 等",apr:213900,may:406900},
+  ]
+};
+
+/* ── 공통 유틸 ── */
+function toKRW(amt, base) {
+  if (amt == null) return null;
+  if (base === 'KRW') return amt;
+  return Math.round(amt * ({USD:1480,JPY:10.1,EUR:1630}[base] || 1));
+}
+function fmtFS(amt, base) {
+  if (amt == null) return '—';
+  return window.fmtAmtDisplay(toKRW(amt, base), base, 1);
+}
+function fmtDiff(apr, may, base) {
+  if (apr == null || may == null) return '—';
+  return '+' + window.fmtAmtDisplay(toKRW(may - apr, base), base, 1);
+}
+
+/* ── 테이블 렌더 ── */
+function renderSurchargeTable() {
+  var lang = window.SHARED_STATE.lang || 'ko';
+  var thead = document.getElementById('tableHead');
+  var tbody = document.getElementById('surchargeTableBody');
+  if (!thead || !tbody) return;
+  var px = AIRLINE_PAGE_DATA.i18nPrefix;
+  thead.innerHTML = ['th.range','th.route','th.apr','th.may','th.diff'].map(function(k){
+    return '<th>' + window.t(px + '.' + k) + '</th>';
+  }).join('');
+  tbody.innerHTML = AIRLINE_PAGE_DATA.rows.map(function(r) {
+    var route = lang==='en'?r.routeEn : lang==='ja'?r.routeJa : lang==='zh'?r.routeZh : r.routeKo;
+    var rangeLabel = r.rangeKo !== undefined ? (lang==='en'?r.rangeEn : lang==='ja'?r.rangeJa : lang==='zh'?r.rangeZh : r.rangeKo) : r.range;
+    var aprCell = r.apr == null ? '<td>—</td>' : '<td>' + fmtFS(r.apr, AIRLINE_PAGE_DATA.baseCurrency) + '</td>';
+    var mayCell = r.may == null ? '<td><strong>—</strong></td>' : '<td><strong>' + fmtFS(r.may, AIRLINE_PAGE_DATA.baseCurrency) + '</strong></td>';
+    var diffCell = (r.apr == null || r.may == null)
+      ? '<td style="font-size:11px;color:var(--muted);">' + window.t(px + '.noService') + '</td>'
+      : '<td style="font-size:11px;color:var(--muted);">' + fmtDiff(r.apr, r.may, AIRLINE_PAGE_DATA.baseCurrency) + '</td>';
+    return '<tr><td>' + rangeLabel + '</td><td>' + route + '</td>' + aprCell + mayCell + diffCell + '</tr>';
+  }).join('');
+  var st = document.getElementById('sectionTitle');
+  if (st) st.textContent = window.t(px + '.sectionTitle');
+  var fn = document.getElementById('tableFootnote');
+  if (fn) fn.textContent = window.t(px + '.footnote');
+}
+
+function renderAirlinePage() {
+  if (window.applyLanguage) window.applyLanguage();
+  renderSurchargeTable();
+}
+
+window.initNav({
+  onLangChange: function() { renderAirlinePage(); },
+  onCurrChange: function()  { renderSurchargeTable(); },
+});
+renderAirlinePage();
+</script>
 </body>
 </html>
