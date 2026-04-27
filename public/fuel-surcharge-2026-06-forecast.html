@@ -121,6 +121,33 @@
 
   <div class="seo-intro" data-i18n="fore.intro"></div>
 
+  <!-- 시장 지표 표 -->
+  <div class="seo-section-title" data-i18n="fore.section.indicators">📊 2026년 6월 전망 참고 지표</div>
+  <div class="data-table-wrap" style="margin-bottom:20px;">
+    <table class="fore-tbl">
+      <thead id="indicatorThead"><!-- JS 렌더 --></thead>
+      <tbody id="indicatorTbody"><!-- JS 렌더 --></tbody>
+    </table>
+  </div>
+  <p style="font-size:11px;color:var(--muted);margin-top:-14px;margin-bottom:20px;" data-i18n="fore.indicator.footnote">※ 전망 수치는 2026.04.28 07:22 기준 참고용입니다. 확정 금액은 항공사 공식 채널에서 확인하세요.</p>
+
+  <!-- 6월 전망 판단 박스 (news.html 판단 기준 동일 패턴) -->
+  <div class="forecast-verdict-box" id="verdictBox"><!-- JS 렌더 --></div>
+
+  <!-- AI 예측 참고 지표 (news.html 동일 패턴) -->
+  <div class="predict-basis-box">
+    <div class="predict-basis-title">
+      <span style="font-size:18px">📊</span>
+      <span data-i18n="fore.predict.title">AI 예측 참고 지표 현황</span>
+      <span style="font-size:10px;font-weight:400;color:#7E57C2" data-i18n="fore.predict.subtitle">데이터 기반 추정</span>
+    </div>
+    <div class="predict-factor-grid" id="predictFactors"><!-- JS 렌더 --></div>
+    <div style="font-size:10px;color:#9C27B0;margin-top:10px;font-style:italic" data-i18n="fore.predict.footnote">* 5월 유류할증료는 공식 공지 기준 확정. 6월 전망은 시장 데이터 기반 참고용입니다.</div>
+  </div>
+
+  <!-- 예약 판단 가이드 -->
+  <div class="booking-guide-box" id="bookingGuideBox"><!-- JS 렌더 --></div>
+
   <!-- 핵심 요약 카드 (news.html 동일 패턴) -->
   <div class="news-summary-card" id="summaryCard"><!-- JS 렌더 --></div>
 
@@ -136,19 +163,6 @@
   <!-- 시장 브리핑 (news.html 동일 패턴) -->
   <div class="market-brief-box" id="marketBriefBox"><!-- JS 렌더 --></div>
 
-  <!-- 시장 지표 표 -->
-  <div class="seo-section-title" data-i18n="fore.section.indicators">📊 2026년 6월 전망 참고 지표</div>
-  <div class="data-table-wrap" style="margin-bottom:20px;">
-    <table class="fore-tbl">
-      <thead id="indicatorThead"><!-- JS 렌더 --></thead>
-      <tbody id="indicatorTbody"><!-- JS 렌더 --></tbody>
-    </table>
-  </div>
-  <p style="font-size:11px;color:var(--muted);margin-top:-14px;margin-bottom:20px;" data-i18n="fore.indicator.footnote">※ 전망 수치는 2026.04.28 07:22 기준 참고용입니다. 확정 금액은 항공사 공식 채널에서 확인하세요.</p>
-
-  <!-- 6월 전망 판단 박스 (news.html 판단 기준 동일 패턴) -->
-  <div class="forecast-verdict-box" id="verdictBox"><!-- JS 렌더 --></div>
-
   <!-- 호텔스컴바인 제휴 -->
   <div class="hotelcombine-box">
     <div class="hotelcombine-title" data-i18n="fore.hotel.title">✈️ 항공권·호텔 가격을 함께 비교하세요</div>
@@ -162,20 +176,6 @@
     <div class="klook-desc"  data-i18n="fore.klook.desc">유류할증료 부담이 큰 만큼, 현지 투어·액티비티 비용도 함께 확인하세요. 미리 파악해두면 전체 여행 예산 관리에 도움이 됩니다.</div>
     <a href="http://app.ac/JjCiEja23" target="_blank" rel="noopener sponsored" class="klook-btn" data-i18n="fore.klook.btn">여행 비용 줄이는 방법 보기 →</a>
   </div>
-
-  <!-- AI 예측 참고 지표 (news.html 동일 패턴) -->
-  <div class="predict-basis-box">
-    <div class="predict-basis-title">
-      <span style="font-size:18px">📊</span>
-      <span data-i18n="fore.predict.title">AI 예측 참고 지표 현황</span>
-      <span style="font-size:10px;font-weight:400;color:#7E57C2" data-i18n="fore.predict.subtitle">데이터 기반 추정</span>
-    </div>
-    <div class="predict-factor-grid" id="predictFactors"><!-- JS 렌더 --></div>
-    <div style="font-size:10px;color:#9C27B0;margin-top:10px;font-style:italic" data-i18n="fore.predict.footnote">* 5월 유류할증료는 공식 공지 기준 확정. 6월 전망은 시장 데이터 기반 참고용입니다.</div>
-  </div>
-
-  <!-- 예약 판단 가이드 -->
-  <div class="booking-guide-box" id="bookingGuideBox"><!-- JS 렌더 --></div>
 
   <!-- 유류할증료 결정 핵심 변수 -->
   <div class="key-vars-box">
