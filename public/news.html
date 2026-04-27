@@ -108,6 +108,18 @@
     .pg-btn.active{background:var(--blue);color:#fff;border-color:var(--blue);}
     .pg-btn:disabled{opacity:.38;cursor:default;}
     @media(max-width:400px){.pg-btn{padding:4px 8px;font-size:12px;min-width:28px;}}
+
+    /* NEW 배지 */
+    .new-badge{font-size:10px;font-weight:700;padding:2px 7px;border-radius:12px;background:#FFE4E6;color:#E11D48;border:1px solid #FDA4AF;}
+    /* 이전 뉴스 구분선 */
+    .prev-news-divider{background:#F8F9FA;border:1px solid var(--line);border-radius:10px;padding:10px 16px;margin:8px 0 12px;font-size:13px;}
+    .prev-news-divider-title{font-weight:700;color:var(--text);margin-bottom:2px;}
+    .prev-news-divider-sub{font-size:11px;color:var(--muted);}
+    /* 데이터 기준 배너 */
+    .data-ref-banner{background:#F0F4FF;border:1px solid #C7D7F5;border-radius:10px;padding:10px 16px;margin-bottom:14px;font-size:12px;}
+    .data-ref-notice{font-size:11px;color:#E65100;font-weight:600;margin-bottom:4px;}
+    .data-ref-time{font-size:12px;color:#1A3BB8;font-weight:700;margin-bottom:4px;}
+    .data-ref-summary{font-size:12px;color:var(--text2);}
   </style>
 </head>
 <body>
@@ -175,15 +187,14 @@
   <!-- [4] 핵심 요약 카드 -->
   <div class="summary-card">
     <div class="summary-card-title">📌 2026년 5월 핵심 요약</div>
-    <div class="summary-updated">🕐 2026.04.27 07:30 기준 시장 지표 반영</div>
+    <div class="summary-updated" data-i18n="fore.summary.updated">🕐 2026.04.28 07:22 기준 시장 지표 반영</div>
     <ul>
-      <li>5월 유류할증료는 주요 한국 출발 국제선 항공사 기준 공시 반영 완료</li>
-      <li>대한항공·아시아나·진에어·제주항공·이스타·에어서울·티웨이·에어프레미아 모두 4월 대비 인상 확정</li>
-      <li>브렌트유는 $86~89 / 배럴 구간에서 단기 반등 후 횡보</li>
-      <li>항공유/MOPS는 일부 조정 후 재상승 시도, 여전히 높은 구간</li>
-      <li>원달러 환율은 1,460~1,480원 구간으로 고환율 부담 지속</li>
-      <li>6월 유류할증료는 인하보다 동결 또는 제한적 상승 가능성이 우세</li>
-      <li>💡 핵심 신호: 하락 신호 없음 · 환율 부담 지속 · 여름 수요 반영 시작</li>
+      <li>5월 유류할증료는 주요 한국 출발 국제선 항공사 기준 인상 반영 완료</li>
+      <li>브렌트유는 약 $108~109 / 배럴 수준으로 상승 압력 확대</li>
+      <li>원달러 환율은 약 1,474원 수준으로 고환율 유지</li>
+      <li>항공유/MOPS는 511.21 cent/gal 수준으로 최고 단계 구간 유지</li>
+      <li>6월 유류할증료는 인하보다 동결 또는 추가 상승 가능성이 우세</li>
+      <li>💡 핵심 신호: 유가 상승 압력 · 고환율 유지 · 항공유 부담 지속 · 인하 신호 약함</li>
     </ul>
   </div>
 
@@ -220,12 +231,12 @@
   <!-- 시장 브리핑 -->
   <div class="market-brief-box">
     <div class="mb-title"   data-i18n="news.marketTitle">🌍 시장 브리핑</div>
-    <div class="mb-item"    data-i18n="news.brent">⛽ 브렌트유: $86~89 / 배럴 — 단기 반등 후 횡보</div>
-    <div class="mb-item"    data-i18n="news.fx">💱 원달러 환율: 1,460~1,480원 — 고점 대비 소폭 하락했지만 여전히 고환율</div>
-    <div class="mb-item"    data-i18n="news.mops">✈️ 항공유/MOPS: 고점 대비 일부 조정 후 재상승 시도, 여전히 높은 구간</div>
-    <div class="mb-item"    data-i18n="news.geo">🌍 지정학: 중동 리스크와 공급 불안 지속</div>
-    <div class="mb-summary" data-i18n="news.marketSummary">→ 유가가 급등하는 국면은 아니지만 환율과 항공유 가격이 높은 수준을 유지해 6월 유류할증료 인하 신호는 약한 구조</div>
-    <div class="mb-summary" style="margin-top:6px;color:#558B2F;" data-i18n="news.fxDominance">💡 핵심 신호: 하락 신호 없음 · 환율 부담 지속 · 여름 수요 반영 시작</div>
+    <div class="mb-item"    data-i18n="news.brent">⛽ 브렌트유: 약 $108~109 / 배럴 — 중동 리스크와 공급 불안으로 상승 압력 확대</div>
+    <div class="mb-item"    data-i18n="news.fx">💱 원달러 환율: 약 1,474원 — 고환율 구간 유지</div>
+    <div class="mb-item"    data-i18n="news.mops">✈️ 항공유/MOPS: 511.21 cent/gal — 최고 단계 구간 유지</div>
+    <div class="mb-item"    data-i18n="news.geo">🌍 지정학: 중동 리스크 및 공급 불안 지속</div>
+    <div class="mb-summary" data-i18n="news.marketSummary">→ 유가와 환율이 동시에 높은 구간에 있어 6월 유류할증료 인하 신호는 약한 구조</div>
+    <div class="mb-summary" style="margin-top:6px;color:#558B2F;" data-i18n="news.fxDominance">💡 핵심 신호: 인하보다 동결 또는 추가 상승 가능성 우세</div>
   </div>
 
   <!-- [5] Klook 제휴 — 하드코딩 텍스트로 키 노출 방지 (1차) -->
@@ -239,7 +250,7 @@
   <div style="background:#FFF8E1;border:1px solid #FFD54F;border-radius:12px;padding:14px 16px;margin-bottom:18px;font-size:13px;font-weight:600;color:#5D4037;">
     <span data-i18n="news.decisionTitle">📌 현재 판단 기준</span><br>
     <span data-i18n="news.decisionLine1">→ 5월은 주요 항공사 인상 반영 완료</span><br>
-    <span data-i18n="news.decisionLine2">→ 6월은 유가 안정에도 불구하고 환율 및 지정학 리스크로 상승 압력이 유지되는 구조</span><br><br>
+    <span data-i18n="news.decisionLine2">→ 6월은 유가·환율·항공유 부담이 동시에 남아 있어 인하를 단정하기 어려운 구조</span><br><br>
     <strong data-i18n="news.decisionShort">👉 단기 여행(1~2개월): 현재 공시 기준 총액 확인 후 예약 판단</strong><br>
     <strong data-i18n="news.decisionLong">👉 여유 있는 일정: 5월 중 6월 공시 추이 추가 확인 권장</strong>
   </div>
@@ -262,6 +273,13 @@
   <!-- [6] Klook 제휴 — 인라인 CTA 하드코딩 (2차) -->
   <div class="klook-inline">
     👉 <a href="http://app.ac/JjCiEja23" target="_blank" rel="noopener sponsored">여행 비용 줄이는 방법 보기</a>
+  </div>
+
+  <!-- 데이터 기준 배너 -->
+  <div class="data-ref-banner" id="dataRefBanner">
+    <div class="data-ref-notice" data-i18n="news.surchargeNote">※ 유류할증료는 예약 시점 기준으로 적용됩니다. 변동 전에 예약 여부를 반드시 확인하세요.</div>
+    <div class="data-ref-time" data-i18n="news.dataRef">🕐 데이터 기준: 2026.04.28 07:22</div>
+    <div class="data-ref-summary" data-i18n="news.curSummary">→ 6월 유류할증료는 인하보다 동결 또는 추가 상승 가능성 우세</div>
   </div>
 
   <!-- 필터 탭 -->
@@ -378,16 +396,16 @@ async function loadNews(){
    FORECAST_DATA feed 값이 오더라도 이 값으로 고정.
    ════════════════════════════════════════════════════════ */
 var TODAY_MARKET = {
-  brent:   '$86~89 / 배럴',
-  brentEn: '$86–89 / bbl',
-  fx:      '1,460~1,480원 (고환율 유지)',
-  fxEn:    'KRW 1,460–1,480 (still elevated)',
-  mops:    '고점 대비 일부 조정 후 재상승 시도, 여전히 높은 구간',
-  mopsEn:  'Attempting to rebound after a limited pullback, still elevated',
+  brent:   '약 $108~109 / 배럴',
+  brentEn: '~$108–109 / bbl',
+  fx:      '약 1,474원 (고환율 유지)',
+  fxEn:    '~KRW 1,474 (still elevated)',
+  mops:    '511.21 cent/gal, 최고 단계 구간 유지',
+  mopsEn:  '511.21 cent/gal, in highest-tier range',
   geo:     '중동 리스크와 공급 불안 지속',
   geoEn:   'Middle East risk and supply concerns remain',
-  outlook: '동결 또는 제한적 상승 가능성 우세',
-  outlookEn: 'Flat or limited increase likely'
+  outlook: '동결 또는 추가 상승 가능성 우세',
+  outlookEn: 'Flat or further increase likely'
 };
 
 /* ════════════════════════════════════════════════════════
@@ -912,6 +930,15 @@ var FIXED_NEWS_FALLBACK = {
     'news.fixed.20260427p4.tag1': '6월', 'news.fixed.20260427p4.tag2': '유류할증료 전망',
     'news.fixed.20260427p4.tag3': '항공권', 'news.fixed.20260427p4.tag4': '예약가이드',
 
+    /* ── 2026-04-28 최신 카드 ── */
+    'news.fixed.20260428.title':   '2026.04.28 유류할증료 시장 점검 — 인하보다 동결·상승 압력 우세',
+    'news.fixed.20260428.summary': '2026년 4월 28일 07:22 기준, 브렌트유는 약 $108~109 / 배럴 수준에서 상승 압력을 받고 있으며, 원달러 환율은 약 1,474원 수준으로 고환율 구간을 유지하고 있습니다. 항공유/MOPS는 511.21 cent/gal 수준으로 최고 단계 구간이 유지되며 항공사 비용 부담이 지속되고 있습니다. 유가·환율·항공유 가격이 동시에 높은 구간에 있어 6월 유류할증료는 인하보다 동결 또는 추가 상승 가능성이 우세합니다.',
+    'news.fixed.20260428.impact':  '6월 유류할증료는 인하보다 동결 또는 추가 상승 가능성이 우세합니다.',
+    'news.fixed.20260428.source':  '시장 데이터 기반 참고 분석 (2026.04.28)',
+    'news.fixed.20260428.tag1': '유류할증료 전망', 'news.fixed.20260428.tag2': '브렌트유',
+    'news.fixed.20260428.tag3': '환율',            'news.fixed.20260428.tag4': 'MOPS',
+    'news.fixed.20260428.tag5': '6월 유류할증료',
+
     /* ── 2026-04-21a: 이스타·에어서울 공시 확인 통합 ── */
     'news.fixed.20260421a.title':   '이스타항공·에어서울 5월 유류할증료 공시 확인',
     'news.fixed.20260421a.summary': '이스타항공(ZE)과 에어서울(RS)이 2026년 5월 적용 국제선 유류할증료를 공식 공지했습니다. 두 항공사 모두 4월 대비 전 구간 인상이 확인되었습니다. 적용 기간은 2026년 5월 1일~31일(발권일 기준)입니다.',
@@ -1362,11 +1389,29 @@ var FIXED_NEWS_FALLBACK = {
     'news.fixed.20260427p4.impact':  'Short-term travelers: check totals against current published rates. Flexible schedules: monitor June notices when published during May.',
     'news.fixed.20260427p4.source':  'Market data reference outlook (2026.04.27)',
     'news.fixed.20260427p4.tag1': 'June', 'news.fixed.20260427p4.tag2': 'surcharge outlook',
-    'news.fixed.20260427p4.tag3': 'airline ticket', 'news.fixed.20260427p4.tag4': 'booking guide'
+    'news.fixed.20260427p4.tag3': 'airline ticket', 'news.fixed.20260427p4.tag4': 'booking guide',
+
+    /* ── 2026-04-28 latest card ── */
+    'news.fixed.20260428.title':   '2026.04.28 Fuel Surcharge Market Update — Flat/Increase More Likely Than a Cut',
+    'news.fixed.20260428.summary': 'As of April 28, 2026 07:22, Brent crude is under upward pressure around $108–109/bbl, and USD/KRW remains around KRW 1,474 in an elevated range. Jet fuel/MOPS stays at 511.21 cent/gal in the highest-tier band, sustaining airline cost pressure. With oil, FX, and jet fuel all elevated simultaneously, a June surcharge freeze or further increase is more likely than a cut.',
+    'news.fixed.20260428.impact':  'June surcharge: flat or further increase more likely than a cut.',
+    'news.fixed.20260428.source':  'Market data reference analysis (2026.04.28)',
+    'news.fixed.20260428.tag1': 'Surcharge Outlook', 'news.fixed.20260428.tag2': 'Brent Crude',
+    'news.fixed.20260428.tag3': 'FX Rate',           'news.fixed.20260428.tag4': 'MOPS',
+    'news.fixed.20260428.tag5': 'June Surcharge'
   }
 };
 
 var FIXED_NEWS = [
+  /* ── 2026-04-28 최신 시장 점검 카드 (NEW) ── */
+  {category:'market', priority:1, date:'2026-04-28', aiSummary:true, isNew:true,
+   titleKey:'news.fixed.20260428.title', summaryKey:'news.fixed.20260428.summary',
+   impactKey:'news.fixed.20260428.impact', sourceNameKey:'news.fixed.20260428.source',
+   tagKeys:['news.fixed.20260428.tag1','news.fixed.20260428.tag2',
+            'news.fixed.20260428.tag3','news.fixed.20260428.tag4',
+            'news.fixed.20260428.tag5'],
+   relevanceScore:1.0},
+
   /* ── 2026-04-27 시장 점검 카드뉴스 시리즈 ── */
   {category:'market',  priority:1, date:'2026-04-27', aiSummary:true,
    titleKey:'news.fixed.20260427p1.title', summaryKey:'news.fixed.20260427p1.summary',
@@ -1717,6 +1762,7 @@ function renderNews(){
       +'<div class="news-meta">'
       +'<span class="cat-badge '+catCls+'">'+catIcon+' '+catLabel+'</span>'
       +(it.aiSummary?'<span class="ai-summary-tag">🤖 '+aiSummaryBadge+'</span>':'')
+      +(it.isNew?'<span class="new-badge">'+(window.t('news.newBadge')||'NEW')+'</span>':'')
       +'<span class="news-date">'+it.date+'</span>'
       +'<div class="relevance-bar">'+dots+'</div>'
       +'</div>'
@@ -1727,7 +1773,26 @@ function renderNews(){
       +'</div>';
   }
 
-  document.getElementById('newsList').innerHTML = (currentPage===1 ? disclaimer : '') + pageItems.map(renderCard).join('');
+  /* 최신(isNew) 카드와 이전 카드 사이에 구분선 삽입 */
+  var latestHtml = '';
+  var prevHtml = '';
+  var dividerInserted = false;
+  var dividerHtml = '';
+  if(currentPage === 1){
+    var sectionTitle = window.t('news.sectionPrev') || '📚 이전 뉴스 / 이전 분석 기록';
+    var sectionSub   = window.t('news.sectionPrevSub') || '※ 아래 내용은 각 작성 시점 기준의 시장 분석 기록입니다.';
+    dividerHtml = '<div class="prev-news-divider"><div class="prev-news-divider-title">'+sectionTitle+'</div><div class="prev-news-divider-sub">'+sectionSub+'</div></div>';
+  }
+  var cardsHtml = '';
+  for(var ci=0; ci<pageItems.length; ci++){
+    var item = pageItems[ci];
+    if(!item.isNew && !dividerInserted && currentPage===1){
+      cardsHtml += dividerHtml;
+      dividerInserted = true;
+    }
+    cardsHtml += renderCard(item);
+  }
+  document.getElementById('newsList').innerHTML = (currentPage===1 ? disclaimer : '') + cardsHtml;
   renderPagination(totalPages, filtered.length);
 }
 
