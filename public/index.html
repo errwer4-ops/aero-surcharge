@@ -640,7 +640,7 @@ function getAirlineName(metaEntry) {
    range 포맷: "min-max" (미만) 또는 "N+" (이상), inRange() 호환
 ════════════════════════════════════════════════════════════════ */
 var _OFFICIAL_AMT = {
-  KE: { rows: [
+  KE: { currency:'KRW', rows: [
     { range:'0-499',    label:'~499mi',        apr: 42000, may:  75000 },
     { range:'500-999',  label:'500~999mi',      apr: 57000, may: 102000 },
     { range:'1000-1499',label:'1,000~1,499mi',  apr: 78000, may: 144000 },
@@ -651,7 +651,7 @@ var _OFFICIAL_AMT = {
     { range:'5000-6499',label:'5,000~6,499mi',  apr:276000, may: 501000 },
     { range:'6500+',    label:'6,500mi~',       apr:303000, may: 564000 }
   ]},
-  OZ: { rows: [
+  OZ: { currency:'KRW', rows: [
     { range:'0-499',    label:'~499mi',        apr: 43900, may:  85400 },
     { range:'500-999',  label:'500~999mi',      apr: 65900, may: 125800 },
     { range:'1000-1499',label:'1,000~1,499mi',  apr: 86400, may: 164700 },
@@ -671,13 +671,12 @@ var _OFFICIAL_AMT = {
     { range:'2500+',    label:'2,500mi~',       apr:  68, may: 126 }
   ]},
   LJ: { currency:'USD', rows: [
-    { range:'0-599',    label:'~599mi',        apr:  25, may:  42 },
+    { range:'0-599',    label:'1~599mi',        apr:  25, may:  42 },
     { range:'600-1199', label:'600~1,199mi',    apr:  35, may:  66 },
     { range:'1200-1799',label:'1,200~1,799mi',  apr:  58, may: 107 },
     { range:'1800-2399',label:'1,800~2,399mi',  apr:  63, may: 117 },
-    { range:'2400+',    label:'2,400mi~',       apr:  76, may: 140 }
+    { range:'2400-3599',label:'2,400~3,599mi',  apr:  76, may: 140 }
   ]},
-  /* ── 이스타항공 (ZE): 7C와 동일한 LCC USD 구조, 군 기반 거리 band ── */
   ZE: { currency:'USD', rows: [
     { range:'0-499',    label:'1군 (~499mi)',       apr:  29, may:  52 },
     { range:'500-999',  label:'2군 (500~999mi)',     apr:  37, may:  66 },
@@ -686,21 +685,14 @@ var _OFFICIAL_AMT = {
     { range:'2000-2499',label:'5군 (2,000~2,499mi)',apr:  60, may: 107 },
     { range:'2500+',    label:'6군 (2,500mi~)',      apr:  68, may: 126 }
   ]},
-  /* ── 에어서울 (RS): KRW 기반, 에어서울 전용 거리 band (마일 기준) ──
-       PDF 원본 구간: 300~700mi / 700~1,100mi / 1,100~1,500mi /
-                      1,500~1,900mi / 1,900~2,300mi
-       ※ inRange() 포맷: "min-max"는 min이상 max미만(미만 처리)
-          PDF는 "300~700 미만" 방식 → 300-700 / 700-1100 / 1100-1500 / 1500-1900 / 1900-2300
-  ── */
-  RS: { rows: [
+  RS: { currency:'KRW', rows: [
     { range:'300-700',  label:'300~699mi',        apr:  46800, may:  94500 },
     { range:'700-1100', label:'700~1,099mi',       apr:  54100, may: 109500 },
     { range:'1100-1500',label:'1,100~1,499mi',     apr:  68700, may: 141000 },
     { range:'1500-1900',label:'1,500~1,899mi',     apr:  77500, may: 153000 },
     { range:'1900-2300',label:'1,900~2,299mi',     apr:  80500, may: 165000 }
   ]},
-  /* ── 티웨이항공 (TW): KRW 기반, 군 기반 거리 band ── */
-  TW: { rows: [
+  TW: { currency:'KRW', rows: [
     { range:'0-600',    label:'1군 (~600mi)',        apr:  30800, may:  58600 },
     { range:'600-1200', label:'2군 (600~1,200mi)',   apr:  54200, may: 103600 },
     { range:'1200-1800',label:'3군 (1,200~1,800mi)', apr:  67400, may: 129100 },
@@ -708,13 +700,6 @@ var _OFFICIAL_AMT = {
     { range:'2400-4000',label:'5군 (2,400~4,000mi)', apr:  95200, may: 180200 },
     { range:'5000+',    label:'7군 (5,000mi~)',       apr: 213900, may: 406900 }
   ]},
-  /* ── 에어프레미아 (YP): USD 공시, 거리구간 band
-       4월 공지: 2026년 3월 24일 게시 / 5월 공지: 2026년 4월 24일 게시
-       노선 예시 — ~999mi: 인천-나리타, 1,000~1,499mi: 인천-홍콩,
-                  1,500~1,999mi: 인천-다낭, 2,000~2,499mi: 인천-방콕,
-                  4,000~4,999mi: 인천-호놀룰루, 5,000~6,499mi: 인천-LAX·SFO,
-                  6,500mi~: 인천-워싱턴D.C.·뉴욕
-  ── */
   YP: { currency:'USD', rows: [
     { range:'0-999',    label:'~999mi',              apr:  32, may:  59 },
     { range:'1000-1499',label:'1,000~1,499mi',        apr:  42, may:  78 },
@@ -725,6 +710,224 @@ var _OFFICIAL_AMT = {
     { range:'6500+',    label:'6,500mi~',             apr: 194, may: 365 }
   ]}
 };
+
+/* ════════════════════════════════════════════════════════════════
+   공식 노선 맵 — PDF 공시 기준 (dep-arr IATA 코드)
+   KE/OZ는 거리기반이므로 routeMap 없이 miles 계산 사용
+════════════════════════════════════════════════════════════════ */
+var OFFICIAL_ROUTE_MAP = {
+  /* ── 대한항공 (KE) ── PDF 공시 기준 (주요 노선) ── */
+  KE: {
+    'ICN-SHE':'0-499','ICN-TAO':'0-499','ICN-DLC':'0-499','ICN-YNJ':'0-499','ICN-FUK':'0-499',
+    'ICN-PVG':'500-999','ICN-PEK':'500-999','ICN-TSN':'500-999','ICN-HGH':'500-999',
+    'ICN-NKG':'500-999','ICN-NGO':'500-999','ICN-NRT':'500-999','ICN-KIX':'500-999',
+    'ICN-TPE':'500-999','ICN-CTS':'500-999','ICN-OKA':'500-999',
+    'GMP-HND':'500-999','PUS-NRT':'500-999',
+    'ICN-CAN':'1000-1499','ICN-XIY':'1000-1499','ICN-SZX':'1000-1499',
+    'ICN-HKG':'1000-1499','ICN-ULN':'1000-1499','ICN-MFM':'1000-1499',
+    'ICN-MNL':'1500-1999','ICN-HAN':'1500-1999','ICN-CEB':'1500-1999','ICN-DAD':'1500-1999',
+    'ICN-BKK':'2000-2999','ICN-SIN':'2000-2999','ICN-RGN':'2000-2999','ICN-KUL':'2000-2999',
+    'ICN-PNH':'2000-2999','ICN-SGN':'2000-2999','ICN-GUM':'2000-2999','ICN-DEL':'2000-2999',
+    'ICN-KTM':'2000-2999','ICN-CNX':'2000-2999','ICN-HKT':'2000-2999','ICN-NHA':'2000-2999',
+    'ICN-CGK':'3000-3999','ICN-DPS':'3000-3999',
+    'ICN-SVO':'4000-4999','ICN-DXB':'4000-4999','ICN-HNL':'4000-4999',
+    'ICN-BNE':'4000-4999','ICN-IST':'4000-4999',
+    'ICN-LHR':'5000-6499','ICN-LAX':'5000-6499','ICN-LAS':'5000-6499','ICN-YVR':'5000-6499',
+    'ICN-SFO':'5000-6499','ICN-SYD':'5000-6499','ICN-SEA':'5000-6499','ICN-AMS':'5000-6499',
+    'ICN-CDG':'5000-6499','ICN-FRA':'5000-6499','ICN-MXP':'5000-6499','ICN-VIE':'5000-6499',
+    'ICN-FCO':'5000-6499','ICN-BUD':'5000-6499','ICN-PRG':'5000-6499','ICN-MAD':'5000-6499',
+    'ICN-LIS':'5000-6499','ICN-AKL':'5000-6499','ICN-MEL':'5000-6499',
+    'ICN-JFK':'6500+','ICN-DFW':'6500+','ICN-BOS':'6500+','ICN-ORD':'6500+',
+    'ICN-ATL':'6500+','ICN-IAD':'6500+','ICN-YYZ':'6500+'
+  },
+  /* ── 아시아나항공 (OZ) ── PDF 공시 기준 (주요 노선) ── */
+  OZ: {
+    'ICN-FUK':'0-499','ICN-OIT':'0-499',
+    'ICN-NRT':'500-999','ICN-KIX':'500-999','ICN-OKA':'500-999',
+    'ICN-PVG':'500-999','ICN-PEK':'500-999','ICN-TPE':'500-999',
+    'ICN-CTS':'500-999','ICN-NGO':'500-999',
+    'GMP-HND':'500-999',
+    'ICN-HKG':'1000-1499','ICN-CAN':'1000-1499','ICN-ULN':'1000-1499','ICN-MFM':'1000-1499',
+    'ICN-MNL':'1500-1999','ICN-HAN':'1500-1999','ICN-DAD':'1500-1999','ICN-CEB':'1500-1999',
+    'ICN-BKK':'2000-2499','ICN-KUL':'2000-2499','ICN-CNX':'2000-2499',
+    'ICN-SGN':'2000-2499','ICN-DEL':'2000-2499','ICN-GUM':'2000-2499',
+    'ICN-SIN':'2500-2999','ICN-KTM':'2500-2999','ICN-HKT':'2500-2999',
+    'ICN-CGK':'3000-3999',
+    'ICN-DXB':'4000-4999','ICN-HNL':'4000-4999',
+    'ICN-LAX':'5000+','ICN-JFK':'5000+','ICN-FRA':'5000+',
+    'ICN-CDG':'5000+','ICN-LHR':'5000+','ICN-SYD':'5000+',
+    'ICN-YVR':'5000+','ICN-SEA':'5000+','ICN-IAD':'5000+','ICN-YYZ':'5000+'
+  },
+  /* ── 진에어 (LJ) ── */
+  LJ: {
+    'CJU-PVG':'0-599','ICN-PVG':'0-599','ICN-FUK':'0-599','PUS-FUK':'0-599',
+    'ICN-KIX':'0-599','PUS-KIX':'0-599',
+    'PUS-NGO':'0-599',
+    'ICN-OKA':'600-1199','PUS-OKA':'600-1199',
+    'ICN-NRT':'600-1199','PUS-NRT':'600-1199',
+    'ICN-NGO':'600-1199',
+    'ICN-CTS':'600-1199','PUS-CTS':'600-1199',
+    'ICN-TPE':'600-1199','PUS-TPE':'600-1199','CJU-TPE':'600-1199',
+    'ICN-TXG':'600-1199','PUS-TXG':'600-1199',
+    'CJJ-CGO':'600-1199',
+    'CJU-HKG':'600-1199',
+    'ICN-CRK':'1200-1799','PUS-CRK':'1200-1799',
+    'PUS-CEB':'1200-1799',
+    'PUS-GUM':'1200-1799',
+    'PUS-ULN':'1200-1799','ICN-ULN':'1200-1799',
+    'ICN-DAD':'1800-2399','PUS-DAD':'1800-2399',
+    'ICN-CEB':'1800-2399',
+    'ICN-TAG':'1800-2399',
+    'ICN-GUM':'1800-2399',
+    'ICN-HKT':'2400-3599'
+  },
+
+  /* ── 티웨이항공 (TW) ── */
+  TW: {
+    'ICN-FUK':'0-600','TAE-FUK':'0-600','CJJ-FUK':'0-600','PUS-FUK':'0-600','CJU-FUK':'0-600',
+    'ICN-KIX':'0-600','TAE-KIX':'0-600','PUS-KIX':'0-600','CJU-KIX':'0-600','CJJ-KIX':'0-600',
+    'ICN-KMJ':'0-600','TAE-KMJ':'0-600',
+    'ICN-OIT':'0-600','TAE-OIT':'0-600','PUS-OIT':'0-600',
+    'ICN-SHA':'0-600','ICN-PVG':'0-600','TAE-PVG':'0-600',
+    'ICN-YNJ':'0-600','CJJ-YNJ':'0-600','TAE-YNJ':'0-600',
+    'ICN-NRT':'600-1200','TAE-NRT':'600-1200',
+    'ICN-NGO':'600-1200','TAE-NGO':'600-1200',
+    'ICN-OKA':'600-1200','TAE-OKA':'600-1200',
+    'ICN-CTS':'600-1200','TAE-CTS':'600-1200','PUS-CTS':'600-1200',
+    'GMP-TPE':'600-1200','ICN-TPE':'600-1200','TAE-TPE':'600-1200',
+    'PUS-TPE':'600-1200','CJU-TPE':'600-1200','CJJ-TPE':'600-1200',
+    'ICN-TXG':'600-1200','PUS-TXG':'600-1200',
+    'ICN-HKG':'600-1200','TAE-HKG':'600-1200','PUS-HKG':'600-1200',
+    'ICN-MFM':'600-1200','CJU-HKG':'600-1200','CJU-MFM':'600-1200',
+    'ICN-VVO':'600-1200',
+    'ICN-HAN':'1200-1800','TAE-HAN':'1200-1800','PUS-HAN':'1200-1800',
+    'ICN-CEB':'1200-1800','TAE-CEB':'1200-1800',
+    'ICN-CRK':'1200-1800','TAE-CRK':'1200-1800',
+    'ICN-ULN':'1200-1800','TAE-ULN':'1200-1800','CJJ-ULN':'1200-1800',
+    'ICN-DAD':'1800-2400','TAE-DAD':'1800-2400','CJJ-DAD':'1800-2400',
+    'ICN-BKK':'1800-2400','TAE-BKK':'1800-2400','CJJ-BKK':'1800-2400',
+    'ICN-CNX':'1800-2400','TAE-CNX':'1800-2400','PUS-CNX':'1800-2400',
+    'ICN-SGN':'1800-2400',
+    'ICN-HKT':'2400-4000',
+    'ICN-SIN':'2400-4000','CJU-SIN':'2400-4000',
+    'ICN-DPS':'2400-4000','CJJ-DPS':'2400-4000',
+    'ICN-BIS':'2400-4000','ICN-TAS':'2400-4000',
+    'ICN-SYD':'5000+','ICN-ZAG':'5000+','ICN-BCN':'5000+',
+    'ICN-FCO':'5000+','ICN-CDG':'5000+','ICN-FRA':'5000+','ICN-YVR':'5000+'
+  },
+
+  /* ── 이스타항공 (ZE) ── */
+  ZE: {
+    'ICN-FUK':'0-499','PUS-FUK':'0-499','PUS-KIX':'0-499','PUS-KMJ':'0-499',
+    'CJU-PVG':'0-499','CJJ-YNJ':'0-499',
+    'ICN-NRT':'500-999','ICN-KIX':'500-999','ICN-OKA':'500-999','PUS-OKA':'500-999',
+    'GMP-TPE':'500-999','ICN-TPE':'500-999','CJJ-TPE':'500-999',
+    'CJU-TPE':'500-999','PUS-TPE':'500-999','PUS-YNJ':'500-999',
+    'ICN-PVG':'500-999','CJJ-PVG':'500-999',
+    'ICN-HKG':'1000-1499','CJJ-DYG':'1000-1499',
+    'ICN-DAD':'1500-1999',
+    'ICN-BKK':'2000-2499','ICN-CNX':'2000-2499','PUS-CNX':'2000-2499',
+    'ICN-NHA':'2000-2499','ICN-HKT':'2000-2499','PUS-HKT':'2000-2499',
+    'ICN-SGN':'2000-2499','PUS-SGN':'2000-2499',
+    'ICN-ALA':'2500+','PUS-ALA':'2500+'
+  },
+
+  /* ── 에어서울 (RS) ── */
+  RS: {
+    'ICN-FUK':'300-700','ICN-KIX':'300-700','ICN-OKA':'300-700',
+    'ICN-NRT':'700-1100',
+    'ICN-DYG':'1100-1500',
+    'ICN-DAD':'1500-1900',
+    'ICN-NHA':'1900-2300','ICN-GUM':'1900-2300'
+  },
+
+  /* ── 에어프레미아 (YP) ── */
+  YP: {
+    'ICN-NRT':'0-999',
+    'ICN-HKG':'1000-1499',
+    'ICN-DAD':'1500-1999',
+    'ICN-BKK':'2000-2499',
+    'ICN-HNL':'4000-4999',
+    'ICN-LAX':'5000-6499',
+    'ICN-SFO':'5000-6499',
+    'ICN-IAD':'6500+',
+    'ICN-JFK':'6500+'
+  },
+  /* ── 제주항공 (7C) ── PDF 공시 기준 (4월/5월) ── */
+  "7C": {
+    /* 0~499mi: 후쿠오카, 오사카(부산발), 마쓰야마, 오이타, 히로시마, 가고시마, 나가사키,
+                웨이하이, 옌타이, 엔지, 칭다오, 난통, 상하이(푸동) */
+    'ICN-FUK':'0-499', 'PUS-FUK':'0-499',
+    'PUS-KIX':'0-499',
+    'ICN-MYJ':'0-499',
+    'ICN-OIT':'0-499', 'PUS-OIT':'0-499',
+    'ICN-HIJ':'0-499',
+    'ICN-KOJ':'0-499',
+    'ICN-NGS':'0-499',
+    'ICN-WEH':'0-499',
+    'ICN-YNT':'0-499',
+    'ICN-YNJ':'0-499',
+    'ICN-TAO':'0-499',
+    'ICN-NTG':'0-499', /* 난통 NTG */
+    'ICN-PVG':'0-499', 'CJU-PVG':'0-499',
+    /* 500~999mi: 오사카(인천/김포발), 도쿄, 삿포로, 오키나와, 나고야,
+                  시즈오카, 하코다테, 하얼빈, 타이베이, 베이징 */
+    'ICN-KIX':'500-999', 'GMP-KIX':'500-999',
+    'ICN-NRT':'500-999', 'GMP-NRT':'500-999',
+    'ICN-CTS':'500-999',
+    'ICN-OKA':'500-999',
+    'ICN-NGO':'500-999',
+    'ICN-FSZ':'500-999', /* 시즈오카 FSZ */
+    'ICN-HKD':'500-999', /* 하코다테 HKD */
+    'ICN-HRB':'500-999', /* 하얼빈 HRB */
+    'ICN-TPE':'500-999', 'GMP-TPE':'500-999',
+    'ICN-PEK':'500-999',
+    /* 1000~1499mi: 홍콩, 마카오, 가오슝, 울란바타르, 장자제, 시안(제주발), 구이린, 클락(부산발) */
+    'ICN-HKG':'1000-1499', 'CJU-HKG':'1000-1499',
+    'ICN-MFM':'1000-1499',
+    'ICN-KHH':'1000-1499',
+    'ICN-ULN':'1000-1499',
+    'ICN-DYG':'1000-1499', /* 장자제 DYG */
+    'CJU-XIY':'1000-1499', /* 시안 제주발 */
+    'ICN-KWL':'1000-1499', /* 구이린 KWL */
+    'PUS-CRK':'1000-1499',
+    /* 1500~1999mi: 마닐라, 세부, 클락, 보홀, 하노이, 다낭, 비엔티안, 괌(부산발), 사이판 */
+    'ICN-MNL':'1500-1999',
+    'ICN-CEB':'1500-1999',
+    'ICN-CRK':'1500-1999',
+    'ICN-TAG':'1500-1999', /* 보홀 TAG */
+    'ICN-HAN':'1500-1999',
+    'ICN-DAD':'1500-1999',
+    'ICN-VTE':'1500-1999', /* 비엔티안 VTE */
+    'PUS-GUM':'1500-1999',
+    'ICN-SPN':'1500-1999', /* 사이판 SPN */
+    /* 2000~2499mi: 방콕, 치앙마이, 달랏, 나트랑, 호찌민, 푸쿠옥, 코타키나발루, 괌(인천발) */
+    'ICN-BKK':'2000-2499',
+    'ICN-CNX':'2000-2499',
+    'ICN-DLI':'2000-2499', /* 달랏 DLI */
+    'ICN-NHA':'2000-2499',
+    'ICN-SGN':'2000-2499',
+    'ICN-PQC':'2000-2499', /* 푸쿠옥 PQC */
+    'ICN-BKI':'2000-2499',
+    'ICN-GUM':'2000-2499',
+    /* 2500+mi: 싱가포르, 덴파사르(발리), 바탐 */
+    'ICN-SIN':'2500+',
+    'ICN-DPS':'2500+',
+    'ICN-BTH':'2500+' /* 바탐 BTH */
+  }
+};
+
+/* route map에서 해당 노선의 구간 찾기 */
+function findOfficialRouteBand(code, dep, arr) {
+  var rm = OFFICIAL_ROUTE_MAP[code];
+  if (!rm) return null;
+  return rm[dep+'-'+arr] || rm[arr+'-'+dep] || null;
+}
+
+/* 항공사가 해당 노선을 운항하는지 확인 — 반드시 routeMap 기준 */
+function airlineServesRoute(code, dep, arr) {
+  return findOfficialRouteBand(code, dep, arr) !== null;
+}
 
 /* 최소 변동률 계산 (랜딩 배지용) */
 function _calcMinRate(code){
@@ -894,7 +1097,7 @@ function getCardData(code,dep,arr,miles){
  * CASE 3 (일반 feed — 기타 항공사 fallback):
  *   feed 5월 데이터가 있으면 비교, 없으면 단열
  * ═══════════════════════════════════════════════════════════════ */
-function buildOfficialSection(cd, al, miles, isRT){
+function buildOfficialSection(cd, al, miles, isRT, dep, arr){
   var mult = isRT ? 2 : 1;
 
   /* 금액 포맷 헬퍼 */
@@ -937,8 +1140,20 @@ function buildOfficialSection(cd, al, miles, isRT){
       return mi>=parseInt(p[0]) && mi<parseInt(p[1]);
     }
 
+    /* routeMap에서 band 확정 — routeMap이 없는 경우 miles fallback (KE/OZ도 이제 routeMap 보유) */
+    var routeBand = (function(){
+      if(!dep || !arr || typeof OFFICIAL_ROUTE_MAP === 'undefined') return null;
+      var rm = OFFICIAL_ROUTE_MAP[al.code];
+      if(!rm) return null;
+      var kr1 = dep+'-'+arr, kr2 = arr+'-'+dep;
+      return rm[kr1] || rm[kr2] || null;
+    })();
+
+    /* routeBand가 있으면 해당 행만 하이라이트/표시, 없으면 miles fallback (routeMap 없는 항공사용) */
     var rows = offData.rows.map(function(r){
-      var isMatch = miles!=null && matchRange(r.range, miles);
+      var isMatch = routeBand
+        ? (r.range === routeBand)
+        : (miles!=null && matchRange(r.range, miles));
       var cls    = isMatch ? ' highlighted' : '';
       var badge  = isMatch ? '<span class="route-highlight-badge">'+window.t('index.card.currentRoute')+'</span>' : '';
 
@@ -1163,7 +1378,7 @@ function buildCard(al, dep, arr, miles, isRT, idx){
   }
 
   var cd=getCardData(al.code,dep,arr,miles);
-  var officialHtml=buildOfficialSection(cd,al,miles,isRT);
+  var officialHtml=buildOfficialSection(cd,al,miles,isRT,dep,arr);
 
   var srcHtml=noticeUrl
     ?'<a class="source-link" href="'+noticeUrl+'" target="_blank" rel="noopener">'+window.t('index.card.miniNotice')+'</a>'
@@ -1261,15 +1476,18 @@ document.getElementById('searchBtn').addEventListener('click',function(){
 function renderCards(f){
   var ctx=window._searchCtx||{};
   var dep=ctx.dep,arr=ctx.arr,miles=ctx.miles||2000,isRT=ctx.isRT;
+
   var list=KR_AIRLINES.filter(function(al){
+    if(!dep||!arr) return false;
+    var rc=window.checkRouteSupport(al.code,dep,arr);
+    if(!rc.operates) return false;
     if(f==='data'){
-      var rc=dep&&arr?window.checkRouteSupport(al.code,dep,arr):{operates:false,reason:'no_route'};
-      if(!rc.operates) return false;
       var cd=getCardData(al.code,dep,arr,miles);
-      return cd.allRoutes.length>0||cd.groupTiersResult!=null;
+      return cd.allRoutes.length>0||cd.groupTiersResult!=null||!!_OFFICIAL_AMT[al.code];
     }
     return true;
   });
+
   document.getElementById('cardsGrid').innerHTML=
     list.map(function(al,i){return buildCard(al,dep,arr,miles,isRT,i);}).join('')
     ||'<div style="grid-column:1/-1;text-align:center;padding:32px;color:var(--muted)">'+window.t('index.result.noResults')+'</div>';

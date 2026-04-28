@@ -592,34 +592,46 @@ window.checkRouteSupport = function(iataCode, dep, arr) {
   var meta = window.getAirlineMeta(iataCode);
   if (!meta) return { operates: false, reason: 'no_meta' };
 
-  // 1. 출발지가 한국인지 확인
+  // 1. 출발지 한국 여부 확인
   var depIsKR = window.isKoreanAirport(dep);
   var arrIsKR = window.isKoreanAirport(arr);
 
-  // 양쪽 모두 한국: 국내선 — 지원 안 함
+  // 국내선
   if (depIsKR && arrIsKR) return { operates: false, reason: 'domestic' };
 
-  // 한국 출발이 아닌 경우
+  // 한국 출발/도착 아닌 경우
   if (!depIsKR && !arrIsKR) return { operates: false, reason: 'neither_kr' };
 
-  // 실제 출발/도착 (한국 출발 기준으로 정렬)
+  // 한국 출발 기준으로 정렬
   var origin = depIsKR ? dep : arr;
   var destination = depIsKR ? arr : dep;
 
-  // 2. supportedOrigins 체크
+  // 2. OFFICIAL_ROUTE_MAP 전용 판단 (KE/OZ 포함 8개 항공사 모두)
+  //    index.html에서 OFFICIAL_ROUTE_MAP이 정의되어 있으면 그것만 사용
+  if (typeof OFFICIAL_ROUTE_MAP !== 'undefined') {
+    var rm = OFFICIAL_ROUTE_MAP[iataCode];
+    if (!rm) {
+      // routeMap이 없는 항공사: 지원 안 함
+      return { operates: false, reason: 'no_route_map' };
+    }
+    var key1 = origin + '-' + destination;
+    var key2 = destination + '-' + origin;
+    var band = rm[key1] || rm[key2] || null;
+    if (!band) return { operates: false, reason: 'destination_not_operated' };
+    return { operates: true, reason: 'ok', band: band };
+  }
+
+  // 3. Fallback (OFFICIAL_ROUTE_MAP 미정의 환경 — 이전 로직 유지)
   if (Array.isArray(meta.supportedOrigins) && meta.supportedOrigins.length > 0) {
     var originOk = meta.supportedOrigins.some(function(o) {
       return o === 'KR' || o === origin;
     });
     if (!originOk) return { operates: false, reason: 'origin_not_supported' };
   }
-
-  // 3. supportedDestinations 체크
   if (Array.isArray(meta.supportedDestinations) && meta.supportedDestinations.length > 0) {
     var destOk = meta.supportedDestinations.indexOf(destination) !== -1;
     if (!destOk) return { operates: false, reason: 'destination_not_operated' };
   }
-
   return { operates: true, reason: 'ok' };
 };
 
@@ -827,11 +839,15 @@ window.krwRefHtml = function(amount, currency, mult) {
 
 /* ─── 공항 데이터 ─── */
 var AIRPORT_GROUPS = [
-  { key:'index.region.korea',    codes:['ICN','GMP','PUS','CJU'] },
-  { key:'index.region.japan',    codes:['NRT','HND','KIX','FUK','CTS'] },
-  { key:'index.region.asia',     codes:['HKG','SIN','BKK','MNL','KUL','SGN','HAN','DAD','DPS','PVG','PEK'] },
-  { key:'index.region.naOceania',codes:['LAX','JFK','SFO','SEA','SYD'] },
-  { key:'index.region.europeMiddleEast', codes:['CDG','LHR','FRA','AMS','DXB'] },
+  { key:'index.region.korea',    codes:['ICN','GMP','PUS','CJU','CJJ','TAE'] },
+  { key:'index.region.japan',    codes:['NRT','HND','KIX','FUK','CTS','OKA','NGO','KMJ','NGS','OIT','HIJ','KOJ','MYJ','HKD','FSZ'] },
+  { key:'index.region.china',    codes:['PVG','PEK','CAN','CTU','XIY','CGO','CKG','YNJ','DYG','SHA','TAO','WEH','YNT','NTG','HRB','KWL'] },
+  { key:'index.region.taiwan',   codes:['TPE','KHH','RMQ'] },
+  { key:'index.region.seasia',   codes:['HKG','SIN','BKK','MNL','KUL','SGN','HAN','DAD','DPS','RGN','CNX','HKT','NHA','MFM','PNH','REP','VTE','ULN','GUM','SPN','PQC','DLI','BTH'] },
+  { key:'index.region.seasia2',  codes:['CEB','TAG','CRK','DVO','ILO','MNL','BKI','KCH','PEN'] },
+  { key:'index.region.swasia',   codes:['DEL','BOM','CMB','KTM','DAC','MLE','TBS','ALA','FRU','TSE','SVO','VVO'] },
+  { key:'index.region.naOceania',codes:['LAX','JFK','SFO','SEA','YVR','YYZ','HNL','IAD','BOS','ORD','ATL','DFW','LAS','SYD','MEL','AKL','BNE'] },
+  { key:'index.region.europeMiddleEast', codes:['CDG','LHR','FRA','AMS','DXB','FCO','BCN','PRG','BUD','MXP','VIE','MAD','LIS','ZAG','IST','CAI','DOH','AUH','RUH'] },
 ];
 
 /* ─── 번역 딕셔너리 ─── */
@@ -849,7 +865,7 @@ ko:{
   'index.metaDesc':'한국 출발 국제선 항공사별 유류할증료를 노선·거리구간별로 비교합니다.',
   /* hero */
   'index.heroTitle':'노선별 유류할증료 조회',
-  'index.heroSub':'한국 국적기 출발·도착 기준 유류할증료 비교 · 공식 공지 + AI 예측',
+  'index.heroSub':'한국 출발 국제선 항공사별 유류할증료 비교 · 공식 공지 기준',
   /* form */
   'index.labelOrigin':'출발 공항','index.labelDest':'도착 공항','index.labelTrip':'여정',
   'index.trip.oneWay':'편도','index.trip.roundTrip':'왕복',
@@ -857,26 +873,58 @@ ko:{
   'index.airport.selectOrigin':'출발지 선택','index.airport.selectDest':'도착지 선택',
   /* regions */
   'index.region.korea':'🇰🇷 한국','index.region.japan':'🇯🇵 일본',
-  'index.region.asia':'🌏 아시아','index.region.naOceania':'🇺🇸 북미·오세아니아',
+  'index.region.china':'🇨🇳 중국','index.region.taiwan':'🇹🇼 대만',
+  'index.region.seasia':'🌏 동남아시아','index.region.seasia2':'🌏 동남아시아 (필리핀·말레이시아)',
+  'index.region.swasia':'🌍 남아시아·중앙아시아',
+  'index.region.naOceania':'🇺🇸 북미·오세아니아',
   'index.region.europeMiddleEast':'🇪🇺 유럽·중동',
   /* airport names */
   'airport.ICN':'인천','airport.GMP':'김포','airport.PUS':'부산','airport.CJU':'제주',
+  'airport.CJJ':'청주','airport.TAE':'대구',
   'airport.NRT':'도쿄 나리타','airport.HND':'도쿄 하네다','airport.KIX':'오사카',
-  'airport.FUK':'후쿠오카','airport.CTS':'삿포로',
+  'airport.FUK':'후쿠오카','airport.CTS':'삿포로','airport.OKA':'오키나와',
+  'airport.NGO':'나고야','airport.KMJ':'구마모토','airport.NGS':'나가사키',
+  'airport.OIT':'오이타','airport.HIJ':'히로시마','airport.KOJ':'가고시마',
+  'airport.MYJ':'마쓰야마','airport.HKD':'하코다테','airport.FSZ':'시즈오카',
   'airport.HKG':'홍콩','airport.SIN':'싱가포르','airport.BKK':'방콕','airport.MNL':'마닐라',
   'airport.KUL':'쿠알라룸푸르','airport.SGN':'호찌민','airport.HAN':'하노이',
   'airport.DAD':'다낭','airport.DPS':'발리','airport.PVG':'상하이','airport.PEK':'베이징',
+  'airport.CAN':'광저우','airport.CTU':'청두','airport.XIY':'시안','airport.CGO':'정저우',
+  'airport.CKG':'충칭','airport.YNJ':'옌지','airport.DYG':'장자제','airport.SHA':'상하이 훙차오',
+  'airport.TAO':'칭다오','airport.WEH':'웨이하이','airport.YNT':'옌타이','airport.NTG':'난통',
+  'airport.HRB':'하얼빈','airport.KWL':'구이린',
+  'airport.TPE':'타이베이','airport.KHH':'가오슝','airport.RMQ':'타이중',
+  'airport.RGN':'양곤','airport.CNX':'치앙마이','airport.HKT':'푸껫','airport.NHA':'나트랑',
+  'airport.MFM':'마카오','airport.PNH':'프놈펜','airport.REP':'씨엠립','airport.VTE':'비엔티안',
+  'airport.ULN':'울란바타르',
+  'airport.GUM':'괌','airport.SPN':'사이판',
+  'airport.PQC':'푸쿠옥','airport.DLI':'달랏','airport.BTH':'바탐',
+  'airport.CEB':'세부','airport.TAG':'보홀','airport.CRK':'클락','airport.DVO':'다바오',
+  'airport.ILO':'일로일로','airport.BKI':'코타키나발루','airport.KCH':'쿠칭','airport.PEN':'페낭',
+  'airport.DEL':'뉴델리','airport.BOM':'뭄바이','airport.CMB':'콜롬보','airport.KTM':'카트만두',
+  'airport.DAC':'다카','airport.MLE':'말레','airport.TBS':'트빌리시',
+  'airport.ALA':'알마티','airport.FRU':'비슈케크','airport.TSE':'아스타나',
+  'airport.SVO':'모스크바','airport.VVO':'블라디보스토크',
   'airport.LAX':'LA','airport.JFK':'뉴욕','airport.SFO':'샌프란시스코',
-  'airport.SEA':'시애틀','airport.SYD':'시드니',
+  'airport.SEA':'시애틀','airport.YVR':'밴쿠버','airport.YYZ':'토론토',
+  'airport.HNL':'호놀룰루','airport.IAD':'워싱턴 D.C.',
+  'airport.BOS':'보스턴','airport.ORD':'시카고','airport.ATL':'애틀랜타',
+  'airport.DFW':'달라스','airport.LAS':'라스베이거스',
+  'airport.SYD':'시드니','airport.MEL':'멜버른','airport.AKL':'오클랜드','airport.BNE':'브리즈번',
   'airport.CDG':'파리','airport.LHR':'런던','airport.FRA':'프랑크푸르트',
   'airport.AMS':'암스테르담','airport.DXB':'두바이',
+  'airport.FCO':'로마','airport.BCN':'바르셀로나','airport.PRG':'프라하',
+  'airport.BUD':'부다페스트','airport.MXP':'밀라노','airport.VIE':'비엔나',
+  'airport.MAD':'마드리드','airport.LIS':'리스본','airport.ZAG':'자그레브',
+  'airport.IST':'이스탄불','airport.CAI':'카이로','airport.DOH':'도하',
+  'airport.AUH':'아부다비','airport.RUH':'리야드',
   /* beta banner */
   'beta.title':'베타 서비스 안내',
   'beta.desc':'현재 한국 출발 국제선 유류할증료를 기준으로 제공되고 있으며, 일부 항공사는 공식 공지 기반 수동 반영입니다. 최종 금액은 항공사 공식 공지를 반드시 확인해주세요.',
   'beta.note':'※ 현재는 한국 출발 국제선만 지원합니다. 해외 출발 노선은 서비스 준비중입니다.',
   /* intro cards */
   'index.intro1.title':'한국 출발 국제선 유류할증료 비교',
-  'index.intro1.body':'이 서비스는 인천(ICN), 김포(GMP), 부산(PUS) 등 한국 출발 국제선의 항공사별 유류할증료를 노선·거리구간별로 비교합니다. 대한항공, 아시아나항공, 제주항공 등 국내외 항공사의 공식 공지를 기반으로 한 데이터를 제공합니다.',
+  'index.intro1.body':'이 서비스는 인천(ICN), 김포(GMP), 부산(PUS), 청주(CJJ), 대구(TAE) 등 한국 출발 국제선의 항공사별 유류할증료를 노선·거리구간별로 비교합니다. 대한항공, 아시아나항공, 제주항공 등 8개 항공사의 공식 공지를 기반으로 한 데이터를 제공합니다.',
   'index.intro2.title':'항공사 공식 공지 기반 정보 제공',
   'index.intro2.body':'각 항공사가 매월 발표하는 공식 유류할증료 공지를 우선으로 반영합니다. 공식 공지가 확인된 항공사에는 \'공식 확인\' 표시가 함께 노출되며, 각 카드에서 항공사 공지 원문 링크를 바로 확인할 수 있습니다.',
   'index.intro3.title':'왜 이 서비스가 필요한가요?',
@@ -1086,18 +1134,45 @@ en:{
   'index.search':'🔍 Search',
   'index.airport.selectOrigin':'Select origin','index.airport.selectDest':'Select destination',
   'index.region.korea':'🇰🇷 Korea','index.region.japan':'🇯🇵 Japan',
-  'index.region.asia':'🌏 Asia','index.region.naOceania':'🇺🇸 N. America & Oceania',
+  'index.region.china':'🇨🇳 China','index.region.taiwan':'🇹🇼 Taiwan',
+  'index.region.seasia':'🌏 Southeast Asia','index.region.seasia2':'🌏 SE Asia (Philippines/Malaysia)',
+  'index.region.swasia':'🌍 South/Central Asia','index.region.naOceania':'🇺🇸 N. America & Oceania',
   'index.region.europeMiddleEast':'🇪🇺 Europe & Middle East',
   'airport.ICN':'Seoul Incheon','airport.GMP':'Seoul Gimpo','airport.PUS':'Busan','airport.CJU':'Jeju',
+  'airport.CJJ':'Cheongju','airport.TAE':'Daegu',
   'airport.NRT':'Tokyo Narita','airport.HND':'Tokyo Haneda','airport.KIX':'Osaka',
-  'airport.FUK':'Fukuoka','airport.CTS':'Sapporo',
+  'airport.FUK':'Fukuoka','airport.CTS':'Sapporo','airport.OKA':'Okinawa',
+  'airport.NGO':'Nagoya','airport.KMJ':'Kumamoto','airport.NGS':'Nagasaki',
+  'airport.OIT':'Oita','airport.HIJ':'Hiroshima','airport.KOJ':'Kagoshima',
+  'airport.MYJ':'Matsuyama','airport.HKD':'Hakodate','airport.FSZ':'Shizuoka',
   'airport.HKG':'Hong Kong','airport.SIN':'Singapore','airport.BKK':'Bangkok','airport.MNL':'Manila',
   'airport.KUL':'Kuala Lumpur','airport.SGN':'Ho Chi Minh City','airport.HAN':'Hanoi',
-  'airport.DAD':'Da Nang','airport.DPS':'Bali','airport.PVG':'Shanghai','airport.PEK':'Beijing',
+  'airport.DAD':'Da Nang','airport.DPS':'Bali','airport.PVG':'Shanghai Pudong','airport.PEK':'Beijing',
+  'airport.CAN':'Guangzhou','airport.CTU':'Chengdu','airport.XIY':'Xian','airport.CGO':'Zhengzhou',
+  'airport.CKG':'Chongqing','airport.YNJ':'Yanji','airport.DYG':'Zhangjiajie','airport.SHA':'Shanghai Hongqiao',
+  'airport.TAO':'Qingdao','airport.WEH':'Weihai','airport.YNT':'Yantai','airport.NTG':'Nantong',
+  'airport.HRB':'Harbin','airport.KWL':'Guilin',
+  'airport.TPE':'Taipei','airport.KHH':'Kaohsiung','airport.RMQ':'Taichung',
+  'airport.RGN':'Yangon','airport.CNX':'Chiang Mai','airport.HKT':'Phuket','airport.NHA':'Nha Trang',
+  'airport.MFM':'Macau','airport.PNH':'Phnom Penh','airport.REP':'Siem Reap','airport.VTE':'Vientiane',
+  'airport.ULN':'Ulaanbaatar',
+  'airport.GUM':'Guam','airport.SPN':'Saipan',
+  'airport.PQC':'Phu Quoc','airport.DLI':'Da Lat','airport.BTH':'Batam',
+  'airport.CEB':'Cebu','airport.TAG':'Bohol','airport.CRK':'Clark','airport.BKI':'Kota Kinabalu',
+  'airport.ALA':'Almaty','airport.FRU':'Bishkek','airport.TSE':'Astana',
+  'airport.SVO':'Moscow','airport.VVO':'Vladivostok',
   'airport.LAX':'Los Angeles','airport.JFK':'New York','airport.SFO':'San Francisco',
-  'airport.SEA':'Seattle','airport.SYD':'Sydney',
+  'airport.SEA':'Seattle','airport.YVR':'Vancouver','airport.YYZ':'Toronto',
+  'airport.HNL':'Honolulu','airport.IAD':'Washington D.C.',
+  'airport.BOS':'Boston','airport.ORD':'Chicago','airport.ATL':'Atlanta',
+  'airport.DFW':'Dallas','airport.LAS':'Las Vegas',
+  'airport.SYD':'Sydney','airport.MEL':'Melbourne','airport.AKL':'Auckland','airport.BNE':'Brisbane',
   'airport.CDG':'Paris','airport.LHR':'London','airport.FRA':'Frankfurt',
   'airport.AMS':'Amsterdam','airport.DXB':'Dubai',
+  'airport.FCO':'Rome','airport.BCN':'Barcelona','airport.PRG':'Prague',
+  'airport.BUD':'Budapest','airport.MXP':'Milan','airport.VIE':'Vienna',
+  'airport.MAD':'Madrid','airport.LIS':'Lisbon','airport.ZAG':'Zagreb',
+  'airport.IST':'Istanbul','airport.CAI':'Cairo','airport.DOH':'Doha',
   'beta.title':'Beta Service Notice',
   'beta.desc':'Currently covering fuel surcharges for international flights departing Korea. Some airlines reflect manually updated official notices. Always confirm the final amount with the airline.',
   'beta.note':'※ Only Korea departure routes are currently supported. Overseas departure routes are coming soon.',
