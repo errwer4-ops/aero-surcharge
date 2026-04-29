@@ -2237,6 +2237,25 @@ window.buildAirportOptions = function(selectEl, type){
   if(saved) selectEl.value = saved;
 };
 
+/* ─── 공항 검색 자동완성용 items 반환 ─── */
+window.getAirportSearchItems = function(){
+  var items = [];
+  AIRPORT_GROUPS.forEach(function(grp){
+    grp.codes.forEach(function(code){
+      var label = window.t('airport.' + code);
+      /* 한국어 고정 레이블도 함께 searchText에 포함 (다국어 전환 시 한글로도 검색 가능) */
+      var labelKo = (window.I18N['ko'] && window.I18N['ko']['airport.' + code]) || '';
+      items.push({
+        code: code,
+        label: label,
+        searchText: (labelKo + ' ' + label + ' ' + code).toLowerCase(),
+        display: label + ' (' + code + ')'
+      });
+    });
+  });
+  return items;
+};
+
 /* ─── DOM 일괄 applyLanguage ─── */
 window.applyLanguage = function(){
   var lang = window.getCurrentLang();

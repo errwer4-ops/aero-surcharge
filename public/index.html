@@ -255,6 +255,47 @@
       .guide-block-body { font-size: 12px; }
     }
 
+    /* ── 공항 자동완성 ── */
+    .airport-combo-wrap { position:relative; width:100%; }
+    .airport-input {
+      width:100%; box-sizing:border-box;
+      background:var(--bg); border:1.5px solid var(--line); border-radius:9px;
+      padding:9px 36px 9px 12px; font-size:14px; font-weight:500;
+      font-family:var(--sans); color:var(--text); outline:none;
+      transition:border-color .15s; cursor:text;
+    }
+    .airport-input:focus { border-color:var(--blue); }
+    .airport-input::placeholder { color:var(--muted); font-weight:400; }
+    .airport-input-clear {
+      position:absolute; right:10px; top:50%; transform:translateY(-50%);
+      width:18px; height:18px; border-radius:50%; background:var(--line);
+      border:none; cursor:pointer; display:none; align-items:center;
+      justify-content:center; font-size:10px; color:var(--text2); padding:0;
+      line-height:1;
+    }
+    .airport-input-clear.visible { display:flex; }
+    .airport-suggest-list {
+      position:absolute; top:calc(100% + 4px); left:0; right:0; z-index:9999;
+      background:#fff; border:1.5px solid var(--line); border-radius:10px;
+      max-height:240px; overflow-y:auto; box-shadow:var(--shadow-lg);
+      display:none;
+    }
+    .airport-suggest-list.open { display:block; }
+    .airport-suggest-item {
+      padding:9px 12px; cursor:pointer; font-size:13px; color:var(--text);
+      transition:background .1s;
+    }
+    .airport-suggest-item:hover,
+    .airport-suggest-item.active { background:var(--blue-lt); color:var(--blue); }
+    .airport-suggest-empty {
+      padding:10px 12px; font-size:12px; color:var(--muted); text-align:center;
+    }
+    @media(max-width:700px){
+      .airport-input { padding:11px 36px 11px 13px; font-size:15px; border-radius:10px; }
+      .airport-suggest-list { max-height:200px; }
+      .airport-suggest-item { padding:10px 13px; font-size:14px; }
+    }
+
     /* ── 제휴 링크 버튼 ── */
     .affiliate-links {
       display:flex;
@@ -354,14 +395,30 @@
   <div class="search-panel">
     <div class="form-group">
       <label class="form-label" id="labelOrigin" data-i18n="index.labelOrigin">출발 공항</label>
-      <select class="airport-select" id="originSelect">
+      <div class="airport-combo-wrap" id="originComboWrap">
+        <input class="airport-input" id="originAirportInput"
+               placeholder="공항명 또는 코드 입력 (예: 인천, ICN)"
+               autocomplete="off" autocorrect="off" spellcheck="false" aria-label="출발 공항 검색"/>
+        <button class="airport-input-clear" id="originClearBtn" tabindex="-1" aria-label="지우기">✕</button>
+        <div class="airport-suggest-list" id="originSuggestList" role="listbox"></div>
+      </div>
+      <!-- 기존 select 유지 (hidden) — value는 여기 설정됨 -->
+      <select class="airport-select" id="originSelect" style="display:none">
         <!-- JS buildAirportOptions()로 채워짐 -->
       </select>
     </div>
     <button class="swap-btn" id="swapBtn" data-i18n-title="index.labelTrip" title="교체">&#8644;</button>
     <div class="form-group">
       <label class="form-label" id="labelDest" data-i18n="index.labelDest">도착 공항</label>
-      <select class="airport-select" id="destSelect">
+      <div class="airport-combo-wrap" id="destComboWrap">
+        <input class="airport-input" id="destAirportInput"
+               placeholder="공항명 또는 코드 입력 (예: 도쿄, HND)"
+               autocomplete="off" autocorrect="off" spellcheck="false" aria-label="도착 공항 검색"/>
+        <button class="airport-input-clear" id="destClearBtn" tabindex="-1" aria-label="지우기">✕</button>
+        <div class="airport-suggest-list" id="destSuggestList" role="listbox"></div>
+      </div>
+      <!-- 기존 select 유지 (hidden) — value는 여기 설정됨 -->
+      <select class="airport-select" id="destSelect" style="display:none">
         <!-- JS buildAirportOptions()로 채워짐 -->
       </select>
     </div>
@@ -1427,9 +1484,201 @@ document.getElementById('btnRT').addEventListener('click', function(){ updateTri
 document.getElementById('swapBtn').addEventListener('click',function(){
   var o=document.getElementById('originSelect'),d=document.getElementById('destSelect'),t=o.value;
   o.value=d.value;d.value=t;
+  syncAirportInputLabels();
 });
 
+/* ════ 공항 자동완성 ════ */
+
+function syncOne(inputId, selectId){
+  var input  = document.getElementById(inputId);
+  var select = document.getElementById(selectId);
+  if(!input || !select) return;
+  var code = select.value;
+  if(!code){ input.value = ''; updateClearBtn(inputId); return; }
+  var label = window.t('airport.' + code);
+  input.value = label + ' (' + code + ')';
+  updateClearBtn(inputId);
+}
+
+function syncAirportInputLabels(){
+  syncOne('originAirportInput','originSelect');
+  syncOne('destAirportInput','destSelect');
+}
+
+function updateClearBtn(inputId){
+  var input = document.getElementById(inputId);
+  var clearId = inputId === 'originAirportInput' ? 'originClearBtn' : 'destClearBtn';
+  var btn = document.getElementById(clearId);
+  if(!btn) return;
+  if(input && input.value) btn.classList.add('visible');
+  else btn.classList.remove('visible');
+}
+
+function setupAirportAutocomplete(inputId, selectId){
+  var input      = document.getElementById(inputId);
+  var select     = document.getElementById(selectId);
+  var listEl     = document.getElementById(inputId === 'originAirportInput' ? 'originSuggestList' : 'destSuggestList');
+  var clearBtn   = document.getElementById(inputId === 'originAirportInput' ? 'originClearBtn' : 'destClearBtn');
+  if(!input || !select || !listEl) return;
+
+  var activeIdx  = -1;
+  var filtered   = [];
+
+  function openList(items){
+    filtered = items;
+    activeIdx = -1;
+    if(!items.length){
+      listEl.innerHTML = '<div class="airport-suggest-empty">결과 없음</div>';
+    } else {
+      listEl.innerHTML = items.map(function(it, i){
+        return '<div class="airport-suggest-item" data-i="'+i+'" role="option">'+it.display+'</div>';
+      }).join('');
+    }
+    listEl.classList.add('open');
+  }
+
+  function closeList(){
+    listEl.classList.remove('open');
+    activeIdx = -1;
+  }
+
+  function selectItem(item){
+    select.value  = item.code;
+    input.value   = item.display;
+    updateClearBtn(inputId);
+    closeList();
+  }
+
+  function highlightItem(idx){
+    var items = listEl.querySelectorAll('.airport-suggest-item');
+    items.forEach(function(el, i){ el.classList.toggle('active', i === idx); });
+    if(items[idx]) items[idx].scrollIntoView({block:'nearest'});
+  }
+
+  function tryMatchExact(q){
+    var qu = q.trim().toUpperCase();
+    var ql = q.trim().toLowerCase();
+    var all = window.getAirportSearchItems ? window.getAirportSearchItems() : [];
+    /* 코드 완전 일치 */
+    for(var i=0;i<all.length;i++){
+      if(all[i].code === qu) return all[i];
+    }
+    /* 레이블 완전 일치 */
+    for(var j=0;j<all.length;j++){
+      if(all[j].label.toLowerCase() === ql) return all[j];
+    }
+    return null;
+  }
+
+  input.addEventListener('input', function(){
+    updateClearBtn(inputId);
+    var q = input.value.trim();
+    if(!q){ closeList(); select.value=''; return; }
+    var all = window.getAirportSearchItems ? window.getAirportSearchItems() : [];
+    var ql  = q.toLowerCase();
+    var res = all.filter(function(it){ return it.searchText.indexOf(ql) !== -1; });
+    openList(res);
+  });
+
+  input.addEventListener('keydown', function(e){
+    var items = listEl.querySelectorAll('.airport-suggest-item');
+    if(e.key === 'ArrowDown'){
+      e.preventDefault();
+      activeIdx = Math.min(activeIdx+1, items.length-1);
+      highlightItem(activeIdx);
+    } else if(e.key === 'ArrowUp'){
+      e.preventDefault();
+      activeIdx = Math.max(activeIdx-1, 0);
+      highlightItem(activeIdx);
+    } else if(e.key === 'Enter'){
+      e.preventDefault();
+      if(activeIdx >= 0 && filtered[activeIdx]){
+        selectItem(filtered[activeIdx]);
+      } else if(filtered.length){
+        selectItem(filtered[0]);
+      } else {
+        /* 입력값 코드/이름 완전 일치 시도 */
+        var exact = tryMatchExact(input.value);
+        if(exact) selectItem(exact);
+      }
+    } else if(e.key === 'Escape'){
+      closeList();
+    }
+  });
+
+  input.addEventListener('focus', function(){
+    if(input.value.trim()){
+      /* 이미 선택된 값이면 전체 텍스트 선택 */
+      input.select();
+    }
+  });
+
+  listEl.addEventListener('mousedown', function(e){
+    var item = e.target.closest('.airport-suggest-item');
+    if(!item) return;
+    e.preventDefault();
+    var idx = parseInt(item.dataset.i, 10);
+    if(filtered[idx]) selectItem(filtered[idx]);
+  });
+
+  if(clearBtn){
+    clearBtn.addEventListener('mousedown', function(e){
+      e.preventDefault();
+      input.value  = '';
+      select.value = '';
+      updateClearBtn(inputId);
+      closeList();
+      input.focus();
+    });
+  }
+
+  document.addEventListener('click', function(e){
+    var wrap = input.closest('.airport-combo-wrap');
+    if(wrap && !wrap.contains(e.target)){
+      closeList();
+      /* 닫힐 때 select.value가 비어있으면 input도 비움 */
+      if(!select.value) input.value = '';
+    }
+  });
+}
+
+/* 검색 전 input → select 매핑 보정 */
+function resolveInputToSelect(inputId, selectId){
+  var input  = document.getElementById(inputId);
+  var select = document.getElementById(selectId);
+  if(!input || !select) return;
+  if(select.value) return; /* 이미 선택됨 */
+  var q = input.value.trim();
+  if(!q) return;
+  var all = window.getAirportSearchItems ? window.getAirportSearchItems() : [];
+  var ql = q.toLowerCase();
+  /* 코드 완전 일치 */
+  var found = null;
+  for(var i=0;i<all.length;i++){
+    if(all[i].code === q.toUpperCase()){ found = all[i]; break; }
+  }
+  /* 이름 완전 일치 */
+  if(!found){
+    for(var j=0;j<all.length;j++){
+      if(all[j].label.toLowerCase() === ql){ found = all[j]; break; }
+    }
+  }
+  /* 부분 일치 단 하나만 */
+  if(!found){
+    var res = all.filter(function(it){ return it.searchText.indexOf(ql) !== -1; });
+    if(res.length === 1) found = res[0];
+  }
+  if(found){
+    select.value = found.code;
+    input.value  = found.display;
+    updateClearBtn(inputId);
+  }
+}
+
 document.getElementById('searchBtn').addEventListener('click',function(){
+  /* input에서 직접 타이핑한 경우 select value 보정 시도 */
+  resolveInputToSelect('originAirportInput','originSelect');
+  resolveInputToSelect('destAirportInput','destSelect');
   var dep=document.getElementById('originSelect').value,
       arr=document.getElementById('destSelect').value;
   if(!dep||!arr){alert(window.t('index.alert.selectAirports'));return;}
@@ -1546,10 +1795,16 @@ window.initNav({
       var txt=window.t(key);
       if(txt) el.textContent=txt;
     });
+    /* 공항 input 표시 언어 갱신 */
+    syncAirportInputLabels();
   },
   onCurrChange:function(){renderLanding();if(window._searchCtx)renderCards('all');}
 });
 loadAll();
+
+/* 자동완성 초기화 — loadAll 이후 */
+setupAirportAutocomplete('originAirportInput','originSelect');
+setupAirportAutocomplete('destAirportInput','destSelect');
 </script>
 
 <footer style="background:var(--white);border-top:1px solid var(--line);padding:20px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;">
