@@ -398,8 +398,11 @@
       <div class="airport-combo-wrap" id="originComboWrap">
         <input class="airport-input" id="originAirportInput"
                placeholder="공항명 또는 코드 입력 (예: 인천, ICN)"
+               data-i18n-placeholder="index.airport.searchOriginPlaceholder"
+               data-i18n-aria-label="index.airport.searchOriginAria"
                autocomplete="off" autocorrect="off" spellcheck="false" aria-label="출발 공항 검색"/>
-        <button class="airport-input-clear" id="originClearBtn" tabindex="-1" aria-label="지우기">✕</button>
+        <button class="airport-input-clear" id="originClearBtn" tabindex="-1"
+                aria-label="지우기" data-i18n-aria-label="common.clear">✕</button>
         <div class="airport-suggest-list" id="originSuggestList" role="listbox"></div>
       </div>
       <!-- 기존 select 유지 (hidden) — value는 여기 설정됨 -->
@@ -413,8 +416,11 @@
       <div class="airport-combo-wrap" id="destComboWrap">
         <input class="airport-input" id="destAirportInput"
                placeholder="공항명 또는 코드 입력 (예: 도쿄, HND)"
+               data-i18n-placeholder="index.airport.searchDestPlaceholder"
+               data-i18n-aria-label="index.airport.searchDestAria"
                autocomplete="off" autocorrect="off" spellcheck="false" aria-label="도착 공항 검색"/>
-        <button class="airport-input-clear" id="destClearBtn" tabindex="-1" aria-label="지우기">✕</button>
+        <button class="airport-input-clear" id="destClearBtn" tabindex="-1"
+                aria-label="지우기" data-i18n-aria-label="common.clear">✕</button>
         <div class="airport-suggest-list" id="destSuggestList" role="listbox"></div>
       </div>
       <!-- 기존 select 유지 (hidden) — value는 여기 설정됨 -->
@@ -1528,7 +1534,7 @@ function setupAirportAutocomplete(inputId, selectId){
     filtered = items;
     activeIdx = -1;
     if(!items.length){
-      listEl.innerHTML = '<div class="airport-suggest-empty">결과 없음</div>';
+      listEl.innerHTML = '<div class="airport-suggest-empty">' + window.t('index.airport.noSearchResults') + '</div>';
     } else {
       listEl.innerHTML = items.map(function(it, i){
         return '<div class="airport-suggest-item" data-i="'+i+'" role="option">'+it.display+'</div>';

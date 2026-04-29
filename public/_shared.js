@@ -871,6 +871,12 @@ ko:{
   'index.trip.oneWay':'편도','index.trip.roundTrip':'왕복',
   'index.search':'🔍 검색',
   'index.airport.selectOrigin':'출발지 선택','index.airport.selectDest':'도착지 선택',
+  'index.airport.searchOriginPlaceholder':'공항명 또는 코드 입력 (예: 인천, ICN)',
+  'index.airport.searchDestPlaceholder':'공항명 또는 코드 입력 (예: 도쿄, HND)',
+  'index.airport.searchOriginAria':'출발 공항 검색',
+  'index.airport.searchDestAria':'도착 공항 검색',
+  'index.airport.noSearchResults':'결과 없음',
+  'common.clear':'지우기',
   /* regions */
   'index.region.korea':'🇰🇷 한국','index.region.japan':'🇯🇵 일본',
   'index.region.china':'🇨🇳 중국','index.region.taiwan':'🇹🇼 대만',
@@ -1133,7 +1139,12 @@ en:{
   'index.trip.oneWay':'One-way','index.trip.roundTrip':'Round-trip',
   'index.search':'🔍 Search',
   'index.airport.selectOrigin':'Select origin','index.airport.selectDest':'Select destination',
-  'index.region.korea':'🇰🇷 Korea','index.region.japan':'🇯🇵 Japan',
+  'index.airport.searchOriginPlaceholder':'Enter airport name or code (e.g. Seoul, ICN)',
+  'index.airport.searchDestPlaceholder':'Enter airport name or code (e.g. Tokyo, HND)',
+  'index.airport.searchOriginAria':'Search departure airport',
+  'index.airport.searchDestAria':'Search arrival airport',
+  'index.airport.noSearchResults':'No results',
+  'common.clear':'Clear',
   'index.region.china':'🇨🇳 China','index.region.taiwan':'🇹🇼 Taiwan',
   'index.region.seasia':'🌏 Southeast Asia','index.region.seasia2':'🌏 SE Asia (Philippines/Malaysia)',
   'index.region.swasia':'🌍 South/Central Asia','index.region.naOceania':'🇺🇸 N. America & Oceania',
@@ -1369,6 +1380,12 @@ ja:{
   'index.trip.oneWay':'片道','index.trip.roundTrip':'往復',
   'index.search':'🔍 検索',
   'index.airport.selectOrigin':'出発地を選択','index.airport.selectDest':'目的地を選択',
+  'index.airport.searchOriginPlaceholder':'空港名またはコードを入力 (例: ソウル, ICN)',
+  'index.airport.searchDestPlaceholder':'空港名またはコードを入力 (例: 東京, HND)',
+  'index.airport.searchOriginAria':'出発空港を検索',
+  'index.airport.searchDestAria':'到着空港を検索',
+  'index.airport.noSearchResults':'結果なし',
+  'common.clear':'クリア',
   'index.region.korea':'🇰🇷 韓国','index.region.japan':'🇯🇵 日本',
   'index.region.asia':'🌏 アジア','index.region.naOceania':'🇺🇸 北米・オセアニア',
   'index.region.europeMiddleEast':'🇪🇺 欧州・中東',
@@ -1577,6 +1594,12 @@ zh:{
   'index.trip.oneWay':'单程','index.trip.roundTrip':'往返',
   'index.search':'🔍 搜索',
   'index.airport.selectOrigin':'选择出发地','index.airport.selectDest':'选择目的地',
+  'index.airport.searchOriginPlaceholder':'输入机场名称或代码（例：首尔, ICN）',
+  'index.airport.searchDestPlaceholder':'输入机场名称或代码（例：东京, HND）',
+  'index.airport.searchOriginAria':'搜索出发机场',
+  'index.airport.searchDestAria':'搜索到达机场',
+  'index.airport.noSearchResults':'无结果',
+  'common.clear':'清除',
   'index.region.korea':'🇰🇷 韩国','index.region.japan':'🇯🇵 日本',
   'index.region.asia':'🌏 亚洲','index.region.naOceania':'🇺🇸 北美·大洋洲',
   'index.region.europeMiddleEast':'🇪🇺 欧洲·中东',
@@ -1785,6 +1808,12 @@ fr:{
   'index.trip.oneWay':'Aller simple','index.trip.roundTrip':'Aller-retour',
   'index.search':'🔍 Rechercher',
   'index.airport.selectOrigin':'Sélectionner départ','index.airport.selectDest':'Sélectionner arrivée',
+  'index.airport.searchOriginPlaceholder':'Saisir un aéroport ou un code (ex. Séoul, ICN)',
+  'index.airport.searchDestPlaceholder':'Saisir un aéroport ou un code (ex. Tokyo, HND)',
+  'index.airport.searchOriginAria':'Rechercher l\'aéroport de départ',
+  'index.airport.searchDestAria':'Rechercher l\'aéroport d\'arrivée',
+  'index.airport.noSearchResults':'Aucun résultat',
+  'common.clear':'Effacer',
   'index.region.korea':'🇰🇷 Corée','index.region.japan':'🇯🇵 Japon',
   'index.region.asia':'🌏 Asie','index.region.naOceania':'🇺🇸 Amér. du Nord & Océanie',
   'index.region.europeMiddleEast':'🇪🇺 Europe & Moyen-Orient',
@@ -1992,6 +2021,12 @@ de:{
   'index.trip.oneWay':'Einfach','index.trip.roundTrip':'Hin und zurück',
   'index.search':'🔍 Suchen',
   'index.airport.selectOrigin':'Abflug wählen','index.airport.selectDest':'Ziel wählen',
+  'index.airport.searchOriginPlaceholder':'Flughafenname oder Code eingeben (z. B. Seoul, ICN)',
+  'index.airport.searchDestPlaceholder':'Flughafenname oder Code eingeben (z. B. Tokio, HND)',
+  'index.airport.searchOriginAria':'Abflughafen suchen',
+  'index.airport.searchDestAria':'Zielflughafen suchen',
+  'index.airport.noSearchResults':'Keine Ergebnisse',
+  'common.clear':'Löschen',
   'index.region.korea':'🇰🇷 Korea','index.region.japan':'🇯🇵 Japan',
   'index.region.asia':'🌏 Asien','index.region.naOceania':'🇺🇸 Nordamerika & Ozeanien',
   'index.region.europeMiddleEast':'🇪🇺 Europa & Naher Osten',
@@ -2275,6 +2310,10 @@ window.applyLanguage = function(){
   /* data-i18n-title */
   document.querySelectorAll('[data-i18n-title]').forEach(function(el){
     el.title = window.t(el.getAttribute('data-i18n-title'));
+  });
+  /* data-i18n-aria-label */
+  document.querySelectorAll('[data-i18n-aria-label]').forEach(function(el){
+    el.setAttribute('aria-label', window.t(el.getAttribute('data-i18n-aria-label')));
   });
   /* airport selects */
   var orig = document.getElementById('originSelect');
