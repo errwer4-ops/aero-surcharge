@@ -131,21 +131,30 @@
     .route-highlight-badge { font-size:9px; background:var(--blue); color:#fff; border-radius:4px; padding:1px 5px; margin-left:5px; vertical-align:middle; }
     .route-spike-badge { font-size:9px; background:#FFF3E0; color:#E65100; border:1px solid #FFCC80; border-radius:4px; padding:1px 5px; }
 
-    /* ── 4월/5월 비교표 전용 ── */
+    /* ── 5월(현재적용)/6월(전망) 표 전용 ── */
     .route-table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
     .route-table th.th-apr { color:var(--muted); text-align:right; white-space:nowrap; }
-    .route-table th.th-may { color:#B71C1C; text-align:right; white-space:nowrap; }
+    .route-table th.th-may { color:var(--blue); text-align:right; white-space:nowrap; }
     .route-amt-apr { font-family:var(--mono); font-size:11px; font-weight:500;
                      color:var(--muted); text-align:right; }
+    /* 현재 적용값 (5월) — 파란색 강조 */
+    .route-amt-current { font-family:var(--mono); font-size:13px; font-weight:700;
+                         color:var(--blue); text-align:right; }
+    /* 다음달 전망 (6월) — 미공시시 muted */
+    .route-amt-next { font-family:var(--mono); font-size:13px; font-weight:700;
+                      color:var(--text2); text-align:right; }
     .route-amt-may-up  { font-family:var(--mono); font-size:13px; font-weight:700;
                          color:#C62828; text-align:right; }
     .route-amt-may-eq  { font-family:var(--mono); font-size:13px; font-weight:700;
                          color:var(--blue); text-align:right; }
     .route-amt-may-dn  { font-family:var(--mono); font-size:13px; font-weight:700;
                          color:#1565C0; text-align:right; }
+    .prepub { color:var(--muted); font-size:10px; font-style:italic; font-weight:400; }
     @media(max-width:700px){
       .route-table td, .route-table th { padding:4px 5px; font-size:10px; }
       .route-amt-apr { font-size:10px; }
+      .route-amt-current { font-size:11px; }
+      .route-amt-next { font-size:11px; }
       .route-amt-may-up,.route-amt-may-eq,.route-amt-may-dn { font-size:11px; }
     }
 
@@ -633,7 +642,7 @@ window.addEventListener('error', function(e){
 })();
 
 /* ════════════════════════════════════════════════════════
-   index.html — v33
+   index.html — v34
    · 한국 출발 국제선 전용 (supportedOrigins 체크)
    · 메인 화면 단일 금액 제거 → 안내 문구 + 공식 공지 버튼
    · 공식값 / 예측값 완전 분리
@@ -696,11 +705,13 @@ function getAirlineName(metaEntry) {
 }
 
 /* ════════════════════════════════════════════════════════════════
-   공식 유류할증료 테이블 — 4월 / 5월 비교 (편도 KRW)
-   ─ KE: 대한항공 공식 공지 (이미지 기준, 9구간)
-   ─ OZ: 아시아나항공 공식 공지 (PDF 기준, 9구간, KE와 완전 분리)
+   공식 유류할증료 테이블 — 5월(현재적용) / 6월(전망) 구조 (편도 KRW)
+   ─ KE: 대한항공 공식 공시 (이미지 기준, 9구간)
+   ─ OZ: 아시아나항공 공식 공시 (PDF 기준, 9구간, KE와 완전 분리)
    ─ 다른 항공사 추가 시 동일 구조로 확장 가능
    range 포맷: "min-max" (미만) 또는 "N+" (이상), inRange() 호환
+   may = 2026.05 공식 공시 (현재 적용값)
+   june = 2026.06 전망 (미공시 시 null)
 ════════════════════════════════════════════════════════════════ */
 var _OFFICIAL_AMT = {
   KE: { currency:'KRW', rows: [
@@ -1017,9 +1028,11 @@ function _trendBadgeHtml(code){
     arrow='▼'; sign=rate.toFixed(1)+'%';
     color='#1565C0'; bg='#EFF5FF'; border='#BBDEFB';
   } else { return ''; }
-  return '<span style="display:inline-flex;align-items:center;font-size:11px;font-weight:700;'
+  /* 툴팁: 전월(2026.04) 대비 변동률 */
+  var tooltip = '전월(2026.04) 대비 변동률';
+  return '<span title="'+tooltip+'" style="display:inline-flex;align-items:center;font-size:11px;font-weight:700;'
     +'color:'+color+';background:'+bg+';border:1px solid '+border+';'
-    +'border-radius:10px;padding:2px 8px;white-space:nowrap;flex-shrink:0;">'
+    +'border-radius:10px;padding:2px 8px;white-space:nowrap;flex-shrink:0;cursor:default;">'
     +arrow+' '+window.t('index.card.mayTrend')+' '+sign+'</span>';
 }
 
@@ -1122,7 +1135,7 @@ function getCardData(code,dep,arr,miles){
   var allRoutes=[], groupTiersResult=null, matchedGroup=null;
 
   if(isGroupTier){
-    groupTiersResult=window.resolveGroupTiers(code,feedAl,'2026.04');
+    groupTiersResult=window.resolveGroupTiers(code,feedAl,'2026.05');
     if(groupTiersResult){
       trusted=true;
       status='official_verified';
@@ -1134,7 +1147,7 @@ function getCardData(code,dep,arr,miles){
       }
     }
   } else {
-    allRoutes=window.resolveAllRoutes(feedAl,code,'2026.04');
+    allRoutes=window.resolveAllRoutes(feedAl,code,'2026.05');
     if(allRoutes.length>0){trusted=true;status='official_verified';}
   }
 
@@ -1150,15 +1163,16 @@ function getCardData(code,dep,arr,miles){
 
 /* ════ 공식값 섹션 HTML ════
  *
- * CASE 1 (_OFFICIAL_AMT 있음 — KE·OZ):
- *   거리구간 | 2026.04 | 2026.05  의 3열 비교표
- *   현재 노선 하이라이트 + 5월 인상시 빨강 강조
+ * CASE 1 (_OFFICIAL_AMT 있음 — KE·OZ 등):
+ *   거리구간 | 2026.05 적용 | 2026.06 전망  의 2열 표
+ *   현재 노선 하이라이트 (파란색 강조), 인상/하락 표시 제거
+ *   june 데이터 없으면 "미공시" 표시
  *
  * CASE 2 (group_tier — ZE 등):
- *   feed 5월 데이터가 있으면 비교, 없으면 단열 (향후 확장 구조)
+ *   feed 5월 데이터 기반 현재 적용값, 6월은 미공시
  *
- * CASE 3 (일반 feed — 기타 항공사 fallback):
- *   feed 5월 데이터가 있으면 비교, 없으면 단열
+ * CASE 3 (일반 feed — 기타 항공사):
+ *   feed 데이터로 현재 적용값 단열
  * ═══════════════════════════════════════════════════════════════ */
 function buildOfficialSection(cd, al, miles, isRT, dep, arr){
   var mult = isRT ? 2 : 1;
@@ -1167,32 +1181,26 @@ function buildOfficialSection(cd, al, miles, isRT, dep, arr){
   function fmt(krw, currency){ return window.fmtAmtDisplay(krw * mult, currency || 'KRW'); }
 
   /* ── 라벨 헤더 ── */
-  function sectionHeader(showMay, extraBadge){
+  function sectionHeader(showNext, extraBadge){
     return '<div class="official-label">'
       + window.statusBadgeHtml('official_verified')
-      + (showMay
-          ? '<span style="font-size:10px;color:var(--muted);margin-left:6px">'+window.t('index.card.compare')+'</span>'
-          : '<span style="font-size:10px;color:var(--muted);margin-left:6px">'+window.t('index.card.period')+'</span>')
+      + '<span style="font-size:10px;color:var(--muted);margin-left:6px">'+window.t('index.card.compare')+'</span>'
       + '<span style="font-size:10px;color:var(--muted);margin-left:4px">' + (isRT?window.t('index.meta.roundTrip'):window.t('index.meta.oneWay')) + '</span>'
       + (extraBadge||'')
       + '</div>';
   }
 
   /* ══════════════════════════════════════════════
-   * CASE 1: _OFFICIAL_AMT 배열 보유 항공사 (KE·OZ)
-   *   → 4월/5월 실제 공식 금액 비교표 직접 렌더링
+   * CASE 1: _OFFICIAL_AMT 배열 보유 항공사 (KE·OZ 등)
+   *   → 5월(현재 적용) / 6월(전망·미공시) 2열 표
    * ══════════════════════════════════════════════ */
   var offData = _OFFICIAL_AMT[al.code];
   if(offData && offData.rows && offData.rows.length){
 
-    /* 공시 원통화 — KE/OZ는 KRW, 7C/LJ 등 USD 공시 항공사는 USD */
     var offCurr = offData.currency || 'KRW';
-
-    /* USD 등 비KRW 공시값을 KRW로 환산 (fmtAmtDisplay는 KRW 입력 가정) */
     var _OFF_RATES = {USD:1480,JPY:10.1,EUR:1630,GBP:1870,CNY:204,HKD:190,AUD:950,SGD:1110};
     function toKRW(v){ return (offCurr !== 'KRW') ? Math.round(v * (_OFF_RATES[offCurr] || 1)) : v; }
 
-    /* inRange 호환 — "min-max"(미만), "N+"(이상) 모두 처리 */
     function matchRange(rangeStr, mi){
       if(!rangeStr || mi==null) return false;
       if(rangeStr.endsWith('+')){
@@ -1203,7 +1211,7 @@ function buildOfficialSection(cd, al, miles, isRT, dep, arr){
       return mi>=parseInt(p[0]) && mi<parseInt(p[1]);
     }
 
-    /* routeMap에서 band 확정 — routeMap이 없는 경우 miles fallback (KE/OZ도 이제 routeMap 보유) */
+    /* routeMap에서 band 확정 */
     var routeBand = (function(){
       if(!dep || !arr || typeof OFFICIAL_ROUTE_MAP === 'undefined') return null;
       var rm = OFFICIAL_ROUTE_MAP[al.code];
@@ -1212,7 +1220,6 @@ function buildOfficialSection(cd, al, miles, isRT, dep, arr){
       return rm[kr1] || rm[kr2] || null;
     })();
 
-    /* routeBand가 있으면 해당 행만 하이라이트/표시, 없으면 miles fallback (routeMap 없는 항공사용) */
     var rows = offData.rows.map(function(r){
       var isMatch = routeBand
         ? (r.range === routeBand)
@@ -1220,26 +1227,22 @@ function buildOfficialSection(cd, al, miles, isRT, dep, arr){
       var cls    = isMatch ? ' highlighted' : '';
       var badge  = isMatch ? '<span class="route-highlight-badge">'+window.t('index.card.currentRoute')+'</span>' : '';
 
-      /* 4월: 취소선 muted */
-      var aprCell = r.apr!=null
-        ? '<td class="route-amt-apr">' + fmt(toKRW(r.apr), offCurr) + '</td>'
-        : '<td class="route-amt-apr" style="color:var(--muted)">-</td>';
+      /* 5월: 현재 적용값 — may 필드 사용 (파란색 강조) */
+      var currentAmt = r.may != null ? r.may : (r.apr != null ? r.apr : null);
+      var currentCell = currentAmt != null
+        ? '<td class="route-amt-current">' + fmt(toKRW(currentAmt), offCurr) + '</td>'
+        : '<td class="route-amt-current" style="color:var(--muted)">-</td>';
 
-      /* 5월: 인상·동일·인하별 색상 */
-      var mayClass = 'route-amt-may-eq';
-      var mayPrefix = '';
-      if(r.may!=null && r.apr!=null){
-        if(r.may > r.apr){ mayClass='route-amt-may-up'; mayPrefix='▲ '; }
-        else if(r.may < r.apr){ mayClass='route-amt-may-dn'; mayPrefix='▼ '; }
-      }
-      var mayCell = r.may!=null
-        ? '<td class="'+mayClass+'">'+mayPrefix+fmt(toKRW(r.may), offCurr)+'</td>'
-        : '<td style="color:var(--muted);text-align:right;font-size:11px">'+window.t('index.card.notPublished')+'</td>';
+      /* 6월: 전망값 — june 필드 없으면 "미공시" */
+      var juneAmt = r.june != null ? r.june : null;
+      var nextCell = juneAmt != null
+        ? '<td class="route-amt-next">' + fmt(toKRW(juneAmt), offCurr) + '</td>'
+        : '<td class="route-amt-next"><span class="prepub">'+window.t('index.card.notPublished')+'</span></td>';
 
       return '<tr class="'+cls+'">'
         + '<td><span class="route-range">'+r.label+'</span>'+badge+'</td>'
-        + aprCell
-        + mayCell
+        + currentCell
+        + nextCell
         + '</tr>';
     }).join('');
 
@@ -1249,8 +1252,8 @@ function buildOfficialSection(cd, al, miles, isRT, dep, arr){
       + '<table class="route-table">'
       + '<thead><tr>'
       + '<th>'+window.t('index.card.distanceBand')+'</th>'
-      + '<th class="th-apr">'+window.t('index.card.period')+'</th>'
-      + '<th class="th-may">'+window.t('index.card.periodMay')+'</th>'
+      + '<th class="th-may">'+window.t('index.card.period')+'</th>'
+      + '<th class="th-apr">'+window.t('index.card.periodMay')+'</th>'
       + '</tr></thead>'
       + '<tbody>' + rows + '</tbody>'
       + '</table></div></div>';
@@ -1258,14 +1261,10 @@ function buildOfficialSection(cd, al, miles, isRT, dep, arr){
 
   /* ══════════════════════════════════════════════
    * CASE 2: group_tier 스키마 (ZE 등)
-   *   feed에 2026.05 기간 데이터가 있으면 비교, 없으면 단열
+   *   feed 5월 데이터 → 현재 적용값, 6월은 미공시
    * ══════════════════════════════════════════════ */
   if(cd.isGroupTier && cd.groupTiersResult){
     var gtr   = cd.groupTiersResult;
-    var gtr05 = null;
-    try{ gtr05=window.resolveGroupTiers(al.code,cd.feedAl,'2026.05'); }catch(e){}
-    var isOfficialCompare = (al.code === 'KE' || al.code === 'OZ');
-    var hasMay = isOfficialCompare && !!(gtr05 && gtr05.tiers && gtr05.tiers.length);
     var gBadge = '<span style="font-size:10px;background:#e3f2fd;color:#0d47a1;border-radius:4px;padding:1px 6px;margin-left:6px;font-weight:700">'+window.t('index.card.groupTier')+'</span>';
 
     var rows = gtr.tiers.map(function(t){
@@ -1273,44 +1272,29 @@ function buildOfficialSection(cd, al, miles, isRT, dep, arr){
       var cls     = isMatch ? ' highlighted' : '';
       var badge   = isMatch ? '<span class="route-highlight-badge">'+window.t('index.card.currentRoute')+'</span>' : '';
       var rm      = gtr.routeMap[String(t.group)]||{};
-      var aprCell = '<td class="'+(isOfficialCompare?'route-amt-apr':'route-amt')+'">'+fmt(t.amountKRW,'USD')+'</td>';
-      var mayCell = '';
-      if(hasMay){
-        /* KE·OZ + feed 5월 데이터 있음 — 실제 금액 */
-        var t05 = gtr05.tiers.find(function(x){return x.group===t.group;});
-        var mc  = (t05&&t05.amountKRW>t.amountKRW)?'route-amt-may-up':'route-amt-may-eq';
-        mayCell = t05
-          ? '<td class="'+mc+'">'+fmt(t05.amountKRW,'USD')+'</td>'
-          : '<td style="color:var(--muted);text-align:right;font-size:11px">-</td>';
-      } else if(isOfficialCompare){
-        /* KE·OZ이지만 feed 5월 없음 — 공시전 */
-        mayCell = '<td style="color:var(--muted);text-align:right;font-size:11px">'+window.t('index.card.preAnnouncement')+'</td>';
-      }
+      var currentCell = '<td class="route-amt-current">'+fmt(t.amountKRW,'USD')+'</td>';
+      var nextCell    = '<td class="route-amt-next"><span class="prepub">'+window.t('index.card.notPublished')+'</span></td>';
       return '<tr class="'+cls+'">'
         + '<td>'+t.label+'<span style="font-size:10px;color:var(--muted);margin-left:5px">'+(rm.desc||'')+'</span>'+badge+'</td>'
-        + aprCell + mayCell
+        + currentCell + nextCell
         + '</tr>';
     }).join('');
 
     return '<div class="official-section">'
-      + sectionHeader(isOfficialCompare, gBadge)
+      + sectionHeader(true, gBadge)
       + '<div class="route-table-wrap"><table class="route-table">'
       + '<thead><tr><th>군 / 구간</th>'
-      + (isOfficialCompare ? '<th class="th-apr">'+window.t('index.card.period')+'</th><th class="th-may">'+window.t('index.card.periodMay')+'</th>' : '<th style="text-align:right">'+window.t('index.card.fare')+'</th>')
+      + '<th class="th-may">'+window.t('index.card.period')+'</th>'
+      + '<th class="th-apr">'+window.t('index.card.periodMay')+'</th>'
       + '</tr></thead>'
       + '<tbody>'+rows+'</tbody></table></div></div>';
   }
 
   /* ══════════════════════════════════════════════
    * CASE 3: 일반 mileage_band — feed 기반 (기타 항공사)
-   *   5월 비교표는 KE·OZ 전용. 나머지는 4월 단열 + 5월 "공시전" 표시.
+   *   현재 적용값 단열 표시
    * ══════════════════════════════════════════════ */
   if(cd.allRoutes.length > 0){
-    /* KE·OZ만 5월 비교 활성 — 나머지는 feed에 데이터가 있어도 표시하지 않음 */
-    var isOfficialCompare = (al.code === 'KE' || al.code === 'OZ');
-    var routes05 = [];
-    try{ routes05=window.resolveAllRoutes(cd.feedAl,al.code,'2026.05')||[]; }catch(e){}
-    var hasMay = isOfficialCompare && routes05.length > 0;
 
     var rows = cd.allRoutes.map(function(route){
       var isMatch   = miles && route.distanceRange && inRange(route.distanceRange,miles);
@@ -1319,41 +1303,19 @@ function buildOfficialSection(cd, al, miles, isRT, dep, arr){
       var spBadge   = route.spiked ? '<span class="route-spike-badge">⚠ 변동</span>' : '';
       var noteHtml  = route.dataNote ? '<span style="font-size:10px;color:var(--warn);margin-left:4px">'+route.dataNote+'</span>' : '';
       var rangeHtml = route.distanceRange ? '<span class="route-range">'+route.distanceRange+'mi</span> ' : '';
-      var aprAmt    = route.amountKRW!=null ? fmt(route.amountKRW,route.currency) : '<span style="color:var(--muted)">'+window.t('index.card.notListed')+'</span>';
+      var currentAmt = route.amountKRW!=null ? fmt(route.amountKRW,route.currency) : '<span style="color:var(--muted)">'+window.t('index.card.notListed')+'</span>';
 
-      if(hasMay){
-        /* KE·OZ: 실제 5월 금액 */
-        var r05    = routes05.find(function(x){return x.distanceRange===route.distanceRange;});
-        var mc     = (r05&&r05.amountKRW>route.amountKRW)?'route-amt-may-up':'route-amt-may-eq';
-        var mayAmt = r05&&r05.amountKRW!=null ? fmt(r05.amountKRW,r05.currency) : '<span style="color:var(--muted)">-</span>';
-        return '<tr class="'+cls+'">'
-          + '<td>'+rangeHtml+route.label+badge+spBadge+noteHtml+'</td>'
-          + '<td class="route-amt-apr">'+aprAmt+'</td>'
-          + '<td class="'+mc+'">'+mayAmt+'</td>'
-          + '</tr>';
-      }
-      if(isOfficialCompare){
-        /* KE·OZ이지만 feed 5월 데이터 없음 — "공시전" */
-        return '<tr class="'+cls+'">'
-          + '<td>'+rangeHtml+route.label+badge+spBadge+noteHtml+'</td>'
-          + '<td class="route-amt-apr">'+aprAmt+'</td>'
-          + '<td style="text-align:right;font-size:11px;color:var(--muted)">'+window.t('index.card.preAnnouncement')+'</td>'
-          + '</tr>';
-      }
-      /* 기타 항공사: 4월 단열만 표시 */
       return '<tr class="'+cls+'">'
         + '<td>'+rangeHtml+route.label+badge+spBadge+noteHtml+'</td>'
-        + '<td class="route-amt">'+aprAmt+'</td>'
+        + '<td class="route-amt-current">'+currentAmt+'</td>'
         + '</tr>';
     }).join('');
 
-    /* 헤더: KE·OZ면 비교형, 나머지는 단열 */
-    var showMayHeader = isOfficialCompare;
     return '<div class="official-section">'
-      + sectionHeader(showMayHeader)
+      + sectionHeader(false)
       + '<div class="route-table-wrap"><table class="route-table">'
       + '<thead><tr><th>'+window.t('index.card.distanceBand')+'</th>'
-      + (showMayHeader ? '<th class="th-apr">'+window.t('index.card.period')+'</th><th class="th-may">'+window.t('index.card.periodMay')+'</th>' : '<th style="text-align:right">'+window.t('index.card.fare')+'</th>')
+      + '<th class="th-may">'+window.t('index.card.period')+'</th>'
       + '</tr></thead>'
       + '<tbody>'+rows+'</tbody></table></div></div>';
   }

@@ -658,7 +658,7 @@ window.getOverrideForPeriod = function(iataCode, period) {
 
 /** 현재 기간 override items 반환 (mileage_band 스키마용) */
 window.getOverrideItems = function(iataCode, period) {
-  var ov = window.getOverrideForPeriod(iataCode, period || '2026.04');
+  var ov = window.getOverrideForPeriod(iataCode, period || '2026.05');
   if (!ov) return null;
   if (Array.isArray(ov.items) && ov.items.length > 0) return {items: ov.items, currency: ov.currency};
   return null;
@@ -666,7 +666,7 @@ window.getOverrideItems = function(iataCode, period) {
 
 /** 현재 기간 override group_tiers 반환 (group_tier 스키마용, ZE) */
 window.getOverrideGroupTiers = function(iataCode, period) {
-  var ov = window.getOverrideForPeriod(iataCode, period || '2026.04');
+  var ov = window.getOverrideForPeriod(iataCode, period || '2026.05');
   if (!ov || !Array.isArray(ov.group_tiers)) return null;
   return {tiers: ov.group_tiers, routeMap: ov.group_route_map || {}, currency: ov.currency};
 };
@@ -707,7 +707,7 @@ function _toKRWLocal(v, c) {
 }
 
 window.resolveAllRoutes = function(feedAl, iataCode, period) {
-  var cur_period = period || '2026.04';
+  var cur_period = period || '2026.05';
   var ovData = iataCode ? window.getOverrideItems(iataCode, cur_period) : null;
 
   var rawItems, currency;
@@ -743,7 +743,7 @@ window.resolveAllRoutes = function(feedAl, iataCode, period) {
 
 /** group_tier 항공사(ZE) 전용 — group_tiers 반환 */
 window.resolveGroupTiers = function(iataCode, feedAl, period) {
-  var cur_period = period || '2026.04';
+  var cur_period = period || '2026.05';
   var ovData = window.getOverrideGroupTiers(iataCode, cur_period);
   if (ovData) {
     return {
@@ -951,7 +951,7 @@ ko:{
   'index.status.loading':'데이터 로딩 중...',
   'index.status.loadError':'데이터 로딩 실패 — 콘솔을 확인하세요',
   'index.status.scriptError':'스크립트 오류로 로딩 실패 — 콘솔을 확인하세요',
-  'index.status.updated':'데이터 갱신: ','index.status.updatedSuffix':' · 2026-04 공식 공지 기준',
+  'index.status.updated':'데이터 갱신: ','index.status.updatedSuffix':' · 2026-05 공식 공시 기준',
   /* filters */
   'index.filter.all':'전체','index.filter.hasOfficialData':'공식 데이터 있음',
   /* result */
@@ -965,7 +965,7 @@ ko:{
   'index.alert.differentAirports':'출발지와 도착지를 다르게 선택하세요',
   /* meta suffix */
   'index.meta.oneWay':'편도','index.meta.roundTrip':'왕복',
-  'index.meta.suffix':'한국 출발 국제선 · 2026년 4월 공식 공지 기준',
+  'index.meta.suffix':'한국 출발 국제선 · 2026년 5월 공식 공시 기준',
   /* card strings */
   'index.card.currentRoute':'현재 노선',
   'index.card.notPublished':'미공지',
@@ -976,12 +976,13 @@ ko:{
   'index.card.routeNotServed':'해당 노선 미취항',
   'index.card.viewOfficialNotice':'공식 공지 ↗',
   'index.card.noData':'공식 데이터를 불러올 수 없습니다. 공식 공지 버튼을 통해 직접 확인하세요.',
-  'index.card.compare':'04→05 비교',
-  'index.card.period':'2026.04',
-  'index.card.periodMay':'2026.05',
+  'index.card.compare':'현재 적용 (2026.05)',
+  'index.card.period':'2026.05 적용',
+  'index.card.periodMay':'2026.06 전망',
+  'index.card.periodNext':'다음달 전망',
   'index.card.fare':'유류할증료',
   'index.card.distanceBand':'거리구간',
-  'index.card.mayTrend':'5월 최소',
+  'index.card.mayTrend':'전월 대비',
   'index.card.groupTierShort':'군별',
   'index.card.notListed':'공지 미기재',
   'index.card.miniNotice':'공식 공지 ↗',
@@ -1205,7 +1206,7 @@ en:{
   'index.indexLink':'→ View Full Airline Index',
   'index.status.loading':'Loading data...','index.status.loadError':'Failed to load data — check console',
   'index.status.scriptError':'Script error — check console',
-  'index.status.updated':'Data updated: ','index.status.updatedSuffix':' · Based on Apr 2026 official notice',
+  'index.status.updated':'Data updated: ','index.status.updatedSuffix':' · Based on May 2026 official notice',
   'index.filter.all':'All','index.filter.hasOfficialData':'Has Official Data',
   'index.result.label':'Fuel Surcharge by Airline',
   'index.result.noResults':'No results found',
@@ -1215,17 +1216,18 @@ en:{
   'index.alert.selectAirports':'Please select origin and destination',
   'index.alert.differentAirports':'Origin and destination must be different',
   'index.meta.oneWay':'One-way','index.meta.roundTrip':'Round-trip',
-  'index.meta.suffix':'Korea Departure · Based on April 2026 Official Notice',
+  'index.meta.suffix':'Korea Departure · Based on May 2026 Official Notice',
   'index.card.currentRoute':'This Route',
   'index.card.notPublished':'N/A','index.card.preAnnouncement':'Pending',
   'index.card.groupTier':'Group Tier','index.card.usdNotice':'USD Quoted',
   'index.card.notOperated':'Not Operated','index.card.routeNotServed':'This airline does not serve this route',
   'index.card.viewOfficialNotice':'Official Notice ↗',
   'index.card.noData':'Official data unavailable. Please check via the official notice button.',
-  'index.card.compare':'04→05 Comparison',
-  'index.card.period':'2026.04','index.card.periodMay':'2026.05',
+  'index.card.compare':'Current Applied (2026.05)',
+  'index.card.period':'2026.05 Applied','index.card.periodMay':'2026.06 Forecast',
+  'index.card.periodNext':'Next Month Forecast',
   'index.card.fare':'Surcharge','index.card.distanceBand':'Distance Band',
-  'index.card.mayTrend':'May Min.',
+  'index.card.mayTrend':'vs. Prev. Month',
   'index.card.groupTierShort':'Group',
   'index.card.notListed':'Not listed','index.card.miniNotice':'Official Notice ↗',
   /* news page */
@@ -1419,7 +1421,7 @@ ja:{
   'index.indexLink':'→ 航空会社一覧を見る',
   'index.status.loading':'データ読み込み中...','index.status.loadError':'データ読み込み失敗',
   'index.status.scriptError':'スクリプトエラー',
-  'index.status.updated':'データ更新: ','index.status.updatedSuffix':' · 2026年4月公式通知基準',
+  'index.status.updated':'データ更新: ','index.status.updatedSuffix':' · 2026年5月公式公示基準',
   'index.filter.all':'すべて','index.filter.hasOfficialData':'公式データあり',
   'index.result.label':'航空会社別燃油サーチャージ',
   'index.result.noResults':'検索結果がありません',
@@ -1429,17 +1431,18 @@ ja:{
   'index.alert.selectAirports':'出発地と目的地を選択してください',
   'index.alert.differentAirports':'出発地と目的地を別々に選択してください',
   'index.meta.oneWay':'片道','index.meta.roundTrip':'往復',
-  'index.meta.suffix':'韓国出発 · 2026年4月公式通知基準',
+  'index.meta.suffix':'韓国出発 · 2026年5月公式公示基準',
   'index.card.currentRoute':'現在の路線',
   'index.card.notPublished':'未公示','index.card.preAnnouncement':'公示前',
   'index.card.groupTier':'群別料金','index.card.usdNotice':'USD建て',
   'index.card.notOperated':'未就航','index.card.routeNotServed':'該当路線は未就航です',
   'index.card.viewOfficialNotice':'公式通知 ↗',
   'index.card.noData':'公式データが取得できません。公式通知ボタンからご確認ください。',
-  'index.card.compare':'04→05比較',
-  'index.card.period':'2026.04','index.card.periodMay':'2026.05',
+  'index.card.compare':'現在適用 (2026.05)',
+  'index.card.period':'2026.05適用','index.card.periodMay':'2026.06展望',
+  'index.card.periodNext':'翌月展望',
   'index.card.fare':'サーチャージ','index.card.distanceBand':'距離帯',
-  'index.card.mayTrend':'5月最小',
+  'index.card.mayTrend':'前月比',
   'index.card.groupTierShort':'群別',
   'index.card.notListed':'公示なし','index.card.miniNotice':'公式通知 ↗',
   /* news page */
@@ -1633,7 +1636,7 @@ zh:{
   'index.indexLink':'→ 查看完整航空公司一览',
   'index.status.loading':'数据加载中...','index.status.loadError':'数据加载失败',
   'index.status.scriptError':'脚本错误',
-  'index.status.updated':'数据更新: ','index.status.updatedSuffix':' · 2026年4月官方公告基准',
+  'index.status.updated':'数据更新: ','index.status.updatedSuffix':' · 2026年5月官方公示基准',
   'index.filter.all':'全部','index.filter.hasOfficialData':'有官方数据',
   'index.result.label':'各航空公司燃油附加费',
   'index.result.noResults':'无搜索结果',
@@ -1643,17 +1646,18 @@ zh:{
   'index.alert.selectAirports':'请选择出发地和目的地',
   'index.alert.differentAirports':'出发地和目的地请选择不同机场',
   'index.meta.oneWay':'单程','index.meta.roundTrip':'往返',
-  'index.meta.suffix':'韩国出发 · 2026年4月官方公告基准',
+  'index.meta.suffix':'韩国出发 · 2026年5月官方公示基准',
   'index.card.currentRoute':'当前航线',
   'index.card.notPublished':'未公布','index.card.preAnnouncement':'待公布',
   'index.card.groupTier':'组别费率','index.card.usdNotice':'USD报价',
   'index.card.notOperated':'未开通','index.card.routeNotServed':'该航空公司未运营此航线',
   'index.card.viewOfficialNotice':'官方公告 ↗',
   'index.card.noData':'无法获取官方数据，请通过官方公告按钮直接查看。',
-  'index.card.compare':'04→05对比',
-  'index.card.period':'2026.04','index.card.periodMay':'2026.05',
+  'index.card.compare':'当前适用 (2026.05)',
+  'index.card.period':'2026.05适用','index.card.periodMay':'2026.06展望',
+  'index.card.periodNext':'下月展望',
   'index.card.fare':'燃油附加费','index.card.distanceBand':'距离段',
-  'index.card.mayTrend':'5月最低',
+  'index.card.mayTrend':'环比变动',
   'index.card.groupTierShort':'组别',
   'index.card.notListed':'未公布','index.card.miniNotice':'官方公告 ↗',
   /* news page */
@@ -1846,7 +1850,7 @@ fr:{
   'index.indexLink':'→ Voir l\'index complet des compagnies',
   'index.status.loading':'Chargement...','index.status.loadError':'Erreur de chargement',
   'index.status.scriptError':'Erreur de script',
-  'index.status.updated':'Mis à jour: ','index.status.updatedSuffix':' · Avis officiel avr. 2026',
+  'index.status.updated':'Mis à jour: ','index.status.updatedSuffix':' · Avis officiel mai 2026',
   'index.filter.all':'Tout','index.filter.hasOfficialData':'Données officielles disponibles',
   'index.result.label':'Surcharge par compagnie',
   'index.result.noResults':'Aucun résultat',
@@ -1856,17 +1860,18 @@ fr:{
   'index.alert.selectAirports':'Veuillez sélectionner départ et destination',
   'index.alert.differentAirports':'Le départ et la destination doivent être différents',
   'index.meta.oneWay':'Aller simple','index.meta.roundTrip':'Aller-retour',
-  'index.meta.suffix':'Départ Corée · Avis officiel avril 2026',
+  'index.meta.suffix':'Départ Corée · Avis officiel mai 2026',
   'index.card.currentRoute':'Cette route',
   'index.card.notPublished':'N/D','index.card.preAnnouncement':'En attente',
   'index.card.groupTier':'Tarif groupe','index.card.usdNotice':'USD coté',
   'index.card.notOperated':'Non desservie','index.card.routeNotServed':'La compagnie ne dessert pas cette route',
   'index.card.viewOfficialNotice':'Avis officiel ↗',
   'index.card.noData':'Données indisponibles. Consultez le bouton avis officiel.',
-  'index.card.compare':'Comparaison 04→05',
-  'index.card.period':'2026.04','index.card.periodMay':'2026.05',
+  'index.card.compare':'Appliqué (2026.05)',
+  'index.card.period':'2026.05 Appliqué','index.card.periodMay':'Prévision 2026.06',
+  'index.card.periodNext':'Prévision mois prochain',
   'index.card.fare':'Surcharge','index.card.distanceBand':'Tranche distance',
-  'index.card.mayTrend':'Min. mai',
+  'index.card.mayTrend':'vs mois préc.',
   'index.card.groupTierShort':'Groupe',
   'index.card.notListed':'Non publié','index.card.miniNotice':'Avis officiel ↗',
   /* news page */
@@ -2061,7 +2066,7 @@ de:{
   'index.indexLink':'→ Vollständigen Airline-Index ansehen',
   'index.status.loading':'Daten werden geladen...','index.status.loadError':'Fehler beim Laden',
   'index.status.scriptError':'Skriptfehler',
-  'index.status.updated':'Aktualisiert: ','index.status.updatedSuffix':' · Offizielle Mitteilung Apr. 2026',
+  'index.status.updated':'Aktualisiert: ','index.status.updatedSuffix':' · Offizielle Mitteilung Mai 2026',
   'index.filter.all':'Alle','index.filter.hasOfficialData':'Offizielle Daten vorhanden',
   'index.result.label':'Treibstoffzuschlag nach Fluggesellschaft',
   'index.result.noResults':'Keine Ergebnisse',
@@ -2071,17 +2076,18 @@ de:{
   'index.alert.selectAirports':'Bitte Abflug und Ziel auswählen',
   'index.alert.differentAirports':'Abflug und Ziel müssen unterschiedlich sein',
   'index.meta.oneWay':'Einfach','index.meta.roundTrip':'Hin und zurück',
-  'index.meta.suffix':'Korea-Abflug · Offizielle Mitteilung April 2026',
+  'index.meta.suffix':'Korea-Abflug · Offizielle Mitteilung Mai 2026',
   'index.card.currentRoute':'Diese Strecke',
   'index.card.notPublished':'Nicht veröffentlicht','index.card.preAnnouncement':'Ausstehend',
   'index.card.groupTier':'Gruppenpreis','index.card.usdNotice':'USD-notiert',
   'index.card.notOperated':'Nicht betrieben','index.card.routeNotServed':'Diese Fluggesellschaft betreibt diese Strecke nicht',
   'index.card.viewOfficialNotice':'Offizielle Mitteilung ↗',
   'index.card.noData':'Offizielle Daten nicht verfügbar. Bitte über den offiziellen Hinweis-Button prüfen.',
-  'index.card.compare':'Vergleich 04→05',
-  'index.card.period':'2026.04','index.card.periodMay':'2026.05',
+  'index.card.compare':'Aktuell angewendet (2026.05)',
+  'index.card.period':'2026.05 Angewendet','index.card.periodMay':'Prognose 2026.06',
+  'index.card.periodNext':'Prognose nächsten Monat',
   'index.card.fare':'Zuschlag','index.card.distanceBand':'Distanzbereich',
-  'index.card.mayTrend':'Mai Min.',
+  'index.card.mayTrend':'Vgl. Vormonat',
   'index.card.groupTierShort':'Gruppe',
   'index.card.notListed':'Nicht veröff.','index.card.miniNotice':'Offizielle Mitteilung ↗',
   /* news page */
