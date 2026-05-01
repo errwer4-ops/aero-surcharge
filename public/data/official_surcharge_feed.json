@@ -1,6 +1,6 @@
 {
   "meta": {
-    "lastUpdated": "2026-04-29T22:25:17.372Z",
+    "lastUpdated": "2026-05-01T00:56:26.023Z",
     "source": "official-multi-airline",
     "schemaVersion": "2.2.0",
     "regulatoryAssist": true,
@@ -10,7 +10,7 @@
       "error": 35,
       "unsupported": 29
     },
-    "pipelineRun": "2026-04-29T22:25:17.372Z",
+    "pipelineRun": "2026-05-01T00:56:26.023Z",
     "_v33note": "2026-04 공식 공지 기준 전면 반영. group_tier 스키마(ZE) 추가."
   },
   "airlines": [
@@ -168,10 +168,10 @@
       "candidatesSummary": [
         {
           "sourceType": "carry_over",
-          "confidence": 0.6,
+          "confidence": 0.5499999999999999,
           "valid": true,
           "routeCount": 9,
-          "reason": "이전 피드 유지 (9구간) — carry_over 현재월 일치"
+          "reason": "이전 피드 유지 (9구간) — carry_over 과거월 (2026.04, 1개월 전, 패널티 5%)"
         },
         {
           "sourceType": "forecast_model",
@@ -181,7 +181,7 @@
           "reason": "forecast_feed 예측 (2구간)"
         }
       ],
-      "lastPipelineRun": "2026-04-29T22:25:17.372Z",
+      "lastPipelineRun": "2026-05-01T00:56:26.023Z",
       "noticeUrl": "https://www.koreanair.com/contents/footer/customer-support/notice",
       "officialCurrencyNote": "KRW",
       "officialSourceUrl": "https://www.koreanair.com/contents/footer/customer-support/notice"
@@ -340,13 +340,13 @@
       "candidatesSummary": [
         {
           "sourceType": "carry_over",
-          "confidence": 0.6,
+          "confidence": 0.5499999999999999,
           "valid": true,
           "routeCount": 9,
-          "reason": "이전 피드 유지 (9구간) — carry_over 현재월 일치"
+          "reason": "이전 피드 유지 (9구간) — carry_over 과거월 (2026.04, 1개월 전, 패널티 5%)"
         }
       ],
-      "lastPipelineRun": "2026-04-29T22:25:17.372Z",
+      "lastPipelineRun": "2026-05-01T00:56:26.023Z",
       "noticeUrl": "https://flyasiana.com/C/KR/KO/customer/notice/list",
       "officialCurrencyNote": "KRW",
       "officialSourceUrl": "https://flyasiana.com/C/KR/KO/customer/notice/list"
@@ -479,13 +479,13 @@
       "candidatesSummary": [
         {
           "sourceType": "carry_over",
-          "confidence": 0.6,
+          "confidence": 0.5499999999999999,
           "valid": true,
           "routeCount": 7,
-          "reason": "이전 피드 유지 (7구간) — carry_over 현재월 일치"
+          "reason": "이전 피드 유지 (7구간) — carry_over 과거월 (2026.04, 1개월 전, 패널티 5%)"
         }
       ],
-      "lastPipelineRun": "2026-04-29T22:25:17.372Z",
+      "lastPipelineRun": "2026-05-01T00:56:26.023Z",
       "officialCurrencyNote": "USD",
       "noticeUrl": "https://www.airpremia.com/a/ko/customer/notice",
       "officialSourceUrl": "https://www.airpremia.com/a/ko/customer/notice"
@@ -592,13 +592,13 @@
       "candidatesSummary": [
         {
           "sourceType": "carry_over",
-          "confidence": 0.6,
+          "confidence": 0.5499999999999999,
           "valid": true,
           "routeCount": 5,
-          "reason": "이전 피드 유지 (5구간) — carry_over 현재월 일치"
+          "reason": "이전 피드 유지 (5구간) — carry_over 과거월 (2026.04, 1개월 전, 패널티 5%)"
         }
       ],
-      "lastPipelineRun": "2026-04-29T22:25:17.372Z",
+      "lastPipelineRun": "2026-05-01T00:56:26.023Z",
       "officialCurrencyNote": "USD",
       "noticeUrl": "https://www.jinair.com/company/announce/announceList",
       "officialSourceUrl": "https://www.jinair.com/company/announce/announceList"
@@ -718,13 +718,13 @@
       "candidatesSummary": [
         {
           "sourceType": "carry_over",
-          "confidence": 0.6,
+          "confidence": 0.5499999999999999,
           "valid": true,
           "routeCount": 6,
-          "reason": "이전 피드 유지 (6구간) — carry_over 현재월 일치"
+          "reason": "이전 피드 유지 (6구간) — carry_over 과거월 (2026.04, 1개월 전, 패널티 5%)"
         }
       ],
-      "lastPipelineRun": "2026-04-29T22:25:17.372Z",
+      "lastPipelineRun": "2026-05-01T00:56:26.023Z",
       "officialCurrencyNote": "USD",
       "noticeUrl": "https://www.jejuair.net/ko/customerServiceCenter/notice.do",
       "officialSourceUrl": "https://www.jejuair.net/ko/customerServiceCenter/notice.do"
@@ -858,13 +858,13 @@
       "candidatesSummary": [
         {
           "sourceType": "carry_over",
-          "confidence": 0.6,
+          "confidence": 0.5499999999999999,
           "valid": true,
           "routeCount": 7,
-          "reason": "이전 피드 유지 (7구간) — carry_over 현재월 일치"
+          "reason": "이전 피드 유지 (7구간) — carry_over 과거월 (2026.04, 1개월 전, 패널티 5%)"
         }
       ],
-      "lastPipelineRun": "2026-04-29T22:25:17.372Z",
+      "lastPipelineRun": "2026-05-01T00:56:26.023Z",
       "noticeUrl": "https://www.twayair.com/app/customerCenter/notice",
       "officialCurrencyNote": "KRW",
       "officialSourceUrl": "https://www.twayair.com/app/customerCenter/notice"
@@ -903,7 +903,7 @@
       "items": [],
       "aiSummary": "[mock] BX: 3개 구간 추출",
       "candidatesSummary": [],
-      "lastPipelineRun": "2026-04-29T22:25:17.372Z",
+      "lastPipelineRun": "2026-05-01T00:56:26.023Z",
       "noticeUrl": null,
       "officialCurrencyNote": null
     },
