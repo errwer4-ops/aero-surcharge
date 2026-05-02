@@ -846,7 +846,10 @@ var AIRPORT_GROUPS = [
   { key:'index.region.seasia',   codes:['HKG','SIN','BKK','MNL','KUL','SGN','HAN','DAD','DPS','RGN','CNX','HKT','NHA','MFM','PNH','REP','VTE','ULN','GUM','SPN','PQC','DLI','BTH'] },
   { key:'index.region.seasia2',  codes:['CEB','TAG','CRK','DVO','ILO','MNL','BKI','KCH','PEN'] },
   { key:'index.region.swasia',   codes:['DEL','BOM','CMB','KTM','DAC','MLE','TBS','ALA','FRU','TSE','SVO','VVO'] },
-  { key:'index.region.naOceania',codes:['LAX','JFK','SFO','SEA','YVR','YYZ','HNL','IAD','BOS','ORD','ATL','DFW','LAS','SYD','MEL','AKL','BNE'] },
+  { key:'index.region.usa',     codes:['LAX','JFK','SFO','SEA','HNL','IAD','BOS','ORD','ATL','DFW','LAS'] },
+  { key:'index.region.canada',  codes:['YVR','YYZ'] },
+  { key:'index.region.australia', codes:['SYD','MEL','BNE'] },
+  { key:'index.region.newzealand',codes:['AKL'] },
   { key:'index.region.europeMiddleEast', codes:['CDG','LHR','FRA','AMS','DXB','FCO','BCN','PRG','BUD','MXP','VIE','MAD','LIS','ZAG','IST','CAI','DOH','AUH','RUH'] },
 ];
 
@@ -882,7 +885,8 @@ ko:{
   'index.region.china':'🇨🇳 중국','index.region.taiwan':'🇹🇼 대만',
   'index.region.seasia':'🌏 동남아시아','index.region.seasia2':'🌏 동남아시아 (필리핀·말레이시아)',
   'index.region.swasia':'🌍 남아시아·중앙아시아',
-  'index.region.naOceania':'🇺🇸 북미·오세아니아',
+  'index.region.usa':'🇺🇸 미국','index.region.canada':'🇨🇦 캐나다',
+  'index.region.australia':'🇦🇺 호주','index.region.newzealand':'🇳🇿 뉴질랜드','index.region.oceania':'🇦🇺 오세아니아',
   'index.region.europeMiddleEast':'🇪🇺 유럽·중동',
   /* airport names */
   'airport.ICN':'인천','airport.GMP':'김포','airport.PUS':'부산','airport.CJU':'제주',
@@ -1002,6 +1006,9 @@ ko:{
   'aff.usim.desc':              '출국 전 필수 준비',
   'aff.hotels.title':           '전 세계 숙소 간편 예약',
   'aff.hotels.desc':            '다양한 호텔과 숙소를 비교하고 바로 예약',
+  'aff.myrealtrip.title':       '✈️ 항공권 가격과 여행 상품을 함께 비교',
+  'aff.myrealtrip.desc':        '항공권 가격과 여행 상품을 함께 확인하고 예약 타이밍을 비교해보세요',
+  'aff.myrealtrip.cta':         '항공권 가격 확인하기',
   'news.pageSub':'유류할증료 관련 국가·기관·항공사·시장 참고 정보 · 데이터 기반 AI 요약 · 예측 근거 연결',
   'news.predictTitle':'📊 AI 예측 참고 지표 현황',
   'news.officialTitle':'📢 2026년 5월 적용 유류할증료 공식 공지 요약',
@@ -1172,7 +1179,8 @@ en:{
   'common.clear':'Clear',
   'index.region.china':'🇨🇳 China','index.region.taiwan':'🇹🇼 Taiwan',
   'index.region.seasia':'🌏 Southeast Asia','index.region.seasia2':'🌏 SE Asia (Philippines/Malaysia)',
-  'index.region.swasia':'🌍 South/Central Asia','index.region.naOceania':'🇺🇸 N. America & Oceania',
+  'index.region.swasia':'🌍 South/Central Asia','index.region.usa':'🇺🇸 United States','index.region.canada':'🇨🇦 Canada',
+  'index.region.australia':'🇦🇺 Australia','index.region.newzealand':'🇳🇿 New Zealand','index.region.oceania':'🇦🇺 Oceania',
   'index.region.europeMiddleEast':'🇪🇺 Europe & Middle East',
   'airport.ICN':'Seoul Incheon','airport.GMP':'Seoul Gimpo','airport.PUS':'Busan','airport.CJU':'Jeju',
   'airport.CJJ':'Cheongju','airport.TAE':'Daegu',
@@ -1270,6 +1278,9 @@ en:{
   'aff.usim.desc':              'Essential before departure',
   'aff.hotels.title':           'Hotels worldwide — easy booking',
   'aff.hotels.desc':            'Compare and book hotels and accommodation worldwide',
+  'aff.myrealtrip.title':       '✈️ Compare flight prices and travel deals',
+  'aff.myrealtrip.desc':        'Check airfare and travel products together before booking',
+  'aff.myrealtrip.cta':         'Check flight prices',
   'news.pageSub':'Fuel surcharge market, policy & airline updates · AI-powered summaries · Forecast basis',
   'news.predictTitle':'📊 AI Forecast Indicators',
   'news.officialTitle':'📢 May 2026 Fuel Surcharge — Official Summary',
@@ -1437,7 +1448,8 @@ ja:{
   'index.airport.noSearchResults':'結果なし',
   'common.clear':'クリア',
   'index.region.korea':'🇰🇷 韓国','index.region.japan':'🇯🇵 日本',
-  'index.region.asia':'🌏 アジア','index.region.naOceania':'🇺🇸 北米・オセアニア',
+  'index.region.asia':'🌏 アジア','index.region.usa':'🇺🇸 アメリカ','index.region.canada':'🇨🇦 カナダ',
+  'index.region.australia':'🇦🇺 オーストラリア','index.region.newzealand':'🇳🇿 ニュージーランド','index.region.oceania':'🇦🇺 オセアニア',
   'index.region.europeMiddleEast':'🇪🇺 欧州・中東',
   'airport.ICN':'ソウル仁川','airport.GMP':'ソウル金浦','airport.PUS':'釜山','airport.CJU':'済州',
   'airport.NRT':'東京成田','airport.HND':'東京羽田','airport.KIX':'大阪',
@@ -1509,6 +1521,9 @@ ja:{
   'aff.usim.desc':              '出国前の必須準備',
   'aff.hotels.title':           '世界中の宿泊施設を簡単予約',
   'aff.hotels.desc':            '多彩なホテル・宿泊施設を比較してすぐ予約',
+  'aff.myrealtrip.title':       '✈️ 航空券価格と旅行商品をまとめて比較',
+  'aff.myrealtrip.desc':        '航空券価格と旅行商品を確認し、予約タイミングを比較できます',
+  'aff.myrealtrip.cta':         '航空券価格を確認',
   'news.pageSub':'燃油サーチャージ関連 市場・政策・航空会社情報 · AI要約 · 予測根拠',
   'news.predictTitle':'📊 AI予測参考指標',
   'news.officialTitle':'📢 5月燃油サーチャージ 公式まとめ',
@@ -1676,7 +1691,8 @@ zh:{
   'index.airport.noSearchResults':'无结果',
   'common.clear':'清除',
   'index.region.korea':'🇰🇷 韩国','index.region.japan':'🇯🇵 日本',
-  'index.region.asia':'🌏 亚洲','index.region.naOceania':'🇺🇸 北美·大洋洲',
+  'index.region.asia':'🌏 亚洲','index.region.usa':'🇺🇸 美国','index.region.canada':'🇨🇦 加拿大',
+  'index.region.australia':'🇦🇺 澳大利亚','index.region.newzealand':'🇳🇿 新西兰','index.region.oceania':'🇦🇺 大洋洲',
   'index.region.europeMiddleEast':'🇪🇺 欧洲·中东',
   'airport.ICN':'首尔仁川','airport.GMP':'首尔金浦','airport.PUS':'釜山','airport.CJU':'济州',
   'airport.NRT':'东京成田','airport.HND':'东京羽田','airport.KIX':'大阪',
@@ -1748,6 +1764,9 @@ zh:{
   'aff.usim.desc':              '出发前必备准备',
   'aff.hotels.title':           '全球住宿轻松预订',
   'aff.hotels.desc':            '比较多种酒店和住宿，立即预订',
+  'aff.myrealtrip.title':       '✈️ 一起比较机票价格和旅行商品',
+  'aff.myrealtrip.desc':        '预订前一起确认机票价格和旅行商品',
+  'aff.myrealtrip.cta':         '查看机票价格',
   'news.pageSub':'燃油附加费相关市场、政策、航空公司动态 · AI摘要 · 预测依据',
   'news.predictTitle':'📊 AI预测参考指标',
   'news.officialTitle':'📢 5月燃油附加费 官方公告汇总',
@@ -1915,7 +1934,8 @@ fr:{
   'index.airport.noSearchResults':'Aucun résultat',
   'common.clear':'Effacer',
   'index.region.korea':'🇰🇷 Corée','index.region.japan':'🇯🇵 Japon',
-  'index.region.asia':'🌏 Asie','index.region.naOceania':'🇺🇸 Amér. du Nord & Océanie',
+  'index.region.asia':'🌏 Asie','index.region.usa':'🇺🇸 États-Unis','index.region.canada':'🇨🇦 Canada',
+  'index.region.australia':'🇦🇺 Australie','index.region.newzealand':'🇳🇿 Nouvelle-Zélande','index.region.oceania':'🇦🇺 Océanie',
   'index.region.europeMiddleEast':'🇪🇺 Europe & Moyen-Orient',
   'airport.ICN':'Séoul Incheon','airport.GMP':'Séoul Gimpo','airport.PUS':'Busan','airport.CJU':'Jeju',
   'airport.NRT':'Tokyo Narita','airport.HND':'Tokyo Haneda','airport.KIX':'Osaka',
@@ -1986,6 +2006,9 @@ fr:{
   'aff.usim.desc':              'Indispensable avant le départ',
   'aff.hotels.title':           'Hôtels du monde entier',
   'aff.hotels.desc':            'Comparez et réservez des hôtels et hébergements dans le monde',
+  'aff.myrealtrip.title':       '✈️ Comparez les vols et les offres de voyage',
+  'aff.myrealtrip.desc':        'Vérifiez les prix des vols et les produits de voyage avant de réserver',
+  'aff.myrealtrip.cta':         'Voir les prix des vols',
   'news.pageSub':'Surcharge carburant · actualités marché, politique & compagnies aériennes · résumés IA',
   'news.predictTitle':'📊 Indicateurs de prévision IA',
   'news.officialTitle':'📢 Surcharge mai — Résumé officiel',
@@ -2153,7 +2176,8 @@ de:{
   'index.airport.noSearchResults':'Keine Ergebnisse',
   'common.clear':'Löschen',
   'index.region.korea':'🇰🇷 Korea','index.region.japan':'🇯🇵 Japan',
-  'index.region.asia':'🌏 Asien','index.region.naOceania':'🇺🇸 Nordamerika & Ozeanien',
+  'index.region.asia':'🌏 Asien','index.region.usa':'🇺🇸 USA','index.region.canada':'🇨🇦 Kanada',
+  'index.region.australia':'🇦🇺 Australien','index.region.newzealand':'🇳🇿 Neuseeland','index.region.oceania':'🇦🇺 Ozeanien',
   'index.region.europeMiddleEast':'🇪🇺 Europa & Naher Osten',
   'airport.ICN':'Seoul Incheon','airport.GMP':'Seoul Gimpo','airport.PUS':'Busan','airport.CJU':'Jeju',
   'airport.NRT':'Tokio Narita','airport.HND':'Tokio Haneda','airport.KIX':'Osaka',
@@ -2226,6 +2250,9 @@ de:{
   'aff.usim.desc':              'Vor der Abreise unbedingt',
   'aff.hotels.title':           'Unterkünfte weltweit — einfach buchen',
   'aff.hotels.desc':            'Hotels und Unterkünfte vergleichen und sofort buchen',
+  'aff.myrealtrip.title':       '✈️ Flugpreise und Reiseangebote vergleichen',
+  'aff.myrealtrip.desc':        'Prüfen Sie Flugpreise und Reiseangebote vor der Buchung',
+  'aff.myrealtrip.cta':         'Flugpreise prüfen',
   'news.pageSub':'Treibstoffzuschlag · Markt-, Politik- & Airline-Updates · KI-Zusammenfassung · Prognosebasis',
   'news.predictTitle':'📊 KI-Prognose Indikatoren',
   'news.officialTitle':'📢 Mai Treibstoffzuschlag — Offizielle Zusammenfassung',
@@ -2422,23 +2449,226 @@ window.buildAirportOptions = function(selectEl, type){
   if(saved) selectEl.value = saved;
 };
 
+/* ─── 공항 별칭 (도시명·국가명·영문 검색 지원) ─── */
+/* ─── 공항 개별 별칭 (도시명·영문) ─── */
+var AIRPORT_ALIASES = {
+  /* ── 한국 ── */
+  ICN: ['인천','서울','seoul','korea','한국','대한민국','incheon'],
+  GMP: ['김포','서울','seoul','korea','한국','대한민국','gimpo'],
+  PUS: ['부산','busan','korea','한국','대한민국'],
+  CJU: ['제주','jeju','korea','한국','대한민국'],
+  CJJ: ['청주','cheongju','korea','한국','대한민국'],
+  TAE: ['대구','daegu','korea','한국','대한민국'],
+  /* ── 일본 ── */
+  NRT: ['도쿄','동경','tokyo','japan','일본','나리타','narita'],
+  HND: ['도쿄','동경','tokyo','japan','일본','하네다','haneda'],
+  KIX: ['오사카','osaka','간사이','kansai','japan','일본'],
+  FUK: ['후쿠오카','fukuoka','japan','일본'],
+  CTS: ['삿포로','sapporo','홋카이도','hokkaido','japan','일본'],
+  OKA: ['오키나와','okinawa','japan','일본'],
+  NGO: ['나고야','nagoya','japan','일본','주부','chubu'],
+  KMJ: ['구마모토','kumamoto','japan','일본'],
+  NGS: ['나가사키','nagasaki','japan','일본'],
+  OIT: ['오이타','oita','japan','일본'],
+  HIJ: ['히로시마','hiroshima','japan','일본'],
+  KOJ: ['가고시마','kagoshima','japan','일본'],
+  MYJ: ['마쓰야마','matsuyama','japan','일본'],
+  HKD: ['하코다테','hakodate','japan','일본'],
+  FSZ: ['시즈오카','shizuoka','japan','일본'],
+  /* ── 중국 ── */
+  PVG: ['상하이','shanghai','china','중국','푸동','pudong'],
+  SHA: ['상하이','shanghai','china','중국','훙차오','hongqiao'],
+  PEK: ['베이징','beijing','china','중국','북경'],
+  CAN: ['광저우','guangzhou','china','중국'],
+  CTU: ['청두','chengdu','china','중국'],
+  XIY: ['시안','xian','china','중국'],
+  CGO: ['정저우','zhengzhou','china','중국'],
+  CKG: ['충칭','chongqing','china','중국'],
+  YNJ: ['옌지','yanji','china','중국'],
+  DYG: ['장자제','zhangjiajie','china','중국'],
+  SHA: ['상하이','shanghai','china','중국','훙차오','hongqiao'],
+  TAO: ['칭다오','qingdao','china','중국'],
+  WEH: ['웨이하이','weihai','china','중국'],
+  YNT: ['옌타이','yantai','china','중국'],
+  NTG: ['난통','nantong','china','중국'],
+  HRB: ['하얼빈','harbin','china','중국'],
+  KWL: ['구이린','guilin','china','중국'],
+  /* ── 대만 ── */
+  TPE: ['타이베이','taipei','taiwan','대만'],
+  KHH: ['가오슝','kaohsiung','taiwan','대만'],
+  RMQ: ['타이중','taichung','taiwan','대만'],
+  /* ── 동남아 ── */
+  BKK: ['방콕','bangkok','thailand','태국'],
+  SIN: ['싱가포르','singapore'],
+  HKG: ['홍콩','hong kong','hongkong'],
+  MNL: ['마닐라','manila','philippines','필리핀'],
+  CEB: ['세부','cebu','philippines','필리핀'],
+  KUL: ['쿠알라룸푸르','kuala lumpur','malaysia','말레이시아'],
+  SGN: ['호찌민','ho chi minh','vietnam','베트남','hcmc'],
+  HAN: ['하노이','hanoi','vietnam','베트남'],
+  DAD: ['다낭','da nang','danang','vietnam','베트남'],
+  DPS: ['발리','bali','indonesia','인도네시아','덴파사르','denpasar'],
+  HKT: ['푸껫','phuket','thailand','태국'],
+  NHA: ['나트랑','nha trang','vietnam','베트남'],
+  CNX: ['치앙마이','chiang mai','thailand','태국'],
+  MFM: ['마카오','macau','macao'],
+  GUM: ['괌','guam'],
+  SPN: ['사이판','saipan'],
+  /* ── 미국 / 캐나다 / 오세아니아 ── */
+  LAX: ['LA','los angeles','usa','미국','로스앤젤레스','america'],
+  JFK: ['뉴욕','new york','usa','미국','nyc','america'],
+  SFO: ['샌프란시스코','san francisco','usa','미국','america'],
+  HNL: ['호놀룰루','honolulu','hawaii','하와이','usa','미국','america'],
+  SEA: ['시애틀','seattle','usa','미국','america'],
+  YVR: ['밴쿠버','vancouver','canada','캐나다'],
+  YYZ: ['토론토','toronto','canada','캐나다'],
+  IAD: ['워싱턴','washington','usa','미국','dc','america'],
+  BOS: ['보스턴','boston','usa','미국','america'],
+  ORD: ['시카고','chicago','usa','미국','america'],
+  ATL: ['애틀랜타','atlanta','usa','미국','america'],
+  DFW: ['달라스','dallas','usa','미국','america'],
+  LAS: ['라스베이거스','las vegas','usa','미국','america'],
+  SYD: ['시드니','sydney','australia','호주','oceania','오세아니아'],
+  MEL: ['멜버른','melbourne','australia','호주','oceania','오세아니아'],
+  AKL: ['오클랜드','auckland','newzealand','new zealand','뉴질랜드','oceania','오세아니아'],
+  BNE: ['브리즈번','brisbane','australia','호주','oceania','오세아니아'],
+  /* ── 유럽 ── */
+  CDG: ['파리','paris','france','프랑스','europe','유럽'],
+  LHR: ['런던','london','uk','영국','britain','europe','유럽'],
+  FRA: ['프랑크푸르트','frankfurt','germany','독일','europe','유럽'],
+  AMS: ['암스테르담','amsterdam','netherlands','네덜란드','europe','유럽'],
+  FCO: ['로마','rome','italy','이탈리아','europe','유럽'],
+  BCN: ['바르셀로나','barcelona','spain','스페인','europe','유럽'],
+  PRG: ['프라하','prague','czech','체코','europe','유럽'],
+  BUD: ['부다페스트','budapest','hungary','헝가리','europe','유럽'],
+  MXP: ['밀라노','milan','italy','이탈리아','europe','유럽'],
+  VIE: ['비엔나','vienna','austria','오스트리아','europe','유럽'],
+  MAD: ['마드리드','madrid','spain','스페인','europe','유럽'],
+  LIS: ['리스본','lisbon','portugal','포르투갈','europe','유럽'],
+  ZAG: ['자그레브','zagreb','croatia','크로아티아','europe','유럽'],
+  /* ── 중동 ── */
+  DXB: ['두바이','dubai','uae','아랍에미리트'],
+  DOH: ['도하','doha','qatar','카타르'],
+  IST: ['이스탄불','istanbul','turkey','튀르키예','터키'],
+  CAI: ['카이로','cairo','egypt','이집트'],
+  AUH: ['아부다비','abu dhabi','uae','아랍에미리트'],
+  RUH: ['리야드','riyadh','saudi','사우디'],
+};
+
+/* ─── 지역(국가) 키워드 → AIRPORT_GROUPS key 매핑 ─── */
+/* ─── 지역(국가) 키워드 → AIRPORT_GROUPS key 직접 매핑 ─── */
+var REGION_KEY_MAP = [
+  {
+    keys: ['한국','대한민국','korea','kr','south korea'],
+    groupKeys: ['index.region.korea']
+  },
+  {
+    keys: ['일본','japan','jp'],
+    groupKeys: ['index.region.japan']
+  },
+  {
+    keys: ['중국','china','cn'],
+    groupKeys: ['index.region.china']
+  },
+  {
+    keys: ['대만','taiwan','tw'],
+    groupKeys: ['index.region.taiwan']
+  },
+  {
+    keys: ['동남아','southeast asia','베트남','vietnam','태국','thailand',
+           '싱가포르','singapore','필리핀','philippines','말레이시아','malaysia',
+           '인도네시아','indonesia','괌','guam','사이판'],
+    groupKeys: ['index.region.seasia','index.region.seasia2']
+  },
+  {
+    keys: ['미국','usa','america','united states','북미'],
+    groupKeys: ['index.region.usa']
+  },
+  {
+    keys: ['캐나다','canada'],
+    groupKeys: ['index.region.canada']
+  },
+  {
+    keys: ['호주','australia','오스트레일리아'],
+    groupKeys: ['index.region.australia']
+  },
+  {
+    keys: ['뉴질랜드','newzealand','new zealand'],
+    groupKeys: ['index.region.newzealand']
+  },
+  {
+    keys: ['오세아니아','oceania'],
+    groupKeys: ['index.region.australia','index.region.newzealand']
+  },
+  {
+    keys: ['유럽','europe'],
+    groupKeys: ['index.region.europeMiddleEast']
+  },
+  {
+    keys: ['중동','middle east','두바이','도하','이스탄불','이집트'],
+    groupKeys: ['index.region.europeMiddleEast']
+  },
+  {
+    keys: ['남아시아','인도','india','스리랑카','중앙아시아'],
+    groupKeys: ['index.region.swasia']
+  },
+];
+
+/* ─── 지역 키워드 매칭 → 해당 그룹 전체 codes 배열 반환 ─── */
+function matchRegionCodes(ql){
+  /* 매칭된 모든 groupKeys 수집 (복수 매칭 허용) */
+  var matchedGroupKeys = {};
+  for(var ri=0; ri<REGION_KEY_MAP.length; ri++){
+    var rm = REGION_KEY_MAP[ri];
+    for(var ki=0; ki<rm.keys.length; ki++){
+      if(ql.indexOf(rm.keys[ki]) !== -1){
+        rm.groupKeys.forEach(function(gk){ matchedGroupKeys[gk] = true; });
+        break; /* 한 항목에서 키 하나 매칭되면 다음 REGION_KEY_MAP 항목으로 */
+      }
+    }
+  }
+  if(!Object.keys(matchedGroupKeys).length) return null;
+
+  /* 매칭된 groupKeys에 속하는 모든 codes 수집 */
+  var allCodes = [];
+  AIRPORT_GROUPS.forEach(function(grp){
+    if(matchedGroupKeys[grp.key]){
+      allCodes = allCodes.concat(grp.codes);
+    }
+  });
+
+  /* 중복 제거 */
+  var seen = {};
+  return allCodes.filter(function(c){ return seen[c] ? false : (seen[c] = true); });
+}
+
 /* ─── 공항 검색 자동완성용 items 반환 ─── */
 window.getAirportSearchItems = function(){
   var items = [];
   AIRPORT_GROUPS.forEach(function(grp){
     grp.codes.forEach(function(code){
-      var label = window.t('airport.' + code);
-      /* 한국어 고정 레이블도 함께 searchText에 포함 (다국어 전환 시 한글로도 검색 가능) */
+      var label   = window.t('airport.' + code);
       var labelKo = (window.I18N['ko'] && window.I18N['ko']['airport.' + code]) || '';
+      var aliases = (AIRPORT_ALIASES[code] || []).join(' ');
       items.push({
         code: code,
         label: label,
-        searchText: (labelKo + ' ' + label + ' ' + code).toLowerCase(),
+        searchText: (labelKo + ' ' + label + ' ' + code + ' ' + aliases).toLowerCase(),
         display: label + ' (' + code + ')'
       });
     });
   });
   return items;
+};
+
+/* ─── 지역 검색어를 items 배열로 변환 ─── */
+window.getAirportItemsByRegionQuery = function(ql){
+  var codes = matchRegionCodes(ql);
+  if(!codes || !codes.length) return null;
+  var all   = window.getAirportSearchItems();
+  var codeSet = {};
+  codes.forEach(function(c){ codeSet[c] = true; });
+  return all.filter(function(it){ return codeSet[it.code]; });
 };
 
 /* ─── DOM 일괄 applyLanguage ─── */
