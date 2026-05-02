@@ -377,6 +377,107 @@
     @media(max-width:480px){
       .affiliate-single { flex-direction:column; align-items:flex-start; }
     }
+
+    /* ── 마이리얼트립 히어로 카드 ── */
+    /* ── 마이리얼트립 CTA 카드 ── */
+    .affiliate-cta.myrealtrip-cta {
+      position:relative;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:22px;
+      min-height:120px;
+      padding:22px 26px;
+      margin:18px 0;
+      border-radius:16px;
+      border:1.5px solid #C7D7F5;
+      background:linear-gradient(135deg,#F8FAFF 0%,#EEF3FF 100%);
+      box-shadow:0 8px 22px rgba(46,79,216,.08);
+      overflow:hidden;
+    }
+    .cta-copy {
+      position:relative;
+      z-index:2;
+      max-width:560px;
+    }
+    .cta-kicker {
+      display:inline-block;
+      margin-bottom:7px;
+      padding:4px 9px;
+      border-radius:999px;
+      background:#E8F0FE;
+      color:#1A3BB8;
+      font-size:11px;
+      font-weight:800;
+    }
+    .cta-title {
+      font-size:16px;
+      font-weight:800;
+      color:var(--text);
+      letter-spacing:-.5px;
+      margin-bottom:7px;
+    }
+    .cta-desc {
+      font-size:13px;
+      color:#5f6675;
+      line-height:1.6;
+      margin-bottom:10px;
+    }
+    .cta-benefits {
+      display:flex;
+      flex-wrap:wrap;
+      gap:6px;
+    }
+    .cta-benefits span {
+      font-size:11px;
+      font-weight:700;
+      color:#1A3BB8;
+      background:#fff;
+      border:1px solid #C7D7F5;
+      border-radius:999px;
+      padding:4px 8px;
+    }
+    .cta-main-btn {
+      position:relative;
+      z-index:2;
+      flex-shrink:0;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-width:170px;
+      padding:13px 18px;
+      border-radius:11px;
+      background:var(--blue);
+      color:#fff;
+      font-size:14px;
+      font-weight:700;
+      text-decoration:none;
+      box-shadow:0 8px 18px rgba(46,79,216,.22);
+      transition:all .18s;
+      white-space:nowrap;
+    }
+    .cta-main-btn:hover {
+      transform:translateY(-2px);
+      background:var(--blue-dk, #1A3BB8);
+      box-shadow:0 12px 24px rgba(46,79,216,.28);
+    }
+    @media(max-width:700px){
+      .affiliate-cta.myrealtrip-cta {
+        display:block;
+        min-height:auto;
+        padding:18px 16px;
+        background:linear-gradient(135deg,#F8FAFF 0%,#EEF3FF 100%);
+      }
+      .cta-copy { max-width:100%; }
+      .cta-title { font-size:15px; }
+      .cta-desc  { font-size:12px; }
+      .cta-main-btn {
+        margin-top:12px;
+        width:100%;
+        min-width:0;
+      }
+      .cta-benefits span { font-size:10px; }
+    }
     </style>
 </head>
 <body>
@@ -530,16 +631,22 @@
       </div>
     </div>
     <div class="affiliate-section" id="affiliateSection">
-      <!-- 마이리얼트립: 항공권 비교 -->
-      <div class="affiliate-single">
-        <div class="affiliate-single-body">
-          <div class="aff-title" data-i18n="aff.myrealtrip.title">✈️ 항공권 가격과 여행 상품을 함께 비교</div>
-          <div class="aff-desc"  data-i18n="aff.myrealtrip.desc">항공권 가격과 여행 상품을 함께 확인하고 예약 타이밍을 비교해보세요</div>
+      <!-- 마이리얼트립: CTA 카드 -->
+      <div class="affiliate-cta myrealtrip-cta">
+        <div class="cta-copy">
+          <div class="cta-kicker">항공권 총액 확인 후 바로 비교</div>
+          <div class="cta-title" data-i18n="aff.myrealtrip.title">유류할증료까지 봤다면, 이제 항공권 가격을 확인해보세요</div>
+          <div class="cta-desc" data-i18n="aff.myrealtrip.desc">노선별 유류할증료 확인 후 실제 항공권 가격과 여행 상품을 함께 비교할 수 있습니다.</div>
+          <div class="cta-benefits">
+            <span>항공권 가격 비교</span>
+            <span>여행 상품 확인</span>
+            <span>예약 타이밍 판단</span>
+          </div>
         </div>
         <a href="https://lase.kr/click.php?m=myrealtrip&a=A100704170&l=0000"
            target="_blank" rel="noopener sponsored"
-           class="aff-btn primary"
-           data-i18n="aff.myrealtrip.cta">항공권 가격 확인하기</a>
+           class="cta-main-btn"
+           data-i18n="aff.myrealtrip.cta">항공권 가격 확인하기 →</a>
       </div>
       <!-- 호텔스컴바인: 숙소 비교 -->
       <div class="affiliate-single">
@@ -584,15 +691,21 @@
     </div>
 
     <!-- 제휴: 마이리얼트립 (랜딩 — 유류할증료 안내 하단) -->
-    <div class="affiliate-single" style="margin-bottom:4px;">
-      <div class="affiliate-single-body">
-        <div class="aff-title" data-i18n="aff.myrealtrip.title">✈️ 항공권 가격과 여행 상품을 함께 비교</div>
-        <div class="aff-desc"  data-i18n="aff.myrealtrip.desc">항공권 가격과 여행 상품을 함께 확인하고 예약 타이밍을 비교해보세요</div>
+    <div class="affiliate-cta myrealtrip-cta">
+      <div class="cta-copy">
+        <div class="cta-kicker">항공권 총액 확인 후 바로 비교</div>
+        <div class="cta-title" data-i18n="aff.myrealtrip.title">유류할증료까지 봤다면, 이제 항공권 가격을 확인해보세요</div>
+        <div class="cta-desc" data-i18n="aff.myrealtrip.desc">노선별 유류할증료 확인 후 실제 항공권 가격과 여행 상품을 함께 비교할 수 있습니다.</div>
+        <div class="cta-benefits">
+          <span>항공권 가격 비교</span>
+          <span>여행 상품 확인</span>
+          <span>예약 타이밍 판단</span>
+        </div>
       </div>
       <a href="https://lase.kr/click.php?m=myrealtrip&a=A100704170&l=0000"
          target="_blank" rel="noopener sponsored"
-         class="aff-btn primary"
-         data-i18n="aff.myrealtrip.cta">항공권 가격 확인하기</a>
+         class="cta-main-btn"
+         data-i18n="aff.myrealtrip.cta">항공권 가격 확인하기 →</a>
     </div>
 
     <div class="landing-title" id="landingTitle" data-i18n="index.landingTitle">한국 출발 국제선 유류할증료</div>
