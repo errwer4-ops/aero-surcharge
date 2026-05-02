@@ -987,7 +987,21 @@ ko:{
   'index.card.notListed':'공지 미기재',
   'index.card.miniNotice':'공식 공지 ↗',
   /* news page */
-  'news.pageTitle':'참고 소식',
+  'news.pageTitle':'📊 2026년 6월 유류할증료 전망 & 예약 판단 가이드',
+  /* CTA 박스 */
+  'news.cta.desc':              '📍 노선별 실제 유류할증료를 바로 확인하세요',
+  'news.cta.main':              '👉 유류할증료 조회하기',
+  'news.cta.airlines':          '👉 항공사별 비교 보기',
+  /* 제휴 카드 */
+  'aff.cta':                    '최저가 확인 →',
+  'aff.hotelscombined.title':   '항공권 예매 및 숙소 예약 한 번에 비교',
+  'aff.hotelscombined.desc':    '항공권과 호텔 가격을 함께 비교하고 최적의 예약 타이밍 확인',
+  'aff.agoda.title':            '항공권 일정에 맞춰 숙소까지 빠르게 예약',
+  'aff.agoda.desc':             '여행 일정에 맞는 숙소를 빠르게 찾고 예약까지 한 번에 진행',
+  'aff.usim.title':             '여행 유심 준비',
+  'aff.usim.desc':              '출국 전 필수 준비',
+  'aff.hotels.title':           '전 세계 숙소 간편 예약',
+  'aff.hotels.desc':            '다양한 호텔과 숙소를 비교하고 바로 예약',
   'news.pageSub':'유류할증료 관련 국가·기관·항공사·시장 참고 정보 · 데이터 기반 AI 요약 · 예측 근거 연결',
   'news.predictTitle':'📊 AI 예측 참고 지표 현황',
   'news.officialTitle':'📢 2026년 5월 적용 유류할증료 공식 공지 요약',
@@ -1102,8 +1116,8 @@ ko:{
   'news.fixed.src.marketBreaking':'Market Breaking',
   'news.fixed.src.fxMarket':'FX Market',
   /* page meta */
-  'news.metaTitle':'참고 소식 — 항공 유류할증료 동향 | 국제유가·환율·정책',
-  'news.metaDesc':'항공 유류할증료에 영향을 주는 국제유가, 환율, 정책 동향 정보. 국가·기관·시장 관련 참고 소식을 AI 요약으로 제공합니다.',
+  'news.metaTitle':'2026년 6월 유류할증료 전망 — 지금 예약 vs 기다림 (5월 대비 변화)',
+  'news.metaDesc':'5월 유류할증료 인상 이후 6월 인하 가능성은? 항공사별 변화와 지금 예약 vs 기다림 판단 기준까지 한 번에 확인하세요.',
   /* footer */
   'news.footer.notice':'이 페이지의 소식은 공개 정보 기반 참고용 자료입니다. 중요한 결정 전 공식 채널을 확인하세요.',
   'news.footer.contact':'문의',
@@ -1242,6 +1256,20 @@ en:{
   'index.card.notListed':'Not listed','index.card.miniNotice':'Official Notice ↗',
   /* news page */
   'news.pageTitle':'Market Insights',
+  /* CTA box */
+  'news.cta.desc':              '📍 Check fuel surcharges by route',
+  'news.cta.main':              '👉 Search Fuel Surcharges',
+  'news.cta.airlines':          '👉 Compare by Airline',
+  /* Affiliate cards */
+  'aff.cta':                    'Check price →',
+  'aff.hotelscombined.title':   'Compare flights & hotels in one place',
+  'aff.hotelscombined.desc':    'Compare airfare and hotel prices together to find the best booking timing',
+  'aff.agoda.title':            'Book accommodation to match your flight',
+  'aff.agoda.desc':             'Find the right place to stay and book in one go',
+  'aff.usim.title':             'Travel SIM',
+  'aff.usim.desc':              'Essential before departure',
+  'aff.hotels.title':           'Hotels worldwide — easy booking',
+  'aff.hotels.desc':            'Compare and book hotels and accommodation worldwide',
   'news.pageSub':'Fuel surcharge market, policy & airline updates · AI-powered summaries · Forecast basis',
   'news.predictTitle':'📊 AI Forecast Indicators',
   'news.officialTitle':'📢 May 2026 Fuel Surcharge — Official Summary',
@@ -1467,6 +1495,20 @@ ja:{
   'index.card.notListed':'公示なし','index.card.miniNotice':'公式通知 ↗',
   /* news page */
   'news.pageTitle':'参考ニュース',
+  /* CTA */
+  'news.cta.desc':              '📍 路線別の燃油サーチャージをすぐ確認',
+  'news.cta.main':              '👉 燃油サーチャージを検索',
+  'news.cta.airlines':          '👉 航空会社別に比較',
+  /* 提携カード */
+  'aff.cta':                    '最安値を確認 →',
+  'aff.hotelscombined.title':   '航空券と宿泊をまとめて比較',
+  'aff.hotelscombined.desc':    '航空券とホテルの料金を比較して最適なタイミングで予約',
+  'aff.agoda.title':            '旅程に合わせて宿泊をすぐ予約',
+  'aff.agoda.desc':             '旅程に合ったホテルを素早く見つけてまとめて予約',
+  'aff.usim.title':             '旅行SIM準備',
+  'aff.usim.desc':              '出国前の必須準備',
+  'aff.hotels.title':           '世界中の宿泊施設を簡単予約',
+  'aff.hotels.desc':            '多彩なホテル・宿泊施設を比較してすぐ予約',
   'news.pageSub':'燃油サーチャージ関連 市場・政策・航空会社情報 · AI要約 · 予測根拠',
   'news.predictTitle':'📊 AI予測参考指標',
   'news.officialTitle':'📢 5月燃油サーチャージ 公式まとめ',
@@ -1692,6 +1734,20 @@ zh:{
   'index.card.notListed':'未公布','index.card.miniNotice':'官方公告 ↗',
   /* news page */
   'news.pageTitle':'参考资讯',
+  /* CTA */
+  'news.cta.desc':              '📍 按航线查询燃油附加费',
+  'news.cta.main':              '👉 查询燃油附加费',
+  'news.cta.airlines':          '👉 按航空公司比较',
+  /* 合作卡片 */
+  'aff.cta':                    '查看最低价 →',
+  'aff.hotelscombined.title':   '机票和住宿一站式比较',
+  'aff.hotelscombined.desc':    '同时比较机票和酒店价格，找到最佳预订时机',
+  'aff.agoda.title':            '按行程快速预订住宿',
+  'aff.agoda.desc':             '快速找到合适住宿并一次完成预订',
+  'aff.usim.title':             '旅行SIM卡准备',
+  'aff.usim.desc':              '出发前必备准备',
+  'aff.hotels.title':           '全球住宿轻松预订',
+  'aff.hotels.desc':            '比较多种酒店和住宿，立即预订',
   'news.pageSub':'燃油附加费相关市场、政策、航空公司动态 · AI摘要 · 预测依据',
   'news.predictTitle':'📊 AI预测参考指标',
   'news.officialTitle':'📢 5月燃油附加费 官方公告汇总',
@@ -1916,6 +1972,20 @@ fr:{
   'index.card.notListed':'Non publié','index.card.miniNotice':'Avis officiel ↗',
   /* news page */
   'news.pageTitle':'Actualités marché',
+  /* CTA */
+  'news.cta.desc':              '📍 Vérifiez les surcharges par route',
+  'news.cta.main':              '👉 Rechercher la surcharge',
+  'news.cta.airlines':          '👉 Comparer par compagnie',
+  /* Cartes partenaires */
+  'aff.cta':                    'Voir le prix →',
+  'aff.hotelscombined.title':   'Vols et hôtels en une seule comparaison',
+  'aff.hotelscombined.desc':    'Comparez les prix des vols et des hôtels pour réserver au meilleur moment',
+  'aff.agoda.title':            'Hébergement adapté à votre itinéraire',
+  'aff.agoda.desc':             'Trouvez et réservez rapidement le logement idéal pour votre voyage',
+  'aff.usim.title':             'SIM de voyage',
+  'aff.usim.desc':              'Indispensable avant le départ',
+  'aff.hotels.title':           'Hôtels du monde entier',
+  'aff.hotels.desc':            'Comparez et réservez des hôtels et hébergements dans le monde',
   'news.pageSub':'Surcharge carburant · actualités marché, politique & compagnies aériennes · résumés IA',
   'news.predictTitle':'📊 Indicateurs de prévision IA',
   'news.officialTitle':'📢 Surcharge mai — Résumé officiel',
@@ -2142,6 +2212,20 @@ de:{
   'index.card.notListed':'Nicht veröff.','index.card.miniNotice':'Offizielle Mitteilung ↗',
   /* news page */
   'news.pageTitle':'Markt-News',
+  /* CTA */
+  'news.cta.desc':              '📍 Zuschläge nach Strecke prüfen',
+  'news.cta.main':              '👉 Zuschlag suchen',
+  'news.cta.airlines':          '👉 Nach Airline vergleichen',
+  /* Partnerkarten */
+  'aff.cta':                    'Preis prüfen →',
+  'aff.hotelscombined.title':   'Flüge & Hotels auf einmal vergleichen',
+  'aff.hotelscombined.desc':    'Flug- und Hotelpreise gemeinsam vergleichen für optimales Buchungstiming',
+  'aff.agoda.title':            'Unterkunft passend zum Flug buchen',
+  'aff.agoda.desc':             'Passende Unterkunft schnell finden und in einem Schritt buchen',
+  'aff.usim.title':             'Reise-SIM-Karte',
+  'aff.usim.desc':              'Vor der Abreise unbedingt',
+  'aff.hotels.title':           'Unterkünfte weltweit — einfach buchen',
+  'aff.hotels.desc':            'Hotels und Unterkünfte vergleichen und sofort buchen',
   'news.pageSub':'Treibstoffzuschlag · Markt-, Politik- & Airline-Updates · KI-Zusammenfassung · Prognosebasis',
   'news.predictTitle':'📊 KI-Prognose Indikatoren',
   'news.officialTitle':'📢 Mai Treibstoffzuschlag — Offizielle Zusammenfassung',

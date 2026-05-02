@@ -80,14 +80,17 @@
     .mb-summary{font-size:12px;font-weight:700;color:#33691E;margin-top:8px;}
     .news-impact{font-size:11px;color:#D84315;margin-bottom:6px;}
     .summary-updated{font-size:11px;color:#9A6A00;margin-bottom:8px;}
-    .klook-box{background:linear-gradient(135deg,#FFF8E1,#FFECB3);border:1px solid #FFD54F;border-radius:12px;padding:14px 16px;margin-bottom:18px;}
-    .klook-title{font-size:13px;font-weight:700;margin-bottom:6px;color:#3E2723;}
-    .klook-desc{font-size:12px;color:#555;margin-bottom:10px;line-height:1.6;}
-    .klook-btn{display:inline-block;background:#FF5722;color:#fff;font-size:12px;padding:6px 14px;border-radius:6px;text-decoration:none;font-weight:600;transition:opacity .15s;}
-    .klook-btn:hover{opacity:.88;}
-    .klook-inline{font-size:12px;margin-bottom:12px;color:#666;line-height:1.6;}
-    .klook-inline a{color:var(--blue);font-weight:600;text-decoration:none;}
-    .klook-inline a:hover{text-decoration:underline;}
+    /* 제휴 그리드 (2-카드) */
+    .affiliate-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;margin:20px 0;}
+    .affiliate-card{padding:12px 14px;border-radius:10px;background:#ffffff;box-shadow:0 2px 8px rgba(0,0,0,.05);border:1px solid var(--line);}
+    /* 단독 제휴 카드 */
+    .affiliate-single{padding:12px 16px;border-radius:10px;background:var(--white);border:1px solid var(--line);margin:16px 0;display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;}
+    .affiliate-single-body{flex:1;min-width:0;}
+    .aff-title{font-weight:700;margin-bottom:3px;font-size:13px;color:var(--text);}
+    .aff-desc{font-size:12px;color:#666;line-height:1.5;margin:0;}
+    .aff-btn{display:inline-block;font-size:12px;color:var(--blue);text-decoration:none;font-weight:600;white-space:nowrap;padding:5px 10px;border:1px solid var(--blue);border-radius:6px;transition:opacity .15s;}
+    .aff-btn:hover{opacity:.75;}
+    @media(max-width:480px){.affiliate-grid{grid-template-columns:1fr;}.affiliate-single{flex-direction:column;align-items:flex-start;}}
     /* CTA 내비게이션 박스 */
     .cta-nav-box{background:linear-gradient(135deg,#E8F0FE,#EEF2FF);border:1.5px solid #90CAF9;border-radius:13px;padding:16px 20px;margin-bottom:18px;display:flex;flex-direction:column;gap:10px;}
     .cta-nav-desc{font-size:13px;font-weight:700;color:#1A237E;margin-bottom:2px;}
@@ -177,10 +180,10 @@
 
   <!-- [2] CTA 내비게이션 박스 — index 유입 유도 -->
   <div class="cta-nav-box">
-    <div class="cta-nav-desc">📍 노선별 실제 유류할증료를 바로 확인하세요</div>
+    <div class="cta-nav-desc" data-i18n="news.cta.desc">📍 노선별 실제 유류할증료를 바로 확인하세요</div>
     <div class="cta-nav-btns">
-      <a href="index.html"    class="cta-nav-btn primary">👉 유류할증료 조회하기</a>
-      <a href="airlines.html" class="cta-nav-btn secondary">👉 항공사별 비교 보기</a>
+      <a href="index.html"    class="cta-nav-btn primary"    data-i18n="news.cta.main">👉 유류할증료 조회하기</a>
+      <a href="airlines.html" class="cta-nav-btn secondary"  data-i18n="news.cta.airlines">👉 항공사별 비교 보기</a>
     </div>
   </div>
 
@@ -196,6 +199,17 @@
       <li data-i18n="news.summary.li5">6월 유류할증료 인하 가능성 우세 강화</li>
       <li data-i18n="news.summary.li6">지정학 리스크 유지 — 하방 속도 제한 요인</li>
     </ul>
+  </div>
+
+  <!-- 제휴: 호텔스컴바인 (summary-card 하단) -->
+  <div class="affiliate-single">
+    <div class="affiliate-single-body">
+      <div class="aff-title" data-i18n="aff.hotelscombined.title">항공권 예매 및 숙소 예약 한 번에 비교</div>
+      <p class="aff-desc" data-i18n="aff.hotelscombined.desc">항공권과 호텔 가격을 함께 비교하고 최적의 예약 타이밍 확인</p>
+    </div>
+    <a href="https://newtip.net/click.php?m=hcombine2&a=A100704170&l=0000"
+       target="_blank" rel="noopener sponsored"
+       class="aff-btn" data-i18n="aff.cta">최저가 확인 →</a>
   </div>
 
   <!-- 공식 공지 요약 -->
@@ -239,11 +253,15 @@
     <div class="mb-summary" style="margin-top:6px;color:#558B2F;" data-i18n="news.fxDominance">💡 핵심 신호: 인하 가능성 우세 (일부 구간 동결 가능)</div>
   </div>
 
-  <!-- [5] Klook 제휴 — 하드코딩 텍스트로 키 노출 방지 (1차) -->
-  <div class="klook-box">
-    <div class="klook-title">✈️ 여행 비용은 항공권만이 아닙니다</div>
-    <div class="klook-desc">유류할증료 부담이 큰 만큼, 현지 투어·액티비티 비용도 함께 확인하세요. 미리 파악해두면 전체 여행 예산 관리에 도움이 됩니다.</div>
-    <a href="http://app.ac/JjCiEja23" target="_blank" rel="noopener sponsored" class="klook-btn">여행 비용 줄이는 방법 보기 →</a>
+  <!-- 제휴: 아고다 (시장 브리핑 하단) -->
+  <div class="affiliate-single">
+    <div class="affiliate-single-body">
+      <div class="aff-title" data-i18n="aff.agoda.title">항공권 일정에 맞춰 숙소까지 빠르게 예약</div>
+      <p class="aff-desc" data-i18n="aff.agoda.desc">여행 일정에 맞는 숙소를 빠르게 찾고 예약까지 한 번에 진행</p>
+    </div>
+    <a href="https://lpweb.kr/click.php?m=agoda&a=A100704170&l=0000"
+       target="_blank" rel="noopener sponsored"
+       class="aff-btn" data-i18n="aff.cta">최저가 확인 →</a>
   </div>
 
   <!-- 판단 기준 박스 -->
@@ -271,9 +289,21 @@
     <div data-i18n="news.aiNotice">AI 요약 콘텐츠 — 이 페이지의 내용은 공개된 정보를 바탕으로 AI가 정리한 참고용 자료입니다. 원문 기반 요약이며, 공식 정보가 아닙니다. 중요한 결정 전에 각 항공사 및 기관의 공식 채널을 반드시 확인하세요.</div>
   </div>
 
-  <!-- [6] Klook 제휴 — 인라인 CTA 하드코딩 (2차) -->
-  <div class="klook-inline">
-    👉 <a href="http://app.ac/JjCiEja23" target="_blank" rel="noopener sponsored">여행 비용 줄이는 방법 보기</a>
+  <!-- 제휴 카드 그리드: 유심사 + 호텔스닷컴 -->
+  <div class="affiliate-grid">
+    <div class="affiliate-card">
+      <div class="aff-title" data-i18n="aff.usim.title">여행 유심 준비</div>
+      <div class="aff-desc" data-i18n="aff.usim.desc">출국 전 필수 준비</div>
+      <a href="http://app.ac/ejCPW0a93" target="_blank" rel="noopener sponsored"
+         class="aff-btn" data-i18n="aff.cta">최저가 확인 →</a>
+    </div>
+    <div class="affiliate-card">
+      <div class="aff-title" data-i18n="aff.hotels.title">전 세계 숙소 간편 예약</div>
+      <div class="aff-desc" data-i18n="aff.hotels.desc">다양한 호텔과 숙소를 비교하고 바로 예약</div>
+      <a href="https://linkmoa.kr/click.php?m=hotelskr&a=A100704170&l=0000"
+         target="_blank" rel="noopener sponsored"
+         class="aff-btn" data-i18n="aff.cta">최저가 확인 →</a>
+    </div>
   </div>
 
   <!-- 데이터 기준 배너 -->
