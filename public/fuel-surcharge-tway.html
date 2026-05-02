@@ -69,10 +69,19 @@
     </table>
   </div>
   <p style="font-size:11px;color:var(--muted);margin-top:-16px;margin-bottom:20px;" id="tableFootnote">※ KRW 공시 기준, 편도 (USD 고지 금액을 평균 환율로 환산). 적용 기간: 2026.05.01~05.31 (발권일 기준). 출처: 티웨이항공 공식 공지(2026.04.21). 통화 선택 시 참고 환산값이 표시됩니다.</p>
-  <div class="affiliate-box hotelcombine-box">
-    <div class="affiliate-title" data-i18n="affiliate.hotel.title">✈️ 항공권·호텔 가격도 함께 비교하세요</div>
-    <div class="affiliate-desc"  data-i18n="affiliate.hotel.desc">유류할증료가 높아질수록 항공권 총액과 숙박비를 함께 확인하는 것이 중요합니다. 예약 전 항공권과 호텔 가격을 같이 비교해보세요.</div>
-    <a href="http://app.ac/xjCXQLa23" target="_blank" rel="noopener sponsored" class="affiliate-btn" data-i18n="affiliate.hotel.btn">항공권·호텔 가격 비교하기 →</a>
+  <div class="affiliate-box" style="display:flex;flex-direction:column;gap:10px;">
+    <div>
+      <div class="affiliate-title" data-i18n="affiliate.flight.title">✈️ 유류할증료 포함 최저가 항공권 비교</div>
+      <div class="affiliate-desc"  data-i18n="affiliate.flight.desc">LCC 항공권도 유류할증료가 붙습니다. 여러 항공사 총액을 한 번에 비교해보세요.</div>
+      <a href="https://lase.kr/click.php?m=myrealtrip&a=A100704170&l=0000" target="_blank" rel="noopener sponsored" class="affiliate-btn" data-i18n="affiliate.flight.btn"
+         onclick="if(window.gtag){gtag('event','affiliate_click',{affiliate:'myrealtrip',placement:'flight_cta'});}">최저가 항공권 비교하기 →</a>
+    </div>
+    <div>
+      <div class="affiliate-title" data-i18n="affiliate.hotel.title2">🏨 숙소 최저가도 함께 확인하세요</div>
+      <div class="affiliate-desc"  data-i18n="affiliate.hotel.desc2">항공권과 함께 호텔 가격을 비교해 전체 여행 예산을 파악하세요.</div>
+      <a href="http://app.ac/xjCXQLa23" target="_blank" rel="noopener sponsored" class="affiliate-btn" style="background:#0D47A1;" data-i18n="affiliate.hotel.btn2"
+         onclick="if(window.gtag){gtag('event','affiliate_click',{affiliate:'hotelscombined',placement:'hotel_cta'});}">호텔 최저가 비교하기 →</a>
+    </div>
   </div>
   <div class="official-link-box">
     <div class="official-link-title" data-i18n="tw.officialTitle">🔗 공식 유류할증료 공지 바로가기</div>
@@ -143,18 +152,30 @@
       'tw.rel.korea':'🇰🇷 한국 출발 유류할증료',
       'tw.rel.other':'🟢 진에어',
       'tw.footer':'표시된 유류할증료는 항공사 공식 공지 기반 참고용 정보입니다. 최종 금액은 항공사 공식 사이트 또는 발권처에서 반드시 확인하세요.<br>문의: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
-    'affiliate.hotel.title': '✈️ 一起比较机票和酒店价格',
-    'affiliate.hotel.desc':  '当燃油附加费上涨时，同时确认机票总额和住宿费用更加重要。预订前可以一起比较机票和酒店价格。',
-    'affiliate.hotel.btn':   '比较机票和酒店价格 →',
-    'affiliate.hotel.title': '✈️ 航空券とホテル料金を一緒に比較しましょう',
-    'affiliate.hotel.desc':  '燃油サーチャージが高い時期は、航空券の総額と宿泊費を一緒に確認することが重要です。予約前に航空券とホテル料金を比較してみましょう。',
-    'affiliate.hotel.btn':   '航空券・ホテル料金を比較する →',
-    'affiliate.hotel.title': '✈️ Compare flight and hotel prices together',
-    'affiliate.hotel.desc':  'When fuel surcharges rise, it becomes more important to check both airfare totals and accommodation costs. Compare flight and hotel prices before booking.',
-    'affiliate.hotel.btn':   'Compare flights and hotels →',
-    'affiliate.hotel.title': '✈️ 항공권·호텔 가격도 함께 비교하세요',
-    'affiliate.hotel.desc':  '유류할증료가 높아질수록 항공권 총액과 숙박비를 함께 확인하는 것이 중요합니다. 예약 전 항공권과 호텔 가격을 같이 비교해보세요.',
-    'affiliate.hotel.btn':   '항공권·호텔 가격 비교하기 →',
+    'affiliate.flight.title': '✈️ 含燃油附加费的最低价机票比较',
+    'affiliate.flight.desc': 'LCC机票同样收取燃油附加费。一次性比较多家航空公司的总费用。',
+    'affiliate.flight.btn': '比较最低价机票 →',
+    'affiliate.hotel.title2': '🏨 同时查看酒店最低价',
+    'affiliate.hotel.desc2': '结合航空票价一起比较酒店价格，掌握整体旅行预算。',
+    'affiliate.hotel.btn2': '比较酒店最低价 →',
+    'affiliate.flight.title': '✈️ 燃油サーチャージ込みの最安値航空券比較',
+    'affiliate.flight.desc': 'LCCも燃油サーチャージが加算されます。各航空会社の総額をまとめて比較しましょう。',
+    'affiliate.flight.btn': '最安値航空券を比較 →',
+    'affiliate.hotel.title2': '🏨 宿泊費も一緒にチェック',
+    'affiliate.hotel.desc2': '航空券とホテルを合わせて比較して旅行全体の予算を把握しましょう。',
+    'affiliate.hotel.btn2': 'ホテル最安値を比較 →',
+    'affiliate.flight.title': '✈️ Compare lowest airfare with fuel surcharge',
+    'affiliate.flight.desc': 'LCC flights also include fuel surcharges. Compare total prices across airlines at once.',
+    'affiliate.flight.btn': 'Compare cheapest flights →',
+    'affiliate.hotel.title2': '🏨 Also check hotel prices',
+    'affiliate.hotel.desc2': 'Compare hotel prices alongside your flight to see the full trip budget.',
+    'affiliate.hotel.btn2': 'Compare hotel prices →',
+    'affiliate.flight.title': '✈️ 유류할증료 포함 최저가 항공권 비교',
+    'affiliate.flight.desc': 'LCC 항공권도 유류할증료가 붙습니다. 여러 항공사 총액을 한 번에 비교해보세요.',
+    'affiliate.flight.btn': '최저가 항공권 비교하기 →',
+    'affiliate.hotel.title2': '🏨 숙소 최저가도 함께 확인하세요',
+    'affiliate.hotel.desc2': '항공권과 함께 호텔 가격을 비교해 전체 여행 예산을 파악하세요.',
+    'affiliate.hotel.btn2': '호텔 최저가 비교하기 →',
       'tw.metaTitle':'티웨이항공 유류할증료 조회 | TW 국제선 월별 공시 금액',
       'tw.metaDesc':'티웨이항공 국제선 유류할증료의 월별 적용 금액과 공식 공지 정보를 확인할 수 있습니다.',
       'tw.noService':'미운항',
