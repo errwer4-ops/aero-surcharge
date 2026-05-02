@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>한국 출발 유류할증료 조회 및 항공사별 비교</title>
+  <meta name="description" content="한국 출발 국제선 항공권에 적용되는 유류할증료를 항공사별로 비교하고, 월별 변동 흐름을 확인할 수 있습니다."/>
+  <link rel="canonical" href="https://aero-surcharge.vercel.app/fuel-surcharge-korea.html"/>
+  <meta property="og:title" content="한국 출발 유류할증료 조회 및 항공사별 비교"/>
+  <meta property="og:description" content="한국 출발 국제선 항공권에 적용되는 유류할증료를 항공사별로 비교하고, 월별 변동 흐름을 확인할 수 있습니다."/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://aero-surcharge.vercel.app/fuel-surcharge-korea.html"/>
+  <link rel="stylesheet" href="_shared.css"/>
+  <link rel="stylesheet" href="_seo_pages.css"/>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-76T4QJPY4L"></script>
+  <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-76T4QJPY4L');</script>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
+  <style>
+    /* ── 현재 적용 기준 박스 ── */
+    .current-basis-box{background:linear-gradient(135deg,#FFF3E0,#FFF8E1);border:1.5px solid #FFB300;border-left:4px solid #FF6F00;border-radius:12px;padding:13px 16px;margin-bottom:18px;}
+    .current-basis-title{font-size:13px;font-weight:700;color:#E65100;margin-bottom:5px;}
+    .current-basis-desc{font-size:12px;color:#5D4037;line-height:1.6;}
+    /* ── 제휴 박스 ── */
+    .affiliate-box{background:linear-gradient(135deg,#E3F2FD,#EFF8FF);border:1px solid #90CAF9;border-radius:12px;padding:14px 16px;margin:18px 0;}
+    .affiliate-title{font-size:13px;font-weight:700;color:#0D47A1;margin-bottom:6px;}
+    .affiliate-desc{font-size:12px;color:#555;line-height:1.6;margin-bottom:10px;}
+    .affiliate-btn{display:inline-block;background:#1565C0;color:#fff;font-size:12px;font-weight:700;padding:7px 14px;border-radius:7px;text-decoration:none;transition:opacity .15s;}
+    .affiliate-btn:hover{opacity:.86;}
+    .affiliate-btn.secondary{background:#0D47A1;}
+    @media(max-width:600px){.affiliate-btn{display:block;text-align:center;}}
+  </style>
+</head>
+<body>
+<nav>
+  <div class="nav-links">
+    <a href="index.html"    class="nav-link" id="navLinkRoutes"   data-i18n="nav.routes">노선별 조회</a>
+    <a href="airlines.html" class="nav-link" id="navLinkAirlines" data-i18n="nav.airlines">항공사 인덱스</a>
+    <a href="news.html"     class="nav-link" id="navLinkNews"     data-i18n="nav.news">참고 소식</a>
+  </div>
+  <div class="nav-controls">
+    <select class="nav-select" id="navLang">
+      <option value="ko">🇰🇷 한국어</option>
+      <option value="en">🇺🇸 English</option>
+      <option value="ja">🇯🇵 日本語</option>
+      <option value="zh">🇨🇳 中文</option>
+      <option value="fr">🇫🇷 Français</option>
+      <option value="de">🇩🇪 Deutsch</option>
+    </select>
+    <div class="nav-divider"></div>
+    <select class="nav-select" id="navCurr">
+      <option value="KRW">₩ KRW</option>
+      <option value="USD">$ USD</option>
+      <option value="JPY">¥ JPY</option>
+      <option value="EUR">€ EUR</option>
+    </select>
+  </div>
+</nav>
+
+<div class="page-header">
+  <div class="page-title" data-i18n="korea.pageTitle">🇰🇷 한국 출발 유류할증료 조회</div>
+  <div class="page-sub" data-i18n="korea.pageSub">인천(ICN) · 김포(GMP) · 부산(PUS) 출발 국제선 항공사별 유류할증료 비교</div>
+</div>
+
+<main class="seo-main">
+  <h1 style="font-size:20px;font-weight:700;color:var(--text);margin-bottom:12px;" data-i18n="korea.h1">한국 출발 유류할증료 조회</h1>
+
+  <div class="seo-lang-notice">⚠️&nbsp;<span data-i18n-html="korea.langNotice"><strong>안내:</strong> 이 페이지의 금액은 항공사 공식 공시 통화 기준입니다. 상단 통화 선택 시 환율 기반으로 자동 변환됩니다. 정확한 금액은 각 항공사 공식 공지를 확인하세요.</span></div>
+
+
+  <!-- 현재 적용 기준 박스 -->
+  <div class="current-basis-box">
+    <div class="current-basis-title" data-i18n="korea.currentBasis.title">🔥 현재 적용 기준: 2026년 5월 유류할증료</div>
+    <div class="current-basis-desc" data-i18n="korea.currentBasis.desc">4월 대비 변동을 함께 표시합니다. 유류할증료는 예약/발권 시점 기준으로 적용됩니다.</div>
+  </div>
+
+  <!-- 제휴 박스 — 테이블 위 -->
+  <div class="affiliate-box affiliate-top">
+    <div class="affiliate-title" data-i18n="korea.aff.top.title">✈️ 5월 유류할증료 기준, 항공권 총액도 함께 확인하세요</div>
+    <div class="affiliate-desc" data-i18n="korea.aff.top.desc">유류할증료는 발권 시점 기준으로 적용됩니다. 항공권 가격과 숙소 비용까지 함께 비교하면 전체 여행 예산을 더 정확히 볼 수 있습니다.</div>
+    <a href="http://app.ac/V36cZ2J03"
+       target="_blank"
+       rel="noopener sponsored"
+       class="affiliate-btn"
+       data-i18n="korea.aff.top.btn"
+       onclick="if(window.gtag){gtag('event','affiliate_click',{affiliate:'hotelscombined',placement:'korea_top'});}">항공권·호텔 가격 비교하기 →</a>
+  </div>
+
+  <div class="seo-intro" data-i18n="korea.intro">
+    한국 출발 국제선 항공권에는 항공사마다 별도의 유류할증료(Fuel Surcharge)가 부과됩니다. 대한항공, 아시아나항공, 제주항공, 진에어, 티웨이항공 등 주요 국적기의 유류할증료는 국제유가와 환율에 연동되어 매월 변동됩니다. 이 페이지에서는 한국 출발 기준 항공사별 유류할증료 공시 현황과 월별 변동 흐름을 정리합니다.
+  </div>
+
+  <div class="summary-cards">
+    <div class="summary-card">
+      <div class="summary-card-icon">📋</div>
+      <div class="summary-card-title" data-i18n="korea.card1.title">공시 기준</div>
+      <div class="summary-card-body" data-i18n="korea.card1.body">유류할증료는 항공사가 매월 국토교통부 기준에 따라 공시하며, 해당 월 발권분부터 적용됩니다. 항공사별 공시 시점이 다를 수 있습니다.</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-card-icon">🌏</div>
+      <div class="summary-card-title" data-i18n="korea.card2.title">적용 구간</div>
+      <div class="summary-card-body" data-i18n="korea.card2.body">국제선 유류할증료는 비행 거리(단거리·장거리)에 따라 구간별로 차등 적용됩니다. 동일 항공사라도 노선에 따라 금액이 다릅니다.</div>
+    </div>
+    <div class="summary-card">
+      <div class="summary-card-icon">💱</div>
+      <div class="summary-card-title" data-i18n="korea.card3.title">통화 기준</div>
+      <div class="summary-card-body" data-i18n="korea.card3.body">항공사마다 KRW(원화) 또는 USD(달러) 기준으로 공시합니다. 상단 통화 선택으로 다른 통화로 환산해 볼 수 있습니다.</div>
+    </div>
+  </div>
+
+  <!-- 동적 테이블 영역 -->
+  <div class="seo-section-title" id="korSectionTitle">✈️ 항공사별 유류할증료 현황 (공시 통화 기준)</div>
+  <p id="korTableNote" style="font-size:12px;color:var(--muted);margin-bottom:12px;"></p>
+  <div class="data-table-wrap">
+    <table class="seo-tbl" id="korSurchargeTable">
+      <thead id="korTableHead"></thead>
+      <tbody id="korTableBody"></tbody>
+    </table>
+  </div>
+  <p id="korTableFootnote" style="font-size:11px;color:var(--muted);margin-top:-16px;margin-bottom:20px;"></p>
+
+
+  <!-- 제휴 박스 — 테이블 아래 -->
+  <div class="affiliate-box affiliate-bottom">
+    <div class="affiliate-title" data-i18n="korea.aff.bottom.title">🏨 항공권만 보지 말고 숙소 비용도 같이 비교하세요</div>
+    <div class="affiliate-desc" data-i18n="korea.aff.bottom.desc">5월 유류할증료가 반영되면 항공권 총액이 커질 수 있습니다. 숙소 가격까지 함께 비교해 전체 여행비를 확인하세요.</div>
+    <a href="http://app.ac/V36cZ2J03"
+       target="_blank"
+       rel="noopener sponsored"
+       class="affiliate-btn secondary"
+       data-i18n="korea.aff.bottom.btn"
+       onclick="if(window.gtag){gtag('event','affiliate_click',{affiliate:'hotelscombined',placement:'korea_bottom'});}">호텔스컴바인에서 가격 비교하기 →</a>
+  </div>
+
+  <!-- 공식 링크 박스 -->
+  <div class="official-link-box">
+    <div class="official-link-title" data-i18n="korea.officialLinkTitle">🔗 항공사 공식 유류할증료 공지 바로가기</div>
+    <div class="official-link-list" id="korOfficialLinks"></div>
+  </div>
+
+  <div class="related-links">
+    <div class="related-title">🔗 <span data-i18n="korea.relatedTitle">관련 페이지</span></div>
+    <div class="related-grid">
+      <a class="related-item" href="index.html"                         data-i18n="korea.related.main">🔍 메인 유류할증료 조회</a>
+      <a class="related-item" href="airlines.html"                      data-i18n="korea.related.airlines">✈️ 항공사별 유류할증료</a>
+      <a class="related-item" href="news.html"                          data-i18n="korea.related.news">📰 유류할증료 뉴스</a>
+      <a class="related-item" href="fuel-surcharge-graph.html"          data-i18n="korea.related.graph">📈 변동 그래프</a>
+      <a class="related-item" href="fuel-surcharge-calculator.html"     data-i18n="korea.related.calc">🧮 계산 방법 안내</a>
+      <a class="related-item" href="fuel-surcharge-2026-05.html"        data-i18n="korea.related.may">📅 2026년 5월</a>
+      <a class="related-item" href="fuel-surcharge-2026-06-forecast.html" data-i18n="korea.related.jun">🔮 2026년 6월 전망</a>
+      <a class="related-item" href="fuel-surcharge-korean-air.html"     data-i18n="korea.related.ke">✈️ 대한항공</a>
+      <a class="related-item" href="fuel-surcharge-asiana.html"         data-i18n="korea.related.oz">✈️ 아시아나항공</a>
+    </div>
+  </div>
+</main>
+
+<footer style="background:var(--white);border-top:1px solid var(--line);padding:20px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;">
+  <p style="font-size:12px;color:var(--muted);max-width:600px;line-height:1.6;margin:0;">
+    <span data-i18n="footer.notice">표시된 유류할증료는 항공사 공식 공지 기반 참고용 정보입니다. 최종 금액은 항공사 공식 사이트 또는 발권처에서 반드시 확인하세요.</span><br>
+    <span data-i18n="korea.footer.contact">문의</span>: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>
+  </p>
+  <nav style="display:flex;gap:16px;flex-wrap:wrap;">
+    <a href="about.html"   style="font-size:12px;color:var(--muted);text-decoration:none;" data-i18n="footer.about">About</a>
+    <a href="privacy.html" style="font-size:12px;color:var(--muted);text-decoration:none;" data-i18n="footer.privacy">Privacy Policy</a>
+    <a href="terms.html"   style="font-size:12px;color:var(--muted);text-decoration:none;" data-i18n="footer.terms">Terms of Service</a>
+  </nav>
+</footer>
+
+<script src="_shared.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  /* ═══════════════════════════════════════════
+     1. 페이지 전용 i18n — window.I18N에 병합
+  ═══════════════════════════════════════════ */
+  var PAGE_I18N = {
+    ko: {
+      'korea.pageTitle':          '🇰🇷 한국 출발 유류할증료 조회',
+      'korea.pageSub':            '인천(ICN) · 김포(GMP) · 부산(PUS) 출발 국제선 항공사별 유류할증료 비교',
+      'korea.h1':                 '한국 출발 유류할증료 조회',
+      'korea.langNotice':         '<strong>안내:</strong> 이 페이지의 금액은 항공사 공식 공시 통화 기준이며, 상단 통화 선택 시 환율 기반으로 자동 변환됩니다. 일부 항공사는 USD 기준으로 공시합니다. 정확한 금액은 각 항공사 공식 공지를 확인하세요.',
+      'korea.intro':              '한국 출발 국제선 항공권에는 항공사마다 별도의 유류할증료(Fuel Surcharge)가 부과됩니다. 대한항공, 아시아나항공, 제주항공, 진에어, 티웨이항공 등 주요 국적기의 유류할증료는 국제유가와 환율에 연동되어 매월 변동됩니다. 이 페이지에서는 한국 출발 기준 항공사별 유류할증료 공시 현황과 월별 변동 흐름을 정리합니다.',
+      'korea.card1.title':        '공시 기준',
+      'korea.card1.body':         '유류할증료는 항공사가 매월 국토교통부 기준에 따라 공시하며, 해당 월 발권분부터 적용됩니다. 항공사별 공시 시점이 다를 수 있습니다.',
+      'korea.card2.title':        '적용 구간',
+      'korea.card2.body':         '국제선 유류할증료는 비행 거리(단거리·장거리)에 따라 구간별로 차등 적용됩니다. 동일 항공사라도 노선에 따라 금액이 다릅니다.',
+      'korea.card3.title':        '통화 기준',
+      'korea.card3.body':         '항공사마다 KRW(원화) 또는 USD(달러) 기준으로 공시합니다. 상단 통화 선택으로 다른 통화로 환산해 볼 수 있습니다.',
+      'korea.currentBasis.title': '🔥 현재 적용 기준: 2026년 5월 유류할증료',
+      'korea.currentBasis.desc':  '4월 대비 변동을 함께 표시합니다. 유류할증료는 예약/발권 시점 기준으로 적용됩니다.',
+      'korea.aff.top.title':      '✈️ 5월 유류할증료 기준, 항공권 총액도 함께 확인하세요',
+      'korea.aff.top.desc':       '유류할증료는 발권 시점 기준으로 적용됩니다. 항공권 가격과 숙소 비용까지 함께 비교하면 전체 여행 예산을 더 정확히 볼 수 있습니다.',
+      'korea.aff.top.btn':        '항공권·호텔 가격 비교하기 →',
+      'korea.aff.bottom.title':   '🏨 항공권만 보지 말고 숙소 비용도 같이 비교하세요',
+      'korea.aff.bottom.desc':    '5월 유류할증료가 반영되면 항공권 총액이 커질 수 있습니다. 숙소 가격까지 함께 비교해 전체 여행비를 확인하세요.',
+      'korea.aff.bottom.btn':     '호텔스컴바인에서 가격 비교하기 →',
+      'korea.sectionTitle':       '✈️ 항공사별 2026년 5월 유류할증료 현황',
+      'korea.tableNote':          '※ 현재 2026년 5월 적용 유류할증료 기준입니다. 4월 금액은 전월 대비 비교용으로 함께 표시합니다. USD 공시 항공사는 선택한 통화 기준으로 환산되며, 원본 USD 금액도 함께 표시됩니다.',
+      'korea.th.airline':         '항공사',
+      'korea.th.currency':        '공시 통화',
+      'korea.th.apr':             '2026년 4월',
+      'korea.th.may':             '2026년 5월',
+      'korea.th.change':          '변동',
+      'korea.th.source':          '공식 출처',
+      'korea.change.major':       '대폭 인상 ▲',
+      'korea.change.minor':       '인상 ▲',
+      'korea.source.label':       '공식 공지 ↗',
+      'korea.footnote':           '※ 구간별 최소~최대 범위로 요약된 참고용 데이터입니다. 정확한 금액은 각 항공사 공식 공지를 반드시 확인하세요. 실시간 데이터는 <a href="index.html" style="color:var(--blue);">메인 조회 페이지</a>를 이용하세요.',
+      'korea.officialLinkTitle':  '🔗 항공사 공식 유류할증료 공지 바로가기',
+      'korea.officialLinkSuffix': '공식 공지 확인 ↗',
+      'korea.relatedTitle':       '관련 페이지',
+      'korea.related.main':       '🔍 메인 유류할증료 조회',
+      'korea.related.airlines':   '✈️ 항공사별 유류할증료',
+      'korea.related.news':       '📰 유류할증료 뉴스',
+      'korea.related.graph':      '📈 변동 그래프',
+      'korea.related.calc':       '🧮 계산 방법 안내',
+      'korea.related.may':        '📅 2026년 5월',
+      'korea.related.jun':        '🔮 2026년 6월 전망',
+      'korea.related.ke':         '✈️ 대한항공',
+      'korea.related.oz':         '✈️ 아시아나항공',
+      'korea.footer.contact':     '문의',
+      'korea.usdBadge':           'USD공시',
+    },
+    en: {
+      'korea.pageTitle':          '🇰🇷 Korea Departure Fuel Surcharge',
+      'korea.pageSub':            'Fuel surcharge comparison for ICN · GMP · PUS departure routes',
+      'korea.h1':                 'Korea Departure Fuel Surcharge Search',
+      'korea.langNotice':         '<strong>Note:</strong> Amounts reflect each airline\'s officially quoted currency. Selecting a currency above converts amounts by reference exchange rate. Some airlines quote in USD. Always confirm with the official airline notice.',
+      'korea.intro':              'International flights departing Korea carry a fuel surcharge (Fuel Surcharge) that varies by airline. Major carriers like Korean Air, Asiana, Jeju Air, Jin Air, and T\'way Air adjust their surcharges monthly in line with international oil prices and exchange rates.',
+      'korea.card1.title':        'Notice Basis',
+      'korea.card1.body':         'Fuel surcharges are published monthly by airlines per Ministry of Land guidelines, applying from the first day of that month\'s ticketing. Announcement dates vary by airline.',
+      'korea.card2.title':        'Distance Bands',
+      'korea.card2.body':         'International fuel surcharges are applied in tiers by flight distance (short-haul vs long-haul). Even within the same airline, amounts differ by route.',
+      'korea.card3.title':        'Currency Basis',
+      'korea.card3.body':         'Airlines quote in KRW or USD. Use the currency selector above to convert to your preferred currency using reference rates.',
+      'korea.currentBasis.title': '🔥 Current basis: May 2026 fuel surcharge',
+      'korea.currentBasis.desc':  'April-to-May changes are shown together. Fuel surcharges apply based on booking/ticketing date.',
+      'korea.aff.top.title':      '✈️ Check the total travel cost with May surcharge applied',
+      'korea.aff.top.desc':       'Fuel surcharges apply based on ticketing date. Comparing airfare and hotel prices together helps estimate your total travel budget more accurately.',
+      'korea.aff.top.btn':        'Compare flights and hotels →',
+      'korea.aff.bottom.title':   '🏨 Don\'t stop at airfare — compare hotel costs too',
+      'korea.aff.bottom.desc':    'May fuel surcharges can raise total airfare. Compare hotel prices as well to understand the full trip cost.',
+      'korea.aff.bottom.btn':     'Compare prices on HotelsCombined →',
+      'korea.sectionTitle':       '✈️ May 2026 Fuel Surcharge by Airline',
+      'korea.tableNote':          '※ Current amounts are based on the May 2026 fuel surcharge. April values are shown for month-over-month comparison. USD-quoted airlines are converted to the selected currency, with original USD values shown together.',
+      'korea.th.airline':         'Airline',
+      'korea.th.currency':        'Quoted Currency',
+      'korea.th.apr':             'April 2026',
+      'korea.th.may':             'May 2026',
+      'korea.th.change':          'Change',
+      'korea.th.source':          'Official Source',
+      'korea.change.major':       'Major hike ▲',
+      'korea.change.minor':       'Increased ▲',
+      'korea.source.label':       'Official Notice ↗',
+      'korea.footnote':           '※ Amounts are min~max summaries across distance bands for reference only. Always confirm exact amounts with the airline\'s official notice. For live data, use the <a href="index.html" style="color:var(--blue);">main search page</a>.',
+      'korea.officialLinkTitle':  '🔗 Official Fuel Surcharge Notices',
+      'korea.officialLinkSuffix': 'Official notice ↗',
+      'korea.relatedTitle':       'Related Pages',
+      'korea.related.main':       '🔍 Main Surcharge Search',
+      'korea.related.airlines':   '✈️ Airline Surcharges',
+      'korea.related.news':       '📰 Surcharge News',
+      'korea.related.graph':      '📈 Trend Graph',
+      'korea.related.calc':       '🧮 Calculation Guide',
+      'korea.related.may':        '📅 May 2026',
+      'korea.related.jun':        '🔮 June 2026 Outlook',
+      'korea.related.ke':         '✈️ Korean Air',
+      'korea.related.oz':         '✈️ Asiana Airlines',
+      'korea.footer.contact':     'Contact',
+      'korea.usdBadge':           'USD quoted',
+    },
+    ja: {
+      'korea.pageTitle':          '🇰🇷 韓国出発 燃油サーチャージ照会',
+      'korea.pageSub':            '仁川(ICN)・金浦(GMP)・釜山(PUS)出発 国際線 航空会社別比較',
+      'korea.h1':                 '韓国出発 燃油サーチャージ照会',
+      'korea.langNotice':         '<strong>ご案内：</strong>金額は各航空会社の公式公示通貨基準です。上部の通貨選択で参考レートによる換算が可能です。USD公示の航空会社もあります。最終金額は必ず公式通知をご確認ください。',
+      'korea.intro':              '韓国出発国際線の航空券には、航空会社ごとに燃油サーチャージが課されます。大韓航空・アシアナ航空・済州航空・ジンエアー・ティーウェイ航空などの主要国籍キャリアは、国際油価と為替に連動して毎月変動します。',
+      'korea.card1.title':        '公示基準',
+      'korea.card1.body':         '燃油サーチャージは航空会社が毎月国土交通部基準に従い公示し、該当月の発券分から適用されます。航空会社により公示時期が異なります。',
+      'korea.card2.title':        '適用区間',
+      'korea.card2.body':         '国際線燃油サーチャージは飛行距離（短距離・長距離）により区間別に異なります。同じ航空会社でも路線により金額が異なります。',
+      'korea.card3.title':        '通貨基準',
+      'korea.card3.body':         '航空会社によりKRW（ウォン）またはUSD（ドル）で公示されます。上部の通貨選択で参考レートによる換算ができます。',
+      'korea.currentBasis.title': '🔥 現在の適用基準: 2026年5月 燃油サーチャージ',
+      'korea.currentBasis.desc':  '4月比の変動も一緒に表示します。燃油サーチャージは予約・発券時点を基準に適用されます。',
+      'korea.aff.top.title':      '✈️ 5月サーチャージ基準で旅行総額を確認',
+      'korea.aff.top.desc':       '燃油サーチャージは発券時点を基準に適用されます。航空券とホテル費用を一緒に比較すると、旅行予算をより正確に把握できます。',
+      'korea.aff.top.btn':        '航空券・ホテル料金を比較 →',
+      'korea.aff.bottom.title':   '🏨 航空券だけでなく宿泊費も比較',
+      'korea.aff.bottom.desc':    '5月の燃油サーチャージが反映されると航空券総額が大きくなる場合があります。ホテル料金も比較して旅行総額を確認してください。',
+      'korea.aff.bottom.btn':     'ホテルスコンバインで価格比較 →',
+      'korea.sectionTitle':       '✈️ 航空会社別 2026年5月 燃油サーチャージ',
+      'korea.tableNote':          '※ 現在の金額は2026年5月適用基準です。4月の金額は前月比比較用として表示します。USD公示の航空会社は選択通貨に換算し、元のUSD金額も併記します。',
+      'korea.th.airline':         '航空会社',
+      'korea.th.currency':        '公示通貨',
+      'korea.th.apr':             '2026年4月',
+      'korea.th.may':             '2026年5月',
+      'korea.th.change':          '変動',
+      'korea.th.source':          '公式出典',
+      'korea.change.major':       '大幅値上げ ▲',
+      'korea.change.minor':       '値上げ ▲',
+      'korea.source.label':       '公式通知 ↗',
+      'korea.footnote':           '※ 距離帯別最小〜最大の範囲で要約された参考データです。正確な金額は必ず各航空会社の公式通知をご確認ください。リアルタイムデータは<a href="index.html" style="color:var(--blue);">メイン照会ページ</a>をご利用ください。',
+      'korea.officialLinkTitle':  '🔗 航空会社 公式燃油サーチャージ通知',
+      'korea.officialLinkSuffix': '公式通知確認 ↗',
+      'korea.relatedTitle':       '関連ページ',
+      'korea.related.main':       '🔍 メイン検索',
+      'korea.related.airlines':   '✈️ 航空会社別',
+      'korea.related.news':       '📰 ニュース',
+      'korea.related.graph':      '📈 変動グラフ',
+      'korea.related.calc':       '🧮 計算方法',
+      'korea.related.may':        '📅 2026年5月',
+      'korea.related.jun':        '🔮 2026年6月予測',
+      'korea.related.ke':         '✈️ 大韓航空',
+      'korea.related.oz':         '✈️ アシアナ航空',
+      'korea.footer.contact':     'お問い合わせ',
+      'korea.usdBadge':           'USD建て',
+    },
+    zh: {
+      'korea.pageTitle':          '🇰🇷 韩国出发 燃油附加费查询',
+      'korea.pageSub':            '仁川(ICN)·金浦(GMP)·釜山(PUS)出发 国际航班 各航空公司比较',
+      'korea.h1':                 '韩国出发燃油附加费查询',
+      'korea.langNotice':         '<strong>说明：</strong>金额以各航空公司官方公示货币为准。选择上方货币可按参考汇率换算。部分航空公司以USD公示。请务必以各航空公司官方公告为准。',
+      'korea.intro':              '韩国出发的国际机票须缴纳燃油附加费，各航空公司标准不同。大韩航空、韩亚航空、济州航空、真航空、德威航空等主要国籍航空公司的燃油附加费每月随国际油价及汇率变动。',
+      'korea.card1.title':        '公示标准',
+      'korea.card1.body':         '燃油附加费由航空公司每月依国土交通部标准公告，适用于该月开票的机票。各航空公司公告时间可能不同。',
+      'korea.card2.title':        '适用区间',
+      'korea.card2.body':         '国际线燃油附加费按飞行距离（短途/长途）分段征收，同一航空公司不同航线金额也有差异。',
+      'korea.card3.title':        '货币标准',
+      'korea.card3.body':         '航空公司分别以KRW（韩元）或USD（美元）公示。可使用上方货币选择器按参考汇率换算。',
+      'korea.currentBasis.title': '🔥 当前适用标准：2026年5月燃油附加费',
+      'korea.currentBasis.desc':  '同时显示4月至5月的变化。燃油附加费以预订/出票时间为准。',
+      'korea.aff.top.title':      '✈️ 按5月燃油附加费标准确认旅行总费用',
+      'korea.aff.top.desc':       '燃油附加费以出票时间为准。机票和酒店一起比较，可以更准确地掌握整体旅行预算。',
+      'korea.aff.top.btn':        '比较机票和酒店价格 →',
+      'korea.aff.bottom.title':   '🏨 不只看机票，也一起比较住宿费用',
+      'korea.aff.bottom.desc':    '5月燃油附加费反映后，机票总额可能增加。建议同时比较酒店价格，确认整体旅行费用。',
+      'korea.aff.bottom.btn':     '在HotelsCombined比较价格 →',
+      'korea.sectionTitle':       '✈️ 各航空公司2026年5月燃油附加费',
+      'korea.tableNote':          '※ 当前金额以2026年5月适用标准为准。4月金额用于环比比较。以USD公告的航空公司会按所选货币换算，并同时显示原始USD金额。',
+      'korea.th.airline':         '航空公司',
+      'korea.th.currency':        '公示货币',
+      'korea.th.apr':             '2026年4月',
+      'korea.th.may':             '2026年5月',
+      'korea.th.change':          '变动',
+      'korea.th.source':          '官方来源',
+      'korea.change.major':       '大幅上涨 ▲',
+      'korea.change.minor':       '上涨 ▲',
+      'korea.source.label':       '官方公告 ↗',
+      'korea.footnote':           '※ 以各距离段最低～最高汇总的参考数据。请务必以各航空公司官方公告为准。实时数据请使用<a href="index.html" style="color:var(--blue);">主查询页面</a>。',
+      'korea.officialLinkTitle':  '🔗 各航空公司官方燃油附加费公告',
+      'korea.officialLinkSuffix': '查看官方公告 ↗',
+      'korea.relatedTitle':       '相关页面',
+      'korea.related.main':       '🔍 主查询页面',
+      'korea.related.airlines':   '✈️ 各航空公司',
+      'korea.related.news':       '📰 相关新闻',
+      'korea.related.graph':      '📈 变动图表',
+      'korea.related.calc':       '🧮 计算说明',
+      'korea.related.may':        '📅 2026年5月',
+      'korea.related.jun':        '🔮 2026年6月预测',
+      'korea.related.ke':         '✈️ 大韩航空',
+      'korea.related.oz':         '✈️ 韩亚航空',
+      'korea.footer.contact':     '联系我们',
+      'korea.usdBadge':           'USD公示',
+    }
+  };
+
+  /* fr/de — en fallback 적용 */
+  var _enFb = PAGE_I18N.en;
+  PAGE_I18N.fr = {
+    'korea.pageTitle':          '🇰🇷 Surcharge carburant — Départs Corée',
+    'korea.pageSub':            'Comparaison par compagnie pour les départs ICN · GMP · PUS',
+    'korea.h1':                 'Surcharge carburant — Départs Corée',
+    'korea.langNotice':         '<strong>Note :</strong> Les montants reflètent la devise officielle de chaque compagnie. La sélection d\'une devise applique un taux de référence. Certaines compagnies cotent en USD. Confirmez toujours avec l\'avis officiel.',
+    'korea.intro':              'Les vols internationaux au départ de Corée sont soumis à une surcharge carburant propre à chaque compagnie, révisée mensuellement selon les prix du pétrole et les taux de change.',
+    'korea.card1.title':        'Base de publication',
+    'korea.card1.body':         _enFb['korea.card1.body'],
+    'korea.card2.title':        'Tranches de distance',
+    'korea.card2.body':         _enFb['korea.card2.body'],
+    'korea.card3.title':        'Devise de référence',
+    'korea.card3.body':         _enFb['korea.card3.body'],
+    'korea.currentBasis.title': '🔥 Base actuelle : surcharge mai 2026',
+    'korea.currentBasis.desc':  _enFb['korea.currentBasis.desc'],
+    'korea.aff.top.title':      _enFb['korea.aff.top.title'],
+    'korea.aff.top.desc':       _enFb['korea.aff.top.desc'],
+    'korea.aff.top.btn':        'Comparer vols et hôtels →',
+    'korea.aff.bottom.title':   _enFb['korea.aff.bottom.title'],
+    'korea.aff.bottom.desc':    _enFb['korea.aff.bottom.desc'],
+    'korea.aff.bottom.btn':     'Comparer sur HotelsCombined →',
+    'korea.sectionTitle':       '✈️ Surcharge carburant mai 2026 par compagnie',
+    'korea.tableNote':          _enFb['korea.tableNote'],
+    'korea.th.airline':         'Compagnie',
+    'korea.th.currency':        'Devise cotée',
+    'korea.th.apr':             'Avril 2026',
+    'korea.th.may':             'Mai 2026',
+    'korea.th.change':          'Variation',
+    'korea.th.source':          'Source officielle',
+    'korea.change.major':       'Forte hausse ▲',
+    'korea.change.minor':       'Hausse ▲',
+    'korea.source.label':       'Avis officiel ↗',
+    'korea.footnote':           _enFb['korea.footnote'],
+    'korea.officialLinkTitle':  '🔗 Avis officiels des compagnies',
+    'korea.officialLinkSuffix': 'Avis officiel ↗',
+    'korea.relatedTitle':       'Pages liées',
+    'korea.related.main':       '🔍 Recherche principale',
+    'korea.related.airlines':   '✈️ Par compagnie',
+    'korea.related.news':       '📰 Actualités',
+    'korea.related.graph':      '📈 Graphique',
+    'korea.related.calc':       '🧮 Guide de calcul',
+    'korea.related.may':        '📅 Mai 2026',
+    'korea.related.jun':        '🔮 Prévision juin 2026',
+    'korea.related.ke':         '✈️ Korean Air',
+    'korea.related.oz':         '✈️ Asiana Airlines',
+    'korea.footer.contact':     'Contact',
+    'korea.usdBadge':           'USD coté',
+  };
+  PAGE_I18N.de = {
+    'korea.pageTitle':          '🇰🇷 Treibstoffzuschlag — Korea-Abflüge',
+    'korea.pageSub':            'Vergleich nach Airline für Abflüge ab ICN · GMP · PUS',
+    'korea.h1':                 'Treibstoffzuschlag — Korea-Abflüge',
+    'korea.langNotice':         '<strong>Hinweis:</strong> Beträge basieren auf der offiziellen Währung jeder Airline. Währungsauswahl konvertiert mit Referenzkurs. Einige Airlines notieren in USD. Immer offiziellen Hinweis prüfen.',
+    'korea.intro':              'Internationale Flüge ab Korea unterliegen einem Treibstoffzuschlag, der je nach Airline monatlich angepasst wird.',
+    'korea.card1.title':        'Veröffentlichungsbasis',
+    'korea.card1.body':         _enFb['korea.card1.body'],
+    'korea.card2.title':        'Distanzbereiche',
+    'korea.card2.body':         _enFb['korea.card2.body'],
+    'korea.card3.title':        'Währungsbasis',
+    'korea.card3.body':         _enFb['korea.card3.body'],
+    'korea.currentBasis.title': '🔥 Aktuelle Basis: Mai 2026 Treibstoffzuschlag',
+    'korea.currentBasis.desc':  _enFb['korea.currentBasis.desc'],
+    'korea.aff.top.title':      _enFb['korea.aff.top.title'],
+    'korea.aff.top.desc':       _enFb['korea.aff.top.desc'],
+    'korea.aff.top.btn':        'Flüge und Hotels vergleichen →',
+    'korea.aff.bottom.title':   _enFb['korea.aff.bottom.title'],
+    'korea.aff.bottom.desc':    _enFb['korea.aff.bottom.desc'],
+    'korea.aff.bottom.btn':     'Auf HotelsCombined vergleichen →',
+    'korea.sectionTitle':       '✈️ Treibstoffzuschlag Mai 2026 nach Airline',
+    'korea.tableNote':          _enFb['korea.tableNote'],
+    'korea.th.airline':         'Airline',
+    'korea.th.currency':        'Notierte Währung',
+    'korea.th.apr':             'April 2026',
+    'korea.th.may':             'Mai 2026',
+    'korea.th.change':          'Änderung',
+    'korea.th.source':          'Offizielle Quelle',
+    'korea.change.major':       'Starke Erhöhung ▲',
+    'korea.change.minor':       'Erhöhung ▲',
+    'korea.source.label':       'Offizielle Mitteilung ↗',
+    'korea.footnote':           _enFb['korea.footnote'],
+    'korea.officialLinkTitle':  '🔗 Offizielle Airline-Mitteilungen',
+    'korea.officialLinkSuffix': 'Offizielle Mitteilung ↗',
+    'korea.relatedTitle':       'Verwandte Seiten',
+    'korea.related.main':       '🔍 Hauptsuche',
+    'korea.related.airlines':   '✈️ Nach Airline',
+    'korea.related.news':       '📰 Nachrichten',
+    'korea.related.graph':      '📈 Trendgraph',
+    'korea.related.calc':       '🧮 Berechnungsguide',
+    'korea.related.may':        '📅 Mai 2026',
+    'korea.related.jun':        '🔮 Prognose Juni 2026',
+    'korea.related.ke':         '✈️ Korean Air',
+    'korea.related.oz':         '✈️ Asiana Airlines',
+    'korea.footer.contact':     'Kontakt',
+    'korea.usdBadge':           'USD-notiert',
+  };
+
+  /* window.I18N에 병합 (shared.js가 먼저 로드되어 있어야 함) */
+  if (window.I18N) {
+    ['ko', 'en', 'ja', 'zh', 'fr', 'de'].forEach(function (lang) {
+      if (!window.I18N[lang]) window.I18N[lang] = {};
+      var src = PAGE_I18N[lang] || {};
+      Object.keys(src).forEach(function (k) { window.I18N[lang][k] = src[k]; });
+    });
+  }
+
+  /* ═══════════════════════════════════════════
+     2. 항공사 원본 데이터
+        currency : 공시 통화 ('KRW' | 'USD')
+        apr/may  : { minKRW, maxKRW }  — 내부 계산용 KRW 환산값
+                   { minOrig, maxOrig } — USD 공시 원본값 (USD 항공사만)
+        shared.js _KRW_RATES.USD = 1480 기준
+  ═══════════════════════════════════════════ */
+  var USD_TO_KRW = 1480; /* shared.js _KRW_RATES와 동일 */
+
+  var KOREA_AIRLINES = [
+    {
+      code: 'KE',
+      name: { ko: '대한항공', en: 'Korean Air', ja: '大韓航空', zh: '大韩航空' },
+      currency: 'KRW',
+      apr: { minKRW: 42000,              maxKRW: 303000 },
+      may: { minKRW: 75000,              maxKRW: 564000 },
+      change: 'major',
+      url: 'https://www.koreanair.com/content/koreanair/ko/KR/customer-service/travel-update/fuel-surcharge.html',
+      domain: 'koreanair.com',
+    },
+    {
+      code: 'OZ',
+      name: { ko: '아시아나항공', en: 'Asiana Airlines', ja: 'アシアナ航空', zh: '韩亚航空' },
+      currency: 'KRW',
+      apr: { minKRW: 43900,              maxKRW: 251900 },
+      may: { minKRW: 85400,              maxKRW: 476200 },
+      change: 'major',
+      url: 'https://flyasiana.com/C/KR/KO/customer/notice/list',
+      domain: 'flyasiana.com',
+    },
+    {
+      code: '7C',
+      name: { ko: '제주항공', en: 'Jeju Air', ja: '済州航空', zh: '济州航空' },
+      currency: 'USD',
+      apr: { minKRW: 29 * USD_TO_KRW,    maxKRW: 68  * USD_TO_KRW,  minOrig: 29,  maxOrig: 68  },
+      may: { minKRW: 52 * USD_TO_KRW,    maxKRW: 126 * USD_TO_KRW,  minOrig: 52,  maxOrig: 126 },
+      change: 'major',
+      url: 'https://www.jejuair.net/ko/customerServiceCenter/noticeList.do',
+      domain: 'jejuair.net',
+    },
+    {
+      code: 'LJ',
+      name: { ko: '진에어', en: 'Jin Air', ja: 'ジンエアー', zh: '真航空' },
+      currency: 'USD',
+      apr: { minKRW: 25 * USD_TO_KRW,    maxKRW: 76  * USD_TO_KRW,  minOrig: 25,  maxOrig: 76  },
+      may: { minKRW: 42 * USD_TO_KRW,    maxKRW: 140 * USD_TO_KRW,  minOrig: 42,  maxOrig: 140 },
+      change: 'major',
+      url: 'https://www.jinair.com/company/announce/announceList',
+      domain: 'jinair.com',
+    },
+    {
+      code: 'TW',
+      name: { ko: '티웨이항공', en: "T'way Air", ja: 'ティーウェイ航空', zh: '德威航空' },
+      currency: 'KRW',
+      apr: { minKRW: 30800,              maxKRW: 213900 },
+      may: { minKRW: 58600,              maxKRW: 406900 },
+      change: 'major',
+      url: 'https://www.twayair.com/app/customerService/notice',
+      domain: 'twayair.com',
+    },
+    {
+      code: 'ZE',
+      name: { ko: '이스타항공', en: 'EastarJet', ja: 'イースター航空', zh: '易思达航空' },
+      currency: 'USD',
+      apr: { minKRW: 29 * USD_TO_KRW,    maxKRW: 68  * USD_TO_KRW,  minOrig: 29,  maxOrig: 68  },
+      may: { minKRW: 52 * USD_TO_KRW,    maxKRW: 126 * USD_TO_KRW,  minOrig: 52,  maxOrig: 126 },
+      change: 'major',
+      url: 'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0',
+      domain: 'eastarjet.com',
+    },
+    {
+      code: 'RS',
+      name: { ko: '에어서울', en: 'Air Seoul', ja: 'エアソウル', zh: '首尔航空' },
+      currency: 'KRW',
+      apr: { minKRW: 46800,              maxKRW: 80500  },
+      may: { minKRW: 48600,              maxKRW: 165000 },
+      change: 'minor',
+      url: 'https://flyairseoul.com/CW/ko/noticeList.do',
+      domain: 'flyairseoul.com',
+    },
+    {
+      code: 'YP',
+      name: { ko: '에어프레미아', en: 'Air Premia', ja: 'エアプレミア', zh: '韩亚优选' },
+      currency: 'USD',
+      apr: { minKRW: 32  * USD_TO_KRW,   maxKRW: 194 * USD_TO_KRW,  minOrig: 32,  maxOrig: 194 },
+      may: { minKRW: 59  * USD_TO_KRW,   maxKRW: 365 * USD_TO_KRW,  minOrig: 59,  maxOrig: 365 },
+      change: 'major',
+      url: 'https://www.airpremia.com/alko/customer/notice',
+      domain: 'airpremia.com',
+    },
+  ];
+
+  /* ═══════════════════════════════════════════
+     3. 금액 포맷 헬퍼
+        - USD 선택 + USD 공시  → 원본 USD 표시 + 배지
+        - KRW/JPY/EUR 선택     → fmtAmt(minKRW) 로 현재 통화 환산
+                                 + USD 공시 배지
+                                 + KRW 선택 시 원본 USD 보조 참고 텍스트
+  ═══════════════════════════════════════════ */
+  function usdBadge() {
+    var label = window.t ? window.t('korea.usdBadge') : 'USD';
+    return '<span style="font-size:9px;background:#e3f2fd;color:#0d47a1;'
+      + 'border-radius:4px;padding:1px 5px;margin-left:4px;font-weight:700;">'
+      + label + '</span>';
+  }
+
+  /* USD 공시 원본값 보조 참고 텍스트 (KRW 선택 시에만) */
+  function fmtOriginalRef(band, origCurrency) {
+    if (origCurrency !== 'USD' || band.minOrig == null || band.maxOrig == null) return '';
+    return '<span style="font-size:10px;color:var(--muted);margin-left:4px;">'
+      + '($' + band.minOrig + '~$' + band.maxOrig + ')</span>';
+  }
+
+  function fmtRange(band, origCurrency) {
+    var curr = (window.SHARED_STATE && window.SHARED_STATE.curr) ? window.SHARED_STATE.curr : 'KRW';
+    var fmt  = window.fmtAmt || function (v) { return String(v); };
+
+    /* USD 선택 + USD 공시 → 원본 달러값 그대로 표시 */
+    if (curr === 'USD' && origCurrency === 'USD' && band.minOrig != null && band.maxOrig != null) {
+      return '$' + band.minOrig + ' ~ $' + band.maxOrig + usdBadge();
+    }
+
+    /* 그 외 모든 통화 (KRW / JPY / EUR):
+       minKRW / maxKRW 기준으로 fmtAmt 를 통해 현재 통화로 환산 표시 */
+    var minStr = fmt(band.minKRW);
+    var maxStr = fmt(band.maxKRW);
+    var badge  = origCurrency === 'USD' ? usdBadge() : '';
+    /* KRW 선택 + USD 공시인 경우에만 원본 달러를 작은 보조 텍스트로 추가 */
+    var ref    = (curr === 'KRW' && origCurrency === 'USD') ? fmtOriginalRef(band, origCurrency) : '';
+    return minStr + ' ~ ' + maxStr + badge + ref;
+  }
+
+  /* ═══════════════════════════════════════════
+     4. 테이블 렌더 함수
+  ═══════════════════════════════════════════ */
+  function renderKoreaTable() {
+    var lang = window.getCurrentLang ? window.getCurrentLang() : 'ko';
+    var T    = window.t || function (k) { return k; };
+
+    /* 섹션 제목 */
+    var titleEl = document.getElementById('korSectionTitle');
+    if (titleEl) titleEl.innerHTML = T('korea.sectionTitle');
+
+    /* 테이블 노트 */
+    var noteEl = document.getElementById('korTableNote');
+    if (noteEl) noteEl.textContent = T('korea.tableNote');
+
+    /* 테이블 헤더 */
+    var thead = document.getElementById('korTableHead');
+    if (thead) {
+      thead.innerHTML =
+        '<tr>'
+        + '<th>' + T('korea.th.airline')   + '</th>'
+        + '<th>' + T('korea.th.currency')  + '</th>'
+        + '<th>' + T('korea.th.apr')       + '</th>'
+        + '<th>' + T('korea.th.may')       + '</th>'
+        + '<th>' + T('korea.th.change')    + '</th>'
+        + '<th>' + T('korea.th.source')    + '</th>'
+        + '</tr>';
+    }
+
+    /* 테이블 바디 */
+    var tbody = document.getElementById('korTableBody');
+    if (!tbody) return;
+
+    var srcLabel = T('korea.source.label');
+
+    tbody.innerHTML = KOREA_AIRLINES.map(function (al) {
+      var name      = (al.name[lang]) || al.name.ko;
+      var aprStr    = fmtRange(al.apr, al.currency);
+      var mayStr    = fmtRange(al.may, al.currency);
+      var chgLabel  = T(al.change === 'major' ? 'korea.change.major' : 'korea.change.minor');
+
+      return '<tr>'
+        + '<td><strong>' + name + ' (' + al.code + ')</strong></td>'
+        + '<td style="font-size:12px;">' + al.currency + '</td>'
+        + '<td style="font-size:12px;">' + aprStr + '</td>'
+        + '<td style="font-size:12px;font-weight:600;">' + mayStr + '</td>'
+        + '<td style="font-size:11px;color:#e53e3e;font-weight:600;">' + chgLabel + '</td>'
+        + '<td><a href="' + al.url + '" target="_blank" rel="noopener"'
+        +   ' style="color:var(--blue);font-size:11px;">' + srcLabel + '</a></td>'
+        + '</tr>';
+    }).join('');
+
+    /* 푸터 노트 */
+    var footnoteEl = document.getElementById('korTableFootnote');
+    if (footnoteEl) footnoteEl.innerHTML = T('korea.footnote');
+
+    /* 공식 링크 박스 */
+    var linksEl = document.getElementById('korOfficialLinks');
+    if (linksEl) {
+      var suffix = T('korea.officialLinkSuffix');
+      linksEl.innerHTML = KOREA_AIRLINES.map(function (al) {
+        var name = (al.name[lang]) || al.name.ko;
+        return '<div class="official-link-item">✈️ ' + name
+          + ': <a href="' + al.url + '" target="_blank" rel="noopener">'
+          + al.domain + ' ' + suffix + '</a></div>';
+      }).join('');
+    }
+  }
+
+  /* ═══════════════════════════════════════════
+     5. 제휴 박스 i18n 재렌더
+  ═══════════════════════════════════════════ */
+  function renderAffiliateBoxes() {
+    var T = window.t || function (k) { return k; };
+    var selectors = [
+      { sel: '.affiliate-top .affiliate-title',   key: 'korea.aff.top.title'    },
+      { sel: '.affiliate-top .affiliate-desc',    key: 'korea.aff.top.desc'     },
+      { sel: '.affiliate-top .affiliate-btn',     key: 'korea.aff.top.btn'      },
+      { sel: '.affiliate-bottom .affiliate-title',key: 'korea.aff.bottom.title' },
+      { sel: '.affiliate-bottom .affiliate-desc', key: 'korea.aff.bottom.desc'  },
+      { sel: '.affiliate-bottom .affiliate-btn',  key: 'korea.aff.bottom.btn'   },
+    ];
+    selectors.forEach(function (item) {
+      var el = document.querySelector(item.sel);
+      if (el) el.textContent = T(item.key);
+    });
+  }
+
+  function renderCurrentBasis() {
+    var T = window.t || function (k) { return k; };
+    var titleEl = document.querySelector('.current-basis-title');
+    var descEl  = document.querySelector('.current-basis-desc');
+    if (titleEl) titleEl.textContent = T('korea.currentBasis.title');
+    if (descEl)  descEl.textContent  = T('korea.currentBasis.desc');
+  }
+
+  /* ═══════════════════════════════════════════
+     6. initNav 연결 — 언어·통화 변경 시 재렌더
+  ═══════════════════════════════════════════ */
+  window.initNav({
+    onLangChange: function () {
+      renderKoreaTable();
+      renderAffiliateBoxes();
+      renderCurrentBasis();
+    },
+    onCurrChange: function () { renderKoreaTable(); },
+  });
+
+  /* 최초 렌더 */
+  renderKoreaTable();
+  renderAffiliateBoxes();
+  renderCurrentBasis();
+
+})();
+</script>
+</body>
+</html>
