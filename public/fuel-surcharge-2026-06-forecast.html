@@ -59,12 +59,12 @@
     .impact-up{color:#dc2626;font-weight:700;}
     .impact-hold{color:#d97706;font-weight:700;}
     .impact-note{font-size:11px;color:var(--muted,#888);}
-    /* klook */
-    .klook-box{background:linear-gradient(135deg,#FFF8E1,#FFECB3);border:1px solid #FFD54F;border-radius:12px;padding:14px 16px;margin-bottom:18px;}
-    .klook-title{font-size:13px;font-weight:700;margin-bottom:6px;color:#3E2723;}
-    .klook-desc{font-size:12px;color:#555;margin-bottom:10px;line-height:1.6;}
-    .klook-btn{display:inline-block;background:#FF5722;color:#fff;font-size:12px;padding:6px 14px;border-radius:6px;text-decoration:none;font-weight:600;transition:opacity .15s;}
-    .klook-btn:hover{opacity:.88;}
+    /* fore-myrealtrip: 메인 CTA (klook 위치 대체) */
+    .fore-myrealtrip-box{background:linear-gradient(135deg,#E8F0FE,#EEF2FF);border:1.5px solid #90CAF9;border-radius:13px;padding:16px 18px;margin-bottom:18px;}
+    .fore-myrealtrip-title{font-size:14px;font-weight:700;margin-bottom:6px;color:#1A237E;line-height:1.5;}
+    .fore-myrealtrip-desc{font-size:12px;color:#444;margin-bottom:12px;line-height:1.65;}
+    .fore-myrealtrip-btn{display:inline-block;background:var(--blue,#2563EB);color:#fff;font-size:13px;padding:9px 18px;border-radius:8px;text-decoration:none;font-weight:700;transition:opacity .15s;}
+    .fore-myrealtrip-btn:hover{opacity:.88;}
     /* related 링크 박스 */
     .related-box{background:var(--white,#fff);border:1.5px solid var(--line,#e5e7eb);border-radius:12px;padding:18px 20px;margin-bottom:18px;}
     .related-box-title{font-size:14px;font-weight:700;color:var(--text,#111);margin-bottom:14px;}
@@ -148,11 +148,13 @@
   <!-- 예약 판단 가이드 -->
   <div class="booking-guide-box" id="bookingGuideBox"><!-- JS 렌더 --></div>
 
-  <!-- 호텔스컴바인 제휴 (예약 판단 가이드 직후) -->
-  <div class="hotelcombine-box">
-    <div class="hotelcombine-title" data-i18n="fore.hotel.title">👉 지금 가격 확인 후 예약 결정하기</div>
-    <div class="hotelcombine-desc"  data-i18n="fore.hotel.desc">유류할증료 포함 최종 가격을 바로 비교하세요</div>
-    <a href="http://app.ac/xjCXQLa23" target="_blank" rel="noopener sponsored" class="hotelcombine-btn" data-i18n="fore.hotel.btn">최종 가격 비교하기 →</a>
+  <!-- 마이리얼트립 제휴 — 메인 CTA (예약 판단 가이드 직후) -->
+  <div class="fore-myrealtrip-box">
+    <div class="fore-myrealtrip-title" data-i18n="fore.myrealtrip.title">👉 유류할증료 전망 확인 후, 실제 항공권 총액 비교하기</div>
+    <div class="fore-myrealtrip-desc"  data-i18n="fore.myrealtrip.desc">6월 유류할증료 인하 가능성을 확인했다면 현재 발권 가격도 함께 비교해보세요. 유류할증료는 발권 시점 기준으로 적용됩니다.</div>
+    <a href="https://linkmoa.kr/click.php?m=myrealtrip&a=A100704170&l=0000"
+       target="_blank" rel="noopener sponsored"
+       class="fore-myrealtrip-btn" data-i18n="fore.myrealtrip.btn">지금 항공권 총액 확인하기 →</a>
   </div>
 
   <!-- 핵심 요약 카드 (news.html 동일 패턴) -->
@@ -170,11 +172,13 @@
   <!-- 시장 브리핑 (news.html 동일 패턴) -->
   <div class="market-brief-box" id="marketBriefBox"><!-- JS 렌더 --></div>
 
-  <!-- Klook 제휴 -->
-  <div class="klook-box">
-    <div class="klook-title" data-i18n="fore.klook.title">✈️ 여행 비용은 항공권만이 아닙니다</div>
-    <div class="klook-desc"  data-i18n="fore.klook.desc">유류할증료 부담이 큰 만큼, 현지 투어·액티비티 비용도 함께 확인하세요. 미리 파악해두면 전체 여행 예산 관리에 도움이 됩니다.</div>
-    <a href="http://app.ac/JjCiEja23" target="_blank" rel="noopener sponsored" class="klook-btn" data-i18n="fore.klook.btn">여행 비용 줄이는 방법 보기 →</a>
+  <!-- 호텔스컴바인 제휴 — 보조 CTA (Klook 위치 대체) -->
+  <div class="hotelcombine-box">
+    <div class="hotelcombine-title" data-i18n="fore.hotelscombined.title">🏨 항공권 일정에 맞춰 숙소 비용도 비교하세요</div>
+    <div class="hotelcombine-desc"  data-i18n="fore.hotelscombined.desc">항공권 총액을 확인한 뒤 숙소 비용까지 함께 비교하면 전체 여행 예산을 더 정확히 판단할 수 있습니다.</div>
+    <a href="https://newtip.net/click.php?m=hcombine2&a=A100704170&l=0000"
+       target="_blank" rel="noopener sponsored"
+       class="hotelcombine-btn" data-i18n="fore.hotelscombined.btn">숙소 최저가 비교하기 →</a>
   </div>
 
   <!-- 유류할증료 결정 핵심 변수 -->
@@ -239,12 +243,12 @@ var FORE_I18N = {
     'fore.predict.title':    'AI 예측 참고 지표 현황',
     'fore.predict.subtitle': '데이터 기반 추정',
     'fore.predict.footnote': '* 5월 유류할증료는 공식 공지 기준 확정. 6월 전망은 시장 데이터 기반 참고용입니다.',
-    'fore.klook.title': '✈️ 여행 비용은 항공권만이 아닙니다',
-    'fore.klook.desc':  '유류할증료 부담이 큰 만큼, 현지 투어·액티비티 비용도 함께 확인하세요. 미리 파악해두면 전체 여행 예산 관리에 도움이 됩니다.',
-    'fore.klook.btn':   '여행 비용 줄이는 방법 보기 →',
-    'fore.hotel.title': '👉 지금 가격 확인 후 예약 결정하기',
-    'fore.hotel.desc':  '유류할증료 포함 최종 가격을 바로 비교하세요',
-    'fore.hotel.btn':   '최종 가격 비교하기 →',
+    'fore.myrealtrip.title': '👉 유류할증료 전망 확인 후, 실제 항공권 총액 비교하기',
+    'fore.myrealtrip.desc':  '6월 유류할증료 인하 가능성을 확인했다면 현재 발권 가격도 함께 비교해보세요. 유류할증료는 발권 시점 기준으로 적용됩니다.',
+    'fore.myrealtrip.btn':   '지금 항공권 총액 확인하기 →',
+    'fore.hotelscombined.title': '🏨 항공권 일정에 맞춰 숙소 비용도 비교하세요',
+    'fore.hotelscombined.desc':  '항공권 총액을 확인한 뒤 숙소 비용까지 함께 비교하면 전체 여행 예산을 더 정확히 판단할 수 있습니다.',
+    'fore.hotelscombined.btn':   '숙소 최저가 비교하기 →',
     'fore.keyvars.title': '🔑 유류할증료 결정 핵심 변수',
     'fore.basis.title': '📅 6월 유류할증료 반영 기준',
     'fore.basis.body':  '6월 유류할증료는 5월 평균 유가 및 환율을 기준으로 산정됩니다.',
@@ -334,12 +338,12 @@ var FORE_I18N = {
     'fore.predict.title':    'AI Forecast Reference Indicators',
     'fore.predict.subtitle': 'Data-based estimate',
     'fore.predict.footnote': '* May surcharges are confirmed via official filings. June outlook is a reference estimate based on market data.',
-    'fore.klook.title': '✈️ Travel costs go beyond just airfare',
-    'fore.klook.desc':  'With fuel surcharges adding up, check local tour and activity costs in advance to better manage your total travel budget.',
-    'fore.klook.btn':   'Explore ways to reduce travel costs →',
-    'fore.hotel.title': '✈️ Compare flight and hotel prices together',
-    'fore.hotel.desc':  'When fuel surcharges rise, it becomes more important to check both airfare totals and accommodation costs. Compare flight and hotel prices before booking.',
-    'fore.hotel.btn':   'Compare flights and hotels →',
+    'fore.myrealtrip.title': '👉 Check the June outlook, then compare your total ticket price',
+    'fore.myrealtrip.desc':  'Now that you\'ve reviewed the June surcharge forecast, compare current ticketing prices too. Surcharges apply at the time of ticketing.',
+    'fore.myrealtrip.btn':   'Check total ticket price now →',
+    'fore.hotelscombined.title': '🏨 Compare accommodation costs to match your flight dates',
+    'fore.hotelscombined.desc':  'After confirming your total airfare, comparing accommodation costs gives you a more accurate picture of your overall travel budget.',
+    'fore.hotelscombined.btn':   'Compare hotel prices →',
     'fore.keyvars.title': '🔑 Key Variables for Fuel Surcharge',
     'fore.basis.title': '📅 June Surcharge Calculation Basis',
     'fore.basis.body':  'June fuel surcharges are calculated based on May\'s average oil prices and exchange rates.',
@@ -428,12 +432,12 @@ var FORE_I18N = {
     'fore.predict.title':    'AI予測参考指標現況',
     'fore.predict.subtitle': 'データ基準推定',
     'fore.predict.footnote': '* 5月燃油サーチャージは公式公示基準確定。6月予測は市場データ基準の参考用です。',
-    'fore.klook.title': '✈️ 旅行費用は航空券だけではありません',
-    'fore.klook.desc':  '燃油サーチャージの負担が大きいため、現地ツアー・アクティビティ費用も事前に確認しましょう。',
-    'fore.klook.btn':   '旅行費用を抑える方法を見る →',
-    'fore.hotel.title': '✈️ 航空券とホテル料金を一緒に比較しましょう',
-    'fore.hotel.desc':  '燃油サーチャージが高い時期は、航空券の総額と宿泊費を一緒に確認することが重要です。予約前に航空券とホテル料金を比較してみましょう。',
-    'fore.hotel.btn':   '航空券・ホテル料金を比較する →',
+    'fore.myrealtrip.title': '👉 6月の見通しを確認したら、実際の航空券総額も比較しましょう',
+    'fore.myrealtrip.desc':  '6月のサーチャージ予測を確認したら、現在の発券価格も一緒に比較してみてください。サーチャージは発券日基準で適用されます。',
+    'fore.myrealtrip.btn':   '今すぐ航空券総額を確認する →',
+    'fore.hotelscombined.title': '🏨 フライト日程に合わせて宿泊費も比較しましょう',
+    'fore.hotelscombined.desc':  '航空券の総額を確認した後、宿泊費も一緒に比較すると旅行全体の予算をより正確に把握できます。',
+    'fore.hotelscombined.btn':   '宿泊施設の最安値を比較する →',
     'fore.keyvars.title': '🔑 燃油サーチャージ決定の主要変数',
     'fore.basis.title': '📅 6月サーチャージの算定基準',
     'fore.basis.body':  '6月の燃油サーチャージは5月平均の油価と為替レートを基準に算定されます。',
@@ -522,12 +526,12 @@ var FORE_I18N = {
     'fore.predict.title':    'AI预测参考指标现状',
     'fore.predict.subtitle': '基于数据的估算',
     'fore.predict.footnote': '* 5月燃油附加费已按官方公告确定。6月预测为基于市场数据的参考。',
-    'fore.klook.title': '✈️ 旅行费用不只是机票',
-    'fore.klook.desc':  '燃油附加费负担较重，建议提前了解当地旅游·活动费用，有助于整体旅行预算管理。',
-    'fore.klook.btn':   '了解降低旅行费用的方法 →',
-    'fore.hotel.title': '✈️ 一起比较机票和酒店价格',
-    'fore.hotel.desc':  '当燃油附加费上涨时，同时确认机票总额和住宿费用更加重要。预订前可以一起比较机票和酒店价格。',
-    'fore.hotel.btn':   '比较机票和酒店价格 →',
+    'fore.myrealtrip.title': '👉 确认6月展望后，比较实际机票总价',
+    'fore.myrealtrip.desc':  '确认了6月附加费预测后，也可以一起比较当前出票价格。燃油附加费按出票日期适用。',
+    'fore.myrealtrip.btn':   '立即查看机票总价 →',
+    'fore.hotelscombined.title': '🏨 根据机票行程比较住宿费用',
+    'fore.hotelscombined.desc':  '确认机票总额后，再比较住宿费用，可以更准确地掌握整体旅行预算。',
+    'fore.hotelscombined.btn':   '比较酒店最低价 →',
     'fore.keyvars.title': '🔑 燃油附加费决定关键变量',
     'fore.basis.title': '📅 6月燃油附加费计算基准',
     'fore.basis.body':  '6月燃油附加费以5月平均油价及汇率为基准计算。',
