@@ -1011,7 +1011,7 @@ ko:{
   'aff.myrealtrip.cta':         '항공권 가격 확인하기',
   'news.pageSub':'유류할증료 관련 국가·기관·항공사·시장 참고 정보 · 데이터 기반 AI 요약 · 예측 근거 연결',
   'news.predictTitle':'📊 AI 예측 참고 지표 현황',
-  'news.officialTitle':'📢 2026년 5월 적용 유류할증료 공식 공지 요약',
+  'news.officialTitle':'📢 2026년 5월 확정 공시 요약 (6월 전망 참고용)',
   'news.compareTitle':'📊 전월 대비: 4월 → 5월 변화',
   'news.marketTitle':'🌍 시장 브리핑 (2026.05.04 09:00 기준)',
   'news.brent':'⛽ 브렌트유: $101~103 — 추가 하락',
@@ -1283,7 +1283,7 @@ en:{
   'aff.myrealtrip.cta':         'Check flight prices',
   'news.pageSub':'Fuel surcharge market, policy & airline updates · AI-powered summaries · Forecast basis',
   'news.predictTitle':'📊 AI Forecast Indicators',
-  'news.officialTitle':'📢 May 2026 Fuel Surcharge — Official Summary',
+  'news.officialTitle':'📢 May 2026 Confirmed Surcharge Summary (Reference for June Outlook)',
   'news.compareTitle':'📊 April vs May Changes',
   'news.marketTitle':'🌍 Market Brief (as of 2026.05.04 09:00 KST)',
   'news.brent':'⛽ Brent Crude: $101–103 — further declining',
@@ -1526,7 +1526,7 @@ ja:{
   'aff.myrealtrip.cta':         '航空券価格を確認',
   'news.pageSub':'燃油サーチャージ関連 市場・政策・航空会社情報 · AI要約 · 予測根拠',
   'news.predictTitle':'📊 AI予測参考指標',
-  'news.officialTitle':'📢 5月燃油サーチャージ 公式まとめ',
+  'news.officialTitle':'📢 5月燃油サーチャージ 確定公示まとめ（6月見通し参考用）',
   'news.compareTitle':'📊 4月→5月変化',
   'news.marketTitle':'🌍 市場ブリーフィング (2026.05.04 09:00 KST基準)',
   'news.brent':'⛽ ブレント原油: $101〜103 — さらに下落',
@@ -1769,7 +1769,7 @@ zh:{
   'aff.myrealtrip.cta':         '查看机票价格',
   'news.pageSub':'燃油附加费相关市场、政策、航空公司动态 · AI摘要 · 预测依据',
   'news.predictTitle':'📊 AI预测参考指标',
-  'news.officialTitle':'📢 5月燃油附加费 官方公告汇总',
+  'news.officialTitle':'📢 5月燃油附加费 确定公告汇总（6月展望参考）',
   'news.compareTitle':'📊 4月 vs 5月对比',
   'news.marketTitle':'🌍 市场简报 (2026.05.04 09:00 KST)',
   'news.brent':'⛽ 布伦特原油: $101~103 — 进一步下跌',
@@ -2011,7 +2011,7 @@ fr:{
   'aff.myrealtrip.cta':         'Voir les prix des vols',
   'news.pageSub':'Surcharge carburant · actualités marché, politique & compagnies aériennes · résumés IA',
   'news.predictTitle':'📊 Indicateurs de prévision IA',
-  'news.officialTitle':'📢 Surcharge mai — Résumé officiel',
+  'news.officialTitle':'📢 Surcharge mai — Résumé confirmé (Référence pour juin)',
   'news.compareTitle':'📊 Comparaison avril vs mai',
   'news.marketTitle':'🌍 Point marché (2026.05.04 09:00 KST)',
   'news.brent':'⛽ Brent: ~101–103 $ / baril (en forte baisse)',
@@ -2255,7 +2255,7 @@ de:{
   'aff.myrealtrip.cta':         'Flugpreise prüfen',
   'news.pageSub':'Treibstoffzuschlag · Markt-, Politik- & Airline-Updates · KI-Zusammenfassung · Prognosebasis',
   'news.predictTitle':'📊 KI-Prognose Indikatoren',
-  'news.officialTitle':'📢 Mai Treibstoffzuschlag — Offizielle Zusammenfassung',
+  'news.officialTitle':'📢 Mai Treibstoffzuschlag — Bestätigte Zusammenfassung (Referenz für Juni)',
   'news.compareTitle':'📊 April vs. Mai Vergleich',
   'news.marketTitle':'🌍 Marktüberblick (2026.05.04 09:00 KST)',
   'news.brent':'⛽ Brent-Rohöl: ~101–103 $ / Barrel (weiter sinkend)',
@@ -2416,6 +2416,14 @@ window.setCurrentLang = function(lang){
 /* ─── 번역 함수 ─── */
 window.t = function(key){
   var lang = window.getCurrentLang();
+  /* 1순위: 페이지별 override (news.html 등에서 선언) */
+  if(window.PAGE_I18N_OVERRIDE){
+    var ovLang = window.PAGE_I18N_OVERRIDE[lang];
+    if(ovLang && ovLang[key] !== undefined) return ovLang[key];
+    var ovKo = window.PAGE_I18N_OVERRIDE['ko'];
+    if(ovKo && ovKo[key] !== undefined) return ovKo[key];
+  }
+  /* 2순위: 공용 I18N 사전 */
   var dict = window.I18N[lang];
   if(dict && dict[key] !== undefined) return dict[key];
   var ko = window.I18N['ko'];
@@ -2677,7 +2685,11 @@ window.applyLanguage = function(){
   document.documentElement.lang = lang;
   /* data-i18n */
   document.querySelectorAll('[data-i18n]').forEach(function(el){
-    el.textContent = window.t(el.getAttribute('data-i18n'));
+    var key = el.getAttribute('data-i18n');
+    var val = window.t(key);
+    /* t()가 키 자체를 반환(번역 없음)하거나 빈 값이면 기존 텍스트 유지 */
+    if(!val || val === key) return;
+    el.textContent = val;
   });
   /* data-i18n-html */
   document.querySelectorAll('[data-i18n-html]').forEach(function(el){
