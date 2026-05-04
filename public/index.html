@@ -32,7 +32,9 @@
     .hero { background:linear-gradient(160deg,#2E4FD8 0%,#1A3BB8 55%,#1230A0 100%); padding:22px 40px 30px; text-align:center; position:relative; overflow:visible; }
     .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 60% at 50% 120%,rgba(255,255,255,.06) 0%,transparent 70%); pointer-events:none; }
     .hero-title { font-size:clamp(18px,3vw,26px); font-weight:700; color:#fff; letter-spacing:-1px; margin-bottom:3px; }
-    .hero-sub { font-size:12px; color:rgba(255,255,255,.55); margin-bottom:18px; }
+    .hero-sub { font-size:12px; color:rgba(255,255,255,.55); margin-bottom:10px; }
+    .hero-signal-row { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin:0 0 16px; }
+    .hero-signal-row span { display:inline-flex; align-items:center; padding:5px 10px; border-radius:999px; background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.22); color:#fff; font-size:11px; font-weight:700; }
     .search-panel { background:#fff; border-radius:13px; padding:16px 20px; max-width:860px; margin:0 auto; display:grid; grid-template-columns:1fr auto 1fr auto auto; gap:11px; align-items:end; box-shadow:0 14px 44px rgba(0,0,0,.2); position:relative; z-index:50; overflow:visible; }
     .form-group { display:flex; flex-direction:column; gap:5px; overflow:visible; }
     .form-label { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); }
@@ -225,6 +227,12 @@
     }
     .guide-block-body p { margin:0 0 8px; }
     .guide-block-body p:last-child { margin:0; }
+    /* ── 예약 판단 블록 ── */
+    .booking-decision-card { background:#f4f8ff; border:1px solid #d6e4ff; border-radius:12px; padding:16px; margin-bottom:12px; }
+    .decision-title { font-weight:700; color:#1a3ea8; margin-bottom:8px; font-size:14px; }
+    .decision-list { padding-left:18px; margin:0 0 10px; }
+    .decision-list li { margin-bottom:4px; font-size:13px; color:var(--text2,#555); }
+    .decision-conclusion { font-weight:600; color:#0b5ed7; font-size:13px; }
 
     /* ════════════════════════════════════════
        모바일 UX (700px 이하)
@@ -261,6 +269,8 @@
       .intro-card { padding: 16px 16px; }
       .intro-card-body { font-size: 12px; }
       .guide-block { padding: 16px 16px; }
+      .booking-decision-card { padding: 14px; }
+      .decision-list li { font-size: 12px; }
       .guide-block-body { font-size: 12px; }
     }
 
@@ -514,7 +524,12 @@
 
 <div class="hero">
   <div class="hero-title" id="heroTitle" data-i18n="index.heroTitle">노선별 유류할증료 조회</div>
-  <div class="hero-sub"   id="heroSub"   data-i18n="index.heroSub">한국 국적기 출발·도착 기준 유류할증료 비교 · 공식 공지 + AI 예측</div>
+  <div class="hero-sub"   id="heroSub"   data-i18n="index.heroSub">지금 예약할지, 6월 공시까지 기다릴지 노선별로 확인하세요</div>
+  <div class="hero-signal-row" id="heroSignalRow">
+    <span data-i18n="index.signal1">📉 6월 인하 가능성 우세</span>
+    <span data-i18n="index.signal2">✈️ 노선별 현재 적용 금액 확인</span>
+    <span data-i18n="index.signal3">⏱️ 예약 타이밍 판단</span>
+  </div>
   <div class="search-panel">
     <div class="form-group">
       <label class="form-label" id="labelOrigin" data-i18n="index.labelOrigin">출발 공항</label>
@@ -635,8 +650,8 @@
       <div class="affiliate-cta myrealtrip-cta">
         <div class="cta-copy">
           <div class="cta-kicker">항공권 총액 확인 후 바로 비교</div>
-          <div class="cta-title" data-i18n="aff.myrealtrip.title">유류할증료까지 봤다면, 이제 항공권 가격을 확인해보세요</div>
-          <div class="cta-desc" data-i18n="aff.myrealtrip.desc">노선별 유류할증료 확인 후 실제 항공권 가격과 여행 상품을 함께 비교할 수 있습니다.</div>
+          <div class="cta-title" data-i18n="aff.myrealtrip.title">유류할증료 확인 후, 실제 항공권 총액도 비교하세요</div>
+          <div class="cta-desc" data-i18n="aff.myrealtrip.desc">유류할증료는 발권 시점 기준으로 적용됩니다. 지금 가격과 6월 전망을 함께 보고 예약 타이밍을 판단하세요.</div>
           <div class="cta-benefits">
             <span>항공권 가격 비교</span>
             <span>여행 상품 확인</span>
@@ -646,7 +661,7 @@
         <a href="https://lase.kr/click.php?m=myrealtrip&a=A100704170&l=0000"
            target="_blank" rel="noopener sponsored"
            class="cta-main-btn"
-           data-i18n="aff.myrealtrip.cta">항공권 가격 확인하기 →</a>
+           data-i18n="aff.myrealtrip.cta">지금 항공권 총액 확인하기 →</a>
       </div>
       <!-- 호텔스컴바인: 숙소 비교 -->
       <div class="affiliate-single">
@@ -681,6 +696,13 @@
       <span id="statusText"></span>
     </div>
 
+    <!-- 예약 판단 블록 -->
+    <div class="booking-decision-card" id="bookingDecisionCard">
+      <div class="decision-title" id="decisionTitle"></div>
+      <ul class="decision-list" id="decisionList"></ul>
+      <div class="decision-conclusion" id="decisionConclusion"></div>
+    </div>
+
     <!-- 유류할증료 안내 블록 (랜딩) -->
     <div class="guide-block">
       <div class="guide-block-title" data-i18n="index.guide.title">💡 유류할증료란 무엇인가요?</div>
@@ -694,8 +716,8 @@
     <div class="affiliate-cta myrealtrip-cta">
       <div class="cta-copy">
         <div class="cta-kicker">항공권 총액 확인 후 바로 비교</div>
-        <div class="cta-title" data-i18n="aff.myrealtrip.title">유류할증료까지 봤다면, 이제 항공권 가격을 확인해보세요</div>
-        <div class="cta-desc" data-i18n="aff.myrealtrip.desc">노선별 유류할증료 확인 후 실제 항공권 가격과 여행 상품을 함께 비교할 수 있습니다.</div>
+        <div class="cta-title" data-i18n="aff.myrealtrip.title">유류할증료 확인 후, 실제 항공권 총액도 비교하세요</div>
+        <div class="cta-desc" data-i18n="aff.myrealtrip.desc">유류할증료는 발권 시점 기준으로 적용됩니다. 지금 가격과 6월 전망을 함께 보고 예약 타이밍을 판단하세요.</div>
         <div class="cta-benefits">
           <span>항공권 가격 비교</span>
           <span>여행 상품 확인</span>
@@ -705,7 +727,7 @@
       <a href="https://lase.kr/click.php?m=myrealtrip&a=A100704170&l=0000"
          target="_blank" rel="noopener sponsored"
          class="cta-main-btn"
-         data-i18n="aff.myrealtrip.cta">항공권 가격 확인하기 →</a>
+         data-i18n="aff.myrealtrip.cta">지금 항공권 총액 확인하기 →</a>
     </div>
 
     <div class="landing-title" id="landingTitle" data-i18n="index.landingTitle">한국 출발 국제선 유류할증료</div>
@@ -1931,6 +1953,7 @@ function renderLanding(){
 window.initNav({
   onLangChange:function(){
     renderLanding();
+    renderBookingDecision();
     if(window._searchCtx)renderCards('all');
     /* 제휴 카드 텍스트 갱신 (aff.* + index.aff.*) */
     document.querySelectorAll('[data-i18n^="aff."], [data-i18n^="index.aff."]').forEach(function(el){
@@ -1943,6 +1966,24 @@ window.initNav({
   },
   onCurrChange:function(){renderLanding();if(window._searchCtx)renderCards('all');}
 });
+/* ── 예약 판단 블록 렌더 ──
+   window.t()를 통해 현재 언어 기준 i18n 값을 채우며,
+   언어 변경 시 onLangChange에서 재호출된다. */
+function renderBookingDecision(){
+  var title      = document.getElementById('decisionTitle');
+  var list       = document.getElementById('decisionList');
+  var conclusion = document.getElementById('decisionConclusion');
+  if(!title || !list || !conclusion) return;
+  /* innerText로 명시적 렌더 — applyLanguage() 덮어쓰기 방지 */
+  title.innerText      = window.t('index.decision.title');
+  list.innerHTML =
+    '<li>' + window.t('index.decision.line1') + '</li>' +
+    '<li>' + window.t('index.decision.line2') + '</li>' +
+    '<li>' + window.t('index.decision.line3') + '</li>';
+  conclusion.innerText = window.t('index.decision.conclusion');
+}
+renderBookingDecision();
+
 loadAll();
 
 /* 자동완성 초기화 — loadAll 이후 */
