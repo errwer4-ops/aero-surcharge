@@ -1,73 +1,102 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+  <!-- 메인 -->
   <url>
     <loc>https://aero-surcharge.vercel.app/</loc>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
+
+  <!-- 항공사 인덱스 -->
   <url>
     <loc>https://aero-surcharge.vercel.app/airlines.html</loc>
     <changefreq>daily</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
+
+  <!-- 참고 소식 -->
   <url>
     <loc>https://aero-surcharge.vercel.app/news.html</loc>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://aero-surcharge.vercel.app/routes.html</loc>
-    <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
-  <url>
-    <loc>https://aero-surcharge.vercel.app/fuel-surcharge-korea.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://aero-surcharge.vercel.app/fuel-surcharge-2026-05.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
+
+  <!-- 월별 / 예측 페이지 -->
   <url>
     <loc>https://aero-surcharge.vercel.app/fuel-surcharge-2026-06-forecast.html</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
+
+  <!-- 한국 출발 랜딩 -->
+  <url>
+    <loc>https://aero-surcharge.vercel.app/fuel-surcharge-korea.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <!-- 2026년 5월 상세 -->
+  <url>
+    <loc>https://aero-surcharge.vercel.app/fuel-surcharge-2026-05.html</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <!-- 항공사 개별 페이지 -->
   <url>
     <loc>https://aero-surcharge.vercel.app/fuel-surcharge-korean-air.html</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aero-surcharge.vercel.app/fuel-surcharge-asiana.html</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aero-surcharge.vercel.app/fuel-surcharge-jejuair.html</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aero-surcharge.vercel.app/fuel-surcharge-jinair.html</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aero-surcharge.vercel.app/fuel-surcharge-tway.html</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
+
+  <!-- 그래프 / 계산 가이드 -->
   <url>
     <loc>https://aero-surcharge.vercel.app/fuel-surcharge-graph.html</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
   <url>
     <loc>https://aero-surcharge.vercel.app/fuel-surcharge-calculator.html</loc>
     <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.5</priority>
   </url>
+
+  <!-- 정책 / 신뢰 페이지 -->
+  <url>
+    <loc>https://aero-surcharge.vercel.app/about.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://aero-surcharge.vercel.app/privacy.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://aero-surcharge.vercel.app/terms.html</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
 </urlset>
