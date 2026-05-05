@@ -153,6 +153,24 @@
           <td style="font-size:12px;color:var(--muted);" data-i18n="calc.note.monthly">매월 공시</td>
         </tr>
         <tr>
+          <td><strong data-i18n="airline.ZE">이스타항공 (ZE)</strong></td>
+          <td data-i18n="calc.row.ze.method">군별 요금 / USD 공시</td>
+          <td><a href="https://www.eastarjet.com/newstar/PGWCA00002?cId=11&amp;iId=0&amp;bId=578&amp;lang=KR" target="_blank" rel="noopener" style="color:var(--blue);font-size:11px;" data-i18n="calc.official.suffix">공식 사이트 ↗</a></td>
+          <td style="font-size:12px;color:var(--muted);" data-i18n="calc.note.monthly">매월 공시</td>
+        </tr>
+        <tr>
+          <td><strong data-i18n="airline.RS">에어서울 (RS)</strong></td>
+          <td data-i18n="calc.row.rs.method">거리구간별 / KRW 공시</td>
+          <td><a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10702" target="_blank" rel="noopener" style="color:var(--blue);font-size:11px;" data-i18n="calc.official.suffix">공식 사이트 ↗</a></td>
+          <td style="font-size:12px;color:var(--muted);" data-i18n="calc.note.monthly">매월 공시</td>
+        </tr>
+        <tr>
+          <td><strong data-i18n="airline.YP">에어프레미아 (YP)</strong></td>
+          <td data-i18n="calc.row.lcc.method">노선별 단일/구간</td>
+          <td><a href="https://www.airpremia.com/a/ko/customer/notice/693" target="_blank" rel="noopener" style="color:var(--blue);font-size:11px;" data-i18n="calc.official.suffix">공식 사이트 ↗</a></td>
+          <td style="font-size:12px;color:var(--muted);" data-i18n="calc.note.monthly">매월 공시</td>
+        </tr>
+        <tr>
           <td><strong data-i18n="airline.BX">에어부산 (BX)</strong></td>
           <td data-i18n="calc.row.lcc.method">노선별 단일/구간</td>
           <td><a href="https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4351" target="_blank" rel="noopener" style="color:var(--blue);font-size:11px;" data-i18n="calc.official.suffix">공식 사이트 ↗</a></td>
@@ -172,6 +190,9 @@
       <div class="official-link-item" data-i18n-html="calc.official.item.7c"></div>
       <div class="official-link-item" data-i18n-html="calc.official.item.lj"></div>
       <div class="official-link-item" data-i18n-html="calc.official.item.tw"></div>
+      <div class="official-link-item" data-i18n-html="calc.official.item.ze"></div>
+      <div class="official-link-item" data-i18n-html="calc.official.item.rs"></div>
+      <div class="official-link-item" data-i18n-html="calc.official.item.yp"></div>
       <div class="official-link-item" data-i18n-html="calc.official.item.bx"></div>
     </div>
   </div>
@@ -260,7 +281,12 @@ var PAGE_I18N = {
     'airline.7C': '제주항공 (7C)',
     'airline.LJ': '진에어 (LJ)',
     'airline.TW': '티웨이항공 (TW)',
+    'airline.ZE': '이스타항공 (ZE)',
+    'airline.RS': '에어서울 (RS)',
+    'airline.YP': '에어프레미아 (YP)',
     'airline.BX': '에어부산 (BX)',
+    'calc.row.ze.method': '군별 요금 / USD 공시',
+    'calc.row.rs.method': '거리구간별 / KRW 공시',
     'calc.note.monthly': '매월 공시',
     'calc.note.manual':  '공식 공지 수동 반영',
     'calc.official.item.ke': '✈️ 대한항공: <a href="https://www.koreanair.com" target="_blank" rel="noopener">koreanair.com 공식 공지 확인 ↗</a>',
@@ -268,6 +294,9 @@ var PAGE_I18N = {
     'calc.official.item.7c': '✈️ 제주항공: <a href="https://www.jejuair.net" target="_blank" rel="noopener">jejuair.net 공식 공지 확인 ↗</a>',
     'calc.official.item.lj': '✈️ 진에어: <a href="https://www.jinair.com" target="_blank" rel="noopener">jinair.com 공식 공지 확인 ↗</a>',
     'calc.official.item.tw': '✈️ 티웨이항공: <a href="https://www.twayair.com" target="_blank" rel="noopener">twayair.com 공식 공지 확인 ↗</a>',
+    'calc.official.item.ze': '✈️ 이스타항공: <a href="https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=578&lang=KR" target="_blank" rel="noopener">eastarjet.com 공식 공지 확인 ↗</a>',
+    'calc.official.item.rs': '✈️ 에어서울: <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10702" target="_blank" rel="noopener">flyairseoul.com 공식 공지 확인 ↗</a>',
+    'calc.official.item.yp': '✈️ 에어프레미아: <a href="https://www.airpremia.com/a/ko/customer/notice/693" target="_blank" rel="noopener">airpremia.com 공식 공지 확인 ↗</a>',
     'calc.official.item.bx': '✈️ 에어부산: <a href="https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4351" target="_blank" rel="noopener">airbusan.com 공식 공지 확인 ↗</a>',
   },
   en: {
@@ -326,7 +355,12 @@ var PAGE_I18N = {
     'airline.7C': 'Jeju Air (7C)',
     'airline.LJ': 'Jin Air (LJ)',
     'airline.TW': "T'way Air (TW)",
+    'airline.ZE': 'Eastar Jet (ZE)',
+    'airline.RS': 'Air Seoul (RS)',
+    'airline.YP': 'Air Premia (YP)',
     'airline.BX': 'Air Busan (BX)',
+    'calc.row.ze.method': 'Group tier / USD filing',
+    'calc.row.rs.method': 'Distance band / KRW filing',
     'calc.note.monthly': 'Monthly',
     'calc.note.manual':  'Manual (official notice)',
     'calc.official.item.ke': '✈️ Korean Air: <a href="https://www.koreanair.com" target="_blank" rel="noopener">koreanair.com — Official Notice ↗</a>',
@@ -334,6 +368,9 @@ var PAGE_I18N = {
     'calc.official.item.7c': '✈️ Jeju Air: <a href="https://www.jejuair.net" target="_blank" rel="noopener">jejuair.net — Official Notice ↗</a>',
     'calc.official.item.lj': '✈️ Jin Air: <a href="https://www.jinair.com" target="_blank" rel="noopener">jinair.com — Official Notice ↗</a>',
     'calc.official.item.tw': "✈️ T'way Air: <a href=\"https://www.twayair.com\" target=\"_blank\" rel=\"noopener\">twayair.com — Official Notice ↗</a>",
+    'calc.official.item.ze': '✈️ Eastar Jet: <a href="https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=578&lang=KR" target="_blank" rel="noopener">eastarjet.com — Official Notice ↗</a>',
+    'calc.official.item.rs': '✈️ Air Seoul: <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10702" target="_blank" rel="noopener">flyairseoul.com — Official Notice ↗</a>',
+    'calc.official.item.yp': '✈️ Air Premia: <a href="https://www.airpremia.com/a/ko/customer/notice/693" target="_blank" rel="noopener">airpremia.com — Official Notice ↗</a>',
     'calc.official.item.bx': '✈️ Air Busan: <a href="https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4351" target="_blank" rel="noopener">airbusan.com — Official Notice ↗</a>',
   },
   ja: {
@@ -392,7 +429,12 @@ var PAGE_I18N = {
     'airline.7C': 'チェジュ航空 (7C)',
     'airline.LJ': 'ジンエアー (LJ)',
     'airline.TW': 'ティーウェイ航空 (TW)',
+    'airline.ZE': 'イースター航空 (ZE)',
+    'airline.RS': 'エアソウル (RS)',
+    'airline.YP': 'エアプレミア (YP)',
     'airline.BX': 'エアプサン (BX)',
+    'calc.row.ze.method': 'グループ別料金 / USD公示',
+    'calc.row.rs.method': '距離区分別 / KRW公示',
     'calc.note.monthly': '毎月公示',
     'calc.note.manual':  '公式案内手動反映',
     'calc.official.item.ke': '✈️ 大韓航空: <a href="https://www.koreanair.com" target="_blank" rel="noopener">koreanair.com 公式案内を確認 ↗</a>',
@@ -400,6 +442,9 @@ var PAGE_I18N = {
     'calc.official.item.7c': '✈️ チェジュ航空: <a href="https://www.jejuair.net" target="_blank" rel="noopener">jejuair.net 公式案内を確認 ↗</a>',
     'calc.official.item.lj': '✈️ ジンエアー: <a href="https://www.jinair.com" target="_blank" rel="noopener">jinair.com 公式案内を確認 ↗</a>',
     'calc.official.item.tw': '✈️ ティーウェイ航空: <a href="https://www.twayair.com" target="_blank" rel="noopener">twayair.com 公式案内を確認 ↗</a>',
+    'calc.official.item.ze': '✈️ イースター航空: <a href="https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=578&lang=KR" target="_blank" rel="noopener">eastarjet.com 公式案内を確認 ↗</a>',
+    'calc.official.item.rs': '✈️ エアソウル: <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10702" target="_blank" rel="noopener">flyairseoul.com 公式案内を確認 ↗</a>',
+    'calc.official.item.yp': '✈️ エアプレミア: <a href="https://www.airpremia.com/a/ko/customer/notice/693" target="_blank" rel="noopener">airpremia.com 公式案内を確認 ↗</a>',
     'calc.official.item.bx': '✈️ エアプサン: <a href="https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4351" target="_blank" rel="noopener">airbusan.com 公式案内を確認 ↗</a>',
   },
   zh: {
@@ -458,7 +503,12 @@ var PAGE_I18N = {
     'airline.7C': '济州航空 (7C)',
     'airline.LJ': '真航空 (LJ)',
     'airline.TW': '德威航空 (TW)',
+    'airline.ZE': '易思达航空 (ZE)',
+    'airline.RS': '首尔航空 (RS)',
+    'airline.YP': '高丽航空 (YP)',
     'airline.BX': '釜山航空 (BX)',
+    'calc.row.ze.method': '组别费用 / USD公告',
+    'calc.row.rs.method': '距离区间别 / KRW公告',
     'calc.note.monthly': '每月公告',
     'calc.note.manual':  '官方公告手动更新',
     'calc.official.item.ke': '✈️ 大韩航空: <a href="https://www.koreanair.com" target="_blank" rel="noopener">koreanair.com 查看官方公告 ↗</a>',
@@ -466,6 +516,9 @@ var PAGE_I18N = {
     'calc.official.item.7c': '✈️ 济州航空: <a href="https://www.jejuair.net" target="_blank" rel="noopener">jejuair.net 查看官方公告 ↗</a>',
     'calc.official.item.lj': '✈️ 真航空: <a href="https://www.jinair.com" target="_blank" rel="noopener">jinair.com 查看官方公告 ↗</a>',
     'calc.official.item.tw': '✈️ 德威航空: <a href="https://www.twayair.com" target="_blank" rel="noopener">twayair.com 查看官方公告 ↗</a>',
+    'calc.official.item.ze': '✈️ 易思达航空: <a href="https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=578&lang=KR" target="_blank" rel="noopener">eastarjet.com 查看官方公告 ↗</a>',
+    'calc.official.item.rs': '✈️ 首尔航空: <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10702" target="_blank" rel="noopener">flyairseoul.com 查看官方公告 ↗</a>',
+    'calc.official.item.yp': '✈️ 高丽航空: <a href="https://www.airpremia.com/a/ko/customer/notice/693" target="_blank" rel="noopener">airpremia.com 查看官方公告 ↗</a>',
     'calc.official.item.bx': '✈️ 釜山航空: <a href="https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4351" target="_blank" rel="noopener">airbusan.com 查看官方公告 ↗</a>',
   },
 };
