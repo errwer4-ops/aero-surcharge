@@ -193,7 +193,7 @@
   <!-- [4] 핵심 요약 카드 — data-i18n으로 다국어 처리 -->
   <div class="summary-card">
     <div class="summary-card-title" data-i18n="news.summary.title">📌 2026년 6월 핵심 요약</div>
-    <div class="summary-updated" data-i18n="news.summary.updated">🕐 2026.05.04 09:00 기준 시장 지표 반영</div>
+    <div class="summary-updated" data-i18n="news.summary.updated">🕐 2026.05.05 11:00 기준 시장 지표 반영</div>
     <ul>
       <li data-i18n="news.summary.li1">유가 추가 하락 — 브렌트유 $101~103 / 배럴</li>
       <li data-i18n="news.summary.li2">환율 하락 유지 — 약 1,440~1,450원</li>
@@ -320,7 +320,7 @@
   <!-- 데이터 기준 배너 -->
   <div class="data-ref-banner" id="dataRefBanner">
     <div class="data-ref-notice" data-i18n="news.surchargeNote">※ 유류할증료는 예약 시점 기준으로 적용됩니다. 변동 전에 예약 여부를 반드시 확인하세요.</div>
-    <div class="data-ref-time" data-i18n="news.dataRef">🕐 데이터 기준: 2026.05.04 09:00</div>
+    <div class="data-ref-time" data-i18n="news.dataRef">🕐 데이터 기준: 2026.05.05 11:00 KST</div>
     <div class="data-ref-summary" data-i18n="news.curSummary">→ 6월 유류할증료는 인하 거의 확정 (일부 단거리 동결 가능)</div>
   </div>
 
@@ -432,7 +432,7 @@ async function loadNews(){
 }
 
 /* ════════════════════════════════════════════════════════
-   TODAY_MARKET — 2026.05.04 09:00 KST 기준 단일 시장 지표 기준값
+   TODAY_MARKET — 2026.05.05 11:00 KST 기준 단일 시장 지표 기준값
    핵심 요약 · 시장 브리핑 · AI 예측 참고 지표 세 구역이
    동일한 수치를 참조하도록 한 곳에서 관리.
    FORECAST_DATA feed 값이 오더라도 이 값으로 고정.
@@ -451,7 +451,7 @@ var TODAY_MARKET = {
 };
 
 /* ════════════════════════════════════════════════════════
-   renderPredictBasis — 2026-04-27 07:30 KST 기준 시장 데이터 반영
+   renderPredictBasis — 2026.05.05 11:00 KST 기준 시장 데이터 반영
    ─────────────────────────────────────────────────────────
    · TODAY_MARKET 기준값 고정 사용 — feed 값으로 덮어쓰지 않음
    · PREDICT_FALLBACK은 TODAY_MARKET과 동일 수치로 통일
@@ -943,6 +943,15 @@ function getCatLabel(cat){
    ════════════════════════════════════════════════════════ */
 var FIXED_NEWS_FALLBACK = {
   ko: {
+    /* ── 2026-05-05 최신 시장 업데이트 카드 (NEW) ── */
+    'news.fixed.20260505p1.title':   '2026.05.05 유류할증료 시장 업데이트 — 인하 조건 3개 완성',
+    'news.fixed.20260505p1.summary': '2026년 5월 5일 11:00 기준, 브렌트유는 약 $101~103 수준에서 약세를 유지하고 있으며 원/달러 환율은 약 1,440~1,450원 구간에서 하락 안정 흐름을 보이고 있습니다. 항공유/MOPS는 약 485~495 cent 수준으로 500선을 완전히 이탈했습니다. 유가·환율·항공유 3대 지표가 동시에 하락 조건을 충족하면서 6월 유류할증료는 인하 거의 확정 흐름에 진입했습니다.',
+    'news.fixed.20260505p1.impact':  '6월 유류할증료 인하 가능성 매우 높음. 일부 단거리 노선은 동결 가능성이 있으나 중장거리 노선은 인하 기대가 더 큼.',
+    'news.fixed.20260505p1.source':  '시장 데이터 기반 참고 분석 (2026.05.05)',
+    'news.fixed.20260505p1.tag1': '유류할증료 전망', 'news.fixed.20260505p1.tag2': '6월 유류할증료',
+    'news.fixed.20260505p1.tag3': '브렌트유',         'news.fixed.20260505p1.tag4': 'MOPS',
+    'news.fixed.20260505p1.tag5': '환율',             'news.fixed.20260505p1.tag6': '예약 판단',
+
     /* ── 2026-05-04 최신 시장 업데이트 카드 (NEW) ── */
     'news.fixed.20260504p1.title':   '2026.05.04 유류할증료 시장 업데이트 — 인하 확정 구간 진입',
     'news.fixed.20260504p1.summary': '2026년 5월 4일 09:00 기준, 브렌트유가 $101~103으로 추가 하락했습니다. 항공유(MOPS)는 485~495 cent/gal로 500선을 완전 이탈하며 하락이 확정 구간에 진입했습니다. 환율은 1,440~1,450원으로 하락을 유지하고 있습니다. 유가·항공유·환율 3대 지표가 동시에 하락을 유지하면서 6월 유류할증료 인하는 사실상 확정 단계에 이르렀습니다.',
@@ -1261,6 +1270,15 @@ var FIXED_NEWS_FALLBACK = {
     'news.fixed.20260424yp.tag3': '5월공시',       'news.fixed.20260424yp.tag4': '항공권 유류할증료'
   },
   en: {
+    /* ── 2026-05-05 latest market update (EN, NEW) ── */
+    'news.fixed.20260505p1.title':   '2026.05.05 Fuel Surcharge Market Update — All 3 Downside Conditions Met',
+    'news.fixed.20260505p1.summary': 'As of May 5, 2026 at 11:00 KST, Brent crude remains weak at ~$101–103/bbl. USD/KRW holds lower in the 1,440–1,450 range. Jet fuel (MOPS) at ~485–495 cent/gal has fully broken below 500. All three downside conditions (oil, FX, jet fuel) are simultaneously met, bringing the June surcharge cut to a near-confirmed trajectory.',
+    'news.fixed.20260505p1.impact':  'June surcharge cut highly likely. Some short-haul routes may hold flat, but mid/long-haul cut expectations are stronger.',
+    'news.fixed.20260505p1.source':  'Market data reference analysis (2026.05.05)',
+    'news.fixed.20260505p1.tag1': 'surcharge outlook', 'news.fixed.20260505p1.tag2': 'June surcharge',
+    'news.fixed.20260505p1.tag3': 'Brent crude',        'news.fixed.20260505p1.tag4': 'MOPS',
+    'news.fixed.20260505p1.tag5': 'exchange rate',      'news.fixed.20260505p1.tag6': 'booking guide',
+
     /* ── 2026-05-04 latest market update (EN) ── */
     'news.fixed.20260504p1.title':   '2026.05.04 Fuel Surcharge Market Update — Confirmed Downside Zone Entry',
     'news.fixed.20260504p1.summary': 'As of May 4, 2026 at 09:00 KST, Brent crude has dropped further to $101–103/bbl. Jet fuel (MOPS) at 485–495 cent/gal has fully broken below 500, entering a confirmed downside zone. USD/KRW holds lower at 1,440–1,450. All three indicators (oil, jet fuel, FX) are simultaneously declining, bringing the June surcharge cut to a near-confirmed stage.',
@@ -1556,8 +1574,17 @@ var FIXED_NEWS_FALLBACK = {
 };
 
 var FIXED_NEWS = [
-  /* ── 2026-05-04 최신 시장 업데이트 카드 (NEW - 최상단) ── */
-  {category:'market', priority:1, date:'2026-05-04', aiSummary:true, isNew:true,
+  /* ── 2026-05-05 최신 시장 업데이트 카드 (NEW - 최상단) ── */
+  {category:'market', priority:1, date:'2026-05-05', aiSummary:true, isNew:true,
+   titleKey:'news.fixed.20260505p1.title', summaryKey:'news.fixed.20260505p1.summary',
+   impactKey:'news.fixed.20260505p1.impact', sourceNameKey:'news.fixed.20260505p1.source',
+   tagKeys:['news.fixed.20260505p1.tag1','news.fixed.20260505p1.tag2',
+            'news.fixed.20260505p1.tag3','news.fixed.20260505p1.tag4',
+            'news.fixed.20260505p1.tag5','news.fixed.20260505p1.tag6'],
+   relevanceScore:1.0},
+
+  /* ── 2026-05-04 최신 시장 업데이트 카드 ── */
+  {category:'market', priority:1, date:'2026-05-04', aiSummary:true, isNew:false,
    titleKey:'news.fixed.20260504p1.title', summaryKey:'news.fixed.20260504p1.summary',
    impactKey:'news.fixed.20260504p1.impact', sourceNameKey:'news.fixed.20260504p1.source',
    tagKeys:['news.fixed.20260504p1.tag1','news.fixed.20260504p1.tag2',
@@ -2125,25 +2152,26 @@ document.getElementById('filterRow').addEventListener('click',function(e){
    PAGE_I18N_OVERRIDE — news.html 전용 최신 시장 문구 우선 적용
    _shared.js의 applyLanguage() / t() 보다 먼저 적용되며,
    새로고침 후 i18n 덮어쓰기로 구버전 문구가 복원되는 현상을 방지한다.
-   기준: 2026.05.04 09:00 KST
+   기준: 2026.05.05 11:00 KST
    ════════════════════════════════════════════════════════ */
 window.PAGE_I18N_OVERRIDE = {
   ko: {
-    'news.summary.updated': '🕐 2026.05.04 09:00 기준 시장 지표 반영',
+    'news.summary.updated': '🕐 2026.05.05 11:00 기준 시장 지표 반영',
     'news.summary.li1':     '유가 추가 하락 — 브렌트유 $101~103 / 배럴',
     'news.summary.li2':     '환율 하락 유지 — 약 1,440~1,450원',
     'news.summary.li3':     '항공유 하락 확정 — 485~495 cent, 500선 완전 이탈',
-    'news.summary.li4':     '하락 조건 3개 완전 유지 (유가·환율·항공유)',
+    'news.summary.li4':     '유류할증료 하락 조건 3개 완성 (유가·환율·항공유)',
     'news.summary.li5':     '6월 유류할증료 인하 거의 확정 흐름',
-    'news.summary.li6':     '지정학 리스크 유지 — 하방 속도 제한 요인',
-    'news.marketTitle':     '🌍 시장 브리핑 (2026.05.04 09:00 기준)',
+    'news.summary.li6':     '중동 리스크는 하락 속도 제한 요인',
+    'news.marketTitle':     '🌍 시장 브리핑 (2026.05.05 11:00 기준)',
     'news.brent':           '⛽ 브렌트유: $101~103 — 추가 하락',
-    'news.fx':              '💱 원달러 환율: 약 1,440~1,450원 — 하락 유지',
+    'news.fx':              '💱 원달러 환율: 약 1,440~1,450원 — 하락 안정',
     'news.mops':            '✈️ 항공유/MOPS: 485~495 cent — 500선 완전 이탈',
-    'news.marketSummary':   '→ 하락 조건 3개 완전 유지 (유가·환율·항공유)',
+    'news.geo':             '🌍 지정학: 중동 리스크 유지 (하방 제한 요인)',
+    'news.marketSummary':   '→ 유류할증료 하락 조건 3개 완성 (유가·환율·항공유)',
     'news.fxDominance':     '💡 핵심 신호: 6월 유류할증료 인하 거의 확정 흐름',
-    'news.dataRef':         '🕐 데이터 기준: 2026.05.04 09:00',
-    'news.curSummary':      '→ 6월 유류할증료는 인하 거의 확정 (일부 단거리 동결 가능)',
+    'news.dataRef':         '🕐 데이터 기준: 2026.05.05 11:00 KST',
+    'news.curSummary':      '→ 6월 유류할증료 인하 거의 확정 (일부 단거리 동결 가능)',
     'news.decisionLine1':   '→ 상승 사이클 종료 — 하락 추세 확정 구간 진입',
     'news.decisionLine2':   '→ 유가·환율·항공유 3대 지표 동시 하락 유지',
     'news.decisionShort':   '👉 단기 여행: 지금 예약 가능 (인하 확정 구간)',
@@ -2154,20 +2182,21 @@ window.PAGE_I18N_OVERRIDE = {
     'news.officialNotice':  '아래 내용은 이미 확정된 2026년 5월 적용 공시입니다. 6월 전망은 상단 시장 브리핑과 최신 뉴스 기준으로 판단하세요.'
   },
   en: {
-    'news.summary.updated': '🕐 Market indicators as of 2026.05.04 09:00 KST',
+    'news.summary.updated': '🕐 Market indicators as of 2026.05.05 11:00 KST',
     'news.summary.li1':     'Oil further declining — Brent at $101–103/bbl',
     'news.summary.li2':     'FX holding lower — about KRW 1,440–1,450',
     'news.summary.li3':     'Jet fuel confirmed downside — 485–495 cent, fully below 500',
-    'news.summary.li4':     'All three downside conditions fully maintained (oil, FX, jet fuel)',
+    'news.summary.li4':     'All 3 downside conditions met (oil, FX, jet fuel)',
     'news.summary.li5':     'June surcharge cut near-confirmed',
-    'news.summary.li6':     'Geopolitical risk persists — limiting pace of decline',
-    'news.marketTitle':     '🌍 Market Brief (as of 2026.05.04 09:00 KST)',
+    'news.summary.li6':     'Middle East risk — limiting pace of decline',
+    'news.marketTitle':     '🌍 Market Brief (as of 2026.05.05 11:00 KST)',
     'news.brent':           '⛽ Brent Crude: $101–103 — further declining',
-    'news.fx':              '💱 USD/KRW: ~KRW 1,440–1,450 — holding lower',
+    'news.fx':              '💱 USD/KRW: ~KRW 1,440–1,450 — holding lower, stable',
     'news.mops':            '✈️ Jet Fuel/MOPS: 485–495 cent — fully below 500, confirmed downside',
-    'news.marketSummary':   '→ All three downside conditions fully maintained (oil, FX, jet fuel)',
+    'news.geo':             '🌍 Geopolitics: Middle East risk persists (limits downside)',
+    'news.marketSummary':   '→ All 3 downside conditions met (oil, FX, jet fuel)',
     'news.fxDominance':     '💡 Key signal: June surcharge cut near-confirmed',
-    'news.dataRef':         '🕐 Data as of: 2026.05.04 09:00 KST',
+    'news.dataRef':         '🕐 Data as of: 2026.05.05 11:00 KST',
     'news.curSummary':      '→ June surcharge cut near-confirmed (some short-haul may hold flat)',
     'news.decisionLine1':   '→ Upward cycle ended — confirmed downside trend entered',
     'news.decisionLine2':   '→ Oil, FX, jet fuel: all three indicators declining simultaneously',
@@ -2179,20 +2208,20 @@ window.PAGE_I18N_OVERRIDE = {
     'news.officialNotice':  'The content below reflects the confirmed May 2026 surcharge filings. For the June outlook, refer to the Market Brief and latest news above.'
   },
   ja: {
-    'news.summary.updated': '🕐 2026.05.04 09:00 KST 市場指標反映',
+    'news.summary.updated': '🕐 2026.05.05 11:00 KST 市場指標反映',
     'news.summary.li1':     '油価さらに下落 — ブレント $101〜103/バレル',
     'news.summary.li2':     '為替下落維持 — 約1,440〜1,450ウォン',
     'news.summary.li3':     '航空燃油下落確定 — 485〜495セント、500完全割れ',
     'news.summary.li4':     '下落条件3つ完全維持（油価・為替・航空燃油）',
     'news.summary.li5':     '6月サーチャージ引き下げほぼ確定',
     'news.summary.li6':     '地政学リスク継続 — 下落ペース制限要因',
-    'news.marketTitle':     '🌍 市場ブリーフィング (2026.05.04 09:00 KST基準)',
+    'news.marketTitle':     '🌍 市場ブリーフィング (2026.05.05 11:00 KST基準)',
     'news.brent':           '⛽ ブレント原油: $101〜103 — さらに下落',
     'news.fx':              '💱 ウォン/ドル: 約1,440〜1,450ウォン — 下落維持',
     'news.mops':            '✈️ 航空燃料/MOPS: 485〜495セント — 500完全割れ、下落確定区間',
     'news.marketSummary':   '→ 下落条件3つ完全維持（油価・為替・航空燃油）',
     'news.fxDominance':     '💡 キーシグナル: 6月サーチャージ引き下げほぼ確定',
-    'news.dataRef':         '🕐 データ基準: 2026.05.04 09:00 KST',
+    'news.dataRef':         '🕐 データ基準: 2026.05.05 11:00 KST',
     'news.curSummary':      '→ 6月燃油サーチャージ：引き下げほぼ確定（一部短距離は据え置き可能）',
     'news.decisionLine1':   '→ 上昇サイクル終了 — 下落トレンド確定区間進入',
     'news.decisionLine2':   '→ 油価・為替・航空燃油：3指標同時下落維持',
@@ -2204,20 +2233,20 @@ window.PAGE_I18N_OVERRIDE = {
     'news.officialNotice':  '以下は確定済みの2026年5月適用公示です。6月の見通しは上部の市場ブリーフィングと最新ニュースをご確認ください。'
   },
   zh: {
-    'news.summary.updated': '🕐 反映2026.05.04 09:00 KST市场指标',
+    'news.summary.updated': '🕐 反映2026.05.05 11:00 KST市场指标',
     'news.summary.li1':     '油价进一步下跌 — 布伦特$101~103/桶',
     'news.summary.li2':     '汇率维持下行 — 约1,440~1,450韩元',
     'news.summary.li3':     '航空燃油下行确认 — 485~495美分，完全跌破500',
     'news.summary.li4':     '三项下行条件完全维持（油价·汇率·航空燃油）',
     'news.summary.li5':     '6月燃油附加费下调几乎确定',
     'news.summary.li6':     '地缘政治风险持续 — 限制下行速度',
-    'news.marketTitle':     '🌍 市场简报 (2026.05.04 09:00 KST)',
+    'news.marketTitle':     '🌍 市场简报 (2026.05.05 11:00 KST)',
     'news.brent':           '⛽ 布伦特原油: $101~103 — 进一步下跌',
     'news.fx':              '💱 美元/韩元: 约1,440~1,450韩元 — 下行维持',
     'news.mops':            '✈️ 航空燃油/MOPS: 485~495美分 — 完全跌破500，下行确认',
     'news.marketSummary':   '→ 三项下行条件完全维持（油价·汇率·航空燃油）',
     'news.fxDominance':     '💡 核心信号: 6月附加费下调几乎确定',
-    'news.dataRef':         '🕐 数据基准: 2026.05.04 09:00 KST',
+    'news.dataRef':         '🕐 数据基准: 2026.05.05 11:00 KST',
     'news.curSummary':      '→ 6月附加费：下调几乎确定（部分短途可能维持）',
     'news.decisionLine1':   '→ 上涨周期结束 — 进入下跌趋势确认区间',
     'news.decisionLine2':   '→ 油价·汇率·航空燃油：三大指标同时维持下行',
@@ -2229,20 +2258,20 @@ window.PAGE_I18N_OVERRIDE = {
     'news.officialNotice':  '以下为已确定的2026年5月适用公告。6月展望请参考上方市场简报和最新动态。'
   },
   fr: {
-    'news.summary.updated': '🕐 Indicateurs marché au 2026.05.04 09:00 KST',
+    'news.summary.updated': '🕐 Indicateurs marché au 2026.05.05 11:00 KST',
     'news.summary.li1':     'Pétrole en forte baisse — Brent à $101–103/baril',
     'news.summary.li2':     'Change baisse maintenue — environ KRW 1 440–1 450',
     'news.summary.li3':     'Kérosène en zone baissière confirmée — 485–495 cent, pleinement sous 500',
     'news.summary.li4':     'Les trois conditions baissières pleinement maintenues (pétrole, change, kérosène)',
     'news.summary.li5':     'Baisse de la surcharge de juin quasi-confirmée',
     'news.summary.li6':     'Risque géopolitique persistant — limite le rythme de baisse',
-    'news.marketTitle':     '🌍 Point marché (2026.05.04 09:00 KST)',
+    'news.marketTitle':     '🌍 Point marché (2026.05.05 11:00 KST)',
     'news.brent':           '⛽ Brent: ~101–103 $ / baril (en forte baisse)',
     'news.fx':              '💱 USD/KRW: ~KRW 1 440–1 450 (baisse maintenue)',
     'news.mops':            '✈️ Kérosène/MOPS: 485–495 cent — pleinement sous 500, zone baissière confirmée',
     'news.marketSummary':   '→ Les trois conditions baissières pleinement maintenues (pétrole, change, kérosène)',
     'news.fxDominance':     '💡 Signal clé: baisse de juin quasi-confirmée',
-    'news.dataRef':         '🕐 Données au: 2026.05.04 09:00 KST',
+    'news.dataRef':         '🕐 Données au: 2026.05.05 11:00 KST',
     'news.curSummary':      '→ Surcharge juin: baisse quasi-confirmée (certaines routes courtes peuvent tenir)',
     'news.decisionLine1':   '→ Cycle haussier terminé — tendance baissière confirmée',
     'news.decisionLine2':   '→ Pétrole, change, kérosène : les trois indicateurs en baisse simultanée',
@@ -2254,20 +2283,20 @@ window.PAGE_I18N_OVERRIDE = {
     'news.officialNotice':  "Le contenu ci-dessous reflète les tarifs de surcharge confirmés pour mai 2026. Pour les prévisions de juin, consultez le point marché et les dernières actualités ci-dessus."
   },
   de: {
-    'news.summary.updated': '🕐 Marktdaten vom 2026.05.04 09:00 KST',
+    'news.summary.updated': '🕐 Marktdaten vom 2026.05.05 11:00 KST',
     'news.summary.li1':     'Öl weiter sinkend — Brent bei $101–103/Barrel',
     'news.summary.li2':     'Wechselkurs abwärts gehalten — ca. KRW 1.440–1.450',
     'news.summary.li3':     'Kerosin in bestätigter Abwärtszone — 485–495 Cent, vollständig unter 500',
     'news.summary.li4':     'Alle drei Abwärtsbedingungen vollständig gehalten (Öl, Wechselkurs, Kerosin)',
     'news.summary.li5':     'Juni-Zuschlagsenkung nahezu bestätigt',
     'news.summary.li6':     'Geopolitisches Risiko anhaltend — begrenzt Rückgangsgeschwindigkeit',
-    'news.marketTitle':     '🌍 Marktüberblick (2026.05.04 09:00 KST)',
+    'news.marketTitle':     '🌍 Marktüberblick (2026.05.05 11:00 KST)',
     'news.brent':           '⛽ Brent-Rohöl: ~101–103 $ / Barrel (weiter sinkend)',
     'news.fx':              '💱 USD/KRW: ~KRW 1.440–1.450 (abwärts gehalten)',
     'news.mops':            '✈️ Kerosin/MOPS: 485–495 Cent — vollständig unter 500, Abwärtszone bestätigt',
     'news.marketSummary':   '→ Alle drei Abwärtsbedingungen vollständig gehalten (Öl, Wechselkurs, Kerosin)',
     'news.fxDominance':     '💡 Kernsignal: Juniabsenkung nahezu bestätigt',
-    'news.dataRef':         '🕐 Datenstand: 2026.05.04 09:00 KST',
+    'news.dataRef':         '🕐 Datenstand: 2026.05.05 11:00 KST',
     'news.curSummary':      '→ Juni-Zuschlag: Absenkung nahezu bestätigt (einige Kurzstrecken könnten stabil bleiben)',
     'news.decisionLine1':   '→ Aufwärtszyklus beendet — bestätigte Abwärtstendenz eingetreten',
     'news.decisionLine2':   '→ Öl, Wechselkurs, Kerosin: alle drei Indikatoren gleichzeitig sinkend',

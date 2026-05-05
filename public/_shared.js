@@ -3,7 +3,8 @@
 /* ─────────────────────────────────────────────
    환율 / 통화 포매팅
 ───────────────────────────────────────────── */
-window.RATES    = { KRW:1, USD:1/1480, JPY:1/10.1, EUR:1/1630, GBP:1/1870, CNY:1/204, AUD:1/950, SGD:1/1110, HKD:1/190 };
+window.RATES    = { KRW:1, USD:1/1450, JPY:1/10.1, EUR:1/1630, GBP:1/1870, CNY:1/204, AUD:1/950, SGD:1/1110, HKD:1/190 };
+/* 환율 기준: USD/KRW 1,450원 참고 적용 (2026.05.05 11:00 KST 기준) */
 window.CURR_SYM = { KRW:'₩', USD:'$', JPY:'¥', EUR:'€', GBP:'£', CNY:'¥', AUD:'A$', SGD:'S$', HKD:'HK$' };
 window.CURR_DEC = { KRW:0, USD:2, JPY:0, EUR:2, GBP:2, CNY:2, AUD:2, SGD:2, HKD:1 };
 window.SHARED_STATE = { lang:'ko', curr:'KRW' };
