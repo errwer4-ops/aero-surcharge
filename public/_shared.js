@@ -4,7 +4,7 @@
    환율 / 통화 포매팅
 ───────────────────────────────────────────── */
 window.RATES    = { KRW:1, USD:1/1450, JPY:1/10.1, EUR:1/1630, GBP:1/1870, CNY:1/204, AUD:1/950, SGD:1/1110, HKD:1/190 };
-/* 환율 기준: USD/KRW 1,450원 참고 적용 (2026.05.05 11:00 KST 기준) */
+/* 환율 기준: USD/KRW 1,450원 (2026.05.05 기준) */
 window.CURR_SYM = { KRW:'₩', USD:'$', JPY:'¥', EUR:'€', GBP:'£', CNY:'¥', AUD:'A$', SGD:'S$', HKD:'HK$' };
 window.CURR_DEC = { KRW:0, USD:2, JPY:0, EUR:2, GBP:2, CNY:2, AUD:2, SGD:2, HKD:1 };
 window.SHARED_STATE = { lang:'ko', curr:'KRW' };
@@ -13,10 +13,10 @@ window.SHARED_STATE = { lang:'ko', curr:'KRW' };
    한국 국적기 필터
    isKoreanCarrier / VISIBLE_CARRIERS
 ───────────────────────────────────────────── */
-/* v32: 에어부산(BX) public UI 전면 제외 */
-window.KOREAN_CARRIER_CODES = ['KE','OZ','YP','LJ','7C','TW','ZE','RS'];
-/* BX는 공식 공지 미제공으로 excludeFromPublicLists=true */
-window.EXCLUDED_FROM_PUBLIC = ['BX'];
+/* v34: 에어부산(BX) 공식 공지 기반 수동 반영 — public UI 포함 */
+window.KOREAN_CARRIER_CODES = ['KE','OZ','YP','LJ','7C','TW','ZE','RS','BX'];
+/* BX: 2026년 5월 공식 공지 수동 반영 완료 — public UI 포함 */
+window.EXCLUDED_FROM_PUBLIC = [];
 
 window.isKoreanCarrier = function(iataCode) {
   return window.KOREAN_CARRIER_CODES.indexOf(iataCode) !== -1;
@@ -146,14 +146,35 @@ window.fmtAmt = function(krw) {
 ───────────────────────────────────────────── */
 window.resolveStatus = function(airline, overrideEntry) {
   if (overrideEntry && overrideEntry.status) return overrideEntry.status;
-  var c = airline.confidence, st = airline.sourceType;
-  if (c === 'fresh' && airline.supported)  return 'official_verified';
-  if (c === 'stale')                        return 'stale_fallback';
-  if (st === 'fare_breakdown')              return 'fare_breakdown_based';
+
+  /* [1] airline_meta.json 기반: hasOfficialNotice=true + officialNoticeUrl 있으면 공식 확인 */
+  var code = airline.iataCode || airline.code || airline.iata;
+  var meta = (code && window.getAirlineMeta) ? window.getAirlineMeta(code) : null;
+  if (meta && meta.hasOfficialNotice && meta.officialNoticeUrl) {
+    return 'official_verified';
+  }
+
+  var c  = airline.confidence;
+  var st = airline.sourceType || airline.officialDataSource;
+
+  /* [2] sourceType/officialDataSource 기반: manual_verified/manual_override/official_notice */
+  if (st === 'manual_verified' ||
+      st === 'manual_override' ||
+      st === 'official_notice') {
+    return 'official_verified';
+  }
+
+  /* [3] 기존 supported + fresh */
+  if (c === 'fresh' && airline.supported) return 'official_verified';
+
+  /* [4] 이하 기존 로직 유지 */
+  if (c === 'stale')                      return 'stale_fallback';
+  if (st === 'fare_breakdown')            return 'fare_breakdown_based';
   if (st === 'fare_embedded' || st === 'booking_only' || st === 'manual') return 'official_missing';
-  if (c === 'unsupported')                  return 'official_missing';
-  if (c === 'error')                        return 'official_blocked';
-  if (airline.regulatoryContext)            return 'regulation_based';
+  if (c === 'unsupported')               return 'official_missing';
+  if (c === 'error')                     return 'official_blocked';
+  /* [5] regulatoryContext는 최후 fallback */
+  if (airline.regulatoryContext)         return 'regulation_based';
   return 'unknown';
 };
 
@@ -301,7 +322,7 @@ var _AP_REGION = {
 
 function _toKRW(val, currency) {
   if (val == null) return null;
-  var rates = { USD:1480, JPY:10.1, EUR:1630, GBP:1870, CNY:204, HKD:190, AUD:950, SGD:1110 };
+  var rates = { USD:1450, JPY:10.1, EUR:1630, GBP:1870, CNY:204, HKD:190, AUD:950, SGD:1110 };
   if (currency && currency !== 'KRW') return Math.round(val * (rates[currency] || 1));
   return val;
 }
@@ -623,6 +644,14 @@ window.checkRouteSupport = function(iataCode, dep, arr) {
   }
 
   // 3. Fallback (OFFICIAL_ROUTE_MAP 미정의 환경 — 이전 로직 유지)
+  /* supportedRoutes: { "ICN": [...], "PUS": [...], "CJU": [...] } 구조 우선 처리 */
+  if (meta.supportedRoutes && typeof meta.supportedRoutes === 'object') {
+    var routeMap = meta.supportedRoutes[origin];
+    if (!routeMap) return { operates: false, reason: 'origin_not_in_route_map' };
+    var destOkR = routeMap.indexOf(destination) !== -1;
+    if (!destOkR) return { operates: false, reason: 'destination_not_operated' };
+    return { operates: true, reason: 'ok' };
+  }
   if (Array.isArray(meta.supportedOrigins) && meta.supportedOrigins.length > 0) {
     var originOk = meta.supportedOrigins.some(function(o) {
       return o === 'KR' || o === origin;
@@ -701,7 +730,7 @@ window.hasVerifiedOfficialData = function(feedAl) {
    manual_overrides 우선 → feed.items fallback
    null amount(티웨이 4000-5000) → 미표시 처리
 ───────────────────────────────────────────── */
-var _KRW_RATES = {USD:1480,JPY:10.1,EUR:1630,GBP:1870,CNY:204,HKD:190,AUD:950,SGD:1110};
+var _KRW_RATES = {USD:1450,JPY:10.1,EUR:1630,GBP:1870,CNY:204,HKD:190,AUD:950,SGD:1110};
 function _toKRWLocal(v, c) {
   if (v == null) return null;
   return (c && c !== 'KRW') ? Math.round(v * (_KRW_RATES[c] || 1)) : v;
@@ -820,7 +849,7 @@ window.fmtAmtDisplay = function(amountKRW, origCurrency, mult) {
   return formatted;
 };
 
-var _NATIVE_RATES = {USD:1480,JPY:10.1,EUR:1630,GBP:1870,CNY:204,HKD:190,AUD:950,SGD:1110};
+var _NATIVE_RATES = {USD:1450,JPY:10.1,EUR:1630,GBP:1870,CNY:204,HKD:190,AUD:950,SGD:1110};
 window.krwRefHtml = function(amount, currency, mult) {
   if (!amount || !currency || currency === 'KRW') return '';
   var rate = _NATIVE_RATES[currency];
@@ -841,11 +870,11 @@ window.krwRefHtml = function(amount, currency, mult) {
 /* ─── 공항 데이터 ─── */
 var AIRPORT_GROUPS = [
   { key:'index.region.korea',    codes:['ICN','GMP','PUS','CJU','CJJ','TAE'] },
-  { key:'index.region.japan',    codes:['NRT','HND','KIX','FUK','CTS','OKA','NGO','KMJ','NGS','OIT','HIJ','KOJ','MYJ','HKD','FSZ'] },
-  { key:'index.region.china',    codes:['PVG','PEK','CAN','CTU','XIY','CGO','CKG','YNJ','DYG','SHA','TAO','WEH','YNT','NTG','HRB','KWL'] },
+  { key:'index.region.japan',    codes:['NRT','HND','KIX','FUK','CTS','OKA','NGO','KMJ','NGS','OIT','HIJ','KOJ','MYJ','HKD','FSZ','TAK'] },
+  { key:'index.region.china',    codes:['PVG','PEK','CAN','CTU','XIY','CGO','CKG','YNJ','DYG','SHA','TAO','WEH','YNT','NTG','HRB','KWL','SYX'] },
   { key:'index.region.taiwan',   codes:['TPE','KHH','RMQ'] },
   { key:'index.region.seasia',   codes:['HKG','SIN','BKK','MNL','KUL','SGN','HAN','DAD','DPS','RGN','CNX','HKT','NHA','MFM','PNH','REP','VTE','ULN','GUM','SPN','PQC','DLI','BTH'] },
-  { key:'index.region.seasia2',  codes:['CEB','TAG','CRK','DVO','ILO','MNL','BKI','KCH','PEN'] },
+  { key:'index.region.seasia2',  codes:['CEB','TAG','CRK','DVO','ILO','MNL','BKI','KCH','PEN','KLO','CXR'] },
   { key:'index.region.swasia',   codes:['DEL','BOM','CMB','KTM','DAC','MLE','TBS','ALA','FRU','TSE','SVO','VVO'] },
   { key:'index.region.usa',     codes:['LAX','JFK','SFO','SEA','HNL','IAD','BOS','ORD','ATL','DFW','LAS'] },
   { key:'index.region.canada',  codes:['YVR','YYZ'] },
@@ -899,12 +928,12 @@ ko:{
   'airport.FUK':'후쿠오카','airport.CTS':'삿포로','airport.OKA':'오키나와',
   'airport.NGO':'나고야','airport.KMJ':'구마모토','airport.NGS':'나가사키',
   'airport.OIT':'오이타','airport.HIJ':'히로시마','airport.KOJ':'가고시마',
-  'airport.MYJ':'마쓰야마','airport.HKD':'하코다테','airport.FSZ':'시즈오카',
+  'airport.MYJ':'마쓰야마','airport.HKD':'하코다테','airport.FSZ':'시즈오카','airport.TAK':'다카마쓰',
   'airport.HKG':'홍콩','airport.SIN':'싱가포르','airport.BKK':'방콕','airport.MNL':'마닐라',
   'airport.KUL':'쿠알라룸푸르','airport.SGN':'호찌민','airport.HAN':'하노이',
   'airport.DAD':'다낭','airport.DPS':'발리','airport.PVG':'상하이','airport.PEK':'베이징',
   'airport.CAN':'광저우','airport.CTU':'청두','airport.XIY':'시안','airport.CGO':'정저우',
-  'airport.CKG':'충칭','airport.YNJ':'옌지','airport.DYG':'장자제','airport.SHA':'상하이 훙차오',
+  'airport.CKG':'충칭','airport.YNJ':'옌지','airport.DYG':'장자제','airport.SHA':'상하이 훙차오','airport.SYX':'싼야(하이난)',
   'airport.TAO':'칭다오','airport.WEH':'웨이하이','airport.YNT':'옌타이','airport.NTG':'난통',
   'airport.HRB':'하얼빈','airport.KWL':'구이린',
   'airport.TPE':'타이베이','airport.KHH':'가오슝','airport.RMQ':'타이중',
@@ -915,6 +944,7 @@ ko:{
   'airport.PQC':'푸쿠옥','airport.DLI':'달랏','airport.BTH':'바탐',
   'airport.CEB':'세부','airport.TAG':'보홀','airport.CRK':'클락','airport.DVO':'다바오',
   'airport.ILO':'일로일로','airport.BKI':'코타키나발루','airport.KCH':'쿠칭','airport.PEN':'페낭',
+  'airport.KLO':'보라카이(칼리보)','airport.CXR':'나트랑(깜라인)',
   'airport.DEL':'뉴델리','airport.BOM':'뭄바이','airport.CMB':'콜롬보','airport.KTM':'카트만두',
   'airport.DAC':'다카','airport.MLE':'말레','airport.TBS':'트빌리시',
   'airport.ALA':'알마티','airport.FRU':'비슈케크','airport.TSE':'아스타나',
@@ -1200,12 +1230,12 @@ en:{
   'airport.FUK':'Fukuoka','airport.CTS':'Sapporo','airport.OKA':'Okinawa',
   'airport.NGO':'Nagoya','airport.KMJ':'Kumamoto','airport.NGS':'Nagasaki',
   'airport.OIT':'Oita','airport.HIJ':'Hiroshima','airport.KOJ':'Kagoshima',
-  'airport.MYJ':'Matsuyama','airport.HKD':'Hakodate','airport.FSZ':'Shizuoka',
+  'airport.MYJ':'Matsuyama','airport.HKD':'Hakodate','airport.FSZ':'Shizuoka','airport.TAK':'Takamatsu',
   'airport.HKG':'Hong Kong','airport.SIN':'Singapore','airport.BKK':'Bangkok','airport.MNL':'Manila',
   'airport.KUL':'Kuala Lumpur','airport.SGN':'Ho Chi Minh City','airport.HAN':'Hanoi',
   'airport.DAD':'Da Nang','airport.DPS':'Bali','airport.PVG':'Shanghai Pudong','airport.PEK':'Beijing',
   'airport.CAN':'Guangzhou','airport.CTU':'Chengdu','airport.XIY':'Xian','airport.CGO':'Zhengzhou',
-  'airport.CKG':'Chongqing','airport.YNJ':'Yanji','airport.DYG':'Zhangjiajie','airport.SHA':'Shanghai Hongqiao',
+  'airport.CKG':'Chongqing','airport.YNJ':'Yanji','airport.DYG':'Zhangjiajie','airport.SHA':'Shanghai Hongqiao','airport.SYX':'Sanya (Hainan)',
   'airport.TAO':'Qingdao','airport.WEH':'Weihai','airport.YNT':'Yantai','airport.NTG':'Nantong',
   'airport.HRB':'Harbin','airport.KWL':'Guilin',
   'airport.TPE':'Taipei','airport.KHH':'Kaohsiung','airport.RMQ':'Taichung',
@@ -1215,6 +1245,7 @@ en:{
   'airport.GUM':'Guam','airport.SPN':'Saipan',
   'airport.PQC':'Phu Quoc','airport.DLI':'Da Lat','airport.BTH':'Batam',
   'airport.CEB':'Cebu','airport.TAG':'Bohol','airport.CRK':'Clark','airport.BKI':'Kota Kinabalu',
+  'airport.KLO':'Boracay (Kalibo)','airport.CXR':'Nha Trang (Cam Ranh)',
   'airport.ALA':'Almaty','airport.FRU':'Bishkek','airport.TSE':'Astana',
   'airport.SVO':'Moscow','airport.VVO':'Vladivostok',
   'airport.LAX':'Los Angeles','airport.JFK':'New York','airport.SFO':'San Francisco',
@@ -2532,6 +2563,7 @@ var AIRPORT_ALIASES = {
   MYJ: ['마쓰야마','matsuyama','japan','일본'],
   HKD: ['하코다테','hakodate','japan','일본'],
   FSZ: ['시즈오카','shizuoka','japan','일본'],
+  TAK: ['다카마쓰','takamatsu','japan','일본'],
   /* ── 중국 ── */
   PVG: ['상하이','shanghai','china','중국','푸동','pudong'],
   SHA: ['상하이','shanghai','china','중국','훙차오','hongqiao'],
@@ -2550,6 +2582,7 @@ var AIRPORT_ALIASES = {
   NTG: ['난통','nantong','china','중국'],
   HRB: ['하얼빈','harbin','china','중국'],
   KWL: ['구이린','guilin','china','중국'],
+  SYX: ['싼야','sanya','hainan','하이난','china','중국'],
   /* ── 대만 ── */
   TPE: ['타이베이','taipei','taiwan','대만'],
   KHH: ['가오슝','kaohsiung','taiwan','대만'],
@@ -2571,6 +2604,8 @@ var AIRPORT_ALIASES = {
   MFM: ['마카오','macau','macao'],
   GUM: ['괌','guam'],
   SPN: ['사이판','saipan'],
+  KLO: ['보라카이','boracay','칼리보','kalibo','philippines','필리핀'],
+  CXR: ['나트랑','깜라인','cam ranh','nha trang','khanh hoa','vietnam','베트남'],
   /* ── 미국 / 캐나다 / 오세아니아 ── */
   LAX: ['LA','los angeles','usa','미국','로스앤젤레스','america'],
   JFK: ['뉴욕','new york','usa','미국','nyc','america'],

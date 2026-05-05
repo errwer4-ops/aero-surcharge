@@ -156,7 +156,7 @@ var PAGE_I18N = {
     'may.pageTitle':    '2026년 5월 유류할증료 항공사별 비교',
     'may.metaDesc':     '2026년 5월 적용 유류할증료를 대한항공, 아시아나항공, 제주항공, 진에어, 티웨이항공 등 항공사별로 비교합니다.',
     'may.h1':           '📅 2026년 5월 유류할증료 비교',
-    'may.pageSub':      '대한항공 · 아시아나 · 제주항공 · 진에어 · 티웨이항공 5월 적용 공시 비교',
+    'may.pageSub':      '대한항공 · 아시아나 · 제주항공 · 진에어 · 티웨이항공 · 에어부산 5월 적용 공시 비교',
     'may.notice':       '<strong>안내:</strong> 이 페이지의 금액은 항공사 공식 공시 통화 기준이며, 상단 통화 선택 시 기준 환율로 자동 환산됩니다. USD 공시 항공사는 원본 USD 금액을 함께 표시합니다.',
     'may.intro':        '2026년 5월 한국 출발 국제선에 적용되는 유류할증료를 항공사별로 정리합니다. 유류할증료는 전월 국제유가 및 환율 수준에 따라 매월 재산정되며, 항공사마다 공시 시점과 적용 기준이 다릅니다. 각 항공사의 공식 공지를 통해 최종 금액을 반드시 확인하시기 바랍니다.',
     'may.card1.title':  '5월 공시 특징',
@@ -317,7 +317,7 @@ var PAGE_I18N = {
 })();
 
 /* ── 항공사 데이터 ── */
-var USD_TO_KRW = 1480;
+var USD_TO_KRW = 1450;
 
 var MAY_AIRLINES = [
   {
@@ -399,6 +399,16 @@ var MAY_AIRLINES = [
     change: 'major',
     url: 'https://www.airpremia.com',
     domain: 'airpremia.com'
+  },
+  {
+    code: 'BX',
+    name: { ko:'에어부산 (BX)', en:'Air Busan (BX)', ja:'エアプサン (BX)', zh:'釜山航空 (BX)' },
+    currency: 'USD',
+    apr: { minOrig: 29,  maxOrig: 70,  minKRW: 29  * USD_TO_KRW, maxKRW: 70  * USD_TO_KRW },
+    may: { minOrig: 52,  maxOrig: 126, minKRW: 52  * USD_TO_KRW, maxKRW: 126 * USD_TO_KRW },
+    change: 'major',
+    url: 'https://www.airbusan.com',
+    domain: 'airbusan.com'
   },
 ];
 

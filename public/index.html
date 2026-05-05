@@ -831,9 +831,10 @@ var AL_TAG = {
 var DIST_FROM_ICN = {
   ICN:0,GMP:14,PUS:196,CJU:278,
   NRT:783,HND:764,KIX:722,FUK:342,CTS:872,OKA:1008,NGO:718,SDJ:891,
-  HKG:1298,TPE:932,PVG:530,PEK:592,CTU:1538,XIY:1162,
+  TAK:845,NGS:320,MYJ:650,FSZ:750,
+  HKG:1298,TPE:932,PVG:530,PEK:592,CTU:1538,XIY:1162,SYX:2043,
   SIN:2867,BKK:2286,MNL:1577,KUL:2693,SGN:2184,HAN:1725,DAD:1840,
-  DPS:3373,CEB:2064,DVO:2178,
+  DPS:3373,CEB:2064,DVO:2178,KLO:2150,CXR:1948,
   LAX:5974,JFK:6903,SFO:5591,SEA:5329,ORD:6218,IAD:6907,
   SYD:5325,MEL:5631,AKL:5831,
   CDG:5655,LHR:5509,FRA:5685,AMS:5726,
@@ -950,6 +951,12 @@ var _OFFICIAL_AMT = {
     { range:'4000-4999',label:'4,000~4,999mi',        apr: 123, may: 229 },
     { range:'5000-6499',label:'5,000~6,499mi',        apr: 155, may: 291 },
     { range:'6500+',    label:'6,500mi~',             apr: 194, may: 365 }
+  ]},
+  BX: { currency:'USD', rows: [
+    { range:'0-699',    label:'1구간 (~699mi)',        apr:  29, may:  52 },
+    { range:'700-1299', label:'2구간 (700~1,299mi)',   apr:  51, may:  94 },
+    { range:'1300-1999',label:'3구간 (1,300~1,999mi)', apr:  60, may: 109 },
+    { range:'2000+',    label:'4구간 (2,000mi~)',      apr:  70, may: 126 }
   ]}
 };
 
@@ -1095,6 +1102,45 @@ var OFFICIAL_ROUTE_MAP = {
     'ICN-IAD':'6500+',
     'ICN-JFK':'6500+'
   },
+  /* ── 에어부산 (BX) ── 2026.05 공식 공지 기준 ── */
+  BX: {
+    /* 1구간 USD 52 (~699mi): 후쿠오카/오사카/마쓰야마/나가사키/다카마쓰/칭다오 */
+    'PUS-FUK':'0-699','CJU-FUK':'0-699','ICN-FUK':'0-699',
+    'PUS-KIX':'0-699','CJU-KIX':'0-699','ICN-KIX':'0-699',
+    'PUS-NGS':'0-699','CJU-NGS':'0-699',
+    'PUS-MYJ':'0-699','CJU-MYJ':'0-699',
+    'PUS-TAK':'0-699','CJU-TAK':'0-699',
+    'PUS-TAO':'0-699','CJU-TAO':'0-699',
+    /* 2구간 USD 94 (700~1299mi): 도쿄/삿포로/시즈오카/시안/옌지/장자제/홍콩/마카오/타이베이/가오슝/울란바토르 */
+    'PUS-NRT':'700-1299','CJU-NRT':'700-1299','ICN-NRT':'700-1299',
+    'PUS-CTS':'700-1299','CJU-CTS':'700-1299',
+    'PUS-FSZ':'700-1299','CJU-FSZ':'700-1299',
+    'PUS-XIY':'700-1299','CJU-XIY':'700-1299',
+    'PUS-YNJ':'700-1299','CJU-YNJ':'700-1299',
+    'PUS-DYG':'700-1299','CJU-DYG':'700-1299',
+    'PUS-HKG':'700-1299','ICN-HKG':'700-1299',
+    'PUS-MFM':'700-1299','CJU-MFM':'700-1299',
+    'PUS-TPE':'700-1299','CJU-TPE':'700-1299',
+    'PUS-KHH':'700-1299','CJU-KHH':'700-1299',
+    'PUS-ULN':'700-1299','CJU-ULN':'700-1299',
+    /* 3구간 USD 109 (1300~1999mi): 싼야/세부/다낭/비엔티안/하노이/코타키나발루/보라카이/나트랑/방콕/보홀/치앙마이 */
+    'PUS-SYX':'1300-1999','CJU-SYX':'1300-1999',
+    'PUS-CEB':'1300-1999','CJU-CEB':'1300-1999',
+    'PUS-DAD':'1300-1999','CJU-DAD':'1300-1999',
+    'PUS-VTE':'1300-1999','CJU-VTE':'1300-1999','ICN-VTE':'1300-1999',
+    'PUS-HAN':'1300-1999','CJU-HAN':'1300-1999',
+    'PUS-BKI':'1300-1999','CJU-BKI':'1300-1999',
+    'PUS-KLO':'1300-1999','CJU-KLO':'1300-1999',
+    'PUS-CXR':'1300-1999','CJU-CXR':'1300-1999','ICN-CXR':'1300-1999',
+    'PUS-BKK':'1300-1999','CJU-BKK':'1300-1999','ICN-BKK':'1300-1999',
+    'PUS-TAG':'1300-1999','CJU-TAG':'1300-1999','ICN-TAG':'1300-1999',
+    'ICN-CNX':'1300-1999',
+    /* 4구간 USD 126 (2000+mi): 발리/괌/사이판 */
+    'PUS-DPS':'2000+','CJU-DPS':'2000+',
+    'PUS-GUM':'2000+','CJU-GUM':'2000+',
+    'PUS-SPN':'2000+','CJU-SPN':'2000+'
+  },
+
   /* ── 제주항공 (7C) ── PDF 공시 기준 (4월/5월) ── */
   "7C": {
     /* 0~499mi: 후쿠오카, 오사카(부산발), 마쓰야마, 오이타, 히로시마, 가고시마, 나가사키,
@@ -1247,6 +1293,29 @@ async function loadAll(){
 
   var metaObj = (window.AIRLINE_META && typeof window.AIRLINE_META === 'object') ? window.AIRLINE_META : {};
 
+  /* ── BX(에어부산) 메타 보완: airline_meta.json 미반영 환경 대비 ──
+     airline_meta.json에 BX가 없거나 excludeFromPublicLists=true인 경우
+     공식 공지 반영 완료된 데이터를 inline fallback으로 주입한다. */
+  if (!metaObj['BX'] || metaObj['BX'].excludeFromPublicLists) {
+    metaObj['BX'] = {
+      name: { ko:'에어부산', en:'Air Busan', ja:'エアプサン', zh:'釜山航空' },
+      iata: 'BX',
+      logo: '🛩',
+      alliance: 'LCC',
+      isVisibleToUser: true,
+      excludeFromPublicLists: false,
+      supportedOrigins: ['PUS','CJU','ICN'],
+      surchargeSchema: 'mileage_band',
+      sourceType: 'manual_verified',
+      confidence: 'fresh',
+      supported: true,
+      regulatoryContext: null,
+      officialNoticeUrl: 'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4351',
+      hasOfficialNotice: true,
+      usdNotice: true,
+    };
+  }
+
   KR_AIRLINES = Object.keys(metaObj)
     .filter(function(c){
       var m = metaObj[c];
@@ -1296,9 +1365,12 @@ function findFeedAl(code){
 /* ════ 카드 데이터 ════ */
 function getCardData(code,dep,arr,miles){
   var feedAl=findFeedAl(code);
-  var status=feedAl?window.resolveStatus(feedAl,null):'unknown';
+  /* _OFFICIAL_AMT 수동 반영 데이터 우선 — feed regulation_based 덮어쓰기 방지 */
+  var status = _OFFICIAL_AMT[code]
+    ? 'official_verified'
+    : (feedAl ? window.resolveStatus(feedAl,null) : 'unknown');
   var isGroupTier=window.isGroupTierSchema(code);
-  var trusted=window.hasVerifiedOfficialData(feedAl);
+  var trusted = !!_OFFICIAL_AMT[code] || window.hasVerifiedOfficialData(feedAl);
 
   var allRoutes=[], groupTiersResult=null, matchedGroup=null;
 
@@ -1317,6 +1389,8 @@ function getCardData(code,dep,arr,miles){
   } else {
     allRoutes=window.resolveAllRoutes(feedAl,code,'2026.05');
     if(allRoutes.length>0){trusted=true;status='official_verified';}
+    /* feed routes 없어도 _OFFICIAL_AMT 있으면 trusted 처리 (BX 등 manual) */
+    if(!trusted && _OFFICIAL_AMT[code]){trusted=true;}
   }
 
   var matchedItem=null;
@@ -1922,7 +1996,15 @@ function renderLanding(){
   }
   grid.innerHTML=KR_AIRLINES.map(function(al){
     var feedAl=findFeedAl(al.code);
-    var status=feedAl?window.resolveStatus(feedAl,null):'unknown';
+    /* _OFFICIAL_AMT 수동 반영 데이터 우선 — feedAl regulatoryContext 덮어쓰기 방지 */
+    var status;
+    if(_OFFICIAL_AMT[al.code]){
+      status = 'official_verified';
+    } else if(feedAl){
+      status = window.resolveStatus(feedAl, null);
+    } else {
+      status = 'unknown';
+    }
     var noticeUrl=al.officialNoticeUrl;
     var btnHtml=noticeUrl
       ?'<a href="'+noticeUrl+'" target="_blank" rel="noopener" class="mini-notice-btn">'+window.t('index.card.miniNotice')+'</a>'
