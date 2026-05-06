@@ -473,7 +473,7 @@
         }
       ],
       "currency": "USD",
-      "sourceType": "manual_verified",
+      "sourceType": "manual_override",
       "confidence": "fresh"
     }
   }

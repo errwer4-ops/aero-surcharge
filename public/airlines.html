@@ -788,6 +788,7 @@ async function loadData(){
     TW:'https://www.twayair.com/app/customerCenter/notice/retrieve/12577',
     ZE:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=566&lang=KR&searchWord=&searchIndex=1',
     RS:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=10587&pageNo=1',
+    BX:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4339',
   };
   var NOTICE_URL_MAY={
     KE:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2605-infuel?pageNum=1',
@@ -808,7 +809,7 @@ async function loadData(){
       var m=metaObj[c];
       return{
         code:c, name:m.name, logo:m.logo,
-        officialNoticeUrl:m.officialNoticeUrl||NOTICE_URL_PATCH[c]||null,
+        officialNoticeUrl:NOTICE_URL_PATCH[c]||m.officialNoticeUrl||null,
         officialNoticeUrlMay:NOTICE_URL_MAY[c]||null,
         hasOfficialNotice:!!m.hasOfficialNotice,
         usdNotice:m.usdNotice,
