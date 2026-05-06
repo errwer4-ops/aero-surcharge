@@ -1,7 +1,7 @@
 {
   "_meta": {
-    "description": "2026-04 공식 공지 기준 수동 오버라이드. official_surcharge_feed보다 우선 적용.",
-    "lastUpdated": "2026-04-12T00:00:00.000Z",
+    "description": "2026.04 및 일부 2026.05 공식 공지 기준 수동 오버라이드. official_surcharge_feed보다 우선 적용.",
+    "lastUpdated": "2026-05-06T00:00:00.000Z",
     "period": "2026.04",
     "appliedOrigins": [
       "KR"
@@ -445,7 +445,7 @@
     "_meta": {
       "source": "에어부산 공식 공지 2026-05",
       "url": "https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4351",
-      "verifiedAt": "2026-05-05",
+      "verifiedAt": "2026-05-06",
       "currency": "USD",
       "schema": "mileage_band"
     },

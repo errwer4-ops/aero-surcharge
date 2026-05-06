@@ -298,8 +298,8 @@
         "CJU"
       ],
       "supportsRouteLookup": true,
-      "officialDataSource": "manual_verified",
-      "sourceType": "manual_verified",
+      "officialDataSource": "manual_override",
+      "sourceType": "manual_override",
       "confidence": "fresh",
       "surchargeSchema": "mileage_band",
       "usdNotice": true,
