@@ -113,7 +113,7 @@
 
 <div class="page-header">
   <div class="page-title" data-i18n="fore.pageTitle">🔮 2026년 6월 유류할증료 전망</div>
-  <div class="page-sub"   data-i18n="fore.pageSub">유가·환율·항공유 기반 6월 전망 — 2026.05.13 21:00 KST 기준 · 참고용</div>
+  <div class="page-sub"   data-i18n="fore.pageSub">유가·환율·항공유 기반 6월 전망 — 2026.05.14 20:50 KST 기준 · 참고용</div>
 </div>
 
 <main class="seo-main">
@@ -133,7 +133,7 @@
       <tbody id="indicatorTbody"><!-- JS 렌더 --></tbody>
     </table>
   </div>
-  <p style="font-size:11px;color:var(--muted);margin-top:-14px;margin-bottom:20px;" data-i18n="fore.indicator.footnote">※ 전망 수치는 2026.05.13 21:00 KST 기준 참고용입니다. 확정 금액은 항공사 공식 채널에서 확인하세요.</p>
+  <p style="font-size:11px;color:var(--muted);margin-top:-14px;margin-bottom:20px;" data-i18n="fore.indicator.footnote">※ 전망 수치는 2026.05.14 20:50 KST 기준 참고용입니다. 확정 금액은 항공사 공식 채널에서 확인하세요.</p>
 
   <!-- 6월 전망 판단 박스 (news.html 판단 기준 동일 패턴) -->
   <div class="forecast-verdict-box" id="verdictBox"><!-- JS 렌더 --></div>
@@ -148,6 +148,9 @@
     <div class="predict-factor-grid" id="predictFactors"><!-- JS 렌더 --></div>
     <div style="font-size:10px;color:#9C27B0;margin-top:10px;font-style:italic" data-i18n="fore.predict.footnote">* 5월 유류할증료는 공식 공지 기준 확정. 6월 전망은 시장 데이터 기반 참고용입니다.</div>
   </div>
+
+  <!-- MOPS 분석 블록 -->
+  <div class="booking-guide-box" id="mopsAnalysisBox" style="background:#FFF3E0;border-color:#FFB74D;"><!-- JS 렌더 --></div>
 
   <!-- 예약 판단 가이드 -->
   <div class="booking-guide-box" id="bookingGuideBox"><!-- JS 렌더 --></div>
@@ -235,15 +238,15 @@ var FORE_I18N = {
     'fore.metaTitle':  '2026년 6월 유류할증료 전망 | 유가·환율 기반 항공권 유류할증료 예측',
     'fore.metaDesc':   '2026년 6월 국제선 유류할증료 전망을 브렌트유, 원달러 환율, 항공유/MOPS, 호르무즈 해협 리스크 기준으로 정리합니다. 한국 출발 국제선 항공권 유류할증료 변동 가능성을 확인하세요.',
     'fore.pageTitle':  '🔮 2026년 6월 유류할증료 전망',
-    'fore.pageSub':    '유가·환율·항공유 기반 6월 전망 — 2026.05.13 21:00 KST 기준 · 참고용',
+    'fore.pageSub':    '유가·환율·항공유 기반 6월 전망 — 2026.05.14 20:50 KST 기준 · 참고용',
     'fore.h1':         '2026년 6월 유류할증료 전망',
-    'fore.notice':     '<strong>안내:</strong> 이 페이지는 2026.05.13 21:00 KST 기준 시장 지표를 바탕으로 작성된 <strong>참고용 전망</strong> 페이지입니다. 확정 금액은 각 항공사 공식 공지를 반드시 확인하세요.',
-    'fore.intro':      '2026년 6월 한국 출발 국제선 유류할증료 전망입니다. 2026.05.13 21:00 KST 기준, 브렌트유는 휴전·협상 뉴스의 영향으로 단기 급락이 발생했으나 시장 불안정성은 여전히 유지되고 있습니다. 싱가포르 항공유 공급 감소가 지속되면서 MOPS 하방이 제한되고 있으며, 원달러 환율은 고변동성 구간을 이어가고 있습니다. 호르무즈 해협 관련 리스크도 여전히 존재하며 물류 정상화가 지연되고 있습니다. 이 복합 리스크(브렌트유 단기 급락 + 항공유 공급 감소 + 환율 변동성 + 호르무즈 리스크)는 6월 유류할증료의 급격한 인하를 제한하는 구조적 요인으로 작용할 수 있습니다. 아래 내용은 참고용 전망이며, 확정 금액은 항공사 공식 발표를 반드시 확인하시기 바랍니다.',
+    'fore.notice':     '<strong>안내:</strong> 이 페이지는 2026.05.14 20:50 KST 기준 시장 지표를 바탕으로 작성된 <strong>참고용 전망</strong> 페이지입니다. 확정 금액은 각 항공사 공식 공지를 반드시 확인하세요.',
+    'fore.intro':      '2026년 6월 한국 출발 국제선 유류할증료 전망입니다. 2026.05.14 20:50 KST 기준, 브렌트유는 약 $105.08~105.63/bbl 고점권에서 변동성이 지속되고 있습니다. 항공유(MOPS)는 약 511.21 cent/gal(약 $214.71/bbl)으로 최고 유류할증료 발동 기준(470 cent/gal)을 약 +41.21 cent/gal 상회하고 있습니다. 원달러 환율은 약 1,488~1,494원 구간(현재 약 1,491~1,492원)에서 고환율 부담이 지속되고 있습니다. 호르무즈 리스크는 일부 완화 신호가 있으나 완전 해소는 아닙니다. 이 복합 요인(브렌트유 $105대 + MOPS 511.21 cent/gal + 환율 1,490원대)은 6월 유류할증료의 급격한 인하를 제한하는 구조적 요인으로 작용할 수 있습니다. 아래 내용은 참고용 전망이며, 확정 금액은 항공사 공식 발표를 반드시 확인하시기 바랍니다.',
     'fore.cta.desc':   '📍 현재 발권 가능한 유류할증료를 노선별로 확인하세요',
     'fore.cta.main':   '👉 유류할증료 조회하기',
     'fore.cta.may':    '👉 5월 공시 데이터 확인',
     'fore.section.indicators': '📊 2026년 6월 전망 참고 지표',
-    'fore.indicator.footnote': '※ 전망 수치는 2026.05.13 21:00 KST 기준 참고용입니다. 확정 금액은 항공사 공식 채널에서 확인하세요.',
+    'fore.indicator.footnote': '※ 전망 수치는 2026.05.14 20:50 KST 기준 참고용입니다. 확정 금액은 항공사 공식 채널에서 확인하세요.',
     'fore.predict.title':    'AI 예측 참고 지표 현황',
     'fore.predict.subtitle': '데이터 기반 추정',
     'fore.predict.footnote': '* 5월 유류할증료는 공식 공지 기준 확정. 6월 전망은 시장 데이터 기반 참고용입니다.',
@@ -262,51 +265,53 @@ var FORE_I18N = {
     'fore.footnote':    '표시된 유류할증료 전망은 참고용 정보입니다. 최종 금액은 항공사 공식 사이트 또는 발권처에서 반드시 확인하세요.<br>문의: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
     /* JS 렌더 콘텐츠 키 */
     'fore.summary.title':   '📌 2026년 6월 핵심 전망 요약',
-    'fore.summary.updated': '🕐 2026.05.13 21:00 KST 기준 시장 지표 반영',
+    'fore.summary.updated': '🕐 2026.05.14 20:50 KST 기준 시장 지표 반영',
     'fore.summary.items': [
-      '브렌트유 단기 급락 발생 — 휴전·협상 뉴스 영향, 변동성 지속',
-      '싱가포르 항공유 공급 감소 지속 — MOPS 하방 제한, 최신 공식 수치 별도 확인 필요',
-      '6월 유류할증료: 브렌트유 단기 급락에도 공급 리스크·환율·호르무즈로 급격한 인하 가능성 제한',
-      '원달러 환율 고변동성 유지 — 불안정 구간 지속',
-      '호르무즈 리스크 여전히 존재 — 휴전 논의 있으나 물류 정상화 지연, 지정학 불안정 지속',
-      '아시아 정제유 수출 감소·국제 항공사 운임 인상 압박 유지 — 항공유 공급 부족 우려 지속',
+      '브렌트유 약 $105.08~105.63/bbl — 고점권 변동성 지속',
+      '항공유(MOPS) 약 511.21 cent/gal, 약 $214.71/bbl — 최고 기준 470 cent/gal 상회',
+      '6월 유류할증료: 브렌트유 $105대 + MOPS 511.21 cent/gal + 환율 1,490원대 영향으로 급격한 인하 가능성 제한',
+      '원달러 환율 약 1,488~1,494원 구간, 현재 약 1,491~1,492원',
+      '호르무즈 리스크 일부 완화 신호 있으나 완전 해소 아님',
+      'MOPS 최고 기준 상회, 일부 완화 가능성도 존재 — 최고 단계 유지 또는 제한적 인하 두 시나리오 동시 존재',
       '변동성 매우 큼 — 공식 공시 전 모니터링 필요',
     ],
-    'fore.indicator.th': ['항목', '현황 (2026.05.13 21:00 KST 기준)', '6월 영향'],
+    'fore.indicator.th': ['항목', '현황 (2026.05.14 20:50 KST 기준)', '6월 영향'],
     'fore.indicator.rows': [
-      ['⛽ 브렌트유', '단기 급락 발생 — 휴전·협상 뉴스 영향, 변동성 지속', '단기 급락에도 공급망 리스크로 인해 즉시 대폭 인하는 어려운 구조'],
-      ['💱 원달러 환율', '고변동성 유지 — 원달러 환율 불안정 구간 지속', '환율 변동성 지속 — 유류할증료 즉시 인하 어려운 구조적 요인'],
-      ['✈️ 항공유/MOPS', '싱가포르 항공유 공급 감소 지속 — MOPS 하방 제한, 최신 공식 수치 별도 확인 필요', '공급 감소로 MOPS 하방 제한 — 실질 인하폭 제한 가능'],
-      ['🌍 지정학 리스크', '호르무즈 리스크 여전히 존재 — 휴전 논의 있으나 물류 정상화 지연, 협상 불안정', '항공유 공급망 및 유가 변동성 지속 — 인하폭 추가 제한 요인'],
-      ['📅 6월 방향', '급격한 인하 가능성 제한 — 공급망·환율·지정학 리스크 복합 작용', '고점 유지 가능성 존재 — 공식 공시 전 참고 전망'],
+      ['⛽ 브렌트유', '약 $105.08~105.63/bbl — 고점권 변동성 지속', '유가 고점권 유지로 인하폭 제한 요인'],
+      ['💱 원달러 환율', '약 1,488~1,494원 구간, 현재 약 1,491~1,492원', '고환율 지속 시 KRW 기준 체감 인하폭 제한'],
+      ['✈️ 항공유/MOPS', '약 511.21 cent/gal, 약 $214.71/bbl — 최고 기준 470 cent/gal 상회', '최고 단계 기준보다 약 +41.21 cent/gal 높아 고점 유지 압력'],
+      ['🌍 지정학 리스크', '호르무즈 리스크 일부 완화 신호 있으나 완전 해소 아님', '항공유 공급망 및 유가 변동성 지속'],
+      ['📅 6월 방향', '급격한 인하 가능성 제한 — 일부 완화 시나리오도 존재', '고점 유지 또는 제한적 인하 — 공식 공시 전 참고 전망'],
     ],
-    'fore.market.title':   '🌍 시장 브리핑 (2026.05.13 21:00 KST 기준)',
-    'fore.market.brent':   '⛽ 브렌트유: 단기 급락 발생 — 휴전·협상 뉴스 영향, 시장 불안정성 유지',
-    'fore.market.fx':      '💱 환율: 원달러 고변동성 유지 — 불안정 구간 지속',
-    'fore.market.mops':    '✈️ 항공유/MOPS: 싱가포르 항공유 공급 감소 지속 — MOPS 하방 제한, 최신 공식 수치 별도 확인 필요',
-    'fore.market.geo':     '🌍 지정학: 호르무즈 리스크 여전히 존재 — 휴전 논의 있으나 물류 정상화 지연, 아시아 정제유 수출 감소',
-    'fore.market.summary': '→ 브렌트유 단기 급락에도 항공유 공급 감소·환율 변동성·호르무즈 리스크 — 급격한 인하 가능성 제한',
-    'fore.market.fx2':     '💡 핵심 신호: 브렌트유 단기 급락에도 항공유 공급 감소 + 환율 변동성 + 호르무즈 리스크 복합 — 유류할증료 즉시 인하 어려운 구조',
+    'fore.market.title':   '🌍 시장 브리핑 (2026.05.14 20:50 KST 기준)',
+    'fore.market.brent':   '⛽ 브렌트유: 약 $105.08~105.63/bbl — 고점권 변동성 지속',
+    'fore.market.fx':      '💱 환율: 약 1,488~1,494원 구간, 현재 약 1,491~1,492원',
+    'fore.market.mops':    '✈️ 항공유/MOPS: 약 511.21 cent/gal, 약 $214.71/bbl — 최고 기준 470 cent/gal 상회',
+    'fore.market.geo':     '🌍 지정학: 호르무즈 리스크 일부 완화 신호 있으나 완전 해소 아님',
+    'fore.market.summary': '→ 브렌트유 $105대 + MOPS 511.21 cent/gal + 환율 1,490원대 영향으로 급격한 인하 가능성 제한',
+    'fore.market.fx2':     '💡 핵심 신호: 브렌트유 $105대 + MOPS 511.21 cent/gal + 환율 1,490원대 복합 — 유류할증료 급격한 인하 어려운 구조',
     'fore.verdict.title':  '📌 6월 전망 판단',
-    'fore.verdict.line1':  '→ 싱가포르 항공유 공급 감소 지속 — MOPS 하방 제한, 최신 공식 수치 별도 확인 필요',
-    'fore.verdict.line2':  '→ 브렌트유 단기 급락에도 공급망 리스크·환율 변동성·호르무즈 리스크 — 급격한 인하 가능성 제한, 고점 유지 가능성 존재 (전망/참고용)',
+    'fore.verdict.line1':  '→ MOPS 약 511.21 cent/gal, 약 $214.71/bbl — 최고 기준 470 cent/gal 상회 (약 +41.21 cent/gal 초과)',
+    'fore.verdict.line2':  '→ 브렌트유 $105대 + MOPS 511.21 cent/gal + 환율 1,490원대 복합 — 급격한 인하 가능성 제한, 고점 유지 가능성 존재 (전망/참고용)',
     'fore.verdict.short':  '👉 단거리: 현재 예약 가능한 구간',
     'fore.verdict.long':   '👉 중장거리·장거리: 항공유 공급 상황·환율·호르무즈 리스크 및 공식 공시 확인 후 예약 판단 권장',
+    'fore.mops.analysis.title': '📈 MOPS 분석',
+    'fore.mops.analysis.body':  'MOPS 수치 기준 (참고):\n- MOPS: 약 511.21 cent/gal\n- 배럴 환산: 약 $214.71/bbl\n- 최고 단계 기준: 470 cent/gal 이상\n- 기준 초과폭: 약 +41.21 cent/gal\n\n현재 MOPS는 최고 유류할증료 발동 기준인 470 cent/gal을 약 41.21 cent/gal 상회하는 구간입니다.\n\n현재 6월 산정 구간에서는 일부 완화 움직임도 관측되고 있습니다.\n\n가능 시나리오:\n\n• 최고 단계 유지\n• 제한적 인하\n\n단, 환율이 약 1,490원대를 유지하면 실제 소비자 체감 인하폭은 제한될 수 있습니다.',
     'fore.booking.title':  '🗓️ 예약 판단 가이드',
     'fore.booking.items': [
       '단거리 노선: 현재 예약 가능한 구간',
-      '중장거리 노선: 환율과 공식 공시 확인 후 예약 판단 권장',
-      '장거리 노선: 항공유 공급 리스크·호르무즈 리스크·환율 변동성 동시 재확인 권장 — 공시 확인 필수',
+      '중장거리 노선: MOPS + 환율 + 공식 공시 동시 확인',
+      '장거리 노선: MOPS + 환율 + 중동 리스크 + 공식 공시 재확인 권장',
       '👉 유류할증료는 브렌트유 단기 급락에도 공급 상황·환율·지정학 리스크의 영향을 동시에 받습니다.',
       '유류할증료는 예약 시점 기준으로 적용됩니다. 공시 후 최종 금액을 반드시 확인하세요.',
     ],
     'fore.keyvars.items': ['⛽ 국제 유가 (Brent)', '✈️ 항공유 가격 (MOPS)', '💱 환율 (USD/KRW)', '🏢 항공사 정책', '🌍 지정학 리스크'],
     'fore.predict.items': [
-      { label:'Brent 유가',           val:'단기 급락 발생 — 휴전·협상 뉴스 영향, 변동성 지속',              cls:'plain' },
-      { label:'항공유 (MOPS)',        val:'싱가포르 공급 감소 지속 — MOPS 하방 제한, 최신 공식 수치 별도 확인 필요', cls:'down' },
-      { label:'원달러 환율',          val:'고변동성 유지 — 원달러 환율 불안정 구간 지속',                     cls:'up' },
-      { label:'지정학 리스크',        val:'호르무즈 리스크 여전히 존재 — 휴전 논의 있으나 물류 정상화 지연',   cls:'up' },
-      { label:'6월 surcharge 방향',   val:'급격한 인하 가능성은 제한적 — 고점 유지 가능성 존재',               cls:'plain' },
+      { label:'Brent 유가',           val:'약 $105.08~105.63/bbl — 고점권 변동성 지속',                      cls:'plain' },
+      { label:'항공유 (MOPS)',        val:'약 511.21 cent/gal, 약 $214.71/bbl — 최고 기준 470 cent/gal 상회', cls:'up' },
+      { label:'원달러 환율',          val:'약 1,488~1,494원 구간, 현재 약 1,491~1,492원',                    cls:'up' },
+      { label:'지정학 리스크',        val:'호르무즈 리스크 일부 완화 신호 있으나 완전 해소 아님',               cls:'plain' },
+      { label:'6월 surcharge 방향',   val:'급격한 인하 가능성 제한 — 일부 완화 시나리오도 공존',               cls:'plain' },
     ],
     'fore.official.items': [
       { name:'대한항공',      url:'https://www.koreanair.com',  domain:'koreanair.com' },
@@ -332,15 +337,15 @@ var FORE_I18N = {
     'fore.metaTitle':  '2026 June Fuel Surcharge Forecast | Oil & Exchange Rate Based Prediction',
     'fore.metaDesc':   'Forecast for June 2026 Korea-departure international fuel surcharges based on Brent crude, USD/KRW exchange rate, jet fuel/MOPS, and Hormuz Strait risk.',
     'fore.pageTitle':  '🔮 June 2026 Fuel Surcharge Forecast',
-    'fore.pageSub':    'Oil, exchange rate & jet fuel — Brent drop + supply risk + FX volatility + Hormuz risk — as of 2026.05.13 21:00 KST · For reference',
+    'fore.pageSub':    'Oil, exchange rate & jet fuel — Brent drop + supply risk + FX volatility + Hormuz risk — as of 2026.05.14 20:50 KST · For reference',
     'fore.h1':         'June 2026 Fuel Surcharge Forecast',
-    'fore.notice':     '<strong>Notice:</strong> This is a <strong>reference forecast</strong> based on market indicators as of 2026.05.13 21:00 KST. Always confirm final amounts via each airline\'s official announcement.',
-    'fore.intro':      'As of 2026.05.13 21:00 KST, Brent crude has seen a short-term drop driven by ceasefire and negotiation news, though market instability persists. Singapore jet fuel supply continues to decline, limiting the downside for MOPS. USD/KRW exchange rate is maintaining high volatility in an unstable zone. Hormuz Strait risk remains present, with ceasefire talks ongoing but logistics normalization delayed. This compound risk — Brent short-term drop + jet fuel supply decline + FX volatility + Hormuz risk — may structurally limit any sharp June surcharge reduction. Content below is for reference only.',
+    'fore.notice':     '<strong>Notice:</strong> This is a <strong>reference forecast</strong> based on market indicators as of 2026.05.14 20:50 KST. Always confirm final amounts via each airline\'s official announcement.',
+    'fore.intro':      'As of 2026.05.14 20:50 KST, Brent crude has seen a short-term drop driven by ceasefire and negotiation news, though market instability persists. MOPS at ~511.21 cent/gal, exceeding the highest fuel surcharge trigger threshold (470 cent/gal). USD/KRW exchange rate is maintaining high volatility in an unstable zone. Hormuz Strait risk remains present, with ceasefire talks ongoing but logistics normalization delayed. This compound risk — Brent short-term drop + jet fuel supply decline + FX volatility + Hormuz risk — may structurally limit any sharp June surcharge reduction. Content below is for reference only.',
     'fore.cta.desc':   '📍 Check current fuel surcharges by route',
     'fore.cta.main':   '👉 Search Fuel Surcharges',
     'fore.cta.may':    '👉 May 2026 Official Data',
     'fore.section.indicators': '📊 June 2026 Reference Indicators',
-    'fore.indicator.footnote': '※ Forecast figures are for reference as of 2026.05.13 21:00 KST. Always confirm final amounts via official airline channels.',
+    'fore.indicator.footnote': '※ Forecast figures are for reference as of 2026.05.14 20:50 KST. Always confirm final amounts via official airline channels.',
     'fore.predict.title':    'AI Forecast Reference Indicators',
     'fore.predict.subtitle': 'Data-based estimate',
     'fore.predict.footnote': '* May surcharges are confirmed via official filings. June outlook is a reference estimate based on market data.',
@@ -358,51 +363,53 @@ var FORE_I18N = {
     'fore.related.title':  '🔗 Related Fuel Surcharge Info',
     'fore.footnote':    'Fuel surcharge forecasts are for reference only. Always confirm final amounts at the airline\'s official site or point of ticketing.<br>Contact: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
     'fore.summary.title':   '📌 June 2026 Key Forecast Summary',
-    'fore.summary.updated': '🕐 Market indicators as of 2026.05.13 21:00 KST',
+    'fore.summary.updated': '🕐 Market indicators as of 2026.05.14 20:50 KST',
     'fore.summary.items': [
       'Brent crude short-term drop — ceasefire/negotiation news impact; volatility persists',
-      'Singapore jet fuel supply declining — MOPS downside limited; latest official benchmark needs confirmation',
+      '~511.21 cent/gal impact ongoing — exceeds highest surcharge threshold (470 cent/gal)',
       'June surcharge: despite Brent drop, supply risk + FX volatility + Hormuz risk — sharp cut structurally difficult',
       'USD/KRW high volatility persists — unstable exchange rate zone continuing',
       'Hormuz risk still present — ceasefire talks ongoing but logistics normalization delayed; geopolitical instability persists',
       'Asian refined product exports declining · international airline fare hike pressure persists',
       'Very high volatility — monitor until official filings',
     ],
-    'fore.indicator.th': ['Indicator', 'Status (as of 2026.05.13 21:00 KST)', 'June Impact'],
+    'fore.indicator.th': ['Indicator', 'Status (as of 2026.05.14 20:50 KST)', 'June Impact'],
     'fore.indicator.rows': [
-      ['⛽ Brent Crude', 'Short-term drop on ceasefire/negotiation news — volatility persists', 'Despite drop, supply chain risks limit immediate sharp surcharge cut'],
-      ['💱 USD/KRW Rate', 'High volatility persists — unstable exchange rate zone', 'FX volatility continuing — structural constraint on surcharge cuts'],
-      ['✈️ Jet Fuel/MOPS', 'Singapore supply declining — MOPS downside limited; latest official benchmark needs confirmation', 'Supply decline limits MOPS downside — actual cut size constrained'],
-      ['🌍 Geopolitical Risk', 'Hormuz risk still present — ceasefire talks ongoing but logistics normalization delayed', 'Persistent risk to jet fuel supply and price volatility'],
-      ['📅 June Direction', 'Sharp cut unlikely — supply + FX + geopolitical risk compound', 'High-level maintenance possible — pre-announcement reference'],
+      ['⛽ Brent Crude', 'Around $105.08–105.63/bbl — elevated volatility persists', 'Elevated oil price maintains pressure limiting surcharge cuts'],
+      ['💱 USD/KRW Rate', 'Around 1,488–1,494 KRW, currently around 1,491–1,492 — elevated FX burden', 'High FX sustained — limits perceived KRW-basis surcharge reduction'],
+      ['✈️ Jet Fuel/MOPS', 'Around 511.21 cent/gal, ~$214.71/bbl — above the 470 cent/gal highest-band threshold', 'About +41.21 cent/gal above highest-band trigger — high pressure maintained'],
+      ['🌍 Geopolitical Risk', 'Hormuz risk shows partial easing signs but is not fully resolved', 'Persistent risk to jet fuel supply and price volatility'],
+      ['📅 June Direction', 'Sharp cut unlikely — partial easing scenario also exists', 'Highest band maintained OR limited reduction — pre-announcement reference'],
     ],
-    'fore.market.title':   '🌍 Market Briefing (as of 2026.05.13 21:00 KST)',
-    'fore.market.brent':   '⛽ Brent crude: short-term drop on ceasefire/negotiation news — volatility persists',
-    'fore.market.fx':      '💱 FX: USD/KRW high volatility persists — unstable zone',
-    'fore.market.mops':    '✈️ Jet fuel/MOPS: Singapore supply declining — MOPS downside limited; latest official benchmark requires separate confirmation',
-    'fore.market.geo':     '🌍 Geopolitics: Hormuz risk still present — ceasefire talks ongoing but logistics normalization delayed; Asian refinery exports declining',
-    'fore.market.summary': '→ Despite Brent short-term drop: jet fuel supply decline + FX volatility + Hormuz risk — sharp surcharge cut unlikely',
-    'fore.market.fx2':     '💡 Key signal: despite Brent drop, jet fuel supply decline + FX volatility + Hormuz risk — structurally difficult for immediate sharp surcharge cut',
+    'fore.market.title':   '🌍 Market Briefing (as of 2026.05.14 20:50 KST)',
+    'fore.market.brent':   '⛽ Brent crude: around $105.08–105.63/bbl — elevated volatility persists',
+    'fore.market.fx':      '💱 FX: USD/KRW around 1,488–1,494 KRW, currently around 1,491–1,492',
+    'fore.market.mops':    '✈️ Jet fuel/MOPS: around 511.21 cent/gal, ~$214.71/bbl — above the 470 cent/gal highest-band threshold',
+    'fore.market.geo':     '🌍 Geopolitics: Hormuz risk shows partial easing signs but is not fully resolved',
+    'fore.market.summary': '→ Brent $105 range + MOPS 511.21 cent/gal + USD/KRW around 1,490s — sharp surcharge cut unlikely',
+    'fore.market.fx2':     '💡 Key signal: Brent $105 range + MOPS 511.21 cent/gal + USD/KRW around 1,490s compound — sharp surcharge cut structurally difficult',
     'fore.verdict.title':  '📌 June Outlook Judgment',
-    'fore.verdict.line1':  '→ Singapore jet fuel supply declining — MOPS downside limited; latest official MOPS figure requires separate confirmation',
-    'fore.verdict.line2':  '→ Despite Brent short-term drop: supply chain risk + FX volatility + Hormuz risk — sharp reduction unlikely; high-level maintenance possible (reference forecast)',
+    'fore.verdict.line1':  '→ MOPS around 511.21 cent/gal, ~$214.71/bbl — above the 470 cent/gal highest-band threshold (about +41.21 cent/gal above)',
+    'fore.verdict.line2':  '→ Brent $105 range + MOPS 511.21 cent/gal + USD/KRW around 1,490s compound — sharp reduction unlikely; high-level maintenance possible (reference forecast)',
     'fore.verdict.short':  '👉 Short-haul: bookable now',
     'fore.verdict.long':   '👉 Mid/long-haul: verify jet fuel supply situation, exchange rate, official filing and Hormuz risk status before deciding',
+    'fore.mops.analysis.title': '📈 MOPS Analysis',
+    'fore.mops.analysis.body':  'MOPS reference figures:\n- MOPS: around 511.21 cent/gal\n- Barrel equivalent: ~$214.71/bbl\n- Highest-band threshold: 470 cent/gal and above\n- Threshold excess: about +41.21 cent/gal\n\nCurrent MOPS is in a zone approximately 41.21 cent/gal above the highest fuel surcharge trigger threshold of 470 cent/gal.\n\nIn the current June calculation window, some easing movement is also observed.\n\nPossible scenarios:\n\n• Highest band maintained\n• Limited reduction\n\nHowever, if exchange rates remain elevated (~1,490s KRW), the actual perceived reduction for consumers may be limited.',
     'fore.booking.title':  '🗓️ Booking Decision Guide',
     'fore.booking.items': [
       'Short-haul routes: bookable now',
-      'Mid/long-haul routes: confirm exchange rate and official filing before booking',
-      'Long-haul routes: verify jet fuel supply risk + Hormuz risk + FX volatility simultaneously — confirm after official filing',
+      'Mid/long-haul routes: MOPS + exchange rate + official filing — verify simultaneously',
+      'Long-haul routes: MOPS + exchange rate + Middle East risk + official filing — re-verify recommended',
       '👉 Surcharges are affected by actual supply conditions and exchange rates simultaneously, not just oil prices.',
       'Surcharges apply on booking date. Always re-confirm the final amount after the official filing.',
     ],
     'fore.keyvars.items': ['⛽ Int\'l Crude (Brent)', '✈️ Jet Fuel (MOPS)', '💱 Exchange Rate (USD/KRW)', '🏢 Airline Policy', '🌍 Geopolitical Risk'],
     'fore.predict.items': [
-      { label:'Brent Crude',              val:'Short-term drop on ceasefire news — volatility persists',          cls:'plain' },
-      { label:'Jet Fuel (MOPS)',          val:'Singapore supply declining — MOPS downside limited; latest benchmark needs confirmation', cls:'down' },
-      { label:'USD / KRW',               val:'High volatility persists — unstable exchange rate zone',            cls:'up' },
-      { label:'Geopolitical Risk',        val:'Hormuz risk still present — ceasefire talks ongoing, logistics normalization delayed', cls:'up' },
-      { label:'June Surcharge Direction', val:'Sharp cut unlikely — supply + FX + geopolitical risk compound; high-level maintenance possible', cls:'plain' },
+      { label:'Brent Crude',              val:'Around $105.08–105.63/bbl — elevated volatility persists',       cls:'plain' },
+      { label:'Jet Fuel (MOPS)',          val:'Around 511.21 cent/gal, ~$214.71/bbl — above the 470 cent/gal highest-band threshold', cls:'up' },
+      { label:'USD / KRW',               val:'Around 1,488–1,494 KRW, currently around 1,491–1,492 — elevated FX burden', cls:'up' },
+      { label:'Geopolitical Risk',        val:'Hormuz risk shows partial easing signs but is not fully resolved', cls:'plain' },
+      { label:'June Surcharge Direction', val:'Sharp cut unlikely — Brent $105 + MOPS 511.21 + FX around 1,490s; partial easing scenario also possible', cls:'plain' },
     ],
     'fore.official.items': [
       { name:'Korean Air',      url:'https://www.koreanair.com',  domain:'koreanair.com' },
@@ -428,15 +435,15 @@ var FORE_I18N = {
     'fore.metaTitle':  '2026年6月 燃油サーチャージ予測 | 油価・為替ベースの予測',
     'fore.metaDesc':   'ブレント原油・ウォン/ドル為替・航空燃油/MOPS・中東リスクを基準に2026年6月燃油サーチャージ変動見通しを整理します。',
     'fore.pageTitle':  '🔮 2026年6月 燃油サーチャージ予測',
-    'fore.pageSub':    '油価・為替・航空燃油ベースの変動コスト見通し — 2026.05.13 21:00 KST基準 · 参考用',
+    'fore.pageSub':    '油価・為替・航空燃油ベースの変動コスト見通し — 2026.05.14 20:50 KST基準 · 参考用',
     'fore.h1':         '2026年6月 燃油サーチャージ予測',
-    'fore.notice':     '<strong>お知らせ:</strong> このページは2026.05.13 21:00 KST基準の市場指標に基づく<strong>参考用予測</strong>ページです。確定金額は各航空会社の公式案内で必ずご確認ください.',
+    'fore.notice':     '<strong>お知らせ:</strong> このページは2026.05.14 20:50 KST基準の市場指標に基づく<strong>参考用予測</strong>ページです。確定金額は各航空会社の公式案内で必ずご確認ください.',
     'fore.intro':      '2026年6月の韓国発国際線燃油サーチャージの動向を予測します。サーチャージは前月平均の国際油価（WTI・ドバイ原油）とウォン/ドル為替に連動して算定されるため、5月市場の動きが6月公示に直接影響します。以下は参考用予測です。',
     'fore.cta.desc':   '📍 路線別に現在の燃油サーチャージを確認できます',
     'fore.cta.main':   '👉 燃油サーチャージを検索',
     'fore.cta.may':    '👉 5月公示データを確認',
     'fore.section.indicators': '📊 2026年6月予測 参考指標',
-    'fore.indicator.footnote': '※ 予測数値は2026.05.13 21:00 KST基準の参考用です。確定金額は各航空会社の公式チャンネルでご確認ください。',
+    'fore.indicator.footnote': '※ 予測数値は2026.05.14 20:50 KST基準の参考用です。確定金額は各航空会社の公式チャンネルでご確認ください。',
     'fore.predict.title':    'AI予測参考指標現況',
     'fore.predict.subtitle': 'データ基準推定',
     'fore.predict.footnote': '* 5月燃油サーチャージは公式公示基準確定。6月予測は市場データ基準の参考用です。',
@@ -454,7 +461,7 @@ var FORE_I18N = {
     'fore.related.title':  '🔗 関連燃油サーチャージ情報',
     'fore.footnote':    '表示された燃油サーチャージ予測は参考情報です。最終金額は各航空会社の公式サイトまたは発券窓口でご確認ください。<br>お問い合わせ: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
     'fore.summary.title':   '📌 2026年6月 主要予測まとめ',
-    'fore.summary.updated': '🕐 2026.05.13 21:00 KST基準市場指標反映',
+    'fore.summary.updated': '🕐 2026.05.14 20:50 KST基準市場指標反映',
     'fore.summary.items': [
       'ブレント原油 短期急落発生 — 停戦・交渉ニュース影響、変動性持続',
       'シンガポール航空燃料供給減少継続 — MOPS下方硬直、最新公式数値は別途確認が必要',
@@ -464,41 +471,43 @@ var FORE_I18N = {
       'アジア精製油輸出減少・国際航空会社の運賃値上げ圧力継続',
       '変動性は依然として大きい — 公式公示まで監視が必要',
     ],
-    'fore.indicator.th': ['項目', '現況 (2026.05.13 21:00 KST基準)', '6月への影響'],
+    'fore.indicator.th': ['項目', '現況 (2026.05.14 20:50 KST基準)', '6月への影響'],
     'fore.indicator.rows': [
-      ['⛽ ブレント原油', '短期急落発生 — 停戦・交渉ニュース影響、変動性持続', '急落でも供給リスクで即時大幅引き下げは困難'],
-      ['💱 ウォン/ドル', '高変動性維持 — 不安定区間継続', '為替変動性継続 — サーチャージ即時引き下げ難しい構造'],
-      ['✈️ 航空燃油/MOPS', 'シンガポール供給減少継続 — MOPS下方硬直、最新公式数値は別途確認が必要', '供給減少でMOPS下方硬直 — 実際の引き下げ幅制限'],
-      ['🌍 地政学リスク', 'ホルムズリスク依然存在 — 停戦論議あるが物流正常化遅延、地政学不安定継続', 'ブレント原油・航空燃油・為替の上方変動性拡大'],
-      ['📅 6月方向', '急激な引き下げ可能性は限定的 — 供給+為替+地政学リスク複合', '高水準維持の可能性あり — 公式公示前参考予測'],
+      ['⛽ ブレント原油', '約$105.08~105.63/bbl — 高値圏での変動性継続', '高値圏維持で引き下げ幅の制限要因'],
+      ['💱 ウォン/ドル', '約1,488~1,494ウォン区間、現在約1,491~1,492ウォン — 高為替負担継続', '高為替継続でKRW基準の体感引き下げ幅制限'],
+      ['✈️ 航空燃油/MOPS', '約511.21セント/ガロン、約$214.71/bbl — 470セント最高基準を上回る', '最高基準より約+41.21セント高い区間 — 高水準維持圧力'],
+      ['🌍 地政学リスク', 'ホルムズリスク一部緩和の兆し — ただし完全解消ではない', '航空燃料供給網および価格変動性継続'],
+      ['📅 6月方向', '急激な引き下げ可能性は限定的 — 一部緩和シナリオも共存', '高水準維持または限定的引き下げ — 公式公示前参考予測'],
     ],
-    'fore.market.title':   '🌍 市場ブリーフィング (2026.05.13 21:00 KST基準)',
-    'fore.market.brent':   '⛽ ブレント原油: 短期急落発生 — 停戦・交渉ニュース影響、変動性持続',
-    'fore.market.fx':      '💱 為替: 高変動性維持 — 不安定区間継続',
-    'fore.market.mops':    '✈️ 航空燃油/MOPS: シンガポール供給減少継続 — MOPS下方硬直、最新公式数値は別途確認が必要',
-    'fore.market.geo':     '🌍 地政学: ホルムズリスク依然存在 — 停戦論議あるが物流正常化遅延、アジア精製油輸出減少',
-    'fore.market.summary': '→ ブレント短期急落でも航空燃料供給減少・為替変動性・ホルムズリスク — 急激な引き下げ可能性は限定的',
+    'fore.market.title':   '🌍 市場ブリーフィング (2026.05.14 20:50 KST基準)',
+    'fore.market.brent':   '⛽ ブレント原油: 約$105.08~105.63/bbl — 高値圏での変動性継続',
+    'fore.market.fx':      '💱 為替: 約1,488~1,494ウォン区間、現在約1,491~1,492ウォン',
+    'fore.market.mops':    '✈️ 航空燃油/MOPS: 約511.21セント/ガロン、約$214.71/bbl — 470セント最高基準を上回る',
+    'fore.market.geo':     '🌍 地政学: ホルムズリスク一部緩和の兆しあり — ただし完全解消ではない',
+    'fore.market.summary': '→ ブレント$105台 + MOPS 511.21セント/ガロン + 為替1,490ウォン台の影響で急激な引き下げ可能性は限定的',
     'fore.market.fx2':     '💡 キーシグナル: ブレント急落でも航空燃料供給減少+為替変動性+ホルムズリスク複合 — サーチャージ即時引き下げ難しい構造',
     'fore.verdict.title':  '📌 6月予測判断',
     'fore.verdict.line1':  '→ シンガポール航空燃料供給減少継続 — MOPS下方硬直、最新公式数値は別途確認が必要',
     'fore.verdict.line2':  '→ ブレント短期急落でも供給リスク・為替変動性・ホルムズリスク — 急激な引き下げ可能性は限定的、高水準維持の可能性あり（参考予測）',
     'fore.verdict.short':  '👉 短距離路線: 現在の予約可能',
     'fore.verdict.long':   '👉 中長距離・長距離: 航空燃料供給状況・為替・ホルムズリスク・公式公示確認後の予約判断を推奨',
+    'fore.mops.analysis.title': '📈 MOPS 分析',
+    'fore.mops.analysis.body':  '現在のMOPSは最高燃油サーチャージ発動基準470セント/ガロンを超える区間の影響を受けています。\n\n現在の6月算定区間では一部緩和の動きも観測されています。\n\n可能なシナリオ：\n\n• 最高バンド維持\n• 限定的引き下げ\n\nただし、為替が高い状態を維持すれば実際の消費者体感引き下げ幅は制限される可能性があります。',
     'fore.booking.title':  '🗓️ 予約判断ガイド',
     'fore.booking.items': [
       '短距離路線: 現在の予約可能',
-      '中長距離路線: 為替と公式公示確認後に予約判断推奨',
-      '長距離路線: 航空燃料供給リスク・ホルムズリスク・為替変動性を同時確認 — 公示後確認を推奨',
+      '中長距離路線: MOPS + 為替 + 公式公示を同時確認',
+      '長距離路線: MOPS + 為替 + 中東リスク + 公式公示 — 再確認推奨',
       '👉 燃油サーチャージは油価だけでなく実際の供給状況と為替の影響を同時に受けます。',
       '燃油サーチャージは予約日基準で適用されます。6月公示発表後に最終金額を必ずご確認ください。',
     ],
     'fore.keyvars.items': ['⛽ 国際原油 (Brent)', '✈️ 航空燃油 (MOPS)', '💱 為替 (USD/KRW)', '🏢 航空会社方針', '🌍 地政学リスク'],
     'fore.predict.items': [
-      { label:'ブレント原油',           val:'短期急落発生 — 停戦・交渉ニュース影響、変動性持続',                            cls:'plain' },
-      { label:'航空燃油 (MOPS)',        val:'シンガポール供給減少継続 — MOPS下方硬直、最新公式数値は別途確認が必要', cls:'down' },
-      { label:'ウォン/ドル',            val:'高変動性維持 — 不安定区間継続',                                                   cls:'up' },
-      { label:'地政学リスク',           val:'ホルムズリスク依然存在 — 停戦論議あるが物流正常化遅延',                           cls:'up' },
-      { label:'6月サーチャージ方向',    val:'急激な引き下げ可能性は限定的 — 高水準維持の可能性あり',                           cls:'plain' },
+      { label:'ブレント原油',           val:'約$105.08~105.63/bbl — 高値圏での変動性継続',                                    cls:'plain' },
+      { label:'航空燃油 (MOPS)',        val:'約511.21セント/ガロン、約$214.71/bbl — 470セント/ガロン最高基準を上回る', cls:'up' },
+      { label:'ウォン/ドル',            val:'約1,488~1,494ウォン区間、現在約1,491~1,492ウォン — 高為替負担継続',              cls:'up' },
+      { label:'地政学リスク',           val:'ホルムズリスク一部緩和の兆し — ただし完全解消ではない',                           cls:'plain' },
+      { label:'6月サーチャージ方向',    val:'急激な引き下げ可能性は限定的 — 一部緩和シナリオも共存',                           cls:'plain' },
     ],
     'fore.official.items': [
       { name:'大韓航空',          url:'https://www.koreanair.com',  domain:'koreanair.com' },
@@ -524,15 +533,15 @@ var FORE_I18N = {
     'fore.metaTitle':  '2026年6月燃油附加费预测 | 基于油价·汇率的预测',
     'fore.metaDesc':   '以布伦特原油、韩元/美元汇率、航空燃油/MOPS、中东风险为基准，整理2026年6月国际线燃油附加费变动展望。',
     'fore.pageTitle':  '🔮 2026年6月燃油附加费预测',
-    'fore.pageSub':    '基于油价·汇率·航空燃油的变动整理 — 2026.05.13 21:00 KST基准 · 参考用',
+    'fore.pageSub':    '基于油价·汇率·航空燃油的变动整理 — 2026.05.14 20:50 KST基准 · 参考用',
     'fore.h1':         '2026年6月燃油附加费预测',
-    'fore.notice':     '<strong>说明:</strong> 本页是基于2026.05.13 21:00 KST市场指标的<strong>参考预测</strong>页面。确定金额请务必查看各航空公司官方公告。',
+    'fore.notice':     '<strong>说明:</strong> 本页是基于2026.05.14 20:50 KST市场指标的<strong>参考预测</strong>页面。确定金额请务必查看各航空公司官方公告。',
     'fore.intro':      '预测2026年6月韩国出发国际航班燃油附加费的变动趋势。由于附加费以上月平均国际油价（WTI/迪拜原油）和韩元/美元汇率为基准计算，5月市场走势将直接影响6月公告。以下内容仅供参考。',
     'fore.cta.desc':   '📍 按航线查看当前可购票的燃油附加费',
     'fore.cta.main':   '👉 查询燃油附加费',
     'fore.cta.may':    '👉 查看5月公告数据',
     'fore.section.indicators': '📊 2026年6月预测参考指标',
-    'fore.indicator.footnote': '※ 预测数值为2026.05.13 21:00 KST基准参考用。确定金额请查看各航空公司官方渠道。',
+    'fore.indicator.footnote': '※ 预测数值为2026.05.14 20:50 KST基准参考用。确定金额请查看各航空公司官方渠道。',
     'fore.predict.title':    'AI预测参考指标现状',
     'fore.predict.subtitle': '基于数据的估算',
     'fore.predict.footnote': '* 5月燃油附加费已按官方公告确定。6月预测为基于市场数据的参考。',
@@ -550,7 +559,7 @@ var FORE_I18N = {
     'fore.related.title':  '🔗 相关燃油附加费信息',
     'fore.footnote':    '所示燃油附加费预测为参考信息。最终金额请在各航空公司官网或购票处确认。<br>联系: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
     'fore.summary.title':   '📌 2026年6月核心预测摘要',
-    'fore.summary.updated': '🕐 反映2026.05.13 21:00 KST市场指标',
+    'fore.summary.updated': '🕐 反映2026.05.14 20:50 KST市场指标',
     'fore.summary.items': [
       '布伦特原油短期急跌 — 受停火/谈判消息影响，波动性持续',
       '新加坡航空燃油供应持续减少 — MOPS下行受限，最新官方数据需另行确认',
@@ -560,41 +569,43 @@ var FORE_I18N = {
       '亚洲成品油出口减少·国际航空公司运价上涨压力持续',
       '波动性仍较大 — 建议等待官方公告',
     ],
-    'fore.indicator.th': ['项目', '现状 (2026.05.13 21:00 KST)', '6月影响'],
+    'fore.indicator.th': ['项目', '现状 (2026.05.14 20:50 KST)', '6月影响'],
     'fore.indicator.rows': [
-      ['⛽ 布伦特原油', '短期急跌 — 受停火/谈判消息影响，波动性持续', '急跌幅度虽大，但供应链风险限制即时大幅下调'],
-      ['💱 韩元/美元', '高波动性维持 — 不稳定区间持续', '汇率波动持续 — 附加费即时下调的结构性制约'],
-      ['✈️ 航空燃油/MOPS', '新加坡供应持续减少 — MOPS下行受限，最新官方数据需另行确认', '供应减少限制MOPS下行空间 — 实际降幅受约束'],
-      ['🌍 地缘政治风险', '霍尔木兹风险依然存在 — 停火讨论进行中但物流正常化延迟，地缘政治不稳定持续', '布伦特油价·航空燃油·汇率上行波动性扩大'],
-      ['📅 6月方向', '大幅下调可能性受限 — 供应+汇率+地缘政治风险复合', '高位维持可能性存在 — 官方公告前参考预测'],
+      ['⛽ 布伦特原油', '约$105.08~105.63/bbl — 高位区间波动性持续', '高位维持为降幅制约因素'],
+      ['💱 韩元/美元', '约1,488~1,494韩元区间，目前约1,491~1,492韩元 — 高汇率负担持续', '高汇率持续限制KRW基准体感降幅'],
+      ['✈️ 航空燃油/MOPS', '约511.21美分/加仑，约$214.71/bbl — 超过470美分最高档标准', '比最高档标准约高+41.21美分 — 高位维持压力'],
+      ['🌍 地缘政治风险', '霍尔木兹风险显示部分缓和迹象，但尚未完全解除', '航空燃油供应链及价格波动性持续'],
+      ['📅 6月方向', '大幅下调可能性受限 — 部分缓和情景也同时存在', '高位维持或有限下调 — 官方公告前参考预测'],
     ],
-    'fore.market.title':   '🌍 市场简报 (2026.05.13 21:00 KST)',
-    'fore.market.brent':   '⛽ 布伦特原油: 短期急跌 — 受停火/谈判消息影响，波动性持续',
-    'fore.market.fx':      '💱 汇率: 高波动性维持 — 不稳定区间持续',
-    'fore.market.mops':    '✈️ 航空燃油/MOPS: 新加坡供应持续减少 — MOPS下行受限，最新官方数据需另行确认',
-    'fore.market.geo':     '🌍 地缘政治: 霍尔木兹风险依然存在 — 停火讨论进行中但物流正常化延迟，亚洲成品油出口减少',
-    'fore.market.summary': '→ 尽管布伦特短期急跌，航空燃油供应减少+汇率波动+霍尔木兹风险 — 大幅下调可能性受限',
+    'fore.market.title':   '🌍 市场简报 (2026.05.14 20:50 KST)',
+    'fore.market.brent':   '⛽ 布伦特原油: 约$105.08~105.63/bbl — 高位区间波动性持续',
+    'fore.market.fx':      '💱 汇率: 约1,488~1,494韩元区间，目前约1,491~1,492韩元',
+    'fore.market.mops':    '✈️ 航空燃油/MOPS: 约511.21美分/加仑，约$214.71/bbl — 超过470美分最高档标准',
+    'fore.market.geo':     '🌍 地缘政治: 霍尔木兹风险显示部分缓和迹象 — 但尚未完全解除',
+    'fore.market.summary': '→ 布伦特$105区间 + MOPS 511.21美分/加仑 + 汇率1,490韩元区间影响 — 大幅下调可能性受限',
     'fore.market.fx2':     '💡 核心信号: 尽管布伦特急跌，航空燃油供应减少+汇率波动+霍尔木兹风险复合 — 附加费即时大幅下调结构性困难',
     'fore.verdict.title':  '📌 6月展望判断',
     'fore.verdict.line1':  '→ 新加坡航空燃油供应持续减少 — MOPS下行受限，最新官方数据需另行确认',
     'fore.verdict.line2':  '→ 尽管布伦特短期急跌，供应链风险+汇率波动+霍尔木兹风险 — 大幅下调可能性受限，高位维持可能性存在（仅供参考）',
     'fore.verdict.short':  '👉 短途航线: 目前可预订',
     'fore.verdict.long':   '👉 中长途·长途: 建议确认航空燃油供应状况·汇率·官方公告及霍尔木兹风险后再做预订决定',
+    'fore.mops.analysis.title': '📈 MOPS 分析',
+    'fore.mops.analysis.body':  '当前MOPS处于超过最高燃油附加费触发标准470美分/加仑的区间影响下。\n\n当前6月计算区间内也观测到部分缓和迹象。\n\n可能的情景：\n\n• 维持最高档位\n• 有限降低\n\n但若汇率维持高位，消费者实际感受到的降幅可能受限。',
     'fore.booking.title':  '🗓️ 预订决策指南',
     'fore.booking.items': [
       '短途航线: 目前可预订',
-      '中长途航线: 确认汇率与官方公告后再做预订判断',
-      '长途航线: 航空燃油供应风险+霍尔木兹风险+汇率波动同时确认 — 建议公告后确认',
+      '中长途航线: MOPS + 汇率 + 官方公告 — 同时确认',
+      '长途航线: MOPS + 汇率 + 中东风险 + 官方公告 — 建议再次确认',
       '👉 燃油附加费受实际供应状况和汇率影响，而非仅受油价影响。',
       '燃油附加费以预订日为基准适用。6月公告发布后务必确认最终金额。',
     ],
     'fore.keyvars.items': ['⛽ 国际原油 (Brent)', '✈️ 航空燃油 (MOPS)', '💱 汇率 (USD/KRW)', '🏢 航空公司政策', '🌍 地缘政治风险'],
     'fore.predict.items': [
-      { label:'布伦特原油',           val:'短期急跌 — 受停火/谈判消息影响，波动性持续',                          cls:'plain' },
-      { label:'航空燃油 (MOPS)',      val:'新加坡供应持续减少 — MOPS下行受限，最新官方数据需另行确认', cls:'down' },
-      { label:'韩元/美元',            val:'高波动性维持 — 不稳定区间持续',                                        cls:'up' },
-      { label:'地缘政治风险',         val:'霍尔木兹风险依然存在 — 停火讨论进行中但物流正常化延迟', cls:'up' },
-      { label:'6月附加费方向',        val:'大幅下调可能性受限 — 高位维持可能性存在',                cls:'plain' },
+      { label:'布伦特原油',           val:'约$105.08~105.63/bbl — 高位区间波动性持续',                          cls:'plain' },
+      { label:'航空燃油 (MOPS)',      val:'约511.21美分/加仑，约$214.71/bbl — 超过470美分/加仑最高档触发标准', cls:'up' },
+      { label:'韩元/美元',            val:'约1,488~1,494韩元区间，目前约1,491~1,492韩元 — 高汇率负担持续',      cls:'up' },
+      { label:'地缘政治风险',         val:'霍尔木兹风险显示部分缓和迹象，但尚未完全解除',                        cls:'plain' },
+      { label:'6月附加费方向',        val:'大幅下调可能性受限 — 部分缓和情景也同时存在',                         cls:'plain' },
     ],
     'fore.official.items': [
       { name:'大韩航空',    url:'https://www.koreanair.com',  domain:'koreanair.com' },
@@ -704,6 +715,20 @@ function renderPredictFactors() {
   }).join('');
 }
 
+/* MOPS 분석 박스 */
+function renderMopsAnalysis() {
+  var el = document.getElementById('mopsAnalysisBox');
+  if (!el) return;
+  var title = td('fore.mops.analysis.title');
+  var body  = td('fore.mops.analysis.body');
+  if (!title && !body) return;
+  var bodyHtml = typeof body === 'string'
+    ? body.replace(/\n/g, '<br>')
+    : '';
+  el.innerHTML = '<div class="bg-title">' + title + '</div>'
+    + '<div class="bg-item" style="white-space:pre-wrap;">' + bodyHtml + '</div>';
+}
+
 /* 예약 가이드 */
 function renderBookingGuide() {
   var el = document.getElementById('bookingGuideBox');
@@ -758,6 +783,7 @@ function renderForecastPage() {
   renderIndicatorTable();
   renderVerdictBox();
   renderPredictFactors();
+  renderMopsAnalysis();
   renderBookingGuide();
   renderKeyVars();
   renderOfficialLinks();
