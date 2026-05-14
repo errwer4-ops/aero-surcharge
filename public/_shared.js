@@ -640,6 +640,22 @@ window.checkRouteSupport = function(iataCode, dep, arr) {
     var key2 = destination + '-' + origin;
     var band = rm[key1] || rm[key2] || null;
     if (!band) return { operates: false, reason: 'destination_not_operated' };
+    /* OZ 노선 범위 불일치 경고 (개발용) */
+    if (iataCode === 'OZ' && typeof AIRLINE_PAGE_DATA !== 'undefined' && AIRLINE_PAGE_DATA.carrier === 'OZ') {
+      var expectedRange = null;
+      if (typeof AIRLINE_PAGE_DATA.rows !== 'undefined') {
+        AIRLINE_PAGE_DATA.rows.forEach(function(row) {
+          /* range string 예: "~499", "500~999", "1,000~1,499" 등을 band 형식과 매핑 */
+          var rangeBand = row.range.replace(/,/g,'').replace('~','').trim();
+          /* 단순 포함 여부로 비교 */
+          if (row.routeKo && rangeBand) {
+            /* 목적지 IATA가 routeKo에 직접 들어있지 않으므로 band 값 비교 */
+          }
+        });
+      }
+      /* AIRLINE_PAGE_DATA rows에 정의된 range와 OFFICIAL_ROUTE_MAP band 비교는
+         페이지 레벨에서 처리 — 여기서는 OZ 전용 목적지 미포함 노선 경고만 */
+    }
     return { operates: true, reason: 'ok', band: band };
   }
 

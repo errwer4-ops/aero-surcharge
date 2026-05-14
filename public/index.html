@@ -834,16 +834,48 @@ var AL_TAG = {
 /* ICN 기준 공항 마일 거리 */
 var DIST_FROM_ICN = {
   ICN:0,GMP:14,PUS:196,CJU:278,
+  /* ── 일본 ── */
   NRT:783,HND:764,KIX:722,FUK:342,CTS:872,OKA:1008,NGO:718,SDJ:891,
-  TAK:845,NGS:320,MYJ:650,FSZ:750,
-  HKG:1298,TPE:932,PVG:530,PEK:592,CTU:1538,XIY:1162,SYX:2043,
-  SIN:2867,BKK:2286,MNL:1577,KUL:2693,SGN:2184,HAN:1725,DAD:1840,
-  DPS:3373,CEB:2064,DVO:2178,KLO:2150,CXR:1948,
+  KMI:310,KMJ:330,AKJ:899,
+  TAK:845,NGS:320,MYJ:650,FSZ:750,OIT:358,
+  /* ── 중국 ── */
+  PVG:530,PEK:592,TSN:610,HGH:680,NKG:650,CSX:870,HRB:803,
+  TAO:410,DLC:280,YNJ:220,WEH:340,YNT:390,CGQ:250,SHE:480,
+  CAN:1325,SZX:1370,XMN:1120,CKG:1400,KWL:1460,CTU:1538,XIY:1162,
+  HKG:1298,MFM:1310,
+  /* ── 대만 ── */
+  TPE:932,TXG:900,
+  /* ── 몽골 ── */
+  ULN:1250,
+  /* ── 동남아 ── */
+  MNL:1577,CRK:1620,TAG:1740,CEB:2064,DVO:2178,KLO:2150,
+  HAN:1725,DAD:1840,SGN:2184,CXR:1948,PQC:2210,DLI:2130,
+  BKK:2286,CNX:2300,HKT:2680,
+  PNH:2240,SGN:2184,
+  SIN:2867,KUL:2693,BKI:2310,BTH:2800,
+  ROR:1850,GUM:1582,SPN:1687,
+  HAK:1640,
+  VTE:2100,
+  /* ── 남아시아 ── */
+  DEL:2887,KTM:2880,RGN:2450,
+  /* ── 중앙아시아 ── */
+  ALA:2760,TAS:3210,
+  /* ── 오세아니아 ── */
+  SYD:5325,MEL:5631,AKL:5831,BNE:5200,DPS:3373,CGK:3371,
+  /* ── 미주 ── */
   LAX:5974,JFK:6903,SFO:5591,SEA:5329,ORD:6218,IAD:6907,
-  SYD:5325,MEL:5631,AKL:5831,
+  LAS:6070,YVR:5665,YYZ:6946,BOS:6935,ATL:6944,DFW:6430,
+  HNL:4268,
+  /* ── 유럽 ── */
   CDG:5655,LHR:5509,FRA:5685,AMS:5726,
+  MXP:5695,VIE:5620,FCO:5636,BUD:5558,PRG:5590,ZRH:5664,
+  MAD:5767,LIS:5989,BCN:5736,
+  IST:4948,
+  /* ── 중동·아프리카 ── */
   DXB:4073,DOH:4149,AUH:4097,
-  GUM:1582,SPN:1687,
+  CAI:5596,
+  /* ── 러시아 ── */
+  SVO:3758,VVO:470,
 };
 function getMiles(dep,arr){
   var d=DIST_FROM_ICN[dep]||0,a=DIST_FROM_ICN[arr]||0;
@@ -994,23 +1026,43 @@ var OFFICIAL_ROUTE_MAP = {
     'ICN-JFK':'6500+','ICN-DFW':'6500+','ICN-BOS':'6500+','ICN-ORD':'6500+',
     'ICN-ATL':'6500+','ICN-IAD':'6500+','ICN-YYZ':'6500+'
   },
-  /* ── 아시아나항공 (OZ) ── PDF 공시 기준 (주요 노선) ── */
+  /* ── 아시아나항공 (OZ) ── 2026년 5월 공식 PDF 공시 기준 ── */
   OZ: {
-    'ICN-FUK':'0-499','ICN-OIT':'0-499',
-    'ICN-NRT':'500-999','ICN-KIX':'500-999','ICN-OKA':'500-999',
-    'ICN-PVG':'500-999','ICN-PEK':'500-999','ICN-TPE':'500-999',
-    'ICN-CTS':'500-999','ICN-NGO':'500-999',
+    /* 0~499mi */
+    'ICN-FUK':'0-499','ICN-YNJ':'0-499','ICN-CGQ':'0-499',
+    'ICN-YNT':'0-499','ICN-DLC':'0-499','ICN-WEH':'0-499',
+    'ICN-TAO':'0-499','ICN-KMI':'0-499','ICN-KMJ':'0-499',
+    /* 500~999mi */
+    'ICN-KIX':'500-999','ICN-NGO':'500-999','ICN-NRT':'500-999',
+    'ICN-OKA':'500-999','ICN-SDJ':'500-999','ICN-CTS':'500-999',
+    'ICN-PVG':'500-999','ICN-PEK':'500-999','ICN-TSN':'500-999',
+    'ICN-NKG':'500-999','ICN-HRB':'500-999','ICN-HGH':'500-999',
+    'ICN-CSX':'500-999','ICN-TPE':'500-999','ICN-AKJ':'500-999',
     'GMP-HND':'500-999',
-    'ICN-HKG':'1000-1499','ICN-CAN':'1000-1499','ICN-ULN':'1000-1499','ICN-MFM':'1000-1499',
-    'ICN-MNL':'1500-1999','ICN-HAN':'1500-1999','ICN-DAD':'1500-1999','ICN-CEB':'1500-1999',
-    'ICN-BKK':'2000-2499','ICN-KUL':'2000-2499','ICN-CNX':'2000-2499',
-    'ICN-SGN':'2000-2499','ICN-DEL':'2000-2499','ICN-GUM':'2000-2499',
-    'ICN-SIN':'2500-2999','ICN-KTM':'2500-2999','ICN-HKT':'2500-2999',
-    'ICN-CGK':'3000-3999',
-    'ICN-DXB':'4000-4999','ICN-HNL':'4000-4999',
-    'ICN-LAX':'5000+','ICN-JFK':'5000+','ICN-FRA':'5000+',
-    'ICN-CDG':'5000+','ICN-LHR':'5000+','ICN-SYD':'5000+',
-    'ICN-YVR':'5000+','ICN-SEA':'5000+','ICN-IAD':'5000+','ICN-YYZ':'5000+'
+    /* 1000~1499mi */
+    'ICN-XIY':'1000-1499','ICN-CAN':'1000-1499','ICN-CKG':'1000-1499',
+    'ICN-SZX':'1000-1499','ICN-KWL':'1000-1499','ICN-CTU':'1000-1499',
+    'ICN-HKG':'1000-1499','ICN-ULN':'1000-1499',
+    /* 1500~1999mi */
+    'ICN-CRK':'1500-1999','ICN-MNL':'1500-1999','ICN-HAN':'1500-1999',
+    'ICN-DAD':'1500-1999','ICN-CEB':'1500-1999','ICN-SPN':'1500-1999',
+    'ICN-HAK':'1500-1999',
+    /* 2000~2499mi */
+    'ICN-SGN':'2000-2499','ICN-PNH':'2000-2499','ICN-BKK':'2000-2499',
+    'ICN-ROR':'2000-2499','ICN-GUM':'2000-2499','ICN-PQC':'2000-2499',
+    'ICN-CXR':'2000-2499','ICN-CNX':'2000-2499','ICN-BKI':'2000-2499',
+    /* 2500~2999mi */
+    'ICN-HKT':'2500-2999','ICN-SIN':'2500-2999','ICN-ALA':'2500-2999',
+    /* 3000~3999mi */
+    'ICN-CGK':'3000-3999','ICN-TAS':'3000-3999',
+    /* 4000~4999mi */
+    'ICN-IST':'4000-4999','ICN-HNL':'4000-4999',
+    /* 5000+mi */
+    'ICN-LAX':'5000+','ICN-SFO':'5000+','ICN-SEA':'5000+',
+    'ICN-JFK':'5000+','ICN-SYD':'5000+','ICN-MEL':'5000+',
+    'ICN-FRA':'5000+','ICN-CDG':'5000+','ICN-LHR':'5000+',
+    'ICN-FCO':'5000+','ICN-BCN':'5000+','ICN-CAI':'5000+',
+    'ICN-PRG':'5000+','ICN-MXP':'5000+','ICN-BUD':'5000+'
   },
   /* ── 진에어 (LJ) ── */
   LJ: {
@@ -1458,19 +1510,50 @@ function buildOfficialSection(cd, al, miles, isRT, dep, arr){
       return mi>=parseInt(p[0]) && mi<parseInt(p[1]);
     }
 
-    /* routeMap에서 band 확정 */
+    /* ── isMilesInBand: band 문자열과 마일 수치 일치 여부 (mismatch 경고용) ── */
+    function isMilesInBand(mi, band){
+      if(!band || mi == null) return false;
+      if(band.endsWith('+')){
+        return mi >= parseInt(band);
+      }
+      var p = band.split('-');
+      if(p.length !== 2) return false;
+      return mi >= parseInt(p[0]) && mi < parseInt(p[1]);
+    }
+
+    /* ── routeBand: KE/OZ는 OFFICIAL_ROUTE_MAP 최우선, miles fallback 없음 ── */
     var routeBand = (function(){
       if(!dep || !arr || typeof OFFICIAL_ROUTE_MAP === 'undefined') return null;
       var rm = OFFICIAL_ROUTE_MAP[al.code];
       if(!rm) return null;
       var kr1 = dep+'-'+arr, kr2 = arr+'-'+dep;
-      return rm[kr1] || rm[kr2] || null;
+      var band = rm[kr1] || rm[kr2] || null;
+      /* KE/OZ 공통 mismatch warning — 디버그 전용, 화면 표시에 영향 없음 */
+      if((al.code === 'KE' || al.code === 'OZ') && band && miles != null){
+        if(!isMilesInBand(miles, band)){
+          console.warn('[Route Band Mismatch]', {
+            airline: al.code,
+            route: kr1,
+            officialBand: band,
+            calculatedMiles: miles
+          });
+        }
+      }
+      return band;
     })();
 
     var rows = offData.rows.map(function(r){
-      var isMatch = routeBand
-        ? (r.range === routeBand)
-        : (miles!=null && matchRange(r.range, miles));
+      /* KE/OZ: routeBand가 있으면 반드시 그것만으로 하이라이트 (getMiles 기반 금지)
+         KE/OZ에서 routeBand null = routeMap에 없는 노선 → 아무 행도 하이라이트 안 함
+         기타 항공사(_OFFICIAL_AMT 있지만 OFFICIAL_ROUTE_MAP 없음): miles fallback 허용 */
+      var isMatch;
+      if(routeBand !== null){
+        isMatch = (r.range === routeBand);
+      } else if(al.code === 'KE' || al.code === 'OZ'){
+        isMatch = false; /* routeMap 미등록 노선 — 하이라이트 없음 */
+      } else {
+        isMatch = (miles != null && matchRange(r.range, miles));
+      }
       var cls    = isMatch ? ' highlighted' : '';
       var badge  = isMatch ? '<span class="route-highlight-badge">'+window.t('index.card.currentRoute')+'</span>' : '';
 
