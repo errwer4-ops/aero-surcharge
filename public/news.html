@@ -197,7 +197,7 @@
   <!-- [4] 핵심 요약 카드 — data-i18n으로 다국어 처리 -->
   <div class="summary-card">
     <div class="summary-card-title" data-i18n="news.summary.title">📌 2026년 6월 핵심 요약</div>
-    <div class="summary-updated" data-i18n="news.summary.updated">🕐 2026.05.15 20:30 KST 기준 시장 지표 반영</div>
+    <div class="summary-updated" data-i18n="news.summary.updated">🕐 2026.05.16 19:15 KST 기준 시장 지표 반영</div>
     <ul>
       <li data-i18n="news.summary.li1">브렌트유 약 $104~106/bbl — 고점권 변동성 유지</li>
       <li data-i18n="news.summary.li2">항공유(MOPS) 약 511.21 cent/gal, 약 $214.71/bbl — 최고 기준 470 cent/gal 상회 지속</li>
@@ -266,8 +266,8 @@
   </div>
 
   <div class="market-brief-box">
-    <div class="mb-title"   data-i18n="news.marketTitle">🌍 시장 브리핑 (2026.05.15 20:30 KST 기준)</div>
-    <div class="mb-item" style="font-size:11px;color:#5D4037;font-weight:700;margin-bottom:6px;" data-i18n="news.dataRef">🕐 데이터 기준: 2026.05.15 20:30 KST</div>
+    <div class="mb-title"   data-i18n="news.marketTitle">🌍 시장 브리핑 (2026.05.16 19:15 KST 기준)</div>
+    <div class="mb-item" style="font-size:11px;color:#5D4037;font-weight:700;margin-bottom:6px;" data-i18n="news.dataRef">🕐 데이터 기준: 2026.05.16 19:15 KST</div>
     <div class="mb-item" style="font-weight:700;color:#33691E;margin-bottom:2px;">⛽ 브렌트유</div>
     <div class="mb-item"    data-i18n="news.brent">약 $104~106/bbl — 고점권 변동성 유지</div>
     <div class="mb-item" style="font-weight:700;color:#33691E;margin-bottom:2px;margin-top:6px;">✈️ 항공유(MOPS)</div>
@@ -328,7 +328,7 @@
 
   <div class="data-ref-banner" id="dataRefBanner">
     <div class="data-ref-notice" data-i18n="news.surchargeNote">※ 유류할증료는 예약 시점 기준으로 적용됩니다. 변동 전에 예약 여부를 반드시 확인하세요.</div>
-    <div class="data-ref-time" data-i18n="news.dataRef">🕐 데이터 기준: 2026.05.15 20:30 KST</div>
+    <div class="data-ref-time" data-i18n="news.dataRef">🕐 데이터 기준: 2026.05.16 19:15 KST</div>
     <div class="data-ref-summary" data-i18n="news.curSummary">→ 브렌트유 $104~106대 + MOPS 511.21 cent/gal + 환율 1,495~1,500원대 복합 영향 — 6월 급격한 인하 가능성 제한, 공식 공시 확인 필요</div>
   </div>
 
@@ -446,16 +446,16 @@ async function loadNews(){
    FORECAST_DATA feed 값이 오더라도 이 값으로 고정.
    ════════════════════════════════════════════════════════ */
 var TODAY_MARKET = {
-  brent:   '브렌트유 약 $104~106/bbl — 고점권 변동성 유지',
-  brentEn: 'Brent crude around $104–106/bbl — elevated volatility persists at highs',
-  fx:      'USD/KRW 약 1,495~1,500원대 — 장중 1,500원 돌파 사례 발생',
-  fxEn:    'USD/KRW around 1,495–1,500 KRW — intraday break above 1,500 observed',
-  mops:    'MOPS 약 511.21 cent/gal / 약 $214.71/bbl — 최고 단계 기준(470 cent/gal) 상회 지속',
-  mopsEn:  'MOPS around 511.21 cent/gal / ~$214.71/bbl — above the 470 cent/gal highest-band threshold',
-  geo:     '중동 리스크 영향 지속 — 안전자산 선호로 달러 강세, 유가 + 환율 동시 압박 구조',
-  geoEn:   'Middle East risk impact continues — dollar strength on safe-haven demand, combined oil + FX pressure',
-  outlook: '브렌트유 $105대 + MOPS 511.21 cent/gal + 환율 1,495~1,500원대 — 6월 급격한 인하 가능성 제한적',
-  outlookEn: 'Brent ~$105 + MOPS 511.21 cent/gal + USD/KRW 1,495–1,500 — sharp June surcharge cut unlikely'
+  brent:   '브렌트유 약 $100~106/bbl — 고점권 변동성 유지',
+  brentEn: 'Brent crude around $100–106/bbl — elevated volatility persists at highs',
+  fx:      'USD/KRW 약 1,490~1,500원대 — 달러 강세·원화 약세 흐름 유지',
+  fxEn:    'USD/KRW around 1,490–1,500 KRW — dollar strength, KRW weakness persists',
+  mops:    'MOPS 최고 단계 기준(470 cent/gal) 상회 상태 유지 — 항공유 가격 상방 압력 지속',
+  mopsEn:  'MOPS above the 470 cent/gal highest-band threshold — jet fuel upward price pressure maintained',
+  geo:     '호르무즈 긴장 완전 해소 아님 (제한적 통행 정상화 수준) — 공급 불안 심리·달러 강세 지속',
+  geoEn:   'Hormuz tension not fully resolved (limited passage normalisation) — supply uncertainty and dollar strength persist',
+  outlook: '유가·환율·항공유(MOPS) 동시 압박 구조 — 6월 유류할증료 급락 가능성 제한, 고점 유지 분위기 우세',
+  outlookEn: 'Oil, FX, jet fuel (MOPS) simultaneous pressure — sharp June surcharge drop unlikely, elevated hold scenario dominant'
 };
 
 /* ════════════════════════════════════════════════════════
@@ -965,6 +965,15 @@ function getCatLabel(cat){
    ════════════════════════════════════════════════════════ */
 var FIXED_NEWS_FALLBACK = {
   ko: {
+    /* ── 2026-05-16 신규 카드뉴스 (NEW) ── */
+    'news.fixed.20260516a.title':   '유가·환율·항공유 동반 압박 지속 — 6월 유류할증료 급락 가능성 제한',
+    'news.fixed.20260516a.summary': '2026.05.16 19:15 KST 기준 시장 주요 지표 현황:\n\n• 브렌트유: 약 $100~106/bbl — 중동 리스크로 변동성 지속, 고점권 유지\n• 항공유(MOPS): 최고 기준(470 cent/gal) 상회 상태 유지 — 항공유 가격 상방 압력 지속\n• 원달러 환율: 약 1,490~1,500원대 — 장중 1,500원 부근 접근, 달러 강세·원화 약세 흐름\n• 호르무즈 해협: 긴장 완전 해소 아님 — 제한적 통행 정상화 수준, 공급 불안 심리 유지\n\n유가·환율·항공유(MOPS) 3대 지표가 동시 압박 구조를 유지하고 있어 단기 급락보다는 고점 유지 분위기가 우세합니다.',
+    'news.fixed.20260516a.impact':  '→ 6월 유류할증료 급락 가능성은 제한적이며, 높은 수준 유지 가능성이 우세합니다.',
+    'news.fixed.20260516a.source':  '시장 데이터 기반 참고 분석 (2026.05.16)',
+    'news.fixed.20260516a.tag1': '브렌트유 고점 유지', 'news.fixed.20260516a.tag2': '환율 1,500원 부근',
+    'news.fixed.20260516a.tag3': '항공유 상방 압력', 'news.fixed.20260516a.tag4': '호르무즈 리스크',
+    'news.fixed.20260516a.tag5': '유류할증료',
+
     /* ── 2026-05-15 신규 카드뉴스 (NEW) ── */
     'news.fixed.20260515a.title':   '국제선 유류할증료 최고 수준 유지… 환율 1,500원 접근',
     'news.fixed.20260515a.summary': '대한항공·아시아나 등 국제선 유류할증료가 최고 단계를 유지하고 있습니다.\n\n주요 지표 (2026.05.15 20:30 KST 기준):\n\n• MOPS: 약 511.21 cent/gal (약 $214.71/bbl) — 최고 단계 기준 470 cent/gal 상회 지속\n• 브렌트유: 약 $104~106/bbl 구간\n• 원달러 환율: 약 1,495~1,500원대 — 장중 1,500원 돌파\n\n유가·환율 복합 영향으로 여행 체감 비용이 증가하고 있습니다.',
@@ -1423,6 +1432,15 @@ var FIXED_NEWS_FALLBACK = {
     'news.fixed.20260424yp.tag3': '5월공시',       'news.fixed.20260424yp.tag4': '항공권 유류할증료'
   },
   en: {
+    /* ── 2026-05-16 new card (NEW) ── */
+    'news.fixed.20260516a.title':   'Oil, FX & jet fuel triple pressure continues — June surcharge sharp drop unlikely',
+    'news.fixed.20260516a.summary': 'Key market indicators as of 2026.05.16 19:15 KST:\n\n• Brent crude: ~$100–106/bbl — Middle East risk sustains elevated volatility\n• Jet fuel (MOPS): above the 470 cent/gal highest-band threshold — upward price pressure maintained\n• USD/KRW: ~1,490–1,500 — dollar strength, KRW weakness persists; intraday approach to 1,500\n• Hormuz Strait: tension not fully resolved — limited passage normalisation, supply uncertainty persists\n\nAll three key variables — oil, FX, jet fuel (MOPS) — remain in a simultaneous pressure structure. An elevated hold scenario is dominant over a sharp near-term decline.',
+    'news.fixed.20260516a.impact':  '→ A sharp June surcharge drop is unlikely; elevated levels are more probable.',
+    'news.fixed.20260516a.source':  'Market data reference analysis (2026.05.16)',
+    'news.fixed.20260516a.tag1': 'Brent hold', 'news.fixed.20260516a.tag2': 'FX near 1,500',
+    'news.fixed.20260516a.tag3': 'jet fuel upward pressure', 'news.fixed.20260516a.tag4': 'Hormuz risk',
+    'news.fixed.20260516a.tag5': 'fuel surcharge',
+
     /* ── 2026-05-15 new cards (NEW) ── */
     'news.fixed.20260515a.title':   'International fuel surcharges remain at peak level… USD/KRW approaches 1,500',
     'news.fixed.20260515a.summary': 'Korean Air, Asiana and other carriers continue to apply peak-tier international fuel surcharges.\n\nKey indicators (as of 2026.05.15 20:30 KST):\n\n• MOPS: ~511.21 cent/gal (~$214.71/bbl) — above the 470 cent/gal highest-band threshold\n• Brent crude: ~$104–106/bbl\n• USD/KRW: ~1,495–1,500 — intraday break above 1,500 observed\n\nCombined oil and FX pressures are increasing the overall travel cost burden.',
@@ -1858,6 +1876,14 @@ var FIXED_NEWS_FALLBACK = {
 };
 
 var FIXED_NEWS = [
+  /* ── 2026-05-16 신규 카드뉴스 (NEW - 최상단) ── */
+  {category:'market', priority:1, date:'2026-05-16', aiSummary:true, isNew:true,
+   titleKey:'news.fixed.20260516a.title', summaryKey:'news.fixed.20260516a.summary',
+   impactKey:'news.fixed.20260516a.impact', sourceNameKey:'news.fixed.20260516a.source',
+   tagKeys:['news.fixed.20260516a.tag1','news.fixed.20260516a.tag2',
+            'news.fixed.20260516a.tag3','news.fixed.20260516a.tag4','news.fixed.20260516a.tag5'],
+   relevanceScore:1.0},
+
   /* ── 2026-05-15 신규 카드뉴스 (NEW - 최상단) ── */
   {category:'market', priority:1, date:'2026-05-15', aiSummary:true, isNew:true,
    titleKey:'news.fixed.20260515a.title', summaryKey:'news.fixed.20260515a.summary',

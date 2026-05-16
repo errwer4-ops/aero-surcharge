@@ -3,8 +3,8 @@
 /* ─────────────────────────────────────────────
    환율 / 통화 포매팅
 ───────────────────────────────────────────── */
-window.RATES    = { KRW:1, USD:1/1450, JPY:1/10.1, EUR:1/1630, GBP:1/1870, CNY:1/204, AUD:1/950, SGD:1/1110, HKD:1/190 };
-/* 환율 기준: USD/KRW 1,450원 (2026.05.07 기준) */
+window.RATES    = { KRW:1, USD:1/1495, JPY:1/10.1, EUR:1/1630, GBP:1/1870, CNY:1/204, AUD:1/950, SGD:1/1110, HKD:1/190 };
+/* 환율 기준: USD/KRW 1,495원 (2026.05.16 기준) */
 window.CURR_SYM = { KRW:'₩', USD:'$', JPY:'¥', EUR:'€', GBP:'£', CNY:'¥', AUD:'A$', SGD:'S$', HKD:'HK$' };
 window.CURR_DEC = { KRW:0, USD:2, JPY:0, EUR:2, GBP:2, CNY:2, AUD:2, SGD:2, HKD:1 };
 window.SHARED_STATE = { lang:'ko', curr:'KRW' };
@@ -83,13 +83,13 @@ window.I18N_SHARED = {
        confidence:{high:'높음',medium:'보통',low:'낮음'},
        predictBasis:'예측 근거', predictNote:'공식 공지 전 참고용 추정값입니다.',
        navRoutes:'노선별 조회', navAirlines:'항공사 인덱스', navNews:'참고 소식',
-       /* 2026.05.15 20:30 KST 시장 브리핑 공용 키 */
-       marketDataRef: '🕐 2026.05.15 20:30 KST 기준',
-       marketBrent:   '브렌트유: 약 $104~106/bbl — 고점권 변동성 유지',
-       marketMops:    '항공유(MOPS): 약 511.21 cent/gal / 약 $214.71/bbl — 최고 기준 470 cent/gal 상회',
-       marketFx:      '원달러 환율: 약 1,495~1,500원대 — 장중 1,500원 돌파',
-       marketGeo:     '중동 리스크 지속 — 달러 강세, 유가+환율 동시 압박 구조',
-       marketOutlook: '6월 급격한 인하 가능성 제한 — 고점 유지+제한적 완화 공존' },
+       /* 2026.05.16 19:15 KST 시장 브리핑 공용 키 */
+       marketDataRef: '🕐 2026.05.16 19:15 KST 기준',
+       marketBrent:   '브렌트유: 약 $100~106/bbl — 고점권 변동성 유지',
+       marketMops:    '항공유(MOPS): 최고 기준(470 cent/gal) 상회 상태 유지 — 항공유 가격 상방 압력 지속',
+       marketFx:      '원달러 환율: 약 1,490~1,500원대 — 달러 강세·원화 약세 흐름 유지',
+       marketGeo:     '호르무즈 리스크 지속 (제한적 통행 정상화 수준) — 공급 불안 심리 유지',
+       marketOutlook: '6월 유류할증료 급락 가능성 제한 — 고점 유지 흐름 우세' },
   en:{ btnOW:'One-way', btnRT:'Round-trip', officialSite:'Official site ↗',
        loading:'Loading...', loadErr:'Load failed', noData:'No data.',
        official:'Official', aiPredict:'AI Forecast', prepublish:'Not yet published', noValue:'No data',
@@ -98,13 +98,13 @@ window.I18N_SHARED = {
        confidence:{high:'High',medium:'Medium',low:'Low'},
        predictBasis:'Forecast basis', predictNote:'Pre-announcement estimate. For reference only.',
        navRoutes:'Route Search', navAirlines:'Airline Index', navNews:'News & Insights',
-       /* 2026.05.15 20:30 KST market brief shared keys */
-       marketDataRef: '🕐 As of 2026.05.15 20:30 KST',
-       marketBrent:   'Brent crude: ~$104–106/bbl — elevated volatility at highs',
-       marketMops:    'Jet fuel (MOPS): ~511.21 cent/gal / ~$214.71/bbl — above 470 cent/gal threshold',
-       marketFx:      'USD/KRW: ~1,495–1,500 — intraday break above 1,500 observed',
-       marketGeo:     'Middle East risk continues — dollar strength, combined oil + FX pressure',
-       marketOutlook: 'June sharp cut unlikely — elevated hold + limited easing coexist' },
+       /* 2026.05.16 19:15 KST market brief shared keys */
+       marketDataRef: '🕐 As of 2026.05.16 19:15 KST',
+       marketBrent:   'Brent crude: ~$100–106/bbl — elevated volatility persists at highs',
+       marketMops:    'Jet fuel (MOPS): above 470 cent/gal threshold — upward price pressure maintained',
+       marketFx:      'USD/KRW: ~1,490–1,500 — dollar strength, KRW weakness persists',
+       marketGeo:     'Hormuz risk ongoing (limited passage normalisation) — supply uncertainty sentiment persists',
+       marketOutlook: 'June sharp surcharge drop unlikely — elevated hold scenario dominant' },
   ja:{ btnOW:'片道', btnRT:'往復', officialSite:'公式サイト ↗',
        loading:'読み込み中...', loadErr:'読み込み失敗', noData:'データなし',
        official:'公式', aiPredict:'AI予測', prepublish:'未公示', noValue:'データなし',
