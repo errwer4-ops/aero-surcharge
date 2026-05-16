@@ -1064,27 +1064,31 @@ var OFFICIAL_ROUTE_MAP = {
     'ICN-FCO':'5000+','ICN-BCN':'5000+','ICN-CAI':'5000+',
     'ICN-PRG':'5000+','ICN-MXP':'5000+','ICN-BUD':'5000+'
   },
-  /* ── 진에어 (LJ) ── */
+  /* ── 진에어 (LJ) ── 공식 PDF 기준 실제 공시 노선만 반영 ──
+     출처: 진에어 공식 유류할증료 공지 (2026년 5월 적용)
+     거리 기반 자동 생성 ≠ 실제 노선 → 이 맵에 없는 노선은 no-data 처리 */
   LJ: {
-    'CJU-PVG':'0-599','ICN-PVG':'0-599','ICN-FUK':'0-599','PUS-FUK':'0-599',
-    'ICN-KIX':'0-599','PUS-KIX':'0-599',
-    'PUS-NGO':'0-599',
-    'ICN-OKA':'600-1199','PUS-OKA':'600-1199',
-    'ICN-NRT':'600-1199','PUS-NRT':'600-1199',
-    'ICN-NGO':'600-1199',
-    'ICN-CTS':'600-1199','PUS-CTS':'600-1199',
+    /* 1~599mi — 후쿠오카·기타큐슈·오사카·다카마쓰·칭다오(ICN 출발) / 후쿠오카·오사카·나고야(PUS 출발) / 상하이(CJU 출발) */
+    'ICN-FUK':'0-599','ICN-KKJ':'0-599','ICN-KIX':'0-599','ICN-TAK':'0-599','ICN-TAO':'0-599',
+    'PUS-FUK':'0-599','PUS-KIX':'0-599','PUS-NGO':'0-599',
+    'CJU-PVG':'0-599',
+    /* 600~1,199mi — 오키나와·도쿄·나고야·삿포로(ICN/PUS 출발) / 타이베이·타이중(ICN/PUS/CJU 출발) / 홍콩(CJU 출발) */
+    'ICN-OKA':'600-1199','ICN-NRT':'600-1199','ICN-NGO':'600-1199','ICN-CTS':'600-1199',
+    'PUS-OKA':'600-1199','PUS-NRT':'600-1199','PUS-CTS':'600-1199',
     'ICN-TPE':'600-1199','PUS-TPE':'600-1199','CJU-TPE':'600-1199',
     'ICN-TXG':'600-1199','PUS-TXG':'600-1199',
-    'CJJ-CGO':'600-1199',
     'CJU-HKG':'600-1199',
+    /* 1,200~1,799mi — 클락·세부·괌(PUS 출발) / 울란바타르(ICN/PUS 출발) */
     'ICN-CRK':'1200-1799','PUS-CRK':'1200-1799',
     'PUS-CEB':'1200-1799',
     'PUS-GUM':'1200-1799',
-    'PUS-ULN':'1200-1799','ICN-ULN':'1200-1799',
+    'ICN-ULN':'1200-1799','PUS-ULN':'1200-1799',
+    /* 1,800~2,399mi — 다낭·보홀·괌(ICN 출발) / 세부(ICN 출발) */
     'ICN-DAD':'1800-2399','PUS-DAD':'1800-2399',
     'ICN-CEB':'1800-2399',
     'ICN-TAG':'1800-2399',
     'ICN-GUM':'1800-2399',
+    /* 2,400~3,599mi — 푸껫(ICN 출발) */
     'ICN-HKT':'2400-3599'
   },
 
@@ -1543,14 +1547,15 @@ function buildOfficialSection(cd, al, miles, isRT, dep, arr){
     })();
 
     var rows = offData.rows.map(function(r){
-      /* KE/OZ: routeBand가 있으면 반드시 그것만으로 하이라이트 (getMiles 기반 금지)
-         KE/OZ에서 routeBand null = routeMap에 없는 노선 → 아무 행도 하이라이트 안 함
+      /* KE/OZ/LJ: OFFICIAL_ROUTE_MAP strict 처리 — miles fallback 금지
+         routeBand null = routeMap에 없는 노선 → 아무 행도 하이라이트 안 함
+         LJ는 반드시 공식 PDF 공시 노선 기반으로만 동작 (거리 자동 매칭 금지)
          기타 항공사(_OFFICIAL_AMT 있지만 OFFICIAL_ROUTE_MAP 없음): miles fallback 허용 */
       var isMatch;
       if(routeBand !== null){
         isMatch = (r.range === routeBand);
-      } else if(al.code === 'KE' || al.code === 'OZ'){
-        isMatch = false; /* routeMap 미등록 노선 — 하이라이트 없음 */
+      } else if(al.code === 'KE' || al.code === 'OZ' || al.code === 'LJ'){
+        isMatch = false; /* routeMap 미등록 노선 — 하이라이트 없음 (no-data 처리) */
       } else {
         isMatch = (miles != null && matchRange(r.range, miles));
       }

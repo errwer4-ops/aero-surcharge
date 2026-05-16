@@ -142,7 +142,7 @@
       'lj.th.apr':'2026년 4월',
       'lj.th.may':'2026년 5월',
       'lj.th.diff':'변동',
-      'lj.footnote':'※ USD 공시 기준, 편도. 적용 기간: 2026.05.01~05.31 (발권일 기준). 출처: 진에어 공식 공지(2026.04.17). 통화 선택 시 참고 환산값이 표시됩니다.',
+      'lj.footnote': '※ 이 표는 진에어(LJ) 공식 유류할증료 공지 PDF 기준 실제 공시 노선을 반영합니다. 거리 기반 자동 생성 노선이 아닌 공식 PDF에 명시된 노선만 표시됩니다. 최종 금액은 공식 공지를 반드시 확인하세요.',
       'lj.officialTitle':'🔗 공식 유류할증료 공지 바로가기',
       'lj.officialSite':'공식 사이트',
       'lj.relatedTitle':'🔗 관련 페이지',
@@ -238,7 +238,7 @@
       'lj.th.apr':'2026年4月',
       'lj.th.may':'2026年5月',
       'lj.th.diff':'変動',
-      'lj.footnote':'※ USD公示・片道基準。適用期間: 2026.05.01〜05.31（発券日基準）。出典: ジンエアー公式公示(2026.04.17)。',
+      'lj.footnote': '※ This table reflects only official routes listed in the Jin Air (LJ) official fuel surcharge notice PDF. Routes not in the official PDF are excluded — no distance-based auto-generation. Always verify final amounts via the official notice.',
       'lj.officialTitle':'🔗 公式燃油サーチャージ公示',
       'lj.officialSite':'公式サイト',
       'lj.relatedTitle':'🔗 関連ページ',
@@ -301,14 +301,67 @@
 })();
 
 /* ── 데이터 ── */
+/* ── 진에어(LJ) AIRLINE_PAGE_DATA ──────────────────────────────────
+   출처: 진에어 공식 유류할증료 공지 PDF (2026년 5월 적용)
+   ※ 공식 PDF에 명시된 실제 운항 노선만 반영.
+      거리 기반 자동 생성 노선 제외.
+      ICN-HRB / ICN-FSZ / ICN-HKD / ICN-PEK / CJJ-CGO 등 비공시 노선 미포함.
+────────────────────────────────────────────────────────────────── */
 var AIRLINE_PAGE_DATA = {
   carrier:'LJ', baseCurrency:'USD', i18nPrefix:'lj',
+  /* _sourceType: 공식 PDF 공시 노선 기반 (거리 템플릿 자동 생성 아님) */
+  _sourceType: 'official_pdf',
   rows:[
-    {range:"1~599",routeKo:"후쿠오카·오사카·나고야·상하이·칭다오",routeEn:"Fukuoka · Osaka · Nagoya · Shanghai · Qingdao",routeJa:"福岡・大阪・名古屋・上海・青島",routeZh:"福冈·大阪·名古屋·上海·青岛",apr:25,may:42},
-    {range:"600~1,199",routeKo:"오키나와·도쿄·삿포로·타이베이·타이중·홍콩",routeEn:"Okinawa · Tokyo · Sapporo · Taipei · Taichung · Hong Kong",routeJa:"沖縄・東京・札幌・台北・台中・香港",routeZh:"冲绳·东京·札幌·台北·台中·香港",apr:35,may:66},
-    {range:"1,200~1,799",routeKo:"클락·세부·괌·울란바타르·구이린",routeEn:"Clark · Cebu · Guam · Ulaanbaatar · Guilin",routeJa:"クラーク・セブ・グアム・ウランバートル・桂林",routeZh:"克拉克·宿务·关岛·乌兰巴托·桂林",apr:58,may:107},
-    {range:"1,800~2,399",routeKo:"다낭·보홀·방콕·치앙마이·나트랑·푸꾸옥",routeEn:"Da Nang · Bohol · Bangkok · Chiang Mai · Nha Trang · Phu Quoc",routeJa:"ダナン・ボホール・バンコク・チェンマイ・ニャチャン・フーコック",routeZh:"岘港·薄荷岛·曼谷·清迈·芽庄·富国岛",apr:63,may:117},
-    {range:"2,400~3,599",routeKo:"푸껫",routeEn:"Phuket",routeJa:"プーケット",routeZh:"普吉",apr:76,may:140},
+    /* 1~599mi
+       ICN출발: 후쿠오카(FUK)·기타큐슈(KKJ)·오사카(KIX)·다카마쓰(TAK)·칭다오(TAO)
+       PUS출발: 후쿠오카(FUK)·오사카(KIX)·나고야(NGO)
+       CJU출발: 상하이 푸동(PVG) */
+    {range:"1~599",
+     routeKo:"후쿠오카·기타큐슈·오사카·다카마쓰·칭다오 (인천출발) / 후쿠오카·오사카·나고야 (부산출발) / 상하이 (제주출발)",
+     routeEn:"Fukuoka · Kitakyushu · Osaka · Takamatsu · Qingdao (from ICN) / Fukuoka · Osaka · Nagoya (from PUS) / Shanghai (from CJU)",
+     routeJa:"福岡・北九州・大阪・高松・青島（仁川発）/ 福岡・大阪・名古屋（釜山発）/ 上海（済州発）",
+     routeZh:"福冈·北九州·大阪·高松·青岛（仁川出发）/ 福冈·大阪·名古屋（釜山出发）/ 上海（济州出发）",
+     apr:25, may:42},
+
+    /* 600~1,199mi
+       ICN출발: 오키나와(OKA)·나리타(NRT)·나고야(NGO)·삿포로(CTS)·타이베이(TPE)·타이중(TXG)
+       PUS출발: 오키나와(OKA)·나리타(NRT)·삿포로(CTS)·타이베이(TPE)·타이중(TXG)
+       CJU출발: 타이베이(TPE)·홍콩(HKG) */
+    {range:"600~1,199",
+     routeKo:"오키나와·나리타·나고야·삿포로 (인천/부산출발) / 타이베이·타이중 (인천/부산/제주출발) / 홍콩 (제주출발)",
+     routeEn:"Okinawa · Tokyo · Nagoya · Sapporo (from ICN/PUS) / Taipei · Taichung (from ICN/PUS/CJU) / Hong Kong (from CJU)",
+     routeJa:"沖縄・成田・名古屋・札幌（仁川/釜山発）/ 台北・台中（仁川/釜山/済州発）/ 香港（済州発）",
+     routeZh:"冲绳·成田·名古屋·札幌（仁川/釜山出发）/ 台北·台中（仁川/釜山/济州出发）/ 香港（济州出发）",
+     apr:35, may:66},
+
+    /* 1,200~1,799mi
+       ICN출발: 클락(CRK)·울란바타르(ULN)
+       PUS출발: 클락(CRK)·세부(CEB)·괌(GUM)·울란바타르(ULN) */
+    {range:"1,200~1,799",
+     routeKo:"클락 (인천/부산출발) / 세부·괌·울란바타르 (부산출발) / 울란바타르 (인천출발)",
+     routeEn:"Clark (from ICN/PUS) / Cebu · Guam · Ulaanbaatar (from PUS) / Ulaanbaatar (from ICN)",
+     routeJa:"クラーク（仁川/釜山発）/ セブ・グアム・ウランバートル（釜山発）/ ウランバートル（仁川発）",
+     routeZh:"克拉克（仁川/釜山出发）/ 宿务·关岛·乌兰巴托（釜山出发）/ 乌兰巴托（仁川出发）",
+     apr:58, may:107},
+
+    /* 1,800~2,399mi
+       ICN출발: 다낭(DAD)·세부(CEB)·보홀(TAG)·괌(GUM)
+       PUS출발: 다낭(DAD) */
+    {range:"1,800~2,399",
+     routeKo:"다낭 (인천/부산출발) / 세부·보홀·괌 (인천출발)",
+     routeEn:"Da Nang (from ICN/PUS) / Cebu · Tagbilaran · Guam (from ICN)",
+     routeJa:"ダナン（仁川/釜山発）/ セブ・ボホール・グアム（仁川発）",
+     routeZh:"岘港（仁川/釜山出发）/ 宿务·薄荷岛·关岛（仁川出发）",
+     apr:63, may:117},
+
+    /* 2,400~3,599mi
+       ICN출발: 푸껫(HKT) */
+    {range:"2,400~3,599",
+     routeKo:"푸껫 (인천출발)",
+     routeEn:"Phuket (from ICN)",
+     routeJa:"プーケット（仁川発）",
+     routeZh:"普吉（仁川出发）",
+     apr:76, may:140},
   ]
 };
 
