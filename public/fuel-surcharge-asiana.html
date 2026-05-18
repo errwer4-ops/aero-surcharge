@@ -72,7 +72,7 @@
       <tbody id="surchargeTableBody"></tbody>
     </table>
   </div>
-  <p style="font-size:11px;color:var(--muted);margin-top:-16px;margin-bottom:20px;" id="tableFootnote">※ KRW 공시 기준, 편도. 적용 기간: 2026.05.01~05.31 (발권일 기준). 출처: 아시아나항공 공식 공지(2026.04.16). 통화 선택 시 참고 환산값이 표시됩니다.</p>
+  <p style="font-size:11px;color:var(--muted);margin-top:-16px;margin-bottom:20px;" id="tableFootnote">※ KRW 공시 기준, 편도. 적용 기간: 6월 적용 기간: 2026.06.01~06.30 (발권일 기준). 출처: 아시아나항공 공식 공지 (2026.05). 통화 선택 시 참고 환산값이 표시됩니다.</p>
   <div class="affiliate-box" style="display:flex;flex-direction:column;gap:10px;">
     <div>
       <div class="affiliate-title" data-i18n="affiliate.flight.title">✈️ 유류할증료 포함 항공권 실제 결제 금액</div>
@@ -90,7 +90,7 @@
   <div class="official-link-box">
     <div class="official-link-title" data-i18n="oz.officialTitle">🔗 공식 유류할증료 공지 바로가기</div>
     <div class="official-link-list">
-      <div class="official-link-item">✈️ <span data-i18n="oz.officialSite">공식 사이트</span>: <a href="https://www.flyasiana.com" target="_blank" rel="noopener">flyasiana.com ↗</a></div>
+      <div class="official-link-item">✈️ <span data-i18n="oz.officialSite">공식 사이트</span>: <a href="https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202605180002529041" target="_blank" rel="noopener">아시아나 6월 공식 공지 ↗</a></div>
     </div>
   </div>
   <div class="related-links">
@@ -136,13 +136,13 @@
       'oz.card2.body':'단거리·장거리 구간에 따라 유류할증료가 다르게 공시됩니다.',
       'oz.card3.title':'공식 확인',
       'oz.card3.body':'정확한 금액은 flyasiana.com에서 반드시 확인하세요.',
-      'oz.sectionTitle':'📊 월별 유류할증료 공시 현황 (KRW 공시)',
+      'oz.sectionTitle':'📊 2026년 5월·6월 유류할증료 비교 (KRW 공시 · 6월 공식 공시 반영)',
       'oz.th.range':'구분/거리',
       'oz.th.route':'노선 예시',
-      'oz.th.apr':'2026년 4월',
-      'oz.th.may':'2026년 5월',
+      'oz.th.may2':'2026년 5월',
+      'oz.th.may':'2026년 5월','oz.th.june':'2026년 6월',
       'oz.th.diff':'변동',
-      'oz.footnote':'※ KRW 공시 기준, 편도. 적용 기간: 2026.05.01~05.31 (발권일 기준). 출처: 아시아나항공 공식 공지(2026.04.16). 통화 선택 시 참고 환산값이 표시됩니다.',
+      'oz.footnote':'※ KRW 공시 기준, 편도. 적용 기간: 6월 적용 기간: 2026.06.01~06.30 (발권일 기준). 출처: 아시아나항공 공식 공지 (2026.05). 통화 선택 시 참고 환산값이 표시됩니다.',
       'oz.officialTitle':'🔗 공식 유류할증료 공지 바로가기',
       'oz.officialSite':'공식 사이트',
       'oz.relatedTitle':'🔗 관련 페이지',
@@ -182,7 +182,7 @@
       'oz.sectionTitle':'📊 Monthly Surcharge Filing (KRW filing)',
       'oz.th.range':'Distance/Zone',
       'oz.th.route':'Route examples',
-      'oz.th.apr':'Apr 2026',
+      'oz.th.may':'May 2026','oz.th.june':'Jun 2026',
       'oz.th.may':'May 2026',
       'oz.th.diff':'Change',
       'oz.footnote':'※ KRW filing, one-way. Period: 2026.05.01–05.31 (ticketing date). Source: Asiana Airlines official notice (2026.04.16).',
@@ -224,7 +224,7 @@
       'oz.sectionTitle':'📊 月別燃油サーチャージ公示 (KRW公示)',
       'oz.th.range':'区間/距離',
       'oz.th.route':'主要路線例',
-      'oz.th.apr':'2026年4月',
+      'oz.th.may':'2026年5月','oz.th.june':'2026年6月',
       'oz.th.may':'2026年5月',
       'oz.th.diff':'変動',
       'oz.footnote':'※ KRW公示・片道基準。適用期間: 2026.05.01〜05.31（発券日基準）。出典: アシアナ航空公式公示(2026.04.16)。',
@@ -266,7 +266,7 @@
       'oz.sectionTitle':'📊 月度燃油附加费公告 (KRW公告)',
       'oz.th.range':'区间/距离',
       'oz.th.route':'主要航线示例',
-      'oz.th.apr':'2026年4月',
+      'oz.th.may':'2026年5月',
       'oz.th.may':'2026年5月',
       'oz.th.diff':'变动',
       'oz.footnote':'※ KRW公告，单程基准。适用期间: 2026.05.01~05.31（出票日基准）。来源: 韩亚航空官方公告(2026.04.16)。',
@@ -305,15 +305,15 @@
 var AIRLINE_PAGE_DATA = {
   carrier:'OZ', baseCurrency:'KRW', i18nPrefix:'oz',
   rows:[
-    {range:"~499",routeKo:"후쿠오카·옌지·창춘·다롄·웨이하이·옌타이·칭다오·구마모토·기타큐슈",routeEn:"Fukuoka · Yanji · Changchun · Dalian · Weihai · Yantai · Qingdao · Kumamoto · Kitakyushu",routeJa:"福岡・延吉・長春・大連・威海・煙台・青島・熊本・北九州",routeZh:"福冈·延吉·长春·大连·威海·烟台·青岛·熊本·北九州",apr:43900,may:85400},
-    {range:"500~999",routeKo:"오사카·나고야·도쿄·오키나와·센다이·삿포로·상하이·베이징·톈진·난징·하얼빈·항저우·창사·타이베이·아사히카와",routeEn:"Osaka · Nagoya · Tokyo · Okinawa · Sendai · Sapporo · Shanghai · Beijing · Tianjin · Nanjing · Harbin · Hangzhou · Changsha · Taipei · Asahikawa",routeJa:"大阪・名古屋・東京・沖縄・仙台・札幌・上海・北京・天津・南京・ハルビン・杭州・長沙・台北・旭川",routeZh:"大阪·名古屋·东京·冲绳·仙台·札幌·上海·北京·天津·南京·哈尔滨·杭州·长沙·台北·旭川",apr:65900,may:125800},
-    {range:"1,000~1,499",routeKo:"시안·광저우·충칭·선전·구이린·청두·홍콩·울란바토르",routeEn:"Xi'an · Guangzhou · Chongqing · Shenzhen · Guilin · Chengdu · Hong Kong · Ulaanbaatar",routeJa:"西安・広州・重慶・深セン・桂林・成都・香港・ウランバートル",routeZh:"西安·广州·重庆·深圳·桂林·成都·香港·乌兰巴托",apr:86400,may:164700},
-    {range:"1,500~1,999",routeKo:"클락·마닐라·하노이·다낭·세부·사이판·하이커우",routeEn:"Clark · Manila · Hanoi · Da Nang · Cebu · Saipan · Haikou",routeJa:"クラーク・マニラ・ハノイ・ダナン・セブ・サイパン・海口",routeZh:"克拉克·马尼拉·河内·岘港·宿务·塞班·海口",apr:106900,may:203700},
-    {range:"2,000~2,499",routeKo:"호찌민·프놈펜·방콕·팔라우·괌·푸꾸옥·나트랑·치앙마이·코타키나발루",routeEn:"Ho Chi Minh · Phnom Penh · Bangkok · Palau · Guam · Phu Quoc · Nha Trang · Chiang Mai · Kota Kinabalu",routeJa:"ホーチミン・プノンペン・バンコク・パラオ・グアム・フーコック・ニャチャン・チェンマイ・コタキナバル",routeZh:"胡志明·金边·曼谷·帕劳·关岛·富国岛·芽庄·清迈·亚庇",apr:127400,may:242600},
-    {range:"2,500~2,999",routeKo:"푸껫·싱가포르·알마티",routeEn:"Phuket · Singapore · Almaty",routeJa:"プーケット・シンガポール・アルマティ",routeZh:"普吉·新加坡·阿拉木图",apr:147900,may:281500},
-    {range:"3,000~3,999",routeKo:"자카르타·타슈켄트",routeEn:"Jakarta · Tashkent",routeJa:"ジャカルタ・タシュケント",routeZh:"雅加达·塔什干",apr:169900,may:320500},
-    {range:"4,000~4,999",routeKo:"이스탄불·호놀룰루",routeEn:"Istanbul · Honolulu",routeJa:"イスタンブール・ホノルル",routeZh:"伊斯坦布尔·火奴鲁鲁",apr:210900,may:398300},
-    {range:"5,000~",routeKo:"로스앤젤레스·샌프란시스코·시애틀·뉴욕·시드니·멜버른·프랑크푸르트·파리·런던·로마·바르셀로나·카이로·프라하·밀라노·부다페스트",routeEn:"Los Angeles · San Francisco · Seattle · New York · Sydney · Melbourne · Frankfurt · Paris · London · Rome · Barcelona · Cairo · Prague · Milan · Budapest",routeJa:"ロサンゼルス・サンフランシスコ・シアトル・ニューヨーク・シドニー・メルボルン・フランクフルト・パリ・ロンドン・ローマ・バルセロナ・カイロ・プラハ・ミラノ・ブダペスト",routeZh:"洛杉矶·旧金山·西雅图·纽约·悉尼·墨尔本·法兰克福·巴黎·伦敦·罗马·巴塞罗那·开罗·布拉格·米兰·布达佩斯",apr:251900,may:476200},
+    {range:"~499",routeKo:"후쿠오카·옌지·창춘·다롄·웨이하이·옌타이·칭다오·구마모토·기타큐슈",routeEn:"Fukuoka · Yanji · Changchun · Dalian · Weihai · Yantai · Qingdao · Kumamoto · Kitakyushu",routeJa:"福岡・延吉・長春・大連・威海・煙台・青島・熊本・北九州",routeZh:"福冈·延吉·长春·大连·威海·烟台·青岛·熊本·北九州",apr:43900,may:85400,june:68000},
+    {range:"500~999",routeKo:"오사카·나고야·도쿄·오키나와·센다이·삿포로·상하이·베이징·톈진·난징·하얼빈·항저우·창사·타이베이·아사히카와",routeEn:"Osaka · Nagoya · Tokyo · Okinawa · Sendai · Sapporo · Shanghai · Beijing · Tianjin · Nanjing · Harbin · Hangzhou · Changsha · Taipei · Asahikawa",routeJa:"大阪・名古屋・東京・沖縄・仙台・札幌・上海・北京・天津・南京・ハルビン・杭州・長沙・台北・旭川",routeZh:"大阪·名古屋·东京·冲绳·仙台·札幌·上海·北京·天津·南京·哈尔滨·杭州·长沙·台北·旭川",apr:65900,may:125800,june:100500},
+    {range:"1,000~1,499",routeKo:"시안·광저우·충칭·선전·구이린·청두·홍콩·울란바토르",routeEn:"Xi'an · Guangzhou · Chongqing · Shenzhen · Guilin · Chengdu · Hong Kong · Ulaanbaatar",routeJa:"西安・広州・重慶・深セン・桂林・成都・香港・ウランバートル",routeZh:"西安·广州·重庆·深圳·桂林·成都·香港·乌兰巴托",apr:86400,may:164700,june:131500},
+    {range:"1,500~1,999",routeKo:"클락·마닐라·하노이·다낭·세부·사이판·하이커우",routeEn:"Clark · Manila · Hanoi · Da Nang · Cebu · Saipan · Haikou",routeJa:"クラーク・マニラ・ハノイ・ダナン・セブ・サイパン・海口",routeZh:"克拉克·马尼拉·河内·岘港·宿务·塞班·海口",apr:106900,may:203700,june:162600},
+    {range:"2,000~2,499",routeKo:"호찌민·프놈펜·방콕·팔라우·괌·푸꾸옥·나트랑·치앙마이·코타키나발루",routeEn:"Ho Chi Minh · Phnom Penh · Bangkok · Palau · Guam · Phu Quoc · Nha Trang · Chiang Mai · Kota Kinabalu",routeJa:"ホーチミン・プノンペン・バンコク・パラオ・グアム・フーコック・ニャチャン・チェンマイ・コタキナバル",routeZh:"胡志明·金边·曼谷·帕劳·关岛·富国岛·芽庄·清迈·亚庇",apr:127400,may:242600,june:195100},
+    {range:"2,500~2,999",routeKo:"푸껫·싱가포르·알마티",routeEn:"Phuket · Singapore · Almaty",routeJa:"プーケット・シンガポール・アルマティ",routeZh:"普吉·新加坡·阿拉木图",apr:147900,may:281500,june:226100},
+    {range:"3,000~3,999",routeKo:"자카르타·타슈켄트",routeEn:"Jakarta · Tashkent",routeJa:"ジャカルタ・タシュケント",routeZh:"雅加达·塔什干",apr:169900,may:320500,june:257100},
+    {range:"4,000~4,999",routeKo:"이스탄불·호놀룰루",routeEn:"Istanbul · Honolulu",routeJa:"イスタンブール・ホノルル",routeZh:"伊斯坦布尔·火奴鲁鲁",apr:210900,may:398300,june:320700},
+    {range:"5,000~",routeKo:"로스앤젤레스·샌프란시스코·시애틀·뉴욕·시드니·멜버른·프랑크푸르트·파리·런던·로마·바르셀로나·카이로·프라하·밀라노·부다페스트",routeEn:"Los Angeles · San Francisco · Seattle · New York · Sydney · Melbourne · Frankfurt · Paris · London · Rome · Barcelona · Cairo · Prague · Milan · Budapest",routeJa:"ロサンゼルス・サンフランシスコ・シアトル・ニューヨーク・シドニー・メルボルン・フランクフルト・パリ・ロンドン・ローマ・バルセロナ・カイロ・プラハ・ミラノ・ブダペスト",routeZh:"洛杉矶·旧金山·西雅图·纽约·悉尼·墨尔本·法兰克福·巴黎·伦敦·罗马·巴塞罗那·开罗·布拉格·米兰·布达佩斯",apr:251900,may:476200,june:382800},
   ]
 };
 
@@ -327,9 +327,13 @@ function fmtFS(amt, base) {
   if (amt == null) return '—';
   return window.fmtAmtDisplay(toKRW(amt, base), base, 1);
 }
-function fmtDiff(apr, may, base) {
-  if (apr == null || may == null) return '—';
-  return '+' + window.fmtAmtDisplay(toKRW(may - apr, base), base, 1);
+function fmtDiff(from, to, base) {
+  if (from == null || to == null) return '—';
+  var diff = to - from;
+  var sign = diff >= 0 ? '+' : '';
+  var pct  = ((diff / from) * 100).toFixed(1);
+  var color = diff < 0 ? 'color:#1565C0;' : 'color:#C62828;';
+  return '<span style="' + color + '">' + sign + pct + '%</span>';
 }
 
 /* ── 테이블 렌더 ── */
@@ -339,17 +343,18 @@ function renderSurchargeTable() {
   var tbody = document.getElementById('surchargeTableBody');
   if (!thead || !tbody) return;
   var px = AIRLINE_PAGE_DATA.i18nPrefix;
-  thead.innerHTML = ['th.range','th.route','th.apr','th.may','th.diff'].map(function(k){
+  thead.innerHTML = ['th.range','th.route','th.may','th.june','th.diff'].map(function(k){
     return '<th>' + window.t(px + '.' + k) + '</th>';
   }).join('');
   tbody.innerHTML = AIRLINE_PAGE_DATA.rows.map(function(r) {
     var route = lang==='en'?r.routeEn : lang==='ja'?r.routeJa : lang==='zh'?r.routeZh : r.routeKo;
-    var aprCell = r.apr == null ? '<td>—</td>' : '<td>' + fmtFS(r.apr, AIRLINE_PAGE_DATA.baseCurrency) + '</td>';
-    var mayCell = r.may == null ? '<td><strong>—</strong></td>' : '<td><strong>' + fmtFS(r.may, AIRLINE_PAGE_DATA.baseCurrency) + '</strong></td>';
-    var diffCell = (r.apr == null || r.may == null)
-      ? '<td style="font-size:11px;color:var(--muted);">' + window.t(px + '.noService') + '</td>'
-      : '<td style="font-size:11px;color:var(--muted);">' + fmtDiff(r.apr, r.may, AIRLINE_PAGE_DATA.baseCurrency) + '</td>';
-    return '<tr><td>' + r.range + '</td><td>' + route + '</td>' + aprCell + mayCell + diffCell + '</tr>';
+    var mayCell = r.may == null ? '<td>—</td>' : '<td>' + fmtFS(r.may, AIRLINE_PAGE_DATA.baseCurrency) + '</td>';
+    var juneCell = r.june == null ? '<td><strong>—</strong></td>'
+      : '<td><strong>' + fmtFS(r.june, AIRLINE_PAGE_DATA.baseCurrency) + '</strong> <span style="font-size:10px;background:#d1fae5;color:#065f46;padding:1px 5px;border-radius:4px;font-weight:700;">공식</span></td>';
+    var diffCell = (r.may == null || r.june == null)
+      ? '<td style="font-size:11px;color:var(--muted);">—</td>'
+      : '<td style="font-size:11px;">' + fmtDiff(r.may, r.june, AIRLINE_PAGE_DATA.baseCurrency) + '</td>';
+    return '<tr><td>' + r.range + '</td><td>' + route + '</td>' + mayCell + juneCell + diffCell + '</tr>';
   }).join('');
   var st = document.getElementById('sectionTitle');
   if (st) st.textContent = window.t(px + '.sectionTitle');

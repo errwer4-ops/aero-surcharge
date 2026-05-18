@@ -213,7 +213,8 @@
       <a href="fuel-surcharge-graph.html"            style="display:block;padding:9px 13px;background:var(--bg);border:1.5px solid var(--line);border-radius:9px;font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;">📈 유류할증료 변동 그래프</a>
       <a href="fuel-surcharge-calculator.html"       style="display:block;padding:9px 13px;background:var(--bg);border:1.5px solid var(--line);border-radius:9px;font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;">🧮 유류할증료 계산 방법</a>
       <a href="fuel-surcharge-2026-05.html"          style="display:block;padding:9px 13px;background:var(--bg);border:1.5px solid var(--line);border-radius:9px;font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;">📅 2026년 5월 유류할증료</a>
-      <a href="fuel-surcharge-2026-06-forecast.html" style="display:block;padding:9px 13px;background:var(--bg);border:1.5px solid var(--line);border-radius:9px;font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;">🔮 2026년 6월 전망</a>
+      <a href="fuel-surcharge-2026-05.html" style="display:block;padding:9px 13px;background:var(--bg);border:1.5px solid var(--line);border-radius:9px;font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;">✅ 2026년 6월 유류할증료</a>
+      <a href="fuel-surcharge-2026-06-forecast.html" style="display:block;padding:9px 13px;background:var(--bg);border:1.5px solid var(--line);border-radius:9px;font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;">🔮 2026년 7월 전망</a>
     </div>
   </section>
 
@@ -228,8 +229,8 @@
    B. 통화 표시 통일: 선택통화 메인 + 원본공시 보조
 ════════════════════════════════════════════════════════ */
 
-var BASE_MONTH = '2026.04';
-var NEXT_MONTH = '2026.05';
+var BASE_MONTH = '2026.05';
+var NEXT_MONTH = '2026.06';
 
 /* ══════════════════════════════════════════════════════
    A. 다국어 사전 (ko/en/ja/zh/fr/de)
@@ -244,8 +245,8 @@ var AIRLINES_I18N = {
     betaDesc:       '현재 한국 출발 국제선 유류할증료를 기준으로 제공되고 있으며, 일부 항공사는 공식 공지 기반 수동 반영입니다. 최종 금액은 항공사 공식 공지를 반드시 확인해주세요.',
     betaNote:       '※ 현재는 한국 출발 국제선만 지원합니다. 해외 출발 노선은 서비스 준비중입니다.',
     krOnlyNote:     '🚩 현재 한국 국적기 9개사를 우선 표시합니다. 일부 항공사(에어부산 등)는 공식 공지 기반 수동 반영됩니다. 외항사는 추후 활성화 예정입니다.',
-    seoSummaryH2:   '📋 2026년 5월 한국 출발 국제선 유류할증료 요약',
-    seoSummaryP:    '2026년 5월 한국 출발 국제선 유류할증료는 전 구간에서 큰 폭으로 인상되었습니다. <strong>대한항공 기준</strong> 단거리(~499 대권거리)는 42,000원 → 75,000원, 장거리(6,500~9,999)는 303,000원 → 564,000원으로 상승하였습니다. <strong>아시아나 기준</strong> 단거리(~499)는 43,900원 → 85,400원, 장거리(5,000마일 이상)는 251,900원 → 476,200원으로 상승하였습니다. LCC 항공사(제주항공·진에어 등) USD 공시 노선도 유사한 폭으로 인상되었으며, 아래 항공사별 비교표에서 4월 대비 5월 증감을 확인할 수 있습니다.',
+    seoSummaryH2:   '📋 2026년 6월 한국 출발 국제선 유류할증료 요약',
+    seoSummaryP:    '2026년 6월 한국 출발 국제선 유류할증료는 대한항공·아시아나·진에어·에어부산이 공식 공시를 완료했습니다. <strong>대한항공 기준</strong> 단거리(~499 대권거리)는 75,000원 → 61,500원, 장거리(6,500~9,999)는 564,000원 → 451,500원으로 인하되었습니다. <strong>아시아나 기준</strong> 단거리(~499)는 85,400원 → 68,000원, 장거리(5,000마일 이상)는 476,200원 → 382,800원으로 인하되었습니다. 아래 항공사별 비교표에서 5월 대비 6월 증감을 확인할 수 있습니다.',
     searchPH:       '항공사명 또는 IATA 코드 검색...',
     ftabAll:        '전체',
     ftabOfficial:   '공식 확인',
@@ -256,22 +257,22 @@ var AIRLINES_I18N = {
     thPeriod:       '기준 월',
     thStatus:       '데이터 상태',
     thSource:       '공식 출처',
-    surchargeIntro: '아래는 2026년 4월·5월 국제선 유류할증료 비교 목록입니다. 항공사 행을 클릭하면 구간별 상세 비교표가 펼쳐집니다.',
+    surchargeIntro: '아래는 2026년 5월·6월 국제선 유류할증료 비교 목록입니다. 항공사 행을 클릭하면 구간별 상세 비교표가 펼쳐집니다.',
     loadingText:    '데이터 로딩 중...',
-    analysisH3:     '2026년 4월 → 5월 유류할증료 변화 분석',
+    analysisH3:     '2026년 5월 → 6월 유류할증료 변화 분석',
     analysisBullets:[
       '<strong>전 구간 일제 인상</strong> — 한국 출발 국제선 모든 거리구간에서 유류할증료가 상승하였습니다.',
       '<strong>인상폭:</strong> 단거리 대비 장거리 구간의 절대 인상액이 훨씬 크며, <strong>대한항공 장거리(6,500~9,999) 기준 약 261,000원</strong>, <strong>아시아나 장거리(5,000마일 이상) 기준 약 224,300원</strong> 인상됩니다. 항공사별 인상폭이 상이하므로 개별 확인이 필요합니다.',
-      '<strong>LCC 항공사 비교</strong> — 제주항공·진에어 등 USD 공시 항공사는 환율 영향을 받으며, 5월 공시 기준 단거리 구간이 USD 25~29 → USD 42~52로 상승하였습니다.',
-      '<strong>이스타항공(군별 공시)</strong> — 1군(일본 근거리)이 USD 29 → USD 52로 인상, 6군(알마티)은 USD 68 → USD 126으로 큰 폭 인상됩니다.',
+      '<strong>LCC 항공사 비교</strong> — 진에어·에어부산은 6월 공시 완료. 단거리 구간이 USD 42~52 → USD 36~43으로 인하되었습니다. 제주항공 등 타 LCC는 6월 공시 확인 필요.',
+      '<strong>대한항공·아시아나(KRW 공시)</strong> — 대한항공 단거리 75,000원→61,500원, 아시아나 단거리 85,400원→68,000원 인하. 전 구간 인하 구조.',
       '실제 발권 시 적용 유류할증료는 각 항공사 공식 공지를 반드시 재확인하세요.',
     ],
     noResults:      '해당하는 항공사가 없습니다',
-    expandHint:     '4월→5월 비교',
-    compareTitle:   '4월 vs 5월 유류할증료 비교',
+    expandHint:     '5월→6월 비교',
+    compareTitle:   '5월 vs 6월 유류할증료 비교',
     officialNotice: '공식 공지',
     aprNotice:      '4월 공식 공지',
-    mayNotice:      '5월 공식 공지',
+    mayNotice:      '6월 공식 공시',
     noNotice:       '공식 공지 없음',
     noData:         '비교 데이터가 없습니다.',
     colBand:        '구간/군',
@@ -285,8 +286,8 @@ var AIRLINES_I18N = {
     usdLabel:       'USD 공시',
     groupLabel:     '군별 요금',
     origLabel:      '공시:',
-    mayBasedLabel:  '5월 기준',
-    aprBasedLabel:  '4월 기준 (5월 미공시)',
+    mayBasedLabel:  '6월 기준 (공식 공시)',
+    aprBasedLabel:  '5월 기준 (6월 미공시)',
     segCount:       '개 구간',
     footerNote:     '표시된 유류할증료는 항공사 공식 공지 기반 참고용 정보입니다. 실제 발권 금액은 항공사에서 직접 확인하세요.',
     statusText:     function(upd,nxt,base){return '갱신: '+upd+' · '+nxt+'월 공식 공지 기준 ('+base+'월 비교 포함)';},
@@ -691,24 +692,26 @@ function diffHtml(v4, v5, currency){
 ══════════════════════════════════════════════════════ */
 var OFFICIAL_COMPARE_DATA = {
   KE: [
-    { band:'~499',        routes:'인천-선양, 칭다오, 다롄, 옌지, 후쿠오카',                          v4:42000,  v5:75000,  cur:'KRW' },
-    { band:'500~999',     routes:'인천-상하이, 베이징, 텐진, 나고야, 오사카, 타이베이, 샤포로 외',   v4:57000,  v5:102000, cur:'KRW' },
-    { band:'1,000~1,499', routes:'인천-광저우, 시안, 선전, 홍콩, 울란바타르, 마카오',                v4:78000,  v5:144000, cur:'KRW' },
-    { band:'1,500~1,999', routes:'인천-마닐라, 하노이, 세부, 다낭',                                  v4:97500,  v5:180000, cur:'KRW' },
-    { band:'2,000~2,999', routes:'인천-방콕, 싱가포르, 양곤, 호찌민, 괌, 나트랑, 푸우옥',           v4:123000, v5:253500, cur:'KRW' },
-    { band:'3,000~3,999', routes:'인천-자카르타, 덴파사르',                                          v4:126000, v5:256500, cur:'KRW' },
-    { band:'4,000~4,999', routes:'인천-모스크바, 두바이, 호놀룰루, 브리즈번, 이스탄불',              v4:199500, v5:345000, cur:'KRW' },
-    { band:'5,000~6,499', routes:'인천-런던, 파리, 프랑크푸르트, 로마, 암스테르담 외',              v4:276000, v5:501000, cur:'KRW' },
-    { band:'6,500~9,999', routes:'인천-뉴욕, 댈러스, 보스턴, 시카고, 워싱턴, 토론토',               v4:303000, v5:564000, cur:'KRW' },
+    { band:'~499',        routes:'인천-선양, 칭다오, 다롄, 옌지, 후쿠오카',                          v4:75000,  v5:61500,  cur:'KRW' },
+    { band:'500~999',     routes:'인천-상하이, 베이징, 텐진, 나고야, 오사카, 타이베이, 삿포로 외',   v4:102000, v5:84000,  cur:'KRW' },
+    { band:'1,000~1,499', routes:'인천-광저우, 시안, 선전, 홍콩, 울란바타르, 마카오',                v4:144000, v5:117000, cur:'KRW' },
+    { band:'1,500~1,999', routes:'인천-마닐라, 하노이, 세부, 다낭',                                  v4:180000, v5:147000, cur:'KRW' },
+    { band:'2,000~2,999', routes:'인천-방콕, 싱가포르, 양곤, 호찌민, 괌, 나트랑, 푸꾸옥',           v4:253500, v5:205500, cur:'KRW' },
+    { band:'3,000~3,999', routes:'인천-자카르타, 덴파사르',                                          v4:256500, v5:210000, cur:'KRW' },
+    { band:'4,000~4,999', routes:'인천-모스크바, 두바이, 호놀룰루, 브리즈번, 이스탄불',              v4:345000, v5:282000, cur:'KRW' },
+    { band:'5,000~6,499', routes:'인천-런던, 파리, 프랑크푸르트, 로마, 암스테르담 외',              v4:501000, v5:409500, cur:'KRW' },
+    { band:'6,500~9,999', routes:'인천-뉴욕, 댈러스, 보스턴, 시카고, 워싱턴, 토론토',               v4:564000, v5:451500, cur:'KRW' },
   ],
   OZ: [
-    { band:'~499',        routes:'인천-후쿠오카, 오사카, 나리타, 상하이, 베이징 외',                 v4:43900,  v5:85400,  cur:'KRW' },
-    { band:'500~999',     routes:'인천-오키나와, 타이베이, 삿포로, 도쿄, 홍콩, 마카오',              v4:54100,  v5:103600, cur:'KRW' },
-    { band:'1,000~1,499', routes:'인천-마닐라, 하노이, 다낭, 세부 외',                               v4:67400,  v5:129100, cur:'KRW' },
-    { band:'1,500~1,999', routes:'인천-방콕, 싱가포르, 괌, 하이난 외',                               v4:77500,  v5:168200, cur:'KRW' },
-    { band:'2,000~2,499', routes:'인천-방콕(수완나폼), 코타키나발루, 자카르타',                      v4:87900,  v5:180200, cur:'KRW' },
-    { band:'2,500~4,999', routes:'인천-호놀룰루, 시드니, 두바이, 이스탄불 외',                       v4:95200,  v5:180200, cur:'KRW' },
-    { band:'5,000+',      routes:'인천-런던, 파리, 뉴욕, 로스앤젤레스, 밴쿠버 외',                  v4:251900, v5:476200, cur:'KRW' },
+    { band:'~499',        routes:'인천-후쿠오카, 옌지, 다롄, 웨이하이, 칭다오 외',                   v4:85400,  v5:68000,  cur:'KRW' },
+    { band:'500~999',     routes:'인천-오사카, 나고야, 나리타, 오키나와, 상하이, 타이베이 외',        v4:125800, v5:100500, cur:'KRW' },
+    { band:'1,000~1,499', routes:'인천-시안, 광저우, 홍콩, 울란바토르 외',                           v4:164700, v5:131500, cur:'KRW' },
+    { band:'1,500~1,999', routes:'인천-클락, 마닐라, 하노이, 다낭, 세부 외',                         v4:203700, v5:162600, cur:'KRW' },
+    { band:'2,000~2,499', routes:'인천-호찌민, 방콕, 괌, 나트랑, 치앙마이, 코타키나발루',            v4:242600, v5:195100, cur:'KRW' },
+    { band:'2,500~2,999', routes:'인천-푸껫, 싱가포르, 알마티',                                      v4:281500, v5:226100, cur:'KRW' },
+    { band:'3,000~3,999', routes:'인천-자카르타, 타슈켄트',                                           v4:320500, v5:257100, cur:'KRW' },
+    { band:'4,000~4,999', routes:'인천-이스탄불, 호놀룰루',                                           v4:398300, v5:320700, cur:'KRW' },
+    { band:'5,000+',      routes:'인천-런던, 파리, 뉴욕, 로스앤젤레스, 시드니, 멜버른 외',           v4:476200, v5:382800, cur:'KRW' },
   ],
   '7C': [
     { band:'~500mile',       routes:'한국-후쿠오카, 오사카(부산), 마쓰야마, 가고시마 외',            v4:29,  v5:52,  cur:'USD' },
@@ -718,13 +721,13 @@ var OFFICIAL_COMPARE_DATA = {
     { band:'2000~2500mile',  routes:'한국-방콕, 치앙마이, 달랏, 나짱(나트랑), 호찌민 외',           v4:60,  v5:107, cur:'USD' },
     { band:'2500mile+',      routes:'한국-싱가포르, 덴파사르, 바탐',                                 v4:68,  v5:126, cur:'USD' },
   ],
-  /* ── 진에어(LJ) — 공식 PDF 공시 노선 기준 ── */
+  /* ── 진에어(LJ) — 공식 PDF 공시 노선 기준 · 6월 공식 공시 반영 ── */
   LJ: [
-    { band:'1~599mi',      routes:'인천-후쿠오카·기타큐슈·오사카·다카마쓰·칭다오 / 부산-후쿠오카·오사카·나고야 / 제주-상하이',  v4:25,  v5:42,  cur:'USD' },
-    { band:'600~1,199mi',  routes:'인천/부산-오키나와·나리타·나고야·삿포로 / 인천/부산/제주-타이베이·타이중 / 제주-홍콩',       v4:35,  v5:66,  cur:'USD' },
-    { band:'1,200~1,799mi',routes:'인천/부산-클락 / 부산-세부·괌·울란바타르 / 인천-울란바타르',                                  v4:58,  v5:107, cur:'USD' },
-    { band:'1,800~2,399mi',routes:'인천/부산-다낭 / 인천-세부·보홀·괌',                                                          v4:63,  v5:117, cur:'USD' },
-    { band:'2,400~3,599mi',routes:'인천-푸껫',                                                                                    v4:76,  v5:140, cur:'USD' },
+    { band:'1~599mi',      routes:'인천-후쿠오카·기타큐슈·오사카·다카마쓰·칭다오 / 부산-후쿠오카·오사카·나고야 / 제주-상하이',  v4:42,  v5:36,  cur:'USD' },
+    { band:'600~1,199mi',  routes:'인천/부산-오키나와·나리타·나고야·삿포로 / 인천/부산/제주-타이베이·타이중 / 제주-홍콩',       v4:66,  v5:54,  cur:'USD' },
+    { band:'1,200~1,799mi',routes:'인천/부산-클락 / 부산-세부·괌·울란바타르 / 인천-울란바타르',                                  v4:107, v5:87,  cur:'USD' },
+    { band:'1,800~2,399mi',routes:'인천/부산-다낭 / 인천-세부·보홀·괌',                                                          v4:117, v5:96,  cur:'USD' },
+    { band:'2,400~3,599mi',routes:'인천-푸껫',                                                                                    v4:140, v5:115, cur:'USD' },
   ],
   TW: [
     { band:'1군 (~600mi)',     routes:'인천-후쿠오카, 오사카, 기타큐슈 외',                           v4:30800,  v5:58600,  cur:'KRW' },
@@ -759,10 +762,10 @@ var OFFICIAL_COMPARE_DATA = {
     { band:'6,500mi~',      routes:'인천-워싱턴 D.C., 인천-뉴욕',                  v4:194, v5:365, cur:'USD' },
   ],
   BX: [
-    { band:'단거리 (~1,500mi)',  routes:'부산/제주-후쿠오카, 오사카(간사이), 나가사키, 칭다오, 다카마쓰, 시즈오카',  v4:29, v5:52,  cur:'USD' },
-    { band:'중거리1 (1,500~2,000mi)', routes:'인천-나리타, 삿포로, 시안, 엔지, 장자제, 홍콩, 마카오, 타이베이, 가오슝', v4:51, v5:94,  cur:'USD' },
-    { band:'중거리2 (2,000~2,500mi)', routes:'씬야, 울란바토르, 세부, 다낭, 나짱(나트랑), 비엔티안, 코타키나발루, 하노이, 보홀, 괌, 치앙마이(인천출발)', v4:60, v5:109, cur:'USD' },
-    { band:'장거리 (2,500mi~)',  routes:'방콕, 발리(덴파사르)',                                                       v4:70, v5:126, cur:'USD' },
+    { band:'1구간 (~699mi)',       routes:'부산/제주-후쿠오카, 오사카(간사이), 나가사키, 칭다오, 다카마쓰, 시즈오카',  v4:52, v5:43,  cur:'USD' },
+    { band:'2구간 (700~1,299mi)',  routes:'인천-나리타, 삿포로, 시안, 엔지, 장자제, 홍콩, 마카오, 타이베이, 가오슝', v4:94, v5:77,  cur:'USD' },
+    { band:'3구간 (1,300~1,999mi)',routes:'씬야, 울란바토르, 세부, 다낭, 나트랑, 비엔티안, 코타키나발루, 하노이, 보홀, 괌, 치앙마이(인천출발)', v4:109, v5:90, cur:'USD' },
+    { band:'4구간 (2,000mi~)',     routes:'방콕, 발리(덴파사르)',                                                       v4:126, v5:106, cur:'USD' },
   ],
 };
 
@@ -781,15 +784,15 @@ async function loadData(){
   FEED=fr.status==='fulfilled'?fr.value:null;
 
   var NOTICE_URL_PATCH={
-    KE:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2604-infuel?pageNum=2',
-    OZ:'https://flyasiana.com/C/KR/KO/customer/notice/list?id=&dispCt=&page=2&searchOption=0&searchText=#CM202603160002528531',
+    KE:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2506-infuel',
+    OZ:'https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202605180002529041',
     YP:'https://www.airpremia.com/a/ko/customer/notice/668',
     '7C':'https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000690',
-    LJ:'https://www.jinair.com/company/announce/announceView?anceSeq=27858&searchWord=&searchKey=titlCtn&page=1',
+    LJ:'https://www.jinair.com/company/announce/announceView?anceSeq=28098',
     TW:'https://www.twayair.com/app/customerCenter/notice/retrieve/12577',
     ZE:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=566&lang=KR&searchWord=&searchIndex=1',
     RS:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=10587&pageNo=1',
-    BX:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4339',
+    BX:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4366',
   };
   var NOTICE_URL_MAY={
     KE:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2605-infuel?pageNum=1',

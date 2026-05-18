@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>유류할증료 변동 그래프 — 2026년 4월·5월 항공사별 비교</title>
-  <meta name="description" content="2026년 4월·5월 한국 출발 국제선 유류할증료를 항공사별로 비교하는 인터랙티브 그래프입니다." data-i18n-page-desc="graph.metaDesc"/>
+  <title>유류할증료 변동 그래프 — 2026년 5월·6월 항공사별 비교</title>
+  <meta name="description" content="2026년 5월·6월 한국 출발 국제선 유류할증료를 항공사별로 비교하는 인터랙티브 그래프입니다." data-i18n-page-desc="graph.metaDesc"/>
   <meta data-i18n-page-title="graph.metaTitle"/>
   <link rel="canonical" href="https://aero-surcharge.com/fuel-surcharge-graph.html"/>
-  <meta property="og:title" content="유류할증료 변동 그래프 — 2026년 4월·5월 항공사별 비교"/>
-  <meta property="og:description" content="2026년 4월·5월 한국 출발 국제선 유류할증료를 항공사별로 비교하는 인터랙티브 그래프입니다."/>
+  <meta property="og:title" content="유류할증료 변동 그래프 — 2026년 5월·6월 항공사별 비교"/>
+  <meta property="og:description" content="2026년 5월·6월 한국 출발 국제선 유류할증료를 항공사별로 비교하는 인터랙티브 그래프입니다."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.com/fuel-surcharge-graph.html"/>
   <link rel="stylesheet" href="_shared.css"/>
@@ -109,11 +109,11 @@
 
 <div class="page-header">
   <div class="page-title" data-i18n="graph.pageTitle">📈 유류할증료 변동 그래프</div>
-  <div class="page-sub"   data-i18n="graph.pageSub">2026년 4월 · 5월 항공사별 비교 — 실제 공식 공지 데이터 기반</div>
+  <div class="page-sub"   data-i18n="graph.pageSub">2026년 5월 · 6월 항공사별 비교 — KE/OZ/LJ/BX 공식 공시 반영</div>
 </div>
 
 <main class="seo-main">
-  <h1 style="font-size:20px;font-weight:700;color:var(--text);margin-bottom:12px;" data-i18n="graph.h1">2026년 4·5월 유류할증료 변동 그래프</h1>
+  <h1 style="font-size:20px;font-weight:700;color:var(--text);margin-bottom:12px;" data-i18n="graph.h1">2026년 5·6월 유류할증료 변동 그래프</h1>
 
   <div class="seo-lang-notice">
     ⚠️&nbsp;<span data-i18n-html="graph.notice"></span>
@@ -206,10 +206,10 @@
 var GRAPH_I18N = {
   ko: {
     'graph.metaTitle': '유류할증료 변동 그래프 — 2026년 4·5월 항공사별 비교',
-    'graph.metaDesc':  '2026년 4월·5월 한국 출발 국제선 유류할증료를 항공사별로 비교하는 인터랙티브 그래프입니다.',
+    'graph.metaDesc':  '2026년 5월·6월 한국 출발 국제선 유류할증료를 항공사별로 비교하는 인터랙티브 그래프입니다.',
     'graph.pageTitle': '📈 유류할증료 변동 그래프',
-    'graph.pageSub':   '2026년 4월 · 5월 항공사별 비교 — 실제 공식 공지 데이터 기반',
-    'graph.h1':        '2026년 4·5월 유류할증료 변동 그래프',
+    'graph.pageSub':   '2026년 5월 · 6월 항공사별 비교 — KE/OZ/LJ/BX 공식 공시 반영',
+    'graph.h1':        '2026년 5·6월 유류할증료 변동 그래프',
     'graph.notice':    '<strong>안내:</strong> 이 페이지의 금액은 항공사 공식 공시 통화 기준이며, 상단 통화 선택 시 기준 환율로 자동 환산됩니다. USD 공시 항공사는 원본 USD 금액을 함께 표시합니다.',
     'graph.intro':     '2026년 4월과 5월에 적용된 항공사별 유류할증료를 인터랙티브 그래프와 표로 비교합니다. 대한항공·아시아나항공·티웨이·에어서울은 원화(KRW) 공시, 제주항공·진에어·이스타·에어프레미아는 달러(USD) 공시입니다. 통화 선택 시 기준 환율(USD 1 = KRW 1,450)로 자동 환산됩니다.',
     'graph.card1.title': '월별 변동 추이',
@@ -220,15 +220,15 @@ var GRAPH_I18N = {
     'graph.card3.body':  '원/달러 환율이 높을수록 동일 유가 수준에서도 원화 환산 유류할증료가 높아질 수 있습니다.',
     'graph.filter.airline': '항공사', 'graph.filter.month': '월',
     'graph.filter.view': '표시 기준', 'graph.filter.currHint': '통화: 상단 navCurr 기준',
-    'graph.filter.all': '전체', 'graph.filter.apr': '2026년 4월',
-    'graph.filter.may': '2026년 5월', 'graph.filter.amount': '금액',
+    'graph.filter.all': '전체', 'graph.filter.may2': '2026년 5월',
+    'graph.filter.may': '2026년 5월','graph.filter.june': '2026년 6월', 'graph.filter.amount': '금액',
     'graph.filter.change': '상승률 (%)',
     'graph.chartNote': '※ 그래프는 각 항공사의 구간 데이터를 구간 인덱스 순서로 표시합니다. 실선: 5월, 점선: 4월. USD 공시 항공사(7C·LJ·ZE·YP)는 선택 통화 기준으로 환산됩니다. 기준 환율: USD 1 = KRW 1,450. 범례 클릭 시 항공사 라인을 숨길 수 있습니다.',
     'graph.tableTitle': '📋 항공사별 유류할증료 상세 데이터',
     'graph.tableNote':  '※ 데이터는 각 항공사 공식 공지(2026년 4월·5월) 기반입니다. — 은 해당 구간 공시 없음을 의미합니다.',
     'graph.th.airline': '항공사', 'graph.th.currency': '공시 통화',
-    'graph.th.band': '구간', 'graph.th.apr': '4월',
-    'graph.th.may': '5월', 'graph.th.change': '4월 대비',
+    'graph.th.band': '구간', 'graph.th.may': '5월','graph.th.june': '6월',
+    'graph.th.may': '5월', 'graph.th.change': '5월 대비',
     'graph.official.title': '🔗 항공사 공식 유류할증료 공지 바로가기',
     'graph.official.suffix': '공식 공지 확인 ↗',
     'graph.relatedTitle': '🔗 관련 페이지',
@@ -375,11 +375,13 @@ var AIRLINES = [
   { code:'KE', currency:'KRW', url:'https://www.koreanair.com', domain:'koreanair.com',
     bands:['~499','500~999','1000~1499','1500~1999','2000~2999','3000~3999','4000~4999','5000~6499','6500~9999'],
     apr:[42000,57000,78000,97500,123000,126000,199500,276000,303000],
-    may:[75000,102000,144000,180000,253500,256500,345000,501000,564000] },
+    may:[75000,102000,144000,180000,253500,256500,345000,501000,564000],
+    june:[61500,84000,117000,147000,205500,210000,282000,409500,451500] },
   { code:'OZ', currency:'KRW', url:'https://www.flyasiana.com', domain:'flyasiana.com',
     bands:['1','2','3','4','5','6','7','8','9'],
     apr:[43900,65900,86400,106900,127400,147900,169900,210900,251900],
-    may:[85400,125800,164700,203700,242600,281500,320500,398300,476200] },
+    may:[85400,125800,164700,203700,242600,281500,320500,398300,476200],
+    june:[68000,100500,131500,162600,195100,226100,257100,320700,382800] },
   { code:'YP', currency:'USD', url:'https://www.airpremia.com', domain:'airpremia.com',
     bands:['~999','1000~1499','1500~1999','2000~2499','4000~4999','5000~6499','6500+'],
     apr:[32,42,54,71,123,155,194],
@@ -391,7 +393,8 @@ var AIRLINES = [
   { code:'LJ', currency:'USD', url:'https://www.jinair.com', domain:'jinair.com',
     bands:['1~599','600~1199','1200~1799','1800~2399','2400~3599'],
     apr:[25,35,58,63,76],
-    may:[42,66,107,117,140] },
+    may:[42,66,107,117,140],
+    june:[36,54,87,96,115] },
   { code:'ZE', currency:'USD', url:'https://www.eastarjet.com', domain:'eastarjet.com',
     bands:['1','2','3','4','5','6'],
     apr:[29,37,44,53,60,68],
@@ -407,7 +410,8 @@ var AIRLINES = [
   { code:'BX', currency:'USD', url:'https://www.airbusan.com', domain:'airbusan.com',
     bands:['단거리','중거리1','중거리2','장거리'],
     apr:[29,51,60,70],
-    may:[52,94,109,126] },
+    may:[52,94,109,126],
+    june:[43,77,90,106] },
 ];
 
 var COLORS = {
