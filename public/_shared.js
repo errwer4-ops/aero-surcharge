@@ -1119,7 +1119,7 @@ ko:{
   'index.card.notListed':'공지 미기재',
   'index.card.miniNotice':'공식 공지 ↗',
   /* news page */
-  'news.pageTitle':'📊 2026년 6월 유류할증료 전망 & 예약 판단 가이드',
+  'news.pageTitle':'📊 2026년 7월 유류할증료 전망 & 6월 공시 반영',
   /* CTA 박스 */
   'news.cta.desc':              '📍 노선별 실제 유류할증료를 바로 확인하세요',
   'news.cta.main':              '👉 유류할증료 조회하기',
@@ -1137,7 +1137,7 @@ ko:{
   'aff.myrealtrip.title':       '유류할증료 확인 후, 실제 항공권 총액도 비교하세요',
   'aff.myrealtrip.desc':        '유류할증료는 발권 시점 기준으로 적용됩니다. 5월과 6월 공식 공시 금액을 함께 보고 예약 타이밍을 판단하세요.',
   'aff.myrealtrip.cta':         '지금 항공권 총액 확인하기',
-  'news.pageSub':'유류할증료 관련 국가·기관·항공사·시장 참고 정보 · 데이터 기반 AI 요약 · 예측 근거 연결',
+  'news.pageSub':'대한항공·아시아나·진에어·에어부산·이스타항공 6월 공식 공시 기준 · 5월 대비 변화 · 7월 방향성 참고 지표',
   'news.predictTitle':'📊 AI 예측 참고 지표 현황',
   'news.officialTitle':'📢 주요 항공사 2026년 6월 국제선 유류할증료 공식 공시',
   'news.compareTitle':'📊 전월 대비: 5월 → 6월 변화',
@@ -1156,19 +1156,19 @@ ko:{
   'news.decisionMid':'👉 중거리: 6월 대한항공 기준 117,000~205,500원 구간',
   'news.decisionLong':'👉 장거리: 항공사별 6월 공식 공시 기준 — KE·OZ·LJ·BX·ZE 반영 완료 (대한항공 282,000~451,500원)',
   /* 7월 전망 CTA 박스 */
-  'news.forecastCta.title':'2026년 7월 유류할증료 전망',
-  'news.forecastCta.desc':'대한항공·아시아나·진에어·에어부산 6월 공식 공시 결과와 브렌트유, 원달러 환율, 항공유/MOPS, 중동 리스크를 기준으로 7월 유류할증료 방향성을 정리했습니다.',
+  'news.forecastCta.title':'2026년 7월 유류할증료 전망 — 6월 공시 반영 기준',
+  'news.forecastCta.desc':'대한항공·아시아나·진에어·에어부산·이스타항공 6월 공식 공시 반영 완료. 5월 대비 변화와 브렌트유·환율·MOPS 지표를 바탕으로 7월 방향성 참고 지표를 정리했습니다.',
   'news.forecastCta.btn':'7월 전망 자세히 보기 →',
-  /* 6월 기준 안내 */
-  'news.basisTitle':'📅 6월 유류할증료 공시 안내',
-  'news.basisBody':'6월 공시는 5월 중 각 항공사 공식 채널에서 확인 필요합니다.',
+  /* 7월 공시 안내 */
+  'news.basisTitle':'📅 7월 유류할증료 공시 안내',
+  'news.basisBody':'7월 공시는 6월 중 각 항공사 공식 채널에서 확인 필요합니다. 6월 공식 공시 반영 결과가 7월 방향성의 중요한 참고 지표입니다.',
   'news.aiNotice':'AI 요약 콘텐츠 — 이 페이지의 내용은 공개된 정보를 바탕으로 AI가 정리한 참고용 자료입니다. 원문 기반 요약이며, 공식 정보가 아닙니다. 중요한 결정 전에 각 항공사 및 기관의 공식 채널을 반드시 확인하세요.',
   'news.filterAll':'전체',
   'news.dataRef':        '✅ 대한항공·아시아나·진에어·에어부산·이스타항공 6월 공식 공시 반영 완료 · 2026.05.19 09:20 KST 기준',
   'news.curSummaryTitle':'현재 기준 요약 (2026.05.14):',
   'news.curSummary':     '→ 6월 유류할증료: 브렌트유 $105대, MOPS 511.21 cent/gal, 환율 1,490원대 영향으로 급격한 인하 가능성은 제한적 — 공식 공시 확인 필요',
   /* 핵심 요약 카드 i18n */
-  'news.summary.title':   '📌 2026년 6월 핵심 요약',
+  'news.summary.title':   '📌 대한항공·아시아나·진에어·에어부산·이스타항공 2026년 6월 공식 공시 반영 + 7월 전망',
   'news.summary.updated': '🕐 2026.05.19 09:20 KST 기준 시장 지표 반영',
   'news.summary.li1':     '브렌트유 약 $105.08~105.63/bbl — 고점권 변동성 지속',
   'news.summary.li2':     '항공유(MOPS) 약 511.21 cent/gal, 약 $214.71/bbl — 최고 기준 470 cent/gal 상회',
@@ -1264,8 +1264,8 @@ ko:{
   'news.fixed.src.marketBreaking':'Market Breaking',
   'news.fixed.src.fxMarket':'FX Market',
   /* page meta */
-  'news.metaTitle':'2026년 6월 유류할증료 전망 — 지금 예약 vs 기다림 (5월 대비 변화)',
-  'news.metaDesc':'대한항공·아시아나·진에어·에어부산 6월 유류할증료 공식 공시 반영 완료. 5월→6월 변화와 7월 방향성 참고 지표를 함께 확인하세요.',
+  'news.metaTitle':'2026년 7월 유류할증료 전망 — 6월 공식 공시 반영 및 5월 대비 변화',
+  'news.metaDesc':'대한항공·아시아나·진에어·에어부산·이스타항공 2026년 6월 국제선 유류할증료 공식 공시가 반영되었습니다. 5월 대비 변화와 2026년 7월 유류할증료 전망 참고 지표를 확인하세요.',
   /* footer */
   'news.footer.notice':'이 페이지의 소식은 공개 정보 기반 참고용 자료입니다. 중요한 결정 전 공식 채널을 확인하세요.',
   'news.footer.contact':'문의',
