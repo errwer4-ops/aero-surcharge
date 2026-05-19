@@ -261,18 +261,20 @@ var AIRLINES_I18N = {
     loadingText:    '데이터 로딩 중...',
     analysisH3:     '2026년 5월 → 6월 유류할증료 변화 분석',
     analysisBullets:[
-      '<strong>전 구간 일제 인상</strong> — 한국 출발 국제선 모든 거리구간에서 유류할증료가 상승하였습니다.',
-      '<strong>인상폭:</strong> 단거리 대비 장거리 구간의 절대 인상액이 훨씬 크며, <strong>대한항공 장거리(6,500~9,999) 기준 약 261,000원</strong>, <strong>아시아나 장거리(5,000마일 이상) 기준 약 224,300원</strong> 인상됩니다. 항공사별 인상폭이 상이하므로 개별 확인이 필요합니다.',
-      '<strong>LCC 항공사 비교</strong> — 진에어·에어부산은 6월 공시 완료. 단거리 구간이 USD 42~52 → USD 36~43으로 인하되었습니다. 제주항공 등 타 LCC는 6월 공시 확인 필요.',
-      '<strong>대한항공·아시아나(KRW 공시)</strong> — 대한항공 단거리 75,000원→61,500원, 아시아나 단거리 85,400원→68,000원 인하. 전 구간 인하 구조.',
+      '<strong>대한항공·아시아나·진에어·에어부산</strong> — 6월 공식 공시 완료. 5월 대비 전 구간 인하 확인.',
+      '<strong>대한항공 (KRW 공시)</strong> — 단거리 75,000원 → 61,500원, 장거리 564,000원 → 451,500원 인하.',
+      '<strong>아시아나항공 (KRW 공시)</strong> — 단거리 85,400원 → 68,000원, 장거리 476,200원 → 382,800원 인하.',
+      '<strong>진에어 (USD 공시)</strong> — USD 42 → 36 (단거리), USD 140 → 115 (장거리) 인하.',
+      '<strong>에어부산 (USD 공시)</strong> — USD 52 → 43 (단거리), USD 126 → 106 (장거리) 인하.',
+      '<strong>6월 공시 전:</strong> 제주항공·이스타항공·에어서울·티웨이항공·에어프레미아는 6월 공시 전이므로 5월 기준으로만 표시됩니다.',
       '실제 발권 시 적용 유류할증료는 각 항공사 공식 공지를 반드시 재확인하세요.',
     ],
     noResults:      '해당하는 항공사가 없습니다',
     expandHint:     '5월→6월 비교',
     compareTitle:   '5월 vs 6월 유류할증료 비교',
     officialNotice: '공식 공지',
-    aprNotice:      '4월 공식 공지',
-    mayNotice:      '6월 공식 공시',
+    aprNotice:      '5월 공식 공지',
+    mayNotice:      '6월 공식 공지',
     noNotice:       '공식 공지 없음',
     noData:         '비교 데이터가 없습니다.',
     colBand:        '구간/군',
@@ -287,7 +289,7 @@ var AIRLINES_I18N = {
     groupLabel:     '군별 요금',
     origLabel:      '공시:',
     mayBasedLabel:  '6월 기준 (공식 공시)',
-    aprBasedLabel:  '5월 기준 (6월 미공시)',
+    aprBasedLabel:  '5월 기준 (6월 공시 전)',
     segCount:       '개 구간',
     footerNote:     '표시된 유류할증료는 항공사 공식 공지 기반 참고용 정보입니다. 실제 발권 금액은 항공사에서 직접 확인하세요.',
     statusText:     function(upd,nxt,base){return '갱신: '+upd+' · '+nxt+'월 공식 공지 기준 ('+base+'월 비교 포함)';},
@@ -301,8 +303,8 @@ var AIRLINES_I18N = {
     betaDesc:       'Currently provides Korea-departure international fuel surcharge data. Some airlines are manually updated from official notices. Please verify the final amount directly with each airline.',
     betaNote:       '※ Only Korea-departure international routes are supported. Overseas-departure routes coming soon.',
     krOnlyNote:     '🚩 Currently displaying 9 Korean carriers. Some airlines (incl. Air Busan) are manually updated from official notices. Foreign carriers to be activated later.',
-    seoSummaryH2:   '📋 May 2026 Korea-Departure Fuel Surcharge Summary',
-    seoSummaryP:    'International fuel surcharges for May 2026 have risen sharply across all distance bands. <strong>Korean Air</strong>: short-haul (~499) ₩42,000→₩75,000, long-haul (6,500~9,999) ₩303,000→₩564,000. <strong>Asiana</strong>: short-haul (~499) ₩43,900→₩85,400, long-haul (5,000+ miles) ₩251,900→₩476,200. LCC carriers (Jeju Air, Jin Air etc.) USD-quoted routes have similarly increased. See the per-airline comparison table below for April vs May details.',
+    seoSummaryH2:   '📋 June 2026 Korea-Departure Fuel Surcharge Summary',
+    seoSummaryP:    'June 2026 international fuel surcharges: KE/OZ/LJ/BX official filings complete — all bands down vs May. <strong>Korean Air</strong>: short-haul ₩75,000→₩61,500, long-haul ₩564,000→₩451,500. <strong>Asiana</strong>: short-haul ₩85,400→₩68,000, long-haul ₩476,200→₩382,800. Jeju Air, Eastar Jet, Air Seoul, T\'way Air, Air Premia: June filing pending — May values shown. See the per-airline comparison table below for May vs June details.',
     searchPH:       'Search airline name or IATA code...',
     ftabAll:        'All',
     ftabOfficial:   'Verified',
@@ -313,22 +315,24 @@ var AIRLINES_I18N = {
     thPeriod:       'Reference Month',
     thStatus:       'Data Status',
     thSource:       'Official Source',
-    surchargeIntro: 'April & May 2026 fuel surcharge comparison. Click a row to expand the band-by-band breakdown.',
+    surchargeIntro: 'May & June 2026 fuel surcharge comparison. KE/OZ/LJ/BX: official June filings. Others: May basis. Click a row to expand.',
     loadingText:    'Loading data...',
-    analysisH3:     'April → May 2026 Fuel Surcharge Change Analysis',
+    analysisH3:     'May → June 2026 Fuel Surcharge Change Analysis',
     analysisBullets:[
-      '<strong>All bands increased</strong> — Fuel surcharges rose on every distance band for Korea-departure international routes.',
-      '<strong>Rise magnitude:</strong> Long-haul absolute increases are far larger than short-haul. <strong>Korean Air long-haul (6,500~9,999) up ~₩261,000</strong>; <strong>Asiana long-haul (5,000+ miles) up ~₩224,300</strong>. Increases vary by airline.',
-      '<strong>LCC comparison</strong> — USD-quoted LCCs (Jeju Air, Jin Air etc.) are also affected by exchange rates; May short-haul bands rose from USD 25~29 → USD 42~52.',
-      '<strong>Eastar Jet (group-tier)</strong> — Group 1 (Japan near) USD 29→52; Group 6 (Almaty) USD 68→126 — significant jump.',
+      '<strong>KE / OZ / LJ / BX</strong> — June official filings complete. All-band reduction vs May confirmed.',
+      '<strong>Korean Air (KRW)</strong> — Short-haul ₩75,000→₩61,500, long-haul ₩564,000→₩451,500.',
+      '<strong>Asiana (KRW)</strong> — Short-haul ₩85,400→₩68,000, long-haul ₩476,200→₩382,800.',
+      '<strong>Jin Air (USD)</strong> — USD 42→36 (short), USD 140→115 (long).',
+      '<strong>Air Busan (USD)</strong> — USD 52→43 (short), USD 126→106 (long).',
+      '<strong>June filing pending:</strong> Jeju Air, Eastar Jet, Air Seoul, T\'way Air, Air Premia — shown at May basis only.',
       'Always verify the applicable surcharge with the official airline notice before ticketing.',
     ],
     noResults:      'No matching airlines',
-    expandHint:     'Apr→May compare',
-    compareTitle:   'Apr vs May Fuel Surcharge',
+    expandHint:     'May→Jun compare',
+    compareTitle:   'May vs Jun Fuel Surcharge',
     officialNotice: 'Official Notice',
-    aprNotice:      'Apr Official Notice',
-    mayNotice:      'May Official Notice',
+    aprNotice:      'May Official Notice',
+    mayNotice:      'Jun Official Notice',
     noNotice:       'No official notice',
     noData:         'No comparison data available.',
     colBand:        'Band / Group',
@@ -342,8 +346,8 @@ var AIRLINES_I18N = {
     usdLabel:       'USD quoted',
     groupLabel:     'Group tier',
     origLabel:      'Official:',
-    mayBasedLabel:  'May basis',
-    aprBasedLabel:  'Apr basis (May TBD)',
+    mayBasedLabel:  'Jun basis (official)',
+    aprBasedLabel:  'May basis (Jun TBD)',
     segCount:       ' bands',
     footerNote:     'Amounts shown are reference only based on official announcements. Always confirm with the airline before booking.',
     statusText:     function(upd,nxt,base){return 'Updated: '+upd+' · '+nxt+' official notice basis (vs '+base+')';},
@@ -357,8 +361,8 @@ var AIRLINES_I18N = {
     betaDesc:       '現在、韓国出発国際線の燃油サーチャージを基準に提供しています。一部航空会社は公式案内を手動で反映しています。最終金額は各航空会社の公式案内で必ずご確認ください。',
     betaNote:       '※ 現在は韓国出発国際線のみ対応しています。海外出発路線は準備中です。',
     krOnlyNote:     '🚩 現在、韓国国籍キャリア9社を優先表示しています。一部航空会社（エアプサン等）は公式案内に基づき手動反映されています。外国航空会社は今後対応予定です。',
-    seoSummaryH2:   '📋 2026年5月 韓国出発国際線 燃油サーチャージ概要',
-    seoSummaryP:    '2026年5月の韓国出発国際線燃油サーチャージは全区間で大幅に引き上げられました。<strong>大韓航空</strong>：短距離(~499) ₩42,000→₩75,000、長距離(6,500~9,999) ₩303,000→₩564,000。<strong>アシアナ</strong>：短距離(~499) ₩43,900→₩85,400、長距離(5,000マイル以上) ₩251,900→₩476,200。LCC各社のUSD建て路線も同様に引き上げられています。',
+    seoSummaryH2:   '📋 2026年6月 韓国出発国際線 燃油サーチャージ概要',
+    seoSummaryP:    '2026年6月：KE·OZ·LJ·BX公式公示完了 — 5月比全区間引き下げ。<strong>大韓航空</strong>：短距離 ₩75,000→₩61,500、長距離 ₩564,000→₩451,500。<strong>アシアナ</strong>：短距離 ₩85,400→₩68,000、長距離 ₩476,200→₩382,800。チェジュ航空・イースター航空・エアソウル・ティーウェイ・エアプレミアは6月公示前 — 5月基準で表示。',
     searchPH:       '航空会社名またはIATAコードで検索...',
     ftabAll:        'すべて',
     ftabOfficial:   '公式確認済',
@@ -369,22 +373,24 @@ var AIRLINES_I18N = {
     thPeriod:       '基準月',
     thStatus:       'データ状態',
     thSource:       '公式出典',
-    surchargeIntro: '2026年4月・5月の燃油サーチャージ比較一覧です。行をクリックすると区間別の詳細比較表が展開されます。',
+    surchargeIntro: '2026年5月・6月の燃油サーチャージ比較一覧です。KE·OZ·LJ·BX：6月公示完了、その他：5月基準。行をクリックすると詳細が展開されます。',
     loadingText:    'データ読み込み中...',
-    analysisH3:     '2026年4月→5月 燃油サーチャージ変化分析',
+    analysisH3:     '2026年5月→6月 燃油サーチャージ変化分析',
     analysisBullets:[
-      '<strong>全区間一斉引き上げ</strong> — 韓国出発国際線のすべての距離区分で燃油サーチャージが上昇しました。',
-      '<strong>引き上げ幅:</strong> 長距離区分の絶対額増加が特に大きく、<strong>大韓航空長距離(6,500~9,999) 約₩261,000増</strong>、<strong>アシアナ長距離(5,000マイル以上) 約₩224,300増</strong>。航空会社ごとに異なるため個別確認が必要です。',
-      '<strong>LCC比較</strong> — チェジュ航空・ジンエアーなどUSD建て航空会社も為替の影響を受け、5月の短距離区分がUSD 25~29→USD 42~52に上昇しました。',
-      '<strong>イースター航空(グループ制)</strong> — 第1グループ(日本近距離) USD 29→52、第6グループ(アルマティ) USD 68→126に大幅引き上げ。',
+      '<strong>KE・OZ・LJ・BX</strong> — 6月公式公示完了。5月比全区間引き下げ確認。',
+      '<strong>大韓航空 (KRW)</strong> — 短距離 ₩75,000→₩61,500、長距離 ₩564,000→₩451,500。',
+      '<strong>アシアナ航空 (KRW)</strong> — 短距離 ₩85,400→₩68,000、長距離 ₩476,200→₩382,800。',
+      '<strong>ジンエアー (USD)</strong> — USD 42→36 (短距離)、USD 140→115 (長距離)。',
+      '<strong>エアプサン (USD)</strong> — USD 52→43 (短距離)、USD 126→106 (長距離)。',
+      '<strong>6月公示前:</strong> チェジュ航空・イースター航空・エアソウル・ティーウェイ・エアプレミアは6月公示前のため5月基準で表示。',
       '実際の発券時に適用されるサーチャージは、各航空会社の公式案内で必ずご確認ください。',
     ],
     noResults:      '該当する航空会社がありません',
-    expandHint:     '4月→5月 比較',
-    compareTitle:   '4月 vs 5月 燃油サーチャージ比較',
+    expandHint:     '5月→6月 比較',
+    compareTitle:   '5月 vs 6月 燃油サーチャージ比較',
     officialNotice: '公式案内',
-    aprNotice:      '4月公式案内',
-    mayNotice:      '5月公式案内',
+    aprNotice:      '5月公式案内',
+    mayNotice:      '6月公式案内',
     noNotice:       '公式案内なし',
     noData:         '比較データがありません。',
     colBand:        '区間/グループ',
@@ -413,8 +419,8 @@ var AIRLINES_I18N = {
     betaDesc:       '目前提供韩国出发国际航线燃油附加费数据，部分航空公司为手动更新官方公告。最终金额请务必向各航空公司官方公告确认。',
     betaNote:       '※ 目前仅支持韩国出发国际航线，海外出发航线功能准备中。',
     krOnlyNote:     '🚩 目前优先显示9家韩国国籍航空公司。部分航空公司（如釜山航空）基于官方公告手动更新。外国航空公司将于日后开放。',
-    seoSummaryH2:   '📋 2026年5月 韩国出发国际航线燃油附加费概要',
-    seoSummaryP:    '2026年5月韩国出发国际航线燃油附加费全区间大幅上涨。<strong>大韩航空</strong>：短途(~499) ₩42,000→₩75,000，长途(6,500~9,999) ₩303,000→₩564,000。<strong>韩亚航空</strong>：短途(~499) ₩43,900→₩85,400，长途(5,000英里以上) ₩251,900→₩476,200。LCC航空公司USD报价航线也出现类似幅度的上涨。',
+    seoSummaryH2:   '📋 2026年6月 韩国出发国际航线燃油附加费概要',
+    seoSummaryP:    '2026年6月：KE·OZ·LJ·BX官方公告完成 — 较5月全区间下调。<strong>大韩航空</strong>：短途 ₩75,000→₩61,500，长途 ₩564,000→₩451,500。<strong>韩亚航空</strong>：短途 ₩85,400→₩68,000，长途 ₩476,200→₩382,800。济州航空·易斯达·首尔航空·德威·航空前奏 — 6月公告待定，仅显示5月基准。',
     searchPH:       '搜索航空公司名称或IATA代码...',
     ftabAll:        '全部',
     ftabOfficial:   '已验证',
@@ -425,22 +431,24 @@ var AIRLINES_I18N = {
     thPeriod:       '基准月',
     thStatus:       '数据状态',
     thSource:       '官方来源',
-    surchargeIntro: '2026年4月及5月国际航线燃油附加费对比列表。点击行可展开各区间详细对比表。',
+    surchargeIntro: '2026年5月及6月国际航线燃油附加费对比列表。KE·OZ·LJ·BX：6月公告完成，其余：5月基准。点击行可展开详细。',
     loadingText:    '数据加载中...',
-    analysisH3:     '2026年4月→5月 燃油附加费变化分析',
+    analysisH3:     '2026年5月→6月 燃油附加费变化分析',
     analysisBullets:[
-      '<strong>全区间统一上涨</strong> — 韩国出发国际航线所有距离区间的燃油附加费均有所上涨。',
-      '<strong>涨幅方面：</strong>长途区间的绝对涨额远大于短途，<strong>大韩航空长途(6,500~9,999) 约₩261,000</strong>，<strong>韩亚航空长途(5,000英里以上) 约₩224,300</strong>。各航空公司涨幅不同，请分别确认。',
-      '<strong>LCC航空公司对比</strong> — 济州航空、真航空等USD报价航空公司受汇率影响，5月短途区间从USD 25~29上涨至USD 42~52。',
-      '<strong>易斯达航空(组别制)</strong> — 第1组(日本近距离) USD 29→52，第6组(阿拉木图) USD 68→126，大幅上涨。',
+      '<strong>KE·OZ·LJ·BX</strong> — 6月官方公告完成，较5月全区间下调确认。',
+      '<strong>大韩航空 (KRW)</strong> — 短途 ₩75,000→₩61,500，长途 ₩564,000→₩451,500。',
+      '<strong>韩亚航空 (KRW)</strong> — 短途 ₩85,400→₩68,000，长途 ₩476,200→₩382,800。',
+      '<strong>真航空 (USD)</strong> — USD 42→36 (短途)，USD 140→115 (长途)。',
+      '<strong>釜山航空 (USD)</strong> — USD 52→43 (短途)，USD 126→106 (长途)。',
+      '<strong>6月公告待定:</strong> 济州航空·易斯达·首尔航空·德威·航空前奏 — 仅显示5月基准。',
       '实际发票时适用的燃油附加费请务必向各航空公司官方公告再次确认。',
     ],
     noResults:      '没有符合条件的航空公司',
-    expandHint:     '4月→5月 对比',
-    compareTitle:   '4月 vs 5月 燃油附加费对比',
+    expandHint:     '5月→6月 对比',
+    compareTitle:   '5月 vs 6月 燃油附加费对比',
     officialNotice: '官方公告',
-    aprNotice:      '4月官方公告',
-    mayNotice:      '5月官方公告',
+    aprNotice:      '5月官方公告',
+    mayNotice:      '6月官方公告',
     noNotice:       '无官方公告',
     noData:         '暂无对比数据。',
     colBand:        '区间/组别',
@@ -469,23 +477,25 @@ var AIRLINES_I18N = {
     betaDesc:       'Actuellement, seules les surcharges au départ de Corée sont disponibles. Certaines compagnies sont mises à jour manuellement. Vérifiez toujours le montant final auprès de la compagnie.',
     betaNote:       '※ Seuls les vols internationaux au départ de Corée sont pris en charge pour l\'instant.',
     krOnlyNote:     '🚩 9 transporteurs coréens affichés (dont Air Busan via notice officielle). Transporteurs étrangers à venir.',
-    seoSummaryH2:   '📋 Résumé des surcharges carburant — Mai 2026 (départ Corée)',
-    seoSummaryP:    'Les surcharges carburant internationales de mai 2026 au départ de Corée ont fortement augmenté sur toutes les tranches de distance. Voir le tableau comparatif ci-dessous pour le détail avril vs mai.',
+    seoSummaryH2:   '📋 Surcharges carburant — Juin 2026 (départ Corée)',
+    seoSummaryP:    'Juin 2026 : publications officielles KE/OZ/LJ/BX complètes — toutes les tranches en baisse vs mai. Jeju Air, Eastar Jet, Air Seoul, T\'way Air, Air Premia : publication juin en attente — base mai affichée.',
     searchPH:       'Rechercher par nom ou code IATA...',
     ftabAll:'Tout', ftabOfficial:'Vérifié', ftabMissing:'Sans avis', ftabBlocked:'Accès limité',
     thAirline:'Compagnie', thCurrent:'Valeur actuelle', thPeriod:'Mois réf.', thStatus:'Statut', thSource:'Source officielle',
-    surchargeIntro: 'Comparaison avril & mai 2026. Cliquez sur une ligne pour voir le détail par tranche.',
+    surchargeIntro: 'Comparaison mai & juin 2026. KE/OZ/LJ/BX : juin officiel. Autres : base mai. Cliquez pour voir le détail.',
     loadingText:    'Chargement...',
-    analysisH3:     'Analyse des variations avril → mai 2026',
+    analysisH3:     'Analyse des variations mai → juin 2026',
     analysisBullets:[
-      '<strong>Hausse générale</strong> — Toutes les tranches de distance ont subi une hausse.',
-      '<strong>Amplitude :</strong> La hausse en valeur absolue est bien plus importante sur le long-courrier.',
-      '<strong>Comparaison LCC</strong> — Les LCC en USD (Jeju Air, Jin Air) ont aussi augmenté : USD 25~29 → USD 42~52 sur le court-courrier.',
-      '<strong>Eastar Jet (groupe)</strong> — Groupe 1 USD 29→52 ; Groupe 6 USD 68→126.',
+      '<strong>KE / OZ / LJ / BX</strong> — Publications juin complètes, baisses confirmées sur toutes les tranches vs mai.',
+      '<strong>Korean Air (KRW)</strong> — Court-courrier ₩75 000→₩61 500, long-courrier ₩564 000→₩451 500.',
+      '<strong>Asiana (KRW)</strong> — Court-courrier ₩85 400→₩68 000, long-courrier ₩476 200→₩382 800.',
+      '<strong>Jin Air (USD)</strong> — USD 42→36 (court), USD 140→115 (long).',
+      '<strong>Air Busan (USD)</strong> — USD 52→43 (court), USD 126→106 (long).',
+      '<strong>Publication juin en attente :</strong> Jeju Air, Eastar Jet, Air Seoul, T\'way Air, Air Premia — affichés en base mai.',
       'Vérifiez toujours la surcharge applicable avec l\'avis officiel de la compagnie avant d\'émettre un billet.',
     ],
-    noResults:'Aucune compagnie trouvée', expandHint:'Comparer avr→mai', compareTitle:'Avr vs Mai — Surcharge carburant',
-    officialNotice:'Avis officiel', aprNotice:'Avis officiel Avr', mayNotice:'Avis officiel Mai', noNotice:'Pas d\'avis officiel',
+    noResults:'Aucune compagnie trouvée', expandHint:'Comparer mai→juin', compareTitle:'Mai vs Juin — Surcharge carburant',
+    officialNotice:'Avis officiel', aprNotice:'Avis officiel Mai', mayNotice:'Avis officiel Juin', noNotice:'Pas d\'avis officiel',
     noData:'Aucune donnée comparative.',
     colBand:'Tranche/Groupe', colRoutes:'Principales routes', colChange:'Variation',
     notPublished:'Non publié', noChange:'Inchangé',
@@ -505,23 +515,25 @@ var AIRLINES_I18N = {
     betaDesc:       'Derzeit nur Korea-Abflüge verfügbar. Einige Airlines werden manuell aktualisiert. Bitte den Endbetrag bei der Airline bestätigen.',
     betaNote:       '※ Nur internationale Flüge ab Korea werden derzeit unterstützt.',
     krOnlyNote:     '🚩 9 koreanische Carrier werden angezeigt (inkl. Air Busan via offizieller Mitteilung). Ausländische Airlines folgen.',
-    seoSummaryH2:   '📋 Mai 2026 Kerosinzuschlag-Übersicht (Abflug Korea)',
-    seoSummaryP:    'Die Kerosinzuschläge für Mai 2026 ab Korea sind in allen Entfernungsbändern deutlich gestiegen. Details siehe Vergleichstabelle unten.',
+    seoSummaryH2:   '📋 Kerosinzuschlag — Juni 2026 (Abflug Korea)',
+    seoSummaryP:    'Juni 2026: KE/OZ/LJ/BX-Mitteilungen vollständig — alle Bänder gegenüber Mai gesunken. Jeju Air, Eastar Jet, Air Seoul, T\'way Air, Air Premia: Juni-Mitteilung ausstehend — Mai-Basis angezeigt.',
     searchPH:       'Airline oder IATA-Code suchen...',
     ftabAll:'Alle', ftabOfficial:'Verifiziert', ftabMissing:'Kein Hinweis', ftabBlocked:'Zugang gesperrt',
     thAirline:'Airline', thCurrent:'Aktueller Wert', thPeriod:'Ref.-Monat', thStatus:'Datenstatus', thSource:'Offizielle Quelle',
-    surchargeIntro: 'April & Mai 2026 Vergleich. Zeile anklicken für detaillierte Band-Aufschlüsselung.',
+    surchargeIntro: 'Mai & Juni 2026 Vergleich. KE/OZ/LJ/BX: Juni offiziell. Andere: Mai-Basis. Zeile anklicken für Details.',
     loadingText:    'Daten werden geladen...',
-    analysisH3:     'Analyse: April → Mai 2026',
+    analysisH3:     'Analyse: Mai → Juni 2026',
     analysisBullets:[
-      '<strong>Allgemeiner Anstieg</strong> — Alle Entfernungsbänder verzeichneten Erhöhungen.',
-      '<strong>Ausmaß:</strong> Langstrecke steigt absolut wesentlich stärker als Kurzstrecke.',
-      '<strong>LCC-Vergleich</strong> — USD-notierte LCCs ebenfalls gestiegen: USD 25~29 → USD 42~52 (Kurzstrecke).',
-      '<strong>Eastar Jet (Gruppen)</strong> — Gruppe 1 USD 29→52; Gruppe 6 USD 68→126.',
+      '<strong>KE / OZ / LJ / BX</strong> — Juni-Mitteilungen vollständig, Senkungen gegenüber Mai auf allen Bändern bestätigt.',
+      '<strong>Korean Air (KRW)</strong> — Kurzstrecke ₩75.000→₩61.500, Langstrecke ₩564.000→₩451.500.',
+      '<strong>Asiana (KRW)</strong> — Kurzstrecke ₩85.400→₩68.000, Langstrecke ₩476.200→₩382.800.',
+      '<strong>Jin Air (USD)</strong> — USD 42→36 (kurz), USD 140→115 (lang).',
+      '<strong>Air Busan (USD)</strong> — USD 52→43 (kurz), USD 126→106 (lang).',
+      '<strong>Juni-Mitteilung ausstehend:</strong> Jeju Air, Eastar Jet, Air Seoul, T\'way Air, Air Premia — nur Mai-Basis.',
       'Bitte den gültigen Zuschlag vor der Buchung anhand der offiziellen Mitteilung der Airline prüfen.',
     ],
-    noResults:'Keine Airline gefunden', expandHint:'Apr→Mai vergleichen', compareTitle:'Apr vs Mai — Kerosinzuschlag',
-    officialNotice:'Offizielle Mitteilung', aprNotice:'Apr Mitteilung', mayNotice:'Mai Mitteilung', noNotice:'Keine Mitteilung',
+    noResults:'Keine Airline gefunden', expandHint:'Mai→Jun vergleichen', compareTitle:'Mai vs Jun — Kerosinzuschlag',
+    officialNotice:'Offizielle Mitteilung', aprNotice:'Mai Mitteilung', mayNotice:'Jun Mitteilung', noNotice:'Keine Mitteilung',
     noData:'Keine Vergleichsdaten vorhanden.',
     colBand:'Band/Gruppe', colRoutes:'Hauptrouten', colChange:'Änderung',
     notPublished:'Noch nicht', noChange:'Keine Änderung',
@@ -714,12 +726,12 @@ var OFFICIAL_COMPARE_DATA = {
     { band:'5,000+',      routes:'인천-런던, 파리, 뉴욕, 로스앤젤레스, 시드니, 멜버른 외',           v4:476200, v5:382800, cur:'KRW' },
   ],
   '7C': [
-    { band:'~500mile',       routes:'한국-후쿠오카, 오사카(부산), 마쓰야마, 가고시마 외',            v4:29,  v5:52,  cur:'USD' },
-    { band:'500~1000mile',   routes:'한국-오사카(인천/김포), 도쿄, 샤포로, 오키나와 외',             v4:37,  v5:66,  cur:'USD' },
-    { band:'1000~1500mile',  routes:'한국-홍콩, 마카오, 가오슝, 울란바타르, 장자제 외',             v4:44,  v5:80,  cur:'USD' },
-    { band:'1500~2000mile',  routes:'한국-마닐라, 세부, 보홀, 하노이, 다낭, 비엔티안, 괌 외',       v4:53,  v5:95,  cur:'USD' },
-    { band:'2000~2500mile',  routes:'한국-방콕, 치앙마이, 달랏, 나짱(나트랑), 호찌민 외',           v4:60,  v5:107, cur:'USD' },
-    { band:'2500mile+',      routes:'한국-싱가포르, 덴파사르, 바탐',                                 v4:68,  v5:126, cur:'USD' },
+    { band:'~500mile',       routes:'한국-후쿠오카, 오사카(부산), 마쓰야마, 가고시마 외',            v4:52,  v5:null,  cur:'USD' },
+    { band:'500~1000mile',   routes:'한국-오사카(인천/김포), 도쿄, 삿포로, 오키나와 외',             v4:66,  v5:null,  cur:'USD' },
+    { band:'1000~1500mile',  routes:'한국-홍콩, 마카오, 가오슝, 울란바타르, 장자제 외',             v4:80,  v5:null,  cur:'USD' },
+    { band:'1500~2000mile',  routes:'한국-마닐라, 세부, 보홀, 하노이, 다낭, 비엔티안, 괌 외',       v4:95,  v5:null,  cur:'USD' },
+    { band:'2000~2500mile',  routes:'한국-방콕, 치앙마이, 달랏, 나트랑, 호찌민 외',                 v4:107, v5:null,  cur:'USD' },
+    { band:'2500mile+',      routes:'한국-싱가포르, 덴파사르, 바탐',                                 v4:126, v5:null,  cur:'USD' },
   ],
   /* ── 진에어(LJ) — 공식 PDF 공시 노선 기준 · 6월 공식 공시 반영 ── */
   LJ: [
@@ -730,36 +742,36 @@ var OFFICIAL_COMPARE_DATA = {
     { band:'2,400~3,599mi',routes:'인천-푸껫',                                                                                    v4:140, v5:115, cur:'USD' },
   ],
   TW: [
-    { band:'1군 (~600mi)',     routes:'인천-후쿠오카, 오사카, 기타큐슈 외',                           v4:30800,  v5:58600,  cur:'KRW' },
-    { band:'2군 (600~1200mi)', routes:'인천-나고야, 오키나와, 삿포로, 타이베이, 홍콩 외',             v4:54200,  v5:103600, cur:'KRW' },
-    { band:'3군 (1200~1800mi)',routes:'인천-하노이, 다낭, 하이커우, 클락, 세부 외',                   v4:67400,  v5:129100, cur:'KRW' },
-    { band:'4군 (1800~2400mi)',routes:'인천-람, 방콕, 치앙마이, 비엔티안 외',                         v4:87900,  v5:168200, cur:'KRW' },
-    { band:'5군 (2400~4000mi)',routes:'인천-싱가포르, 발리, 자카르타, 푸껫, 비슈케크, 타슈켄트 외',   v4:95200,  v5:180200, cur:'KRW' },
-    { band:'7군 (5000mi+)',    routes:'인천-시드니, 자그레브, 바르셀로나, 로마, 파리, 밴쿠버',         v4:213900, v5:406900, cur:'KRW' },
+    { band:'1군 (~600mi)',     routes:'인천-후쿠오카, 오사카, 기타큐슈 외',                           v4:58600,  v5:null,  cur:'KRW' },
+    { band:'2군 (600~1200mi)', routes:'인천-나고야, 오키나와, 삿포로, 타이베이, 홍콩 외',             v4:103600, v5:null,  cur:'KRW' },
+    { band:'3군 (1200~1800mi)',routes:'인천-하노이, 다낭, 하이커우, 클락, 세부 외',                   v4:129100, v5:null,  cur:'KRW' },
+    { band:'4군 (1800~2400mi)',routes:'인천-방콕, 치앙마이, 비엔티안 외',                             v4:168200, v5:null,  cur:'KRW' },
+    { band:'5군 (2400~4000mi)',routes:'인천-싱가포르, 발리, 자카르타, 푸껫, 비슈케크, 타슈켄트 외',   v4:180200, v5:null,  cur:'KRW' },
+    { band:'7군 (5000mi+)',    routes:'인천-시드니, 자그레브, 바르셀로나, 로마, 파리, 밴쿠버',         v4:406900, v5:null,  cur:'KRW' },
   ],
   ZE: [
-    { band:'1군', routes:'인천-후쿠오카, 부산-후쿠오카, 오사카, 구마모토, 제주-상하이, 청주-옌지, 인천-엔타이', v4:29, v5:52, cur:'USD' },
-    { band:'2군', routes:'인천-나리타, 오사카, 치토세, 오키나와, 도쿠시마, 상하이, 정저우 외',                   v4:37, v5:66, cur:'USD' },
-    { band:'3군', routes:'인천-홍콩, 청주-장가계',                                                              v4:44, v5:80, cur:'USD' },
-    { band:'4군', routes:'인천-다낭',                                                                            v4:53, v5:95, cur:'USD' },
-    { band:'5군', routes:'인천-방콕, 치앙마이, 나트랑, 푸우옥, 마나도, 부산-치앙마이',                           v4:60, v5:107, cur:'USD' },
-    { band:'6군', routes:'인천-알마티, 부산-알마티',                                                             v4:68, v5:126, cur:'USD' },
+    { band:'1군', routes:'인천-후쿠오카, 부산-후쿠오카, 오사카, 구마모토, 제주-상하이, 청주-옌지, 인천-엔타이', v4:52,  v5:null, cur:'USD' },
+    { band:'2군', routes:'인천-나리타, 오사카, 치토세, 오키나와, 도쿠시마, 상하이, 정저우 외',                   v4:66,  v5:null, cur:'USD' },
+    { band:'3군', routes:'인천-홍콩, 청주-장가계',                                                              v4:80,  v5:null, cur:'USD' },
+    { band:'4군', routes:'인천-다낭',                                                                            v4:95,  v5:null, cur:'USD' },
+    { band:'5군', routes:'인천-방콕, 치앙마이, 나트랑, 푸꾸옥, 마나도, 부산-치앙마이',                           v4:107, v5:null, cur:'USD' },
+    { band:'6군', routes:'인천-알마티, 부산-알마티',                                                             v4:126, v5:null, cur:'USD' },
   ],
   RS: [
-    { band:'300~700mi',   routes:'다카마쓰, 후쿠오카, 오사카, 오나고', v4:46800, v5:94500,  cur:'KRW' },
-    { band:'700~1100mi',  routes:'도쿄',                                v4:54100, v5:109900, cur:'KRW' },
-    { band:'1100~1500mi', routes:'장자제',                              v4:68700, v5:141000, cur:'KRW' },
-    { band:'1500~1900mi', routes:'다낭',                                v4:77500, v5:153000, cur:'KRW' },
-    { band:'1900~2300mi', routes:'나트랑, 괌',                          v4:80500, v5:165000, cur:'KRW' },
+    { band:'300~700mi',   routes:'다카마쓰, 후쿠오카, 오사카, 오나고', v4:94500,  v5:null, cur:'KRW' },
+    { band:'700~1100mi',  routes:'도쿄',                                v4:109500, v5:null, cur:'KRW' },
+    { band:'1100~1500mi', routes:'장자제',                              v4:141000, v5:null, cur:'KRW' },
+    { band:'1500~1900mi', routes:'다낭',                                v4:153000, v5:null, cur:'KRW' },
+    { band:'1900~2300mi', routes:'나트랑, 괌',                          v4:165000, v5:null, cur:'KRW' },
   ],
   YP: [
-    { band:'~999mi',        routes:'인천-나리타',                                   v4:32,  v5:59,  cur:'USD' },
-    { band:'1,000~1,499mi', routes:'인천-홍콩',                                     v4:42,  v5:78,  cur:'USD' },
-    { band:'1,500~1,999mi', routes:'인천-다낭',                                     v4:54,  v5:102, cur:'USD' },
-    { band:'2,000~2,499mi', routes:'인천-방콕',                                     v4:71,  v5:131, cur:'USD' },
-    { band:'4,000~4,999mi', routes:'인천-호놀룰루',                                 v4:123, v5:229, cur:'USD' },
-    { band:'5,000~6,499mi', routes:'인천-로스앤젤레스, 인천-샌프란시스코',         v4:155, v5:291, cur:'USD' },
-    { band:'6,500mi~',      routes:'인천-워싱턴 D.C., 인천-뉴욕',                  v4:194, v5:365, cur:'USD' },
+    { band:'~999mi',        routes:'인천-나리타',                                   v4:59,  v5:null, cur:'USD' },
+    { band:'1,000~1,499mi', routes:'인천-홍콩',                                     v4:78,  v5:null, cur:'USD' },
+    { band:'1,500~1,999mi', routes:'인천-다낭',                                     v4:102, v5:null, cur:'USD' },
+    { band:'2,000~2,499mi', routes:'인천-방콕',                                     v4:131, v5:null, cur:'USD' },
+    { band:'4,000~4,999mi', routes:'인천-호놀룰루',                                 v4:229, v5:null, cur:'USD' },
+    { band:'5,000~6,499mi', routes:'인천-로스앤젤레스, 인천-샌프란시스코',         v4:291, v5:null, cur:'USD' },
+    { band:'6,500mi~',      routes:'인천-워싱턴 D.C., 인천-뉴욕',                  v4:365, v5:null, cur:'USD' },
   ],
   BX: [
     { band:'1구간 (~699mi)',       routes:'부산/제주-후쿠오카, 오사카(간사이), 나가사키, 칭다오, 다카마쓰, 시즈오카',  v4:52, v5:43,  cur:'USD' },
@@ -768,6 +780,11 @@ var OFFICIAL_COMPARE_DATA = {
     { band:'4구간 (2,000mi~)',     routes:'방콕, 발리(덴파사르)',                                                       v4:126, v5:106, cur:'USD' },
   ],
 };
+
+
+/* ── 6월 공식 공시 완료 항공사 목록 ── */
+var JUNE_OFFICIAL_CODES = ['KE', 'OZ', 'LJ', 'BX'];
+function hasJuneOfficial(code){ return JUNE_OFFICIAL_CODES.indexOf(code) >= 0; }
 
 /* ══════════════════════════════════════════════════════
    데이터 로드 & 항공사 목록
@@ -971,11 +988,10 @@ function renderTable(){
 
     /* 데이터 source 배지 */
     var src=al.officialDataSource||'unknown';
-    var srcLabel={
-      manual_override:'<span style="font-size:11px;background:#e8f5e9;color:#1b5e20;border-radius:6px;padding:2px 7px;font-weight:700">'+T('srcManual')+'</span>',
-      official_notice:'<span style="font-size:11px;background:#e3f2fd;color:#0d47a1;border-radius:6px;padding:2px 7px">'+T('srcFeed')+'</span>',
-      no_data:'<span style="font-size:11px;background:#fafafa;color:#999;border-radius:6px;padding:2px 7px">'+T('srcNoData')+'</span>',
-    }[src]||'<span style="font-size:11px;color:var(--muted)">'+src+'</span>';
+    var juneOfficialBadge=hasJuneOfficial(al.code)
+      ?'<span style="font-size:11px;background:#e8f5e9;color:#1b5e20;border-radius:6px;padding:2px 7px;font-weight:700">6월 공식 공시 반영</span>'
+      :'<span style="font-size:11px;background:#FFF8E1;color:#F57F17;border-radius:6px;padding:2px 7px;font-weight:700;border:1px solid #FFE082;">6월 공시 전</span>';
+    var srcLabel=juneOfficialBadge;
 
     /* 대표 금액 */
     var rep=getRepAmount(al.code,feedAl);
@@ -1004,10 +1020,14 @@ function renderTable(){
     var countHtml=routeCount>0?'<div style="font-size:10px;color:var(--muted);margin-top:2px">'+routeCount+T('segCount')+'</div>':'';
 
     /* 기준 월 */
-    var periodDisplay=repMonth===NEXT_MONTH?NEXT_MONTH:(repMonth?BASE_MONTH+' (5M TBD)':'—');
     var lang=(window.SHARED_STATE&&window.SHARED_STATE.lang)||'ko';
-    if(lang==='ko'){
-      periodDisplay=repMonth===NEXT_MONTH?NEXT_MONTH:(repMonth?BASE_MONTH+' (5월 미공시)':'—');
+    var periodDisplay;
+    if(repMonth===NEXT_MONTH){
+      periodDisplay=NEXT_MONTH;
+    } else if(repMonth){
+      periodDisplay=lang==='ko'?(BASE_MONTH+' (6월 공시 전)'):(BASE_MONTH+' (Jun TBD)');
+    } else {
+      periodDisplay='—';
     }
 
     /* 확장 힌트 */
@@ -1026,17 +1046,27 @@ function renderTable(){
     var schemaNote=al.surchargeSchema==='group_tier'
       ?'<span style="font-size:11px;color:#6a1b9a;margin-left:6px">'+T('groupLabel')+'</span>':'';
 
-    /* detail: 4/5월 비교표 */
+    /* detail: 5월/6월 비교표 링크 */
     var detailSrcLinks='';
-    if(al.officialNoticeUrl)
-      detailSrcLinks+='<a class="detail-src-link cell-src-link" href="'+al.officialNoticeUrl
+    var juneOff=hasJuneOfficial(al.code);
+    /* 5월 공지 링크 (May URL) */
+    var mayUrl=al.officialNoticeUrlMay||al.officialNoticeUrl;
+    if(mayUrl)
+      detailSrcLinks+='<a class="detail-src-link cell-src-link" href="'+mayUrl
         +'" target="_blank" rel="noopener" onclick="event.stopPropagation()">'+T('aprNotice')+' ↗</a>';
-    if(al.officialNoticeUrlMay)
-      detailSrcLinks+='<a class="detail-src-link cell-src-link" href="'+al.officialNoticeUrlMay
+    /* 6월 공지 링크 — 공시 완료 항공사만 */
+    if(juneOff && al.officialNoticeUrl)
+      detailSrcLinks+='<a class="detail-src-link cell-src-link" href="'+al.officialNoticeUrl
         +'" target="_blank" rel="noopener" onclick="event.stopPropagation()">'+T('mayNotice')+' ↗</a>';
+    /* 6월 공시 전 항공사: 비활성화 표시 */
+    if(!juneOff)
+      detailSrcLinks+='<span class="detail-src-link" style="font-size:11px;color:var(--muted);padding:3px 8px;border:1px solid var(--line);border-radius:5px;cursor:default;">6월 공시 전</span>';
 
+    var detailBaseBadge=hasJuneOfficial(al.code)
+      ?'<span style="font-size:10px;background:#e8f5e9;color:#1b5e20;border-radius:4px;padding:1px 6px;margin-left:6px;font-weight:700;">'+T('mayBasedLabel')+'</span>'
+      :'<span style="font-size:10px;background:#FFF8E1;color:#F57F17;border-radius:4px;padding:1px 6px;margin-left:6px;border:1px solid #FFE082;">'+T('aprBasedLabel')+'</span>';
     var detailInner='<div class="detail-header">'
-      +'<span class="detail-title">📊 '+al.name+' — '+T('compareTitle')+'</span>'
+      +'<span class="detail-title">📊 '+al.name+' — '+T('compareTitle')+detailBaseBadge+'</span>'
       +'<div class="detail-src-links">'+detailSrcLinks+'</div>'
       +'</div>'
       +buildCompareTableHtml(al.code,feedAl);
