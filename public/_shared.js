@@ -4,7 +4,7 @@
    환율 / 통화 포매팅
 ───────────────────────────────────────────── */
 window.RATES    = { KRW:1, USD:1/1490, JPY:1/10.0, EUR:1/1620, GBP:1/1860, CNY:1/203, AUD:1/948, SGD:1/1108, HKD:1/189 };
-/* 환율 기준: USD/KRW 약 1,485~1,495원대 (2026.05.19 기준 · 대한항공·아시아나·진에어·에어부산 6월 공식 공시 반영 완료) */
+/* 환율 기준: USD/KRW 약 1,485~1,495원대 (2026.05.19 기준 · 대한항공·아시아나·진에어·에어부산·이스타항공 6월 공식 공시 반영 완료) */
 window.CURR_SYM = { KRW:'₩', USD:'$', JPY:'¥', EUR:'€', GBP:'£', CNY:'¥', AUD:'A$', SGD:'S$', HKD:'HK$' };
 window.CURR_DEC = { KRW:0, USD:2, JPY:0, EUR:2, GBP:2, CNY:2, AUD:2, SGD:2, HKD:1 };
 window.SHARED_STATE = { lang:'ko', curr:'KRW' };
@@ -83,13 +83,13 @@ window.I18N_SHARED = {
        confidence:{high:'높음',medium:'보통',low:'낮음'},
        predictBasis:'예측 근거', predictNote:'공식 공지 전 참고용 추정값입니다.',
        navRoutes:'노선별 조회', navAirlines:'항공사 인덱스', navNews:'참고 소식',
-       /* 2026.05.19 KST 시장 브리핑 공용 키 — 대한항공 6월 공식 공시 반영 완료 */
-       marketDataRef: '🕐 2026.05.19 기준 · 대한항공 6월 공시 반영 완료',
+       /* 2026.05.19 KST 시장 브리핑 공용 키 — 대한항공·아시아나·진에어·에어부산·이스타항공 6월 공식 공시 반영 완료 */
+       marketDataRef: '🕐 2026.05.19 기준 · 대한항공·아시아나·진에어·에어부산·이스타항공 6월 공시 반영 완료',
        marketBrent:   '브렌트유: 약 $100~106/bbl — 중동 리스크 영향으로 고점권 변동성 유지',
        marketMops:    '항공유(MOPS): 최고 기준(470 cent/gal) 상회 상태 — 현재 시장은 7월 방향성에 영향',
        marketFx:      '원달러 환율: 약 1,485~1,495원대 — 달러 강세·원화 약세 흐름',
        marketGeo:     '호르무즈 긴장 부분 완화 — 공급 불안 심리 일부 지속',
-       marketOutlook: '대한항공·아시아나·진에어·에어부산 6월 공식 공시 반영 완료 — 현재 시장은 7월 방향성에 영향' },
+       marketOutlook: '대한항공·아시아나·진에어·에어부산·이스타항공 6월 공식 공시 반영 완료 — 현재 시장은 7월 방향성에 영향' },
   en:{ btnOW:'One-way', btnRT:'Round-trip', officialSite:'Official site ↗',
        loading:'Loading...', loadErr:'Load failed', noData:'No data.',
        official:'Official', aiPredict:'AI Forecast', prepublish:'Not yet published', noValue:'No data',
@@ -98,13 +98,13 @@ window.I18N_SHARED = {
        confidence:{high:'High',medium:'Medium',low:'Low'},
        predictBasis:'Forecast basis', predictNote:'Pre-announcement estimate. For reference only.',
        navRoutes:'Route Search', navAirlines:'Airline Index', navNews:'News & Insights',
-       /* 2026.05.19 KST market brief shared keys — Korean Air June official filing reflected */
-       marketDataRef: '🕐 As of 2026.05.19 · Korean Air June filing reflected',
+       /* 2026.05.19 KST market brief shared keys — KE/OZ/LJ/BX/ZE June official filing reflected */
+       marketDataRef: '🕐 As of 2026.05.19 · KE/OZ/LJ/BX/ZE June filings reflected',
        marketBrent:   'Brent crude: ~$100–106/bbl — Middle East risk sustains elevated volatility',
        marketMops:    'Jet fuel (MOPS): above 470 cent/gal threshold — current market signals July direction',
        marketFx:      'USD/KRW: ~1,485–1,495 — dollar strength, KRW weakness persists',
        marketGeo:     'Hormuz tensions partially easing — residual supply uncertainty remains',
-       marketOutlook: 'Korean Air June official filing complete — market now signals July direction' },
+       marketOutlook: 'KE/OZ/LJ/BX/ZE June official filings complete — market now signals July direction' },
   ja:{ btnOW:'片道', btnRT:'往復', officialSite:'公式サイト ↗',
        loading:'読み込み中...', loadErr:'読み込み失敗', noData:'データなし',
        official:'公式', aiPredict:'AI予測', prepublish:'未公示', noValue:'データなし',
@@ -576,6 +576,56 @@ window.initNav = function(opts) {
 window.AIRLINE_META = null;
 window.MANUAL_OVERRIDES = null;
 
+/* ─────────────────────────────────────────────
+   ZE(이스타항공) 6월 공식 공시 하드코딩 데이터
+   2026.05.19 공시 기준 · PDF 원문 확인 완료
+   1군 USD 43 / 2군 USD 54 / 3군 USD 66
+   4군 USD 79 / 5군 USD 89 / 6군 USD 103
+───────────────────────────────────────────── */
+window._ZE_OFFICIAL_OVERRIDE = {
+  '2026.05': {
+    sourceType: 'manual_override', confidence: 'fresh', currency: 'USD',
+    surchargeSchema: 'group_tier',
+    group_tiers: [
+      { group: 1, label: '1군', amount: 52, currency: 'USD' },
+      { group: 2, label: '2군', amount: 66, currency: 'USD' },
+      { group: 3, label: '3군', amount: 80, currency: 'USD' },
+      { group: 4, label: '4군', amount: 95, currency: 'USD' },
+      { group: 5, label: '5군', amount: 107, currency: 'USD' },
+      { group: 6, label: '6군', amount: 126, currency: 'USD' },
+    ],
+    group_route_map: {
+      1: { milesApprox: '0-700',    routes: ['인천-후쿠오카','부산-후쿠오카','부산-오사카','부산-구마모토','제주-상하이','청주-옌지','인천-엔타이'] },
+      2: { milesApprox: '700-1200', routes: ['인천-나리타','인천-오사카','인천-치토세','부산-치토세','인천-오키나와','부산-오키나와','인천-도쿠시마','김포-타이베이','인천-타이베이','청주-타이베이','제주-타이베이','부산-타이베이','인천-상하이','청주-상하이','부산-옌지','인천-정저우'] },
+      3: { milesApprox: '1200-1500', routes: ['인천-홍콩','청주-장가계'] },
+      4: { milesApprox: '1500-1800', routes: ['인천-다낭'] },
+      5: { milesApprox: '1800-2500', routes: ['인천-방콕','인천-치앙마이','부산-치앙마이','인천-나트랑','인천-푸꾸옥','인천-마나도'] },
+      6: { milesApprox: '2500+',     routes: ['인천-알마티','부산-알마티'] },
+    },
+  },
+  '2026.06': {
+    sourceType: 'manual_override', confidence: 'fresh', currency: 'USD',
+    surchargeSchema: 'group_tier',
+    officialNoticeUrl: 'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=594&lang=KR',
+    group_tiers: [
+      { group: 1, label: '1군', amount: 43, currency: 'USD' },
+      { group: 2, label: '2군', amount: 54, currency: 'USD' },
+      { group: 3, label: '3군', amount: 66, currency: 'USD' },
+      { group: 4, label: '4군', amount: 79, currency: 'USD' },
+      { group: 5, label: '5군', amount: 89, currency: 'USD' },
+      { group: 6, label: '6군', amount: 103, currency: 'USD' },
+    ],
+    group_route_map: {
+      1: { milesApprox: '0-700',    routes: ['인천-후쿠오카','부산-후쿠오카','부산-오사카','부산-구마모토','제주-상하이','청주-옌지','인천-엔타이'] },
+      2: { milesApprox: '700-1200', routes: ['인천-나리타','인천-오사카','인천-치토세','부산-치토세','인천-오키나와','부산-오키나와','인천-도쿠시마','김포-타이베이','인천-타이베이','청주-타이베이','제주-타이베이','부산-타이베이','인천-상하이','청주-상하이','부산-옌지','인천-정저우'] },
+      3: { milesApprox: '1200-1500', routes: ['인천-홍콩','청주-장가계'] },
+      4: { milesApprox: '1500-1800', routes: ['인천-다낭'] },
+      5: { milesApprox: '1800-2500', routes: ['인천-방콕','인천-치앙마이','부산-치앙마이','인천-나트랑','인천-푸꾸옥','인천-마나도'] },
+      6: { milesApprox: '2500+',     routes: ['인천-알마티','부산-알마티'] },
+    },
+  },
+};
+
 window.loadAirlineMeta = async function() {
   try {
     var [mr, or_] = await Promise.allSettled([
@@ -585,6 +635,11 @@ window.loadAirlineMeta = async function() {
     if (mr.status === 'fulfilled' && mr.value) window.AIRLINE_META = mr.value.airlines || {};
     if (or_.status === 'fulfilled' && or_.value) window.MANUAL_OVERRIDES = or_.value;
   } catch(e) { window.AIRLINE_META = {}; }
+  /* ZE 6월 공식 공시 데이터 강제 주입 (manual_overrides.json 미포함 대비) */
+  if (!window.MANUAL_OVERRIDES) window.MANUAL_OVERRIDES = {};
+  if (!window.MANUAL_OVERRIDES['ZE']) window.MANUAL_OVERRIDES['ZE'] = {};
+  window.MANUAL_OVERRIDES['ZE']['2026.05'] = window._ZE_OFFICIAL_OVERRIDE['2026.05'];
+  window.MANUAL_OVERRIDES['ZE']['2026.06'] = window._ZE_OFFICIAL_OVERRIDE['2026.06'];
   return window.AIRLINE_META;
 };
 
@@ -1027,7 +1082,7 @@ ko:{
   'index.status.loading':'데이터 로딩 중...',
   'index.status.loadError':'데이터 로딩 실패 — 콘솔을 확인하세요',
   'index.status.scriptError':'스크립트 오류로 로딩 실패 — 콘솔을 확인하세요',
-  'index.status.updated':'데이터 갱신: ','index.status.updatedSuffix':' · KE·OZ·LJ·BX 6월 공식 공시 반영 · 2026.05.19 기준',
+  'index.status.updated':'데이터 갱신: ','index.status.updatedSuffix':' · KE·OZ·LJ·BX·ZE 6월 공식 공시 반영 · 2026.05.19 기준',
   /* filters */
   'index.filter.all':'전체','index.filter.hasOfficialData':'공식 데이터 있음',
   /* result */
@@ -1092,14 +1147,14 @@ ko:{
   'news.mops':'✈️ 항공유/MOPS: 약 511.21 cent/gal, 약 $214.71/bbl — 최고 기준 470 cent/gal 상회',
   'news.mops.extra':'→ 최고 단계 발동 기준보다 약 +41.21 cent/gal 높은 구간',
   'news.geo':'🌍 지정학: 호르무즈 리스크 일부 완화 신호 있으나 완전 해소 아님',
-  'news.marketSummary':'→ KE·OZ·LJ·BX 6월 공시 완료(전구간 인하). 브렌트유 $100~105/bbl·환율 1,485~1,495원·MOPS 고수준 지속 — 7월 방향성 주시. 7월 공시는 6월 중 확인.',
+  'news.marketSummary':'→ KE·OZ·LJ·BX·ZE 6월 공시 완료(전구간 인하). 브렌트유 $100~105/bbl·환율 1,485~1,495원·MOPS 고수준 지속 — 7월 방향성 주시. 7월 공시는 6월 중 확인.',
   'news.fxDominance':'🌍 유가·환율 변수 주시 (6월 변동성 확대 구간)',
   'news.decisionTitle':'📌 현재 판단 기준',
   'news.decisionLine1':'→ 브렌트유 $105대 + MOPS 511.21 cent/gal + 환율 1,490원대 복합 — 인하폭 제한 구조',
   'news.decisionLine2':'→ MOPS 최고 기준 상회, 일부 완화 가능성도 있으나 환율·유가 영향으로 실질 인하폭 제한 가능',
   'news.decisionShort':'👉 단거리: 6월 대한항공 기준 61,500원 (5월 75,000원)',
   'news.decisionMid':'👉 중거리: 6월 대한항공 기준 117,000~205,500원 구간',
-  'news.decisionLong':'👉 장거리: 항공사별 6월 공식 공시 기준 — KE·OZ·LJ·BX 반영 완료 (대한항공 282,000~451,500원)',
+  'news.decisionLong':'👉 장거리: 항공사별 6월 공식 공시 기준 — KE·OZ·LJ·BX·ZE 반영 완료 (대한항공 282,000~451,500원)',
   /* 7월 전망 CTA 박스 */
   'news.forecastCta.title':'2026년 7월 유류할증료 전망',
   'news.forecastCta.desc':'대한항공·아시아나·진에어·에어부산 6월 공식 공시 결과와 브렌트유, 원달러 환율, 항공유/MOPS, 중동 리스크를 기준으로 7월 유류할증료 방향성을 정리했습니다.',
@@ -1109,7 +1164,7 @@ ko:{
   'news.basisBody':'6월 공시는 5월 중 각 항공사 공식 채널에서 확인 필요합니다.',
   'news.aiNotice':'AI 요약 콘텐츠 — 이 페이지의 내용은 공개된 정보를 바탕으로 AI가 정리한 참고용 자료입니다. 원문 기반 요약이며, 공식 정보가 아닙니다. 중요한 결정 전에 각 항공사 및 기관의 공식 채널을 반드시 확인하세요.',
   'news.filterAll':'전체',
-  'news.dataRef':        '✅ 대한항공·아시아나·진에어·에어부산 6월 공식 공시 반영 완료 · 2026.05.19 09:20 KST 기준',
+  'news.dataRef':        '✅ 대한항공·아시아나·진에어·에어부산·이스타항공 6월 공식 공시 반영 완료 · 2026.05.19 09:20 KST 기준',
   'news.curSummaryTitle':'현재 기준 요약 (2026.05.14):',
   'news.curSummary':     '→ 6월 유류할증료: 브렌트유 $105대, MOPS 511.21 cent/gal, 환율 1,490원대 영향으로 급격한 인하 가능성은 제한적 — 공식 공시 확인 필요',
   /* 핵심 요약 카드 i18n */
@@ -1121,7 +1176,7 @@ ko:{
   'news.summary.li4':     '호르무즈 리스크 일부 완화 신호 있으나 완전 해소 아님',
   'news.summary.li5':     '6월 유류할증료: MOPS는 최고 기준을 상회하나 일부 완화 가능성도 있어 최고 단계 유지 또는 제한적 인하 가능성 동시 존재',
   'news.summary.li6':     '브렌트유 $105대 + MOPS 511.21 cent/gal + 환율 1,490원대 복합 — 급격한 인하 가능성 제한',
-  'news.surchargeNote':  '※ 유류할증료는 발권일 기준 적용됩니다. 대한항공·아시아나·진에어·에어부산 6월 공식 공시 반영 완료 (2026.05.19 기준)',
+  'news.surchargeNote':  '※ 유류할증료는 발권일 기준 적용됩니다. 대한항공·아시아나·진에어·에어부산·이스타항공 6월 공식 공시 반영 완료 (2026.05.19 기준)',
   'news.sectionPrev':    '📚 이전 뉴스 / 이전 분석 기록',
   'news.sectionPrevSub': '※ 아래 내용은 각 작성 시점 기준의 시장 분석 기록입니다.',
   'news.newBadge':       'NEW',
@@ -1133,7 +1188,7 @@ ko:{
   'news.impact.prefix':'→ 유류할증료 영향: ',
   /* predict box */
   'news.predict.subtitle':'데이터 기반 추정',
-  'news.predict.footnote':'* KE·OZ·LJ·BX 6월 공식 공시 완료(인하). 현재 시장 지표는 7월 유류할증료 방향성 참고용입니다.',
+  'news.predict.footnote':'* KE·OZ·LJ·BX·ZE 6월 공식 공시 완료(인하). 현재 시장 지표는 7월 유류할증료 방향성 참고용입니다.',
   'news.predict.brentLabel':'Brent 유가',
   'news.predict.mopsLabel':'싱가포르 항공유 (MOPS)',
   'news.predict.mopsValue':'고점 대비 일부 조정 후 재상승 시도, 고가 유지',
@@ -1165,17 +1220,17 @@ ko:{
   'news.official.lj':'진에어 — 5월 대비 전 구간 인하 (USD 42→36, USD 140→115)',
   'news.official.7c':'제주항공 — 6월 공시 전 (5월 기준 최대 USD 126)',
   'news.official.bx':'에어부산 — 5월 대비 전 구간 인하 (USD 52→43, USD 126→106)',
-  'news.official.ze':'이스타항공 — 6월 공시 전',
+  'news.official.ze':'이스타항공 — 5월 대비 전 구간 인하 (USD 52→43, USD 126→103)',
   'news.official.rs':'에어서울 — 6월 공시 전',
   'news.official.tw':'티웨이항공 — 6월 공시 전',
   'news.official.yp':'에어프레미아 — 6월 공시 전',
-  'news.official.desc':'* KE·OZ·LJ·BX 6월 공식 공시 완료 · 5월 대비 전 구간 인하 · 제주항공·이스타·에어서울·티웨이·에어프레미아는 6월 공시 전',
+  'news.official.desc':'* KE·OZ·LJ·BX·ZE 6월 공식 공시 완료 · 5월 대비 전 구간 인하 · 제주항공·에어서울·티웨이·에어프레미아는 6월 공시 전',
   /* compare box */
   'news.compare.li1':'대한항공: 전 구간 인하 (단거리 75,000원→61,500원, 장거리 564,000원→451,500원)',
   'news.compare.li2':'아시아나: 전 구간 인하 (단거리 85,400원→68,000원, 장거리 476,200원→382,800원)',
   'news.compare.li3':'진에어: 전 구간 인하 (USD 42→36, USD 140→115)',
   'news.compare.li4':'에어부산: 전 구간 인하 (USD 52→43, USD 126→106)',
-  'news.compare.li5':'제주항공·이스타·에어서울·티웨이·에어프레미아: 6월 공시 전 (5월 기준)',
+  'news.compare.li5':'이스타항공: 전 구간 인하 (USD 52→43, USD 126→103)',
   /* fixed news cards */
   'news.fixed.20260420.title':'유가 하락 지속, 6월 유류할증료 변동성 확대 — 공식 공시 확인 필요',
   'news.fixed.20260420.summary':'브렌트유가 80달러 초반까지 하락한 이후 추가 하락 흐름을 유지하고 있다. 환율은 여전히 높은 수준이지만 소폭 안정세를 보이며, 6월 유류할증료는 하락 또는 유지 가능성이 커지고 있다.',
@@ -1335,7 +1390,7 @@ en:{
   'index.indexLink':'→ View Full Airline Index',
   'index.status.loading':'Loading data...','index.status.loadError':'Failed to load data — check console',
   'index.status.scriptError':'Script error — check console',
-  'index.status.updated':'Data updated: ','index.status.updatedSuffix':' · Korean Air Jun 2026 official filing reflected',
+  'index.status.updated':'Data updated: ','index.status.updatedSuffix':' · KE/OZ/LJ/BX/ZE Jun 2026 official filing reflected',
   'index.filter.all':'All','index.filter.hasOfficialData':'Has Official Data',
   'index.result.label':'Fuel Surcharge by Airline',
   'index.result.noResults':'No results found',
@@ -1388,24 +1443,24 @@ en:{
   'news.fx':'💱 USD/KRW: around 1,488–1,494 KRW, currently around 1,491–1,492 — elevated FX burden',
   'news.mops':'✈️ Jet Fuel/MOPS: around 511.21 cent/gal, ~$214.71/bbl — above the 470 cent/gal highest-band threshold',
   'news.geo':'🌍 Geopolitics: Hormuz Strait risk re-escalating — Iran claims wider operational zone, US-Iran ceasefire uncertain',
-  'news.marketSummary':'→ KE/OZ/LJ/BX June filings complete (all down). Brent $100–105/bbl, FX 1,485–1,495, MOPS elevated — July direction watch. July filings due in June.',
+  'news.marketSummary':'→ KE/OZ/LJ/BX/ZE June filings complete (all down). Brent $100–105/bbl, FX 1,485–1,495, MOPS elevated — July direction watch. July filings due in June.',
   'news.fxDominance':'🌍 Oil & FX variables to watch (June volatility zone)',
   'news.decisionTitle':'📌 Current Decision Guide',
   'news.decisionLine1':'→ Brent rebound (~$107) + USD/KRW late-1,470s + Hormuz risk — compound structure limiting cut size',
   'news.decisionLine2':'→ MOPS downward pressure exists, but actual cut size may be constrained by above variables',
   'news.decisionShort':'👉 Short-haul: June Korean Air KRW 61,500 (May 75,000)',
   'news.decisionMid':'👉 Mid-haul: June Korean Air KRW 117,000–205,500 range',
-  'news.decisionLong':'👉 Long-haul: June filings complete for KE/OZ/LJ/BX — Korean Air KRW 282,000–451,500',
+  'news.decisionLong':'👉 Long-haul: June filings complete for KE/OZ/LJ/BX/ZE — Korean Air KRW 282,000–451,500',
   /* 7월 전망 CTA 박스 */
   'news.forecastCta.title':'July 2026 Fuel Surcharge Outlook',
-  'news.forecastCta.desc':'Based on KE/OZ/LJ/BX June official filing results, Brent crude, USD/KRW, jet fuel/MOPS and geopolitical risk, this page summarizes July surcharge direction.',
+  'news.forecastCta.desc':'Based on KE/OZ/LJ/BX/ZE June official filing results, Brent crude, USD/KRW, jet fuel/MOPS and geopolitical risk, this page summarizes July surcharge direction.',
   'news.forecastCta.btn':'View July Outlook →',
   /* 6월 기준 안내 */
   'news.basisTitle':'📅 June Surcharge Filing Notice',
   'news.basisBody':'June filings will be published by each airline via their official channels during May.',
   'news.aiNotice':'AI Summary — Content on this page is AI-organized reference information based on public data. Not official. Always confirm with airline official channels before important decisions.',
   'news.filterAll':'All',
-  'news.dataRef':        '✅ KE/OZ/LJ/BX June official filings complete · As of 2026.05.19 09:20 KST',
+  'news.dataRef':        '✅ KE/OZ/LJ/BX/ZE June official filings complete · As of 2026.05.19 09:20 KST',
   'news.curSummaryTitle':'Current Market Summary (2026.05.14):',
   'news.curSummary':     '→ June surcharge: Brent $105 range, MOPS 511.21 cent/gal, USD/KRW around 1,490s — sharp cut unlikely. Check official filing.',
   /* summary card i18n */
@@ -1417,7 +1472,7 @@ en:{
   'news.summary.li4':     'Hormuz risk shows partial easing signs but is not fully resolved',
   'news.summary.li5':     'June surcharge: MOPS above highest threshold but partial easing possible — highest band maintained OR limited reduction, both scenarios coexist',
   'news.summary.li6':     'Brent $105 range + MOPS 511.21 cent/gal + USD/KRW around 1,490s compound — sharp surcharge cut unlikely',
-  'news.surchargeNote':  '※ Surcharges apply at booking date. KE/OZ/LJ/BX June 2026 official filings reflected (as of 2026.05.19)',
+  'news.surchargeNote':  '※ Surcharges apply at booking date. KE/OZ/LJ/BX/ZE June 2026 official filings reflected (as of 2026.05.19)',
   'news.sectionPrev':    '📚 Previous News / Past Analysis',
   'news.sectionPrevSub': '※ The content below is market analysis recorded at each publication date.',
   'news.newBadge':       'NEW',
@@ -1461,17 +1516,18 @@ en:{
   'news.official.lj':'Jin Air — All routes down vs May (USD 42→36, USD 140→115)',
   'news.official.7c':'Jeju Air — June filing pending (May basis: max USD 126)',
   'news.official.bx':'Air Busan — All routes down vs May (USD 52→43, USD 126→106)',
-  'news.official.ze':'Eastar Jet — June filing pending',
+  'news.official.ze':'Eastar Jet — All routes down vs May (USD 52→43, USD 126→103)',
   'news.official.rs':'Air Seoul — June filing pending',
   'news.official.tw':'T\'way Air — June filing pending',
   'news.official.yp':'Air Premia — June filing pending',
-  'news.official.desc':'* KE/OZ/LJ/BX June filings complete · All-band reduction vs May · Jeju Air/Eastar/Air Seoul/T\'way/Air Premia: June filing pending',
+  'news.official.desc':'* KE/OZ/LJ/BX/ZE June filings complete · All-band reduction vs May · Jeju Air/Air Seoul/T\'way/Air Premia: June filing pending',
   /* compare box */
   'news.compare.li1':'Korean Air: all routes down (short ₩75,000→₩61,500, long ₩564,000→₩451,500)',
   'news.compare.li2':'Asiana: all routes down (short ₩85,400→₩68,000, long ₩476,200→₩382,800)',
   'news.compare.li3':'Jin Air: all routes down (USD 42→36, USD 140→115)',
   'news.compare.li4':'Air Busan: all routes down (USD 52→43, USD 126→106)',
-  'news.compare.li5':'Jeju Air / Eastar / Air Seoul / T\'way / Air Premia: June filing pending — May basis only',
+  'news.compare.li4b':'Eastar Jet: all routes down (USD 52→43, USD 126→103)',
+  'news.compare.li5':'Jeju Air / Air Seoul / T\'way / Air Premia: June filing pending — May basis only',
   /* fixed news cards */
   'news.fixed.20260420.title':'Oil prices keep falling — June surcharge outlook uncertain, check official filings',
   'news.fixed.20260420.summary':'Brent crude has continued sliding after hitting the low $80s. The USD/KRW rate is easing slightly despite remaining elevated, and the probability of a June surcharge reduction or hold is growing.',
@@ -1616,7 +1672,7 @@ ja:{
   'index.indexLink':'→ 航空会社一覧を見る',
   'index.status.loading':'データ読み込み中...','index.status.loadError':'データ読み込み失敗',
   'index.status.scriptError':'スクリプトエラー',
-  'index.status.updated':'データ更新: ','index.status.updatedSuffix':' · 大韓航空2026年6月公式公示反映',
+  'index.status.updated':'データ更新: ','index.status.updatedSuffix':' · KE·OZ·LJ·BX·ZE 2026年6月公式公示反映',
   'index.filter.all':'すべて','index.filter.hasOfficialData':'公式データあり',
   'index.result.label':'航空会社別燃油サーチャージ',
   'index.result.noResults':'検索結果がありません',
@@ -1679,14 +1735,14 @@ ja:{
   'news.decisionLong':'👉 原油・為替変数により方向が変わる可能性あり',
   /* 6月予測CTAボックス */
   'news.forecastCta.title':'2026年7月 燃油サーチャージ予測',
-  'news.forecastCta.desc':'KE·OZ·LJ·BX 6月公式公示結果とブレント原油・ウォン/ドル為替・航空燃油/MOPS・中東リスクをベースに7月サーチャージの方向性をまとめました。',
+  'news.forecastCta.desc':'KE·OZ·LJ·BX·ZE 6月公式公示結果とブレント原油・ウォン/ドル為替・航空燃油/MOPS・中東リスクをベースに7月サーチャージの方向性をまとめました。',
   'news.forecastCta.btn':'7月予測を詳しく見る →',
   /* 6月基準案内 */
   'news.basisTitle':'📅 6月サーチャージ公示案内',
   'news.basisBody':'6月公示は5月中に各航空会社の公式チャンネルでご確認ください。',
   'news.aiNotice':'AI要約コンテンツ — このページの内容は公開情報をもとにAIが整理した参考資料です。公式情報ではありません。重要な判断前は各航空会社の公式チャンネルを必ずご確認ください。',
   'news.filterAll':'すべて',
-  'news.dataRef':        '✅ KE·OZ·LJ·BX 6月公式公示完了 · 2026.05.19 09:20 KST 基準',
+  'news.dataRef':        '✅ KE·OZ·LJ·BX·ZE 6月公式公示完了 · 2026.05.19 09:20 KST 基準',
   'news.curSummaryTitle':'現在の基準要約 (2026.05.07):',
   'news.curSummary':     '→ 6月サーチャージ: 原油・為替変数により方向不透明 — 公式公示の確認が必要',
   /* summary card i18n (ja — en fallback) */
@@ -1698,7 +1754,7 @@ ja:{
   'news.summary.li4':     '中東地政学リスクは依然として継続',
   'news.summary.li5':     '6月燃油サーチャージ: 原油・為替変数に要注意、公式公示確認が必要',
   'news.summary.li6':     '短期的な変動性は非常に大きい状態',
-  'news.surchargeNote':  '※ 燃油サーチャージは予約時点(発券日)を基準に適用されます。KE·OZ·LJ·BX 6月公式公示が反映されました。',
+  'news.surchargeNote':  '※ 燃油サーチャージは予約時点(発券日)を基準に適用されます。KE·OZ·LJ·BX·ZE 6月公式公示が反映されました。',
   'news.sectionPrev':    '📚 過去のニュース / 過去の分析記録',
   'news.sectionPrevSub': '※ 下記の内容は各作成時点基準の市場分析記録です。',
   'news.newBadge':       'NEW',
@@ -1742,17 +1798,18 @@ ja:{
   'news.official.lj':'ジンエアー — 5月比全路線引き下げ (USD 42→36, 140→115)',
   'news.official.7c':'チェジュ航空 — 6月公示前 (5月基準 最大 USD 126)',
   'news.official.bx':'エアプサン — 5月比全路線引き下げ (USD 52→43, 126→106)',
-  'news.official.ze':'イースター航空 — 6月公示前',
+  'news.official.ze':'イースター航空 — 5月比全路線引き下げ (USD 52→43、126→103)',
   'news.official.rs':'エアソウル — 6月公示前',
   'news.official.tw':'ティーウェイ — 6月公示前',
   'news.official.yp':'エアプレミア — 6月公示前',
-  'news.official.desc':'* KE·OZ·LJ·BX 6月公式公示完了 · 5月比全路線引き下げ · チェジュ·イースター·エアソウル·ティーウェイ·エアプレミアは6月公示前',
+  'news.official.desc':'* KE·OZ·LJ·BX·ZE 6月公式公示完了 · 5月比全路線引き下げ · チェジュ·エアソウル·ティーウェイ·エアプレミアは6月公示前',
   /* compare box */
   'news.compare.li1':'大韓航空：全路線引き下げ (短距離₩75,000→₩61,500、長距離₩564,000→₩451,500)',
   'news.compare.li2':'アシアナ：全路線引き下げ (短距離₩85,400→₩68,000、長距離₩476,200→₩382,800)',
   'news.compare.li3':'ジンエアー：全路線引き下げ (USD 42→36、140→115)',
   'news.compare.li4':'エアプサン：全路線引き下げ (USD 52→43、126→106)',
-  'news.compare.li5':'チェジュ·イースター·エアソウル·ティーウェイ·エアプレミア：6月公示前 (5月基準)',
+  'news.compare.li4b':'イースター航空：全路線引き下げ (USD 52→43、126→103)',
+  'news.compare.li5':'チェジュ·エアソウル·ティーウェイ·エアプレミア：6月公示前 (5月基準)',
   /* fixed news cards */
   'news.fixed.20260420.title':'原油安続く — 6月サーチャージの見通し不透明、公式公示の確認が必要',
   'news.fixed.20260420.summary':'ブレント原油が80ドル前半まで下落後も下落基調を維持。為替は依然高水準だが小幅安定化し、6月サーチャージの引き下げまたは維持の可能性が高まっている。',
@@ -1897,7 +1954,7 @@ zh:{
   'index.indexLink':'→ 查看完整航空公司一览',
   'index.status.loading':'数据加载中...','index.status.loadError':'数据加载失败',
   'index.status.scriptError':'脚本错误',
-  'index.status.updated':'数据更新: ','index.status.updatedSuffix':' · 大韩航空2026年6月官方公告已反映',
+  'index.status.updated':'数据更新: ','index.status.updatedSuffix':' · KE·OZ·LJ·BX·ZE 2026年6月官方公告已反映',
   'index.filter.all':'全部','index.filter.hasOfficialData':'有官方数据',
   'index.result.label':'各航空公司燃油附加费',
   'index.result.noResults':'无搜索结果',
@@ -1960,14 +2017,14 @@ zh:{
   'news.decisionLong':'👉 油价·汇率变量可能使方向出现变化',
   /* 6月预测CTA框 */
   'news.forecastCta.title':'2026年7月燃油附加费预测',
-  'news.forecastCta.desc':'基于KE·OZ·LJ·BX 6月官方公告结果、布伦特原油、韩元/美元汇率、航空燃油/MOPS及中东风险，整理了7月附加费方向性。',
+  'news.forecastCta.desc':'基于KE·OZ·LJ·BX·ZE 6月官方公告结果、布伦特原油、韩元/美元汇率、航空燃油/MOPS及中东风险，整理了7月附加费方向性。',
   'news.forecastCta.btn':'查看7月预测详情 →',
   /* 6月基准说明 */
   'news.basisTitle':'📅 6月燃油附加费公告说明',
   'news.basisBody':'6月公告请于5月中关注各航空公司官方渠道。',
   'news.aiNotice':'AI摘要内容 — 本页内容为AI基于公开信息整理的参考资料，非官方信息。重要决策前请务必确认各航空公司官方渠道。',
   'news.filterAll':'全部',
-  'news.dataRef':        '✅ KE·OZ·LJ·BX 6月官方公告完成 · 2026.05.19 09:20 KST 基准',
+  'news.dataRef':        '✅ KE·OZ·LJ·BX·ZE 6月官方公告完成 · 2026.05.19 09:20 KST 基准',
   'news.curSummaryTitle':'当前基准摘要 (2026.05.07):',
   'news.curSummary':     '→ 6月附加费：因油价·汇率变量方向不明，需确认官方公告',
   /* summary card i18n (zh) */
@@ -1979,7 +2036,7 @@ zh:{
   'news.summary.li4':     '中东地缘政治风险依然持续',
   'news.summary.li5':     '6月燃油附加费：需关注油价·汇率变量，确认官方公告',
   'news.summary.li6':     '近期波动性极大',
-  'news.surchargeNote':  '※ 燃油附加费按出票日期基准适用。KE·OZ·LJ·BX 6月官方公告已反映。',
+  'news.surchargeNote':  '※ 燃油附加费按出票日期基准适用。KE·OZ·LJ·BX·ZE 6月官方公告已反映。',
   'news.sectionPrev':    '📚 历史新闻 / 历史分析记录',
   'news.sectionPrevSub': '※ 以下内容为各发布时间点的市场分析记录。',
   'news.newBadge':       'NEW',
@@ -2023,17 +2080,18 @@ zh:{
   'news.official.lj':'真航空 — 较5月全航线下调 (USD 42→36, 140→115)',
   'news.official.7c':'济州航空 — 6月公告待定 (5月基准 最高 USD 126)',
   'news.official.bx':'釜山航空 — 较5月全航线下调 (USD 52→43, 126→106)',
-  'news.official.ze':'易斯达航空 — 6月公告待定',
+  'news.official.ze':'易斯达航空 — 较5月全航线下调 (USD 52→43, 126→103)',
   'news.official.rs':'首尔航空 — 6月公告待定',
   'news.official.tw':'德威航空 — 6月公告待定',
   'news.official.yp':'航空前奏 — 6月公告待定',
-  'news.official.desc':'* KE·OZ·LJ·BX 6月官方公告完成 · 较5月全区间下调 · 济州·易斯达·首尔·德威·航空前奏：6月公告待定',
+  'news.official.desc':'* KE·OZ·LJ·BX·ZE 6月官方公告完成 · 较5月全区间下调 · 济州·首尔·德威·航空前奏：6月公告待定',
   /* compare box */
   'news.compare.li1':'大韩航空：全线下调 (短途₩75,000→₩61,500，长途₩564,000→₩451,500)',
   'news.compare.li2':'韩亚航空：全线下调 (短途₩85,400→₩68,000，长途₩476,200→₩382,800)',
   'news.compare.li3':'真航空：全线下调 (USD 42→36，140→115)',
   'news.compare.li4':'釜山航空：全线下调 (USD 52→43，126→106)',
-  'news.compare.li5':'济州·易斯达·首尔·德威·航空前奏：6月公告待定 (仅显示5月基准)',
+  'news.compare.li4b':'易斯达航空：全线下调 (USD 52→43，126→103)',
+  'news.compare.li5':'济州·首尔·德威·航空前奏：6月公告待定 (仅显示5月基准)',
   /* fixed news cards */
   'news.fixed.20260420.title':'油价持续下跌 — 6月附加费走势不明，需关注官方公告',
   'news.fixed.20260420.summary':'布伦特原油跌至80美元初段后继续下行。汇率虽仍偏高但小幅稳定，6月附加费下调或维持的可能性正在增大。',
@@ -2160,7 +2218,7 @@ fr:{
   'index.indexLink':'→ Voir l\'index complet des compagnies',
   'index.status.loading':'Chargement...','index.status.loadError':'Erreur de chargement',
   'index.status.scriptError':'Erreur de script',
-  'index.status.updated':'Mis à jour: ','index.status.updatedSuffix':' · Publication officielle Korean Air juin 2026',
+  'index.status.updated':'Mis à jour: ','index.status.updatedSuffix':' · Publications officielles KE/OZ/LJ/BX/ZE juin 2026',
   'index.filter.all':'Tout','index.filter.hasOfficialData':'Données officielles disponibles',
   'index.result.label':'Surcharge par compagnie',
   'index.result.noResults':'Aucun résultat',
@@ -2170,7 +2228,7 @@ fr:{
   'index.alert.selectAirports':'Veuillez sélectionner départ et destination',
   'index.alert.differentAirports':'Le départ et la destination doivent être différents',
   'index.meta.oneWay':'Aller simple','index.meta.roundTrip':'Aller-retour',
-  'index.meta.suffix':'Départ Corée · Publication officielle Korean Air juin 2026',
+  'index.meta.suffix':'Départ Corée · Publications officielles KE/OZ/LJ/BX/ZE juin 2026',
   'index.card.currentRoute':'Cette route',
   'index.card.notPublished':'N/D','index.card.preAnnouncement':'En attente',
   'index.card.groupTier':'Tarif groupe','index.card.usdNotice':'USD coté',
@@ -2223,14 +2281,14 @@ fr:{
   'news.decisionLong':'👉 Les variables pétrole & change peuvent faire évoluer la direction',
   /* Boîte CTA prévision juin */
   'news.forecastCta.title':'Prévision surcharge carburant juillet 2026',
-  'news.forecastCta.desc':'Basée sur les publications officielles KE/OZ/LJ/BX de juin, cette page résume la direction de la surcharge de juillet.',
+  'news.forecastCta.desc':'Basée sur les publications officielles KE/OZ/LJ/BX/ZE de juin, cette page résume la direction de la surcharge de juillet.',
   'news.forecastCta.btn':'Voir la prévision de juillet →',
   /* Mention base calcul juin */
   'news.basisTitle':'📅 Annonce surcharge juin',
   'news.basisBody':'Les annonces de juin seront publiées par chaque compagnie aérienne via leurs canaux officiels en mai.',
   'news.aiNotice':'Résumé IA — Le contenu de cette page est une référence organisée par IA sur la base de données publiques. Non officiel. Vérifiez toujours auprès des canaux officiels avant toute décision importante.',
   'news.filterAll':'Tout',
-  'news.dataRef':        '✅ Publications officielles KE/OZ/LJ/BX juin complètes · Au 2026.05.19 09:20 KST',
+  'news.dataRef':        '✅ Publications officielles KE/OZ/LJ/BX/ZE juin complètes · Au 2026.05.19 09:20 KST',
   'news.curSummaryTitle':'Résumé actuel (2026.05.07) :',
   'news.curSummary':     '→ Surcharge juin: direction incertaine (pétrole & change) — vérifier l\'annonce officielle',
   /* summary card i18n (fr — en content) */
@@ -2242,7 +2300,7 @@ fr:{
   'news.summary.li4':     'Risques géopolitiques au Moyen-Orient toujours présents',
   'news.summary.li5':     'Surcharge juin: variables pétrole & change à surveiller, vérifier annonce officielle',
   'news.summary.li6':     'Forte volatilité à court terme',
-  'news.surchargeNote':  "※ La surcharge s'applique à la date d'émission du billet. Les publications juin de KE/OZ/LJ/BX ont été reflétées.",
+  'news.surchargeNote':  "※ La surcharge s'applique à la date d'émission du billet. Les publications juin de KE/OZ/LJ/BX/ZE ont été reflétées.",
   'news.sectionPrev':    '📚 Actualités précédentes / Analyses passées',
   'news.sectionPrevSub': '※ Le contenu ci-dessous est une analyse de marché à la date de publication respective.',
   'news.newBadge':       'NEW',
@@ -2286,17 +2344,18 @@ fr:{
   'news.official.lj':'Jin Air — Baisse vs mai (USD 42→36, 140→115)',
   'news.official.7c':'Jeju Air — Publication juin en attente (max USD 126 en mai)',
   'news.official.bx':'Air Busan — Baisse vs mai (USD 52→43, 126→106)',
-  'news.official.ze':'Eastar Jet — Publication juin en attente',
+  'news.official.ze':'Eastar Jet — Tous les itinéraires en baisse vs mai (USD 52→43, 126→103)',
   'news.official.rs':'Air Seoul — Publication juin en attente',
   'news.official.tw':'T\'way Air — Publication juin en attente',
   'news.official.yp':'Air Premia — Publication juin en attente',
-  'news.official.desc':'* KE/OZ/LJ/BX publications juin complètes · Baisse vs mai · Jeju/Eastar/Air Seoul/T\'way/Air Premia: en attente',
+  'news.official.desc':'* KE/OZ/LJ/BX/ZE publications juin complètes · Baisse vs mai · Jeju/Air Seoul/T\'way/Air Premia: en attente',
   /* compare box */
   'news.compare.li1':'Korean Air : tous en baisse vs mai (court ₩75 000→₩61 500, long ₩564 000→₩451 500)',
   'news.compare.li2':'Asiana : tous en baisse (court ₩85 400→₩68 000, long ₩476 200→₩382 800)',
   'news.compare.li3':'Jin Air : tous en baisse (USD 42→36, 140→115)',
   'news.compare.li4':'Air Busan : tous en baisse (USD 52→43, 126→106)',
-  'news.compare.li5':'Jeju / Eastar / Air Seoul / T\'way / Air Premia : publication juin en attente — base mai',
+  'news.compare.li4b':'Eastar Jet : tous en baisse (USD 52→43, 126→103)',
+  'news.compare.li5':'Jeju / Air Seoul / T\'way / Air Premia : publication juin en attente — base mai',
   /* fixed news cards */
   'news.fixed.20260420.title':'Le pétrole continue de baisser — perspectives juin incertaines, surveiller l\'annonce officielle',
   'news.fixed.20260420.summary':'Le Brent reste sous pression après les niveaux bas des $80. Le taux USD/KRW se stabilise légèrement malgré un niveau encore élevé, mais les variables pétrole & change rendent la direction de juin incertaine — vérifier l\'annonce officielle.',
@@ -2425,7 +2484,7 @@ de:{
   'index.indexLink':'→ Vollständigen Airline-Index ansehen',
   'index.status.loading':'Daten werden geladen...','index.status.loadError':'Fehler beim Laden',
   'index.status.scriptError':'Skriptfehler',
-  'index.status.updated':'Aktualisiert: ','index.status.updatedSuffix':' · Offizielle Bekanntgabe Korean Air Juni 2026',
+  'index.status.updated':'Aktualisiert: ','index.status.updatedSuffix':' · Offizielle Bekanntgaben KE/OZ/LJ/BX/ZE Juni 2026',
   'index.filter.all':'Alle','index.filter.hasOfficialData':'Offizielle Daten vorhanden',
   'index.result.label':'Treibstoffzuschlag nach Fluggesellschaft',
   'index.result.noResults':'Keine Ergebnisse',
@@ -2435,7 +2494,7 @@ de:{
   'index.alert.selectAirports':'Bitte Abflug und Ziel auswählen',
   'index.alert.differentAirports':'Abflug und Ziel müssen unterschiedlich sein',
   'index.meta.oneWay':'Einfach','index.meta.roundTrip':'Hin und zurück',
-  'index.meta.suffix':'Korea-Abflug · Offizielle Bekanntgabe Korean Air Juni 2026',
+  'index.meta.suffix':'Korea-Abflug · Offizielle Bekanntgaben KE/OZ/LJ/BX/ZE Juni 2026',
   'index.card.currentRoute':'Diese Strecke',
   'index.card.notPublished':'Nicht veröffentlicht','index.card.preAnnouncement':'Ausstehend',
   'index.card.groupTier':'Gruppenpreis','index.card.usdNotice':'USD-notiert',
@@ -2488,14 +2547,14 @@ de:{
   'news.decisionLong':'👉 Öl- & Wechselkursvariablen können die Richtung in beide Seiten verschieben',
   /* Forecast CTA Box Juni */
   'news.forecastCta.title':'Prognose Treibstoffzuschlag Juli 2026',
-  'news.forecastCta.desc':'Basierend auf den offiziellen Bekanntgaben von KE/OZ/LJ/BX für Juni fasst diese Seite die Juli-Zuschlagsrichtung zusammen.',
+  'news.forecastCta.desc':'Basierend auf den offiziellen Bekanntgaben von KE/OZ/LJ/BX/ZE für Juni fasst diese Seite die Juli-Zuschlagsrichtung zusammen.',
   'news.forecastCta.btn':'Juli-Prognose ansehen →',
   /* Hinweis Juni-Basis */
   'news.basisTitle':'📅 Hinweis Juni-Zuschlag',
   'news.basisBody':'Die Juni-Mitteilungen werden von jeder Airline über ihre offiziellen Kanäle im Mai veröffentlicht.',
   'news.aiNotice':'KI-Zusammenfassung — Inhalte dieser Seite sind KI-aufbereitete Referenzinformationen auf Basis öffentlicher Daten. Nicht offiziell. Bitte immer offizielle Kanäle der Fluggesellschaft prüfen.',
   'news.filterAll':'Alle',
-  'news.dataRef':        '✅ Offizielle KE/OZ/LJ/BX Juni-Bekanntgaben vollständig · Stand 2026.05.19 09:20 KST',
+  'news.dataRef':        '✅ Offizielle KE/OZ/LJ/BX/ZE Juni-Bekanntgaben vollständig · Stand 2026.05.19 09:20 KST',
   'news.curSummaryTitle':'Aktuelle Zusammenfassung (2026.05.07):',
   'news.curSummary':     '→ Juni-Zuschlag: Richtung ungewiss (Öl & Wechselkurs) — offizielle Bekanntgabe prüfen',
   /* summary card i18n (de) */
@@ -2507,7 +2566,7 @@ de:{
   'news.summary.li4':     'Geopolitische Risiken im Nahen Osten bestehen weiterhin',
   'news.summary.li5':     'Juni-Zuschlag: Öl- & Wechselkursvariablen beobachten, offizielle Bekanntgabe prüfen',
   'news.summary.li6':     'Kurzfristige Volatilität sehr hoch',
-  'news.surchargeNote':  '※ Der Treibstoffzuschlag gilt ab dem Ausstellungsdatum. Die Juni-Bekanntgaben von KE/OZ/LJ/BX wurden berücksichtigt.',
+  'news.surchargeNote':  '※ Der Treibstoffzuschlag gilt ab dem Ausstellungsdatum. Die Juni-Bekanntgaben von KE/OZ/LJ/BX/ZE wurden berücksichtigt.',
   'news.sectionPrev':    '📚 Frühere Nachrichten / Frühere Analysen',
   'news.sectionPrevSub': '※ Die folgenden Inhalte sind Marktanalysen zum jeweiligen Veröffentlichungszeitpunkt.',
   'news.newBadge':       'NEW',
@@ -2551,17 +2610,18 @@ de:{
   'news.official.lj':'Jin Air — Alle Strecken gesenkt vs Mai (USD 42→36, 140→115)',
   'news.official.7c':'Jeju Air — Juni-Mitteilung ausstehend (Mai max USD 126)',
   'news.official.bx':'Air Busan — Alle Strecken gesenkt vs Mai (USD 52→43, 126→106)',
-  'news.official.ze':'Eastar Jet — Juni-Mitteilung ausstehend',
+  'news.official.ze':'Eastar Jet — Alle Strecken gesenkt vs Mai (USD 52→43, 126→103)',
   'news.official.rs':'Air Seoul — Juni-Mitteilung ausstehend',
   'news.official.tw':'T\'way Air — Juni-Mitteilung ausstehend',
   'news.official.yp':'Air Premia — Juni-Mitteilung ausstehend',
-  'news.official.desc':'* KE/OZ/LJ/BX Juni-Mitteilungen vollständig · Senkungen vs Mai · Jeju/Eastar/Air Seoul/T\'way/Air Premia: ausstehend',
+  'news.official.desc':'* KE/OZ/LJ/BX/ZE Juni-Mitteilungen vollständig · Senkungen vs Mai · Jeju/Air Seoul/T\'way/Air Premia: ausstehend',
   /* compare box */
   'news.compare.li1':'Korean Air: alle Strecken gesunken (kurz ₩75.000→₩61.500, lang ₩564.000→₩451.500)',
   'news.compare.li2':'Asiana: alle Strecken gesunken (kurz ₩85.400→₩68.000, lang ₩476.200→₩382.800)',
   'news.compare.li3':'Jin Air: alle gesunken (USD 42→36, 140→115)',
   'news.compare.li4':'Air Busan: alle gesunken (USD 52→43, 126→106)',
-  'news.compare.li5':'Jeju / Eastar / Air Seoul / T\'way / Air Premia: Juni ausstehend — nur Mai-Basis',
+  'news.compare.li4b':'Eastar Jet: alle gesunken (USD 52→43, 126→103)',
+  'news.compare.li5':'Jeju / Air Seoul / T\'way / Air Premia: Juni ausstehend — nur Mai-Basis',
   /* fixed news cards */
   'news.fixed.20260420.title':'Ölpreise fallen weiter — Juni-Aussichten ungewiss, offizielle Bekanntgabe im Blick behalten',
   'news.fixed.20260420.summary':'Brent-Rohöl setzt den Rückgang nach dem Tief in den unteren 80 $ fort. USD/KRW stabilisiert sich leicht trotz erhöhtem Niveau; die Wahrscheinlichkeit einer Senkung oder eines stabilen Zuschlags im Juni nimmt zu.',
