@@ -3,8 +3,8 @@
 /* ─────────────────────────────────────────────
    환율 / 통화 포매팅
 ───────────────────────────────────────────── */
-window.RATES    = { KRW:1, USD:1/1490, JPY:1/10.0, EUR:1/1620, GBP:1/1860, CNY:1/203, AUD:1/948, SGD:1/1108, HKD:1/189 };
-/* 환율 기준: USD/KRW 약 1,485~1,495원대 (2026.05.19 기준 · 대한항공·아시아나·진에어·에어부산·이스타항공 6월 공식 공시 반영 완료) */
+window.RATES    = { KRW:1, USD:1/1500, JPY:1/10.0, EUR:1/1620, GBP:1/1860, CNY:1/203, AUD:1/948, SGD:1/1108, HKD:1/189 };
+/* 환율 기준: USD/KRW 약 1,490~1,507원대 (2026.05.20 기준 · 대한항공·아시아나·진에어·에어부산·이스타항공 6월 공식 공시 반영 완료) */
 window.CURR_SYM = { KRW:'₩', USD:'$', JPY:'¥', EUR:'€', GBP:'£', CNY:'¥', AUD:'A$', SGD:'S$', HKD:'HK$' };
 window.CURR_DEC = { KRW:0, USD:2, JPY:0, EUR:2, GBP:2, CNY:2, AUD:2, SGD:2, HKD:1 };
 window.SHARED_STATE = { lang:'ko', curr:'KRW' };
@@ -83,13 +83,13 @@ window.I18N_SHARED = {
        confidence:{high:'높음',medium:'보통',low:'낮음'},
        predictBasis:'예측 근거', predictNote:'공식 공지 전 참고용 추정값입니다.',
        navRoutes:'노선별 조회', navAirlines:'항공사 인덱스', navNews:'참고 소식',
-       /* 2026.05.19 KST 시장 브리핑 공용 키 — 대한항공·아시아나·진에어·에어부산·이스타항공 6월 공식 공시 반영 완료 */
-       marketDataRef: '🕐 2026.05.19 기준 · 대한항공·아시아나·진에어·에어부산·이스타항공 6월 공시 반영 완료',
-       marketBrent:   '브렌트유: 약 $100~106/bbl — 중동 리스크 영향으로 고점권 변동성 유지',
-       marketMops:    '항공유(MOPS): 최고 기준(470 cent/gal) 상회 상태 — 현재 시장은 7월 방향성에 영향',
-       marketFx:      '원달러 환율: 약 1,485~1,495원대 — 달러 강세·원화 약세 흐름',
-       marketGeo:     '호르무즈 긴장 부분 완화 — 공급 불안 심리 일부 지속',
-       marketOutlook: '대한항공·아시아나·진에어·에어부산·이스타항공 6월 공식 공시 반영 완료 — 현재 시장은 7월 방향성에 영향' },
+       /* 2026.05.20 09:40 KST 시장 브리핑 공용 키 — 대한항공·아시아나·진에어·에어부산·이스타항공 6월 공식 공시 반영 완료 */
+       marketDataRef: '🕐 2026.05.20 09:40 KST 기준 · 대한항공·아시아나·진에어·에어부산·이스타항공 6월 공시 반영 완료',
+       marketBrent:   '브렌트유: 약 $109~112/bbl — 호르무즈 봉쇄 지속으로 고공 유지. EIA 5~6월 평균 $106/bbl 전망',
+       marketMops:    '항공유(MOPS): 호르무즈 사태 후 급등 이후 일부 완화, 470 cent/gal 최고 기준 여전히 상회 — 7월 방향성에 영향',
+       marketFx:      '원달러 환율: 약 1,490~1,507원대 — 외국인 매도·달러 강세로 1,500원 상회 구간 진입',
+       marketGeo:     '호르무즈 해협 사실상 봉쇄 지속 — 미·이란 협상 진행 중이나 재개 미확인. 사우디·UAE 중재로 군사 행동 일시 보류',
+       marketOutlook: '대한항공·아시아나·진에어·에어부산·이스타항공 6월 공식 공시 반영 완료 — 브렌트유·환율·호르무즈가 7월 방향성 복합 압박 중' },
   en:{ btnOW:'One-way', btnRT:'Round-trip', officialSite:'Official site ↗',
        loading:'Loading...', loadErr:'Load failed', noData:'No data.',
        official:'Official', aiPredict:'AI Forecast', prepublish:'Not yet published', noValue:'No data',
@@ -98,13 +98,13 @@ window.I18N_SHARED = {
        confidence:{high:'High',medium:'Medium',low:'Low'},
        predictBasis:'Forecast basis', predictNote:'Pre-announcement estimate. For reference only.',
        navRoutes:'Route Search', navAirlines:'Airline Index', navNews:'News & Insights',
-       /* 2026.05.19 KST market brief shared keys — KE/OZ/LJ/BX/ZE June official filing reflected */
-       marketDataRef: '🕐 As of 2026.05.19 · KE/OZ/LJ/BX/ZE June filings reflected',
-       marketBrent:   'Brent crude: ~$100–106/bbl — Middle East risk sustains elevated volatility',
-       marketMops:    'Jet fuel (MOPS): above 470 cent/gal threshold — current market signals July direction',
-       marketFx:      'USD/KRW: ~1,485–1,495 — dollar strength, KRW weakness persists',
-       marketGeo:     'Hormuz tensions partially easing — residual supply uncertainty remains',
-       marketOutlook: 'KE/OZ/LJ/BX/ZE June official filings complete — market now signals July direction' },
+       /* 2026.05.20 09:40 KST market brief shared keys — KE/OZ/LJ/BX/ZE June official filing reflected */
+       marketDataRef: '🕐 As of 2026.05.20 09:40 KST · KE/OZ/LJ/BX/ZE June filings reflected',
+       marketBrent:   'Brent crude: ~$109–112/bbl — Hormuz blockade sustains elevated prices. EIA forecasts ~$106/bbl avg May–Jun',
+       marketMops:    'Jet fuel (MOPS): post-Hormuz surge partially eased, still well above 470 cent/gal threshold — key July direction signal',
+       marketFx:      'USD/KRW: ~1,490–1,507 — foreign selling pressure and dollar strength driving above 1,500 KRW',
+       marketGeo:     'Hormuz Strait effectively closed — US-Iran talks ongoing, no confirmed reopening; military action paused at Gulf allies\' request',
+       marketOutlook: 'KE/OZ/LJ/BX/ZE June filings complete — Brent, FX, and Hormuz create complex July direction pressure' },
   ja:{ btnOW:'片道', btnRT:'往復', officialSite:'公式サイト ↗',
        loading:'読み込み中...', loadErr:'読み込み失敗', noData:'データなし',
        official:'公式', aiPredict:'AI予測', prepublish:'未公示', noValue:'データなし',
