@@ -942,12 +942,12 @@ var _OFFICIAL_AMT = {
     { range:'5000+',    label:'5,000mi~',       apr:251900, may: 476200, june: 382800 }
   ]},
   "7C": { currency:'USD', rows: [
-    { range:'0-499',    label:'~499mi',        apr:  29, may:  52 },
-    { range:'500-999',  label:'500~999mi',      apr:  37, may:  66 },
-    { range:'1000-1499',label:'1,000~1,499mi',  apr:  44, may:  80 },
-    { range:'1500-1999',label:'1,500~1,999mi',  apr:  53, may:  95 },
-    { range:'2000-2499',label:'2,000~2,499mi',  apr:  60, may: 107 },
-    { range:'2500+',    label:'2,500mi~',       apr:  68, may: 126 }
+    { range:'0-499',    label:'~499mi (후쿠오카·오사카·상하이 등)',   apr:  29, may:  52, june:  42 },
+    { range:'500-999',  label:'500~999mi (도쿄·삿포로·타이베이 등)', apr:  37, may:  66, june:  54 },
+    { range:'1000-1499',label:'1,000~1,499mi (홍콩·마카오·장자제)', apr:  44, may:  80, june:  65 },
+    { range:'1500-1999',label:'1,500~1,999mi (마닐라·하노이·다낭)', apr:  53, may:  95, june:  78 },
+    { range:'2000-2499',label:'2,000~2,499mi (방콕·치앙마이·호찌민)', apr:  60, may: 107, june:  89 },
+    { range:'2500+',    label:'2,500mi~ (싱가포르·덴파사르·바탐)',   apr:  68, may: 126, june: 104 }
   ]},
   LJ: { currency:'USD', rows: [
     { range:'0-599',    label:'1~599mi',        apr:  25, may:  42, june:  36 },
@@ -1202,7 +1202,7 @@ var OFFICIAL_ROUTE_MAP = {
     'PUS-SPN':'2000+','CJU-SPN':'2000+'
   },
 
-  /* ── 제주항공 (7C) ── PDF 공시 기준 (4월/5월) ── */
+  /* ── 제주항공 (7C) ── 공식 공시 기준 (4월·5월·6월) — 6월 official_verified ✅ ── */
   "7C": {
     /* 0~499mi: 후쿠오카, 오사카(부산발), 마쓰야마, 오이타, 히로시마, 가고시마, 나가사키,
                 웨이하이, 옌타이, 엔지, 칭다오, 난통, 상하이(푸동) */
