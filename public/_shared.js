@@ -665,6 +665,53 @@ window._7C_OFFICIAL_OVERRIDE = {
   },
 };
 
+/* ─────────────────────────────────────────────
+   TW(티웨이항공) 2026년 6월 공식 공시 하드코딩 데이터
+   작성일: 2026.05.21 17:15 · KRW 공시 (판도 기준)
+   1군 KRW 47,400 / 2군 KRW 82,900 / 3군 KRW 103,600
+   4군 KRW 134,700 / 5군 KRW 145,000 / 6군 — / 7군 KRW 327,000
+   5월 대비 전 구간 약 19~20% 인하
+   공식 공지: twayair.com 2026.05.21 공시 기준
+───────────────────────────────────────────── */
+window._TW_OFFICIAL_OVERRIDE = {
+  '2026.05': {
+    sourceType: 'manual_override', confidence: 'fresh', currency: 'KRW',
+    surchargeSchema: 'group_tier',
+    group_tiers: [
+      { group: 1, label: '1군 (~600mi)',        amount:  58600, currency: 'KRW' },
+      { group: 2, label: '2군 (600~1,200mi)',   amount: 103600, currency: 'KRW' },
+      { group: 3, label: '3군 (1,200~1,800mi)', amount: 129100, currency: 'KRW' },
+      { group: 4, label: '4군 (1,800~2,400mi)', amount: 168200, currency: 'KRW' },
+      { group: 5, label: '5군 (2,400~4,000mi)', amount: 180200, currency: 'KRW' },
+      { group: 6, label: '6군 (4,000~5,000mi)', amount:    null, currency: 'KRW' },
+      { group: 7, label: '7군 (5,000mi+)',       amount: 406900, currency: 'KRW' },
+    ],
+  },
+  '2026.06': {
+    sourceType: 'official_notice', status: 'official_verified', confidence: 'fresh', currency: 'KRW',
+    surchargeSchema: 'group_tier',
+    officialNoticeUrl: 'https://www.twayair.com/app/customer/NOTICE_VIEW?lang=ko&noticeType=1&noticeNo=10001268',
+    group_tiers: [
+      { group: 1, label: '1군 (~600mi)',        amount:  47400, currency: 'KRW' },
+      { group: 2, label: '2군 (600~1,200mi)',   amount:  82900, currency: 'KRW' },
+      { group: 3, label: '3군 (1,200~1,800mi)', amount: 103600, currency: 'KRW' },
+      { group: 4, label: '4군 (1,800~2,400mi)', amount: 134700, currency: 'KRW' },
+      { group: 5, label: '5군 (2,400~4,000mi)', amount: 145000, currency: 'KRW' },
+      { group: 6, label: '6군 (4,000~5,000mi)', amount:    null, currency: 'KRW' },
+      { group: 7, label: '7군 (5,000mi+)',       amount: 327000, currency: 'KRW' },
+    ],
+    group_route_map: {
+      1: { milesApprox: '0-600',    routes: ['인천-후쿠오카','대구-후쿠오카','부산-후쿠오카','제주-후쿠오카','인천-오사카','대구-오사카','부산-오사카','인천-상하이','인천-옌지'] },
+      2: { milesApprox: '600-1200', routes: ['인천-나리타','인천-오키나와','인천-삿포로','인천-타이베이','인천-홍콩','인천-마카오','인천-블라디보스토크'] },
+      3: { milesApprox: '1200-1800', routes: ['인천-하노이','인천-세부','인천-클락','인천-울란바타르'] },
+      4: { milesApprox: '1800-2400', routes: ['인천-방콕','인천-치앙마이','인천-다낭','인천-람'] },
+      5: { milesApprox: '2400-4000', routes: ['인천-싱가포르','인천-발리','인천-타슈켄트','인천-비슈케크'] },
+      6: { milesApprox: '4000-5000', routes: [] },
+      7: { milesApprox: '5000+',     routes: ['인천-시드니','인천-자그레브','인천-바르셀로나','인천-로마','인천-파리','인천-프랑크푸르트','인천-밴쿠버'] },
+    },
+  },
+};
+
 window.loadAirlineMeta = async function() {
   try {
     var [mr, or_] = await Promise.allSettled([
@@ -683,6 +730,10 @@ window.loadAirlineMeta = async function() {
   if (!window.MANUAL_OVERRIDES['7C']) window.MANUAL_OVERRIDES['7C'] = {};
   window.MANUAL_OVERRIDES['7C']['2026.05'] = window._7C_OFFICIAL_OVERRIDE['2026.05'];
   window.MANUAL_OVERRIDES['7C']['2026.06'] = window._7C_OFFICIAL_OVERRIDE['2026.06'];
+  /* TW(티웨이항공) 2026년 6월 공식 공시 데이터 강제 주입 — official_verified · KRW 공시 */
+  if (!window.MANUAL_OVERRIDES['TW']) window.MANUAL_OVERRIDES['TW'] = {};
+  window.MANUAL_OVERRIDES['TW']['2026.05'] = window._TW_OFFICIAL_OVERRIDE['2026.05'];
+  window.MANUAL_OVERRIDES['TW']['2026.06'] = window._TW_OFFICIAL_OVERRIDE['2026.06'];
   return window.AIRLINE_META;
 };
 
@@ -1111,11 +1162,11 @@ ko:{
   'index.guide.p3':'아래 결과는 공식 공지 기준이며, 최종 결제 금액은 항공사 예약 화면 또는 공식 공지에서 반드시 재확인하시기 바랍니다.',
   'index.guide.p1Landing':'유류할증료(Fuel Surcharge)는 국제유가 변동에 연동해 항공사가 기본 운임과 별도로 부과하는 요금입니다. 비행 거리가 멀수록, 유가가 높을수록 금액이 높아지는 구조입니다.',
   'index.guide.p2Landing':'국내 항공사들은 국토교통부 기준에 따라 매월 다음 달 적용 금액을 공식 공지합니다. 출발지·도착지를 선택해 검색하면 항공사별 공식 공지 기준 금액을 노선별로 비교할 수 있습니다.',
-  'index.decision.title':'📢 KE·OZ·LJ·BX·ZE·RS·7C 6월 공식 공시 반영 완료',
-  'index.decision.line1':'✔ KE·OZ·LJ·BX·ZE·RS·7C 6월 공식 공시 반영 완료 — 5월 대비 전 구간 인하. 제주항공(7C) USD 공시 기준 포함',
-  'index.decision.line2':'✔ 발권일 기준 적용 — "오늘 발권 = 6월 공시 기준" · 티웨이·에어프레미아는 공시 전',
+  'index.decision.title':'📢 KE·OZ·LJ·BX·ZE·RS·TW·7C 6월 공식 공시 반영 완료',
+  'index.decision.line1':'✔ KE·OZ·LJ·BX·ZE·RS·TW·7C 6월 공식 공시 반영 완료 — 5월 대비 전 구간 인하. 티웨이(TW) KRW 공시, 제주항공(7C) USD 공시 포함',
+  'index.decision.line2':'✔ 발권일 기준 적용 — "오늘 발권 = 6월 공시 기준" · 에어프레미아는 공시 전',
   'index.decision.line3':'✔ 7월 방향성: 브렌트유($109~112)·MOPS·환율(1,490~1,507) 복합 모니터링 필요',
-  'index.decision.conclusion':'👉 7개 항공사 6월 공시 확인 완료 · 발권일 기준 적용 · 7월 방향성 별도 확인 권장',
+  'index.decision.conclusion':'👉 8개 항공사 6월 공시 확인 완료 · 발권일 기준 적용 · 7월 방향성 별도 확인 권장',
   /* landing */
   'index.landingTitle':'한국 출발 국제선 유류할증료',
   'index.krOnly.title':'한국 출발 국제선만 지원합니다',
@@ -1125,7 +1176,7 @@ ko:{
   'index.status.loading':'데이터 로딩 중...',
   'index.status.loadError':'데이터 로딩 실패 — 콘솔을 확인하세요',
   'index.status.scriptError':'스크립트 오류로 로딩 실패 — 콘솔을 확인하세요',
-  'index.status.updated':'데이터 갱신: ','index.status.updatedSuffix':' · KE·OZ·LJ·BX·ZE·RS·7C 6월 공식 공시 반영 · 2026.05.21 기준',
+  'index.status.updated':'데이터 갱신: ','index.status.updatedSuffix':' · KE·OZ·LJ·BX·ZE·RS·TW·7C 6월 공식 공시 반영 · 2026.05.22 09:25 KST 기준',
   /* filters */
   'index.filter.all':'전체','index.filter.hasOfficialData':'공식 데이터 있음',
   /* result */
@@ -1139,7 +1190,7 @@ ko:{
   'index.alert.differentAirports':'출발지와 도착지를 다르게 선택하세요',
   /* meta suffix */
   'index.meta.oneWay':'편도','index.meta.roundTrip':'왕복',
-  'index.meta.suffix':'한국 출발 국제선 · 2026년 6월 KE·OZ·LJ·BX·ZE·RS·7C 공식 공시 반영',
+  'index.meta.suffix':'한국 출발 국제선 · 2026년 6월 KE·OZ·LJ·BX·ZE·RS·TW·7C 공식 공시 반영',
   /* card strings */
   'index.card.currentRoute':'현재 노선',
   'index.card.notPublished':'미공지',
@@ -1207,11 +1258,11 @@ ko:{
   'news.basisBody':'7월 공시는 6월 중 각 항공사 공식 채널에서 확인 필요합니다. 6월 공식 공시 반영 결과가 7월 방향성의 중요한 참고 지표입니다.',
   'news.aiNotice':'AI 요약 콘텐츠 — 이 페이지의 내용은 공개된 정보를 바탕으로 AI가 정리한 참고용 자료입니다. 원문 기반 요약이며, 공식 정보가 아닙니다. 중요한 결정 전에 각 항공사 및 기관의 공식 채널을 반드시 확인하세요.',
   'news.filterAll':'전체',
-  'news.dataRef':        '✅ KE·OZ·LJ·BX·ZE·RS·7C 6월 공식 공시 반영 완료 · 2026.05.21 09:00 KST 기준',
+  'news.dataRef':        '✅ KE·OZ·LJ·BX·ZE·RS·TW·7C 6월 공식 공시 반영 완료 · 2026.05.22 09:25 KST 기준',
   'news.curSummaryTitle':'현재 기준 요약 (2026.05.14):',
   'news.curSummary':     '→ 6월 유류할증료: 브렌트유 $105대, MOPS 511.21 cent/gal, 환율 1,490원대 영향으로 급격한 인하 가능성은 제한적 — 공식 공시 확인 필요',
   /* 핵심 요약 카드 i18n */
-  'news.summary.title':   '📌 대한항공·아시아나·진에어·에어부산·이스타항공 2026년 6월 공식 공시 반영 + 7월 전망',
+  'news.summary.title':   '📌 KE·OZ·LJ·BX·ZE·RS·TW·7C 2026년 6월 공식 공시 반영 + 7월 방향성 전망',
   'news.summary.updated': '🕐 2026.05.21 09:00 KST 기준 시장 지표 반영',
   'news.summary.li1':     '브렌트유 약 $105.08~105.63/bbl — 고점권 변동성 지속',
   'news.summary.li2':     '항공유(MOPS) 약 511.21 cent/gal, 약 $214.71/bbl — 최고 기준 470 cent/gal 상회',
@@ -1219,7 +1270,7 @@ ko:{
   'news.summary.li4':     '호르무즈 리스크 일부 완화 신호 있으나 완전 해소 아님',
   'news.summary.li5':     '6월 유류할증료: MOPS는 최고 기준을 상회하나 일부 완화 가능성도 있어 최고 단계 유지 또는 제한적 인하 가능성 동시 존재',
   'news.summary.li6':     '브렌트유 $105대 + MOPS 511.21 cent/gal + 환율 1,490원대 복합 — 급격한 인하 가능성 제한',
-  'news.surchargeNote':  '※ 유류할증료는 발권일 기준 적용됩니다. KE·OZ·LJ·BX·ZE·RS·7C 6월 공식 공시 반영 완료 (2026.05.21 기준) · 오늘 발권 = 6월 공시 기준 적용',
+  'news.surchargeNote':  '※ 유류할증료는 발권일 기준 적용됩니다. KE·OZ·LJ·BX·ZE·RS·TW·7C 6월 공식 공시 반영 완료 (2026.05.22 기준) · 오늘 발권 = 6월 공시 기준 적용',
   'news.sectionPrev':    '📚 이전 뉴스 / 이전 분석 기록',
   'news.sectionPrevSub': '※ 아래 내용은 각 작성 시점 기준의 시장 분석 기록입니다.',
   'news.newBadge':       'NEW',
@@ -1265,9 +1316,9 @@ ko:{
   'news.official.bx':'에어부산 — 5월 대비 전 구간 인하 (USD 52→43, USD 126→106)',
   'news.official.ze':'이스타항공 — 5월 대비 전 구간 인하 (USD 52→43, USD 126→103)',
   'news.official.rs':'에어서울 — 5월 대비 전 구간 인하 (KRW 94,500→75,300 / KRW 165,000→132,800) · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1" target="_blank" rel="noopener" style="color:#1565C0;font-weight:700;">공식 공지 ↗</a>',
-  'news.official.tw':'티웨이항공 — 미공지',
+  'news.official.tw':'티웨이항공 — <span style="color:#1b5e20;font-weight:700;">6월 공식 공시 완료 ✅</span> · KRW 공시 · 1군 47,400원~7군 327,000원 · <a href="https://www.twayair.com/app/customer/NOTICE_VIEW?lang=ko&noticeType=1&noticeNo=10001268" target="_blank" rel="noopener" style="color:#1565C0;font-weight:700;">공식 공지 ↗</a>',
   'news.official.yp':'에어프레미아 — 미공지',
-  'news.official.desc':'* KE·OZ·LJ·BX·ZE·RS·7C 6월 공식 공시 완료 · 5월 대비 전 구간 인하 · 티웨이·에어프레미아는 공시 전',
+  'news.official.desc':'* KE·OZ·LJ·BX·ZE·RS·TW·7C 6월 공식 공시 완료 · 5월 대비 전 구간 인하 · 티웨이(TW) KRW 공시 포함 · 에어프레미아만 미공지 · 최종 금액은 발권일 기준 공식 공지 반드시 확인',
   /* compare box */
   'news.compare.li1':'대한항공: 전 구간 인하 (단거리 75,000원→61,500원, 장거리 564,000원→451,500원)',
   'news.compare.li2':'아시아나: 전 구간 인하 (단거리 85,400원→68,000원, 장거리 476,200원→382,800원)',
@@ -1276,7 +1327,7 @@ ko:{
   'news.compare.li5':'이스타항공: 전 구간 인하 (USD 52→43, USD 126→103)',
   'news.compare.li6':'에어서울: 전 구간 인하 (KRW 94,500→75,300 / KRW 165,000→132,800)',
   'news.compare.li7':'제주항공: 6월 공식 공시 완료 ✅ — 전 구간 인하 (USD 52→42, USD 126→104)',
-  'news.compare.li8':'티웨이항공: 공시 전',
+  'news.compare.li8':'티웨이항공: 5월 대비 6월 전 구간 인하 — 1군 58,600원→47,400원 / 7군 406,900원→327,000원 (KRW 공시)',
   'news.compare.li9':'에어프레미아: 공시 전',
   /* fixed news cards */
   'news.fixed.20260420.title':'유가 하락 지속, 6월 유류할증료 변동성 확대 — 공식 공시 확인 필요',
@@ -1788,7 +1839,7 @@ ja:{
   'news.basisBody':'6月公示は5月中に各航空会社の公式チャンネルでご確認ください。',
   'news.aiNotice':'AI要約コンテンツ — このページの内容は公開情報をもとにAIが整理した参考資料です。公式情報ではありません。重要な判断前は各航空会社の公式チャンネルを必ずご確認ください。',
   'news.filterAll':'すべて',
-  'news.dataRef':        '✅ KE·OZ·LJ·BX·ZE·RS·7C 6月公式公示完了 · 2026.05.21 09:00 KST 基準',
+  'news.dataRef':        '✅ KE·OZ·LJ·BX·ZE·RS·TW·7C 6月公式公示完了 · 2026.05.21 09:00 KST 基準',
   'news.curSummaryTitle':'現在の基準要約 (2026.05.07):',
   'news.curSummary':     '→ 6月サーチャージ: 原油・為替変数により方向不透明 — 公式公示の確認が必要',
   /* summary card i18n (ja — en fallback) */
@@ -1800,7 +1851,7 @@ ja:{
   'news.summary.li4':     '中東地政学リスクは依然として継続',
   'news.summary.li5':     '6月燃油サーチャージ: 原油・為替変数に要注意、公式公示確認が必要',
   'news.summary.li6':     '短期的な変動性は非常に大きい状態',
-  'news.surchargeNote':  '※ 燃油サーチャージは予約時点(発券日)を基準に適用されます。KE·OZ·LJ·BX·ZE·RS·7C 6月公式公示が反映されました (2026.05.21基準)。',
+  'news.surchargeNote':  '※ 燃油サーチャージは予約時点(発券日)を基準に適用されます。KE·OZ·LJ·BX·ZE·RS·TW·7C 6月公式公示が反映されました (2026.05.21基準)。',
   'news.sectionPrev':    '📚 過去のニュース / 過去の分析記録',
   'news.sectionPrevSub': '※ 下記の内容は各作成時点基準の市場分析記録です。',
   'news.newBadge':       'NEW',
@@ -1848,7 +1899,7 @@ ja:{
   'news.official.rs':'エアソウル — 5月比全路線引き下げ (KRW 94,500→75,300 / KRW 165,000→132,800) · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1" target="_blank" rel="noopener" style="color:#1565C0;font-weight:700;">公式公示 ↗</a>',
   'news.official.tw':'ティーウェイ — 6月公示前',
   'news.official.yp':'エアプレミア — 6月公示前',
-  'news.official.desc':'* KE·OZ·LJ·BX·ZE·RS·7C 6月公式公示完了 · 5月比全路線引き下げ · ティーウェイ·エアプレミアは公示前',
+  'news.official.desc':'* KE·OZ·LJ·BX·ZE·RS·TW·7C 6月公式公示完了 · 5月比全区間引き下げ · エアプレミアのみ公示前',
   /* compare box */
   'news.compare.li1':'大韓航空：全路線引き下げ (短距離₩75,000→₩61,500、長距離₩564,000→₩451,500)',
   'news.compare.li2':'アシアナ：全路線引き下げ (短距離₩85,400→₩68,000、長距離₩476,200→₩382,800)',
@@ -2072,7 +2123,7 @@ zh:{
   'news.basisBody':'6月公告请于5月中关注各航空公司官方渠道。',
   'news.aiNotice':'AI摘要内容 — 本页内容为AI基于公开信息整理的参考资料，非官方信息。重要决策前请务必确认各航空公司官方渠道。',
   'news.filterAll':'全部',
-  'news.dataRef':        '✅ KE·OZ·LJ·BX·ZE·RS·7C 6月官方公告完成 · 2026.05.21 09:00 KST 基准',
+  'news.dataRef':        '✅ KE·OZ·LJ·BX·ZE·RS·TW·7C 6月官方公告完成 · 2026.05.21 09:00 KST 基准',
   'news.curSummaryTitle':'当前基准摘要 (2026.05.07):',
   'news.curSummary':     '→ 6月附加费：因油价·汇率变量方向不明，需确认官方公告',
   /* summary card i18n (zh) */
@@ -2084,7 +2135,7 @@ zh:{
   'news.summary.li4':     '中东地缘政治风险依然持续',
   'news.summary.li5':     '6月燃油附加费：需关注油价·汇率变量，确认官方公告',
   'news.summary.li6':     '近期波动性极大',
-  'news.surchargeNote':  '※ 燃油附加费按出票日期基准适用。KE·OZ·LJ·BX·ZE·RS·7C 6月官方公告已反映 (2026.05.21基准)。',
+  'news.surchargeNote':  '※ 燃油附加费按出票日期基准适用。KE·OZ·LJ·BX·ZE·RS·TW·7C 6月官方公告已反映 (2026.05.21基准)。',
   'news.sectionPrev':    '📚 历史新闻 / 历史分析记录',
   'news.sectionPrevSub': '※ 以下内容为各发布时间点的市场分析记录。',
   'news.newBadge':       'NEW',
@@ -2132,7 +2183,7 @@ zh:{
   'news.official.rs':'首尔航空 — 较5月全区间下调 (KRW 94,500→75,300 / KRW 165,000→132,800) · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1" target="_blank" rel="noopener" style="color:#1565C0;font-weight:700;">官方公告 ↗</a>',
   'news.official.tw':'德威航空 — 6月公告待定',
   'news.official.yp':'航空前奏 — 6月公告待定',
-  'news.official.desc':'* KE·OZ·LJ·BX·ZE·RS·7C 6月官方公告完成 · 较5月全区间下调 · 济州已含 · 德威·航空前奏：公告待定',
+  'news.official.desc':'* KE·OZ·LJ·BX·ZE·RS·TW·7C 6月官方公告完成 · 较5月全区间下调 · 仅航空前奏(YP)公告待定',
   /* compare box */
   'news.compare.li1':'大韩航空：全线下调 (短途₩75,000→₩61,500，长途₩564,000→₩451,500)',
   'news.compare.li2':'韩亚航空：全线下调 (短途₩85,400→₩68,000，长途₩476,200→₩382,800)',

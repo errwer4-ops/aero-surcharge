@@ -261,15 +261,15 @@ var AIRLINES_I18N = {
     loadingText:    '데이터 로딩 중...',
     analysisH3:     '2026년 5월 → 6월 유류할증료 변화 분석',
     analysisBullets:[
-      '<strong>대한항공·아시아나·진에어·에어부산·이스타항공·에어서울</strong> — 6월 공식 공시 완료. 5월 대비 전 구간 인하 확인.',
+      '<strong>대한항공·아시아나·진에어·에어부산·이스타항공·에어서울·티웨이항공(TW)</strong> — 6월 공식 공시 완료. 5월 대비 전 구간 인하 확인.',
       '<strong>대한항공 (KRW 공시)</strong> — 단거리 75,000원 → 61,500원, 장거리 564,000원 → 451,500원 인하.',
       '<strong>아시아나항공 (KRW 공시)</strong> — 단거리 85,400원 → 68,000원, 장거리 476,200원 → 382,800원 인하.',
       '<strong>진에어 (USD 공시)</strong> — USD 42 → 36 (단거리), USD 140 → 115 (장거리) 인하.',
       '<strong>에어부산 (USD 공시)</strong> — USD 52 → 43 (단거리), USD 126 → 106 (장거리) 인하.',
       '<strong>이스타항공 (USD 공시)</strong> — 1군 USD 52 → 43, 6군 USD 126 → 103 인하.',
       '<strong>에어서울 (KRW 공시)</strong> — 일본 단거리 94,500원 → 75,300원, 괌·나트랑 165,000원 → 132,800원 인하.',
-      '<strong>공시 완료:</strong> 대한항공·아시아나·진에어·에어부산·이스타항공·에어서울·제주항공(7C) 6월 공식 공시 반영 완료 · USD 공시 배지 포함.',
-      '<strong>공시 전:</strong> 티웨이항공·에어프레미아는 공시 전이므로 5월 기준으로만 표시됩니다.',
+      '<strong>공시 완료:</strong> 대한항공·아시아나·진에어·에어부산·이스타항공·에어서울·티웨이항공(TW)·제주항공(7C) 6월 공식 공시 반영 완료 · TW KRW/7C USD 공시 배지 포함.',
+      '<strong>에어프레미아 미공지:</strong> 에어프레미아는 아직 6월 공시 전이므로 5월 기준으로만 표시됩니다. 티웨이항공(TW)은 6월 공식 공시 완료.',
       '실제 발권 시 적용 유류할증료는 각 항공사 공식 공지를 반드시 재확인하세요.',
     ],
     noResults:      '해당하는 항공사가 없습니다',
@@ -756,12 +756,13 @@ var OFFICIAL_COMPARE_DATA = {
     { band:'2,400~3,599mi',routes:'인천-푸껫',                                                                                    v4:140, v5:115, cur:'USD' },
   ],
   TW: [
-    { band:'1군 (~600mi)',     routes:'인천-후쿠오카, 오사카, 기타큐슈 외',                           v4:58600,  v5:null,  cur:'KRW' },
-    { band:'2군 (600~1200mi)', routes:'인천-나고야, 오키나와, 삿포로, 타이베이, 홍콩 외',             v4:103600, v5:null,  cur:'KRW' },
-    { band:'3군 (1200~1800mi)',routes:'인천-하노이, 다낭, 하이커우, 클락, 세부 외',                   v4:129100, v5:null,  cur:'KRW' },
-    { band:'4군 (1800~2400mi)',routes:'인천-방콕, 치앙마이, 비엔티안 외',                             v4:168200, v5:null,  cur:'KRW' },
-    { band:'5군 (2400~4000mi)',routes:'인천-싱가포르, 발리, 자카르타, 푸껫, 비슈케크, 타슈켄트 외',   v4:180200, v5:null,  cur:'KRW' },
-    { band:'7군 (5000mi+)',    routes:'인천-시드니, 자그레브, 바르셀로나, 로마, 파리, 밴쿠버',         v4:406900, v5:null,  cur:'KRW' },
+    { band:'1군 (~600mi)',       routes:'인천-후쿠오카, 오사카, 기타큐슈 외',                           v4:58600,  v5: 47400, cur:'KRW' },
+    { band:'2군 (600~1,200mi)',  routes:'인천-나고야, 오키나와, 삿포로, 타이베이, 홍콩 외',             v4:103600, v5: 82900, cur:'KRW' },
+    { band:'3군 (1,200~1,800mi)',routes:'인천-하노이, 다낭, 클락, 세부, 울란바타르 외',                 v4:129100, v5:103600, cur:'KRW' },
+    { band:'4군 (1,800~2,400mi)',routes:'인천-방콕, 치앙마이, 다낭, 람 외',                             v4:168200, v5:134700, cur:'KRW' },
+    { band:'5군 (2,400~4,000mi)',routes:'인천-싱가포르, 발리, 타슈켄트, 비슈케크 외',                   v4:180200, v5:145000, cur:'KRW' },
+    { band:'6군 (4,000~5,000mi)',routes:'(미운항)',                                                      v4:null,   v5:null,   cur:'KRW' },
+    { band:'7군 (5,000mi+)',     routes:'인천-시드니, 자그레브, 바르셀로나, 로마, 파리, 밴쿠버',         v4:406900, v5:327000, cur:'KRW' },
   ],
   ZE: [
     { band:'1군', routes:'인천-후쿠오카, 부산-후쿠오카, 오사카, 구마모토, 제주-상하이, 청주-옌지, 인천-엔타이', v4:52,  v5:43,  cur:'USD' },
@@ -797,7 +798,7 @@ var OFFICIAL_COMPARE_DATA = {
 
 
 /* ── 6월 공식 공시 완료 항공사 목록 ── */
-var JUNE_OFFICIAL_CODES = ['KE', 'OZ', 'LJ', 'BX', 'ZE', 'RS', '7C'];
+var JUNE_OFFICIAL_CODES = ['KE', 'OZ', 'LJ', 'BX', 'ZE', 'RS', 'TW', '7C'];
 function hasJuneOfficial(code){ return JUNE_OFFICIAL_CODES.indexOf(code) >= 0; }
 
 /* ══════════════════════════════════════════════════════
@@ -904,8 +905,9 @@ function buildCompareTableHtml(code, feedAl){
     return '<p style="color:var(--muted);font-size:12px;padding:8px 0">'+T('noData')+'</p>';
 
   var trs=rows.map(function(r){
-    var fmt4=r.v4!=null?fmtSurcharge(r.v4,r.cur4):'<span class="diff-na">—</span>';
-    var fmt5=r.v5!=null?fmtSurcharge(r.v5,r.cur5):'<span class="diff-na">'+T('notPublished')+'</span>';
+    var _noService=(r.v4==null&&r.v5==null);
+    var fmt4=r.v4!=null?fmtSurcharge(r.v4,r.cur4):'<span class="diff-na">'+(_noService?T('noService')||'미운항':'—')+'</span>';
+    var fmt5=r.v5!=null?fmtSurcharge(r.v5,r.cur5):'<span class="diff-na">'+(_noService?T('noService')||'미운항':T('notPublished'))+'</span>';
     var dh=diffHtml(r.v4, r.v5, r.cur4);
     return '<tr>'
       +'<td><span class="cmp-band">'+r.band+'</span></td>'
