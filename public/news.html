@@ -2,13 +2,13 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>2026년 7월 유류할증료 전망 — 6월 공식 공시 반영 및 5월 대비 변화</title>
-  <meta name="description" content="대한항공·아시아나·진에어·에어부산·이스타항공·에어서울 2026년 6월 국제선 유류할증료 공식 공시가 반영되었습니다. 5월 대비 변화와 2026년 7월 유류할증료 전망 참고 지표를 확인하세요."
+  <title>2026년 7월 유류할증료 전망 — 2026.05.23 22:00 KST 유가·환율 브리핑</title>
+  <meta name="description" content="2026.05.23 22:00 KST 기준 유가·환율·항공유 흐름과 7월 유류할증료 전망을 정리합니다. 6월 확정 공시와 7월 시장 기반 전망을 분리해 확인하세요."
         data-i18n-page-desc="news.metaDesc"/>
   <meta data-i18n-page-title="news.metaTitle"/>
 
   <link rel="canonical" href="https://aero-surcharge.com/news.html"/>
-  <meta property="og:title" content="2026년 7월 유류할증료 전망 — 6월 공식 공시 반영 및 5월 대비 변화"/>
+  <meta property="og:title" content="2026년 7월 유류할증료 전망 — 2026.05.23 22:00 KST 유가·환율 브리핑"/>
   <meta property="og:description" content="대한항공·아시아나·진에어·에어부산·이스타항공·에어서울 6월 유류할증료 공식 공시 반영. 5월 대비 인하 흐름과 7월 전망 참고 지표를 확인하세요."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.com/news.html"/>
@@ -137,6 +137,7 @@
 <nav>
   <div class="nav-links">
     <a href="index.html"    class="nav-link"        id="navLinkRoutes"   data-i18n="nav.routes">노선별 조회</a>
+    <a href="fuel-surcharge-calculator.html" class="nav-link" id="navLinkCalculator" data-i18n="nav.calc">계산기</a>
     <a href="airlines.html" class="nav-link"        id="navLinkAirlines" data-i18n="nav.airlines">항공사 인덱스</a>
     <a href="news.html"     class="nav-link active" id="navLinkNews"     data-i18n="nav.news">참고 소식</a>
   </div>
@@ -441,23 +442,23 @@ async function loadNews(){
 }
 
 /* ════════════════════════════════════════════════════════
-   TODAY_MARKET — 2026.05.21 09:00 KST 기준 단일 시장 지표 기준값
+   TODAY_MARKET — 2026.05.23 22:00 KST 기준 단일 시장 지표 기준값
    핵심 요약 · 시장 브리핑 · AI 예측 참고 지표 세 구역이
    동일한 수치를 참조하도록 한 곳에서 관리.
    FORECAST_DATA feed 값이 오더라도 이 값으로 고정.
    ════════════════════════════════════════════════════════ */
 var TODAY_MARKET = {
-  /* 2026.05.21 09:00 KST 기준 */
-  brent:   '브렌트유 약 $109~112/bbl — 호르무즈 봉쇄 지속 영향, EIA 5~6월 평균 $106 전망. 7월 방향성 핵심 변수',
-  brentEn: 'Brent crude ~$109–112/bbl — Hormuz blockade sustains elevated prices; EIA forecasts ~$106/bbl avg May-Jun. Key variable for July direction',
-  fx:      'USD/KRW 약 1,490~1,507원대 — 외국인 매도 압력·달러 강세로 1,500원 상회 구간 진입. 고환율+고유가 복합 압박 지속',
-  fxEn:    'USD/KRW ~1,490–1,507 — foreign investor selling pressure and dollar strength pushing above 1,500 won. High-FX + high-oil compound pressure persists',
-  mops:    'MOPS 고공행진 지속 — 항공유 가격 호르무즈 사태 이후 3배 급등 후 일부 완화, 여전히 470 cent/gal 최고 기준 상회',
-  mopsEn:  'MOPS remains elevated — jet fuel prices surged ~3x post-Hormuz crisis then partially eased; still above 470 cent/gal threshold',
-  geo:     '호르무즈 해협 사실상 봉쇄 지속 — 미·이란 협상 진행 중이나 재개 확인 안 됨. 사우디·UAE 요청으로 군사 행동 일시 보류, 공급 불안 지속',
-  geoEn:   'Hormuz Strait effectively closed — US-Iran negotiations ongoing but no confirmed reopening. Military action paused at Gulf allies\' request; supply disruption continues',
-  outlook: 'KE·OZ·LJ·BX·ZE·RS·TW·7C 6월 공식 공시 완료 (인하) — 7월은 호르무즈 추이·유가·환율·MOPS 복합 변수에 따라 결정. 급격한 인하보다 고점 유지 또는 제한적 조정 가능성',
-  outlookEn: 'KE/OZ/LJ/BX/ZE/RS/TW/7C June filings complete (all down) — July direction hinges on Hormuz developments, oil prices, FX, and MOPS. Gradual hold or limited adjustment more likely than sharp cut'
+  /* 2026.05.23 22:00 KST 기준 */
+  brent:   '브렌트유는 최근 고점권에서 등락 중 — 유류할증료 급락 기대 제한',
+  brentEn: 'Brent crude is fluctuating near recent highs — sharp surcharge cuts look limited',
+  fx:      'USD/KRW는 2026.05.22 공개 데이터 기준 약 1,504~1,512원 범위 확인 — 실시간 환율 확인 필요',
+  fxEn:    'USD/KRW public May 22 data shows roughly 1,504–1,512 KRW — check real-time FX before purchase',
+  mops:    'MOPS는 단기 조정 이후 재반등 가능성 점검 — 최신 공개 수치 확인 필요',
+  mopsEn:  'MOPS needs latest public figure verification — monitor rebound risk after short-term correction',
+  geo:     '호르무즈 관련 불확실성은 완전 해소 전 — 즉각 봉쇄보다 리스크 프리미엄 일부 유지 흐름',
+  geoEn:   'Hormuz uncertainty is not fully resolved — risk premium partly remains rather than immediate blockade as base case',
+  outlook: '6월 확정 공시와 7월 시장 전망 분리 — 7월은 급격한 인하보다 현 수준 유지 또는 제한적 조정 가능성',
+  outlookEn: 'Separate June confirmed filings from July market outlook — hold or limited adjustment is more likely than a sharp cut'
 };
 
 /* ════════════════════════════════════════════════════════
@@ -965,6 +966,13 @@ function getCatLabel(cat){
    ════════════════════════════════════════════════════════ */
 var FIXED_NEWS_FALLBACK = {
   ko: {
+    'news.fixed.20260523a.title':   '2026.05.23 22:00 KST | 유가·환율 고점 유지, 7월 유류할증료 급락 가능성은 제한적',
+    'news.fixed.20260523a.summary': '① 오늘의 핵심 요약\n2026.05.23 22:00 KST 기준, 6월 유류할증료는 이미 공시가 확인된 항공사의 확정 데이터와 7월 시장 기반 전망을 분리해서 봐야 합니다. 현재 유가와 환율 흐름을 고려하면 7월 유류할증료는 급격한 인하보다는 현 수준 유지 또는 일부 구간의 제한적 조정 가능성이 더 높습니다.\n\n② 국제유가/항공유 흐름\n브렌트유는 최근 고점권에서 등락 중이며, 유류할증료 급락을 기대하기 어려운 환경입니다. 중동 리스크와 호르무즈 해협 관련 불확실성은 완전히 해소되지 않았지만, 즉각적인 봉쇄 가능성보다는 리스크 프리미엄이 일부 유지되는 흐름으로 정리하는 것이 적절합니다. 싱가포르 항공유(MOPS)는 단기 조정 이후 재반등 가능성을 점검해야 하나, 최신 공개 수치 확인이 필요하므로 임의 수치는 넣지 않습니다.\n\n③ 원/달러 환율 흐름\n원/달러 환율은 2026.05.22 기준 1,500원대 전후의 높은 구간이 확인됩니다. 공개 환율 데이터상 2026.05.22 USD/KRW는 약 1,504.37~1,511.79원 범위로 집계되어, 유류할증료 하락을 제한하는 요인입니다. 2026.05.23 22:00 KST 실시간 환율은 거래/데이터 소스별 차이가 있어 최종 결제 전 실시간 환율 확인이 필요합니다.\n\n④ 7월 유류할증료 전망\n공시 확정 데이터는 6월 항공사별 공시로 한정하고, 7월은 시장 지표 기반 전망으로 분리합니다. 유가와 환율이 동시에 높은 편이므로 항공사들이 유류할증료를 크게 낮추기 어려운 환경입니다. 따라서 7월은 급락보다는 현 수준 유지 또는 일부 구간의 제한적 조정 가능성이 더 높습니다.\n\n⑤ 예약 판단 가이드\n일본·동남아·유럽 등 여름 성수기 노선은 유류할증료뿐 아니라 환율, 성수기 운임, 좌석 상황까지 함께 확인해야 합니다. 단거리 노선은 유류할증료 변동보다 항공권 운임 자체의 영향이 더 클 수 있고, 장거리 노선은 유류할증료와 환율 영향을 함께 확인하는 것이 유리합니다.\n\n※ 6월 공시 미확인 항공사는 이전월 데이터를 6월 확정 데이터처럼 표시하지 않고, “공지 전” 또는 “6월 공시 미확인”으로 구분해야 합니다.',
+    'news.fixed.20260523a.impact':  '→ 6월 확정 공시와 7월 시장 전망을 분리. 브렌트유 고점권·USD/KRW 1,500원대 전후·MOPS 최신 공개 수치 확인 필요 조건을 반영하면 7월 급락 가능성은 제한적입니다.',
+    'news.fixed.20260523a.source':  '시장 데이터 기반 분석 (2026.05.23 22:00 KST)',
+    'news.fixed.20260523a.tag1': '7월 유류할증료 전망', 'news.fixed.20260523a.tag2': '유가 고점권',
+    'news.fixed.20260523a.tag3': 'USD/KRW 1,500원대', 'news.fixed.20260523a.tag4': 'MOPS 확인 필요',
+    'news.fixed.20260523a.tag5': '성수기 예약 가이드',
 
     /* ── 2026-05-21 티웨이항공(TW) 6월 공식 공시 반영 카드 (NEW) ── */
     'news.fixed.20260521.tw.title':   '✅ 티웨이항공(TW) 2026년 6월 국제선 유류할증료 공식 공시 반영 완료 — KRW 기준 전 구간 인하',
@@ -2054,6 +2062,14 @@ var FIXED_NEWS_FALLBACK = {
 };
 
 var FIXED_NEWS = [
+  /* 2026-05-23 22:00 KST 시장 브리핑 — 6월 확정 데이터와 7월 전망 분리 */
+  {category:'market', priority:1, date:'2026-05-23', aiSummary:true, isNew:true,
+   titleKey:'news.fixed.20260523a.title', summaryKey:'news.fixed.20260523a.summary',
+   impactKey:'news.fixed.20260523a.impact', sourceNameKey:'news.fixed.20260523a.source',
+   tagKeys:['news.fixed.20260523a.tag1','news.fixed.20260523a.tag2',
+            'news.fixed.20260523a.tag3','news.fixed.20260523a.tag4','news.fixed.20260523a.tag5'],
+   relevanceScore:1.0},
+
   /* ── 2026-05-21 티웨이항공(TW) 6월 공식 공시 반영 카드 (NEW) ── */
   {category:'airline', priority:1, date:'2026-05-21', aiSummary:false, isNew:true,
    titleKey:'news.fixed.20260521.tw.title', summaryKey:'news.fixed.20260521.tw.summary',
@@ -2886,22 +2902,22 @@ document.getElementById('filterRow').addEventListener('click',function(e){
    ════════════════════════════════════════════════════════ */
 window.PAGE_I18N_OVERRIDE = {
   ko: {
-    'news.summary.updated': '✅ 2026.05.19 09:20 KST 기준 · 2026.06.01~06.30 적용 · 공식 공시 확인: 대한항공·아시아나·진에어·에어부산',
-    'news.summary.li1':     '✅ 대한항공 6월 공식 공시 완료 — 5월 대비 전 구간 인하',
-    'news.summary.li2':     '단거리 (~499km): 61,500원 (5월 75,000원 → 약 18% 인하)',
-    'news.summary.li3':     '중거리 (1,000~1,499km): 117,000원 (5월 144,000원 → 약 19% 인하)',
-    'news.summary.li4':     '장거리 (6,500~9,999km): 451,500원 (5월 564,000원 → 약 20% 인하)',
-    'news.summary.li5':     '단거리 인하폭 소폭, 장거리 인하폭 상대적으로 큼 — 전 구간 일괄 인하 구조',
-    'news.summary.li6':     '현재 시장은 7월 방향성에 영향 — 브렌트유·MOPS·환율 동시 모니터링 필요',
-    'news.marketTitle':     '🌍 6월 공식 공시 이후 시장 상황 (2026.05.20 기준)',
-    'news.brent':           '약 $109~112/bbl — 호르무즈 봉쇄 지속으로 고공 유지. EIA 5~6월 평균 $106 전망, 7월 방향성 핵심 변수',
-    'news.fx':              '원달러 환율 약 1,490~1,507원대 — 외국인 매도·달러 강세로 1,500원 상회 구간 진입. 환율 부담 확대',
-    'news.mops':            'MOPS 최고 단계 기준(470 cent/gal) 상회 — 7월 방향성 참고 지표로 작용',
-    'news.geo':             '호르무즈 해협 사실상 봉쇄 지속 — 미·이란 협상 진행 중이나 재개 미확인. 사우디·UAE 중재로 군사 행동 일시 보류. 7월 방향성 최대 변수',
-    'news.marketSummary':   '→ 대한항공·아시아나·진에어·에어부산·이스타항공·에어서울 6월 공식 공시 반영 완료. 브렌트유 $109~112/bbl·환율 1,500원 상회·호르무즈 봉쇄가 7월 방향성 복합 압박. 7월 공시는 6월 중 확인 필요.',
-    'news.fxDominance':     '🌍 7월 방향성 참고 지표: 유가 + 환율 + 중동 리스크 동시 주시 필요',
-    'news.dataRef':         '✅ 대한항공·아시아나·진에어·에어부산 6월 공식 공시 반영 완료 · 2026.06.01~06.30 적용 (발권일 기준)',
-    'news.curSummary':      '→ 대한항공 6월 전 구간 인하 확인 · 현재 시장은 7월 방향성에 영향 · 7월 공시는 6월 중 각 항공사 공식 채널 확인',
+    'news.summary.updated': '✅ 2026.05.23 22:00 KST 기준 · 6월 확정 공시와 7월 시장 전망 분리',
+    'news.summary.li1':     '브렌트유는 최근 고점권에서 등락 중 — 유류할증료 급락 기대 제한',
+    'news.summary.li2':     'MOPS는 단기 조정 이후 재반등 가능성 점검 — 최신 공개 수치 확인 필요',
+    'news.summary.li3':     'USD/KRW는 2026.05.22 공개 데이터 기준 약 1,504~1,512원 범위 확인',
+    'news.summary.li4':     '호르무즈 관련 불확실성은 완전 해소 전 — 리스크 프리미엄 일부 유지',
+    'news.summary.li5':     '6월 공시는 확인된 항공사 공식 공시만 확정 데이터로 표시',
+    'news.summary.li6':     '7월은 급격한 인하보다 현 수준 유지 또는 일부 구간 제한적 조정 가능성 우세',
+    'news.marketTitle':     '🌍 시장 브리핑 (2026.05.23 22:00 KST 기준)',
+    'news.brent':           '브렌트유는 최근 고점권에서 등락 중 — 유류할증료 급락 기대 제한',
+    'news.fx':              'USD/KRW는 2026.05.22 공개 데이터 기준 약 1,504~1,512원 범위 확인 — 실시간 환율 확인 필요',
+    'news.mops':            'MOPS는 단기 조정 이후 재반등 가능성 점검 — 최신 공개 수치 확인 필요',
+    'news.geo':             '호르무즈 관련 불확실성은 완전 해소 전 — 즉각 봉쇄보다 리스크 프리미엄 일부 유지 흐름',
+    'news.marketSummary':   '→ 6월 확정 공시와 7월 시장 전망을 분리해 확인하세요. 브렌트유 고점권·USD/KRW 1,500원대 전후·MOPS 최신 공개 수치 확인 필요 흐름상 7월 급락 가능성은 제한적입니다.',
+    'news.fxDominance':     '🌍 7월 방향성 참고 지표: 유가 + 환율 + MOPS 확인 필요',
+    'news.dataRef':         '✅ 6월 확정 공시와 7월 시장 전망 분리 · 2026.05.23 22:00 KST 기준',
+    'news.curSummary':      '→ 6월 확정 공시는 공식 공시 확인 항공사만 표시 · 7월은 시장 지표 기반 전망',
     'news.decisionLine1':   '→ 대한항공·아시아나·진에어·에어부산 6월 공식 공시 완료 — 5월 대비 전 구간 인하 확인',
     'news.decisionLine2':   '→ 현재 시장(브렌트유·MOPS·환율)은 7월 방향성에 영향 — 7월 공시 모니터링 필요',
     'news.decisionShort':   '👉 단거리: 6월 대한항공 기준 61,500원 (5월 75,000원)',

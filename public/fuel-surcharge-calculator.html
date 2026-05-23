@@ -3,14 +3,19 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>유류할증료 계산 방법 안내 — 항공사별 산정 기준 설명</title>
-  <meta name="description" content="항공권 유류할증료가 어떻게 산정되는지 설명하고, 항공사별 공시 기준과 확인 방법을 안내합니다." data-i18n-page-desc="calc.metaDesc"/>
+  <title>유류할증료 계산기 — 5월·6월 항공사별 절약액 비교</title>
+  <meta name="description" content="한국 출발 국제선 노선의 5월·6월 유류할증료를 항공사별로 비교하고, 발권월에 따라 얼마나 아낄 수 있는지 계산해보세요." data-i18n-page-desc="calc.metaDesc"/>
   <meta data-i18n-page-title="calc.metaTitle"/>
   <link rel="canonical" href="https://aero-surcharge.com/fuel-surcharge-calculator.html"/>
-  <meta property="og:title" content="유류할증료 계산 방법 안내 — 항공사별 산정 기준 설명"/>
-  <meta property="og:description" content="항공권 유류할증료가 어떻게 산정되는지 설명하고, 항공사별 공시 기준과 확인 방법을 안내합니다."/>
+  <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
+  <meta name="keywords" content="유류할증료 계산기, 항공권 유류할증료, 유류할증료 비교, 5월 유류할증료, 6월 유류할증료, 한국 출발 유류할증료"/>
+  <meta property="og:title" content="유류할증료 계산기 — 5월·6월 항공사별 절약액 비교"/>
+  <meta property="og:description" content="한국 출발 국제선 노선의 5월·6월 유류할증료를 항공사별로 비교하고, 발권월에 따라 얼마나 아낄 수 있는지 계산해보세요."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.com/fuel-surcharge-calculator.html"/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="유류할증료 계산기 — 항공사별 절약액 비교"/>
+  <meta name="twitter:description" content="출발지와 도착지를 선택해 5월·6월 유류할증료 차이와 항공사별 절약액을 확인하세요."/>
   <link rel="stylesheet" href="_shared.css"/>
   <link rel="stylesheet" href="_seo_pages.css"/>
   <link rel="icon" href="/favicon-v2.ico">
@@ -28,13 +33,148 @@
     .guide-block-body p:last-child{margin:0;}
     .guide-block-body ol{margin:8px 0;padding-left:20px;display:flex;flex-direction:column;gap:6px;}
     .guide-block-body li{font-size:13px;line-height:1.6;}
-    @media(max-width:700px){.guide-block{padding:16px;}}
+    .answer-block{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:10px;padding:16px 18px;margin:16px 0 20px;}
+    .answer-block-title{font-size:15px;font-weight:850;color:var(--text);margin-bottom:8px;}
+    .answer-block-body{font-size:13px;color:var(--text2);line-height:1.75;}
+    .faq-list{display:flex;flex-direction:column;gap:10px;margin:18px 0 22px;}
+    .faq-item{border:1px solid var(--line);border-radius:8px;background:#fff;padding:13px 14px;}
+    .faq-q{font-size:13px;font-weight:850;color:var(--text);margin-bottom:6px;}
+    .faq-a{font-size:12px;color:var(--text2);line-height:1.7;}
+    .saving-tool{background:#fff;border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin:22px 0;box-shadow:var(--shadow);}
+    .saving-tool-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:16px;}
+    .saving-tool-title{font-size:18px;font-weight:800;color:var(--text);margin-bottom:6px;}
+    .saving-tool-sub{font-size:12px;color:var(--text2);line-height:1.6;}
+    .saving-tool-badge{font-size:11px;font-weight:800;color:#065f46;background:#d1fae5;border:1px solid #a7f3d0;border-radius:999px;padding:5px 10px;white-space:nowrap;}
+    .saving-form{display:grid;grid-template-columns:1fr 1.4fr .7fr .8fr;gap:10px;margin-bottom:16px;}
+    .saving-field{display:flex;flex-direction:column;gap:6px;min-width:0;}
+    .saving-label{font-size:11px;font-weight:800;color:var(--muted);text-transform:uppercase;}
+    .saving-select,.saving-input{width:100%;height:40px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--text);font-family:var(--sans);font-size:13px;font-weight:650;padding:0 10px;outline:none;}
+    .saving-select:focus,.saving-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(46,79,216,.12);}
+    .saving-toggle{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;height:40px;background:#fff;}
+    .saving-toggle button{flex:1;border:0;background:#fff;color:var(--text2);font-size:12px;font-weight:800;cursor:pointer;}
+    .saving-toggle button.active{background:var(--blue);color:#fff;}
+    .saving-result{display:grid;grid-template-columns:1fr 1fr 1.2fr;gap:10px;align-items:stretch;}
+    .saving-metric{background:var(--card2);border:1px solid var(--line);border-radius:8px;padding:13px 14px;min-width:0;}
+    .saving-metric-label{font-size:11px;color:var(--muted);font-weight:800;margin-bottom:7px;}
+    .saving-metric-value{font-family:var(--mono);font-size:19px;font-weight:800;color:var(--text);word-break:keep-all;}
+    .saving-metric-value.good{color:#047857;}
+    .saving-metric-value.bad{color:#b45309;}
+    .saving-impact{background:#f8fafc;border:1px solid var(--line);border-left:4px solid var(--green);border-radius:8px;padding:13px 14px;line-height:1.6;}
+    .saving-impact-title{font-size:12px;font-weight:800;color:var(--green);margin-bottom:5px;}
+    .saving-impact-body{font-size:13px;color:var(--text2);}
+    .saving-table-wrap{margin-top:12px;border:1px solid var(--line);border-radius:8px;overflow:auto;background:#fff;}
+    .saving-table{width:100%;border-collapse:collapse;min-width:620px;}
+    .saving-table th,.saving-table td{padding:10px 12px;border-bottom:1px solid var(--line);font-size:12px;text-align:right;white-space:nowrap;}
+    .saving-table th:first-child,.saving-table td:first-child{text-align:left;}
+    .saving-table th{background:#f8fafc;color:var(--muted);font-size:11px;font-weight:800;}
+    .saving-table tr:last-child td{border-bottom:0;}
+    .saving-table .best-row td{background:#ecfdf5;}
+    .saving-airline-name{font-weight:800;color:var(--text);}
+    .saving-route-note{display:block;font-size:10px;color:var(--muted);font-weight:600;margin-top:2px;}
+    .saving-positive{font-weight:800;color:#047857;}
+    .saving-empty{padding:14px;font-size:12px;color:var(--muted);line-height:1.6;}
+    .saving-affiliate{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-top:12px;padding:14px 16px;border:1px solid #bfdbfe;border-radius:10px;background:linear-gradient(135deg,#eff6ff,#f8fafc);}
+    .saving-affiliate-body{min-width:0;}
+    .saving-affiliate-kicker{font-size:10px;font-weight:800;color:#2563eb;margin-bottom:5px;letter-spacing:.02em;}
+    .saving-affiliate-title{font-size:14px;font-weight:850;color:var(--text);line-height:1.45;margin-bottom:4px;}
+    .saving-affiliate-desc{font-size:12px;color:var(--text2);line-height:1.6;}
+    .saving-affiliate-btn{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 16px;border-radius:8px;background:var(--blue);color:#fff;text-decoration:none;font-size:12px;font-weight:850;white-space:nowrap;}
+    .saving-affiliate-btn:hover{opacity:.88;}
+    .saving-note{font-size:11px;color:var(--muted);line-height:1.6;margin-top:12px;}
+    @media(max-width:900px){.saving-form,.saving-result{grid-template-columns:1fr 1fr;}.saving-impact{grid-column:1/-1;}}
+    @media(max-width:700px){.guide-block{padding:16px;}.saving-tool{padding:16px;}.saving-tool-head{display:block;}.saving-tool-badge{display:inline-flex;margin-top:10px;}.saving-form,.saving-result{grid-template-columns:1fr;}.saving-metric-value{font-size:17px;}.saving-affiliate{align-items:flex-start;flex-direction:column;}.saving-affiliate-btn{width:100%;}}
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "@id": "https://aero-surcharge.com/fuel-surcharge-calculator.html#app",
+        "name": "유류할증료 계산기",
+        "url": "https://aero-surcharge.com/fuel-surcharge-calculator.html",
+        "applicationCategory": "TravelApplication",
+        "operatingSystem": "Any",
+        "inLanguage": "ko",
+        "description": "한국 출발 국제선 노선의 5월·6월 유류할증료를 항공사별로 비교하고 발권월에 따른 절약액을 계산하는 도구입니다.",
+        "isAccessibleForFree": true,
+        "dateModified": "2026-05-23",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "KRW"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Aero Surcharge",
+          "url": "https://aero-surcharge.com/"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://aero-surcharge.com/fuel-surcharge-calculator.html#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "유류할증료는 탑승일 기준인가요, 발권일 기준인가요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "유류할증료는 일반적으로 탑승일이 아니라 항공권을 실제로 발권하는 날짜 기준으로 적용됩니다. 같은 여행 일정이라도 발권월에 따라 금액이 달라질 수 있습니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "이 계산기는 어떤 노선을 기준으로 하나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "사이트 메인 노선 조회에 정리된 한국 출발 국제선 노선 데이터를 기준으로 출발지와 도착지를 나누어 비교합니다. 선택한 노선에 취항하는 항공사가 2개 이상이면 항공사별 금액을 함께 보여줍니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "계산 결과가 실제 결제 금액과 완전히 같나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "아닙니다. 이 계산기는 공식 공시 유류할증료를 기준으로 한 비교용 도구입니다. 실제 항공권 결제 금액은 운임, 세금, 환율, 예약 채널, 항공사 정책에 따라 달라질 수 있습니다."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "왕복 항공권은 어떻게 계산하나요?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "왕복을 선택하면 편도 유류할증료 기준 금액에 2를 곱해 비교합니다. 인원을 늘리면 선택한 인원 수까지 반영해 총 절약액을 계산합니다."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://aero-surcharge.com/fuel-surcharge-calculator.html#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "노선별 조회",
+            "item": "https://aero-surcharge.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "유류할증료 계산기",
+            "item": "https://aero-surcharge.com/fuel-surcharge-calculator.html"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 <nav>
   <div class="nav-links">
     <a href="index.html"    class="nav-link" id="navLinkRoutes"   data-i18n="nav.routes">노선별 조회</a>
+    <a href="fuel-surcharge-calculator.html" class="nav-link active" id="navLinkCalculator" data-i18n="nav.calc">계산기</a>
     <a href="airlines.html" class="nav-link" id="navLinkAirlines" data-i18n="nav.airlines">항공사 인덱스</a>
     <a href="news.html"     class="nav-link" id="navLinkNews"     data-i18n="nav.news">참고 소식</a>
   </div>
@@ -56,12 +196,12 @@
 </nav>
 
 <div class="page-header">
-  <div class="page-title" data-i18n="calc.pageTitle">🧮 유류할증료 계산 방법 안내</div>
-  <div class="page-sub"   data-i18n="calc.pageSub">항공사별 산정 기준 설명 · 확인 방법 안내 — 직접 계산기가 아닌 설명 페이지입니다</div>
+  <div class="page-title" data-i18n="calc.pageTitle">🧮 유류할증료 계산기</div>
+  <div class="page-sub"   data-i18n="calc.pageSub">한국 출발 노선별 5월·6월 유류할증료 비교 · 항공사별 절약액 계산</div>
 </div>
 
 <main class="seo-main">
-  <h1 style="font-size:20px;font-weight:700;color:var(--text);margin-bottom:12px;" data-i18n="calc.h1">유류할증료 계산 방법 안내</h1>
+  <h1 style="font-size:20px;font-weight:700;color:var(--text);margin-bottom:12px;" data-i18n="calc.h1">유류할증료 계산기: 항공사별 5월·6월 절약액 비교</h1>
 
   <div class="seo-lang-notice">
     ⚠️&nbsp;<span data-i18n-html="calc.notice"></span>
@@ -72,6 +212,98 @@
   </div>
 
   <div class="seo-intro" data-i18n="calc.intro"></div>
+
+  <section class="answer-block" aria-label="유류할증료 계산기 핵심 답변">
+    <div class="answer-block-title" data-i18n="calc.answer.title">언제 발권하는 게 유리한가요?</div>
+    <div class="answer-block-body" data-i18n="calc.answer.body">
+      선택한 노선에서 5월 대비 6월 유류할증료가 낮아지는 항공사와 절약액을 보여줍니다.
+      여러 항공사가 같은 목적지에 취항할 때 발권월을 바꾸는 것이 실제로 의미 있는지 빠르게 판단할 수 있습니다.
+    </div>
+  </section>
+
+  <section class="saving-tool" id="savingTool" aria-label="유류할증료 절약 비교 계산기">
+    <div class="saving-tool-head">
+      <div>
+        <div class="saving-tool-title">노선별 5월 vs 6월 유류할증료 비교</div>
+        <div class="saving-tool-sub">같은 노선의 취항 항공사를 자동으로 묶어 최저 금액, 항공사별 차이, 예상 절약액을 표로 보여줍니다.</div>
+      </div>
+      <div class="saving-tool-badge">2026.06 공식 공시 반영</div>
+    </div>
+
+    <div class="saving-form">
+      <label class="saving-field">
+        <span class="saving-label">출발지</span>
+        <select class="saving-select" id="savingOrigin"></select>
+      </label>
+      <label class="saving-field">
+        <span class="saving-label">도착지</span>
+        <select class="saving-select" id="savingDestination"></select>
+      </label>
+      <label class="saving-field">
+        <span class="saving-label">인원</span>
+        <input class="saving-input" id="savingPax" type="number" min="1" max="20" step="1" value="1">
+      </label>
+      <div class="saving-field">
+        <span class="saving-label">여정</span>
+        <div class="saving-toggle" role="group" aria-label="편도 또는 왕복 선택">
+          <button type="button" class="active" id="savingOneWay">편도</button>
+          <button type="button" id="savingRoundTrip">왕복</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="saving-result">
+      <div class="saving-metric">
+        <div class="saving-metric-label">비교 항공사</div>
+        <div class="saving-metric-value" id="savingCarrierCount">-</div>
+      </div>
+      <div class="saving-metric">
+        <div class="saving-metric-label">6월 최저 유류할증료</div>
+        <div class="saving-metric-value good" id="savingBestJune">-</div>
+      </div>
+      <div class="saving-impact">
+        <div class="saving-impact-title" id="savingHeadline">절약액 계산 중</div>
+        <div class="saving-impact-body" id="savingImpact">목적지를 선택하면 항공사별 비교 결과가 표시됩니다.</div>
+      </div>
+    </div>
+    <div class="saving-table-wrap" id="savingTableWrap"></div>
+    <div class="saving-affiliate" id="savingAffiliate">
+      <div class="saving-affiliate-body">
+        <div class="saving-affiliate-kicker">마이리얼트립 제휴</div>
+        <div class="saving-affiliate-title" id="savingAffiliateTitle">절약한 금액으로 실제 항공권 총액도 확인해보세요</div>
+        <div class="saving-affiliate-desc" id="savingAffiliateDesc">유류할증료는 발권 시점 기준입니다. 계산 결과를 확인했다면 현재 항공권 총액도 함께 비교해보세요.</div>
+      </div>
+      <a href="https://lase.kr/click.php?m=myrealtrip&a=A100704170&l=0000"
+         target="_blank"
+         rel="noopener sponsored"
+         class="saving-affiliate-btn"
+         id="savingAffiliateBtn"
+         onclick="if(window.gtag){gtag('event','affiliate_click',{affiliate:'myrealtrip',placement:'calculator_result'});}">항공권 총액 확인하기</a>
+    </div>
+    <div class="saving-note">※ 유류할증료는 발권일 기준으로 적용됩니다. 실제 결제 금액은 항공사, 환율, 세금, 예약 채널에 따라 달라질 수 있으므로 최종 발권 전 공식 공지를 확인하세요.</div>
+  </section>
+
+  <section aria-label="유류할증료 계산기 자주 묻는 질문">
+    <div class="seo-section-title">유류할증료 계산기 FAQ</div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">유류할증료는 탑승일 기준인가요, 발권일 기준인가요?</div>
+        <div class="faq-a">유류할증료는 일반적으로 탑승일이 아니라 항공권을 실제로 발권하는 날짜 기준으로 적용됩니다. 같은 여행 일정이라도 5월에 발권하는지 6월에 발권하는지에 따라 금액이 달라질 수 있습니다.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">이 계산기는 어떤 노선을 기준으로 하나요?</div>
+        <div class="faq-a">사이트 메인 노선 조회에 정리된 한국 출발 국제선 노선 데이터를 기준으로 출발지와 도착지를 나누어 비교합니다. 선택한 노선에 취항하는 항공사가 2개 이상이면 항공사별 금액을 함께 보여줍니다.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">계산 결과가 실제 결제 금액과 완전히 같나요?</div>
+        <div class="faq-a">아닙니다. 이 계산기는 공식 공시 유류할증료를 기준으로 한 비교용 도구입니다. 실제 항공권 결제 금액은 운임, 세금, 환율, 예약 채널, 항공사 정책에 따라 달라질 수 있으므로 최종 발권 전 공식 공지를 확인해야 합니다.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">왕복 항공권은 어떻게 계산하나요?</div>
+        <div class="faq-a">왕복을 선택하면 편도 유류할증료 기준 금액에 2를 곱해 비교합니다. 인원을 늘리면 선택한 인원 수까지 반영해 총 절약액을 계산합니다.</div>
+      </div>
+    </div>
+  </section>
 
   <div class="summary-cards">
     <div class="summary-card">
@@ -86,8 +318,8 @@
     </div>
     <div class="summary-card">
       <div class="summary-card-icon">🎟️</div>
-      <div class="summary-card-title" data-i18n="calc.card3.title">발권 시점 기준</div>
-      <div class="summary-card-body"  data-i18n="calc.card3.body">유류할증료는 탑승일이 아닌 발권일 기준 공시 금액이 적용됩니다. 미래 탑승 일정도 발권 시점의 할증료가 부과됩니다.</div>
+      <div class="summary-card-title" data-i18n="calc.card3.title">절약액 비교 기준</div>
+      <div class="summary-card-body"  data-i18n="calc.card3.body">같은 노선에 취항하는 항공사의 5월·6월 공시 금액을 편도·왕복과 인원 수에 맞춰 비교합니다.</div>
     </div>
   </div>
 
@@ -186,21 +418,6 @@
 
   <p style="font-size:11px;color:var(--muted);margin-top:-16px;margin-bottom:20px;" data-i18n="calc.tableFootnote">※ 정확한 구간 기준과 금액은 각 항공사 공식 공지를 반드시 확인하세요.</p>
 
-  <div class="official-link-box">
-    <div class="official-link-title" data-i18n="calc.official.title">🔗 항공사 공식 유류할증료 공지 바로가기</div>
-    <div class="official-link-list">
-      <div class="official-link-item" data-i18n-html="calc.official.item.ke"></div>
-      <div class="official-link-item" data-i18n-html="calc.official.item.oz"></div>
-      <div class="official-link-item" data-i18n-html="calc.official.item.7c"></div>
-      <div class="official-link-item" data-i18n-html="calc.official.item.lj"></div>
-      <div class="official-link-item" data-i18n-html="calc.official.item.tw"></div>
-      <div class="official-link-item" data-i18n-html="calc.official.item.ze"></div>
-      <div class="official-link-item" data-i18n-html="calc.official.item.rs"></div>
-      <div class="official-link-item" data-i18n-html="calc.official.item.yp"></div>
-      <div class="official-link-item" data-i18n-html="calc.official.item.bx"></div>
-    </div>
-  </div>
-
   <div class="related-links">
     <div class="related-title" data-i18n="calc.related.title">🔗 관련 페이지</div>
     <div class="related-grid">
@@ -208,7 +425,7 @@
       <a class="related-item" href="airlines.html"                       data-i18n="calc.related.airlines">✈️ 항공사별 유류할증료</a>
       <a class="related-item" href="news.html"                           data-i18n="calc.related.news">📰 유류할증료 뉴스</a>
       <a class="related-item" href="fuel-surcharge-graph.html"           data-i18n="calc.related.graph">📈 변동 그래프</a>
-      <a class="related-item" href="fuel-surcharge-calculator.html"      data-i18n="calc.related.calc">🧮 계산 방법 안내</a>
+      <a class="related-item" href="fuel-surcharge-calculator.html"      data-i18n="calc.related.calc">🧮 유류할증료 계산기</a>
       <a class="related-item" href="fuel-surcharge-2026-05.html"         data-i18n="calc.related.may">📅 2026년 5월</a>
       <a class="related-item" href="fuel-surcharge-2026-06-forecast.html" data-i18n="calc.related.june">🔮 2026년 6월 전망</a>
       <a class="related-item" href="fuel-surcharge-korea.html"           data-i18n="calc.related.korea">🇰🇷 한국 출발 유류할증료</a>
@@ -227,23 +444,627 @@
 
 <script src="_shared.js"></script>
 <script>
+var SAVING_COMPARE_DATA = {
+  KE: { name:'대한항공', currency:'KRW', rows:[
+    { label:'~499mi', may:75000, june:61500 }, { label:'500~999mi', may:102000, june:84000 },
+    { label:'1,000~1,499mi', may:144000, june:117000 }, { label:'1,500~1,999mi', may:180000, june:147000 },
+    { label:'2,000~2,999mi', may:253500, june:205500 }, { label:'3,000~3,999mi', may:256500, june:210000 },
+    { label:'4,000~4,999mi', may:345000, june:282000 }, { label:'5,000~6,499mi', may:501000, june:409500 },
+    { label:'6,500mi~', may:564000, june:451500 }
+  ]},
+  OZ: { name:'아시아나항공', currency:'KRW', rows:[
+    { label:'~499mi', may:85400, june:68000 }, { label:'500~999mi', may:125800, june:100500 },
+    { label:'1,000~1,499mi', may:164700, june:131500 }, { label:'1,500~1,999mi', may:203700, june:162600 },
+    { label:'2,000~2,499mi', may:242600, june:195100 }, { label:'2,500~2,999mi', may:281500, june:226100 },
+    { label:'3,000~3,999mi', may:320500, june:257100 }, { label:'4,000~4,999mi', may:398300, june:320700 },
+    { label:'5,000mi~', may:476200, june:382800 }
+  ]},
+  '7C': { name:'제주항공', currency:'USD', rows:[
+    { label:'~499mi (후쿠오카·오사카·상하이 등)', may:52, june:42 }, { label:'500~999mi (도쿄·삿포로·타이베이 등)', may:66, june:54 },
+    { label:'1,000~1,499mi (홍콩·마카오·장자제)', may:80, june:65 }, { label:'1,500~1,999mi (마닐라·하노이·다낭)', may:95, june:78 },
+    { label:'2,000~2,499mi (방콕·치앙마이·호찌민)', may:107, june:89 }, { label:'2,500mi~ (싱가포르·덴파사르·바탐)', may:126, june:104 }
+  ]},
+  LJ: { name:'진에어', currency:'USD', rows:[
+    { label:'1~599mi', may:42, june:36 }, { label:'600~1,199mi', may:66, june:54 },
+    { label:'1,200~1,799mi', may:107, june:87 }, { label:'1,800~2,399mi', may:117, june:96 },
+    { label:'2,400~3,599mi', may:140, june:115 }
+  ]},
+  BX: { name:'에어부산', currency:'USD', rows:[
+    { label:'1군 (~499mi)', may:52, june:43 }, { label:'2군 (500~999mi)', may:66, june:54 },
+    { label:'3군 (1,000~1,499mi)', may:80, june:66 }, { label:'4군 (1,500~1,999mi)', may:95, june:79 },
+    { label:'5군 (2,000~2,499mi)', may:107, june:89 }, { label:'6군 (2,500mi~)', may:126, june:103 }
+  ]},
+  RS: { name:'에어서울', currency:'KRW', rows:[
+    { label:'300~699mi', may:94500, june:75300 }, { label:'700~1,099mi', may:109500, june:87100 },
+    { label:'1,100~1,499mi', may:141000, june:109200 }, { label:'1,500~1,899mi', may:153000, june:125500 },
+    { label:'1,900~2,299mi', may:165000, june:132800 }
+  ]},
+  TW: { name:'티웨이항공', currency:'KRW', rows:[
+    { label:'1군 (~600mi)', may:58600, june:47400 }, { label:'2군 (600~1,200mi)', may:103600, june:82900 },
+    { label:'3군 (1,200~1,800mi)', may:129100, june:103600 }, { label:'4군 (1,800~2,400mi)', may:168200, june:134700 },
+    { label:'5군 (2,400~4,000mi)', may:180200, june:145000 }, { label:'7군 (5,000mi~)', may:406900, june:327000 }
+  ]},
+  ZE: { name:'이스타항공', currency:'USD', rows:[
+    { label:'1구간 (~699mi)', may:52, june:43 }, { label:'2구간 (700~1,299mi)', may:94, june:77 },
+    { label:'3구간 (1,300~1,999mi)', may:109, june:90 }, { label:'4구간 (2,000mi~)', may:126, june:106 }
+  ]}
+};
+
+(function initSavingCompareTool(){
+  var airlineEl = document.getElementById('savingAirline');
+  var bandEl = document.getElementById('savingBand');
+  var paxEl = document.getElementById('savingPax');
+  var oneWayEl = document.getElementById('savingOneWay');
+  var roundTripEl = document.getElementById('savingRoundTrip');
+  var mayEl = document.getElementById('savingMay');
+  var juneEl = document.getElementById('savingJune');
+  var headlineEl = document.getElementById('savingHeadline');
+  var impactEl = document.getElementById('savingImpact');
+  if (!airlineEl || !bandEl) return;
+  var selectedTrip = 1;
+  var usdRate = 1450;
+  var SAVING_INDEX_ROUTE_MAP = null;
+  var order = ['KE','OZ','7C','LJ','BX','RS','TW','ZE'];
+  function toKRW(amount, currency) { return currency === 'USD' ? Math.round(amount * usdRate) : amount; }
+  function fmtKRW(amount) {
+    var c = (window.SHARED_STATE && window.SHARED_STATE.curr) || 'KRW';
+    var rates = window.RATES || { KRW:1, USD:1/1450, JPY:1/10, EUR:1/1620 };
+    var dec = (window.CURR_DEC && window.CURR_DEC[c] != null) ? window.CURR_DEC[c] : 0;
+    var sym = (window.CURR_SYM && window.CURR_SYM[c]) || c;
+    return sym + (amount * (rates[c] || 1)).toLocaleString('en-US', { minimumFractionDigits:dec, maximumFractionDigits:dec });
+  }
+  function nativeText(amount, currency) {
+    var c = (window.SHARED_STATE && window.SHARED_STATE.curr) || 'KRW';
+    return currency === 'USD' && c !== 'USD' ? ' ($' + amount + ')' : '';
+  }
+  function getImpactText(saving) {
+    if (saving >= 300000) return '장거리 여행 예산에서 호텔 1박 비용이나 현지 투어 비용을 크게 덜어낼 수 있는 수준입니다.';
+    if (saving >= 150000) return '공항 이동비, 여행자보험, 현지 식사 몇 끼까지 한 번에 커버할 수 있는 금액입니다.';
+    if (saving >= 80000) return '가족 여행이라면 공항 식사나 수하물 추가 비용으로 돌릴 수 있는 꽤 실감나는 차이입니다.';
+    if (saving >= 40000) return '두 명 기준 공항 식사 한 번, 또는 현지 교통비 일부로 쓰기 좋은 금액입니다.';
+    if (saving >= 15000) return '카페 몇 잔이나 공항 간식 비용 정도를 아낄 수 있습니다. 인원이 늘면 차이가 더 커집니다.';
+    if (saving > 0) return '작은 차이지만 여러 명이 함께 발권하면 체감 금액이 커질 수 있습니다.';
+    if (saving === 0) return '두 달의 유류할증료 차이가 없습니다. 발권월보다 항공권 운임 차이를 함께 보는 편이 좋습니다.';
+    return '6월이 더 비싼 조합입니다. 이 경우에는 5월 발권이 유류할증료만 놓고 보면 유리합니다.';
+  }
+  function fillAirlines() {
+    airlineEl.innerHTML = order.map(function(code) {
+      var item = SAVING_COMPARE_DATA[code];
+      return '<option value="' + code + '">' + item.name + ' (' + code + ')</option>';
+    }).join('');
+  }
+  function fillBands() {
+    var data = SAVING_COMPARE_DATA[airlineEl.value];
+    bandEl.innerHTML = data.rows.map(function(row, idx) {
+      return '<option value="' + idx + '">' + row.label + '</option>';
+    }).join('');
+  }
+  function updateResult() {
+    var data = SAVING_COMPARE_DATA[airlineEl.value];
+    var row = data.rows[Number(bandEl.value)] || data.rows[0];
+    var pax = Math.max(1, Math.min(20, parseInt(paxEl.value, 10) || 1));
+    paxEl.value = pax;
+    var multiplier = pax * selectedTrip;
+    var mayTotal = toKRW(row.may, data.currency) * multiplier;
+    var juneTotal = toKRW(row.june, data.currency) * multiplier;
+    var saving = mayTotal - juneTotal;
+    mayEl.textContent = fmtKRW(mayTotal) + nativeText(row.may * multiplier, data.currency);
+    juneEl.textContent = fmtKRW(juneTotal) + nativeText(row.june * multiplier, data.currency);
+    juneEl.className = 'saving-metric-value ' + (saving > 0 ? 'good' : saving < 0 ? 'bad' : '');
+    headlineEl.textContent = saving > 0 ? '총 ' + fmtKRW(saving) + ' 절약' : saving < 0 ? '총 ' + fmtKRW(Math.abs(saving)) + ' 추가 부담' : '두 달 금액 동일';
+    impactEl.textContent = getImpactText(saving);
+  }
+  fillAirlines();
+  fillBands();
+  updateResult();
+  airlineEl.addEventListener('change', function(){ fillBands(); updateResult(); });
+  bandEl.addEventListener('change', updateResult);
+  paxEl.addEventListener('input', updateResult);
+  oneWayEl.addEventListener('click', function(){ selectedTrip = 1; oneWayEl.classList.add('active'); roundTripEl.classList.remove('active'); updateResult(); });
+  roundTripEl.addEventListener('click', function(){ selectedTrip = 2; roundTripEl.classList.add('active'); oneWayEl.classList.remove('active'); updateResult(); });
+})();
+var SAVING_RANGE_PATCHES = {
+  KE:['0-499','500-999','1000-1499','1500-1999','2000-2999','3000-3999','4000-4999','5000-6499','6500+'],
+  OZ:['0-499','500-999','1000-1499','1500-1999','2000-2499','2500-2999','3000-3999','4000-4999','5000+'],
+  '7C':['0-499','500-999','1000-1499','1500-1999','2000-2499','2500+'],
+  LJ:['0-599','600-1199','1200-1799','1800-2399','2400-3599'],
+  BX:['0-499','500-999','1000-1499','1500-1999','2000-2499','2500+'],
+  RS:['300-699','700-1099','1100-1499','1500-1899','1900-2299'],
+  TW:['0-600','600-1200','1200-1800','1800-2400','2400-4000','5000+'],
+  ZE:['0-699','700-1299','1300-1999','2000+']
+};
+Object.keys(SAVING_RANGE_PATCHES).forEach(function(code) {
+  var data = SAVING_COMPARE_DATA[code];
+  if (!data || !Array.isArray(data.rows)) return;
+  SAVING_RANGE_PATCHES[code].forEach(function(range, idx) {
+    if (data.rows[idx]) data.rows[idx].range = range;
+  });
+});
+
+var SAVING_DESTINATIONS = [
+  { code:'FUK', name:'후쿠오카', miles:350, airlines:['KE','OZ','7C','LJ','BX','TW','ZE'] },
+  { code:'KIX', name:'오사카', miles:530, airlines:['KE','OZ','7C','LJ','BX','TW','ZE'] },
+  { code:'NRT', name:'도쿄/나리타', miles:760, airlines:['KE','OZ','7C','LJ','BX','TW','ZE'] },
+  { code:'TPE', name:'타이베이', miles:920, airlines:['KE','OZ','7C','LJ','BX','TW','ZE'] },
+  { code:'HKG', name:'홍콩', miles:1290, airlines:['KE','OZ','7C','LJ','BX','TW','ZE'] },
+  { code:'DAD', name:'다낭', miles:1860, airlines:['KE','OZ','7C','LJ','BX','TW','ZE'] },
+  { code:'BKK', name:'방콕', miles:2270, airlines:['KE','OZ','7C','LJ','BX','TW','ZE'] },
+  { code:'SIN', name:'싱가포르', miles:2880, airlines:['KE','OZ','7C','LJ','BX','TW'] },
+  { code:'GUM', name:'괌', miles:1990, airlines:['KE','OZ','LJ','7C','TW','RS'] },
+  { code:'SYD', name:'시드니', miles:5200, airlines:['KE','OZ','TW'] },
+  { code:'LAX', name:'로스앤젤레스', miles:6000, airlines:['KE','OZ'] },
+  { code:'CDG', name:'파리', miles:5600, airlines:['KE','OZ','TW'] }
+];
+
+var SAVING_AIRPORT_MILES = {
+  AKL:6000, ALA:2500, AMS:5350, AUH:4250, BKI:2250, BKK:2270, CDG:5600,
+  CEB:1880, CNX:2150, CTS:880, CTU:1360, CXR:2050, DAD:1860, DOH:4350,
+  DPS:3300, DVO:2100, DXB:4200, DYG:1020, FRA:5350, FSZ:740, FUK:350,
+  GUM:1990, HAN:1700, HKG:1290, HND:760, HNL:4580, HPH:1650, IAD:6950,
+  JFK:6900, KHH:1040, KIX:530, KUL:2870, LAX:6000, LHR:5500, MEL:5350,
+  MFM:1300, MNL:1620, NGO:600, NGS:370, NHA:2050, NRT:760, OKA:780,
+  ORD:6550, PEK:570, PPS:2100, PVG:530, SDJ:780, SEA:5200, SFO:5650,
+  SGN:2200, SIN:2880, SPN:1950, SYD:5200, SYX:2050, TAG:1900, TAK:520,
+  TAO:370, TPE:920, ULN:1230, VTE:2000, XIY:1000, YNJ:420
+};
+
+var SAVING_AIRPORT_LABELS = {
+  AKL:'오클랜드', ALA:'알마티', AMS:'암스테르담', AUH:'아부다비', BKI:'코타키나발루',
+  BKK:'방콕', CDG:'파리', CEB:'세부', CNX:'치앙마이', CTS:'삿포로', CTU:'청두',
+  CXR:'나트랑/깜라인', DAD:'다낭', DOH:'도하', DPS:'발리/덴파사르', DVO:'다바오',
+  DXB:'두바이', DYG:'장자제', FRA:'프랑크푸르트', FSZ:'시즈오카', FUK:'후쿠오카',
+  GUM:'괌', HAN:'하노이', HKG:'홍콩', HND:'도쿄/하네다', HNL:'호놀룰루',
+  HPH:'하이퐁', IAD:'워싱턴', JFK:'뉴욕', KHH:'가오슝', KIX:'오사카',
+  KUL:'쿠알라룸푸르', LAX:'로스앤젤레스', LHR:'런던', MEL:'멜버른', MFM:'마카오',
+  MNL:'마닐라', NGO:'나고야', NGS:'나가사키', NHA:'나트랑', NRT:'도쿄/나리타',
+  OKA:'오키나와', ORD:'시카고', PEK:'베이징', PPS:'푸에르토프린세사', PVG:'상하이',
+  SDJ:'센다이', SEA:'시애틀', SFO:'샌프란시스코', SGN:'호찌민', SIN:'싱가포르',
+  SPN:'사이판', SYD:'시드니', SYX:'싼야', TAG:'보홀', TAK:'다카마쓰',
+  TAO:'칭다오', TPE:'타이베이', ULN:'울란바토르', VTE:'비엔티안', XIY:'시안',
+  YNJ:'옌지'
+};
+
+var SAVING_ORIGIN_LABELS = {
+  ICN:'인천', GMP:'김포', PUS:'부산', CJU:'제주', CJJ:'청주', TAE:'대구'
+};
+var SAVING_INDEX_ROUTE_MAP = null;
+
+(function initDestinationSavingCompareTool(){
+  var originEl = document.getElementById('savingOrigin');
+  var destinationEl = document.getElementById('savingDestination');
+  var paxEl = document.getElementById('savingPax');
+  var oneWayEl = document.getElementById('savingOneWay');
+  var roundTripEl = document.getElementById('savingRoundTrip');
+  var countEl = document.getElementById('savingCarrierCount');
+  var bestJuneEl = document.getElementById('savingBestJune');
+  var headlineEl = document.getElementById('savingHeadline');
+  var impactEl = document.getElementById('savingImpact');
+  var tableWrapEl = document.getElementById('savingTableWrap');
+  var affiliateTitleEl = document.getElementById('savingAffiliateTitle');
+  var affiliateDescEl = document.getElementById('savingAffiliateDesc');
+  var affiliateBtnEl = document.getElementById('savingAffiliateBtn');
+  if (!originEl || !destinationEl || !tableWrapEl) return;
+
+  var selectedTrip = 1;
+  var usdRate = 1450;
+  function toKRW(amount, currency) { return currency === 'USD' ? Math.round(amount * usdRate) : amount; }
+  var SAVING_UI_TEXT = {
+    ko: { count:'{n}개', noDataTitle:'비교 데이터 없음', noDataBody:'현재 선택한 목적지는 비교 가능한 항공사 데이터가 없습니다.', noDataCell:'비교 가능한 항공사 데이터가 없습니다.', bestJune:'{name} {amount}', saveHeadline:'{name} 이용 시 최대 {amount} 절약', extraHeadline:'{name} 이용 시 {amount} 추가 부담', sameHeadline:'두 달 금액 동일', thAirline:'항공사', thMay:'5월 발권', thJune:'6월 발권', thSaving:'절약액', routeSep:' · ', affiliateTitle:'{dest} 항공권 총액도 바로 확인해보세요', affiliateSave:'6월 발권 기준 최대 {amount}까지 아낄 수 있습니다. 절약액을 확인했다면 마이리얼트립에서 현재 항공권 총액도 함께 비교해보세요.', affiliateNeutral:'유류할증료만으로는 차이가 작을 수 있습니다. 마이리얼트립에서 현재 항공권 총액과 일정까지 같이 비교해보세요.', affiliateBtn:'{dest} 항공권 총액 보기', affiliateAria:'{dest} 항공권 총액을 마이리얼트립에서 확인하기' },
+    en: { count:'{n}', noDataTitle:'No comparison data', noDataBody:'No comparable airline data is available for the selected destination.', noDataCell:'No comparable airline data is available.', bestJune:'{name} {amount}', saveHeadline:'Save up to {amount} with {name}', extraHeadline:'{amount} extra with {name}', sameHeadline:'Same amount in both months', thAirline:'Airline', thMay:'May ticketing', thJune:'June ticketing', thSaving:'Savings', routeSep:' · ', affiliateTitle:'Check total airfare for {dest}', affiliateSave:'Based on June ticketing, you can save up to {amount}. Compare the current total airfare on MyRealTrip too.', affiliateNeutral:'Fuel surcharge differences may be small. Compare current airfare totals and schedules on MyRealTrip.', affiliateBtn:'View {dest} airfare totals', affiliateAria:'Check {dest} airfare totals on MyRealTrip' },
+    ja: { count:'{n}社', noDataTitle:'比較データなし', noDataBody:'選択した目的地で比較可能な航空会社データがありません。', noDataCell:'比較可能な航空会社データがありません。', bestJune:'{name} {amount}', saveHeadline:'{name}なら最大{amount}節約', extraHeadline:'{name}なら{amount}追加負担', sameHeadline:'両月の金額は同じ', thAirline:'航空会社', thMay:'5月発券', thJune:'6月発券', thSaving:'節約額', routeSep:' · ', affiliateTitle:'{dest}航空券の総額も確認', affiliateSave:'6月発券基準で最大{amount}節約できます。MyRealTripで現在の航空券総額も比較してみてください。', affiliateNeutral:'燃油サーチャージだけでは差が小さい場合があります。MyRealTripで航空券総額と日程も比較してください。', affiliateBtn:'{dest}航空券総額を見る', affiliateAria:'MyRealTripで{dest}航空券総額を確認' },
+    zh: { count:'{n}家', noDataTitle:'无比较数据', noDataBody:'当前目的地没有可比较的航空公司数据。', noDataCell:'没有可比较的航空公司数据。', bestJune:'{name} {amount}', saveHeadline:'选择{name}最多可省{amount}', extraHeadline:'选择{name}需多付{amount}', sameHeadline:'两个月金额相同', thAirline:'航空公司', thMay:'5月出票', thJune:'6月出票', thSaving:'节省额', routeSep:' · ', affiliateTitle:'也可查看{dest}机票总价', affiliateSave:'按6月出票最多可省{amount}。也可以在MyRealTrip比较当前机票总价。', affiliateNeutral:'仅燃油附加费的差异可能较小。请在MyRealTrip同时比较机票总价和日程。', affiliateBtn:'查看{dest}机票总价', affiliateAria:'在MyRealTrip查看{dest}机票总价' }
+  };
+  function langCode() {
+    return (window.SHARED_STATE && window.SHARED_STATE.lang) || (window.getCurrentLang && window.getCurrentLang()) || 'ko';
+  }
+  function st(key, vars) {
+    var dict = SAVING_UI_TEXT[langCode()] || SAVING_UI_TEXT.ko;
+    var text = dict[key] || SAVING_UI_TEXT.ko[key] || key;
+    Object.keys(vars || {}).forEach(function(k) { text = text.replace(new RegExp('\\{' + k + '\\}', 'g'), vars[k]); });
+    return text;
+  }
+  function translated(key, fallback) {
+    if (window.t) {
+      var val = window.t(key);
+      if (val && val !== key) return val;
+    }
+    return fallback;
+  }
+  function airlineDisplayName(code, fallback) { return translated('airline.' + code, fallback || code); }
+  function airportDisplayName(code, fallback) { return translated('airport.' + code, fallback || code); }
+  function fmtKRW(amount) {
+    var c = (window.SHARED_STATE && window.SHARED_STATE.curr) || 'KRW';
+    var rates = window.RATES || { KRW:1, USD:1/1450, JPY:1/10, EUR:1/1620 };
+    var dec = (window.CURR_DEC && window.CURR_DEC[c] != null) ? window.CURR_DEC[c] : 0;
+    var sym = (window.CURR_SYM && window.CURR_SYM[c]) || c;
+    return sym + (amount * (rates[c] || 1)).toLocaleString('en-US', { minimumFractionDigits:dec, maximumFractionDigits:dec });
+  }
+  function nativeText(amount, currency) {
+    var c = (window.SHARED_STATE && window.SHARED_STATE.curr) || 'KRW';
+    return currency === 'USD' && c !== 'USD' ? ' ($' + amount + ')' : '';
+  }
+  function esc(text) {
+    return String(text).replace(/[&<>"']/g, function(ch) {
+      return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];
+    });
+  }
+  function rowRange(row) {
+    var source = row.range || row.label || '';
+    var clean = String(source).replace(/,/g, '');
+    if (clean.indexOf('+') !== -1) return { min:parseInt(clean, 10), max:Infinity };
+    var trailingOver = clean.match(/(\d+)\s*mi\s*~/i);
+    if (trailingOver) return { min:parseInt(trailingOver[1], 10), max:Infinity };
+    var m = clean.match(/(\d+)\D+(\d+)/);
+    if (m) return { min:parseInt(m[1], 10), max:parseInt(m[2], 10) };
+    var under = clean.match(/~(\d+)/);
+    if (under) return { min:0, max:parseInt(under[1], 10) };
+    var over = clean.match(/(\d+)\D*~/);
+    if (over) return { min:parseInt(over[1], 10), max:Infinity };
+    return null;
+  }
+  function findRow(airlineCode, miles, routeKey) {
+    var data = SAVING_COMPARE_DATA[airlineCode];
+    if (!data) return null;
+    var routeBand = routeKey && SAVING_INDEX_ROUTE_MAP && SAVING_INDEX_ROUTE_MAP[airlineCode]
+      ? SAVING_INDEX_ROUTE_MAP[airlineCode][routeKey]
+      : null;
+    var row = routeBand
+      ? data.rows.find(function(item) { return item.range === routeBand; })
+      : data.rows.find(function(item) {
+      var range = rowRange(item);
+      return range && miles >= range.min && miles <= range.max;
+    });
+    if (!row) return null;
+    return { code:airlineCode, name:data.name, currency:data.currency, row:row };
+  }
+  function getImpactText(bestSaving, bestName, cheapestName) {
+    if (langCode() !== 'ko') {
+      if (bestSaving > 0) return st('affiliateSave', { amount:fmtKRW(bestSaving) });
+      return st('affiliateNeutral');
+    }
+    if (bestSaving >= 150000) return bestName + ' 기준 절약폭이 큽니다. 여행자보험, 공항 이동비, 현지 식사 예산까지 같이 확보할 수 있는 수준입니다.';
+    if (bestSaving >= 80000) return bestName + ' 기준이면 가족 여행에서 공항 식사나 수하물 추가 비용으로 돌릴 만큼 차이가 납니다.';
+    if (bestSaving >= 30000) return bestName + ' 기준으로 카페, 간식, 현지 교통비 정도를 아낄 수 있습니다.';
+    if (bestSaving > 0) return '절약폭은 작지만 여러 명이 함께 발권하면 차이가 커집니다. 6월 최저 금액은 ' + cheapestName + ' 쪽이 유리합니다.';
+    return '이 목적지는 5월과 6월 차이가 작습니다. 발권월보다 실제 항공권 운임과 스케줄을 함께 비교하는 편이 좋습니다.';
+  }
+  function getRouteDep(route) {
+    return route.dep || (route.code && route.code.indexOf('-') > -1 ? route.code.split('-')[0] : 'ICN');
+  }
+  function getRouteArr(route) {
+    return route.arr || (route.code && route.code.indexOf('-') > -1 ? route.code.split('-')[1] : route.code);
+  }
+  function routeDisplayName(route) {
+    var dep = getRouteDep(route);
+    var arr = getRouteArr(route);
+    return airportDisplayName(dep, SAVING_ORIGIN_LABELS[dep] || dep) + ' → ' + airportDisplayName(arr, SAVING_AIRPORT_LABELS[arr] || arr);
+  }
+  function fillOrigins() {
+    var saved = originEl.value;
+    var origins = [];
+    SAVING_DESTINATIONS.forEach(function(route) {
+      var dep = getRouteDep(route);
+      if (dep && origins.indexOf(dep) === -1) origins.push(dep);
+    });
+    var originOrder = ['ICN','GMP','PUS','CJU','CJJ','TAE'];
+    origins.sort(function(a, b) {
+      var ai = originOrder.indexOf(a);
+      var bi = originOrder.indexOf(b);
+      if (ai !== -1 || bi !== -1) return (ai === -1 ? 99 : ai) - (bi === -1 ? 99 : bi);
+      return (SAVING_ORIGIN_LABELS[a] || a).localeCompare(SAVING_ORIGIN_LABELS[b] || b, 'ko');
+    });
+    originEl.innerHTML = origins.map(function(code) {
+      return '<option value="' + code + '">' + airportDisplayName(code, SAVING_ORIGIN_LABELS[code] || code) + ' (' + code + ')</option>';
+    }).join('');
+    if (saved && origins.indexOf(saved) !== -1) originEl.value = saved;
+  }
+  function fillDestinationsForOrigin() {
+    var origin = originEl.value;
+    var saved = destinationEl.value;
+    var routes = SAVING_DESTINATIONS.filter(function(route) {
+      return getRouteDep(route) === origin;
+    });
+    destinationEl.innerHTML = routes.map(function(route) {
+      var arr = getRouteArr(route);
+      return '<option value="' + arr + '">' + airportDisplayName(arr, SAVING_AIRPORT_LABELS[arr] || arr) + ' (' + arr + ')</option>';
+    }).join('');
+    if (saved && routes.some(function(route) { return getRouteArr(route) === saved; })) destinationEl.value = saved;
+  }
+  function getSelectedRoute() {
+    var routeKey = originEl.value + '-' + destinationEl.value;
+    return SAVING_DESTINATIONS.find(function(route) {
+      return route.code === routeKey;
+    }) || null;
+  }
+  function updateAffiliate(dest, saving) {
+    if (!affiliateTitleEl || !affiliateDescEl || !affiliateBtnEl || !dest) return;
+    var arr = getRouteArr(dest);
+    var destName = airportDisplayName(arr, SAVING_AIRPORT_LABELS[arr] || arr || '선택한 여행지');
+    var positiveSaving = Math.max(0, saving || 0);
+    affiliateTitleEl.textContent = st('affiliateTitle', { dest:destName });
+    affiliateDescEl.textContent = positiveSaving > 0
+      ? st('affiliateSave', { amount:fmtKRW(positiveSaving) })
+      : st('affiliateNeutral');
+    affiliateBtnEl.textContent = st('affiliateBtn', { dest:destName });
+    affiliateBtnEl.setAttribute('aria-label', st('affiliateAria', { dest:destName }));
+  }
+  function applySavingStaticText() {
+    var root = document.getElementById('savingTool');
+    if (!root) return;
+    var dict = {
+      ko:['유류할증료 절약 비교 계산기','노선별 5월 vs 6월 유류할증료 비교','같은 노선의 취항 항공사를 자동으로 묶어 최저 금액, 항공사별 차이, 예상 절약액을 표로 보여줍니다.','2026.06 공식 공시 반영','출발지','도착지','인원','여정','편도 또는 왕복 선택','편도','왕복','비교 항공사','6월 최저 유류할증료','마이리얼트립 제휴','※ 유류할증료는 발권일 기준으로 적용됩니다. 실제 결제 금액은 항공권 운임, 환율, 세금, 예약 채널에 따라 달라질 수 있으므로 최종 발권 전 공식 공지를 확인하세요.'],
+      en:['Fuel surcharge savings calculator','Route Fuel Surcharge Comparison: May vs June','Compares airlines on the same route and shows the lowest June surcharge, airline differences, and estimated savings.','June 2026 official filings reflected','Origin','Destination','Passengers','Trip','Choose one-way or round-trip','One-way','Round-trip','Airlines compared','Lowest June surcharge','MyRealTrip Partner','※ Fuel surcharges are applied by ticketing date. Final payment may vary by fare, FX, taxes, and booking channel, so verify the official notice before purchase.'],
+      ja:['燃油サーチャージ節約比較計算機','路線別 5月 vs 6月 燃油サーチャージ比較','同じ路線の航空会社をまとめて、6月の最安額・航空会社別差額・想定節約額を表示します。','2026年6月公式公示反映','出発地','到着地','人数','旅程','片道または往復を選択','片道','往復','比較航空会社','6月最安サーチャージ','MyRealTrip提携','※ 燃油サーチャージは発券日基準で適用されます。最終金額は運賃・為替・税金・予約チャネルにより変わるため、発券前に公式案内をご確認ください。'],
+      zh:['燃油附加费节省比较计算器','按航线比较5月 vs 6月燃油附加费','自动汇总同一航线的航空公司，显示6月最低金额、航空公司差异和预计节省额。','已反映2026年6月官方公告','出发地','目的地','人数','行程','选择单程或往返','单程','往返','比较航空公司','6月最低燃油附加费','MyRealTrip合作','※ 燃油附加费按出票日适用。最终支付金额可能因票价、汇率、税费和预订渠道而异，出票前请确认官方公告。']
+    };
+    var t = dict[langCode()] || dict.ko;
+    root.setAttribute('aria-label', t[0]);
+    var targets = ['.saving-tool-title','.saving-tool-sub','.saving-tool-badge','.saving-form .saving-field:nth-child(1) .saving-label','.saving-form .saving-field:nth-child(2) .saving-label','.saving-form .saving-field:nth-child(3) .saving-label','.saving-form .saving-field:nth-child(4) .saving-label','#savingOneWay','#savingRoundTrip','.saving-result .saving-metric:nth-child(1) .saving-metric-label','.saving-result .saving-metric:nth-child(2) .saving-metric-label','.saving-affiliate-kicker','.saving-note'];
+    [1,2,3,4,5,6,7,9,10,11,12,13,14].forEach(function(idx, pos) {
+      var el = root.querySelector(targets[pos]);
+      if (el) el.textContent = t[idx];
+    });
+    var toggle = root.querySelector('.saving-toggle');
+    if (toggle) toggle.setAttribute('aria-label', t[8]);
+  }
+  function extractIndexAssignment(source, name) {
+    var key = 'var ' + name;
+    var start = source.indexOf(key);
+    if (start < 0) return null;
+    var braceStart = source.indexOf('{', start);
+    if (braceStart < 0) return null;
+    var depth = 0;
+    var quote = null;
+    var escape = false;
+    for (var i = braceStart; i < source.length; i++) {
+      var ch = source[i];
+      if (quote) {
+        if (escape) { escape = false; continue; }
+        if (ch === '\\') { escape = true; continue; }
+        if (ch === quote) quote = null;
+        continue;
+      }
+      if (ch === '"' || ch === "'") { quote = ch; continue; }
+      if (ch === '{') depth++;
+      if (ch === '}') {
+        depth--;
+        if (depth === 0) return source.slice(braceStart, i + 1);
+      }
+    }
+    return null;
+  }
+  function evalIndexObject(source, name) {
+    var literal = extractIndexAssignment(source, name);
+    if (!literal) return null;
+    if (typeof Function !== 'function') return null;
+    try { return (new Function('return (' + literal + ');'))(); }
+    catch (err) { console.warn('[savingTool] index parse failed:', name, err); return null; }
+  }
+  function normalizeIndexData(indexData) {
+    if (indexData && indexData.amounts) {
+      Object.keys(indexData.amounts).forEach(function(code) {
+        var item = indexData.amounts[code];
+        if (!item || !Array.isArray(item.rows)) return;
+        var base = SAVING_COMPARE_DATA[code] || { name: code };
+        SAVING_COMPARE_DATA[code] = {
+          name: base.name || code,
+          currency: item.currency || base.currency || 'KRW',
+          rows: item.rows
+        };
+      });
+    }
+    if (indexData && indexData.routeMap) {
+      SAVING_INDEX_ROUTE_MAP = indexData.routeMap;
+    }
+  }
+  function buildRoutesFromIndexMap(routeMap) {
+    var byRoute = {};
+    Object.keys(routeMap || {}).forEach(function(airlineCode) {
+      if (!SAVING_COMPARE_DATA[airlineCode]) return;
+      var routes = routeMap[airlineCode] || {};
+      Object.keys(routes).forEach(function(routeKey) {
+        var parts = routeKey.split('-');
+        if (parts.length !== 2) return;
+        var dep = parts[0], arr = parts[1];
+        if (!SAVING_ORIGIN_LABELS[dep]) return;
+        var data = SAVING_COMPARE_DATA[airlineCode];
+        var band = routes[routeKey];
+        var row = data.rows && data.rows.find(function(item) { return item.range === band; });
+        if (!row || row.may == null || row.june == null) return;
+        if (!byRoute[routeKey]) {
+          byRoute[routeKey] = {
+            code: routeKey,
+              name: airportDisplayName(dep, SAVING_ORIGIN_LABELS[dep] || dep) + ' → ' + airportDisplayName(arr, SAVING_AIRPORT_LABELS[arr] || arr),
+            dep: dep,
+            arr: arr,
+            airlines: []
+          };
+        }
+        if (byRoute[routeKey].airlines.indexOf(airlineCode) === -1) {
+          byRoute[routeKey].airlines.push(airlineCode);
+        }
+      });
+    });
+    var list = Object.keys(byRoute).map(function(code) { return byRoute[code]; });
+    list.sort(function(a, b) {
+      if (b.airlines.length !== a.airlines.length) return b.airlines.length - a.airlines.length;
+      return a.name.localeCompare(b.name, 'ko');
+    });
+    return list.length ? list : SAVING_DESTINATIONS;
+  }
+  function loadIndexRouteData() {
+    return fetch('index.html')
+      .then(function(res) { return res.ok ? res.text() : null; })
+      .then(function(html) {
+        if (!html) return null;
+        return {
+          amounts: evalIndexObject(html, '_OFFICIAL_AMT'),
+          routeMap: evalIndexObject(html, 'OFFICIAL_ROUTE_MAP')
+        };
+      })
+      .catch(function() { return null; });
+  }
+  function buildDestinationsFromMeta(meta) {
+    var byRoute = {};
+    Object.keys(meta || {}).forEach(function(airlineCode) {
+      if (!SAVING_COMPARE_DATA[airlineCode]) return;
+      var airline = meta[airlineCode] || {};
+      var routesByOrigin = {};
+      if (Array.isArray(airline.supportedDestinations)) {
+        var defaultOrigins = Array.isArray(airline.supportedOrigins) && airline.supportedOrigins.length
+          ? airline.supportedOrigins
+          : ['ICN'];
+        defaultOrigins.forEach(function(origin) {
+          routesByOrigin[origin] = (routesByOrigin[origin] || []).concat(airline.supportedDestinations);
+        });
+      }
+      if (airline.supportedRoutes) {
+        Object.keys(airline.supportedRoutes).forEach(function(origin) {
+          var routes = airline.supportedRoutes[origin];
+          if (Array.isArray(routes)) routesByOrigin[origin] = (routesByOrigin[origin] || []).concat(routes);
+        });
+      }
+      Object.keys(routesByOrigin).forEach(function(origin) {
+        if (!SAVING_ORIGIN_LABELS[origin]) return;
+        routesByOrigin[origin].forEach(function(destCode) {
+          if (!SAVING_AIRPORT_MILES[destCode]) return;
+          var routeKey = origin + '-' + destCode;
+          if (!byRoute[routeKey]) {
+            byRoute[routeKey] = {
+              code: routeKey,
+              name: airportDisplayName(origin, SAVING_ORIGIN_LABELS[origin] || origin) + ' → ' + airportDisplayName(destCode, SAVING_AIRPORT_LABELS[destCode] || destCode),
+              dep: origin,
+              arr: destCode,
+            miles: SAVING_AIRPORT_MILES[destCode],
+            airlines: []
+            };
+          }
+          if (byRoute[routeKey].airlines.indexOf(airlineCode) === -1) {
+            byRoute[routeKey].airlines.push(airlineCode);
+          }
+        });
+      });
+    });
+    var list = Object.keys(byRoute).map(function(code) { return byRoute[code]; });
+    list.sort(function(a, b) {
+      if (b.airlines.length !== a.airlines.length) return b.airlines.length - a.airlines.length;
+      return a.name.localeCompare(b.name, 'ko');
+    });
+    return list.length ? list : SAVING_DESTINATIONS;
+  }
+  function loadDestinationMeta() {
+    if (window.AIRLINE_META && Object.keys(window.AIRLINE_META).length) {
+      return Promise.resolve(window.AIRLINE_META);
+    }
+    return fetch('data/airline_meta.json')
+      .then(function(res) { return res.ok ? res.json() : null; })
+      .then(function(json) { return json && json.airlines ? json.airlines : null; })
+      .catch(function() { return null; });
+  }
+  function updateResult() {
+    applySavingStaticText();
+    var dest = getSelectedRoute() || SAVING_DESTINATIONS[0];
+    var pax = Math.max(1, Math.min(20, parseInt(paxEl.value, 10) || 1));
+    paxEl.value = pax;
+    var multiplier = pax * selectedTrip;
+    var results = dest.airlines.map(function(code){ return findRow(code, dest.miles, dest.code); }).filter(Boolean).map(function(item) {
+      var mayTotal = toKRW(item.row.may, item.currency) * multiplier;
+      var juneTotal = toKRW(item.row.june, item.currency) * multiplier;
+      return {
+        code:item.code,
+        name:item.name,
+        band:item.row.label,
+        currency:item.currency,
+        mayNative:item.row.may * multiplier,
+        juneNative:item.row.june * multiplier,
+        mayTotal:mayTotal,
+        juneTotal:juneTotal,
+        saving:mayTotal - juneTotal
+      };
+    }).sort(function(a, b){ return a.juneTotal - b.juneTotal; });
+
+    if (!results.length) {
+      countEl.textContent = st('count', { n:0 });
+      bestJuneEl.textContent = '-';
+      headlineEl.textContent = st('noDataTitle');
+      impactEl.textContent = st('noDataBody');
+      tableWrapEl.innerHTML = '<div class="saving-empty">' + esc(st('noDataCell')) + '</div>';
+      updateAffiliate(dest, 0);
+      return;
+    }
+
+    var cheapest = results[0];
+    var bestSaving = results.slice().sort(function(a, b){ return b.saving - a.saving; })[0];
+    countEl.textContent = st('count', { n:results.length });
+    bestJuneEl.textContent = st('bestJune', { name:airlineDisplayName(cheapest.code, cheapest.name), amount:fmtKRW(cheapest.juneTotal) });
+    headlineEl.textContent = bestSaving.saving > 0
+      ? st('saveHeadline', { name:airlineDisplayName(bestSaving.code, bestSaving.name), amount:fmtKRW(bestSaving.saving) })
+      : bestSaving.saving < 0
+        ? st('extraHeadline', { name:airlineDisplayName(bestSaving.code, bestSaving.name), amount:fmtKRW(Math.abs(bestSaving.saving)) })
+        : st('sameHeadline');
+    impactEl.textContent = getImpactText(bestSaving.saving, bestSaving.name, cheapest.name);
+    updateAffiliate(dest, bestSaving.saving);
+    tableWrapEl.innerHTML = '<table class="saving-table"><thead><tr>'
+      + '<th>' + esc(st('thAirline')) + '</th><th>' + esc(st('thMay')) + '</th><th>' + esc(st('thJune')) + '</th><th>' + esc(st('thSaving')) + '</th>'
+      + '</tr></thead><tbody>'
+      + results.map(function(item) {
+        return '<tr class="' + (item.code === cheapest.code ? 'best-row' : '') + '">'
+          + '<td><span class="saving-airline-name">' + esc(airlineDisplayName(item.code, item.name)) + ' (' + item.code + ')</span>'
+          + '<span class="saving-route-note">' + esc(routeDisplayName(dest)) + esc(st('routeSep')) + esc(item.band) + '</span></td>'
+          + '<td>' + fmtKRW(item.mayTotal) + nativeText(item.mayNative, item.currency) + '</td>'
+          + '<td>' + fmtKRW(item.juneTotal) + nativeText(item.juneNative, item.currency) + '</td>'
+          + '<td class="saving-positive">' + fmtKRW(item.saving) + '</td>'
+          + '</tr>';
+      }).join('')
+      + '</tbody></table>';
+  }
+
+  Promise.all([loadIndexRouteData(), loadDestinationMeta()]).then(function(results) {
+    var indexData = results[0];
+    var meta = results[1];
+    if (indexData && indexData.amounts && indexData.routeMap) {
+      normalizeIndexData(indexData);
+      SAVING_DESTINATIONS = buildRoutesFromIndexMap(indexData.routeMap);
+    } else if (meta) {
+      SAVING_DESTINATIONS = buildDestinationsFromMeta(meta);
+    }
+    window.renderSavingCalculator = function() {
+      applySavingStaticText();
+      fillOrigins();
+      fillDestinationsForOrigin();
+      updateResult();
+    };
+    window.updateSavingCalculator = updateResult;
+    window.renderSavingCalculator();
+  });
+  applySavingStaticText();
+  window.updateSavingCalculator = updateResult;
+  originEl.addEventListener('change', function(){ fillDestinationsForOrigin(); updateResult(); });
+  destinationEl.addEventListener('change', updateResult);
+  paxEl.addEventListener('input', updateResult);
+  oneWayEl.addEventListener('click', function(){ selectedTrip = 1; oneWayEl.classList.add('active'); roundTripEl.classList.remove('active'); updateResult(); });
+  roundTripEl.addEventListener('click', function(){ selectedTrip = 2; roundTripEl.classList.add('active'); oneWayEl.classList.remove('active'); updateResult(); });
+})();
+
 /* ── 페이지 전용 i18n ── */
 var PAGE_I18N = {
   ko: {
-    'calc.metaTitle':  '유류할증료 계산 방법 안내 — 항공사별 산정 기준 설명',
-    'calc.metaDesc':   '항공권 유류할증료가 어떻게 산정되는지 설명하고, 항공사별 공시 기준과 확인 방법을 안내합니다.',
-    'calc.pageTitle':  '🧮 유류할증료 계산 방법 안내',
-    'calc.pageSub':    '항공사별 산정 기준 설명 · 확인 방법 안내 — 직접 계산기가 아닌 설명 페이지입니다',
-    'calc.h1':         '유류할증료 계산 방법 안내',
-    'calc.notice':     '<strong>안내:</strong> 이 페이지는 유류할증료 산정 구조를 설명하는 안내 페이지입니다. 실제 금액은 각 항공사 공식 공지를 확인하세요.',
-    'calc.alert':      '이 페이지는 <strong>실시간 자동 계산기가 아닙니다.</strong> 유류할증료 산정 구조와 항공사별 공시 기준을 설명하는 <strong>안내 페이지</strong>입니다. 실제 금액은 각 항공사 공식 공지에서 직접 확인하세요.',
-    'calc.intro':      '항공권 유류할증료(Fuel Surcharge)는 국제유가 변동에 따른 연료비 부담을 승객에게 분담시키는 부대 요금입니다. 항공사마다 산정 기준과 구간 구분 방식이 다르며, 매월 공시를 통해 금액이 결정됩니다. 이 페이지에서는 유류할증료가 어떻게 산정되는지, 항공사별 공시 기준과 확인 방법을 안내합니다.',
+    'calc.metaTitle':  '유류할증료 계산기 — 5월·6월 항공사별 절약액 비교',
+    'calc.metaDesc':   '한국 출발 국제선 노선의 5월·6월 유류할증료를 항공사별로 비교하고, 발권월에 따라 얼마나 아낄 수 있는지 계산해보세요.',
+    'calc.pageTitle':  '🧮 유류할증료 계산기',
+    'calc.pageSub':    '한국 출발 노선별 5월·6월 유류할증료 비교 · 항공사별 절약액 계산',
+    'calc.h1':         '유류할증료 계산기: 항공사별 5월·6월 절약액 비교',
+    'calc.notice':     '<strong>안내:</strong> 출발지와 도착지를 선택하면 한국 출발 국제선의 5월·6월 유류할증료 차이를 항공사별로 비교할 수 있습니다.',
+    'calc.alert':      '유류할증료는 <strong>탑승일이 아닌 발권일 기준</strong>으로 적용됩니다. 계산 결과는 공식 공시 금액 기준의 비교용 정보이며, 최종 결제 전 항공사 공지와 예약 화면을 함께 확인하세요.',
+    'calc.intro':      '한국 출발 국제선 유류할증료를 발권월 기준으로 비교하는 계산기입니다. 공식 공시 데이터를 바탕으로 노선별 최저 금액과 예상 절약액을 확인할 수 있습니다.',
+    'calc.answer.title':'언제 발권하는 게 유리한가요?',
+    'calc.answer.body': '선택한 노선에서 5월 대비 6월 유류할증료가 낮아지는 항공사와 절약액을 보여줍니다. 여러 항공사가 같은 목적지에 취항할 때 발권월을 바꾸는 것이 실제로 의미 있는지 빠르게 판단할 수 있습니다.',
     'calc.card1.title':'유가 연동 구조',
     'calc.card1.body': '유류할증료는 전월 평균 국제유가(WTI·두바이유)를 기준으로 산정됩니다. 유가가 특정 구간을 넘으면 할증료 단계가 올라갑니다.',
     'calc.card2.title':'거리 구간별 차등',
     'calc.card2.body': '단거리(일본·중국·동남아)와 장거리(미주·유럽) 노선에 따라 유류할증료 금액이 다르게 적용됩니다.',
-    'calc.card3.title':'발권 시점 기준',
-    'calc.card3.body': '유류할증료는 탑승일이 아닌 발권일 기준 공시 금액이 적용됩니다. 미래 탑승 일정도 발권 시점의 할증료가 부과됩니다.',
+    'calc.card3.title':'절약액 비교 기준',
+    'calc.card3.body': '같은 노선에 취항하는 항공사의 5월·6월 공시 금액을 편도·왕복과 인원 수에 맞춰 비교합니다.',
     'calc.section.structure': '📖 유류할증료 산정 구조 설명',
     'calc.guide.what.title':  '💡 유류할증료란?',
     'calc.guide.what.body':   '유류할증료(Fuel Surcharge)는 항공기 운항에 필요한 연료비(항공유) 상승분을 항공권 요금에 별도 부과하는 요금입니다. 항공사는 기본 운임 외에 유류할증료를 별도 공시하며, 예약·발권 시 항공권 구성 요소 중 하나로 청구됩니다.',
@@ -275,7 +1096,7 @@ var PAGE_I18N = {
     'calc.related.airlines':  '✈️ 항공사별 유류할증료',
     'calc.related.news':      '📰 유류할증료 뉴스',
     'calc.related.graph':     '📈 변동 그래프',
-    'calc.related.calc':      '🧮 계산 방법 안내',
+    'calc.related.calc':      '🧮 유류할증료 계산기',
     'calc.related.may':       '📅 2026년 5월',
     'calc.related.june':      '🔮 2026년 6월 전망',
     'calc.related.korea':     '🇰🇷 한국 출발 유류할증료',
@@ -304,20 +1125,22 @@ var PAGE_I18N = {
     'calc.official.item.bx': '✈️ 에어부산: <a href="https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4351" target="_blank" rel="noopener">airbusan.com 공식 공지 확인 ↗</a>',
   },
   en: {
-    'calc.metaTitle':  'Fuel Surcharge Calculation Guide — How Airlines Calculate Surcharges',
-    'calc.metaDesc':   'Learn how airline fuel surcharges are calculated, and how to check each airline\'s official filing criteria.',
-    'calc.pageTitle':  '🧮 Fuel Surcharge Calculation Guide',
-    'calc.pageSub':    'How airlines calculate surcharges · How to check — this is a guide page, not a live calculator',
-    'calc.h1':         'Fuel Surcharge Calculation Guide',
-    'calc.notice':     '<strong>Notice:</strong> This page explains how fuel surcharges are calculated. For actual amounts, please check each airline\'s official announcement.',
-    'calc.alert':      'This page is <strong>not a live calculator.</strong> It explains the fuel surcharge calculation structure and each airline\'s filing criteria. Check each airline\'s official announcement for actual amounts.',
-    'calc.intro':      'An airline fuel surcharge is an additional fee charged on top of the base fare to help offset rising jet fuel costs due to fluctuating international oil prices. Each airline uses its own calculation criteria and distance bands, and publishes amounts monthly. This page explains how fuel surcharges are calculated and how to verify them.',
+    'calc.metaTitle':  'Fuel Surcharge Calculator — Compare May and June Savings by Airline',
+    'calc.metaDesc':   'Compare May and June fuel surcharges for Korea-departure international routes by airline and estimate how much you can save by ticketing month.',
+    'calc.pageTitle':  '🧮 Fuel Surcharge Calculator',
+    'calc.pageSub':    'Compare May and June fuel surcharges by Korea-departure route and airline',
+    'calc.h1':         'Fuel Surcharge Calculator: Compare May and June Savings by Airline',
+    'calc.notice':     '<strong>Notice:</strong> Select an origin and destination to compare May and June fuel surcharge differences by airline.',
+    'calc.alert':      'Fuel surcharges are applied based on the <strong>ticketing date, not the travel date</strong>. Results are for comparison based on official filing amounts; check the airline notice and booking screen before final ticketing.',
+    'calc.intro':      'A calculator for comparing Korea-departure international fuel surcharges by ticketing month. It uses official filing data to show the lowest route amount and estimated savings.',
+    'calc.answer.title':'When is it better to ticket?',
+    'calc.answer.body': 'For the selected route, the calculator shows which airlines have lower June surcharges than May and how much you may save. It helps you decide whether changing the ticketing month is meaningful when multiple airlines serve the same destination.',
     'calc.card1.title':'Oil Price Linkage',
     'calc.card1.body': 'Fuel surcharges are calculated based on the prior month\'s average international oil price (WTI or Dubai crude). When the price crosses a threshold band, the surcharge tier increases.',
     'calc.card2.title':'Distance-Based Tiers',
     'calc.card2.body': 'Different amounts apply for short-haul routes (Japan, China, Southeast Asia) versus long-haul routes (Americas, Europe).',
-    'calc.card3.title':'Ticketing Date Applies',
-    'calc.card3.body': 'The surcharge is determined by the ticketing date, not the travel date. Even future departures are charged at the surcharge rate in effect on the day of purchase.',
+    'calc.card3.title':'Savings Comparison Basis',
+    'calc.card3.body': 'The calculator compares May and June filing amounts for airlines on the same route, adjusted for one-way or round-trip and passenger count.',
     'calc.section.structure': '📖 Surcharge Calculation Structure',
     'calc.guide.what.title':  '💡 What Is a Fuel Surcharge?',
     'calc.guide.what.body':   'A fuel surcharge (also called a fuel levy) is an add-on fee charged separately from the base airfare to recover the cost of rising jet fuel prices. Airlines announce it monthly, and it appears as a distinct line item when you book or purchase a ticket.',
@@ -349,7 +1172,7 @@ var PAGE_I18N = {
     'calc.related.airlines':  '✈️ Surcharge by Airline',
     'calc.related.news':      '📰 Surcharge News',
     'calc.related.graph':     '📈 Trend Graph',
-    'calc.related.calc':      '🧮 Calculation Guide',
+    'calc.related.calc':      '🧮 Fuel Surcharge Calculator',
     'calc.related.may':       '📅 May 2026',
     'calc.related.june':      '🔮 June 2026 Forecast',
     'calc.related.korea':     '🇰🇷 Korea-Departure Surcharge',
@@ -390,8 +1213,8 @@ var PAGE_I18N = {
     'calc.card1.body': '燃油サーチャージは前月平均の国際油価（WTI・ドバイ原油）を基準に算定されます。油価が特定の区間を超えると、サーチャージの段階が上がります。',
     'calc.card2.title':'距離区分別差等',
     'calc.card2.body': '短距離（日本・中国・東南アジア）と長距離（米州・欧州）で適用金額が異なります。',
-    'calc.card3.title':'発券日基準',
-    'calc.card3.body': '燃油サーチャージは搭乗日ではなく発券日の公示金額が適用されます。将来の搭乗予定も発券時点のサーチャージが課されます。',
+    'calc.card3.title':'節約額の比較基準',
+    'calc.card3.body': '同じ路線に就航する航空会社の5月・6月公示額を、片道・往復と人数に合わせて比較します。',
     'calc.section.structure': '📖 燃油サーチャージ算定構造の説明',
     'calc.guide.what.title':  '💡 燃油サーチャージとは？',
     'calc.guide.what.body':   '燃油サーチャージは、航空機運航に必要な燃料費（航空燃料）の上昇分を航空券料金に別途課す料金です。航空会社は基本運賃とは別に燃油サーチャージを毎月公示し、予約・発券時に航空券の構成要素の一つとして請求されます。',
@@ -464,8 +1287,8 @@ var PAGE_I18N = {
     'calc.card1.body': '燃油附加费以上月平均国际油价（WTI或迪拜原油）为基准计算。当油价超过某一档位时，附加费等级上升。',
     'calc.card2.title':'按距离分档差异',
     'calc.card2.body': '短途（日本、中国、东南亚）与长途（美洲、欧洲）航线适用不同金额。',
-    'calc.card3.title':'以购票日期为准',
-    'calc.card3.body': '燃油附加费以购票日而非出行日的公告金额为准。即使是未来的行程，也按购票时的附加费标准收取。',
+    'calc.card3.title':'节省金额比较标准',
+    'calc.card3.body': '按同一航线各航空公司的5月、6月公告金额，并结合单程/往返和人数进行比较。',
     'calc.section.structure': '📖 燃油附加费计算结构说明',
     'calc.guide.what.title':  '💡 什么是燃油附加费？',
     'calc.guide.what.body':   '燃油附加费是在基本票价之外单独收取的费用，用于弥补航空燃油价格上涨带来的成本增加。航空公司每月单独公告此费用，购票时作为机票组成部分之一收取。',
@@ -537,7 +1360,14 @@ var PAGE_I18N = {
   });
 })();
 
-window.initNav({});
+window.initNav({
+  onLangChange: function() {
+    if (window.renderSavingCalculator) window.renderSavingCalculator();
+  },
+  onCurrChange: function() {
+    if (window.updateSavingCalculator) window.updateSavingCalculator();
+  }
+});
 </script>
 </body>
 </html>

@@ -85,12 +85,12 @@ window.I18N_SHARED = {
        predictBasis:'예측 근거', predictNote:'공식 공지 전 참고용 추정값입니다.',
        navRoutes:'노선별 조회', navAirlines:'항공사 인덱스', navNews:'참고 소식',
        /* 2026.05.21 09:00 KST 시장 브리핑 공용 키 — KE/OZ/LJ/BX/ZE/7C 6월 공식 공시 반영 완료 */
-       marketDataRef: '🕐 2026.05.21 09:00 KST 기준 · KE/OZ/LJ/BX/ZE/7C 6월 공식 공시 반영 완료',
-       marketBrent:   '브렌트유: 약 $109~112/bbl — 호르무즈 봉쇄 지속으로 고공 유지. EIA 5~6월 평균 $106/bbl 전망',
-       marketMops:    '항공유(MOPS): 호르무즈 사태 후 급등 이후 일부 완화, 470 cent/gal 최고 기준 여전히 상회 — 7월 방향성에 영향',
-       marketFx:      '원달러 환율: 약 1,490~1,507원대 — 외국인 매도·달러 강세로 1,500원 상회 구간 진입',
-       marketGeo:     '호르무즈 해협 사실상 봉쇄 지속 — 미·이란 협상 진행 중이나 재개 미확인. 사우디·UAE 중재로 군사 행동 일시 보류',
-       marketOutlook: 'KE/OZ/LJ/BX/ZE/7C 6월 공식 공시 반영 완료 — 브렌트유·환율·호르무즈가 7월 방향성 복합 압박 중. 고환율+고유가 복합 압박 지속' },
+       marketDataRef: '🕐 2026.05.23 22:00 KST 기준 · 6월 확정 공시와 7월 시장 전망 분리',
+       marketBrent:   '브렌트유: 최근 고점권 등락 — 유류할증료 급락을 기대하기 어려운 환경',
+       marketMops:    '항공유(MOPS): 단기 조정 이후 재반등 가능성 점검 필요 · 최신 공개 수치 확인 필요',
+       marketFx:      '원달러 환율: 2026.05.22 공개 데이터 기준 약 1,504~1,512원 범위 확인 — 실시간 환율 확인 필요',
+       marketGeo:     '호르무즈 해협 관련 불확실성은 완전 해소 전 — 즉각 봉쇄보다는 리스크 프리미엄 일부 유지 흐름',
+       marketOutlook: '7월 유류할증료는 급격한 인하보다 현 수준 유지 또는 일부 구간의 제한적 조정 가능성이 높음' },
   en:{ btnOW:'One-way', btnRT:'Round-trip', officialSite:'Official site ↗',
        loading:'Loading...', loadErr:'Load failed', noData:'No data.',
        official:'Official', aiPredict:'AI Forecast', prepublish:'Not yet published', noValue:'No data',
@@ -100,12 +100,12 @@ window.I18N_SHARED = {
        predictBasis:'Forecast basis', predictNote:'Pre-announcement estimate. For reference only.',
        navRoutes:'Route Search', navAirlines:'Airline Index', navNews:'News & Insights',
        /* 2026.05.21 09:00 KST market brief shared keys — KE/OZ/LJ/BX/ZE/7C June official filing reflected */
-       marketDataRef: '🕐 As of 2026.05.21 09:00 KST · KE/OZ/LJ/BX/ZE/7C June filings reflected',
-       marketBrent:   'Brent crude: ~$109–112/bbl — Hormuz blockade sustains elevated prices. EIA forecasts ~$106/bbl avg May–Jun',
-       marketMops:    'Jet fuel (MOPS): post-Hormuz surge partially eased, still well above 470 cent/gal threshold — key July direction signal',
-       marketFx:      'USD/KRW: ~1,490–1,507 — foreign selling pressure and dollar strength driving above 1,500 KRW',
-       marketGeo:     'Hormuz Strait effectively closed — US-Iran talks ongoing, no confirmed reopening; military action paused at Gulf allies\' request',
-       marketOutlook: 'KE/OZ/LJ/BX/ZE/7C June filings complete — Brent, FX, and Hormuz create complex July direction pressure. High-FX + high-oil compound pressure persists' },
+       marketDataRef: '🕐 As of 2026.05.23 22:00 KST · June confirmed filings separated from July market outlook',
+       marketBrent:   'Brent crude: fluctuating near recent highs — not a setup for a sharp surcharge drop',
+       marketMops:    'Jet fuel (MOPS): monitor rebound risk after short-term correction · latest public figure needs verification',
+       marketFx:      'USD/KRW: public May 22 data shows roughly 1,504–1,512 KRW range — check real-time FX before purchase',
+       marketGeo:     'Hormuz uncertainty not fully resolved — risk premium partly maintained rather than immediate blockade as base case',
+       marketOutlook: 'July surcharge outlook leans toward current-level hold or limited band adjustments rather than a sharp cut' },
   ja:{ btnOW:'片道', btnRT:'往復', officialSite:'公式サイト ↗',
        loading:'読み込み中...', loadErr:'読み込み失敗', noData:'データなし',
        official:'公式', aiPredict:'AI予測', prepublish:'未公示', noValue:'データなし',
@@ -1068,7 +1068,7 @@ window.I18N = {
 /* ══════ 한국어 ══════ */
 ko:{
   /* nav */
-  'nav.routes':'노선별 조회','nav.airlines':'항공사 인덱스','nav.news':'참고 소식',
+  'nav.routes':'노선별 조회','nav.calc':'계산기','nav.airlines':'항공사 인덱스','nav.news':'참고 소식',
   /* footer */
   'footer.notice':'표시된 유류할증료는 항공사 공식 공지 기반 참고용 정보입니다. 최종 금액은 항공사 공식 사이트 또는 발권처에서 반드시 확인하세요.',
   'footer.about':'About','footer.privacy':'Privacy Policy','footer.terms':'Terms of Service',
@@ -1235,42 +1235,42 @@ ko:{
   'news.predictTitle':'📊 AI 예측 참고 지표 현황',
   'news.officialTitle':'📢 주요 항공사 2026년 6월 국제선 유류할증료 공식 공시',
   'news.compareTitle':'📊 전월 대비: 5월 → 6월 변화 (공식 공시 기준)',
-  'news.marketTitle':'🌍 시장 브리핑 (2026.05.21 09:00 KST 기준)',
-  'news.brent':'⛽ 브렌트유: 약 $105.08~105.63/bbl — 고점권 변동성 지속',
-  'news.fx':'💱 원달러 환율: 약 1,488~1,494원 구간, 현재 약 1,491~1,492원',
-  'news.mops':'✈️ 항공유/MOPS: 약 511.21 cent/gal, 약 $214.71/bbl — 최고 기준 470 cent/gal 상회',
-  'news.mops.extra':'→ 최고 단계 발동 기준보다 약 +41.21 cent/gal 높은 구간',
-  'news.geo':'🌍 지정학: 호르무즈 리스크 일부 완화 신호 있으나 완전 해소 아님',
-  'news.marketSummary':'→ KE·OZ·LJ·BX·ZE 6월 공시 완료(전구간 인하). 브렌트유 $100~105/bbl·환율 1,485~1,495원·MOPS 고수준 지속 — 7월 방향성 주시. 7월 공시는 6월 중 확인.',
-  'news.fxDominance':'🌍 유가·환율 변수 주시 (6월 변동성 확대 구간)',
+  'news.marketTitle':'🌍 시장 브리핑 (2026.05.23 22:00 KST 기준)',
+  'news.brent':'⛽ 브렌트유: 최근 고점권 등락 — 급락 기대 제한',
+  'news.fx':'💱 원달러 환율: 2026.05.22 공개 데이터 기준 약 1,504~1,512원 범위 확인 · 실시간 환율 확인 필요',
+  'news.mops':'✈️ 항공유/MOPS: 단기 조정 이후 재반등 가능성 점검 · 최신 공개 수치 확인 필요',
+  'news.mops.extra':'→ 확인 가능한 최신 공개 수치 확보 전 임의 수치 미표기',
+  'news.geo':'🌍 지정학: 호르무즈 관련 불확실성은 완전 해소 전 · 리스크 프리미엄 일부 유지',
+  'news.marketSummary':'→ 6월 확정 공시와 7월 시장 전망을 분리해 확인하세요. 브렌트유 고점권·USD/KRW 1,500원대 전후·MOPS 최신 공개 수치 확인 필요 흐름상 7월 급락 가능성은 제한적입니다.',
+  'news.fxDominance':'🌍 7월 방향성 참고 지표: 유가 + 환율 + MOPS 확인 필요',
   'news.decisionTitle':'📌 현재 판단 기준',
-  'news.decisionLine1':'→ 브렌트유 $105대 + MOPS 511.21 cent/gal + 환율 1,490원대 복합 — 인하폭 제한 구조',
-  'news.decisionLine2':'→ MOPS 최고 기준 상회, 일부 완화 가능성도 있으나 환율·유가 영향으로 실질 인하폭 제한 가능',
+  'news.decisionLine1':'→ 현재 유가와 환율 흐름상 7월 급격한 인하보다 현 수준 유지 또는 제한적 조정 가능성이 높음',
+  'news.decisionLine2':'→ MOPS는 최신 공개 수치 확인 필요 · 임의 수치 없이 확인 후 반영',
   'news.decisionShort':'👉 단거리: 6월 대한항공 기준 61,500원 (5월 75,000원)',
   'news.decisionMid':'👉 중거리: 6월 대한항공 기준 117,000~205,500원 구간',
   'news.decisionLong':'👉 장거리: 항공사별 6월 공식 공시 기준 — KE·OZ·LJ·BX·ZE 반영 완료 (대한항공 282,000~451,500원)',
   /* 7월 전망 CTA 박스 */
   'news.forecastCta.title':'2026년 7월 유류할증료 전망 — 6월 공시 반영 기준',
-  'news.forecastCta.desc':'대한항공·아시아나·진에어·에어부산·이스타항공 6월 공식 공시 반영 완료. 5월 대비 변화와 브렌트유·환율·MOPS 지표를 바탕으로 7월 방향성 참고 지표를 정리했습니다.',
+  'news.forecastCta.desc':'6월 공시 확정 데이터와 7월 시장 기반 전망을 분리해 정리했습니다. 브렌트유·환율·MOPS 확인 필요 지표를 바탕으로 7월 방향성을 확인하세요.',
   'news.forecastCta.btn':'7월 전망 자세히 보기 →',
   /* 7월 공시 안내 */
   'news.basisTitle':'📅 7월 유류할증료 공시 안내',
   'news.basisBody':'7월 공시는 6월 중 각 항공사 공식 채널에서 확인 필요합니다. 6월 공식 공시 반영 결과가 7월 방향성의 중요한 참고 지표입니다.',
   'news.aiNotice':'AI 요약 콘텐츠 — 이 페이지의 내용은 공개된 정보를 바탕으로 AI가 정리한 참고용 자료입니다. 원문 기반 요약이며, 공식 정보가 아닙니다. 중요한 결정 전에 각 항공사 및 기관의 공식 채널을 반드시 확인하세요.',
   'news.filterAll':'전체',
-  'news.dataRef':        '✅ KE·OZ·LJ·BX·ZE·RS·TW·7C 6월 공식 공시 반영 완료 · 2026.05.22 09:25 KST 기준',
-  'news.curSummaryTitle':'현재 기준 요약 (2026.05.14):',
-  'news.curSummary':     '→ 6월 유류할증료: 브렌트유 $105대, MOPS 511.21 cent/gal, 환율 1,490원대 영향으로 급격한 인하 가능성은 제한적 — 공식 공시 확인 필요',
+  'news.dataRef':        '✅ 6월 확정 공시와 7월 시장 전망 분리 · 2026.05.23 22:00 KST 기준',
+  'news.curSummaryTitle':'현재 기준 요약 (2026.05.23 22:00 KST):',
+  'news.curSummary':     '→ 6월 확정 공시는 공식 공시 확인 항공사만 표시 · 7월은 시장 지표 기반 전망',
   /* 핵심 요약 카드 i18n */
-  'news.summary.title':   '📌 KE·OZ·LJ·BX·ZE·RS·TW·7C 2026년 6월 공식 공시 반영 + 7월 방향성 전망',
-  'news.summary.updated': '🕐 2026.05.21 09:00 KST 기준 시장 지표 반영',
-  'news.summary.li1':     '브렌트유 약 $105.08~105.63/bbl — 고점권 변동성 지속',
-  'news.summary.li2':     '항공유(MOPS) 약 511.21 cent/gal, 약 $214.71/bbl — 최고 기준 470 cent/gal 상회',
-  'news.summary.li3':     '원달러 환율 약 1,488~1,494원 구간, 현재 약 1,491~1,492원',
-  'news.summary.li4':     '호르무즈 리스크 일부 완화 신호 있으나 완전 해소 아님',
-  'news.summary.li5':     '6월 유류할증료: MOPS는 최고 기준을 상회하나 일부 완화 가능성도 있어 최고 단계 유지 또는 제한적 인하 가능성 동시 존재',
-  'news.summary.li6':     '브렌트유 $105대 + MOPS 511.21 cent/gal + 환율 1,490원대 복합 — 급격한 인하 가능성 제한',
-  'news.surchargeNote':  '※ 유류할증료는 발권일 기준 적용됩니다. KE·OZ·LJ·BX·ZE·RS·TW·7C 6월 공식 공시 반영 완료 (2026.05.22 기준) · 오늘 발권 = 6월 공시 기준 적용',
+  'news.summary.title':   '📌 2026년 7월 유류할증료 방향성 — 6월 확정 공시와 시장 전망 분리',
+  'news.summary.updated': '🕐 2026.05.23 22:00 KST 기준 시장 지표 반영',
+  'news.summary.li1':     '브렌트유는 최근 고점권에서 등락 중 — 유류할증료 급락 기대 제한',
+  'news.summary.li2':     '항공유(MOPS)는 단기 조정 이후 재반등 가능성 점검 — 최신 공개 수치 확인 필요',
+  'news.summary.li3':     'USD/KRW는 2026.05.22 공개 데이터 기준 약 1,504~1,512원 범위 확인',
+  'news.summary.li4':     '호르무즈 관련 불확실성은 완전 해소 전 — 리스크 프리미엄 일부 유지',
+  'news.summary.li5':     '6월 공시는 확인된 항공사 공식 공시만 확정 데이터로 표시',
+  'news.summary.li6':     '7월은 급격한 인하보다 현 수준 유지 또는 일부 구간 제한적 조정 가능성 우세',
+  'news.surchargeNote':  '※ 유류할증료는 발권일 기준 적용됩니다. 6월 확정 공시와 7월 시장 전망을 혼동하지 말고, 최종 발권 전 항공사 공식 공지를 확인하세요.',
   'news.sectionPrev':    '📚 이전 뉴스 / 이전 분석 기록',
   'news.sectionPrevSub': '※ 아래 내용은 각 작성 시점 기준의 시장 분석 기록입니다.',
   'news.newBadge':       'NEW',
@@ -1330,6 +1330,15 @@ ko:{
   'news.compare.li8':'티웨이항공: 5월 대비 6월 전 구간 인하 — 1군 58,600원→47,400원 / 7군 406,900원→327,000원 (KRW 공시)',
   'news.compare.li9':'에어프레미아: 공시 전',
   /* fixed news cards */
+  'news.fixed.20260523a.title':'2026.05.23 22:00 KST | 유가·환율 고점 유지, 7월 유류할증료 급락 가능성은 제한적',
+  'news.fixed.20260523a.summary':'6월 유류할증료는 확인된 항공사 공식 공시만 확정 데이터로 보고, 7월은 시장 지표 기반 전망으로 분리해야 합니다. 브렌트유는 최근 고점권에서 등락 중이며, MOPS는 최신 공개 수치 확인이 필요합니다. USD/KRW는 2026.05.22 공개 데이터 기준 약 1,504~1,512원 범위가 확인되어 하락 제한 요인입니다. 현재 유가와 환율 흐름을 고려하면 7월 유류할증료는 급격한 인하보다는 현 수준 유지 또는 일부 구간의 제한적 조정 가능성이 더 높습니다.',
+  'news.fixed.20260523a.impact':'7월 급락 가능성 제한적 · 6월 확정 공시와 7월 전망 분리',
+  'news.fixed.20260523a.source':'시장 데이터 기반 분석 (2026.05.23 22:00 KST)',
+  'news.fixed.20260523a.tag1':'7월 유류할증료 전망',
+  'news.fixed.20260523a.tag2':'유가 고점권',
+  'news.fixed.20260523a.tag3':'USD/KRW 1,500원대',
+  'news.fixed.20260523a.tag4':'MOPS 확인 필요',
+  'news.fixed.20260523a.tag5':'성수기 예약 가이드',
   'news.fixed.20260420.title':'유가 하락 지속, 6월 유류할증료 변동성 확대 — 공식 공시 확인 필요',
   'news.fixed.20260420.summary':'브렌트유가 80달러 초반까지 하락한 이후 추가 하락 흐름을 유지하고 있다. 환율은 여전히 높은 수준이지만 소폭 안정세를 보이며, 6월 유류할증료는 하락 또는 유지 가능성이 커지고 있다.',
   'news.fixed.20260420.impact':'하락 압력 강화',
@@ -1397,7 +1406,7 @@ ko:{
 
 /* ══════ English ══════ */
 en:{
-  'nav.routes':'Route Search','nav.airlines':'Airline Index','nav.news':'Market News',
+  'nav.routes':'Route Search','nav.calc':'Calculator','nav.airlines':'Airline Index','nav.news':'Market News',
   'footer.notice':'Fuel surcharge data is provided for reference only. Always confirm the final amount with the airline or ticketing agent.',
   'footer.about':'About','footer.privacy':'Privacy Policy','footer.terms':'Terms of Service',
   'index.title':'Fuel Surcharge Search — Korea Departure International Flights',
@@ -1534,16 +1543,16 @@ en:{
   'news.predictTitle':'📊 AI Forecast Indicators',
   'news.officialTitle':'📢 May 2026 Confirmed Surcharge Summary (Reference for June Outlook)',
   'news.compareTitle':'📊 May vs June Changes (Official Filings)',
-  'news.marketTitle':'🌍 Market Brief (as of 2026.05.21 09:00 KST)',
-  'news.brent':'⛽ Brent Crude: around $105.08–105.63/bbl — elevated volatility persists',
-  'news.fx':'💱 USD/KRW: around 1,488–1,494 KRW, currently around 1,491–1,492 — elevated FX burden',
-  'news.mops':'✈️ Jet Fuel/MOPS: around 511.21 cent/gal, ~$214.71/bbl — above the 470 cent/gal highest-band threshold',
-  'news.geo':'🌍 Geopolitics: Hormuz Strait risk re-escalating — Iran claims wider operational zone, US-Iran ceasefire uncertain',
-  'news.marketSummary':'→ KE/OZ/LJ/BX/ZE June filings complete (all down). Brent $100–105/bbl, FX 1,485–1,495, MOPS elevated — July direction watch. July filings due in June.',
-  'news.fxDominance':'🌍 Oil & FX variables to watch (June volatility zone)',
+  'news.marketTitle':'🌍 Market Brief (as of 2026.05.23 22:00 KST)',
+  'news.brent':'⛽ Brent crude: fluctuating near recent highs — sharp surcharge cuts look limited',
+  'news.fx':'💱 USD/KRW: public May 22 data shows roughly 1,504–1,512 KRW — check real-time FX before purchase',
+  'news.mops':'✈️ Jet Fuel/MOPS: latest public figure needs verification — monitor rebound risk after short-term correction',
+  'news.geo':'🌍 Geopolitics: Hormuz uncertainty is not fully resolved — risk premium partly remains',
+  'news.marketSummary':'→ Separate June confirmed filings from July market outlook. Brent near highs, USD/KRW around the 1,500 zone, and MOPS verification needs suggest limited odds of a sharp July cut.',
+  'news.fxDominance':'🌍 July direction reference: monitor oil + FX + MOPS verification',
   'news.decisionTitle':'📌 Current Decision Guide',
-  'news.decisionLine1':'→ Brent rebound (~$107) + USD/KRW late-1,470s + Hormuz risk — compound structure limiting cut size',
-  'news.decisionLine2':'→ MOPS downward pressure exists, but actual cut size may be constrained by above variables',
+  'news.decisionLine1':'→ Current oil and FX conditions favor a hold or limited adjustment over a sharp July cut',
+  'news.decisionLine2':'→ MOPS needs latest public figure verification; avoid unverified numeric assumptions',
   'news.decisionShort':'👉 Short-haul: June Korean Air KRW 61,500 (May 75,000)',
   'news.decisionMid':'👉 Mid-haul: June Korean Air KRW 117,000–205,500 range',
   'news.decisionLong':'👉 Long-haul: June filings complete for KE/OZ/LJ/BX/ZE — Korean Air KRW 282,000–451,500',
@@ -1556,19 +1565,19 @@ en:{
   'news.basisBody':'June filings will be published by each airline via their official channels during May.',
   'news.aiNotice':'AI Summary — Content on this page is AI-organized reference information based on public data. Not official. Always confirm with airline official channels before important decisions.',
   'news.filterAll':'All',
-  'news.dataRef':        '✅ KE/OZ/LJ/BX/ZE/RS/7C June official filings complete · As of 2026.05.21 09:00 KST',
-  'news.curSummaryTitle':'Current Market Summary (2026.05.14):',
-  'news.curSummary':     '→ June surcharge: Brent $105 range, MOPS 511.21 cent/gal, USD/KRW around 1,490s — sharp cut unlikely. Check official filing.',
+  'news.dataRef':        '✅ June confirmed filings separated from July market outlook · As of 2026.05.23 22:00 KST',
+  'news.curSummaryTitle':'Current Market Summary (2026.05.23 22:00 KST):',
+  'news.curSummary':     '→ Show June data only when official filings are confirmed; July remains a market-based outlook.',
   /* summary card i18n */
-  'news.summary.title':   '📌 June 2026 Key Summary',
-  'news.summary.updated': '🕐 Market indicators as of 2026.05.21 09:00 KST',
-  'news.summary.li1':     'Brent crude around $105.08–105.63/bbl — elevated volatility persists',
-  'news.summary.li2':     'Jet fuel (MOPS) around 511.21 cent/gal, ~$214.71/bbl — above the 470 cent/gal highest-band threshold',
-  'news.summary.li3':     'USD/KRW around 1,488–1,494 KRW, currently around 1,491–1,492 — elevated FX burden',
-  'news.summary.li4':     'Hormuz risk shows partial easing signs but is not fully resolved',
-  'news.summary.li5':     'June surcharge: MOPS above highest threshold but partial easing possible — highest band maintained OR limited reduction, both scenarios coexist',
-  'news.summary.li6':     'Brent $105 range + MOPS 511.21 cent/gal + USD/KRW around 1,490s compound — sharp surcharge cut unlikely',
-  'news.surchargeNote':  '※ Surcharges apply at booking date. KE/OZ/LJ/BX/ZE/RS/7C June 2026 official filings reflected (as of 2026.05.21) · Booking today = June filing applies',
+  'news.summary.title':   '📌 July 2026 Surcharge Direction — June filings and market outlook separated',
+  'news.summary.updated': '🕐 Market indicators as of 2026.05.23 22:00 KST',
+  'news.summary.li1':     'Brent is fluctuating near recent highs — sharp surcharge cuts look limited',
+  'news.summary.li2':     'Jet fuel/MOPS needs latest public figure verification',
+  'news.summary.li3':     'USD/KRW public May 22 data shows roughly 1,504–1,512 KRW',
+  'news.summary.li4':     'Hormuz uncertainty is not fully resolved; risk premium partly remains',
+  'news.summary.li5':     'June values should be shown only for airlines with confirmed official filings',
+  'news.summary.li6':     'July outlook favors current-level hold or limited adjustments over a sharp cut',
+  'news.surchargeNote':  '※ Surcharges apply at ticketing date. Do not mix June confirmed filings with July market outlook; confirm final amount via official airline notices.',
   'news.sectionPrev':    '📚 Previous News / Past Analysis',
   'news.sectionPrevSub': '※ The content below is market analysis recorded at each publication date.',
   'news.newBadge':       'NEW',
@@ -1693,7 +1702,7 @@ en:{
   'index.quick.tw.desc':'TW monthly notice details',
 },
 ja:{
-  'nav.routes':'路線別検索','nav.airlines':'航空会社一覧','nav.news':'参考ニュース',
+  'nav.routes':'路線別検索','nav.calc':'計算機','nav.airlines':'航空会社一覧','nav.news':'参考ニュース',
   'footer.notice':'燃油サーチャージ情報は参考用です。最終金額は必ず航空会社公式サイトでご確認ください。',
   'footer.about':'About','footer.privacy':'プライバシーポリシー','footer.terms':'利用規約',
   'index.title':'燃油サーチャージ照会 — 韓国出発国際線',
@@ -1977,7 +1986,7 @@ ja:{
   'index.quick.tw.desc':'TW 月別公示詳細',
 },
 zh:{
-  'nav.routes':'按航线查询','nav.airlines':'航空公司一览','nav.news':'参考资讯',
+  'nav.routes':'按航线查询','nav.calc':'计算器','nav.airlines':'航空公司一览','nav.news':'参考资讯',
   'footer.notice':'燃油附加费信息仅供参考。最终金额请以航空公司官方公告为准。',
   'footer.about':'About','footer.privacy':'隐私政策','footer.terms':'服务条款',
   'index.title':'燃油附加费查询 — 韩国出发国际航班',
@@ -2261,7 +2270,7 @@ zh:{
   'index.quick.tw.desc':'TW 月度公告详情',
 },
 fr:{
-  'nav.routes':'Recherche route','nav.airlines':'Index compagnies','nav.news':'Actualités',
+  'nav.routes':'Recherche route','nav.calc':'Calculateur','nav.airlines':'Index compagnies','nav.news':'Actualités',
   'footer.notice':'Les données de surcharge carburant sont fournies à titre indicatif. Confirmez toujours le montant final auprès de la compagnie aérienne.',
   'footer.about':'À propos','footer.privacy':'Confidentialité','footer.terms':'Conditions',
   'index.title':'Surcharge carburant — Vols internationaux depuis la Corée',
@@ -2526,7 +2535,7 @@ fr:{
   'index.quick.tw.desc':'TW — Détails des avis mensuels',
 },
 de:{
-  'nav.routes':'Streckensuche','nav.airlines':'Airline-Index','nav.news':'Nachrichten',
+  'nav.routes':'Streckensuche','nav.calc':'Rechner','nav.airlines':'Airline-Index','nav.news':'Nachrichten',
   'footer.notice':'Treibstoffzuschlag-Daten dienen nur als Referenz. Bitte bestätigen Sie den endgültigen Betrag bei der Fluggesellschaft.',
   'footer.about':'Über uns','footer.privacy':'Datenschutz','footer.terms':'Nutzungsbedingungen',
   'index.title':'Treibstoffzuschlag — Internationale Flüge ab Korea',
@@ -2803,6 +2812,13 @@ window.setCurrentLang = function(lang){
   localStorage.setItem('aero_lang', lang);
   window.SHARED_STATE.lang = lang;
   document.documentElement.lang = lang;
+};
+window.getCurrentCurr = function(){
+  return localStorage.getItem('aero_curr') || 'KRW';
+};
+window.setCurrentCurr = function(curr){
+  localStorage.setItem('aero_curr', curr);
+  window.SHARED_STATE.curr = curr;
 };
 
 /* ─── 번역 함수 ─── */
@@ -3129,16 +3145,25 @@ var _origInitNav = window.initNav;
 window.initNav = function(opts){
   opts = opts || {};
   var origLang = opts.onLangChange;
+  var origCurr = opts.onCurrChange;
   opts.onLangChange = function(val){
     window.setCurrentLang(val);
     window.applyLanguage();
     if(origLang) origLang(val);
   };
+  opts.onCurrChange = function(val){
+    window.setCurrentCurr(val);
+    if(origCurr) origCurr(val);
+  };
   /* 저장된 언어 복원 */
   var saved = window.getCurrentLang();
   window.SHARED_STATE.lang = saved;
+  var savedCurr = window.getCurrentCurr();
+  window.SHARED_STATE.curr = savedCurr;
   var navLang = document.getElementById('navLang');
   if(navLang && saved) navLang.value = saved;
+  var navCurr = document.getElementById('navCurr');
+  if(navCurr && savedCurr) navCurr.value = savedCurr;
   /* 원래 initNav 호출 */
   if(_origInitNav) _origInitNav(opts);
   /* 최초 적용 */
