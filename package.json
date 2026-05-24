@@ -4,6 +4,7 @@
   "description": "항공 유류할증료 데이터 수집·파싱·검증 파이프라인 (MVP) (v23: TW/OZ/YP/KE 상세 진입 로직 복구)",
   "main": "scripts/run_pipeline.js",
   "scripts": {
+    "check:env": "node scripts/check_env.js",
     "pipeline": "node scripts/run_pipeline.js",
     "pipeline:mock": "node scripts/run_pipeline.js --mock",
     "pipeline:dry": "node scripts/run_pipeline.js --mock --dry-run",
@@ -14,5 +15,8 @@
   },
   "dependencies": {
     "playwright": "^1.59.1"
+  },
+  "devDependencies": {
+    "dotenv": "^17.4.2"
   }
 }

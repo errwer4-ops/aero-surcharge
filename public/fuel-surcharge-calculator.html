@@ -80,9 +80,31 @@
     .saving-affiliate-desc{font-size:12px;color:var(--text2);line-height:1.6;}
     .saving-affiliate-btn{display:inline-flex;align-items:center;justify-content:center;min-height:38px;padding:0 16px;border-radius:8px;background:var(--blue);color:#fff;text-decoration:none;font-size:12px;font-weight:850;white-space:nowrap;}
     .saving-affiliate-btn:hover{opacity:.88;}
+    .live-fare-panel{margin-top:14px;border:1px solid #d6e4ff;border-radius:12px;background:#fbfdff;overflow:hidden;}
+    .live-fare-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:15px 16px;border-bottom:1px solid #e5ecfb;}
+    .live-fare-kicker{font-size:10px;font-weight:850;color:#2563eb;letter-spacing:.02em;margin-bottom:5px;}
+    .live-fare-title{font-size:15px;font-weight:850;color:var(--text);line-height:1.45;margin-bottom:4px;}
+    .live-fare-desc{font-size:12px;color:var(--text2);line-height:1.65;}
+    .live-fare-controls{display:flex;align-items:end;gap:8px;flex-shrink:0;}
+    .live-fare-field{display:flex;flex-direction:column;gap:5px;min-width:150px;}
+    .live-fare-label{font-size:10px;font-weight:850;color:var(--muted);text-transform:uppercase;}
+    .live-fare-date{height:38px;border:1px solid var(--line);border-radius:8px;background:#fff;color:var(--text);font-family:var(--sans);font-size:12px;font-weight:750;padding:0 9px;}
+    .live-fare-btn{height:38px;border:1px solid var(--blue);border-radius:8px;background:var(--blue);color:#fff;font-size:12px;font-weight:850;padding:0 13px;cursor:pointer;white-space:nowrap;}
+    .live-fare-btn:disabled{opacity:.55;cursor:wait;}
+    .live-fare-body{padding:13px 16px;}
+    .live-fare-status{font-size:12px;color:var(--muted);line-height:1.65;}
+    .live-fare-list{display:grid;gap:9px;}
+    .live-fare-card{display:grid;grid-template-columns:minmax(0,1.2fr) minmax(150px,.75fr) auto;gap:12px;align-items:center;padding:12px;border:1px solid var(--line);border-radius:9px;background:#fff;}
+    .live-fare-airline{font-size:13px;font-weight:850;color:var(--text);margin-bottom:4px;}
+    .live-fare-schedule{font-family:var(--mono);font-size:12px;color:var(--text2);line-height:1.55;}
+    .live-fare-price{font-family:var(--mono);font-size:16px;font-weight:850;color:var(--text);text-align:right;margin-bottom:4px;}
+    .live-fare-ratio{font-size:11px;color:#2563eb;text-align:right;line-height:1.5;}
+    .live-fare-link{display:inline-flex;align-items:center;justify-content:center;min-height:36px;padding:0 12px;border-radius:8px;border:1px solid #FF385C;color:#FF385C;background:#fff;text-decoration:none;font-size:12px;font-weight:850;white-space:nowrap;}
+    .live-fare-link:hover{background:#FF385C;color:#fff;}
+    .live-fare-note{font-size:11px;color:var(--muted);line-height:1.6;margin-top:10px;}
     .saving-note{font-size:11px;color:var(--muted);line-height:1.6;margin-top:12px;}
     @media(max-width:900px){.saving-form,.saving-result{grid-template-columns:1fr 1fr;}.saving-impact{grid-column:1/-1;}}
-    @media(max-width:700px){.guide-block{padding:16px;}.saving-tool{padding:16px;}.saving-tool-head{display:block;}.saving-tool-badge{display:inline-flex;margin-top:10px;}.saving-form,.saving-result{grid-template-columns:1fr;}.saving-metric-value{font-size:17px;}.saving-affiliate{align-items:flex-start;flex-direction:column;}.saving-affiliate-btn{width:100%;}}
+    @media(max-width:700px){.guide-block{padding:16px;}.saving-tool{padding:16px;}.saving-tool-head{display:block;}.saving-tool-badge{display:inline-flex;margin-top:10px;}.saving-form,.saving-result{grid-template-columns:1fr;}.saving-metric-value{font-size:17px;}.saving-affiliate{align-items:flex-start;flex-direction:column;}.saving-affiliate-btn{width:100%;}.live-fare-head{display:block;}.live-fare-controls{margin-top:12px;display:grid;grid-template-columns:1fr;}.live-fare-field{min-width:0;}.live-fare-card{grid-template-columns:1fr;}.live-fare-price,.live-fare-ratio{text-align:left;}.live-fare-link{width:100%;}}
   </style>
   <script type="application/ld+json">
   {
@@ -267,19 +289,27 @@
       </div>
     </div>
     <div class="saving-table-wrap" id="savingTableWrap"></div>
-    <div class="saving-affiliate" id="savingAffiliate">
-      <div class="saving-affiliate-body">
-        <div class="saving-affiliate-kicker">마이리얼트립 제휴</div>
-        <div class="saving-affiliate-title" id="savingAffiliateTitle">절약한 금액으로 실제 항공권 총액도 확인해보세요</div>
-        <div class="saving-affiliate-desc" id="savingAffiliateDesc">유류할증료는 발권 시점 기준입니다. 계산 결과를 확인했다면 현재 항공권 총액도 함께 비교해보세요.</div>
+    <section class="live-fare-panel" id="liveFarePanel" aria-label="현재 항공권 판매가 예시">
+      <div class="live-fare-head">
+        <div>
+          <div class="live-fare-kicker">현재 항공권 가격으로 보면</div>
+          <div class="live-fare-title" id="liveFareTitle">공시 유류할증료가 실제 항공권 총액에서 차지하는 비중</div>
+          <div class="live-fare-desc" id="liveFareDesc">선택한 노선의 항공권 예시를 불러오면, 공식 공시 유류할증료와 판매가 총액을 나란히 볼 수 있습니다.</div>
+        </div>
+        <div class="live-fare-controls">
+          <label class="live-fare-field">
+            <span class="live-fare-label">출발일</span>
+            <input class="live-fare-date" id="liveFareDate" type="date">
+          </label>
+          <button class="live-fare-btn" id="liveFareBtn" type="button">항공권 총액 확인</button>
+        </div>
       </div>
-      <a href="https://lase.kr/click.php?m=myrealtrip&a=A100704170&l=0000"
-         target="_blank"
-         rel="noopener sponsored"
-         class="saving-affiliate-btn"
-         id="savingAffiliateBtn"
-         onclick="if(window.gtag){gtag('event','affiliate_click',{affiliate:'myrealtrip',placement:'calculator_result'});}">항공권 총액 확인하기</a>
-    </div>
+      <div class="live-fare-body">
+        <div class="live-fare-status" id="liveFareStatus">계산 결과를 확인한 뒤 판매가 예시를 불러오면, 총액 대비 유류할증료 비중을 함께 계산합니다.</div>
+        <div class="live-fare-list" id="liveFareList" hidden></div>
+        <div class="live-fare-note">표시되는 유류할증료는 항공사 공식 공시 기반이며, 항공권 총액은 판매 채널의 조회 시점에 따라 달라질 수 있습니다. 외부 제휴 링크를 통해 가격 확인 페이지로 이동할 수 있습니다.</div>
+      </div>
+    </section>
     <div class="saving-note">※ 유류할증료는 발권일 기준으로 적용됩니다. 실제 결제 금액은 항공사, 환율, 세금, 예약 채널에 따라 달라질 수 있으므로 최종 발권 전 공식 공지를 확인하세요.</div>
   </section>
 
@@ -643,10 +673,17 @@ var SAVING_INDEX_ROUTE_MAP = null;
   var affiliateTitleEl = document.getElementById('savingAffiliateTitle');
   var affiliateDescEl = document.getElementById('savingAffiliateDesc');
   var affiliateBtnEl = document.getElementById('savingAffiliateBtn');
+  var liveFareDateEl = document.getElementById('liveFareDate');
+  var liveFareBtnEl = document.getElementById('liveFareBtn');
+  var liveFareStatusEl = document.getElementById('liveFareStatus');
+  var liveFareListEl = document.getElementById('liveFareList');
   if (!originEl || !destinationEl || !tableWrapEl) return;
 
   var selectedTrip = 1;
   var usdRate = 1450;
+  var latestFareContext = null;
+  var liveFareApiReady = false;
+  var liveFareFallbackUrl = 'https://lase.kr/click.php?m=myrealtrip&a=A100704170&l=0000';
   function toKRW(amount, currency) { return currency === 'USD' ? Math.round(amount * usdRate) : amount; }
   var SAVING_UI_TEXT = {
     ko: { count:'{n}개', noDataTitle:'비교 데이터 없음', noDataBody:'현재 선택한 목적지는 비교 가능한 항공사 데이터가 없습니다.', noDataCell:'비교 가능한 항공사 데이터가 없습니다.', bestJune:'{name} {amount}', saveHeadline:'{name} 이용 시 최대 {amount} 절약', extraHeadline:'{name} 이용 시 {amount} 추가 부담', sameHeadline:'두 달 금액 동일', thAirline:'항공사', thMay:'5월 발권', thJune:'6월 발권', thSaving:'절약액', routeSep:' · ', affiliateTitle:'{dest} 항공권 총액도 바로 확인해보세요', affiliateSave:'6월 발권 기준 최대 {amount}까지 아낄 수 있습니다. 절약액을 확인했다면 마이리얼트립에서 현재 항공권 총액도 함께 비교해보세요.', affiliateNeutral:'유류할증료만으로는 차이가 작을 수 있습니다. 마이리얼트립에서 현재 항공권 총액과 일정까지 같이 비교해보세요.', affiliateBtn:'{dest} 항공권 총액 보기', affiliateAria:'{dest} 항공권 총액을 마이리얼트립에서 확인하기' },
@@ -682,6 +719,47 @@ var SAVING_INDEX_ROUTE_MAP = null;
   function nativeText(amount, currency) {
     var c = (window.SHARED_STATE && window.SHARED_STATE.curr) || 'KRW';
     return currency === 'USD' && c !== 'USD' ? ' ($' + amount + ')' : '';
+  }
+  function fmtTime(value) {
+    var text = String(value || '');
+    return text.length === 4 ? text.slice(0, 2) + ':' + text.slice(2) : text;
+  }
+  function formatDateForInput(date) {
+    var yyyy = date.getFullYear();
+    var mm = String(date.getMonth() + 1).padStart(2, '0');
+    var dd = String(date.getDate()).padStart(2, '0');
+    return yyyy + '-' + mm + '-' + dd;
+  }
+  function setupLiveFareDate() {
+    if (!liveFareDateEl || liveFareDateEl.value) return;
+    var date = new Date();
+    date.setDate(date.getDate() + 30);
+    liveFareDateEl.value = formatDateForInput(date);
+    liveFareDateEl.min = formatDateForInput(new Date(Date.now() + 24 * 60 * 60 * 1000));
+  }
+  function checkLiveFareApiStatus() {
+    if (!liveFareBtnEl || !liveFareStatusEl) return Promise.resolve(false);
+    liveFareBtnEl.disabled = true;
+    return fetch('/api/myrealtrip/flights?status=1')
+      .then(function(res) { return res.ok ? res.json() : null; })
+      .then(function(json) {
+        liveFareApiReady = Boolean(json && json.configured && json.callable);
+        liveFareBtnEl.disabled = false;
+        if (!liveFareApiReady) {
+          liveFareBtnEl.textContent = '항공권 총액 확인';
+          liveFareStatusEl.textContent = '자동 판매가 예시는 준비 중입니다. 현재는 공식 공시 유류할증료를 확인한 뒤 항공권 총액을 직접 확인할 수 있습니다.';
+        } else {
+          liveFareBtnEl.textContent = '판매가 예시 보기';
+        }
+        return liveFareApiReady;
+      })
+      .catch(function() {
+        liveFareApiReady = false;
+        liveFareBtnEl.disabled = false;
+        liveFareBtnEl.textContent = '항공권 총액 확인';
+        liveFareStatusEl.textContent = '자동 판매가 예시 상태를 확인하지 못했습니다. 현재는 공식 공시 유류할증료를 확인한 뒤 항공권 총액을 직접 확인할 수 있습니다.';
+        return false;
+      });
   }
   function esc(text) {
     return String(text).replace(/[&<>"']/g, function(ch) {
@@ -787,6 +865,96 @@ var SAVING_INDEX_ROUTE_MAP = null;
       : st('affiliateNeutral');
     affiliateBtnEl.textContent = st('affiliateBtn', { dest:destName });
     affiliateBtnEl.setAttribute('aria-label', st('affiliateAria', { dest:destName }));
+  }
+  function getOfficialSurchargeForFlight(item, fallbackResults) {
+    var code = item && item.airlineCode;
+    var match = fallbackResults && fallbackResults.find(function(row) { return row.code === code; });
+    if (match) return match.juneTotal;
+    return fallbackResults && fallbackResults.length ? fallbackResults[0].juneTotal : 0;
+  }
+  function resetLiveFareForRoute(dest, results) {
+    latestFareContext = { dest:dest, results:results || [] };
+    if (!liveFareStatusEl || !liveFareListEl) return;
+    var routeName = dest ? routeDisplayName(dest) : '선택 노선';
+    liveFareListEl.hidden = true;
+    liveFareListEl.innerHTML = '';
+    if (liveFareApiReady) {
+      liveFareStatusEl.textContent = routeName + ' 계산 결과가 준비됐습니다. 출발일을 고른 뒤 현재 판매가 예시를 불러오면 총액 대비 공시 유류할증료 비중을 계산합니다.';
+    } else {
+      liveFareStatusEl.textContent = routeName + ' 공식 유류할증료 계산 결과가 준비됐습니다. 항공권 총액은 외부 가격 확인 페이지에서 직접 확인할 수 있습니다.';
+    }
+    setupLiveFareDate();
+  }
+  function renderLiveFareItems(items) {
+    if (!liveFareStatusEl || !liveFareListEl || !latestFareContext) return;
+    if (!items || !items.length) {
+      liveFareListEl.hidden = true;
+      liveFareListEl.innerHTML = '';
+      liveFareStatusEl.textContent = '현재 표시할 수 있는 항공권 예시가 없습니다. 공식 유류할증료 비교 결과는 계속 사용할 수 있습니다.';
+      return;
+    }
+    liveFareStatusEl.textContent = '조회 시점의 항공권 예시입니다. 유류할증료는 우리 사이트의 공식 공시 데이터를 기준으로 대입했습니다.';
+    liveFareListEl.hidden = false;
+    liveFareListEl.innerHTML = items.map(function(item) {
+      var price = item.price || {};
+      var total = Number(price.total || 0);
+      var currency = price.currency || 'KRW';
+      var official = getOfficialSurchargeForFlight(item, latestFareContext.results);
+      var ratio = total > 0 ? Math.round((official / total) * 1000) / 10 : null;
+      var airline = (item.airlineName || item.airlineCode || '항공사') + (item.airlineCode ? ' (' + item.airlineCode + ')' : '');
+      var schedule = esc(item.origin || '') + ' ' + esc(fmtTime(item.departTime)) + ' → ' + esc(item.destination || '') + ' ' + esc(fmtTime(item.arriveTime));
+      var stopText = item.isDirect || item.stops === 0 ? '직항' : '경유 ' + esc(item.stops || 1) + '회';
+      var href = item.reservationUrl || 'https://lase.kr/click.php?m=myrealtrip&a=A100704170&l=0000';
+      return '<article class="live-fare-card">'
+        + '<div><div class="live-fare-airline">' + esc(airline) + '</div>'
+        + '<div class="live-fare-schedule">' + schedule + ' · ' + stopText + '</div></div>'
+        + '<div><div class="live-fare-price">' + (currency === 'KRW' ? fmtKRW(total) : esc(currency + ' ' + total.toLocaleString('en-US'))) + '</div>'
+        + '<div class="live-fare-ratio">공시 유류할증료 ' + fmtKRW(official) + (ratio == null ? '' : ' · 총액의 ' + ratio + '%') + '</div></div>'
+        + '<a class="live-fare-link" href="' + esc(href) + '" target="_blank" rel="noopener sponsored">가격 확인</a>'
+        + '</article>';
+    }).join('');
+  }
+  function loadLiveFares() {
+    if (!latestFareContext || !latestFareContext.dest || !liveFareBtnEl || !liveFareDateEl || !liveFareStatusEl) return;
+    if (!liveFareApiReady) {
+      if (window.gtag) gtag('event', 'affiliate_click', { affiliate:'myrealtrip', placement:'calculator_live_fare_fallback' });
+      window.open(liveFareFallbackUrl, '_blank', 'noopener');
+      return;
+    }
+    var dep = getRouteDep(latestFareContext.dest);
+    var arr = getRouteArr(latestFareContext.dest);
+    var departDate = liveFareDateEl.value;
+    if (!dep || !arr || !departDate) return;
+    liveFareBtnEl.disabled = true;
+    liveFareStatusEl.textContent = '선택한 노선의 판매가 예시를 확인하는 중입니다.';
+    if (liveFareListEl) {
+      liveFareListEl.hidden = true;
+      liveFareListEl.innerHTML = '';
+    }
+    var params = new URLSearchParams({
+      origin: dep,
+      destination: arr,
+      departDate: departDate,
+      tripType: selectedTrip === 2 ? 'ROUND_TRIP' : 'ONE_WAY',
+      maxResults: '3'
+    });
+    fetch('/api/myrealtrip/flights?' + params.toString())
+      .then(function(res) { return res.ok ? res.json() : Promise.reject(new Error('request failed')); })
+      .then(function(json) {
+        if (!json || !json.success) {
+          liveFareStatusEl.textContent = json && json.code === 'flight_endpoint_not_configured'
+            ? '항공권 자동 조회용 API가 아직 설정되지 않았습니다. 현재는 공시 유류할증료 계산 결과를 기준으로 항공권 총액 확인 페이지로 이동할 수 있습니다.'
+            : '현재 판매가 API 권한 또는 응답을 확인하지 못했습니다. 공시 유류할증료 계산 결과를 먼저 참고하세요.';
+          return;
+        }
+        renderLiveFareItems(json.items || []);
+      })
+      .catch(function() {
+        liveFareStatusEl.textContent = '현재 판매가 예시를 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.';
+      })
+      .finally(function() {
+        liveFareBtnEl.disabled = false;
+      });
   }
   function applySavingStaticText() {
     var root = document.getElementById('savingTool');
@@ -1057,6 +1225,7 @@ var SAVING_INDEX_ROUTE_MAP = null;
       impactEl.textContent = st('noDataBody');
       tableWrapEl.innerHTML = '<div class="saving-empty">' + esc(st('noDataCell')) + '</div>';
       updateAffiliate(dest, 0);
+      resetLiveFareForRoute(dest, []);
       return;
     }
 
@@ -1084,6 +1253,7 @@ var SAVING_INDEX_ROUTE_MAP = null;
           + '</tr>';
       }).join('')
       + '</tbody></table>';
+    resetLiveFareForRoute(dest, results);
   }
 
   Promise.all([loadIndexRouteData(), loadDestinationMeta()]).then(function(results) {
@@ -1103,12 +1273,15 @@ var SAVING_INDEX_ROUTE_MAP = null;
     };
     window.updateSavingCalculator = updateResult;
     window.renderSavingCalculator();
+    checkLiveFareApiStatus();
   });
   applySavingStaticText();
   window.updateSavingCalculator = updateResult;
+  checkLiveFareApiStatus();
   originEl.addEventListener('change', function(){ fillDestinationsForOrigin(); updateResult(); });
   destinationEl.addEventListener('change', updateResult);
   paxEl.addEventListener('input', updateResult);
+  if (liveFareBtnEl) liveFareBtnEl.addEventListener('click', loadLiveFares);
   oneWayEl.addEventListener('click', function(){ selectedTrip = 1; oneWayEl.classList.add('active'); roundTripEl.classList.remove('active'); updateResult(); });
   roundTripEl.addEventListener('click', function(){ selectedTrip = 2; roundTripEl.classList.add('active'); oneWayEl.classList.remove('active'); updateResult(); });
 })();
