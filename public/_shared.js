@@ -85,12 +85,12 @@ window.I18N_SHARED = {
        predictBasis:'예측 근거', predictNote:'공식 공지 전 참고용 추정값입니다.',
        navRoutes:'노선별 조회', navAirlines:'항공사 인덱스', navNews:'참고 소식',
        /* 2026.05.21 09:00 KST 시장 브리핑 공용 키 — KE/OZ/LJ/BX/ZE/7C 6월 공식 공시 반영 완료 */
-       marketDataRef: '🕐 2026.05.23 22:00 KST 기준 · 6월 확정 공시와 7월 시장 전망 분리',
-       marketBrent:   '브렌트유: 최근 고점권 등락 — 유류할증료 급락을 기대하기 어려운 환경',
-       marketMops:    '항공유(MOPS): 단기 조정 이후 재반등 가능성 점검 필요 · 최신 공개 수치 확인 필요',
-       marketFx:      '원달러 환율: 2026.05.22 공개 데이터 기준 약 1,504~1,512원 범위 확인 — 실시간 환율 확인 필요',
-       marketGeo:     '호르무즈 해협 관련 불확실성은 완전 해소 전 — 즉각 봉쇄보다는 리스크 프리미엄 일부 유지 흐름',
-       marketOutlook: '7월 유류할증료는 급격한 인하보다 현 수준 유지 또는 일부 구간의 제한적 조정 가능성이 높음' },
+       marketDataRef: '🕐 2026.05.24 10:30 KST 기준 · 6월 확정 공시와 7월 시장 전망 분리',
+       marketBrent:   '국제유가: 미국-이란 협상 기대감은 리스크 프리미엄 완화 요인이나 호르무즈 리스크는 완전 해소 전',
+       marketMops:    '항공유(MOPS): 511.21 → 410.02 cents/gal 하락 — 7월 추가 인하 가능성의 핵심 변수',
+       marketFx:      '원달러 환율: 2026.05.22 공개 데이터 기준 약 1,504~1,512원 범위 — 2026.05.24 10:30 KST 실시간 환율 확인 필요',
+       marketGeo:     '호르무즈 해협 리스크는 완전 해소 전 — 협상 기대감과 지정학 리스크가 동시에 존재',
+       marketOutlook: '7월 유류할증료는 추가 인하 가능성이 존재하지만 환율과 지정학 변수로 인하 폭은 제한 가능' },
   en:{ btnOW:'One-way', btnRT:'Round-trip', officialSite:'Official site ↗',
        loading:'Loading...', loadErr:'Load failed', noData:'No data.',
        official:'Official', aiPredict:'AI Forecast', prepublish:'Not yet published', noValue:'No data',
@@ -100,12 +100,12 @@ window.I18N_SHARED = {
        predictBasis:'Forecast basis', predictNote:'Pre-announcement estimate. For reference only.',
        navRoutes:'Route Search', navAirlines:'Airline Index', navNews:'News & Insights',
        /* 2026.05.21 09:00 KST market brief shared keys — KE/OZ/LJ/BX/ZE/7C June official filing reflected */
-       marketDataRef: '🕐 As of 2026.05.23 22:00 KST · June confirmed filings separated from July market outlook',
-       marketBrent:   'Brent crude: fluctuating near recent highs — not a setup for a sharp surcharge drop',
-       marketMops:    'Jet fuel (MOPS): monitor rebound risk after short-term correction · latest public figure needs verification',
-       marketFx:      'USD/KRW: public May 22 data shows roughly 1,504–1,512 KRW range — check real-time FX before purchase',
-       marketGeo:     'Hormuz uncertainty not fully resolved — risk premium partly maintained rather than immediate blockade as base case',
-       marketOutlook: 'July surcharge outlook leans toward current-level hold or limited band adjustments rather than a sharp cut' },
+       marketDataRef: '🕐 As of 2026.05.24 10:30 KST · June confirmed filings separated from July market outlook',
+       marketBrent:   'Oil prices: US-Iran talks may ease risk premium, but Hormuz risk is not fully resolved',
+       marketMops:    'Jet fuel (MOPS): 511.21 → 410.02 cents/gal — key driver for possible July cuts',
+       marketFx:      'USD/KRW: public May 22 data shows roughly 1,504–1,512 KRW range — check real-time FX for May 24 10:30 KST',
+       marketGeo:     'Hormuz risk is not fully resolved — negotiation hopes and geopolitical risk coexist',
+       marketOutlook: 'July surcharge has room for additional cuts, but FX and geopolitics may limit the size' },
   ja:{ btnOW:'片道', btnRT:'往復', officialSite:'公式サイト ↗',
        loading:'読み込み中...', loadErr:'読み込み失敗', noData:'データなし',
        official:'公式', aiPredict:'AI予測', prepublish:'未公示', noValue:'データなし',
@@ -1235,17 +1235,17 @@ ko:{
   'news.predictTitle':'📊 AI 예측 참고 지표 현황',
   'news.officialTitle':'📢 주요 항공사 2026년 6월 국제선 유류할증료 공식 공시',
   'news.compareTitle':'📊 전월 대비: 5월 → 6월 변화 (공식 공시 기준)',
-  'news.marketTitle':'🌍 시장 브리핑 (2026.05.23 22:00 KST 기준)',
-  'news.brent':'⛽ 브렌트유: 최근 고점권 등락 — 급락 기대 제한',
-  'news.fx':'💱 원달러 환율: 2026.05.22 공개 데이터 기준 약 1,504~1,512원 범위 확인 · 실시간 환율 확인 필요',
-  'news.mops':'✈️ 항공유/MOPS: 단기 조정 이후 재반등 가능성 점검 · 최신 공개 수치 확인 필요',
-  'news.mops.extra':'→ 확인 가능한 최신 공개 수치 확보 전 임의 수치 미표기',
-  'news.geo':'🌍 지정학: 호르무즈 관련 불확실성은 완전 해소 전 · 리스크 프리미엄 일부 유지',
-  'news.marketSummary':'→ 6월 확정 공시와 7월 시장 전망을 분리해 확인하세요. 브렌트유 고점권·USD/KRW 1,500원대 전후·MOPS 최신 공개 수치 확인 필요 흐름상 7월 급락 가능성은 제한적입니다.',
-  'news.fxDominance':'🌍 7월 방향성 참고 지표: 유가 + 환율 + MOPS 확인 필요',
+  'news.marketTitle':'🌍 시장 브리핑 (2026.05.24 10:30 KST 기준)',
+  'news.brent':'🛢 국제유가: 미국-이란 협상 기대감은 리스크 프리미엄 완화 요인 · 호르무즈 리스크는 완전 해소 전',
+  'news.fx':'💱 원달러 환율: 2026.05.22 공개 데이터 기준 약 1,504~1,512원 범위 · 2026.05.24 10:30 KST 실시간 환율 확인 필요',
+  'news.mops':'✈️ 항공유/MOPS: 511.21 → 410.02 cents/gal 하락',
+  'news.mops.extra':'→ MOPS 하락은 7월 유류할증료 추가 인하 가능성을 높이는 핵심 변수',
+  'news.geo':'⚠ 지정학: 미국-이란 협상 기대감은 있으나 호르무즈 해협 리스크는 완전 해소 전',
+  'news.marketSummary':'→ 6월 확정 공시와 7월 시장 전망을 분리해 확인하세요. MOPS 하락은 추가 인하 요인이지만 USD/KRW 1,500원대와 호르무즈 리스크가 인하 폭을 제한할 수 있습니다.',
+  'news.fxDominance':'🌍 7월 방향성 참고 지표: MOPS + 환율 + 국제유가 + 호르무즈 리스크',
   'news.decisionTitle':'📌 현재 판단 기준',
-  'news.decisionLine1':'→ 현재 유가와 환율 흐름상 7월 급격한 인하보다 현 수준 유지 또는 제한적 조정 가능성이 높음',
-  'news.decisionLine2':'→ MOPS는 최신 공개 수치 확인 필요 · 임의 수치 없이 확인 후 반영',
+  'news.decisionLine1':'→ MOPS 511.21 → 410.02 cents/gal 하락으로 7월 추가 인하 가능성 존재',
+  'news.decisionLine2':'→ 다만 환율 1,500원대와 호르무즈 리스크로 인하 폭은 제한될 수 있음',
   'news.decisionShort':'👉 단거리: 6월 대한항공 기준 61,500원 (5월 75,000원)',
   'news.decisionMid':'👉 중거리: 6월 대한항공 기준 117,000~205,500원 구간',
   'news.decisionLong':'👉 장거리: 항공사별 6월 공식 공시 기준 — KE·OZ·LJ·BX·ZE 반영 완료 (대한항공 282,000~451,500원)',
@@ -1258,18 +1258,18 @@ ko:{
   'news.basisBody':'7월 공시는 6월 중 각 항공사 공식 채널에서 확인 필요합니다. 6월 공식 공시 반영 결과가 7월 방향성의 중요한 참고 지표입니다.',
   'news.aiNotice':'AI 요약 콘텐츠 — 이 페이지의 내용은 공개된 정보를 바탕으로 AI가 정리한 참고용 자료입니다. 원문 기반 요약이며, 공식 정보가 아닙니다. 중요한 결정 전에 각 항공사 및 기관의 공식 채널을 반드시 확인하세요.',
   'news.filterAll':'전체',
-  'news.dataRef':        '✅ 6월 확정 공시와 7월 시장 전망 분리 · 2026.05.23 22:00 KST 기준',
-  'news.curSummaryTitle':'현재 기준 요약 (2026.05.23 22:00 KST):',
+  'news.dataRef':        '✅ 6월 확정 공시와 7월 시장 전망 분리 · 2026.05.24 10:30 KST 기준',
+  'news.curSummaryTitle':'현재 기준 요약 (2026.05.24 10:30 KST):',
   'news.curSummary':     '→ 6월 확정 공시는 공식 공시 확인 항공사만 표시 · 7월은 시장 지표 기반 전망',
   /* 핵심 요약 카드 i18n */
-  'news.summary.title':   '📌 2026년 7월 유류할증료 방향성 — 6월 확정 공시와 시장 전망 분리',
-  'news.summary.updated': '🕐 2026.05.23 22:00 KST 기준 시장 지표 반영',
-  'news.summary.li1':     '브렌트유는 최근 고점권에서 등락 중 — 유류할증료 급락 기대 제한',
-  'news.summary.li2':     '항공유(MOPS)는 단기 조정 이후 재반등 가능성 점검 — 최신 공개 수치 확인 필요',
+  'news.summary.title':   '📌 2026년 7월 유류할증료 전망 — MOPS 하락과 환율 변수',
+  'news.summary.updated': '🕐 2026.05.24 10:30 KST 기준 시장 지표 반영',
+  'news.summary.li1':     '6월 국제선 유류할증료 인하 흐름 확정 — 대한항공 564,000원 → 451,500원',
+  'news.summary.li2':     '항공유(MOPS) 511.21 → 410.02 cents/gal 하락',
   'news.summary.li3':     'USD/KRW는 2026.05.22 공개 데이터 기준 약 1,504~1,512원 범위 확인',
-  'news.summary.li4':     '호르무즈 관련 불확실성은 완전 해소 전 — 리스크 프리미엄 일부 유지',
+  'news.summary.li4':     '미국-이란 협상 기대감은 유가 리스크 프리미엄 완화 요인이나 호르무즈 리스크는 완전 해소 전',
   'news.summary.li5':     '6월 공시는 확인된 항공사 공식 공시만 확정 데이터로 표시',
-  'news.summary.li6':     '7월은 급격한 인하보다 현 수준 유지 또는 일부 구간 제한적 조정 가능성 우세',
+  'news.summary.li6':     '7월은 추가 인하 가능성이 존재하지만 환율과 지정학 변수로 인하 폭 제한 가능',
   'news.surchargeNote':  '※ 유류할증료는 발권일 기준 적용됩니다. 6월 확정 공시와 7월 시장 전망을 혼동하지 말고, 최종 발권 전 항공사 공식 공지를 확인하세요.',
   'news.sectionPrev':    '📚 이전 뉴스 / 이전 분석 기록',
   'news.sectionPrevSub': '※ 아래 내용은 각 작성 시점 기준의 시장 분석 기록입니다.',
@@ -1589,7 +1589,7 @@ en:{
   'news.impact.prefix':'→ Surcharge impact: ',
   /* predict box */
   'news.predict.subtitle':'Data-based estimate',
-  'news.predict.footnote':'* May surcharge confirmed by official notice. June outlook is market-data reference only.',
+  'news.predict.footnote':'* June surcharge uses confirmed official filings where available. July outlook is market-data reference only.',
   'news.predict.brentLabel':'Brent Crude',
   'news.predict.mopsLabel':'Singapore Jet Fuel (MOPS)',
   'news.predict.mopsValue':'Rebounding after partial pullback, still elevated',
@@ -2804,6 +2804,643 @@ de:{
 },
 }; /* end I18N */
 
+/* 2026.05.24 10:30 KST topic-based news cards
+   Shared data shape for news.html, FAQ schema, and future archive reuse. */
+window.AERO_NEWS_CARDS_20260524 = [
+  {
+    id: 'news-20260524-june-surcharge-cut',
+    slug: 'june-international-fuel-surcharge-cut-2026',
+    category: 'airline',
+    priority: 1,
+    date: '2026-05-24',
+    updatedAt: '2026.05.24 10:30 KST 업데이트',
+    aiSummary: true,
+    relevanceScore: 1,
+    title: '2026년 6월 국제선 유류할증료 인하 확정: 대한항공 최대 112,500원 인하',
+    aiBrief: '2026년 6월 발권 국제선 유류할증료는 항공유 가격 하락 영향으로 인하 흐름이 확정되었습니다. 대한항공 기준 장거리 최상위 구간은 564,000원에서 451,500원으로 112,500원 내려갔습니다.',
+    summary: '6월 국제선 유류할증료는 5월 대비 낮아진 항공유 기준 가격을 반영해 주요 구간에서 인하되었습니다.\n\n핵심 변화\n- 대한항공 최상위 장거리: 564,000원 -> 451,500원\n- 인하액: 112,500원\n- 소비자 관점: 6월 발권분은 5월 발권분보다 유류할증료 부담이 낮아졌습니다.\n\n다만 유류할증료는 발권일 기준으로 적용되므로 실제 결제 전 항공사 예매 화면의 총액을 확인해야 합니다.',
+    impact: '국제선 유류할증료 인하 검색 의도에 대응하는 확정 데이터 카드입니다.',
+    sourceName: '대한항공 6월 공시 및 항공업계 보도 기반',
+    sourceUrl: 'https://biz.chosun.com/industry/company/2026/05/18/WC6GLCWTA5C2DCUFP3UZ4PCVFE/?outputType=amp',
+    tags: ['국제선 유류할증료 인하', '대한항공 유류할증료', '2026년 6월 유류할증료', '발권일 기준'],
+    faq: [
+      { q: '2026년 6월 국제선 유류할증료는 인하됐나요?', a: '네. 대한항공 등 주요 항공사의 6월 국제선 유류할증료는 5월 대비 인하 흐름이 확인됩니다.' },
+      { q: '대한항공 유류할증료는 얼마나 내려갔나요?', a: '대한항공 최상위 장거리 구간은 564,000원에서 451,500원으로 112,500원 인하되었습니다.' },
+      { q: '유류할증료는 탑승일 기준인가요?', a: '아닙니다. 유류할증료는 일반적으로 탑승일이 아니라 발권일 기준으로 적용됩니다.' }
+    ],
+    links: [
+      { href: 'airlines.html', label: '항공사별 유류할증료 공시 보기' },
+      { href: 'index.html', label: '노선별 유류할증료 조회' },
+      { href: 'fuel-surcharge-graph.html', label: '월별 유류할증료 그래프 확인' }
+    ]
+  },
+  {
+    id: 'news-20260524-mops-drop',
+    slug: 'mops-jet-fuel-price-drop-2026',
+    category: 'market',
+    priority: 1,
+    date: '2026-05-24',
+    updatedAt: '2026.05.24 10:30 KST 업데이트',
+    aiSummary: true,
+    relevanceScore: 1,
+    title: 'MOPS 급락으로 국제선 유류할증료 하락세 지속: 511.21 -> 410.02 cents/gal',
+    aiBrief: '싱가포르 항공유 가격 지표인 MOPS가 511.21 cents/gal에서 410.02 cents/gal로 하락했습니다. 항공유 기준 가격 하락은 6월 유류할증료 인하의 핵심 배경이며, 7월 추가 인하 가능성을 판단할 때도 가장 중요한 변수입니다.',
+    summary: 'MOPS는 국제선 유류할증료 산정에 직접 영향을 주는 항공유 가격 지표입니다.\n\n수치 변화\n- 이전 고점 참고: 511.21 cents/gal\n- 6월 산정 기준 보도: 410.02 cents/gal\n- 변화: 약 101.19 cents/gal 하락\n\nMOPS 하락은 유류할증료 인하 압력으로 작용합니다. 다만 7월 유류할증료는 6월 중 평균 항공유 가격과 환율, 항공사별 공시 기준을 함께 봐야 합니다.',
+    impact: 'MOPS 하락, 항공유 가격, 유류할증료 예상 검색 의도에 대응합니다.',
+    sourceName: '항공유 MOPS 기준 가격 보도',
+    sourceUrl: 'https://biz.chosun.com/industry/company/2026/05/18/WC6GLCWTA5C2DCUFP3UZ4PCVFE/?outputType=amp',
+    tags: ['MOPS 하락', '항공유 가격', '싱가포르 항공유', '유류할증료 예상'],
+    faq: [
+      { q: 'MOPS 하락이 왜 유류할증료에 중요한가요?', a: 'MOPS는 항공유 가격 기준으로 쓰이며, 항공유 가격이 내려가면 국제선 유류할증료 인하 압력이 커집니다.' },
+      { q: 'MOPS 410.02 cents/gal은 무엇을 의미하나요?', a: '6월 유류할증료 산정 기준이 된 싱가포르 항공유 현물시장 가격 지표로 보도된 수치입니다.' },
+      { q: 'MOPS가 하락하면 7월 유류할증료도 무조건 내려가나요?', a: '무조건은 아닙니다. 7월에는 6월 중 항공유 평균, 원달러 환율, 항공사 정책이 함께 반영됩니다.' }
+    ],
+    links: [
+      { href: 'fuel-surcharge-2026-06-forecast.html', label: '2026년 7월 유류할증료 전망 보기' },
+      { href: 'fuel-surcharge-graph.html', label: 'MOPS와 유류할증료 흐름 비교' },
+      { href: 'fuel-surcharge-calculator.html', label: '발권월별 절약액 계산' }
+    ]
+  },
+  {
+    id: 'news-20260524-usdkrw-stabilizes',
+    slug: 'usd-krw-fuel-surcharge-relationship-2026',
+    category: 'market',
+    priority: 1,
+    date: '2026-05-24',
+    updatedAt: '2026.05.24 10:30 KST 업데이트',
+    aiSummary: true,
+    relevanceScore: 0.95,
+    title: '원달러 환율 변동성 완화: 유류할증료 추가 인하를 제한하는 변수는 여전히 환율',
+    aiBrief: '2026.05.24 10:30 KST는 주말 시점이므로 최신 실시간 환율 대신 2026.05.22 공개 USD/KRW 데이터를 참고해야 합니다. 원달러 환율은 1,500원대 전후의 높은 구간에 있어 MOPS 하락 효과를 일부 제한할 수 있습니다.',
+    summary: '원달러 환율은 항공사가 원화 기준 유류할증료를 공시할 때 중요한 변수입니다.\n\n확인 기준\n- 2026.05.22 공개 USD/KRW 데이터: 약 1,504~1,512원 범위\n- 2026.05.24 10:30 KST: 주말 시점으로 실시간 환율 확인 필요\n- 해석: 변동성은 다소 완화됐지만 환율 레벨은 여전히 높은 편입니다.\n\n따라서 MOPS가 내려가더라도 원달러 환율이 높게 유지되면 7월 유류할증료 인하 폭은 제한될 수 있습니다.',
+    impact: '환율과 항공권 가격 관계, 유류할증료 인하 제한 요인을 설명합니다.',
+    sourceName: 'USD/KRW 공개 환율 히스토리',
+    sourceUrl: 'https://www.poundsterlinglive.com/history/USD-KRW-2026',
+    tags: ['원달러 환율', 'USD/KRW', '항공권 가격', '유류할증료 영향'],
+    faq: [
+      { q: '환율이 유류할증료에 영향을 주나요?', a: '네. 항공유 가격이 달러 기반으로 움직이기 때문에 원달러 환율이 높으면 원화 기준 유류할증료 인하 폭이 줄어들 수 있습니다.' },
+      { q: '2026.05.24 10:30 KST 환율은 왜 실시간 확인이 필요한가요?', a: '해당 시점은 주말로 시장 데이터 제공처마다 반영 방식이 달라 최종 결제 전 실시간 환율 확인이 필요합니다.' },
+      { q: '환율 변동성이 완화되면 항공권이 바로 싸지나요?', a: '바로 반영되지는 않습니다. 항공권 총액은 운임, 유류할증료, 세금, 좌석 상황이 함께 결정합니다.' }
+    ],
+    links: [
+      { href: 'fuel-surcharge-calculator.html', label: '환율 반영 절약액 계산하기' },
+      { href: 'fuel-surcharge-2026-06-forecast.html', label: '7월 유류할증료 환율 변수 보기' },
+      { href: 'index.html', label: '노선별 총 부담 확인' }
+    ]
+  },
+  {
+    id: 'news-20260524-hormuz-risk',
+    slug: 'hormuz-risk-oil-price-fuel-surcharge-2026',
+    category: 'market',
+    priority: 1,
+    date: '2026-05-24',
+    updatedAt: '2026.05.24 10:30 KST 업데이트',
+    aiSummary: true,
+    relevanceScore: 0.95,
+    title: '호르무즈 해협 리스크 현황: 미국-이란 협상 기대감에도 완전 해소는 아님',
+    aiBrief: '미국-이란 협상 기대감은 국제유가의 리스크 프리미엄을 낮추는 요인입니다. 다만 호르무즈 해협 관련 불확실성이 완전히 사라진 것은 아니어서 7월 유류할증료 전망에는 하방 요인과 상방 리스크가 동시에 남아 있습니다.',
+    summary: '호르무즈 해협 리스크는 국제유가와 항공유 가격에 영향을 주는 지정학 변수입니다.\n\n현재 해석\n- 미국-이란 협상 기대감: 유가 리스크 프리미엄 완화 요인\n- 호르무즈 리스크: 완전 해소 전\n- 유류할증료 영향: MOPS 하락을 지지하지만, 지정학 재확대 시 인하 폭이 줄어들 수 있음\n\n즉 7월 유류할증료는 추가 인하 가능성이 존재하지만, 지정학 리스크가 재확대될 경우 일부 구간은 제한적 조정에 그칠 수 있습니다.',
+    impact: '호르무즈 해협 리스크와 국제유가가 유류할증료에 미치는 영향을 분리 설명합니다.',
+    sourceName: 'AP 미국-이란 협상 및 호르무즈 보도',
+    sourceUrl: 'https://apnews.com/article/1c283f26d037102cc5e6f798546d0e59',
+    tags: ['호르무즈 해협 리스크', '국제유가', '미국 이란 협상', '항공유 가격'],
+    faq: [
+      { q: '호르무즈 해협 리스크가 유류할증료에 영향을 주나요?', a: '네. 호르무즈 리스크는 국제유가와 항공유 가격의 리스크 프리미엄을 키워 유류할증료 하락을 제한할 수 있습니다.' },
+      { q: '미국-이란 협상 기대감은 유류할증료에 어떤 의미인가요?', a: '협상 기대감은 유가와 항공유 가격을 낮추는 방향으로 작용할 수 있어 7월 유류할증료 추가 인하 가능성을 높입니다.' },
+      { q: '호르무즈 리스크는 완전히 해소됐나요?', a: '아직 완전 해소로 보기 어렵습니다. 협상 기대감은 있지만 시장은 일부 리스크 프리미엄을 유지하고 있습니다.' }
+    ],
+    links: [
+      { href: 'news.html#news-20260524-mops-drop', label: 'MOPS 하락 카드 함께 보기' },
+      { href: 'fuel-surcharge-2026-06-forecast.html', label: '7월 전망에서 지정학 변수 확인' },
+      { href: 'fuel-surcharge-graph.html', label: '유류할증료 추세 그래프 보기' }
+    ]
+  },
+  {
+    id: 'news-20260524-july-outlook',
+    slug: 'july-2026-fuel-surcharge-outlook',
+    category: 'market',
+    priority: 1,
+    date: '2026-05-24',
+    updatedAt: '2026.05.24 10:30 KST 업데이트',
+    aiSummary: true,
+    relevanceScore: 1,
+    title: '2026년 7월 유류할증료 추가 인하 가능성: MOPS 하락과 환율이 핵심 변수',
+    aiBrief: '2026년 7월 유류할증료는 6월 확정 공시가 아니라 시장 기반 전망으로 봐야 합니다. MOPS가 410.02 cents/gal까지 내려간 점은 추가 인하 요인이지만, 원달러 환율과 호르무즈 리스크가 인하 폭을 제한할 수 있습니다.',
+    summary: '2026년 7월 유류할증료는 아직 확정 공시가 아닙니다. 현재 기준으로는 추가 인하 가능성이 존재하지만, 인하 폭은 제한될 수 있습니다.\n\n7월 전망 핵심\n- 인하 요인: MOPS 511.21 -> 410.02 cents/gal 하락\n- 제한 요인: 원달러 환율 1,500원대 전후\n- 리스크 요인: 호르무즈 해협 불확실성 완전 해소 전\n- 소비자 판단: 단거리 노선은 운임 자체, 장거리 노선은 유류할증료와 환율을 함께 확인\n\n결론: 7월 유류할증료는 추가 인하 가능성이 존재하지만, 확정 금액은 6월 중 항공사 공식 공시를 확인해야 합니다.',
+    impact: '2026년 7월 유류할증료 전망, 유류할증료 예상 검색 의도에 대응하는 대표 카드입니다.',
+    sourceName: '시장 지표 종합 분석 (2026.05.24 10:30 KST)',
+    sourceUrl: 'fuel-surcharge-2026-06-forecast.html',
+    tags: ['2026년 7월 유류할증료 전망', '유류할증료 예상', '국제선 유류할증료 인하', 'MOPS 하락'],
+    faq: [
+      { q: '2026년 7월 유류할증료는 더 내려갈 가능성이 있나요?', a: '가능성은 있습니다. MOPS 하락은 추가 인하 요인이지만, 환율과 지정학 리스크 때문에 인하 폭은 제한될 수 있습니다.' },
+      { q: '7월 유류할증료는 확정됐나요?', a: '아직 확정 공시가 아닙니다. 7월 확정 금액은 6월 중 각 항공사 공식 채널에서 확인해야 합니다.' },
+      { q: '단거리와 장거리 노선 중 어디가 유류할증료 영향을 더 받나요?', a: '단거리 노선은 운임 자체 영향이 더 클 수 있고, 장거리 노선은 유류할증료와 환율 영향을 함께 확인하는 것이 유리합니다.' }
+    ],
+    links: [
+      { href: 'fuel-surcharge-2026-06-forecast.html', label: '2026년 7월 유류할증료 전망 상세' },
+      { href: 'fuel-surcharge-calculator.html', label: '5월·6월 발권 절약액 계산' },
+      { href: 'airlines.html', label: '항공사별 공식 공시 확인' }
+    ]
+  }
+];
+
+(function(){
+  var tr = {
+    'news-20260524-june-surcharge-cut': {
+      en: {
+        updatedAt: 'Updated 2026.05.24 10:30 KST',
+        title: 'June 2026 international fuel surcharge cuts confirmed: Korean Air down by up to KRW 112,500',
+        aiBrief: 'June 2026 ticketing surcharges are moving lower as jet fuel prices fell. Korean Air’s highest long-haul band declined from KRW 564,000 to KRW 451,500, a KRW 112,500 reduction.',
+        summary: 'The June international fuel surcharge reflects a lower jet fuel pricing base versus May.\n\nKey change\n- Korean Air highest long-haul band: KRW 564,000 -> KRW 451,500\n- Reduction: KRW 112,500\n- Consumer meaning: June ticketing carries a lower surcharge burden than May ticketing.\n\nFuel surcharges apply by ticketing date, so always confirm the final total on the airline booking screen.',
+        impact: 'Confirmed-data card for searches about international fuel surcharge cuts.',
+        sourceName: 'Korean Air June filing and airline-industry reporting',
+        tags: ['international fuel surcharge cut', 'Korean Air fuel surcharge', 'June 2026 fuel surcharge', 'ticketing date basis'],
+        faq: [
+          { q: 'Did June 2026 international fuel surcharges go down?', a: 'Yes. Major Korea-departure international surcharges including Korean Air show a lower June filing versus May.' },
+          { q: 'How much did Korean Air’s surcharge fall?', a: 'The highest long-haul band fell from KRW 564,000 to KRW 451,500, down KRW 112,500.' },
+          { q: 'Are fuel surcharges based on travel date?', a: 'No. They are generally applied by ticketing date, not departure date.' }
+        ],
+        links: [
+          { href: 'airlines.html', label: 'View airline surcharge notices' },
+          { href: 'index.html', label: 'Search surcharge by route' },
+          { href: 'fuel-surcharge-graph.html', label: 'See monthly surcharge chart' }
+        ]
+      }
+    },
+    'news-20260524-mops-drop': {
+      en: {
+        updatedAt: 'Updated 2026.05.24 10:30 KST',
+        title: 'MOPS drop keeps international fuel surcharge trend lower: 511.21 -> 410.02 cents/gal',
+        aiBrief: 'Singapore jet fuel MOPS fell from 511.21 to 410.02 cents/gal. This drop is the key reason June surcharges came down and the most important variable for possible July cuts.',
+        summary: 'MOPS is a jet fuel price benchmark that directly affects international fuel surcharge calculations.\n\nNumerical change\n- Previous high reference: 511.21 cents/gal\n- Reported June calculation base: 410.02 cents/gal\n- Change: down about 101.19 cents/gal\n\nLower MOPS creates downward pressure on surcharges. July still depends on June average jet fuel prices, FX rates, and each airline’s filing rules.',
+        impact: 'Covers search intent for MOPS decline, jet fuel prices, and fuel surcharge forecasts.',
+        sourceName: 'Reported jet fuel MOPS benchmark',
+        tags: ['MOPS drop', 'jet fuel price', 'Singapore jet fuel', 'fuel surcharge forecast'],
+        faq: [
+          { q: 'Why does MOPS matter for fuel surcharges?', a: 'MOPS is used as a jet fuel price benchmark. When jet fuel falls, downward pressure on international fuel surcharges increases.' },
+          { q: 'What does 410.02 cents/gal mean?', a: 'It is the reported Singapore jet fuel spot-market benchmark used for June surcharge calculations.' },
+          { q: 'If MOPS falls, will July surcharges automatically fall?', a: 'Not automatically. July also reflects June average jet fuel prices, USD/KRW, and airline policy.' }
+        ],
+        links: [
+          { href: 'fuel-surcharge-2026-06-forecast.html', label: 'View July 2026 surcharge outlook' },
+          { href: 'fuel-surcharge-graph.html', label: 'Compare MOPS and surcharge trends' },
+          { href: 'fuel-surcharge-calculator.html', label: 'Calculate ticketing-month savings' }
+        ]
+      }
+    },
+    'news-20260524-usdkrw-stabilizes': {
+      en: {
+        updatedAt: 'Updated 2026.05.24 10:30 KST',
+        title: 'USD/KRW volatility eases, but FX still limits further fuel surcharge cuts',
+        aiBrief: 'Because 2026.05.24 10:30 KST falls on a weekend, the latest public USD/KRW reference is the May 22 range. The exchange rate remains around the high 1,500 KRW zone, which can limit the benefit from lower MOPS.',
+        summary: 'USD/KRW matters when airlines publish won-denominated fuel surcharges.\n\nReference points\n- Public May 22 USD/KRW data: roughly KRW 1,504~1,512\n- 2026.05.24 10:30 KST: real-time weekend FX check required\n- Interpretation: volatility has eased somewhat, but the level is still high.\n\nEven if MOPS falls, a high USD/KRW rate can limit the size of July surcharge cuts.',
+        impact: 'Explains how FX can limit fuel surcharge cuts and affect ticket totals.',
+        sourceName: 'Public USD/KRW history',
+        tags: ['USD/KRW', 'exchange rate', 'air ticket price', 'fuel surcharge impact'],
+        faq: [
+          { q: 'Does exchange rate affect fuel surcharges?', a: 'Yes. Jet fuel is dollar-linked, so a high USD/KRW can reduce the won-denominated benefit of lower fuel prices.' },
+          { q: 'Why check real-time FX for 2026.05.24 10:30 KST?', a: 'It is a weekend timestamp, and providers can differ in how they publish or roll forward data.' },
+          { q: 'Does lower FX volatility immediately make tickets cheaper?', a: 'No. Total ticket price also depends on fare, taxes, surcharge, and seat availability.' }
+        ],
+        links: [
+          { href: 'fuel-surcharge-calculator.html', label: 'Calculate FX-adjusted savings' },
+          { href: 'fuel-surcharge-2026-06-forecast.html', label: 'See FX variable in July outlook' },
+          { href: 'index.html', label: 'Check route-level total burden' }
+        ]
+      }
+    },
+    'news-20260524-hormuz-risk': {
+      en: {
+        updatedAt: 'Updated 2026.05.24 10:30 KST',
+        title: 'Strait of Hormuz risk update: US-Iran talks help, but risk is not fully resolved',
+        aiBrief: 'US-Iran negotiation hopes can reduce the oil risk premium. However, Hormuz uncertainty has not fully disappeared, so the July surcharge outlook still contains both downside support and upside risk.',
+        summary: 'Hormuz risk is a geopolitical variable for crude oil and jet fuel prices.\n\nCurrent reading\n- US-Iran talks: possible easing factor for oil risk premium\n- Hormuz risk: not fully resolved\n- Surcharge impact: supports lower MOPS, but renewed tension could limit cuts\n\nJuly surcharges may fall further, but renewed geopolitical risk could keep some bands from moving much.',
+        impact: 'Separates the effect of Hormuz risk and oil prices on fuel surcharges.',
+        sourceName: 'AP reporting on US-Iran talks and Hormuz risk',
+        tags: ['Strait of Hormuz risk', 'oil price', 'US Iran talks', 'jet fuel price'],
+        faq: [
+          { q: 'Does Hormuz risk affect fuel surcharges?', a: 'Yes. Hormuz risk can lift the risk premium in crude and jet fuel prices, limiting surcharge declines.' },
+          { q: 'What do US-Iran talks mean for surcharges?', a: 'Negotiation hopes can ease oil and jet fuel prices, increasing the chance of July surcharge cuts.' },
+          { q: 'Is Hormuz risk fully resolved?', a: 'No. There are negotiation hopes, but the market still keeps some risk premium.' }
+        ],
+        links: [
+          { href: 'news.html#news-20260524-mops-drop', label: 'Read the MOPS drop card' },
+          { href: 'fuel-surcharge-2026-06-forecast.html', label: 'Check geopolitics in July outlook' },
+          { href: 'fuel-surcharge-graph.html', label: 'See surcharge trend chart' }
+        ]
+      }
+    },
+    'news-20260524-july-outlook': {
+      en: {
+        updatedAt: 'Updated 2026.05.24 10:30 KST',
+        title: 'July 2026 fuel surcharge outlook: further cuts possible as MOPS falls, FX remains key',
+        aiBrief: 'July 2026 surcharges should be read as a market-based outlook, not a confirmed filing. MOPS at 410.02 cents/gal supports further cuts, while USD/KRW and Hormuz risk can limit the size.',
+        summary: 'July 2026 fuel surcharges are not officially confirmed yet. Further cuts are possible, but the size may be limited.\n\nJuly outlook\n- Cut driver: MOPS 511.21 -> 410.02 cents/gal\n- Limiting factor: USD/KRW around the 1,500 KRW zone\n- Risk factor: Hormuz uncertainty not fully resolved\n- Consumer guide: short-haul depends more on fare itself, while long-haul should check surcharge and FX together\n\nConclusion: July has room for further cuts, but final amounts must be checked through official airline notices in June.',
+        impact: 'Representative card for July 2026 fuel surcharge outlook and forecast search intent.',
+        sourceName: 'Market indicator synthesis (2026.05.24 10:30 KST)',
+        tags: ['July 2026 fuel surcharge outlook', 'fuel surcharge forecast', 'international surcharge cut', 'MOPS drop'],
+        faq: [
+          { q: 'Can July 2026 fuel surcharges fall further?', a: 'Yes, there is room for further cuts because MOPS fell, but FX and geopolitics may limit the size.' },
+          { q: 'Are July surcharges confirmed?', a: 'No. Final July amounts should be checked through each airline’s official channel in June.' },
+          { q: 'Do short-haul and long-haul routes react differently?', a: 'Short-haul routes may be affected more by fare itself, while long-haul routes should check both surcharge and FX.' }
+        ],
+        links: [
+          { href: 'fuel-surcharge-2026-06-forecast.html', label: 'Detailed July 2026 outlook' },
+          { href: 'fuel-surcharge-calculator.html', label: 'Calculate May vs June savings' },
+          { href: 'airlines.html', label: 'Check official airline notices' }
+        ]
+      }
+    },
+    zh: {
+      'news-20260524-june-surcharge-cut': {
+        updatedAt: '2026.05.24 10:30 KST 更新',
+        title: '2026年6月国际线燃油附加费下调确认：大韩航空最高下调112,500韩元',
+        aiBrief: '受航空燃油价格下降影响，2026年6月出票的国际线燃油附加费已确认下调。以大韩航空为例，最长距离区间从564,000韩元降至451,500韩元，下降112,500韩元。',
+        summary: '6月国际线燃油附加费反映了较5月更低的航空燃油基准价格，主要区间出现下调。\n\n核心变化\n- 大韩航空最长距离区间：564,000韩元 -> 451,500韩元\n- 下调金额：112,500韩元\n- 对消费者的意义：6月出票比5月出票的燃油附加费负担更低。\n\n燃油附加费按出票日适用，付款前请在航空公司预订页面确认最终总额。',
+        impact: '面向“国际线燃油附加费下调”搜索意图的确认数据卡片。',
+        sourceName: '大韩航空6月公告及航空业报道',
+        tags: ['国际线燃油附加费下调', '大韩航空燃油附加费', '2026年6月燃油附加费', '出票日标准'],
+        faq: [
+          { q: '2026年6月国际线燃油附加费下调了吗？', a: '是的。包括大韩航空在内的主要韩国出发国际线6月公告显示较5月下调。' },
+          { q: '大韩航空燃油附加费下调多少？', a: '最长距离区间从564,000韩元降至451,500韩元，下降112,500韩元。' },
+          { q: '燃油附加费按乘机日计算吗？', a: '不是。一般按出票日而不是乘机日适用。' }
+        ],
+        links: [
+          { href: 'airlines.html', label: '查看各航空公司公告' },
+          { href: 'index.html', label: '按航线查询' },
+          { href: 'fuel-surcharge-graph.html', label: '查看月度图表' }
+        ]
+      },
+      'news-20260524-mops-drop': {
+        updatedAt: '2026.05.24 10:30 KST 更新',
+        title: 'MOPS大幅下跌，国际线燃油附加费延续下降趋势：511.21 -> 410.02 cents/gal',
+        aiBrief: '新加坡航空燃油指标MOPS从511.21 cents/gal降至410.02 cents/gal。这是6月燃油附加费下调的核心原因，也是判断7月是否继续下调的重要变量。',
+        summary: 'MOPS是直接影响国际线燃油附加费计算的航空燃油价格指标。\n\n数值变化\n- 前期高位参考：511.21 cents/gal\n- 6月计算基准报道：410.02 cents/gal\n- 变化：约下降101.19 cents/gal\n\nMOPS下跌会形成燃油附加费下调压力。但7月仍需结合6月平均航空燃油价格、汇率和航空公司公告规则判断。',
+        impact: '对应MOPS下跌、航空燃油价格、燃油附加费预测等搜索意图。',
+        sourceName: '航空燃油MOPS基准价格报道',
+        tags: ['MOPS下跌', '航空燃油价格', '新加坡航空燃油', '燃油附加费预测'],
+        faq: [
+          { q: 'MOPS下跌为什么重要？', a: 'MOPS是航空燃油价格基准，航空燃油下降会增强国际线燃油附加费下调压力。' },
+          { q: 'MOPS 410.02 cents/gal是什么意思？', a: '这是被报道用于6月燃油附加费计算的新加坡航空燃油现货市场指标。' },
+          { q: 'MOPS下降后7月一定会下调吗？', a: '不一定。7月还会反映6月平均航空燃油价格、USD/KRW和航空公司政策。' }
+        ],
+        links: [
+          { href: 'fuel-surcharge-2026-06-forecast.html', label: '查看2026年7月展望' },
+          { href: 'fuel-surcharge-graph.html', label: '比较MOPS和附加费趋势' },
+          { href: 'fuel-surcharge-calculator.html', label: '计算出票月份节省额' }
+        ]
+      },
+      'news-20260524-usdkrw-stabilizes': {
+        updatedAt: '2026.05.24 10:30 KST 更新',
+        title: '韩元/美元汇率波动缓和，但仍限制燃油附加费进一步下调',
+        aiBrief: '2026.05.24 10:30 KST为周末时点，因此需参考2026.05.22公开USD/KRW数据。汇率仍在1,500韩元附近的高位，可能部分抵消MOPS下跌效果。',
+        summary: '韩元/美元汇率是航空公司公布韩元计价燃油附加费时的重要变量。\n\n确认基准\n- 2026.05.22公开USD/KRW：约1,504~1,512韩元\n- 2026.05.24 10:30 KST：周末时点，需确认实时汇率\n- 解读：波动性有所缓和，但汇率水平仍偏高。\n\n即使MOPS下降，如果USD/KRW维持高位，7月燃油附加费下调幅度也可能受限。',
+        impact: '解释汇率与机票价格、燃油附加费下调限制因素。',
+        sourceName: 'USD/KRW公开汇率历史',
+        tags: ['韩元美元汇率', 'USD/KRW', '机票价格', '燃油附加费影响'],
+        faq: [
+          { q: '汇率会影响燃油附加费吗？', a: '会。航空燃油受美元计价影响，USD/KRW较高会削弱燃油价格下降带来的韩元计价下调效果。' },
+          { q: '为什么2026.05.24 10:30 KST需要确认实时汇率？', a: '该时点为周末，不同数据源的更新和延续方式可能不同。' },
+          { q: '汇率波动缓和后机票会马上变便宜吗？', a: '不会马上反映。机票总价还取决于票价、税费、燃油附加费和座位情况。' }
+        ],
+        links: [
+          { href: 'fuel-surcharge-calculator.html', label: '计算汇率影响节省额' },
+          { href: 'fuel-surcharge-2026-06-forecast.html', label: '查看7月展望中的汇率变量' },
+          { href: 'index.html', label: '确认航线负担' }
+        ]
+      },
+      'news-20260524-hormuz-risk': {
+        updatedAt: '2026.05.24 10:30 KST 更新',
+        title: '霍尔木兹海峡风险现状：美国-伊朗谈判预期存在，但尚未完全解除',
+        aiBrief: '美国-伊朗谈判预期有助于降低国际油价风险溢价。但霍尔木兹海峡不确定性尚未完全消失，因此7月燃油附加费展望中同时存在下行因素和上行风险。',
+        summary: '霍尔木兹海峡风险是影响国际油价和航空燃油价格的地缘政治变量。\n\n当前解读\n- 美国-伊朗谈判：可能缓和油价风险溢价\n- 霍尔木兹风险：尚未完全解除\n- 对燃油附加费影响：支持MOPS下行，但紧张再扩大时可能限制下调幅度\n\n因此7月燃油附加费存在继续下调可能，但地缘政治风险再次扩大时部分区间可能仅小幅调整。',
+        impact: '分离说明霍尔木兹海峡风险和国际油价对燃油附加费的影响。',
+        sourceName: 'AP美国-伊朗谈判及霍尔木兹报道',
+        tags: ['霍尔木兹海峡风险', '国际油价', '美国伊朗谈判', '航空燃油价格'],
+        faq: [
+          { q: '霍尔木兹风险会影响燃油附加费吗？', a: '会。该风险会提高原油和航空燃油风险溢价，从而限制燃油附加费下降。' },
+          { q: '美国-伊朗谈判对燃油附加费意味着什么？', a: '谈判预期可能压低油价和航空燃油价格，提高7月继续下调的可能性。' },
+          { q: '霍尔木兹风险已经完全解除了吗？', a: '还没有。虽然存在谈判预期，但市场仍保留部分风险溢价。' }
+        ],
+        links: [
+          { href: 'news.html#news-20260524-mops-drop', label: '查看MOPS下跌卡片' },
+          { href: 'fuel-surcharge-2026-06-forecast.html', label: '查看7月展望地缘因素' },
+          { href: 'fuel-surcharge-graph.html', label: '查看趋势图' }
+        ]
+      },
+      'news-20260524-july-outlook': {
+        updatedAt: '2026.05.24 10:30 KST 更新',
+        title: '2026年7月燃油附加费继续下调可能性：MOPS下跌与汇率是关键',
+        aiBrief: '2026年7月燃油附加费应视为市场展望，而非确认公告。MOPS降至410.02 cents/gal支持继续下调，但汇率和霍尔木兹风险可能限制幅度。',
+        summary: '2026年7月燃油附加费尚未正式确认。当前存在继续下调可能，但下调幅度可能受限。\n\n7月展望\n- 下调因素：MOPS 511.21 -> 410.02 cents/gal\n- 限制因素：USD/KRW在1,500韩元附近\n- 风险因素：霍尔木兹海峡不确定性尚未完全解除\n- 消费者判断：短途更受票价本身影响，长途需同时确认燃油附加费和汇率\n\n结论：7月存在继续下调空间，但最终金额需通过6月各航空公司官方公告确认。',
+        impact: '对应2026年7月燃油附加费展望和预测搜索意图的代表卡片。',
+        sourceName: '市场指标综合分析 (2026.05.24 10:30 KST)',
+        tags: ['2026年7月燃油附加费展望', '燃油附加费预测', '国际线燃油附加费下调', 'MOPS下跌'],
+        faq: [
+          { q: '2026年7月燃油附加费还会下降吗？', a: '有可能。MOPS下降是下调因素，但汇率和地缘风险可能限制幅度。' },
+          { q: '7月燃油附加费已经确定了吗？', a: '尚未确定。最终金额需在6月通过各航空公司官方渠道确认。' },
+          { q: '短途和长途受影响不同吗？', a: '短途可能更受票价本身影响，长途则应同时确认燃油附加费和汇率影响。' }
+        ],
+        links: [
+          { href: 'fuel-surcharge-2026-06-forecast.html', label: '2026年7月展望详情' },
+          { href: 'fuel-surcharge-calculator.html', label: '计算5月/6月节省额' },
+          { href: 'airlines.html', label: '查看航空公司官方公告' }
+        ]
+      }
+    }
+  };
+  (window.AERO_NEWS_CARDS_20260524 || []).forEach(function(card){
+    if(tr[card.id]) card.i18n = tr[card.id];
+  });
+  var local = {
+    ja: {
+      'news-20260524-june-surcharge-cut': {
+        updatedAt: '2026.05.24 10:30 KST 更新',
+        title: '2026年6月 国際線燃油サーチャージ引き下げ確定：大韓航空は最大112,500ウォン下落',
+        aiBrief: '2026年6月発券分の国際線燃油サーチャージは、航空燃油価格の下落を受けて引き下げられました。大韓航空の最長距離帯は564,000ウォンから451,500ウォンへ、112,500ウォン下がりました。',
+        summary: '6月の国際線燃油サーチャージは、5月より低い航空燃油基準価格を反映して主要区間で引き下げられました。\n\n主な変化\n- 大韓航空 最長距離帯: 564,000ウォン -> 451,500ウォン\n- 引き下げ額: 112,500ウォン\n- 利用者への意味: 6月発券分は5月発券分より燃油サーチャージ負担が軽くなります。\n\n燃油サーチャージは搭乗日ではなく発券日基準で適用されるため、決済前に航空会社の予約画面で総額を確認してください。',
+        impact: '国際線燃油サーチャージ引き下げに関する確定データカードです。',
+        sourceName: '大韓航空6月公示および航空業界報道',
+        tags: ['国際線燃油サーチャージ引き下げ', '大韓航空 燃油サーチャージ', '2026年6月 燃油サーチャージ', '発券日基準'],
+        faq: [
+          { q: '2026年6月の国際線燃油サーチャージは下がりましたか？', a: 'はい。大韓航空を含む主要な韓国発国際線の6月公示では、5月より低い水準が確認されています。' },
+          { q: '大韓航空の燃油サーチャージはいくら下がりましたか？', a: '最長距離帯は564,000ウォンから451,500ウォンへ、112,500ウォン下がりました。' },
+          { q: '燃油サーチャージは搭乗日基準ですか？', a: 'いいえ。一般的に搭乗日ではなく発券日基準で適用されます。' }
+        ],
+        links: [
+          { href: 'airlines.html', label: '航空会社別公示を見る' },
+          { href: 'index.html', label: '路線別に検索' },
+          { href: 'fuel-surcharge-graph.html', label: '月別グラフを見る' }
+        ]
+      },
+      'news-20260524-mops-drop': {
+        updatedAt: '2026.05.24 10:30 KST 更新',
+        title: 'MOPS急落で国際線燃油サーチャージの下落基調続く：511.21 -> 410.02 cents/gal',
+        aiBrief: 'シンガポール航空燃油指標のMOPSは511.21 cents/galから410.02 cents/galへ下落しました。6月サーチャージ引き下げの主因であり、7月の追加引き下げ可能性を判断する重要指標です。',
+        summary: 'MOPSは国際線燃油サーチャージ算定に直接影響する航空燃油価格指標です。\n\n数値変化\n- 以前の高値参考: 511.21 cents/gal\n- 6月算定基準として報道: 410.02 cents/gal\n- 変化: 約101.19 cents/gal下落\n\nMOPS下落は燃油サーチャージの引き下げ圧力になります。ただし7月分は6月中の平均航空燃油価格、為替、航空会社別公示基準を合わせて見る必要があります。',
+        impact: 'MOPS下落、航空燃油価格、燃油サーチャージ予想に対応します。',
+        sourceName: '航空燃油MOPS基準価格報道',
+        tags: ['MOPS下落', '航空燃油価格', 'シンガポール航空燃油', '燃油サーチャージ予想'],
+        faq: [
+          { q: 'MOPS下落はなぜ重要ですか？', a: 'MOPSは航空燃油価格の基準であり、航空燃油が下がると国際線燃油サーチャージの引き下げ圧力が強まります。' },
+          { q: 'MOPS 410.02 cents/galとは何ですか？', a: '6月燃油サーチャージ算定基準として報道されたシンガポール航空燃油現物市場の指標です。' },
+          { q: 'MOPSが下がれば7月も必ず下がりますか？', a: '必ずではありません。7月は6月平均の航空燃油価格、USD/KRW、航空会社の方針も反映されます。' }
+        ],
+        links: [
+          { href: 'fuel-surcharge-2026-06-forecast.html', label: '2026年7月見通しを見る' },
+          { href: 'fuel-surcharge-graph.html', label: 'MOPSと推移を比較' },
+          { href: 'fuel-surcharge-calculator.html', label: '発券月別節約額を計算' }
+        ]
+      },
+      'news-20260524-usdkrw-stabilizes': {
+        updatedAt: '2026.05.24 10:30 KST 更新',
+        title: 'ウォン/ドル為替の変動性は緩和、ただし追加引き下げを制限する要因',
+        aiBrief: '2026.05.24 10:30 KSTは週末のため、公開データは2026.05.22のUSD/KRWを参考にします。為替は1,500ウォン台前後と高く、MOPS下落効果を一部制限する可能性があります。',
+        summary: 'ウォン/ドル為替は、航空会社がウォン建て燃油サーチャージを公示する際の重要変数です。\n\n確認基準\n- 2026.05.22公開USD/KRW: 約1,504~1,512ウォン\n- 2026.05.24 10:30 KST: 週末のためリアルタイム為替確認が必要\n- 解釈: 変動性はやや緩和しましたが、水準はまだ高めです。\n\nMOPSが下がっても、USD/KRWが高いままだと7月の引き下げ幅は制限される可能性があります。',
+        impact: '為替と航空券価格、燃油サーチャージ引き下げ制限要因を説明します。',
+        sourceName: 'USD/KRW公開為替履歴',
+        tags: ['ウォン/ドル為替', 'USD/KRW', '航空券価格', '燃油サーチャージ影響'],
+        faq: [
+          { q: '為替は燃油サーチャージに影響しますか？', a: 'はい。航空燃油はドル建ての影響を受けるため、USD/KRWが高いとウォン建ての引き下げ幅が小さくなる可能性があります。' },
+          { q: '2026.05.24 10:30 KSTの為替はなぜ確認が必要ですか？', a: '週末時点のため、データ提供元によって反映方法が異なる場合があります。' },
+          { q: '為替変動性が緩和すれば航空券はすぐ安くなりますか？', a: 'すぐには反映されません。航空券総額は運賃、税金、サーチャージ、座席状況で決まります。' }
+        ],
+        links: [
+          { href: 'fuel-surcharge-calculator.html', label: '為替反映の節約額を計算' },
+          { href: 'fuel-surcharge-2026-06-forecast.html', label: '7月見通しの為替要因を見る' },
+          { href: 'index.html', label: '路線別負担を確認' }
+        ]
+      },
+      'news-20260524-hormuz-risk': {
+        updatedAt: '2026.05.24 10:30 KST 更新',
+        title: 'ホルムズ海峡リスク現況：米国・イラン協議期待でも完全解消ではない',
+        aiBrief: '米国・イラン協議への期待は原油リスクプレミアムを下げる要因です。ただしホルムズ海峡の不確実性は完全には消えておらず、7月サーチャージには下落要因と上振れリスクが共存します。',
+        summary: 'ホルムズ海峡リスクは国際原油と航空燃油価格に影響する地政学変数です。\n\n現在の解釈\n- 米国・イラン協議: 原油リスクプレミアム緩和要因\n- ホルムズリスク: 完全解消前\n- サーチャージ影響: MOPS下落を支える一方、緊張再拡大時は引き下げ幅を制限\n\n7月燃油サーチャージは追加引き下げの可能性がありますが、地政学リスクが再拡大すれば一部区間は限定的な調整にとどまる可能性があります。',
+        impact: 'ホルムズ海峡リスクと国際油価が燃油サーチャージに与える影響を分離して説明します。',
+        sourceName: 'AP 米国・イラン協議およびホルムズ報道',
+        tags: ['ホルムズ海峡リスク', '国際油価', '米国 イラン協議', '航空燃油価格'],
+        faq: [
+          { q: 'ホルムズ海峡リスクは燃油サーチャージに影響しますか？', a: 'はい。原油と航空燃油のリスクプレミアムを高め、サーチャージ下落を制限する可能性があります。' },
+          { q: '米国・イラン協議はどんな意味がありますか？', a: '協議期待は原油と航空燃油を下げる方向に作用し、7月の追加引き下げ可能性を高めます。' },
+          { q: 'ホルムズリスクは完全に解消されましたか？', a: 'いいえ。協議期待はありますが、市場は一部リスクプレミアムを維持しています。' }
+        ],
+        links: [
+          { href: 'news.html#news-20260524-mops-drop', label: 'MOPS下落カードを見る' },
+          { href: 'fuel-surcharge-2026-06-forecast.html', label: '7月見通しの地政学要因' },
+          { href: 'fuel-surcharge-graph.html', label: '推移グラフを見る' }
+        ]
+      },
+      'news-20260524-july-outlook': {
+        updatedAt: '2026.05.24 10:30 KST 更新',
+        title: '2026年7月 燃油サーチャージ追加引き下げの可能性：MOPS下落と為替が核心',
+        aiBrief: '2026年7月分は確定公示ではなく市場ベースの見通しです。MOPSが410.02 cents/galまで下がった点は追加引き下げ要因ですが、為替とホルムズリスクが幅を制限する可能性があります。',
+        summary: '2026年7月燃油サーチャージはまだ確定公示ではありません。現時点では追加引き下げの可能性がありますが、幅は制限される可能性があります。\n\n7月見通し\n- 引き下げ要因: MOPS 511.21 -> 410.02 cents/gal\n- 制限要因: USD/KRW 1,500ウォン台前後\n- リスク要因: ホルムズ海峡不確実性が完全解消前\n- 消費者判断: 短距離は運賃自体、長距離はサーチャージと為替を一緒に確認\n\n結論: 7月は追加引き下げの余地がありますが、確定金額は6月中の航空会社公式公示を確認してください。',
+        impact: '2026年7月燃油サーチャージ見通し検索に対応する代表カードです。',
+        sourceName: '市場指標総合分析 (2026.05.24 10:30 KST)',
+        tags: ['2026年7月 燃油サーチャージ見通し', '燃油サーチャージ予想', '国際線サーチャージ引き下げ', 'MOPS下落'],
+        faq: [
+          { q: '2026年7月の燃油サーチャージはさらに下がりますか？', a: '可能性はあります。MOPS下落は引き下げ要因ですが、為替と地政学リスクで幅が制限される可能性があります。' },
+          { q: '7月分は確定していますか？', a: 'まだ確定公示ではありません。6月中に各航空会社の公式チャンネルで確認が必要です。' },
+          { q: '短距離と長距離で影響は違いますか？', a: '短距離は運賃自体の影響が大きく、長距離はサーチャージと為替を一緒に確認するのが有利です。' }
+        ],
+        links: [
+          { href: 'fuel-surcharge-2026-06-forecast.html', label: '2026年7月見通し詳細' },
+          { href: 'fuel-surcharge-calculator.html', label: '5月・6月節約額計算' },
+          { href: 'airlines.html', label: '航空会社公式公示確認' }
+        ]
+      }
+    }
+  };
+  Object.keys(local).forEach(function(lang){
+    (window.AERO_NEWS_CARDS_20260524 || []).forEach(function(card){
+      if(local[lang][card.id]){
+        if(!card.i18n) card.i18n = {};
+        card.i18n[lang] = local[lang][card.id];
+      }
+    });
+  });
+  var zhCards = {
+    'news-20260524-june-surcharge-cut': {
+      updatedAt: '2026.05.24 10:30 KST 更新',
+      title: '2026年6月国际线燃油附加费下调确认：大韩航空最高下调112,500韩元',
+      aiBrief: '受航空燃油价格下降影响，2026年6月出票的国际线燃油附加费已确认下调。以大韩航空为例，最长距离区间从564,000韩元降至451,500韩元。',
+      summary: '6月国际线燃油附加费反映了较5月更低的航空燃油基准价格。\n\n核心变化\n- 大韩航空最长距离区间：564,000韩元 -> 451,500韩元\n- 下调金额：112,500韩元\n- 燃油附加费按出票日适用，付款前请确认航空公司预订页面的最终总额。',
+      impact: '面向国际线燃油附加费下调搜索意图的确认数据卡片。',
+      sourceName: '大韩航空6月公告及航空业报道',
+      tags: ['国际线燃油附加费下调', '大韩航空燃油附加费', '2026年6月燃油附加费', '出票日标准'],
+      faq: [
+        { q: '2026年6月国际线燃油附加费下调了吗？', a: '是的。包括大韩航空在内的主要韩国出发国际线6月公告显示较5月下调。' },
+        { q: '大韩航空燃油附加费下调多少？', a: '最长距离区间从564,000韩元降至451,500韩元，下降112,500韩元。' }
+      ],
+      links: [{href:'airlines.html',label:'查看各航空公司公告'},{href:'index.html',label:'按航线查询'}]
+    },
+    'news-20260524-mops-drop': {
+      updatedAt: '2026.05.24 10:30 KST 更新',
+      title: 'MOPS大幅下跌，国际线燃油附加费延续下降趋势：511.21 -> 410.02 cents/gal',
+      aiBrief: '新加坡航空燃油指标MOPS从511.21 cents/gal降至410.02 cents/gal。这是6月燃油附加费下调的核心原因，也是判断7月是否继续下调的重要变量。',
+      summary: 'MOPS是直接影响国际线燃油附加费计算的航空燃油价格指标。\n\n数值变化\n- 前期高位参考：511.21 cents/gal\n- 6月计算基准报道：410.02 cents/gal\n- 变化：约下降101.19 cents/gal\n\nMOPS下跌会形成燃油附加费下调压力，但7月仍需结合汇率和航空公司公告判断。',
+      impact: '对应MOPS下跌、航空燃油价格、燃油附加费预测等搜索意图。',
+      sourceName: '航空燃油MOPS基准价格报道',
+      tags: ['MOPS下跌', '航空燃油价格', '新加坡航空燃油', '燃油附加费预测'],
+      faq: [
+        { q: 'MOPS下跌为什么重要？', a: 'MOPS是航空燃油价格基准，航空燃油下降会增强国际线燃油附加费下调压力。' },
+        { q: 'MOPS下降后7月一定会下调吗？', a: '不一定。7月还会反映6月平均航空燃油价格、USD/KRW和航空公司政策。' }
+      ],
+      links: [{href:'fuel-surcharge-2026-06-forecast.html',label:'查看2026年7月展望'},{href:'fuel-surcharge-graph.html',label:'比较MOPS和附加费趋势'}]
+    },
+    'news-20260524-usdkrw-stabilizes': {
+      updatedAt: '2026.05.24 10:30 KST 更新',
+      title: '韩元/美元汇率波动缓和，但仍限制燃油附加费进一步下调',
+      aiBrief: '2026.05.24 10:30 KST为周末时点，因此需参考2026.05.22公开USD/KRW数据。汇率仍在1,500韩元附近，可能部分抵消MOPS下跌效果。',
+      summary: '韩元/美元汇率是航空公司公布韩元计价燃油附加费时的重要变量。\n\n确认基准\n- 2026.05.22公开USD/KRW：约1,504~1,512韩元\n- 2026.05.24 10:30 KST：周末时点，需确认实时汇率\n\n即使MOPS下降，如果USD/KRW维持高位，7月燃油附加费下调幅度也可能受限。',
+      impact: '解释汇率与机票价格、燃油附加费下调限制因素。',
+      sourceName: 'USD/KRW公开汇率历史',
+      tags: ['韩元美元汇率', 'USD/KRW', '机票价格', '燃油附加费影响'],
+      faq: [
+        { q: '汇率会影响燃油附加费吗？', a: '会。航空燃油受美元计价影响，USD/KRW较高会削弱燃油价格下降带来的韩元计价下调效果。' }
+      ],
+      links: [{href:'fuel-surcharge-calculator.html',label:'计算汇率影响节省额'},{href:'fuel-surcharge-2026-06-forecast.html',label:'查看7月展望中的汇率变量'}]
+    },
+    'news-20260524-hormuz-risk': {
+      updatedAt: '2026.05.24 10:30 KST 更新',
+      title: '霍尔木兹海峡风险现状：美国-伊朗谈判预期存在，但尚未完全解除',
+      aiBrief: '美国-伊朗谈判预期有助于降低国际油价风险溢价。但霍尔木兹海峡不确定性尚未完全消失，因此7月燃油附加费展望中同时存在下行因素和上行风险。',
+      summary: '霍尔木兹海峡风险是影响国际油价和航空燃油价格的地缘政治变量。\n\n当前解读\n- 美国-伊朗谈判：可能缓和油价风险溢价\n- 霍尔木兹风险：尚未完全解除\n- 对燃油附加费影响：支持MOPS下行，但紧张再扩大时可能限制下调幅度。',
+      impact: '分离说明霍尔木兹海峡风险和国际油价对燃油附加费的影响。',
+      sourceName: 'AP美国-伊朗谈判及霍尔木兹报道',
+      tags: ['霍尔木兹海峡风险', '国际油价', '美国伊朗谈判', '航空燃油价格'],
+      faq: [
+        { q: '霍尔木兹风险会影响燃油附加费吗？', a: '会。该风险会提高原油和航空燃油风险溢价，从而限制燃油附加费下降。' }
+      ],
+      links: [{href:'news.html#news-20260524-mops-drop',label:'查看MOPS下跌卡片'},{href:'fuel-surcharge-2026-06-forecast.html',label:'查看7月展望地缘因素'}]
+    },
+    'news-20260524-july-outlook': {
+      updatedAt: '2026.05.24 10:30 KST 更新',
+      title: '2026年7月燃油附加费继续下调可能性：MOPS下跌与汇率是关键',
+      aiBrief: '2026年7月燃油附加费应视为市场展望，而非确认公告。MOPS降至410.02 cents/gal支持继续下调，但汇率和霍尔木兹风险可能限制幅度。',
+      summary: '2026年7月燃油附加费尚未正式确认。当前存在继续下调可能，但下调幅度可能受限。\n\n7月展望\n- 下调因素：MOPS 511.21 -> 410.02 cents/gal\n- 限制因素：USD/KRW在1,500韩元附近\n- 风险因素：霍尔木兹海峡不确定性尚未完全解除\n\n最终金额需通过6月各航空公司官方公告确认。',
+      impact: '对应2026年7月燃油附加费展望和预测搜索意图的代表卡片。',
+      sourceName: '市场指标综合分析 (2026.05.24 10:30 KST)',
+      tags: ['2026年7月燃油附加费展望', '燃油附加费预测', '国际线燃油附加费下调', 'MOPS下跌'],
+      faq: [
+        { q: '2026年7月燃油附加费还会下降吗？', a: '有可能。MOPS下降是下调因素，但汇率和地缘风险可能限制幅度。' },
+        { q: '7月燃油附加费已经确定了吗？', a: '尚未确定。最终金额需在6月通过各航空公司官方渠道确认。' }
+      ],
+      links: [{href:'fuel-surcharge-2026-06-forecast.html',label:'2026年7月展望详情'},{href:'airlines.html',label:'查看航空公司官方公告'}]
+    }
+  };
+  (window.AERO_NEWS_CARDS_20260524 || []).forEach(function(card){
+    if(zhCards[card.id]){
+      if(!card.i18n) card.i18n = {};
+      card.i18n.zh = zhCards[card.id];
+    }
+  });
+  var newsFrDe = {
+    fr: {
+      'news-20260524-june-surcharge-cut': {
+        updatedAt:'Mise à jour 2026.05.24 10:30 KST',
+        title:'Juin 2026 : baisse confirmée des surtaxes carburant internationales, Korean Air -112 500 KRW au maximum',
+        aiBrief:'Les surtaxes carburant internationales de juin 2026 reculent avec la baisse du prix du carburant aérien. Chez Korean Air, la zone long-courrier la plus élevée passe de 564 000 KRW à 451 500 KRW.',
+        summary:'Les montants de juin sont plus bas que ceux de mai sur les principales zones.\n\nPoints clés\n- Korean Air long-courrier maximum : 564 000 KRW -> 451 500 KRW\n- Baisse : 112 500 KRW\n- Le montant dépend de la date de billetterie ; vérifiez le total final avant paiement.',
+        impact:'Carte de données confirmées pour la recherche sur la baisse des surtaxes internationales.',
+        sourceName:'Annonces de juin Korean Air et presse aérienne',
+        tags:['baisse surtaxe carburant internationale','Korean Air surtaxe carburant','juin 2026','date de billetterie']
+      },
+      'news-20260524-mops-drop': {
+        updatedAt:'Mise à jour 2026.05.24 10:30 KST',
+        title:'La baisse du MOPS soutient la tendance baissière des surtaxes : 511.21 -> 410.02 cents/gal',
+        aiBrief:'Le MOPS, indicateur du carburant aérien à Singapour, est passé de 511.21 à 410.02 cents/gal. C’est un facteur clé pour la baisse de juin et la possibilité d’une nouvelle baisse en juillet.',
+        summary:'Le MOPS influence directement les surtaxes carburant internationales.\n\n- Ancien niveau de référence : 511.21 cents/gal\n- Niveau rapporté pour le calcul de juin : 410.02 cents/gal\n- Baisse : environ 101.19 cents/gal\n\nPour juillet, il faut aussi suivre l’USD/KRW et les annonces officielles.',
+        impact:'Répond aux recherches MOPS, prix du carburant aérien et prévision de surtaxe.',
+        sourceName:'Données et articles sur le MOPS',
+        tags:['MOPS en baisse','prix du carburant aérien','prévision surtaxe']
+      },
+      'news-20260524-usdkrw-stabilizes': {
+        updatedAt:'Mise à jour 2026.05.24 10:30 KST',
+        title:'USD/KRW : volatilité plus modérée, mais le change limite encore les baisses de surtaxe',
+        aiBrief:'Au 2026.05.24 10:30 KST, le week-end impose de se référer aux données publiques du 2026.05.22. L’USD/KRW reste autour de 1 500 KRW et peut limiter l’effet de la baisse du MOPS.',
+        summary:'Le change USD/KRW reste une variable importante pour les surtaxes publiées en KRW.\n\n- Données publiques du 2026.05.22 : environ 1 504~1 512 KRW\n- Le niveau reste élevé malgré une volatilité plus modérée\n- Une devise forte peut limiter la baisse de juillet.',
+        impact:'Explique le lien entre change, prix du billet et surtaxe.',
+        sourceName:'Historique public USD/KRW',
+        tags:['USD/KRW','change','prix des billets','surtaxe carburant']
+      },
+      'news-20260524-hormuz-risk': {
+        updatedAt:'Mise à jour 2026.05.24 10:30 KST',
+        title:'Risque du détroit d’Hormuz : les discussions USA-Iran aident, mais le risque n’est pas résolu',
+        aiBrief:'Les attentes de négociation USA-Iran peuvent réduire la prime de risque du pétrole, mais l’incertitude autour d’Hormuz n’a pas disparu.',
+        summary:'Le risque Hormuz reste une variable géopolitique pour le pétrole et le carburant aérien.\n\n- Discussions USA-Iran : facteur de détente\n- Risque Hormuz : pas entièrement résolu\n- Impact : la baisse du MOPS aide, mais une reprise des tensions pourrait limiter la baisse.',
+        impact:'Sépare l’effet géopolitique de l’effet prix du carburant.',
+        sourceName:'AP et données de marché',
+        tags:['détroit d’Hormuz','pétrole','USA Iran','carburant aérien']
+      },
+      'news-20260524-july-outlook': {
+        updatedAt:'Mise à jour 2026.05.24 10:30 KST',
+        title:'Prévision juillet 2026 : nouvelle baisse possible des surtaxes, MOPS et change restent clés',
+        aiBrief:'Juillet 2026 n’est pas encore officiellement publié. La baisse du MOPS soutient une nouvelle baisse possible, mais l’USD/KRW et Hormuz peuvent limiter l’ampleur.',
+        summary:'La surtaxe carburant de juillet reste une prévision de marché.\n\n- Facteur de baisse : MOPS 511.21 -> 410.02 cents/gal\n- Facteur limitant : USD/KRW autour de 1 500 KRW\n- Risque : Hormuz non entièrement résolu\n\nConclusion : une baisse supplémentaire est possible, mais les montants finaux doivent être vérifiés en juin.',
+        impact:'Carte principale pour la recherche prévision surtaxe carburant juillet 2026.',
+        sourceName:'Analyse des indicateurs de marché',
+        tags:['prévision juillet 2026','surtaxe carburant','MOPS','baisse possible']
+      }
+    },
+    de: {
+      'news-20260524-june-surcharge-cut': {
+        updatedAt:'Aktualisiert 2026.05.24 10:30 KST',
+        title:'Juni 2026: internationale Treibstoffzuschläge sinken, Korean Air bis zu 112.500 KRW niedriger',
+        aiBrief:'Die internationalen Treibstoffzuschläge für Juni 2026 sinken mit dem Rückgang der Flugtreibstoffpreise. Bei Korean Air fällt die höchste Langstreckenzone von 564.000 KRW auf 451.500 KRW.',
+        summary:'Die Juni-Beträge liegen in wichtigen Zonen unter Mai.\n\nKernpunkte\n- Korean Air höchste Langstrecke: 564.000 KRW -> 451.500 KRW\n- Rückgang: 112.500 KRW\n- Der Zuschlag gilt nach Ticketausstellungsdatum; prüfen Sie vor Zahlung den Endbetrag.',
+        impact:'Bestätigte Datenkarte zur Suche nach sinkenden internationalen Treibstoffzuschlägen.',
+        sourceName:'Korean-Air-Juni-Mitteilungen und Branchenberichte',
+        tags:['internationaler Treibstoffzuschlag sinkt','Korean Air Zuschlag','Juni 2026','Ticketausstellung']
+      },
+      'news-20260524-mops-drop': {
+        updatedAt:'Aktualisiert 2026.05.24 10:30 KST',
+        title:'MOPS-Rückgang hält Treibstoffzuschläge unter Druck: 511.21 -> 410.02 cents/gal',
+        aiBrief:'Der Singapur-Flugtreibstoffindikator MOPS fiel von 511.21 auf 410.02 cents/gal. Das ist ein Kernfaktor für die Juni-Senkung und mögliche Juli-Senkungen.',
+        summary:'MOPS beeinflusst internationale Treibstoffzuschläge direkt.\n\n- Früherer Referenzwert: 511.21 cents/gal\n- Für Juni gemeldeter Wert: 410.02 cents/gal\n- Rückgang: rund 101.19 cents/gal\n\nFür Juli zählen zusätzlich USD/KRW und offizielle Mitteilungen.',
+        impact:'Deckt Suchintentionen zu MOPS, Flugtreibstoffpreis und Zuschlagsprognose ab.',
+        sourceName:'MOPS-Daten und Berichte',
+        tags:['MOPS Rückgang','Flugtreibstoffpreis','Zuschlagsprognose']
+      },
+      'news-20260524-usdkrw-stabilizes': {
+        updatedAt:'Aktualisiert 2026.05.24 10:30 KST',
+        title:'USD/KRW: geringere Volatilität, aber Wechselkurs begrenzt weitere Zuschlagssenkungen',
+        aiBrief:'Stand 2026.05.24 10:30 KST ist wegen Wochenende auf öffentliche Daten vom 2026.05.22 zu achten. USD/KRW bleibt nahe 1.500 KRW und kann den MOPS-Effekt begrenzen.',
+        summary:'USD/KRW bleibt wichtig für in KRW veröffentlichte Zuschläge.\n\n- Öffentliche Daten vom 2026.05.22: etwa 1.504~1.512 KRW\n- Das Niveau bleibt trotz geringerer Volatilität hoch\n- Ein starker Dollar kann Juli-Senkungen begrenzen.',
+        impact:'Erklärt den Zusammenhang zwischen Wechselkurs, Flugpreis und Zuschlag.',
+        sourceName:'Öffentliche USD/KRW-Historie',
+        tags:['USD/KRW','Wechselkurs','Flugpreise','Treibstoffzuschlag']
+      },
+      'news-20260524-hormuz-risk': {
+        updatedAt:'Aktualisiert 2026.05.24 10:30 KST',
+        title:'Hormuz-Risiko: USA-Iran-Gespräche helfen, aber das Risiko ist nicht gelöst',
+        aiBrief:'Erwartungen an USA-Iran-Gespräche können die Öl-Risikoprämie senken, doch die Unsicherheit um Hormuz ist nicht verschwunden.',
+        summary:'Das Hormuz-Risiko bleibt eine geopolitische Variable für Öl und Flugtreibstoff.\n\n- USA-Iran-Gespräche: Entlastungsfaktor\n- Hormuz-Risiko: nicht vollständig gelöst\n- Wirkung: MOPS-Rückgang hilft, neue Spannungen könnten Senkungen begrenzen.',
+        impact:'Trennt geopolitische Effekte von Treibstoffpreiseffekten.',
+        sourceName:'AP und Marktdaten',
+        tags:['Straße von Hormuz','Ölpreis','USA Iran','Flugtreibstoff']
+      },
+      'news-20260524-july-outlook': {
+        updatedAt:'Aktualisiert 2026.05.24 10:30 KST',
+        title:'Prognose Juli 2026: weitere Senkung möglich, MOPS und Wechselkurs bleiben entscheidend',
+        aiBrief:'Juli 2026 ist noch nicht offiziell veröffentlicht. Der MOPS-Rückgang spricht für weitere Senkungen, aber USD/KRW und Hormuz können den Umfang begrenzen.',
+        summary:'Der Juli-Zuschlag bleibt eine Marktprognose.\n\n- Senkungsfaktor: MOPS 511.21 -> 410.02 cents/gal\n- Begrenzender Faktor: USD/KRW um 1.500 KRW\n- Risiko: Hormuz nicht vollständig gelöst\n\nFazit: Weitere Senkungen sind möglich, endgültige Beträge müssen im Juni geprüft werden.',
+        impact:'Hauptkarte für Suchanfragen zur Treibstoffzuschlag-Prognose Juli 2026.',
+        sourceName:'Analyse der Marktindikatoren',
+        tags:['Prognose Juli 2026','Treibstoffzuschlag','MOPS','mögliche Senkung']
+      }
+    }
+  };
+  Object.keys(newsFrDe).forEach(function(lang){
+    (window.AERO_NEWS_CARDS_20260524 || []).forEach(function(card){
+      if(newsFrDe[lang][card.id]){
+        if(!card.i18n) card.i18n = {};
+        card.i18n[lang] = newsFrDe[lang][card.id];
+      }
+    });
+  });
+})();
+
 /* ─── 언어 관리 ─── */
 window.getCurrentLang = function(){
   return localStorage.getItem('aero_lang') || 'ko';
@@ -2821,6 +3458,252 @@ window.setCurrentCurr = function(curr){
   window.SHARED_STATE.curr = curr;
 };
 
+/* fr/de page fallback for pages that still have only ko/en/ja/zh local dictionaries. */
+window.pageAutoTranslate = function(lang, key){
+  if(lang !== 'fr' && lang !== 'de') return undefined;
+  var isFr = lang === 'fr';
+  var common = isFr ? {
+    official:'Avis officiel ↗', officialTitle:'Liens officiels des compagnies', related:'Pages liées',
+    main:'Recherche principale', airlines:'Par compagnie', news:'Actualités', graph:'Graphique',
+    calc:'Calculateur', may:'Mai 2026', june:'Prévision juillet 2026', korea:'Départ de Corée',
+    airline:'Compagnie', currency:'Devise', source:'Source officielle', range:'Zone',
+    route:'Itinéraire', diff:'Variation', noService:'Non desservi',
+    foot:'Informations indicatives basées sur les annonces officielles. Vérifiez toujours le montant final avant achat.'
+  } : {
+    official:'Offizielle Mitteilung ↗', officialTitle:'Offizielle Airline-Links', related:'Verwandte Seiten',
+    main:'Hauptsuche', airlines:'Nach Airline', news:'Nachrichten', graph:'Diagramm',
+    calc:'Rechner', may:'Mai 2026', june:'Prognose Juli 2026', korea:'Ab Korea',
+    airline:'Airline', currency:'Währung', source:'Offizielle Quelle', range:'Zone',
+    route:'Route', diff:'Änderung', noService:'Nicht bedient',
+    foot:'Angaben dienen nur als Referenz und basieren auf offiziellen Mitteilungen. Prüfen Sie immer den endgültigen Betrag vor dem Kauf.'
+  };
+  var names = {KE:'Korean Air (KE)', OZ:'Asiana Airlines (OZ)', '7C':'Jeju Air (7C)', LJ:'Jin Air (LJ)', TW:"T'way Air (TW)", ZE:'Eastar Jet (ZE)', RS:'Air Seoul (RS)', YP:'Air Premia (YP)', BX:'Air Busan (BX)'};
+  if(/^airline\./.test(key)) return names[key.split('.')[1]];
+
+  var related = {
+    main:common.main, airlines:common.airlines, news:common.news, graph:common.graph,
+    calc:common.calc, may:common.may, june:common.june, korea:common.korea
+  };
+  var mRel = key.match(/^(may|graph|calc)\.related\.(main|airlines|news|graph|calc|may|june|korea)$/);
+  if(mRel) return related[mRel[2]];
+
+  var basic = {};
+  basic.fr = {
+    'may.pageTitle':'Comparaison des surtaxes carburant mai vs juin 2026', 'may.metaDesc':'Comparez les surtaxes carburant mai et juin 2026 par compagnie au départ de Corée.',
+    'may.h1':'📊 Comparaison des surtaxes carburant mai vs juin 2026', 'may.pageSub':'Annonces officielles de juin reflétées · baisse par rapport à mai',
+    'may.notice':'<strong>Note :</strong> Les montants sont basés sur les annonces officielles des compagnies.', 'may.intro':'Cette page compare les surtaxes carburant internationales au départ de Corée entre mai et juin 2026.',
+    'may.card1.title':'Caractéristiques de juin', 'may.card1.body':'Les surtaxes de juin reflètent la baisse du prix de référence du carburant aérien.', 'may.card2.title':'Différences entre compagnies',
+    'may.card2.body':'Les compagnies peuvent utiliser des zones, devises et méthodes différentes.', 'may.card3.title':'Recherche par itinéraire', 'may.card3.body':'Utilisez la recherche principale pour vérifier le montant exact par route.',
+    'may.sectionTitle':'📊 Tableau comparatif des surtaxes carburant', 'may.th.airline':common.airline, 'may.th.currency':common.currency, 'may.th.apr':'Mai 2026', 'may.th.may':'Juin 2026',
+    'may.th.change':'vs mai', 'may.th.source':common.source, 'may.change.major':'Baisse importante ▼', 'may.change.minor':'Baisse légère ▼', 'may.source.label':'Avis officiel',
+    'may.officialLinkTitle':common.officialTitle, 'may.officialLinkSuffix':common.official, 'may.tableNote':'※ Données basées sur les annonces officielles.', 'may.relatedTitle':common.related,
+    'may.usdBadge':'Publication USD', 'may.footnote':common.foot,
+    'graph.pageTitle':'📈 Graphique des surtaxes carburant', 'graph.metaTitle':'Graphique des surtaxes carburant — avril, mai et juin 2026', 'graph.metaDesc':'Graphique interactif comparant les surtaxes carburant par compagnie.',
+    'graph.pageSub':'Comparaison avril · mai · juin 2026', 'graph.h1':'Graphique des surtaxes carburant avril, mai et juin 2026', 'graph.notice':'<strong>Note :</strong> Les montants sont basés sur la devise officielle publiée.',
+    'graph.intro':'Comparez les surtaxes carburant par compagnie avec un graphique et un tableau.', 'graph.answer.title':'Comment les surtaxes ont-elles évolué ?', 'graph.answer.body':'Le graphique en barres permet de comparer avril, mai et juin par compagnie et par zone.',
+    'graph.card1.title':'Tendance mensuelle', 'graph.card1.body':'Les surtaxes suivent généralement les prix du pétrole et du carburant aérien.', 'graph.card2.title':'Lien avec le pétrole', 'graph.card2.body':'Les montants reflètent les prix moyens du mois précédent.',
+    'graph.card3.title':'Effet du change', 'graph.card3.body':'Un USD/KRW élevé peut augmenter le montant équivalent en KRW.', 'graph.filter.airline':common.airline, 'graph.filter.month':'Mois', 'graph.filter.view':'Vue',
+    'graph.filter.currHint':'Devise : réglée dans la barre supérieure', 'graph.filter.all':'Toutes', 'graph.filter.apr':'Avril 2026', 'graph.filter.may':'Mai 2026', 'graph.filter.june':'Juin 2026',
+    'graph.filter.amount':'Montant', 'graph.filter.change':'Variation (%)', 'graph.chartNote':'※ Le graphique affiche les montants moyens ou par zone selon la sélection.', 'graph.tableTitle':'📋 Données détaillées par compagnie',
+    'graph.tableNote':'※ Données issues des annonces officielles.', 'graph.faq.title':'FAQ du graphique', 'graph.faq.q1':'Quelles données sont comparées ?', 'graph.faq.a1':'Avril, mai et juin 2026 par compagnie.',
+    'graph.faq.q2':'Pourquoi un graphique en barres ?', 'graph.faq.a2':'Les surtaxes sont des montants mensuels publiés.', 'graph.th.airline':common.airline, 'graph.th.currency':common.currency,
+    'graph.th.band':common.range, 'graph.th.apr':'Avril', 'graph.th.may':'Mai', 'graph.th.june':'Juin', 'graph.th.change':'vs mai', 'graph.official.title':common.officialTitle,
+    'graph.official.suffix':common.official, 'graph.relatedTitle':common.related, 'graph.usdBadge':'Publication USD', 'graph.noData':'—', 'graph.footnote':common.foot,
+    'calc.pageTitle':'🧮 Calculateur de surtaxe carburant', 'calc.metaTitle':'Calculateur de surtaxe carburant', 'calc.metaDesc':'Comparez les surtaxes carburant mai et juin par route et compagnie.',
+    'calc.pageSub':'Comparez mai et juin par itinéraire et compagnie', 'calc.h1':'Calculateur de surtaxe carburant', 'calc.notice':'<strong>Note :</strong> Sélectionnez un départ et une destination.',
+    'calc.alert':'La surtaxe s’applique généralement selon la date de billetterie.', 'calc.intro':'Ce calculateur compare les surtaxes par mois, route et compagnie.', 'calc.answer.title':'Quand émettre le billet ?',
+    'calc.answer.body':'Le calculateur indique quelle compagnie est moins chère et l’économie estimée.', 'calc.section.airline':'🔍 Critères par compagnie', 'calc.th.airline':common.airline,
+    'calc.th.method':'Méthode', 'calc.th.channel':'Canal officiel', 'calc.th.note':'Note', 'calc.official.suffix':'Site officiel ↗', 'calc.official.title':common.officialTitle,
+    'calc.related.title':common.related, 'calc.footnote':common.foot
+  };
+  basic.de = {
+    'may.pageTitle':'Vergleich Treibstoffzuschläge Mai vs. Juni 2026', 'may.metaDesc':'Vergleichen Sie Treibstoffzuschläge Mai und Juni 2026 nach Airline ab Korea.',
+    'may.h1':'📊 Vergleich Treibstoffzuschläge Mai vs. Juni 2026', 'may.pageSub':'Offizielle Juni-Mitteilungen berücksichtigt · Rückgang gegenüber Mai',
+    'may.notice':'<strong>Hinweis:</strong> Die Beträge basieren auf offiziellen Airline-Mitteilungen.', 'may.intro':'Diese Seite vergleicht internationale Treibstoffzuschläge ab Korea für Mai und Juni 2026.',
+    'may.card1.title':'Merkmale im Juni', 'may.card1.body':'Die Juni-Zuschläge spiegeln niedrigere Referenzpreise für Flugtreibstoff wider.', 'may.card2.title':'Unterschiede nach Airline',
+    'may.card2.body':'Airlines können unterschiedliche Zonen, Währungen und Methoden verwenden.', 'may.card3.title':'Routensuche', 'may.card3.body':'Nutzen Sie die Hauptsuche für genaue Beträge je Route.',
+    'may.sectionTitle':'📊 Vergleichstabelle Treibstoffzuschläge', 'may.th.airline':common.airline, 'may.th.currency':common.currency, 'may.th.apr':'Mai 2026', 'may.th.may':'Juni 2026',
+    'may.th.change':'ggü. Mai', 'may.th.source':common.source, 'may.change.major':'Deutlicher Rückgang ▼', 'may.change.minor':'Leichter Rückgang ▼', 'may.source.label':'Offizielle Mitteilung',
+    'may.officialLinkTitle':common.officialTitle, 'may.officialLinkSuffix':common.official, 'may.tableNote':'※ Daten basieren auf offiziellen Mitteilungen.', 'may.relatedTitle':common.related,
+    'may.usdBadge':'USD-Mitteilung', 'may.footnote':common.foot,
+    'graph.pageTitle':'📈 Trenddiagramm Treibstoffzuschlag', 'graph.metaTitle':'Trenddiagramm Treibstoffzuschlag — April, Mai und Juni 2026', 'graph.metaDesc':'Interaktives Diagramm zum Vergleich der Treibstoffzuschläge nach Airline.',
+    'graph.pageSub':'Vergleich April · Mai · Juni 2026', 'graph.h1':'Trenddiagramm der Treibstoffzuschläge April, Mai und Juni 2026', 'graph.notice':'<strong>Hinweis:</strong> Die Beträge basieren auf der offiziell veröffentlichten Währung.',
+    'graph.intro':'Vergleichen Sie Treibstoffzuschläge nach Airline mit Diagramm und Tabelle.', 'graph.answer.title':'Wie haben sich Zuschläge verändert?', 'graph.answer.body':'Das Balkendiagramm vergleicht April, Mai und Juni nach Airline und Zone.',
+    'graph.card1.title':'Monatlicher Trend', 'graph.card1.body':'Zuschläge folgen meist Öl- und Flugtreibstoffpreisen.', 'graph.card2.title':'Bezug zum Ölpreis', 'graph.card2.body':'Beträge spiegeln Durchschnittspreise des Vormonats wider.',
+    'graph.card3.title':'Wechselkurseffekt', 'graph.card3.body':'Ein hoher USD/KRW kann KRW-Beträge erhöhen.', 'graph.filter.airline':common.airline, 'graph.filter.month':'Monat', 'graph.filter.view':'Ansicht',
+    'graph.filter.currHint':'Währung: oben einstellen', 'graph.filter.all':'Alle', 'graph.filter.apr':'April 2026', 'graph.filter.may':'Mai 2026', 'graph.filter.june':'Juni 2026',
+    'graph.filter.amount':'Betrag', 'graph.filter.change':'Änderung (%)', 'graph.chartNote':'※ Das Diagramm zeigt je nach Auswahl Durchschnitts- oder Zonenwerte.', 'graph.tableTitle':'📋 Detaildaten nach Airline',
+    'graph.tableNote':'※ Daten stammen aus offiziellen Mitteilungen.', 'graph.faq.title':'Diagramm-FAQ', 'graph.faq.q1':'Welche Daten werden verglichen?', 'graph.faq.a1':'April, Mai und Juni 2026 nach Airline.',
+    'graph.faq.q2':'Warum ein Balkendiagramm?', 'graph.faq.a2':'Zuschläge sind monatlich veröffentlichte Beträge.', 'graph.th.airline':common.airline, 'graph.th.currency':common.currency,
+    'graph.th.band':common.range, 'graph.th.apr':'April', 'graph.th.may':'Mai', 'graph.th.june':'Juni', 'graph.th.change':'ggü. Mai', 'graph.official.title':common.officialTitle,
+    'graph.official.suffix':common.official, 'graph.relatedTitle':common.related, 'graph.usdBadge':'USD-Mitteilung', 'graph.noData':'—', 'graph.footnote':common.foot,
+    'calc.pageTitle':'🧮 Treibstoffzuschlag-Rechner', 'calc.metaTitle':'Treibstoffzuschlag-Rechner', 'calc.metaDesc':'Vergleichen Sie Treibstoffzuschläge Mai und Juni nach Route und Airline.',
+    'calc.pageSub':'Vergleich Mai und Juni nach Route und Airline', 'calc.h1':'Treibstoffzuschlag-Rechner', 'calc.notice':'<strong>Hinweis:</strong> Wählen Sie Abflug und Ziel.',
+    'calc.alert':'Der Zuschlag gilt meist nach Ticketausstellungsdatum.', 'calc.intro':'Dieser Rechner vergleicht Zuschläge nach Monat, Route und Airline.', 'calc.answer.title':'Wann ist die Ausstellung günstiger?',
+    'calc.answer.body':'Der Rechner zeigt die günstigere Airline und die geschätzte Ersparnis.', 'calc.section.airline':'🔍 Kriterien nach Airline', 'calc.th.airline':common.airline,
+    'calc.th.method':'Methode', 'calc.th.channel':'Offizieller Kanal', 'calc.th.note':'Hinweis', 'calc.official.suffix':'Offizielle Seite ↗', 'calc.official.title':common.officialTitle,
+    'calc.related.title':common.related, 'calc.footnote':common.foot
+  };
+  if(basic[lang][key] !== undefined) return basic[lang][key];
+
+  var air = key.match(/^(ke|oz|jj|lj|tw)\.(.+)$/);
+  if(air){
+    var airline = {ke:'Korean Air', oz:'Asiana Airlines', jj:'Jeju Air', lj:'Jin Air', tw:"T'way Air"}[air[1]];
+    var tail = air[2];
+    var airMap = {
+      metaTitle: airline + (isFr ? ' — surtaxe carburant 2026' : ' — Treibstoffzuschlag 2026'),
+      metaDesc: isFr ? ('Surtaxe carburant ' + airline + ' au départ de Corée.') : ('Treibstoffzuschlag von ' + airline + ' ab Korea.'),
+      pageTitle: '✈️ ' + airline + (isFr ? ' — surtaxe carburant' : ' — Treibstoffzuschlag'),
+      pageSub: isFr ? 'Montants officiels par zone' : 'Offizielle Beträge nach Zone',
+      h1: airline + (isFr ? ' — surtaxe carburant internationale' : ' — internationaler Treibstoffzuschlag'),
+      notice: isFr ? '<strong>Note :</strong> Vérifiez le montant final sur l’avis officiel.' : '<strong>Hinweis:</strong> Prüfen Sie den endgültigen Betrag in der offiziellen Mitteilung.',
+      intro: isFr ? ('Résumé des surtaxes carburant de ' + airline + ' par zone.') : ('Zusammenfassung der Treibstoffzuschläge von ' + airline + ' nach Zone.'),
+      sectionTitle: isFr ? ('📊 Tableau des surtaxes ' + airline) : ('📊 Zuschlagstabelle ' + airline),
+      officialTitle: isFr ? ('🔗 Avis officiel ' + airline) : ('🔗 Offizielle Mitteilung ' + airline),
+      officialSite: isFr ? 'Site officiel ↗' : 'Offizielle Seite ↗',
+      relatedTitle: common.related, footer: common.foot, noService: common.noService,
+      footnote: common.foot, 'th.range':common.range, 'th.route':common.route, 'th.apr':'Avril', 'th.may':isFr?'Mai':'Mai',
+      'th.may2':isFr?'Mai':'Mai', 'th.jun':isFr?'Juin':'Juni', 'th.june':isFr?'Juin':'Juni', 'th.diff':common.diff,
+      'th.diffmay':common.diff, 'th.diffjun':common.diff, 'th.diff_may_june':common.diff,
+      'rel.main':common.main, 'rel.airlines':common.airlines, 'rel.news':common.news, 'rel.graph':common.graph,
+      'rel.calc':common.calc, 'rel.may':common.may, 'rel.jun':common.june, 'rel.korea':common.korea, 'rel.asiana':'Asiana Airlines', 'rel.other':isFr?'Autres compagnies':'Andere Airlines',
+      'card1.title':isFr?'Base de calcul':'Berechnungsbasis', 'card1.body':isFr?'Les montants reflètent le carburant, le change et la méthode de la compagnie.':'Die Beträge spiegeln Treibstoff, Wechselkurs und Airline-Methode wider.',
+      'card2.title':isFr?'Différences par zone':'Unterschiede nach Zone', 'card2.body':isFr?'Les montants varient selon la distance.':'Die Beträge variieren nach Entfernung.',
+      'card3.title':isFr?'Vérification avant achat':'Prüfung vor dem Kauf', 'card3.body':isFr?'Confirmez le total final avant achat.':'Prüfen Sie den endgültigen Gesamtbetrag vor dem Kauf.'
+    };
+    if(airMap[tail] !== undefined) return airMap[tail];
+  }
+  if(/^fore\./.test(key)){
+    var fore = isFr ? {
+      'fore.metaTitle':'Prévision des surtaxes carburant juillet 2026',
+      'fore.metaDesc':'Prévision juillet 2026 basée sur les annonces confirmées de juin, MOPS, USD/KRW, pétrole et risque Hormuz.',
+      'fore.pageTitle':'🔮 Prévision des surtaxes carburant juillet 2026',
+      'fore.pageSub':'Données confirmées de juin séparées de la prévision de juillet',
+      'fore.h1':'Prévision juillet 2026 — MOPS, change et pétrole',
+      'fore.notice':'<strong>Note :</strong> Juillet n’est pas encore officiellement publié. Cette page distingue les données confirmées de juin et la prévision de marché.',
+      'fore.intro':'Au 2026.05.24 10:30 KST, les surtaxes de juin sont en baisse, tandis que juillet reste une prévision basée sur MOPS, USD/KRW, le pétrole et le risque Hormuz.',
+      'fore.section.indicators':'📊 Indicateurs clés pour juillet 2026',
+      'fore.indicator.footnote':'※ Juin correspond aux annonces officielles confirmées ; juillet reste une prévision de marché.',
+      'fore.predict.title':'Indicateurs de marché',
+      'fore.predict.subtitle':'Données de juin et prévision de juillet séparées',
+      'fore.predict.footnote':'* Les montants de juillet devront être confirmés par les annonces officielles en juin.',
+      'fore.summary.title':'📌 Résumé de la prévision juillet 2026',
+      'fore.summary.updated':'✅ Mise à jour 2026.05.24 10:30 KST',
+      'fore.market.title':'🌍 Briefing marché',
+      'fore.market.brent':'🛢 Pétrole : les attentes de négociation réduisent la prime de risque, mais Hormuz n’est pas entièrement résolu.',
+      'fore.market.fx':'💱 USD/KRW : données publiques du 2026.05.22 autour de 1 504~1 512 KRW.',
+      'fore.market.mops':'✈️ MOPS : baisse de 511.21 à 410.02 cents/gal.',
+      'fore.market.geo':'⚠ Géopolitique : risque Hormuz encore présent.',
+      'fore.market.summary':'→ Une baisse supplémentaire en juillet est possible, mais le change et la géopolitique peuvent limiter l’ampleur.',
+      'fore.market.fx2':'💡 Signal clé : MOPS baisse, mais USD/KRW et Hormuz limitent la baisse.',
+      'fore.verdict.title':'📌 Conclusion juillet',
+      'fore.verdict.line1':'→ La baisse du MOPS ouvre une possibilité de nouvelle baisse en juillet.',
+      'fore.verdict.line2':'→ Juillet n’est pas confirmé ; les avis officiels devront être vérifiés en juin.',
+      'fore.verdict.short':'👉 Court-courrier : le tarif de base et les sièges peuvent compter davantage.',
+      'fore.verdict.long':'👉 Long-courrier : vérifiez ensemble surtaxe et change.',
+      'fore.mops.analysis.title':'📉 MOPS et prévision juillet',
+      'fore.mops.analysis.body':'La baisse du MOPS soutient une possible réduction en juillet, mais USD/KRW et le risque Hormuz peuvent limiter l’ampleur.',
+      'fore.booking.title':'🗓️ Guide de réservation',
+      'fore.keyvars.title':'🔑 Variables clés',
+      'fore.basis.title':'📅 Base de calcul de juillet',
+      'fore.basis.body':'Les surtaxes de juillet seront publiées selon le prix moyen du carburant, le change et la politique de chaque compagnie.',
+      'fore.aiNotice':'Contenu de référence basé sur des données publiques.',
+      'fore.official.title':'🔗 Avis officiels des compagnies',
+      'fore.related.title':'🔗 Pages liées',
+      'fore.footnote':'Prévision indicative. Vérifiez toujours le montant final.'
+    } : {
+      'fore.metaTitle':'Prognose Treibstoffzuschlag Juli 2026',
+      'fore.metaDesc':'Juli-2026-Prognose auf Basis bestätigter Juni-Mitteilungen, MOPS, USD/KRW, Ölpreis und Hormuz-Risiko.',
+      'fore.pageTitle':'🔮 Prognose Treibstoffzuschlag Juli 2026',
+      'fore.pageSub':'Bestätigte Juni-Daten getrennt von der Juli-Prognose',
+      'fore.h1':'Prognose Juli 2026 — MOPS, Wechselkurs und Ölpreis',
+      'fore.notice':'<strong>Hinweis:</strong> Juli ist noch nicht offiziell veröffentlicht. Diese Seite trennt bestätigte Juni-Daten von der Marktprognose.',
+      'fore.intro':'Stand 2026.05.24 10:30 KST sinken die Juni-Zuschläge, während Juli eine Prognose auf Basis von MOPS, USD/KRW, Ölpreis und Hormuz-Risiko bleibt.',
+      'fore.section.indicators':'📊 Schlüsselindikatoren für Juli 2026',
+      'fore.indicator.footnote':'※ Juni sind bestätigte offizielle Mitteilungen; Juli ist eine Marktprognose.',
+      'fore.predict.title':'Marktindikatoren',
+      'fore.predict.subtitle':'Juni-Daten und Juli-Prognose getrennt',
+      'fore.predict.footnote':'* Juli-Beträge müssen im Juni über offizielle Mitteilungen bestätigt werden.',
+      'fore.summary.title':'📌 Kurzfassung Prognose Juli 2026',
+      'fore.summary.updated':'✅ Aktualisiert 2026.05.24 10:30 KST',
+      'fore.market.title':'🌍 Marktbriefing',
+      'fore.market.brent':'🛢 Ölpreis: Verhandlungshoffnungen senken die Risikoprämie, aber Hormuz ist nicht vollständig gelöst.',
+      'fore.market.fx':'💱 USD/KRW: öffentliche Daten vom 2026.05.22 etwa 1.504~1.512 KRW.',
+      'fore.market.mops':'✈️ MOPS: Rückgang von 511.21 auf 410.02 cents/gal.',
+      'fore.market.geo':'⚠ Geopolitik: Hormuz-Risiko bleibt bestehen.',
+      'fore.market.summary':'→ Zusätzliche Juli-Senkungen sind möglich, aber Wechselkurs und Geopolitik können den Umfang begrenzen.',
+      'fore.market.fx2':'💡 Kernsignal: MOPS fällt, USD/KRW und Hormuz begrenzen die Senkung.',
+      'fore.verdict.title':'📌 Fazit Juli',
+      'fore.verdict.line1':'→ Der MOPS-Rückgang eröffnet Spielraum für weitere Senkungen im Juli.',
+      'fore.verdict.line2':'→ Juli ist noch nicht bestätigt; offizielle Mitteilungen müssen im Juni geprüft werden.',
+      'fore.verdict.short':'👉 Kurzstrecke: Basispreis und Sitzplätze können wichtiger sein.',
+      'fore.verdict.long':'👉 Langstrecke: Zuschlag und Wechselkurs gemeinsam prüfen.',
+      'fore.mops.analysis.title':'📉 MOPS und Juli-Prognose',
+      'fore.mops.analysis.body':'Der MOPS-Rückgang stützt mögliche Juli-Senkungen, aber USD/KRW und Hormuz-Risiko können den Umfang begrenzen.',
+      'fore.booking.title':'🗓️ Buchungsleitfaden',
+      'fore.keyvars.title':'🔑 Schlüsselvariablen',
+      'fore.basis.title':'📅 Berechnungsbasis Juli',
+      'fore.basis.body':'Juli-Zuschläge werden anhand durchschnittlicher Treibstoffpreise, Wechselkurse und Airline-Regeln veröffentlicht.',
+      'fore.aiNotice':'Referenzinhalt auf Basis öffentlicher Daten.',
+      'fore.official.title':'🔗 Offizielle Airline-Mitteilungen',
+      'fore.related.title':'🔗 Verwandte Seiten',
+      'fore.footnote':'Unverbindliche Prognose. Prüfen Sie immer den endgültigen Betrag.'
+    };
+    if(fore[key] !== undefined) return fore[key];
+  }
+  var extra = isFr ? {
+    'affiliate.flight.title':'Comparer le prix total du billet', 'affiliate.flight.desc':'Vérifiez le prix du billet avec taxes et surtaxes incluses.', 'affiliate.flight.btn':'Voir les prix des vols',
+    'affiliate.hotel.title2':'Comparer les hébergements avec vos dates', 'affiliate.hotel.desc2':'Comparez aussi l’hôtel pour estimer le coût total du voyage.', 'affiliate.hotel.btn2':'Comparer les hôtels',
+    'fore.myrealtrip.title':'Comparez le prix total du billet maintenant', 'fore.myrealtrip.desc':'Les surtaxes de juin ont baissé ; comparez le prix final avant achat.', 'fore.myrealtrip.btn':'Vérifier le prix total →',
+    'fore.cta.desc':'📍 Vérifiez les surtaxes actuelles par itinéraire', 'fore.cta.main':'👉 Rechercher les surtaxes', 'fore.cta.may':'👉 Comparer mai et juin',
+    'fore.hotelscombined.title':'🏨 Comparez aussi les hébergements', 'fore.hotelscombined.desc':'Après le vol, comparez l’hébergement pour voir le coût total.', 'fore.hotelscombined.btn':'Comparer les hôtels →',
+    'calc.card1.title':'Lien avec le pétrole', 'calc.card1.body':'Les surtaxes sont calculées à partir des prix moyens du pétrole et du carburant aérien.', 'calc.card2.title':'Zones par distance', 'calc.card2.body':'Les montants diffèrent selon la distance et la compagnie.', 'calc.card3.title':'Base de comparaison', 'calc.card3.body':'Le calcul compare les montants publiés en mai et juin.',
+    'calc.section.structure':'📖 Structure de calcul', 'calc.guide.what.title':'💡 Qu’est-ce qu’une surtaxe carburant ?', 'calc.guide.what.body':'C’est un supplément appliqué au billet pour refléter le coût du carburant.', 'calc.guide.how.title':'📋 Méthode de calcul',
+    'calc.guide.how.step1':'<strong>Prix de référence :</strong> prix moyen du mois précédent.', 'calc.guide.how.step2':'<strong>Zone :</strong> le prix est associé à un palier.', 'calc.guide.how.step3':'<strong>Montant :</strong> il dépend de la distance et de la compagnie.', 'calc.guide.how.step4':'<strong>Application :</strong> selon la date de billetterie.', 'calc.guide.how.step5':'<strong>Aller-retour :</strong> généralement deux fois l’aller simple.',
+    'calc.row.ke.method':'Zones court / long-courrier', 'calc.row.oz.method':'Zones court / long-courrier', 'calc.row.lcc.method':'Par route ou par zone', 'calc.row.ze.method':'Zone / publication USD', 'calc.row.rs.method':'Zone de distance / KRW', 'calc.note.monthly':'Mensuel', 'calc.note.manual':'Manuel',
+    'calc.tableFootnote':'※ Vérifiez toujours les zones et montants exacts dans l’avis officiel.',
+    'index.intro3.title':'Pourquoi ce service ?', 'index.guide.title':'💡 Qu’est-ce qu’une surtaxe carburant ?', 'index.quick.jul.name':'Prévision juillet 2026', 'index.quick.jul.desc':'Voir la prévision de juillet basée sur MOPS, change et pétrole.',
+    'news.officialNotice':'✅ Période : 1er–30 juin 2026 · avis officiel', 'news.filterAirline':'Compagnies',
+    'graph.legend.averageNote':'Vue globale : montant moyen par compagnie'
+  } : {
+    'affiliate.flight.title':'Gesamtpreis des Flugtickets vergleichen', 'affiliate.flight.desc':'Prüfen Sie den Flugpreis inklusive Steuern und Zuschlägen.', 'affiliate.flight.btn':'Flugpreise ansehen',
+    'affiliate.hotel.title2':'Unterkünfte passend zu Ihren Reisedaten vergleichen', 'affiliate.hotel.desc2':'Vergleichen Sie auch Hotels, um die Gesamtkosten zu sehen.', 'affiliate.hotel.btn2':'Hotels vergleichen',
+    'fore.myrealtrip.title':'Gesamtpreis des Tickets jetzt vergleichen', 'fore.myrealtrip.desc':'Die Juni-Zuschläge sind niedriger; prüfen Sie den Endpreis vor dem Kauf.', 'fore.myrealtrip.btn':'Gesamtpreis prüfen →',
+    'fore.cta.desc':'📍 Aktuelle Zuschläge nach Route prüfen', 'fore.cta.main':'👉 Zuschläge suchen', 'fore.cta.may':'👉 Mai und Juni vergleichen',
+    'fore.hotelscombined.title':'🏨 Auch Unterkünfte vergleichen', 'fore.hotelscombined.desc':'Nach dem Flugpreis hilft der Hotelvergleich beim Gesamtbudget.', 'fore.hotelscombined.btn':'Hotels vergleichen →',
+    'calc.card1.title':'Bezug zum Ölpreis', 'calc.card1.body':'Zuschläge werden aus Durchschnittspreisen für Öl und Flugtreibstoff berechnet.', 'calc.card2.title':'Distanzzonen', 'calc.card2.body':'Die Beträge unterscheiden sich nach Entfernung und Airline.', 'calc.card3.title':'Vergleichsbasis', 'calc.card3.body':'Der Rechner vergleicht veröffentlichte Beträge im Mai und Juni.',
+    'calc.section.structure':'📖 Berechnungsstruktur', 'calc.guide.what.title':'💡 Was ist ein Treibstoffzuschlag?', 'calc.guide.what.body':'Ein Zusatzbetrag zum Ticket, der Treibstoffkosten abbildet.', 'calc.guide.how.title':'📋 Berechnungsmethode',
+    'calc.guide.how.step1':'<strong>Referenzpreis:</strong> Durchschnittspreis des Vormonats.', 'calc.guide.how.step2':'<strong>Zone:</strong> der Preis wird einer Stufe zugeordnet.', 'calc.guide.how.step3':'<strong>Betrag:</strong> abhängig von Distanz und Airline.', 'calc.guide.how.step4':'<strong>Anwendung:</strong> nach Ticketausstellungsdatum.', 'calc.guide.how.step5':'<strong>Hin und zurück:</strong> meist doppelter einfacher Betrag.',
+    'calc.row.ke.method':'Kurz- / Langstreckenzonen', 'calc.row.oz.method':'Kurz- / Langstreckenzonen', 'calc.row.lcc.method':'Je Route oder Zone', 'calc.row.ze.method':'Zone / USD-Mitteilung', 'calc.row.rs.method':'Distanzzone / KRW', 'calc.note.monthly':'Monatlich', 'calc.note.manual':'Manuell',
+    'calc.tableFootnote':'※ Prüfen Sie genaue Zonen und Beträge immer in der offiziellen Mitteilung.',
+    'index.intro3.title':'Warum dieser Service?', 'index.guide.title':'💡 Was ist ein Treibstoffzuschlag?', 'index.quick.jul.name':'Prognose Juli 2026', 'index.quick.jul.desc':'Juli-Prognose auf Basis von MOPS, Wechselkurs und Ölpreis ansehen.',
+    'news.officialNotice':'✅ Zeitraum: 1.–30. Juni 2026 · offizielle Mitteilung', 'news.filterAirline':'Airlines',
+    'graph.legend.averageNote':'Gesamtansicht: Durchschnittsbetrag je Airline'
+  };
+  if(extra[key] !== undefined) return extra[key];
+  if(/^korea\./.test(key)){
+    var ktail = key.replace(/^korea\./,'');
+    var kbase = isFr ? {
+      pageTitle:'🇰🇷 Surtaxe carburant au départ de Corée', pageSub:'Recherche par compagnie et route', h1:'Surtaxe carburant internationale au départ de Corée',
+      langNotice:'Les montants varient selon la date de billetterie et la compagnie.', intro:'Comparez les surtaxes carburant pour les vols internationaux au départ de Corée.',
+      officialLinkTitle:common.officialTitle, footnote:common.foot
+      , 'footer.contact':'Kontakt', usdBadge:'Publication USD'
+    } : {
+      pageTitle:'🇰🇷 Treibstoffzuschlag ab Korea', pageSub:'Suche nach Airline und Route', h1:'Internationaler Treibstoffzuschlag ab Korea',
+      langNotice:'Beträge variieren nach Ticketausstellung und Airline.', intro:'Vergleichen Sie Treibstoffzuschläge für internationale Flüge ab Korea.',
+      officialLinkTitle:common.officialTitle, footnote:common.foot
+      , 'footer.contact':'Kontakt', usdBadge:'USD-Mitteilung'
+    };
+    if(kbase[ktail] !== undefined) return kbase[ktail];
+    if(/title$/i.test(ktail)) return isFr ? 'Information clé' : 'Wichtige Information';
+    if(/desc$|body$/i.test(ktail)) return isFr ? 'Vérifiez les montants officiels et le total final avant achat.' : 'Prüfen Sie offizielle Beträge und den Endpreis vor dem Kauf.';
+    if(/btn$/i.test(ktail)) return isFr ? 'Vérifier maintenant' : 'Jetzt prüfen';
+    if(/^related\./.test(ktail)) return common.related;
+    if(/^th\./.test(ktail)) return common.diff;
+  }
+  return undefined;
+};
+
 /* ─── 번역 함수 ─── */
 window.t = function(key){
   var lang = window.getCurrentLang();
@@ -2828,12 +3711,22 @@ window.t = function(key){
   if(window.PAGE_I18N_OVERRIDE){
     var ovLang = window.PAGE_I18N_OVERRIDE[lang];
     if(ovLang && ovLang[key] !== undefined) return ovLang[key];
-    var ovKo = window.PAGE_I18N_OVERRIDE['ko'];
-    if(ovKo && ovKo[key] !== undefined) return ovKo[key];
   }
   /* 2순위: 공용 I18N 사전 */
   var dict = window.I18N[lang];
   if(dict && dict[key] !== undefined) return dict[key];
+  var auto = window.pageAutoTranslate ? window.pageAutoTranslate(lang, key) : undefined;
+  if(auto !== undefined) return auto;
+  var en = window.I18N['en'];
+  if(lang !== 'ko' && en && en[key] !== undefined) return en[key];
+  if(window.PAGE_I18N_OVERRIDE && lang !== 'ko'){
+    var ovEn = window.PAGE_I18N_OVERRIDE['en'];
+    if(ovEn && ovEn[key] !== undefined) return ovEn[key];
+  }
+  if(window.PAGE_I18N_OVERRIDE){
+    var ovKo = window.PAGE_I18N_OVERRIDE['ko'];
+    if(ovKo && ovKo[key] !== undefined) return ovKo[key];
+  }
   var ko = window.I18N['ko'];
   if(ko && ko[key] !== undefined) return ko[key];
   return key;

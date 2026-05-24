@@ -2,17 +2,17 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>2026년 7월 유류할증료 전망 — 2026.05.23 22:00 KST 유가·환율 브리핑</title>
-  <meta name="description" content="2026.05.23 22:00 KST 기준 유가·환율·항공유 흐름과 7월 유류할증료 전망을 정리합니다. 6월 확정 공시와 7월 시장 기반 전망을 분리해 확인하세요."
+  <title>2026년 7월 유류할증료 전망 — MOPS 하락·환율·국제유가 뉴스</title>
+  <meta name="description" content="2026.05.24 10:30 KST 기준 국제선 유류할증료 인하, MOPS 하락, 원달러 환율, 호르무즈 리스크, 2026년 7월 유류할증료 전망을 주제별 카드뉴스로 정리합니다."
         data-i18n-page-desc="news.metaDesc"/>
   <meta data-i18n-page-title="news.metaTitle"/>
 
   <link rel="canonical" href="https://aero-surcharge.com/news.html"/>
-  <meta property="og:title" content="2026년 7월 유류할증료 전망 — 2026.05.23 22:00 KST 유가·환율 브리핑"/>
-  <meta property="og:description" content="대한항공·아시아나·진에어·에어부산·이스타항공·에어서울 6월 유류할증료 공식 공시 반영. 5월 대비 인하 흐름과 7월 전망 참고 지표를 확인하세요."/>
+  <meta property="og:title" content="2026년 7월 유류할증료 전망 — MOPS 하락·환율·국제유가 뉴스"/>
+  <meta property="og:description" content="6월 국제선 유류할증료 인하, MOPS 511.21→410.02 cents/gal 하락, 대한항공 최대 112,500원 인하, 7월 전망을 주제별 카드뉴스로 확인하세요."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.com/news.html"/>
-  <meta property="article:modified_time" content="2026-05-21T09:00:00+09:00"/>
+  <meta property="article:modified_time" content="2026-05-24T10:30:00+09:00"/>
   <link rel="stylesheet" href="_shared.css"/>
   <link rel="icon" href="/favicon-v2.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-v2.png">
@@ -52,7 +52,17 @@
     .news-date{font-size:11px;color:var(--muted);font-family:var(--mono);}
     .ai-summary-tag{font-size:10px;font-weight:700;padding:2px 7px;border-radius:12px;background:#EDE7F6;color:#4527A0;border:1px solid #CE93D8;}
     .news-title{font-size:15px;font-weight:700;margin-bottom:6px;color:var(--text);}
+    .news-ai-brief{background:#F8FAFC;border:1px solid #DDE7F3;border-left:3px solid var(--blue);border-radius:8px;padding:10px 12px;margin:8px 0 10px;font-size:12px;font-weight:600;line-height:1.6;color:#1E3A5F;}
     .news-summary{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:10px;}
+    .news-updated{font-size:11px;color:#6B7280;font-family:var(--mono);margin-bottom:8px;}
+    .news-faq{margin-top:12px;border-top:1px solid var(--line);padding-top:10px;}
+    .news-faq-title{font-size:12px;font-weight:800;margin-bottom:6px;color:var(--text);}
+    .news-faq-item{margin:7px 0;}
+    .news-faq-q{font-size:12px;font-weight:700;color:#1F2937;margin-bottom:2px;}
+    .news-faq-a{font-size:12px;color:var(--text2);line-height:1.55;}
+    .news-related{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;}
+    .news-related a{font-size:11px;font-weight:700;color:#1D4ED8;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:999px;padding:5px 9px;text-decoration:none;}
+    .news-related a:hover{background:#DBEAFE;}
     .news-footer{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap;}
     .news-link{font-size:12px;color:var(--blue);text-decoration:none;font-weight:600;}
     .news-link:hover{text-decoration:underline;}
@@ -442,23 +452,23 @@ async function loadNews(){
 }
 
 /* ════════════════════════════════════════════════════════
-   TODAY_MARKET — 2026.05.23 22:00 KST 기준 단일 시장 지표 기준값
+   TODAY_MARKET — 2026.05.24 10:30 KST 기준 단일 시장 지표 기준값
    핵심 요약 · 시장 브리핑 · AI 예측 참고 지표 세 구역이
    동일한 수치를 참조하도록 한 곳에서 관리.
    FORECAST_DATA feed 값이 오더라도 이 값으로 고정.
    ════════════════════════════════════════════════════════ */
 var TODAY_MARKET = {
-  /* 2026.05.23 22:00 KST 기준 */
-  brent:   '브렌트유는 최근 고점권에서 등락 중 — 유류할증료 급락 기대 제한',
-  brentEn: 'Brent crude is fluctuating near recent highs — sharp surcharge cuts look limited',
-  fx:      'USD/KRW는 2026.05.22 공개 데이터 기준 약 1,504~1,512원 범위 확인 — 실시간 환율 확인 필요',
-  fxEn:    'USD/KRW public May 22 data shows roughly 1,504–1,512 KRW — check real-time FX before purchase',
-  mops:    'MOPS는 단기 조정 이후 재반등 가능성 점검 — 최신 공개 수치 확인 필요',
-  mopsEn:  'MOPS needs latest public figure verification — monitor rebound risk after short-term correction',
-  geo:     '호르무즈 관련 불확실성은 완전 해소 전 — 즉각 봉쇄보다 리스크 프리미엄 일부 유지 흐름',
-  geoEn:   'Hormuz uncertainty is not fully resolved — risk premium partly remains rather than immediate blockade as base case',
-  outlook: '6월 확정 공시와 7월 시장 전망 분리 — 7월은 급격한 인하보다 현 수준 유지 또는 제한적 조정 가능성',
-  outlookEn: 'Separate June confirmed filings from July market outlook — hold or limited adjustment is more likely than a sharp cut'
+  /* 2026.05.24 10:30 KST 기준 */
+  brent:   '국제유가: 미국-이란 협상 기대감은 리스크 프리미엄 완화 요인이나 호르무즈 리스크는 완전 해소 전',
+  brentEn: 'Oil prices: US-Iran talks may ease risk premium, but Hormuz risk is not fully resolved',
+  fx:      'USD/KRW는 2026.05.22 공개 데이터 기준 약 1,504~1,512원 범위 — 2026.05.24 10:30 KST 실시간 환율 확인 필요',
+  fxEn:    'USD/KRW public May 22 data shows roughly 1,504–1,512 KRW — check real-time FX for May 24 10:30 KST',
+  mops:    'MOPS 511.21 → 410.02 cents/gal 하락 — 7월 추가 인하 가능성의 핵심 변수',
+  mopsEn:  'MOPS fell from 511.21 to 410.02 cents/gal — key driver for possible July cuts',
+  geo:     '호르무즈 관련 불확실성은 완전 해소 전 — 협상 기대감과 지정학 리스크가 동시에 존재',
+  geoEn:   'Hormuz uncertainty is not fully resolved — negotiation hopes and geopolitical risk coexist',
+  outlook: '6월 확정 공시와 7월 시장 전망 분리 — 7월은 추가 인하 가능성이 존재하지만 환율과 지정학 변수로 인하 폭 제한 가능',
+  outlookEn: 'Separate June confirmed filings from July market outlook — July has room for further cuts, but FX and geopolitics may limit the size'
 };
 
 /* ════════════════════════════════════════════════════════
@@ -679,6 +689,9 @@ function renderPredictBasis(){
    select.value를 1순위로 읽음.
    ════════════════════════════════════════════════════════ */
 function getCurrentLang(){
+  var savedLang = localStorage.getItem('aero_lang');
+  if(savedLang) return String(savedLang).toLowerCase().split('-')[0];
+  if(window.SHARED_STATE && window.SHARED_STATE.lang) return String(window.SHARED_STATE.lang).toLowerCase().split('-')[0];
   var sel = document.getElementById('navLang');
   if(sel && sel.value) return String(sel.value).toLowerCase().split('-')[0];
   var docLang = document.documentElement.lang || 'ko';
@@ -960,9 +973,9 @@ function getCatLabel(cat){
 
 /* ════════════════════════════════════════════════════════
    FIXED_NEWS_FALLBACK
-   — 신규 4개 카드뉴스 항목의 다국어 fallback 텍스트
-   — window.t(key) 실패 시 현재언어 → en → ko 순서로 사용
-   — ja / zh / fr / de 는 en fallback으로 내려감
+   — 고정 카드뉴스 항목의 다국어 텍스트
+   — 현재 언어에 번역이 있는 카드만 표시하여 다른 언어가 섞이지 않도록 처리
+   — 번역이 없는 아카이브 카드는 해당 언어에서 숨김
    ════════════════════════════════════════════════════════ */
 var FIXED_NEWS_FALLBACK = {
   ko: {
@@ -1544,7 +1557,50 @@ var FIXED_NEWS_FALLBACK = {
     'news.fixed.20260424yp.tag1': '에어프레미아', 'news.fixed.20260424yp.tag2': '유류할증료 조회',
     'news.fixed.20260424yp.tag3': '5월공시',       'news.fixed.20260424yp.tag4': '항공권 유류할증료'
   },
+  ja: {
+    'news.fixed.20260523a.title':   '2026.05.23 22:00 KST | 原油・為替の高止まり、7月燃油サーチャージ急落の可能性は限定的',
+    'news.fixed.20260523a.summary': '① 今日の要点\n2026.05.23 22:00 KST基準では、6月燃油サーチャージは航空会社が公示済みの確定データとして確認し、7月は市場指標に基づく見通しとして分けて見る必要があります。現在の原油価格と為替の流れを考慮すると、7月燃油サーチャージは急激な引き下げより、現水準の維持または一部区間の限定的な調整となる可能性が高い状況です。\n\n② 国際原油・航空燃料の流れ\nブレント原油は最近の高値圏で推移しており、燃油サーチャージの急落を期待しにくい環境です。中東リスクとホルムズ海峡をめぐる不確実性は完全には解消されていませんが、即時封鎖よりもリスクプレミアムが一部残る流れとして見るのが適切です。シンガポール航空燃料(MOPS)は短期調整後の再反発可能性を確認する必要があり、最新公開数値の確認が必要です。\n\n③ ウォン/ドル為替の流れ\nウォン/ドル為替は2026.05.22基準で1,500ウォン前後の高い水準が確認されています。公開為替データ上、2026.05.22のUSD/KRWは約1,504.37〜1,511.79ウォンの範囲で集計されており、燃油サーチャージの下落を制限する要因です。2026.05.23 22:00 KST時点のリアルタイム為替は取引・データソースによって差があるため、最終決済前に確認が必要です。\n\n④ 7月燃油サーチャージ見通し\n公示確定データは6月の航空会社別公示に限定し、7月は市場指標ベースの見通しとして分けます。原油と為替が同時に高い水準にあるため、航空会社が燃油サーチャージを大きく下げにくい環境です。したがって7月は急落よりも、現水準維持または一部区間の限定的調整の可能性が高いと見られます。\n\n⑤ 予約判断ガイド\n日本、東南アジア、欧州など夏の繁忙期路線は、燃油サーチャージだけでなく為替、繁忙期運賃、座席状況も合わせて確認する必要があります。短距離路線は燃油サーチャージの変動より航空券運賃そのものの影響が大きい場合があり、長距離路線は燃油サーチャージと為替の影響を一緒に確認する方が有利です。\n\n※ 6月公示未確認の航空会社は、前月データを6月確定データのように表示せず、「公示前」または「6月公示未確認」として区分します。',
+    'news.fixed.20260523a.impact':  '→ 6月確定公示と7月市場見通しを分離。ブレント原油の高値圏、USD/KRW 1,500ウォン前後、MOPS最新公開数値の確認が必要なため、7月の急落可能性は限定的です。',
+    'news.fixed.20260523a.source':  '市場データに基づく分析 (2026.05.23 22:00 KST)',
+    'news.fixed.20260523a.tag1': '7月燃油サーチャージ見通し', 'news.fixed.20260523a.tag2': '原油高値圏',
+    'news.fixed.20260523a.tag3': 'USD/KRW 1,500ウォン台', 'news.fixed.20260523a.tag4': 'MOPS確認必要',
+    'news.fixed.20260523a.tag5': '繁忙期予約ガイド'
+  },
+  zh: {
+    'news.fixed.20260523a.title':   '2026.05.23 22:00 KST | 油价与汇率维持高位，7月燃油附加费大幅下降可能性有限',
+    'news.fixed.20260523a.summary': '① 今日核心摘要\n以2026.05.23 22:00 KST为准，6月燃油附加费应与航空公司已发布的确定公告数据分开查看，7月则应作为基于市场指标的展望来判断。考虑当前油价与汇率走势，7月燃油附加费更可能维持现有水平或仅在部分区间有限调整，而不是急剧下调。\n\n② 国际油价与航空燃油走势\n布伦特原油近期仍在高位区间波动，难以期待燃油附加费快速大幅下降。中东风险和霍尔木兹海峡相关不确定性尚未完全解除，但更适合理解为风险溢价仍部分存在，而不是立即封锁的情形。新加坡航空燃油(MOPS)在短期调整后仍需观察是否反弹，最新公开数值需要单独确认。\n\n③ 韩元/美元汇率走势\n韩元/美元汇率在2026.05.22基准仍处于1,500韩元前后的高位。公开汇率数据中，2026.05.22 USD/KRW约在1,504.37至1,511.79韩元区间，这会限制燃油附加费下调空间。2026.05.23 22:00 KST实时汇率因交易与数据来源不同可能存在差异，最终支付前仍需确认。\n\n④ 7月燃油附加费展望\n已确定数据仅限于6月航空公司公告，7月应作为市场指标基础上的展望处理。由于油价和汇率都处于偏高水平，航空公司难以大幅降低燃油附加费。因此7月更可能维持当前水平或在部分区间有限调整，而不是快速下跌。\n\n⑤ 预订判断指南\n日本、东南亚、欧洲等暑期旺季航线，需要同时查看燃油附加费、汇率、旺季票价和座位情况。短途航线中，机票票价本身的影响可能大于燃油附加费变化；长途航线则更适合同时确认燃油附加费和汇率影响。\n\n※ 6月公告尚未确认的航空公司，不应把前月数据误标为6月确定数据，应标示为“公告前”或“6月公告未确认”。',
+    'news.fixed.20260523a.impact':  '→ 区分6月确定公告与7月市场展望。布伦特原油高位、USD/KRW约1,500韩元、MOPS最新公开数值仍需确认，因此7月大幅下降可能性有限。',
+    'news.fixed.20260523a.source':  '基于市场数据的分析 (2026.05.23 22:00 KST)',
+    'news.fixed.20260523a.tag1': '7月燃油附加费展望', 'news.fixed.20260523a.tag2': '油价高位',
+    'news.fixed.20260523a.tag3': 'USD/KRW 1,500韩元区间', 'news.fixed.20260523a.tag4': 'MOPS需确认',
+    'news.fixed.20260523a.tag5': '旺季预订指南'
+  },
+  fr: {
+    'news.fixed.20260523a.title':   '2026.05.23 22:00 KST | Pétrole et change élevés, baisse brutale des surtaxes de juillet limitée',
+    'news.fixed.20260523a.summary': '① Résumé\nAu 2026.05.23 22:00 KST, les données de juin doivent être distinguées des prévisions de juillet. Les montants de juin ne sont confirmés que pour les compagnies ayant publié un avis officiel, tandis que juillet reste une prévision fondée sur les indicateurs de marché.\n\n② Pétrole et carburant aérien\nLe Brent reste dans une zone élevée. Le risque Moyen-Orient et le détroit d’Hormuz ne sont pas entièrement résolus, même si le scénario de blocage immédiat n’est pas le scénario central. Le MOPS doit être confirmé avec les dernières données publiques.\n\n③ USD/KRW\nLes données publiques du 2026.05.22 situent l’USD/KRW autour de 1 504~1 512 KRW. Ce niveau peut limiter la baisse des surtaxes en KRW.\n\n④ Prévision juillet\nLa structure actuelle favorise plutôt un maintien du niveau actuel ou des ajustements limités, plutôt qu’une chute brutale.\n\n⑤ Guide de réservation\nPour les routes d’été vers le Japon, l’Asie du Sud-Est ou l’Europe, comparez aussi le change, les tarifs de haute saison et la disponibilité des sièges.',
+    'news.fixed.20260523a.impact':  '→ Les données confirmées de juin et la prévision de juillet sont séparées ; la baisse brutale de juillet reste limitée.',
+    'news.fixed.20260523a.source':  'Analyse de marché (2026.05.23 22:00 KST)',
+    'news.fixed.20260523a.tag1': 'prévision juillet', 'news.fixed.20260523a.tag2': 'pétrole élevé',
+    'news.fixed.20260523a.tag3': 'USD/KRW autour de 1 500', 'news.fixed.20260523a.tag4': 'MOPS à vérifier',
+    'news.fixed.20260523a.tag5': 'guide de réservation'
+  },
+  de: {
+    'news.fixed.20260523a.title':   '2026.05.23 22:00 KST | Öl und Wechselkurs bleiben hoch, starke Juli-Senkung begrenzt',
+    'news.fixed.20260523a.summary': '① Kurzfassung\nStand 2026.05.23 22:00 KST müssen bestätigte Juni-Daten und Juli-Prognosen getrennt betrachtet werden. Juni ist nur für Airlines mit offizieller Mitteilung bestätigt, während Juli eine marktbasierte Prognose bleibt.\n\n② Öl und Flugtreibstoff\nBrent bleibt in einer erhöhten Spanne. Nahost- und Hormuz-Risiken sind nicht vollständig gelöst, auch wenn eine sofortige Blockade nicht das Basisszenario ist. MOPS sollte mit aktuellen öffentlichen Daten geprüft werden.\n\n③ USD/KRW\nÖffentliche Daten vom 2026.05.22 zeigen USD/KRW etwa bei 1.504~1.512 KRW. Dieses Niveau kann Senkungen in KRW begrenzen.\n\n④ Juli-Prognose\nDie aktuelle Struktur spricht eher für ein Halten des Niveaus oder begrenzte Anpassungen als für einen starken Rückgang.\n\n⑤ Buchungsleitfaden\nFür Sommerstrecken nach Japan, Südostasien oder Europa sollten auch Wechselkurs, Hochsaison-Tarife und Sitzverfügbarkeit geprüft werden.',
+    'news.fixed.20260523a.impact':  '→ Bestätigte Juni-Daten und Juli-Prognose werden getrennt; eine starke Juli-Senkung bleibt begrenzt.',
+    'news.fixed.20260523a.source':  'Marktanalyse (2026.05.23 22:00 KST)',
+    'news.fixed.20260523a.tag1': 'Juli-Prognose', 'news.fixed.20260523a.tag2': 'Ölpreis erhöht',
+    'news.fixed.20260523a.tag3': 'USD/KRW um 1.500', 'news.fixed.20260523a.tag4': 'MOPS prüfen',
+    'news.fixed.20260523a.tag5': 'Buchungsleitfaden'
+  },
   en: {
+    'news.fixed.20260523a.title':   '2026.05.23 22:00 KST | Oil and FX remain high, limiting the chance of a sharp July fuel surcharge drop',
+    'news.fixed.20260523a.summary': '① Key summary\nAs of 2026.05.23 22:00 KST, June fuel surcharge figures should be treated as confirmed only for airlines that have published official notices, while July should be separated as a market-based outlook. Given current oil and FX trends, July fuel surcharges are more likely to stay near current levels or see limited adjustments in some bands than to fall sharply.\n\n② Oil and jet fuel trend\nBrent crude remains in a high range, making a sudden fuel surcharge drop difficult to expect. Middle East and Strait of Hormuz uncertainty has not been fully resolved, but the current situation is better described as a remaining risk premium rather than an immediate blockade scenario. Singapore jet fuel(MOPS) needs updated public data confirmation after the short-term pullback.\n\n③ USD/KRW trend\nUSD/KRW remains high around the 1,500 KRW level based on public data for 2026.05.22. Public FX data places USD/KRW around 1,504.37 to 1,511.79 KRW, which limits room for fuel surcharge declines. Real-time rates as of 2026.05.23 22:00 KST may differ by source and should be checked before final payment.\n\n④ July fuel surcharge outlook\nConfirmed data should be limited to June airline notices, while July remains a market-indicator-based outlook. Because both oil and FX remain relatively high, airlines have limited room to cut fuel surcharges sharply. July is therefore more likely to show current-level continuation or limited band-level adjustment than a rapid drop.\n\n⑤ Booking guide\nFor peak summer routes such as Japan, Southeast Asia, and Europe, travelers should compare fuel surcharges together with FX, seasonal fares, and seat availability. On short-haul routes, base fare changes may matter more than fuel surcharge movement; on long-haul routes, checking both fuel surcharge and FX impact is more useful.\n\n※ Airlines without confirmed June notices should be marked as “notice pending” or “June notice unconfirmed,” not treated as if prior-month data were June confirmed data.',
+    'news.fixed.20260523a.impact':  '→ June confirmed notices and July market outlook are separated. Brent remains high, USD/KRW is around the 1,500 KRW range, and MOPS needs latest public-data confirmation, so a sharp July drop is limited.',
+    'news.fixed.20260523a.source':  'Market data analysis (2026.05.23 22:00 KST)',
+    'news.fixed.20260523a.tag1': 'July fuel surcharge outlook', 'news.fixed.20260523a.tag2': 'oil high range',
+    'news.fixed.20260523a.tag3': 'USD/KRW around 1,500', 'news.fixed.20260523a.tag4': 'MOPS check needed',
+    'news.fixed.20260523a.tag5': 'peak-season booking guide',
 
     /* ── 2026-05-21 T'way Air (TW) June official filing card (NEW) ── */
     'news.fixed.20260521.tw.title':   "✅ T'way Air (TW) June 2026 International Fuel Surcharge — Official Filing Reflected, All Bands Down vs May",
@@ -2645,6 +2701,8 @@ var FIXED_NEWS = [
    tags:['환율','USDKRW']}
 ];
 
+FIXED_NEWS = (window.AERO_NEWS_CARDS_20260524 || []).concat(FIXED_NEWS);
+
 /* ── renderNews ──
    window.t(key) 실패 시 FIXED_NEWS_FALLBACK에서
    현재언어 → en → ko 순서로 fallback 텍스트를 가져옴.
@@ -2664,11 +2722,13 @@ function renderNews(){
   function getNewsText(key){
     var fb = FIXED_NEWS_FALLBACK;
     if(fb[lang] && fb[lang][key]) return fb[lang][key];
-    if(fb['en'] && fb['en'][key]) return fb['en'][key];
-    if(fb['ko'] && fb['ko'][key]) return fb['ko'][key];
-    /* fallback: 공용 i18n */
-    var v = window.t(key);
-    return (v && v !== key) ? v : '';
+    if(window.PAGE_I18N_OVERRIDE && window.PAGE_I18N_OVERRIDE[lang] && window.PAGE_I18N_OVERRIDE[lang][key] !== undefined) {
+      return window.PAGE_I18N_OVERRIDE[lang][key];
+    }
+    if(window.I18N && window.I18N[lang] && window.I18N[lang][key] !== undefined) {
+      return window.I18N[lang][key];
+    }
+    return '';
   }
 
   /* 외부 feed에서 들어오는 불필요 항목 제거 */
@@ -2733,31 +2793,75 @@ function renderNews(){
   var impactPrefix   = window.t('news.impact.prefix');
   var aiSummaryBadge = window.t('common.aiSummaryBadge');
 
+  function esc(v){
+    return String(v == null ? '' : v)
+      .replace(/&/g,'&amp;')
+      .replace(/</g,'&lt;')
+      .replace(/>/g,'&gt;')
+      .replace(/"/g,'&quot;')
+      .replace(/'/g,'&#39;');
+  }
+  function textBlock(v){
+    return esc(v).replace(/\n/g,'<br>');
+  }
+  function localizedCardValue(it, key){
+    var lang = getCurrentLang();
+    if(it.i18n){
+      if(it.i18n[lang] && it.i18n[lang][key] !== undefined) return it.i18n[lang][key];
+    }
+    return lang === 'ko' ? it[key] : undefined;
+  }
+  function localizedCardArray(it, key){
+    var val = localizedCardValue(it, key);
+    return Array.isArray(val) ? val : [];
+  }
+
   /* ── 4단계: 카드 렌더 — data-date 속성 추가, NEW 배지 날짜 기준 자동 제어 ──
      isLatestDate: 현재 카드가 가장 최신 날짜인지 여부
      NEW 배지는 가장 최신 날짜 카드에만 표시 (isNew 플래그 불요) */
   function renderCard(it, isLatestDate){
-    var title   = it.titleKey      ? getNewsText(it.titleKey)      : (it.title   ||'');
-    var summary = it.summaryKey    ? getNewsText(it.summaryKey)    : (it.summary ||'');
+    var title   = it.titleKey      ? getNewsText(it.titleKey)      : (localizedCardValue(it,'title')   ||'');
+    var summary = it.summaryKey    ? getNewsText(it.summaryKey)    : (localizedCardValue(it,'summary') ||'');
     /* 안전장치: title 또는 summary가 없으면 빈 카드 렌더 방지 */
     if(!title || !summary) return '';
-    var impact  = it.impactKey     ? getNewsText(it.impactKey)     : (it.impact  ||'');
-    var srcName = it.sourceNameKey ? getNewsText(it.sourceNameKey) : (it.sourceName||'');
+    var impact  = it.impactKey     ? getNewsText(it.impactKey)     : (localizedCardValue(it,'impact')  ||'');
+    var srcName = it.sourceNameKey ? getNewsText(it.sourceNameKey) : (localizedCardValue(it,'sourceName')||'');
     var tagList = it.tagKeys
       ? it.tagKeys.map(function(k){ return getNewsText(k); }).filter(Boolean)
-      : (it.tags || []);
+      : localizedCardArray(it,'tags');
     var catCls   = CAT_CLS[it.category]  || CAT_CLS.general;
     var catIcon  = CAT_ICON[it.category] || 'ℹ️';
     var catLabel = getCatLabel(it.category);
     var dots='';
     for(var i=0;i<5;i++) dots+='<span class="rel-dot'+(((it.relevanceScore||0)>=(i+1)*0.2)?'':' dim')+'"></span>';
-    var tagsHtml=tagList.map(function(tg){return'<span class="news-tag">'+tg+'</span>';}).join('');
+    var tagsHtml=tagList.map(function(tg){return'<span class="news-tag">'+esc(tg)+'</span>';}).join('');
     var srcHtml=it.sourceUrl
       ?'<a class="news-link" href="'+it.sourceUrl+'" target="_blank" rel="noopener">'+srcName+' ↗</a>'
       :'<span style="font-size:11px;color:var(--muted)">'+srcName+'</span>';
+    var updatedText = localizedCardValue(it,'updatedAt') || it.updatedAt;
+    var aiBrief = localizedCardValue(it,'aiBrief');
+    var updatedHtml = updatedText ? '<div class="news-updated">'+esc(updatedText)+'</div>' : '';
+    var aiBriefHtml = aiBrief ? '<div class="news-ai-brief">'+textBlock(aiBrief)+'</div>' : '';
+    var faqHtml = '';
+    var faqList = localizedCardArray(it,'faq');
+    if(faqList.length){
+      faqHtml = '<div class="news-faq"><div class="news-faq-title">FAQ</div>'
+        + faqList.map(function(f){
+          return '<div class="news-faq-item"><div class="news-faq-q">Q. '+esc(f.q)+'</div>'
+            + '<div class="news-faq-a">A. '+textBlock(f.a)+'</div></div>';
+        }).join('')
+        + '</div>';
+    }
+    var relatedHtml = '';
+    var linkList = localizedCardArray(it,'links');
+    if(linkList.length){
+      relatedHtml = '<div class="news-related">'
+        + linkList.map(function(l){ return '<a href="'+esc(l.href)+'">'+esc(l.label)+'</a>'; }).join('')
+        + '</div>';
+    }
     /* NEW 배지: 가장 최신 날짜 카드에만 표시 */
     var showNew = isLatestDate;
-    return '<div class="news-card priority-'+(it.priority||3)+'" data-date="'+(it.date||'')+'">'
+    return '<article class="news-card priority-'+(it.priority||3)+'" id="'+esc(it.id || '')+'" data-date="'+(it.date||'')+'" data-slug="'+esc(it.slug || '')+'">'
       +'<div class="news-meta">'
       +'<span class="cat-badge '+catCls+'">'+catIcon+' '+catLabel+'</span>'
       +(it.aiSummary?'<span class="ai-summary-tag">🤖 '+aiSummaryBadge+'</span>':'')
@@ -2765,11 +2869,66 @@ function renderNews(){
       +'<span class="news-date">'+it.date+'</span>'
       +'<div class="relevance-bar">'+dots+'</div>'
       +'</div>'
-      +'<div class="news-title">'+title+'</div>'
-      +'<div class="news-summary">'+summary+'</div>'
-      +'<div class="news-impact">'+impactPrefix+impact+'</div>'
+      +updatedHtml
+      +'<div class="news-title">'+esc(title)+'</div>'
+      +aiBriefHtml
+      +'<div class="news-summary">'+textBlock(summary)+'</div>'
+      +'<div class="news-impact">'+esc(impactPrefix)+esc(impact)+'</div>'
       +'<div class="news-footer">'+srcHtml+'<div class="news-tags">'+tagsHtml+'</div></div>'
-      +'</div>';
+      +faqHtml
+      +relatedHtml
+      +'</article>';
+  }
+
+  function syncNewsStructuredData(schemaItems){
+    var baseUrl = 'https://aero-surcharge.com/news.html';
+    var cards = (schemaItems || []).filter(function(it){ return it && (it.id || it.slug); }).slice(0, 12);
+    var articles = cards.map(function(it){
+      var headline = it.titleKey ? getNewsText(it.titleKey) : (localizedCardValue(it,'title') || '');
+      var desc = localizedCardValue(it,'aiBrief') || (it.summaryKey ? getNewsText(it.summaryKey) : (localizedCardValue(it,'summary') || ''));
+      return {
+        '@type': 'NewsArticle',
+        headline: headline,
+        description: String(desc).replace(/\s+/g, ' ').slice(0, 300),
+        datePublished: (it.date || '2026-05-24') + 'T10:30:00+09:00',
+        dateModified: '2026-05-24T10:30:00+09:00',
+        inLanguage: (getCurrentLang() === 'ko' ? 'ko-KR' : getCurrentLang()),
+        mainEntityOfPage: baseUrl + (it.id ? '#' + it.id : ''),
+        url: baseUrl + (it.id ? '#' + it.id : '')
+      };
+    });
+    var faqs = [];
+    cards.forEach(function(it){
+      var faqList = localizedCardArray(it,'faq');
+      if(!faqList.length) return;
+      faqList.forEach(function(f){
+        if(!f.q || !f.a) return;
+        faqs.push({
+          '@type': 'Question',
+          name: f.q,
+          acceptedAnswer: { '@type': 'Answer', text: f.a }
+        });
+      });
+    });
+    var graph = articles.slice();
+    if(faqs.length){
+      graph.push({
+        '@type': 'FAQPage',
+        mainEntity: faqs.slice(0, 30)
+      });
+    }
+    var payload = {
+      '@context': 'https://schema.org',
+      '@graph': graph
+    };
+    var el = document.getElementById('topicNewsStructuredData');
+    if(!el){
+      el = document.createElement('script');
+      el.type = 'application/ld+json';
+      el.id = 'topicNewsStructuredData';
+      document.head.appendChild(el);
+    }
+    el.textContent = JSON.stringify(payload);
   }
 
   /* ── 5단계: 날짜 기준 최신 / 이전 영역 자동 분리 ──
@@ -2797,6 +2956,7 @@ function renderNews(){
     cardsHtml += renderCard(item, isLatestDate);
   }
   document.getElementById('newsList').innerHTML = (currentPage===1 ? disclaimer : '') + cardsHtml;
+  syncNewsStructuredData(filtered);
   renderPagination(totalPages, filtered.length);
 }
 
@@ -2902,21 +3062,21 @@ document.getElementById('filterRow').addEventListener('click',function(e){
    ════════════════════════════════════════════════════════ */
 window.PAGE_I18N_OVERRIDE = {
   ko: {
-    'news.summary.updated': '✅ 2026.05.23 22:00 KST 기준 · 6월 확정 공시와 7월 시장 전망 분리',
-    'news.summary.li1':     '브렌트유는 최근 고점권에서 등락 중 — 유류할증료 급락 기대 제한',
-    'news.summary.li2':     'MOPS는 단기 조정 이후 재반등 가능성 점검 — 최신 공개 수치 확인 필요',
+    'news.summary.updated': '✅ 2026.05.24 10:30 KST 기준 · 6월 확정 공시와 7월 시장 전망 분리',
+    'news.summary.li1':     '6월 국제선 유류할증료 인하 흐름 확정 — 대한항공 564,000원 → 451,500원',
+    'news.summary.li2':     'MOPS 511.21 → 410.02 cents/gal 하락 — 항공유 가격 하락이 유류할증료 인하 요인',
     'news.summary.li3':     'USD/KRW는 2026.05.22 공개 데이터 기준 약 1,504~1,512원 범위 확인',
-    'news.summary.li4':     '호르무즈 관련 불확실성은 완전 해소 전 — 리스크 프리미엄 일부 유지',
+    'news.summary.li4':     '미국-이란 협상 기대감은 유가 리스크 프리미엄 완화 요인이나 호르무즈 리스크는 완전 해소 전',
     'news.summary.li5':     '6월 공시는 확인된 항공사 공식 공시만 확정 데이터로 표시',
-    'news.summary.li6':     '7월은 급격한 인하보다 현 수준 유지 또는 일부 구간 제한적 조정 가능성 우세',
-    'news.marketTitle':     '🌍 시장 브리핑 (2026.05.23 22:00 KST 기준)',
-    'news.brent':           '브렌트유는 최근 고점권에서 등락 중 — 유류할증료 급락 기대 제한',
-    'news.fx':              'USD/KRW는 2026.05.22 공개 데이터 기준 약 1,504~1,512원 범위 확인 — 실시간 환율 확인 필요',
-    'news.mops':            'MOPS는 단기 조정 이후 재반등 가능성 점검 — 최신 공개 수치 확인 필요',
-    'news.geo':             '호르무즈 관련 불확실성은 완전 해소 전 — 즉각 봉쇄보다 리스크 프리미엄 일부 유지 흐름',
-    'news.marketSummary':   '→ 6월 확정 공시와 7월 시장 전망을 분리해 확인하세요. 브렌트유 고점권·USD/KRW 1,500원대 전후·MOPS 최신 공개 수치 확인 필요 흐름상 7월 급락 가능성은 제한적입니다.',
-    'news.fxDominance':     '🌍 7월 방향성 참고 지표: 유가 + 환율 + MOPS 확인 필요',
-    'news.dataRef':         '✅ 6월 확정 공시와 7월 시장 전망 분리 · 2026.05.23 22:00 KST 기준',
+    'news.summary.li6':     '7월은 추가 인하 가능성이 존재하지만 환율과 지정학 변수로 인하 폭 제한 가능',
+    'news.marketTitle':     '🌍 시장 브리핑 (2026.05.24 10:30 KST 기준)',
+    'news.brent':           '국제유가: 미국-이란 협상 기대감은 리스크 프리미엄 완화 요인이나 호르무즈 리스크는 완전 해소 전',
+    'news.fx':              'USD/KRW는 2026.05.22 공개 데이터 기준 약 1,504~1,512원 범위 확인 — 2026.05.24 10:30 KST 실시간 환율 확인 필요',
+    'news.mops':            'MOPS 511.21 → 410.02 cents/gal 하락 — 7월 추가 인하 가능성의 핵심 변수',
+    'news.geo':             '호르무즈 관련 불확실성은 완전 해소 전 — 협상 기대감과 지정학 리스크가 동시에 존재',
+    'news.marketSummary':   '→ 6월 확정 공시와 7월 시장 전망을 분리해 확인하세요. MOPS 하락은 추가 인하 요인이지만 USD/KRW 1,500원대와 호르무즈 리스크가 인하 폭을 제한할 수 있습니다.',
+    'news.fxDominance':     '🌍 7월 방향성 참고 지표: MOPS + 환율 + 국제유가 + 호르무즈 리스크',
+    'news.dataRef':         '✅ 6월 확정 공시와 7월 시장 전망 분리 · 2026.05.24 10:30 KST 기준',
     'news.curSummary':      '→ 6월 확정 공시는 공식 공시 확인 항공사만 표시 · 7월은 시장 지표 기반 전망',
     'news.decisionLine1':   '→ 대한항공·아시아나·진에어·에어부산 6월 공식 공시 완료 — 5월 대비 전 구간 인하 확인',
     'news.decisionLine2':   '→ 현재 시장(브렌트유·MOPS·환율)은 7월 방향성에 영향 — 7월 공시 모니터링 필요',

@@ -327,7 +327,7 @@ var GRAPH_I18N = {
     'graph.related.news': '📰 유류할증료 뉴스', 'graph.related.graph': '📈 변동 그래프',
     'graph.related.calc': '🧮 계산 방법 안내', 'graph.related.may': '📅 2026년 5월',
     'graph.related.june': '🔮 2026년 6월 전망', 'graph.related.korea': '🇰🇷 한국 출발 유류할증료',
-    'graph.usdBadge': 'USD공시', 'graph.noData': '—',
+    'graph.usdBadge': 'USD공시', 'graph.legend.averageNote': '전체 보기: 항공사별 평균 금액', 'graph.noData': '—',
     'graph.footnote': '표시된 유류할증료는 항공사 공식 공지 기반 참고용 정보입니다. 최종 금액은 항공사 공식 사이트 또는 발권처에서 반드시 확인하세요.<br>문의: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
     'airline.KE': '대한항공 (KE)', 'airline.OZ': '아시아나항공 (OZ)',
     'airline.YP': '에어프레미아 (YP)', 'airline.7C': '제주항공 (7C)',
@@ -371,7 +371,7 @@ var GRAPH_I18N = {
     'graph.related.news': '📰 News', 'graph.related.graph': '📈 Trend Graph',
     'graph.related.calc': '🧮 Calculation Guide', 'graph.related.may': '📅 May 2026',
     'graph.related.june': '🔮 June 2026 Forecast', 'graph.related.korea': '🇰🇷 Korea-Departure',
-    'graph.usdBadge': 'USD Filing', 'graph.noData': '—',
+    'graph.usdBadge': 'USD Filing', 'graph.legend.averageNote': 'All view: average amount by airline', 'graph.noData': '—',
     'graph.footnote': 'Data is for reference only, based on official airline announcements. Always confirm final amounts at the airline\'s official site.<br>Contact: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
     'airline.KE': 'Korean Air (KE)', 'airline.OZ': 'Asiana Airlines (OZ)',
     'airline.YP': 'Air Premia (YP)', 'airline.7C': 'Jeju Air (7C)',
@@ -408,7 +408,7 @@ var GRAPH_I18N = {
     'graph.related.news': '📰 ニュース', 'graph.related.graph': '📈 推移グラフ',
     'graph.related.calc': '🧮 計算方法', 'graph.related.may': '📅 2026年5月',
     'graph.related.june': '🔮 2026年6月予測', 'graph.related.korea': '🇰🇷 韓国発',
-    'graph.usdBadge': 'USD申告', 'graph.noData': '—',
+    'graph.usdBadge': 'USD申告', 'graph.legend.averageNote': '全体表示：航空会社別の平均金額', 'graph.noData': '—',
     'graph.footnote': '表示された燃油サーチャージは参考情報です。最終金額は各航空会社の公式サイトでご確認ください。<br>お問い合わせ: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
     'airline.KE': '大韓航空 (KE)', 'airline.OZ': 'アシアナ航空 (OZ)',
     'airline.YP': 'エアプレミア (YP)', 'airline.7C': '済州航空 (7C)',
@@ -445,7 +445,7 @@ var GRAPH_I18N = {
     'graph.related.news': '📰 资讯', 'graph.related.graph': '📈 趋势图',
     'graph.related.calc': '🧮 计算方法', 'graph.related.may': '📅 2026年5月',
     'graph.related.june': '🔮 2026年6月预测', 'graph.related.korea': '🇰🇷 韩国出发',
-    'graph.usdBadge': 'USD申报', 'graph.noData': '—',
+    'graph.usdBadge': 'USD申报', 'graph.legend.averageNote': '全部视图：按航空公司显示平均金额', 'graph.noData': '—',
     'graph.footnote': '所示燃油附加费为参考信息，基于各航空公司官方公告。最终金额请在各航空公司官网确认。<br>联系: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>',
     'airline.KE': '大韩航空 (KE)', 'airline.OZ': '韩亚航空 (OZ)',
     'airline.YP': '高丽航空 (YP)', 'airline.7C': '济州航空 (7C)',
@@ -862,7 +862,7 @@ function buildLegend() {
     var note = document.createElement('div');
     note.className = 'legend-item';
     note.style.cursor = 'default';
-    note.innerHTML = '<span class="legend-tag">'+tg('graph.usdBadge')+'</span><span style="color:var(--muted);font-size:11px">전체 보기: 항공사별 평균 금액</span>';
+    note.innerHTML = '<span class="legend-tag">'+tg('graph.usdBadge')+'</span><span style="color:var(--muted);font-size:11px">'+tg('graph.legend.averageNote')+'</span>';
     el.appendChild(note);
   }
 }

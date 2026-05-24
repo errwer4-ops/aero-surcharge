@@ -797,7 +797,45 @@ var SAVING_INDEX_ROUTE_MAP = null;
       ja:['燃油サーチャージ節約比較計算機','路線別 5月 vs 6月 燃油サーチャージ比較','同じ路線の航空会社をまとめて、6月の最安額・航空会社別差額・想定節約額を表示します。','2026年6月公式公示反映','出発地','到着地','人数','旅程','片道または往復を選択','片道','往復','比較航空会社','6月最安サーチャージ','MyRealTrip提携','※ 燃油サーチャージは発券日基準で適用されます。最終金額は運賃・為替・税金・予約チャネルにより変わるため、発券前に公式案内をご確認ください。'],
       zh:['燃油附加费节省比较计算器','按航线比较5月 vs 6月燃油附加费','自动汇总同一航线的航空公司，显示6月最低金额、航空公司差异和预计节省额。','已反映2026年6月官方公告','出发地','目的地','人数','行程','选择单程或往返','单程','往返','比较航空公司','6月最低燃油附加费','MyRealTrip合作','※ 燃油附加费按出票日适用。最终支付金额可能因票价、汇率、税费和预订渠道而异，出票前请确认官方公告。']
     };
-    var t = dict[langCode()] || dict.ko;
+    var lang = langCode();
+    var t = dict[lang] || dict.ko;
+    if (lang === 'fr') {
+      t = [
+        'Calculateur d’économies de surtaxe carburant',
+        'Comparaison des surtaxes par route : mai vs juin',
+        'Compare automatiquement les compagnies sur le même itinéraire et affiche le montant le plus bas en juin, les écarts par compagnie et l’économie estimée.',
+        'Annonces officielles de juin 2026 reflétées',
+        'Départ',
+        'Destination',
+        'Passagers',
+        'Trajet',
+        'Choisir aller simple ou aller-retour',
+        'Aller simple',
+        'Aller-retour',
+        'Compagnies comparées',
+        'Surtaxe minimale en juin',
+        'Partenaire MyRealTrip',
+        '※ La surtaxe carburant s’applique selon la date de billetterie. Le paiement final peut varier selon le tarif, le change, les taxes et le canal de réservation ; vérifiez toujours l’avis officiel avant achat.'
+      ];
+    } else if (lang === 'de') {
+      t = [
+        'Treibstoffzuschlag-Ersparnisrechner',
+        'Routenvergleich der Zuschläge: Mai vs. Juni',
+        'Vergleicht automatisch Airlines auf derselben Route und zeigt den niedrigsten Juni-Zuschlag, Unterschiede je Airline und die geschätzte Ersparnis.',
+        'Offizielle Juni-2026-Mitteilungen berücksichtigt',
+        'Abflug',
+        'Ziel',
+        'Passagiere',
+        'Reiseart',
+        'Einfach oder Hin- und Rückflug wählen',
+        'Einfach',
+        'Hin und zurück',
+        'Verglichene Airlines',
+        'Niedrigster Juni-Zuschlag',
+        'MyRealTrip Partner',
+        '※ Treibstoffzuschläge gelten nach Ticketausstellungsdatum. Der Endbetrag kann je nach Tarif, Wechselkurs, Steuern und Buchungskanal variieren; prüfen Sie vor dem Kauf immer die offizielle Mitteilung.'
+      ];
+    }
     root.setAttribute('aria-label', t[0]);
     var targets = ['.saving-tool-title','.saving-tool-sub','.saving-tool-badge','.saving-form .saving-field:nth-child(1) .saving-label','.saving-form .saving-field:nth-child(2) .saving-label','.saving-form .saving-field:nth-child(3) .saving-label','.saving-form .saving-field:nth-child(4) .saving-label','#savingOneWay','#savingRoundTrip','.saving-result .saving-metric:nth-child(1) .saving-metric-label','.saving-result .saving-metric:nth-child(2) .saving-metric-label','.saving-affiliate-kicker','.saving-note'];
     [1,2,3,4,5,6,7,9,10,11,12,13,14].forEach(function(idx, pos) {
@@ -806,6 +844,35 @@ var SAVING_INDEX_ROUTE_MAP = null;
     });
     var toggle = root.querySelector('.saving-toggle');
     if (toggle) toggle.setAttribute('aria-label', t[8]);
+    var faqTitle = document.querySelector('section[aria-label] .seo-section-title');
+    var faqItems = document.querySelectorAll('.faq-list .faq-item');
+    var faqText = {
+      fr: [
+        'FAQ du calculateur de surtaxe carburant',
+        ['La surtaxe carburant dépend-elle de la date de voyage ou de billetterie?', 'Elle s’applique généralement selon la date de billetterie. Le montant peut donc changer selon que le billet est émis en mai ou en juin.'],
+        ['Sur quelles routes ce calculateur se base-t-il?', 'Il utilise les données de routes internationales au départ de Corée organisées dans la page principale et compare les compagnies disponibles sur le même itinéraire.'],
+        ['Le résultat correspond-il au paiement final?', 'Non. Le résultat compare les surtaxes publiées. Le paiement final peut varier selon le tarif, les taxes, le change, le canal de réservation et les règles de la compagnie.'],
+        ['Comment le calcul aller-retour est-il fait?', 'En mode aller-retour, le montant aller simple est multiplié par deux, puis multiplié par le nombre de passagers sélectionné.']
+      ],
+      de: [
+        'FAQ zum Treibstoffzuschlag-Rechner',
+        ['Gilt der Treibstoffzuschlag nach Reisedatum oder Ticketausstellung?', 'Er gilt in der Regel nach Ticketausstellungsdatum. Der Betrag kann sich daher unterscheiden, je nachdem ob das Ticket im Mai oder Juni ausgestellt wird.'],
+        ['Auf welchen Routen basiert der Rechner?', 'Er nutzt die in der Hauptseite organisierten internationalen Routen ab Korea und vergleicht verfügbare Airlines auf derselben Route.'],
+        ['Entspricht das Ergebnis dem endgültigen Zahlungsbetrag?', 'Nein. Das Ergebnis vergleicht veröffentlichte Zuschläge. Der Endbetrag kann je nach Tarif, Steuern, Wechselkurs, Buchungskanal und Airline-Regeln variieren.'],
+        ['Wie wird ein Hin- und Rückflug berechnet?', 'Im Modus Hin und zurück wird der einfache Betrag verdoppelt und anschließend mit der gewählten Passagierzahl multipliziert.']
+      ]
+    }[lang];
+    if (faqText && faqTitle && faqItems.length) {
+      faqTitle.textContent = faqText[0];
+      faqItems.forEach(function(item, idx) {
+        var row = faqText[idx + 1];
+        if (!row) return;
+        var q = item.querySelector('.faq-q');
+        var a = item.querySelector('.faq-a');
+        if (q) q.textContent = row[0];
+        if (a) a.textContent = row[1];
+      });
+    }
   }
   function extractIndexAssignment(source, name) {
     var key = 'var ' + name;
