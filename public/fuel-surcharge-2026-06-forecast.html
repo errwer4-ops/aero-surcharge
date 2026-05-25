@@ -1,18 +1,17 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>2026년 7월 유류할증료 전망 | 6월 확정 공시와 7월 시장 지표 분리</title>
-  <meta name="description" content="2026.05.24 10:30 KST 기준 2026년 7월 국제선 유류할증료 전망입니다. 6월 확정 공시, MOPS 511.21→410.02 cents/gal 하락, 원달러 환율, 호르무즈 리스크를 분리해 정리합니다."
-        data-i18n-page-desc="fore.metaDesc"/>
+  <title>2026년 7월 유류할증료 전망 | MOPS 안정·환율·호르무즈 변수 정리</title>
+  <meta name="description" content="2026.05.25 10:30 KST 기준 2026년 7월 국제선 유류할증료 전망입니다. MOPS 511.21 → 410.02 cents/gal 하락, 6월 33단계 → 27단계, USD/KRW 환율 부담, 호르무즈 리스크와 공급망 안정을 함께 정리했습니다." data-i18n-page-desc="fore.metaDesc"/>
   <meta data-i18n-page-title="fore.metaTitle"/>
   <link rel="canonical" href="https://aero-surcharge.com/fuel-surcharge-2026-06-forecast.html"/>
-  <meta property="og:title" content="2026년 7월 유류할증료 전망 | 6월 확정 공시와 7월 시장 지표 분리"/>
-  <meta property="og:description" content="2026.05.24 10:30 KST 기준, 6월 확정 공시와 7월 시장 기반 전망을 분리해 MOPS 하락·환율·국제유가·호르무즈 리스크를 정리합니다."/>
+  <meta property="og:title" content="2026년 7월 유류할증료 전망 | MOPS 안정·환율·호르무즈 변수 정리"/>
+  <meta property="og:description" content="2026.05.25 10:30 KST 기준 7월 유류할증료 추가 하락 또는 안정화 가능성을 MOPS, USD/KRW, Brent, 호르무즈 리스크, 공급망 흐름으로 정리했습니다."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.com/fuel-surcharge-2026-06-forecast.html"/>
-  <meta property="article:modified_time" content="2026-05-24T10:30:00+09:00"/>
+  <meta property="article:modified_time" content="2026-05-25T10:30:00+09:00"/>
   <link rel="stylesheet" href="_shared.css"/>
   <link rel="stylesheet" href="_seo_pages.css"/>
   <link rel="icon" href="/favicon-v2.ico">
@@ -39,6 +38,20 @@
     .mb-summary{font-size:12px;font-weight:700;color:#33691E;margin-top:8px;}
     .forecast-verdict-box{background:#FFF3E0;border:1px solid #FFD54F;border-radius:12px;padding:14px 16px;margin-bottom:18px;font-size:13px;font-weight:600;color:#5D4037;}
     .verdict-title{font-size:13px;font-weight:700;color:#E65100;margin-bottom:8px;}
+    .market-core-box{background:#F8FAFC;border:1px solid #CBD5E1;border-left:4px solid #2563EB;border-radius:12px;padding:16px 18px;margin-bottom:18px;}
+    .market-core-title{font-size:14px;font-weight:800;color:#1E3A8A;margin-bottom:10px;}
+    .market-core-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;}
+    .market-core-item{background:#fff;border:1px solid #E2E8F0;border-radius:8px;padding:10px 12px;font-size:12px;line-height:1.55;color:#334155;}
+    .market-core-item strong{display:block;color:#0F172A;font-size:12px;margin-bottom:4px;}
+    .scenario-box{background:#F0FDF4;border:1px solid #86EFAC;border-radius:12px;padding:16px 18px;margin-bottom:18px;}
+    .scenario-title{font-size:14px;font-weight:800;color:#166534;margin-bottom:10px;}
+    .scenario-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px;}
+    .scenario-card{background:#fff;border:1px solid #BBF7D0;border-radius:8px;padding:12px;line-height:1.55;}
+    .scenario-card h3{font-size:13px;margin:0 0 6px;color:#14532D;}
+    .scenario-card p{font-size:12px;margin:4px 0;color:#374151;}
+    .booking-decision-box{background:#EFF6FF;border:1px solid #93C5FD;border-radius:12px;padding:16px 18px;margin-bottom:18px;}
+    .booking-decision-title{font-size:14px;font-weight:800;color:#1D4ED8;margin-bottom:10px;}
+    .booking-decision-box p{font-size:13px;line-height:1.65;color:#374151;margin:6px 0;}
     /* 핵심 요약 카드 — news.html 동일 패턴 */
     .news-summary-card{background:#FFF3E0;border:1.5px solid #FFCC80;border-left:4px solid #FF6F00;border-radius:13px;padding:14px 18px;margin-bottom:18px;}
     .nsc-title{font-size:13px;font-weight:700;color:#E65100;margin-bottom:8px;}
@@ -126,6 +139,12 @@
   </div>
 
   <div class="seo-intro" data-i18n="fore.intro"></div>
+
+  <section class="market-core-box" id="marketCoreBox"><!-- JS 렌더 --></section>
+
+  <section class="scenario-box" id="scenarioBox"><!-- JS 렌더 --></section>
+
+  <section class="booking-decision-box" id="bookingDecisionBox"><!-- JS 렌더 --></section>
 
   <!-- 시장 지표 표 -->
   <div class="seo-section-title" data-i18n="fore.section.indicators">📊 2026년 7월 전망 참고 지표 (대한항공·아시아나·진에어·에어부산 6월 공시 결과 기반)</div>
@@ -916,6 +935,128 @@ Object.assign(FORE_I18N.de, {
   ]
 });
 
+/* 2026.05.25 10:30 KST update: July outlook-focused SEO/AEO/GEO content.
+   Added as a final override so older June-focused copy remains in the archive
+   but the current forecast page answers July-search intent first. */
+Object.assign(FORE_I18N.ko, {
+  'fore.metaTitle': '2026년 7월 유류할증료 전망 | MOPS 안정·환율·호르무즈 변수 정리',
+  'fore.metaDesc': '2026.05.25 10:30 KST 기준 2026년 7월 국제선 유류할증료 전망입니다. MOPS 511.21 → 410.02 cents/gal 하락, 6월 33단계 → 27단계, USD/KRW 환율 부담, 호르무즈 리스크와 공급망 안정을 함께 정리했습니다.',
+  'fore.pageTitle': '📊 2026년 7월 유류할증료 전망',
+  'fore.pageSub': '2026.05.25 10:30 KST 기준 · 6월 확정 공시와 7월 시장 전망 분리 · MOPS·환율·Brent·호르무즈 변수 반영',
+  'fore.h1': '2026년 7월 국제선 유류할증료 전망: MOPS 하락, 환율 부담, 호르무즈 리스크 분석',
+  'fore.notice': '<strong>안내:</strong> 이 페이지는 6월 항공사 확정 공시와 2026년 7월 유류할증료 전망을 분리합니다. 7월 금액은 아직 확정 공시가 아니며, MOPS·USD/KRW·Brent·호르무즈 리스크를 기반으로 한 시장 전망입니다.',
+  'fore.intro': '2026.05.25 10:30 KST 기준 국제선 유류할증료 전망은 급등보다 안정화 또는 추가 하락 가능성이 더 큰 흐름입니다. 5월 중순 이후 MOPS는 511.21에서 410.02 cents/gal로 내려왔고, 6월 유류할증료는 33단계에서 27단계로 하락했습니다. 다만 USD/KRW 환율 부담, 여름 성수기 항공유 수요, 호르무즈 해협 변수는 항공권 가격 전망을 제한하는 요인입니다.',
+  'fore.section.indicators': '📊 2026년 7월 전망 참고 지표',
+  'fore.indicator.footnote': '※ 6월은 항공사 공시 기반 확정 데이터입니다. 7월은 2026.05.25 10:30 KST 기준 시장 지표를 활용한 전망이며, 최종 금액은 각 항공사 공식 공시에서 확인해야 합니다.',
+  'fore.indicator.th': ['항목', '현황 (2026.05.25 10:30 KST 기준)', '7월 유류할증료 영향'],
+  'fore.predict.title': 'AI 검색용 핵심 지표 요약',
+  'fore.predict.subtitle': 'MOPS·환율·Brent·호르무즈·성수기 수요',
+  'fore.predict.footnote': '* 7월 유류할증료는 확정 공시 전입니다. 6월 확정 데이터와 7월 시장 기반 전망을 분리해 해석하세요.',
+  'fore.basis.body': '7월 유류할증료는 6월 평균 항공유 가격(MOPS), 국제유가, USD/KRW 환율, 항공사별 정책을 바탕으로 공시됩니다. 현재 페이지는 2026.05.25 10:30 KST 기준 시장 전망이며 확정 공시가 아닙니다.',
+  'fore.summary.title': '🔎 2026년 7월 유류할증료 전망 요약',
+  'fore.summary.updated': '2026.05.25 10:30 KST 기준 · 7월 전망 중심 업데이트',
+  'fore.summary.items': [
+    'MOPS 511.21 → 410.02 cents/gal 하락으로 항공유 가격 전망은 안정 쪽으로 이동',
+    '6월 국제선 유류할증료는 33단계 → 27단계로 하락',
+    '7월 유류할증료는 추가 하락 또는 안정화 가능성이 우세',
+    'USD/KRW 환율 부담은 항공권 가격 전망과 소비자 체감 인하 폭을 제한',
+    '공급망 안정과 정유사 항공유 생산 확대는 공급 공포 완화 요인',
+    '호르무즈 변수 재점화과 여름 항공유 수요 증가는 변동성 확대 요인'
+  ],
+  'fore.marketCore.title': '📊 현재 시장 핵심 요약',
+  'fore.marketCore.items': [
+    { label:'Brent 흐름', body:'급등 피크는 일단 지나갔다는 시장 분위기입니다. 다만 중동 리스크 프리미엄은 일부 유지되고 있어 급격한 유가 하락을 단정하기는 어렵습니다.' },
+    { label:'MOPS 흐름', body:'싱가포르 항공유(MOPS)는 511.21 → 410.02 cents/gal로 하락했습니다. 6월 33단계 → 27단계 하락의 핵심 배경입니다.' },
+    { label:'환율 흐름', body:'USD/KRW 환율 부담은 지속됩니다. 유류할증료가 내려가도 항공권 총액 하락이 제한될 수 있습니다.' },
+    { label:'중동 리스크', body:'미국-이란 협상 기대감은 완화 요인이지만, 호르무즈 해협 리스크는 완전히 해소되지 않았습니다.' },
+    { label:'공급망 분위기', body:'유럽 및 글로벌 공급망 안정, 정유사 항공유 생산 확대는 항공유 공급 공포를 낮추는 요인입니다.' }
+  ],
+  'fore.scenario.title': '🔮 7월 예상 시나리오',
+  'fore.scenario.factor': '발생 요인:',
+  'fore.scenario.traveler': '여행객 영향:',
+  'fore.scenario.strategy': '예약 전략:',
+  'fore.scenario.items': [
+    { title:'안정화 시나리오', factor:'MOPS 하락 이후 항공유 가격이 현 수준에서 안정되고 공급망 불안이 완화되는 경우입니다.', traveler:'국제선 유류할증료는 6월과 비슷하거나 일부 구간만 조정될 수 있습니다.', strategy:'단거리 노선은 운임 자체를 우선 비교하고, 장거리 노선은 총액 기준으로 확인하세요.' },
+    { title:'추가 하락 시나리오', factor:'MOPS 하락세가 유지되고 USD/KRW 환율 부담이 완화되는 경우입니다.', traveler:'장거리 노선에서 유류할증료 인하 체감이 더 커질 수 있습니다.', strategy:'6월 말 항공사 공식 공시를 확인한 뒤 장거리 발권 타이밍을 비교하는 전략이 유리합니다.' },
+    { title:'재상승 시나리오', factor:'호르무즈 변수 재점화, 여름 성수기 항공유 수요 증가, 환율 재상승이 겹치는 경우입니다.', traveler:'유류할증료 인하 폭이 줄거나 일부 구간은 유지될 수 있습니다.', strategy:'성수기 좌석이 빠르게 줄어드는 노선은 유류할증료만 기다리기보다 운임과 좌석을 함께 봐야 합니다.' }
+  ],
+  'fore.bookingDecision.title': '✈️ 예약 판단 가이드',
+  'fore.bookingDecision.items': [
+    '지금 예약이 유리한 경우: 여행 날짜가 여름 성수기이거나 좌석 수급이 빠르게 줄어드는 일본·동남아·유럽 노선은 운임 상승이 유류할증료 인하보다 클 수 있습니다.',
+    '기다리는 것이 유리할 수 있는 경우: 일정이 유연하고 장거리 노선 중심이라면 7월 공시 전후 유류할증료와 USD/KRW 환율을 함께 비교할 가치가 있습니다.',
+    '반드시 확인할 변수: 발권월 유류할증료, 실시간 항공권 운임, USD/KRW 환율, MOPS 방향성, 호르무즈 리스크, 여름 성수기 좌석 상황입니다.'
+  ],
+  'fore.market.title': '🌍 2026년 7월 유류할증료 시장 브리핑',
+  'fore.market.brent': 'Brent: 급등 피크는 일단 지나갔다는 분위기이나 중동 리스크 프리미엄은 일부 유지',
+  'fore.market.fx': 'USD/KRW: 환율 부담 지속 — 항공권 가격 전망을 낮추기 어려운 핵심 변수',
+  'fore.market.mops': 'MOPS: 511.21 → 410.02 cents/gal 하락 — 항공유 가격 전망 안정 요인',
+  'fore.market.geo': '호르무즈: 협상 기대감은 완화 요인, 리스크 완전 해소 전',
+  'fore.market.summary': '→ 7월 유류할증료는 급격한 재상승보다 추가 하락 또는 안정화 가능성이 우세합니다.',
+  'fore.market.fx2': '→ 단거리 노선은 운임 자체, 장거리 노선은 유류할증료와 환율 영향을 함께 확인하세요.',
+  'fore.verdict.title': '7월 유류할증료는 더 내려갈까?',
+  'fore.verdict.line1': '현재 유가와 항공유 가격 흐름을 보면 2026년 7월 유류할증료는 추가 하락 또는 안정화 가능성이 우세합니다.',
+  'fore.verdict.line2': '다만 USD/KRW 환율 부담, 여름 항공유 수요, 호르무즈 리스크가 인하 폭을 제한할 수 있습니다.',
+  'fore.verdict.short': '단거리: 유류할증료보다 항공권 운임 자체의 영향이 더 클 수 있습니다.',
+  'fore.verdict.long': '장거리: 유류할증료와 환율 영향을 함께 확인하는 것이 유리합니다.',
+  'fore.mops.analysis.title': 'MOPS 하락이 의미하는 것은?',
+  'fore.mops.analysis.body': 'MOPS는 국제선 유류할증료 산정에 중요한 항공유 가격 지표입니다.\n511.21 → 410.02 cents/gal 하락은 항공유 가격 전망을 안정 쪽으로 바꿨고, 6월 유류할증료 33단계 → 27단계 하락의 핵심 배경입니다.\n다만 7월 최종 금액은 6월 평균 항공유 가격, USD/KRW 환율, 항공사 공시 기준을 함께 반영합니다.',
+  'fore.booking.title': '✈️ 소비자 예약 판단 포인트',
+  'fore.booking.items': [
+    '일본·동남아 단거리 노선은 유류할증료 변동보다 항공권 운임 자체의 영향이 더 클 수 있습니다.',
+    '유럽·미주 등 장거리 노선은 유류할증료와 환율 영향을 함께 확인하는 것이 유리합니다.',
+    '여름 성수기는 좌석 상황과 운임 상승이 빠르게 반영될 수 있으므로 총액 기준으로 비교하세요.'
+  ],
+  'fore.keyvars.items': ['MOPS 하락', 'USD/KRW 환율 부담', 'Brent 리스크 프리미엄', '호르무즈 변수', '공급망 안정', '여름 성수기 수요'],
+  'fore.predict.items': [
+    { label:'MOPS', val:'511.21 → 410.02 cents/gal', cls:'down' },
+    { label:'6월 단계', val:'33단계 → 27단계', cls:'down' },
+    { label:'7월 방향', val:'추가 하락 또는 안정화 우세', cls:'down' },
+    { label:'USD/KRW', val:'환율 부담 지속', cls:'up' },
+    { label:'호르무즈', val:'리스크 완전 해소 전', cls:'plain' }
+  ]
+});
+
+Object.assign(FORE_I18N.en, {
+  'fore.metaTitle': 'July 2026 Fuel Surcharge Outlook | MOPS, FX and Hormuz Variables',
+  'fore.metaDesc': 'As of 2026.05.25 10:30 KST, this July 2026 international fuel surcharge outlook separates confirmed June filings from July market indicators: MOPS 511.21 → 410.02 cents/gal, Level 33 → Level 27, USD/KRW burden, Hormuz risk, and supply-chain stabilization.',
+  'fore.pageTitle': '📊 July 2026 Fuel Surcharge Outlook',
+  'fore.pageSub': 'As of 2026.05.25 10:30 KST · June confirmed filings separated from July market outlook',
+  'fore.h1': 'July 2026 International Fuel Surcharge Outlook: MOPS drop, FX burden, and Hormuz risk',
+  'fore.notice': '<strong>Note:</strong> This page separates confirmed June airline filings from the July 2026 fuel surcharge outlook. July amounts are not official filings yet; they are a market-based outlook using MOPS, USD/KRW, Brent, and Hormuz risk.',
+  'fore.intro': 'As of 2026.05.25 10:30 KST, July international fuel surcharges look more likely to stabilize or fall further than spike. MOPS moved from 511.21 to 410.02 cents/gal after mid-May, and June fuel surcharges fell from Level 33 to Level 27. USD/KRW, summer jet fuel demand, and Hormuz risk can still limit air ticket price relief.',
+  'fore.indicator.th': ['Item', 'Status (as of 2026.05.25 10:30 KST)', 'July surcharge impact'],
+  'fore.basis.body': 'July surcharges are filed based on June average jet fuel prices (MOPS), oil prices, USD/KRW and airline policy. This page is a market outlook as of 2026.05.25 10:30 KST, not an official filing.',
+  'fore.marketCore.title': '📊 Current Market Summary',
+  'fore.marketCore.items': [
+    { label:'Brent trend', body:'The spike appears to have passed for now, but some Middle East risk premium remains.' },
+    { label:'MOPS trend', body:'Singapore jet fuel MOPS fell from 511.21 to 410.02 cents/gal, explaining the Level 33 → Level 27 June move.' },
+    { label:'FX trend', body:'USD/KRW remains a burden. Lower surcharges may not fully reduce total ticket prices.' },
+    { label:'Middle East risk', body:'US-Iran talk hopes help, but Strait of Hormuz uncertainty is not fully resolved.' },
+    { label:'Supply chain', body:'Stable global supply chains and higher refinery output ease jet fuel supply fear.' }
+  ],
+  'fore.scenario.title': '🔮 July Scenarios',
+  'fore.scenario.factor': 'Driver:',
+  'fore.scenario.traveler': 'Traveler impact:',
+  'fore.scenario.strategy': 'Booking strategy:',
+  'fore.scenario.items': [
+    { title:'Stabilization', factor:'Jet fuel prices stabilize after the MOPS drop and supply-chain fear eases.', traveler:'International surcharges may stay near June or adjust only in selected bands.', strategy:'For short-haul, compare base fare first; for long-haul, check total price.' },
+    { title:'Further decline', factor:'MOPS remains low and USD/KRW pressure eases.', traveler:'Long-haul routes may show a clearer surcharge saving.', strategy:'Flexible long-haul travelers can compare official July filings before ticketing.' },
+    { title:'Rebound risk', factor:'Hormuz risk, summer jet fuel demand, or FX rebound returns.', traveler:'Surcharge cuts may narrow or some bands may stay unchanged.', strategy:'For peak-season routes, do not wait on surcharge alone; check fare and seats together.' }
+  ],
+  'fore.bookingDecision.title': '✈️ Booking Decision Guide',
+  'fore.bookingDecision.items': [
+    'Book now may be better when summer seats are tightening on Japan, Southeast Asia, or Europe routes because fare increases can outweigh surcharge savings.',
+    'Waiting may help if dates are flexible and the route is long-haul, where surcharge and FX changes matter more.',
+    'Check ticketing-month surcharge, live fare, USD/KRW, MOPS direction, Hormuz risk, and peak-season seat availability together.'
+  ]
+});
+
+['ja','zh','fr','de'].forEach(function(lang) {
+  Object.keys(FORE_I18N.en).forEach(function(key) {
+    if (FORE_I18N[lang] && FORE_I18N[lang][key] === undefined) FORE_I18N[lang][key] = FORE_I18N.en[key];
+  });
+});
+
 /* ── window.I18N 병합 ── */
 (function() {
   if (!window.I18N) window.I18N = {};
@@ -939,6 +1080,44 @@ function td(key) {
 ═══════════════════════════════════════════════════ */
 
 /* 핵심 요약 카드 */
+function renderMarketCoreBox() {
+  var el = document.getElementById('marketCoreBox');
+  if (!el) return;
+  var items = td('fore.marketCore.items');
+  if (!Array.isArray(items)) items = [];
+  el.innerHTML = '<div class="market-core-title">' + td('fore.marketCore.title') + '</div>'
+    + '<div class="market-core-grid">'
+    + items.map(function(it) {
+      return '<div class="market-core-item"><strong>' + it.label + '</strong>' + it.body + '</div>';
+    }).join('')
+    + '</div>';
+}
+
+function renderScenarioBox() {
+  var el = document.getElementById('scenarioBox');
+  if (!el) return;
+  var items = td('fore.scenario.items');
+  if (!Array.isArray(items)) items = [];
+  el.innerHTML = '<div class="scenario-title">' + td('fore.scenario.title') + '</div>'
+    + '<div class="scenario-grid">'
+    + items.map(function(it) {
+      return '<article class="scenario-card"><h3>' + it.title + '</h3>'
+        + '<p><strong>' + td('fore.scenario.factor') + '</strong> ' + it.factor + '</p>'
+        + '<p><strong>' + td('fore.scenario.traveler') + '</strong> ' + it.traveler + '</p>'
+        + '<p><strong>' + td('fore.scenario.strategy') + '</strong> ' + it.strategy + '</p></article>';
+    }).join('')
+    + '</div>';
+}
+
+function renderBookingDecisionBox() {
+  var el = document.getElementById('bookingDecisionBox');
+  if (!el) return;
+  var items = td('fore.bookingDecision.items');
+  if (!Array.isArray(items)) items = [];
+  el.innerHTML = '<div class="booking-decision-title">' + td('fore.bookingDecision.title') + '</div>'
+    + items.map(function(s) { return '<p>' + s + '</p>'; }).join('');
+}
+
 function renderSummaryCard() {
   var el = document.getElementById('summaryCard');
   if (!el) return;
@@ -1065,6 +1244,9 @@ function renderRelatedLinks() {
 /* ── 전체 재렌더 ── */
 function renderForecastPage() {
   if (window.applyLanguage) window.applyLanguage();
+  renderMarketCoreBox();
+  renderScenarioBox();
+  renderBookingDecisionBox();
   renderSummaryCard();
   renderMarketBrief();
   renderIndicatorTable();

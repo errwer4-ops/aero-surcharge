@@ -682,6 +682,7 @@ var SAVING_INDEX_ROUTE_MAP = null;
   var selectedTrip = 1;
   var usdRate = 1450;
   var latestFareContext = null;
+  var latestLiveFareItems = [];
   var liveFareApiReady = false;
   var liveFareFallbackUrl = 'https://lase.kr/click.php?m=myrealtrip&a=A100704170&l=0000';
   function toKRW(amount, currency) { return currency === 'USD' ? Math.round(amount * usdRate) : amount; }
@@ -697,6 +698,126 @@ var SAVING_INDEX_ROUTE_MAP = null;
   function st(key, vars) {
     var dict = SAVING_UI_TEXT[langCode()] || SAVING_UI_TEXT.ko;
     var text = dict[key] || SAVING_UI_TEXT.ko[key] || key;
+    Object.keys(vars || {}).forEach(function(k) { text = text.replace(new RegExp('\\{' + k + '\\}', 'g'), vars[k]); });
+    return text;
+  }
+  var LIVE_FARE_TEXT = {
+    ko: {
+      panelAria:'노선별 항공권 캘린더 최저가',
+      kicker:'현재 항공권 총액으로 보면',
+      title:'공시 유류할증료와 항공권 최저가 함께 보기',
+      desc:'선택한 노선의 캘린더 최저가를 불러오고, 같은 항공사의 공시 유류할증료가 있을 때만 함께 표시합니다.',
+      dateLabel:'출발일',
+      buttonReady:'캘린더 최저가 보기',
+      buttonFallback:'항공권 총액 확인',
+      ready:'{route} 계산 결과가 준비됐습니다. 출발일을 고른 뒤 캘린더 최저가를 불러올 수 있습니다.',
+      fallbackReady:'{route} 공시 유류할증료 계산 결과가 준비됐습니다. 항공권 총액은 가격 확인 페이지에서 직접 확인할 수 있습니다.',
+      fallbackStatus:'자동 최저가 조회는 준비 중입니다. 현재는 공시 유류할증료를 확인한 뒤 항공권 총액을 직접 확인할 수 있습니다.',
+      statusFail:'자동 최저가 조회 상태를 확인하지 못했습니다. 현재는 항공권 총액 확인 페이지로 이동할 수 있습니다.',
+      loading:'선택한 노선의 캘린더 최저가를 확인하는 중입니다.',
+      none:'현재 표시할 수 있는 캘린더 최저가가 없습니다. 공시 유류할증료 비교 결과는 계속 사용할 수 있습니다.',
+      loaded:'조회 시점의 캘린더 최저가입니다. 공시 유류할증료는 같은 항공사의 공식 데이터가 있을 때만 표시합니다.',
+      apiNotConfigured:'항공권 자동 조회 API가 아직 설정되지 않았습니다. 공시 유류할증료 계산 결과를 먼저 참고해 주세요.',
+      requestFail:'현재 최저가 API 권한 또는 응답을 확인하지 못했습니다. 공시 유류할증료 계산 결과를 먼저 참고해 주세요.',
+      catchFail:'현재 캘린더 최저가를 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.',
+      noOfficial:'해당 항공사 공시 유류할증료 데이터 없음',
+      officialLine:'공시 유류할증료 {amount}{ratioText}',
+      ratioSuffix:' · 총액의 {ratio}%',
+      direct:'직항',
+      transfer:'경유 {n}회',
+      unknownTransfer:'경유 정보 미제공',
+      departSuffix:'출발',
+      priceLink:'가격 확인',
+      note:'항공권 총액은 판매 채널 조회 시점에 따라 달라질 수 있습니다. 공시 유류할증료는 우리 사이트가 보유한 항공사 공식 공시 데이터와 항공사 코드가 일치할 때만 표시합니다.'
+    },
+    en: {
+      panelAria:'Route airfare calendar lowest fares',
+      kicker:'Compared with current airfare totals',
+      title:'View published fuel surcharges beside low fares',
+      desc:'Load calendar low fares for the selected route. Published surcharge data is shown only when the same airline is in our official dataset.',
+      dateLabel:'Departure',
+      buttonReady:'View calendar low fares',
+      buttonFallback:'Check airfare total',
+      ready:'{route} is ready. Choose a departure date to load calendar low fares.',
+      fallbackReady:'{route} surcharge results are ready. You can check airfare totals on the price page.',
+      fallbackStatus:'Automatic low-fare lookup is not ready yet. You can still compare published surcharges and check airfare totals separately.',
+      statusFail:'Could not verify the low-fare lookup status. You can still open the airfare total page.',
+      loading:'Checking calendar low fares for the selected route.',
+      none:'No calendar low fare is available right now. The published surcharge comparison is still available.',
+      loaded:'Calendar low fares at lookup time. Published surcharge data is shown only for matching airlines.',
+      apiNotConfigured:'The airfare lookup API is not configured yet. Use the published surcharge comparison first.',
+      requestFail:'Could not verify the low-fare API permission or response. Use the published surcharge comparison first.',
+      catchFail:'Could not load calendar low fares right now. Please try again later.',
+      noOfficial:'No published surcharge data for this airline',
+      officialLine:'Published fuel surcharge {amount}{ratioText}',
+      ratioSuffix:' · {ratio}% of total',
+      direct:'Nonstop',
+      transfer:'{n} stop(s)',
+      unknownTransfer:'Stop info unavailable',
+      departSuffix:'departure',
+      priceLink:'Check price',
+      note:'Airfare totals can change by sales channel and lookup time. Published surcharges appear only when the airline code matches official data held by this site.'
+    }
+  };
+  LIVE_FARE_TEXT.ja = {
+    panelAria:'路線別航空券カレンダー最安値', kicker:'現在の航空券総額と見る', title:'公示燃油サーチャージと航空券最安値を比較', desc:'選択した路線のカレンダー最安値を取得し、同じ航空会社の公式データがある場合のみ燃油サーチャージを表示します。', dateLabel:'出発日', buttonReady:'カレンダー最安値を見る', buttonFallback:'航空券総額を確認', ready:'{route} の計算結果が準備できました。出発日を選ぶとカレンダー最安値を取得できます。', fallbackReady:'{route} の公示燃油サーチャージ結果が準備できました。航空券総額は価格確認ページで確認できます。', fallbackStatus:'自動最安値取得は準備中です。公示燃油サーチャージを確認したうえで航空券総額を確認できます。', statusFail:'自動最安値取得の状態を確認できませんでした。航空券総額ページへ移動できます。', loading:'選択した路線のカレンダー最安値を確認しています。', none:'現在表示できるカレンダー最安値はありません。公示燃油サーチャージ比較は利用できます。', loaded:'照会時点のカレンダー最安値です。公示燃油サーチャージは同じ航空会社の公式データがある場合のみ表示します。', apiNotConfigured:'航空券自動照会APIはまだ設定されていません。まず公示燃油サーチャージ比較を参照してください。', requestFail:'最安値APIの権限または応答を確認できませんでした。まず公示燃油サーチャージ比較を参照してください。', catchFail:'現在カレンダー最安値を取得できません。しばらくしてから再度お試しください。', noOfficial:'この航空会社の公示燃油サーチャージデータはありません', officialLine:'公示燃油サーチャージ {amount}{ratioText}', ratioSuffix:' · 総額の{ratio}%', direct:'直行', transfer:'経由 {n}回', unknownTransfer:'経由情報なし', departSuffix:'出発', priceLink:'価格確認', note:'航空券総額は販売チャネルや照会時点により変動します。公示燃油サーチャージは、このサイトが保有する公式データと航空会社コードが一致する場合のみ表示します。'
+  };
+  LIVE_FARE_TEXT.zh = {
+    panelAria:'按航线查看机票日历最低价', kicker:'结合当前机票总价来看', title:'同时查看公布燃油附加费与机票最低价', desc:'可读取所选航线的日历最低价；只有当同一航司存在官方公布数据时，才显示燃油附加费。', dateLabel:'出发日', buttonReady:'查看日历最低价', buttonFallback:'查看机票总价', ready:'{route} 的计算结果已准备好。选择出发日后可读取日历最低价。', fallbackReady:'{route} 的公布燃油附加费结果已准备好。机票总价可在价格确认页面查看。', fallbackStatus:'自动最低价查询尚未准备好。你仍可先比较公布燃油附加费，再查看机票总价。', statusFail:'无法确认自动最低价查询状态。你仍可打开机票总价页面。', loading:'正在查询所选航线的日历最低价。', none:'当前没有可显示的日历最低价。公布燃油附加费比较仍可使用。', loaded:'这是查询时点的日历最低价。仅在航司代码与本站官方数据匹配时显示公布燃油附加费。', apiNotConfigured:'机票自动查询 API 尚未配置。请先参考公布燃油附加费比较结果。', requestFail:'无法确认最低价 API 权限或响应。请先参考公布燃油附加费比较结果。', catchFail:'当前无法读取日历最低价。请稍后再试。', noOfficial:'没有该航司的公布燃油附加费数据', officialLine:'公布燃油附加费 {amount}{ratioText}', ratioSuffix:' · 占总额 {ratio}%', direct:'直飞', transfer:'经停 {n} 次', unknownTransfer:'未提供经停信息', departSuffix:'出发', priceLink:'查看价格', note:'机票总价会随销售渠道和查询时间变化。仅当航司代码与本站持有的官方公布数据一致时，才显示燃油附加费。'
+  };
+  LIVE_FARE_TEXT.fr = LIVE_FARE_TEXT.en;
+  LIVE_FARE_TEXT.de = LIVE_FARE_TEXT.en;
+  LIVE_FARE_TEXT = {
+    ko: {
+      panelAria:'선택 목적지 항공권 가격 확인',
+      kicker:'유류할증료 비교 다음 단계',
+      title:'선택한 목적지의 항공권 총액 확인',
+      desc:'공식 공시 유류할증료를 비교한 뒤, 같은 목적지의 실제 항공권 총액과 구매 가능 여부를 확인할 수 있습니다.',
+      buttonFallback:'항공권 구매 페이지로 이동',
+      fallbackReady:'{route} 유류할증료 비교 결과가 준비됐습니다. 버튼을 누르면 선택한 목적지의 항공권 확인 페이지로 이동합니다.',
+      statusFail:'선택한 목적지의 항공권 확인 페이지로 이동할 수 있습니다.',
+      note:'항공권 총액은 운임, 세금, 환율, 좌석 상황, 예약 채널에 따라 달라질 수 있습니다. 유류할증료 비교 결과는 공식 공시 데이터 기준으로 먼저 참고하세요.',
+      priceLink:'항공권 확인'
+    },
+    en: {
+      panelAria:'Check airfare for the selected destination',
+      kicker:'Next after comparing surcharges',
+      title:'Check total airfare for the selected destination',
+      desc:'After comparing official published fuel surcharges, open the booking flow to check current airfare totals for the same destination.',
+      buttonFallback:'Go to airfare booking',
+      fallbackReady:'{route} surcharge comparison is ready. Use the button to check airfare for the selected destination.',
+      statusFail:'You can open the airfare page for the selected destination.',
+      note:'Total airfare can vary by fare, taxes, exchange rate, seat availability, and booking channel. Use the surcharge comparison as official published-data context.',
+      priceLink:'Check airfare'
+    },
+    ja: {
+      panelAria:'選択した目的地の航空券価格確認',
+      kicker:'サーチャージ比較の次に',
+      title:'選択した目的地の航空券総額を確認',
+      desc:'公式公示の燃油サーチャージを比較した後、同じ目的地の現在の航空券総額と購入可否を確認できます。',
+      buttonFallback:'航空券購入ページへ',
+      fallbackReady:'{route} の燃油サーチャージ比較結果が準備できました。ボタンから選択した目的地の航空券を確認できます。',
+      statusFail:'選択した目的地の航空券確認ページへ移動できます。',
+      note:'航空券総額は運賃、税金、為替、座席状況、予約チャネルにより変動します。燃油サーチャージ比較は公式公示データとして参考にしてください。',
+      priceLink:'航空券確認'
+    },
+    zh: {
+      panelAria:'查看所选目的地机票价格',
+      kicker:'比较附加费后的下一步',
+      title:'查看所选目的地的机票总价',
+      desc:'比较官方公布的燃油附加费后，可前往查看同一目的地当前机票总价和购买情况。',
+      buttonFallback:'前往机票购买页',
+      fallbackReady:'{route} 的燃油附加费比较结果已准备好。点击按钮可查看所选目的地机票。',
+      statusFail:'可前往所选目的地的机票确认页面。',
+      note:'机票总价会因票价、税费、汇率、座位情况和预订渠道而变化。燃油附加费比较请作为官方公布数据参考。',
+      priceLink:'查看机票'
+    }
+  };
+  LIVE_FARE_TEXT.fr = LIVE_FARE_TEXT.en;
+  LIVE_FARE_TEXT.de = LIVE_FARE_TEXT.en;
+  function lt(key, vars) {
+    var dict = LIVE_FARE_TEXT[langCode()] || LIVE_FARE_TEXT.ko;
+    var text = dict[key] || LIVE_FARE_TEXT.ko[key] || key;
     Object.keys(vars || {}).forEach(function(k) { text = text.replace(new RegExp('\\{' + k + '\\}', 'g'), vars[k]); });
     return text;
   }
@@ -737,29 +858,38 @@ var SAVING_INDEX_ROUTE_MAP = null;
     liveFareDateEl.value = formatDateForInput(date);
     liveFareDateEl.min = formatDateForInput(new Date(Date.now() + 24 * 60 * 60 * 1000));
   }
+  function applyLiveFareStaticText() {
+    var panel = document.getElementById('liveFarePanel');
+    if (!panel) return;
+    panel.setAttribute('aria-label', lt('panelAria'));
+    var kicker = panel.querySelector('.live-fare-kicker');
+    var title = document.getElementById('liveFareTitle');
+    var desc = document.getElementById('liveFareDesc');
+    var label = panel.querySelector('.live-fare-label');
+    var note = panel.querySelector('.live-fare-note');
+    var field = label ? label.closest('.live-fare-field') : null;
+    if (kicker) kicker.textContent = lt('kicker');
+    if (title) title.textContent = lt('title');
+    if (desc) desc.textContent = lt('desc');
+    if (label) label.textContent = lt('dateLabel');
+    if (note) note.textContent = lt('note');
+    if (field) field.hidden = true;
+    if (liveFareListEl) {
+      liveFareListEl.hidden = true;
+      liveFareListEl.innerHTML = '';
+    }
+    if (liveFareBtnEl) liveFareBtnEl.textContent = lt('buttonFallback');
+  }
   function checkLiveFareApiStatus() {
-    if (!liveFareBtnEl || !liveFareStatusEl) return Promise.resolve(false);
-    liveFareBtnEl.disabled = true;
-    return fetch('/api/myrealtrip/flights?status=1')
-      .then(function(res) { return res.ok ? res.json() : null; })
-      .then(function(json) {
-        liveFareApiReady = Boolean(json && json.configured && json.callable);
-        liveFareBtnEl.disabled = false;
-        if (!liveFareApiReady) {
-          liveFareBtnEl.textContent = '항공권 총액 확인';
-          liveFareStatusEl.textContent = '자동 판매가 예시는 준비 중입니다. 현재는 공식 공시 유류할증료를 확인한 뒤 항공권 총액을 직접 확인할 수 있습니다.';
-        } else {
-          liveFareBtnEl.textContent = '판매가 예시 보기';
-        }
-        return liveFareApiReady;
-      })
-      .catch(function() {
-        liveFareApiReady = false;
-        liveFareBtnEl.disabled = false;
-        liveFareBtnEl.textContent = '항공권 총액 확인';
-        liveFareStatusEl.textContent = '자동 판매가 예시 상태를 확인하지 못했습니다. 현재는 공식 공시 유류할증료를 확인한 뒤 항공권 총액을 직접 확인할 수 있습니다.';
-        return false;
-      });
+    liveFareApiReady = false;
+    if (liveFareBtnEl) liveFareBtnEl.disabled = false;
+    applyLiveFareStaticText();
+    if (liveFareStatusEl && latestFareContext && latestFareContext.dest) {
+      liveFareStatusEl.textContent = lt('fallbackReady', { route:routeDisplayName(latestFareContext.dest) });
+    } else if (liveFareStatusEl) {
+      liveFareStatusEl.textContent = lt('statusFail');
+    }
+    return Promise.resolve(false);
   }
   function esc(text) {
     return String(text).replace(/[&<>"']/g, function(ch) {
@@ -868,97 +998,80 @@ var SAVING_INDEX_ROUTE_MAP = null;
   }
   function getOfficialSurchargeForFlight(item, fallbackResults) {
     var code = item && item.airlineCode;
+    if (!code) return null;
     var match = fallbackResults && fallbackResults.find(function(row) { return row.code === code; });
     if (match) return match.juneTotal;
-    return fallbackResults && fallbackResults.length ? fallbackResults[0].juneTotal : 0;
+    return null;
+  }
+  function buildDestinationFareUrl(dest) {
+    return liveFareFallbackUrl;
   }
   function resetLiveFareForRoute(dest, results) {
     latestFareContext = { dest:dest, results:results || [] };
+    latestLiveFareItems = [];
     if (!liveFareStatusEl || !liveFareListEl) return;
     var routeName = dest ? routeDisplayName(dest) : '선택 노선';
     liveFareListEl.hidden = true;
     liveFareListEl.innerHTML = '';
-    if (liveFareApiReady) {
-      liveFareStatusEl.textContent = routeName + ' 계산 결과가 준비됐습니다. 출발일을 고른 뒤 현재 판매가 예시를 불러오면 총액 대비 공시 유류할증료 비중을 계산합니다.';
-    } else {
-      liveFareStatusEl.textContent = routeName + ' 공식 유류할증료 계산 결과가 준비됐습니다. 항공권 총액은 외부 가격 확인 페이지에서 직접 확인할 수 있습니다.';
-    }
+    applyLiveFareStaticText();
+    liveFareStatusEl.textContent = lt('fallbackReady', { route:routeName });
     setupLiveFareDate();
   }
   function renderLiveFareItems(items) {
     if (!liveFareStatusEl || !liveFareListEl || !latestFareContext) return;
+    latestLiveFareItems = items || [];
+    applyLiveFareStaticText();
     if (!items || !items.length) {
       liveFareListEl.hidden = true;
       liveFareListEl.innerHTML = '';
-      liveFareStatusEl.textContent = '현재 표시할 수 있는 항공권 예시가 없습니다. 공식 유류할증료 비교 결과는 계속 사용할 수 있습니다.';
+      liveFareStatusEl.textContent = lt('none');
       return;
     }
-    liveFareStatusEl.textContent = '조회 시점의 항공권 예시입니다. 유류할증료는 우리 사이트의 공식 공시 데이터를 기준으로 대입했습니다.';
+    liveFareStatusEl.textContent = lt('loaded');
     liveFareListEl.hidden = false;
     liveFareListEl.innerHTML = items.map(function(item) {
       var price = item.price || {};
       var total = Number(price.total || 0);
       var currency = price.currency || 'KRW';
       var official = getOfficialSurchargeForFlight(item, latestFareContext.results);
-      var ratio = total > 0 ? Math.round((official / total) * 1000) / 10 : null;
-      var airline = (item.airlineName || item.airlineCode || '항공사') + (item.airlineCode ? ' (' + item.airlineCode + ')' : '');
-      var schedule = esc(item.origin || '') + ' ' + esc(fmtTime(item.departTime)) + ' → ' + esc(item.destination || '') + ' ' + esc(fmtTime(item.arriveTime));
-      var stopText = item.isDirect || item.stops === 0 ? '직항' : '경유 ' + esc(item.stops || 1) + '회';
-      var href = item.reservationUrl || 'https://lase.kr/click.php?m=myrealtrip&a=A100704170&l=0000';
+      var hasOfficial = official != null && official > 0;
+      var ratio = hasOfficial && total > 0 ? Math.round((official / total) * 1000) / 10 : null;
+      var ratioText = ratio == null ? '' : lt('ratioSuffix', { ratio:ratio });
+      var officialText = hasOfficial ? lt('officialLine', { amount:fmtKRW(official), ratioText:ratioText }) : lt('noOfficial');
+      var airlineName = airlineDisplayName(item.airlineCode, item.airlineName || item.airlineCode || 'Airline');
+      var airline = airlineName + (item.airlineCode ? ' (' + item.airlineCode + ')' : '');
+      var routeText = esc(item.origin || '') + ' -> ' + esc(item.destination || '');
+      var dateText = item.departDate ? esc(item.departDate) + ' ' + esc(lt('departSuffix')) : '';
+      var schedule = item.departTime ? routeText + ' · ' + esc(fmtTime(item.departTime)) + ' ' + esc(lt('departSuffix')) : routeText + (dateText ? ' · ' + dateText : '');
+      var stopText = item.stops === 0 ? lt('direct') : item.stops ? lt('transfer', { n:esc(item.stops) }) : lt('unknownTransfer');
+      var href = item.reservationUrl || liveFareFallbackUrl;
+      var priceText = currency === 'KRW' ? fmtKRW(total) : esc(currency + ' ' + total.toLocaleString('en-US'));
       return '<article class="live-fare-card">'
         + '<div><div class="live-fare-airline">' + esc(airline) + '</div>'
-        + '<div class="live-fare-schedule">' + schedule + ' · ' + stopText + '</div></div>'
-        + '<div><div class="live-fare-price">' + (currency === 'KRW' ? fmtKRW(total) : esc(currency + ' ' + total.toLocaleString('en-US'))) + '</div>'
-        + '<div class="live-fare-ratio">공시 유류할증료 ' + fmtKRW(official) + (ratio == null ? '' : ' · 총액의 ' + ratio + '%') + '</div></div>'
-        + '<a class="live-fare-link" href="' + esc(href) + '" target="_blank" rel="noopener sponsored">가격 확인</a>'
+        + '<div class="live-fare-schedule">' + schedule + ' · ' + esc(stopText) + '</div></div>'
+        + '<div><div class="live-fare-price">' + priceText + '</div>'
+        + '<div class="live-fare-ratio">' + esc(officialText) + '</div></div>'
+        + '<a class="live-fare-link" href="' + esc(href) + '" target="_blank" rel="noopener sponsored">' + esc(lt('priceLink')) + '</a>'
         + '</article>';
     }).join('');
   }
   function loadLiveFares() {
     if (!latestFareContext || !latestFareContext.dest || !liveFareBtnEl || !liveFareDateEl || !liveFareStatusEl) return;
-    if (!liveFareApiReady) {
-      if (window.gtag) gtag('event', 'affiliate_click', { affiliate:'myrealtrip', placement:'calculator_live_fare_fallback' });
-      window.open(liveFareFallbackUrl, '_blank', 'noopener');
-      return;
-    }
     var dep = getRouteDep(latestFareContext.dest);
     var arr = getRouteArr(latestFareContext.dest);
-    var departDate = liveFareDateEl.value;
-    if (!dep || !arr || !departDate) return;
-    liveFareBtnEl.disabled = true;
-    liveFareStatusEl.textContent = '선택한 노선의 판매가 예시를 확인하는 중입니다.';
-    if (liveFareListEl) {
-      liveFareListEl.hidden = true;
-      liveFareListEl.innerHTML = '';
-    }
-    var params = new URLSearchParams({
-      origin: dep,
-      destination: arr,
-      departDate: departDate,
-      tripType: selectedTrip === 2 ? 'ROUND_TRIP' : 'ONE_WAY',
-      maxResults: '3'
+    if (window.gtag) gtag('event', 'affiliate_click', {
+      affiliate:'myrealtrip',
+      placement:'calculator_destination_fare',
+      origin:dep,
+      destination:arr,
+      tripType:selectedTrip === 2 ? 'round_trip' : 'one_way'
     });
-    fetch('/api/myrealtrip/flights?' + params.toString())
-      .then(function(res) { return res.ok ? res.json() : Promise.reject(new Error('request failed')); })
-      .then(function(json) {
-        if (!json || !json.success) {
-          liveFareStatusEl.textContent = json && json.code === 'flight_endpoint_not_configured'
-            ? '항공권 자동 조회용 API가 아직 설정되지 않았습니다. 현재는 공시 유류할증료 계산 결과를 기준으로 항공권 총액 확인 페이지로 이동할 수 있습니다.'
-            : '현재 판매가 API 권한 또는 응답을 확인하지 못했습니다. 공시 유류할증료 계산 결과를 먼저 참고하세요.';
-          return;
-        }
-        renderLiveFareItems(json.items || []);
-      })
-      .catch(function() {
-        liveFareStatusEl.textContent = '현재 판매가 예시를 불러오지 못했습니다. 잠시 후 다시 확인해 주세요.';
-      })
-      .finally(function() {
-        liveFareBtnEl.disabled = false;
-      });
+    window.open(buildDestinationFareUrl(latestFareContext.dest), '_blank', 'noopener');
   }
   function applySavingStaticText() {
     var root = document.getElementById('savingTool');
     if (!root) return;
+    applyLiveFareStaticText();
     var dict = {
       ko:['유류할증료 절약 비교 계산기','노선별 5월 vs 6월 유류할증료 비교','같은 노선의 취항 항공사를 자동으로 묶어 최저 금액, 항공사별 차이, 예상 절약액을 표로 보여줍니다.','2026.06 공식 공시 반영','출발지','도착지','인원','여정','편도 또는 왕복 선택','편도','왕복','비교 항공사','6월 최저 유류할증료','마이리얼트립 제휴','※ 유류할증료는 발권일 기준으로 적용됩니다. 실제 결제 금액은 항공권 운임, 환율, 세금, 예약 채널에 따라 달라질 수 있으므로 최종 발권 전 공식 공지를 확인하세요.'],
       en:['Fuel surcharge savings calculator','Route Fuel Surcharge Comparison: May vs June','Compares airlines on the same route and shows the lowest June surcharge, airline differences, and estimated savings.','June 2026 official filings reflected','Origin','Destination','Passengers','Trip','Choose one-way or round-trip','One-way','Round-trip','Airlines compared','Lowest June surcharge','MyRealTrip Partner','※ Fuel surcharges are applied by ticketing date. Final payment may vary by fare, FX, taxes, and booking channel, so verify the official notice before purchase.'],
@@ -1030,6 +1143,36 @@ var SAVING_INDEX_ROUTE_MAP = null;
         ['Wie wird ein Hin- und Rückflug berechnet?', 'Im Modus Hin und zurück wird der einfache Betrag verdoppelt und anschließend mit der gewählten Passagierzahl multipliziert.']
       ]
     }[lang];
+    faqText = ({
+      ko: [
+        '유류할증료 계산기 FAQ',
+        ['유류할증료는 탑승일 기준인가요, 발권일 기준인가요?', '유류할증료는 일반적으로 탑승일이 아니라 항공권을 실제로 발권하는 날짜 기준으로 적용됩니다. 같은 여행 일정이라도 5월에 발권하는지 6월에 발권하는지에 따라 금액이 달라질 수 있습니다.'],
+        ['이 계산기는 어떤 노선을 기준으로 하나요?', '사이트가 보유한 한국 출발 국제선 공식 공시 데이터를 기준으로 출발지와 도착지를 나누어 비교합니다. 선택한 노선에 취항하는 항공사가 2개 이상이면 항공사별 금액을 함께 보여줍니다.'],
+        ['항공권 최저가와 유류할증료 비중은 항상 계산되나요?', '아닙니다. 항공권 최저가의 항공사 코드와 우리 사이트의 공식 공시 데이터가 정확히 일치할 때만 유류할증료와 비중을 표시합니다. 공시 데이터가 없는 항공사는 비중 계산에서 제외합니다.'],
+        ['왕복 항공권은 어떻게 계산하나요?', '왕복을 선택하면 편도 유류할증료 기준 금액에 2를 곱해 비교합니다. 인원을 늘리면 선택한 인원 수까지 반영해 총 절약액을 계산합니다.']
+      ],
+      en: [
+        'Fuel surcharge calculator FAQ',
+        ['Is the fuel surcharge based on travel date or ticketing date?', 'It is generally applied by the ticketing date, not the travel date. The amount may differ depending on whether the ticket is issued in May or June.'],
+        ['Which routes does this calculator use?', 'It compares Korea-origin international routes using the official published surcharge data held by this site. When multiple airlines operate the selected route, it shows airline-by-airline amounts.'],
+        ['Is the surcharge share always calculated against low fares?', 'No. The share is shown only when the low-fare airline code exactly matches official published surcharge data on this site. Airlines without official data are excluded from share calculations.'],
+        ['How is a round trip calculated?', 'Round trip mode doubles the one-way surcharge amount and then multiplies it by the selected passenger count.']
+      ],
+      ja: [
+        '燃油サーチャージ計算機 FAQ',
+        ['燃油サーチャージは搭乗日基準ですか、発券日基準ですか？', '通常は搭乗日ではなく、航空券を実際に発券する日を基準に適用されます。同じ旅程でも、5月発券か6月発券かで金額が変わる場合があります。'],
+        ['この計算機はどの路線を基準にしていますか？', 'このサイトが保有する韓国発国際線の公式公示データを基準に、出発地と目的地ごとに比較します。選択した路線に複数の航空会社がある場合は航空会社別に表示します。'],
+        ['航空券最安値に対する燃油サーチャージ比率は常に計算されますか？', 'いいえ。最安値の航空会社コードと、このサイトの公式公示データが正確に一致する場合のみ表示します。公式データがない航空会社は比率計算から除外します。'],
+        ['往復航空券はどのように計算しますか？', '往復を選択すると、片道の燃油サーチャージ基準額を2倍にし、選択した人数を反映して比較します。']
+      ],
+      zh: [
+        '燃油附加费计算器 FAQ',
+        ['燃油附加费按乘机日还是出票日计算？', '通常按实际出票日期计算，而不是按乘机日期计算。即使行程相同，5月出票和6月出票的金额也可能不同。'],
+        ['这个计算器基于哪些航线？', '它基于本站持有的韩国出发国际航线官方公布数据，按出发地和目的地进行比较。如果所选航线有多家航司运营，会按航司显示金额。'],
+        ['机票最低价中的燃油附加费占比会一直计算吗？', '不会。只有当最低价航司代码与本站官方公布数据完全匹配时才显示占比。没有官方数据的航司会从占比计算中排除。'],
+        ['往返机票如何计算？', '选择往返时，会将单程燃油附加费金额乘以2，再按所选乘客人数计算总额。']
+      ]
+    })[lang] || faqText;
     if (faqText && faqTitle && faqItems.length) {
       faqTitle.textContent = faqText[0];
       faqItems.forEach(function(item, idx) {
@@ -1266,17 +1409,30 @@ var SAVING_INDEX_ROUTE_MAP = null;
       SAVING_DESTINATIONS = buildDestinationsFromMeta(meta);
     }
     window.renderSavingCalculator = function() {
+      var cachedLiveFareItems = latestLiveFareItems.slice();
       applySavingStaticText();
       fillOrigins();
       fillDestinationsForOrigin();
       updateResult();
+      latestLiveFareItems = cachedLiveFareItems;
+      if (latestLiveFareItems.length) renderLiveFareItems(latestLiveFareItems);
     };
-    window.updateSavingCalculator = updateResult;
+    window.updateSavingCalculator = function() {
+      var cachedLiveFareItems = latestLiveFareItems.slice();
+      updateResult();
+      latestLiveFareItems = cachedLiveFareItems;
+      if (latestLiveFareItems.length) renderLiveFareItems(latestLiveFareItems);
+    };
     window.renderSavingCalculator();
     checkLiveFareApiStatus();
   });
   applySavingStaticText();
-  window.updateSavingCalculator = updateResult;
+  window.updateSavingCalculator = function() {
+    var cachedLiveFareItems = latestLiveFareItems.slice();
+    updateResult();
+    latestLiveFareItems = cachedLiveFareItems;
+    if (latestLiveFareItems.length) renderLiveFareItems(latestLiveFareItems);
+  };
   checkLiveFareApiStatus();
   originEl.addEventListener('change', function(){ fillDestinationsForOrigin(); updateResult(); });
   destinationEl.addEventListener('change', updateResult);

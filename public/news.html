@@ -1,18 +1,27 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>2026년 7월 유류할증료 전망 — MOPS 하락·환율·국제유가 뉴스</title>
-  <meta name="description" content="2026.05.24 10:30 KST 기준 국제선 유류할증료 인하, MOPS 하락, 원달러 환율, 호르무즈 리스크, 2026년 7월 유류할증료 전망을 주제별 카드뉴스로 정리합니다."
-        data-i18n-page-desc="news.metaDesc"/>
+  <title>2026년 7월 유류할증료 전망 | MOPS 안정·환율·호르무즈 최신 뉴스</title>
+  <meta name="description" content="2026.05.25 10:30 KST 기준 2026년 7월 유류할증료 전망, MOPS 급락 이후 항공유 가격 안정, USD/KRW 환율 부담, 호르무즈 리스크를 주제별 카드뉴스로 정리했습니다." data-i18n-page-desc="news.metaDesc"/>
   <meta data-i18n-page-title="news.metaTitle"/>
 
   <link rel="canonical" href="https://aero-surcharge.com/news.html"/>
-  <meta property="og:title" content="2026년 7월 유류할증료 전망 — MOPS 하락·환율·국제유가 뉴스"/>
-  <meta property="og:description" content="6월 국제선 유류할증료 인하, MOPS 511.21→410.02 cents/gal 하락, 대한항공 최대 112,500원 인하, 7월 전망을 주제별 카드뉴스로 확인하세요."/>
+  <script type="application/ld+json" id="newsBreadcrumbStructuredData">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      {"@type": "ListItem", "position": 1, "name": "홈", "item": "https://aero-surcharge.com/index.html"},
+      {"@type": "ListItem", "position": 2, "name": "유류할증료 뉴스", "item": "https://aero-surcharge.com/news.html"}
+    ]
+  }
+  </script>
+  <meta property="og:title" content="2026년 7월 유류할증료 전망 | MOPS 안정·환율·호르무즈 최신 뉴스"/>
+  <meta property="og:description" content="2026.05.25 10:30 KST 기준 7월 유류할증료 안정화 가능성, MOPS 511.21 → 410.02 cents/gal 하락, 환율 부담, 호르무즈 리스크를 카드뉴스로 확인하세요."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.com/news.html"/>
-  <meta property="article:modified_time" content="2026-05-24T10:30:00+09:00"/>
+  <meta property="article:modified_time" content="2026-05-25T10:30:00+09:00"/>
   <link rel="stylesheet" href="_shared.css"/>
   <link rel="icon" href="/favicon-v2.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-v2.png">
@@ -2701,7 +2710,9 @@ var FIXED_NEWS = [
    tags:['환율','USDKRW']}
 ];
 
-FIXED_NEWS = (window.AERO_NEWS_CARDS_20260524 || []).concat(FIXED_NEWS);
+FIXED_NEWS = (window.AERO_NEWS_CARDS_20260525 || [])
+  .concat(window.AERO_NEWS_CARDS_20260524 || [])
+  .concat(FIXED_NEWS);
 
 /* ── renderNews ──
    window.t(key) 실패 시 FIXED_NEWS_FALLBACK에서
@@ -2890,8 +2901,8 @@ function renderNews(){
         '@type': 'NewsArticle',
         headline: headline,
         description: String(desc).replace(/\s+/g, ' ').slice(0, 300),
-        datePublished: (it.date || '2026-05-24') + 'T10:30:00+09:00',
-        dateModified: '2026-05-24T10:30:00+09:00',
+        datePublished: (it.date || '2026-05-25') + 'T10:30:00+09:00',
+        dateModified: '2026-05-25T10:30:00+09:00',
         inLanguage: (getCurrentLang() === 'ko' ? 'ko-KR' : getCurrentLang()),
         mainEntityOfPage: baseUrl + (it.id ? '#' + it.id : ''),
         url: baseUrl + (it.id ? '#' + it.id : '')
@@ -3209,6 +3220,57 @@ window.PAGE_I18N_OVERRIDE = {
   }
 };
 
+/* 2026.05.25 10:30 KST latest page-level SEO/AEO copy.
+   Kept after the legacy override object so this daily briefing wins without
+   deleting prior archive translations. */
+Object.assign(window.PAGE_I18N_OVERRIDE.ko, {
+  'news.metaTitle': '2026년 7월 유류할증료 전망 | MOPS 안정·환율·호르무즈 최신 뉴스',
+  'news.metaDesc': '2026.05.25 10:30 KST 기준 2026년 7월 유류할증료 전망, MOPS 급락 이후 항공유 가격 안정, USD/KRW 환율 부담, 호르무즈 리스크를 주제별 카드뉴스로 정리했습니다.',
+  'news.summary.updated': '✅ 2026.05.25 10:30 KST 기준 · 6월 확정 데이터와 7월 유류할증료 전망 분리',
+  'news.summary.li1': 'MOPS 511.21 → 410.02 cents/gal 하락 이후 항공유 가격 안정 흐름',
+  'news.summary.li2': '6월 국제선 유류할증료는 33단계 → 27단계 하락 흐름 확인',
+  'news.summary.li3': '7월 유류할증료는 추가 하락 또는 안정화 가능성이 우세',
+  'news.summary.li4': 'USD/KRW 환율 부담은 지속되어 항공권 체감 가격 하락을 제한할 수 있음',
+  'news.summary.li5': '유럽 및 글로벌 공급망 안정, 정유사 항공유 생산 확대는 공급 공포 완화 요인',
+  'news.summary.li6': '호르무즈 변수와 여름 성수기 항공유 수요는 7월 변동성 확대 요인',
+  'news.marketTitle': '🌍 시장 브리핑 (2026.05.25 10:30 KST 기준)',
+  'news.brent': 'Brent 흐름: 급등 피크는 일단 지나갔다는 분위기이나 중동 리스크 프리미엄은 일부 유지',
+  'news.fx': 'USD/KRW: 환율 부담 지속 — 유류할증료 인하 효과가 항공권 총액에 모두 반영되기 어려운 구간',
+  'news.mops': 'MOPS: 511.21 → 410.02 cents/gal 하락 — 6월 33단계 → 27단계 하락의 핵심 배경',
+  'news.geo': '호르무즈 리스크: 미국-이란 협상 기대감은 완화 요인이지만 불확실성은 완전 해소 전',
+  'news.marketSummary': '→ 현재 7월 유류할증료 전망은 급등보다 추가 하락 또는 안정화 가능성이 우세합니다. 다만 환율, 성수기 수요, 호르무즈 변수는 반드시 함께 확인해야 합니다.',
+  'news.fxDominance': '🌍 7월 핵심 변수: MOPS + USD/KRW 환율 + Brent + 호르무즈 리스크 + 성수기 수요',
+  'news.dataRef': '✅ 2026.05.25 10:30 KST 기준 · 6월 확정 공시와 7월 시장 전망 분리',
+  'news.curSummary': '→ 6월은 공시 확정 데이터, 7월은 시장 지표 기반 전망으로 분리해 표시'
+});
+Object.assign(window.PAGE_I18N_OVERRIDE.en, {
+  'news.metaTitle': 'July 2026 Fuel Surcharge Outlook | MOPS, FX and Hormuz Latest News',
+  'news.metaDesc': 'As of 2026.05.25 10:30 KST, review the July 2026 fuel surcharge outlook, MOPS stabilization after the drop, USD/KRW burden, and Hormuz risk in topic-based news cards.',
+  'news.summary.updated': '✅ As of 2026.05.25 10:30 KST · June confirmed data separated from July outlook',
+  'news.summary.li1': 'MOPS moved from 511.21 to 410.02 cents/gal, supporting jet fuel price stabilization',
+  'news.summary.li2': 'June international fuel surcharges moved from Level 33 to Level 27',
+  'news.summary.li3': 'July fuel surcharges are more likely to stabilize or fall further than spike',
+  'news.summary.li4': 'USD/KRW burden can limit the consumer benefit of lower surcharges',
+  'news.summary.li5': 'Stable global supply chains and higher refinery output ease supply fear',
+  'news.summary.li6': 'Hormuz risk and summer jet fuel demand remain July volatility variables',
+  'news.marketTitle': '🌍 Market Briefing (as of 2026.05.25 10:30 KST)',
+  'news.brent': 'Brent: the spike appears to have passed for now, but some Middle East risk premium remains',
+  'news.fx': 'USD/KRW: exchange-rate burden persists and can limit total ticket-price relief',
+  'news.mops': 'MOPS: 511.21 → 410.02 cents/gal, key driver behind Level 33 → Level 27',
+  'news.geo': 'Hormuz: US-Iran talk hopes help, but uncertainty is not fully resolved',
+  'news.marketSummary': '→ July fuel surcharges look more likely to stabilize or fall further than spike, but FX, peak-season demand, and Hormuz risk must be checked together.',
+  'news.fxDominance': '🌍 July variables: MOPS + USD/KRW + Brent + Hormuz + summer demand',
+  'news.dataRef': '✅ As of 2026.05.25 10:30 KST · confirmed June filings separated from July market outlook',
+  'news.curSummary': '→ June is confirmed filing data; July is market-indicator outlook'
+});
+['ja','zh','fr','de'].forEach(function(lang){
+  if(!window.PAGE_I18N_OVERRIDE[lang]) window.PAGE_I18N_OVERRIDE[lang] = {};
+  Object.keys(window.PAGE_I18N_OVERRIDE.en).forEach(function(key){
+    if(window.PAGE_I18N_OVERRIDE[lang][key] === undefined) {
+      window.PAGE_I18N_OVERRIDE[lang][key] = window.PAGE_I18N_OVERRIDE.en[key];
+    }
+  });
+});
 
 window.initNav({
   onLangChange:function(){

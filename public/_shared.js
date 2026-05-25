@@ -2804,6 +2804,297 @@ de:{
 },
 }; /* end I18N */
 
+/* 2026.05.25 10:30 KST topic-based news cards
+   New cards are cumulative. Do not overwrite prior daily cards because the news page
+   is also used as an archive for SEO/AEO/GEO discovery. */
+window.AERO_NEWS_CARDS_20260525 = [
+  {
+    id: 'news-20260525-july-surcharge-stabilization',
+    slug: 'july-2026-fuel-surcharge-stabilization-outlook',
+    category: 'market',
+    priority: 1,
+    date: '2026-05-25',
+    updatedAt: '2026.05.25 10:30 KST 업데이트',
+    aiSummary: true,
+    relevanceScore: 1,
+    title: '2026년 7월 유류할증료 안정화 가능성 확대: 추가 하락 또는 제한적 조정 우세',
+    aiBrief: '2026.05.25 10:30 KST 기준 2026년 7월 유류할증료는 급등보다 안정화 가능성이 더 큰 흐름입니다. MOPS 급락으로 6월 국제선 유류할증료가 33단계에서 27단계로 낮아졌고, 7월은 추가 하락 또는 제한적 조정 가능성이 우세합니다.',
+    summary: '현재 시장은 항공유 가격 피크가 일단 지나갔다는 쪽에 무게가 실립니다.\n\nMOPS 급락 이후 6월 국제선 유류할증료는 33단계에서 27단계로 하락했습니다. 7월 유류할증료 전망은 추가 하락 또는 현 수준 안정화 가능성이 우세하지만, 여름 성수기 항공유 수요와 환율이 인하 폭을 제한할 수 있습니다.\n\n여행객은 단거리 노선에서는 운임 자체를, 장거리 노선에서는 유류할증료와 환율을 함께 확인하는 것이 유리합니다.',
+    impact: '2026년 7월 유류할증료 전망, 국제선 유류할증료, 항공권 가격 전망 검색 의도에 맞춘 핵심 카드입니다.',
+    sourceName: '시장 지표 종합 분석 (2026.05.25 10:30 KST)',
+    sourceUrl: 'fuel-surcharge-2026-06-forecast.html',
+    tags: ['NEW', '7월 전망', '유류할증료 전망', '2026년 7월 유류할증료', '국제선 유류할증료'],
+    faq: [
+      { q: '7월 유류할증료는 더 내려갈까?', a: '가능성은 있습니다. MOPS 급락으로 하락 압력이 생겼지만 USD/KRW 환율, 성수기 항공유 수요, 중동 리스크 때문에 인하 폭은 제한될 수 있습니다.' },
+      { q: '6월 확정 데이터와 7월 전망은 어떻게 다른가요?', a: '6월은 항공사 공시로 확인된 데이터이고, 7월은 MOPS, 환율, 유가, 지정학 리스크를 바탕으로 한 시장 기반 전망입니다.' },
+      { q: '지금 항공권을 예약하는 것이 유리한가요?', a: '단거리 노선은 유류할증료보다 운임 변동 영향이 클 수 있습니다. 장거리 노선은 유류할증료와 환율을 함께 보고 총액 기준으로 판단하는 것이 좋습니다.' }
+    ],
+    links: [
+      { href: 'fuel-surcharge-2026-06-forecast.html', label: '2026년 7월 유류할증료 전망 자세히 보기' },
+      { href: 'fuel-surcharge-calculator.html', label: '5월·6월 발권 절약액 계산' },
+      { href: 'airlines.html', label: '항공사별 공식 공시 확인' },
+      { href: 'fuel-surcharge-graph.html', label: '월별 유류할증료 그래프' }
+    ],
+    i18n: {
+      en: {
+        updatedAt: 'Updated 2026.05.25 10:30 KST',
+        title: 'July 2026 fuel surcharge stabilization outlook: further cuts or limited adjustment more likely',
+        aiBrief: 'As of 2026.05.25 10:30 KST, July 2026 fuel surcharges look more likely to stabilize than spike. MOPS dropped sharply and June international fuel surcharges moved from Level 33 to Level 27.',
+        summary: 'The current market view is that the jet fuel price spike has likely passed for now.\n\nAfter the MOPS drop, June international surcharges fell from Level 33 to Level 27. For July, further cuts or stabilization look more likely, but summer jet fuel demand and USD/KRW may limit the size.\n\nTravelers should focus on fare levels for short-haul routes and check both surcharge and FX impact for long-haul routes.',
+        impact: 'Core card for July 2026 fuel surcharge outlook, international fuel surcharge, and air ticket price forecast searches.',
+        sourceName: 'Market indicator synthesis (2026.05.25 10:30 KST)',
+        tags: ['NEW', 'July outlook', 'fuel surcharge outlook', 'July 2026 fuel surcharge', 'international fuel surcharge'],
+        faq: [
+          { q: 'Will July fuel surcharges fall further?', a: 'They may. MOPS creates downward pressure, but USD/KRW, summer fuel demand, and Middle East risk can limit the size.' },
+          { q: 'How are June confirmed data and July outlook different?', a: 'June is based on airline filings, while July is a market-based outlook using MOPS, FX, crude oil, and geopolitical risk.' },
+          { q: 'Is booking now better?', a: 'For short-haul routes, base fare can matter more than surcharge. For long-haul routes, compare surcharge and FX impact together.' }
+        ],
+        links: [
+          { href: 'fuel-surcharge-2026-06-forecast.html', label: 'Detailed July 2026 fuel surcharge outlook' },
+          { href: 'fuel-surcharge-calculator.html', label: 'Calculate May-June ticketing savings' },
+          { href: 'airlines.html', label: 'Check official airline filings' },
+          { href: 'fuel-surcharge-graph.html', label: 'Monthly surcharge chart' }
+        ]
+      },
+      ja: {
+        updatedAt: '2026.05.25 10:30 KST 更新',
+        title: '2026年7月の燃油サーチャージは安定化の可能性が拡大',
+        aiBrief: '2026.05.25 10:30 KST時点では、2026年7月の燃油サーチャージは急上昇よりも安定化の可能性が高い流れです。MOPS急落後、6月の国際線燃油サーチャージは33段階から27段階へ下がりました。',
+        summary: '現在の市場では、航空燃料価格の急騰局面はいったん通過したとの見方が強まっています。\n\nMOPS急落を受けて、6月の国際線燃油サーチャージは33段階から27段階へ低下しました。7月は追加引き下げまたは安定化が優勢ですが、夏の需要と為替が下げ幅を制限する可能性があります。\n\n短距離路線は運賃そのもの、長距離路線は燃油サーチャージと為替を合わせて確認するのが有利です。',
+        impact: '2026年7月燃油サーチャージ見通し、国際線燃油サーチャージ、航空券価格見通し向けの主要カードです。',
+        sourceName: '市場指標総合分析（2026.05.25 10:30 KST）',
+        tags: ['NEW', '7月見通し', '燃油サーチャージ見通し', '2026年7月燃油サーチャージ', '国際線燃油サーチャージ'],
+        faq: [
+          { q: '7月の燃油サーチャージはさらに下がりますか？', a: '可能性はあります。MOPS下落は下押し要因ですが、USD/KRW、夏の燃料需要、中東リスクが下げ幅を抑える場合があります。' },
+          { q: '6月確定データと7月見通しの違いは？', a: '6月は航空会社の公示データで、7月はMOPS、為替、原油、地政学リスクを使った市場見通しです。' },
+          { q: '今予約した方がよいですか？', a: '短距離は運賃の影響が大きく、長距離は燃油サーチャージと為替を一緒に確認するのがよいです。' }
+        ],
+        links: [
+          { href: 'fuel-surcharge-2026-06-forecast.html', label: '2026年7月見通しを見る' },
+          { href: 'fuel-surcharge-calculator.html', label: '5月・6月発券の節約額を計算' },
+          { href: 'airlines.html', label: '航空会社の公式公示を確認' },
+          { href: 'fuel-surcharge-graph.html', label: '月別グラフを見る' }
+        ]
+      },
+      zh: {
+        updatedAt: '2026.05.25 10:30 KST 更新',
+        title: '2026年7月燃油附加费稳定可能性扩大：进一步下调或有限调整占优',
+        aiBrief: '截至2026.05.25 10:30 KST，2026年7月燃油附加费更可能进入稳定阶段，而不是再次急涨。MOPS急跌后，6月国际线燃油附加费从33级降至27级。',
+        summary: '当前市场更倾向于认为航空燃油价格的急涨高点已暂时过去。\n\nMOPS急跌后，6月国际线燃油附加费从33级降至27级。7月可能继续小幅下调或维持稳定，但暑期航空燃油需求和美元兑韩元汇率可能限制降幅。\n\n短途航线应重点看机票基础运价，长途航线应同时比较燃油附加费和汇率影响。',
+        impact: '面向2026年7月燃油附加费预测、国际线燃油附加费和机票价格预测搜索意图的核心卡片。',
+        sourceName: '市场指标综合分析（2026.05.25 10:30 KST）',
+        tags: ['NEW', '7月展望', '燃油附加费预测', '2026年7月燃油附加费', '国际线燃油附加费'],
+        faq: [
+          { q: '7月燃油附加费还会下降吗？', a: '有可能。MOPS下降带来下调压力，但USD/KRW汇率、暑期需求和中东风险可能限制降幅。' },
+          { q: '6月确定数据和7月展望有什么区别？', a: '6月是航空公司已公布数据，7月是基于MOPS、汇率、油价和地缘风险的市场展望。' },
+          { q: '现在订票更有利吗？', a: '短途航线基础票价影响可能更大，长途航线应同时查看燃油附加费和汇率。' }
+        ],
+        links: [
+          { href: 'fuel-surcharge-2026-06-forecast.html', label: '查看2026年7月燃油附加费展望' },
+          { href: 'fuel-surcharge-calculator.html', label: '计算5月与6月出票节省额' },
+          { href: 'airlines.html', label: '查看航空公司官方公告' },
+          { href: 'fuel-surcharge-graph.html', label: '查看月度图表' }
+        ]
+      },
+      fr: {
+        updatedAt: 'Mise à jour 2026.05.25 10:30 KST',
+        title: 'Surcharge carburant de juillet 2026 : scénario de stabilisation ou de baisse limitée',
+        aiBrief: 'Au 2026.05.25 10:30 KST, la surcharge carburant de juillet 2026 paraît plus proche d’une stabilisation que d’un nouveau bond. Le MOPS a fortement baissé et la surcharge internationale de juin est passée du niveau 33 au niveau 27.',
+        summary: 'Le marché considère que le pic de prix du carburant aviation est probablement passé pour le moment.\n\nAprès la baisse du MOPS, la surcharge internationale de juin est passée du niveau 33 au niveau 27. Pour juillet, une nouvelle baisse ou une stabilisation paraît plus probable, mais la demande estivale et l’USD/KRW peuvent limiter l’ampleur.\n\nSur les courts-courriers, le tarif de base reste central. Sur les longs-courriers, il faut vérifier la surcharge et l’effet de change ensemble.',
+        impact: 'Carte clé pour les requêtes sur la prévision de surcharge carburant de juillet 2026 et le prix des billets.',
+        sourceName: 'Synthèse des indicateurs de marché (2026.05.25 10:30 KST)',
+        tags: ['NEW', 'prévision juillet', 'surcharge carburant', 'juillet 2026', 'vols internationaux'],
+        faq: [
+          { q: 'La surcharge de juillet peut-elle encore baisser ?', a: 'Oui, c’est possible. Le MOPS pousse à la baisse, mais l’USD/KRW, la demande estivale et le risque Moyen-Orient peuvent limiter l’effet.' },
+          { q: 'Quelle différence entre juin confirmé et juillet prévu ?', a: 'Juin repose sur les annonces des compagnies. Juillet est une prévision de marché fondée sur MOPS, change, pétrole et risque géopolitique.' },
+          { q: 'Faut-il réserver maintenant ?', a: 'Sur court-courrier, le tarif de base peut compter davantage. Sur long-courrier, comparez surcharge et change ensemble.' }
+        ],
+        links: [
+          { href: 'fuel-surcharge-2026-06-forecast.html', label: 'Prévision détaillée de juillet 2026' },
+          { href: 'fuel-surcharge-calculator.html', label: 'Calculer l’économie mai-juin' },
+          { href: 'airlines.html', label: 'Voir les annonces officielles' },
+          { href: 'fuel-surcharge-graph.html', label: 'Graphique mensuel' }
+        ]
+      },
+      de: {
+        updatedAt: 'Aktualisiert 2026.05.25 10:30 KST',
+        title: 'Kerosinzuschlag Juli 2026: Stabilisierung oder begrenzte Senkung wahrscheinlicher',
+        aiBrief: 'Stand 2026.05.25 10:30 KST wirkt der Juli-Zuschlag 2026 eher stabil als sprunghaft steigend. MOPS fiel deutlich, und der internationale Juni-Zuschlag sank von Stufe 33 auf Stufe 27.',
+        summary: 'Der Markt geht derzeit davon aus, dass der Preisspitzenbereich bei Flugkraftstoff vorerst überschritten ist.\n\nNach dem MOPS-Rückgang sank der internationale Juni-Zuschlag von Stufe 33 auf Stufe 27. Für Juli sind eine weitere Senkung oder Stabilisierung wahrscheinlicher, doch Sommernachfrage und USD/KRW können den Umfang begrenzen.\n\nBei Kurzstrecken zählt oft der Basistarif stärker. Bei Langstrecken sollten Zuschlag und Wechselkurs gemeinsam geprüft werden.',
+        impact: 'Kernkarte für Suchanfragen zu Juli-2026-Zuschlag, internationalen Zuschlägen und Ticketpreis-Prognosen.',
+        sourceName: 'Marktindikatoren-Synthese (2026.05.25 10:30 KST)',
+        tags: ['NEW', 'Juli-Ausblick', 'Kerosinzuschlag', 'Juli 2026', 'internationaler Zuschlag'],
+        faq: [
+          { q: 'Kann der Juli-Zuschlag weiter sinken?', a: 'Ja, das ist möglich. MOPS wirkt senkend, aber USD/KRW, Sommernachfrage und Nahost-Risiken können den Umfang begrenzen.' },
+          { q: 'Was unterscheidet Juni-Daten und Juli-Ausblick?', a: 'Juni basiert auf Airline-Meldungen. Juli ist ein Marktausblick aus MOPS, Wechselkurs, Ölpreis und geopolitischem Risiko.' },
+          { q: 'Sollte man jetzt buchen?', a: 'Bei Kurzstrecken kann der Grundtarif wichtiger sein. Bei Langstrecken sollten Zuschlag und Wechselkurs zusammen verglichen werden.' }
+        ],
+        links: [
+          { href: 'fuel-surcharge-2026-06-forecast.html', label: 'Detaillierter Juli-Ausblick 2026' },
+          { href: 'fuel-surcharge-calculator.html', label: 'Ersparnis Mai-Juni berechnen' },
+          { href: 'airlines.html', label: 'Offizielle Airline-Meldungen prüfen' },
+          { href: 'fuel-surcharge-graph.html', label: 'Monatsdiagramm ansehen' }
+        ]
+      }
+    }
+  },
+  {
+    id: 'news-20260525-mops-market-stabilization',
+    slug: 'mops-drop-jet-fuel-market-stabilization-2026',
+    category: 'market',
+    priority: 1,
+    date: '2026-05-25',
+    updatedAt: '2026.05.25 10:30 KST 업데이트',
+    aiSummary: true,
+    relevanceScore: 1,
+    title: 'MOPS 급락 이후 항공유 가격 안정 흐름: 511.21 → 410.02 cents/gal',
+    aiBrief: '싱가포르 항공유(MOPS)는 511.21에서 410.02 cents/gal로 내려오며 항공유 가격 전망을 안정 쪽으로 바꿨습니다. 이 흐름은 6월 유류할증료 33단계 → 27단계 하락의 핵심 배경입니다.',
+    summary: 'MOPS는 국제선 유류할증료 산정에 직접 연결되는 대표 항공유 가격 지표입니다.\n\n5월 중순 이후 MOPS가 급락하면서 항공업계에서는 급등 피크가 일단 지나갔다는 분위기가 강해졌습니다. 유럽 및 글로벌 공급망 안정, 정유사의 항공유 생산 확대도 공급 공포 완화에 기여했습니다.\n\n다만 중동 리스크는 여전히 변수입니다. MOPS가 안정돼도 호르무즈 리스크가 재점화되면 항공유 가격 전망은 다시 흔들릴 수 있습니다.',
+    impact: 'MOPS 하락, 항공유 가격, 항공유 가격 전망 검색에 대응하는 카드입니다.',
+    sourceName: 'MOPS 및 항공유 가격 흐름 종합',
+    sourceUrl: 'fuel-surcharge-graph.html',
+    tags: ['NEW', 'MOPS', '항공유 가격', '항공유 가격 전망', '33단계 → 27단계'],
+    faq: [
+      { q: 'MOPS 하락이 의미하는 것은?', a: 'MOPS 하락은 항공사의 연료비 부담이 줄어들 수 있다는 뜻입니다. 유류할증료에는 시차가 있지만, 국제선 유류할증료 인하 압력으로 작용합니다.' },
+      { q: 'MOPS 511.21에서 410.02 cents/gal 하락은 큰 변화인가요?', a: '약 101.19 cents/gal 하락으로, 6월 유류할증료가 33단계에서 27단계로 내려간 배경으로 해석할 수 있습니다.' },
+      { q: '항공유 가격이 안정되면 항공권도 바로 싸지나요?', a: '바로 연결되지는 않습니다. 항공권 총액은 운임, 좌석 상황, 환율, 세금, 유류할증료가 함께 결정합니다.' }
+    ],
+    links: [
+      { href: 'fuel-surcharge-graph.html', label: 'MOPS·유류할증료 추세 보기' },
+      { href: 'news.html#news-20260525-july-surcharge-stabilization', label: '7월 전망 카드 보기' },
+      { href: 'fuel-surcharge-2026-06-forecast.html', label: '7월 예상 시나리오 확인' }
+    ],
+    i18n: {
+      en: {
+        updatedAt: 'Updated 2026.05.25 10:30 KST',
+        title: 'Jet fuel market stabilizes after MOPS drop: 511.21 → 410.02 cents/gal',
+        aiBrief: 'Singapore jet fuel MOPS fell from 511.21 to 410.02 cents/gal. This shift supports a more stable jet fuel price outlook and explains the Level 33 → Level 27 June surcharge drop.',
+        summary: 'MOPS is one of the key jet fuel benchmarks behind international fuel surcharge calculations.\n\nAfter the mid-May MOPS drop, the airline market view is that the spike has likely passed for now. More stable European and global supply chains and increased refinery output helped ease supply fear.\n\nMiddle East risk remains a variable. If Hormuz risk returns, the jet fuel price outlook can become volatile again.',
+        impact: 'Supports search intent for MOPS decline, jet fuel prices, and jet fuel price outlook.',
+        sourceName: 'MOPS and jet fuel price trend synthesis',
+        tags: ['NEW', 'MOPS', 'jet fuel price', 'jet fuel price outlook', 'Level 33 → Level 27'],
+        faq: [
+          { q: 'What does the MOPS drop mean?', a: 'It means airline fuel-cost pressure may ease. There is a lag, but it creates downward pressure on international fuel surcharges.' },
+          { q: 'Is 511.21 to 410.02 cents/gal a large move?', a: 'Yes. It is a drop of about 101.19 cents/gal and helps explain the Level 33 to Level 27 change.' },
+          { q: 'Do air tickets get cheaper immediately?', a: 'Not necessarily. Total price also depends on fare, seats, FX, taxes, and surcharge.' }
+        ],
+        links: [
+          { href: 'fuel-surcharge-graph.html', label: 'See MOPS and surcharge trend' },
+          { href: 'news.html#news-20260525-july-surcharge-stabilization', label: 'Read July outlook card' },
+          { href: 'fuel-surcharge-2026-06-forecast.html', label: 'Check July scenarios' }
+        ]
+      }
+    }
+  },
+  {
+    id: 'news-20260525-usdkrw-ticket-burden',
+    slug: 'usd-krw-exchange-rate-ticket-price-burden-2026',
+    category: 'market',
+    priority: 1,
+    date: '2026-05-25',
+    updatedAt: '2026.05.25 10:30 KST 업데이트',
+    aiSummary: true,
+    relevanceScore: 0.95,
+    title: '환율 부담은 아직 지속: 유류할증료가 내려도 항공권 체감 가격은 제한적',
+    aiBrief: 'USD/KRW 환율 부담은 2026년 7월 유류할증료 전망의 핵심 변수입니다. 유류할증료가 내려가도 환율과 성수기 운임이 높으면 항공권 가격 전망은 크게 낮아지기 어렵습니다.',
+    summary: '유류할증료는 항공유 가격뿐 아니라 달러 기반 비용과 원화 환산 부담의 영향을 받습니다.\n\n현재 시장은 환율 변동성이 일부 완화됐지만 USD/KRW 부담이 계속되는 구간으로 해석됩니다. 따라서 MOPS 하락이 있더라도 항공권 유류할증료 인하 효과가 소비자 총액에 모두 반영되지는 않을 수 있습니다.\n\n여행객은 유류할증료만 보지 말고 환율 전망, 성수기 운임, 좌석 상황까지 함께 확인해야 합니다.',
+    impact: '환율 전망, 항공권 가격 전망, 항공권 유류할증료 검색 의도에 대응합니다.',
+    sourceName: 'USD/KRW 및 항공권 가격 변수 분석',
+    sourceUrl: 'fuel-surcharge-calculator.html',
+    tags: ['NEW', '환율 전망', 'USD/KRW', '항공권 가격 전망', '항공권 유류할증료'],
+    faq: [
+      { q: '환율이 항공권 가격에 미치는 영향은?', a: 'USD/KRW가 높으면 달러 기반 연료비와 해외 비용의 원화 부담이 커집니다. 유류할증료가 내려도 항공권 총액 하락이 제한될 수 있습니다.' },
+      { q: '유류할증료가 내려가면 무조건 싸게 살 수 있나요?', a: '아닙니다. 여름 성수기 운임과 좌석 수급이 높게 형성되면 유류할증료 인하 효과가 줄어들 수 있습니다.' },
+      { q: '소비자는 무엇을 같이 봐야 하나요?', a: '발권월 유류할증료, 실시간 운임, USD/KRW 환율, 좌석 상황을 함께 비교해야 합니다.' }
+    ],
+    links: [
+      { href: 'fuel-surcharge-calculator.html', label: '발권월별 절약액 계산하기' },
+      { href: 'index.html', label: '노선별 유류할증료 조회' },
+      { href: 'fuel-surcharge-2026-06-forecast.html', label: '환율 변수 반영 전망 보기' }
+    ],
+    i18n: {
+      en: {
+        updatedAt: 'Updated 2026.05.25 10:30 KST',
+        title: 'USD/KRW burden persists: lower surcharge may not fully lower perceived ticket cost',
+        aiBrief: 'USD/KRW remains a key variable for the July 2026 fuel surcharge outlook. Even if surcharges fall, high FX and peak-season fares can keep ticket prices elevated.',
+        summary: 'Fuel surcharges are affected not only by jet fuel prices but also by dollar-linked costs and won conversion.\n\nThe market sees some easing in FX volatility, but USD/KRW remains a burden. As a result, lower MOPS may not fully translate into lower consumer ticket totals.\n\nTravelers should check surcharge, FX outlook, peak-season fare, and seat availability together.',
+        impact: 'Supports exchange-rate outlook, air ticket price forecast, and ticket fuel surcharge search intent.',
+        sourceName: 'USD/KRW and air ticket price variable analysis',
+        tags: ['NEW', 'exchange rate outlook', 'USD/KRW', 'air ticket price forecast', 'ticket fuel surcharge'],
+        faq: [
+          { q: 'How does FX affect ticket prices?', a: 'A high USD/KRW raises won-denominated dollar costs, so lower surcharges may not fully reduce the total ticket price.' },
+          { q: 'Does a lower surcharge always mean cheaper tickets?', a: 'No. Peak-season fares and seat availability can offset the surcharge benefit.' },
+          { q: 'What should travelers compare?', a: 'Compare ticketing-month surcharge, live fare, USD/KRW, and seat availability together.' }
+        ],
+        links: [
+          { href: 'fuel-surcharge-calculator.html', label: 'Calculate ticketing-month savings' },
+          { href: 'index.html', label: 'Search surcharge by route' },
+          { href: 'fuel-surcharge-2026-06-forecast.html', label: 'See FX in July outlook' }
+        ]
+      }
+    }
+  },
+  {
+    id: 'news-20260525-hormuz-risk-variable',
+    slug: 'hormuz-risk-middle-east-oil-jet-fuel-variable-2026',
+    category: 'market',
+    priority: 1,
+    date: '2026-05-25',
+    updatedAt: '2026.05.25 10:30 KST 업데이트',
+    aiSummary: true,
+    relevanceScore: 0.95,
+    title: '호르무즈 변수는 여전히 존재: 공급망 안정에도 중동 리스크는 7월 유류할증료 변수',
+    aiBrief: '유럽 및 글로벌 공급망은 안정되는 흐름이지만 중동 리스크는 여전히 변수입니다. 호르무즈 해협 관련 불확실성이 재점화되면 Brent와 항공유 가격 전망이 다시 흔들릴 수 있습니다.',
+    summary: '공급망 안정과 정유사 항공유 생산 확대는 항공유 가격 안정에 긍정적입니다.\n\n하지만 중동 리스크는 여전히 변수입니다. 미국-이란 협상 기대감은 위험 프리미엄을 낮추는 요인이지만, 호르무즈 해협 관련 불확실성이 완전히 사라진 것은 아닙니다.\n\n7월 유류할증료 전망은 안정화가 우세하되, 호르무즈 변수가 재점화되면 변동성이 확대될 수 있다는 점을 함께 봐야 합니다.',
+    impact: '중동 리스크, 호르무즈 해협, Brent, 항공유 가격 전망 검색 의도에 대응합니다.',
+    sourceName: '중동 리스크 및 공급망 흐름 종합',
+    sourceUrl: 'fuel-surcharge-2026-06-forecast.html',
+    tags: ['NEW', '호르무즈 리스크', '중동 리스크', 'Brent', '항공유 가격 전망'],
+    faq: [
+      { q: '호르무즈 리스크가 유류할증료에 영향을 주나요?', a: '영향을 줄 수 있습니다. 호르무즈 리스크는 Brent와 항공유 가격의 위험 프리미엄을 높여 유류할증료 하락을 제한할 수 있습니다.' },
+      { q: '공급망 안정은 어떤 의미인가요?', a: '글로벌 공급망 안정과 정유사 생산 확대는 항공유 공급 공포를 낮추며 MOPS 안정에 도움이 됩니다.' },
+      { q: '7월 전망에서 가장 중요한 변수는 무엇인가요?', a: 'MOPS 하락, USD/KRW 환율, 여름 항공유 수요, 호르무즈 리스크를 함께 봐야 합니다.' }
+    ],
+    links: [
+      { href: 'fuel-surcharge-2026-06-forecast.html', label: '7월 유류할증료 변수 정리' },
+      { href: 'news.html#news-20260525-mops-market-stabilization', label: 'MOPS 안정 카드 보기' },
+      { href: 'fuel-surcharge-graph.html', label: '월별 변동 흐름 확인' }
+    ],
+    i18n: {
+      en: {
+        updatedAt: 'Updated 2026.05.25 10:30 KST',
+        title: 'Hormuz risk remains a variable for July fuel surcharge despite supply-chain stabilization',
+        aiBrief: 'European and global supply chains are stabilizing, but Middle East risk remains a variable. If Strait of Hormuz uncertainty returns, Brent and jet fuel price outlooks can become volatile again.',
+        summary: 'Supply-chain stabilization and higher refinery jet fuel output are positive for jet fuel prices.\n\nHowever, Middle East risk remains a variable. US-Iran negotiation hopes can reduce risk premium, but Strait of Hormuz uncertainty has not fully disappeared.\n\nFor July fuel surcharges, stabilization is more likely, but renewed Hormuz risk could increase volatility.',
+        impact: 'Supports search intent for Middle East risk, Strait of Hormuz, Brent, and jet fuel price outlook.',
+        sourceName: 'Middle East risk and supply-chain trend synthesis',
+        tags: ['NEW', 'Hormuz risk', 'Middle East risk', 'Brent', 'jet fuel price outlook'],
+        faq: [
+          { q: 'Can Hormuz risk affect fuel surcharges?', a: 'Yes. It can raise risk premium in Brent and jet fuel prices, limiting surcharge declines.' },
+          { q: 'What does supply-chain stabilization mean?', a: 'Stable global supply chains and higher refinery output reduce supply fear and support MOPS stability.' },
+          { q: 'What are the key July variables?', a: 'MOPS decline, USD/KRW, summer fuel demand, and Hormuz risk should be checked together.' }
+        ],
+        links: [
+          { href: 'fuel-surcharge-2026-06-forecast.html', label: 'See July surcharge variables' },
+          { href: 'news.html#news-20260525-mops-market-stabilization', label: 'Read MOPS stabilization card' },
+          { href: 'fuel-surcharge-graph.html', label: 'Check monthly trend' }
+        ]
+      }
+    }
+  }
+];
+
+/* Reuse English card text for languages that should not fall back to Korean when
+   a full localized editorial version is not yet available. */
+(function(){
+  ['ja','zh','fr','de'].forEach(function(lang){
+    (window.AERO_NEWS_CARDS_20260525 || []).forEach(function(card){
+      if(!card.i18n) card.i18n = {};
+      if(!card.i18n[lang] && card.i18n.en) card.i18n[lang] = card.i18n.en;
+    });
+  });
+})();
+
 /* 2026.05.24 10:30 KST topic-based news cards
    Shared data shape for news.html, FAQ schema, and future archive reuse. */
 window.AERO_NEWS_CARDS_20260524 = [
@@ -4027,10 +4318,42 @@ window.applyLanguage = function(){
   if(dest) window.buildAirportOptions(dest, 'dest');
   /* document.title */
   var titleKey = document.querySelector('meta[data-i18n-page-title]');
-  if(titleKey) document.title = window.t(titleKey.getAttribute('data-i18n-page-title'));
+  if(titleKey) {
+    var localizedTitle = window.t(titleKey.getAttribute('data-i18n-page-title'));
+    document.title = localizedTitle;
+    var ogTitle = document.querySelector('meta[property="og:title"]');
+    var twTitle = document.querySelector('meta[name="twitter:title"], meta[property="twitter:title"]');
+    if(ogTitle) ogTitle.setAttribute('content', localizedTitle);
+    if(twTitle) twTitle.setAttribute('content', localizedTitle);
+  }
   /* meta description */
   var descEl = document.querySelector('meta[name="description"][data-i18n-page-desc]');
-  if(descEl) descEl.setAttribute('content', window.t(descEl.getAttribute('data-i18n-page-desc')));
+  if(descEl) {
+    var localizedDesc = window.t(descEl.getAttribute('data-i18n-page-desc'));
+    descEl.setAttribute('content', localizedDesc);
+    var ogDesc = document.querySelector('meta[property="og:description"]');
+    var twDesc = document.querySelector('meta[name="twitter:description"], meta[property="twitter:description"]');
+    if(ogDesc) ogDesc.setAttribute('content', localizedDesc);
+    if(twDesc) twDesc.setAttribute('content', localizedDesc);
+  }
+  /* Keep JSON-LD modified dates aligned with the page-level article timestamp. */
+  var modifiedMeta = document.querySelector('meta[property="article:modified_time"]');
+  if(modifiedMeta && modifiedMeta.content){
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function(script){
+      if(!script.textContent || script.id === 'topicNewsStructuredData') return;
+      try{
+        var data = JSON.parse(script.textContent);
+        function touch(node){
+          if(!node || typeof node !== 'object') return;
+          if(node.dateModified !== undefined) node.dateModified = modifiedMeta.content;
+          if(Array.isArray(node['@graph'])) node['@graph'].forEach(touch);
+          if(Array.isArray(node.mainEntity)) node.mainEntity.forEach(touch);
+        }
+        touch(data);
+        script.textContent = JSON.stringify(data);
+      }catch(e){}
+    });
+  }
 };
 
 /* ─── initNav 래핑 ─── */

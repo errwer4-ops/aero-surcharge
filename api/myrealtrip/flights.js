@@ -21,9 +21,20 @@ function isValidDate(value) {
   return /^\d{4}-\d{2}-\d{2}$/.test(String(value || ""));
 }
 
+function toFlightCityCode(code) {
+  const cityByAirport = {
+    HND: "TYO",
+    NRT: "TYO",
+    KIX: "OSA",
+    ITM: "OSA",
+    GMP: "SEL",
+  };
+  return cityByAirport[code] || code;
+}
+
 function getConfig() {
   loadLocalEnv();
-  const endpoint = (process.env.MYREALTRIP_FLIGHTS_ENDPOINT || "").trim();
+  const endpoint = (process.env.MYREALTRIP_FLIGHTS_ENDPOINT || "/v1/products/flight/calendar").trim();
   const baseUrl = (process.env.MYREALTRIP_API_BASE_URL || "").trim().replace(/\/+$/, "");
   const apiKey = (process.env.MYREALTRIP_API_KEY || "").trim();
   const requestUrl = endpoint && /^https?:\/\//i.test(endpoint)
@@ -33,21 +44,25 @@ function getConfig() {
       : "";
 
   return {
-    configured: Boolean(endpoint),
-    callable: /^https?:\/\//i.test(requestUrl),
+    configured: Boolean(endpoint && baseUrl && apiKey),
+    callable: /^https?:\/\//i.test(requestUrl) && Boolean(apiKey),
     endpoint,
     requestUrl,
     apiKey,
   };
 }
 
-function requestJson(url, headers) {
+function requestJson(url, options) {
   return new Promise((resolve, reject) => {
     const parsed = new URL(url);
     const client = parsed.protocol === "http:" ? http : https;
+    const body = options.body ? JSON.stringify(options.body) : null;
     const req = client.request(parsed, {
-      method: "GET",
-      headers,
+      method: options.method || "GET",
+      headers: {
+        ...options.headers,
+        ...(body ? { "Content-Type": "application/json", "Content-Length": Buffer.byteLength(body) } : {}),
+      },
       timeout: 15000,
     }, (response) => {
       const chunks = [];
@@ -70,12 +85,44 @@ function requestJson(url, headers) {
 
     req.on("timeout", () => req.destroy(new Error("MyRealTrip flight request timed out.")));
     req.on("error", reject);
+    if (body) req.write(body);
     req.end();
   });
 }
 
-function normalizeItems(payload) {
+function isWithinDateRange(value, startDate, endDate) {
+  if (!value) return true;
+  return value >= startDate && value <= endDate;
+}
+
+function normalizeItems(payload, options = {}) {
   const root = payload && payload.result ? payload.result : payload;
+  if (Array.isArray(payload && payload.data)) {
+    return payload.data
+      .filter((item) => isWithinDateRange(item.departureDate, options.startDate, options.endDate))
+      .slice(0, 5)
+      .map((item, index) => ({
+      id: `${item.fromCity || ""}-${item.toCity || ""}-${item.departureDate || index}`,
+      airlineCode: item.airline || null,
+      airlineName: item.airline || null,
+      origin: item.fromCity || null,
+      destination: item.toCity || null,
+      departDate: item.departureDate || null,
+      departTime: null,
+      arriveDate: item.returnDate || null,
+      arriveTime: null,
+      stops: item.transfer,
+      isDirect: item.transfer === 0,
+      durationMinutes: null,
+      price: {
+        currency: "KRW",
+        total: item.totalPrice || 0,
+        averagePrice: item.averagePrice || null,
+      },
+      reservationUrl: null,
+    }));
+  }
+
   const items = Array.isArray(root && root.items) ? root.items : [];
 
   return items.slice(0, 5).map((item) => {
@@ -110,6 +157,7 @@ module.exports = async function handler(req, res) {
     const departDate = String(first(req.query.departDate) || "").trim();
     const tripType = String(first(req.query.tripType) || "ONE_WAY").trim().toUpperCase();
     const maxResults = Math.max(1, Math.min(5, parseInt(first(req.query.maxResults), 10) || 3));
+    const period = Math.max(3, Math.min(7, parseInt(first(req.query.period), 10) || 5));
     const config = getConfig();
 
     if (String(first(req.query.status) || "") === "1") {
@@ -142,16 +190,25 @@ module.exports = async function handler(req, res) {
     }
 
     const url = new URL(config.requestUrl);
-    url.searchParams.set("origin", origin);
-    url.searchParams.set("destination", destination);
-    url.searchParams.set("departDate", departDate);
-    url.searchParams.set("tripType", tripType === "ROUND_TRIP" ? "ROUND_TRIP" : "ONE_WAY");
-    url.searchParams.set("maxResults", String(maxResults));
+    const endDate = new Date(`${departDate}T00:00:00Z`);
+    endDate.setUTCDate(endDate.getUTCDate() + 14);
+    const endDateText = endDate.toISOString().slice(0, 10);
 
     const upstream = await requestJson(url.toString(), {
+      method: "POST",
       Accept: "application/json",
-      "User-Agent": "aero-surcharge-flight-context/1.0",
-      ...(config.apiKey ? { Authorization: `Bearer ${config.apiKey}`, "X-API-Key": config.apiKey } : {}),
+      headers: {
+        Accept: "application/json",
+        Authorization: `Bearer ${config.apiKey}`,
+        "User-Agent": "aero-surcharge-flight-context/1.0",
+      },
+      body: {
+        depCityCd: toFlightCityCode(origin),
+        arrCityCd: toFlightCityCode(destination),
+        startDate: departDate,
+        endDate: endDateText,
+        period: tripType === "ROUND_TRIP" ? period : 3,
+      },
     });
 
     if (!upstream.ok) {
@@ -167,7 +224,7 @@ module.exports = async function handler(req, res) {
       success: true,
       route: `${origin}-${destination}`,
       departDate,
-      items: normalizeItems(upstream.data).slice(0, maxResults),
+      items: normalizeItems(upstream.data, { startDate: departDate, endDate: endDateText }).slice(0, maxResults),
     });
   } catch (error) {
     return sendJson(res, 500, {
