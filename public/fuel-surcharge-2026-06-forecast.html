@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>2026년 7월 유류할증료 전망 | MOPS 안정·환율·호르무즈 변수 정리</title>
-  <meta name="description" content="2026.05.25 10:30 KST 기준 2026년 7월 국제선 유류할증료 전망입니다. MOPS 511.21 → 410.02 cents/gal 하락, 6월 33단계 → 27단계, USD/KRW 환율 부담, 호르무즈 리스크와 공급망 안정을 함께 정리했습니다." data-i18n-page-desc="fore.metaDesc"/>
+  <title>2026년 7월 유류할증료 전망 | 6월 27단계·항공유 가격·원달러 환율</title>
+  <meta name="description" content="2026.05.26 06:25 KST 기준 2026년 7월 국제선 유류할증료 전망입니다. 6월 유류할증료 27단계 적용, 항공유 평균가 하락, 원달러 환율 부담, 국제유가와 호르무즈 리스크, 여름 성수기 예약 판단을 정리했습니다." data-i18n-page-desc="fore.metaDesc"/>
   <meta data-i18n-page-title="fore.metaTitle"/>
   <link rel="canonical" href="https://aero-surcharge.com/fuel-surcharge-2026-06-forecast.html"/>
-  <meta property="og:title" content="2026년 7월 유류할증료 전망 | MOPS 안정·환율·호르무즈 변수 정리"/>
-  <meta property="og:description" content="2026.05.25 10:30 KST 기준 7월 유류할증료 추가 하락 또는 안정화 가능성을 MOPS, USD/KRW, Brent, 호르무즈 리스크, 공급망 흐름으로 정리했습니다."/>
+  <meta property="og:title" content="2026년 7월 유류할증료 전망 | 6월 27단계·항공유 가격·원달러 환율"/>
+  <meta property="og:description" content="2026.05.26 06:25 KST 기준 7월 유류할증료 하락 가능성, 6월 33단계→27단계 적용, 항공유 가격 하락, 원달러 환율 부담, 호르무즈 리스크를 정리했습니다."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.com/fuel-surcharge-2026-06-forecast.html"/>
-  <meta property="article:modified_time" content="2026-05-25T10:30:00+09:00"/>
+  <meta property="article:modified_time" content="2026-05-26T06:25:00+09:00"/>
   <link rel="stylesheet" href="_shared.css"/>
   <link rel="stylesheet" href="_seo_pages.css"/>
   <link rel="icon" href="/favicon-v2.ico">
@@ -413,7 +413,7 @@ var FORE_I18N = {
     'fore.market.geo':     '🌍 Geopolitics: Hormuz tension not fully resolved — supply uncertainty and dollar strength persist',
     'fore.market.summary': '→ KE/OZ/LJ/BX/ZE/RS/TW/7C June filings complete (all down). Current market (Brent·MOPS·FX) signals July direction.',
     'fore.market.fx2':     '💡 Key signal: June confirmed down (KE/OZ/LJ/BX/ZE). Current market now influences July direction — July filing expected during June.',
-    'fore.verdict.title':  '📌 June Outlook Judgment',
+    'fore.verdict.title':  '📌 July Outlook Judgment',
     'fore.verdict.line1':  '→ KE/OZ/LJ/BX/ZE June official filings complete — all-band reductions vs May confirmed',
     'fore.verdict.line2':  '→ Current market (Brent·MOPS·FX) influences July surcharge direction — July filing expected during June (reference only)',
     'fore.verdict.short':  '👉 Short-haul: June Korean Air ₩61,500 (May ₩75,000) — KE/OZ/LJ/BX confirmed',
@@ -467,7 +467,7 @@ var FORE_I18N = {
     'fore.cta.desc':   '📍 路線別に現在の燃油サーチャージを確認できます',
     'fore.cta.main':   '👉 燃油サーチャージを検索',
     'fore.cta.may':    '👉 5月公示データを確認',
-    'fore.section.indicators': '📊 2026年6月予測 参考指標',
+    'fore.section.indicators': '📊 2026年7月見通し 参考指標',
     'fore.indicator.footnote': '※ 予測数値は2026.05.21 09:00 KST基準の参考用です。確定金額は各航空会社の公式チャンネルでご確認ください。',
     'fore.predict.title':    'AI予測参考指標現況',
     'fore.predict.subtitle': 'データ基準推定',
@@ -1051,9 +1051,168 @@ Object.assign(FORE_I18N.en, {
   ]
 });
 
+/* 2026.05.26 06:25 KST update: currentMonthNotice=2026-06 is baseline,
+   forecastTargetMonth=2026-07 is the market outlook focus. */
+Object.assign(FORE_I18N.ko, {
+  'fore.metaTitle': '2026년 7월 유류할증료 전망 | 6월 27단계·항공유 가격·원달러 환율',
+  'fore.metaDesc': '2026.05.26 06:25 KST 기준 2026년 7월 국제선 유류할증료 전망입니다. 6월 유류할증료 27단계 적용, 항공유 평균가 하락, 원달러 환율 부담, 국제유가와 호르무즈 리스크, 여름 성수기 예약 판단을 정리했습니다.',
+  'fore.pageTitle': '2026년 7월 유류할증료 전망',
+  'fore.pageSub': '2026.05.26 06:25 KST 기준 · 현재 적용 2026년 6월 27단계 · forecastTargetMonth=2026-07',
+  'fore.h1': '2026년 7월 국제선 유류할증료 전망 — 6월 27단계 적용 이후 항공유 가격·원달러 환율·중동 리스크 점검',
+  'fore.notice': '<strong>안내:</strong> 이 페이지는 currentMonthNotice=2026-06 공시 데이터를 기준점으로 두고, forecastTargetMonth=2026-07 유류할증료 전망을 분리해 설명합니다. 7월 확정 공시는 아직 발표 전이며, 최종 금액은 각 항공사 공식 공지에서 확인해야 합니다.',
+  'fore.intro': '2026.05.26 06:25 KST 기준, 콘텐츠 중심은 6월 공시 반영 완료에서 2026년 7월 유류할증료 전망으로 이동했습니다. 현재 적용 중인 2026년 6월 국제선 유류할증료는 기존 33단계에서 27단계로 하락했습니다. 하락 배경은 4월 중순~5월 중순 평균 싱가포르 항공유 가격이 전월 대비 크게 낮아진 흐름입니다. 다만 원달러 환율은 여전히 높은 구간에 있어 유가 하락에도 항공권 체감가 하락폭을 제한할 수 있습니다. 7월 전망은 하락 가능성 우세, 단 중동 리스크 재확대 시 변동 가능으로 보는 것이 적절합니다.',
+  'fore.section.indicators': '2026년 7월 유류할증료 전망 참고 지표',
+  'fore.indicator.footnote': '※ 6월은 항공사 공식 공시 기반 확정 데이터입니다. 7월은 항공유 가격, 원달러 환율, 국제유가, 중동 리스크를 바탕으로 한 시장 전망입니다.',
+  'fore.indicator.th': ['항목', '2026.05.26 06:25 KST 기준 현황', '7월 유류할증료 영향'],
+  'fore.summary.title': '2026년 7월 유류할증료 전망 요약',
+  'fore.summary.updated': '2026.05.26 06:25 KST 기준 · currentMonthNotice=2026-06 · forecastTargetMonth=2026-07',
+  'fore.summary.items': [
+    '현재 적용: 2026년 6월 국제선 유류할증료 27단계',
+    '하락 배경: 4월 중순~5월 중순 평균 싱가포르 항공유 가격이 전월 대비 크게 하락',
+    '대한항공 기준: 5월 75,000~564,000원 → 6월 61,500~451,500원, 최대 편도 112,500원 감소',
+    '제한 요인: 원달러 환율이 높은 구간이라 항공권 체감가 하락폭을 제한할 수 있음',
+    '7월 변수: 국제유가, 싱가포르 항공유, 원달러 환율, 호르무즈 해협, 미국·이란 협상',
+    '전망 결론: 하락 가능성 우세, 단 지정학 리스크 재확대 시 변동 가능'
+  ],
+  'fore.indicator.rows': [
+    ['현재 적용', '2026년 6월 국제선 유류할증료 27단계', '7월 전망의 기준점'],
+    ['항공유 가격', '4월 중순~5월 중순 평균 싱가포르 항공유 가격이 전월 대비 크게 하락', '추가 완화 가능성을 높이는 요인'],
+    ['대한항공 기준점', '5월 75,000~564,000원 → 6월 61,500~451,500원', '최대 편도 112,500원 감소, 6월 공시 반영 완료'],
+    ['원달러 환율', '여전히 높은 구간', '유가 하락에도 항공권 체감가 하락폭 제한 가능'],
+    ['중동 리스크', '호르무즈 해협, 미국·이란 협상, 국제유가 반등 가능성', '지정학 리스크 재확대 시 변동 가능'],
+    ['예약 판단', '장거리·성수기 노선은 총액 기준 비교 필요', '유류할증료보다 운임·좌석·환율 영향이 커질 수 있음']
+  ],
+  'fore.marketCore.title': '현재 시장 핵심 요약',
+  'fore.marketCore.items': [
+    { label:'현재 적용', body:'2026년 6월 국제선 유류할증료는 27단계로 적용 중입니다. 이 값은 7월 전망의 기준 데이터입니다.' },
+    { label:'하락 배경', body:'4월 중순~5월 중순 평균 싱가포르 항공유 가격이 전월 대비 크게 하락해 6월 단계 하락으로 이어졌습니다.' },
+    { label:'환율 제한', body:'원달러 환율은 높은 구간에 있어 유가 하락에도 항공권 체감가 하락폭을 제한할 수 있습니다.' },
+    { label:'7월 변수', body:'국제유가, 싱가포르 항공유, 원달러 환율, 호르무즈 해협, 미국·이란 협상이 핵심 변수입니다.' },
+    { label:'예약 판단', body:'장거리·성수기 노선은 유류할증료만 보지 말고 항공권 총액 기준으로 비교해야 합니다.' }
+  ],
+  'fore.scenario.title': '7월 전망 시나리오',
+  'fore.scenario.factor': '발생 요인:',
+  'fore.scenario.traveler': '여행객 영향:',
+  'fore.scenario.strategy': '예약 전략:',
+  'fore.scenario.items': [
+    { title:'하락 가능성 우세', factor:'항공유 평균가 하락 흐름이 유지되고 국제유가가 안정되는 경우입니다.', traveler:'6월보다 추가 완화 가능성을 기대할 수 있으나 확정 금액은 공시 전까지 알 수 없습니다.', strategy:'일정이 유연한 장거리 노선은 7월 공시 전후 총액을 비교하세요.' },
+    { title:'인하 폭 제한', factor:'원달러 환율이 높은 구간에 머물거나 성수기 운임이 상승하는 경우입니다.', traveler:'유류할증료가 내려가도 항공권 체감가 하락폭은 제한될 수 있습니다.', strategy:'유류할증료 조회 후 실시간 운임과 환율을 함께 확인하세요.' },
+    { title:'변동성 재확대', factor:'호르무즈 해협, 미국·이란 협상, 국제유가 반등 가능성이 재부각되는 경우입니다.', traveler:'일부 구간은 예상보다 덜 내려가거나 유지될 수 있습니다.', strategy:'성수기 좌석이 줄어드는 노선은 기다림보다 총액 확정이 나을 수 있습니다.' }
+  ],
+  'fore.bookingDecision.title': '예약 판단 가이드',
+  'fore.bookingDecision.items': [
+    '일본·동남아 단거리 노선은 유류할증료보다 항공권 운임과 좌석 상황 영향이 더 클 수 있습니다.',
+    '유럽·미주 등 장거리 노선은 대한항공 5월→6월 최대 112,500원 인하처럼 유류할증료 차이가 커질 수 있어 총액 기준 비교가 필요합니다.',
+    '여름 성수기 항공권은 발권월 유류할증료, 원달러 환율, 세금, 운임, 좌석 상황을 함께 확인하세요.'
+  ],
+  'fore.market.title': '2026년 7월 유류할증료 시장 브리핑',
+  'fore.market.brent': '국제유가: 5월 고점 이후 완화 흐름이 우세하지만 중동 리스크 프리미엄은 완전히 사라지지 않았습니다.',
+  'fore.market.fx': '원달러 환율: 여전히 높은 구간에 있어 유가 하락에도 항공권 체감가 하락폭을 제한할 수 있습니다.',
+  'fore.market.mops': '싱가포르 항공유: 4월 중순~5월 중순 평균 가격 하락이 6월 33단계→27단계 적용의 핵심 배경입니다.',
+  'fore.market.geo': '중동 리스크: 호르무즈 해협, 미국·이란 협상, 국제유가 반등 가능성은 별도 리스크입니다.',
+  'fore.market.summary': '→ 현재 흐름이 유지되면 7월 유류할증료도 추가 완화 가능성이 있습니다.',
+  'fore.market.fx2': '→ 다만 고환율과 지정학 리스크 때문에 항공권 총액 하락폭은 제한될 수 있습니다.',
+  'fore.verdict.title': '7월 유류할증료 전망 결론',
+  'fore.verdict.line1': '→ 하락 가능성 우세. 4월 중순~5월 중순 평균 항공유 가격 하락이 6월 27단계 적용으로 확인됐고, 흐름이 유지되면 7월에도 추가 완화 가능성이 있습니다.',
+  'fore.verdict.line2': '→ 단, 원달러 환율이 높은 구간이고 호르무즈 해협·미국 이란 협상·국제유가 반등 가능성이 남아 있어 변동 가능성을 열어둬야 합니다.',
+  'fore.verdict.short': '단거리: 유류할증료보다 운임·좌석 상황을 우선 확인',
+  'fore.verdict.long': '장거리·성수기: 유류할증료와 환율을 포함한 항공권 총액 기준 비교 필요',
+  'fore.mops.analysis.title': '항공유 하락과 7월 유류할증료 전망',
+  'fore.mops.analysis.body': '5월 고점 → 6월 하락 적용 → 7월 추가 완화 가능성 점검 흐름입니다.\n\n■ 현재 적용\n2026년 6월 국제선 유류할증료는 33단계에서 27단계로 하락 적용 중입니다.\n\n■ 하락 배경\n4월 중순~5월 중순 평균 싱가포르 항공유 가격이 전월 대비 크게 하락했습니다.\n\n■ 대한항공 기준점\n5월 국제선 편도 유류할증료는 최소 75,000원~최대 564,000원이었고, 6월은 최소 61,500원~최대 451,500원입니다. 최대 감소폭은 편도 기준 112,500원입니다.\n\n■ 7월 전망\n현재 흐름이 유지되면 7월 유류할증료도 추가 완화 가능성이 있습니다. 다만 고환율, 호르무즈 해협, 미국·이란 협상, 국제유가 반등 가능성은 별도 리스크입니다.',
+  'fore.booking.title': '소비자 예약 판단 포인트',
+  'fore.booking.items': [
+    '6월 공시 데이터는 확정값이고 7월 전망은 시장 지표 기반 참고값입니다.',
+    '단거리 노선은 유류할증료보다 운임 자체와 좌석 상황의 영향이 클 수 있습니다.',
+    '장거리·성수기 노선은 발권월 유류할증료, 원달러 환율, 항공권 총액을 함께 비교하세요.'
+  ],
+  'fore.keyvars.items': ['현재 적용 6월 27단계', '항공유 평균가 하락', '원달러 환율', '국제유가', '호르무즈 해협', '미국·이란 협상', '성수기 좌석 상황'],
+  'fore.predict.items': [
+    { label:'현재 적용', val:'2026년 6월 국제선 유류할증료 27단계', cls:'down' },
+    { label:'항공유 가격', val:'4월 중순~5월 중순 평균 싱가포르 항공유 가격 하락', cls:'down' },
+    { label:'대한항공 기준', val:'최대 편도 112,500원 인하', cls:'down' },
+    { label:'원달러 환율', val:'높은 구간 지속, 체감가 하락폭 제한 가능', cls:'up' },
+    { label:'7월 방향', val:'하락 가능성 우세, 지정학 리스크 재확대 시 변동 가능', cls:'plain' }
+  ],
+  'fore.basis.body': '7월 유류할증료는 6월 평균 항공유 가격, 국제유가, 원달러 환율, 항공사별 정책을 바탕으로 공시됩니다. 이 페이지는 2026.05.26 06:25 KST 기준 7월 전망이며 확정 공시가 아닙니다.'
+});
+
+Object.assign(FORE_I18N.en, {
+  'fore.metaTitle': 'July 2026 Fuel Surcharge Outlook | June Level 27, Jet Fuel, USD/KRW',
+  'fore.metaDesc': 'As of 2026.05.26 06:25 KST, this July 2026 international fuel surcharge outlook covers June Level 27, lower jet fuel averages, USD/KRW burden, oil and Hormuz risk, and summer booking decisions.',
+  'fore.pageTitle': 'July 2026 Fuel Surcharge Outlook',
+  'fore.pageSub': 'As of 2026.05.26 06:25 KST · Current June 2026 Level 27 · forecastTargetMonth=2026-07',
+  'fore.h1': 'July 2026 International Fuel Surcharge Outlook — after June Level 27, check jet fuel, USD/KRW, and Middle East risk',
+  'fore.notice': '<strong>Note:</strong> This page uses currentMonthNotice=2026-06 as confirmed baseline data and separates forecastTargetMonth=2026-07 as a market outlook. July amounts are not official filings yet.',
+  'fore.intro': 'As of 2026.05.26 06:25 KST, the focus has shifted from reflecting June filings to the July 2026 fuel surcharge outlook. June international surcharges are being applied at Level 27 after falling from Level 33. The driver was the lower mid-April to mid-May Singapore jet fuel average. Elevated USD/KRW can still limit perceived airfare relief. The balanced July view is lower bias, but variable if Middle East risk re-expands.',
+  'fore.indicator.th': ['Item', 'Status as of 2026.05.26 06:25 KST', 'July surcharge impact'],
+  'fore.summary.updated': 'As of 2026.05.26 06:25 KST · currentMonthNotice=2026-06 · forecastTargetMonth=2026-07',
+  'fore.summary.items': [
+    'Current application: June 2026 international fuel surcharge Level 27',
+    'Driver: lower mid-April to mid-May Singapore jet fuel average',
+    'Korean Air benchmark: May KRW 75,000–564,000 → June KRW 61,500–451,500, up to KRW 112,500 one-way decrease',
+    'Constraint: elevated USD/KRW can limit perceived airfare relief',
+    'July variables: crude oil, Singapore jet fuel, USD/KRW, Hormuz, US-Iran talks',
+    'Conclusion: lower bias, but renewed geopolitical risk can change the path'
+  ],
+  'fore.indicator.rows': [
+    ['Current application', 'June 2026 international fuel surcharge Level 27', 'Baseline for July outlook'],
+    ['Jet fuel price', 'Lower mid-April to mid-May Singapore jet fuel average', 'Supports further easing'],
+    ['Korean Air benchmark', 'May KRW 75,000–564,000 → June KRW 61,500–451,500', 'Up to KRW 112,500 one-way decrease; confirmed June filing'],
+    ['USD/KRW', 'Still elevated', 'Can limit perceived airfare relief'],
+    ['Middle East risk', 'Hormuz, US-Iran talks, possible oil rebound', 'Can change the lower-bias scenario'],
+    ['Booking decision', 'Long-haul and peak-season routes need total-price comparison', 'Fare, seats, FX can outweigh surcharge movement']
+  ],
+  'fore.marketCore.title': 'Current Market Summary',
+  'fore.marketCore.items': [
+    { label:'Current application', body:'June 2026 international surcharges are being applied at Level 27. This is the baseline for July outlook.' },
+    { label:'Driver', body:'The lower mid-April to mid-May Singapore jet fuel average caused the June stage reduction.' },
+    { label:'FX constraint', body:'USD/KRW remains elevated and can limit the perceived benefit of lower oil prices.' },
+    { label:'July variables', body:'Crude oil, Singapore jet fuel, USD/KRW, Hormuz, and US-Iran talks are the key variables.' },
+    { label:'Booking decision', body:'For long-haul and peak-season routes, compare by total airfare, not surcharge alone.' }
+  ],
+  'fore.scenario.items': [
+    { title:'Lower-bias scenario', factor:'Jet fuel averages stay lower and crude oil remains stable.', traveler:'July can ease further, but final amounts are unknown until filings.', strategy:'Flexible long-haul travelers can compare totals around July filings.' },
+    { title:'Limited-cut scenario', factor:'USD/KRW stays elevated or peak-season fares rise.', traveler:'Lower surcharges may not fully reduce the final ticket price.', strategy:'Check live fare and FX after using fuel surcharge search.' },
+    { title:'Volatility scenario', factor:'Hormuz, US-Iran talks, or oil rebound risk returns.', traveler:'Some bands may fall less than expected or stay unchanged.', strategy:'For routes with tightening seats, confirmed total price can matter more than waiting.' }
+  ],
+  'fore.bookingDecision.items': [
+    'For Japan and Southeast Asia short-haul routes, fare and seat availability can matter more than fuel surcharge movement.',
+    'For Europe and US long-haul routes, surcharge gaps can be large, so compare total price including FX.',
+    'For summer peak travel, compare ticketing-month surcharge, USD/KRW, taxes, fare, and seats together.'
+  ],
+  'fore.market.title': 'July 2026 Fuel Surcharge Market Briefing',
+  'fore.market.brent': 'Oil prices: easing after the May peak is positive, but Middle East risk premium has not fully disappeared.',
+  'fore.market.fx': 'USD/KRW: elevated FX can limit perceived airfare relief even when oil prices fall.',
+  'fore.market.mops': 'Singapore jet fuel: the lower mid-April to mid-May average drove the June Level 33→27 application.',
+  'fore.market.geo': 'Middle East risk: Hormuz, US-Iran talks, and possible oil rebound are separate risks.',
+  'fore.market.summary': '→ If the current trend holds, July fuel surcharges may ease further.',
+  'fore.market.fx2': '→ High FX and geopolitical risk can limit total airfare relief.',
+  'fore.verdict.title': 'July Fuel Surcharge Outlook Conclusion',
+  'fore.verdict.line1': '→ Lower bias. The lower mid-April to mid-May jet fuel average has already shown up in June Level 27, and if the trend holds July may ease further.',
+  'fore.verdict.line2': '→ However, elevated USD/KRW, Hormuz, US-Iran talks, and possible oil rebound mean the outlook can change.',
+  'fore.verdict.short': 'Short-haul: check fare and seat availability first',
+  'fore.verdict.long': 'Long-haul and peak season: compare total airfare including surcharge and FX',
+  'fore.mops.analysis.title': 'Jet Fuel Decline and July Fuel Surcharge Outlook',
+  'fore.mops.analysis.body': 'The sequence is: May peak → June cut applied → check possible July easing.\n\nCurrent application: June 2026 international surcharges fell from Level 33 to Level 27.\n\nDriver: the mid-April to mid-May Singapore jet fuel average fell sharply from the previous month.\n\nKorean Air benchmark: May one-way surcharges were KRW 75,000–564,000, while June is KRW 61,500–451,500. The maximum one-way decrease is KRW 112,500.\n\nJuly outlook: if the current trend holds, July may ease further. Elevated FX, Hormuz, US-Iran talks, and possible oil rebound remain separate risks.',
+  'fore.booking.items': [
+    'June filing data is confirmed; July outlook is market-based reference.',
+    'For short-haul routes, base fare and seat availability may matter more than surcharge movement.',
+    'For long-haul and peak-season routes, compare ticketing-month surcharge, USD/KRW, and total fare together.'
+  ],
+  'fore.keyvars.items': ['June Level 27', 'lower jet fuel average', 'USD/KRW', 'crude oil', 'Hormuz', 'US-Iran talks', 'peak-season seats'],
+  'fore.predict.items': [
+    { label:'Current application', val:'June 2026 international fuel surcharge Level 27', cls:'down' },
+    { label:'Jet fuel', val:'Lower mid-April to mid-May Singapore jet fuel average', cls:'down' },
+    { label:'Korean Air benchmark', val:'Up to KRW 112,500 one-way decrease', cls:'down' },
+    { label:'USD/KRW', val:'Elevated FX can limit perceived relief', cls:'up' },
+    { label:'July direction', val:'Lower bias, but variable if geopolitical risk re-expands', cls:'plain' }
+  ],
+  'fore.basis.body': 'July fuel surcharges are filed based on June average jet fuel prices, oil prices, USD/KRW, and airline policy. This page is a July outlook as of 2026.05.26 06:25 KST, not an official filing.'
+});
+
 ['ja','zh','fr','de'].forEach(function(lang) {
   Object.keys(FORE_I18N.en).forEach(function(key) {
-    if (FORE_I18N[lang] && FORE_I18N[lang][key] === undefined) FORE_I18N[lang][key] = FORE_I18N.en[key];
+    if (FORE_I18N[lang]) FORE_I18N[lang][key] = FORE_I18N.en[key];
   });
 });
 
