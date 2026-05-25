@@ -852,9 +852,10 @@ var SAVING_INDEX_ROUTE_MAP = null;
   function airlineDisplayName(code, fallback) { return translated('airline.' + code, fallback || code); }
   function airportDisplayName(code, fallback) { return translated('airport.' + code, fallback || code); }
   function regionLabelForCode(code) {
-    if (typeof AIRPORT_GROUPS !== 'undefined' && Array.isArray(AIRPORT_GROUPS)) {
-      for (var i = 0; i < AIRPORT_GROUPS.length; i++) {
-        if (AIRPORT_GROUPS[i].codes.indexOf(code) !== -1) return translated(AIRPORT_GROUPS[i].key, AIRPORT_GROUPS[i].key);
+    var groups = window.AIRPORT_GROUPS || (typeof AIRPORT_GROUPS !== 'undefined' ? AIRPORT_GROUPS : null);
+    if (Array.isArray(groups)) {
+      for (var i = 0; i < groups.length; i++) {
+        if (groups[i].codes.indexOf(code) !== -1) return translated(groups[i].key, groups[i].key);
       }
     }
     if (SAVING_AIRPORT_REGION_FALLBACKS[code]) {
@@ -869,10 +870,10 @@ var SAVING_INDEX_ROUTE_MAP = null;
     }
     return map;
   }
-  function airportSearchText(code, label, sharedMap) {
+  function airportSearchText(code, label, sharedMap, groupLabel) {
     var shared = sharedMap && sharedMap[code];
     var localLabel = SAVING_AIRPORT_LABELS[code] || SAVING_ORIGIN_LABELS[code] || '';
-    return (((shared && shared.searchText) || '') + ' ' + label + ' ' + localLabel + ' ' + code).toLowerCase();
+    return (((shared && shared.searchText) || '') + ' ' + label + ' ' + localLabel + ' ' + (groupLabel || '') + ' ' + code).toLowerCase();
   }
   function syncComboText(type) {
     var isOrigin = type === 'origin';
@@ -898,7 +899,8 @@ var SAVING_INDEX_ROUTE_MAP = null;
       SAVING_DESTINATIONS.forEach(function(route) { origins[getRouteDep(route)] = true; });
       return sortItems(Object.keys(origins).sort().map(function(code) {
         var label = airportDisplayName(code, SAVING_ORIGIN_LABELS[code] || code);
-        return { code:code, label:label, display:label + ' (' + code + ')', group:regionLabelForCode(code), searchText:airportSearchText(code, label, sharedMap) };
+        var group = regionLabelForCode(code);
+        return { code:code, label:label, display:label + ' (' + code + ')', group:group, searchText:airportSearchText(code, label, sharedMap, group) };
       }));
     }
     var origin = originEl.value;
@@ -908,7 +910,8 @@ var SAVING_INDEX_ROUTE_MAP = null;
       if (seen[code]) return null;
       seen[code] = true;
       var label = airportDisplayName(code, SAVING_AIRPORT_LABELS[code] || code);
-      return { code:code, label:label, display:label + ' (' + code + ')', group:regionLabelForCode(code), searchText:airportSearchText(code, label, sharedMap) };
+      var group = regionLabelForCode(code);
+      return { code:code, label:label, display:label + ' (' + code + ')', group:group, searchText:airportSearchText(code, label, sharedMap, group) };
     }).filter(Boolean));
   }
   function renderComboList(type, query) {

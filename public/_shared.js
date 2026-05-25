@@ -1049,18 +1049,20 @@ window.krwRefHtml = function(amount, currency, mult) {
 /* ─── 공항 데이터 ─── */
 var AIRPORT_GROUPS = [
   { key:'index.region.korea',    codes:['ICN','GMP','PUS','CJU','CJJ','TAE'] },
-  { key:'index.region.japan',    codes:['NRT','HND','KIX','FUK','CTS','OKA','NGO','KMJ','NGS','OIT','HIJ','KOJ','MYJ','HKD','FSZ','TAK'] },
-  { key:'index.region.china',    codes:['PVG','PEK','CAN','CTU','XIY','CGO','CKG','YNJ','DYG','SHA','TAO','WEH','YNT','NTG','HRB','KWL','SYX','SHE','DLC','TSN','HGH','NKG','SZX','XMN','CSX'] },
+  { key:'index.region.japan',    codes:['NRT','HND','KIX','FUK','CTS','OKA','NGO','KMJ','NGS','OIT','HIJ','KOJ','MYJ','HKD','FSZ','TAK','AKJ','KKJ','KMI','SDJ'] },
+  { key:'index.region.china',    codes:['PVG','PEK','CAN','CTU','XIY','CGO','CKG','YNJ','DYG','SHA','TAO','WEH','YNT','NTG','HRB','KWL','SYX','SHE','DLC','TSN','HGH','NKG','SZX','XMN','CSX','CGQ','HAK'] },
   { key:'index.region.taiwan',   codes:['TPE','KHH','RMQ'] },
-  { key:'index.region.seasia',   codes:['HKG','SIN','BKK','MNL','KUL','SGN','HAN','DAD','DPS','RGN','CNX','HKT','NHA','MFM','PNH','REP','VTE','ULN','GUM','SPN','PQC','DLI','BTH'] },
-  { key:'index.region.seasia2',  codes:['CEB','TAG','CRK','DVO','ILO','MNL','BKI','KCH','PEN','KLO','CXR'] },
+  { key:'index.region.seasia',   codes:['HKG','SIN','BKK','MNL','KUL','SGN','HAN','DAD','DPS','RGN','CNX','HKT','NHA','MFM','PNH','REP','VTE','ULN','GUM','SPN','PQC','DLI','BTH','HPH'] },
+  { key:'index.region.seasia2',  codes:['CEB','TAG','CRK','DVO','ILO','MNL','BKI','KCH','PEN','KLO','CXR','PPS'] },
   { key:'index.region.swasia',   codes:['DEL','BOM','CMB','KTM','DAC','MLE','TBS','ALA','FRU','TSE','SVO','VVO'] },
-  { key:'index.region.usa',     codes:['LAX','JFK','SFO','SEA','HNL','IAD','BOS','ORD','ATL','DFW','LAS'] },
+  { key:'index.region.usa',     codes:['LAX','JFK','SFO','SEA','HNL','IAD','BOS','ORD','ATL','DFW','LAS','BIS'] },
   { key:'index.region.canada',  codes:['YVR','YYZ'] },
   { key:'index.region.australia', codes:['SYD','MEL','BNE'] },
   { key:'index.region.newzealand',codes:['AKL'] },
+  { key:'index.region.oceania', codes:['ROR'] },
   { key:'index.region.europeMiddleEast', codes:['CDG','LHR','FRA','AMS','DXB','FCO','BCN','PRG','BUD','MXP','VIE','MAD','LIS','ZRH','ZAG','IST','CAI','DOH','AUH','RUH'] },
 ];
+window.AIRPORT_GROUPS = AIRPORT_GROUPS;
 
 /* ─── 번역 딕셔너리 ─── */
 window.I18N = {
