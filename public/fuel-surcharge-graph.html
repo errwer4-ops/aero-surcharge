@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8"/>
@@ -43,7 +43,7 @@
     }
     .chart-wrap canvas { display:block; width:100% !important; }
     #graphTooltip {
-      position:fixed; background:rgba(15,23,42,.93); color:#fff;
+      position:fixed; background:rgba(7,89,133,.94); color:#fff;
       font-size:12px; line-height:1.65; padding:9px 13px; border-radius:9px;
       pointer-events:none; z-index:9999; display:none; white-space:nowrap;
       box-shadow:0 4px 20px rgba(0,0,0,.28);
@@ -60,20 +60,20 @@
     .legend-item.dimmed { opacity:.3; }
     .legend-dot { width:10px; height:10px; border-radius:50%; flex-shrink:0; }
     .legend-tag {
-      font-size:10px; color:#1d4ed8; border:1px solid #bfdbfe;
+      font-size:10px; color:#075985; border:1px solid #BAE6FD;
       border-radius:3px; padding:0 3px; line-height:1.5;
-      background:#dbeafe;
+      background:#BAE6FD;
     }
     .graph-data-table { overflow-x:auto; margin-bottom:20px; }
     .graph-data-table table { width:100%; border-collapse:collapse; font-size:12px; }
     .graph-data-table th {
-      background:#f8faff; border-bottom:2px solid #e0e7ff;
-      padding:8px 10px; text-align:left; font-weight:700; color:#3730a3; white-space:nowrap;
+      background:#F0F9FF; border-bottom:2px solid #BAE6FD;
+      padding:8px 10px; text-align:left; font-weight:700; color:#075985; white-space:nowrap;
     }
     .graph-data-table td { padding:7px 10px; border-bottom:1px solid #f1f5f9; vertical-align:middle; }
-    .graph-data-table tr:hover td { background:#f8faff; }
+    .graph-data-table tr:hover td { background:#F0F9FF; }
     .usd-badge {
-      display:inline-block; background:#dbeafe; color:#1d4ed8;
+      display:inline-block; background:#BAE6FD; color:#075985;
       font-size:9px; font-weight:700; border-radius:3px; padding:1px 4px;
       margin-left:3px; vertical-align:middle;
     }
@@ -82,7 +82,7 @@
     .change-note { font-size:10px; color:var(--muted,#888); }
     .null-cell   { color:var(--muted,#aaa); font-size:11px; }
     .graph-notice { font-size:11px; color:var(--muted,#888); margin-bottom:18px; line-height:1.7; }
-    .graph-answer{background:#fff;border:1px solid var(--line,#e5e7eb);border-left:4px solid var(--blue,#2563eb);border-radius:10px;padding:14px 16px;margin:16px 0 18px;}
+    .graph-answer{background:#fff;border:1px solid var(--line,#e5e7eb);border-left:4px solid var(--blue,#0284C7);border-radius:10px;padding:14px 16px;margin:16px 0 18px;}
     .graph-answer-title{font-size:14px;font-weight:800;color:var(--text,#111);margin-bottom:6px;}
     .graph-answer-body{font-size:13px;color:var(--text2,#475569);line-height:1.7;}
     .graph-faq{display:flex;flex-direction:column;gap:10px;margin:18px 0 22px;}
@@ -517,7 +517,7 @@ var AIRLINES = [
 ];
 
 var COLORS = {
-  KE:'#1d4ed8', OZ:'#0891b2', YP:'#7c3aed',
+  KE:'#075985', OZ:'#0891b2', YP:'#7c3aed',
   '7C':'#dc2626', LJ:'#16a34a', ZE:'#d97706',
   TW:'#db2777', RS:'#64748b', BX:'#0f766e'
 };
@@ -627,7 +627,7 @@ function drawChart() {
   var PAD = {top:24, right:24, bottom:64, left:82};
   var gW = W - PAD.left - PAD.right;
   var gH = H - PAD.top - PAD.bottom;
-  var monthColors = { apr:'#94a3b8', may:'#2563eb', june:'#10b981', change:'#0f766e' };
+  var monthColors = { apr:'#94a3b8', may:'#0284C7', june:'#10b981', change:'#0f766e' };
   var monthOrder = [];
   if (showApr) monthOrder.push('apr');
   if (showMay) monthOrder.push('may');
@@ -848,7 +848,7 @@ function buildLegend() {
   }
   [
     { key:'apr', label:tg('graph.filter.apr'), color:'#94a3b8' },
-    { key:'may', label:tg('graph.filter.may'), color:'#2563eb' },
+    { key:'may', label:tg('graph.filter.may'), color:'#0284C7' },
     { key:'june', label:tg('graph.filter.june'), color:'#10b981' }
   ].forEach(function(itemData) {
     if (filterState.month !== 'all' && filterState.month !== itemData.key) return;

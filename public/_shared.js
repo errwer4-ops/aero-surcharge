@@ -1,4 +1,4 @@
-/* ── 항공 유류할증료 — Shared JS v3 ── */
+﻿/* ── 항공 유류할증료 — Shared JS v3 ── */
 
 /* ─────────────────────────────────────────────
    환율 / 통화 포매팅
@@ -1315,8 +1315,8 @@ ko:{
   'news.official.7c':'제주항공 — 6월 공식 공시 완료 ✅ (5월→6월: 최대 USD 126→104, 전 구간 인하)',
   'news.official.bx':'에어부산 — 5월 대비 전 구간 인하 (USD 52→43, USD 126→106)',
   'news.official.ze':'이스타항공 — 5월 대비 전 구간 인하 (USD 52→43, USD 126→103)',
-  'news.official.rs':'에어서울 — 5월 대비 전 구간 인하 (KRW 94,500→75,300 / KRW 165,000→132,800) · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1" target="_blank" rel="noopener" style="color:#1565C0;font-weight:700;">공식 공지 ↗</a>',
-  'news.official.tw':'티웨이항공 — <span style="color:#1b5e20;font-weight:700;">6월 공식 공시 완료 ✅</span> · KRW 공시 · 1군 47,400원~7군 327,000원 · <a href="https://www.twayair.com/app/customer/NOTICE_VIEW?lang=ko&noticeType=1&noticeNo=10001268" target="_blank" rel="noopener" style="color:#1565C0;font-weight:700;">공식 공지 ↗</a>',
+  'news.official.rs':'에어서울 — 5월 대비 전 구간 인하 (KRW 94,500→75,300 / KRW 165,000→132,800) · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">공식 공지 ↗</a>',
+  'news.official.tw':'티웨이항공 — <span style="color:#1b5e20;font-weight:700;">6월 공식 공시 완료 ✅</span> · KRW 공시 · 1군 47,400원~7군 327,000원 · <a href="https://www.twayair.com/app/customer/NOTICE_VIEW?lang=ko&noticeType=1&noticeNo=10001268" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">공식 공지 ↗</a>',
   'news.official.yp':'에어프레미아 — 미공지',
   'news.official.desc':'* KE·OZ·LJ·BX·ZE·RS·TW·7C 6월 공식 공시 완료 · 5월 대비 전 구간 인하 · 티웨이(TW) KRW 공시 포함 · 에어프레미아만 미공지 · 최종 금액은 발권일 기준 공식 공지 반드시 확인',
   /* compare box */
@@ -1622,7 +1622,7 @@ en:{
   'news.official.7c':'Jeju Air — June official filing complete ✅ (May→Jun: max USD 126→104, all-band reduction)',
   'news.official.bx':'Air Busan — All routes down vs May (USD 52→43, USD 126→106)',
   'news.official.ze':'Eastar Jet — All routes down vs May (USD 52→43, USD 126→103)',
-  'news.official.rs':'Air Seoul — All-band reduction vs May (KRW 94,500→75,300 / KRW 165,000→132,800) · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1" target="_blank" rel="noopener" style="color:#1565C0;font-weight:700;">Official Notice ↗</a>',
+  'news.official.rs':'Air Seoul — All-band reduction vs May (KRW 94,500→75,300 / KRW 165,000→132,800) · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">Official Notice ↗</a>',
   'news.official.tw':'T\'way Air — June filing pending',
   'news.official.yp':'Air Premia — June filing pending',
   'news.official.desc':'* KE/OZ/LJ/BX/ZE/RS/7C June filings complete · All-band reduction vs May · Jeju Air (USD) included · T\'way/Air Premia: filing pending',
@@ -1905,7 +1905,7 @@ ja:{
   'news.official.7c':'チェジュ航空 — 6月公式公示完了 ✅ (5月→6月: 最大 USD 126→104、全路線引き下げ)',
   'news.official.bx':'エアプサン — 5月比全路線引き下げ (USD 52→43, 126→106)',
   'news.official.ze':'イースター航空 — 5月比全路線引き下げ (USD 52→43、126→103)',
-  'news.official.rs':'エアソウル — 5月比全路線引き下げ (KRW 94,500→75,300 / KRW 165,000→132,800) · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1" target="_blank" rel="noopener" style="color:#1565C0;font-weight:700;">公式公示 ↗</a>',
+  'news.official.rs':'エアソウル — 5月比全路線引き下げ (KRW 94,500→75,300 / KRW 165,000→132,800) · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">公式公示 ↗</a>',
   'news.official.tw':'ティーウェイ — 6月公示前',
   'news.official.yp':'エアプレミア — 6月公示前',
   'news.official.desc':'* KE·OZ·LJ·BX·ZE·RS·TW·7C 6月公式公示完了 · 5月比全区間引き下げ · エアプレミアのみ公示前',
@@ -2189,7 +2189,7 @@ zh:{
   'news.official.7c':'济州航空 — 6月官方公告完成 ✅ (5月→6月: 最高 USD 126→104，全区间下调)',
   'news.official.bx':'釜山航空 — 较5月全航线下调 (USD 52→43, 126→106)',
   'news.official.ze':'易斯达航空 — 较5月全航线下调 (USD 52→43, 126→103)',
-  'news.official.rs':'首尔航空 — 较5月全区间下调 (KRW 94,500→75,300 / KRW 165,000→132,800) · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1" target="_blank" rel="noopener" style="color:#1565C0;font-weight:700;">官方公告 ↗</a>',
+  'news.official.rs':'首尔航空 — 较5月全区间下调 (KRW 94,500→75,300 / KRW 165,000→132,800) · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">官方公告 ↗</a>',
   'news.official.tw':'德威航空 — 6月公告待定',
   'news.official.yp':'航空前奏 — 6月公告待定',
   'news.official.desc':'* KE·OZ·LJ·BX·ZE·RS·TW·7C 6月官方公告完成 · 较5月全区间下调 · 仅航空前奏(YP)公告待定',
@@ -2455,7 +2455,7 @@ fr:{
   'news.official.7c':'Jeju Air — Publication juin complète ✅ (mai→juin: max USD 126→104, baisse tous itinéraires)',
   'news.official.bx':'Air Busan — Baisse vs mai (USD 52→43, 126→106)',
   'news.official.ze':'Eastar Jet — Tous les itinéraires en baisse vs mai (USD 52→43, 126→103)',
-  'news.official.rs':'Air Seoul — Baisse sur toutes les tranches vs mai (KRW 94 500→75 300 / KRW 165 000→132 800) · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1" target="_blank" rel="noopener" style="color:#1565C0;font-weight:700;">Avis officiel ↗</a>',
+  'news.official.rs':'Air Seoul — Baisse sur toutes les tranches vs mai (KRW 94 500→75 300 / KRW 165 000→132 800) · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">Avis officiel ↗</a>',
   'news.official.tw':'T\'way Air — Publication juin en attente',
   'news.official.yp':'Air Premia — Publication juin en attente',
   'news.official.desc':'* KE/OZ/LJ/BX/ZE/RS/7C publications juin complètes · Baisse vs mai · T\'way/Air Premia: en attente',
@@ -2722,7 +2722,7 @@ de:{
   'news.official.7c':'Jeju Air — Juni-Mitteilung vollständig ✅ (Mai→Juni: max USD 126→104, alle Bänder gesunken)',
   'news.official.bx':'Air Busan — Alle Strecken gesenkt vs Mai (USD 52→43, 126→106)',
   'news.official.ze':'Eastar Jet — Alle Strecken gesenkt vs Mai (USD 52→43, 126→103)',
-  'news.official.rs':'Air Seoul — Alle Strecken gesunken vs Mai (KRW 94.500→75.300 / KRW 165.000→132.800) · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1" target="_blank" rel="noopener" style="color:#1565C0;font-weight:700;">Offizielle Mitteilung ↗</a>',
+  'news.official.rs':'Air Seoul — Alle Strecken gesunken vs Mai (KRW 94.500→75.300 / KRW 165.000→132.800) · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">Offizielle Mitteilung ↗</a>',
   'news.official.tw':'T\'way Air — Juni-Mitteilung ausstehend',
   'news.official.yp':'Air Premia — Juni-Mitteilung ausstehend',
   'news.official.desc':'* KE/OZ/LJ/BX/ZE/RS/7C Juni-Mitteilungen vollständig · Senkungen vs Mai · T\'way/Air Premia: ausstehend',

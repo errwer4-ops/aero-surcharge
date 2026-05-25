@@ -1,26 +1,26 @@
-/* ── 항공 유류할증료 — Shared CSS ── */
+﻿/* ── 항공 유류할증료 — Shared CSS ── */
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
 
 :root {
-  --blue:    #2E4FD8;
-  --blue-dk: #1E3AA8;
-  --blue-lt: #E8EEFF;
-  --bg:      #F0F2F8;
+  --blue:    #0284C7;
+  --blue-dk: #075985;
+  --blue-lt: #E0F2FE;
+  --bg:      #F6FBFF;
   --white:   #FFFFFF;
-  --card2:   #F8FAFD;
-  --text:    #0D1120;
-  --text2:   #4A5068;
-  --muted:   #8890A8;
-  --line:    #DDE0EC;
+  --card2:   #F0F9FF;
+  --text:    #0F172A;
+  --text2:   #475569;
+  --muted:   #64748B;
+  --line:    #CFE4F3;
   --red:     #D42B2B;
   --red-lt:  #FEF0F0;
-  --orange:  #E07000;
-  --green:   #0B7A4A;
-  --green-lt:#E8F7EF;
+  --orange:  #D97706;
+  --green:   #059669;
+  --green-lt:#ECFDF5;
   --mono:    'DM Mono', monospace;
   --sans:    'DM Sans', sans-serif;
-  --shadow:  0 1px 3px rgba(0,0,0,.06), 0 4px 16px rgba(0,0,0,.05);
-  --shadow-lg: 0 4px 24px rgba(0,0,0,.10);
+  --shadow:  0 1px 3px rgba(7,89,133,.06), 0 10px 28px rgba(7,89,133,.08);
+  --shadow-lg: 0 16px 44px rgba(7,89,133,.16);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -60,7 +60,7 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 .ai-range-sep { color:#9C27B0; margin:0 2px; font-size:12px; }
 .ai-dir { font-size:12px; font-weight:700; padding:1px 5px; border-radius:4px; margin-left:4px; }
 .ai-dir.dir-up   { color:#C62828; background:#FFEBEE; }
-.ai-dir.dir-down { color:#1565C0; background:#E3F2FD; }
+.ai-dir.dir-down { color:#075985; background:#E0F2FE; }
 .ai-dir.dir-flat { color:#616161; background:#F5F5F5; }
 .ai-drivers { display:flex; flex-wrap:wrap; gap:4px; margin-bottom:6px; }
 .ai-driver-chip {
@@ -68,13 +68,13 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
   border:1px solid var(--line); background:rgba(255,255,255,.7); color:var(--text2);
 }
 .ai-driver-chip.positive { border-color:#FFCDD2; background:#FFF5F5; color:#B33; }
-.ai-driver-chip.negative { border-color:#C7D5FF; background:#F5F8FF; color:#339; }
+.ai-driver-chip.negative { border-color:#BAE6FD; background:#F0F9FF; color:#075985; }
 .ai-basis-label { font-size:10px; font-weight:700; color:#7C4DFF; letter-spacing:.5px; text-transform:uppercase; margin-bottom:4px; opacity:.8; }
 .ai-predict-note { font-size:9.5px; color:#6A1B9A; font-style:italic; margin-top:4px; opacity:.8; }
 
 /* ── 공식값 / AI 색상 체계 ── */
 .status-badge { display:inline-flex; align-items:center; gap:4px; font-size:10px; font-weight:700; padding:3px 8px; border-radius:20px; letter-spacing:.2px; white-space:nowrap; flex-shrink:0; }
-.sb-official   { background:#EBF5FF; color:#1565C0; border:1px solid #90CAF9; }
+.sb-official   { background:#E0F2FE; color:#075985; border:1px solid #7DD3FC; }
 .sb-blocked    { background:#FFF8E1; color:#E65100; border:1px solid #FFCC80; }
 .sb-missing    { background:#F3E5F5; color:#6A1B9A; border:1px solid #CE93D8; }
 .sb-regulation { background:#F5F5F5; color:#424242; border:1px solid #BDBDBD; }
@@ -99,32 +99,34 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 
 /* ── NAV v3 ── */
 nav {
-  background: var(--blue);
+  background: rgba(255,255,255,.94);
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 32px; height: 52px;
   position: sticky; top: 0; z-index: 200;
-  box-shadow: 0 2px 12px rgba(0,0,0,.15);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 1px 12px rgba(7,89,133,.08);
+  backdrop-filter: blur(12px);
 }
 .nav-links { display:flex; gap:4px; align-items:center; }
 .nav-link {
-  color: rgba(255,255,255,.65); text-decoration: none;
+  color: var(--text2); text-decoration: none;
   font-size: 13px; font-weight: 600; padding: 6px 14px;
   border-radius: 7px; transition: background .15s, color .15s; white-space:nowrap;
 }
-.nav-link:hover  { background: rgba(255,255,255,.12); color: #fff; }
-.nav-link.active { background: rgba(255,255,255,.18); color: #fff; }
+.nav-link:hover  { background: var(--blue-lt); color: var(--blue-dk); }
+.nav-link.active { background: linear-gradient(180deg,#E0F2FE,#D7EEFC); color: var(--blue-dk); }
 .nav-controls { display: flex; align-items: center; gap: 8px; }
 .nav-select {
-  background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.22);
+  background: #fff; border: 1px solid var(--line);
   border-radius: 8px; padding: 5px 24px 5px 10px; font-size: 12px;
-  font-weight: 600; color: #fff; font-family: var(--sans);
+  font-weight: 600; color: var(--text); font-family: var(--sans);
   cursor: pointer; outline: none; appearance: none;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='rgba(255,255,255,.55)' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2364748B' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
   background-repeat:no-repeat; background-position:right 7px center;
 }
-.nav-select:hover  { background-color: rgba(255,255,255,.2); }
-.nav-select option { background: #1E3AA8; color: #fff; }
-.nav-divider { width: 1px; height: 20px; background: rgba(255,255,255,.2); }
+.nav-select:hover  { border-color: #7DD3FC; }
+.nav-select option { background: #fff; color: var(--text); }
+.nav-divider { width: 1px; height: 20px; background: var(--line); }
 @media(max-width:700px) {
   nav {
     height: auto;
@@ -147,7 +149,7 @@ nav {
     display: flex;
     justify-content: center;
     gap: 6px;
-    border-top: 1px solid rgba(255,255,255,.12);
+    border-top: 1px solid var(--line);
     padding-top: 8px;
   }
   .nav-select {
