@@ -638,19 +638,19 @@ var SAVING_DESTINATIONS = [
 var SAVING_AIRPORT_MILES = {
   AKJ:899, AKL:6000, ALA:2500, AMS:5350, AUH:4250, BIS:6100, BKI:2250, BKK:2270, CDG:5600,
   CEB:1880, CNX:2150, CTS:880, CTU:1360, CXR:2050, DAD:1860, DOH:4350,
-  DPS:3300, DVO:2100, DXB:4200, DYG:1020, FRA:5350, FSZ:740, FUK:350,
+  CGK:3280, DPS:3300, DVO:2100, DXB:4200, DYG:1020, FRA:5350, FSZ:740, FUK:350,
   GUM:1990, HAK:1640, HAN:1700, HKG:1290, HND:760, HNL:4580, HPH:1650, IAD:6950,
   JFK:6900, KHH:1040, KIX:530, KKJ:560, KMI:700, KUL:2870, LAX:6000, LHR:5500, MEL:5350,
   MFM:1300, MNL:1620, NGO:600, NGS:370, NHA:2050, NRT:760, OKA:780,
   ORD:6550, PEK:570, PPS:2100, PVG:530, SDJ:780, SEA:5200, SFO:5650,
   SGN:2200, SIN:2880, SPN:1950, SYD:5200, SYX:2050, TAG:1900, TAK:520,
-  TAO:370, TPE:920, ULN:1230, VTE:2000, XIY:1000, YNJ:420, YYZ:6950, ROR:2100, CAI:5600, KTM:2800, CGQ:650
+  TAO:370, TAS:3000, TPE:920, TXG:980, ULN:1230, VTE:2000, XIY:1000, YNJ:420, YYZ:6950, ROR:2100, CAI:5600, KTM:2800, CGQ:650
 };
 
 var SAVING_AIRPORT_LABELS = {
   AKJ:'아사히카와', AKL:'오클랜드', ALA:'알마티', AMS:'암스테르담', AUH:'아부다비', BKI:'코타키나발루',
   BIS:'비스마크', BKK:'방콕', CDG:'파리', CEB:'세부', CNX:'치앙마이', CTS:'삿포로', CTU:'청두',
-  CXR:'나트랑/깜라인', DAD:'다낭', DOH:'도하', DPS:'발리/덴파사르', DVO:'다바오',
+  CGK:'자카르타', CXR:'나트랑/깜라인', DAD:'다낭', DOH:'도하', DPS:'발리/덴파사르', DVO:'다바오',
   DXB:'두바이', DYG:'장자제', FRA:'프랑크푸르트', FSZ:'시즈오카', FUK:'후쿠오카',
   GUM:'괌', HAK:'하이커우', HAN:'하노이', HKG:'홍콩', HND:'도쿄 하네다', HNL:'호놀룰루',
   HPH:'하이퐁', IAD:'워싱턴', JFK:'뉴욕', KHH:'가오슝', KIX:'오사카',
@@ -659,7 +659,7 @@ var SAVING_AIRPORT_LABELS = {
   OKA:'오키나와', ORD:'시카고', PEK:'베이징', PPS:'푸에르토프린세사', PVG:'상하이',
   ROR:'코로르', SDJ:'센다이', SEA:'시애틀', SFO:'샌프란시스코', SGN:'호찌민', SIN:'싱가포르',
   SPN:'사이판', SYD:'시드니', SYX:'싼야', TAG:'보홀', TAK:'다카마쓰',
-  TAO:'칭다오', TPE:'타이베이', ULN:'울란바토르', VTE:'비엔티안', XIY:'시안',
+  TAO:'칭다오', TAS:'타슈켄트', TPE:'타이베이', TXG:'타이중', ULN:'울란바토르', VTE:'비엔티안', XIY:'시안',
   YNJ:'옌지', YYZ:'토론토', CAI:'카이로', CGQ:'창춘'
 };
 
@@ -669,6 +669,9 @@ var SAVING_ORIGIN_LABELS = {
 var SAVING_AIRPORT_REGION_FALLBACKS = {
   AKJ:'index.region.japan', KKJ:'index.region.japan', KMI:'index.region.japan',
   CGQ:'index.region.china', HAK:'index.region.china',
+  TXG:'index.region.taiwan',
+  CGK:'index.region.seasia',
+  TAS:'index.region.swasia',
   ROR:'index.region.oceania', BIS:'index.region.usa'
 };
 var SAVING_INDEX_ROUTE_MAP = null;
