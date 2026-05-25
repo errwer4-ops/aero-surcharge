@@ -289,31 +289,23 @@
       </div>
     </div>
     <div class="saving-table-wrap" id="savingTableWrap"></div>
-    <section class="live-fare-panel" id="liveFarePanel" aria-label="현재 항공권 판매가 예시">
-      <div class="live-fare-head">
-        <div>
-          <div class="live-fare-kicker">현재 항공권 가격으로 보면</div>
-          <div class="live-fare-title" id="liveFareTitle">공시 유류할증료가 실제 항공권 총액에서 차지하는 비중</div>
-          <div class="live-fare-desc" id="liveFareDesc">선택한 노선의 항공권 예시를 불러오면, 공식 공시 유류할증료와 판매가 총액을 나란히 볼 수 있습니다.</div>
-        </div>
-        <div class="live-fare-controls">
-          <label class="live-fare-field">
-            <span class="live-fare-label">출발일</span>
-            <input class="live-fare-date" id="liveFareDate" type="date">
-          </label>
-          <button class="live-fare-btn" id="liveFareBtn" type="button">항공권 총액 확인</button>
-        </div>
+    <div class="saving-affiliate" id="savingAffiliate">
+      <div class="saving-affiliate-body">
+        <div class="saving-affiliate-kicker">항공권 총액 확인</div>
+        <div class="saving-affiliate-title" id="savingAffiliateTitle">선택한 목적지의 항공권 총액도 함께 확인하세요</div>
+        <div class="saving-affiliate-desc" id="savingAffiliateDesc">유류할증료는 항공권 총액의 일부입니다. 계산 결과를 확인한 뒤 실제 운임, 세금, 좌석 상황을 함께 비교해보세요.</div>
       </div>
-      <div class="live-fare-body">
-        <div class="live-fare-status" id="liveFareStatus">계산 결과를 확인한 뒤 판매가 예시를 불러오면, 총액 대비 유류할증료 비중을 함께 계산합니다.</div>
-        <div class="live-fare-list" id="liveFareList" hidden></div>
-        <div class="live-fare-note">표시되는 유류할증료는 항공사 공식 공시 기반이며, 항공권 총액은 판매 채널의 조회 시점에 따라 달라질 수 있습니다. 외부 제휴 링크를 통해 가격 확인 페이지로 이동할 수 있습니다.</div>
-      </div>
-    </section>
+      <a href="https://lase.kr/click.php?m=myrealtrip&a=A100704170&l=0000"
+         target="_blank"
+         rel="noopener sponsored"
+         class="saving-affiliate-btn"
+         id="savingAffiliateBtn"
+         onclick="if(window.gtag){gtag('event','affiliate_click',{affiliate:'myrealtrip',placement:'calculator_result'});}">항공권 총액 보기</a>
+    </div>
     <div class="saving-note">※ 유류할증료는 발권일 기준으로 적용됩니다. 실제 결제 금액은 항공사, 환율, 세금, 예약 채널에 따라 달라질 수 있으므로 최종 발권 전 공식 공지를 확인하세요.</div>
   </section>
 
-  <section aria-label="유류할증료 계산기 자주 묻는 질문">
+  <section id="calculatorFaq" aria-label="유류할증료 계산기 자주 묻는 질문">
     <div class="seo-section-title">유류할증료 계산기 FAQ</div>
     <div class="faq-list">
       <div class="faq-item">
@@ -687,10 +679,10 @@ var SAVING_INDEX_ROUTE_MAP = null;
   var liveFareFallbackUrl = 'https://lase.kr/click.php?m=myrealtrip&a=A100704170&l=0000';
   function toKRW(amount, currency) { return currency === 'USD' ? Math.round(amount * usdRate) : amount; }
   var SAVING_UI_TEXT = {
-    ko: { count:'{n}개', noDataTitle:'비교 데이터 없음', noDataBody:'현재 선택한 목적지는 비교 가능한 항공사 데이터가 없습니다.', noDataCell:'비교 가능한 항공사 데이터가 없습니다.', bestJune:'{name} {amount}', saveHeadline:'{name} 이용 시 최대 {amount} 절약', extraHeadline:'{name} 이용 시 {amount} 추가 부담', sameHeadline:'두 달 금액 동일', thAirline:'항공사', thMay:'5월 발권', thJune:'6월 발권', thSaving:'절약액', routeSep:' · ', affiliateTitle:'{dest} 항공권 총액도 바로 확인해보세요', affiliateSave:'6월 발권 기준 최대 {amount}까지 아낄 수 있습니다. 절약액을 확인했다면 마이리얼트립에서 현재 항공권 총액도 함께 비교해보세요.', affiliateNeutral:'유류할증료만으로는 차이가 작을 수 있습니다. 마이리얼트립에서 현재 항공권 총액과 일정까지 같이 비교해보세요.', affiliateBtn:'{dest} 항공권 총액 보기', affiliateAria:'{dest} 항공권 총액을 마이리얼트립에서 확인하기' },
-    en: { count:'{n}', noDataTitle:'No comparison data', noDataBody:'No comparable airline data is available for the selected destination.', noDataCell:'No comparable airline data is available.', bestJune:'{name} {amount}', saveHeadline:'Save up to {amount} with {name}', extraHeadline:'{amount} extra with {name}', sameHeadline:'Same amount in both months', thAirline:'Airline', thMay:'May ticketing', thJune:'June ticketing', thSaving:'Savings', routeSep:' · ', affiliateTitle:'Check total airfare for {dest}', affiliateSave:'Based on June ticketing, you can save up to {amount}. Compare the current total airfare on MyRealTrip too.', affiliateNeutral:'Fuel surcharge differences may be small. Compare current airfare totals and schedules on MyRealTrip.', affiliateBtn:'View {dest} airfare totals', affiliateAria:'Check {dest} airfare totals on MyRealTrip' },
-    ja: { count:'{n}社', noDataTitle:'比較データなし', noDataBody:'選択した目的地で比較可能な航空会社データがありません。', noDataCell:'比較可能な航空会社データがありません。', bestJune:'{name} {amount}', saveHeadline:'{name}なら最大{amount}節約', extraHeadline:'{name}なら{amount}追加負担', sameHeadline:'両月の金額は同じ', thAirline:'航空会社', thMay:'5月発券', thJune:'6月発券', thSaving:'節約額', routeSep:' · ', affiliateTitle:'{dest}航空券の総額も確認', affiliateSave:'6月発券基準で最大{amount}節約できます。MyRealTripで現在の航空券総額も比較してみてください。', affiliateNeutral:'燃油サーチャージだけでは差が小さい場合があります。MyRealTripで航空券総額と日程も比較してください。', affiliateBtn:'{dest}航空券総額を見る', affiliateAria:'MyRealTripで{dest}航空券総額を確認' },
-    zh: { count:'{n}家', noDataTitle:'无比较数据', noDataBody:'当前目的地没有可比较的航空公司数据。', noDataCell:'没有可比较的航空公司数据。', bestJune:'{name} {amount}', saveHeadline:'选择{name}最多可省{amount}', extraHeadline:'选择{name}需多付{amount}', sameHeadline:'两个月金额相同', thAirline:'航空公司', thMay:'5月出票', thJune:'6月出票', thSaving:'节省额', routeSep:' · ', affiliateTitle:'也可查看{dest}机票总价', affiliateSave:'按6月出票最多可省{amount}。也可以在MyRealTrip比较当前机票总价。', affiliateNeutral:'仅燃油附加费的差异可能较小。请在MyRealTrip同时比较机票总价和日程。', affiliateBtn:'查看{dest}机票总价', affiliateAria:'在MyRealTrip查看{dest}机票总价' }
+    ko: { count:'{n}개', noDataTitle:'비교 데이터 없음', noDataBody:'현재 선택한 목적지는 비교 가능한 항공사 데이터가 없습니다.', noDataCell:'비교 가능한 항공사 데이터가 없습니다.', bestJune:'{name} {amount}', saveHeadline:'{name} 이용 시 최대 {amount} 절약', extraHeadline:'{name} 이용 시 {amount} 추가 부담', sameHeadline:'두 달 금액 동일', thAirline:'항공사', thMay:'5월 발권', thJune:'6월 발권', thSaving:'절약액', routeSep:' · ', affiliateTitle:'{dest} 항공권 총액도 함께 확인하세요', affiliateSave:'6월 발권 기준 최대 {amount}까지 차이가 납니다. 유류할증료는 항공권 총액의 일부이므로 실제 운임, 세금, 좌석 상황까지 함께 비교해보세요.', affiliateNeutral:'유류할증료만으로는 차이가 작을 수 있습니다. 실제 항공권 총액과 일정 조건을 함께 비교해보세요.', affiliateBtn:'{dest} 항공권 총액 보기', affiliateAria:'{dest} 항공권 총액 확인하기' },
+    en: { count:'{n}', noDataTitle:'No comparison data', noDataBody:'No comparable airline data is available for the selected destination.', noDataCell:'No comparable airline data is available.', bestJune:'{name} {amount}', saveHeadline:'Save up to {amount} with {name}', extraHeadline:'{amount} extra with {name}', sameHeadline:'Same amount in both months', thAirline:'Airline', thMay:'May ticketing', thJune:'June ticketing', thSaving:'Savings', routeSep:' · ', affiliateTitle:'Check total airfare for {dest}', affiliateSave:'Based on June ticketing, the difference can be up to {amount}. Fuel surcharge is only part of the total fare, so compare actual fare, taxes, and seat availability too.', affiliateNeutral:'Fuel surcharge differences may be small. Compare total airfare and schedule conditions together.', affiliateBtn:'View {dest} airfare totals', affiliateAria:'Check {dest} airfare totals' },
+    ja: { count:'{n}社', noDataTitle:'比較データなし', noDataBody:'選択した目的地で比較可能な航空会社データがありません。', noDataCell:'比較可能な航空会社データがありません。', bestJune:'{name} {amount}', saveHeadline:'{name}なら最大{amount}節約', extraHeadline:'{name}なら{amount}追加負担', sameHeadline:'両月の金額は同じ', thAirline:'航空会社', thMay:'5月発券', thJune:'6月発券', thSaving:'節約額', routeSep:' · ', affiliateTitle:'{dest}航空券の総額も確認', affiliateSave:'6月発券基準で最大{amount}の差があります。燃油サーチャージは航空券総額の一部なので、運賃・税金・座席状況もあわせて確認してください。', affiliateNeutral:'燃油サーチャージだけでは差が小さい場合があります。航空券総額と日程条件もあわせて比較してください。', affiliateBtn:'{dest}航空券総額を見る', affiliateAria:'{dest}航空券総額を確認' },
+    zh: { count:'{n}家', noDataTitle:'无比较数据', noDataBody:'当前目的地没有可比较的航空公司数据。', noDataCell:'没有可比较的航空公司数据。', bestJune:'{name} {amount}', saveHeadline:'选择{name}最多可省{amount}', extraHeadline:'选择{name}需多付{amount}', sameHeadline:'两个月金额相同', thAirline:'航空公司', thMay:'5月出票', thJune:'6月出票', thSaving:'节省额', routeSep:' · ', affiliateTitle:'也可查看{dest}机票总价', affiliateSave:'按6月出票最多相差{amount}。燃油附加费只是机票总价的一部分，建议同时比较实际票价、税费和座位情况。', affiliateNeutral:'仅燃油附加费的差异可能较小。请同时比较机票总价和行程条件。', affiliateBtn:'查看{dest}机票总价', affiliateAria:'查看{dest}机票总价' }
   };
   function langCode() {
     return (window.SHARED_STATE && window.SHARED_STATE.lang) || (window.getCurrentLang && window.getCurrentLang()) || 'ko';
@@ -1073,10 +1065,10 @@ var SAVING_INDEX_ROUTE_MAP = null;
     if (!root) return;
     applyLiveFareStaticText();
     var dict = {
-      ko:['유류할증료 절약 비교 계산기','노선별 5월 vs 6월 유류할증료 비교','같은 노선의 취항 항공사를 자동으로 묶어 최저 금액, 항공사별 차이, 예상 절약액을 표로 보여줍니다.','2026.06 공식 공시 반영','출발지','도착지','인원','여정','편도 또는 왕복 선택','편도','왕복','비교 항공사','6월 최저 유류할증료','마이리얼트립 제휴','※ 유류할증료는 발권일 기준으로 적용됩니다. 실제 결제 금액은 항공권 운임, 환율, 세금, 예약 채널에 따라 달라질 수 있으므로 최종 발권 전 공식 공지를 확인하세요.'],
-      en:['Fuel surcharge savings calculator','Route Fuel Surcharge Comparison: May vs June','Compares airlines on the same route and shows the lowest June surcharge, airline differences, and estimated savings.','June 2026 official filings reflected','Origin','Destination','Passengers','Trip','Choose one-way or round-trip','One-way','Round-trip','Airlines compared','Lowest June surcharge','MyRealTrip Partner','※ Fuel surcharges are applied by ticketing date. Final payment may vary by fare, FX, taxes, and booking channel, so verify the official notice before purchase.'],
-      ja:['燃油サーチャージ節約比較計算機','路線別 5月 vs 6月 燃油サーチャージ比較','同じ路線の航空会社をまとめて、6月の最安額・航空会社別差額・想定節約額を表示します。','2026年6月公式公示反映','出発地','到着地','人数','旅程','片道または往復を選択','片道','往復','比較航空会社','6月最安サーチャージ','MyRealTrip提携','※ 燃油サーチャージは発券日基準で適用されます。最終金額は運賃・為替・税金・予約チャネルにより変わるため、発券前に公式案内をご確認ください。'],
-      zh:['燃油附加费节省比较计算器','按航线比较5月 vs 6月燃油附加费','自动汇总同一航线的航空公司，显示6月最低金额、航空公司差异和预计节省额。','已反映2026年6月官方公告','出发地','目的地','人数','行程','选择单程或往返','单程','往返','比较航空公司','6月最低燃油附加费','MyRealTrip合作','※ 燃油附加费按出票日适用。最终支付金额可能因票价、汇率、税费和预订渠道而异，出票前请确认官方公告。']
+      ko:['유류할증료 절약 비교 계산기','노선별 5월 vs 6월 유류할증료 비교','같은 노선의 취항 항공사를 자동으로 묶어 최저 금액, 항공사별 차이, 예상 절약액을 표로 보여줍니다.','2026.06 공식 공시 반영','출발지','도착지','인원','여정','편도 또는 왕복 선택','편도','왕복','비교 항공사','6월 최저 유류할증료','항공권 총액 확인','※ 유류할증료는 발권일 기준으로 적용됩니다. 실제 결제 금액은 항공권 운임, 환율, 세금, 예약 채널에 따라 달라질 수 있으므로 최종 발권 전 공식 공지를 확인하세요.'],
+      en:['Fuel surcharge savings calculator','Route Fuel Surcharge Comparison: May vs June','Compares airlines on the same route and shows the lowest June surcharge, airline differences, and estimated savings.','June 2026 official filings reflected','Origin','Destination','Passengers','Trip','Choose one-way or round-trip','One-way','Round-trip','Airlines compared','Lowest June surcharge','Check total airfare','※ Fuel surcharges are applied by ticketing date. Final payment may vary by fare, FX, taxes, and booking channel, so verify the official notice before purchase.'],
+      ja:['燃油サーチャージ節約比較計算機','路線別 5月 vs 6月 燃油サーチャージ比較','同じ路線の航空会社をまとめて、6月の最安額・航空会社別差額・想定節約額を表示します。','2026年6月公式公示反映','出発地','到着地','人数','旅程','片道または往復を選択','片道','往復','比較航空会社','6月最安サーチャージ','航空券総額を確認','※ 燃油サーチャージは発券日基準で適用されます。最終金額は運賃・為替・税金・予約チャネルにより変わるため、発券前に公式案内をご確認ください。'],
+      zh:['燃油附加费节省比较计算器','按航线比较5月 vs 6月燃油附加费','自动汇总同一航线的航空公司，显示6月最低金额、航空公司差异和预计节省额。','已反映2026年6月官方公告','出发地','目的地','人数','行程','选择单程或往返','单程','往返','比较航空公司','6月最低燃油附加费','查看机票总价','※ 燃油附加费按出票日适用。最终支付金额可能因票价、汇率、税费和预订渠道而异，出票前请确认官方公告。']
     };
     var lang = langCode();
     var t = dict[lang] || dict.ko;
@@ -1095,7 +1087,7 @@ var SAVING_INDEX_ROUTE_MAP = null;
         'Aller-retour',
         'Compagnies comparées',
         'Surtaxe minimale en juin',
-        'Partenaire MyRealTrip',
+        'Verifier le prix total du billet',
         '※ La surtaxe carburant s’applique selon la date de billetterie. Le paiement final peut varier selon le tarif, le change, les taxes et le canal de réservation ; vérifiez toujours l’avis officiel avant achat.'
       ];
     } else if (lang === 'de') {
@@ -1113,7 +1105,7 @@ var SAVING_INDEX_ROUTE_MAP = null;
         'Hin und zurück',
         'Verglichene Airlines',
         'Niedrigster Juni-Zuschlag',
-        'MyRealTrip Partner',
+        'Gesamtpreis des Flugtickets prüfen',
         '※ Treibstoffzuschläge gelten nach Ticketausstellungsdatum. Der Endbetrag kann je nach Tarif, Wechselkurs, Steuern und Buchungskanal variieren; prüfen Sie vor dem Kauf immer die offizielle Mitteilung.'
       ];
     }
@@ -1185,6 +1177,68 @@ var SAVING_INDEX_ROUTE_MAP = null;
       });
     }
   }
+  function applyCalculatorFaqText() {
+    var faqRoot = document.getElementById('calculatorFaq');
+    if (!faqRoot) return;
+    var lang = langCode();
+    var faqTitle = faqRoot.querySelector('.seo-section-title');
+    var faqItems = faqRoot.querySelectorAll('.faq-list .faq-item');
+    var faqText = ({
+      ko: [
+        '유류할증료 계산기 FAQ',
+        ['유류할증료는 탑승일 기준인가요, 발권일 기준인가요?', '유류할증료는 일반적으로 탑승일이 아니라 항공권을 실제로 발권하는 날짜 기준으로 적용됩니다. 같은 여행 일정이라도 5월에 발권하는지 6월에 발권하는지에 따라 금액이 달라질 수 있습니다.'],
+        ['이 계산기는 어떤 노선을 기준으로 하나요?', '사이트가 보유한 한국 출발 국제선 공식 공시 데이터를 기준으로 출발지와 도착지를 나누어 비교합니다. 선택한 노선에 취항하는 항공사가 2개 이상이면 항공사별 금액을 함께 보여줍니다.'],
+        ['계산 결과가 실제 결제 금액과 완전히 같나요?', '아닙니다. 이 계산기는 공식 공시 유류할증료를 기준으로 한 비교용 도구입니다. 실제 항공권 결제 금액은 운임, 세금, 환율, 예약 채널, 항공사 정책에 따라 달라질 수 있으므로 최종 발권 전 공식 공지를 확인해야 합니다.'],
+        ['왕복 항공권은 어떻게 계산하나요?', '왕복을 선택하면 편도 유류할증료 기준 금액에 2를 곱해 비교합니다. 인원을 늘리면 선택한 인원 수까지 반영해 총 절약액을 계산합니다.']
+      ],
+      en: [
+        'Fuel surcharge calculator FAQ',
+        ['Is the fuel surcharge based on travel date or ticketing date?', 'It is generally applied by the ticketing date, not the travel date. The amount may differ depending on whether the ticket is issued in May or June.'],
+        ['Which routes does this calculator use?', 'It compares Korea-origin international routes using the official published surcharge data held by this site. When multiple airlines operate the selected route, it shows airline-by-airline amounts.'],
+        ['Does the result exactly match the final payment amount?', 'No. This calculator is a comparison tool based on officially published fuel surcharges. The final ticket price can vary by fare, taxes, exchange rate, booking channel, and airline policy, so always check the official notice before ticketing.'],
+        ['How is a round trip calculated?', 'Round trip mode doubles the one-way surcharge amount and then multiplies it by the selected passenger count.']
+      ],
+      ja: [
+        '燃油サーチャージ計算機 FAQ',
+        ['燃油サーチャージは搭乗日基準ですか、発券日基準ですか？', '通常、燃油サーチャージは搭乗日ではなく航空券を実際に発券する日を基準に適用されます。同じ旅行日程でも、5月に発券するか6月に発券するかによって金額が変わることがあります。'],
+        ['この計算機はどの路線を基準にしていますか？', '当サイトが保有する韓国発国際線の公式公示データを基準に、出発地と目的地ごとに比較します。選択した路線に複数の航空会社が就航している場合、航空会社別の金額を表示します。'],
+        ['計算結果は実際の決済金額と完全に同じですか？', 'いいえ。この計算機は公式公示燃油サーチャージに基づく比較用ツールです。実際の航空券決済金額は運賃、税金、為替、予約チャネル、航空会社の方針によって変わるため、発券前に公式案内を確認してください。'],
+        ['往復航空券はどのように計算しますか？', '往復を選択すると、片道の燃油サーチャージ基準額に2を掛けて比較します。人数を増やすと、選択した人数分まで反映して総節約額を計算します。']
+      ],
+      zh: [
+        '燃油附加费计算器 FAQ',
+        ['燃油附加费按乘机日还是出票日计算？', '燃油附加费通常不是按乘机日，而是按实际出票日期适用。即使旅行日期相同，5月出票和6月出票的金额也可能不同。'],
+        ['这个计算器基于哪些航线？', '本工具基于本站持有的韩国出发国际航线官方公布数据，按出发地和目的地进行比较。如果所选航线有两家以上航空公司运营，会显示各航空公司的金额。'],
+        ['计算结果和实际支付金额完全一样吗？', '不是。本计算器是基于官方公布燃油附加费的比较工具。实际机票支付金额可能因票价、税费、汇率、预订渠道和航空公司政策而变化，出票前请确认官方公告。'],
+        ['往返机票如何计算？', '选择往返时，会将单程燃油附加费基准金额乘以2进行比较。增加人数后，会按所选人数计算总节省金额。']
+      ],
+      fr: [
+        'FAQ du calculateur de surtaxe carburant',
+        ['La surtaxe carburant dépend-elle de la date de voyage ou de billetterie ?', 'Elle s’applique généralement selon la date d’émission du billet, et non selon la date de voyage. Le montant peut donc changer selon que le billet est émis en mai ou en juin.'],
+        ['Sur quelles routes ce calculateur se base-t-il ?', 'Il utilise les données officielles des routes internationales au départ de Corée conservées par ce site et compare les compagnies disponibles sur le même itinéraire.'],
+        ['Le résultat correspond-il exactement au paiement final ?', 'Non. Le calculateur compare les surtaxes carburant officiellement publiées. Le montant final peut varier selon le tarif, les taxes, le change, le canal de réservation et les règles de la compagnie.'],
+        ['Comment le calcul aller-retour est-il fait ?', 'En mode aller-retour, le montant aller simple est multiplié par deux, puis par le nombre de passagers sélectionné.']
+      ],
+      de: [
+        'FAQ zum Treibstoffzuschlag-Rechner',
+        ['Gilt der Treibstoffzuschlag nach Reisedatum oder Ticketausstellung?', 'Er gilt in der Regel nach dem Ausstellungsdatum des Tickets, nicht nach dem Reisedatum. Der Betrag kann sich daher unterscheiden, je nachdem ob das Ticket im Mai oder Juni ausgestellt wird.'],
+        ['Auf welchen Routen basiert der Rechner?', 'Er nutzt die auf dieser Website vorhandenen offiziellen Daten für internationale Routen ab Korea und vergleicht verfügbare Airlines auf derselben Route.'],
+        ['Entspricht das Ergebnis genau dem endgültigen Zahlungsbetrag?', 'Nein. Der Rechner vergleicht offiziell veröffentlichte Treibstoffzuschläge. Der Endbetrag kann je nach Tarif, Steuern, Wechselkurs, Buchungskanal und Airline-Regeln variieren.'],
+        ['Wie wird ein Hin- und Rückflug berechnet?', 'Im Modus Hin- und Rückflug wird der einfache Zuschlag verdoppelt und anschließend mit der gewählten Passagierzahl multipliziert.']
+      ]
+    })[lang] || null;
+    if (!faqText) return;
+    if (faqTitle) faqTitle.textContent = faqText[0];
+    faqItems.forEach(function(item, idx) {
+      var row = faqText[idx + 1];
+      if (!row) return;
+      var q = item.querySelector('.faq-q');
+      var a = item.querySelector('.faq-a');
+      if (q) q.textContent = row[0];
+      if (a) a.textContent = row[1];
+    });
+  }
+
   function extractIndexAssignment(source, name) {
     var key = 'var ' + name;
     var start = source.indexOf(key);
@@ -1411,6 +1465,7 @@ var SAVING_INDEX_ROUTE_MAP = null;
     window.renderSavingCalculator = function() {
       var cachedLiveFareItems = latestLiveFareItems.slice();
       applySavingStaticText();
+      applyCalculatorFaqText();
       fillOrigins();
       fillDestinationsForOrigin();
       updateResult();
@@ -1427,6 +1482,7 @@ var SAVING_INDEX_ROUTE_MAP = null;
     checkLiveFareApiStatus();
   });
   applySavingStaticText();
+  applyCalculatorFaqText();
   window.updateSavingCalculator = function() {
     var cachedLiveFareItems = latestLiveFareItems.slice();
     updateResult();
