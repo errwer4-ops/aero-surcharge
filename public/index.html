@@ -7,12 +7,14 @@
   <meta name="description" content="한국 출발 국제선 항공사별 유류할증료를 노선·거리구간별로 비교합니다."
         data-i18n-page-title="index.title"
         data-i18n-page-desc="index.metaDesc"/>
+  <meta name="google-adsense-account" content="ca-pub-4285114770383510">
 
   <link rel="canonical" href="https://aero-surcharge.com/"/>
   <meta property="og:title" content="유류할증료 조회 — 한국 출발 국제선 항공사별 비교"/>
   <meta property="og:description" content="한국 출발 국제선 항공사별 유류할증료를 노선·거리구간별로 비교합니다."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.com/"/>
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="_shared.css"/>
   <link rel="icon" href="/favicon-v2.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-v2.png">
@@ -27,10 +29,6 @@
     gtag('js', new Date());
     gtag('config', 'G-76T4QJPY4L');
   </script>
-
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510"
-     crossorigin="anonymous"></script>
 
   <style>
     .hero { background:linear-gradient(160deg,#075985 0%,#0369A1 55%,#0284C7 100%); padding:22px 40px 30px; text-align:center; position:relative; overflow:visible; }
@@ -51,11 +49,6 @@
     .trip-btn.active { background:var(--blue); color:#fff; }
     .search-btn { background:var(--blue); color:#fff; border:none; border-radius:9px; padding:10px 22px; font-size:13px; font-weight:700; cursor:pointer; font-family:var(--sans); white-space:nowrap; transition:all .15s; align-self:end; }
     .search-btn:hover { background:var(--blue-dk); transform:translateY(-1px); }
-
-    /* 광고 슬롯 — 승인 전: 실제 광고 단위만 삽입, placeholder 없음 */
-    .ad-slot { max-width:1140px; margin:14px auto 0; padding:0 24px; }
-    .ad-slot-bottom { margin-top:28px; }
-    .ad-slot-mid { grid-column:1/-1; }
 
     .main { max-width:1140px; margin:0 auto; padding:18px 24px 56px; }
 
@@ -265,8 +258,6 @@
       .amt-val { font-size: 12px; }
       .kr-only-notice { padding: 12px 14px; gap: 10px; }
       .kr-only-desc { font-size: 11px; }
-      .ad-slot { padding: 0 14px; }
-
       /* intro / guide 모바일 */
       .intro-section { padding: 20px 14px 0; }
       .intro-grid { grid-template-columns: 1fr; gap: 10px; }
@@ -621,9 +612,6 @@
   </div>
 </section>
 
-<!-- 광고 슬롯 1 -->
-<div class="ad-slot" id="adSlot1"></div>
-
 <div class="main">
   <!-- 검색 결과 -->
   <div id="resultsSection" style="display:none">
@@ -691,7 +679,6 @@
            data-i18n="aff.cta">최저가 확인 →</a>
       </div>
     </div>
-    <div class="ad-slot-bottom" id="adSlot2"></div>
   </div>
 
   <!-- 랜딩 -->
@@ -1324,9 +1311,6 @@ function _trendBadgeHtml(code){
     +'border-radius:10px;padding:2px 8px;white-space:nowrap;flex-shrink:0;cursor:default;">'
     +label+'</span>';
 }
-
-
-
 
 async function loadAll(){
   var loadErrors = [];
