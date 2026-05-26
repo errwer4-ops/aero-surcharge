@@ -851,7 +851,7 @@ var DIST_FROM_ICN = {
   /* ── 오세아니아 ── */
   SYD:5325,MEL:5631,AKL:5831,BNE:5200,DPS:3373,CGK:3371,
   /* ── 미주 ── */
-  LAX:5974,JFK:6903,SFO:5591,SEA:5329,ORD:6218,IAD:6907,
+  LAX:5974,JFK:6903,EWR:6884,SFO:5591,SEA:5329,ORD:6218,IAD:6907,
   LAS:6070,YVR:5665,YYZ:6946,BOS:6935,ATL:6944,DFW:6430,
   HNL:4268,
   /* ── 유럽 ── */
@@ -969,13 +969,13 @@ var _OFFICIAL_AMT = {
     { range:'5000+',    label:'7군 (5,000mi~)',       apr: 213900, may: 406900, june: 327000 }
   ]},
   YP: { currency:'USD', rows: [
-    { range:'0-999',    label:'~999mi',              apr:  32, may:  59 },
-    { range:'1000-1499',label:'1,000~1,499mi',        apr:  42, may:  78 },
-    { range:'1500-1999',label:'1,500~1,999mi',        apr:  54, may: 102 },
-    { range:'2000-2499',label:'2,000~2,499mi',        apr:  71, may: 131 },
-    { range:'4000-4999',label:'4,000~4,999mi',        apr: 123, may: 229 },
-    { range:'5000-6499',label:'5,000~6,499mi',        apr: 155, may: 291 },
-    { range:'6500+',    label:'6,500mi~',             apr: 194, may: 365 }
+    { range:'0-999',    label:'인천-나리타',                 apr:  32, may:  59, june:  48 },
+    { range:'1000-1499',label:'인천-홍콩',                   apr:  42, may:  78, june:  64 },
+    { range:'1500-1999',label:'인천-다낭',                   apr:  54, may: 102, june:  83 },
+    { range:'2000-2499',label:'인천-방콕',                   apr:  71, may: 131, june: 107 },
+    { range:'4000-4999',label:'인천-호놀룰루',               apr: 123, may: 229, june: 187 },
+    { range:'5000-6499',label:'인천-로스앤젤레스·샌프란시스코', apr: 155, may: 291, june: 236 },
+    { range:'6500+',    label:'인천-워싱턴 D.C.·뉴욕',       apr: 194, may: 365, june: 296 }
   ]},
   BX: { currency:'USD', rows: [
     { range:'0-699',    label:'1구간 (~699mi)',        apr:  29, may:  52, june:  43 },
@@ -1150,7 +1150,8 @@ var OFFICIAL_ROUTE_MAP = {
     'ICN-LAX':'5000-6499',
     'ICN-SFO':'5000-6499',
     'ICN-IAD':'6500+',
-    'ICN-JFK':'6500+'
+    'ICN-JFK':'6500+',
+    'ICN-EWR':'6500+'
   },
   /* ── 에어부산 (BX) ── 2026.05 공식 공지 기준 ── */
   BX: {

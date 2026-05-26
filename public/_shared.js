@@ -328,7 +328,7 @@ var _AP_REGION = {
   SGN:'VN',HAN:'VN',DAD:'VN',DPS:'ID',CGK:'ID',
   DEL:'IN',BOM:'IN',
   SYD:'AU',MEL:'AU',AKL:'NZ',
-  JFK:'US',LAX:'US',SFO:'US',SEA:'US',ORD:'US',ATL:'US',IAD:'US',HNL:'US',GUM:'US',
+  JFK:'US',EWR:'US',LAX:'US',SFO:'US',SEA:'US',ORD:'US',ATL:'US',IAD:'US',HNL:'US',GUM:'US',
   YVR:'CA',YYZ:'CA',
   LHR:'GB',MAN:'GB',CDG:'FR',FRA:'DE',MUC:'DE',AMS:'NL',
   FCO:'IT',BCN:'ES',MAD:'ES',VIE:'AT',ZRH:'CH',HEL:'FI',IST:'TR',
@@ -712,6 +712,29 @@ window._TW_OFFICIAL_OVERRIDE = {
   },
 };
 
+/* ─────────────────────────────────────────────
+   YP(에어프레미아) 2026년 6월 공식 공시 데이터
+   확인 파일: 2026.06 에어프레미아 유류할증료.pdf
+   공식 원문은 한국 출발 편도/mile 기준 USD 공시
+───────────────────────────────────────────── */
+window._YP_OFFICIAL_OVERRIDE = {
+  '2026.06': {
+    sourceType: 'official_notice', status: 'official_verified', confidence: 'fresh', currency: 'USD',
+    surchargeSchema: 'mileage_band',
+    officialNoticeUrl: 'https://www.airpremia.com/a/ko/customer/notice',
+    note: '에어프레미아 2026년 6월 공식 공시는 편도/mile 기준 USD 금액입니다.',
+    items: [
+      { distanceRange: '0-999',     label: '인천-나리타', amount:  48, currency: 'USD', route: 'ICN-NRT' },
+      { distanceRange: '1000-1499', label: '인천-홍콩', amount:  64, currency: 'USD', route: 'ICN-HKG' },
+      { distanceRange: '1500-1999', label: '인천-다낭', amount:  83, currency: 'USD', route: 'ICN-DAD' },
+      { distanceRange: '2000-2499', label: '인천-방콕', amount: 107, currency: 'USD', route: 'ICN-BKK' },
+      { distanceRange: '4000-4999', label: '인천-호놀룰루', amount: 187, currency: 'USD', route: 'ICN-HNL' },
+      { distanceRange: '5000-6499', label: '인천-로스앤젤레스·샌프란시스코', amount: 236, currency: 'USD', route: 'ICN-LAX/ICN-SFO' },
+      { distanceRange: '6500+',     label: '인천-워싱턴 D.C.·뉴욕', amount: 296, currency: 'USD', route: 'ICN-IAD/ICN-EWR' },
+    ],
+  },
+};
+
 window.loadAirlineMeta = async function() {
   try {
     var [mr, or_] = await Promise.allSettled([
@@ -734,6 +757,9 @@ window.loadAirlineMeta = async function() {
   if (!window.MANUAL_OVERRIDES['TW']) window.MANUAL_OVERRIDES['TW'] = {};
   window.MANUAL_OVERRIDES['TW']['2026.05'] = window._TW_OFFICIAL_OVERRIDE['2026.05'];
   window.MANUAL_OVERRIDES['TW']['2026.06'] = window._TW_OFFICIAL_OVERRIDE['2026.06'];
+  /* YP(에어프레미아) 2026년 6월 공식 PDF 공시 데이터 강제 주입 — official_verified · USD 공시 */
+  if (!window.MANUAL_OVERRIDES['YP']) window.MANUAL_OVERRIDES['YP'] = {};
+  window.MANUAL_OVERRIDES['YP']['2026.06'] = window._YP_OFFICIAL_OVERRIDE['2026.06'];
   return window.AIRLINE_META;
 };
 
@@ -1055,7 +1081,7 @@ var AIRPORT_GROUPS = [
   { key:'index.region.seasia',   codes:['HKG','SIN','BKK','MNL','KUL','SGN','HAN','DAD','DPS','CGK','RGN','CNX','HKT','NHA','MFM','PNH','REP','VTE','ULN','GUM','SPN','PQC','DLI','BTH','HPH'] },
   { key:'index.region.seasia2',  codes:['CEB','TAG','CRK','DVO','ILO','MNL','BKI','KCH','PEN','KLO','CXR','PPS'] },
   { key:'index.region.swasia',   codes:['DEL','BOM','CMB','KTM','DAC','MLE','TBS','ALA','FRU','TSE','TAS','SVO','VVO'] },
-  { key:'index.region.usa',     codes:['LAX','JFK','SFO','SEA','HNL','IAD','BOS','ORD','ATL','DFW','LAS','BIS'] },
+  { key:'index.region.usa',     codes:['LAX','JFK','EWR','SFO','SEA','HNL','IAD','BOS','ORD','ATL','DFW','LAS','BIS'] },
   { key:'index.region.canada',  codes:['YVR','YYZ'] },
   { key:'index.region.australia', codes:['SYD','MEL','BNE'] },
   { key:'index.region.newzealand',codes:['AKL'] },
@@ -1133,7 +1159,7 @@ ko:{
   'airport.DAC':'다카','airport.MLE':'말레','airport.TBS':'트빌리시',
   'airport.ALA':'알마티','airport.FRU':'비슈케크','airport.TSE':'아스타나','airport.TAS':'타슈켄트',
   'airport.SVO':'모스크바','airport.VVO':'블라디보스토크',
-  'airport.LAX':'LA','airport.JFK':'뉴욕','airport.SFO':'샌프란시스코',
+  'airport.LAX':'LA','airport.JFK':'뉴욕 JFK','airport.EWR':'뉴욕 뉴어크','airport.SFO':'샌프란시스코',
   'airport.SEA':'시애틀','airport.YVR':'밴쿠버','airport.YYZ':'토론토',
   'airport.HNL':'호놀룰루','airport.IAD':'워싱턴 D.C.',
   'airport.BOS':'보스턴','airport.ORD':'시카고','airport.ATL':'애틀랜타',
@@ -1164,11 +1190,11 @@ ko:{
   'index.guide.p3':'아래 결과는 공식 공지 기준이며, 최종 결제 금액은 항공사 예약 화면 또는 공식 공지에서 반드시 재확인하시기 바랍니다.',
   'index.guide.p1Landing':'유류할증료(Fuel Surcharge)는 국제유가 변동에 연동해 항공사가 기본 운임과 별도로 부과하는 요금입니다. 비행 거리가 멀수록, 유가가 높을수록 금액이 높아지는 구조입니다.',
   'index.guide.p2Landing':'국내 항공사들은 국토교통부 기준에 따라 매월 다음 달 적용 금액을 공식 공지합니다. 출발지·도착지를 선택해 검색하면 항공사별 공식 공지 기준 금액을 노선별로 비교할 수 있습니다.',
-  'index.decision.title':'📢 KE·OZ·LJ·BX·ZE·RS·TW·7C 6월 공식 공시 반영 완료',
-  'index.decision.line1':'✔ KE·OZ·LJ·BX·ZE·RS·TW·7C 6월 공식 공시 반영 완료 — 5월 대비 전 구간 인하. 티웨이(TW) KRW 공시, 제주항공(7C) USD 공시 포함',
-  'index.decision.line2':'✔ 발권일 기준 적용 — "오늘 발권 = 6월 공시 기준" · 에어프레미아는 공시 전',
+  'index.decision.title':'📢 KE·OZ·LJ·BX·ZE·RS·TW·7C·YP 6월 공식 공시 반영 완료',
+  'index.decision.line1':'✔ 주요 9개 국적사 6월 유류할증료 공시 반영 — 티웨이(TW)는 KRW, 제주항공(7C)·에어프레미아(YP)는 USD 기준',
+  'index.decision.line2':'✔ 에어프레미아 6월 공시 추가 — 단거리 인천-나리타 USD 48, 장거리 뉴욕·워싱턴 D.C. USD 296',
   'index.decision.line3':'✔ 7월 방향성: 브렌트유($109~112)·MOPS·환율(1,490~1,507) 복합 모니터링 필요',
-  'index.decision.conclusion':'👉 8개 항공사 6월 공시 확인 완료 · 발권일 기준 적용 · 7월 방향성 별도 확인 권장',
+  'index.decision.conclusion':'👉 9개 항공사 6월 공시 확인 완료 · 발권일 기준 적용 · 7월 방향성 별도 확인 권장',
   /* landing */
   'index.landingTitle':'한국 출발 국제선 유류할증료',
   'index.krOnly.title':'한국 출발 국제선만 지원합니다',
@@ -1178,7 +1204,7 @@ ko:{
   'index.status.loading':'데이터 로딩 중...',
   'index.status.loadError':'데이터 로딩 실패 — 콘솔을 확인하세요',
   'index.status.scriptError':'스크립트 오류로 로딩 실패 — 콘솔을 확인하세요',
-  'index.status.updated':'데이터 갱신: ','index.status.updatedSuffix':' · KE·OZ·LJ·BX·ZE·RS·TW·7C 6월 공식 공시 반영 · 2026.05.22 09:25 KST 기준',
+  'index.status.updated':'데이터 갱신: ','index.status.updatedSuffix':' · KE·OZ·LJ·BX·ZE·RS·TW·7C·YP 6월 공식 공시 반영 · 2026.05.26 KST 기준',
   /* filters */
   'index.filter.all':'전체','index.filter.hasOfficialData':'공식 데이터 있음',
   /* result */
@@ -1192,7 +1218,7 @@ ko:{
   'index.alert.differentAirports':'출발지와 도착지를 다르게 선택하세요',
   /* meta suffix */
   'index.meta.oneWay':'편도','index.meta.roundTrip':'왕복',
-  'index.meta.suffix':'한국 출발 국제선 · 2026년 6월 KE·OZ·LJ·BX·ZE·RS·TW·7C 공식 공시 반영',
+  'index.meta.suffix':'한국 출발 국제선 · 2026년 6월 KE·OZ·LJ·BX·ZE·RS·TW·7C·YP 공식 공시 반영',
   /* card strings */
   'index.card.currentRoute':'현재 노선',
   'index.card.notPublished':'미공지',
@@ -1317,10 +1343,10 @@ ko:{
   'news.official.7c':'제주항공 — 6월 공식 공시 완료 ✅ (5월→6월: 최대 USD 126→104, 전 구간 인하)',
   'news.official.bx':'에어부산 — 5월 대비 전 구간 인하 (USD 52→43, USD 126→106)',
   'news.official.ze':'이스타항공 — 5월 대비 전 구간 인하 (USD 52→43, USD 126→103)',
-  'news.official.rs':'에어서울 — 5월 대비 전 구간 인하 (KRW 94,500→75,300 / KRW 165,000→132,800) · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">공식 공지 ↗</a>',
-  'news.official.tw':'티웨이항공 — <span style="color:#1b5e20;font-weight:700;">6월 공식 공시 완료 ✅</span> · KRW 공시 · 1군 47,400원~7군 327,000원 · <a href="https://www.twayair.com/app/customer/NOTICE_VIEW?lang=ko&noticeType=1&noticeNo=10001268" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">공식 공지 ↗</a>',
-  'news.official.yp':'에어프레미아 — 미공지',
-  'news.official.desc':'* KE·OZ·LJ·BX·ZE·RS·TW·7C 6월 공식 공시 완료 · 5월 대비 전 구간 인하 · 티웨이(TW) KRW 공시 포함 · 에어프레미아만 미공지 · 최종 금액은 발권일 기준 공식 공지 반드시 확인',
+  'news.official.rs':'에어서울 — 5월 대비 전 구간 인하 (KRW 94,500→75,300 / KRW 165,000→132,800)',
+  'news.official.tw':'티웨이항공 — <span style="color:#1b5e20;font-weight:700;">6월 공식 공시 완료 ✅</span> · KRW 공시 · 1군 47,400원~7군 327,000원',
+  'news.official.yp':'에어프레미아 — 6월 USD 공시 반영 · 단거리 예시 인천-나리타 USD 59→48 / 장거리 예시 인천-뉴욕·워싱턴 D.C. USD 365→296',
+  'news.official.desc':'* KE·OZ·LJ·BX·ZE·RS·TW·7C·YP 6월 공식 공시 완료 · 5월 대비 전 구간 인하 · 티웨이(TW) KRW 공시, 에어프레미아(YP) USD 공시 포함 · 최종 금액은 발권일 기준 공식 공지 반드시 확인',
   /* compare box */
   'news.compare.li1':'대한항공: 전 구간 인하 (단거리 75,000원→61,500원, 장거리 564,000원→451,500원)',
   'news.compare.li2':'아시아나: 전 구간 인하 (단거리 85,400원→68,000원, 장거리 476,200원→382,800원)',
@@ -1330,7 +1356,7 @@ ko:{
   'news.compare.li6':'에어서울: 전 구간 인하 (KRW 94,500→75,300 / KRW 165,000→132,800)',
   'news.compare.li7':'제주항공: 6월 공식 공시 완료 ✅ — 전 구간 인하 (USD 52→42, USD 126→104)',
   'news.compare.li8':'티웨이항공: 5월 대비 6월 전 구간 인하 — 1군 58,600원→47,400원 / 7군 406,900원→327,000원 (KRW 공시)',
-  'news.compare.li9':'에어프레미아: 공시 전',
+  'news.compare.li9':'공통: KE·OZ·LJ·BX·ZE·RS·TW·7C·YP 6월 공식 공시 반영 완료 — 5월 대비 인하 흐름 확인',
   /* fixed news cards */
   'news.fixed.20260523a.title':'2026.05.23 22:00 KST | 유가·환율 고점 유지, 7월 유류할증료 급락 가능성은 제한적',
   'news.fixed.20260523a.summary':'6월 유류할증료는 확인된 항공사 공식 공시만 확정 데이터로 보고, 7월은 시장 지표 기반 전망으로 분리해야 합니다. 브렌트유는 최근 고점권에서 등락 중이며, MOPS는 최신 공개 수치 확인이 필요합니다. USD/KRW는 2026.05.22 공개 데이터 기준 약 1,504~1,512원 범위가 확인되어 하락 제한 요인입니다. 현재 유가와 환율 흐름을 고려하면 7월 유류할증료는 급격한 인하보다는 현 수준 유지 또는 일부 구간의 제한적 조정 가능성이 더 높습니다.',
@@ -1459,7 +1485,7 @@ en:{
   'airport.KLO':'Boracay (Kalibo)','airport.CXR':'Nha Trang (Cam Ranh)',
   'airport.ALA':'Almaty','airport.FRU':'Bishkek','airport.TSE':'Astana','airport.TAS':'Tashkent',
   'airport.SVO':'Moscow','airport.VVO':'Vladivostok',
-  'airport.LAX':'Los Angeles','airport.JFK':'New York','airport.SFO':'San Francisco',
+  'airport.LAX':'Los Angeles','airport.JFK':'New York JFK','airport.EWR':'Newark / New York','airport.SFO':'San Francisco',
   'airport.SEA':'Seattle','airport.YVR':'Vancouver','airport.YYZ':'Toronto',
   'airport.HNL':'Honolulu','airport.IAD':'Washington D.C.',
   'airport.BOS':'Boston','airport.ORD':'Chicago','airport.ATL':'Atlanta',
@@ -1486,11 +1512,11 @@ en:{
   'index.guide.p3':'Results shown are based on official notices. Always reconfirm the final amount via the airline\'s reservation system or official notice.',
   'index.guide.p1Landing':'A fuel surcharge is linked to international oil prices and is charged separately from the base fare. The further the distance and the higher the oil price, the greater the surcharge.',
   'index.guide.p2Landing':'Korean airlines publish next-month amounts in official notices each month. Select origin and destination to compare official notice amounts by airline.',
-  'index.decision.title':'📢 KE/OZ/LJ/BX/ZE/RS/7C Jun official filing reflected',
-  'index.decision.line1':'✔ KE/OZ/LJ/BX/ZE/RS/7C June filings complete — all bands down vs May. Jeju Air (7C) USD filing included',
-  'index.decision.line2':'✔ Booking date basis — book today = June filing applies · T\'way/Air Premia: filing pending',
+  'index.decision.title':'📢 KE/OZ/LJ/BX/ZE/RS/TW/7C/YP June official filings reflected',
+  'index.decision.line1':'✔ Nine Korean carriers reflected — T\u0027way in KRW, Jeju Air and Air Premia in USD',
+  'index.decision.line2':'✔ Air Premia added — short-haul ICN-NRT USD 48, long-haul New York/Washington D.C. USD 296',
   'index.decision.line3':'✔ July direction: monitor Brent ($109–112), MOPS & FX (1,490–1,507) complex pressures',
-  'index.decision.conclusion':'👉 7-airline June filings confirmed · Booking-date basis applies · Verify July direction separately',
+  'index.decision.conclusion':'👉 9-airline June filings confirmed · Booking-date basis applies · Verify July direction separately',
   'index.landingTitle':'Fuel Surcharges — Korea Departures',
   'index.krOnly.title':'Korea Departures Only',
   'index.krOnly.desc':'Select origin and destination in Route Search to compare official surcharge amounts by airline. Per-segment amounts vary, so a single figure is not shown.',
@@ -1624,10 +1650,10 @@ en:{
   'news.official.7c':'Jeju Air — June official filing complete ✅ (May→Jun: max USD 126→104, all-band reduction)',
   'news.official.bx':'Air Busan — All routes down vs May (USD 52→43, USD 126→106)',
   'news.official.ze':'Eastar Jet — All routes down vs May (USD 52→43, USD 126→103)',
-  'news.official.rs':'Air Seoul — All-band reduction vs May (KRW 94,500→75,300 / KRW 165,000→132,800) · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">Official Notice ↗</a>',
-  'news.official.tw':'T\'way Air — June filing pending',
-  'news.official.yp':'Air Premia — June filing pending',
-  'news.official.desc':'* KE/OZ/LJ/BX/ZE/RS/7C June filings complete · All-band reduction vs May · Jeju Air (USD) included · T\'way/Air Premia: filing pending',
+  'news.official.rs':'Air Seoul — All-band reduction vs May (KRW 94,500→75,300 / KRW 165,000→132,800)',
+  'news.official.tw':'T\'way Air — June filing complete',
+  'news.official.yp':'Air Premia — June USD filing reflected · short-haul ICN-NRT USD 59→48 / long-haul New York·Washington D.C. USD 365→296',
+  'news.official.desc':'* KE/OZ/LJ/BX/ZE/RS/TW/7C/YP June filings complete · All-band reduction vs May · Jeju Air (USD), T\'way (KRW), and Air Premia (USD) included',
   /* compare box */
   'news.compare.li1':'Korean Air: all routes down (short ₩75,000→₩61,500, long ₩564,000→₩451,500)',
   'news.compare.li2':'Asiana: all routes down (short ₩85,400→₩68,000, long ₩476,200→₩382,800)',
@@ -1636,8 +1662,8 @@ en:{
   'news.compare.li5':'Eastar Jet: all routes down (USD 52→43, USD 126→103)',
   'news.compare.li6':'Air Seoul: all routes down (KRW 94,500→75,300 / KRW 165,000→132,800)',
   'news.compare.li7':'Jeju Air: June official filing complete ✅ — all-band reduction (USD 52→42, USD 126→104)',
-  'news.compare.li8':'T\'way Air: filing pending',
-  'news.compare.li9':'Air Premia: filing pending',
+  'news.compare.li8':'T\'way Air: June KRW filing reflected',
+  'news.compare.li9':'Overall: KE/OZ/LJ/BX/ZE/RS/TW/7C/YP June filings reflected — reductions confirmed vs May',
   /* fixed news cards */
   'news.fixed.20260420.title':'Oil prices keep falling — June surcharge outlook uncertain, check official filings',
   'news.fixed.20260420.summary':'Brent crude has continued sliding after hitting the low $80s. The USD/KRW rate is easing slightly despite remaining elevated, and the probability of a June surcharge reduction or hold is growing.',
@@ -1751,7 +1777,7 @@ ja:{
   'airport.PRG':'プラハ','airport.BUD':'ブダペスト','airport.ZRH':'チューリッヒ',
   'airport.MAD':'マドリード','airport.LIS':'リスボン','airport.IST':'イスタンブール',
   'airport.SVO':'モスクワ',
-  'airport.LAX':'ロサンゼルス','airport.JFK':'ニューヨーク','airport.SFO':'サンフランシスコ',
+  'airport.LAX':'ロサンゼルス','airport.JFK':'ニューヨーク JFK','airport.EWR':'ニューアーク / ニューヨーク','airport.SFO':'サンフランシスコ',
   'airport.SEA':'シアトル','airport.SYD':'シドニー',
   'airport.CDG':'パリ','airport.LHR':'ロンドン','airport.FRA':'フランクフルト',
   'airport.AMS':'アムステルダム','airport.DXB':'ドバイ',
@@ -1907,10 +1933,10 @@ ja:{
   'news.official.7c':'チェジュ航空 — 6月公式公示完了 ✅ (5月→6月: 最大 USD 126→104、全路線引き下げ)',
   'news.official.bx':'エアプサン — 5月比全路線引き下げ (USD 52→43, 126→106)',
   'news.official.ze':'イースター航空 — 5月比全路線引き下げ (USD 52→43、126→103)',
-  'news.official.rs':'エアソウル — 5月比全路線引き下げ (KRW 94,500→75,300 / KRW 165,000→132,800) · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">公式公示 ↗</a>',
+  'news.official.rs':'エアソウル — 5月比全路線引き下げ (KRW 94,500→75,300 / KRW 165,000→132,800)',
   'news.official.tw':'ティーウェイ — 6月公示前',
-  'news.official.yp':'エアプレミア — 6月公示前',
-  'news.official.desc':'* KE·OZ·LJ·BX·ZE·RS·TW·7C 6月公式公示完了 · 5月比全区間引き下げ · エアプレミアのみ公示前',
+  'news.official.yp':'エアプレミア — 6月USD公示反映済み · 短距離 ICN-NRT USD 59→48 / 長距離 ニューヨーク·ワシントンD.C. USD 365→296',
+  'news.official.desc':'* KE·OZ·LJ·BX·ZE·RS·TW·7C·YP 6月公式公示完了 · 5月比全区間引き下げ · エアプレミア(YP) USD公示反映済み',
   /* compare box */
   'news.compare.li1':'大韓航空：全路線引き下げ (短距離₩75,000→₩61,500、長距離₩564,000→₩451,500)',
   'news.compare.li2':'アシアナ：全路線引き下げ (短距離₩85,400→₩68,000、長距離₩476,200→₩382,800)',
@@ -1921,7 +1947,7 @@ ja:{
   'news.compare.li6':'エアソウル：全路線引き下げ (KRW 94,500→75,300 / KRW 165,000→132,800)',
   'news.compare.li7':'チェジュ航空：6月公式公示完了 ✅ — 全路線引き下げ (USD 52→42、USD 126→104)',
   'news.compare.li8':'ティーウェイ：公示前',
-  'news.compare.li9':'エアプレミア：公示前',
+  'news.compare.li9':'共通: KE/OZ/LJ/BX/ZE/RS/TW/7C/YP 6月公示反映済み — 5月比引き下げを確認',
   /* fixed news cards */
   'news.fixed.20260420.title':'原油安続く — 6月サーチャージの見通し不透明、公式公示の確認が必要',
   'news.fixed.20260420.summary':'ブレント原油が80ドル前半まで下落後も下落基調を維持。為替は依然高水準だが小幅安定化し、6月サーチャージの引き下げまたは維持の可能性が高まっている。',
@@ -2035,7 +2061,7 @@ zh:{
   'airport.PRG':'布拉格','airport.BUD':'布达佩斯','airport.ZRH':'苏黎世',
   'airport.MAD':'马德里','airport.LIS':'里斯本','airport.IST':'伊斯坦布尔',
   'airport.SVO':'莫斯科',
-  'airport.LAX':'洛杉矶','airport.JFK':'纽约','airport.SFO':'旧金山',
+  'airport.LAX':'洛杉矶','airport.JFK':'纽约 JFK','airport.EWR':'纽瓦克 / 纽约','airport.SFO':'旧金山',
   'airport.SEA':'西雅图','airport.SYD':'悉尼',
   'airport.CDG':'巴黎','airport.LHR':'伦敦','airport.FRA':'法兰克福',
   'airport.AMS':'阿姆斯特丹','airport.DXB':'迪拜',
@@ -2191,10 +2217,10 @@ zh:{
   'news.official.7c':'济州航空 — 6月官方公告完成 ✅ (5月→6月: 最高 USD 126→104，全区间下调)',
   'news.official.bx':'釜山航空 — 较5月全航线下调 (USD 52→43, 126→106)',
   'news.official.ze':'易斯达航空 — 较5月全航线下调 (USD 52→43, 126→103)',
-  'news.official.rs':'首尔航空 — 较5月全区间下调 (KRW 94,500→75,300 / KRW 165,000→132,800) · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">官方公告 ↗</a>',
-  'news.official.tw':'德威航空 — 6月公告待定',
-  'news.official.yp':'航空前奏 — 6月公告待定',
-  'news.official.desc':'* KE·OZ·LJ·BX·ZE·RS·TW·7C 6月官方公告完成 · 较5月全区间下调 · 仅航空前奏(YP)公告待定',
+  'news.official.rs':'首尔航空 — 较5月全区间下调 (KRW 94,500→75,300 / KRW 165,000→132,800)',
+  'news.official.tw':'德威航空 — 6月公告完成',
+  'news.official.yp':'航空前奏 — 已反映6月USD公告 · 短途 ICN-NRT USD 59→48 / 长途 纽约·华盛顿D.C. USD 365→296',
+  'news.official.desc':'* KE·OZ·LJ·BX·ZE·RS·TW·7C·YP 6月官方公告完成 · 较5月全区间下调 · 已包含航空前奏(YP) USD公告',
   /* compare box */
   'news.compare.li1':'大韩航空：全线下调 (短途₩75,000→₩61,500，长途₩564,000→₩451,500)',
   'news.compare.li2':'韩亚航空：全线下调 (短途₩85,400→₩68,000，长途₩476,200→₩382,800)',
@@ -2204,8 +2230,8 @@ zh:{
   'news.compare.li5':'易斯达航空：全区间下调 (USD 52→43、126→103)',
   'news.compare.li6':'首尔航空：全区间下调 (KRW 94,500→75,300 / KRW 165,000→132,800)',
   'news.compare.li7':'济州航空：6月官方公告完成 ✅ — 全区间下调 (USD 52→42、USD 126→104)',
-  'news.compare.li8':'德威航空：公告待定',
-  'news.compare.li9':'航空前奏：公告待定',
+  'news.compare.li8':'德威航空：已反映6月KRW公告',
+  'news.compare.li9':'总体：KE/OZ/LJ/BX/ZE/RS/TW/7C/YP 6月公告已反映 — 较5月下调确认',
   /* fixed news cards */
   'news.fixed.20260420.title':'油价持续下跌 — 6月附加费走势不明，需关注官方公告',
   'news.fixed.20260420.summary':'布伦特原油跌至80美元初段后继续下行。汇率虽仍偏高但小幅稳定，6月附加费下调或维持的可能性正在增大。',
@@ -2303,7 +2329,7 @@ fr:{
   'airport.KUL':'Kuala Lumpur','airport.SGN':'Hô Chi Minh-Ville','airport.HAN':'Hanoï',
   'airport.DAD':'Da Nang','airport.DPS':'Bali','airport.CGK':'Jakarta','airport.PVG':'Shanghai','airport.PEK':'Pékin',
   'airport.TAS':'Tachkent','airport.TXG':'Taichung',
-  'airport.LAX':'Los Angeles','airport.JFK':'New York','airport.SFO':'San Francisco',
+  'airport.LAX':'Los Angeles','airport.JFK':'New York JFK','airport.EWR':'Newark / New York','airport.SFO':'San Francisco',
   'airport.SEA':'Seattle','airport.SYD':'Sydney',
   'airport.CDG':'Paris','airport.LHR':'Londres','airport.FRA':'Francfort',
   'airport.AMS':'Amsterdam','airport.DXB':'Dubaï',
@@ -2458,10 +2484,10 @@ fr:{
   'news.official.7c':'Jeju Air — Publication juin complète ✅ (mai→juin: max USD 126→104, baisse tous itinéraires)',
   'news.official.bx':'Air Busan — Baisse vs mai (USD 52→43, 126→106)',
   'news.official.ze':'Eastar Jet — Tous les itinéraires en baisse vs mai (USD 52→43, 126→103)',
-  'news.official.rs':'Air Seoul — Baisse sur toutes les tranches vs mai (KRW 94 500→75 300 / KRW 165 000→132 800) · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">Avis officiel ↗</a>',
-  'news.official.tw':'T\'way Air — Publication juin en attente',
-  'news.official.yp':'Air Premia — Publication juin en attente',
-  'news.official.desc':'* KE/OZ/LJ/BX/ZE/RS/7C publications juin complètes · Baisse vs mai · T\'way/Air Premia: en attente',
+  'news.official.rs':'Air Seoul — Baisse sur toutes les tranches vs mai (KRW 94 500→75 300 / KRW 165 000→132 800)',
+  'news.official.tw':'T\'way Air — Publication juin complète',
+  'news.official.yp':'Air Premia — publication USD juin reflétée · court ICN-NRT USD 59→48 / long New York·Washington D.C. USD 365→296',
+  'news.official.desc':'* Publications juin KE/OZ/LJ/BX/ZE/RS/TW/7C/YP complètes · Baisse vs mai · Air Premia USD inclus',
   /* compare box */
   'news.compare.li1':'Korean Air : tous en baisse vs mai (court ₩75 000→₩61 500, long ₩564 000→₩451 500)',
   'news.compare.li2':'Asiana : tous en baisse (court ₩85 400→₩68 000, long ₩476 200→₩382 800)',
@@ -2470,8 +2496,8 @@ fr:{
   'news.compare.li5':'Eastar Jet : tous en baisse (USD 52→43, 126→103)',
   'news.compare.li6':'Air Seoul : tous en baisse (KRW 94 500→75 300 / KRW 165 000→132 800)',
   'news.compare.li7':'Jeju Air : publication juin complète ✅ — tous en baisse (USD 52→42, USD 126→104)',
-  'news.compare.li8':'T\'way Air : en attente',
-  'news.compare.li9':'Air Premia : en attente',
+  'news.compare.li8':'T\'way Air : publication KRW de juin reflétée',
+  'news.compare.li9':'Ensemble : publications juin KE/OZ/LJ/BX/ZE/RS/TW/7C/YP reflétées — baisses vs mai confirmées',
   /* fixed news cards */
   'news.fixed.20260420.title':'Le pétrole continue de baisser — perspectives juin incertaines, surveiller l\'annonce officielle',
   'news.fixed.20260420.summary':'Le Brent reste sous pression après les niveaux bas des $80. Le taux USD/KRW se stabilise légèrement malgré un niveau encore élevé, mais les variables pétrole & change rendent la direction de juin incertaine — vérifier l\'annonce officielle.',
@@ -2569,7 +2595,7 @@ de:{
   'airport.KUL':'Kuala Lumpur','airport.SGN':'Ho-Chi-Minh-Stadt','airport.HAN':'Hanoi',
   'airport.DAD':'Da Nang','airport.DPS':'Bali','airport.CGK':'Jakarta','airport.PVG':'Shanghai','airport.PEK':'Peking',
   'airport.TAS':'Taschkent','airport.TXG':'Taichung',
-  'airport.LAX':'Los Angeles','airport.JFK':'New York','airport.SFO':'San Francisco',
+  'airport.LAX':'Los Angeles','airport.JFK':'New York JFK','airport.EWR':'Newark / New York','airport.SFO':'San Francisco',
   'airport.SEA':'Seattle','airport.SYD':'Sydney',
   'airport.CDG':'Paris','airport.LHR':'London','airport.FRA':'Frankfurt',
   'airport.AMS':'Amsterdam','airport.DXB':'Dubai',
@@ -2726,10 +2752,10 @@ de:{
   'news.official.7c':'Jeju Air — Juni-Mitteilung vollständig ✅ (Mai→Juni: max USD 126→104, alle Bänder gesunken)',
   'news.official.bx':'Air Busan — Alle Strecken gesenkt vs Mai (USD 52→43, 126→106)',
   'news.official.ze':'Eastar Jet — Alle Strecken gesenkt vs Mai (USD 52→43, 126→103)',
-  'news.official.rs':'Air Seoul — Alle Strecken gesunken vs Mai (KRW 94.500→75.300 / KRW 165.000→132.800) · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">Offizielle Mitteilung ↗</a>',
-  'news.official.tw':'T\'way Air — Juni-Mitteilung ausstehend',
-  'news.official.yp':'Air Premia — Juni-Mitteilung ausstehend',
-  'news.official.desc':'* KE/OZ/LJ/BX/ZE/RS/7C Juni-Mitteilungen vollständig · Senkungen vs Mai · T\'way/Air Premia: ausstehend',
+  'news.official.rs':'Air Seoul — Alle Strecken gesunken vs Mai (KRW 94.500→75.300 / KRW 165.000→132.800)',
+  'news.official.tw':'T\'way Air — Juni-Mitteilung vollständig',
+  'news.official.yp':'Air Premia — Juni-USD-Mitteilung berücksichtigt · Kurzstrecke ICN-NRT USD 59→48 / Langstrecke New York·Washington D.C. USD 365→296',
+  'news.official.desc':'* KE/OZ/LJ/BX/ZE/RS/TW/7C/YP Juni-Mitteilungen vollständig · Senkungen vs Mai · Air Premia USD enthalten',
   /* compare box */
   'news.compare.li1':'Korean Air: alle Strecken gesunken (kurz ₩75.000→₩61.500, lang ₩564.000→₩451.500)',
   'news.compare.li2':'Asiana: alle Strecken gesunken (kurz ₩85.400→₩68.000, lang ₩476.200→₩382.800)',
@@ -2739,8 +2765,8 @@ de:{
   'news.compare.li5':'Eastar Jet: alle gesunken (USD 52→43, 126→103)',
   'news.compare.li6':'Air Seoul: alle gesunken (KRW 94.500→75.300 / KRW 165.000→132.800)',
   'news.compare.li7':'Jeju Air: Juni-Mitteilung vollständig ✅ — alle Bänder gesunken (USD 52→42, USD 126→104)',
-  'news.compare.li8':'T\'way Air: ausstehend',
-  'news.compare.li9':'Air Premia: ausstehend',
+  'news.compare.li8':'T\'way Air: Juni-KRW-Mitteilung berücksichtigt',
+  'news.compare.li9':'Insgesamt: KE/OZ/LJ/BX/ZE/RS/TW/7C/YP Juni-Mitteilungen berücksichtigt — Senkungen vs Mai bestätigt',
   /* fixed news cards */
   'news.fixed.20260420.title':'Ölpreise fallen weiter — Juni-Aussichten ungewiss, offizielle Bekanntgabe im Blick behalten',
   'news.fixed.20260420.summary':'Brent-Rohöl setzt den Rückgang nach dem Tief in den unteren 80 $ fort. USD/KRW stabilisiert sich leicht trotz erhöhtem Niveau; die Wahrscheinlichkeit einer Senkung oder eines stabilen Zuschlags im Juni nimmt zu.',
@@ -4399,6 +4425,7 @@ var AIRPORT_ALIASES = {
   /* ── 미국 / 캐나다 / 오세아니아 ── */
   LAX: ['LA','los angeles','usa','미국','로스앤젤레스','america'],
   JFK: ['뉴욕','new york','usa','미국','nyc','america'],
+  EWR: ['뉴어크','뉴욕','newark','new york','usa','미국','nyc','america'],
   SFO: ['샌프란시스코','san francisco','usa','미국','america'],
   HNL: ['호놀룰루','honolulu','hawaii','하와이','usa','미국','america'],
   SEA: ['시애틀','seattle','usa','미국','america'],

@@ -1,8 +1,8 @@
 {
   "_meta": {
     "description": "2026.04 및 일부 2026.05 공식 공지 기준 수동 오버라이드. official_surcharge_feed보다 우선 적용.",
-    "lastUpdated": "2026-05-06T00:00:00.000Z",
-    "period": "2026.04",
+    "lastUpdated": "2026-05-26T21:59:47+09:00",
+    "period": "2026.06",
     "appliedOrigins": [
       "KR"
     ],
@@ -132,11 +132,12 @@
   },
   "YP": {
     "_meta": {
-      "source": "에어프레미아 공식 공지 2026-04",
+      "source": "에어프레미아 2026년 6월 국제선 유류할증료 공식 공지 PDF",
       "url": "https://www.airpremia.com/a/ko/customer/notice",
-      "verifiedAt": "2026-04-01",
+      "verifiedAt": "2026-05-26",
       "currency": "USD",
-      "schema": "mileage_band"
+      "schema": "mileage_band",
+      "note": "2026년 6월 공식 공시는 한국 출발 편도/mile 기준 USD 금액입니다."
     },
     "2026.04": {
       "items": [
@@ -179,6 +180,67 @@
       "currency": "USD",
       "sourceType": "official_notice",
       "confidence": "fresh"
+    },
+    "2026.06": {
+      "items": [
+        {
+          "distanceRange": "0-999",
+          "label": "인천-나리타",
+          "amount": 48,
+          "currency": "USD",
+          "route": "ICN-NRT"
+        },
+        {
+          "distanceRange": "1000-1499",
+          "label": "인천-홍콩",
+          "amount": 64,
+          "currency": "USD",
+          "route": "ICN-HKG"
+        },
+        {
+          "distanceRange": "1500-1999",
+          "label": "인천-다낭",
+          "amount": 83,
+          "currency": "USD",
+          "route": "ICN-DAD"
+        },
+        {
+          "distanceRange": "2000-2499",
+          "label": "인천-방콕",
+          "amount": 107,
+          "currency": "USD",
+          "route": "ICN-BKK"
+        },
+        {
+          "distanceRange": "4000-4999",
+          "label": "인천-호놀룰루",
+          "amount": 187,
+          "currency": "USD",
+          "route": "ICN-HNL"
+        },
+        {
+          "distanceRange": "5000-6499",
+          "label": "인천-로스앤젤레스·샌프란시스코",
+          "amount": 236,
+          "currency": "USD",
+          "route": "ICN-LAX/ICN-SFO"
+        },
+        {
+          "distanceRange": "6500+",
+          "label": "인천-워싱턴 D.C.·뉴욕",
+          "amount": 296,
+          "currency": "USD",
+          "route": "ICN-IAD/ICN-EWR"
+        }
+      ],
+      "currency": "USD",
+      "sourceType": "official_notice",
+      "status": "official_verified",
+      "confidence": "fresh",
+      "surchargeSchema": "mileage_band",
+      "officialNoticeUrl": "https://www.airpremia.com/a/ko/customer/notice",
+      "sourceFile": "C:/Users/jiwoo/OneDrive/Desktop/사이드/유류할증료/2026.06 유류할증료/2026.06 에어프레미아 유류할증료.pdf",
+      "note": "적용 기간: 2026년 6월 1일~2026년 6월 30일, 결제일 기준. 좌석을 점유하지 않는 만 2세 미만 유아는 면제."
     }
   },
   "LJ": {
