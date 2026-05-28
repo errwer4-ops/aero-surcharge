@@ -84,13 +84,13 @@ window.I18N_SHARED = {
        confidence:{high:'높음',medium:'보통',low:'낮음'},
        predictBasis:'예측 근거', predictNote:'공식 공지 전 참고용 추정값입니다.',
        navRoutes:'노선별 조회', navAirlines:'항공사 인덱스', navNews:'참고 소식',
-       /*2026.05.28 06:45 KST 시장 브리핑 공용 키 — 6월 공시 완료 후 7월 전망 중심 */
-      marketDataRef: '2026.05.28 06:45 KST 기준 · currentMonthNotice=2026-06 · forecastTargetMonth=2026-07',
-      marketBrent:   '브렌트유: 5월 초 급등 이후 고점 대비 완화 흐름이지만 중동 리스크 프리미엄이 완전히 사라진 것은 아닙니다.',
-      marketMops:    '항공유 가격(MOPS): 6월 유류할증료 인하의 핵심 배경이지만, 7월은 다음 산정기간 평균과 항공사 공시 시차를 함께 봐야 합니다.',
-      marketFx:      '원달러 환율: 여전히 높은 구간에 있어 유가 하락 효과가 항공권 체감가에 온전히 반영되지 않을 수 있습니다.',
-      marketGeo:     '중동 리스크: 호르무즈 해협, 미국·이란 협상, 국제유가 반등 가능성은 7월 전망의 변동성 요인입니다.',
-      marketOutlook: '2026년 7월 유류할증료 전망은 인하 가능성 우세, 단 고환율·중동 변수 재확대 시 인하 폭 제한 또는 변동 가능입니다.' },
+       /* 2026.05.29 07:00 KST 시장 브리핑 공용 키 — 6월 확정 데이터 기반 7월 전망 중심 */
+      marketDataRef: '2026.05.29 07:00 KST 기준 · currentMonthNotice=2026-06 · forecastTargetMonth=2026-07',
+      marketBrent:   '국제유가: 급등세는 둔화됐지만 항공유 부담이 남아 있어 7월 유류할증료 인하를 단정하기 어렵습니다.',
+      marketMops:    '항공유 가격(MOPS): 고점 대비 일부 진정됐지만 여전히 높은 구간입니다. 7월은 동결 또는 소폭 조정 가능성 중심으로 봅니다.',
+      marketFx:      '원달러 환율: 유가가 일부 내려도 환율이 높으면 소비자 체감 인하는 제한될 수 있습니다.',
+      marketGeo:     '중동 리스크: 국제유가와 항공유 가격이 다시 흔들릴 수 있는 변수입니다.',
+      marketOutlook: '2026년 7월 유류할증료 전망은 동결 또는 소폭 조정 가능성 중심입니다. 인하 전환은 아직 확신하기 어렵습니다.' },
   en:{ btnOW:'One-way', btnRT:'Round-trip', officialSite:'Official site ↗',
        loading:'Loading...', loadErr:'Load failed', noData:'No data.',
        official:'Official', aiPredict:'AI Forecast', prepublish:'Not yet published', noValue:'No data',
@@ -99,13 +99,13 @@ window.I18N_SHARED = {
        confidence:{high:'High',medium:'Medium',low:'Low'},
        predictBasis:'Forecast basis', predictNote:'Pre-announcement estimate. For reference only.',
        navRoutes:'Route Search', navAirlines:'Airline Index', navNews:'News & Insights',
-       /*2026.05.28 06:45 KST market brief shared keys */
-      marketDataRef: 'As of 2026.05.28 06:45 KST · currentMonthNotice=2026-06 · forecastTargetMonth=2026-07',
-      marketBrent:   'Brent crude: lower than the early-May spike, but the Middle East risk premium has not fully disappeared.',
-      marketMops:    'Jet fuel price (MOPS): the key driver of June cuts, but July depends on the next average, FX and airline filing lag.',
-      marketFx:      'USD/KRW: still elevated, so lower oil may not fully translate into lower perceived airfare.',
-      marketGeo:     'Middle East risk: Hormuz, US-Iran talks and possible oil rebound remain July volatility factors.',
-      marketOutlook: 'July 2026 fuel surcharges have a lower-bias outlook, but high FX and renewed Middle East risk can limit or change the cut.' },
+       /* 2026.05.29 07:00 KST market brief shared keys */
+      marketDataRef: 'As of 2026.05.29 07:00 KST · currentMonthNotice=2026-06 · forecastTargetMonth=2026-07',
+      marketBrent:   'Oil: the spike has slowed, but jet fuel burden remains and a July fuel surcharge cut is not certain.',
+      marketMops:    'Jet fuel price (MOPS): still elevated after easing from highs. July is centered on freeze or small adjustment scenarios.',
+      marketFx:      'USD/KRW: elevated FX can limit consumer relief even if oil eases.',
+      marketGeo:     'Middle East risk: a variable that can revive oil and jet fuel volatility.',
+      marketOutlook: 'July 2026 fuel surcharge outlook is centered on freeze or small adjustment. A clear cut is not yet certain.' },
   ja:{ btnOW:'片道', btnRT:'往復', officialSite:'公式サイト ↗',
        loading:'読み込み中...', loadErr:'読み込み失敗', noData:'データなし',
        official:'公式', aiPredict:'AI予測', prepublish:'未公示', noValue:'データなし',
@@ -2853,6 +2853,169 @@ window.AERO_MARKET_BRIEF_20260528 = {
   ]
 };
 window.AERO_NEWS_LATEST = window.AERO_MARKET_BRIEF_20260528;
+
+/* 2026.05.29 07:00 KST latest market brief.
+   June 2026 filings are confirmed baseline data. July 2026 remains the forecast focus. */
+window.AERO_MARKET_BRIEF_20260529 = {
+  id: 'market-brief-20260529-0700',
+  timestamp: '2026-05-29T07:00:00+09:00',
+  displayTime: '2026.05.29 07:00 KST',
+  badge: 'LATEST',
+  currentMonthNotice: '2026-06',
+  forecastTargetMonth: '2026-07',
+  summary: '2026.05.29 07:00 KST 기준 콘텐츠 초점은 2026년 7월 유류할증료 전망입니다. 6월 공시는 확정 데이터로 유지하고, 7월은 국제유가·항공유 가격·원달러 환율·여름 성수기 수요를 함께 본 시장 전망으로 분리합니다.',
+  keywords: ['2026년 7월 유류할증료 전망','7월 유류할증료','항공권 유류할증료 환율','유류할증료 인하 가능성','대한항공 7월 유류할증료 전망','여름 휴가 항공권 예약 시기','원달러 환율 항공권 가격'],
+  cards: [
+    { title:'국제유가 급등세 둔화', point:'고점 대비 일부 진정', decision:'항공유 부담이 남아 있어 7월은 동결 또는 소폭 조정 가능성 중심으로 봅니다.' },
+    { title:'환율 부담 지속', point:'원달러 환율이 체감 인하 제한', decision:'유가가 내려도 환율이 높으면 항공권 가격 부담은 남을 수 있습니다.' },
+    { title:'6월 확정 → 7월 전망', point:'공시 완료 데이터는 기준점', decision:'미공시 항공사는 공지 전 또는 업데이트 대기로 분리합니다.' },
+    { title:'여름 휴가 예약 판단', point:'성수기 수요 변수', decision:'일정이 확정된 여행자는 유류할증료만 기다리지 말고 총액 기준으로 판단합니다.' }
+  ]
+};
+window.AERO_NEWS_LATEST = window.AERO_MARKET_BRIEF_20260529;
+
+window.AERO_NEWS_CARDS_20260529 = [
+  {
+    id: 'news-20260529-oil-jetfuel-burden',
+    slug: 'may-29-oil-easing-jetfuel-burden',
+    category: 'market',
+    priority: 1,
+    date: '2026-05-29',
+    updatedAt: '2026.05.29 07:00 KST 업데이트',
+    badge: 'NEW',
+    aiSummary: true,
+    relevanceScore: 1,
+    currentMonthNotice: '2026-06',
+    forecastTargetMonth: '2026-07',
+    title: '국제유가 급등세는 둔화, 하지만 항공유 부담은 지속',
+    aiBrief: '브렌트유와 항공유 가격은 고점 대비 일부 진정된 흐름입니다. 다만 항공유 가격이 여전히 높은 구간에 있어 2026년 7월 유류할증료 인하를 단정하기는 어렵습니다.',
+    summary: '2026.05.29 07:00 KST 기준 7월 유류할증료 전망은 큰 폭 인하보다 동결 또는 소폭 조정 가능성 중심으로 보는 것이 안전합니다.\n\n국제유가 급등세는 둔화됐지만, 항공유 가격 부담은 아직 남아 있습니다. 유류할증료는 유가 하루 변동이 아니라 항공유 가격(MOPS) 평균, 환율, 항공사 공시 시차를 함께 반영합니다.',
+    impact: '2026년 7월 유류할증료 전망, 항공유 가격, 유류할증료 인하 가능성 검색 의도에 대응합니다.',
+    sourceName: '시장 지표 종합 점검 (2026.05.29 07:00 KST)',
+    sourceUrl: 'fuel-surcharge-2026-06-forecast.html',
+    tags: ['NEW','항공유 가격','MOPS','2026년 7월 유류할증료 전망','유류할증료 인하 가능성'],
+    faq: [
+      { q:'유가가 진정되면 7월 유류할증료가 바로 내려가나요?', a:'아닙니다. 항공유 가격 평균, 환율, 항공사 공시 시차가 함께 반영되므로 동결 또는 소폭 조정 가능성도 봐야 합니다.' }
+    ],
+    links: [
+      { href:'fuel-surcharge-2026-06-forecast.html', label:'7월 전망 자세히 보기' },
+      { href:'fuel-surcharge-graph.html', label:'월별 변동 그래프 보기' }
+    ],
+    i18n: {
+      en: {
+        title:'Oil spike slows, but jet fuel burden remains',
+        aiBrief:'Brent and jet fuel have eased from their highs, but jet fuel remains elevated. A July 2026 fuel surcharge cut is not guaranteed.',
+        summary:'As of 2026.05.29 07:00 KST, the July fuel surcharge outlook should be read as freeze or small adjustment rather than a certain large cut. Fuel surcharges reflect MOPS averages, FX and airline filing lag, not one-day oil moves.',
+        impact:'Matches July 2026 fuel surcharge outlook, jet fuel price and surcharge-cut search intent.'
+      }
+    }
+  },
+  {
+    id: 'news-20260529-usdkrw-limits-cut',
+    slug: 'may-29-usdkrw-limits-fuel-surcharge-cut',
+    category: 'market',
+    priority: 1,
+    date: '2026-05-29',
+    updatedAt: '2026.05.29 07:00 KST 업데이트',
+    badge: 'NEW',
+    aiSummary: true,
+    relevanceScore: 1,
+    currentMonthNotice: '2026-06',
+    forecastTargetMonth: '2026-07',
+    title: '원/달러 환율 부담 지속, 유류할증료 인하를 막는 변수',
+    aiBrief: '유가가 일부 내려도 원/달러 환율이 높은 수준이면 소비자 체감 인하는 제한될 수 있습니다. 7월 전망에서 환율은 가장 중요한 변수 중 하나입니다.',
+    summary: '항공권 유류할증료 환율 영향은 7월 전망에서 핵심입니다.\n\n유류할증료는 항공유 가격뿐 아니라 환율 영향을 함께 받습니다. 원달러 환율이 높은 구간에 머물면 유가 하락 효과가 항공권 가격에 온전히 반영되지 않을 수 있습니다. 따라서 7월 항공권 가격 전망은 유류할증료 인하 가능성만이 아니라 총액 기준으로 봐야 합니다.',
+    impact: '항공권 유류할증료 환율, 원달러 환율 항공권 가격, 여름 휴가 항공권 예약 시기 검색 의도에 대응합니다.',
+    sourceName: '환율·항공권 총액 영향 점검',
+    sourceUrl: 'fuel-surcharge-calculator.html',
+    tags: ['NEW','원달러 환율','항공권 유류할증료 환율','항공권 가격 전망','7월 유류할증료'],
+    faq: [
+      { q:'환율이 높으면 유류할증료 인하 효과가 줄어드나요?', a:'그럴 수 있습니다. 유가가 일부 내려도 원달러 환율이 높으면 원화 기준 항공권 체감 인하는 제한될 수 있습니다.' }
+    ],
+    links: [
+      { href:'fuel-surcharge-calculator.html', label:'유류할증료 계산기' },
+      { href:'index.html', label:'노선별 조회' }
+    ],
+    i18n: {
+      en: {
+        title:'USD/KRW remains a key variable limiting surcharge relief',
+        aiBrief:'Even if oil eases, elevated USD/KRW can limit the consumer benefit. FX remains one of the most important July variables.',
+        summary:'Fuel surcharges are affected by jet fuel prices and exchange rates. If USD/KRW remains elevated, lower oil may not fully reduce won-denominated airfare.',
+        impact:'Matches airfare fuel surcharge FX and USD/KRW airfare price search intent.'
+      }
+    }
+  },
+  {
+    id: 'news-20260529-june-confirmed-july-focus',
+    slug: 'may-29-june-filings-confirmed-july-outlook-focus',
+    category: 'forecast',
+    priority: 1,
+    date: '2026-05-29',
+    updatedAt: '2026.05.29 07:00 KST 업데이트',
+    badge: 'NEW',
+    aiSummary: true,
+    relevanceScore: 1,
+    currentMonthNotice: '2026-06',
+    forecastTargetMonth: '2026-07',
+    title: '6월 공시 반영 이후 시장은 7월 전망으로 이동',
+    aiBrief: '대한항공, 아시아나, 주요 LCC의 6월 공시 데이터는 확정 기준점입니다. 이제 사이트 문구는 2026년 7월 유류할증료 전망 중심이어야 합니다.',
+    summary: '6월 공시 완료 항공사는 6월 확정 데이터로 표시하고, 미공시 항공사는 공지 전·6월 공시 미확인·업데이트 대기로 구분해야 합니다.\n\n2026년 7월 유류할증료 전망은 6월 확정 데이터 위에 국제유가, 항공유 가격, 원달러 환율 흐름을 더해 판단합니다. 이미 공시가 나온 항공사를 예상 또는 미정처럼 표시하면 안 됩니다.',
+    impact: '대한항공 7월 유류할증료 전망, 2026년 7월 유류할증료 전망, 6월 확정 데이터 검색 의도에 대응합니다.',
+    sourceName: '6월 확정 데이터 기반 7월 전망',
+    sourceUrl: 'fuel-surcharge-2026-06-forecast.html',
+    tags: ['NEW','6월 확정 데이터','공시 완료','2026년 7월 유류할증료 전망','대한항공 7월 유류할증료 전망'],
+    faq: [
+      { q:'6월 공시가 완료됐는데 왜 7월 전망을 보나요?', a:'6월 금액은 현재 기준점이고, 여행객은 7월 성수기 발권 판단을 위해 다음 달 방향성을 함께 봐야 하기 때문입니다.' }
+    ],
+    links: [
+      { href:'fuel-surcharge-2026-06-forecast.html', label:'6월 확정 데이터 기반 7월 전망' },
+      { href:'airlines.html', label:'항공사별 공시 보기' }
+    ],
+    i18n: {
+      en: {
+        title:'After June filings, market focus shifts to July',
+        aiBrief:'June filings by Korean Air, Asiana and major LCCs are confirmed baseline data. The site should now focus on the July 2026 outlook.',
+        summary:'Airlines with confirmed June notices should be shown as confirmed. Airlines without notices should remain pending or unconfirmed, not copied from previous months.',
+        impact:'Matches Korean Air July fuel surcharge outlook and confirmed June data search intent.'
+      }
+    }
+  },
+  {
+    id: 'news-20260529-summer-booking-guide',
+    slug: 'may-29-summer-vacation-airfare-booking-guide',
+    category: 'general',
+    priority: 1,
+    date: '2026-05-29',
+    updatedAt: '2026.05.29 07:00 KST 업데이트',
+    badge: 'NEW',
+    aiSummary: true,
+    relevanceScore: 0.98,
+    currentMonthNotice: '2026-06',
+    forecastTargetMonth: '2026-07',
+    title: '여름 휴가철 항공권, 지금 예약 판단이 필요한 구간',
+    aiBrief: '7월은 여름 성수기와 겹쳐 항공권 수요가 늘어날 수 있습니다. 유류할증료가 크게 내려갈 가능성이 뚜렷하지 않다면 일정이 확정된 여행자는 조기 예약 검토가 필요합니다.',
+    summary: '여름 휴가 항공권 예약 시기는 유류할증료만으로 판단하기 어렵습니다.\n\n7월에는 성수기 수요가 늘 수 있고, 환율 부담도 남아 있습니다. 유류할증료가 크게 내려갈 가능성이 아직 뚜렷하지 않다면 일정이 확정된 여행자는 현재 항공권 총액을 확인하는 편이 낫습니다. 단거리 노선은 유가·환율 변동에 따라 소폭 조정 가능성이 남아 있습니다.',
+    impact: '여름 휴가 항공권 예약 시기, 원달러 환율 항공권 가격, 7월 유류할증료 검색 의도에 대응합니다.',
+    sourceName: '여름 성수기 예약 판단 가이드',
+    sourceUrl: 'index.html',
+    tags: ['NEW','여름 휴가 항공권 예약 시기','7월 유류할증료','항공권 가격 전망','원달러 환율 항공권 가격'],
+    faq: [
+      { q:'7월 여행은 유류할증료 공시를 기다리는 편이 좋나요?', a:'일정이 확정된 성수기 노선은 운임과 좌석 상황이 더 빠르게 움직일 수 있어 항공권 총액 기준으로 조기 확인하는 편이 안전할 수 있습니다.' }
+    ],
+    links: [
+      { href:'index.html', label:'노선별 유류할증료 조회' },
+      { href:'fuel-surcharge-calculator.html', label:'목적지별 총액 확인' }
+    ],
+    i18n: {
+      en: {
+        title:'Summer vacation airfares may need earlier booking decisions',
+        aiBrief:'July overlaps with peak summer demand. If a large surcharge cut is not clear, travelers with fixed schedules may need to check total fares earlier.',
+        summary:'For July travel, do not judge by fuel surcharge alone. Peak demand, FX and seat availability can matter more than waiting for a small surcharge adjustment.',
+        impact:'Matches summer vacation airfare booking timing and July fuel surcharge search intent.'
+      }
+    }
+  }
+];
 
 window.AERO_NEWS_CARDS_20260528 = [
   {

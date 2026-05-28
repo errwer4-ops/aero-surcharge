@@ -2,8 +2,8 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>2026년 7월 유류할증료 전망 | 5월 28일 유가·환율·항공유 뉴스</title>
-  <meta name="description" content="2026.05.28 06:45 KST 기준 2026년 7월 유류할증료 전망입니다. 6월 유류할증료 공시 확정 이후 브렌트유, 원달러 환율, 항공유 가격(MOPS), 중동 리스크, 7월 항공권 예약 타이밍을 정리했습니다." data-i18n-page-desc="news.metaDesc"/>
+  <title>2026년 7월 유류할증료 전망 | 5월 29일 유가·환율·항공유 뉴스</title>
+  <meta name="description" content="2026.05.29 07:00 KST 기준 2026년 6월 항공사별 유류할증료 공시 데이터를 기준으로, 국제유가·항공유·원/달러 환율 흐름을 반영해 2026년 7월 유류할증료 전망과 항공권 예약 판단 포인트를 정리합니다." data-i18n-page-desc="news.metaDesc"/>
   <meta name="google-adsense-account" content="ca-pub-4285114770383510">
   <meta data-i18n-page-title="news.metaTitle"/>
 
@@ -18,11 +18,11 @@
     ]
   }
   </script>
-  <meta property="og:title" content="2026년 7월 유류할증료 전망 | 5월 28일 유가·환율·항공유 뉴스"/>
-  <meta property="og:description" content="2026.05.28 06:45 KST 기준 7월 유류할증료 전망입니다. 국제유가 완화, 고환율 부담, MOPS, 중동 리스크를 분리해 정리했습니다."/>
+  <meta property="og:title" content="2026년 7월 유류할증료 전망 | 5월 29일 유가·환율·항공유 뉴스"/>
+  <meta property="og:description" content="2026.05.29 07:00 KST 기준 6월 확정 데이터 기반 7월 전망입니다. 국제유가 급등세 둔화, 항공유 부담, 원/달러 환율, 여름 휴가 항공권 예약 시기를 정리했습니다."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.com/news.html"/>
-  <meta property="article:modified_time" content="2026-05-28T06:45:00+09:00"/>
+  <meta property="article:modified_time" content="2026-05-29T07:00:00+09:00"/>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="_shared.css"/>
   <link rel="icon" href="/favicon-v2.ico">
@@ -467,9 +467,9 @@ var TODAY_MARKET = {
   brent:   '국제유가: 5월 고점 이후 완화 흐름이 우세하지만 중동 리스크 프리미엄은 완전히 사라지지 않았습니다.',
   brentEn: 'Oil prices: easing after the May peak is positive, but Middle East risk premium has not fully disappeared.',
   fx:      '원달러 환율은 여전히 높은 구간 — 유가 하락에도 항공권 체감가 하락폭을 제한할 수 있음',
-  fxEn:    'USD/KRW remains elevated and can limit perceived airfare relief even when oil prices fall.',
+  geo:     'Geopolitical risk remains a July volatility factor.',
   mops:    '항공유(MOPS): 4월 중순~5월 중순 평균 싱가포르 항공유 가격 하락 — 6월 33단계→27단계 적용의 핵심 배경',
-  mopsEn:  'Jet fuel (MOPS): lower mid-April to mid-May Singapore jet fuel average drove the June Level 33→27 application.',
+  outlook: 'July fuel surcharge outlook remains centered on freeze or small adjustment.',
   geo:     '중동 리스크: 호르무즈 해협, 미국·이란 협상, 국제유가 반등 가능성은 7월 전망의 별도 리스크',
   geoEn:   'Middle East risk: Hormuz, US-Iran talks, and possible oil rebound remain separate July risk factors.',
   outlook: '7월 유류할증료 전망: 하락 가능성 우세, 단 지정학 리스크 재확대 시 변동 가능',
@@ -498,6 +498,21 @@ Object.assign(TODAY_MARKET, {
    · PREDICT_FALLBACK은 TODAY_MARKET과 동일 수치로 통일
    · _forecastLoaded 플래그로 이중 렌더/깜빡임 방지(기존 유지)
    ════════════════════════════════════════════════════════ */
+/* 2026.05.29 TODAY_MARKET override start */
+Object.assign(TODAY_MARKET, {
+  brent: '국제유가: 급등세는 둔화됐지만 항공유 부담이 남아 있어 7월 유류할증료 인하를 단정하기 어렵습니다.',
+  mops: '항공유 가격(MOPS): 고점 대비 일부 진정됐지만 여전히 높은 구간입니다. 7월은 동결 또는 소폭 조정 가능성 중심으로 봅니다.',
+  fx: '원달러 환율: 유가가 일부 내려도 환율이 높으면 소비자 체감 인하는 제한될 수 있습니다.',
+  geo: '지정학 리스크: 국제유가와 항공유 가격이 다시 흔들릴 수 있는 변수입니다.',
+  outlook: '7월 유류할증료 전망: 동결 또는 소폭 조정 가능성 중심입니다. 인하 전환은 아직 확신하기 어렵습니다.',
+  brentEn: 'Oil: the spike has slowed, but jet fuel burden remains and a July surcharge cut is not certain.',
+  mopsEn: 'Jet fuel price (MOPS): still elevated after easing from highs. July is centered on freeze or small adjustment scenarios.',
+  fxEn: 'USD/KRW: elevated FX can limit consumer relief even if oil eases.',
+  geoEn: 'Geopolitical risk: a variable that can revive oil and jet fuel volatility.',
+  outlookEn: 'July fuel surcharge outlook: freeze or small adjustment is central. A clear cut is not yet certain.'
+});
+/* 2026.05.29 TODAY_MARKET override end */
+
 function renderPredictBasis(){
   var box = document.getElementById('predictFactors');
   if(!box) return;
@@ -1280,8 +1295,8 @@ var FIXED_NEWS_FALLBACK = {
     'news.fixed.20260502p1.tag3': 'MOPS',             'news.fixed.20260502p1.tag4': '환율',
     'news.fixed.20260502p1.tag5': '6월 유류할증료',
 
-    'news.fixed.20260502p2.title':   '6월 유류할증료 전망 — 인하 가능성 우세 강화',
-    'news.fixed.20260502p2.summary': '2026.05.02 08:50 기준 최신 시장 흐름에서는 브렌트유 하락, 원달러 환율 하락 전환 지속, 항공유/MOPS 500선 이탈이 동시에 확인됩니다. 이에 따라 6월 유류할증료 전망은 기존 \'인하 가능성 우세\'에서 \'인하 가능성 우세 강화\'로 조정됩니다. 다만 항공사별 최종 금액은 5월 중 발표되는 6월 공식 공시 전까지 확정할 수 없으므로, 현재는 참고 전망으로 표기합니다.',
+    'news.fixed.20260502p2.title':   '5월 초 시장 기록 — 6월 공시 전 인하 가능성 강화',
+    'news.fixed.20260502p2.summary': '2026.05.02 08:50 기준 최신 시장 흐름에서는 브렌트유 하락, 원달러 환율 하락 전환 지속, 항공유/MOPS 500선 이탈이 동시에 확인됩니다. 이에 따라 5월 초의 6월 공시 전 방향성은 기존 인하 가능성 우세에서 인하 가능성 우세 강화로 조정됐습니다. 다만 항공사별 최종 금액은 5월 중 발표되는 6월 공식 공시 전까지 확정할 수 없으므로, 현재는 과거 참고 기록으로 표기합니다.',
     'news.fixed.20260502p2.impact':  '6월 유류할증료 인하 가능성 우세 강화. 일부 구간은 동결 가능. 최종 판단은 항공사 공식 공시 확인 필요.',
     'news.fixed.20260502p2.source':  '시장 데이터 기반 참고 전망 (2026.05.02)',
     'news.fixed.20260502p2.tag1': '6월 유류할증료', 'news.fixed.20260502p2.tag2': '인하 가능성',
@@ -1297,7 +1312,7 @@ var FIXED_NEWS_FALLBACK = {
     'news.fixed.20260501p1.tag3': 'MOPS',             'news.fixed.20260501p1.tag4': '6월 유류할증료',
 
     'news.fixed.20260501p2.title':   '6월 유류할증료 — 인하 가능성 우세 (2026.05.01 기준)',
-    'news.fixed.20260501p2.summary': '2026.05.01 09:00 기준, 6월 유류할증료 전망이 기존 "동결 중심"에서 "인하 우세"로 방향 전환됩니다. 브렌트유 하락, 원화 강세 전환, 항공유 500선 붕괴가 동시에 진행 중으로 하락 사이클 초입 진입이 확인됩니다. 중동 리스크가 하방을 일부 제한하고 있으나, 3개 지표 동시 하락이라는 핵심 조건이 충족되어 인하 가능성이 우세합니다.',
+    'news.fixed.20260501p2.summary': '2026.05.01 09:00 기준, 5월 초의 6월 공시 전 방향성은 기존 동결 중심에서 인하 우세로 방향 전환됐습니다. 브렌트유 하락, 원화 강세 전환, 항공유 500선 붕괴가 동시에 진행 중으로 하락 사이클 초입 진입이 확인됩니다. 중동 리스크가 하방을 일부 제한하고 있으나, 3개 지표 동시 하락이라는 핵심 조건이 충족되어 인하 가능성이 우세했습니다.',
     'news.fixed.20260501p2.impact':  '6월 유류할증료 인하 가능성 우세. 일부 구간 동결 가능. 하락폭 확인 후 장거리 예약 권장.',
     'news.fixed.20260501p2.source':  '시장 데이터 기반 참고 전망 (2026.05.01)',
     'news.fixed.20260501p2.tag1': '6월 유류할증료', 'news.fixed.20260501p2.tag2': '인하 가능성 우세',
@@ -1311,7 +1326,7 @@ var FIXED_NEWS_FALLBACK = {
     'news.fixed.20260430p1.tag3': 'MOPS',             'news.fixed.20260430p1.tag4': '6월 유류할증료',
 
     'news.fixed.20260430p2.title':   '6월 유류할증료 — 인하 가능성 등장 (2026.04.30 기준)',
-    'news.fixed.20260430p2.summary': '최신 시장 데이터(2026.04.30) 기준, 6월 유류할증료 전망이 기존 "상승 또는 동결" 구조에서 "동결 + 일부 인하 가능" 구조로 변화하고 있습니다. 완전한 하락장은 아니지만 상승 사이클의 종료가 감지되며 일부 구간에서 제한적 인하 가능성이 처음으로 등장했습니다.',
+    'news.fixed.20260430p2.summary': '최신 시장 데이터(2026.04.30) 기준, 5월 초의 6월 공시 전 방향성은 기존 상승 또는 동결 구조에서 동결 + 일부 인하 가능 구조로 변화했습니다. 완전한 하락장은 아니지만 상승 사이클의 종료가 감지되며 일부 구간에서 제한적 인하 가능성이 처음으로 등장했습니다.',
     'news.fixed.20260430p2.impact':  '6월 유류할증료 동결 가능성이 가장 높으며, 일부 구간에서 제한적 인하 가능성 존재. 예약 전 변동 여부를 반드시 확인하세요.',
     'news.fixed.20260430p2.source':  '시장 데이터 기반 참고 전망 (2026.04.30)',
     'news.fixed.20260430p2.tag1': '6월 유류할증료', 'news.fixed.20260430p2.tag2': '인하 가능성',
@@ -1339,7 +1354,7 @@ var FIXED_NEWS_FALLBACK = {
     'news.fixed.20260427p3.tag1': 'MOPS', 'news.fixed.20260427p3.tag2': '항공유',
     'news.fixed.20260427p3.tag3': '유류할증료 전망', 'news.fixed.20260427p3.tag4': '여름성수기',
 
-    'news.fixed.20260427p4.title':   '6월 유류할증료 전망 — 인하보다 동결 가능성 우세',
+    'news.fixed.20260427p4.title':   '4월 말 시장 기록 — 인하보다 동결 가능성 우세',
     'news.fixed.20260427p4.summary': '현재 시장 구조에서는 유가 급락, 환율 안정, 항공유 가격 하락이 동시에 나타나지 않는 한 6월 유류할증료가 크게 내려가기는 어렵습니다. 현재 기준으로는 동결 또는 제한적 상승 가능성이 더 현실적인 시나리오입니다.',
     'news.fixed.20260427p4.impact':  '단기 여행자는 현재 공시 기준으로 총액을 확인하고, 여유 일정은 5월 중 6월 공시를 추가 확인하는 것이 좋습니다.',
     'news.fixed.20260427p4.source':  '시장 데이터 기반 참고 전망 (2026.04.27)',
@@ -1438,8 +1453,8 @@ var FIXED_NEWS_FALLBACK = {
     'news.fixed.20260422tw5.tag3': '고점',             'news.fixed.20260422tw5.tag4': '유류할증료 계산',
 
     /* 카드 7: 과거 6월 시장 전망 (아카이브) */
-    'news.fixed.20260422tw6.title':   '6월 유류할증료 전망 — 동결 또는 소폭 인하 가능성',
-    'news.fixed.20260422tw6.summary': '시장 데이터 기반 6월 유류할증료 전망(참고용): 브렌트유가 현 박스권(83~86달러)에서 추가 하락 시 6월 유류할증료 동결 또는 소폭 인하 가능성이 있습니다. 반면 환율 1,370원대가 유지되거나 중동 리스크가 재확산되면 인하 폭이 제한될 수 있습니다. 6월 공시는 5월 중 각 항공사 공식 채널에서 확인 가능합니다. 국제선 유류할증료 전망은 참고용이며 확정 수치가 아닙니다.',
+    'news.fixed.20260422tw6.title':   '4월 시장 기록 — 동결 또는 소폭 인하 가능성',
+    'news.fixed.20260422tw6.summary': '시장 데이터 기반 과거 참고 기록: 브렌트유가 당시 박스권(83~86달러)에서 추가 하락할 경우 6월 공시 전 방향성은 동결 또는 소폭 인하 가능성이 있었습니다. 반면 환율 1,370원대가 유지되거나 중동 리스크가 재확산되면 인하 폭이 제한될 수 있었습니다. 현재는 6월 공시가 확정됐고, 콘텐츠 중심은 7월 방향성입니다.',
     'news.fixed.20260422tw6.impact':  '6월 동결 ~ 소폭 인하 가능성 있으나 확정 전까지 미확인. 공시 후 유류할증료 조회로 실제 금액 반드시 확인.',
     'news.fixed.20260422tw6.source':  '시장 데이터 기반 참고 전망 (2026.04.22)',
     'news.fixed.20260422tw6.tag1': '유류할증료 전망', 'news.fixed.20260422tw6.tag2': '6월',
@@ -1488,7 +1503,7 @@ var FIXED_NEWS_FALLBACK = {
     'news.fixed.20260423m3.tag3': '5월공시완료', 'news.fixed.20260423m3.tag4': '유류할증료 조회',
 
     /* m4: 과거 6월 시장 전망 (아카이브) */
-    'news.fixed.20260423m4.title':   '6월 유류할증료 전망 — 인하 단정 어려움, 유지·변동 가능성 열려 있음',
+    'news.fixed.20260423m4.title':   '4월 시장 기록 — 인하 단정 어려움, 유지·변동 가능성 열려 있음',
     'news.fixed.20260423m4.summary': '2026년 6월 국제선 유류할증료는 유가·환율·지정학 변수에 따라 유지 또는 변동 가능성이 모두 열려 있습니다. 브렌트유가 $99~100 안팎에서 내려오지 않고 원달러 환율도 고환율 구간을 유지할 경우, 6월 인하를 단정짓기 어렵습니다. 반대로 유가 급락이나 지정학 완화가 빠르게 진행될 경우 소폭 조정 여지는 있습니다. 6월 공시는 5월 중 각 항공사 공식 채널에서 확인 가능합니다. 이 내용은 참고용 해석이며 확정 전망이 아닙니다.',
     'news.fixed.20260423m4.impact':  '6월 방향 미확정. 유가·환율·지정학 3가지 변수 추이 확인 필요. 공시 발표 후 유류할증료 조회로 실제 금액 확인 권장.',
     'news.fixed.20260423m4.source':  '시장 데이터 기반 참고 (2026.04.23)',
@@ -1530,7 +1545,7 @@ var FIXED_NEWS_FALLBACK = {
     'news.fixed.20260424c.tag3': '유류할증료 전망', 'news.fixed.20260424c.tag4': '시장',
 
     /* 카드 d: 과거 6월 시장 전망 (아카이브) */
-    'news.fixed.20260424d.title':   '6월 유류할증료 전망 — 인하 가능성 낮음',
+    'news.fixed.20260424d.title':   '4월 시장 기록 — 인하 가능성 낮음',
     'news.fixed.20260424d.summary': '현재 시장 구조에서는 유류할증료가 급격히 하락할 가능성은 낮습니다. 유가 하락이나 환율 안정이 동반되지 않는 이상, 6월은 유지 또는 소폭 변동 가능성이 높은 구간입니다.',
     'news.fixed.20260424d.impact':  '인하 기대보다는 유지 시나리오 우세',
     'news.fixed.20260424d.source':  '시장 데이터 기반 참고 (2026.04.24)',
@@ -1548,7 +1563,7 @@ var FIXED_NEWS_FALLBACK = {
     'news.fixed.20260425p1.tag3': '브렌트유',         'news.fixed.20260425p1.tag4': '6월 유류할증료',
 
     /* 카드 p2: 과거 6월 시장 전망 (아카이브) */
-    'news.fixed.20260425p2.title':   '6월 유류할증료 전망 — 동결 또는 제한적 상승 가능성 우세',
+    'news.fixed.20260425p2.title':   '4월 말 시장 기록 — 동결 또는 제한적 상승 가능성 우세',
     'news.fixed.20260425p2.summary': '6월 유류할증료는 4월 평균 유가 및 환율 흐름을 기준으로 산정됩니다. 현재 유가는 급등보다는 고점권 횡보에 가깝지만, 원달러 환율이 높은 수준을 유지하고 있어 항공사 비용 부담은 쉽게 낮아지지 않는 구조입니다. 특히 KRW 기준으로 공시되는 항공사의 경우 환율 영향이 실제 공시 금액에 크게 반영될 수 있습니다.',
     'news.fixed.20260425p2.impact':  '유가 안정만으로는 인하를 단정하기 어렵고, 환율이 핵심 변수입니다.',
     'news.fixed.20260425p2.source':  '시장 데이터 기반 참고 전망 (2026.04.25)',
@@ -2733,7 +2748,8 @@ var FIXED_NEWS = [
    tags:['환율','USDKRW']}
 ];
 
-FIXED_NEWS = (window.AERO_NEWS_CARDS_20260528 || [])
+FIXED_NEWS = (window.AERO_NEWS_CARDS_20260529 || [])
+  .concat(window.AERO_NEWS_CARDS_20260528 || [])
   .concat(window.AERO_NEWS_CARDS_20260527 || [])
   .concat(window.AERO_NEWS_CARDS_20260526 || [])
   .concat(window.AERO_NEWS_CARDS_20260525 || [])
@@ -3503,6 +3519,79 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
 });
 ['ja','zh','fr','de'].forEach(function(lang){ if (!window.PAGE_I18N_OVERRIDE[lang]) window.PAGE_I18N_OVERRIDE[lang] = {}; Object.keys(window.PAGE_I18N_OVERRIDE.en).forEach(function(key){ window.PAGE_I18N_OVERRIDE[lang][key] = window.PAGE_I18N_OVERRIDE.en[key]; }); });
 /*2026.05.28 page override end */
+
+/* 2026.05.29 page override start */
+Object.assign(window.PAGE_I18N_OVERRIDE.ko, {
+  'news.metaTitle': '2026년 7월 유류할증료 전망 | 5월 29일 유가·환율·항공유 뉴스',
+  'news.metaDesc': '2026.05.29 07:00 KST 기준 2026년 6월 항공사별 유류할증료 공시 데이터를 기준으로, 국제유가·항공유·원/달러 환율 흐름을 반영해 2026년 7월 유류할증료 전망과 항공권 예약 판단 포인트를 정리합니다.',
+  'news.pageTitle': '2026년 7월 유류할증료 전망과 국제선 유류할증료 뉴스',
+  'news.pageSub': '2026.05.29 07:00 KST 기준 · 2026년 6월 확정 데이터 기반 7월 전망 · 유가·항공유·원달러 환율 점검',
+  'news.summary.title': '2026년 7월 유류할증료 전망 요약',
+  'news.summary.updated': '2026.05.29 07:00 KST 기준 · currentMonthNotice=2026-06 · forecastTargetMonth=2026-07',
+  'news.summary.li1': '2026년 6월 유류할증료 공시는 확정 데이터로 유지합니다.',
+  'news.summary.li2': '콘텐츠 중심은 2026년 7월 유류할증료 전망입니다.',
+  'news.summary.li3': '국제유가 급등세는 둔화됐지만 항공유 가격 부담은 여전히 남아 있습니다.',
+  'news.summary.li4': '원달러 환율이 높은 수준이면 유가가 내려도 항공권 체감 인하는 제한될 수 있습니다.',
+  'news.summary.li5': '7월 전망은 인하 확정이 아니라 동결 또는 소폭 조정 가능성 중심으로 봅니다.',
+  'news.summary.li6': '여름 휴가 항공권 예약 시기는 유류할증료보다 총액과 좌석 상황까지 함께 판단해야 합니다.',
+  'news.marketTitle': '시장 브리핑 (2026.05.29 07:00 KST 기준)',
+  'news.brent': '국제유가: 급등세는 둔화됐지만 항공유 부담이 남아 있어 7월 유류할증료 인하를 단정하기 어렵습니다.',
+  'news.fx': '원달러 환율: 유가가 일부 내려도 환율이 높으면 소비자 체감 인하는 제한될 수 있습니다.',
+  'news.mops': '항공유 가격(MOPS): 7월 유류할증료는 항공유 평균, 환율, 항공사 공시 시차를 함께 봐야 합니다.',
+  'news.geo': '중동 리스크: 국제유가와 항공유 가격의 재변동 가능성을 만드는 변수입니다.',
+  'news.marketSummary': '→ 2026년 7월 유류할증료 전망은 동결 또는 소폭 조정 가능성 중심입니다. 인하 전환은 아직 확신하기 어렵습니다.',
+  'news.fxDominance': '7월 변수: 항공유 가격(MOPS) + 원달러 환율 + 성수기 수요 + 공시 시차',
+  'news.dataRef': '6월 확정 데이터 기반 7월 전망 · 2026.05.29 07:00 KST 기준',
+  'news.curSummary': '6월은 공시 완료 항공사의 확정 데이터이고, 7월은 국제유가·항공유·원달러 환율 흐름 기반 전망입니다.',
+  'news.decisionTitle': '여름 성수기 전 예약 판단 기준',
+  'news.decisionLine1': '→ 일정이 확정된 여행자는 유류할증료만 기다리기보다 현재 항공권 총액을 확인할 가치가 있습니다.',
+  'news.decisionLine2': '→ 단거리 노선은 유가·환율 변동에 따라 소폭 조정 가능성이 남아 있습니다.',
+  'news.decisionShort': '단거리: 소폭 조정 가능성은 남아 있으나 총액 확인 필요',
+  'news.decisionMid': '중거리: 환율과 항공유 흐름을 함께 확인',
+  'news.decisionLong': '장거리·성수기: 좌석 상황과 항공권 총액 기준 판단',
+  'news.forecastCta.title': '2026년 7월 유류할증료 전망 — 5월 29일 시장 점검',
+  'news.forecastCta.desc': '6월 확정 데이터 이후 국제유가 급등세 둔화, 항공유 부담, 원달러 환율 변수를 분리해 7월 방향성을 정리했습니다.',
+  'news.basisBody': '7월 공시는 아직 확정 전입니다. 이 페이지는 2026.05.29 07:00 KST 기준으로 6월 확정 공시와 7월 시장 전망을 분리해 정리합니다.'
+});
+Object.assign(window.PAGE_I18N_OVERRIDE.en, {
+  'news.metaTitle': 'July 2026 Fuel Surcharge Outlook | May 29 Oil, FX and Jet Fuel News',
+  'news.metaDesc': 'As of 2026.05.29 07:00 KST, this page uses confirmed June airline fuel surcharge filings and oil, jet fuel and USD/KRW trends to summarize the July 2026 fuel surcharge outlook and airfare booking guide.',
+  'news.pageTitle': 'July 2026 Fuel Surcharge Outlook and International Fuel Surcharge News',
+  'news.pageSub': 'As of 2026.05.29 07:00 KST · July outlook based on confirmed June data · Oil, jet fuel and USD/KRW check',
+  'news.summary.title': 'July 2026 Fuel Surcharge Outlook Summary',
+  'news.summary.updated': 'As of 2026.05.29 07:00 KST · currentMonthNotice=2026-06 · forecastTargetMonth=2026-07',
+  'news.summary.li1': 'June 2026 fuel surcharge filings remain confirmed data.',
+  'news.summary.li2': 'The content focus is the July 2026 fuel surcharge outlook.',
+  'news.summary.li3': 'The oil spike has slowed, but jet fuel remains a burden.',
+  'news.summary.li4': 'Elevated USD/KRW can limit consumer relief even if oil eases.',
+  'news.summary.li5': 'The July outlook is centered on freeze or small adjustment, not a confirmed cut.',
+  'news.summary.li6': 'For summer vacation booking timing, compare total airfare and seat availability, not surcharge alone.',
+  'news.marketTitle': 'Market Briefing (as of 2026.05.29 07:00 KST)',
+  'news.brent': 'Oil: the spike has slowed, but jet fuel burden remains and a July surcharge cut is not certain.',
+  'news.fx': 'USD/KRW: elevated FX can limit consumer relief even when oil eases.',
+  'news.mops': 'Jet fuel price (MOPS): July needs MOPS averages, FX and airline filing lag checked together.',
+  'news.geo': 'Middle East risk: a variable that can revive oil and jet fuel volatility.',
+  'news.marketSummary': '→ July 2026 fuel surcharge outlook: freeze or small adjustment is central; a clear cut is not yet certain.',
+  'news.fxDominance': 'July variables: MOPS + USD/KRW + peak-season demand + filing lag',
+  'news.dataRef': 'July outlook based on confirmed June data · As of 2026.05.29 07:00 KST',
+  'news.curSummary': 'June is confirmed filing data, while July is an outlook based on oil, jet fuel and USD/KRW trends.',
+  'news.decisionTitle': 'Pre-summer Booking Guide',
+  'news.decisionLine1': '→ Travelers with fixed schedules should check current total airfare instead of waiting only for surcharge changes.',
+  'news.decisionLine2': '→ Short-haul routes still have room for small adjustments depending on oil and FX.',
+  'news.decisionShort': 'Short haul: small adjustment possible, but total fare should be checked',
+  'news.decisionMid': 'Medium haul: watch FX and jet fuel together',
+  'news.decisionLong': 'Long haul and peak season: judge by seats and total airfare',
+  'news.forecastCta.title': 'July 2026 Fuel Surcharge Outlook — May 29 Market Check',
+  'news.forecastCta.desc': 'After confirmed June data, this update separates slowing oil momentum, jet fuel burden and USD/KRW variables for July.',
+  'news.basisBody': 'July filings are not confirmed yet. This page separates confirmed June filings from the July market outlook as of 2026.05.29 07:00 KST.'
+});
+['ja','zh','fr','de'].forEach(function(lang){
+  if (!window.PAGE_I18N_OVERRIDE[lang]) window.PAGE_I18N_OVERRIDE[lang] = {};
+  Object.keys(window.PAGE_I18N_OVERRIDE.en).forEach(function(key){
+    window.PAGE_I18N_OVERRIDE[lang][key] = window.PAGE_I18N_OVERRIDE.en[key];
+  });
+});
+/* 2026.05.29 page override end */
 
 window.initNav({
   onLangChange:function(){
