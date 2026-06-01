@@ -4966,6 +4966,125 @@ window.AERO_NEWS_CARDS_20260601 = [
 ];
 window.AERO_NEWS_LATEST = window.AERO_MARKET_BRIEF_20260601;
 
+/* 2026.06 index readiness copy.
+   Keeps June confirmed notices and July notice-prep status separate on the main page. */
+(function(){
+  if (!window.I18N) return;
+  var ko = {
+    'index.title':'유류할증료 조회 — 6월 확정 공시와 7월 공시 준비',
+    'index.metaDesc':'한국 출발 국제선 항공사별 유류할증료를 노선·거리구간별로 비교하고, 2026년 6월 확정 공시와 7월 유류할증료 공시 준비 상태를 확인합니다.',
+    'index.heroTitle':'노선별 유류할증료 조회',
+    'index.heroSub':'6월 확정 공시를 기준으로 비교하고 7월 공시 준비 상태를 확인하세요',
+    'index.signal1':'6월 공식 공시 반영 완료',
+    'index.signal2':'노선별 현재 적용 금액 확인',
+    'index.signal3':'7월 공시 입력 준비 중',
+    'index.decision.title':'6월 확정 공시 기준 · 7월 공시 입력 준비',
+    'index.decision.line1':'6월 유류할증료는 KE·OZ·LJ·BX·ZE·RS·TW·7C·YP 공식 공시 데이터를 기준으로 제공합니다.',
+    'index.decision.line2':'7월 유류할증료는 아직 확정 전이며, 항공사 공식 공지가 나오는 순서대로 별도 입력할 예정입니다.',
+    'index.decision.line3':'7월 입력 전에는 항공유 가격, 원/달러 환율, 국제유가와 호르무즈 리스크를 함께 점검합니다.',
+    'index.decision.conclusion':'현재 조회 결과는 6월 확정 데이터입니다. 7월 금액은 공시 확인 후 확정 데이터로 전환합니다.',
+    'index.readiness.title':'7월 유류할증료 공시 입력 준비',
+    'index.readiness.badge':'공시 전 · 대기 중',
+    'index.readiness.baseLabel':'확정 기준',
+    'index.readiness.baseText':'2026년 6월 공식 공시 데이터 유지',
+    'index.readiness.targetLabel':'다음 입력',
+    'index.readiness.targetText':'2026년 7월 항공사별 공시 확인 후 반영',
+    'index.readiness.watchLabel':'점검 변수',
+    'index.readiness.watchText':'항공유 가격, 원/달러 환율, 호르무즈 리스크',
+    'index.readiness.note':'7월 공시는 아직 확정 전입니다. 현재 노선 조회 결과는 6월 확정 공시를 기준으로 제공하며, 7월 데이터는 항공사 공식 공지가 확인되는 순서대로 입력할 예정입니다.',
+    'index.readiness.link':'2026년 7월 유류할증료 전망 보기 →',
+    'index.status.updatedSuffix':' · 2026년 6월 공식 공시 반영 · 7월 공시 입력 준비 중',
+    'index.meta.suffix':'한국 출발 국제선 · 2026년 6월 공식 공시 반영 · 7월 공시 준비 중',
+    'aff.myrealtrip.desc':'유류할증료는 발권 시점 기준으로 적용됩니다. 현재 6월 확정 공시 금액을 확인한 뒤, 같은 목적지의 실제 항공권 총액도 함께 비교하세요.',
+    'index.quick.compare.name':'2026년 5월 → 6월 유류할증료 비교',
+    'index.quick.compare.desc':'6월 확정 공시와 5월 적용 금액 비교',
+    'index.quick.jul.name':'2026년 7월 유류할증료 전망',
+    'index.quick.jul.desc':'7월 공시 전 항공유·환율·국제유가 변수 점검'
+  };
+  var en = {
+    'index.title':'Fuel surcharge search — confirmed June notices and July filing preparation',
+    'index.metaDesc':'Compare Korea-departure international fuel surcharges by airline and route, and check confirmed June 2026 notices plus July 2026 filing preparation status.',
+    'index.heroSub':'Compare confirmed June notices and check July filing preparation status',
+    'index.signal1':'June official notices reflected',
+    'index.signal2':'Check current route amounts',
+    'index.signal3':'July filing preparation',
+    'index.decision.title':'Confirmed June baseline · July filing preparation',
+    'index.decision.line1':'June surcharges are based on official notices for KE, OZ, LJ, BX, ZE, RS, TW, 7C and YP.',
+    'index.decision.line2':'July surcharges are not confirmed yet and will be entered separately as airline notices are released.',
+    'index.decision.line3':'Before July entry, we monitor jet fuel prices, USD/KRW, oil prices and Strait of Hormuz risk.',
+    'index.decision.conclusion':'Current route results are confirmed June data. July amounts will switch to confirmed data after official notices are verified.',
+    'index.readiness.title':'July fuel surcharge filing preparation',
+    'index.readiness.badge':'Pre-filing · waiting',
+    'index.readiness.baseLabel':'Confirmed base',
+    'index.readiness.baseText':'Keep June 2026 official notice data',
+    'index.readiness.targetLabel':'Next entry',
+    'index.readiness.targetText':'Add July 2026 airline notices after verification',
+    'index.readiness.watchLabel':'Variables',
+    'index.readiness.watchText':'Jet fuel, USD/KRW, oil and Hormuz risk',
+    'index.readiness.note':'July filings are not confirmed yet. Current route results use confirmed June notices, and July data will be entered as each airline official notice is verified.',
+    'index.readiness.link':'View July 2026 fuel surcharge outlook →',
+    'index.status.updatedSuffix':' · June 2026 official notices reflected · July filing preparation',
+    'index.meta.suffix':'Korea departure · June 2026 official notices reflected · July filing preparation',
+    'aff.myrealtrip.desc':'Fuel surcharges apply by ticketing date. After checking confirmed June amounts, compare the actual total airfare for the same destination.'
+  };
+  var ja = {
+    'index.title':'燃油サーチャージ検索 — 6月確定公示と7月公示準備',
+    'index.metaDesc':'韓国発国際線の燃油サーチャージを航空会社・路線別に比較し、2026年6月確定公示と7月公示準備状況を確認できます。',
+    'index.heroSub':'6月確定公示を基準に比較し、7月公示準備状況を確認してください',
+    'index.signal1':'6月公式公示反映済み',
+    'index.signal2':'路線別の現在適用額を確認',
+    'index.signal3':'7月公示入力準備中',
+    'index.decision.title':'6月確定公示基準 · 7月公示入力準備',
+    'index.decision.line1':'6月燃油サーチャージはKE・OZ・LJ・BX・ZE・RS・TW・7C・YPの公式公示データを基準に表示します。',
+    'index.decision.line2':'7月燃油サーチャージはまだ確定前で、各航空会社の公式公示確認後に順次入力します。',
+    'index.decision.line3':'7月入力前には航空燃油価格、USD/KRW、国際原油価格、ホルムズ海峡リスクを確認します。',
+    'index.decision.conclusion':'現在の検索結果は6月確定データです。7月金額は公示確認後に確定データへ切り替えます。',
+    'index.readiness.title':'7月燃油サーチャージ公示入力準備',
+    'index.readiness.badge':'公示前 · 待機中',
+    'index.readiness.baseLabel':'確定基準',
+    'index.readiness.baseText':'2026年6月公式公示データを維持',
+    'index.readiness.targetLabel':'次の入力',
+    'index.readiness.targetText':'2026年7月航空会社別公示確認後に反映',
+    'index.readiness.watchLabel':'確認変数',
+    'index.readiness.watchText':'航空燃油価格、USD/KRW、ホルムズリスク',
+    'index.readiness.note':'7月公示はまだ確定前です。現在の路線検索結果は6月確定公示を基準に提供し、7月データは航空会社公式公示が確認され次第入力します。',
+    'index.readiness.link':'2026年7月燃油サーチャージ見通しを見る →',
+    'index.status.updatedSuffix':' · 2026年6月公式公示反映 · 7月公示入力準備中',
+    'index.meta.suffix':'韓国発国際線 · 2026年6月公式公示反映 · 7月公示準備中',
+    'aff.myrealtrip.desc':'燃油サーチャージは発券日基準で適用されます。6月確定公示額を確認した後、同じ目的地の航空券総額も比較してください。'
+  };
+  var zh = {
+    'index.title':'燃油附加费查询 — 6月已确认公告与7月公告准备',
+    'index.metaDesc':'按航空公司和航线比较韩国出发国际线燃油附加费，并确认2026年6月已确认公告及7月公告准备状态。',
+    'index.heroSub':'以6月已确认公告为基准比较，并确认7月公告准备状态',
+    'index.signal1':'6月官方公告已反映',
+    'index.signal2':'查看航线当前适用金额',
+    'index.signal3':'7月公告录入准备中',
+    'index.decision.title':'6月已确认公告基准 · 7月公告录入准备',
+    'index.decision.line1':'6月燃油附加费基于KE、OZ、LJ、BX、ZE、RS、TW、7C、YP官方公告数据提供。',
+    'index.decision.line2':'7月燃油附加费尚未确认，将在各航空公司官方公告确认后依次录入。',
+    'index.decision.line3':'7月录入前，将同时观察航空燃油价格、美元/韩元、国际油价和霍尔木兹风险。',
+    'index.decision.conclusion':'当前查询结果为6月确认数据。7月金额将在公告确认后切换为确认数据。',
+    'index.readiness.title':'7月燃油附加费公告录入准备',
+    'index.readiness.badge':'公告前 · 等待中',
+    'index.readiness.baseLabel':'确认基准',
+    'index.readiness.baseText':'维持2026年6月官方公告数据',
+    'index.readiness.targetLabel':'下一步录入',
+    'index.readiness.targetText':'确认2026年7月各航空公司公告后反映',
+    'index.readiness.watchLabel':'观察变量',
+    'index.readiness.watchText':'航空燃油价格、美元/韩元、霍尔木兹风险',
+    'index.readiness.note':'7月公告尚未确认。当前航线查询结果以6月已确认公告为基准，7月数据将在航空公司官方公告确认后依次录入。',
+    'index.readiness.link':'查看2026年7月燃油附加费展望 →',
+    'index.status.updatedSuffix':' · 2026年6月官方公告已反映 · 7月公告录入准备中',
+    'index.meta.suffix':'韩国出发国际线 · 2026年6月官方公告已反映 · 7月公告准备中',
+    'aff.myrealtrip.desc':'燃油附加费按出票日期适用。确认6月已确定公告金额后，也请比较同一目的地的实际机票总价。'
+  };
+  Object.assign(window.I18N.ko || (window.I18N.ko = {}), ko);
+  Object.assign(window.I18N.en || (window.I18N.en = {}), en);
+  Object.assign(window.I18N.ja || (window.I18N.ja = {}), ja);
+  Object.assign(window.I18N.zh || (window.I18N.zh = {}), zh);
+})();
+
 var _origInitNav = window.initNav;
 window.initNav = function(opts){
   opts = opts || {};

@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>유류할증료 조회 — 한국 출발 국제선 항공사별 비교</title>
-  <meta name="description" content="한국 출발 국제선 항공사별 유류할증료를 노선·거리구간별로 비교합니다."
+  <title>유류할증료 조회 — 6월 확정 공시와 7월 공시 준비</title>
+  <meta name="description" content="한국 출발 국제선 항공사별 유류할증료를 노선·거리구간별로 비교하고, 2026년 6월 확정 공시와 7월 유류할증료 공시 준비 상태를 확인합니다."
         data-i18n-page-title="index.title"
         data-i18n-page-desc="index.metaDesc"/>
   <meta name="google-adsense-account" content="ca-pub-4285114770383510">
 
   <link rel="canonical" href="https://aero-surcharge.com/"/>
-  <meta property="og:title" content="유류할증료 조회 — 한국 출발 국제선 항공사별 비교"/>
-  <meta property="og:description" content="한국 출발 국제선 항공사별 유류할증료를 노선·거리구간별로 비교합니다."/>
+  <meta property="og:title" content="유류할증료 조회 — 6월 확정 공시와 7월 공시 준비"/>
+  <meta property="og:description" content="한국 출발 국제선 항공사별 유류할증료를 노선·거리구간별로 비교하고, 2026년 7월 공시 준비 상태를 확인합니다."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.com/"/>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
@@ -230,6 +230,17 @@
     .decision-list { padding-left:18px; margin:0 0 10px; }
     .decision-list li { margin-bottom:4px; font-size:13px; color:var(--text2,#555); }
     .decision-conclusion { font-weight:600; color:#0284C7; font-size:13px; }
+    .notice-readiness-card { background:#FFF7ED; border:1px solid #FDBA74; border-radius:12px; padding:16px; margin-bottom:14px; }
+    .notice-readiness-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:10px; }
+    .notice-readiness-title { font-size:14px; font-weight:800; color:#9A3412; }
+    .notice-readiness-badge { display:inline-flex; align-items:center; border-radius:999px; padding:4px 9px; font-size:11px; font-weight:800; color:#9A3412; background:#FFEDD5; border:1px solid #FED7AA; white-space:nowrap; }
+    .notice-readiness-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:10px; }
+    .notice-readiness-item { background:#fff; border:1px solid #FED7AA; border-radius:9px; padding:10px; }
+    .notice-readiness-label { font-size:10px; font-weight:800; color:#9A3412; margin-bottom:4px; text-transform:uppercase; letter-spacing:.5px; }
+    .notice-readiness-text { font-size:12px; color:#432818; line-height:1.5; }
+    .notice-readiness-note { font-size:12px; color:#7C2D12; line-height:1.65; }
+    .notice-readiness-link { display:inline-flex; align-items:center; margin-top:8px; color:#075985; font-weight:700; text-decoration:none; font-size:12px; }
+    .notice-readiness-link:hover { text-decoration:underline; }
 
     /* ════════════════════════════════════════
        모바일 UX (700px 이하)
@@ -266,6 +277,8 @@
       .guide-block { padding: 16px 16px; }
       .booking-decision-card { padding: 14px; }
       .decision-list li { font-size: 12px; }
+      .notice-readiness-head { flex-direction:column; align-items:flex-start; gap:6px; }
+      .notice-readiness-grid { grid-template-columns:1fr; }
       .guide-block-body { font-size: 12px; }
     }
 
@@ -693,6 +706,32 @@
       <div class="decision-title" id="decisionTitle"></div>
       <ul class="decision-list" id="decisionList"></ul>
       <div class="decision-conclusion" id="decisionConclusion"></div>
+    </div>
+
+    <!-- 7월 공시 입력 준비 상태 -->
+    <div class="notice-readiness-card" id="julyNoticeReadinessCard">
+      <div class="notice-readiness-head">
+        <div class="notice-readiness-title" data-i18n="index.readiness.title">7월 유류할증료 공시 입력 준비</div>
+        <div class="notice-readiness-badge" data-i18n="index.readiness.badge">공시 전 · 대기 중</div>
+      </div>
+      <div class="notice-readiness-grid">
+        <div class="notice-readiness-item">
+          <div class="notice-readiness-label" data-i18n="index.readiness.baseLabel">확정 기준</div>
+          <div class="notice-readiness-text" data-i18n="index.readiness.baseText">2026년 6월 공식 공시 데이터 유지</div>
+        </div>
+        <div class="notice-readiness-item">
+          <div class="notice-readiness-label" data-i18n="index.readiness.targetLabel">다음 입력</div>
+          <div class="notice-readiness-text" data-i18n="index.readiness.targetText">2026년 7월 항공사별 공시 확인 후 반영</div>
+        </div>
+        <div class="notice-readiness-item">
+          <div class="notice-readiness-label" data-i18n="index.readiness.watchLabel">점검 변수</div>
+          <div class="notice-readiness-text" data-i18n="index.readiness.watchText">항공유 가격, 원/달러 환율, 호르무즈 리스크</div>
+        </div>
+      </div>
+      <div class="notice-readiness-note" data-i18n="index.readiness.note">
+        7월 공시는 아직 확정 전입니다. 현재 노선 조회 결과는 6월 확정 공시를 기준으로 제공하며, 7월 데이터는 항공사 공식 공지가 확인되는 순서대로 입력할 예정입니다.
+      </div>
+      <a class="notice-readiness-link" href="fuel-surcharge-2026-06-forecast.html" data-i18n="index.readiness.link">2026년 7월 유류할증료 전망 보기 →</a>
     </div>
 
     <!-- 유류할증료 안내 블록 (랜딩) -->
