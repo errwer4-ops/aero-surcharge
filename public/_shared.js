@@ -85,10 +85,10 @@ window.I18N_SHARED = {
        predictBasis:'예측 근거', predictNote:'공식 공지 전 참고용 추정값입니다.',
        navRoutes:'노선별 조회', navAirlines:'항공사 인덱스', navNews:'참고 소식',
        /* 2026.05.29 07:00 KST 시장 브리핑 공용 키 — 6월 확정 데이터 기반 7월 전망 중심 */
-      marketDataRef: '2026.05.29 07:00 KST 기준 · currentMonthNotice=2026-06 · forecastTargetMonth=2026-07',
+      marketDataRef: '2026.05.29 07:00 KST 기준',
       marketBrent:   '국제유가: 급등세는 둔화됐지만 항공유 부담이 남아 있어 7월 유류할증료 인하를 단정하기 어렵습니다.',
       marketMops:    '항공유 가격(MOPS): 고점 대비 일부 진정됐지만 여전히 높은 구간입니다. 7월은 동결 또는 소폭 조정 가능성 중심으로 봅니다.',
-      marketFx:      '원달러 환율: 유가가 일부 내려도 환율이 높으면 소비자 체감 인하는 제한될 수 있습니다.',
+      marketFx:      '원달러 환율: 공개 USD/KRW 환율은 약 1,505원대 흐름입니다. 유가가 일부 내려도 환율이 높으면 소비자 체감 인하는 제한될 수 있습니다.',
       marketGeo:     '중동 리스크: 국제유가와 항공유 가격이 다시 흔들릴 수 있는 변수입니다.',
       marketOutlook: '2026년 7월 유류할증료 전망은 동결 또는 소폭 조정 가능성 중심입니다. 인하 전환은 아직 확신하기 어렵습니다.' },
   en:{ btnOW:'One-way', btnRT:'Round-trip', officialSite:'Official site ↗',
@@ -100,10 +100,10 @@ window.I18N_SHARED = {
        predictBasis:'Forecast basis', predictNote:'Pre-announcement estimate. For reference only.',
        navRoutes:'Route Search', navAirlines:'Airline Index', navNews:'News & Insights',
        /* 2026.05.29 07:00 KST market brief shared keys */
-      marketDataRef: 'As of 2026.05.29 07:00 KST · currentMonthNotice=2026-06 · forecastTargetMonth=2026-07',
+      marketDataRef: 'As of 2026.05.29 07:00 KST',
       marketBrent:   'Oil: the spike has slowed, but jet fuel burden remains and a July fuel surcharge cut is not certain.',
       marketMops:    'Jet fuel price (MOPS): still elevated after easing from highs. July is centered on freeze or small adjustment scenarios.',
-      marketFx:      'USD/KRW: elevated FX can limit consumer relief even if oil eases.',
+      marketFx:      'USD/KRW: public USD/KRW quotes are around the 1,505 KRW level, and elevated FX can limit consumer relief even if oil eases.',
       marketGeo:     'Middle East risk: a variable that can revive oil and jet fuel volatility.',
       marketOutlook: 'July 2026 fuel surcharge outlook is centered on freeze or small adjustment. A clear cut is not yet certain.' },
   ja:{ btnOW:'片道', btnRT:'往復', officialSite:'公式サイト ↗',
@@ -3241,7 +3241,7 @@ window.AERO_NEWS_CARDS_20260527 = [
     forecastTargetMonth: '2026-07',
     title: '항공유 하락은 긍정적이지만,2일 오전 유가·환율은 인하 폭 제한 요인',
     aiBrief: '항공유/MOPS 하락은 6월 유류할증료 인하의 핵심 배경입니다. 하지만2026.05.28 06:45 KST 기준으로는 Brent eased from the early-May spike, while elevated USD/KRW can still limit perceived airfare relief.',
-    summary: '27일 기준으로 새로 강조해야 할 부분은 “항공유 하락 자체”보다 “항공유 하락 효과가 얼마나 더 남았는가”입니다.\n\n6월 유류할증료 27단계 적용은 이미 항공유/MOPS 하락을 반영한 결과입니다. 따라서 7월 전망에서는 남은 항공유 흐름뿐 아니라 Brent 유가와 원달러 환율을 함께 봐야 합니다.\n\n특히 원달러 환율이 ?? ??원대에 머물면 유류할증료가 더 내려가더라도 항공권 총액 체감 인하가 제한될 수 있습니다. 장거리·성수기 노선은 유류할증료 절감분보다 운임, 환율, 좌석 상황이 더 크게 작용할 수 있습니다.',
+    summary: '27일 기준으로 새로 강조해야 할 부분은 “항공유 하락 자체”보다 “항공유 하락 효과가 얼마나 더 남았는가”입니다.\n\n6월 유류할증료 27단계 적용은 이미 항공유/MOPS 하락을 반영한 결과입니다. 따라서 7월 전망에서는 남은 항공유 흐름뿐 아니라 Brent 유가와 원달러 환율을 함께 봐야 합니다.\n\n특히 원달러 환율 변동성이 확대되면 유류할증료가 더 내려가더라도 항공권 총액 체감 인하가 제한될 수 있습니다. 장거리·성수기 노선은 유류할증료 절감분보다 운임, 환율, 좌석 상황이 더 크게 작용할 수 있습니다.',
     impact: '항공유 가격, Brent 유가, 원달러 환율, 항공권 유류할증료 키워드를 5월 28일 기준으로 연결합니다.',
     sourceName: 'Brent·USDKRW2일 오전 지표 점검',
     sourceUrl: 'news.html#news-20260527-oil-fx-constraint',
@@ -4839,6 +4839,133 @@ window.applyLanguage = function(){
 };
 
 /* ─── initNav 래핑 ─── */
+/* 2026.06.01 09:05 KST latest market brief and news cards.
+   June 2026 notice remains the confirmed baseline; July 2026 remains forecast-only. */
+window.AERO_MARKET_BRIEF_20260601 = {
+  id: 'market-brief-20260601-0905',
+  timestamp: '2026-06-01T09:05:00+09:00',
+  displayTime: '2026.06.01 09:05 KST',
+  badge: 'LATEST',
+  currentMonthNotice: '2026-06',
+  forecastTargetMonth: '2026-07',
+  summary: '2026.06.01 09:05 KST 기준 2026년 7월 유류할증료 전망은 국제유가, 항공유 가격, 약 1,505원대의 원달러 환율, 호르무즈 해협 리스크를 함께 봐야 합니다. 국제유가 상승과 원화 약세가 동시에 나타나면 항공사 유류비 부담이 커져 유류할증료 인하 가능성은 낮아지고 동결 또는 소폭 인상 압력이 커질 수 있습니다.',
+  keywords: ['유류할증료 전망','2026년 7월 유류할증료','국제유가 전망','항공유 가격 전망','원달러 환율 전망','호르무즈 해협','항공권 유류할증료','대한항공 유류할증료','아시아나 유류할증료'],
+  cards: [
+    { title:'중동 긴장 지속', point:'호르무즈 해협 리스크 확대', decision:'국제유가 상승은 항공유 가격과 항공사 비용을 끌어올려 유류할증료 인상 압력으로 이어질 수 있습니다.' },
+    { title:'원달러 환율 변동성 확대', point:'약 1,505원대 흐름', decision:'원화 약세가 겹치면 항공사 달러 결제 부담이 커져 유류할증료 인하 여력이 줄어듭니다.' },
+    { title:'7월 전망', point:'동결 또는 소폭 인상 가능성 우세', decision:'유가 안정과 환율 하락이 함께 나타날 때만 일부 인하 가능성을 검토할 수 있습니다.' }
+  ]
+};
+
+window.AERO_NEWS_CARDS_20260601 = [
+  {
+    id: 'news-20260601-middle-east-oil-pressure',
+    slug: 'june-1-middle-east-hormuz-oil-pressure',
+    category: 'market',
+    priority: 1,
+    date: '2026-06-01',
+    updatedAt: '2026.06.01 09:05 KST 업데이트',
+    badge: 'NEW',
+    aiSummary: true,
+    relevanceScore: 1,
+    currentMonthNotice: '2026-06',
+    forecastTargetMonth: '2026-07',
+    title: '중동 긴장 지속, 국제유가 다시 상승 압력',
+    aiBrief: '호르무즈 해협 리스크가 이어지면 원유 공급 차질 우려가 커지고 국제유가 변동성이 확대됩니다. 국제유가 상승은 항공유 가격 상승과 항공사 비용 증가로 이어져 유류할증료 인상 압력이 될 수 있습니다.',
+    summary: '2026.06.01 09:05 KST 기준 2026년 7월 유류할증료 전망에서 가장 중요한 변수는 국제유가와 호르무즈 해협 리스크입니다.\n\n호르무즈 해협은 전 세계 원유 수송의 핵심 통로입니다. 긴장 확대나 봉쇄 우려가 커지면 국제유가와 항공유 가격이 급등할 수 있고, 이는 항공사 유류비 부담 증가와 항공권 유류할증료 인상 압력으로 연결됩니다.',
+    impact: '유류할증료 전망, 국제유가 전망, 항공유 가격 전망, 호르무즈 해협 검색 의도에 대응합니다.',
+    sourceName: '시장 지표 종합 점검 (2026.06.01 09:05 KST)',
+    sourceUrl: 'fuel-surcharge-2026-06-forecast.html',
+    tags: ['NEW','국제유가 전망','항공유 가격 전망','호르무즈 해협','유류할증료 전망'],
+    faq: [
+      { q:'호르무즈 해협이 유류할증료에 영향을 주는 이유는?', a:'호르무즈 해협은 전 세계 원유 수송의 핵심 통로입니다. 이 지역 긴장이 커지면 국제유가와 항공유 가격이 상승해 항공사 비용과 유류할증료에 영향을 줄 수 있습니다.' }
+    ],
+    links: [
+      { href:'fuel-surcharge-2026-06-forecast.html', label:'2026년 7월 유류할증료 전망 보기' },
+      { href:'fuel-surcharge-graph.html', label:'월별 유류할증료 그래프 보기' }
+    ],
+    i18n: {
+      en: {
+        title:'Middle East tensions keep upward pressure on oil prices',
+        aiBrief:'Strait of Hormuz risk can raise oil supply concerns and widen oil-price volatility. Higher oil can lift jet fuel prices, airline costs and fuel surcharge pressure.',
+        summary:'As of 2026.06.01 09:05 KST, oil prices and Strait of Hormuz risk are key variables for the July 2026 fuel surcharge outlook. If the chokepoint risk escalates, oil and jet fuel can rise, raising airline fuel costs and surcharge pressure.',
+        impact:'Matches fuel surcharge outlook, oil price outlook, jet fuel price outlook and Strait of Hormuz search intent.'
+      }
+    }
+  },
+  {
+    id: 'news-20260601-usdkrw-volatility',
+    slug: 'june-1-usdkrw-volatility-airline-fuel-cost',
+    category: 'market',
+    priority: 1,
+    date: '2026-06-01',
+    updatedAt: '2026.06.01 09:05 KST 업데이트',
+    badge: 'NEW',
+    aiSummary: true,
+    relevanceScore: 1,
+    currentMonthNotice: '2026-06',
+    forecastTargetMonth: '2026-07',
+    title: '원달러 환율 변동성 확대',
+    aiBrief: '공개 USD/KRW 환율은 약 1,505원대 흐름입니다. 한국 외환시장의 24시간 체제 확대를 앞두고 원달러 환율 변동성도 함께 봐야 합니다. 중동 리스크가 달러 강세와 원화 약세로 이어지면 항공사 달러 결제 부담이 커질 수 있습니다.',
+    summary: '항공권 유류할증료는 국제유가만으로 결정되지 않습니다. 원달러 환율 전망도 함께 봐야 합니다.\n\n항공유와 국제선 관련 비용은 달러 결제 비중이 크기 때문에 원화가 약해지면 항공사 유류비 부담이 증가할 수 있습니다. 유가 상승과 원화 약세가 동시에 발생하면 2026년 7월 유류할증료 인하 가능성은 낮아지고 동결 또는 소폭 인상 가능성이 커질 수 있습니다.',
+    impact: '원달러 환율 전망, 항공권 유류할증료, 유류할증료 인하 가능성 검색 의도에 대응합니다.',
+    sourceName: '환율·항공사 비용 영향 점검',
+    sourceUrl: 'fuel-surcharge-calculator.html',
+    tags: ['NEW','원달러 환율 전망','항공권 유류할증료','항공사 유류비','유류할증료 전망'],
+    faq: [
+      { q:'환율이 오르면 유류할증료도 오르나요?', a:'항상 즉시 오르는 것은 아니지만, 원화 약세가 지속되면 항공사의 달러 결제 유류비 부담이 커져 유류할증료 인하 여력이 줄거나 인상 압력이 커질 수 있습니다.' }
+    ],
+    links: [
+      { href:'fuel-surcharge-calculator.html', label:'유류할증료 계산기 보기' },
+      { href:'index.html', label:'노선별 유류할증료 조회' }
+    ],
+    i18n: {
+      en: {
+        title:'USD/KRW volatility expands as an airfare variable',
+        aiBrief:'With Korea expanding FX trading hours, USD/KRW volatility matters for airline fuel costs. Middle East risk can support the dollar and weaken the won.',
+        summary:'Fuel surcharges are not driven by oil alone. If higher oil and a weaker won occur together, airline dollar-denominated fuel costs can rise and reduce room for July fuel surcharge cuts.',
+        impact:'Matches USD/KRW outlook, airfare fuel surcharge and fuel surcharge cut search intent.'
+      }
+    }
+  },
+  {
+    id: 'news-20260601-july-surcharge-outlook',
+    slug: 'june-1-july-2026-fuel-surcharge-outlook',
+    category: 'forecast',
+    priority: 1,
+    date: '2026-06-01',
+    updatedAt: '2026.06.01 09:05 KST 업데이트',
+    badge: 'NEW',
+    aiSummary: true,
+    relevanceScore: 1,
+    currentMonthNotice: '2026-06',
+    forecastTargetMonth: '2026-07',
+    title: '7월 유류할증료 전망은?',
+    aiBrief: '현재 기준 2026년 7월 유류할증료는 인하보다 동결 또는 소폭 인상 가능성에 더 무게가 실립니다. 국제유가, 원달러 환율, 호르무즈 해협 리스크가 핵심 변수입니다.',
+    summary: '2026년 7월 유류할증료 전망은 세 가지 변수로 정리됩니다. 국제유가, 원달러 환율, 호르무즈 해협 리스크입니다.\n\n국제유가가 높은 수준을 유지하고 원화 약세가 지속될 경우 항공사의 유류비 부담이 증가하여 대한항공 유류할증료, 아시아나 유류할증료 등 주요 항공사의 7월 금액은 동결 또는 소폭 인상 압력을 받을 수 있습니다. 반대로 국제유가 안정과 환율 하락이 동시에 나타날 경우 일부 항공사의 인하 가능성도 남아 있습니다.',
+    impact: '2026년 7월 유류할증료, 대한항공 유류할증료, 아시아나 유류할증료, 항공권 유류할증료 검색 의도에 대응합니다.',
+    sourceName: '2026년 7월 유류할증료 전망 요약',
+    sourceUrl: 'fuel-surcharge-2026-06-forecast.html',
+    tags: ['NEW','2026년 7월 유류할증료','대한항공 유류할증료','아시아나 유류할증료','항공권 유류할증료'],
+    faq: [
+      { q:'2026년 7월 유류할증료는 인상될 가능성이 있나요?', a:'현재 기준으로는 국제유가와 환율 부담 때문에 인하보다 동결 또는 소폭 인상 가능성을 함께 봐야 합니다. 다만 유가 안정과 환율 하락이 동시에 나타나면 일부 인하 가능성도 남아 있습니다.' }
+    ],
+    links: [
+      { href:'fuel-surcharge-2026-06-forecast.html', label:'7월 전망 상세 보기' },
+      { href:'airlines.html', label:'항공사별 유류할증료 보기' }
+    ],
+    i18n: {
+      en: {
+        title:'What is the July fuel surcharge outlook?',
+        aiBrief:'As of now, July 2026 fuel surcharges lean more toward freeze or small increase than a clear cut. Oil, USD/KRW and Hormuz risk are key variables.',
+        summary:'The July 2026 fuel surcharge outlook depends on oil prices, USD/KRW and Strait of Hormuz risk. If oil remains high and the won weakens, Korean Air and Asiana fuel surcharges may face freeze or small-increase pressure.',
+        impact:'Matches July 2026 fuel surcharge, Korean Air fuel surcharge, Asiana fuel surcharge and airfare surcharge search intent.'
+      }
+    }
+  }
+];
+window.AERO_NEWS_LATEST = window.AERO_MARKET_BRIEF_20260601;
+
 var _origInitNav = window.initNav;
 window.initNav = function(opts){
   opts = opts || {};

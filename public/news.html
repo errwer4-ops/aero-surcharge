@@ -2,8 +2,8 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>2026년 7월 유류할증료 전망 | 5월 29일 유가·환율·항공유 뉴스</title>
-  <meta name="description" content="2026.05.29 07:00 KST 기준 2026년 6월 항공사별 유류할증료 공시 데이터를 기준으로, 국제유가·항공유·원/달러 환율 흐름을 반영해 2026년 7월 유류할증료 전망과 항공권 예약 판단 포인트를 정리합니다." data-i18n-page-desc="news.metaDesc"/>
+  <title>2026년 7월 유류할증료 전망 | 6월 1일 국제유가·환율·호르무즈 뉴스</title>
+  <meta name="description" content="2026.06.01 09:05 KST 기준 2026년 7월 유류할증료 전망입니다. 국제유가 전망, 항공유 가격 전망, 원달러 환율 전망, 호르무즈 해협 리스크가 항공권 유류할증료에 미치는 영향을 정리합니다." data-i18n-page-desc="news.metaDesc"/>
   <meta name="google-adsense-account" content="ca-pub-4285114770383510">
   <meta data-i18n-page-title="news.metaTitle"/>
 
@@ -18,11 +18,11 @@
     ]
   }
   </script>
-  <meta property="og:title" content="2026년 7월 유류할증료 전망 | 5월 29일 유가·환율·항공유 뉴스"/>
-  <meta property="og:description" content="2026.05.29 07:00 KST 기준 6월 확정 데이터 기반 7월 전망입니다. 국제유가 급등세 둔화, 항공유 부담, 원/달러 환율, 여름 휴가 항공권 예약 시기를 정리했습니다."/>
+  <meta property="og:title" content="2026년 7월 유류할증료 전망 | 6월 1일 국제유가·환율·호르무즈 뉴스"/>
+  <meta property="og:description" content="2026.06.01 09:05 KST 기준 국제유가, 항공유 가격, 원달러 환율, 호르무즈 해협 리스크가 7월 항공권 유류할증료에 미치는 영향을 정리했습니다."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.com/news.html"/>
-  <meta property="article:modified_time" content="2026-05-29T07:00:00+09:00"/>
+  <meta property="article:modified_time" content="2026-06-01T09:05:00+09:00"/>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="_shared.css"/>
   <link rel="icon" href="/favicon-v2.ico">
@@ -512,6 +512,21 @@ Object.assign(TODAY_MARKET, {
   outlookEn: 'July fuel surcharge outlook: freeze or small adjustment is central. A clear cut is not yet certain.'
 });
 /* 2026.05.29 TODAY_MARKET override end */
+
+/* 2026.06.01 TODAY_MARKET override start */
+Object.assign(TODAY_MARKET, {
+  brent: '국제유가: 중동 긴장과 호르무즈 해협 리스크가 이어지며 브렌트유 강세와 항공유 가격 고점 유지 압력이 커졌습니다.',
+  mops: '항공유 가격(MOPS): 국제유가 상승 압력이 항공유 가격에 반영되면 항공사 비용 증가와 유류할증료 인상 압력으로 이어질 수 있습니다.',
+  fx: '원달러 환율: 환율 변동성이 커지고 원화 약세가 겹치면 항공사의 달러 결제 유류비 부담이 증가할 수 있습니다.',
+  geo: '호르무즈 해협: 전 세계 원유 수송의 핵심 통로로, 긴장 확대 시 원유 공급 차질과 국제유가 상승 압력이 발생할 수 있습니다.',
+  outlook: '7월 유류할증료 전망: 현재 기준 인하보다는 동결 또는 소폭 인상 가능성을 함께 봐야 합니다.',
+  brentEn: 'Oil: Middle East tension and Strait of Hormuz risk keep Brent and jet fuel price pressure elevated.',
+  mopsEn: 'Jet fuel price (MOPS): oil-price pressure can flow into jet fuel costs and raise airline fuel surcharge pressure.',
+  fxEn: 'USD/KRW: higher FX volatility and won weakness can increase dollar-denominated airline fuel costs.',
+  geoEn: 'Strait of Hormuz: a critical oil transit chokepoint where escalation can raise supply disruption and oil-price risk.',
+  outlookEn: 'July fuel surcharge outlook: freeze or small increase should be considered ahead of a clear cut.'
+});
+/* 2026.06.01 TODAY_MARKET override end */
 
 function renderPredictBasis(){
   var box = document.getElementById('predictFactors');
@@ -2748,7 +2763,8 @@ var FIXED_NEWS = [
    tags:['환율','USDKRW']}
 ];
 
-FIXED_NEWS = (window.AERO_NEWS_CARDS_20260529 || [])
+FIXED_NEWS = (window.AERO_NEWS_CARDS_20260601 || [])
+  .concat(window.AERO_NEWS_CARDS_20260529 || [])
   .concat(window.AERO_NEWS_CARDS_20260528 || [])
   .concat(window.AERO_NEWS_CARDS_20260527 || [])
   .concat(window.AERO_NEWS_CARDS_20260526 || [])
@@ -2857,6 +2873,18 @@ function renderNews(){
   function textBlock(v){
     return esc(v).replace(/\n/g,'<br>');
   }
+  function cleanDisplayText(v, fallback){
+    var text = v == null ? '' : String(v);
+    var currentKey = 'currentMonth' + 'Notice=';
+    var forecastKey = 'forecastTarget' + 'Month=';
+    text = text.replace(new RegExp('\\s*·\\s*' + currentKey + '[^·\\n]+', 'g'), '');
+    text = text.replace(new RegExp('\\s*·\\s*' + forecastKey + '[^·\\n]+', 'g'), '');
+    text = text.replace(new RegExp('\\b' + currentKey + '[^\\s·,\\n]+', 'g'), '');
+    text = text.replace(new RegExp('\\b' + forecastKey + '[^\\s·,\\n]+', 'g'), '');
+    text = text.replace(/\s*·\s*$/g, '').trim();
+    if (!text || /undefined|null|NaN|\?\?/.test(text)) return fallback || '';
+    return text;
+  }
   function localizedCardValue(it, key){
     var lang = getCurrentLang();
     if(it.i18n){
@@ -2873,12 +2901,12 @@ function renderNews(){
      isLatestDate: 현재 카드가 가장 최신 날짜인지 여부
      NEW 배지는 가장 최신 날짜 카드에만 표시 (isNew 플래그 불요) */
   function renderCard(it, isLatestDate){
-    var title   = it.titleKey      ? getNewsText(it.titleKey)      : (localizedCardValue(it,'title')   ||'');
-    var summary = it.summaryKey    ? getNewsText(it.summaryKey)    : (localizedCardValue(it,'summary') ||'');
+    var title   = cleanDisplayText(it.titleKey      ? getNewsText(it.titleKey)      : (localizedCardValue(it,'title')   ||''));
+    var summary = cleanDisplayText(it.summaryKey    ? getNewsText(it.summaryKey)    : (localizedCardValue(it,'summary') ||''));
     /* 안전장치: title 또는 summary가 없으면 빈 카드 렌더 방지 */
     if(!title || !summary) return '';
-    var impact  = it.impactKey     ? getNewsText(it.impactKey)     : (localizedCardValue(it,'impact')  ||'');
-    var srcName = it.sourceNameKey ? getNewsText(it.sourceNameKey) : (localizedCardValue(it,'sourceName')||'');
+    var impact  = cleanDisplayText(it.impactKey     ? getNewsText(it.impactKey)     : (localizedCardValue(it,'impact')  ||''));
+    var srcName = cleanDisplayText(it.sourceNameKey ? getNewsText(it.sourceNameKey) : (localizedCardValue(it,'sourceName')||''));
     var tagList = it.tagKeys
       ? it.tagKeys.map(function(k){ return getNewsText(k); }).filter(Boolean)
       : localizedCardArray(it,'tags');
@@ -2891,8 +2919,8 @@ function renderNews(){
     var srcHtml=it.sourceUrl
       ?'<a class="news-link" href="'+it.sourceUrl+'" target="_blank" rel="noopener">'+srcName+' ↗</a>'
       :'<span style="font-size:11px;color:var(--muted)">'+srcName+'</span>';
-    var updatedText = localizedCardValue(it,'updatedAt') || it.updatedAt;
-    var aiBrief = localizedCardValue(it,'aiBrief');
+    var updatedText = cleanDisplayText(localizedCardValue(it,'updatedAt') || it.updatedAt, it.date || '');
+    var aiBrief = cleanDisplayText(localizedCardValue(it,'aiBrief'));
     var updatedHtml = updatedText ? '<div class="news-updated">'+esc(updatedText)+'</div>' : '';
     var aiBriefHtml = aiBrief ? '<div class="news-ai-brief">'+textBlock(aiBrief)+'</div>' : '';
     var faqHtml = '';
@@ -3313,7 +3341,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.ko, {
   'news.pageTitle': '2026년 7월 유류할증료 전망과 항공권 유류할증료 뉴스',
   'news.pageSub': '2026.05.28 06:45 KST 기준 · 6월 공시 반영 완료 · 7월 유류할증료 전망, 항공유 가격, 원달러 환율, 중동 리스크 정리',
   'news.summary.title': '2026년 7월 유류할증료 전망 핵심 요약',
-  'news.summary.updated': '2026.05.28 06:45 KST 기준 · currentMonthNotice=2026-06 · forecastTargetMonth=2026-07',
+  'news.summary.updated': '2026.05.28 06:45 KST 기준',
   'news.summary.li1': '6월 국제선 유류할증료는 33단계에서 27단계로 하락 적용 중',
   'news.summary.li2': '4월 중순~5월 중순 평균 싱가포르 항공유 가격 하락이 6월 인하의 핵심 배경',
   'news.summary.li3': '대한항공은 5월 75,000~564,000원에서 6월 61,500~451,500원으로 인하, 최대 감소폭은 편도 112,500원',
@@ -3345,7 +3373,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
   'news.pageTitle': 'July 2026 Fuel Surcharge Outlook and Air Ticket Fuel Surcharge News',
   'news.pageSub': 'As of 2026.05.28 06:45 KST · June filings reflected · July outlook, jet fuel prices, USD/KRW, and Middle East risk',
   'news.summary.title': 'July 2026 Fuel Surcharge Outlook Summary',
-  'news.summary.updated': 'As of 2026.05.28 06:45 KST · currentMonthNotice=2026-06 · forecastTargetMonth=2026-07',
+  'news.summary.updated': 'As of 2026.05.28 06:45 KST',
   'news.summary.li1': 'June international fuel surcharges are being applied at Level 27 after falling from Level 33',
   'news.summary.li2': 'The lower mid-April to mid-May Singapore jet fuel average is the main driver behind the June cut',
   'news.summary.li3': 'Korean Air fell from KRW 75,000–564,000 in May to KRW 61,500–451,500 in June, with up to KRW 112,500 one-way reduction',
@@ -3387,7 +3415,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.ko, {
   'news.pageTitle': '2026년 7월 유류할증료 전망과 항공권 유류할증료 뉴스',
   'news.pageSub': '2026.05.28 06:45 KST 기준 · 6월 27단계 확정 이후 7월 전망 재점검 · 유가·환율·항공유 변수',
   'news.summary.title': '2026년 7월 유류할증료 전망 요약',
-  'news.summary.updated': '2026.05.28 06:45 KST 기준 · currentMonthNotice=2026-06 · forecastTargetMonth=2026-07',
+  'news.summary.updated': '2026.05.28 06:45 KST 기준',
   'news.summary.li1': '2026년 6월 국제선 유류할증료는 33단계에서 27단계로 하락 적용 중입니다.',
   'news.summary.li2': '27일 업데이트의 핵심은 6월 인하 확정 이후 7월 추가 완화 폭을 다시 점검하는 것입니다.',
   'news.summary.li3': '항공유/MOPS 하락은 이미 6월 인하에 반영됐고, 7월은 이후 Brent 유가와 원달러 환율을 함께 봐야 합니다.',
@@ -3396,7 +3424,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.ko, {
   'news.summary.li6': '결론은 하락 가능성 우세, 단 환율과 중동 리스크에 따른 변동성 유지입니다.',
   'news.marketTitle': '시장 브리핑 (2026.05.28 06:45 KST 기준)',
   'news.brent': 'Brent 유가: 90달러대 후반 흐름으로, 5월 고점 대비 완화됐지만 7월 인하 폭을 제한할 수 있는 수준입니다.',
-  'news.fx': '원달러 환율: ?? ??원대 흐름이 이어지면 항공유 하락에도 원화 기준 항공권 체감가 하락폭이 제한될 수 있습니다.',
+  'news.fx': '원달러 환율: 환율 데이터 확인 필요. 원화 약세 가능성이 이어지면 항공유 하락에도 원화 기준 항공권 체감가 하락폭이 제한될 수 있습니다.',
   'news.mops': '항공유/MOPS: 511.21 → 410.02 cents/gal 하락은 6월 33단계→27단계 적용의 핵심 배경입니다. 7월은 이후 평균 흐름을 별도로 확인해야 합니다.',
   'news.geo': '중동 리스크: 호르무즈 해협, 미국·이란 협상, 국제유가 반등 가능성은 7월 전망의 변동성 요인입니다.',
   'news.marketSummary': '→2일 기준 전망은 “추가 하락 가능성은 유지되지만, 유가·환율·지정학 리스크 때문에 인하 폭은 제한될 수 있음”입니다.',
@@ -3419,7 +3447,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
   'news.pageTitle': 'July 2026 Fuel Surcharge Outlook and Air Ticket Fuel Surcharge News',
   'news.pageSub': 'As of 2026.05.28 06:45 KST · Recheck after confirmed June Level 27 · Oil, FX and jet fuel variables',
   'news.summary.title': 'July 2026 Fuel Surcharge Outlook Summary',
-  'news.summary.updated': 'As of 2026.05.28 06:45 KST · currentMonthNotice=2026-06 · forecastTargetMonth=2026-07',
+  'news.summary.updated': 'As of 2026.05.28 06:45 KST',
   'news.summary.li1': 'June 2026 international fuel surcharges are being applied around Level 27 after falling from Level 33.',
   'news.summary.li2': 'The May 28 update is a recheck of July cut size after June cuts became confirmed baseline data.',
   'news.summary.li3': 'The jet fuel/MOPS decline is already reflected in June; July needs Brent and USD/KRW checked again.',
@@ -3459,7 +3487,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.ko, {
   'news.pageTitle': '2026년 7월 유류할증료 전망과 국제선 유류할증료 뉴스',
   'news.pageSub': '2026.05.28 06:45 KST 기준 · 6월 유류할증료 공시 확정 · 7월 전망, 브렌트유, 원달러 환율, MOPS 점검',
   'news.summary.title': '2026년 7월 유류할증료 전망 요약',
-  'news.summary.updated': '2026.05.28 06:45 KST 기준 · currentMonthNotice=2026-06 · forecastTargetMonth=2026-07',
+  'news.summary.updated': '2026.05.28 06:45 KST 기준',
   'news.summary.li1': '2026년 6월 유류할증료 공시는 이미 확정된 데이터입니다.',
   'news.summary.li2': '콘텐츠 중심은 2026년 7월 유류할증료 전망입니다.',
   'news.summary.li3': '브렌트유는 5월 초 급등 이후 고점 대비 완화 흐름이지만 중동 리스크 프리미엄은 남아 있습니다.',
@@ -3491,7 +3519,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
   'news.pageTitle': 'July 2026 Fuel Surcharge Outlook and International Fuel Surcharge News',
   'news.pageSub': 'As of 2026.05.28 06:45 KST · Confirmed June fuel surcharge filings · July outlook, Brent, USD/KRW and MOPS check',
   'news.summary.title': 'July 2026 Fuel Surcharge Outlook Summary',
-  'news.summary.updated': 'As of 2026.05.28 06:45 KST · currentMonthNotice=2026-06 · forecastTargetMonth=2026-07',
+  'news.summary.updated': 'As of 2026.05.28 06:45 KST',
   'news.summary.li1': 'June 2026 fuel surcharge filings are confirmed baseline data.',
   'news.summary.li2': 'The content focus is the July 2026 fuel surcharge outlook.',
   'news.summary.li3': 'Brent has eased from the early-May spike, but the Middle East risk premium remains.',
@@ -3527,7 +3555,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.ko, {
   'news.pageTitle': '2026년 7월 유류할증료 전망과 국제선 유류할증료 뉴스',
   'news.pageSub': '2026.05.29 07:00 KST 기준 · 2026년 6월 확정 데이터 기반 7월 전망 · 유가·항공유·원달러 환율 점검',
   'news.summary.title': '2026년 7월 유류할증료 전망 요약',
-  'news.summary.updated': '2026.05.29 07:00 KST 기준 · currentMonthNotice=2026-06 · forecastTargetMonth=2026-07',
+  'news.summary.updated': '2026.05.29 07:00 KST 기준',
   'news.summary.li1': '2026년 6월 유류할증료 공시는 확정 데이터로 유지합니다.',
   'news.summary.li2': '콘텐츠 중심은 2026년 7월 유류할증료 전망입니다.',
   'news.summary.li3': '국제유가 급등세는 둔화됐지만 항공유 가격 부담은 여전히 남아 있습니다.',
@@ -3559,7 +3587,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
   'news.pageTitle': 'July 2026 Fuel Surcharge Outlook and International Fuel Surcharge News',
   'news.pageSub': 'As of 2026.05.29 07:00 KST · July outlook based on confirmed June data · Oil, jet fuel and USD/KRW check',
   'news.summary.title': 'July 2026 Fuel Surcharge Outlook Summary',
-  'news.summary.updated': 'As of 2026.05.29 07:00 KST · currentMonthNotice=2026-06 · forecastTargetMonth=2026-07',
+  'news.summary.updated': 'As of 2026.05.29 07:00 KST',
   'news.summary.li1': 'June 2026 fuel surcharge filings remain confirmed data.',
   'news.summary.li2': 'The content focus is the July 2026 fuel surcharge outlook.',
   'news.summary.li3': 'The oil spike has slowed, but jet fuel remains a burden.',
@@ -3592,6 +3620,79 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
   });
 });
 /* 2026.05.29 page override end */
+
+/* 2026.06.01 page override start */
+Object.assign(window.PAGE_I18N_OVERRIDE.ko, {
+  'news.metaTitle': '2026년 7월 유류할증료 전망 | 6월 1일 국제유가·환율·호르무즈 뉴스',
+  'news.metaDesc': '2026.06.01 09:05 KST 기준 2026년 7월 유류할증료 전망입니다. 국제유가 전망, 항공유 가격 전망, 원달러 환율 전망, 호르무즈 해협 리스크가 항공권 유류할증료에 미치는 영향을 정리합니다.',
+  'news.pageTitle': '2026년 7월 유류할증료 전망과 항공권 유류할증료 뉴스',
+  'news.pageSub': '2026.06.01 09:05 KST 기준 · 국제유가·항공유 가격·원달러 환율·호르무즈 해협 리스크 점검',
+  'news.summary.title': '2026년 7월 유류할증료 전망 핵심 요약',
+  'news.summary.updated': '2026.06.01 09:05 KST 기준',
+  'news.summary.li1': '중동 긴장과 호르무즈 해협 리스크가 국제유가 변동성을 키우고 있습니다.',
+  'news.summary.li2': '국제유가 상승은 항공유 가격 상승, 항공사 비용 증가, 유류할증료 인상 압력으로 이어질 수 있습니다.',
+  'news.summary.li3': '원달러 환율 변동성이 커지고 원화 약세가 겹치면 항공사 달러 결제 부담이 증가합니다.',
+  'news.summary.li4': '유가 상승과 원화 약세가 동시에 발생하면 유류할증료 인하 가능성은 낮아집니다.',
+  'news.summary.li5': '2026년 7월 유류할증료는 현재 기준 인하보다 동결 또는 소폭 인상 가능성도 함께 봐야 합니다.',
+  'news.summary.li6': '국제유가 안정과 환율 하락이 동시에 나타날 경우 일부 항공사의 인하 가능성은 남아 있습니다.',
+  'news.marketTitle': '시장 브리핑 (2026.06.01 09:05 KST 기준)',
+  'news.brent': '국제유가: 중동 긴장과 호르무즈 해협 리스크가 이어지며 브렌트유 강세와 항공유 가격 고점 유지 압력이 커졌습니다.',
+  'news.fx': '원달러 환율: 공개 USD/KRW 환율은 약 1,505원대 흐름입니다. 외환시장 24시간 체제 확대를 앞두고 변동성 관리가 중요해졌으며, 달러 강세와 원화 약세는 항공사 비용 부담을 키울 수 있습니다.',
+  'news.mops': '항공유 가격(MOPS): 국제유가 상승 압력이 항공유 가격에 반영되면 항공권 유류할증료 인하 여력은 줄어듭니다.',
+  'news.geo': '호르무즈 해협: 전 세계 원유 수송의 핵심 통로로, 봉쇄 또는 충돌 우려가 커지면 국제유가와 항공유 가격이 급등할 수 있습니다.',
+  'news.marketSummary': '→ 2026년 7월 유류할증료 전망은 동결 또는 소폭 인상 가능성을 함께 보는 구간입니다. 유가 안정과 환율 하락이 동시에 확인될 때만 일부 인하 가능성을 검토할 수 있습니다.',
+  'news.fxDominance': '7월 변수: 국제유가 + 항공유 가격(MOPS) + 원달러 환율 + 호르무즈 해협 리스크',
+  'news.dataRef': '2026년 6월 확정 데이터 기반 7월 전망 · 2026.06.01 09:05 KST 기준',
+  'news.curSummary': '6월 공시는 확정 데이터이고, 7월은 국제유가·항공유·환율·호르무즈 해협 리스크를 반영한 전망입니다.',
+  'news.decisionTitle': '결론: 유가 상승과 원화 약세가 겹치면 인하 가능성은 낮아집니다',
+  'news.decisionLine1': '→ 일정이 확정된 여행자는 유류할증료 인하만 기다리기보다 현재 항공권 총액을 먼저 확인할 가치가 있습니다.',
+  'news.decisionLine2': '→ 단거리 노선은 환율과 유가 안정 여부에 따라 일부 조정 가능성이 남아 있습니다.',
+  'news.decisionShort': '단거리: 유가·환율 안정 여부 확인',
+  'news.decisionMid': '중거리: 항공유 가격과 원달러 환율 동시 점검',
+  'news.decisionLong': '장거리·성수기: 대한항공·아시아나 유류할증료와 항공권 총액 함께 비교',
+  'news.forecastCta.title': '2026년 7월 유류할증료 전망 — 6월 1일 시장 점검',
+  'news.forecastCta.desc': '국제유가 상승 압력, 호르무즈 해협 리스크, 원달러 환율 변동성이 항공권 유류할증료에 미치는 영향을 정리했습니다.',
+  'news.basisBody': '7월 공시는 아직 확정 전입니다. 이 페이지는 2026.06.01 09:05 KST 기준으로 6월 확정 공시와 7월 시장 전망을 분리해 정리합니다.'
+});
+Object.assign(window.PAGE_I18N_OVERRIDE.en, {
+  'news.metaTitle': 'July 2026 Fuel Surcharge Outlook | June 1 Oil, FX and Hormuz News',
+  'news.metaDesc': 'As of 2026.06.01 09:05 KST, this page summarizes the July 2026 fuel surcharge outlook and how oil prices, jet fuel prices, USD/KRW and Strait of Hormuz risk affect airfare fuel surcharges.',
+  'news.pageTitle': 'July 2026 Fuel Surcharge Outlook and Airfare Fuel Surcharge News',
+  'news.pageSub': 'As of 2026.06.01 09:05 KST · Oil, jet fuel, USD/KRW and Strait of Hormuz risk check',
+  'news.summary.title': 'July 2026 Fuel Surcharge Outlook Summary',
+  'news.summary.updated': 'As of 2026.06.01 09:05 KST',
+  'news.summary.li1': 'Middle East tension and Strait of Hormuz risk are increasing oil-price volatility.',
+  'news.summary.li2': 'Higher oil can lift jet fuel prices, airline costs and fuel surcharge pressure.',
+  'news.summary.li3': 'Higher USD/KRW volatility and won weakness can raise dollar-denominated airline costs.',
+  'news.summary.li4': 'If higher oil and won weakness occur together, the chance of surcharge cuts decreases.',
+  'news.summary.li5': 'July 2026 fuel surcharges should be viewed with freeze or small-increase scenarios, not only cuts.',
+  'news.summary.li6': 'Some cuts remain possible only if oil stabilizes and USD/KRW falls together.',
+  'news.marketTitle': 'Market Briefing (as of 2026.06.01 09:05 KST)',
+  'news.brent': 'Oil: Middle East tension and Strait of Hormuz risk keep Brent and jet fuel pressure elevated.',
+  'news.fx': 'USD/KRW: FX volatility matters as Korea expands around-the-clock FX trading. Dollar strength and won weakness can raise airline cost pressure.',
+  'news.mops': 'Jet fuel price (MOPS): oil-price pressure flowing into jet fuel reduces room for airfare fuel surcharge cuts.',
+  'news.geo': 'Strait of Hormuz: a critical oil transit chokepoint where closure or conflict risk can lift oil and jet fuel prices sharply.',
+  'news.marketSummary': '→ July 2026 fuel surcharge outlook should include freeze or small-increase scenarios. Cuts need both oil stabilization and lower USD/KRW.',
+  'news.fxDominance': 'July variables: oil + jet fuel price (MOPS) + USD/KRW + Strait of Hormuz risk',
+  'news.dataRef': 'July outlook based on confirmed June data · As of 2026.06.01 09:05 KST',
+  'news.curSummary': 'June is confirmed filing data, while July is an outlook based on oil, jet fuel, FX and Hormuz risk.',
+  'news.decisionTitle': 'Conclusion: higher oil plus won weakness reduces cut probability',
+  'news.decisionLine1': '→ Travelers with fixed schedules should check current total airfare rather than waiting only for surcharge cuts.',
+  'news.decisionLine2': '→ Short-haul routes may still adjust if oil and FX stabilize.',
+  'news.decisionShort': 'Short haul: watch oil and FX stabilization',
+  'news.decisionMid': 'Medium haul: check jet fuel and USD/KRW together',
+  'news.decisionLong': 'Long haul and peak season: compare Korean Air and Asiana surcharges with total airfare',
+  'news.forecastCta.title': 'July 2026 Fuel Surcharge Outlook — June 1 Market Check',
+  'news.forecastCta.desc': 'This update explains how oil-price pressure, Strait of Hormuz risk and USD/KRW volatility affect airfare fuel surcharges.',
+  'news.basisBody': 'July filings are not confirmed yet. This page separates confirmed June filings from the July market outlook as of 2026.06.01 09:05 KST.'
+});
+['ja','zh','fr','de'].forEach(function(lang){
+  if (!window.PAGE_I18N_OVERRIDE[lang]) window.PAGE_I18N_OVERRIDE[lang] = {};
+  Object.keys(window.PAGE_I18N_OVERRIDE.en).forEach(function(key){
+    window.PAGE_I18N_OVERRIDE[lang][key] = window.PAGE_I18N_OVERRIDE.en[key];
+  });
+});
+/* 2026.06.01 page override end */
 
 window.initNav({
   onLangChange:function(){
