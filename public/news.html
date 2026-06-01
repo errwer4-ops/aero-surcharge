@@ -22,7 +22,7 @@
   <meta property="og:description" content="2026.06.01 09:05 KST 기준 국제유가, 항공유 가격, 원달러 환율, 호르무즈 해협 리스크가 7월 항공권 유류할증료에 미치는 영향을 정리했습니다."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.com/news.html"/>
-  <meta property="article:modified_time" content="2026-06-01T09:05:00+09:00"/>
+  <meta property="article:modified_time" content="2026-06-02T08:30:00+09:00"/>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="_shared.css"/>
   <link rel="icon" href="/favicon-v2.ico">
@@ -527,6 +527,21 @@ Object.assign(TODAY_MARKET, {
   outlookEn: 'July fuel surcharge outlook: freeze or small increase should be considered ahead of a clear cut.'
 });
 /* 2026.06.01 TODAY_MARKET override end */
+
+/* 2026.06.02 TODAY_MARKET override start */
+Object.assign(TODAY_MARKET, {
+  brent: '국제유가: 중동 리스크와 호르무즈 해협 불안으로 브렌트유와 항공유 가격 상승 압력이 지속되고 있습니다.',
+  mops: '항공유 가격: 높은 항공유 가격은 항공사 연료비 부담을 키워 7월 국제선 유류할증료 상승 또는 고점 유지 요인이 될 수 있습니다.',
+  fx: '원달러 환율: 중동 리스크 확대 시 달러 강세와 원화 약세 압력이 커져 항공사 달러 결제 연료비 부담을 높일 수 있습니다.',
+  geo: '호르무즈 해협: 선박 통행 제한, 보험료 상승, 우회 운항 가능성이 원유·항공유 공급 불확실성의 핵심 변수입니다.',
+  outlook: '7월 유류할증료 전망: 현재 기준 6월 대비 상승 또는 고점 유지 가능성 우세, 단 안정 변수 확인 시 상승폭 제한 가능.',
+  brentEn: 'Oil: Middle East risk and Strait of Hormuz uncertainty keep upward pressure on Brent and jet fuel prices.',
+  mopsEn: 'Jet fuel price: elevated jet fuel prices can keep July international fuel surcharge pressure high.',
+  fxEn: 'USD/KRW: safe-haven dollar strength and won weakness can increase airline dollar-denominated fuel-cost pressure.',
+  geoEn: 'Strait of Hormuz: traffic limits, insurance costs and rerouting risk remain key supply uncertainty variables.',
+  outlookEn: 'July fuel surcharge outlook: higher or still-elevated levels versus June are more likely, with upside limited if stabilizing variables improve.'
+});
+/* 2026.06.02 TODAY_MARKET override end */
 
 function renderPredictBasis(){
   var box = document.getElementById('predictFactors');
@@ -2763,7 +2778,8 @@ var FIXED_NEWS = [
    tags:['환율','USDKRW']}
 ];
 
-FIXED_NEWS = (window.AERO_NEWS_CARDS_20260601 || [])
+FIXED_NEWS = (window.AERO_NEWS_CARDS_20260602 || [])
+  .concat(window.AERO_NEWS_CARDS_20260601 || [])
   .concat(window.AERO_NEWS_CARDS_20260529 || [])
   .concat(window.AERO_NEWS_CARDS_20260528 || [])
   .concat(window.AERO_NEWS_CARDS_20260527 || [])
@@ -2964,15 +2980,25 @@ function renderNews(){
   function syncNewsStructuredData(schemaItems){
     var baseUrl = 'https://aero-surcharge.com/news.html';
     var cards = (schemaItems || []).filter(function(it){ return it && (it.id || it.slug); }).slice(0, 12);
+    function cardDateTime(it){
+      if (it && it.date === '2026-06-02') return '2026-06-02T08:30:00+09:00';
+      if (it && it.date === '2026-06-01') return '2026-06-01T09:05:00+09:00';
+      if (it && it.date === '2026-05-29') return '2026-05-29T07:00:00+09:00';
+      if (it && it.date === '2026-05-28') return '2026-05-28T06:45:00+09:00';
+      if (it && it.date === '2026-05-27') return '2026-05-27T06:25:00+09:00';
+      return (it.date || '2026-05-27') + 'T10:30:00+09:00';
+    }
+    var latestModified = cards.length ? cardDateTime(cards[0]) : '2026-06-02T08:30:00+09:00';
     var articles = cards.map(function(it){
       var headline = it.titleKey ? getNewsText(it.titleKey) : (localizedCardValue(it,'title') || '');
       var desc = localizedCardValue(it,'aiBrief') || (it.summaryKey ? getNewsText(it.summaryKey) : (localizedCardValue(it,'summary') || ''));
+      var dt = cardDateTime(it);
       return {
         '@type': 'NewsArticle',
         headline: headline,
         description: String(desc).replace(/\s+/g, ' ').slice(0, 300),
-        datePublished: (it.date || '2026-05-27') + (it.date === '2026-05-27' ? 'T06:25:00+09:00' : 'T10:30:00+09:00'),
-        dateModified: '2026-05-28T06:45:00+09:00',
+        datePublished: dt,
+        dateModified: latestModified,
         inLanguage: (getCurrentLang() === 'ko' ? 'ko-KR' : getCurrentLang()),
         mainEntityOfPage: baseUrl + (it.id ? '#' + it.id : ''),
         url: baseUrl + (it.id ? '#' + it.id : '')
@@ -3693,6 +3719,79 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
   });
 });
 /* 2026.06.01 page override end */
+
+/* 2026.06.02 page override start */
+Object.assign(window.PAGE_I18N_OVERRIDE.ko, {
+  'news.metaTitle': '2026년 7월 유류할증료 전망 | 6월 2일 항공유·환율·호르무즈 뉴스',
+  'news.metaDesc': '2026.06.02 08:30 KST 기준 2026년 7월 유류할증료 전망입니다. 국제유가, 항공유 가격, 원달러 환율, 호르무즈 해협 리스크와 OPEC+ 증산이 국제선 유류할증료와 항공권 가격 전망에 미치는 영향을 정리합니다.',
+  'news.pageTitle': '2026년 7월 유류할증료 전망과 국제선 유류할증료 뉴스',
+  'news.pageSub': '2026.06.02 08:30 KST 기준 · 항공유 가격·원달러 환율·호르무즈 해협·OPEC+ 증산 점검',
+  'news.summary.title': '2026년 7월 유류할증료 전망 핵심 요약',
+  'news.summary.updated': '2026.06.02 08:30 KST 기준',
+  'news.summary.li1': '2026년 6월 유류할증료 공시는 확정 데이터이며, 7월 유류할증료는 아직 전망 단계입니다.',
+  'news.summary.li2': '중동 리스크와 호르무즈 해협 불안은 국제유가와 항공유 가격 상승 압력으로 작용합니다.',
+  'news.summary.li3': '국제유가 상승 → 항공유 가격 상승 → 항공사 연료비 부담 확대 → 유류할증료 인상 압력 구조를 확인해야 합니다.',
+  'news.summary.li4': 'OPEC+ 증산은 유가 안정 요인이지만 지정학 리스크와 물류 차질을 완전히 상쇄하기에는 제한적입니다.',
+  'news.summary.li5': '원달러 환율 상승과 원화 약세는 국제선 유류할증료 산정에 추가 상승 요인이 될 수 있습니다.',
+  'news.summary.li6': '현재 7월 전망은 6월 대비 상승 또는 고점 유지 가능성 우세, 단 호르무즈 정상화와 원화 반등 시 상승폭 제한입니다.',
+  'news.marketTitle': '시장 브리핑 (2026.06.02 08:30 KST 기준)',
+  'news.brent': '국제유가: 중동 리스크와 호르무즈 해협 불안으로 브렌트유와 항공유 가격의 상승 압력이 지속되고 있습니다.',
+  'news.fx': '원달러 환율: 중동 리스크 확대 시 안전자산 선호로 달러 강세와 원화 약세 압력이 커질 수 있어 항공사 달러 결제 연료비 부담을 높입니다.',
+  'news.mops': '항공유 가격: 항공유가 높은 구간을 유지하면 2026년 7월 국제선 유류할증료는 인하보다 상승 또는 고점 유지 가능성을 함께 봐야 합니다.',
+  'news.geo': '호르무즈 해협: 선박 통행 제한, 보험료 상승, 우회 운항 가능성이 남아 있어 원유·항공유 공급 불확실성의 핵심 변수입니다.',
+  'news.marketSummary': '→ 2026년 7월 유류할증료 전망은 현재 기준 상승 또는 고점 유지 가능성이 우세합니다. 다만 호르무즈 정상화, 국제유가 조정, 원화 반등이 확인되면 상승폭은 제한될 수 있습니다.',
+  'news.fxDominance': '7월 변수: 항공유 가격 + 원달러 환율 + 호르무즈 해협 + OPEC+ 증산 + 항공사 공시 시차',
+  'news.dataRef': '2026년 6월 확정 공시 기반 7월 전망 · 2026.06.02 08:30 KST 기준',
+  'news.curSummary': '6월은 항공사 공식 공시가 확인된 확정 데이터이고, 7월은 항공유 가격·원달러 환율·호르무즈 해협·국제유가 기반 전망입니다.',
+  'news.decisionTitle': '결론: 7월은 상승 또는 고점 유지 가능성 우세',
+  'news.decisionLine1': '일정이 확정된 여행자는 7월 공시만 기다리기보다 현재 항공권 총액과 좌석 상황을 함께 확인하는 편이 안전합니다.',
+  'news.decisionLine2': '호르무즈 해협 정상화, 국제유가 조정, 원화 반등이 동시에 확인되면 유류할증료 상승폭은 제한될 수 있습니다.',
+  'news.decisionShort': '단거리: 총액과 좌석 상황 우선 확인',
+  'news.decisionMid': '중거리: 항공유 가격과 원달러 환율 동시 점검',
+  'news.decisionLong': '장거리·성수기: 대한항공·아시아나 유류할증료와 항공권 총액 함께 비교',
+  'news.forecastCta.title': '2026년 7월 유류할증료 전망 — 6월 2일 시장 점검',
+  'news.forecastCta.desc': '항공유 가격 상승 압력, 호르무즈 해협 리스크, OPEC+ 증산, 원달러 환율이 항공권 유류할증료에 미치는 영향을 정리했습니다.',
+  'news.basisBody': '7월 공시는 아직 확정 전입니다. 이 페이지는 2026.06.02 08:30 KST 기준으로 6월 확정 공시와 7월 시장 전망을 분리해 정리합니다.'
+});
+Object.assign(window.PAGE_I18N_OVERRIDE.en, {
+  'news.metaTitle': 'July 2026 Fuel Surcharge Outlook | June 2 Jet Fuel, FX and Hormuz News',
+  'news.metaDesc': 'As of 2026.06.02 08:30 KST, this page summarizes the July 2026 fuel surcharge outlook and how oil prices, jet fuel prices, USD/KRW, Strait of Hormuz risk and OPEC+ production affect international airfare fuel surcharges.',
+  'news.pageTitle': 'July 2026 Fuel Surcharge Outlook and International Surcharge News',
+  'news.pageSub': 'As of 2026.06.02 08:30 KST · Jet fuel, USD/KRW, Strait of Hormuz and OPEC+ check',
+  'news.summary.title': 'July 2026 Fuel Surcharge Outlook Summary',
+  'news.summary.updated': 'As of 2026.06.02 08:30 KST',
+  'news.summary.li1': 'June 2026 fuel surcharge filings are confirmed data; July remains forecast-only.',
+  'news.summary.li2': 'Middle East risk and Strait of Hormuz uncertainty keep upward pressure on oil and jet fuel prices.',
+  'news.summary.li3': 'The chain is oil up, jet fuel up, airline fuel costs up, and fuel surcharge pressure up.',
+  'news.summary.li4': 'OPEC+ production increases are stabilizing, but may not fully offset logistics and geopolitical risk.',
+  'news.summary.li5': 'Higher USD/KRW and won weakness can add upward pressure to international fuel surcharge calculations.',
+  'news.summary.li6': 'The July outlook currently leans toward higher or still-elevated levels, with upside limited if Hormuz, oil and FX stabilize.',
+  'news.marketTitle': 'Market Briefing (as of 2026.06.02 08:30 KST)',
+  'news.brent': 'Oil: Middle East risk and Strait of Hormuz uncertainty keep upward pressure on Brent and jet fuel prices.',
+  'news.fx': 'USD/KRW: safe-haven dollar strength and won weakness can increase airline dollar-denominated fuel-cost pressure.',
+  'news.mops': 'Jet fuel: elevated jet fuel prices reduce the likelihood of July fuel surcharge cuts.',
+  'news.geo': 'Strait of Hormuz: traffic limits, insurance costs and rerouting risk remain key variables for oil and jet fuel supply uncertainty.',
+  'news.marketSummary': '→ The July 2026 fuel surcharge outlook currently leans toward higher or still-elevated levels. Normalization in Hormuz, lower oil and a stronger won could limit the upside.',
+  'news.fxDominance': 'July variables: jet fuel + USD/KRW + Strait of Hormuz + OPEC+ production + airline filing lag',
+  'news.dataRef': 'July outlook based on confirmed June data · As of 2026.06.02 08:30 KST',
+  'news.curSummary': 'June is confirmed filing data, while July is a market outlook based on jet fuel, USD/KRW, Hormuz and oil-price risk.',
+  'news.decisionTitle': 'Conclusion: July leans higher or still elevated',
+  'news.decisionLine1': 'Travelers with fixed dates should compare current total airfare and seat availability instead of waiting only for July filings.',
+  'news.decisionLine2': 'Upside can be limited if the Strait of Hormuz normalizes, oil adjusts lower and the won rebounds together.',
+  'news.decisionShort': 'Short haul: check total fare and seats first',
+  'news.decisionMid': 'Medium haul: monitor jet fuel and USD/KRW together',
+  'news.decisionLong': 'Long haul and peak season: compare Korean Air and Asiana surcharges with total airfare',
+  'news.forecastCta.title': 'July 2026 Fuel Surcharge Outlook — June 2 Market Check',
+  'news.forecastCta.desc': 'This update explains how jet fuel pressure, Strait of Hormuz risk, OPEC+ production and USD/KRW affect airfare fuel surcharges.',
+  'news.basisBody': 'July filings are not confirmed yet. This page separates confirmed June filings from the July market outlook as of 2026.06.02 08:30 KST.'
+});
+['ja','zh','fr','de'].forEach(function(lang){
+  if (!window.PAGE_I18N_OVERRIDE[lang]) window.PAGE_I18N_OVERRIDE[lang] = {};
+  Object.keys(window.PAGE_I18N_OVERRIDE.en).forEach(function(key){
+    window.PAGE_I18N_OVERRIDE[lang][key] = window.PAGE_I18N_OVERRIDE.en[key];
+  });
+});
+/* 2026.06.02 page override end */
 
 window.initNav({
   onLangChange:function(){
