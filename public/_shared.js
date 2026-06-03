@@ -5165,6 +5165,370 @@ window.AERO_NEWS_CARDS_20260602 = [
 
 window.AERO_NEWS_LATEST = window.AERO_MARKET_BRIEF_20260602;
 
+/* 2026.06.03 KST latest market brief and news cards.
+   June 2026 notice remains the confirmed baseline; July 2026 remains forecast-only. */
+window.AERO_MARKET_BRIEF_20260603 = {
+  id: 'market-brief-20260603',
+  timestamp: '2026-06-03T09:00:00+09:00',
+  displayTime: '2026.06.03 KST',
+  badge: 'LATEST',
+  currentMonthNotice: '2026-06',
+  forecastTargetMonth: '2026-07',
+  summary: '2026.06.03 KST 기준 미국-이란 협상 교착과 호르무즈 해협 물동량 감소, 전쟁위험 보험료 상승이 항공유 가격과 국제선 유류할증료에 다시 상승 압력으로 작용하고 있습니다. Brent는 약 $96~97/bbl, WTI는 약 $95/bbl, USD/KRW는 1,517.80원 수준입니다. 다만 OPEC+ 증산 유지가 급격한 인상 가능성을 일부 제한해 현재 2026년 7월 유류할증료 전망은 동결 55%, 1단계 인상 35%, 2단계 이상 인상 10%로 정리합니다.',
+  keywords: ['2026년 7월 유류할증료 전망','유류할증료','항공권 유류할증료','국제유가','브렌트유','WTI','환율 전망','원달러 환율','항공유 가격','호르무즈 해협','대한항공 유류할증료','아시아나 유류할증료','제주항공 유류할증료'],
+  cards: [
+    { title:'미국-이란 갈등 재점화', point:'협상 교착과 군사 긴장 재상승', decision:'중동 긴장이 다시 높아지며 국제유가와 항공유 가격 상승 압력이 커지고 있습니다.' },
+    { title:'브렌트유 97달러 근접', point:'Brent 약 $96~97/bbl, WTI 약 $95/bbl', decision:'유류할증료 산정에 영향을 주는 국제유가가 다시 높은 구간으로 올라왔습니다.' },
+    { title:'호르무즈 해협 통항 감소', point:'평시 대비 선박 통항량 급감', decision:'원유 수송 차질 우려가 확대되면 항공유 가격 상승 가능성이 커집니다.' },
+    { title:'전쟁위험 보험료 급등', point:'유조선 보험료와 운송 비용 상승', decision:'원유 공급 비용 증가가 항공사 연료비 부담으로 이어질 수 있습니다.' },
+    { title:'7월 유류할증료 전망', point:'동결 55% · 1단계 인상 35% · 2단계 이상 10%', decision:'현재 기준 동결 가능성이 높지만 일부 항공사의 인상 가능성도 존재합니다.' }
+  ]
+};
+
+window.AERO_NEWS_CARDS_20260603 = [
+  {
+    id: 'news-20260603-us-iran-tension',
+    slug: 'june-3-us-iran-tension-fuel-surcharge',
+    category: 'market',
+    priority: 1,
+    date: '2026-06-03',
+    updatedAt: '2026.06.03 KST 업데이트',
+    badge: 'NEW',
+    aiSummary: true,
+    relevanceScore: 1,
+    currentMonthNotice: '2026-06',
+    forecastTargetMonth: '2026-07',
+    title: '미국-이란 갈등 재점화',
+    aiBrief: '미국-이란 협상 교착과 중동 군사적 긴장 재상승으로 국제유가와 항공유 가격의 상승 압력이 다시 커지고 있습니다.',
+    summary: '중동 긴장이 다시 높아지며 국제유가가 상승 압력을 받고 있습니다.\n\n2026년 7월 유류할증료 전망에서는 미국-이란 갈등 재확대가 핵심 변수입니다. 국제유가가 오르면 항공유 가격과 항공사 연료비 부담이 커지고, 이는 대한항공 유류할증료, 아시아나 유류할증료, 제주항공 유류할증료 등 국제선 항공권 유류할증료의 상승 압력으로 이어질 수 있습니다.',
+    impact: '유류할증료 영향: 상승. 7월 전망 영향: 동결 우세 속 일부 항공사 1단계 인상 가능성을 높이는 요인입니다.',
+    sourceName: '2026년 7월 유류할증료 전망 업데이트',
+    sourceUrl: 'fuel-surcharge-2026-06-forecast.html',
+    tags: ['NEW','미국-이란 갈등','국제유가','유류할증료','항공권 유류할증료'],
+    faq: [
+      { q:'유류할증료는 왜 오르나요?', a:'국제유가와 항공유 가격 상승이 주요 원인입니다. 중동 긴장이 높아지면 항공유 가격과 항공사 연료비 부담이 커져 유류할증료 상승 압력으로 이어질 수 있습니다.' }
+    ],
+    links: [
+      { href:'fuel-surcharge-2026-06-forecast.html', label:'2026년 7월 유류할증료 전망 보기' },
+      { href:'airlines.html', label:'항공사별 유류할증료 보기' }
+    ],
+    i18n: {
+      en: {
+        title:'U.S.-Iran tensions flare again',
+        aiBrief:'Stalled U.S.-Iran talks and renewed Middle East military tension are increasing upward pressure on oil and jet fuel prices.',
+        summary:'Renewed U.S.-Iran tension is a key variable for the July 2026 fuel surcharge outlook. Higher oil can raise jet fuel prices and airline fuel-cost pressure.',
+        impact:'Fuel surcharge impact: upward. July outlook impact: raises the chance of a one-step increase for some airlines.'
+      }
+    }
+  },
+  {
+    id: 'news-20260603-brent-wti',
+    slug: 'june-3-brent-wti-oil-price',
+    category: 'market',
+    priority: 1,
+    date: '2026-06-03',
+    updatedAt: '2026.06.03 KST 업데이트',
+    badge: 'NEW',
+    aiSummary: true,
+    relevanceScore: 1,
+    currentMonthNotice: '2026-06',
+    forecastTargetMonth: '2026-07',
+    title: '브렌트유 97달러 근접',
+    aiBrief: 'Brent는 약 $96~97/bbl, WTI는 약 $95/bbl 수준입니다. 유류할증료 산정에 영향을 주는 국제유가가 다시 높은 구간에 머물고 있습니다.',
+    summary: '유류할증료 산정에 영향을 주는 국제유가가 다시 상승 중입니다.\n\n공개 시장 지표 기준 Brent는 약 $96~97/bbl, WTI는 약 $95/bbl 수준입니다. 국제유가가 높은 구간에 머물면 항공유 가격도 쉽게 내려가기 어렵고, 2026년 7월 국제선 유류할증료 전망은 동결 가능성 우세 속 일부 인상 가능성을 함께 봐야 합니다.',
+    impact: '유류할증료 영향: 상승. 7월 전망 영향: 동결 가능성은 유지되지만 인하 가능성은 낮추는 요인입니다.',
+    sourceName: 'Brent·WTI 국제유가 점검',
+    sourceUrl: 'fuel-surcharge-2026-06-forecast.html',
+    tags: ['NEW','브렌트유','WTI','국제유가','항공유 가격','2026년 7월 유류할증료'],
+    faq: [
+      { q:'국제유가가 오르면 유류할증료도 바로 오르나요?', a:'즉시 오르는 것은 아니지만, 항공유 가격 평균과 항공사 공시 시차를 거쳐 유류할증료 산정에 영향을 줄 수 있습니다.' }
+    ],
+    links: [
+      { href:'fuel-surcharge-graph.html', label:'월별 유류할증료 그래프 보기' }
+    ],
+    i18n: {
+      en: {
+        title:'Brent approaches the $97 range',
+        aiBrief:'Brent is around $96-97/bbl and WTI is around $95/bbl, keeping oil in a high range for fuel surcharge calculations.',
+        summary:'Oil prices are back in an elevated range. This lowers the chance of a July surcharge cut and keeps freeze or one-step increase scenarios relevant.',
+        impact:'Fuel surcharge impact: upward. July outlook impact: reduces cut probability.'
+      }
+    }
+  },
+  {
+    id: 'news-20260603-hormuz-traffic',
+    slug: 'june-3-hormuz-traffic-decline',
+    category: 'market',
+    priority: 1,
+    date: '2026-06-03',
+    updatedAt: '2026.06.03 KST 업데이트',
+    badge: 'NEW',
+    aiSummary: true,
+    relevanceScore: 1,
+    currentMonthNotice: '2026-06',
+    forecastTargetMonth: '2026-07',
+    title: '호르무즈 해협 통항 감소',
+    aiBrief: '평시 대비 선박 통항량이 급감하고 일부 유조선 및 LNG 운반선만 제한 운항하는 흐름입니다. 물류 불확실성이 항공유 가격 리스크로 이어질 수 있습니다.',
+    summary: '호르무즈 해협의 원유 수송 차질 우려가 확대되고 있습니다.\n\n호르무즈 해협은 세계 원유 물동량의 상당 부분이 통과하는 핵심 통로입니다. 해협 리스크가 장기화되면 원유와 항공유 공급 불확실성이 커지고, 항공유 가격 상승 가능성이 높아져 항공권 유류할증료 전망에도 부담이 됩니다.',
+    impact: '유류할증료 영향: 상승. 7월 전망 영향: 해협 상황 악화 시 추가 인상 가능성을 높입니다.',
+    sourceName: '호르무즈 해협 물류 리스크 점검',
+    sourceUrl: 'fuel-surcharge-2026-06-forecast.html',
+    tags: ['NEW','호르무즈 해협','항공유 가격','국제유가','항공권 유류할증료'],
+    faq: [
+      { q:'호르무즈 해협이 중요한 이유는?', a:'세계 원유 물동량의 상당 부분이 통과하기 때문입니다. 통항이 줄거나 보험료가 오르면 원유와 항공유 공급 비용이 올라 유류할증료에 영향을 줄 수 있습니다.' }
+    ],
+    links: [
+      { href:'fuel-surcharge-2026-06-forecast.html', label:'호르무즈 리스크 반영 전망 보기' }
+    ],
+    i18n: {
+      en: {
+        title:'Strait of Hormuz traffic remains constrained',
+        aiBrief:'Traffic is sharply below normal, with only limited tanker and LNG carrier operations. Logistics uncertainty can lift jet fuel risk.',
+        summary:'The Strait of Hormuz remains a critical variable for oil and jet fuel supply. Prolonged disruption can increase fuel surcharge pressure.',
+        impact:'Fuel surcharge impact: upward. July outlook impact: deterioration can raise additional increase risk.'
+      }
+    }
+  },
+  {
+    id: 'news-20260603-war-risk-insurance',
+    slug: 'june-3-war-risk-insurance',
+    category: 'market',
+    priority: 1,
+    date: '2026-06-03',
+    updatedAt: '2026.06.03 KST 업데이트',
+    badge: 'NEW',
+    aiSummary: true,
+    relevanceScore: 0.95,
+    currentMonthNotice: '2026-06',
+    forecastTargetMonth: '2026-07',
+    title: '전쟁위험 보험료 급등',
+    aiBrief: '유조선 전쟁위험 보험료 상승은 운송 비용과 원유 공급 비용을 키우며 항공유 가격 상승 압력으로 연결될 수 있습니다.',
+    summary: '원유 운송 비용 증가로 항공유 가격 상승 압력이 커지고 있습니다.\n\n전쟁위험 보험료가 오르면 유조선 운항 비용이 상승하고, 이 비용은 원유 공급 비용과 항공유 가격에 반영될 수 있습니다. 항공사는 항공유 가격과 환율의 영향을 함께 받기 때문에 원달러 환율 상승까지 겹치면 연료비 부담이 더 커질 수 있습니다.',
+    impact: '유류할증료 영향: 상승. 7월 전망 영향: 항공사 연료비 부담 증가 가능성입니다.',
+    sourceName: '전쟁위험 보험료와 항공유 비용 영향',
+    sourceUrl: 'fuel-surcharge-2026-06-forecast.html',
+    tags: ['NEW','전쟁위험 보험료','항공유 가격','원달러 환율','항공사 연료비'],
+    faq: [
+      { q:'전쟁위험 보험료가 항공권 유류할증료와 관련이 있나요?', a:'직접 항공권 항목은 아니지만 원유 운송 비용과 항공유 가격을 밀어 올릴 수 있어 항공사 연료비 부담과 유류할증료 전망에 간접 영향을 줄 수 있습니다.' }
+    ],
+    links: [
+      { href:'fuel-surcharge-calculator.html', label:'노선별 유류할증료 계산기 보기' }
+    ],
+    i18n: {
+      en: {
+        title:'War-risk insurance costs surge',
+        aiBrief:'Higher war-risk insurance for tankers can raise shipping and oil supply costs, adding pressure to jet fuel prices.',
+        summary:'Rising war-risk insurance can lift oil transport costs and feed into jet fuel price pressure, especially when USD/KRW is elevated.',
+        impact:'Fuel surcharge impact: upward. July outlook impact: increases airline fuel-cost burden.'
+      }
+    }
+  },
+  {
+    id: 'news-20260603-july-outlook-probability',
+    slug: 'june-3-july-2026-fuel-surcharge-probability',
+    category: 'forecast',
+    priority: 1,
+    date: '2026-06-03',
+    updatedAt: '2026.06.03 KST 업데이트',
+    badge: 'NEW',
+    aiSummary: true,
+    relevanceScore: 1,
+    currentMonthNotice: '2026-06',
+    forecastTargetMonth: '2026-07',
+    title: '2026년 7월 유류할증료 전망',
+    aiBrief: '현재 기준 동결 가능성이 높지만 일부 항공사의 1단계 인상 가능성도 존재합니다. 전망 확률은 동결 55%, 1단계 인상 35%, 2단계 이상 인상 10%입니다.',
+    summary: '현재 기준 동결 가능성이 높지만 일부 항공사의 인상 가능성도 존재합니다.\n\n2026년 7월 유류할증료는 아직 공식 공시 전입니다. 현재 국제유가는 중동 긴장 고조와 호르무즈 해협 리스크 영향으로 상승 압력을 받고 있으나, OPEC+ 증산 유지가 일부 완충 역할을 하고 있습니다. 따라서 전망은 동결 55%, 1단계 인상 35%, 2단계 이상 인상 10%로 정리합니다.',
+    impact: '유류할증료 영향: 중립~상승. 7월 전망 영향: 동결 우세, 일부 항공사 1단계 인상 가능성 존재.',
+    sourceName: '2026년 7월 유류할증료 전망 확률',
+    sourceUrl: 'fuel-surcharge-2026-06-forecast.html',
+    tags: ['NEW','2026년 7월 유류할증료','대한항공 유류할증료','아시아나 유류할증료','제주항공 유류할증료'],
+    faq: [
+      { q:'2026년 7월 유류할증료는 오를까요?', a:'현재 기준으로 동결 가능성이 높지만 일부 인상 가능성도 존재합니다. 전망 확률은 동결 55%, 1단계 인상 35%, 2단계 이상 인상 10%입니다.' }
+    ],
+    links: [
+      { href:'fuel-surcharge-2026-06-forecast.html', label:'7월 전망 상세 보기' },
+      { href:'index.html', label:'한국 출발 유류할증료 조회' }
+    ],
+    i18n: {
+      en: {
+        title:'July 2026 fuel surcharge outlook',
+        aiBrief:'Freeze remains the most likely scenario, but a one-step increase is possible for some airlines. Probability: freeze 55%, one-step increase 35%, two-step or more 10%.',
+        summary:'July 2026 fuel surcharges are not official filings yet. OPEC+ production helps cap sharp increases, while Hormuz and oil-price risks keep one-step increase scenarios alive.',
+        impact:'Fuel surcharge impact: neutral to upward. July outlook impact: freeze bias with one-step increase risk.'
+      }
+    }
+  }
+];
+
+window.AERO_NEWS_LATEST = window.AERO_MARKET_BRIEF_20260603;
+
+/* 2026.06.03 multilingual news-card cleanup.
+   Every visible card field has per-language text so non-Korean pages do not mix
+   Korean base fields with English fallback content. */
+(function(){
+  var tr = {
+    'news-20260603-us-iran-tension': {
+      en: {
+        updatedAt:'Updated 2026.06.03 KST',
+        title:'U.S.-Iran tensions flare again',
+        aiBrief:'Stalled U.S.-Iran talks and renewed Middle East military tension are increasing upward pressure on oil and jet fuel prices.',
+        summary:'Middle East tension is rising again, increasing pressure on oil prices. For the July 2026 fuel surcharge outlook, renewed U.S.-Iran conflict is a key variable because higher oil can lift jet fuel prices and airline fuel costs.',
+        impact:'Fuel surcharge impact: upward. July outlook impact: raises the chance of a one-step increase for some airlines.',
+        sourceName:'July 2026 fuel surcharge outlook update',
+        tags:['NEW','U.S.-Iran tension','oil prices','fuel surcharge','airfare fuel surcharge'],
+        faq:[{q:'Why do fuel surcharges rise?',a:'Oil and jet fuel price increases are the main causes. When Middle East tension rises, jet fuel and airline fuel-cost pressure can increase.'}],
+        links:[{href:'fuel-surcharge-2026-06-forecast.html',label:'View July 2026 outlook'},{href:'airlines.html',label:'View airline fuel surcharges'}]
+      },
+      ja: {
+        updatedAt:'2026.06.03 KST 更新',
+        title:'米国・イラン対立が再燃',
+        aiBrief:'米国・イラン協議の停滞と中東の軍事的緊張により、原油価格と航空燃料価格に上昇圧力がかかっています。',
+        summary:'中東情勢の緊張が再び高まり、国際原油価格に上昇圧力が出ています。2026年7月の燃油サーチャージ見通しでは、米国・イラン対立の再燃が重要な変数です。',
+        impact:'燃油サーチャージへの影響: 上昇要因。7月見通しへの影響: 一部航空会社で1段階引き上げの可能性を高める要因です。',
+        sourceName:'2026年7月燃油サーチャージ見通し更新',
+        tags:['NEW','米国・イラン','原油価格','燃油サーチャージ','航空券燃油サーチャージ'],
+        faq:[{q:'燃油サーチャージはなぜ上がりますか？',a:'主な要因は国際原油価格と航空燃料価格の上昇です。中東情勢が悪化すると、航空会社の燃料費負担が増える可能性があります。'}],
+        links:[{href:'fuel-surcharge-2026-06-forecast.html',label:'7月見通しを見る'},{href:'airlines.html',label:'航空会社別燃油サーチャージを見る'}]
+      },
+      zh: {
+        updatedAt:'2026.06.03 KST 更新',
+        title:'美国与伊朗紧张局势再度升温',
+        aiBrief:'美国与伊朗谈判停滞，中东军事紧张再起，正在推高原油和航空燃油价格压力。',
+        summary:'中东紧张局势再次升温，国际油价面临上行压力。在2026年7月燃油附加费展望中，美国与伊朗冲突再度升温是关键变量。',
+        impact:'燃油附加费影响：上行。7月展望影响：提高部分航空公司上调一级的可能性。',
+        sourceName:'2026年7月燃油附加费展望更新',
+        tags:['NEW','美国伊朗紧张','国际油价','燃油附加费','机票燃油附加费'],
+        faq:[{q:'燃油附加费为什么会上涨？',a:'主要原因是国际油价和航空燃油价格上涨。中东紧张局势升温时，航空公司燃油成本压力可能增加。'}],
+        links:[{href:'fuel-surcharge-2026-06-forecast.html',label:'查看7月展望'},{href:'airlines.html',label:'查看航空公司燃油附加费'}]
+      },
+      fr: {
+        updatedAt:'Mis à jour le 2026.06.03 KST',
+        title:'Regain de tension entre les États-Unis et l’Iran',
+        aiBrief:'Le blocage des discussions entre les États-Unis et l’Iran et le regain de tension militaire au Moyen-Orient renforcent la pression sur le pétrole et le kérosène.',
+        summary:'La tension au Moyen-Orient augmente de nouveau et soutient les prix du pétrole. Pour les surtaxes carburant de juillet 2026, le risque États-Unis/Iran redevient une variable clé.',
+        impact:'Impact sur la surtaxe carburant : haussier. Impact pour juillet : risque accru d’une hausse d’un palier chez certaines compagnies.',
+        sourceName:'Mise à jour des perspectives de surtaxe carburant de juillet 2026',
+        tags:['NEW','États-Unis Iran','prix du pétrole','surtaxe carburant','billet d’avion'],
+        faq:[{q:'Pourquoi les surtaxes carburant augmentent-elles ?',a:'La hausse du pétrole et du kérosène est la cause principale. Une tension accrue au Moyen-Orient peut augmenter les coûts de carburant des compagnies.'}],
+        links:[{href:'fuel-surcharge-2026-06-forecast.html',label:'Voir les perspectives de juillet'},{href:'airlines.html',label:'Voir les surtaxes par compagnie'}]
+      },
+      de: {
+        updatedAt:'Aktualisiert am 2026.06.03 KST',
+        title:'US-Iran-Konflikt flammt wieder auf',
+        aiBrief:'Stockende Gespräche zwischen den USA und Iran sowie neue militärische Spannungen im Nahen Osten erhöhen den Druck auf Öl- und Kerosinpreise.',
+        summary:'Die Spannungen im Nahen Osten nehmen wieder zu und stützen höhere Ölpreise. Für den Ausblick auf die Treibstoffzuschläge im Juli 2026 ist der US-Iran-Konflikt ein wichtiger Faktor.',
+        impact:'Auswirkung auf den Treibstoffzuschlag: steigend. Auswirkung auf Juli: erhöht das Risiko einer Anhebung um eine Stufe bei einigen Airlines.',
+        sourceName:'Update zum Ausblick auf Treibstoffzuschläge Juli 2026',
+        tags:['NEW','USA Iran','Ölpreise','Treibstoffzuschlag','Flugticket-Zuschlag'],
+        faq:[{q:'Warum steigen Treibstoffzuschläge?',a:'Hauptgründe sind steigende Öl- und Kerosinpreise. Höhere Spannungen im Nahen Osten können die Treibstoffkosten der Airlines erhöhen.'}],
+        links:[{href:'fuel-surcharge-2026-06-forecast.html',label:'Juli-Ausblick ansehen'},{href:'airlines.html',label:'Zuschläge nach Airline ansehen'}]
+      }
+    },
+    'news-20260603-brent-wti': {
+      en: {
+        updatedAt:'Updated 2026.06.03 KST',
+        title:'Brent approaches the $97 range',
+        aiBrief:'Brent is around $96-97/bbl and WTI is around $95/bbl, keeping oil in a high range for fuel surcharge calculations.',
+        summary:'Oil prices are back in an elevated range. This lowers the chance of a July surcharge cut and keeps freeze or one-step increase scenarios relevant.',
+        impact:'Fuel surcharge impact: upward. July outlook impact: reduces cut probability.',
+        sourceName:'Brent and WTI oil price check',
+        tags:['NEW','Brent','WTI','oil prices','jet fuel price','July 2026 fuel surcharge'],
+        faq:[{q:'Do fuel surcharges rise immediately when oil prices rise?',a:'Not immediately. Airline surcharge filings usually reflect jet fuel averages and a filing lag.'}],
+        links:[{href:'fuel-surcharge-graph.html',label:'View monthly fuel surcharge graph'}]
+      },
+      ja: {
+        updatedAt:'2026.06.03 KST 更新',
+        title:'ブレント原油が97ドル圏に接近',
+        aiBrief:'ブレント原油は約96〜97ドル/bbl、WTIは約95ドル/bblで、燃油サーチャージ算定に影響する原油価格が高い水準にあります。',
+        summary:'国際原油価格は再び高い水準に戻っています。7月の燃油サーチャージが下がる可能性は低下し、据え置きまたは1段階引き上げのシナリオを確認する必要があります。',
+        impact:'燃油サーチャージへの影響: 上昇要因。7月見通しへの影響: 引き下げ可能性を抑える要因です。',
+        sourceName:'ブレント・WTI原油価格チェック',
+        tags:['NEW','ブレント原油','WTI','国際原油価格','航空燃料価格','2026年7月燃油サーチャージ'],
+        faq:[{q:'原油価格が上がると燃油サーチャージもすぐ上がりますか？',a:'すぐに上がるとは限りません。航空燃料価格の平均と航空会社の公示時差を経て反映されます。'}],
+        links:[{href:'fuel-surcharge-graph.html',label:'月別燃油サーチャージグラフを見る'}]
+      },
+      zh: {
+        updatedAt:'2026.06.03 KST 更新',
+        title:'布伦特原油接近97美元区间',
+        aiBrief:'布伦特原油约为96至97美元/桶，WTI约为95美元/桶，油价仍处于影响燃油附加费测算的高位。',
+        summary:'国际油价重新回到较高区间。这会降低7月燃油附加费下调的可能性，使维持不变或上调一级的情景仍需关注。',
+        impact:'燃油附加费影响：上行。7月展望影响：降低下调概率。',
+        sourceName:'布伦特与WTI油价检查',
+        tags:['NEW','布伦特原油','WTI','国际油价','航空燃油价格','2026年7月燃油附加费'],
+        faq:[{q:'油价上涨后燃油附加费会立即上涨吗？',a:'不一定会立即上涨。通常会经过航空燃油均价和航空公司公示时差后反映。'}],
+        links:[{href:'fuel-surcharge-graph.html',label:'查看月度燃油附加费图表'}]
+      },
+      fr: {
+        updatedAt:'Mis à jour le 2026.06.03 KST',
+        title:'Le Brent se rapproche de 97 dollars',
+        aiBrief:'Le Brent évolue autour de 96-97 dollars le baril et le WTI autour de 95 dollars, un niveau élevé pour le calcul des surtaxes carburant.',
+        summary:'Les prix du pétrole sont revenus dans une zone élevée. Cela réduit la probabilité d’une baisse en juillet et maintient les scénarios de statu quo ou de hausse d’un palier.',
+        impact:'Impact sur la surtaxe carburant : haussier. Impact pour juillet : baisse moins probable.',
+        sourceName:'Point Brent et WTI',
+        tags:['NEW','Brent','WTI','prix du pétrole','kérosène','surtaxe juillet 2026'],
+        faq:[{q:'La surtaxe augmente-t-elle immédiatement quand le pétrole monte ?',a:'Pas immédiatement. Les compagnies reflètent généralement la moyenne du kérosène et un délai de publication.'}],
+        links:[{href:'fuel-surcharge-graph.html',label:'Voir le graphique mensuel'}]
+      },
+      de: {
+        updatedAt:'Aktualisiert am 2026.06.03 KST',
+        title:'Brent nähert sich der Marke von 97 US-Dollar',
+        aiBrief:'Brent liegt bei etwa 96-97 US-Dollar je Barrel und WTI bei etwa 95 US-Dollar. Öl bleibt damit für Zuschlagsberechnungen auf hohem Niveau.',
+        summary:'Die Ölpreise befinden sich wieder in einem erhöhten Bereich. Das verringert die Wahrscheinlichkeit einer Senkung im Juli und hält Szenarien mit unveränderten oder leicht höheren Zuschlägen relevant.',
+        impact:'Auswirkung auf den Treibstoffzuschlag: steigend. Auswirkung auf Juli: geringere Senkungswahrscheinlichkeit.',
+        sourceName:'Brent- und WTI-Preischeck',
+        tags:['NEW','Brent','WTI','Ölpreise','Kerosinpreis','Treibstoffzuschlag Juli 2026'],
+        faq:[{q:'Steigen Treibstoffzuschläge sofort, wenn Ölpreise steigen?',a:'Nicht sofort. Meist wirken Kerosin-Durchschnittspreise und Veröffentlichungsfristen der Airlines zeitverzögert.'}],
+        links:[{href:'fuel-surcharge-graph.html',label:'Monatsgrafik ansehen'}]
+      }
+    }
+  };
+  var common = {
+    'news-20260603-hormuz-traffic': {
+      en:['Strait of Hormuz traffic remains constrained','Traffic is sharply below normal, with only limited tanker and LNG carrier operations. Logistics uncertainty can lift jet fuel risk.','The Strait of Hormuz remains a critical variable for oil and jet fuel supply. Prolonged disruption can increase fuel surcharge pressure.','Fuel surcharge impact: upward. July outlook impact: deterioration can raise additional increase risk.','Strait of Hormuz logistics risk check',['NEW','Strait of Hormuz','jet fuel price','oil prices','airfare fuel surcharge'],'Why is the Strait of Hormuz important?','A significant share of global oil traffic passes through the strait. Lower traffic or higher insurance costs can raise oil and jet fuel supply costs.','View Hormuz risk outlook'],
+      ja:['ホルムズ海峡の通航減少','平常時に比べ船舶通航量が大きく減少し、一部のタンカーとLNG船だけが限定的に運航しています。物流不確実性は航空燃料リスクを高めます。','ホルムズ海峡は原油と航空燃料供給の重要な変数です。混乱が長期化すると燃油サーチャージの上昇圧力が強まる可能性があります。','燃油サーチャージへの影響: 上昇要因。7月見通しへの影響: 状況悪化時に追加引き上げリスクが高まります。','ホルムズ海峡物流リスク点検',['NEW','ホルムズ海峡','航空燃料価格','国際原油価格','航空券燃油サーチャージ'],'ホルムズ海峡が重要な理由は？','世界の原油輸送の相当部分が通過するためです。通航減少や保険料上昇は原油・航空燃料供給コストを押し上げる可能性があります。','ホルムズリスク見通しを見る'],
+      zh:['霍尔木兹海峡通行受限','船舶通行量较平时大幅减少，仅部分油轮和LNG运输船有限运行。物流不确定性可能推高航空燃油风险。','霍尔木兹海峡仍是原油和航空燃油供应的关键变量。若干扰持续，燃油附加费上行压力可能增加。','燃油附加费影响：上行。7月展望影响：若形势恶化，额外上调风险增加。','霍尔木兹海峡物流风险检查',['NEW','霍尔木兹海峡','航空燃油价格','国际油价','机票燃油附加费'],'霍尔木兹海峡为什么重要？','全球相当一部分原油运输经过该海峡。通行减少或保险费上升可能提高原油和航空燃油供应成本。','查看霍尔木兹风险展望'],
+      fr:['Le trafic du détroit d’Ormuz reste contraint','Le trafic maritime est nettement inférieur à la normale, avec seulement certaines opérations limitées de pétroliers et méthaniers. Cette incertitude logistique peut accroître le risque sur le kérosène.','Le détroit d’Ormuz reste une variable critique pour l’offre de pétrole et de kérosène. Une perturbation prolongée peut augmenter la pression sur les surtaxes carburant.','Impact sur la surtaxe carburant : haussier. Impact pour juillet : une détérioration peut accroître le risque de hausse supplémentaire.','Point sur le risque logistique du détroit d’Ormuz',['NEW','détroit d’Ormuz','kérosène','prix du pétrole','surtaxe billet d’avion'],'Pourquoi le détroit d’Ormuz est-il important ?','Une part importante du trafic pétrolier mondial y transite. Une baisse du trafic ou une hausse des assurances peut augmenter les coûts du pétrole et du kérosène.','Voir le risque Ormuz'],
+      de:['Verkehr in der Straße von Hormus bleibt eingeschränkt','Der Schiffsverkehr liegt deutlich unter dem Normalniveau; nur begrenzte Tanker- und LNG-Transporte laufen weiter. Diese Logistikunsicherheit kann das Kerosinrisiko erhöhen.','Die Straße von Hormus bleibt ein zentraler Faktor für Öl- und Kerosinversorgung. Anhaltende Störungen können den Druck auf Treibstoffzuschläge erhöhen.','Auswirkung auf den Treibstoffzuschlag: steigend. Auswirkung auf Juli: Verschlechterung kann Zusatzrisiko erhöhen.','Check des Logistikrisikos Straße von Hormus',['NEW','Straße von Hormus','Kerosinpreis','Ölpreise','Flugticket-Treibstoffzuschlag'],'Warum ist die Straße von Hormus wichtig?','Ein erheblicher Teil des weltweiten Ölverkehrs passiert diese Meerenge. Weniger Verkehr oder höhere Versicherungen können Öl- und Kerosinkosten erhöhen.','Hormus-Risiko ansehen']
+    },
+    'news-20260603-war-risk-insurance': {
+      en:['War-risk insurance costs surge','Higher war-risk insurance for tankers can raise shipping and oil supply costs, adding pressure to jet fuel prices.','Rising war-risk insurance can lift oil transport costs and feed into jet fuel price pressure, especially when USD/KRW is elevated.','Fuel surcharge impact: upward. July outlook impact: increases airline fuel-cost burden.','War-risk insurance and jet fuel cost check',['NEW','war-risk insurance','jet fuel price','USD/KRW','airline fuel cost'],'How are war-risk insurance costs linked to airfare fuel surcharges?','They are not a direct ticket fee, but they can raise oil transport and jet fuel costs, indirectly affecting airline fuel-cost pressure.','View route fuel surcharge calculator'],
+      ja:['戦争リスク保険料が急騰','タンカー向け戦争リスク保険料の上昇は輸送費と原油供給コストを押し上げ、航空燃料価格に上昇圧力を加える可能性があります。','戦争リスク保険料の上昇は原油輸送コストを高め、特にUSD/KRWが高い局面では航空燃料価格への圧力となります。','燃油サーチャージへの影響: 上昇要因。7月見通しへの影響: 航空会社の燃料費負担を増やす可能性があります。','戦争リスク保険料と航空燃料コスト点検',['NEW','戦争リスク保険料','航空燃料価格','USD/KRW','航空会社燃料費'],'戦争リスク保険料は航空券燃油サーチャージと関係がありますか？','直接の航空券手数料ではありませんが、原油輸送費と航空燃料コストを押し上げ、航空会社の燃料費負担に間接的に影響します。','路線別燃油サーチャージ計算機を見る'],
+      zh:['战争风险保险费急升','油轮战争风险保险费上升可能提高运输和原油供应成本，并对航空燃油价格形成压力。','战争风险保险费上升会推高原油运输成本，尤其在美元兑韩元汇率较高时，会进一步增加航空燃油价格压力。','燃油附加费影响：上行。7月展望影响：增加航空公司燃油成本负担。','战争风险保险费与航空燃油成本检查',['NEW','战争风险保险费','航空燃油价格','USD/KRW','航空公司燃油成本'],'战争风险保险费与机票燃油附加费有关吗？','它不是直接的机票费用，但可能提高原油运输和航空燃油成本，间接影响航空公司燃油成本压力。','查看航线燃油附加费计算器'],
+      fr:['Forte hausse des assurances risque de guerre','La hausse des assurances risque de guerre pour les pétroliers peut augmenter les coûts de transport et d’approvisionnement en pétrole, ajoutant une pression sur le kérosène.','La hausse des assurances peut renchérir le transport du pétrole et se transmettre au kérosène, surtout lorsque l’USD/KRW reste élevé.','Impact sur la surtaxe carburant : haussier. Impact pour juillet : hausse possible de la charge carburant des compagnies.','Assurance risque de guerre et coût du kérosène',['NEW','assurance risque de guerre','kérosène','USD/KRW','coût carburant compagnie'],'Quel lien avec la surtaxe carburant des billets ?', 'Ce n’est pas un frais direct du billet, mais cela peut augmenter les coûts de transport du pétrole et du kérosène, influençant indirectement les compagnies.','Voir le calculateur par route'],
+      de:['Kriegsrisiko-Versicherungen steigen stark','Höhere Kriegsrisiko-Versicherungen für Tanker können Transport- und Ölversorgungskosten erhöhen und Druck auf Kerosinpreise ausüben.','Steigende Versicherungen können Öltransportkosten erhöhen und besonders bei hohem USD/KRW auf Kerosinkosten durchschlagen.','Auswirkung auf den Treibstoffzuschlag: steigend. Auswirkung auf Juli: höhere Treibstoffkostenbelastung der Airlines möglich.','Kriegsrisiko-Versicherung und Kerosinkosten',['NEW','Kriegsrisiko-Versicherung','Kerosinpreis','USD/KRW','Airline-Treibstoffkosten'],'Wie hängen Kriegsrisiko-Versicherungen mit Flugticket-Zuschlägen zusammen?', 'Sie sind keine direkte Ticketgebühr, können aber Öltransport- und Kerosinkosten erhöhen und damit Airlines indirekt belasten.','Routenrechner ansehen']
+    },
+    'news-20260603-july-outlook-probability': {
+      en:['July 2026 fuel surcharge outlook','Freeze remains the most likely scenario, but a one-step increase is possible for some airlines. Probability: freeze 55%, one-step increase 35%, two-step or more 10%.','July 2026 fuel surcharges are not official filings yet. OPEC+ production helps cap sharp increases, while Hormuz and oil-price risks keep one-step increase scenarios alive.','Fuel surcharge impact: neutral to upward. July outlook impact: freeze bias with one-step increase risk.','July 2026 fuel surcharge probability',['NEW','July 2026 fuel surcharge','Korean Air fuel surcharge','Asiana fuel surcharge','Jeju Air fuel surcharge'],'Will July 2026 fuel surcharges rise?','Freeze is currently the most likely scenario, but some increase is possible. Probability: freeze 55%, one-step increase 35%, two-step or more 10%.','View detailed July outlook'],
+      ja:['2026年7月燃油サーチャージ見通し','現時点では据え置きの可能性が最も高いものの、一部航空会社で1段階引き上げの可能性もあります。確率は据え置き55%、1段階引き上げ35%、2段階以上10%です。','2026年7月の燃油サーチャージはまだ公式公示前です。OPEC+の増産は急騰を抑える一方、ホルムズ海峡と原油価格リスクにより1段階引き上げの可能性は残ります。','燃油サーチャージへの影響: 中立〜上昇。7月見通しへの影響: 据え置き優勢、一部1段階引き上げリスクあり。','2026年7月燃油サーチャージ確率',['NEW','2026年7月燃油サーチャージ','大韓航空燃油サーチャージ','アシアナ燃油サーチャージ','チェジュ航空燃油サーチャージ'],'2026年7月の燃油サーチャージは上がりますか？','現時点では据え置きの可能性が最も高いですが、一部引き上げの可能性もあります。据え置き55%、1段階引き上げ35%、2段階以上10%です。','7月見通しの詳細を見る'],
+      zh:['2026年7月燃油附加费展望','目前维持不变的可能性最高，但部分航空公司存在上调一级的可能。概率为维持55%、上调一级35%、上调两级以上10%。','2026年7月燃油附加费尚未正式公示。OPEC+增产有助于限制急涨，但霍尔木兹和油价风险仍使上调一级情景存在。','燃油附加费影响：中性至上行。7月展望影响：维持为主，同时存在上调一级风险。','2026年7月燃油附加费概率',['NEW','2026年7月燃油附加费','大韩航空燃油附加费','韩亚航空燃油附加费','济州航空燃油附加费'],'2026年7月燃油附加费会上涨吗？','目前维持不变的可能性最高，但也存在部分上调可能。概率为维持55%、上调一级35%、上调两级以上10%。','查看7月详细展望'],
+      fr:['Perspectives de surtaxe carburant pour juillet 2026','Le statu quo reste le scénario le plus probable, mais une hausse d’un palier reste possible pour certaines compagnies. Probabilité : statu quo 55%, hausse d’un palier 35%, deux paliers ou plus 10%.','Les surtaxes carburant de juillet 2026 ne sont pas encore officielles. La production OPEC+ limite une forte hausse, mais les risques Ormuz et pétrole maintiennent le scénario d’une hausse d’un palier.','Impact sur la surtaxe carburant : neutre à haussier. Impact pour juillet : biais de statu quo avec risque de hausse d’un palier.','Probabilité de surtaxe carburant juillet 2026',['NEW','surtaxe juillet 2026','surtaxe Korean Air','surtaxe Asiana','surtaxe Jeju Air'],'Les surtaxes de juillet 2026 vont-elles augmenter ?', 'Le statu quo est le scénario le plus probable, mais une hausse reste possible. Probabilité : statu quo 55%, hausse d’un palier 35%, deux paliers ou plus 10%.','Voir le détail des perspectives de juillet'],
+      de:['Ausblick auf Treibstoffzuschläge Juli 2026','Unveränderte Zuschläge bleiben am wahrscheinlichsten, aber bei einigen Airlines ist eine Anhebung um eine Stufe möglich. Wahrscheinlichkeit: unverändert 55%, eine Stufe 35%, zwei Stufen oder mehr 10%.','Die Zuschläge für Juli 2026 sind noch nicht offiziell. OPEC+ Produktion begrenzt starke Anstiege, während Hormus- und Ölpreisrisiken das Szenario einer Anhebung um eine Stufe offenhalten.','Auswirkung auf den Treibstoffzuschlag: neutral bis steigend. Auswirkung auf Juli: unverändert wahrscheinlicher, aber Risiko einer Stufe.','Wahrscheinlichkeit Juli 2026',['NEW','Treibstoffzuschlag Juli 2026','Korean Air Zuschlag','Asiana Zuschlag','Jeju Air Zuschlag'],'Werden die Treibstoffzuschläge im Juli 2026 steigen?', 'Unverändert ist derzeit am wahrscheinlichsten, aber Anhebungen sind möglich: 55% unverändert, 35% eine Stufe, 10% zwei Stufen oder mehr.','Detaillierten Juli-Ausblick ansehen']
+    }
+  };
+  Object.keys(common).forEach(function(id){
+    tr[id] = tr[id] || {};
+    Object.keys(common[id]).forEach(function(lang){
+      var a = common[id][lang];
+      tr[id][lang] = {
+        updatedAt: lang === 'en' ? 'Updated 2026.06.03 KST' : a[0].includes('2026') ? a[0] : undefined,
+        title:a[0], aiBrief:a[1], summary:a[2], impact:a[3], sourceName:a[4], tags:a[5],
+        faq:[{q:a[6], a:a[7]}], links:[{href:id === 'news-20260603-july-outlook-probability' ? 'fuel-surcharge-2026-06-forecast.html' : (id === 'news-20260603-war-risk-insurance' ? 'fuel-surcharge-calculator.html' : 'fuel-surcharge-2026-06-forecast.html'), label:a[8]}]
+      };
+      if (!tr[id][lang].updatedAt) {
+        tr[id][lang].updatedAt = ({ja:'2026.06.03 KST 更新',zh:'2026.06.03 KST 更新',fr:'Mis à jour le 2026.06.03 KST',de:'Aktualisiert am 2026.06.03 KST'})[lang] || 'Updated 2026.06.03 KST';
+      }
+    });
+  });
+  (window.AERO_NEWS_CARDS_20260603 || []).forEach(function(card){
+    var perCard = tr[card.id];
+    if (!perCard) return;
+    card.i18n = card.i18n || {};
+    ['en','ja','zh','fr','de'].forEach(function(lang){
+      if (perCard[lang]) card.i18n[lang] = Object.assign({}, card.i18n[lang] || {}, perCard[lang]);
+    });
+  });
+})();
+
 /* 2026.06 index readiness copy.
    Keeps June confirmed notices and July notice-prep status separate on the main page. */
 (function(){
