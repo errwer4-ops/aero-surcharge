@@ -2,8 +2,8 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>2026년 7월 유류할증료 전망 | 6월 3일 중동 정세·국제유가·환율 뉴스</title>
-  <meta name="description" content="2026.06.03 KST 기준 미국-이란 갈등, 호르무즈 해협 통항 감소, 브렌트유와 WTI, 원달러 환율 흐름을 반영해 2026년 7월 국제선 유류할증료 전망을 정리합니다." data-i18n-page-desc="news.metaDesc"/>
+  <title>2026년 7월 유류할증료 전망 | 6월 4일 MOPS·국제유가·환율 뉴스</title>
+  <meta name="description" content="2026.06.04 09:00 KST 기준 호르무즈 해협, 국제유가, MOPS 항공유 가격, 원달러 환율 흐름을 반영해 2026년 7월 국제선 유류할증료 전망을 정리합니다." data-i18n-page-desc="news.metaDesc"/>
   <meta name="google-adsense-account" content="ca-pub-4285114770383510">
   <meta data-i18n-page-title="news.metaTitle"/>
 
@@ -18,11 +18,11 @@
     ]
   }
   </script>
-  <meta property="og:title" content="2026년 7월 유류할증료 전망 | 6월 3일 중동 정세·국제유가·환율 뉴스"/>
-  <meta property="og:description" content="2026.06.03 KST 기준 국제유가, 항공유 가격, 원달러 환율, 호르무즈 해협 리스크가 7월 항공권 유류할증료에 미치는 영향을 정리했습니다."/>
+  <meta property="og:title" content="2026년 7월 유류할증료 전망 | 6월 4일 MOPS·국제유가·환율 뉴스"/>
+  <meta property="og:description" content="2026.06.04 09:00 KST 기준 MOPS, 브렌트유, WTI, 원달러 환율, 호르무즈 해협 리스크가 7월 항공권 유류할증료에 미치는 영향을 정리했습니다."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.com/news.html"/>
-  <meta property="article:modified_time" content="2026-06-03T09:00:00+09:00"/>
+  <meta property="article:modified_time" content="2026-06-04T09:00:00+09:00"/>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="_shared.css"/>
   <link rel="icon" href="/favicon-v2.ico">
@@ -2778,7 +2778,8 @@ var FIXED_NEWS = [
    tags:['환율','USDKRW']}
 ];
 
-FIXED_NEWS = (window.AERO_NEWS_CARDS_20260603 || [])
+FIXED_NEWS = (window.AERO_NEWS_CARDS_20260604 || [])
+  .concat(window.AERO_NEWS_CARDS_20260603 || [])
   .concat(window.AERO_NEWS_CARDS_20260602 || [])
   .concat(window.AERO_NEWS_CARDS_20260601 || [])
   .concat(window.AERO_NEWS_CARDS_20260529 || [])
@@ -2990,6 +2991,7 @@ function renderNews(){
     var baseUrl = 'https://aero-surcharge.com/news.html';
     var cards = (schemaItems || []).filter(function(it){ return it && (it.id || it.slug); }).slice(0, 12);
     function cardDateTime(it){
+      if (it && it.date === '2026-06-04') return '2026-06-04T09:00:00+09:00';
       if (it && it.date === '2026-06-03') return '2026-06-03T09:00:00+09:00';
       if (it && it.date === '2026-06-02') return '2026-06-02T08:30:00+09:00';
       if (it && it.date === '2026-06-01') return '2026-06-01T09:05:00+09:00';
@@ -3875,6 +3877,100 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
   });
 });
 /* 2026.06.03 page override end */
+
+/* 2026.06.04 page-level multilingual override */
+(function(){
+  var page604 = {
+    ko:{
+      'news.metaTitle':'2026년 7월 유류할증료 전망 | 6월 4일 MOPS·국제유가·환율 뉴스',
+      'news.metaDesc':'2026.06.04 09:00 KST 기준 호르무즈 해협, 국제유가, MOPS 항공유 가격, 원달러 환율을 반영한 2026년 7월 유류할증료 전망입니다.',
+      'news.pageTitle':'2026년 7월 유류할증료 전망과 국제선 유류할증료 뉴스',
+      'news.pageSub':'2026.06.04 09:00 KST 기준 · MOPS·브렌트유·WTI·원달러 환율·호르무즈 해협 점검',
+      'news.summary.title':'2026년 7월 유류할증료 전망 핵심 요약',
+      'news.summary.updated':'2026.06.04 09:00 KST 기준',
+      'news.summary.li1':'호르무즈 해협 리스크와 미국·이란 협상 교착이 국제유가와 항공유 가격에 상승 압력을 주고 있습니다.',
+      'news.summary.li2':'Brent는 약 $97/bbl, WTI는 약 $96/bbl 수준으로 높은 구간입니다.',
+      'news.summary.li3':'유류할증료 산정에는 국제유가보다 MOPS 항공유 가격 흐름이 더 직접적으로 중요합니다.',
+      'news.summary.li4':'MOPS와 원달러 환율이 함께 오르면 항공사의 원화 기준 유류비 부담이 커질 수 있습니다.',
+      'news.summary.li5':'6월 평균 MOPS가 5월보다 높거나 비슷하면 7월 유류할증료 하락 가능성은 제한적입니다.',
+      'news.summary.li6':'7월 전망은 동결 50~55%, 1단계 인상 35~40%, 2단계 이상 인상 10% 이하입니다.',
+      'news.marketTitle':'시장 브리핑 (2026.06.04 09:00 KST 기준)',
+      'news.brent':'국제유가: Brent 약 $97/bbl, WTI 약 $96/bbl로 전일 대비 상승 압력이 이어지고 있습니다.',
+      'news.fx':'원달러 환율: 중동 리스크와 유가 상승은 달러 강세·원화 약세 압력으로 이어질 수 있습니다.',
+      'news.mops':'MOPS 항공유 가격: 국내 항공사 유류할증료 산정에 더 직접적인 핵심 기준입니다.',
+      'news.geo':'호르무즈 해협: 통항 불확실성과 원유 수송 차질 우려가 계속되고 있습니다.',
+      'news.marketSummary':'→ 한 줄 결론: 7월 유류할증료는 동결 가능성이 가장 높지만, 호르무즈 해협 리스크와 MOPS 강세로 일부 인상 가능성이 커졌습니다.',
+      'news.fxDominance':'핵심 수치: Brent 약 $97/bbl · WTI 약 $96/bbl · 동결 50~55% / 1단계 인상 35~40% / 2단계 이상 10% 이하',
+      'news.dataRef':'2026년 6월 확정 공시 기반 7월 전망 · 2026.06.04 09:00 KST 기준',
+      'news.curSummary':'6월은 확정 공시 데이터이며, 7월은 MOPS·국제유가·환율·호르무즈 해협 리스크 기반 전망입니다.',
+      'news.decisionTitle':'결론: 동결과 소폭 인상 경합',
+      'news.decisionLine1':'현재는 동결 가능성이 가장 높지만 일부 항공사의 1단계 인상 가능성이 전일보다 커졌습니다.',
+      'news.decisionLine2':'MOPS 강세와 원달러 환율 상승이 동시에 나타나면 인상 압력이 더 커질 수 있습니다.',
+      'news.forecastCta.title':'2026년 7월 유류할증료 전망 — 6월 4일 MOPS·유가 점검',
+      'news.forecastCta.desc':'호르무즈 해협, 국제유가, MOPS 항공유 가격, 원달러 환율이 항공권 유류할증료에 미치는 영향을 정리했습니다.',
+      'news.basisBody':'7월 공시는 아직 확정 전입니다. 이 페이지는 2026.06.04 09:00 KST 기준으로 6월 확정 공시와 7월 시장 전망을 분리합니다.'
+    },
+    en:{
+      'news.metaTitle':'July 2026 Fuel Surcharge Outlook | June 4 MOPS, Oil and FX News',
+      'news.metaDesc':'As of 2026.06.04 09:00 KST, this page summarizes the July 2026 fuel surcharge outlook using Strait of Hormuz risk, oil prices, MOPS jet fuel and USD/KRW.',
+      'news.pageTitle':'July 2026 Fuel Surcharge Outlook and International Surcharge News',
+      'news.pageSub':'As of 2026.06.04 09:00 KST · MOPS, Brent, WTI, USD/KRW and Hormuz check',
+      'news.summary.title':'July 2026 Fuel Surcharge Outlook Summary',
+      'news.summary.updated':'As of 2026.06.04 09:00 KST',
+      'news.summary.li1':'Hormuz risk and stalled U.S.-Iran talks keep upward pressure on oil and jet fuel.',
+      'news.summary.li2':'Brent is around $97/bbl and WTI around $96/bbl.',
+      'news.summary.li3':'MOPS jet fuel prices are more directly relevant to fuel surcharge calculations than crude oil alone.',
+      'news.summary.li4':'Higher MOPS and USD/KRW together can increase airline fuel-cost pressure.',
+      'news.summary.li5':'If June MOPS averages stay at or above May, the chance of a July cut is limited.',
+      'news.summary.li6':'July outlook: freeze 50-55%, one-step increase 35-40%, two steps or more 10% or less.',
+      'news.marketTitle':'Market Briefing (as of 2026.06.04 09:00 KST)',
+      'news.brent':'Oil: Brent is around $97/bbl and WTI around $96/bbl, with renewed upward pressure.',
+      'news.fx':'USD/KRW: Middle East risk and higher oil can support dollar strength and won weakness.',
+      'news.mops':'MOPS jet fuel: a more direct benchmark for Korean airline fuel surcharge calculations.',
+      'news.geo':'Strait of Hormuz: traffic uncertainty and oil-shipping disruption risk remain.',
+      'news.marketSummary':'→ One-line conclusion: freeze remains most likely, but strong MOPS and Hormuz risk have increased the chance of some July increases.',
+      'news.fxDominance':'Key figures: Brent about $97/bbl · WTI about $96/bbl · freeze 50-55% / one-step increase 35-40% / two steps or more 10% or less',
+      'news.dataRef':'July outlook based on confirmed June data · As of 2026.06.04 09:00 KST',
+      'news.curSummary':'June is confirmed filing data; July remains a market outlook based on MOPS, oil, FX and Hormuz.',
+      'news.decisionTitle':'Conclusion: freeze and small increase are competing',
+      'news.decisionLine1':'Freeze remains most likely, but a one-step increase for some airlines is more likely than yesterday.',
+      'news.decisionLine2':'If MOPS and USD/KRW rise together, surcharge pressure can increase further.',
+      'news.forecastCta.title':'July 2026 Fuel Surcharge Outlook — June 4 MOPS and Oil Check',
+      'news.forecastCta.desc':'This update explains how Hormuz, oil prices, MOPS jet fuel and USD/KRW affect airfare fuel surcharges.',
+      'news.basisBody':'July filings are not confirmed yet. This page separates confirmed June data from the July outlook as of 2026.06.04 09:00 KST.'
+    }
+  };
+  page604.ja=Object.assign({},page604.en,{
+    'news.pageTitle':'2026年7月燃油サーチャージ見通しと国際線ニュース',
+    'news.pageSub':'2026.06.04 09:00 KST時点 · MOPS・Brent・WTI・USD/KRW・ホルムズ海峡',
+    'news.summary.title':'2026年7月燃油サーチャージ見通し要約',
+    'news.summary.updated':'2026.06.04 09:00 KST時点',
+    'news.marketSummary':'→ 結論: 据え置きが最有力ですが、MOPSの強さとホルムズ海峡リスクにより一部引き上げの可能性が高まりました。'
+  });
+  page604.zh=Object.assign({},page604.en,{
+    'news.pageTitle':'2026年7月燃油附加费展望与国际线新闻',
+    'news.pageSub':'截至2026.06.04 09:00 KST · MOPS、Brent、WTI、USD/KRW与霍尔木兹海峡',
+    'news.summary.title':'2026年7月燃油附加费展望摘要',
+    'news.summary.updated':'截至2026.06.04 09:00 KST',
+    'news.marketSummary':'→ 结论：维持不变仍最有可能，但MOPS强势和霍尔木兹海峡风险提高了部分上调的可能性。'
+  });
+  page604.fr=Object.assign({},page604.en,{
+    'news.pageTitle':'Perspectives des surtaxes carburant de juillet 2026',
+    'news.pageSub':'Au 2026.06.04 09:00 KST · MOPS, Brent, WTI, USD/KRW et détroit d’Ormuz',
+    'news.summary.title':'Résumé des perspectives de juillet 2026',
+    'news.marketSummary':'→ Conclusion : le statu quo reste le plus probable, mais MOPS et le risque Ormuz augmentent la possibilité de hausses limitées.'
+  });
+  page604.de=Object.assign({},page604.en,{
+    'news.pageTitle':'Ausblick auf Treibstoffzuschläge Juli 2026',
+    'news.pageSub':'Stand 2026.06.04 09:00 KST · MOPS, Brent, WTI, USD/KRW und Straße von Hormus',
+    'news.summary.title':'Zusammenfassung des Juli-Ausblicks',
+    'news.marketSummary':'→ Fazit: Unverändert bleibt am wahrscheinlichsten, aber starkes MOPS und Hormus-Risiken erhöhen die Chance begrenzter Anhebungen.'
+  });
+  Object.keys(page604).forEach(function(lang){
+    window.PAGE_I18N_OVERRIDE[lang]=window.PAGE_I18N_OVERRIDE[lang]||{};
+    Object.assign(window.PAGE_I18N_OVERRIDE[lang],page604[lang]);
+  });
+})();
 
 window.initNav({
   onLangChange:function(){
