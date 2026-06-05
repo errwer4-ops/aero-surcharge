@@ -22,11 +22,11 @@
     <priority>0.7</priority>
   </url>
 
-  <!-- 월별 / 예측 페이지 -->
+  <!-- 전망 대표 허브 -->
   <url>
-    <loc>https://aero-surcharge.com/fuel-surcharge-2026-06-forecast.html</loc>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://aero-surcharge.com/fuel-surcharge-forecast.html</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
 
   <!-- 한국 출발 랜딩 -->

@@ -1,6 +1,18 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/fuel-surcharge-2026-06-forecast",
+      "destination": "/fuel-surcharge-forecast",
+      "permanent": true
+    },
+    {
+      "source": "/fuel-surcharge-2026-06-forecast.html",
+      "destination": "/fuel-surcharge-forecast",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     {
       "source": "/admin/myrealtrip-test",
