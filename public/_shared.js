@@ -85,12 +85,12 @@ window.I18N_SHARED = {
        predictBasis:'예측 근거', predictNote:'공식 공지 전 참고용 추정값입니다.',
        navRoutes:'노선별 조회', navAirlines:'항공사 인덱스', navNews:'참고 소식',
        /* 2026.05.29 07:00 KST 시장 브리핑 공용 키 — 6월 확정 데이터 기반 7월 전망 중심 */
-      marketDataRef: '2026.06.05 09:00 KST 기준',
-      marketBrent:   '국제유가: 이란 원유 수출 감소와 호르무즈 해협 불확실성으로 상승 압력이 이어지고 있습니다.',
-      marketMops:    '항공유 가격(MOPS): 항공유 수요와 국제유가 부담으로 강세 가능성이 남아 있으며, 7월 유류할증료 인하 가능성을 제한할 수 있습니다.',
-      marketFx:      '원달러 환율: 높은 환율 구간이 이어지면 항공사의 달러 결제 연료비 부담이 커져 KRW 기준 유류할증료 인하 여력이 줄어들 수 있습니다.',
-      marketGeo:     '호르무즈 해협: 일부 물동량은 회복됐지만 정상화로 보기 어렵고, 지정학 리스크 프리미엄은 여전히 남아 있습니다.',
-      marketOutlook: '2026년 7월 유류할증료 전망은 동결과 1단계 인상 가능성이 경합하는 구간입니다. 현재 기준 동결 45~50%, 1단계 인상 40~45%, 2단계 이상 인상 10% 이하로 봅니다.' },
+      marketDataRef: '2026.06.06 10:30 KST 기준',
+      marketBrent:   '국제유가: 협상 기대감으로 고점 대비 일부 완화됐지만, 호르무즈 해협 리스크와 공급 불확실성은 여전히 남아 있습니다.',
+      marketMops:    '항공유 가격(MOPS): 항공유 가격 부담이 지속되고 있어 2026년 7월 유류할증료 인하 가능성을 제한할 수 있습니다.',
+      marketFx:      '원달러 환율: 높은 환율 구간이 유지되면 항공사의 달러 결제 연료비 부담이 커져 KRW 기준 유류할증료 인하 여력이 줄어들 수 있습니다.',
+      marketGeo:     '호르무즈 해협: 일부 이동 재개 기대는 있지만 통항 정상화로 보기는 어렵고, 지정학 리스크 프리미엄은 여전히 남아 있습니다.',
+      marketOutlook: '2026년 7월 유류할증료 전망은 동결과 1단계 인상 가능성이 경합하는 상태입니다. 현재 기준 동결 45~50%, 1단계 인상 35~45%, 2단계 이상 인상 10% 이하로 봅니다.' },
   en:{ btnOW:'One-way', btnRT:'Round-trip', officialSite:'Official site ↗',
        loading:'Loading...', loadErr:'Load failed', noData:'No data.',
        official:'Official', aiPredict:'AI Forecast', prepublish:'Not yet published', noValue:'No data',
@@ -100,12 +100,12 @@ window.I18N_SHARED = {
        predictBasis:'Forecast basis', predictNote:'Pre-announcement estimate. For reference only.',
        navRoutes:'Route Search', navAirlines:'Airline Index', navNews:'News & Insights',
        /* 2026.05.29 07:00 KST market brief shared keys */
-      marketDataRef: 'As of 2026.06.05 09:00 KST',
-      marketBrent:   'Oil: lower Iranian crude exports and Strait of Hormuz uncertainty keep upward pressure on oil and jet fuel.',
-      marketMops:    'Jet fuel price (MOPS): strong air travel demand and oil pressure can keep MOPS firm, limiting the chance of July surcharge cuts.',
-      marketFx:      'USD/KRW: elevated FX can increase KRW-based airline fuel costs and reduce room for fuel surcharge cuts.',
-      marketGeo:     'Strait of Hormuz: some traffic has recovered, but normalization is still uncertain and the geopolitical risk premium remains.',
-      marketOutlook: 'July 2026 fuel surcharge outlook is now a competition between freeze and one-step increase. Current view: freeze 45-50%, one-step increase 40-45%, two steps or more 10% or less.' },
+      marketDataRef: 'As of 2026.06.06 10:30 KST',
+      marketBrent:   'Oil: negotiation hopes have eased prices from recent highs, but Strait of Hormuz risk and supply uncertainty remain.',
+      marketMops:    'Jet fuel price (MOPS): persistent jet fuel costs continue to limit the chance of July 2026 fuel surcharge cuts.',
+      marketFx:      'USD/KRW: an elevated exchange rate can increase airlines’ dollar-denominated fuel costs and reduce room for KRW-based surcharge cuts.',
+      marketGeo:     'Strait of Hormuz: some movement may resume, but transit is not yet normalized and the geopolitical risk premium remains.',
+      marketOutlook: 'July 2026 fuel surcharges remain a contest between a freeze and a one-step increase. Current view: freeze 45-50%, one-step increase 35-45%, two steps or more 10% or less.' },
   ja:{ btnOW:'片道', btnRT:'往復', officialSite:'公式サイト ↗',
        loading:'読み込み中...', loadErr:'読み込み失敗', noData:'データなし',
        official:'公式', aiPredict:'AI予測', prepublish:'未公示', noValue:'データなし',
@@ -5828,6 +5828,70 @@ window.AERO_MARKET_BRIEF_20260605 = {
 })();
 
 window.AERO_NEWS_LATEST = window.AERO_MARKET_BRIEF_20260605;
+
+/* 2026.06.06 KST market brief and news cards. */
+window.AERO_MARKET_BRIEF_20260606 = {
+  timestamp:'2026-06-06T10:30:00+09:00',
+  displayTime:'2026.06.06 10:30 KST',
+  currentMonthNotice:'2026-06',
+  forecastTargetMonth:'2026-07',
+  badge:'JULY_OUTLOOK',
+  summary:'2026년 6월 6일 10:30 KST 기준 2026년 7월 유류할증료는 동결과 1단계 인상 가능성이 경합하는 상태입니다. 전일보다 인상 압력은 약간 완화됐지만, 인하 전망으로 전환할 정도는 아닙니다.',
+  probabilities:{freeze:'45~50%',oneStepIncrease:'35~45%',twoStepOrMore:'10% 이하'},
+  keywords:['유류할증료','2026년 7월 유류할증료','항공권 유류할증료','MOPS','항공유 가격','국제유가','브렌트유','WTI','원달러 환율','환율 전망','호르무즈 해협','대한항공 유류할증료','아시아나 유류할증료','제주항공 유류할증료','티웨이 유류할증료']
+};
+(function(){
+  var date='2026-06-06';
+  var faqKo=[
+    {q:'2026년 7월 유류할증료는 오를 가능성이 있나요?',a:'2026년 6월 6일 10:30 KST 기준으로는 동결과 1단계 인상 가능성이 경합하고 있습니다. 동결 가능성은 45~50%, 1단계 인상 가능성은 35~45% 수준으로 봅니다.'},
+    {q:'MOPS가 왜 중요한가요?',a:'MOPS는 항공유 가격 지표로 국내 항공사 유류할증료 산정에 직접적인 영향을 줍니다.'},
+    {q:'호르무즈 해협 리스크가 완화됐나요?',a:'일부 선박 이동 기대는 있지만 통항 정상화로 보기는 어렵습니다. 따라서 국제유가와 항공유 가격에 대한 리스크 프리미엄은 남아 있습니다.'},
+    {q:'국제유가가 일부 하락했는데 유류할증료도 내려가나요?',a:'국제유가가 일부 완화된 것은 인상 압력을 낮추는 요인이지만, MOPS 항공유 가격과 원달러 환율, 호르무즈 해협 리스크가 남아 있어 7월 유류할증료 인하 전망으로 보기는 아직 어렵습니다.'}
+  ];
+  var faqEn=[
+    {q:'Could July 2026 fuel surcharges rise?',a:'As of June 6, 2026 10:30 KST, a freeze and a one-step increase remain competing scenarios. Freeze is estimated at 45-50%, and a one-step increase at 35-45%.'},
+    {q:'Why is MOPS important?',a:'MOPS is a jet fuel price benchmark that directly affects Korean airline fuel surcharge calculations.'},
+    {q:'Has Strait of Hormuz risk eased?',a:'Some vessel movement may resume, but transit is not yet normalized, so a risk premium remains in oil and jet fuel prices.'},
+    {q:'Will lower oil prices reduce fuel surcharges?',a:'Partial oil-price easing reduces upward pressure, but MOPS, USD/KRW and Strait of Hormuz risk still make a July surcharge cut difficult to call.'}
+  ];
+  var rowsKo=[
+    ['oil-easing','국제유가 일부 완화에도 MOPS·환율 부담 지속, 7월 유류할증료 동결·인상 경합','브렌트유와 WTI는 협상 기대감으로 고점 대비 일부 하락했습니다.','2026년 6월 6일 10:30 KST 기준 국제유가는 협상 기대감으로 고점 대비 일부 완화됐지만, 호르무즈 해협 통항 정상화는 아직 확인되지 않았습니다. 항공유 가격과 MOPS 부담, 높은 원달러 환율이 이어지면서 2026년 7월 유류할증료는 인하보다는 동결 또는 일부 항공사의 1단계 인상 가능성이 경합하는 상태로 판단됩니다.','완화 요인. 전일보다 인상 압력을 낮추지만 인하 전망으로 전환하기에는 부족합니다.'],
+    ['hormuz-not-normal','호르무즈 정상화는 아직','일부 선박 이동 기대는 있지만 통항 정상화로 보기는 어렵습니다.','호르무즈 해협의 정상 통항이 확인되기 전까지 국제유가와 항공유 가격에는 지정학 리스크 프리미엄이 남을 수 있습니다.','상승 요인. 공급 불확실성과 항공유 가격 변동성을 유지합니다.'],
+    ['mops-burden','MOPS 부담 지속','항공유 가격 부담이 이어지며 유류할증료 인하 여력을 제한하고 있습니다.','MOPS는 국내 항공사의 국제선 유류할증료 산정에 직접 영향을 주는 항공유 가격 지표입니다. 항공유 가격 부담이 지속되면 7월 인하 가능성은 제한됩니다.','상승 요인. 동결 또는 1단계 인상 가능성을 지지합니다.'],
+    ['fx-variable','환율도 변수','높은 원달러 환율은 항공사의 달러 결제 연료비 부담을 키울 수 있습니다.','국제유가가 일부 완화돼도 원달러 환율이 높은 구간을 유지하면 원화 기준 연료비 부담과 유류할증료 인하 제약이 이어질 수 있습니다.','상승 요인. KRW 기준 인하 여력을 제한합니다.'],
+    ['july-outlook','7월 전망','현재 기준 7월 유류할증료는 동결과 1단계 인상 가능성이 경합하고 있습니다.','전망 확률은 동결 45~50%, 1단계 인상 35~45%, 2단계 이상 인상 10% 이하입니다. 전일보다 상승 압력은 다소 낮아졌지만 인하 전망으로 보기는 어렵습니다.','중립~상승. 7월 금액은 아직 공식 공시 전입니다.']
+  ];
+  var rowsEn=[
+    ['oil-easing','Oil eases, but MOPS and FX keep July surcharge outlook contested','Brent and WTI have eased from recent highs on negotiation hopes.','As of June 6, 2026 10:30 KST, oil has eased from recent highs, but Strait of Hormuz transit is not normalized. MOPS jet fuel costs and elevated USD/KRW keep July fuel surcharges between a freeze and a possible one-step increase.','Relief factor, but not enough to establish a cut outlook.'],
+    ['hormuz-not-normal','Hormuz is not normalized','Some vessel movement may resume, but normal transit has not been confirmed.','A geopolitical risk premium can remain in oil and jet fuel until normal Strait of Hormuz transit is confirmed.','Upward factor through supply uncertainty.'],
+    ['mops-burden','MOPS burden persists','Jet fuel costs continue to limit room for surcharge cuts.','MOPS directly affects Korean international fuel surcharge calculations. Persistent jet fuel costs limit the chance of a July cut.','Upward factor supporting freeze or one-step increase.'],
+    ['fx-variable','FX remains a variable','Elevated USD/KRW can increase airline dollar-denominated fuel costs.','Even with some oil-price relief, elevated USD/KRW can preserve KRW-based fuel cost pressure.','Upward factor limiting KRW-based cuts.'],
+    ['july-outlook','July outlook','A freeze and one-step increase remain competing scenarios.','Current probabilities are freeze 45-50%, one-step increase 35-45%, and two steps or more 10% or less. Upward pressure eased slightly from the prior day, but a cut remains difficult to call.','Neutral to upward. July is not officially filed yet.']
+  ];
+  var categories=['market','market','market','fx','forecast'];
+  window.AERO_NEWS_CARDS_20260606=rowsKo.map(function(row,idx){
+    var en=rowsEn[idx];
+    return {
+      id:'news-20260606-'+row[0],slug:'june-6-'+row[0],category:categories[idx],priority:1,date:date,
+      updatedAt:'2026.06.06 10:30 KST 업데이트',badge:'NEW',aiSummary:true,relevanceScore:1,
+      currentMonthNotice:'2026-06',forecastTargetMonth:'2026-07',
+      title:row[1],aiBrief:row[2],summary:row[3],impact:row[4],
+      sourceName:'2026년 7월 유류할증료 전망 업데이트',sourceUrl:'fuel-surcharge-forecast.html',
+      tags:window.AERO_MARKET_BRIEF_20260606.keywords.slice(0,9),faq:faqKo,
+      links:[{href:'fuel-surcharge-forecast.html',label:'2026년 7월 전망 보기'}],
+      i18n:{
+        en:{updatedAt:'Updated 2026.06.06 10:30 KST',title:en[1],aiBrief:en[2],summary:en[3],impact:en[4],sourceName:'July 2026 fuel surcharge outlook update',tags:['NEW','fuel surcharge','MOPS','oil prices','USD/KRW','Strait of Hormuz'],faq:faqEn,links:[{href:'fuel-surcharge-forecast.html',label:'View July 2026 outlook'}]}
+      }
+    };
+  });
+  ['ja','zh','fr','de'].forEach(function(lang){
+    window.AERO_NEWS_CARDS_20260606.forEach(function(card){
+      card.i18n[lang]=Object.assign({},card.i18n.en);
+    });
+  });
+})();
+
+window.AERO_NEWS_LATEST = window.AERO_MARKET_BRIEF_20260606;
 
 /* 2026.06 index readiness copy.
    Keeps June confirmed notices and July notice-prep status separate on the main page. */
