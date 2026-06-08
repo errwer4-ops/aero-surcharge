@@ -11,12 +11,16 @@
       "source": "/fuel-surcharge-2026-06-forecast.html",
       "destination": "/fuel-surcharge-forecast",
       "permanent": true
-    }
-  ],
-  "rewrites": [
+    },
     {
-      "source": "/admin/myrealtrip-test",
-      "destination": "/admin/myrealtrip-test.html"
+      "source": "/routes",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/routes.html",
+      "destination": "/",
+      "permanent": true
     }
   ]
 }
