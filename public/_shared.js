@@ -85,12 +85,12 @@ window.I18N_SHARED = {
        predictBasis:'예측 근거', predictNote:'공식 공지 전 참고용 추정값입니다.',
        navRoutes:'노선별 조회', navAirlines:'항공사 인덱스', navNews:'참고 소식',
        /* 2026.05.29 07:00 KST 시장 브리핑 공용 키 — 6월 확정 데이터 기반 7월 전망 중심 */
-      marketDataRef: '2026.06.08 09:00 KST 기준',
-      marketBrent:   '국제유가: 최근 고점 대비 일부 안정됐지만 중동 리스크와 공급 불확실성은 여전히 남아 있습니다.',
-      marketMops:    '항공유 가격(MOPS): 국제선 수요 증가와 성수기 진입 영향으로 강세를 유지하고 있습니다.',
-      marketFx:      '원달러 환율: 높은 환율 구간이 유지될 경우 항공사의 연료비 부담이 증가할 수 있습니다.',
-      marketGeo:     '호르무즈 해협: 일부 운항은 지속되고 있으나 정상화 선언은 없는 상태입니다.',
-      marketOutlook: '2026년 7월 유류할증료는 동결 가능성이 다시 우세해졌지만, MOPS와 환율 부담으로 인해 소폭 인상 가능성도 남아 있습니다.' },
+      marketDataRef: '2026.06.10 11:00 KST 기준',
+      marketBrent:   '국제유가: 브렌트유는 6월 초 고점보다 안정됐고, OPEC+ 증산 기대가 유가 급등을 제한하고 있습니다.',
+      marketMops:    '항공유 가격(MOPS): 국제유가는 안정됐지만 항공유 가격 부담과 성수기 수요가 남아 있어 유류할증료 인하 가능성을 제한할 수 있습니다.',
+      marketFx:      '원달러 환율: 높은 환율 구간이 유지될 경우 항공사의 달러 결제 연료비 부담이 커져 KRW 기준 유류할증료 인하 여력이 줄어들 수 있습니다.',
+      marketGeo:     '호르무즈 해협: 개방 신호와 선박 통행 증가 조짐이 나타났지만, 완전 정상화 전까지 지정학 리스크 프리미엄은 남아 있습니다.',
+      marketOutlook: '2026년 7월 유류할증료는 동결 가능성이 가장 높고 일부 항공사의 1단계 인상 가능성이 남아 있습니다. 현재 기준 동결 55~60%, 1단계 인상 25~35%, 2단계 이상 인상 10% 이하로 봅니다.' },
   en:{ btnOW:'One-way', btnRT:'Round-trip', officialSite:'Official site ↗',
        loading:'Loading...', loadErr:'Load failed', noData:'No data.',
        official:'Official', aiPredict:'AI Forecast', prepublish:'Not yet published', noValue:'No data',
@@ -100,12 +100,12 @@ window.I18N_SHARED = {
        predictBasis:'Forecast basis', predictNote:'Pre-announcement estimate. For reference only.',
        navRoutes:'Route Search', navAirlines:'Airline Index', navNews:'News & Insights',
        /* 2026.05.29 07:00 KST market brief shared keys */
-      marketDataRef: 'As of 2026.06.08 09:00 KST',
-      marketBrent:   'Oil: prices have stabilized somewhat from recent highs, but Middle East risk and supply uncertainty remain.',
-      marketMops:    'Jet fuel price (MOPS): international travel demand and the summer peak season are keeping jet fuel firm.',
-      marketFx:      'USD/KRW: an elevated exchange-rate zone can increase airline fuel-cost burdens.',
-      marketGeo:     'Strait of Hormuz: some operations continue, but there is no normalization declaration yet.',
-      marketOutlook: 'July 2026 fuel surcharges are again leaning toward a freeze, while MOPS and FX burdens still leave room for a small increase.' },
+      marketDataRef: 'As of 2026.06.10 11:00 KST',
+      marketBrent:   'Oil prices: Brent has stabilized from early-June highs, while expected OPEC+ supply is limiting another sharp rise.',
+      marketMops:    'MOPS jet fuel: oil has stabilized, but jet-fuel costs and peak-season demand still limit the chance of a surcharge cut.',
+      marketFx:      'USD/KRW: elevated FX can increase dollar-denominated airline fuel costs and reduce room for a KRW-based surcharge cut.',
+      marketGeo:     'Strait of Hormuz: reopening signals and rising vessel traffic are positive, but a geopolitical risk premium remains until full normalization.',
+      marketOutlook: 'A freeze is the leading July 2026 scenario: 55-60%, versus 25-35% for a one-step increase and 10% or less for two steps or more.' },
   ja:{ btnOW:'片道', btnRT:'往復', officialSite:'公式サイト ↗',
        loading:'読み込み中...', loadErr:'読み込み失敗', noData:'データなし',
        official:'公式', aiPredict:'AI予測', prepublish:'未公示', noValue:'データなし',
@@ -198,6 +198,16 @@ window.AERO_MARKET_NUMBERS_20260608 = {
   }
 };
 
+/* June 10 outlook ranges supplied for the current forecast.
+   Exact MOPS and USD/KRW values below remain labeled reference inputs. */
+window.AERO_MARKET_NUMBERS_20260610 = Object.assign({}, window.AERO_MARKET_NUMBERS_20260608, {
+  asOf: '2026.06.10 11:00 KST',
+  brentMinUsdPerBbl: 90,
+  brentMaxUsdPerBbl: 93,
+  wtiMinUsdPerBbl: 88,
+  wtiMaxUsdPerBbl: 90
+});
+
 window.marketMoney = function(usdAmount, unit) {
   if (usdAmount == null) return '—';
   var c = window.getCurrentCurr ? window.getCurrentCurr() : (window.SHARED_STATE.curr || 'KRW');
@@ -219,7 +229,7 @@ window.marketMoney = function(usdAmount, unit) {
 };
 
 window.marketMetricText = function(metric) {
-  var d = window.AERO_MARKET_NUMBERS_20260608;
+  var d = window.AERO_MARKET_NUMBERS_20260610 || window.AERO_MARKET_NUMBERS_20260608;
   var lang = window.getCurrentLang ? window.getCurrentLang() : (window.SHARED_STATE.lang || 'ko');
   var curr = window.getCurrentCurr ? window.getCurrentCurr() : (window.SHARED_STATE.curr || 'KRW');
   var original = curr === 'USD' ? '' : ' (USD 기준)';
@@ -232,6 +242,8 @@ window.marketMetricText = function(metric) {
     de: { brent:'Brent', wti:'WTI', iata:'IATA wöchentlicher globaler Jet Fuel', mops:'MOPS', fx:'USD/KRW' }
   };
   var l = labels[lang] || labels.en;
+  if (metric === 'brentRange') return l.brent + ' ' + window.marketMoney(d.brentMinUsdPerBbl, 'bbl') + '–' + window.marketMoney(d.brentMaxUsdPerBbl, 'bbl') + original;
+  if (metric === 'wtiRange') return l.wti + ' ' + window.marketMoney(d.wtiMinUsdPerBbl, 'bbl') + '–' + window.marketMoney(d.wtiMaxUsdPerBbl, 'bbl') + original;
   if (metric === 'brent') return l.brent + ' ' + window.marketMoney(d.brentUsdPerBbl, 'bbl') + original;
   if (metric === 'wti') return l.wti + ' ' + window.marketMoney(d.wtiUsdPerBbl, 'bbl') + original;
   if (metric === 'iataJetFuel') return l.iata + ' ' + window.marketMoney(d.iataJetFuelUsdPerBbl, 'bbl') + original;
@@ -4919,6 +4931,8 @@ window.applyLanguage = function(){
     if(ogDesc) ogDesc.setAttribute('content', localizedDesc);
     if(twDesc) twDesc.setAttribute('content', localizedDesc);
   }
+  /* data-i18n may recreate market metric spans. Hydrate them after every language pass. */
+  if (window.hydrateMarketMetricSpans) window.hydrateMarketMetricSpans(document);
   /* Keep JSON-LD modified dates aligned with the page-level article timestamp. */
   var modifiedMeta = document.querySelector('meta[property="article:modified_time"]');
   if(modifiedMeta && modifiedMeta.content){
@@ -6131,6 +6145,128 @@ window.AERO_MARKET_BRIEF_20260608 = {
 })();
 
 window.AERO_NEWS_LATEST = window.AERO_MARKET_BRIEF_20260608;
+
+/* 2026.06.10 11:00 KST market brief and news cards. */
+window.AERO_MARKET_BRIEF_20260610 = {
+  date:'2026-06-10',
+  displayTime:'2026.06.10 11:00 KST',
+  title:'호르무즈 해협 개방 신호와 유가 안정, 7월 유류할증료 동결 가능성 확대',
+  summary:'호르무즈 해협 리스크와 국제유가는 6월 초보다 완화됐지만 MOPS 항공유 가격과 높은 원달러 환율 부담은 남아 있습니다.',
+  outlook:{freeze:'55~60%',oneStep:'25~35%',twoPlus:'10% 이하'},
+  keywords:['유류할증료','2026년 7월 유류할증료','MOPS','항공유 가격','국제유가','브렌트유','WTI','원달러 환율','호르무즈 해협','OPEC+']
+};
+
+(function(){
+  var rows = {
+    ko:[
+      ['호르무즈 해협 개방 신호와 유가 안정, 7월 유류할증료 동결 가능성 확대','동결 55~60%가 가장 높은 시나리오입니다.','호르무즈 해협 리스크는 완화됐고 국제유가도 6월 초 고점보다 안정됐습니다. 다만 MOPS 항공유 가격과 높은 원달러 환율 때문에 인하보다 동결, 일부 항공사의 1단계 인상 가능성을 함께 봐야 합니다.'],
+      ['호르무즈 개방 신호','완전 봉쇄 위험은 낮아졌습니다.','선박 통행 증가 조짐은 긍정적이지만 통행료, 보험료와 지정학적 프리미엄은 남아 있습니다.'],
+      ['국제유가 안정','브렌트유는 90달러 초반 수준입니다.','WTI도 80달러 후반에서 90달러 부근으로 안정돼 유류할증료 인상 압력을 낮추고 있습니다.'],
+      ['OPEC+ 증산 기대','추가 공급 기대가 가격 상단을 제한합니다.','OPEC+ 증산 기대와 중국 원유 수입 둔화가 국제유가의 100달러 돌파 가능성을 낮추는 요인입니다.'],
+      ['MOPS 부담 지속','항공유 가격 부담은 여전히 남아 있습니다.','여름 성수기 항공 수요로 MOPS 하락 폭이 제한될 수 있어 국제유가 안정이 바로 유류할증료 인하로 이어지지는 않습니다.'],
+      ['7월 전망','현재는 동결 가능성이 가장 높습니다.','동결 55~60%, 1단계 인상 25~35%, 2단계 이상 인상 10% 이하로 보며 공식 공시 전까지 변동 가능성이 있습니다.']
+    ],
+    en:[
+      ['Hormuz reopening signals and steadier oil raise the chance of a July fuel-surcharge freeze','A freeze at 55-60% is the leading scenario.','Hormuz and oil risks have eased from early June, but MOPS jet fuel and elevated USD/KRW still favor a freeze over a cut, with a one-step increase possible for some airlines.'],
+      ['Hormuz reopening signals','The risk of a complete closure has declined.','Rising vessel traffic is positive, but possible tolls, insurance costs and geopolitical premiums remain.'],
+      ['Oil prices stabilize','Brent is in the low $90s per barrel.','WTI is in the high $80s to around $90, reducing upward pressure on fuel surcharges.'],
+      ['OPEC+ supply expectations','Expected additional supply is capping prices.','OPEC+ supply expectations and slower Chinese crude imports reduce the chance of oil breaking above $100.'],
+      ['MOPS burden persists','Jet-fuel cost pressure remains.','Peak summer demand may limit MOPS declines, so steadier crude oil does not immediately translate into lower surcharges.'],
+      ['July outlook','A freeze is currently the most likely result.','Freeze 55-60%, one-step increase 25-35%, and two steps or more at 10% or less, subject to official airline filings.']
+    ],
+    ja:[
+      ['ホルムズ海峡の開放兆候と原油安定で7月燃油サーチャージ据え置きの可能性上昇','据え置き55〜60%が最有力です。','ホルムズ海峡と原油のリスクは緩和しましたが、MOPSと高いUSD/KRWにより引き下げより据え置きが有力です。'],
+      ['ホルムズ開放の兆候','完全封鎖の可能性は低下しました。','船舶通行の増加は好材料ですが、通行料、保険料、地政学プレミアムは残ります。'],
+      ['原油価格が安定','ブレントは1バレル90ドル台前半です。','WTIも80ドル台後半から90ドル付近で安定しています。'],
+      ['OPEC+増産期待','追加供給期待が上値を抑えています。','OPEC+増産期待が100ドル突破の可能性を低下させています。'],
+      ['MOPS負担は継続','航空燃料価格の負担は残っています。','夏季需要でMOPSの下落幅が限られる可能性があります。'],
+      ['7月見通し','据え置きが最も有力です。','据え置き55〜60%、1段階引き上げ25〜35%、2段階以上10%以下です。']
+    ],
+    zh:[
+      ['霍尔木兹海峡开放信号与油价稳定提高7月燃油附加费维持概率','维持不变55–60%为最可能情景。','霍尔木兹和油价风险有所缓和，但MOPS与高位美元/韩元仍使维持不变比下调更可能。'],
+      ['霍尔木兹开放信号','完全封锁风险已经下降。','船舶通行增加是积极信号，但通行费、保险费和地缘政治溢价仍然存在。'],
+      ['国际油价稳定','布伦特原油处于每桶90美元出头。','WTI在80美元后段至90美元附近。'],
+      ['OPEC+增产预期','新增供应预期限制价格上沿。','OPEC+增产预期降低油价突破100美元的可能。'],
+      ['MOPS压力持续','航空燃油成本压力仍在。','暑期需求可能限制MOPS跌幅。'],
+      ['7月展望','目前维持不变概率最高。','维持55–60%，上调一级25–35%，上调两级以上10%以下。']
+    ],
+    fr:[
+      ['Les signaux de réouverture d’Ormuz renforcent le statu quo en juillet','Le statu quo à 55-60% est le scénario principal.','Les risques ont diminué, mais le MOPS et un USD/KRW élevé favorisent le statu quo plutôt qu’une baisse.'],
+      ['Réouverture d’Ormuz','Le risque de fermeture totale a diminué.','Trafic en hausse, mais péages, assurance et prime géopolitique subsistent.'],
+      ['Pétrole stabilisé','Le Brent se situe au début des 90 dollars.','Le WTI évolue entre la fin des 80 dollars et environ 90 dollars.'],
+      ['Attentes OPEC+','L’offre attendue plafonne les prix.','Les attentes de hausse de l’offre limitent le risque de dépasser 100 dollars.'],
+      ['Pression MOPS','La charge du carburant aviation demeure.','La demande estivale peut limiter la baisse du MOPS.'],
+      ['Perspectives de juillet','Le statu quo est le plus probable.','Statu quo 55-60%, hausse d’un palier 25-35%, deux paliers ou plus 10% ou moins.']
+    ],
+    de:[
+      ['Hormus-Öffnungssignale erhöhen die Chance unveränderter Juli-Zuschläge','Unverändert mit 55-60% ist das Leitszenario.','Die Risiken sind gesunken, doch MOPS und ein hoher USD/KRW sprechen eher für unverändert als für eine Senkung.'],
+      ['Hormus-Öffnungssignale','Das Risiko einer vollständigen Sperre ist gesunken.','Mehr Verkehr ist positiv, Gebühren, Versicherung und Risikoprämien bleiben.'],
+      ['Ölpreise stabilisieren sich','Brent liegt im niedrigen 90-Dollar-Bereich.','WTI liegt im hohen 80-Dollar-Bereich bis nahe 90 Dollar.'],
+      ['OPEC+-Erwartungen','Zusatzangebot begrenzt die Preise.','Höhere Angebotserwartungen senken die Chance auf Öl über 100 Dollar.'],
+      ['MOPS-Belastung','Der Kerosin-Kostendruck besteht fort.','Sommernachfrage kann MOPS-Rückgänge begrenzen.'],
+      ['Juli-Ausblick','Unverändert ist am wahrscheinlichsten.','Unverändert 55-60%, eine Stufe höher 25-35%, zwei oder mehr Stufen höchstens 10%.']
+    ]
+  };
+  var ids=['main','hormuz','oil','opec','mops','outlook'];
+  var categories=['forecast','geopolitics','oil','oil','mops','forecast'];
+  window.AERO_NEWS_CARDS_20260610=rows.ko.map(function(row,idx){
+    var card={
+      id:'news-20260610-'+ids[idx],slug:'june-10-'+ids[idx],category:categories[idx],priority:1,
+      date:'2026-06-10',updatedAt:'2026.06.10 11:00 KST 업데이트',badge:'NEW',aiSummary:true,relevanceScore:1,
+      currentMonthNotice:'2026-06',forecastTargetMonth:'2026-07',
+      title:row[0],aiBrief:row[1],summary:row[2],impact:'2026년 7월 유류할증료 판단 변수입니다.',
+      sourceName:'2026년 7월 유류할증료 전망 업데이트',sourceUrl:'fuel-surcharge-forecast.html',
+      tags:window.AERO_MARKET_BRIEF_20260610.keywords.slice(),
+      links:[{href:'fuel-surcharge-forecast.html',label:'2026년 7월 전망 보기'}],i18n:{}
+    };
+    ['en','ja','zh','fr','de'].forEach(function(lang){
+      var translated=rows[lang][idx];
+      card.i18n[lang]={
+        updatedAt:'2026.06.10 11:00 KST',title:translated[0],aiBrief:translated[1],
+        summary:translated[2],impact:translated[1],
+        sourceName:'July 2026 fuel surcharge outlook update',
+        tags:window.AERO_MARKET_BRIEF_20260610.keywords.slice(),
+        links:[{href:'fuel-surcharge-forecast.html',label:'View July 2026 outlook'}]
+      };
+    });
+    return card;
+  });
+})();
+
+window.AERO_NEWS_LATEST = window.AERO_MARKET_BRIEF_20260610;
+
+Object.assign(window.I18N_SHARED.ja, {
+  marketDataRef:'2026.06.10 11:00 KST時点',
+  marketBrent:'国際原油価格: ブレントは6月初めの高値から安定し、OPEC+の増産期待が急騰を抑えています。',
+  marketMops:'航空燃料価格(MOPS): 原油は安定しましたが、航空燃料負担と繁忙期需要が引き下げ余地を制限します。',
+  marketFx:'USD/KRW: 高い為替水準はドル建て燃料費を押し上げ、KRW基準の引き下げ余地を縮小します。',
+  marketGeo:'ホルムズ海峡: 開放兆候と船舶通行増加が見られますが、完全正常化までは地政学プレミアムが残ります。',
+  marketOutlook:'7月は据え置き55〜60%、1段階引き上げ25〜35%、2段階以上10%以下と見ます。'
+});
+Object.assign(window.I18N_SHARED.zh, {
+  marketDataRef:'截至2026.06.10 11:00 KST',
+  marketBrent:'国际油价：布伦特较6月初高点稳定，OPEC+增产预期限制再次大幅上涨。',
+  marketMops:'航空燃油价格(MOPS)：油价稳定，但航空燃油成本与旺季需求仍限制下调空间。',
+  marketFx:'美元/韩元：高汇率会增加美元燃油成本，减少韩元基准燃油附加费下调空间。',
+  marketGeo:'霍尔木兹海峡：出现开放与船舶通行增加信号，但完全正常化前仍有地缘政治溢价。',
+  marketOutlook:'7月维持不变55–60%，上调一级25–35%，上调两级以上10%以下。'
+});
+Object.assign(window.I18N_SHARED.fr, {
+  marketDataRef:'Au 2026.06.10 11:00 KST',
+  marketBrent:'Pétrole: le Brent s’est stabilisé depuis les sommets de début juin et les attentes OPEC+ limitent une nouvelle flambée.',
+  marketMops:'MOPS: le pétrole est plus stable, mais le coût du carburant aviation et la demande estivale limitent une baisse.',
+  marketFx:'USD/KRW: un change élevé accroît les coûts en dollars et réduit la marge de baisse en KRW.',
+  marketGeo:'Détroit d’Ormuz: les signaux de réouverture sont positifs, mais une prime géopolitique demeure avant normalisation complète.',
+  marketOutlook:'Juillet: statu quo 55-60%, hausse d’un palier 25-35%, deux paliers ou plus 10% ou moins.'
+});
+Object.assign(window.I18N_SHARED.de, {
+  marketDataRef:'Stand 2026.06.10 11:00 KST',
+  marketBrent:'Öl: Brent hat sich von den Hochs Anfang Juni stabilisiert; OPEC+-Angebotserwartungen begrenzen einen neuen Sprung.',
+  marketMops:'MOPS: Stabileres Öl hilft, doch Kerosinkosten und Sommernachfrage begrenzen eine Senkung.',
+  marketFx:'USD/KRW: Ein hoher Wechselkurs erhöht Dollarkosten und verringert den Spielraum für KRW-basierte Senkungen.',
+  marketGeo:'Straße von Hormus: Öffnungssignale sind positiv, doch bis zur Normalisierung bleibt eine geopolitische Prämie.',
+  marketOutlook:'Juli: unverändert 55-60%, eine Stufe höher 25-35%, zwei oder mehr Stufen höchstens 10%.'
+});
 
 /* 2026.06 index readiness copy.
    Keeps June confirmed notices and July notice-prep status separate on the main page. */

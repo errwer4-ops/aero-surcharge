@@ -54,14 +54,32 @@ function assert(condition, message) {
 
       await select(page, 'ko', 'KRW');
       let body = await text(page);
-      assert(body.includes('₩148,934'), `${pageName} KRW Brent amount missing`);
-      assert(body.includes('₩5,633'), `${pageName} KRW MOPS gallon amount missing`);
+      assert(body.includes('₩148,934/bbl'), `${pageName} KRW Brent amount missing`);
+      assert(body.includes('₩5,633/gal') && body.includes('₩236,602/bbl'), `${pageName} KRW MOPS amounts missing`);
+      assert(body.includes('₩220,868/bbl'), `${pageName} KRW IATA jet fuel amount missing`);
       assert(body.includes('1 USD = ₩1,559.36'), `${pageName} USD/KRW amount missing`);
+      assert(body.includes('2026.06.10 11:00 KST'), `${pageName} latest timestamp missing`);
+      assert(body.includes('55~60%'), `${pageName} latest freeze probability missing`);
+      assert(!body.includes('forecastTargetMonth') && !body.includes('currentMonthNotice'), `${pageName} internal variable leaked`);
+      if (pageName === 'fuel-surcharge-forecast.html') {
+        const indicatorText = await page.locator('#indicatorTbody').innerText();
+        const predictText = await page.locator('#predictFactors').innerText();
+        for (const expected of ['₩148,934/bbl', '₩5,633/gal', '₩220,868/bbl', '1 USD = ₩1,559.36']) {
+          assert(indicatorText.includes(expected), `Forecast indicator table missing ${expected}`);
+          assert(predictText.includes(expected), `Forecast key variables missing ${expected}`);
+        }
+      }
+      if (pageName === 'news.html') {
+        const firstCardTitle = await page.locator('.news-card').first().innerText();
+        assert(firstCardTitle.includes('호르무즈') || firstCardTitle.includes('7월 유류할증료'), 'June 10 news card is not first');
+        assert(!body.includes('완화 요인: · 으로'), 'News relief-factor sentence has a blank metric');
+      }
 
       await select(page, 'ko', 'USD');
       body = await text(page);
-      assert(body.includes('$95.51/bbl'), `${pageName} USD Brent amount missing`);
-      assert(body.includes('$3.61/gal'), `${pageName} USD MOPS gallon amount missing`);
+      assert(body.includes('$95.51/bbl') && body.includes('$92.72/bbl'), `${pageName} USD oil amounts missing`);
+      assert(body.includes('$3.61/gal') && body.includes('$151.73/bbl'), `${pageName} USD MOPS amounts missing`);
+      assert(body.includes('$141.64/bbl'), `${pageName} USD IATA jet fuel amount missing`);
 
       await select(page, 'ja', 'JPY');
       body = await text(page);
