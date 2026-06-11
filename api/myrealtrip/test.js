@@ -17,14 +17,9 @@ module.exports = function handler(req, res) {
     return res.status(200).json({
       success: true,
       hasApiKey: Boolean(apiKey),
-      keyPreview: apiKey ? apiKey.slice(0, 6) + "..." : null,
       hasBaseUrl: Boolean(baseUrl),
-      baseUrlPreview: baseUrl ? baseUrl.slice(0, 30) : null,
-      nodeEnv: process.env.NODE_ENV || "development",
       checkedAt: new Date().toISOString(),
-      envKeys: Object.keys(process.env)
-        .filter((key) => key.includes("MYREALTRIP"))
-        .sort(),
+      message: "MyRealTrip server environment check complete.",
     });
   } catch (error) {
     return res.status(500).json({

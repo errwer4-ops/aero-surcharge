@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ko">
 <head>
   <meta charset="UTF-8"/>
@@ -308,7 +308,7 @@
     <div class="calc-readiness-body" data-i18n="calc.readiness.body">
       현재 계산기는 2026년 6월 항공사 공식 공시 데이터를 기준으로 비교합니다. 7월 유류할증료는 항공사 공식 공지가 확인된 뒤 별도 입력하며, 그 전까지는 전망 페이지에서 항공유 가격·원/달러 환율·국제유가 변수를 참고하세요.
     </div>
-    <a class="calc-readiness-link" href="fuel-surcharge-forecast.html" data-i18n="calc.readiness.link">2026년 7월 유류할증료 전망 보기 →</a>
+    <a class="calc-readiness-link" href="forecast.html" data-i18n="calc.readiness.link">2026년 7월 유류할증료 전망 보기 →</a>
   </section>
 
   <section class="saving-tool" id="savingTool" aria-label="유류할증료 절약 비교 계산기">
@@ -489,7 +489,7 @@
       <a class="related-item" href="fuel-surcharge-graph.html"           data-i18n="calc.related.graph">📈 변동 그래프</a>
       <a class="related-item" href="fuel-surcharge-calculator.html"      data-i18n="calc.related.calc">🧮 유류할증료 계산기</a>
       <a class="related-item" href="fuel-surcharge-2026-05.html"         data-i18n="calc.related.may">📅 2026년 5월</a>
-      <a class="related-item" href="fuel-surcharge-forecast.html" data-i18n="calc.related.june">🔮 2026년 7월 전망</a>
+      <a class="related-item" href="forecast.html" data-i18n="calc.related.june">🔮 2026년 7월 전망</a>
       <a class="related-item" href="fuel-surcharge-korea.html"           data-i18n="calc.related.korea">🇰🇷 한국 출발 유류할증료</a>
     </div>
   </div>
@@ -740,6 +740,9 @@ var SAVING_INDEX_ROUTE_MAP = null;
   var latestLiveFareItems = [];
   var liveFareApiReady = false;
   var liveFareFallbackUrl = 'https://lase.kr/click.php?m=myrealtrip&a=A100704170&l=0000';
+  var myRealTripLinkCache = {};
+  var myRealTripApiUnavailable = false;
+  var myRealTripHomeUrl = 'https://www.myrealtrip.com/';
   function toKRW(amount, currency) { return currency === 'USD' ? Math.round(amount * usdRate) : amount; }
   var SAVING_UI_TEXT = {
     ko: { count:'{n}개', noDataTitle:'비교 데이터 없음', noDataBody:'현재 선택한 목적지는 비교 가능한 항공사 데이터가 없습니다.', noDataCell:'비교 가능한 항공사 데이터가 없습니다.', bestJune:'{name} {amount}', saveHeadline:'6월 기준 항공사별 차이 최대 {amount}', extraHeadline:'최저 공시 대비 {amount} 차이', sameHeadline:'항공사별 금액 동일', thAirline:'항공사', thMay:'7월 공시 상태', thJune:'6월 확정 공시', thSaving:'6월 최저 대비', julyPending:'공시 전', routeSep:' · ', affiliateTitle:'{dest} 항공권 총액도 함께 확인하세요', affiliateSave:'6월 확정 공시 기준 항공사별 유류할증료 차이는 최대 {amount}입니다. 7월 금액은 아직 공시 전이므로 실제 운임, 세금, 좌석 상황까지 함께 비교해보세요.', affiliateNeutral:'6월 확정 공시 기준 항공사별 차이가 작습니다. 7월 금액은 아직 공시 전이므로 실제 항공권 총액과 일정 조건을 함께 비교해보세요.', affiliateBtn:'{dest} 항공권 총액 보기', affiliateAria:'{dest} 항공권 총액 확인하기' },
@@ -1208,6 +1211,8 @@ var SAVING_INDEX_ROUTE_MAP = null;
       : st('affiliateNeutral');
     affiliateBtnEl.textContent = st('affiliateBtn', { dest:destName });
     affiliateBtnEl.setAttribute('aria-label', st('affiliateAria', { dest:destName }));
+    affiliateBtnEl.href = getCachedMyRealTripUrl(dest);
+    prepareMyRealTripLink(dest);
   }
   function getOfficialSurchargeForFlight(item, fallbackResults) {
     var code = item && item.airlineCode;
@@ -1217,7 +1222,56 @@ var SAVING_INDEX_ROUTE_MAP = null;
     return null;
   }
   function buildDestinationFareUrl(dest) {
-    return liveFareFallbackUrl;
+    return getCachedMyRealTripUrl(dest);
+  }
+  function getMyRealTripSubId(dest) {
+    if (!dest) return 'calculator_unknown';
+    return 'calculator_' + getRouteDep(dest) + '_' + getRouteArr(dest);
+  }
+  function getCachedMyRealTripUrl(dest) {
+    var subId = getMyRealTripSubId(dest);
+    return myRealTripLinkCache[subId] || liveFareFallbackUrl;
+  }
+  function prepareMyRealTripLink(dest) {
+    if (!dest || typeof fetch !== 'function' || myRealTripApiUnavailable) {
+      return Promise.resolve(liveFareFallbackUrl);
+    }
+    var subId = getMyRealTripSubId(dest);
+    if (myRealTripLinkCache[subId]) return Promise.resolve(myRealTripLinkCache[subId]);
+    if (myRealTripLinkCache[subId + '_failed']) return Promise.resolve(liveFareFallbackUrl);
+    if (myRealTripLinkCache[subId + '_pending']) return myRealTripLinkCache[subId + '_pending'];
+
+    var requestUrl = '/api/myrealtrip/mylink?call=1'
+      + '&originalUrl=' + encodeURIComponent(myRealTripHomeUrl)
+      + '&subId=' + encodeURIComponent(subId);
+    var request = fetch(requestUrl, { headers:{ Accept:'application/json' }, credentials:'same-origin' })
+      .then(function(response) {
+        if (response.status === 404 || response.status === 405) myRealTripApiUnavailable = true;
+        if (!response.ok) throw new Error('MyLink API unavailable: ' + response.status);
+        return response.json();
+      })
+      .then(function(payload) {
+        var trackingUrl = payload && payload.success && payload.link && payload.link.trackingUrl;
+        if (trackingUrl && /^https?:\/\//i.test(trackingUrl)) {
+          myRealTripLinkCache[subId] = trackingUrl;
+          if (affiliateBtnEl && latestFareContext && getMyRealTripSubId(latestFareContext.dest) === subId) {
+            affiliateBtnEl.href = trackingUrl;
+          }
+          return trackingUrl;
+        }
+        myRealTripLinkCache[subId + '_failed'] = true;
+        return liveFareFallbackUrl;
+      })
+      .catch(function() {
+        myRealTripLinkCache[subId + '_failed'] = true;
+        return liveFareFallbackUrl;
+      })
+      .then(function(url) {
+        delete myRealTripLinkCache[subId + '_pending'];
+        return url;
+      });
+    myRealTripLinkCache[subId + '_pending'] = request;
+    return request;
   }
   function resetLiveFareForRoute(dest, results) {
     latestFareContext = { dest:dest, results:results || [] };
@@ -1229,6 +1283,7 @@ var SAVING_INDEX_ROUTE_MAP = null;
     applyLiveFareStaticText();
     liveFareStatusEl.textContent = lt('fallbackReady', { route:routeName });
     setupLiveFareDate();
+    prepareMyRealTripLink(dest);
   }
   function renderLiveFareItems(items) {
     if (!liveFareStatusEl || !liveFareListEl || !latestFareContext) return;

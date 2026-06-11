@@ -4,12 +4,22 @@
   "redirects": [
     {
       "source": "/fuel-surcharge-2026-06-forecast",
-      "destination": "/fuel-surcharge-forecast",
+      "destination": "/forecast.html",
       "permanent": true
     },
     {
       "source": "/fuel-surcharge-2026-06-forecast.html",
-      "destination": "/fuel-surcharge-forecast",
+      "destination": "/forecast.html",
+      "permanent": true
+    },
+    {
+      "source": "/fuel-surcharge-forecast",
+      "destination": "/forecast.html",
+      "permanent": true
+    },
+    {
+      "source": "/fuel-surcharge-forecast.html",
+      "destination": "/forecast.html",
       "permanent": true
     },
     {

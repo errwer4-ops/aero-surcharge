@@ -1,4 +1,4 @@
-﻿/* ── 항공 유류할증료 — Shared JS v3 ── */
+/* ── 항공 유류할증료 — Shared JS v3 ── */
 
 /* ─────────────────────────────────────────────
    환율 / 통화 포매팅
@@ -208,6 +208,32 @@ window.AERO_MARKET_NUMBERS_20260610 = Object.assign({}, window.AERO_MARKET_NUMBE
   wtiMaxUsdPerBbl: 90
 });
 
+/* June 12 outlook snapshot.
+   Oil uses the June 11 close available at the 06:00 KST cutoff.
+   MOPS, IATA jet fuel and USD/KRW retain their last verified exact reference values. */
+window.AERO_MARKET_NUMBERS_20260612 = Object.assign({}, window.AERO_MARKET_NUMBERS_20260610, {
+  asOf: '2026.06.12 06:00 KST',
+  brentUsdPerBbl: 90.38,
+  wtiUsdPerBbl: 87.71,
+  brentMinUsdPerBbl: 90,
+  brentMaxUsdPerBbl: 92,
+  wtiMinUsdPerBbl: 87,
+  wtiMaxUsdPerBbl: 89,
+  referenceAsOf: {
+    brentWti: '2026.06.11 close',
+    iataJetFuel: 'latest verified weekly global average',
+    mops: 'latest verified MOPS reference',
+    usdKrw: 'latest verified USD/KRW reference'
+  },
+  sources: {
+    brentWti: 'June 11, 2026 market close: Brent 90.38 USD/bbl; WTI 87.71 USD/bbl',
+    iataJetFuel: 'IATA Fuel Price Monitor, latest verified weekly global average',
+    mops: 'Latest verified MOPS reference retained until a newer public exact value is confirmed',
+    usdKrw: 'Latest verified USD/KRW reference retained until a newer exact quote is confirmed'
+  }
+});
+window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260612;
+
 window.marketMoney = function(usdAmount, unit) {
   if (usdAmount == null) return '—';
   var c = window.getCurrentCurr ? window.getCurrentCurr() : (window.SHARED_STATE.curr || 'KRW');
@@ -218,7 +244,8 @@ window.marketMoney = function(usdAmount, unit) {
     val = usdAmount;
     dec = 2;
   } else {
-    var krw = usdAmount * window.AERO_MARKET_NUMBERS_20260608.usdKrw;
+    var latestMarket = window.AERO_MARKET_NUMBERS_LATEST || window.AERO_MARKET_NUMBERS_20260608;
+    var krw = usdAmount * latestMarket.usdKrw;
     val = krw * (window.RATES[c] || 1);
   }
   var amount = sym + val.toLocaleString('en-US', {
@@ -229,7 +256,7 @@ window.marketMoney = function(usdAmount, unit) {
 };
 
 window.marketMetricText = function(metric) {
-  var d = window.AERO_MARKET_NUMBERS_20260610 || window.AERO_MARKET_NUMBERS_20260608;
+  var d = window.AERO_MARKET_NUMBERS_LATEST || window.AERO_MARKET_NUMBERS_20260610 || window.AERO_MARKET_NUMBERS_20260608;
   var lang = window.getCurrentLang ? window.getCurrentLang() : (window.SHARED_STATE.lang || 'ko');
   var curr = window.getCurrentCurr ? window.getCurrentCurr() : (window.SHARED_STATE.curr || 'KRW');
   var original = curr === 'USD' ? '' : ' (USD 기준)';
@@ -3001,13 +3028,13 @@ window.AERO_NEWS_CARDS_20260529 = [
     summary: '2026.05.29 07:00 KST 기준 7월 유류할증료 전망은 큰 폭 인하보다 동결 또는 소폭 조정 가능성 중심으로 보는 것이 안전합니다.\n\n국제유가 급등세는 둔화됐지만, 항공유 가격 부담은 아직 남아 있습니다. 유류할증료는 유가 하루 변동이 아니라 항공유 가격(MOPS) 평균, 환율, 항공사 공시 시차를 함께 반영합니다.',
     impact: '2026년 7월 유류할증료 전망, 항공유 가격, 유류할증료 인하 가능성 검색 의도에 대응합니다.',
     sourceName: '시장 지표 종합 점검 (2026.05.29 07:00 KST)',
-    sourceUrl: 'fuel-surcharge-forecast.html',
+    sourceUrl: 'forecast.html',
     tags: ['NEW','항공유 가격','MOPS','2026년 7월 유류할증료 전망','유류할증료 인하 가능성'],
     faq: [
       { q:'유가가 진정되면 7월 유류할증료가 바로 내려가나요?', a:'아닙니다. 항공유 가격 평균, 환율, 항공사 공시 시차가 함께 반영되므로 동결 또는 소폭 조정 가능성도 봐야 합니다.' }
     ],
     links: [
-      { href:'fuel-surcharge-forecast.html', label:'7월 전망 자세히 보기' },
+      { href:'forecast.html', label:'7월 전망 자세히 보기' },
       { href:'fuel-surcharge-graph.html', label:'월별 변동 그래프 보기' }
     ],
     i18n: {
@@ -3071,13 +3098,13 @@ window.AERO_NEWS_CARDS_20260529 = [
     summary: '6월 공시 완료 항공사는 6월 확정 데이터로 표시하고, 미공시 항공사는 공지 전·6월 공시 미확인·업데이트 대기로 구분해야 합니다.\n\n2026년 7월 유류할증료 전망은 6월 확정 데이터 위에 국제유가, 항공유 가격, 원달러 환율 흐름을 더해 판단합니다. 이미 공시가 나온 항공사를 예상 또는 미정처럼 표시하면 안 됩니다.',
     impact: '대한항공 7월 유류할증료 전망, 2026년 7월 유류할증료 전망, 6월 확정 데이터 검색 의도에 대응합니다.',
     sourceName: '6월 확정 데이터 기반 7월 전망',
-    sourceUrl: 'fuel-surcharge-forecast.html',
+    sourceUrl: 'forecast.html',
     tags: ['NEW','6월 확정 데이터','공시 완료','2026년 7월 유류할증료 전망','대한항공 7월 유류할증료 전망'],
     faq: [
       { q:'6월 공시가 완료됐는데 왜 7월 전망을 보나요?', a:'6월 금액은 현재 기준점이고, 여행객은 7월 성수기 발권 판단을 위해 다음 달 방향성을 함께 봐야 하기 때문입니다.' }
     ],
     links: [
-      { href:'fuel-surcharge-forecast.html', label:'6월 확정 데이터 기반 7월 전망' },
+      { href:'forecast.html', label:'6월 확정 데이터 기반 7월 전망' },
       { href:'airlines.html', label:'항공사별 공시 보기' }
     ],
     i18n: {
@@ -3144,14 +3171,14 @@ window.AERO_NEWS_CARDS_20260528 = [
     summary: '2026년 7월 유류할증료 전망에서 국제유가는 긍정 요인과 제한 요인이 함께 있는 상태입니다.\n\n5월 초 급등 이후 브렌트유는 고점 대비 완화되는 흐름이지만, 중동 리스크 프리미엄이 완전히 사라졌다고 단정하기는 어렵습니다. 따라서 “유가 하락 = 유류할증료 즉시 인하”로 연결하면 안 됩니다.\n\n7월 국제선 유류할증료는 항공유 가격(MOPS) 평균, 원달러 환율, 항공사별 공시 시차, 지정학 리스크를 함께 반영해 판단해야 합니다.',
     impact: '브렌트유, 항공유 가격, MOPS,2026년 7월 유류할증료 전망 검색 의도에 대응합니다.',
     sourceName: '시장 지표 종합 점검 (2026.05.28 06:45 KST)',
-    sourceUrl: 'fuel-surcharge-forecast.html',
+    sourceUrl: 'forecast.html',
     tags: ['NEW','브렌트유','항공유 가격','MOPS','2026년 7월 유류할증료 전망'],
     faq: [
       { q:'유가가 내려가면 유류할증료도 바로 내려가나요?', a:'아닙니다. 유류할증료는 항공유 MOPS 평균, 환율, 항공사 공시 시차, 지정학 리스크를 함께 반영합니다.' },
       { q:'28일 기준 국제유가 흐름은 7월 전망에 어떤 의미인가요?', a:'고점 대비 완화는 인하 가능성을 높이지만, 중동 리스크 프리미엄이 남아 있어 인하 폭은 제한될 수 있습니다.' }
     ],
     links: [
-      { href:'fuel-surcharge-forecast.html', label:'2026년 7월 전망 자세히 보기' },
+      { href:'forecast.html', label:'2026년 7월 전망 자세히 보기' },
       { href:'fuel-surcharge-graph.html', label:'월별 유류할증료 그래프' }
     ]
   },
@@ -3200,14 +3227,14 @@ window.AERO_NEWS_CARDS_20260528 = [
     summary: '2026년 7월 유류할증료 전망은 “인하 가능성 우세, 단 고환율·중동 변수 재확대 시 인하 폭 제한 또는 변동 가능”으로 정리하는 것이 적절합니다.\n\n6월 유류할증료 공시는 이미 확정 데이터입니다. KE/OZ/LJ/BX/ZE/RS/TW/7C/YP의 6월 공식 공시 데이터는 유지하며, 7월 전망은 별도 시장 전망으로 봐야 합니다.\n\n유가 하락을 바로 유류할증료 인하로 단정하지 않고, 항공유 가격(MOPS) 평균, 원달러 환율, 항공사 공시 시차, 중동 리스크를 함께 확인해야 합니다.',
     impact: '2026년 7월 유류할증료 전망, 유류할증료 인하 가능성, 6월 유류할증료 공시 검색 의도에 대응합니다.',
     sourceName: '7월 전망 종합',
-    sourceUrl: 'fuel-surcharge-forecast.html',
+    sourceUrl: 'forecast.html',
     tags: ['NEW','2026년 7월 유류할증료 전망','유류할증료 인하 가능성','6월 유류할증료 공시','MOPS'],
     faq: [
       { q:'2026년 7월 유류할증료는 내려갈 가능성이 있나요?', a:'현재 흐름에서는 인하 가능성이 우세합니다. 다만 고환율과 중동 리스크가 다시 커지면 인하 폭이 제한되거나 전망이 흔들릴 수 있습니다.' },
       { q:'6월 공시와 7월 전망은 어떻게 다른가요?', a:'6월 공시는 항공사 공식 공시로 확정된 데이터이고, 7월은 MOPS 평균, 환율, 유가, 지정학 리스크를 바탕으로 한 전망입니다.' }
     ],
     links: [
-      { href:'fuel-surcharge-forecast.html', label:'7월 전망 페이지' },
+      { href:'forecast.html', label:'7월 전망 페이지' },
       { href:'news.html#news-20260528-oil-easing-risk-premium', label:'국제유가 카드 보기' }
     ]
   },
@@ -3303,7 +3330,7 @@ window.AERO_NEWS_CARDS_20260527 = [
     summary: '2026년 5월 28일 오전 기준 뉴스의 초점은26일 카드와 달라야 합니다.26일이 “6월 공시 반영 완료와 7월 전망 전환”이었다면,2일은 “6월 인하가 기준점으로 굳어진 뒤 7월 추가 완화 폭을 다시 점검하는 시점”입니다.\n\n확정 데이터는 분명합니다.2026년 6월 국제선 유류할증료는 5월 33단계에서 6월 27단계 수준으로 내려와 적용 중입니다. 대한항공 기준 6월 국제선 편도 유류할증료는 61,500원~451,500원이며, 5월 대비 최대 112,500원 낮아진 구간이 있습니다.\n\n다만2일 오전에는 “추가 하락 가능성”만 강조하기 어렵습니다. 항공유/MOPS 하락은 6월 인하에 이미 반영됐고, Brent eased from the early-May spike, while elevated USD/KRW can still limit perceived airfare relief.',
     impact: '2026년 7월 유류할증료 전망,2026년 6월 유류할증료, 항공유 가격, 원달러 환율 검색 의도에 맞춘 5월 28일 기준 카드입니다.',
     sourceName: '시장 지표 재점검 (2026.05.28 06:45 KST)',
-    sourceUrl: 'fuel-surcharge-forecast.html',
+    sourceUrl: 'forecast.html',
     tags: ['LATEST', '2026년 7월 유류할증료 전망', '2026년 6월 유류할증료', '항공유 가격', '원달러 환율'],
     faq: [
       { q:'2026년 7월 유류할증료는 내려갈 가능성이 있나요?', a:'가능성은 여전히 있습니다. 다만 5월 28일 오전 기준으로는 Brent 유가와 원달러 환율이 인하 폭을 제한할 수 있어 “하락 가능성 우세, 변동성 유지”로 보는 것이 적절합니다.' },
@@ -3311,7 +3338,7 @@ window.AERO_NEWS_CARDS_20260527 = [
       { q:'6월 유류할증료 하락 이유는 무엇인가요?', a:'싱가포르 항공유/MOPS 하락이 핵심 배경입니다. 이 효과는 이미 6월 33단계→27단계 적용으로 확인됐고, 7월은 이후 시장 지표를 별도로 봐야 합니다.' }
     ],
     links: [
-      { href:'fuel-surcharge-forecast.html', label:'2026년 7월 유류할증료 전망 보기' },
+      { href:'forecast.html', label:'2026년 7월 유류할증료 전망 보기' },
       { href:'fuel-surcharge-calculator.html', label:'유류할증료 계산기로 총액 비교' },
       { href:'fuel-surcharge-graph.html', label:'월별 유류할증료 그래프 확인' }
     ],
@@ -3330,7 +3357,7 @@ window.AERO_NEWS_CARDS_20260527 = [
           { q:'Why did June surcharges fall?', a:'Lower Singapore jet fuel/MOPS drove the June move from Level 33 to Level 27. July requires a separate market check.' }
         ],
         links:[
-          { href:'fuel-surcharge-forecast.html', label:'See July 2026 outlook' },
+          { href:'forecast.html', label:'See July 2026 outlook' },
           { href:'fuel-surcharge-calculator.html', label:'Compare total with calculator' },
           { href:'fuel-surcharge-graph.html', label:'See monthly trend chart' }
         ]
@@ -3360,7 +3387,7 @@ window.AERO_NEWS_CARDS_20260527 = [
       { q:'27일 기준으로 항공유 하락만 보면 되나요?', a:'아닙니다. 6월 인하에는 항공유 하락이 이미 반영됐고, 7월 전망은 Brent 유가와 원달러 환율을 함께 봐야 합니다.' }
     ],
     links: [
-      { href:'fuel-surcharge-forecast.html', label:'7월 전망 상세 보기' },
+      { href:'forecast.html', label:'7월 전망 상세 보기' },
       { href:'fuel-surcharge-calculator.html', label:'항공권 총액 비교하기' }
     ],
     i18n: {
@@ -3377,7 +3404,7 @@ window.AERO_NEWS_CARDS_20260527 = [
           { q:'Is jet fuel the only variable now?', a:'No. June already reflected the jet fuel decline; July needs Brent and USD/KRW checked together.' }
         ],
         links:[
-          { href:'fuel-surcharge-forecast.html', label:'See detailed July outlook' },
+          { href:'forecast.html', label:'See detailed July outlook' },
           { href:'fuel-surcharge-calculator.html', label:'Compare total airfare' }
         ]
       }
@@ -3412,7 +3439,7 @@ window.AERO_NEWS_CARDS_20260525 = [
     summary: '현재 시장은 항공유 가격 피크가 일단 지나갔다는 쪽에 무게가 실립니다.\n\nMOPS 급락 이후 6월 국제선 유류할증료는 33단계에서 27단계로 하락했습니다. 7월 유류할증료 전망은 추가 하락 또는 현 수준 안정화 가능성이 우세하지만, 여름 성수기 항공유 수요와 환율이 인하 폭을 제한할 수 있습니다.\n\n여행객은 단거리 노선에서는 운임 자체를, 장거리 노선에서는 유류할증료와 환율을 함께 확인하는 것이 유리합니다.',
     impact: '2026년 7월 유류할증료 전망, 국제선 유류할증료, 항공권 가격 전망 검색 의도에 맞춘 핵심 카드입니다.',
     sourceName: '시장 지표 종합 분석 (2026.05.25 10:30 KST)',
-    sourceUrl: 'fuel-surcharge-forecast.html',
+    sourceUrl: 'forecast.html',
     tags: ['NEW', '7월 전망', '유류할증료 전망', '2026년 7월 유류할증료', '국제선 유류할증료'],
     faq: [
       { q: '7월 유류할증료는 더 내려갈까?', a: '가능성은 있습니다. MOPS 급락으로 하락 압력이 생겼지만 USD/KRW 환율, 성수기 항공유 수요, 중동 리스크 때문에 인하 폭은 제한될 수 있습니다.' },
@@ -3420,7 +3447,7 @@ window.AERO_NEWS_CARDS_20260525 = [
       { q: '지금 항공권을 예약하는 것이 유리한가요?', a: '단거리 노선은 유류할증료보다 운임 변동 영향이 클 수 있습니다. 장거리 노선은 유류할증료와 환율을 함께 보고 총액 기준으로 판단하는 것이 좋습니다.' }
     ],
     links: [
-      { href: 'fuel-surcharge-forecast.html', label: '2026년 7월 유류할증료 전망 자세히 보기' },
+      { href: 'forecast.html', label: '2026년 7월 유류할증료 전망 자세히 보기' },
       { href: 'fuel-surcharge-calculator.html', label: '5월·6월 발권 절약액 계산' },
       { href: 'airlines.html', label: '항공사별 공식 공시 확인' },
       { href: 'fuel-surcharge-graph.html', label: '월별 유류할증료 그래프' }
@@ -3440,7 +3467,7 @@ window.AERO_NEWS_CARDS_20260525 = [
           { q: 'Is booking now better?', a: 'For short-haul routes, base fare can matter more than surcharge. For long-haul routes, compare surcharge and FX impact together.' }
         ],
         links: [
-          { href: 'fuel-surcharge-forecast.html', label: 'Detailed July 2026 fuel surcharge outlook' },
+          { href: 'forecast.html', label: 'Detailed July 2026 fuel surcharge outlook' },
           { href: 'fuel-surcharge-calculator.html', label: 'Calculate May-June ticketing savings' },
           { href: 'airlines.html', label: 'Check official airline filings' },
           { href: 'fuel-surcharge-graph.html', label: 'Monthly surcharge chart' }
@@ -3460,7 +3487,7 @@ window.AERO_NEWS_CARDS_20260525 = [
           { q: '今予約した方がよいですか？', a: '短距離は運賃の影響が大きく、長距離は燃油サーチャージと為替を一緒に確認するのがよいです。' }
         ],
         links: [
-          { href: 'fuel-surcharge-forecast.html', label: '2026年7月見通しを見る' },
+          { href: 'forecast.html', label: '2026年7月見通しを見る' },
           { href: 'fuel-surcharge-calculator.html', label: '5月・6月発券の節約額を計算' },
           { href: 'airlines.html', label: '航空会社の公式公示を確認' },
           { href: 'fuel-surcharge-graph.html', label: '月別グラフを見る' }
@@ -3480,7 +3507,7 @@ window.AERO_NEWS_CARDS_20260525 = [
           { q: '现在订票更有利吗？', a: '短途航线基础票价影响可能更大，长途航线应同时查看燃油附加费和汇率。' }
         ],
         links: [
-          { href: 'fuel-surcharge-forecast.html', label: '查看2026年7月燃油附加费展望' },
+          { href: 'forecast.html', label: '查看2026年7月燃油附加费展望' },
           { href: 'fuel-surcharge-calculator.html', label: '计算5月与6月出票节省额' },
           { href: 'airlines.html', label: '查看航空公司官方公告' },
           { href: 'fuel-surcharge-graph.html', label: '查看月度图表' }
@@ -3500,7 +3527,7 @@ window.AERO_NEWS_CARDS_20260525 = [
           { q: 'Faut-il réserver maintenant ?', a: 'Sur court-courrier, le tarif de base peut compter davantage. Sur long-courrier, comparez surcharge et change ensemble.' }
         ],
         links: [
-          { href: 'fuel-surcharge-forecast.html', label: 'Prévision détaillée de juillet2026' },
+          { href: 'forecast.html', label: 'Prévision détaillée de juillet2026' },
           { href: 'fuel-surcharge-calculator.html', label: 'Calculer l’économie mai-juin' },
           { href: 'airlines.html', label: 'Voir les annonces officielles' },
           { href: 'fuel-surcharge-graph.html', label: 'Graphique mensuel' }
@@ -3520,7 +3547,7 @@ window.AERO_NEWS_CARDS_20260525 = [
           { q: 'Sollte man jetzt buchen?', a: 'Bei Kurzstrecken kann der Grundtarif wichtiger sein. Bei Langstrecken sollten Zuschlag und Wechselkurs zusammen verglichen werden.' }
         ],
         links: [
-          { href: 'fuel-surcharge-forecast.html', label: 'Detaillierter Juli-Ausblick2026' },
+          { href: 'forecast.html', label: 'Detaillierter Juli-Ausblick2026' },
           { href: 'fuel-surcharge-calculator.html', label: 'Ersparnis Mai-Juni berechnen' },
           { href: 'airlines.html', label: 'Offizielle Airline-Meldungen prüfen' },
           { href: 'fuel-surcharge-graph.html', label: 'Monatsdiagramm ansehen' }
@@ -3552,7 +3579,7 @@ window.AERO_NEWS_CARDS_20260525 = [
     links: [
       { href: 'fuel-surcharge-graph.html', label: 'MOPS·유류할증료 추세 보기' },
       { href: 'news.html#news-20260525-july-surcharge-stabilization', label: '7월 전망 카드 보기' },
-      { href: 'fuel-surcharge-forecast.html', label: '7월 예상 시나리오 확인' }
+      { href: 'forecast.html', label: '7월 예상 시나리오 확인' }
     ],
     i18n: {
       en: {
@@ -3571,7 +3598,7 @@ window.AERO_NEWS_CARDS_20260525 = [
         links: [
           { href: 'fuel-surcharge-graph.html', label: 'See MOPS and surcharge trend' },
           { href: 'news.html#news-20260525-july-surcharge-stabilization', label: 'Read July outlook card' },
-          { href: 'fuel-surcharge-forecast.html', label: 'Check July scenarios' }
+          { href: 'forecast.html', label: 'Check July scenarios' }
         ]
       }
     }
@@ -3600,7 +3627,7 @@ window.AERO_NEWS_CARDS_20260525 = [
     links: [
       { href: 'fuel-surcharge-calculator.html', label: '발권월별 절약액 계산하기' },
       { href: 'index.html', label: '노선별 유류할증료 조회' },
-      { href: 'fuel-surcharge-forecast.html', label: '환율 변수 반영 전망 보기' }
+      { href: 'forecast.html', label: '환율 변수 반영 전망 보기' }
     ],
     i18n: {
       en: {
@@ -3619,7 +3646,7 @@ window.AERO_NEWS_CARDS_20260525 = [
         links: [
           { href: 'fuel-surcharge-calculator.html', label: 'Calculate ticketing-month savings' },
           { href: 'index.html', label: 'Search surcharge by route' },
-          { href: 'fuel-surcharge-forecast.html', label: 'See FX in July outlook' }
+          { href: 'forecast.html', label: 'See FX in July outlook' }
         ]
       }
     }
@@ -3638,7 +3665,7 @@ window.AERO_NEWS_CARDS_20260525 = [
     summary: '공급망 안정과 정유사 항공유 생산 확대는 항공유 가격 안정에 긍정적입니다.\n\n하지만 중동 리스크는 여전히 변수입니다. 미국-이란 협상 기대감은 위험 프리미엄을 낮추는 요인이지만, 호르무즈 해협 관련 불확실성이 완전히 사라진 것은 아닙니다.\n\n7월 유류할증료 전망은 안정화가 우세하되, 호르무즈 변수가 재점화되면 변동성이 확대될 수 있다는 점을 함께 봐야 합니다.',
     impact: '중동 리스크, 호르무즈 해협, Brent, 항공유 가격 전망 검색 의도에 대응합니다.',
     sourceName: '중동 리스크 및 공급망 흐름 종합',
-    sourceUrl: 'fuel-surcharge-forecast.html',
+    sourceUrl: 'forecast.html',
     tags: ['NEW', '호르무즈 리스크', '중동 리스크', 'Brent', '항공유 가격 전망'],
     faq: [
       { q: '호르무즈 리스크가 유류할증료에 영향을 주나요?', a: '영향을 줄 수 있습니다. 호르무즈 리스크는 Brent와 항공유 가격의 위험 프리미엄을 높여 유류할증료 하락을 제한할 수 있습니다.' },
@@ -3646,7 +3673,7 @@ window.AERO_NEWS_CARDS_20260525 = [
       { q: '7월 전망에서 가장 중요한 변수는 무엇인가요?', a: 'MOPS 하락, USD/KRW 환율, 여름 항공유 수요, 호르무즈 리스크를 함께 봐야 합니다.' }
     ],
     links: [
-      { href: 'fuel-surcharge-forecast.html', label: '7월 유류할증료 변수 정리' },
+      { href: 'forecast.html', label: '7월 유류할증료 변수 정리' },
       { href: 'news.html#news-20260525-mops-market-stabilization', label: 'MOPS 안정 카드 보기' },
       { href: 'fuel-surcharge-graph.html', label: '월별 변동 흐름 확인' }
     ],
@@ -3665,7 +3692,7 @@ window.AERO_NEWS_CARDS_20260525 = [
           { q: 'What are the key July variables?', a: 'MOPS decline, USD/KRW, summer fuel demand, and Hormuz risk should be checked together.' }
         ],
         links: [
-          { href: 'fuel-surcharge-forecast.html', label: 'See July surcharge variables' },
+          { href: 'forecast.html', label: 'See July surcharge variables' },
           { href: 'news.html#news-20260525-mops-market-stabilization', label: 'Read MOPS stabilization card' },
           { href: 'fuel-surcharge-graph.html', label: 'Check monthly trend' }
         ]
@@ -3737,7 +3764,7 @@ window.AERO_NEWS_CARDS_20260524 = [
       { q: 'MOPS가 하락하면 7월 유류할증료도 무조건 내려가나요?', a: '무조건은 아닙니다. 7월에는 6월 중 항공유 평균, 원달러 환율, 항공사 정책이 함께 반영됩니다.' }
     ],
     links: [
-      { href: 'fuel-surcharge-forecast.html', label: '2026년 7월 유류할증료 전망 보기' },
+      { href: 'forecast.html', label: '2026년 7월 유류할증료 전망 보기' },
       { href: 'fuel-surcharge-graph.html', label: 'MOPS와 유류할증료 흐름 비교' },
       { href: 'fuel-surcharge-calculator.html', label: '발권월별 절약액 계산' }
     ]
@@ -3765,7 +3792,7 @@ window.AERO_NEWS_CARDS_20260524 = [
     ],
     links: [
       { href: 'fuel-surcharge-calculator.html', label: '환율 반영 절약액 계산하기' },
-      { href: 'fuel-surcharge-forecast.html', label: '7월 유류할증료 환율 변수 보기' },
+      { href: 'forecast.html', label: '7월 유류할증료 환율 변수 보기' },
       { href: 'index.html', label: '노선별 총 부담 확인' }
     ]
   },
@@ -3792,7 +3819,7 @@ window.AERO_NEWS_CARDS_20260524 = [
     ],
     links: [
       { href: 'news.html#news-20260524-mops-drop', label: 'MOPS 하락 카드 함께 보기' },
-      { href: 'fuel-surcharge-forecast.html', label: '7월 전망에서 지정학 변수 확인' },
+      { href: 'forecast.html', label: '7월 전망에서 지정학 변수 확인' },
       { href: 'fuel-surcharge-graph.html', label: '유류할증료 추세 그래프 보기' }
     ]
   },
@@ -3810,7 +3837,7 @@ window.AERO_NEWS_CARDS_20260524 = [
     summary: '2026년 7월 유류할증료는 아직 확정 공시가 아닙니다. 현재 기준으로는 추가 인하 가능성이 존재하지만, 인하 폭은 제한될 수 있습니다.\n\n7월 전망 핵심\n- 인하 요인: MOPS 511.21 -> 410.02 cents/gal 하락\n- 제한 요인: 원달러 환율 1,500원대 전후\n- 리스크 요인: 호르무즈 해협 불확실성 완전 해소 전\n- 소비자 판단: 단거리 노선은 운임 자체, 장거리 노선은 유류할증료와 환율을 함께 확인\n\n결론: 7월 유류할증료는 추가 인하 가능성이 존재하지만, 확정 금액은 6월 중 항공사 공식 공시를 확인해야 합니다.',
     impact: '2026년 7월 유류할증료 전망, 유류할증료 예상 검색 의도에 대응하는 대표 카드입니다.',
     sourceName: '시장 지표 종합 분석 (2026.05.24 10:30 KST)',
-    sourceUrl: 'fuel-surcharge-forecast.html',
+    sourceUrl: 'forecast.html',
     tags: ['2026년 7월 유류할증료 전망', '유류할증료 예상', '국제선 유류할증료 인하', 'MOPS 하락'],
     faq: [
       { q: '2026년 7월 유류할증료는 더 내려갈 가능성이 있나요?', a: '가능성은 있습니다. MOPS 하락은 추가 인하 요인이지만, 환율과 지정학 리스크 때문에 인하 폭은 제한될 수 있습니다.' },
@@ -3818,7 +3845,7 @@ window.AERO_NEWS_CARDS_20260524 = [
       { q: '단거리와 장거리 노선 중 어디가 유류할증료 영향을 더 받나요?', a: '단거리 노선은 운임 자체 영향이 더 클 수 있고, 장거리 노선은 유류할증료와 환율 영향을 함께 확인하는 것이 유리합니다.' }
     ],
     links: [
-      { href: 'fuel-surcharge-forecast.html', label: '2026년 7월 유류할증료 전망 상세' },
+      { href: 'forecast.html', label: '2026년 7월 유류할증료 전망 상세' },
       { href: 'fuel-surcharge-calculator.html', label: '5월·6월 발권 절약액 계산' },
       { href: 'airlines.html', label: '항공사별 공식 공시 확인' }
     ]
@@ -3863,7 +3890,7 @@ window.AERO_NEWS_CARDS_20260524 = [
           { q: 'If MOPS falls, will July surcharges automatically fall?', a: 'Not automatically. July also reflects June average jet fuel prices, USD/KRW, and airline policy.' }
         ],
         links: [
-          { href: 'fuel-surcharge-forecast.html', label: 'View July 2026 surcharge outlook' },
+          { href: 'forecast.html', label: 'View July 2026 surcharge outlook' },
           { href: 'fuel-surcharge-graph.html', label: 'Compare MOPS and surcharge trends' },
           { href: 'fuel-surcharge-calculator.html', label: 'Calculate ticketing-month savings' }
         ]
@@ -3885,7 +3912,7 @@ window.AERO_NEWS_CARDS_20260524 = [
         ],
         links: [
           { href: 'fuel-surcharge-calculator.html', label: 'Calculate FX-adjusted savings' },
-          { href: 'fuel-surcharge-forecast.html', label: 'See FX variable in July outlook' },
+          { href: 'forecast.html', label: 'See FX variable in July outlook' },
           { href: 'index.html', label: 'Check route-level total burden' }
         ]
       }
@@ -3906,7 +3933,7 @@ window.AERO_NEWS_CARDS_20260524 = [
         ],
         links: [
           { href: 'news.html#news-20260524-mops-drop', label: 'Read the MOPS drop card' },
-          { href: 'fuel-surcharge-forecast.html', label: 'Check geopolitics in July outlook' },
+          { href: 'forecast.html', label: 'Check geopolitics in July outlook' },
           { href: 'fuel-surcharge-graph.html', label: 'See surcharge trend chart' }
         ]
       }
@@ -3926,7 +3953,7 @@ window.AERO_NEWS_CARDS_20260524 = [
           { q: 'Do short-haul and long-haul routes react differently?', a: 'Short-haul routes may be affected more by fare itself, while long-haul routes should check both surcharge and FX.' }
         ],
         links: [
-          { href: 'fuel-surcharge-forecast.html', label: 'Detailed July 2026 outlook' },
+          { href: 'forecast.html', label: 'Detailed July 2026 outlook' },
           { href: 'fuel-surcharge-calculator.html', label: 'Calculate May vs June savings' },
           { href: 'airlines.html', label: 'Check official airline notices' }
         ]
@@ -3966,7 +3993,7 @@ window.AERO_NEWS_CARDS_20260524 = [
           { q: 'MOPS下降后7月一定会下调吗？', a: '不一定。7月还会反映6月平均航空燃油价格、USD/KRW和航空公司政策。' }
         ],
         links: [
-          { href: 'fuel-surcharge-forecast.html', label: '查看2026年7月展望' },
+          { href: 'forecast.html', label: '查看2026年7月展望' },
           { href: 'fuel-surcharge-graph.html', label: '比较MOPS和附加费趋势' },
           { href: 'fuel-surcharge-calculator.html', label: '计算出票月份节省额' }
         ]
@@ -3986,7 +4013,7 @@ window.AERO_NEWS_CARDS_20260524 = [
         ],
         links: [
           { href: 'fuel-surcharge-calculator.html', label: '计算汇率影响节省额' },
-          { href: 'fuel-surcharge-forecast.html', label: '查看7月展望中的汇率变量' },
+          { href: 'forecast.html', label: '查看7月展望中的汇率变量' },
           { href: 'index.html', label: '确认航线负担' }
         ]
       },
@@ -4005,7 +4032,7 @@ window.AERO_NEWS_CARDS_20260524 = [
         ],
         links: [
           { href: 'news.html#news-20260524-mops-drop', label: '查看MOPS下跌卡片' },
-          { href: 'fuel-surcharge-forecast.html', label: '查看7月展望地缘因素' },
+          { href: 'forecast.html', label: '查看7月展望地缘因素' },
           { href: 'fuel-surcharge-graph.html', label: '查看趋势图' }
         ]
       },
@@ -4023,7 +4050,7 @@ window.AERO_NEWS_CARDS_20260524 = [
           { q: '短途和长途受影响不同吗？', a: '短途可能更受票价本身影响，长途则应同时确认燃油附加费和汇率影响。' }
         ],
         links: [
-          { href: 'fuel-surcharge-forecast.html', label: '2026年7月展望详情' },
+          { href: 'forecast.html', label: '2026年7月展望详情' },
           { href: 'fuel-surcharge-calculator.html', label: '计算5月/6月节省额' },
           { href: 'airlines.html', label: '查看航空公司官方公告' }
         ]
@@ -4068,7 +4095,7 @@ window.AERO_NEWS_CARDS_20260524 = [
           { q: 'MOPSが下がれば7月も必ず下がりますか？', a: '必ずではありません。7月は6月平均の航空燃油価格、USD/KRW、航空会社の方針も反映されます。' }
         ],
         links: [
-          { href: 'fuel-surcharge-forecast.html', label: '2026年7月見通しを見る' },
+          { href: 'forecast.html', label: '2026年7月見通しを見る' },
           { href: 'fuel-surcharge-graph.html', label: 'MOPSと推移を比較' },
           { href: 'fuel-surcharge-calculator.html', label: '発券月別節約額を計算' }
         ]
@@ -4088,7 +4115,7 @@ window.AERO_NEWS_CARDS_20260524 = [
         ],
         links: [
           { href: 'fuel-surcharge-calculator.html', label: '為替反映の節約額を計算' },
-          { href: 'fuel-surcharge-forecast.html', label: '7月見通しの為替要因を見る' },
+          { href: 'forecast.html', label: '7月見通しの為替要因を見る' },
           { href: 'index.html', label: '路線別負担を確認' }
         ]
       },
@@ -4107,7 +4134,7 @@ window.AERO_NEWS_CARDS_20260524 = [
         ],
         links: [
           { href: 'news.html#news-20260524-mops-drop', label: 'MOPS下落カードを見る' },
-          { href: 'fuel-surcharge-forecast.html', label: '7月見通しの地政学要因' },
+          { href: 'forecast.html', label: '7月見通しの地政学要因' },
           { href: 'fuel-surcharge-graph.html', label: '推移グラフを見る' }
         ]
       },
@@ -4125,7 +4152,7 @@ window.AERO_NEWS_CARDS_20260524 = [
           { q: '短距離と長距離で影響は違いますか？', a: '短距離は運賃自体の影響が大きく、長距離はサーチャージと為替を一緒に確認するのが有利です。' }
         ],
         links: [
-          { href: 'fuel-surcharge-forecast.html', label: '2026年7月見通し詳細' },
+          { href: 'forecast.html', label: '2026年7月見通し詳細' },
           { href: 'fuel-surcharge-calculator.html', label: '5月・6月節約額計算' },
           { href: 'airlines.html', label: '航空会社公式公示確認' }
         ]
@@ -4167,7 +4194,7 @@ window.AERO_NEWS_CARDS_20260524 = [
         { q: 'MOPS下跌为什么重要？', a: 'MOPS是航空燃油价格基准，航空燃油下降会增强国际线燃油附加费下调压力。' },
         { q: 'MOPS下降后7月一定会下调吗？', a: '不一定。7月还会反映6月平均航空燃油价格、USD/KRW和航空公司政策。' }
       ],
-      links: [{href:'fuel-surcharge-forecast.html',label:'查看2026年7月展望'},{href:'fuel-surcharge-graph.html',label:'比较MOPS和附加费趋势'}]
+      links: [{href:'forecast.html',label:'查看2026年7月展望'},{href:'fuel-surcharge-graph.html',label:'比较MOPS和附加费趋势'}]
     },
     'news-20260524-usdkrw-stabilizes': {
       updatedAt: '2026.05.24 10:30 KST 更新',
@@ -4180,7 +4207,7 @@ window.AERO_NEWS_CARDS_20260524 = [
       faq: [
         { q: '汇率会影响燃油附加费吗？', a: '会。航空燃油受美元计价影响，USD/KRW较高会削弱燃油价格下降带来的韩元计价下调效果。' }
       ],
-      links: [{href:'fuel-surcharge-calculator.html',label:'计算汇率影响节省额'},{href:'fuel-surcharge-forecast.html',label:'查看7月展望中的汇率变量'}]
+      links: [{href:'fuel-surcharge-calculator.html',label:'计算汇率影响节省额'},{href:'forecast.html',label:'查看7月展望中的汇率变量'}]
     },
     'news-20260524-hormuz-risk': {
       updatedAt: '2026.05.24 10:30 KST 更新',
@@ -4193,7 +4220,7 @@ window.AERO_NEWS_CARDS_20260524 = [
       faq: [
         { q: '霍尔木兹风险会影响燃油附加费吗？', a: '会。该风险会提高原油和航空燃油风险溢价，从而限制燃油附加费下降。' }
       ],
-      links: [{href:'news.html#news-20260524-mops-drop',label:'查看MOPS下跌卡片'},{href:'fuel-surcharge-forecast.html',label:'查看7月展望地缘因素'}]
+      links: [{href:'news.html#news-20260524-mops-drop',label:'查看MOPS下跌卡片'},{href:'forecast.html',label:'查看7月展望地缘因素'}]
     },
     'news-20260524-july-outlook': {
       updatedAt: '2026.05.24 10:30 KST 更新',
@@ -4207,7 +4234,7 @@ window.AERO_NEWS_CARDS_20260524 = [
         { q: '2026年7月燃油附加费还会下降吗？', a: '有可能。MOPS下降是下调因素，但汇率和地缘风险可能限制幅度。' },
         { q: '7月燃油附加费已经确定了吗？', a: '尚未确定。最终金额需在6月通过各航空公司官方渠道确认。' }
       ],
-      links: [{href:'fuel-surcharge-forecast.html',label:'2026年7月展望详情'},{href:'airlines.html',label:'查看航空公司官方公告'}]
+      links: [{href:'forecast.html',label:'2026年7月展望详情'},{href:'airlines.html',label:'查看航空公司官方公告'}]
     }
   };
   (window.AERO_NEWS_CARDS_20260524 || []).forEach(function(card){
@@ -4990,13 +5017,13 @@ window.AERO_NEWS_CARDS_20260601 = [
     summary: '2026.06.01 09:05 KST 기준 2026년 7월 유류할증료 전망에서 가장 중요한 변수는 국제유가와 호르무즈 해협 리스크입니다.\n\n호르무즈 해협은 전 세계 원유 수송의 핵심 통로입니다. 긴장 확대나 봉쇄 우려가 커지면 국제유가와 항공유 가격이 급등할 수 있고, 이는 항공사 유류비 부담 증가와 항공권 유류할증료 인상 압력으로 연결됩니다.',
     impact: '유류할증료 전망, 국제유가 전망, 항공유 가격 전망, 호르무즈 해협 검색 의도에 대응합니다.',
     sourceName: '시장 지표 종합 점검 (2026.06.01 09:05 KST)',
-    sourceUrl: 'fuel-surcharge-forecast.html',
+    sourceUrl: 'forecast.html',
     tags: ['NEW','국제유가 전망','항공유 가격 전망','호르무즈 해협','유류할증료 전망'],
     faq: [
       { q:'호르무즈 해협이 유류할증료에 영향을 주는 이유는?', a:'호르무즈 해협은 전 세계 원유 수송의 핵심 통로입니다. 이 지역 긴장이 커지면 국제유가와 항공유 가격이 상승해 항공사 비용과 유류할증료에 영향을 줄 수 있습니다.' }
     ],
     links: [
-      { href:'fuel-surcharge-forecast.html', label:'2026년 7월 유류할증료 전망 보기' },
+      { href:'forecast.html', label:'2026년 7월 유류할증료 전망 보기' },
       { href:'fuel-surcharge-graph.html', label:'월별 유류할증료 그래프 보기' }
     ],
     i18n: {
@@ -5060,13 +5087,13 @@ window.AERO_NEWS_CARDS_20260601 = [
     summary: '2026년 7월 유류할증료 전망은 세 가지 변수로 정리됩니다. 국제유가, 원달러 환율, 호르무즈 해협 리스크입니다.\n\n국제유가가 높은 수준을 유지하고 원화 약세가 지속될 경우 항공사의 유류비 부담이 증가하여 대한항공 유류할증료, 아시아나 유류할증료 등 주요 항공사의 7월 금액은 동결 또는 소폭 인상 압력을 받을 수 있습니다. 반대로 국제유가 안정과 환율 하락이 동시에 나타날 경우 일부 항공사의 인하 가능성도 남아 있습니다.',
     impact: '2026년 7월 유류할증료, 대한항공 유류할증료, 아시아나 유류할증료, 항공권 유류할증료 검색 의도에 대응합니다.',
     sourceName: '2026년 7월 유류할증료 전망 요약',
-    sourceUrl: 'fuel-surcharge-forecast.html',
+    sourceUrl: 'forecast.html',
     tags: ['NEW','2026년 7월 유류할증료','대한항공 유류할증료','아시아나 유류할증료','항공권 유류할증료'],
     faq: [
       { q:'2026년 7월 유류할증료는 인상될 가능성이 있나요?', a:'현재 기준으로는 국제유가와 환율 부담 때문에 인하보다 동결 또는 소폭 인상 가능성을 함께 봐야 합니다. 다만 유가 안정과 환율 하락이 동시에 나타나면 일부 인하 가능성도 남아 있습니다.' }
     ],
     links: [
-      { href:'fuel-surcharge-forecast.html', label:'7월 전망 상세 보기' },
+      { href:'forecast.html', label:'7월 전망 상세 보기' },
       { href:'airlines.html', label:'항공사별 유류할증료 보기' }
     ],
     i18n: {
@@ -5119,13 +5146,13 @@ window.AERO_NEWS_CARDS_20260602 = [
     summary: '2026.06.02 08:30 KST 기준 항공유 가격은 중동 리스크와 호르무즈 해협 불안의 영향을 계속 받고 있습니다.\n\n항공사는 국제선 연료비의 상당 부분을 달러 기준으로 부담하기 때문에 항공유 가격이 높은 구간에 머물면 2026년 7월 국제선 유류할증료 전망도 인하보다 상승 또는 고점 유지 가능성을 함께 봐야 합니다. 다만 7월 유류할증료는 아직 항공사 공식 공시 전이므로 확정 금액처럼 표현해서는 안 됩니다.',
     impact: '유류할증료 영향: 상승. 7월 전망 영향: 6월 대비 상승 또는 고점 유지 가능성을 높이는 요인입니다.',
     sourceName: '2026년 7월 유류할증료 전망 업데이트',
-    sourceUrl: 'fuel-surcharge-forecast.html',
+    sourceUrl: 'forecast.html',
     tags: ['NEW','항공유 가격','국제유가 전망','국제선 유류할증료','항공권 가격 전망'],
     faq: [
       { q:'2026년 7월 유류할증료는 오를 가능성이 있나요?', a:'가능성은 있습니다. 항공유 가격과 국제유가가 높은 구간을 유지하고 원달러 환율까지 오르면 7월 유류할증료는 6월 대비 상승 또는 고점 유지 압력을 받을 수 있습니다. 단, 아직 공식 공시는 아닙니다.' }
     ],
     links: [
-      { href:'fuel-surcharge-forecast.html', label:'2026년 7월 유류할증료 전망 보기' },
+      { href:'forecast.html', label:'2026년 7월 유류할증료 전망 보기' },
       { href:'fuel-surcharge-calculator.html', label:'6월 확정 공시 기준 계산기 보기' }
     ],
     i18n: {
@@ -5154,13 +5181,13 @@ window.AERO_NEWS_CARDS_20260602 = [
     summary: '호르무즈 해협은 전 세계 해상 원유 물동량의 약 20%가 통과하는 핵심 지역으로, 중동 지정학 리스크가 국제유가와 항공유 가격에 전달되는 통로입니다.\n\n이번 7월 유류할증료 전망에서는 단순한 유가 숫자보다 호르무즈 해협 정상화 속도가 더 중요한 변수입니다. 통행 제한, 보험료 상승, 우회 운항 가능성이 지속되면 항공유 공급 불확실성이 커지고 항공권 유류할증료 인하 가능성은 낮아질 수 있습니다.',
     impact: '유류할증료 영향: 상승. 7월 전망 영향: 호르무즈 정상화가 지연되면 고점 유지 또는 상승 압력이 커집니다.',
     sourceName: '호르무즈 해협 리스크 점검',
-    sourceUrl: 'fuel-surcharge-forecast.html',
+    sourceUrl: 'forecast.html',
     tags: ['NEW','호르무즈 해협','국제유가 전망','항공유 가격 전망','유류할증료 전망'],
     faq: [
       { q:'호르무즈 해협이 유류할증료에 영향을 주는 이유는 무엇인가요?', a:'호르무즈 해협은 원유 수송의 핵심 통로입니다. 이 지역에서 봉쇄, 충돌, 통행 제한이 발생하면 국제유가와 항공유 가격이 올라 항공사의 연료비 부담과 유류할증료 전망에 영향을 줄 수 있습니다.' }
     ],
     links: [
-      { href:'fuel-surcharge-forecast.html', label:'호르무즈 리스크 반영 전망 보기' },
+      { href:'forecast.html', label:'호르무즈 리스크 반영 전망 보기' },
       { href:'news.html', label:'최신 유류할증료 뉴스 보기' }
     ],
     i18n: {
@@ -5189,13 +5216,13 @@ window.AERO_NEWS_CARDS_20260602 = [
     summary: 'OPEC+ 일부 산유국의 증산은 국제유가 안정에 도움을 줄 수 있는 요인입니다.\n\n다만 호르무즈 해협 통행 제한, 보험료 상승, 우회 운항 가능성처럼 물류 차질이 남아 있으면 증산 효과가 항공유 가격 안정으로 곧바로 이어지기는 어렵습니다. 따라서 2026년 7월 유류할증료 전망에서는 OPEC+ 증산을 하락 요인으로 보되, 지정학 리스크를 완전히 상쇄하는 재료로 단정하지 않는 편이 안전합니다.',
     impact: '유류할증료 영향: 중립. 7월 전망 영향: 유가 안정 요인이지만 상승 압력을 제한하는 정도로 해석합니다.',
     sourceName: 'OPEC+ 증산과 항공유 가격 영향 분석',
-    sourceUrl: 'fuel-surcharge-forecast.html',
+    sourceUrl: 'forecast.html',
     tags: ['NEW','OPEC+ 증산','국제유가 전망','항공유 가격','유류할증료 인하 가능성'],
     faq: [
       { q:'OPEC+ 증산이면 유류할증료가 바로 내려가나요?', a:'그렇게 단정하기 어렵습니다. 증산은 유가 안정 요인이지만 호르무즈 해협 리스크, 운송 차질, 환율 상승이 남아 있으면 항공유 가격과 유류할증료 인하 효과가 제한될 수 있습니다.' }
     ],
     links: [
-      { href:'fuel-surcharge-forecast.html', label:'7월 시장 변수 자세히 보기' }
+      { href:'forecast.html', label:'7월 시장 변수 자세히 보기' }
     ],
     i18n: {
       en: {
@@ -5258,13 +5285,13 @@ window.AERO_NEWS_CARDS_20260602 = [
     summary: '2026년 7월 유류할증료는 아직 확정 공시가 아닙니다. 현재 사이트에서는 2026년 6월 항공사 공식 공시를 확정 데이터로 유지하고, 7월은 시장 변수 기반 전망으로 분리합니다.\n\n2026.06.02 08:30 KST 기준으로는 국제유가와 항공유 가격 상승 압력, 원달러 환율 변동성, 호르무즈 해협 리스크 때문에 6월 대비 상승 또는 고점 유지 가능성이 우세합니다. 다만 호르무즈 해협 정상화, 국제유가 조정, 원화 반등이 동시에 나타나면 상승폭은 제한될 수 있습니다.',
     impact: '유류할증료 영향: 상승. 7월 전망 영향: 상승 또는 고점 유지 가능성 우세, 단 안정 변수 확인 시 제한적 조정 가능.',
     sourceName: '2026년 7월 유류할증료 전망 요약',
-    sourceUrl: 'fuel-surcharge-forecast.html',
+    sourceUrl: 'forecast.html',
     tags: ['NEW','2026년 7월 유류할증료 전망','대한항공 유류할증료','아시아나 유류할증료','항공권 유류할증료'],
     faq: [
       { q:'2026년 7월 유류할증료는 오를 가능성이 있나요?', a:'현재 기준으로는 상승 또는 고점 유지 가능성이 우세합니다. 다만 7월 공식 공시는 아직 나오지 않았고, 호르무즈 해협 정상화와 원화 반등이 확인되면 상승폭은 제한될 수 있습니다.' }
     ],
     links: [
-      { href:'fuel-surcharge-forecast.html', label:'7월 전망 상세 보기' },
+      { href:'forecast.html', label:'7월 전망 상세 보기' },
       { href:'airlines.html', label:'항공사별 유류할증료 보기' }
     ],
     i18n: {
@@ -5318,13 +5345,13 @@ window.AERO_NEWS_CARDS_20260603 = [
     summary: '중동 긴장이 다시 높아지며 국제유가가 상승 압력을 받고 있습니다.\n\n2026년 7월 유류할증료 전망에서는 미국-이란 갈등 재확대가 핵심 변수입니다. 국제유가가 오르면 항공유 가격과 항공사 연료비 부담이 커지고, 이는 대한항공 유류할증료, 아시아나 유류할증료, 제주항공 유류할증료 등 국제선 항공권 유류할증료의 상승 압력으로 이어질 수 있습니다.',
     impact: '유류할증료 영향: 상승. 7월 전망 영향: 동결 우세 속 일부 항공사 1단계 인상 가능성을 높이는 요인입니다.',
     sourceName: '2026년 7월 유류할증료 전망 업데이트',
-    sourceUrl: 'fuel-surcharge-forecast.html',
+    sourceUrl: 'forecast.html',
     tags: ['NEW','미국-이란 갈등','국제유가','유류할증료','항공권 유류할증료'],
     faq: [
       { q:'유류할증료는 왜 오르나요?', a:'국제유가와 항공유 가격 상승이 주요 원인입니다. 중동 긴장이 높아지면 항공유 가격과 항공사 연료비 부담이 커져 유류할증료 상승 압력으로 이어질 수 있습니다.' }
     ],
     links: [
-      { href:'fuel-surcharge-forecast.html', label:'2026년 7월 유류할증료 전망 보기' },
+      { href:'forecast.html', label:'2026년 7월 유류할증료 전망 보기' },
       { href:'airlines.html', label:'항공사별 유류할증료 보기' }
     ],
     i18n: {
@@ -5353,7 +5380,7 @@ window.AERO_NEWS_CARDS_20260603 = [
     summary: '유류할증료 산정에 영향을 주는 국제유가가 다시 상승 중입니다.\n\n공개 시장 지표 기준 Brent는 약 $96~97/bbl, WTI는 약 $95/bbl 수준입니다. 국제유가가 높은 구간에 머물면 항공유 가격도 쉽게 내려가기 어렵고, 2026년 7월 국제선 유류할증료 전망은 동결 가능성 우세 속 일부 인상 가능성을 함께 봐야 합니다.',
     impact: '유류할증료 영향: 상승. 7월 전망 영향: 동결 가능성은 유지되지만 인하 가능성은 낮추는 요인입니다.',
     sourceName: 'Brent·WTI 국제유가 점검',
-    sourceUrl: 'fuel-surcharge-forecast.html',
+    sourceUrl: 'forecast.html',
     tags: ['NEW','브렌트유','WTI','국제유가','항공유 가격','2026년 7월 유류할증료'],
     faq: [
       { q:'국제유가가 오르면 유류할증료도 바로 오르나요?', a:'즉시 오르는 것은 아니지만, 항공유 가격 평균과 항공사 공시 시차를 거쳐 유류할증료 산정에 영향을 줄 수 있습니다.' }
@@ -5387,13 +5414,13 @@ window.AERO_NEWS_CARDS_20260603 = [
     summary: '호르무즈 해협의 원유 수송 차질 우려가 확대되고 있습니다.\n\n호르무즈 해협은 세계 원유 물동량의 상당 부분이 통과하는 핵심 통로입니다. 해협 리스크가 장기화되면 원유와 항공유 공급 불확실성이 커지고, 항공유 가격 상승 가능성이 높아져 항공권 유류할증료 전망에도 부담이 됩니다.',
     impact: '유류할증료 영향: 상승. 7월 전망 영향: 해협 상황 악화 시 추가 인상 가능성을 높입니다.',
     sourceName: '호르무즈 해협 물류 리스크 점검',
-    sourceUrl: 'fuel-surcharge-forecast.html',
+    sourceUrl: 'forecast.html',
     tags: ['NEW','호르무즈 해협','항공유 가격','국제유가','항공권 유류할증료'],
     faq: [
       { q:'호르무즈 해협이 중요한 이유는?', a:'세계 원유 물동량의 상당 부분이 통과하기 때문입니다. 통항이 줄거나 보험료가 오르면 원유와 항공유 공급 비용이 올라 유류할증료에 영향을 줄 수 있습니다.' }
     ],
     links: [
-      { href:'fuel-surcharge-forecast.html', label:'호르무즈 리스크 반영 전망 보기' }
+      { href:'forecast.html', label:'호르무즈 리스크 반영 전망 보기' }
     ],
     i18n: {
       en: {
@@ -5421,7 +5448,7 @@ window.AERO_NEWS_CARDS_20260603 = [
     summary: '원유 운송 비용 증가로 항공유 가격 상승 압력이 커지고 있습니다.\n\n전쟁위험 보험료가 오르면 유조선 운항 비용이 상승하고, 이 비용은 원유 공급 비용과 항공유 가격에 반영될 수 있습니다. 항공사는 항공유 가격과 환율의 영향을 함께 받기 때문에 원달러 환율 상승까지 겹치면 연료비 부담이 더 커질 수 있습니다.',
     impact: '유류할증료 영향: 상승. 7월 전망 영향: 항공사 연료비 부담 증가 가능성입니다.',
     sourceName: '전쟁위험 보험료와 항공유 비용 영향',
-    sourceUrl: 'fuel-surcharge-forecast.html',
+    sourceUrl: 'forecast.html',
     tags: ['NEW','전쟁위험 보험료','항공유 가격','원달러 환율','항공사 연료비'],
     faq: [
       { q:'전쟁위험 보험료가 항공권 유류할증료와 관련이 있나요?', a:'직접 항공권 항목은 아니지만 원유 운송 비용과 항공유 가격을 밀어 올릴 수 있어 항공사 연료비 부담과 유류할증료 전망에 간접 영향을 줄 수 있습니다.' }
@@ -5455,13 +5482,13 @@ window.AERO_NEWS_CARDS_20260603 = [
     summary: '현재 기준 동결 가능성이 높지만 일부 항공사의 인상 가능성도 존재합니다.\n\n2026년 7월 유류할증료는 아직 공식 공시 전입니다. 현재 국제유가는 중동 긴장 고조와 호르무즈 해협 리스크 영향으로 상승 압력을 받고 있으나, OPEC+ 증산 유지가 일부 완충 역할을 하고 있습니다. 따라서 전망은 동결 55%, 1단계 인상 35%, 2단계 이상 인상 10%로 정리합니다.',
     impact: '유류할증료 영향: 중립~상승. 7월 전망 영향: 동결 우세, 일부 항공사 1단계 인상 가능성 존재.',
     sourceName: '2026년 7월 유류할증료 전망 확률',
-    sourceUrl: 'fuel-surcharge-forecast.html',
+    sourceUrl: 'forecast.html',
     tags: ['NEW','2026년 7월 유류할증료','대한항공 유류할증료','아시아나 유류할증료','제주항공 유류할증료'],
     faq: [
       { q:'2026년 7월 유류할증료는 오를까요?', a:'현재 기준으로 동결 가능성이 높지만 일부 인상 가능성도 존재합니다. 전망 확률은 동결 55%, 1단계 인상 35%, 2단계 이상 인상 10%입니다.' }
     ],
     links: [
-      { href:'fuel-surcharge-forecast.html', label:'7월 전망 상세 보기' },
+      { href:'forecast.html', label:'7월 전망 상세 보기' },
       { href:'index.html', label:'한국 출발 유류할증료 조회' }
     ],
     i18n: {
@@ -5492,7 +5519,7 @@ window.AERO_NEWS_LATEST = window.AERO_MARKET_BRIEF_20260603;
         sourceName:'July 2026 fuel surcharge outlook update',
         tags:['NEW','U.S.-Iran tension','oil prices','fuel surcharge','airfare fuel surcharge'],
         faq:[{q:'Why do fuel surcharges rise?',a:'Oil and jet fuel price increases are the main causes. When Middle East tension rises, jet fuel and airline fuel-cost pressure can increase.'}],
-        links:[{href:'fuel-surcharge-forecast.html',label:'View July 2026 outlook'},{href:'airlines.html',label:'View airline fuel surcharges'}]
+        links:[{href:'forecast.html',label:'View July 2026 outlook'},{href:'airlines.html',label:'View airline fuel surcharges'}]
       },
       ja: {
         updatedAt:'2026.06.03 KST 更新',
@@ -5503,7 +5530,7 @@ window.AERO_NEWS_LATEST = window.AERO_MARKET_BRIEF_20260603;
         sourceName:'2026年7月燃油サーチャージ見通し更新',
         tags:['NEW','米国・イラン','原油価格','燃油サーチャージ','航空券燃油サーチャージ'],
         faq:[{q:'燃油サーチャージはなぜ上がりますか？',a:'主な要因は国際原油価格と航空燃料価格の上昇です。中東情勢が悪化すると、航空会社の燃料費負担が増える可能性があります。'}],
-        links:[{href:'fuel-surcharge-forecast.html',label:'7月見通しを見る'},{href:'airlines.html',label:'航空会社別燃油サーチャージを見る'}]
+        links:[{href:'forecast.html',label:'7月見通しを見る'},{href:'airlines.html',label:'航空会社別燃油サーチャージを見る'}]
       },
       zh: {
         updatedAt:'2026.06.03 KST 更新',
@@ -5514,7 +5541,7 @@ window.AERO_NEWS_LATEST = window.AERO_MARKET_BRIEF_20260603;
         sourceName:'2026年7月燃油附加费展望更新',
         tags:['NEW','美国伊朗紧张','国际油价','燃油附加费','机票燃油附加费'],
         faq:[{q:'燃油附加费为什么会上涨？',a:'主要原因是国际油价和航空燃油价格上涨。中东紧张局势升温时，航空公司燃油成本压力可能增加。'}],
-        links:[{href:'fuel-surcharge-forecast.html',label:'查看7月展望'},{href:'airlines.html',label:'查看航空公司燃油附加费'}]
+        links:[{href:'forecast.html',label:'查看7月展望'},{href:'airlines.html',label:'查看航空公司燃油附加费'}]
       },
       fr: {
         updatedAt:'Mis à jour le 2026.06.03 KST',
@@ -5525,7 +5552,7 @@ window.AERO_NEWS_LATEST = window.AERO_MARKET_BRIEF_20260603;
         sourceName:'Mise à jour des perspectives de surtaxe carburant de juillet 2026',
         tags:['NEW','États-Unis Iran','prix du pétrole','surtaxe carburant','billet d’avion'],
         faq:[{q:'Pourquoi les surtaxes carburant augmentent-elles ?',a:'La hausse du pétrole et du kérosène est la cause principale. Une tension accrue au Moyen-Orient peut augmenter les coûts de carburant des compagnies.'}],
-        links:[{href:'fuel-surcharge-forecast.html',label:'Voir les perspectives de juillet'},{href:'airlines.html',label:'Voir les surtaxes par compagnie'}]
+        links:[{href:'forecast.html',label:'Voir les perspectives de juillet'},{href:'airlines.html',label:'Voir les surtaxes par compagnie'}]
       },
       de: {
         updatedAt:'Aktualisiert am 2026.06.03 KST',
@@ -5536,7 +5563,7 @@ window.AERO_NEWS_LATEST = window.AERO_MARKET_BRIEF_20260603;
         sourceName:'Update zum Ausblick auf Treibstoffzuschläge Juli 2026',
         tags:['NEW','USA Iran','Ölpreise','Treibstoffzuschlag','Flugticket-Zuschlag'],
         faq:[{q:'Warum steigen Treibstoffzuschläge?',a:'Hauptgründe sind steigende Öl- und Kerosinpreise. Höhere Spannungen im Nahen Osten können die Treibstoffkosten der Airlines erhöhen.'}],
-        links:[{href:'fuel-surcharge-forecast.html',label:'Juli-Ausblick ansehen'},{href:'airlines.html',label:'Zuschläge nach Airline ansehen'}]
+        links:[{href:'forecast.html',label:'Juli-Ausblick ansehen'},{href:'airlines.html',label:'Zuschläge nach Airline ansehen'}]
       }
     },
     'news-20260603-brent-wti': {
@@ -5627,7 +5654,7 @@ window.AERO_NEWS_LATEST = window.AERO_MARKET_BRIEF_20260603;
       tr[id][lang] = {
         updatedAt: lang === 'en' ? 'Updated 2026.06.03 KST' : a[0].includes('2026') ? a[0] : undefined,
         title:a[0], aiBrief:a[1], summary:a[2], impact:a[3], sourceName:a[4], tags:a[5],
-        faq:[{q:a[6], a:a[7]}], links:[{href:id === 'news-20260603-july-outlook-probability' ? 'fuel-surcharge-forecast.html' : (id === 'news-20260603-war-risk-insurance' ? 'fuel-surcharge-calculator.html' : 'fuel-surcharge-forecast.html'), label:a[8]}]
+        faq:[{q:a[6], a:a[7]}], links:[{href:id === 'news-20260603-july-outlook-probability' ? 'forecast.html' : (id === 'news-20260603-war-risk-insurance' ? 'fuel-surcharge-calculator.html' : 'forecast.html'), label:a[8]}]
       };
       if (!tr[id][lang].updatedAt) {
         tr[id][lang].updatedAt = ({ja:'2026.06.03 KST 更新',zh:'2026.06.03 KST 更新',fr:'Mis à jour le 2026.06.03 KST',de:'Aktualisiert am 2026.06.03 KST'})[lang] || 'Updated 2026.06.03 KST';
@@ -5751,10 +5778,10 @@ window.AERO_MARKET_BRIEF_20260604 = {
   var categories=['market','market','market','fx','forecast'];
   window.AERO_NEWS_CARDS_20260604 = ids.map(function(id,idx){
     var ko=text.ko[idx];
-    var card={id:'news-20260604-'+id,slug:'june-4-'+id,category:categories[idx],priority:1,date:date,updatedAt:updated.ko,badge:'NEW',aiSummary:true,relevanceScore:1,currentMonthNotice:'2026-06',forecastTargetMonth:'2026-07',title:ko[0],aiBrief:ko[1],summary:ko[2],impact:ko[3],sourceName:'2026년 7월 유류할증료 전망 업데이트',sourceUrl:'fuel-surcharge-forecast.html',tags:window.AERO_MARKET_BRIEF_20260604.keywords.slice(0,6),faq:faq.ko,links:[{href:'fuel-surcharge-forecast.html',label:'2026년 7월 전망 보기'}],i18n:{}};
+    var card={id:'news-20260604-'+id,slug:'june-4-'+id,category:categories[idx],priority:1,date:date,updatedAt:updated.ko,badge:'NEW',aiSummary:true,relevanceScore:1,currentMonthNotice:'2026-06',forecastTargetMonth:'2026-07',title:ko[0],aiBrief:ko[1],summary:ko[2],impact:ko[3],sourceName:'2026년 7월 유류할증료 전망 업데이트',sourceUrl:'forecast.html',tags:window.AERO_MARKET_BRIEF_20260604.keywords.slice(0,6),faq:faq.ko,links:[{href:'forecast.html',label:'2026년 7월 전망 보기'}],i18n:{}};
     ['en','ja','zh','fr','de'].forEach(function(lang){
       var v=text[lang][idx];
-      card.i18n[lang]={updatedAt:updated[lang],title:v[0],aiBrief:v[1],summary:v[2],impact:v[3],sourceName:lang==='ja'?'2026年7月燃油サーチャージ見通し更新':lang==='zh'?'2026年7月燃油附加费展望更新':'July 2026 fuel surcharge outlook update',tags:lang==='ja'?['NEW','燃油サーチャージ','MOPS','ホルムズ海峡','原油価格','為替']:lang==='zh'?['NEW','燃油附加费','MOPS','霍尔木兹海峡','国际油价','汇率']:['NEW','fuel surcharge','MOPS','Strait of Hormuz','oil prices','FX'],faq:faq[lang],links:[{href:'fuel-surcharge-forecast.html',label:lang==='ja'?'2026年7月見通しを見る':lang==='zh'?'查看2026年7月展望':'View July 2026 outlook'}]};
+      card.i18n[lang]={updatedAt:updated[lang],title:v[0],aiBrief:v[1],summary:v[2],impact:v[3],sourceName:lang==='ja'?'2026年7月燃油サーチャージ見通し更新':lang==='zh'?'2026年7月燃油附加费展望更新':'July 2026 fuel surcharge outlook update',tags:lang==='ja'?['NEW','燃油サーチャージ','MOPS','ホルムズ海峡','原油価格','為替']:lang==='zh'?['NEW','燃油附加费','MOPS','霍尔木兹海峡','国际油价','汇率']:['NEW','fuel surcharge','MOPS','Strait of Hormuz','oil prices','FX'],faq:faq[lang],links:[{href:'forecast.html',label:lang==='ja'?'2026年7月見通しを見る':lang==='zh'?'查看2026年7月展望':'View July 2026 outlook'}]};
     });
     return card;
   });
@@ -5777,7 +5804,7 @@ window.AERO_NEWS_LATEST = window.AERO_MARKET_BRIEF_20260604;
       card.i18n[lang]=card.i18n[lang]||{};
       card.i18n[lang].sourceName=copy.sourceName;
       card.i18n[lang].tags=copy.tags;
-      card.i18n[lang].links=[{href:'fuel-surcharge-forecast.html',label:copy.label}];
+      card.i18n[lang].links=[{href:'forecast.html',label:copy.label}];
     });
   });
 })();
@@ -5832,8 +5859,8 @@ window.AERO_MARKET_BRIEF_20260605 = {
   var source={ko:'2026년 7월 유류할증료 전망 업데이트',en:'July 2026 fuel surcharge outlook update',ja:'2026年7月燃油サーチャージ見通し更新',zh:'2026年7月燃油附加费展望更新',fr:'Mise à jour des perspectives de juillet 2026',de:'Aktualisierung des Juli-Ausblicks 2026'};
   var labels={ko:'2026년 7월 전망 보기',en:'View July 2026 outlook',ja:'2026年7月見通しを見る',zh:'查看2026年7月展望',fr:'Voir les perspectives de juillet 2026',de:'Juli-Ausblick 2026 ansehen'};
   window.AERO_NEWS_CARDS_20260605=cards.ko.map(function(v,idx){
-    var card={id:'news-20260605-'+v[0],slug:'june-5-'+v[0],category:categories[idx],priority:1,date:date,updatedAt:updated.ko,badge:'NEW',aiSummary:true,relevanceScore:1,currentMonthNotice:'2026-06',forecastTargetMonth:'2026-07',title:v[1],aiBrief:v[2],summary:v[3],impact:v[4],sourceName:source.ko,sourceUrl:'fuel-surcharge-forecast.html',tags:window.AERO_MARKET_BRIEF_20260605.keywords.slice(0,6),faq:faq.ko,links:[{href:'fuel-surcharge-forecast.html',label:labels.ko}],i18n:{}};
-    ['en','ja','zh','fr','de'].forEach(function(lang){var x=cards[lang][idx];card.i18n[lang]={updatedAt:updated[lang],title:x[1],aiBrief:x[2],summary:x[3],impact:x[4],sourceName:source[lang],tags:['NEW','fuel surcharge','MOPS','Strait of Hormuz','oil prices','FX'],faq:faq[lang],links:[{href:'fuel-surcharge-forecast.html',label:labels[lang]}]};});
+    var card={id:'news-20260605-'+v[0],slug:'june-5-'+v[0],category:categories[idx],priority:1,date:date,updatedAt:updated.ko,badge:'NEW',aiSummary:true,relevanceScore:1,currentMonthNotice:'2026-06',forecastTargetMonth:'2026-07',title:v[1],aiBrief:v[2],summary:v[3],impact:v[4],sourceName:source.ko,sourceUrl:'forecast.html',tags:window.AERO_MARKET_BRIEF_20260605.keywords.slice(0,6),faq:faq.ko,links:[{href:'forecast.html',label:labels.ko}],i18n:{}};
+    ['en','ja','zh','fr','de'].forEach(function(lang){var x=cards[lang][idx];card.i18n[lang]={updatedAt:updated[lang],title:x[1],aiBrief:x[2],summary:x[3],impact:x[4],sourceName:source[lang],tags:['NEW','fuel surcharge','MOPS','Strait of Hormuz','oil prices','FX'],faq:faq[lang],links:[{href:'forecast.html',label:labels[lang]}]};});
     return card;
   });
 })();
@@ -5936,7 +5963,7 @@ window.AERO_MARKET_BRIEF_20260605 = {
         sourceName: pack.sourceName,
         tags: pack.tags,
         faq: pack.faq,
-        links: [{href:'fuel-surcharge-forecast.html', label: pack.label}]
+        links: [{href:'forecast.html', label: pack.label}]
       });
     });
   });
@@ -5991,11 +6018,11 @@ window.AERO_MARKET_BRIEF_20260606 = {
       updatedAt:'2026.06.06 10:30 KST 업데이트',badge:'NEW',aiSummary:true,relevanceScore:1,
       currentMonthNotice:'2026-06',forecastTargetMonth:'2026-07',
       title:row[1],aiBrief:row[2],summary:row[3],impact:row[4],
-      sourceName:'2026년 7월 유류할증료 전망 업데이트',sourceUrl:'fuel-surcharge-forecast.html',
+      sourceName:'2026년 7월 유류할증료 전망 업데이트',sourceUrl:'forecast.html',
       tags:window.AERO_MARKET_BRIEF_20260606.keywords.slice(0,9),faq:faqKo,
-      links:[{href:'fuel-surcharge-forecast.html',label:'2026년 7월 전망 보기'}],
+      links:[{href:'forecast.html',label:'2026년 7월 전망 보기'}],
       i18n:{
-        en:{updatedAt:'Updated 2026.06.06 10:30 KST',title:en[1],aiBrief:en[2],summary:en[3],impact:en[4],sourceName:'July 2026 fuel surcharge outlook update',tags:['NEW','fuel surcharge','MOPS','oil prices','USD/KRW','Strait of Hormuz'],faq:faqEn,links:[{href:'fuel-surcharge-forecast.html',label:'View July 2026 outlook'}]}
+        en:{updatedAt:'Updated 2026.06.06 10:30 KST',title:en[1],aiBrief:en[2],summary:en[3],impact:en[4],sourceName:'July 2026 fuel surcharge outlook update',tags:['NEW','fuel surcharge','MOPS','oil prices','USD/KRW','Strait of Hormuz'],faq:faqEn,links:[{href:'forecast.html',label:'View July 2026 outlook'}]}
       }
     };
   });
@@ -6055,11 +6082,11 @@ window.AERO_MARKET_BRIEF_20260608 = {
       updatedAt:'2026.06.08 09:00 KST 업데이트',badge:'NEW',aiSummary:true,relevanceScore:1,
       currentMonthNotice:'2026-06',forecastTargetMonth:'2026-07',
       title:row[1],aiBrief:row[2],summary:row[3],impact:row[4],
-      sourceName:'2026년 7월 유류할증료 전망 업데이트',sourceUrl:'fuel-surcharge-forecast.html',
+      sourceName:'2026년 7월 유류할증료 전망 업데이트',sourceUrl:'forecast.html',
       tags:window.AERO_MARKET_BRIEF_20260608.keywords.slice(0,10),faq:faqKo,
-      links:[{href:'fuel-surcharge-forecast.html',label:'2026년 7월 전망 보기'}],
+      links:[{href:'forecast.html',label:'2026년 7월 전망 보기'}],
       i18n:{
-        en:{updatedAt:'Updated 2026.06.08 09:00 KST',title:en[1],aiBrief:en[2],summary:en[3],impact:en[4],sourceName:'July 2026 fuel surcharge outlook update',tags:['NEW','fuel surcharge','MOPS','jet fuel price','oil prices','Brent','WTI','USD/KRW','Strait of Hormuz'],faq:faqEn,links:[{href:'fuel-surcharge-forecast.html',label:'View July 2026 outlook'}]}
+        en:{updatedAt:'Updated 2026.06.08 09:00 KST',title:en[1],aiBrief:en[2],summary:en[3],impact:en[4],sourceName:'July 2026 fuel surcharge outlook update',tags:['NEW','fuel surcharge','MOPS','jet fuel price','oil prices','Brent','WTI','USD/KRW','Strait of Hormuz'],faq:faqEn,links:[{href:'forecast.html',label:'View July 2026 outlook'}]}
       }
     };
   });
@@ -6138,7 +6165,7 @@ window.AERO_MARKET_BRIEF_20260608 = {
       card.i18n[lang]={
         updatedAt:pack.updatedAt,title:row[0],aiBrief:row[1],summary:row[2],impact:row[3],
         sourceName:pack.sourceName,tags:pack.tags,faq:pack.faq,
-        links:[{href:'fuel-surcharge-forecast.html',label:pack.link}]
+        links:[{href:'forecast.html',label:pack.link}]
       };
     });
   });
@@ -6215,9 +6242,9 @@ window.AERO_MARKET_BRIEF_20260610 = {
       date:'2026-06-10',updatedAt:'2026.06.10 11:00 KST 업데이트',badge:'NEW',aiSummary:true,relevanceScore:1,
       currentMonthNotice:'2026-06',forecastTargetMonth:'2026-07',
       title:row[0],aiBrief:row[1],summary:row[2],impact:'2026년 7월 유류할증료 판단 변수입니다.',
-      sourceName:'2026년 7월 유류할증료 전망 업데이트',sourceUrl:'fuel-surcharge-forecast.html',
+      sourceName:'2026년 7월 유류할증료 전망 업데이트',sourceUrl:'forecast.html',
       tags:window.AERO_MARKET_BRIEF_20260610.keywords.slice(),
-      links:[{href:'fuel-surcharge-forecast.html',label:'2026년 7월 전망 보기'}],i18n:{}
+      links:[{href:'forecast.html',label:'2026년 7월 전망 보기'}],i18n:{}
     };
     ['en','ja','zh','fr','de'].forEach(function(lang){
       var translated=rows[lang][idx];
@@ -6226,7 +6253,7 @@ window.AERO_MARKET_BRIEF_20260610 = {
         summary:translated[2],impact:translated[1],
         sourceName:'July 2026 fuel surcharge outlook update',
         tags:window.AERO_MARKET_BRIEF_20260610.keywords.slice(),
-        links:[{href:'fuel-surcharge-forecast.html',label:'View July 2026 outlook'}]
+        links:[{href:'forecast.html',label:'View July 2026 outlook'}]
       };
     });
     return card;
@@ -6267,6 +6294,114 @@ Object.assign(window.I18N_SHARED.de, {
   marketGeo:'Straße von Hormus: Öffnungssignale sind positiv, doch bis zur Normalisierung bleibt eine geopolitische Prämie.',
   marketOutlook:'Juli: unverändert 55-60%, eine Stufe höher 25-35%, zwei oder mehr Stufen höchstens 10%.'
 });
+
+/* 2026.06.12 06:00 KST market brief and news cards. */
+window.AERO_MARKET_BRIEF_20260612 = {
+  asOf:'2026.06.12 06:00 KST',
+  currentMonthNotice:'2026-06',
+  forecastTargetMonth:'2026-07',
+  freezeProbability:'60~65%',
+  oneStepProbability:'25~30%',
+  twoStepProbability:'10% 이하',
+  keywords:['유류할증료','2026년 7월 유류할증료','MOPS','항공유 가격','국제유가','브렌트유','WTI','원달러 환율','호르무즈 해협','OPEC+']
+};
+(function(){
+  var rows={
+    ko:[
+      ['국제유가 안정세 지속, 7월 유류할증료 동결 가능성 확대','동결 60~65%가 가장 유력합니다.','브렌트유 $90.38/bbl, WTI $87.71/bbl로 6월 초 고점보다 안정됐습니다. MOPS와 원달러 환율 부담은 남아 있어 인하보다 동결 가능성이 높습니다.'],
+      ['국제유가 안정세','브렌트유와 WTI가 6월 초 고점보다 낮아졌습니다.','6월 11일 종가는 브렌트유 $90.38/bbl, WTI $87.71/bbl로 확인됩니다.'],
+      ['호르무즈 리스크 완화','완전 정상화는 아니지만 전면 봉쇄 위험은 낮아졌습니다.','우회 수송과 공급망 적응이 진행됐지만 보험료와 지정학 프리미엄은 남아 있습니다.'],
+      ['MOPS 하락 제한','항공유 가격은 국제유가보다 완만하게 움직일 수 있습니다.','여름 성수기와 국제선 수요가 MOPS 하락 폭을 제한해 유류할증료 인하 가능성을 낮춥니다.'],
+      ['환율 부담 지속','높은 원달러 환율은 항공사의 원화 환산 연료비를 높입니다.','환율은 인하 요인보다 동결 요인으로 작용하고 있습니다.'],
+      ['7월 전망','현재는 인상보다 동결 가능성이 가장 높습니다.','동결 60~65%, 1단계 인상 25~30%, 2단계 이상 인상 10% 이하로 판단합니다.']
+    ],
+    en:[
+      ['Steadier oil raises the probability of a July fuel-surcharge freeze','A freeze at 60-65% is the leading scenario.','Brent closed at $90.38/bbl and WTI at $87.71/bbl, below early-June highs. MOPS and USD/KRW pressure still favor a freeze over a cut.'],
+      ['Oil stabilizes','Brent and WTI are below early-June highs.','The June 11 close was $90.38/bbl for Brent and $87.71/bbl for WTI.'],
+      ['Hormuz risk eases','Full normalization has not occurred, but complete-closure risk has declined.','Rerouting and supply-chain adaptation help, while insurance and geopolitical premiums remain.'],
+      ['MOPS decline remains limited','Jet fuel can decline more slowly than crude oil.','Peak-season and international demand may limit MOPS declines and reduce the chance of a surcharge cut.'],
+      ['FX pressure remains','Elevated USD/KRW raises airlines’ KRW-equivalent fuel costs.','FX currently supports a freeze rather than a cut.'],
+      ['July outlook','A freeze is more likely than an increase.','Freeze 60-65%, one-step increase 25-30%, and two steps or more 10% or less.']
+    ],
+    ja:[
+      ['原油安定で7月燃油サーチャージ据え置き確率が上昇','据え置き60〜65%が最有力です。','ブレントは$90.38/bbl、WTIは$87.71/bblで6月初めの高値を下回ります。MOPSとUSD/KRW負担により値下げより据え置きが有力です。'],
+      ['原油価格が安定','ブレントとWTIは6月初めの高値を下回りました。','6月11日終値はブレント$90.38/bbl、WTI$87.71/bblです。'],
+      ['ホルムズリスク緩和','完全正常化ではありませんが全面封鎖リスクは低下しました。','迂回輸送と供給網の適応が進む一方、保険料と地政学プレミアムは残ります。'],
+      ['MOPS下落は限定的','航空燃料は原油より緩やかに下落する可能性があります。','夏季需要がMOPSの下落幅を制限します。'],
+      ['為替負担継続','高いUSD/KRWは航空会社の燃料費を押し上げます。','為替は値下げより据え置き要因です。'],
+      ['7月見通し','引き上げより据え置きが有力です。','据え置き60〜65%、1段階引き上げ25〜30%、2段階以上10%以下です。']
+    ],
+    zh:[
+      ['油价趋稳提高7月燃油附加费维持概率','维持不变60–65%为最可能情景。','布伦特收于$90.38/bbl，WTI收于$87.71/bbl，低于6月初高点。MOPS与美元/韩元压力使维持不变比下调更可能。'],
+      ['国际油价趋稳','布伦特和WTI低于6月初高点。','6月11日收盘价为布伦特$90.38/bbl、WTI $87.71/bbl。'],
+      ['霍尔木兹风险缓和','尚未完全正常化，但全面封锁风险下降。','绕行运输和供应链适应在推进，保险费与地缘溢价仍存在。'],
+      ['MOPS跌幅有限','航空燃油可能比原油下降得更慢。','暑期和国际线需求限制MOPS跌幅。'],
+      ['汇率压力持续','高位美元/韩元提高航空公司的韩元燃油成本。','汇率更支持维持而非下调。'],
+      ['7月展望','维持不变比上调更可能。','维持60–65%，上调一级25–30%，上调两级以上10%以下。']
+    ],
+    fr:[
+      ['La stabilisation du pétrole renforce le statu quo en juillet','Le statu quo à 60-65% est le scénario principal.','Le Brent a clôturé à 90,38 $/bbl et le WTI à 87,71 $/bbl. Le MOPS et l’USD/KRW favorisent le statu quo plutôt qu’une baisse.'],
+      ['Pétrole stabilisé','Le Brent et le WTI sont sous les sommets de début juin.','Clôture du 11 juin: Brent 90,38 $/bbl, WTI 87,71 $/bbl.'],
+      ['Risque d’Ormuz en baisse','La normalisation n’est pas totale, mais le risque de fermeture complète diminue.','Les détours progressent; assurance et prime géopolitique subsistent.'],
+      ['Baisse MOPS limitée','Le carburant aviation peut baisser moins vite que le brut.','La demande estivale limite le recul du MOPS.'],
+      ['Pression du change','Un USD/KRW élevé augmente le coût du carburant en KRW.','Le change favorise le statu quo plutôt qu’une baisse.'],
+      ['Perspectives de juillet','Le statu quo est plus probable qu’une hausse.','Statu quo 60-65%, hausse d’un palier 25-30%, deux paliers ou plus 10% ou moins.']
+    ],
+    de:[
+      ['Stabileres Öl erhöht die Chance unveränderter Juli-Zuschläge','Unverändert mit 60-65% ist das Leitszenario.','Brent schloss bei 90,38 $/bbl und WTI bei 87,71 $/bbl. MOPS und USD/KRW sprechen eher für unverändert als für eine Senkung.'],
+      ['Ölpreise stabilisieren sich','Brent und WTI liegen unter den Hochs Anfang Juni.','Schluss am 11. Juni: Brent 90,38 $/bbl, WTI 87,71 $/bbl.'],
+      ['Hormus-Risiko sinkt','Keine vollständige Normalisierung, aber geringeres Sperrrisiko.','Umleitungen nehmen zu; Versicherungs- und Risikoprämien bleiben.'],
+      ['MOPS-Rückgang begrenzt','Kerosin kann langsamer als Rohöl fallen.','Sommernachfrage begrenzt den MOPS-Rückgang.'],
+      ['FX-Belastung bleibt','Ein hoher USD/KRW erhöht die Treibstoffkosten in KRW.','FX stützt unverändert statt einer Senkung.'],
+      ['Juli-Ausblick','Unverändert ist wahrscheinlicher als eine Erhöhung.','Unverändert 60-65%, eine Stufe höher 25-30%, zwei oder mehr Stufen höchstens 10%.']
+    ]
+  };
+  var ids=['main','oil','hormuz','mops','fx','outlook'];
+  var categories=['forecast','oil','geopolitics','mops','fx','forecast'];
+  window.AERO_NEWS_CARDS_20260612=rows.ko.map(function(row,idx){
+    var card={
+      id:'news-20260612-'+ids[idx],slug:'june-12-'+ids[idx],category:categories[idx],priority:idx+1,
+      date:'2026-06-12',updatedAt:'2026.06.12 06:00 KST 업데이트',badge:'NEW',aiSummary:true,relevanceScore:1,
+      currentMonthNotice:'2026-06',forecastTargetMonth:'2026-07',
+      title:row[0],aiBrief:row[1],summary:row[2],impact:'2026년 7월 유류할증료 판단 변수입니다.',
+      sourceName:'2026년 7월 유류할증료 전망 업데이트',sourceUrl:'forecast.html',
+      tags:window.AERO_MARKET_BRIEF_20260612.keywords.slice(),
+      links:[{href:'forecast.html',label:'2026년 7월 전망 보기'}],i18n:{}
+    };
+    ['en','ja','zh','fr','de'].forEach(function(lang){
+      var translated=rows[lang][idx];
+      card.i18n[lang]={
+        updatedAt:'2026.06.12 06:00 KST',title:translated[0],aiBrief:translated[1],summary:translated[2],impact:translated[1],
+        sourceName:'July 2026 fuel surcharge outlook update',
+        tags:window.AERO_MARKET_BRIEF_20260612.keywords.slice(),
+        links:[{href:'forecast.html',label:'View July 2026 outlook'}]
+      };
+    });
+    return card;
+  });
+})();
+window.AERO_NEWS_LATEST=window.AERO_MARKET_BRIEF_20260612;
+
+Object.assign(window.I18N_SHARED.ko,{
+  marketDataRef:'2026.06.12 06:00 KST 기준',
+  marketBrent:'국제유가: 브렌트유 $90.38/bbl, WTI $87.71/bbl로 6월 초 고점보다 안정됐으며 OPEC+ 공급 기대가 추가 급등을 제한합니다.',
+  marketMops:'항공유 가격(MOPS): 국제유가는 안정됐지만 여름 성수기와 국제선 수요로 하락 폭은 제한적입니다.',
+  marketFx:'원달러 환율: 높은 환율 구간은 항공사의 원화 환산 연료비 부담을 높여 유류할증료 인하 여력을 제한합니다.',
+  marketGeo:'호르무즈 해협: 전면 봉쇄 위험은 낮아졌지만 완전 정상화는 아니며 보험료와 지정학 프리미엄이 남아 있습니다.',
+  marketOutlook:'2026년 7월 유류할증료는 동결 60~65%, 1단계 인상 25~30%, 2단계 이상 인상 10% 이하로 봅니다.'
+});
+Object.assign(window.I18N_SHARED.en,{
+  marketDataRef:'As of 2026.06.12 06:00 KST',
+  marketBrent:'Oil: Brent closed at $90.38/bbl and WTI at $87.71/bbl, below early-June highs, while OPEC+ supply expectations cap another spike.',
+  marketMops:'MOPS jet fuel: steadier crude helps, but peak-season and international demand may limit the decline.',
+  marketFx:'USD/KRW: elevated FX raises airlines’ KRW-equivalent fuel costs and limits room for a surcharge cut.',
+  marketGeo:'Strait of Hormuz: complete-closure risk has declined, but insurance and geopolitical premiums remain before full normalization.',
+  marketOutlook:'July 2026: freeze 60-65%, one-step increase 25-30%, and two steps or more 10% or less.'
+});
+Object.assign(window.I18N_SHARED.ja,{marketDataRef:'2026.06.12 06:00 KST時点',marketBrent:'原油: ブレント$90.38/bbl、WTI $87.71/bblで6月初めの高値を下回ります。',marketMops:'MOPS: 夏季と国際線需要により下落幅は限定的です。',marketFx:'USD/KRW: 高い為替水準が値下げ余地を制限します。',marketGeo:'ホルムズ海峡: 全面封鎖リスクは低下しましたが完全正常化ではありません。',marketOutlook:'7月は据え置き60〜65%、1段階引き上げ25〜30%、2段階以上10%以下です。'});
+Object.assign(window.I18N_SHARED.zh,{marketDataRef:'截至2026.06.12 06:00 KST',marketBrent:'国际油价：布伦特$90.38/bbl、WTI $87.71/bbl，低于6月初高点。',marketMops:'MOPS：暑期和国际线需求限制跌幅。',marketFx:'美元/韩元：高汇率限制燃油附加费下调空间。',marketGeo:'霍尔木兹海峡：全面封锁风险下降，但尚未完全正常化。',marketOutlook:'7月维持60–65%，上调一级25–30%，上调两级以上10%以下。'});
+Object.assign(window.I18N_SHARED.fr,{marketDataRef:'Au 2026.06.12 06:00 KST',marketBrent:'Pétrole: Brent 90,38 $/bbl et WTI 87,71 $/bbl, sous les sommets de début juin.',marketMops:'MOPS: la demande estivale limite la baisse.',marketFx:'USD/KRW: un change élevé limite une baisse de la surtaxe.',marketGeo:'Ormuz: le risque de fermeture totale diminue sans normalisation complète.',marketOutlook:'Juillet: statu quo 60-65%, hausse d’un palier 25-30%, deux paliers ou plus 10% ou moins.'});
+Object.assign(window.I18N_SHARED.de,{marketDataRef:'Stand 2026.06.12 06:00 KST',marketBrent:'Öl: Brent 90,38 $/bbl und WTI 87,71 $/bbl, unter den Hochs Anfang Juni.',marketMops:'MOPS: Sommer- und internationale Nachfrage begrenzen den Rückgang.',marketFx:'USD/KRW: Ein hoher Wechselkurs begrenzt den Spielraum für Senkungen.',marketGeo:'Hormus: Das vollständige Sperrrisiko sinkt, aber keine volle Normalisierung.',marketOutlook:'Juli: unverändert 60-65%, eine Stufe höher 25-30%, zwei oder mehr Stufen höchstens 10%.'});
 
 /* 2026.06 index readiness copy.
    Keeps June confirmed notices and July notice-prep status separate on the main page. */

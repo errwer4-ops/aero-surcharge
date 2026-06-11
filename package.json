@@ -4,7 +4,10 @@
   "description": "항공 유류할증료 데이터 수집·파싱·검증 파이프라인 (MVP) (v23: TW/OZ/YP/KE 상세 진입 로직 복구)",
   "main": "scripts/run_pipeline.js",
   "scripts": {
+    "dev": "node scripts/serve_local.js",
     "check:env": "node scripts/check_env.js",
+    "test:myrealtrip": "node scripts/verify_myrealtrip_integration.js",
+    "test:myrealtrip:browser": "node scripts/verify_myrealtrip_browser.js",
     "pipeline": "node scripts/run_pipeline.js",
     "pipeline:mock": "node scripts/run_pipeline.js --mock",
     "pipeline:dry": "node scripts/run_pipeline.js --mock --dry-run",

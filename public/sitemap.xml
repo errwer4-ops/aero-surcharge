@@ -24,7 +24,7 @@
 
   <!-- 전망 대표 허브 -->
   <url>
-    <loc>https://aero-surcharge.com/fuel-surcharge-forecast.html</loc>
+    <loc>https://aero-surcharge.com/forecast.html</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>

@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>MyRealTrip API 관리자 테스트</title>
+  <style>
+    :root{font-family:Arial,sans-serif;color:#172033;background:#f4f7fb}
+    *{box-sizing:border-box}
+    body{margin:0;padding:24px}
+    main{max-width:1080px;margin:auto}
+    h1{font-size:24px;margin:0 0 8px}
+    p{line-height:1.6}
+    .toolbar{display:grid;grid-template-columns:180px 1fr 1fr auto;gap:10px;align-items:end;margin:20px 0}
+    label{display:grid;gap:6px;font-size:13px;font-weight:700}
+    select,input,button{min-height:42px;border:1px solid #b8c3d4;border-radius:6px;background:#fff;padding:8px 10px;font:inherit}
+    button{background:#1265d6;color:#fff;border-color:#1265d6;font-weight:700;cursor:pointer}
+    .panel{background:#fff;border:1px solid #d8e0eb;border-radius:8px;padding:18px;margin-top:14px}
+    .status{font-weight:700}
+    .analysis{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+    .analysis article{border:1px solid #d8e0eb;border-radius:6px;padding:12px}
+    .analysis h3{font-size:14px;margin:0 0 8px}
+    .analysis ul{padding-left:18px;margin:8px 0;font-size:12px;line-height:1.5}
+    pre{white-space:pre-wrap;word-break:break-word;max-height:480px;overflow:auto;background:#101828;color:#e6edf7;padding:14px;border-radius:6px}
+    .admin{display:none}
+    .admin.show{display:grid}
+    @media(max-width:760px){body{padding:14px}.toolbar{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<main>
+  <h1>MyRealTrip API 관리자 테스트</h1>
+  <p>기본 요청은 설정만 확인한다. 실제 상위 API 호출은 <code>call=1</code>일 때만 실행된다. 관리자 토큰은 브라우저에 저장하지 않는다.</p>
+
+  <div class="toolbar">
+    <label>리소스
+      <select id="resource">
+        <option value="mylink">MyLink</option>
+        <option value="products">Products</option>
+        <option value="revenues">Revenues</option>
+        <option value="reservations">Reservations</option>
+      </select>
+    </label>
+    <label id="originalUrlWrap">원본 URL
+      <input id="originalUrl" value="https://www.myrealtrip.com/" inputmode="url">
+    </label>
+    <label id="subIdWrap">subId
+      <input id="subId" value="api_test">
+    </label>
+    <button id="run" type="button">설정 확인</button>
+  </div>
+
+  <div class="toolbar admin" id="adminFields">
+    <label>관리자 토큰
+      <input id="adminToken" type="password" autocomplete="off">
+    </label>
+    <label>조회 시작일
+      <input id="startDate" type="date">
+    </label>
+    <label>조회 종료일
+      <input id="endDate" type="date">
+    </label>
+    <span></span>
+  </div>
+
+  <div class="panel">
+    <label><input id="actualCall" type="checkbox"> 실제 API 호출 실행</label>
+    <p class="status" id="status">대기 중</p>
+  </div>
+  <section class="panel">
+    <h2>필드 분석</h2>
+    <div class="analysis" id="analysis">설정 확인 응답이라 분석 가능한 실제 API 데이터가 없습니다.</div>
+  </section>
+  <section class="panel">
+    <h2>응답</h2>
+    <pre id="output">{}</pre>
+  </section>
+</main>
+<script>
+(function(){
+  var resource = document.getElementById('resource');
+  var actualCall = document.getElementById('actualCall');
+  var run = document.getElementById('run');
+  var status = document.getElementById('status');
+  var output = document.getElementById('output');
+  var analysis = document.getElementById('analysis');
+  var adminFields = document.getElementById('adminFields');
+  var originalUrlWrap = document.getElementById('originalUrlWrap');
+  var subIdWrap = document.getElementById('subIdWrap');
+
+  function isAdminResource(){return resource.value === 'reservations' || resource.value === 'revenues';}
+  function sync(){
+    var isMyLink = resource.value === 'mylink';
+    adminFields.classList.toggle('show', isAdminResource());
+    originalUrlWrap.style.display = isMyLink ? 'grid' : 'none';
+    subIdWrap.style.display = isMyLink ? 'grid' : 'none';
+    run.textContent = actualCall.checked ? '실제 호출' : '설정 확인';
+  }
+  function esc(value){
+    return String(value).replace(/[&<>"']/g,function(ch){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch];});
+  }
+  function renderAnalysis(payload){
+    if (!payload || !payload.upstreamTest || !payload.analysis) {
+      analysis.textContent = '설정 확인 응답이라 분석 가능한 실제 API 데이터가 없습니다.';
+      return;
+    }
+    analysis.innerHTML = payload.analysis.categories.map(function(item){
+      var matches = item.matches || [];
+      return '<article><h3>' + esc(item.label) + ' (' + matches.length + ')</h3><p>' + esc(item.explanation) + '</p>'
+        + (matches.length ? '<ul>' + matches.map(function(match){return '<li>' + esc(match) + '</li>';}).join('') + '</ul>' : '')
+        + '</article>';
+    }).join('');
+  }
+  async function execute(){
+    var params = new URLSearchParams();
+    if (actualCall.checked) params.set('call','1');
+    if (resource.value === 'mylink') {
+      params.set('originalUrl', document.getElementById('originalUrl').value);
+      params.set('subId', document.getElementById('subId').value);
+    }
+    if (isAdminResource()) {
+      var startDate = document.getElementById('startDate').value;
+      var endDate = document.getElementById('endDate').value;
+      if (startDate) params.set('startDate', startDate);
+      if (endDate) params.set('endDate', endDate);
+    }
+    status.textContent = '요청 중';
+    output.textContent = '{}';
+    try {
+      var headers = {Accept:'application/json'};
+      var adminToken = document.getElementById('adminToken').value;
+      if (isAdminResource() && adminToken) headers.Authorization = 'Bearer ' + adminToken;
+      var response = await fetch('/api/myrealtrip/' + resource.value + '?' + params.toString(), {headers:headers,credentials:'same-origin'});
+      var payload = await response.json();
+      status.textContent = (payload.success ? '성공' : '실패') + ' · HTTP ' + response.status + ' · ' + (payload.message || '');
+      output.textContent = JSON.stringify(payload,null,2);
+      renderAnalysis(payload);
+    } catch (error) {
+      status.textContent = '요청 실패';
+      output.textContent = JSON.stringify({success:false,error:error.message},null,2);
+      analysis.textContent = '응답을 받지 못해 분석할 수 없습니다.';
+    }
+  }
+  resource.addEventListener('change',sync);
+  actualCall.addEventListener('change',sync);
+  run.addEventListener('click',execute);
+  sync();
+})();
+</script>
+</body>
+</html>

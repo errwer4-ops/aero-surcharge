@@ -2002,7 +2002,7 @@
       "pageErrors": []
     },
     {
-      "page": "fuel-surcharge-forecast.html",
+      "page": "forecast.html",
       "hasLanguageSelector": true,
       "hasCurrencySelector": true,
       "availableLanguages": [

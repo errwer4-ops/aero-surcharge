@@ -71,7 +71,7 @@ async function main() {
       assert(news.cardCount > 0, 'news cards did not render');
       assert(news.scrollWidth <= news.innerWidth + 2, 'news mobile/desktop horizontal overflow');
 
-      await page.goto(`${base}/fuel-surcharge-forecast.html`, { waitUntil: 'domcontentloaded' });
+      await page.goto(`${base}/forecast.html`, { waitUntil: 'domcontentloaded' });
       await page.waitForFunction(() => document.querySelector('#summaryCard')?.innerText.includes('동결: 50~55%'));
       const forecast = await page.evaluate(() => {
         const faq = JSON.parse(document.querySelector('script[type="application/ld+json"]').textContent);
