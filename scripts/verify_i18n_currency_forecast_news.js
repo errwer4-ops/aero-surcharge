@@ -79,6 +79,27 @@ function assert(condition, message) {
         }
       } else {
         const firstCard = await page.locator(".news-card").first().innerText();
+        const latestCards = page.locator('.news-card[data-date="2026-06-12"]');
+        assert(await latestCards.count() === 6, "All six June 12 cards should be visible");
+        assert(
+          await latestCards.locator(".cat-badge.cat-market").count() === 6,
+          "June 12 cards must all use the market category"
+        );
+        const sourceHrefs = await latestCards.locator("a.news-link").evaluateAll((links) =>
+          links.map((link) => link.href)
+        );
+        assert(sourceHrefs.length >= 6, "Each June 12 card should expose an external source");
+        assert(
+          sourceHrefs.every((href) =>
+            /^https?:\/\//.test(href) && !/(^|\.)aero-surcharge\.com/i.test(new URL(href).hostname)
+          ),
+          "A June 12 card still uses an internal source"
+        );
+        await page.locator('#filterRow [data-f="market"]').click();
+        assert(
+          await page.locator('.news-card[data-date="2026-06-12"]').count() === 6,
+          "June 12 cards disappear from the market filter"
+        );
         assert(firstCard.includes("국제유가 안정세 지속"), "June 12 news card is not first");
       }
 

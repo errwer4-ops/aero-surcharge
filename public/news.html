@@ -2894,8 +2894,19 @@ function renderNews(){
     });
   }
 
+  function enforceNewsPolicy(it){
+    if(window.AERO_NEWS_POLICY && window.AERO_NEWS_POLICY.enforceCard){
+      return window.AERO_NEWS_POLICY.enforceCard(it);
+    }
+    if(it && ['airline','institution','market'].indexOf(it.category)===-1){
+      it.category='market';
+    }
+    return it;
+  }
+
   var rawItems = (NEWS_DATA && NEWS_DATA.items) || [];
-  var items = FIXED_NEWS.concat(rawItems.filter(function(it){ return !isExcluded(it); }));
+  var items = FIXED_NEWS.concat(rawItems.filter(function(it){ return !isExcluded(it); }))
+    .map(enforceNewsPolicy);
 
   var disclaimer = '<div style="font-size:12px;color:#777;margin-bottom:10px;">'+window.t('news.disclaimer')+'</div>';
 
@@ -2976,6 +2987,18 @@ function renderNews(){
     var val = localizedCardValue(it, key);
     return Array.isArray(val) ? val : [];
   }
+  function isExternalSourceUrl(value){
+    if(window.AERO_NEWS_POLICY && window.AERO_NEWS_POLICY.isExternalSourceUrl){
+      return window.AERO_NEWS_POLICY.isExternalSourceUrl(value);
+    }
+    try{
+      var parsed=new URL(value);
+      return /^https?:$/.test(parsed.protocol) &&
+        !/(^|\.)aero-surcharge\.com$/i.test(parsed.hostname);
+    }catch(e){
+      return false;
+    }
+  }
 
   /* ── 4단계: 카드 렌더 — data-date 속성 추가, NEW 배지 날짜 기준 자동 제어 ──
      isLatestDate: 현재 카드가 가장 최신 날짜인지 여부
@@ -3003,9 +3026,16 @@ function renderNews(){
     var dots='';
     for(var i=0;i<5;i++) dots+='<span class="rel-dot'+(((it.relevanceScore||0)>=(i+1)*0.2)?'':' dim')+'"></span>';
     var tagsHtml=tagList.map(function(tg){return'<span class="news-tag">'+esc(tg)+'</span>';}).join('');
-    var srcHtml=it.sourceUrl
-      ?'<a class="news-link" href="'+it.sourceUrl+'" target="_blank" rel="noopener">'+srcName+' ↗</a>'
-      :'<span style="font-size:11px;color:var(--muted)">'+srcName+'</span>';
+    var sourceRefs = localizedCardArray(it,'sourceRefs').filter(function(ref){
+      return ref && ref.name && isExternalSourceUrl(ref.url);
+    });
+    var srcHtml = sourceRefs.length
+      ? sourceRefs.map(function(ref){
+          return '<a class="news-link" href="'+esc(ref.url)+'" target="_blank" rel="noopener noreferrer">'+esc(ref.name)+' ↗</a>';
+        }).join(' ')
+      : (isExternalSourceUrl(it.sourceUrl)
+          ? '<a class="news-link" href="'+esc(it.sourceUrl)+'" target="_blank" rel="noopener noreferrer">'+esc(srcName)+' ↗</a>'
+          : '');
     var updatedText = cleanDisplayText(localizedCardValue(it,'updatedAt') || it.updatedAt, it.date || '');
     var aiBrief = cleanDisplayText(localizedCardValue(it,'aiBrief'));
     var updatedHtml = updatedText ? '<div class="news-updated">'+esc(updatedText)+'</div>' : '';

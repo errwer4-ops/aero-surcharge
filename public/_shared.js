@@ -5775,7 +5775,7 @@ window.AERO_MARKET_BRIEF_20260604 = {
     ['Treibstoffzuschlag Juli 2026: höherer Druck trotz unverändertem Basisszenario','Unverändert bleibt am wahrscheinlichsten, aber eine Anhebung um eine Stufe ist wahrscheinlicher als gestern.','Stand 2026.06.04 09:00 KST: unverändert 50-55%, eine Stufe 35-40%, zwei Stufen oder mehr höchstens 10%.','Neutral bis steigend. Juli ist noch nicht offiziell.']
   ];
   var ids=['hormuz-risk','brent-wti-high','mops-focus','fx-variable','july-outlook'];
-  var categories=['market','market','market','fx','forecast'];
+  var categories=['market','market','market','market','market'];
   window.AERO_NEWS_CARDS_20260604 = ids.map(function(id,idx){
     var ko=text.ko[idx];
     var card={id:'news-20260604-'+id,slug:'june-4-'+id,category:categories[idx],priority:1,date:date,updatedAt:updated.ko,badge:'NEW',aiSummary:true,relevanceScore:1,currentMonthNotice:'2026-06',forecastTargetMonth:'2026-07',title:ko[0],aiBrief:ko[1],summary:ko[2],impact:ko[3],sourceName:'2026년 7월 유류할증료 전망 업데이트',sourceUrl:'forecast.html',tags:window.AERO_MARKET_BRIEF_20260604.keywords.slice(0,6),faq:faq.ko,links:[{href:'forecast.html',label:'2026년 7월 전망 보기'}],i18n:{}};
@@ -5855,7 +5855,7 @@ window.AERO_MARKET_BRIEF_20260605 = {
     ]
   };
   cards.ja=cards.en; cards.zh=cards.en; cards.fr=cards.en; cards.de=cards.en;
-  var categories=['market','market','market','fx','forecast'];
+  var categories=['market','market','market','market','market'];
   var source={ko:'2026년 7월 유류할증료 전망 업데이트',en:'July 2026 fuel surcharge outlook update',ja:'2026年7月燃油サーチャージ見通し更新',zh:'2026年7月燃油附加费展望更新',fr:'Mise à jour des perspectives de juillet 2026',de:'Aktualisierung des Juli-Ausblicks 2026'};
   var labels={ko:'2026년 7월 전망 보기',en:'View July 2026 outlook',ja:'2026年7月見通しを見る',zh:'查看2026年7月展望',fr:'Voir les perspectives de juillet 2026',de:'Juli-Ausblick 2026 ansehen'};
   window.AERO_NEWS_CARDS_20260605=cards.ko.map(function(v,idx){
@@ -6010,7 +6010,7 @@ window.AERO_MARKET_BRIEF_20260606 = {
     ['fx-variable','FX remains a variable','Elevated USD/KRW can increase airline dollar-denominated fuel costs.','Even with some oil-price relief, elevated USD/KRW can preserve KRW-based fuel cost pressure.','Upward factor limiting KRW-based cuts.'],
     ['july-outlook','July outlook','A freeze and one-step increase remain competing scenarios.','Current probabilities are freeze 45-50%, one-step increase 35-45%, and two steps or more 10% or less. Upward pressure eased slightly from the prior day, but a cut remains difficult to call.','Neutral to upward. July is not officially filed yet.']
   ];
-  var categories=['market','market','market','fx','forecast'];
+  var categories=['market','market','market','market','market'];
   window.AERO_NEWS_CARDS_20260606=rowsKo.map(function(row,idx){
     var en=rowsEn[idx];
     return {
@@ -6074,7 +6074,7 @@ window.AERO_MARKET_BRIEF_20260608 = {
     ['fx-burden','FX burden persists','USD/KRW remains a factor increasing airline fuel-cost pressure.','If USD/KRW stays elevated, airlines face higher dollar-denominated fuel costs and higher KRW-based cost pressure. FX outlook remains central to July airfare fuel surcharge decisions.','Upward factor. Limits KRW-based cuts.'],
     ['july-outlook','July outlook','A freeze is now somewhat more likely than an increase.','Current probabilities are freeze 50-55%, one-step increase 30-40%, and two steps or more 10% or less. The outlook moved from competition on June 5 to freeze-leaning on June 8, but not to a cut outlook.','Neutral to relief. July filings are not official yet.']
   ];
-  var categories=['market','market','market','market','fx','forecast'];
+  var categories=['market','market','market','market','market','market'];
   window.AERO_NEWS_CARDS_20260608=rowsKo.map(function(row,idx){
     var en=rowsEn[idx];
     return {
@@ -6235,10 +6235,10 @@ window.AERO_MARKET_BRIEF_20260610 = {
     ]
   };
   var ids=['main','hormuz','oil','opec','mops','outlook'];
-  var categories=['forecast','geopolitics','oil','oil','mops','forecast'];
+  var categories=['market','market','market','market','market','market'];
   window.AERO_NEWS_CARDS_20260610=rows.ko.map(function(row,idx){
     var card={
-      id:'news-20260610-'+ids[idx],slug:'june-10-'+ids[idx],category:categories[idx],priority:1,
+      id:'news-20260610-'+ids[idx],slug:'june-10-'+ids[idx],category:categories[idx],topic:ids[idx],priority:1,
       date:'2026-06-10',updatedAt:'2026.06.10 11:00 KST 업데이트',badge:'NEW',aiSummary:true,relevanceScore:1,
       currentMonthNotice:'2026-06',forecastTargetMonth:'2026-07',
       title:row[0],aiBrief:row[1],summary:row[2],impact:'2026년 7월 유류할증료 판단 변수입니다.',
@@ -6357,10 +6357,10 @@ window.AERO_MARKET_BRIEF_20260612 = {
     ]
   };
   var ids=['main','oil','hormuz','mops','fx','outlook'];
-  var categories=['forecast','oil','geopolitics','mops','fx','forecast'];
+  var categories=['market','market','market','market','market','market'];
   window.AERO_NEWS_CARDS_20260612=rows.ko.map(function(row,idx){
     var card={
-      id:'news-20260612-'+ids[idx],slug:'june-12-'+ids[idx],category:categories[idx],priority:idx+1,
+      id:'news-20260612-'+ids[idx],slug:'june-12-'+ids[idx],category:categories[idx],topic:ids[idx],priority:idx+1,
       date:'2026-06-12',updatedAt:'2026.06.12 06:00 KST 업데이트',badge:'NEW',aiSummary:true,relevanceScore:1,
       currentMonthNotice:'2026-06',forecastTargetMonth:'2026-07',
       title:row[0],aiBrief:row[1],summary:row[2],impact:'2026년 7월 유류할증료 판단 변수입니다.',
@@ -6381,6 +6381,74 @@ window.AERO_MARKET_BRIEF_20260612 = {
   });
 })();
 window.AERO_NEWS_LATEST=window.AERO_MARKET_BRIEF_20260612;
+
+/*
+ * News taxonomy and sourcing policy:
+ * categories are limited to airline, institution, and market.
+ * Detailed subjects belong in topic/tags. Internal pages are never sources.
+ */
+(function(){
+  var allowedCategories={airline:true,institution:true,market:true};
+  var externalSources={
+    oil:[{name:'U.S. EIA - Petroleum & Other Liquids',url:'https://www.eia.gov/petroleum/'}],
+    opec:[{name:'OPEC - Press Releases',url:'https://www.opec.org/press-releases.html'}],
+    mops:[{name:'IATA - Fuel Price Monitor',url:'https://www.iata.org/en/publications/economics/fuel-monitor/'}],
+    fx:[{name:'Bank of Korea ECOS',url:'https://ecos.bok.or.kr/'}],
+    hormuz:[{name:'UKMTO - Maritime Security',url:'https://www.ukmto.org/'}],
+    geopolitics:[{name:'UKMTO - Maritime Security',url:'https://www.ukmto.org/'}],
+    main:[
+      {name:'U.S. EIA - Petroleum & Other Liquids',url:'https://www.eia.gov/petroleum/'},
+      {name:'IATA - Fuel Price Monitor',url:'https://www.iata.org/en/publications/economics/fuel-monitor/'},
+      {name:'Bank of Korea ECOS',url:'https://ecos.bok.or.kr/'}
+    ],
+    outlook:[
+      {name:'U.S. EIA - Petroleum & Other Liquids',url:'https://www.eia.gov/petroleum/'},
+      {name:'IATA - Fuel Price Monitor',url:'https://www.iata.org/en/publications/economics/fuel-monitor/'},
+      {name:'Bank of Korea ECOS',url:'https://ecos.bok.or.kr/'}
+    ]
+  };
+  function isExternalUrl(value){
+    try{
+      var parsed=new URL(value);
+      return /^https?:$/.test(parsed.protocol) &&
+        !/(^|\.)aero-surcharge\.com$/i.test(parsed.hostname);
+    }catch(e){
+      return false;
+    }
+  }
+  function inferTopic(card){
+    if(card.topic) return card.topic;
+    var value=(card.id||card.slug||'').toLowerCase();
+    return ['hormuz','geopolitics','opec','mops','oil','fx','outlook','main'].find(function(key){
+      return value.indexOf(key)!==-1;
+    }) || '';
+  }
+  function enforce(card){
+    if(!card) return card;
+    if(!allowedCategories[card.category]) card.category='market';
+    card.topic=inferTopic(card);
+    if(!isExternalUrl(card.sourceUrl)){
+      delete card.sourceUrl;
+      delete card.sourceName;
+    }
+    var refs=(card.sourceRefs||externalSources[card.topic]||[]).filter(function(ref){
+      return ref && ref.name && isExternalUrl(ref.url);
+    });
+    if(refs.length) card.sourceRefs=refs;
+    else delete card.sourceRefs;
+    return card;
+  }
+  Object.keys(window).filter(function(key){
+    return /^AERO_NEWS_CARDS_\d{8}$/.test(key);
+  }).forEach(function(key){
+    (window[key]||[]).forEach(enforce);
+  });
+  window.AERO_NEWS_POLICY={
+    categories:['airline','institution','market'],
+    isExternalSourceUrl:isExternalUrl,
+    enforceCard:enforce
+  };
+})();
 
 Object.assign(window.I18N_SHARED.ko,{
   marketDataRef:'2026.06.12 06:00 KST 기준',
