@@ -25,6 +25,15 @@ assert(
   news.includes("localizedCardArray(it,'sourceRefs')"),
   'External source references are not rendered.'
 );
+assert(
+  shared.includes('AERO_NEWS_CARDS_20260615') &&
+  shared.includes("window.AERO_NEWS_LATEST=window.AERO_MARKET_BRIEF_20260615"),
+  'The June 15 market cards are not configured as the latest set.'
+);
+assert(
+  shared.includes("id:'news-20260615-'") && shared.includes("category:'market'"),
+  'The June 15 cards do not follow the three-category taxonomy.'
+);
 
 const categoryLists = [...shared.matchAll(/var categories=\[([^\]]+)\];/g)]
   .slice(-6)

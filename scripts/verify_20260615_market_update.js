@@ -13,19 +13,19 @@ const news = read("public/news.html");
 const forecast = read("public/forecast.html");
 const vercel = JSON.parse(read("vercel.json"));
 
-assert(shared.includes("AERO_MARKET_NUMBERS_20260612"), "June 12 market numbers are missing");
-assert(shared.includes("AERO_NEWS_CARDS_20260612"), "June 12 news cards are missing");
-assert(shared.includes("window.AERO_NEWS_LATEST=window.AERO_MARKET_BRIEF_20260612"), "June 12 brief is not latest");
-assert(news.indexOf("AERO_NEWS_CARDS_20260612") < news.indexOf("AERO_NEWS_CARDS_20260610"), "June 12 cards are not prepended");
-assert(news.includes("2026-06-12T06:00:00+09:00"), "News modified time is stale");
-assert(forecast.includes("2026-06-12T06:00:00+09:00"), "Forecast modified time is stale");
-assert(news.includes("#faq-20260612"), "News FAQ id is stale");
-assert(forecast.includes("#faq-20260612"), "Forecast FAQ id is stale");
-assert(forecast.includes("동결: 60~65%"), "Latest freeze probability is missing");
-assert(forecast.includes("1단계 인상: 25~30%"), "Latest one-step probability is missing");
-assert(forecast.includes("브렌트유 $90.38/bbl") && forecast.includes("WTI $87.71/bbl"), "Exact oil values are missing");
+assert(shared.includes("AERO_MARKET_NUMBERS_20260615"), "June 15 market numbers are missing");
+assert(shared.includes("AERO_NEWS_CARDS_20260615"), "June 15 news cards are missing");
+assert(shared.includes("window.AERO_NEWS_LATEST=window.AERO_MARKET_BRIEF_20260615"), "June 15 brief is not latest");
+assert(news.indexOf("AERO_NEWS_CARDS_20260615") < news.indexOf("AERO_NEWS_CARDS_20260612"), "June 15 cards are not prepended");
+assert(news.includes("2026-06-15T09:10:00+09:00"), "News modified time is stale");
+assert(forecast.includes("2026-06-15T09:10:00+09:00"), "Forecast modified time is stale");
+assert(news.includes("#faq-20260615"), "News FAQ id is stale");
+assert(forecast.includes("#faq-20260615"), "Forecast FAQ id is stale");
+assert(forecast.includes("동결 70~75%"), "Latest freeze probability is missing");
+assert(forecast.includes("1단계 인상 15~20%"), "Latest one-step probability is missing");
+assert(forecast.includes("$83.90/bbl") && forecast.includes("$81.07/bbl"), "Exact oil values are missing");
 assert(forecast.includes("대한항공 유류할증료") && forecast.includes("티웨이 유류할증료"), "Airline SEO entities are missing");
-assert(shared.includes("AERO_NEWS_CARDS_20260610") && shared.includes("AERO_NEWS_CARDS_20260608"), "News history was removed");
+assert(shared.includes("AERO_NEWS_CARDS_20260612") && shared.includes("AERO_NEWS_CARDS_20260608"), "News history was removed");
 assert(news.includes("AERO_NEWS_CARDS_20260524"), "Older news history was removed");
 assert(!fs.existsSync(path.join(root, "public", "fuel-surcharge-forecast.html")), "Old forecast file still exists");
 assert(fs.existsSync(path.join(root, "public", "forecast.html")), "forecast.html is missing");
@@ -52,4 +52,4 @@ for (const [name, html] of [["news", news], ["forecast", forecast]]) {
   jsonBlocks.forEach((match) => JSON.parse(match[1]));
 }
 
-console.log("2026-06-12 market update verification passed");
+console.log("2026-06-15 market update verification passed");

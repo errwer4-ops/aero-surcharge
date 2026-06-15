@@ -63,49 +63,36 @@ function assert(condition, message) {
 
       await select(page, "ko", "KRW");
       let body = await page.locator("body").innerText();
-      for (const expected of ["₩140,935/bbl", "₩136,771/bbl", "₩5,633/gal", "₩236,602/bbl", "₩220,868/bbl", "1 USD = ₩1,559.36"]) {
+      for (const expected of ["₩130,830/bbl", "₩126,417/bbl", "₩5,633/gal", "₩236,602/bbl", "₩220,868/bbl", "1 USD = ₩1,559.36"]) {
         assert(body.includes(expected), `${pageName} KRW market amount missing: ${expected}`);
       }
-      assert(body.includes("2026.06.12 06:00 KST"), `${pageName} June 12 timestamp missing`);
-      assert(body.includes("60~65%"), `${pageName} freeze probability missing`);
+      assert(body.includes("2026.06.15 09:10 KST"), `${pageName} June 15 timestamp missing`);
+      assert(body.includes("70~75%"), `${pageName} freeze probability missing`);
       assert(!body.includes("forecastTargetMonth") && !body.includes("currentMonthNotice"), `${pageName} internal variable leaked`);
 
       if (pageName === "forecast.html") {
         const indicatorText = await page.locator("#indicatorTbody").innerText();
         const predictText = await page.locator("#predictFactors").innerText();
-        for (const expected of ["₩140,935/bbl", "₩136,771/bbl", "₩5,633/gal", "₩236,602/bbl", "₩220,868/bbl", "1 USD = ₩1,559.36"]) {
+        for (const expected of ["₩130,830/bbl", "₩126,417/bbl", "₩5,633/gal", "₩236,602/bbl", "₩220,868/bbl", "1 USD = ₩1,559.36"]) {
           assert(indicatorText.includes(expected), `Forecast indicator table missing ${expected}`);
           assert(predictText.includes(expected), `Forecast key variables missing ${expected}`);
         }
       } else {
         const firstCard = await page.locator(".news-card").first().innerText();
-        const latestCards = page.locator('.news-card[data-date="2026-06-12"]');
-        assert(await latestCards.count() === 6, "All six June 12 cards should be visible");
-        assert(
-          await latestCards.locator(".cat-badge.cat-market").count() === 6,
-          "June 12 cards must all use the market category"
-        );
-        const sourceHrefs = await latestCards.locator("a.news-link").evaluateAll((links) =>
-          links.map((link) => link.href)
-        );
-        assert(sourceHrefs.length >= 6, "Each June 12 card should expose an external source");
-        assert(
-          sourceHrefs.every((href) =>
-            /^https?:\/\//.test(href) && !/(^|\.)aero-surcharge\.com/i.test(new URL(href).hostname)
-          ),
-          "A June 12 card still uses an internal source"
-        );
+        const latestCards = page.locator('.news-card[data-date="2026-06-15"]');
+        assert(await latestCards.count() === 6, "All six June 15 cards should be visible");
+        assert(await latestCards.locator(".cat-badge.cat-market").count() === 6, "June 15 cards must use the market category");
+        const sourceHrefs = await latestCards.locator("a.news-link").evaluateAll((links) => links.map((link) => link.href));
+        assert(sourceHrefs.length >= 6, "Each June 15 card should expose an external source");
+        assert(sourceHrefs.every((href) => /^https?:\/\//.test(href) && !/(^|\.)aero-surcharge\.com/i.test(new URL(href).hostname)), "A June 15 card still uses an internal source");
         await page.locator('#filterRow [data-f="market"]').click();
-        assert(
-          await page.locator('.news-card[data-date="2026-06-12"]').count() === 6,
-          "June 12 cards disappear from the market filter"
-        );
-        assert(firstCard.includes("국제유가 안정세 지속"), "June 12 news card is not first");
+        assert(await page.locator('.news-card[data-date="2026-06-15"]').count() === 6, "June 15 cards disappear from the market filter");
+        assert(firstCard.includes("호르무즈") || firstCard.includes("국제유가"), "June 15 news card is not first");
       }
 
       await select(page, "ko", "USD");
       body = await page.locator("body").innerText();
-      for (const expected of ["$90.38/bbl", "$87.71/bbl", "$3.61/gal", "$151.73/bbl", "$141.64/bbl"]) {
+      for (const expected of ["$83.90/bbl", "$81.07/bbl", "$3.61/gal", "$151.73/bbl", "$141.64/bbl"]) {
         assert(body.includes(expected), `${pageName} USD amount missing: ${expected}`);
       }
 
@@ -117,7 +104,8 @@ function assert(condition, message) {
           assert(body.toLowerCase().includes(signal.toLowerCase()), `${pageName} ${lang} content missing: ${signal}`);
         }
         assert(body.includes(currencySignals[curr]), `${pageName} ${lang}/${curr} currency marker missing`);
-        assert(body.includes(lang === "ko" ? "60~65%" : lang === "ja" ? "60〜65%" : "60-65%") || body.includes("60–65%"), `${pageName} ${lang} probability missing`);
+        const probability = lang === "ko" ? "70~75%" : lang === "ja" ? "70〜75%" : lang === "zh" ? "70–75%" : "70-75%";
+        assert(body.includes(probability), `${pageName} ${lang} probability missing`);
       }
 
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 2);

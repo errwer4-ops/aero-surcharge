@@ -232,7 +232,32 @@ window.AERO_MARKET_NUMBERS_20260612 = Object.assign({}, window.AERO_MARKET_NUMBE
     usdKrw: 'Latest verified USD/KRW reference retained until a newer exact quote is confirmed'
   }
 });
-window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260612;
+
+/* June 15 outlook snapshot.
+   Oil reflects the market reaction available at the 09:10 KST cutoff.
+   MOPS, IATA jet fuel and USD/KRW retain their latest verified exact references. */
+window.AERO_MARKET_NUMBERS_20260615 = Object.assign({}, window.AERO_MARKET_NUMBERS_20260612, {
+  asOf: '2026.06.15 09:10 KST',
+  brentUsdPerBbl: 83.90,
+  wtiUsdPerBbl: 81.07,
+  brentMinUsdPerBbl: 83,
+  brentMaxUsdPerBbl: 84,
+  wtiMinUsdPerBbl: 80,
+  wtiMaxUsdPerBbl: 82,
+  referenceAsOf: {
+    brentWti: '2026.06.15 09:10 KST market snapshot',
+    iataJetFuel: 'latest verified weekly global average',
+    mops: 'latest verified MOPS reference',
+    usdKrw: 'latest verified USD/KRW reference'
+  },
+  sources: {
+    brentWti: 'June 15, 2026 market reaction: Brent 83.90 USD/bbl; WTI 81.07 USD/bbl',
+    iataJetFuel: 'IATA Fuel Price Monitor, latest verified weekly global average',
+    mops: 'Latest verified MOPS reference retained until a newer public exact value is confirmed',
+    usdKrw: 'Latest verified USD/KRW reference retained until a newer exact quote is confirmed'
+  }
+});
+window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260615;
 
 window.marketMoney = function(usdAmount, unit) {
   if (usdAmount == null) return '—';
@@ -6380,7 +6405,57 @@ window.AERO_MARKET_BRIEF_20260612 = {
     return card;
   });
 })();
-window.AERO_NEWS_LATEST=window.AERO_MARKET_BRIEF_20260612;
+
+/* 2026.06.15 09:10 KST market brief and news cards. */
+window.AERO_MARKET_BRIEF_20260615 = {
+  asOf:'2026.06.15 09:10 KST',
+  currentMonthNotice:'2026-06',
+  forecastTargetMonth:'2026-07',
+  probabilities:{freeze:'70~75%',oneStepIncrease:'15~20%',twoStepOrMore:'5% 이하'},
+  keywords:['유류할증료','2026년 7월 유류할증료','항공권 유류할증료','MOPS','항공유 가격','국제유가','브렌트유','WTI','원달러 환율','환율 전망','호르무즈 해협','호르무즈 재개방','OPEC+','미국-이란 평화 합의']
+};
+(function(){
+  var ids=['main','hormuz','oil','opec','mops','outlook'];
+  var ko=[
+    ['호르무즈 재개방 합의와 국제유가 급락, 7월 유류할증료 동결 사실상 유력','동결 70~75%가 핵심 시나리오입니다.','미국과 이란의 합의 발표에 호르무즈 해협 재개방 기대가 커지며 국제유가가 급락했습니다. 다만 정식 서명과 실제 물류 정상화, MOPS와 원달러 환율의 시차 반영이 남아 있어 즉시 인하로 단정하기는 어렵습니다.'],
+    ['호르무즈 해협 재개방 기대','정식 서명과 실제 운항 정상화 여부를 확인해야 합니다.','합의 발표로 전면 봉쇄 위험은 크게 낮아졌지만 보험료, 선박 통행량과 물류 정상화에는 시간이 필요할 수 있습니다.'],
+    ['국제유가 급락','브렌트유와 WTI가 6월 초 고점 대비 크게 낮아졌습니다.','2026년 6월 15일 09:10 KST 시장 반응 기준 브렌트유는 약 $83.90/bbl, WTI는 약 $81.07/bbl입니다.'],
+    ['공급 정상화 기대','호르무즈 재개방과 OPEC+ 공급 확대 기대가 급등 위험을 낮춥니다.','걸프 지역 수출 회복 기대와 OPEC+ 증산 기조는 국제유가 상단을 제한하는 요인입니다.'],
+    ['MOPS의 시차 반영','원유 급락이 항공유 가격에 즉시 같은 폭으로 반영되지는 않습니다.','여름 성수기 항공 수요와 정제·물류 비용 때문에 MOPS 하락은 국제유가보다 늦고 완만할 수 있습니다.'],
+    ['7월 전망','동결 가능성이 매우 높아졌습니다.','동결 70~75%, 1단계 인상 15~20%, 2단계 이상 인상 5% 이하입니다. 8월 이후에는 하락 신호가 더 뚜렷해질 수 있습니다.']
+  ];
+  var en=[
+    ['Hormuz reopening framework and oil selloff make a July freeze highly likely','A freeze at 70-75% is the core scenario.','The U.S.-Iran framework raised expectations for reopening the Strait of Hormuz and pushed oil sharply lower. Formal signing, actual shipping normalization, and delayed MOPS and FX transmission still prevent an immediate cut call.'],
+    ['Hormuz reopening expectations','Formal signing and actual shipping normalization still need confirmation.','The announcement sharply reduced full-closure risk, but insurance, vessel traffic and logistics may take time to normalize.'],
+    ['Oil prices plunge','Brent and WTI are well below early-June highs.','At the June 15 09:10 KST market snapshot, Brent was about $83.90/bbl and WTI about $81.07/bbl.'],
+    ['Supply normalization expectations','Hormuz reopening and OPEC+ supply expectations reduce spike risk.','Expected Gulf export recovery and OPEC+ supply growth cap the upside for crude oil.'],
+    ['Delayed MOPS transmission','Jet fuel does not necessarily fall as quickly as crude oil.','Peak-season aviation demand plus refining and logistics costs can make MOPS decline later and more gradually.'],
+    ['July outlook','A freeze is now highly likely.','Freeze 70-75%, one-step increase 15-20%, and two steps or more 5% or less. A clearer downward signal may appear from August.']
+  ];
+  var localized={
+    ja:{main:'ホルムズ海峡再開合意と原油急落で7月据え置きが有力',line:'据え置き70〜75%、1段階引き上げ15〜20%、2段階以上5%以下。原油下落はMOPSに遅れて反映されます。'},
+    zh:{main:'霍尔木兹海峡重开框架与油价大跌使7月维持不变更可能',line:'维持70–75%，上调一级15–20%，上调两级以上不超过5%。原油下跌会延迟传导至MOPS。'},
+    fr:{main:'Le cadre de réouverture d’Ormuz et la chute du pétrole renforcent le statu quo en juillet',line:'Statu quo 70-75%, hausse d’un palier 15-20%, deux paliers ou plus 5% ou moins. La baisse du brut se transmet au MOPS avec retard.'},
+    de:{main:'Hormus-Rahmenabkommen und Ölpreisrückgang machen unveränderte Juli-Zuschläge sehr wahrscheinlich',line:'Unverändert 70-75%, eine Stufe höher 15-20%, zwei oder mehr Stufen höchstens 5%. Der Ölpreisrückgang wirkt verzögert auf MOPS.'}
+  };
+  window.AERO_NEWS_CARDS_20260615=ko.map(function(row,idx){
+    var card={
+      id:'news-20260615-'+ids[idx],slug:'june-15-'+ids[idx],category:'market',topic:ids[idx],
+      priority:idx+1,date:'2026-06-15',updatedAt:'2026.06.15 09:10 KST 업데이트',
+      badge:'NEW',aiSummary:true,relevanceScore:1,currentMonthNotice:'2026-06',forecastTargetMonth:'2026-07',
+      title:row[0],aiBrief:row[1],summary:row[2],impact:'2026년 7월 유류할증료 동결 가능성을 높이는 변수입니다.',
+      tags:window.AERO_MARKET_BRIEF_20260615.keywords.slice(),
+      links:[{href:'forecast.html',label:'2026년 7월 전망 보기'}],i18n:{}
+    };
+    card.i18n.en={updatedAt:'Updated 2026.06.15 09:10 KST',title:en[idx][0],aiBrief:en[idx][1],summary:en[idx][2],impact:en[idx][1],tags:['fuel surcharge','July 2026','MOPS','jet fuel','oil','Brent','WTI','USD/KRW','Hormuz','OPEC+'],links:[{href:'forecast.html',label:'View July 2026 outlook'}]};
+    Object.keys(localized).forEach(function(lang){
+      var pack=localized[lang];
+      card.i18n[lang]={updatedAt:'2026.06.15 09:10 KST',title:idx===0?pack.main:(en[idx][0]),aiBrief:pack.line,summary:pack.line,impact:pack.line,tags:card.i18n.en.tags,links:[{href:'forecast.html',label:'July 2026 outlook'}]};
+    });
+    return card;
+  });
+})();
+window.AERO_NEWS_LATEST=window.AERO_MARKET_BRIEF_20260615;
 
 /*
  * News taxonomy and sourcing policy:
@@ -6470,6 +6545,13 @@ Object.assign(window.I18N_SHARED.ja,{marketDataRef:'2026.06.12 06:00 KST時点',
 Object.assign(window.I18N_SHARED.zh,{marketDataRef:'截至2026.06.12 06:00 KST',marketBrent:'国际油价：布伦特$90.38/bbl、WTI $87.71/bbl，低于6月初高点。',marketMops:'MOPS：暑期和国际线需求限制跌幅。',marketFx:'美元/韩元：高汇率限制燃油附加费下调空间。',marketGeo:'霍尔木兹海峡：全面封锁风险下降，但尚未完全正常化。',marketOutlook:'7月维持60–65%，上调一级25–30%，上调两级以上10%以下。'});
 Object.assign(window.I18N_SHARED.fr,{marketDataRef:'Au 2026.06.12 06:00 KST',marketBrent:'Pétrole: Brent 90,38 $/bbl et WTI 87,71 $/bbl, sous les sommets de début juin.',marketMops:'MOPS: la demande estivale limite la baisse.',marketFx:'USD/KRW: un change élevé limite une baisse de la surtaxe.',marketGeo:'Ormuz: le risque de fermeture totale diminue sans normalisation complète.',marketOutlook:'Juillet: statu quo 60-65%, hausse d’un palier 25-30%, deux paliers ou plus 10% ou moins.'});
 Object.assign(window.I18N_SHARED.de,{marketDataRef:'Stand 2026.06.12 06:00 KST',marketBrent:'Öl: Brent 90,38 $/bbl und WTI 87,71 $/bbl, unter den Hochs Anfang Juni.',marketMops:'MOPS: Sommer- und internationale Nachfrage begrenzen den Rückgang.',marketFx:'USD/KRW: Ein hoher Wechselkurs begrenzt den Spielraum für Senkungen.',marketGeo:'Hormus: Das vollständige Sperrrisiko sinkt, aber keine volle Normalisierung.',marketOutlook:'Juli: unverändert 60-65%, eine Stufe höher 25-30%, zwei oder mehr Stufen höchstens 10%.'});
+
+Object.assign(window.I18N_SHARED.ko,{marketDataRef:'2026.06.15 09:10 KST 기준',marketBrent:'국제유가: 미국-이란 합의 발표와 호르무즈 재개방 기대에 브렌트유는 약 $83.90/bbl, WTI는 약 $81.07/bbl로 급락했습니다.',marketMops:'항공유 가격(MOPS): 국제유가 급락은 긍정적이지만 여름 성수기 수요와 정제·물류 비용 때문에 시차를 두고 반영될 수 있습니다.',marketFx:'원달러 환율: 국제유가 급락은 원화 부담 완화 요인이지만 달러 강세와 글로벌 경기 우려는 변동 요인입니다.',marketGeo:'호르무즈 해협: 재개방을 포함한 합의가 발표됐지만 정식 서명과 실제 선박 운항·보험·물류 정상화 여부를 확인해야 합니다.',marketOutlook:'2026년 7월 유류할증료는 동결 70~75%, 1단계 인상 15~20%, 2단계 이상 인상 5% 이하로 판단합니다.'});
+Object.assign(window.I18N_SHARED.en,{marketDataRef:'As of 2026.06.15 09:10 KST',marketBrent:'Oil: Brent fell to about $83.90/bbl and WTI to about $81.07/bbl after the U.S.-Iran framework and Hormuz reopening expectations.',marketMops:'MOPS jet fuel: the oil selloff is positive, but peak demand, refining and logistics can delay transmission.',marketFx:'USD/KRW: lower oil eases pressure, while dollar strength and global growth concerns remain variables.',marketGeo:'Strait of Hormuz: a reopening framework was announced, but formal signing and actual shipping, insurance and logistics normalization still require confirmation.',marketOutlook:'July 2026: freeze 70-75%, one-step increase 15-20%, and two steps or more 5% or less.'});
+Object.assign(window.I18N_SHARED.ja,{marketDataRef:'2026.06.15 09:10 KST時点',marketBrent:'原油: 米国・イラン合意とホルムズ海峡再開期待でブレント約83.90ドル、WTI約81.07ドルへ下落しました。',marketMops:'MOPS: 原油下落は好材料ですが、夏季需要と精製・物流費により反映には時間差があります。',marketFx:'USD/KRW: 原油下落は負担緩和要因ですが、ドル高と景気懸念は変動要因です。',marketGeo:'ホルムズ海峡: 再開枠組みは発表されましたが、正式署名と実際の物流正常化を確認する必要があります。',marketOutlook:'7月は据え置き70〜75%、1段階引き上げ15〜20%、2段階以上5%以下です。'});
+Object.assign(window.I18N_SHARED.zh,{marketDataRef:'截至2026.06.15 09:10 KST',marketBrent:'国际油价：美伊框架协议与霍尔木兹海峡重开预期使布伦特跌至约83.90美元，WTI约81.07美元。',marketMops:'MOPS：原油下跌是利好，但暑期需求、炼化和物流成本会造成延迟传导。',marketFx:'美元/韩元：油价下跌缓解压力，但美元强势与全球增长担忧仍是变量。',marketGeo:'霍尔木兹海峡：已公布重开框架，但仍需确认正式签署和实际航运、保险及物流正常化。',marketOutlook:'7月维持70–75%，上调一级15–20%，上调两级以上不超过5%。'});
+Object.assign(window.I18N_SHARED.fr,{marketDataRef:'Au 2026.06.15 09:10 KST',marketBrent:'Pétrole: le cadre États-Unis-Iran et l’espoir de réouverture d’Ormuz ont ramené le Brent vers 83,90 $ et le WTI vers 81,07 $.',marketMops:'MOPS: la baisse du brut est positive, mais la demande estivale et les coûts de raffinage et de logistique retardent sa transmission.',marketFx:'USD/KRW: la baisse du pétrole allège la pression, mais le dollar et les craintes de croissance restent des variables.',marketGeo:'Ormuz: un cadre de réouverture a été annoncé, mais la signature et la normalisation réelle doivent être confirmées.',marketOutlook:'Juillet: statu quo 70-75%, hausse d’un palier 15-20%, deux paliers ou plus 5% ou moins.'});
+Object.assign(window.I18N_SHARED.de,{marketDataRef:'Stand 2026.06.15 09:10 KST',marketBrent:'Öl: Das US-Iran-Rahmenabkommen und die Hormus-Öffnungserwartung drückten Brent auf etwa 83,90 $ und WTI auf etwa 81,07 $.',marketMops:'MOPS: Der Ölpreisrückgang hilft, wird wegen Sommernachfrage sowie Raffinerie- und Logistikkosten aber verzögert weitergegeben.',marketFx:'USD/KRW: Niedrigeres Öl entlastet, während Dollarstärke und Wachstumssorgen Variablen bleiben.',marketGeo:'Hormus: Ein Öffnungsrahmen wurde angekündigt, doch Unterzeichnung und tatsächliche Normalisierung müssen bestätigt werden.',marketOutlook:'Juli: unverändert 70-75%, eine Stufe höher 15-20%, zwei oder mehr Stufen höchstens 5%.'});
 
 /* 2026.06 index readiness copy.
    Keeps June confirmed notices and July notice-prep status separate on the main page. */
