@@ -45,12 +45,12 @@ function assert(condition, message) {
   const browser = await chromium.launch({ headless: true });
   try {
     const localeSignals = {
-      ko: ["2026년 7월", "동결"],
-      en: ["July 2026", "Freeze"],
-      ja: ["2026年7月", "据え置き"],
-      zh: ["2026年7月", "维持"],
-      fr: ["juillet 2026", "statu quo"],
-      de: ["Juli 2026", "Unverändert"],
+      ko: ["2026년 7월", "소폭 인상"],
+      en: ["July 2026", "small increase"],
+      ja: ["2026年7月", "小幅引き上げ"],
+      zh: ["2026年7月", "小幅上调"],
+      fr: ["juillet 2026", "légère hausse"],
+      de: ["Juli 2026", "kleine Erhöhung"],
     };
     const currencies = { ko: "KRW", en: "USD", ja: "JPY", zh: "JPY", fr: "EUR", de: "EUR" };
     const currencySignals = { KRW: "₩", USD: "$", JPY: "¥", EUR: "€" };
@@ -63,36 +63,40 @@ function assert(condition, message) {
 
       await select(page, "ko", "KRW");
       let body = await page.locator("body").innerText();
-      for (const expected of ["₩130,830/bbl", "₩126,417/bbl", "₩5,633/gal", "₩236,602/bbl", "₩220,868/bbl", "1 USD = ₩1,559.36"]) {
+      for (const expected of ["₩129,536/bbl", "₩125,341/bbl", "₩5,633/gal", "₩236,602/bbl", "₩220,868/bbl", "1 USD = ₩1,559.36"]) {
         assert(body.includes(expected), `${pageName} KRW market amount missing: ${expected}`);
       }
-      assert(body.includes("2026.06.15 09:10 KST"), `${pageName} June 15 timestamp missing`);
-      assert(body.includes("70~75%"), `${pageName} freeze probability missing`);
+      assert(body.includes("2026.06.16 09:30 KST"), `${pageName} June 16 timestamp missing`);
+      assert(body.includes("유지 ~ 소폭 인상") || body.includes("소폭 인상 가능"), `${pageName} July outlook missing`);
+      assert(!body.includes("2026년 8월 유류할증료 전망") && !body.includes("8월 국제선 유류할증료"), `${pageName} August outlook leaked`);
+      if (pageName === "forecast.html") {
+        assert(!body.includes("공시 완료") && !body.includes("발표됨") && !body.includes("확정됩니다"), `${pageName} final wording leaked`);
+      }
       assert(!body.includes("forecastTargetMonth") && !body.includes("currentMonthNotice"), `${pageName} internal variable leaked`);
 
       if (pageName === "forecast.html") {
         const indicatorText = await page.locator("#indicatorTbody").innerText();
         const predictText = await page.locator("#predictFactors").innerText();
-        for (const expected of ["₩130,830/bbl", "₩126,417/bbl", "₩5,633/gal", "₩236,602/bbl", "₩220,868/bbl", "1 USD = ₩1,559.36"]) {
+        for (const expected of ["₩129,536/bbl", "₩125,341/bbl", "₩5,633/gal", "₩236,602/bbl", "₩220,868/bbl", "1 USD = ₩1,559.36"]) {
           assert(indicatorText.includes(expected), `Forecast indicator table missing ${expected}`);
           assert(predictText.includes(expected), `Forecast key variables missing ${expected}`);
         }
       } else {
         const firstCard = await page.locator(".news-card").first().innerText();
-        const latestCards = page.locator('.news-card[data-date="2026-06-15"]');
-        assert(await latestCards.count() === 6, "All six June 15 cards should be visible");
-        assert(await latestCards.locator(".cat-badge.cat-market").count() === 6, "June 15 cards must use the market category");
+        const latestCards = page.locator('.news-card[data-date="2026-06-16"]');
+        assert(await latestCards.count() === 5, "All five June 16 cards should be visible");
+        assert(await latestCards.locator(".cat-badge.cat-market").count() === 5, "June 16 cards must use the market category");
         const sourceHrefs = await latestCards.locator("a.news-link").evaluateAll((links) => links.map((link) => link.href));
-        assert(sourceHrefs.length >= 6, "Each June 15 card should expose an external source");
-        assert(sourceHrefs.every((href) => /^https?:\/\//.test(href) && !/(^|\.)aero-surcharge\.com/i.test(new URL(href).hostname)), "A June 15 card still uses an internal source");
+        assert(sourceHrefs.length >= 5, "Each June 16 card should expose an external source");
+        assert(sourceHrefs.every((href) => /^https?:\/\//.test(href) && !/(^|\.)aero-surcharge\.com/i.test(new URL(href).hostname)), "A June 16 card still uses an internal source");
         await page.locator('#filterRow [data-f="market"]').click();
-        assert(await page.locator('.news-card[data-date="2026-06-15"]').count() === 6, "June 15 cards disappear from the market filter");
-        assert(firstCard.includes("호르무즈") || firstCard.includes("국제유가"), "June 15 news card is not first");
+        assert(await page.locator('.news-card[data-date="2026-06-16"]').count() === 5, "June 16 cards disappear from the market filter");
+        assert(firstCard.includes("미국-이란") || firstCard.includes("호르무즈"), "June 16 news card is not first");
       }
 
       await select(page, "ko", "USD");
       body = await page.locator("body").innerText();
-      for (const expected of ["$83.90/bbl", "$81.07/bbl", "$3.61/gal", "$151.73/bbl", "$141.64/bbl"]) {
+      for (const expected of ["$83.07/bbl", "$80.38/bbl", "$3.61/gal", "$151.73/bbl", "$141.64/bbl"]) {
         assert(body.includes(expected), `${pageName} USD amount missing: ${expected}`);
       }
 
@@ -103,9 +107,10 @@ function assert(condition, message) {
         for (const signal of localeSignals[lang]) {
           assert(body.toLowerCase().includes(signal.toLowerCase()), `${pageName} ${lang} content missing: ${signal}`);
         }
+        assert(!body.includes("2026년 8월 유류할증료 전망") && !body.includes("August 2026 Fuel Surcharge Outlook") && !body.includes("2026年8月"), `${pageName} ${lang} August outlook leaked`);
         assert(body.includes(currencySignals[curr]), `${pageName} ${lang}/${curr} currency marker missing`);
-        const probability = lang === "ko" ? "70~75%" : lang === "ja" ? "70〜75%" : lang === "zh" ? "70–75%" : "70-75%";
-        assert(body.includes(probability), `${pageName} ${lang} probability missing`);
+        const outlookSignal = lang === "ko" ? "소폭 인상" : lang === "en" ? "small increase" : lang === "ja" ? "小幅引き上げ" : lang === "zh" ? "小幅上调" : lang === "fr" ? "légère hausse" : "kleine Erhöhung";
+        assert(body.toLowerCase().includes(outlookSignal.toLowerCase()), `${pageName} ${lang} July direction missing`);
       }
 
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth + 2);
