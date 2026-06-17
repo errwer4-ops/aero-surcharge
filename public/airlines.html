@@ -842,17 +842,17 @@ var OFFICIAL_COMPARE_DATA = {
     { band:'6,500mi~',      routes:'인천-워싱턴 D.C., 인천-뉴욕',                  v4:365, v5:296, cur:'USD' },
   ],
   BX: [
-    { band:'1구간 (~699mi)',       routes:'부산/제주-후쿠오카, 오사카(간사이), 나가사키, 칭다오, 다카마쓰, 시즈오카',  v4:52, v5:43,  cur:'USD' },
-    { band:'2구간 (700~1,299mi)',  routes:'인천-나리타, 삿포로, 시안, 엔지, 장자제, 홍콩, 마카오, 타이베이, 가오슝', v4:94, v5:77,  cur:'USD' },
-    { band:'3구간 (1,300~1,999mi)',routes:'씬야, 울란바토르, 세부, 다낭, 나트랑, 비엔티안, 코타키나발루, 하노이, 보홀, 괌, 치앙마이(인천출발)', v4:109, v5:90, cur:'USD' },
-    { band:'4구간 (2,000mi~)',     routes:'방콕, 발리(덴파사르)',                                                       v4:126, v5:106, cur:'USD' },
+    { band:'1구간 (~699mi)',       routes:'부산/제주-후쿠오카, 오사카(간사이), 나가사키, 칭다오, 다카마쓰, 시즈오카',  v4:43, v5:30, cur:'USD' },
+    { band:'2구간 (700~1,299mi)',  routes:'인천-나리타, 삿포로, 시안, 엔지, 장자제, 홍콩, 마카오, 타이베이, 가오슝', v4:77, v5:54, cur:'USD' },
+    { band:'3구간 (1,300~1,999mi)',routes:'씬야, 울란바토르, 세부, 다낭, 나트랑, 비엔티안, 코타키나발루, 하노이, 보홀, 괌, 치앙마이(인천출발)', v4:90, v5:64, cur:'USD' },
+    { band:'4구간 (2,000mi~)',     routes:'방콕, 발리(덴파사르)',                                                       v4:106, v5:74, cur:'USD' },
   ],
 };
 
 /* ── 공식 공시 완료 항공사 목록 ── */
 var JUNE_OFFICIAL_CODES = ['KE', 'OZ', 'LJ', 'BX', 'ZE', 'RS', 'TW', '7C', 'YP'];
 function hasJuneOfficial(code){ return JUNE_OFFICIAL_CODES.indexOf(code) >= 0; }
-var JULY_OFFICIAL_CODES = ['KE', 'OZ', '7C', 'LJ'];
+var JULY_OFFICIAL_CODES = ['KE', 'OZ', '7C', 'LJ', 'BX'];
 function hasJulyOfficial(code){ return JULY_OFFICIAL_CODES.indexOf(code) >= 0; }
 
 /* ══════════════════════════════════════════════════════
@@ -878,7 +878,7 @@ async function loadData(){
     TW:'https://www.twayair.com/app/customerCenter/notice/retrieve/12577',
     ZE:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=594&lang=KR&searchWord=&searchIndex=1',
     RS:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1',
-    BX:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4366',
+    BX:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4377',
   };
   var NOTICE_URL_MAY={
     KE:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2605-infuel?pageNum=1',

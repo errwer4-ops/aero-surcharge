@@ -1017,10 +1017,10 @@ var _OFFICIAL_AMT = {
     { range:'6500+',    label:'인천-워싱턴 D.C.·뉴욕',       apr: 194, may: 365, june: 296 }
   ]},
   BX: { currency:'USD', rows: [
-    { range:'0-699',    label:'1구간 (~699mi)',        apr:  29, may:  52, june:  43 },
-    { range:'700-1299', label:'2구간 (700~1,299mi)',   apr:  51, may:  94, june:  77 },
-    { range:'1300-1999',label:'3구간 (1,300~1,999mi)', apr:  60, may: 109, june:  90 },
-    { range:'2000+',    label:'4구간 (2,000mi~)',      apr:  70, may: 126, june: 106 }
+    { range:'0-699',    label:'1구간 (~699mi)',        apr:  29, may:  52, june:  43, july: 30 },
+    { range:'700-1299', label:'2구간 (700~1,299mi)',   apr:  51, may:  94, june:  77, july: 54 },
+    { range:'1300-1999',label:'3구간 (1,300~1,999mi)', apr:  60, may: 109, june:  90, july: 64 },
+    { range:'2000+',    label:'4구간 (2,000mi~)',      apr:  70, may: 126, june: 106, july: 74 }
   ]}
 };
 
@@ -1311,7 +1311,15 @@ var JULY_2026_NOTICE_LINKS = {
   KE: 'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2607-infuel?pageNum=1',
   OZ: 'https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202606160002529424&dispCt=all&page=1&searchOption=0&searchText=',
   '7C': 'https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000729',
-  LJ: 'https://www.jinair.com/company/announce/announceView?anceSeq=28218&searchWord=&searchKey=titlCtn&page=1'
+  LJ: 'https://www.jinair.com/company/announce/announceView?anceSeq=28218&searchWord=&searchKey=titlCtn&page=1',
+  BX: 'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4377'
+};
+
+var JULY_PENDING_NOTICE_LINKS = {
+  TW: 'https://www.twayair.com/app/customerService/notice',
+  ZE: 'https://www.eastarjet.com/newstar/PGWCA00002',
+  RS: 'https://flyairseoul.com/CW/ko/noticeList.do',
+  YP: 'https://www.airpremia.com/a/ko/customer/notice'
 };
 
 /* 최소 변동률 계산 (랜딩 배지용) */
@@ -1358,6 +1366,34 @@ function _trendBadgeHtml(code){
     +'border-radius:10px;padding:2px 8px;white-space:nowrap;flex-shrink:0;cursor:default;">'
     +label+'</span>';
 }
+
+_trendBadgeHtml = function(code){
+  var res = _calcMinRate(code);
+  if (res === null) return '';
+  if (res.pendingJuly) {
+    return '<span title="2026년 7월 공식 공시 확인 전" style="display:inline-flex;align-items:center;font-size:11px;font-weight:700;'
+      + 'color:#9A3412;background:#FFF7ED;border:1px solid #FED7AA;'
+      + 'border-radius:10px;padding:2px 8px;white-space:nowrap;flex-shrink:0;cursor:default;">'
+      + '7월 공시 예정</span>';
+  }
+  var rate = res.rate;
+  var arrow, sign, color, bg, border;
+  if (rate > 0) {
+    arrow = '▲'; sign = '+' + rate.toFixed(1) + '%';
+    color = '#C62828'; bg = '#FFF0F0'; border = '#FFCDD2';
+  } else if (rate < 0) {
+    arrow = '▼'; sign = rate.toFixed(1) + '%';
+    color = '#075985'; bg = '#E0F2FE'; border = '#BAE6FD';
+  } else {
+    return '';
+  }
+  var tooltip = '2026년 6월 대비 2026년 7월 공식 공시 최소 변동률';
+  var label = arrow + ' 6월 대비 최소 ' + sign;
+  return '<span title="' + tooltip + '" style="display:inline-flex;align-items:center;font-size:11px;font-weight:700;'
+    + 'color:' + color + ';background:' + bg + ';border:1px solid ' + border + ';'
+    + 'border-radius:10px;padding:2px 8px;white-space:nowrap;flex-shrink:0;cursor:default;">'
+    + label + '</span>';
+};
 
 async function loadAll(){
   var loadErrors = [];
@@ -1416,7 +1452,7 @@ async function loadAll(){
       confidence: 'fresh',
       supported: true,
       regulatoryContext: null,
-      officialNoticeUrl: 'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4351',
+      officialNoticeUrl: 'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4377',
       hasOfficialNotice: true,
       usdNotice: true,
     };
@@ -1726,9 +1762,100 @@ function buildOfficialSection(cd, al, miles, isRT, dep, arr){
 }
 
 /* ════ 카드 빌드 ════ */
+var _buildOfficialSectionBase = buildOfficialSection;
+buildOfficialSection = function(cd, al, miles, isRT, dep, arr){
+  var offData = _OFFICIAL_AMT[al.code];
+  if (!offData || !offData.rows || !offData.rows.length) {
+    return _buildOfficialSectionBase(cd, al, miles, isRT, dep, arr);
+  }
+
+  var mult = isRT ? 2 : 1;
+  var offCurr = offData.currency || 'KRW';
+  var rates = {USD:1490,JPY:10.0,EUR:1620,GBP:1860,CNY:203,HKD:189,AUD:948,SGD:1108};
+  var hasJuly = offData.rows.some(function(r){ return r.july != null; });
+  var hasJune = offData.rows.some(function(r){ return r.june != null; });
+
+  function toKRW(v){ return (offCurr !== 'KRW') ? Math.round(v * (rates[offCurr] || 1)) : v; }
+  function fmt(v){ return window.fmtAmtDisplay(v * mult, offCurr); }
+  function matchRange(rangeStr, mi){
+    if(!rangeStr || mi == null) return false;
+    if(rangeStr.endsWith('+')) return mi >= parseInt(rangeStr, 10);
+    var p = rangeStr.split('-');
+    return p.length === 2 && mi >= parseInt(p[0], 10) && mi < parseInt(p[1], 10);
+  }
+
+  var routeBand = (function(){
+    if(!dep || !arr || typeof OFFICIAL_ROUTE_MAP === 'undefined') return null;
+    var rm = OFFICIAL_ROUTE_MAP[al.code];
+    if(!rm) return null;
+    var band = rm[dep + '-' + arr] || rm[arr + '-' + dep] || null;
+    if((al.code === 'KE' || al.code === 'OZ') && band && miles != null && !matchRange(band, miles)){
+      console.warn('[Route Band Mismatch]', { airline: al.code, route: dep + '-' + arr, officialBand: band, calculatedMiles: miles });
+    }
+    return band;
+  })();
+
+  var compareLabel = hasJuly ? '6월 VS 7월 공식 공시' : '6월 공시 · 7월 공시 예정';
+  var stateBadge = hasJuly
+    ? '<span style="font-size:10px;background:#d1fae5;color:#065f46;border-radius:4px;padding:1px 7px;margin-left:6px;font-weight:700">✓ 7월 공식 공시 반영</span>'
+    : '<span style="font-size:10px;background:#fff7ed;color:#9a3412;border:1px solid #fed7aa;border-radius:4px;padding:1px 7px;margin-left:6px;font-weight:700">7월 공시 예정</span>';
+  var header = '<div class="official-label">'
+    + window.statusBadgeHtml('official_verified')
+    + '<span style="font-size:10px;color:var(--muted);margin-left:6px">' + compareLabel + '</span>'
+    + '<span style="font-size:10px;color:var(--muted);margin-left:4px">' + (isRT ? window.t('index.meta.roundTrip') : window.t('index.meta.oneWay')) + '</span>'
+    + stateBadge
+    + '</div>';
+
+  var rows = offData.rows.map(function(r){
+    var isMatch = routeBand !== null
+      ? r.range === routeBand
+      : ((al.code === 'KE' || al.code === 'OZ' || al.code === 'LJ') ? false : matchRange(r.range, miles));
+    var cls = isMatch ? ' highlighted' : '';
+    var badge = isMatch ? '<span class="route-highlight-badge">' + window.t('index.card.currentRoute') + '</span>' : '';
+    var juneAmt = r.june != null ? r.june : null;
+    var julyAmt = hasJuly && r.july != null ? r.july : null;
+    var juneCell = juneAmt != null
+      ? '<td class="route-amt-current">' + fmt(toKRW(juneAmt)) + '</td>'
+      : '<td class="route-amt-current" style="color:var(--muted)">-</td>';
+    var julyCell = julyAmt != null
+      ? '<td class="route-amt-next" style="color:#059669;font-weight:700">' + fmt(toKRW(julyAmt)) + '</td>'
+      : '<td class="route-amt-next"><span class="prepub">공시 예정</span></td>';
+    var diffCell = '<td style="font-size:11px;color:var(--muted);text-align:center">공시 예정</td>';
+    if(juneAmt != null && julyAmt != null){
+      var diff = toKRW(julyAmt) - toKRW(juneAmt);
+      var pct = ((julyAmt - juneAmt) / juneAmt) * 100;
+      var color = diff < 0 ? '#059669' : (diff > 0 ? '#dc2626' : '#64748b');
+      var prefix = diff < 0 ? '▼ ' : (diff > 0 ? '▲ ' : '');
+      var amt = diff !== 0 ? window.fmtAmtDisplay(Math.abs(diff) * mult, offCurr) : '-';
+      diffCell = '<td style="font-size:11px;font-weight:700;color:' + color + ';text-align:center">' + prefix + pct.toFixed(1) + '%<br><span style="font-size:10px">' + amt + '</span></td>';
+    }
+    return '<tr class="' + cls + '">'
+      + '<td><span class="route-range">' + r.label + '</span>' + badge + '</td>'
+      + juneCell + julyCell + (hasJune ? diffCell : '')
+      + '</tr>';
+  }).join('');
+
+  var thead = '<thead><tr>'
+    + '<th>' + window.t('index.card.distanceBand') + '</th>'
+    + '<th class="th-may">2026.06</th>'
+    + '<th class="th-apr">' + (hasJuly ? '2026.07 공식 공시' : '2026.07 공시 예정') + '</th>'
+    + (hasJune ? '<th style="font-size:10px;color:var(--muted);text-align:center">' + window.t('index.card.diff') + '</th>' : '')
+    + '</tr></thead>';
+
+  return '<div class="official-section">'
+    + header
+    + '<div class="route-table-wrap"><table class="route-table">'
+    + thead
+    + '<tbody>' + rows + '</tbody>'
+    + '</table></div></div>';
+};
+
 function buildCard(al, dep, arr, miles, isRT, idx){
   var tag=AL_TAG[al.alliance]||AL_TAG.other;
-  var noticeUrl=al.officialNoticeUrl||null;
+  var isJulyOfficialForCard=!!JULY_2026_NOTICE_LINKS[al.code];
+  var noticeUrl=isJulyOfficialForCard
+    ? JULY_2026_NOTICE_LINKS[al.code]
+    : (JULY_PENDING_NOTICE_LINKS[al.code] || al.officialNoticeUrl || null);
 
   var routeCheck=dep&&arr
     ? window.checkRouteSupport(al.code,dep,arr)
@@ -2155,6 +2282,7 @@ function renderLanding(){
   grid.innerHTML=KR_AIRLINES.map(function(al){
     var feedAl=findFeedAl(al.code);
     /* _OFFICIAL_AMT 수동 반영 데이터 우선 — feedAl regulatoryContext 덮어쓰기 방지 */
+    var isJulyOfficial=!!JULY_2026_NOTICE_LINKS[al.code];
     var status;
     if(_OFFICIAL_AMT[al.code]){
       status = 'official_verified';
@@ -2191,6 +2319,50 @@ function renderLanding(){
     document.getElementById('statusDot').className='status-dot';
   }
 }
+
+renderLanding = function(){
+  var grid = document.getElementById('miniGrid');
+  if(!Array.isArray(KR_AIRLINES) || !KR_AIRLINES.length){
+    grid.innerHTML = '<div class="empty-state"><div class="empty-icon">!</div><p>' + window.t('index.status.loadError') + '</p></div>';
+    return;
+  }
+  grid.innerHTML = KR_AIRLINES.map(function(al){
+    var feedAl = findFeedAl(al.code);
+    var isJulyOfficial = !!JULY_2026_NOTICE_LINKS[al.code];
+    var hasOfficialRows = !!_OFFICIAL_AMT[al.code];
+    var status = hasOfficialRows
+      ? 'official_verified'
+      : (feedAl ? window.resolveStatus(feedAl, null) : 'unknown');
+    var noticeUrl = isJulyOfficial
+      ? JULY_2026_NOTICE_LINKS[al.code]
+      : (JULY_PENDING_NOTICE_LINKS[al.code] || al.officialNoticeUrl);
+    var btnText = isJulyOfficial ? '7월 공식 공지 ↗' : '공지 확인 ↗';
+    var btnHtml = noticeUrl
+      ? '<a href="' + noticeUrl + '" target="_blank" rel="noopener" class="mini-notice-btn">' + btnText + '</a>' + _trendBadgeHtml(al.code)
+      : _trendBadgeHtml(al.code);
+    var schemaBadge = al.surchargeSchema === 'group_tier'
+      ? '<span style="font-size:9px;color:#6a1b9a;margin-left:4px">(' + window.t('index.card.groupTierShort') + ')</span>'
+      : '';
+    var displayName = getAirlineName({ name: al._metaName }) || al.name || al.code;
+    return '<div class="mini-card">'
+      + '<div class="mini-badge">' + al.logo + '</div>'
+      + '<div style="flex:1">'
+      + '<div class="mini-name">' + displayName + schemaBadge + '</div>'
+      + '<div class="mini-status">' + window.statusBadgeHtml(status) + '</div>'
+      + btnHtml
+      + '</div>'
+      + '</div>';
+  }).join('');
+
+  if(FEED && FEED.meta){
+    document.getElementById('statusStrip').style.display = 'flex';
+    var upd = FEED.meta.lastUpdated
+      ? new Date(FEED.meta.lastUpdated).toLocaleString('ko-KR', {month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'})
+      : '';
+    document.getElementById('statusText').textContent = window.t('index.status.updated') + upd + window.t('index.status.updatedSuffix');
+    document.getElementById('statusDot').className = 'status-dot';
+  }
+};
 
 window.initNav({
   onLangChange:function(){

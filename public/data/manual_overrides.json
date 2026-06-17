@@ -537,6 +537,62 @@
       "currency": "USD",
       "sourceType": "manual_override",
       "confidence": "fresh"
+    },
+    "2026.06": {
+      "items": [
+        {
+          "distanceRange": "0-699",
+          "label": "1구간 (~699mi)",
+          "amount": 43
+        },
+        {
+          "distanceRange": "700-1299",
+          "label": "2구간 (700~1,299mi)",
+          "amount": 77
+        },
+        {
+          "distanceRange": "1300-1999",
+          "label": "3구간 (1,300~1,999mi)",
+          "amount": 90
+        },
+        {
+          "distanceRange": "2000+",
+          "label": "4구간 (2,000mi~)",
+          "amount": 106
+        }
+      ],
+      "currency": "USD",
+      "sourceType": "official_notice",
+      "confidence": "fresh",
+      "officialNoticeUrl": "https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4366"
+    },
+    "2026.07": {
+      "items": [
+        {
+          "distanceRange": "0-699",
+          "label": "1구간 (~699mi)",
+          "amount": 30
+        },
+        {
+          "distanceRange": "700-1299",
+          "label": "2구간 (700~1,299mi)",
+          "amount": 54
+        },
+        {
+          "distanceRange": "1300-1999",
+          "label": "3구간 (1,300~1,999mi)",
+          "amount": 64
+        },
+        {
+          "distanceRange": "2000+",
+          "label": "4구간 (2,000mi~)",
+          "amount": 74
+        }
+      ],
+      "currency": "USD",
+      "sourceType": "official_notice",
+      "confidence": "fresh",
+      "officialNoticeUrl": "https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4377"
     }
   }
 }

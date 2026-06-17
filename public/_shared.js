@@ -920,6 +920,20 @@ window._JULY_2026_OFFICIAL_OVERRIDES = {
       ],
     },
   },
+  BX: {
+    '2026.07': {
+      sourceType: 'official_notice', status: 'official_verified', confidence: 'fresh', currency: 'USD',
+      surchargeSchema: 'mileage_band',
+      officialNoticeUrl: 'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4377',
+      verifiedAt: '2026-06-17T00:00:00+09:00',
+      items: [
+        { distanceRange: '0-699',     label: '1구간 (~699mi)',        amount: 30, currency: 'USD' },
+        { distanceRange: '700-1299',  label: '2구간 (700~1,299mi)',   amount: 54, currency: 'USD' },
+        { distanceRange: '1300-1999', label: '3구간 (1,300~1,999mi)', amount: 64, currency: 'USD' },
+        { distanceRange: '2000+',     label: '4구간 (2,000mi~)',      amount: 74, currency: 'USD' },
+      ],
+    },
+  },
 };
 
 /* ─────────────────────────────────────────────
