@@ -850,6 +850,76 @@ window._7C_OFFICIAL_OVERRIDE = {
       { distanceRange: '2500mile+',       label: '2,500마일+',      amount: 104, currency: 'USD' },
     ],
   },
+  '2026.07': {
+    sourceType: 'official_notice', status: 'official_verified', confidence: 'fresh', currency: 'USD',
+    surchargeSchema: 'mileage_band',
+    officialNoticeUrl: 'https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000729',
+    verifiedAt: '2026-06-16T00:00:00+09:00',
+    items: [
+      { distanceRange: '1~500mile',       label: '1~500마일',       amount: 30, currency: 'USD' },
+      { distanceRange: '500~1000mile',    label: '500~1,000마일',   amount: 38, currency: 'USD' },
+      { distanceRange: '1000~1500mile',   label: '1,000~1,500마일', amount: 46, currency: 'USD' },
+      { distanceRange: '1500~2000mile',   label: '1,500~2,000마일', amount: 55, currency: 'USD' },
+      { distanceRange: '2000~2500mile',   label: '2,000~2,500마일', amount: 62, currency: 'USD' },
+      { distanceRange: '2500mile+',       label: '2,500마일+',      amount: 72, currency: 'USD' },
+    ],
+  },
+};
+
+window._JULY_2026_OFFICIAL_OVERRIDES = {
+  KE: {
+    '2026.07': {
+      sourceType: 'official_notice', status: 'official_verified', confidence: 'fresh', currency: 'KRW',
+      surchargeSchema: 'mileage_band',
+      officialNoticeUrl: 'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2607-infuel?pageNum=1',
+      verifiedAt: '2026-06-16T00:00:00+09:00',
+      items: [
+        { distanceRange: '0-499',     label: '~499마일',       amount: 46400,  currency: 'KRW' },
+        { distanceRange: '500-999',   label: '500~999마일',    amount: 62400,  currency: 'KRW' },
+        { distanceRange: '1000-1499', label: '1,000~1,499마일', amount: 86400,  currency: 'KRW' },
+        { distanceRange: '1500-1999', label: '1,500~1,999마일', amount: 108800, currency: 'KRW' },
+        { distanceRange: '2000-2999', label: '2,000~2,999마일', amount: 139200, currency: 'KRW' },
+        { distanceRange: '3000-3999', label: '3,000~3,999마일', amount: 147200, currency: 'KRW' },
+        { distanceRange: '4000-4999', label: '4,000~4,999마일', amount: 214400, currency: 'KRW' },
+        { distanceRange: '5000-6499', label: '5,000~6,499마일', amount: 318400, currency: 'KRW' },
+        { distanceRange: '6500+',     label: '6,500마일 이상', amount: 344000, currency: 'KRW' },
+      ],
+    },
+  },
+  OZ: {
+    '2026.07': {
+      sourceType: 'official_notice', status: 'official_verified', confidence: 'fresh', currency: 'KRW',
+      surchargeSchema: 'mileage_band',
+      officialNoticeUrl: 'https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202606160002529424&dispCt=all&page=1&searchOption=0&searchText=',
+      verifiedAt: '2026-06-16T00:00:00+09:00',
+      items: [
+        { distanceRange: '0-499',     label: '~499마일',       amount: 48500,  currency: 'KRW' },
+        { distanceRange: '500-999',   label: '500~999마일',    amount: 71200,  currency: 'KRW' },
+        { distanceRange: '1000-1499', label: '1,000~1,499마일', amount: 94000,  currency: 'KRW' },
+        { distanceRange: '1500-1999', label: '1,500~1,999마일', amount: 116700, currency: 'KRW' },
+        { distanceRange: '2000-2499', label: '2,000~2,499마일', amount: 139400, currency: 'KRW' },
+        { distanceRange: '2500-2999', label: '2,500~2,999마일', amount: 162200, currency: 'KRW' },
+        { distanceRange: '3000-3999', label: '3,000~3,999마일', amount: 184900, currency: 'KRW' },
+        { distanceRange: '4000-4999', label: '4,000~4,999마일', amount: 230400, currency: 'KRW' },
+        { distanceRange: '5000+',     label: '5,000마일 이상', amount: 275800, currency: 'KRW' },
+      ],
+    },
+  },
+  LJ: {
+    '2026.07': {
+      sourceType: 'official_notice', status: 'official_verified', confidence: 'fresh', currency: 'USD',
+      surchargeSchema: 'mileage_band',
+      officialNoticeUrl: 'https://www.jinair.com/company/announce/announceView?anceSeq=28218&searchWord=&searchKey=titlCtn&page=1',
+      verifiedAt: '2026-06-16T00:00:00+09:00',
+      items: [
+        { distanceRange: '1-599',     label: '1~599마일',       amount: 27, currency: 'USD' },
+        { distanceRange: '600-1199',  label: '600~1,199마일',   amount: 37, currency: 'USD' },
+        { distanceRange: '1200-1799', label: '1,200~1,799마일', amount: 61, currency: 'USD' },
+        { distanceRange: '1800-2399', label: '1,800~2,399마일', amount: 67, currency: 'USD' },
+        { distanceRange: '2400-3599', label: '2,400~3,599마일', amount: 79, currency: 'USD' },
+      ],
+    },
+  },
 };
 
 /* ─────────────────────────────────────────────
@@ -940,6 +1010,15 @@ window.loadAirlineMeta = async function() {
   if (!window.MANUAL_OVERRIDES['7C']) window.MANUAL_OVERRIDES['7C'] = {};
   window.MANUAL_OVERRIDES['7C']['2026.05'] = window._7C_OFFICIAL_OVERRIDE['2026.05'];
   window.MANUAL_OVERRIDES['7C']['2026.06'] = window._7C_OFFICIAL_OVERRIDE['2026.06'];
+  window.MANUAL_OVERRIDES['7C']['2026.07'] = window._7C_OFFICIAL_OVERRIDE['2026.07'];
+  /* 2026년 7월 공식 공시 완료 항공사 — KE/OZ/LJ */
+  Object.keys(window._JULY_2026_OFFICIAL_OVERRIDES || {}).forEach(function(code) {
+    if (!window.MANUAL_OVERRIDES[code]) window.MANUAL_OVERRIDES[code] = {};
+    var months = window._JULY_2026_OFFICIAL_OVERRIDES[code] || {};
+    Object.keys(months).forEach(function(month) {
+      window.MANUAL_OVERRIDES[code][month] = months[month];
+    });
+  });
   /* TW(티웨이항공)2026년 6월 공식 공시 데이터 강제 주입 — official_verified · KRW 공시 */
   if (!window.MANUAL_OVERRIDES['TW']) window.MANUAL_OVERRIDES['TW'] = {};
   window.MANUAL_OVERRIDES['TW']['2026.05'] = window._TW_OFFICIAL_OVERRIDE['2026.05'];
@@ -6530,6 +6609,109 @@ window.AERO_MARKET_BRIEF_20260616 = {
     return card;
   });
 })();
+
+(function(){
+  var date = '2026-06-16';
+  var updatedKo = '2026.06.16 KST 공식 공시 반영';
+  var cards = [
+    {
+      id:'news-20260616-ke-july-official',
+      slug:'korean-air-july-2026-official-surcharge',
+      category:'airline',
+      topic:'official-notice',
+      priority:1,
+      title:'대한항공 2026년 7월 국제선 유류할증료 공시 반영',
+      aiBrief:'대한항공은 2026년 7월 한국 출발 국제선 유류할증료를 원화 기준으로 공시했습니다.',
+      summary:'대한항공 2026년 7월 유류할증료는 거리 구간별 46,400원부터 344,000원까지입니다. 기존 6월 데이터는 보존하고 7월 공식 공시 금액을 별도로 반영했습니다.',
+      impact:'공시 확인. 대한항공 이용자는 7월 발권 전 노선별 거리 구간과 항공권 총액을 함께 확인해야 합니다.',
+      sourceName:'대한항공 공식 공지',
+      sourceUrl:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2607-infuel?pageNum=1',
+      tags:['대한항공 유류할증료','2026년 7월 유류할증료','국제선 유류할증료','항공권 유류할증료'],
+      faq:[
+        {q:'대한항공 2026년 7월 유류할증료는 확정됐나요?',a:'현재 사이트에는 대한항공 공식 공지 기준으로 2026년 7월 한국 출발 국제선 유류할증료를 공시 반영했습니다.'},
+        {q:'대한항공 7월 금액은 어떤 기준으로 표시되나요?',a:'대한항공 공식 공지의 거리 구간별 원화 금액을 그대로 유지해 표시합니다.'}
+      ],
+      links:[{href:'airlines.html',label:'항공사별 7월 공시 보기'},{href:'forecast.html',label:'7월 공시 반영 현황 보기'}]
+    },
+    {
+      id:'news-20260616-oz-july-official',
+      slug:'asiana-july-2026-official-surcharge',
+      category:'airline',
+      topic:'official-notice',
+      priority:1,
+      title:'아시아나항공 2026년 7월 국제선 유류할증료 공시 반영',
+      aiBrief:'아시아나항공은 2026년 7월 한국 출발 국제선 유류할증료를 원화 기준으로 공시했습니다.',
+      summary:'아시아나항공 2026년 7월 유류할증료는 거리 구간별 48,500원부터 275,800원까지입니다. 대한항공과 구간 체계가 다르므로 항공사 공시 기준을 그대로 분리해 반영했습니다.',
+      impact:'공시 확인. 아시아나항공은 노선별 적용 구간을 확인한 뒤 대한항공 등 다른 항공사와 총액 기준으로 비교하는 것이 좋습니다.',
+      sourceName:'아시아나항공 공식 공지',
+      sourceUrl:'https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202606160002529424&dispCt=all&page=1&searchOption=0&searchText=',
+      tags:['아시아나 유류할증료','2026년 7월 유류할증료','국제선 유류할증료','항공권 유류할증료'],
+      faq:[
+        {q:'아시아나항공 2026년 7월 유류할증료는 확정됐나요?',a:'현재 사이트에는 아시아나항공 공식 공지 기준으로 2026년 7월 한국 출발 국제선 유류할증료를 공시 반영했습니다.'},
+        {q:'대한항공과 아시아나 금액을 바로 같은 구간으로 비교해도 되나요?',a:'두 항공사는 공시 구간과 노선 적용 방식이 다를 수 있으므로 각 항공사 공시 기준을 유지해 비교해야 합니다.'}
+      ],
+      links:[{href:'airlines.html',label:'항공사별 7월 공시 보기'},{href:'forecast.html',label:'7월 공시 반영 현황 보기'}]
+    },
+    {
+      id:'news-20260616-7c-july-official',
+      slug:'jeju-air-july-2026-official-surcharge',
+      category:'airline',
+      topic:'official-notice',
+      priority:1,
+      title:'제주항공 2026년 7월 국제선 유류할증료 USD 공시 반영',
+      aiBrief:'제주항공은 2026년 7월 한국 출발 국제선 유류할증료를 USD 기준으로 공시했습니다.',
+      summary:'제주항공 2026년 7월 유류할증료는 거리 구간별 USD 30부터 USD 72까지입니다. 원화 환산 금액은 선택 통화와 환율 기준에 따라 참고값으로 표시됩니다.',
+      impact:'공시 확인. USD 공시 항공사는 발권 시점 환율과 항공권 총액을 함께 보는 것이 중요합니다.',
+      sourceName:'제주항공 공식 공지',
+      sourceUrl:'https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000729',
+      tags:['제주항공 유류할증료','USD 유류할증료','2026년 7월 유류할증료','항공권 유류할증료'],
+      faq:[
+        {q:'제주항공 2026년 7월 유류할증료는 어떤 통화인가요?',a:'제주항공 공식 공시는 USD 기준입니다. 사이트의 원화 금액은 환율 적용 참고값으로 봐야 합니다.'},
+        {q:'제주항공 7월 최저 구간 금액은 얼마인가요?',a:'공식 공시 기준 최저 구간은 USD 30입니다.'}
+      ],
+      links:[{href:'airlines.html',label:'항공사별 7월 공시 보기'},{href:'forecast.html',label:'7월 공시 반영 현황 보기'}]
+    },
+    {
+      id:'news-20260616-lj-july-official',
+      slug:'jin-air-july-2026-official-surcharge',
+      category:'airline',
+      topic:'official-notice',
+      priority:1,
+      title:'진에어 2026년 7월 국제선 유류할증료 USD 공시 반영',
+      aiBrief:'진에어는 2026년 7월 한국 출발 국제선 유류할증료를 USD 기준으로 공시했습니다.',
+      summary:'진에어 2026년 7월 유류할증료는 거리 구간별 USD 27부터 USD 79까지입니다. 진에어의 6월 데이터와 7월 공시 데이터를 분리해 비교할 수 있게 반영했습니다.',
+      impact:'공시 확인. 진에어는 USD 공시이므로 실제 결제 통화와 환율 적용 기준을 함께 확인해야 합니다.',
+      sourceName:'진에어 공식 공지',
+      sourceUrl:'https://www.jinair.com/company/announce/announceView?anceSeq=28218&searchWord=&searchKey=titlCtn&page=1',
+      tags:['진에어 유류할증료','USD 유류할증료','2026년 7월 유류할증료','항공권 유류할증료'],
+      faq:[
+        {q:'진에어 2026년 7월 유류할증료는 어떤 통화인가요?',a:'진에어 공식 공시는 USD 기준입니다. 사이트의 원화 표시는 참고 환산값입니다.'},
+        {q:'진에어 7월 최저 구간 금액은 얼마인가요?',a:'공식 공시 기준 최저 구간은 USD 27입니다.'}
+      ],
+      links:[{href:'airlines.html',label:'항공사별 7월 공시 보기'},{href:'forecast.html',label:'7월 공시 반영 현황 보기'}]
+    }
+  ];
+  cards.forEach(function(card){
+    card.date = date;
+    card.updatedAt = updatedKo;
+    card.badge = 'NEW';
+    card.aiSummary = true;
+    card.relevanceScore = 1;
+    card.i18n = card.i18n || {};
+    card.i18n.en = {
+      updatedAt:'Updated 2026.06.16 KST',
+      title:card.title,
+      aiBrief:card.aiBrief,
+      summary:card.summary,
+      impact:card.impact,
+      sourceName:card.sourceName,
+      tags:['official notice','July 2026 fuel surcharge','Korea departure','international flights'],
+      faq:card.faq,
+      links:[{href:'airlines.html',label:'View July official notices'},{href:'forecast.html',label:'View July notice status'}]
+    };
+  });
+  window.AERO_NEWS_CARDS_20260616 = cards.concat(window.AERO_NEWS_CARDS_20260616 || []);
+})();
 window.AERO_NEWS_LATEST=window.AERO_MARKET_BRIEF_20260616;
 
 /*
@@ -6635,66 +6817,66 @@ Object.assign(window.I18N_SHARED.zh,{marketDataRef:'截至2026.06.16 09:30 KST',
 Object.assign(window.I18N_SHARED.fr,{marketDataRef:'Au 2026.06.16 09:30 KST',marketBrent:'Pétrole: le projet d’accord États-Unis-Iran et l’espoir de réouverture d’Ormuz réduisent le risque de flambée, mais la normalisation lente maintient une prime de risque.',marketMops:'MOPS: les tensions sur la chaîne d’approvisionnement et le prix élevé du kérosène limitent les baisses possibles en juillet.',marketFx:'USD/KRW: la stabilisation du change est positive, mais le MOPS reste le facteur dominant.',marketGeo:'Ormuz: le déminage, les contrôles de sécurité et la normalisation de l’assurance prendront du temps.',marketOutlook:'Juillet 2026: une forte baisse est peu probable; un statu quo ou une légère hausse reste possible.'});
 Object.assign(window.I18N_SHARED.de,{marketDataRef:'Stand 2026.06.16 09:30 KST',marketBrent:'Öl: Der US-Iran-Friedensentwurf und die Hormus-Öffnungserwartung senken das Sprungrisiko, aber verzögerte Normalisierung hält eine Risikoprämie aufrecht.',marketMops:'MOPS: Unsicherheit in der Kerosin-Lieferkette und hohe Jet-Fuel-Preise begrenzen mögliche Juli-Senkungen.',marketFx:'USD/KRW: Stabilerer Wechselkurs hilft, doch MOPS wirkt stärker auf Treibstoffzuschläge.',marketGeo:'Hormus: Minenräumung, Sicherheitschecks und Versicherungsnormalisierung brauchen Zeit.',marketOutlook:'Juli 2026: eine starke Senkung ist unwahrscheinlich; unverändert bis kleine Erhöhung bleibt möglich.'});
 
-/* 2026.06 index readiness copy.
-   Keeps June confirmed notices and July notice-prep status separate on the main page. */
+/* 2026.06.16 index official filing copy.
+   Reflects verified July notices and separates pending airlines. */
 (function(){
   if (!window.I18N) return;
   var ko = {
-    'index.title':'유류할증료 조회 — 6월 확정 공시와 7월 공시 준비',
-    'index.metaDesc':'한국 출발 국제선 항공사별 유류할증료를 노선·거리구간별로 비교하고, 2026년 6월 확정 공시와 7월 유류할증료 공시 준비 상태를 확인합니다.',
+    'index.title':'유류할증료 조회 — 2026년 7월 공식 공시 반영',
+    'index.metaDesc':'한국 출발 국제선 항공사별 유류할증료를 노선·거리구간별로 비교하고, 2026년 7월 대한항공·아시아나항공·제주항공·진에어 공식 공시 반영 현황을 확인합니다.',
     'index.heroTitle':'노선별 유류할증료 조회',
-    'index.heroSub':'6월 확정 공시를 기준으로 비교하고 7월 공시 준비 상태를 확인하세요',
-    'index.signal1':'6월 공식 공시 반영 완료',
+    'index.heroSub':'2026년 7월 공식 공시 반영 항공사와 미공시 항공사를 구분해 확인하세요',
+    'index.signal1':'7월 일부 공식 공시 반영',
     'index.signal2':'노선별 현재 적용 금액 확인',
-    'index.signal3':'7월 공시 입력 준비 중',
-    'index.decision.title':'6월 확정 공시 기준 · 7월 공시 입력 준비',
-    'index.decision.line1':'6월 유류할증료는 KE·OZ·LJ·BX·ZE·RS·TW·7C·YP 공식 공시 데이터를 기준으로 제공합니다.',
-    'index.decision.line2':'7월 유류할증료는 아직 확정 전이며, 항공사 공식 공지가 나오는 순서대로 별도 입력할 예정입니다.',
-    'index.decision.line3':'7월 입력 전에는 항공유 가격, 원/달러 환율, 국제유가와 호르무즈 리스크를 함께 점검합니다.',
-    'index.decision.conclusion':'현재 조회 결과는 6월 확정 데이터입니다. 7월 금액은 공시 확인 후 확정 데이터로 전환합니다.',
-    'index.readiness.title':'7월 유류할증료 공시 입력 준비',
-    'index.readiness.badge':'공시 전 · 대기 중',
+    'index.signal3':'미공시 항공사 대기 상태 분리',
+    'index.decision.title':'2026년 7월 공식 공시 반영 · 미공시 항공사 대기',
+    'index.decision.line1':'2026년 7월 유류할증료는 대한항공·아시아나항공·제주항공·진에어 공식 공시 데이터를 반영했습니다.',
+    'index.decision.line2':'아직 7월 공시가 확인되지 않은 항공사는 6월 공식 공시 기준과 공시 대기 상태를 분리해 표시합니다.',
+    'index.decision.line3':'USD 공시 항공사는 원문 통화를 유지하고, 원화 표시는 환율 적용 참고값으로 제공합니다.',
+    'index.decision.conclusion':'조회 결과는 공시 완료 항공사는 7월 공식 금액, 미공시 항공사는 대기 상태로 구분합니다.',
+    'index.readiness.title':'7월 유류할증료 공시 반영 현황',
+    'index.readiness.badge':'일부 공시 반영',
     'index.readiness.baseLabel':'확정 기준',
-    'index.readiness.baseText':'2026년 6월 공식 공시 데이터 유지',
+    'index.readiness.baseText':'2026년 7월 공식 공시 확인 항공사 반영',
     'index.readiness.targetLabel':'다음 입력',
-    'index.readiness.targetText':'2026년 7월 항공사별 공시 확인 후 반영',
+    'index.readiness.targetText':'미공시 항공사 공지 확인 후 순차 반영',
     'index.readiness.watchLabel':'점검 변수',
     'index.readiness.watchText':'항공유 가격, 원/달러 환율, 호르무즈 리스크',
-    'index.readiness.note':'7월 공시는 아직 확정 전입니다. 현재 노선 조회 결과는 6월 확정 공시를 기준으로 제공하며, 7월 데이터는 항공사 공식 공지가 확인되는 순서대로 입력할 예정입니다.',
-    'index.readiness.link':'2026년 7월 유류할증료 전망 보기 →',
-    'index.status.updatedSuffix':' · 2026년 6월 공식 공시 반영 · 7월 공시 입력 준비 중',
-    'index.meta.suffix':'한국 출발 국제선 · 2026년 6월 공식 공시 반영 · 7월 공시 준비 중',
-    'aff.myrealtrip.desc':'유류할증료는 발권 시점 기준으로 적용됩니다. 현재 6월 확정 공시 금액을 확인한 뒤, 같은 목적지의 실제 항공권 총액도 함께 비교하세요.',
-    'index.quick.compare.name':'2026년 5월 → 6월 유류할증료 비교',
-    'index.quick.compare.desc':'6월 확정 공시와 5월 적용 금액 비교',
-    'index.quick.jul.name':'2026년 7월 유류할증료 전망',
-    'index.quick.jul.desc':'7월 공시 전 항공유·환율·국제유가 변수 점검'
+    'index.readiness.note':'대한항공, 아시아나항공, 제주항공, 진에어의 2026년 7월 공시는 공식 원문 기준으로 반영했습니다. 아직 공시되지 않은 항공사는 임의 금액 없이 대기 상태로 표시합니다.',
+    'index.readiness.link':'2026년 7월 공시 반영 현황 보기 →',
+    'index.status.updatedSuffix':' · 2026년 7월 공식 공시 일부 반영 · 미공시 항공사 대기',
+    'index.meta.suffix':'한국 출발 국제선 · 2026년 7월 공식 공시 일부 반영 · 미공시 항공사 대기',
+    'aff.myrealtrip.desc':'유류할증료는 발권 시점 기준으로 적용됩니다. 7월 공식 공시 금액과 실제 항공권 총액을 함께 비교하세요.',
+    'index.quick.compare.name':'2026년 6월 → 7월 유류할증료 비교',
+    'index.quick.compare.desc':'공시 완료 항공사의 6월 대비 7월 공식 금액 비교',
+    'index.quick.jul.name':'2026년 7월 유류할증료 공시 반영',
+    'index.quick.jul.desc':'공시 완료 항공사와 미공시 대기 항공사 분리'
   };
   var en = {
-    'index.title':'Fuel surcharge search — confirmed June notices and July filing preparation',
-    'index.metaDesc':'Compare Korea-departure international fuel surcharges by airline and route, and check confirmed June 2026 notices plus July 2026 filing preparation status.',
-    'index.heroSub':'Compare confirmed June notices and check July filing preparation status',
-    'index.signal1':'June official notices reflected',
+    'index.title':'Fuel surcharge search — July 2026 official notices reflected',
+    'index.metaDesc':'Compare Korea-departure international fuel surcharges by airline and route, including July 2026 official notices for Korean Air, Asiana, Jeju Air and Jin Air.',
+    'index.heroSub':'Compare July 2026 official notices and pending airlines',
+    'index.signal1':'July official notices reflected',
     'index.signal2':'Check current route amounts',
-    'index.signal3':'July filing preparation',
-    'index.decision.title':'Confirmed June baseline · July filing preparation',
-    'index.decision.line1':'June surcharges are based on official notices for KE, OZ, LJ, BX, ZE, RS, TW, 7C and YP.',
-    'index.decision.line2':'July surcharges are not confirmed yet and will be entered separately as airline notices are released.',
-    'index.decision.line3':'Before July entry, we monitor jet fuel prices, USD/KRW, oil prices and Strait of Hormuz risk.',
-    'index.decision.conclusion':'Current route results are confirmed June data. July amounts will switch to confirmed data after official notices are verified.',
-    'index.readiness.title':'July fuel surcharge filing preparation',
-    'index.readiness.badge':'Pre-filing · waiting',
+    'index.signal3':'Pending airlines separated',
+    'index.decision.title':'July notices reflected · pending airlines separated',
+    'index.decision.line1':'July 2026 official notices are reflected for Korean Air, Asiana, Jeju Air and Jin Air.',
+    'index.decision.line2':'Airlines without confirmed July notices remain separated as pending instead of using invented amounts.',
+    'index.decision.line3':'USD notices keep their original currency; KRW conversions are reference values only.',
+    'index.decision.conclusion':'Route results show July official amounts for confirmed airlines and pending status for others.',
+    'index.readiness.title':'July fuel surcharge notice status',
+    'index.readiness.badge':'Partly reflected',
     'index.readiness.baseLabel':'Confirmed base',
-    'index.readiness.baseText':'Keep June 2026 official notice data',
+    'index.readiness.baseText':'July 2026 official notices reflected where verified',
     'index.readiness.targetLabel':'Next entry',
-    'index.readiness.targetText':'Add July 2026 airline notices after verification',
+    'index.readiness.targetText':'Add pending airline notices after verification',
     'index.readiness.watchLabel':'Variables',
     'index.readiness.watchText':'Jet fuel, USD/KRW, oil and Hormuz risk',
-    'index.readiness.note':'July filings are not confirmed yet. Current route results use confirmed June notices, and July data will be entered as each airline official notice is verified.',
-    'index.readiness.link':'View July 2026 fuel surcharge outlook →',
-    'index.status.updatedSuffix':' · June 2026 official notices reflected · July filing preparation',
-    'index.meta.suffix':'Korea departure · June 2026 official notices reflected · July filing preparation',
-    'aff.myrealtrip.desc':'Fuel surcharges apply by ticketing date. After checking confirmed June amounts, compare the actual total airfare for the same destination.'
+    'index.readiness.note':'July official notices for Korean Air, Asiana, Jeju Air and Jin Air are reflected from official sources. Airlines without confirmed July notices remain pending.',
+    'index.readiness.link':'View July 2026 notice status →',
+    'index.status.updatedSuffix':' · July 2026 official notices partly reflected · pending airlines separated',
+    'index.meta.suffix':'Korea departure · July 2026 official notices partly reflected · pending airlines separated',
+    'aff.myrealtrip.desc':'Fuel surcharges apply by ticketing date. Compare July official surcharge amounts with the actual total airfare.'
   };
   var ja = {
     'index.title':'燃油サーチャージ検索 — 6月確定公示と7月公示準備',
