@@ -461,7 +461,39 @@
       "confidence": "fresh",
       "surchargeSchema": "group_tier"
     }
-  },
+,
+    "2026.06": {
+      "group_tiers": [
+        { "group": 1, "label": "1군", "amount": 43, "currency": "USD" },
+        { "group": 2, "label": "2군", "amount": 54, "currency": "USD" },
+        { "group": 3, "label": "3군", "amount": 66, "currency": "USD" },
+        { "group": 4, "label": "4군", "amount": 79, "currency": "USD" },
+        { "group": 5, "label": "5군", "amount": 89, "currency": "USD" },
+        { "group": 6, "label": "6군", "amount": 103, "currency": "USD" }
+      ],
+      "currency": "USD",
+      "sourceType": "official_notice",
+      "confidence": "fresh",
+      "surchargeSchema": "group_tier",
+      "officialNoticeUrl": "https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=594&lang=KR"
+    },
+    "2026.07": {
+      "group_tiers": [
+        { "group": 1, "label": "1군", "amount": 30, "currency": "USD" },
+        { "group": 2, "label": "2군", "amount": 38, "currency": "USD" },
+        { "group": 3, "label": "3군", "amount": 45, "currency": "USD" },
+        { "group": 4, "label": "4군", "amount": 55, "currency": "USD" },
+        { "group": 5, "label": "5군", "amount": 62, "currency": "USD" },
+        { "group": 6, "label": "6군", "amount": 72, "currency": "USD" }
+      ],
+      "currency": "USD",
+      "sourceType": "official_notice",
+      "confidence": "fresh",
+      "surchargeSchema": "group_tier",
+      "officialNoticeUrl": "https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=608&lang=KR",
+      "verifiedAt": "2026-06-17",
+      "appliedPeriod": "2026-07-01~2026-07-31"
+    }  },
   "RS": {
     "_meta": {
       "source": "에어서울 공식 공지 2026-04",

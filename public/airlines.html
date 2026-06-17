@@ -818,12 +818,12 @@ var OFFICIAL_COMPARE_DATA = {
     { band:'7군 (5,000mi+)',     routes:'인천-시드니, 자그레브, 바르셀로나, 로마, 파리, 밴쿠버',         v4:406900, v5:327000, cur:'KRW' },
   ],
   ZE: [
-    { band:'1군', routes:'인천-후쿠오카, 부산-후쿠오카, 오사카, 구마모토, 제주-상하이, 청주-옌지, 인천-엔타이', v4:52,  v5:43,  cur:'USD' },
-    { band:'2군', routes:'인천-나리타, 오사카, 치토세, 오키나와, 도쿠시마, 상하이, 정저우 외',                   v4:66,  v5:54,  cur:'USD' },
-    { band:'3군', routes:'인천-홍콩, 청주-장가계',                                                              v4:80,  v5:66,  cur:'USD' },
-    { band:'4군', routes:'인천-다낭',                                                                            v4:95,  v5:79,  cur:'USD' },
-    { band:'5군', routes:'인천-방콕, 치앙마이, 나트랑, 푸꾸옥, 마나도, 부산-치앙마이',                           v4:107, v5:89,  cur:'USD' },
-    { band:'6군', routes:'인천-알마티, 부산-알마티',                                                             v4:126, v5:103, cur:'USD' },
+    { band:'1군', routes:'인천-후쿠오카, 부산-후쿠오카, 오사카, 구마모토, 제주-상하이, 청주-옌지, 인천-엔타이', v4:43, v5:30,  cur:'USD' },
+    { band:'2군', routes:'인천-나리타, 오사카, 치토세, 오키나와, 도쿠시마, 상하이, 정저우 외',                   v4:54, v5:38,  cur:'USD' },
+    { band:'3군', routes:'인천-홍콩, 청주-장가계',                                                              v4:66, v5:45,  cur:'USD' },
+    { band:'4군', routes:'인천-다낭',                                                                            v4:79, v5:55,  cur:'USD' },
+    { band:'5군', routes:'인천-방콕, 치앙마이, 나트랑, 푸꾸옥, 마나도, 부산-치앙마이',                           v4:89, v5:62,  cur:'USD' },
+    { band:'6군', routes:'인천-알마티, 부산-알마티',                                                             v4:103, v5:72, cur:'USD' },
   ],
   RS: [
     { band:'300~700mi',   routes:'다카마쓰, 후쿠오카, 오사카, 요나고', v4:94500,  v5:75300,  cur:'KRW' },
@@ -852,7 +852,7 @@ var OFFICIAL_COMPARE_DATA = {
 /* ── 공식 공시 완료 항공사 목록 ── */
 var JUNE_OFFICIAL_CODES = ['KE', 'OZ', 'LJ', 'BX', 'ZE', 'RS', 'TW', '7C', 'YP'];
 function hasJuneOfficial(code){ return JUNE_OFFICIAL_CODES.indexOf(code) >= 0; }
-var JULY_OFFICIAL_CODES = ['KE', 'OZ', '7C', 'LJ', 'BX'];
+var JULY_OFFICIAL_CODES = ['KE', 'OZ', '7C', 'LJ', 'BX', 'ZE'];
 function hasJulyOfficial(code){ return JULY_OFFICIAL_CODES.indexOf(code) >= 0; }
 
 /* ══════════════════════════════════════════════════════
@@ -876,7 +876,7 @@ async function loadData(){
     '7C':'https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000729',
     LJ:'https://www.jinair.com/company/announce/announceView?anceSeq=28218&searchWord=&searchKey=titlCtn&page=1',
     TW:'https://www.twayair.com/app/customerCenter/notice/retrieve/12577',
-    ZE:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=594&lang=KR&searchWord=&searchIndex=1',
+    ZE:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=608&lang=KR',
     RS:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1',
     BX:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4377',
   };
@@ -887,9 +887,9 @@ async function loadData(){
     '7C':'https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000703',
     LJ:'https://www.jinair.com/company/announce/announceView?anceSeq=27948&searchWord=&searchKey=titlCtn&page=1',
     TW:'https://www.twayair.com/app/customerCenter/notice/retrieve/12611',
-    ZE:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=578&lang=KR&searchWord=&searchIndex=1',
+    ZE:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=608&lang=KR',
     RS:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=10702&pageNo=1',
-    BX:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4351',
+    BX:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4377',
   };
 
   var metaObj=window.AIRLINE_META||{};

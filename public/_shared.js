@@ -920,7 +920,22 @@ window._JULY_2026_OFFICIAL_OVERRIDES = {
       ],
     },
   },
-  BX: {
+  ZE: {
+    '2026.07': {
+      sourceType: 'official_notice', status: 'official_verified', confidence: 'fresh', currency: 'USD',
+      surchargeSchema: 'group_tier',
+      officialNoticeUrl: 'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=608&lang=KR',
+      verifiedAt: '2026-06-17T00:00:00+09:00',
+      group_tiers: [
+        { group: 1, label: '1군', amount: 30, currency: 'USD' },
+        { group: 2, label: '2군', amount: 38, currency: 'USD' },
+        { group: 3, label: '3군', amount: 45, currency: 'USD' },
+        { group: 4, label: '4군', amount: 55, currency: 'USD' },
+        { group: 5, label: '5군', amount: 62, currency: 'USD' },
+        { group: 6, label: '6군', amount: 72, currency: 'USD' },
+      ],
+    },
+  },  BX: {
     '2026.07': {
       sourceType: 'official_notice', status: 'official_verified', confidence: 'fresh', currency: 'USD',
       surchargeSchema: 'mileage_band',
@@ -6742,7 +6757,9 @@ window.AERO_NEWS_LATEST=window.AERO_MARKET_BRIEF_20260616;
     {name:'Korean Air official notice',url:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2607-infuel?pageNum=1'},
     {name:'Asiana Airlines official notice',url:'https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202606160002529424&dispCt=all&page=1&searchOption=0&searchText='},
     {name:'Jeju Air official notice',url:'https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000729'},
-    {name:'Jin Air official notice',url:'https://www.jinair.com/company/announce/announceView?anceSeq=28218&searchWord=&searchKey=titlCtn&page=1'}
+    {name:'Jin Air official notice',url:'https://www.jinair.com/company/announce/announceView?anceSeq=28218&searchWord=&searchKey=titlCtn&page=1'},
+    {name:'Air Busan official notice',url:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4377'},
+    {name:'Eastar Jet official notice',url:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=608&lang=KR'}
   ];
   window.AERO_MARKET_BRIEF_20260617 = {
     asOf:'2026.06.17 KST',
@@ -6846,7 +6863,42 @@ window.AERO_NEWS_LATEST=window.AERO_MARKET_BRIEF_20260616;
       links:[{href:'forecast.html',label:'8월 전망 핵심 지표 보기'}]
     }
   ];
-  cards.forEach(function(card, idx){
+  cards.push({
+    id:'news-20260617-air-busan-july-official',
+    slug:'air-busan-july-2026-fuel-surcharge-official-notice',
+    category:'airline',
+    topic:'official-notice',
+    priority:1,
+    title:'에어부산 2026년 7월 국제선 유류할증료 공식 공시 — 6월 대비 전 구간 인하',
+    aiBrief:'에어부산의 2026년 7월 한국 출발 국제선 유류할증료가 공식 공시됐고, 6월 대비 모든 USD 구간이 인하됐습니다.',
+    summary:'에어부산이 2026년 7월 한국 출발 국제선 유류할증료를 공식 공시했습니다.\n\n■ 적용 기간: 2026년 7월 1일~7월 31일 (발권일 기준)\n■ 공시 통화: USD\n■ 공시 상태: 공식 공시 확인\n\n■ 6월 → 7월 변화:\n• 1구간 (~699mi): USD 43 → USD 30\n• 2구간 (700~1,299mi): USD 77 → USD 54\n• 3구간 (1,300~1,999mi): USD 90 → USD 64\n• 4구간 (2,000mi~): USD 106 → USD 74\n\n7월 공시가 확인된 항공사는 대한항공, 아시아나항공, 제주항공, 진에어, 에어부산, 이스타항공으로 확대됐습니다. 미공시 항공사는 확인 전까지 공시 전 상태로 분리 표시합니다.',
+    impact:'에어부산 7월 공식 공시 반영 완료. 6월 대비 전 구간 인하가 확인됐으며 USD 공시 기준으로 표시합니다.',
+    tags:['에어부산','2026년 7월 유류할증료','국제선 유류할증료','USD 공시','항공사 공식'],
+    sourceRefs:[{name:'Air Busan official notice',url:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4377'}],
+    faq:[
+      {q:'2026년 7월 에어부산 유류할증료는 얼마인가?',a:'에어부산 2026년 7월 한국 출발 국제선 유류할증료는 USD 30, USD 54, USD 64, USD 74로 공시됐습니다. 구간은 에어부산 공식 거리 구간 기준입니다.'},
+      {q:'에어부산 7월 유류할증료는 6월보다 내려갔나?',a:'네. 공식 공시 기준으로 1구간 USD 43→30, 2구간 USD 77→54, 3구간 USD 90→64, 4구간 USD 106→74로 전 구간 인하됐습니다.'}
+    ],
+    links:[{href:'airlines.html',label:'항공사별 7월 공시 보기'},{href:'fuel-surcharge-korea.html',label:'6월→7월 비교 보기'}]
+  });
+  cards.push({
+    id:'news-20260617-eastar-july-official',
+    slug:'eastar-jet-july-2026-fuel-surcharge-official-notice',
+    category:'airline',
+    topic:'official-notice',
+    priority:1,
+    title:'이스타항공 2026년 7월 국제선 유류할증료 공식 공시 — 6월 대비 전 구간 인하',
+    aiBrief:'이스타항공의 2026년 7월 한국 출발 국제선 유류할증료가 공식 공시됐고, 6월 대비 모든 USD 군이 인하됐습니다.',
+    summary:'이스타항공이 2026년 7월 한국 출발 국제선 유류할증료를 공식 공시했습니다.\n\n■ 적용 기간: 2026년 7월 1일~7월 31일 (발권일 기준)\n■ 공시 통화: USD\n■ 공시 상태: 공식 공시 확인\n\n■ 6월 → 7월 변화:\n• 1군: USD 43 → USD 30\n• 2군: USD 54 → USD 38\n• 3군: USD 66 → USD 45\n• 4군: USD 79 → USD 55\n• 5군: USD 89 → USD 62\n• 6군: USD 103 → USD 72\n\n7월 공시 확인 항공사는 대한항공, 아시아나항공, 제주항공, 진에어, 에어부산, 이스타항공으로 확대됐습니다. 에어서울, 티웨이항공, 에어프레미아 등 미공시 항공사는 확인 전까지 공시 전 상태로 분리 표시합니다.',
+    impact:'이스타항공 7월 공식 공시 반영 완료. 6월 대비 전 구간 인하가 확인됐으며 USD 공시 기준으로 표시합니다.',
+    tags:['이스타항공','2026년 7월 유류할증료','국제선 유류할증료','USD 공시','항공사 공식'],
+    sourceRefs:[{name:'Eastar Jet official notice',url:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=608&lang=KR'}],
+    faq:[
+      {q:'2026년 7월 이스타항공 유류할증료는 얼마인가?',a:'이스타항공 2026년 7월 한국 출발 국제선 유류할증료는 공식 공시 기준 1군 USD 30, 2군 USD 38, 3군 USD 45, 4군 USD 55, 5군 USD 62, 6군 USD 72입니다.'},
+      {q:'이스타항공 7월 유류할증료는 6월보다 내려갔나?',a:'네. 공식 공시 기준으로 1군 USD 43→30, 2군 USD 54→38, 3군 USD 66→45, 4군 USD 79→55, 5군 USD 89→62, 6군 USD 103→72로 전 구간 인하됐습니다.'}
+    ],
+    links:[{href:'airlines.html',label:'항공사별 7월 공시 보기'},{href:'fuel-surcharge-korea.html',label:'6월→7월 비교 보기'}]
+  });  cards.forEach(function(card, idx){
     card.date = date;
     card.updatedAt = updatedKo;
     card.badge = 'NEW';
@@ -6876,6 +6928,37 @@ window.AERO_NEWS_LATEST=window.AERO_MARKET_BRIEF_20260616;
       faq:card.faq,
       links:card.links
     };
+    if(card.id === 'news-20260617-eastar-july-official') {
+      card.i18n.en = {
+        updatedAt:'Updated 2026.06.17 KST',
+        title:'Eastar Jet July 2026 International Fuel Surcharge Official Notice - All USD Groups Down vs June',
+        aiBrief:'Eastar Jet has published its July 2026 Korea-departure international fuel surcharge, with all USD groups lower than June.',
+        summary:'Eastar Jet has published its July 2026 Korea-departure international fuel surcharge notice.\n\nApplied period: July 1-31, 2026 (ticketing date basis)\nCurrency: USD\nStatus: official notice verified\n\nJune to July changes:\n- Group 1: USD 43 to USD 30\n- Group 2: USD 54 to USD 38\n- Group 3: USD 66 to USD 45\n- Group 4: USD 79 to USD 55\n- Group 5: USD 89 to USD 62\n- Group 6: USD 103 to USD 72\n\nVerified July notices now include Korean Air, Asiana Airlines, Jeju Air, Jin Air, Air Busan and Eastar Jet. Air Seoul, Tway Air and Air Premia remain pending until official notices are verified.',
+        impact:'Eastar Jet July official notice reflected. All USD groups are lower than June and are displayed using the airline official USD filing.',
+        tags:['Eastar Jet','July 2026 fuel surcharge','international fuel surcharge','USD filing','airline official notice'],
+        sourceRefs:card.sourceRefs,
+        faq:[
+          {q:'How much is Eastar Jet fuel surcharge in July 2026?',a:'Eastar Jet July 2026 Korea-departure international fuel surcharge is USD 30, 38, 45, 55, 62 and 72 by official group.'},
+          {q:'Did Eastar Jet July surcharge fall from June?',a:'Yes. The official notice shows all groups down: USD 43 to 30, 54 to 38, 66 to 45, 79 to 55, 89 to 62 and 103 to 72.'}
+        ],
+        links:[{href:'airlines.html',label:'View July airline notices'},{href:'fuel-surcharge-korea.html',label:'Compare June to July'}]
+      };
+    }    if(card.id === 'news-20260617-air-busan-july-official') {
+      card.i18n.en = {
+        updatedAt:'Updated 2026.06.17 KST',
+        title:'Air Busan July 2026 International Fuel Surcharge Official Notice — All USD Bands Down vs June',
+        aiBrief:'Air Busan has published its July 2026 Korea-departure international fuel surcharge, with all USD bands lower than June.',
+        summary:'Air Busan has published its July 2026 Korea-departure international fuel surcharge notice.\n\n■ Applied period: July 1-31, 2026 (ticketing date basis)\n■ Currency: USD\n■ Status: official notice verified\n\n■ June → July changes:\n• Band 1 (~699mi): USD 43 → USD 30\n• Band 2 (700-1,299mi): USD 77 → USD 54\n• Band 3 (1,300-1,999mi): USD 90 → USD 64\n• Band 4 (2,000mi+): USD 106 → USD 74\n\nVerified July notices now include Korean Air, Asiana Airlines, Jeju Air, Jin Air and Air Busan. Pending airlines remain separated until official notices are verified.',
+        impact:'Air Busan July official notice reflected. All USD bands are lower than June and are displayed using the airline official USD filing.',
+        tags:['Air Busan','July 2026 fuel surcharge','international fuel surcharge','USD filing','airline official notice'],
+        sourceRefs:card.sourceRefs,
+        faq:[
+          {q:'How much is Air Busan fuel surcharge in July 2026?',a:'Air Busan July 2026 Korea-departure international fuel surcharge is published at USD 30, USD 54, USD 64 and USD 74 by the airline distance bands.'},
+          {q:'Did Air Busan July surcharge fall from June?',a:'Yes. The official notice shows all bands down: USD 43→30, USD 77→54, USD 90→64 and USD 106→74.'}
+        ],
+        links:[{href:'airlines.html',label:'View July airline notices'},{href:'fuel-surcharge-korea.html',label:'Compare June to July'}]
+      };
+    }
   });
   window.AERO_NEWS_CARDS_20260617 = cards.concat(window.AERO_NEWS_CARDS_20260617 || []);
 })();
