@@ -6714,6 +6714,159 @@ window.AERO_MARKET_BRIEF_20260616 = {
 })();
 window.AERO_NEWS_LATEST=window.AERO_MARKET_BRIEF_20260616;
 
+/* 2026.06.17 KST market brief and news cards. */
+(function(){
+  var date = '2026-06-17';
+  var updatedKo = '2026.06.17 KST 업데이트';
+  var marketRefs = [
+    {name:'U.S. EIA - Petroleum & Other Liquids',url:'https://www.eia.gov/petroleum/'},
+    {name:'IATA - Fuel Price Monitor',url:'https://www.iata.org/en/publications/economics/fuel-monitor/'},
+    {name:'Bank of Korea ECOS',url:'https://ecos.bok.or.kr/'},
+    {name:'UKMTO - Maritime Security',url:'https://www.ukmto.org/'}
+  ];
+  var officialRefs = [
+    {name:'Korean Air official notice',url:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2607-infuel?pageNum=1'},
+    {name:'Asiana Airlines official notice',url:'https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202606160002529424&dispCt=all&page=1&searchOption=0&searchText='},
+    {name:'Jeju Air official notice',url:'https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000729'},
+    {name:'Jin Air official notice',url:'https://www.jinair.com/company/announce/announceView?anceSeq=28218&searchWord=&searchKey=titlCtn&page=1'}
+  ];
+  window.AERO_MARKET_BRIEF_20260617 = {
+    asOf:'2026.06.17 KST',
+    forecastTargetMonth:'2026-08',
+    category:'market',
+    title:'2026년 8월 유류할증료 전망: 보합 또는 소폭 인하 가능성 우세',
+    summary:'7월 공시 항공사 4곳의 인하, 브렌트유 하락, 원화 강세, 호르무즈 해협 통항 정상화 기대는 8월 유류할증료 하방 요인입니다. 다만 싱가포르 석유 재고가 약 13년 최저 수준이고 중동 리스크와 선박 보험료 부담이 남아 있어 급격한 인하로 단정하기는 어렵습니다.',
+    direction:'보합 또는 소폭 인하 가능성 우세',
+    keywords:['2026년 8월 유류할증료 전망','국제선 유류할증료','MOPS','항공유 가격','원달러 환율','호르무즈 해협','브렌트유','싱가포르 항공유'],
+    sourceRefs:marketRefs
+  };
+  var cards = [
+    {
+      id:'news-20260617-august-outlook',
+      slug:'august-2026-fuel-surcharge-flat-or-slight-cut',
+      category:'market',
+      topic:'outlook',
+      priority:1,
+      title:'2026년 8월 유류할증료, 보합 또는 소폭 인하 가능성 우세',
+      aiBrief:'7월 공시 인하와 시장 안정 요인이 8월 국제선 유류할증료의 하방 압력을 키우고 있습니다.',
+      summary:'대한항공, 아시아나항공, 제주항공, 진에어의 2026년 7월 공식 공시는 모두 6월 대비 인하로 확인됐습니다. 여기에 브렌트유 하락, 원화 강세, 호르무즈 해협 통항 정상화 기대가 더해지며 8월 유류할증료는 보합 또는 소폭 인하 가능성이 우세합니다.',
+      impact:'8월 전망 영향: 하방 요인이 우세합니다. 다만 싱가포르 석유 재고 부족과 중동 리스크 때문에 급격한 인하보다는 보합 또는 소폭 인하 시나리오가 적절합니다.',
+      tags:['2026년 8월 유류할증료 전망','국제선 유류할증료','MOPS','항공유 가격','원달러 환율','브렌트유','호르무즈 해협'],
+      sourceRefs:marketRefs,
+      faq:[
+        {q:'2026년 8월 유류할증료는 인하될까요?',a:'현재 기준으로는 보합 또는 소폭 인하 가능성이 우세합니다. 다만 항공유 재고 부족과 지정학 리스크가 남아 있어 큰 폭 인하로 단정하기는 어렵습니다.'},
+        {q:'7월 공시 인하가 8월 전망에 영향을 주나요?',a:'영향을 줍니다. 7월에 공시된 4개 항공사가 모두 6월 대비 인하되면서 8월 전망의 기준점도 하방 쪽으로 이동했습니다.'}
+      ],
+      links:[{href:'forecast.html',label:'8월 전망 보기'},{href:'airlines.html',label:'7월 공시 항공사 보기'}]
+    },
+    {
+      id:'news-20260617-positive-factors',
+      slug:'brent-krw-hormuz-positive-factors-june-17',
+      category:'market',
+      topic:'oil',
+      priority:2,
+      title:'브렌트유 하락·원화 강세, 8월 유류할증료 하방 요인 확대',
+      aiBrief:'브렌트유 하락, 싱가포르 항공유 프리미엄 완화, 원화 강세가 유류할증료 상승 압력을 낮추고 있습니다.',
+      summary:'미국·이란 긴장 완화와 호르무즈 해협 통항 정상화 기대가 커지면서 브렌트유 급등 우려가 일부 완화됐습니다. 원화 강세와 싱가포르 항공유 프리미엄 하락도 항공권 유류할증료 상승 압력을 낮추는 방향으로 작용합니다.',
+      impact:'긍정 요인: 국제유가와 환율 부담이 동시에 완화되면 다음 공시월의 유류할증료 인하 가능성이 높아질 수 있습니다.',
+      tags:['브렌트유 하락','원화 강세','싱가포르 항공유 프리미엄','항공권 유류할증료','MOPS 전망'],
+      sourceRefs:marketRefs,
+      faq:[
+        {q:'브렌트유 하락은 유류할증료에 바로 반영되나요?',a:'바로 반영되지는 않습니다. 항공사 공시는 MOPS 항공유 가격, 환율, 적용 기간을 함께 보므로 시차가 생길 수 있습니다.'},
+        {q:'원화 강세는 왜 긍정 요인인가요?',a:'항공유와 항공 관련 비용은 달러 기준 영향이 크기 때문에 원화 강세는 원화 기준 비용 부담을 낮추는 요인입니다.'}
+      ],
+      links:[{href:'forecast.html',label:'시장 지표 해석 보기'}]
+    },
+    {
+      id:'news-20260617-risk-factors',
+      slug:'singapore-inventory-hormuz-risk-june-17',
+      category:'market',
+      topic:'hormuz',
+      priority:3,
+      title:'싱가포르 석유 재고 부족과 호르무즈 리스크, 큰 폭 인하 제한',
+      aiBrief:'싱가포르 석유 재고가 낮고 선박 보험료 부담이 남아 있어 항공유 가격의 급락을 기대하기는 어렵습니다.',
+      summary:'긍정적인 시장 흐름에도 싱가포르 석유 재고가 약 13년 최저 수준이라는 점은 부담입니다. 중동 지정학 리스크, 선박 보험료 상승, 공급망 정상화 미완료도 남아 있어 8월 유류할증료를 급격한 인하로 보기에는 아직 이릅니다.',
+      impact:'부정 요인: 항공유 공급망과 보험료 부담이 유지되면 MOPS 하락 속도가 제한되고, 유류할증료 인하 폭도 제한될 수 있습니다.',
+      tags:['싱가포르 석유 재고','호르무즈 해협','선박 보험료','중동 리스크','항공유 가격 전망'],
+      sourceRefs:marketRefs,
+      faq:[
+        {q:'싱가포르 석유 재고가 왜 중요합니까?',a:'싱가포르 시장은 아시아 항공유 가격과 MOPS 흐름에 영향을 주는 핵심 지표 중 하나라 재고 부족은 가격 하락을 제한할 수 있습니다.'},
+        {q:'호르무즈 해협 정상화 기대가 있는데도 왜 위험 요인인가요?',a:'통항 기대는 커졌지만 실제 물류 정상화, 선박 안전 점검, 보험료 안정까지는 시간이 걸릴 수 있기 때문입니다.'}
+      ],
+      links:[{href:'forecast.html',label:'리스크 요인 보기'}]
+    },
+    {
+      id:'news-20260617-july-official-baseline',
+      slug:'july-2026-official-notices-become-august-baseline',
+      category:'airline',
+      topic:'official-notice',
+      priority:4,
+      title:'7월 공시 인하, 8월 유류할증료 전망의 기준점으로 전환',
+      aiBrief:'대한항공·아시아나항공·제주항공·진에어의 7월 공시는 모두 6월 대비 인하로 확인됐습니다.',
+      summary:'2026년 7월 공시가 확인된 대한항공, 아시아나항공, 제주항공, 진에어는 모두 6월 대비 인하되었습니다. 따라서 뉴스와 전망 페이지에서는 7월은 사실 데이터로, 8월은 전망 데이터로 분리해서 해석해야 합니다.',
+      impact:'데이터 기준: 7월 공시 완료 항공사는 확정 데이터로 표시하고, 미공시 항공사는 공시 전 상태로 유지해야 합니다.',
+      tags:['2026년 7월 유류할증료','대한항공 유류할증료','아시아나 유류할증료','제주항공 유류할증료','진에어 유류할증료'],
+      sourceRefs:officialRefs,
+      faq:[
+        {q:'2026년 7월 공시 완료 항공사는 어디인가요?',a:'현재 사이트 기준으로 대한항공, 아시아나항공, 제주항공, 진에어가 2026년 7월 한국 출발 국제선 유류할증료를 공시한 상태입니다.'},
+        {q:'미공시 항공사는 어떻게 표시해야 하나요?',a:'공식 공시가 확인되기 전까지는 금액을 임의로 만들지 않고 공시 전 또는 대기 상태로 표시해야 합니다.'}
+      ],
+      links:[{href:'airlines.html',label:'항공사별 7월 공시 보기'}]
+    },
+    {
+      id:'news-20260617-indicators-to-watch',
+      slug:'mops-iata-fx-indicators-to-watch-june-17',
+      category:'institution',
+      topic:'mops',
+      priority:5,
+      title:'MOPS·IATA 항공유·환율, 다음 공시월 핵심 확인 변수',
+      aiBrief:'7월 공시가 시작된 이후에는 MOPS, IATA 항공유 가격, 원달러 환율이 8월 전망의 핵심 지표입니다.',
+      summary:'7월 공시 금액은 항공사별 공식 데이터로 확정 관리하고, 이후 시장 지표는 8월 전망 판단에 활용해야 합니다. MOPS 항공유 가격, IATA 항공유 지표, 원달러 환율, 호르무즈 해협 물류 정상화 여부가 다음 공시월의 핵심 확인 변수입니다.',
+      impact:'GEO/AEO 관점: 7월 확정 데이터와 8월 전망 데이터를 분리하면 AI 검색엔진이 인용하기 쉬운 구조가 됩니다.',
+      tags:['MOPS','IATA 항공유','원달러 환율','환율 전망','8월 유류할증료 전망'],
+      sourceRefs:marketRefs,
+      faq:[
+        {q:'MOPS와 IATA 항공유 가격은 같은 지표인가요?',a:'둘 다 항공유 시장을 보는 데 활용되지만 산정 기준과 제공 방식이 다릅니다. 유류할증료 판단에는 항공사 공시 기준과 MOPS 흐름을 함께 보는 것이 안전합니다.'},
+        {q:'7월 공시 이후 가장 먼저 볼 지표는 무엇인가요?',a:'MOPS 항공유 가격, 원달러 환율, 국제유가, 호르무즈 해협 물류 정상화 여부를 함께 확인하는 것이 좋습니다.'}
+      ],
+      links:[{href:'forecast.html',label:'8월 전망 핵심 지표 보기'}]
+    }
+  ];
+  cards.forEach(function(card, idx){
+    card.date = date;
+    card.updatedAt = updatedKo;
+    card.badge = 'NEW';
+    card.aiSummary = true;
+    card.relevanceScore = 1;
+    card.i18n = card.i18n || {};
+    card.i18n.en = {
+      updatedAt:'Updated 2026.06.17 KST',
+      title:[
+        'August 2026 fuel surcharge: flat to slight cut scenario leads',
+        'Lower Brent and a stronger KRW add downside pressure',
+        'Singapore inventory shortage and Hormuz risk limit a sharp cut',
+        'July official cuts become the baseline for August outlook',
+        'MOPS, IATA jet fuel and USD/KRW are the key next indicators'
+      ][idx],
+      aiBrief:[
+        'July official cuts and easing market indicators point to downside pressure for August.',
+        'Lower Brent, softer Singapore jet-fuel premium and a stronger KRW reduce surcharge pressure.',
+        'Low Singapore inventories, insurance costs and incomplete logistics normalization still matter.',
+        'July verified notices should be treated as factual data, while August remains an outlook.',
+        'After July notices, MOPS, IATA jet fuel, USD/KRW and Hormuz logistics are the key watch items.'
+      ][idx],
+      summary:card.summary,
+      impact:card.impact,
+      tags:card.tags,
+      sourceRefs:card.sourceRefs,
+      faq:card.faq,
+      links:card.links
+    };
+  });
+  window.AERO_NEWS_CARDS_20260617 = cards.concat(window.AERO_NEWS_CARDS_20260617 || []);
+})();
+window.AERO_NEWS_LATEST=window.AERO_MARKET_BRIEF_20260617;
+
 /*
  * News taxonomy and sourcing policy:
  * categories are limited to airline, institution, and market.

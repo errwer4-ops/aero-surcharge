@@ -2834,7 +2834,8 @@ var FIXED_NEWS = [
    tags:['환율','USDKRW']}
 ];
 
-FIXED_NEWS = (window.AERO_NEWS_CARDS_20260616 || [])
+FIXED_NEWS = (window.AERO_NEWS_CARDS_20260617 || [])
+  .concat(window.AERO_NEWS_CARDS_20260616 || [])
   .concat(window.AERO_NEWS_CARDS_20260615 || [])
   .concat(window.AERO_NEWS_CARDS_20260612 || [])
   .concat(window.AERO_NEWS_CARDS_20260610 || [])
@@ -4975,6 +4976,72 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
     'news.forecastCta.title':'July 2026 fuel surcharge notice status',
     'news.forecastCta.desc':'Check confirmed airlines, pending airlines and June-to-July changes.',
     'news.forecastCta.btn':'View July notice status →'
+  };
+  window.PAGE_I18N_OVERRIDE.ko = window.PAGE_I18N_OVERRIDE.ko || {};
+  window.PAGE_I18N_OVERRIDE.en = window.PAGE_I18N_OVERRIDE.en || {};
+  Object.assign(window.PAGE_I18N_OVERRIDE.ko, ko);
+  Object.assign(window.PAGE_I18N_OVERRIDE.en, en);
+  ['ja','zh','fr','de'].forEach(function(lang){
+    window.PAGE_I18N_OVERRIDE[lang] = window.PAGE_I18N_OVERRIDE[lang] || {};
+    Object.assign(window.PAGE_I18N_OVERRIDE[lang], en);
+  });
+})();
+
+(function(){
+  window.PAGE_I18N_OVERRIDE = window.PAGE_I18N_OVERRIDE || {};
+  var ko = {
+    'news.metaTitle':'2026년 8월 유류할증료 전망 뉴스 | 6월 17일 시장 동향·7월 공시 반영',
+    'news.metaDesc':'2026.06.17 KST 기준 브렌트유 하락, 원화 강세, 호르무즈 통항 정상화 기대, 싱가포르 재고 부족을 반영한 2026년 8월 유류할증료 전망 뉴스입니다.',
+    'news.pageTitle':'2026년 8월 유류할증료 전망과 7월 공시 뉴스',
+    'news.pageSub':'2026.06.17 KST 기준 · 7월 공시 인하 반영 · 8월 보합 또는 소폭 인하 가능성',
+    'news.summary.title':'2026.06.17 핵심 뉴스 요약',
+    'news.summary.updated':'2026.06.17 KST 기준',
+    'news.summary.li1':'8월 유류할증료는 현재 기준 보합 또는 소폭 인하 가능성이 우세합니다.',
+    'news.summary.li2':'7월 공시 완료 항공사 4곳은 모두 6월 대비 인하됐습니다.',
+    'news.summary.li3':'긍정 요인: 미국·이란 긴장 완화, 브렌트유 하락, 호르무즈 통항 정상화 기대, 싱가포르 항공유 프리미엄 하락, 원화 강세.',
+    'news.summary.li4':'부정 요인: 싱가포르 석유 재고 약 13년 최저, 중동 지정학 리스크, 선박 보험료 상승, 공급망 정상화 미완료.',
+    'news.summary.li5':'큰 폭 인하보다 보합 또는 소폭 인하 시나리오가 현재 기준으로 더 적절합니다.',
+    'news.marketTitle':'2026.06.17 시장 동향',
+    'news.dataRef':'2026.06.17 KST 기준 8월 전망 점검',
+    'news.brent':'브렌트유: 미국·이란 긴장 완화와 호르무즈 해협 통항 정상화 기대가 반영되며 급등 부담이 일부 완화됐습니다.',
+    'news.mops':'항공유 가격(MOPS): 싱가포르 항공유 프리미엄 하락은 긍정적이지만 석유 재고 부족으로 큰 폭 하락은 제한될 수 있습니다.',
+    'news.fx':'원달러 환율: 원화 강세는 항공사의 원화 기준 연료비 부담을 낮추는 방향으로 작용합니다.',
+    'news.geo':'지정학 리스크: 호르무즈 해협 통항 정상화 기대는 커졌지만 선박 보험료와 공급망 정상화 지연은 계속 확인해야 합니다.',
+    'news.marketSummary':'7월 공식 공시 금액은 사실 데이터로 관리하고, 8월은 MOPS·IATA 항공유·원달러 환율·호르무즈 리스크를 기준으로 전망합니다.',
+    'news.fxDominance':'핵심 판단: 7월 공시 인하 + 시장 안정 요인으로 8월은 보합 또는 소폭 인하 가능성이 우세하나 급격한 인하는 제한적입니다.',
+    'news.decisionTitle':'결론: 7월 공시는 사실 데이터, 8월은 보합 또는 소폭 인하 전망',
+    'news.decisionLine1':'대한항공, 아시아나항공, 제주항공, 진에어의 7월 공시는 확정 데이터로 반영합니다.',
+    'news.decisionLine2':'8월 유류할증료는 현재 시장 흐름상 보합 또는 소폭 인하 가능성이 우세하지만 싱가포르 재고 부족과 호르무즈 리스크를 계속 확인해야 합니다.',
+    'news.forecastCta.title':'2026년 8월 유류할증료 전망 확인',
+    'news.forecastCta.desc':'7월 공시 인하 이후 MOPS, 환율, 국제유가, 호르무즈 리스크를 기준으로 다음 공시월 방향을 확인하세요.',
+    'news.forecastCta.btn':'8월 전망 보기 →'
+  };
+  var en = {
+    'news.metaTitle':'August 2026 Fuel Surcharge Outlook News | June 17 Market Update',
+    'news.metaDesc':'As of June 17, 2026 KST, this news page reflects lower Brent, a stronger KRW, Hormuz normalization hopes and Singapore inventory risk for the August 2026 fuel surcharge outlook.',
+    'news.pageTitle':'August 2026 Fuel Surcharge Outlook and July Notice News',
+    'news.pageSub':'June 17, 2026 KST · July official cuts reflected · August flat to slight cut scenario leads',
+    'news.summary.title':'June 17, 2026 Key News Summary',
+    'news.summary.updated':'As of June 17, 2026 KST',
+    'news.summary.li1':'The August fuel surcharge outlook currently leans flat to slightly lower.',
+    'news.summary.li2':'All four airlines with verified July notices are lower than June.',
+    'news.summary.li3':'Positive factors: U.S.-Iran easing, lower Brent, Hormuz normalization hopes, softer Singapore jet-fuel premium and stronger KRW.',
+    'news.summary.li4':'Negative factors: Singapore oil inventories near a 13-year low, Middle East risk, higher vessel insurance costs and incomplete supply-chain normalization.',
+    'news.summary.li5':'A flat to slight cut scenario is more appropriate than a sharp cut at this point.',
+    'news.marketTitle':'June 17, 2026 Market Update',
+    'news.dataRef':'August outlook check as of June 17, 2026 KST',
+    'news.brent':'Brent: U.S.-Iran easing and Hormuz transit normalization hopes reduce upside pressure.',
+    'news.mops':'Jet fuel price (MOPS): a softer Singapore jet-fuel premium helps, but low inventories may limit a large decline.',
+    'news.fx':'USD/KRW: a stronger KRW lowers KRW-equivalent fuel-cost pressure for airlines.',
+    'news.geo':'Geopolitical risk: Hormuz normalization hopes are positive, but vessel insurance and supply-chain delays still need monitoring.',
+    'news.marketSummary':'July official amounts are factual data; August remains an outlook based on MOPS, IATA jet fuel, USD/KRW and Hormuz risk.',
+    'news.fxDominance':'Core view: July official cuts and market easing make flat to slight August cuts more likely, while sharp cuts remain limited.',
+    'news.decisionTitle':'Conclusion: July is factual data; August leans flat to slightly lower',
+    'news.decisionLine1':'Korean Air, Asiana, Jeju Air and Jin Air July notices are reflected as verified data.',
+    'news.decisionLine2':'August currently leans flat to slightly lower, but Singapore inventory shortages and Hormuz risk remain watch items.',
+    'news.forecastCta.title':'Check the August 2026 fuel surcharge outlook',
+    'news.forecastCta.desc':'Review MOPS, FX, oil and Hormuz risks after the July official cuts.',
+    'news.forecastCta.btn':'View August outlook →'
   };
   window.PAGE_I18N_OVERRIDE.ko = window.PAGE_I18N_OVERRIDE.ko || {};
   window.PAGE_I18N_OVERRIDE.en = window.PAGE_I18N_OVERRIDE.en || {};
