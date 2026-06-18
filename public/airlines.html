@@ -214,7 +214,7 @@
       <a href="fuel-surcharge-calculator.html"       style="display:block;padding:9px 13px;background:var(--bg);border:1.5px solid var(--line);border-radius:9px;font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;">🧮 유류할증료 계산 방법</a>
       <a href="fuel-surcharge-2026-05.html"          style="display:block;padding:9px 13px;background:var(--bg);border:1.5px solid var(--line);border-radius:9px;font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;">📅 2026년 5월 유류할증료</a>
       <a href="fuel-surcharge-2026-05.html" style="display:block;padding:9px 13px;background:var(--bg);border:1.5px solid var(--line);border-radius:9px;font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;">✅ 2026년 6월 유류할증료</a>
-      <a href="forecast.html" style="display:block;padding:9px 13px;background:var(--bg);border:1.5px solid var(--line);border-radius:9px;font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;">🔮 2026년 7월 전망</a>
+      <a href="forecast.html" style="display:block;padding:9px 13px;background:var(--bg);border:1.5px solid var(--line);border-radius:9px;font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;">🔮 2026년 8월 전망</a>
     </div>
   </section>
 
@@ -1187,6 +1187,52 @@ document.querySelector('.filter-tabs').addEventListener('click',function(e){
 document.getElementById('searchInput').addEventListener('input',function(e){
   searchQ=e.target.value.trim(); openCode=null; renderTable();
 });
+
+(function applyFinalJulyOfficialAirlinesCopy(){
+  var ko = AIRLINES_I18N.ko || {};
+  var en = AIRLINES_I18N.en || {};
+  ko.seoSummaryH2 = '📋 2026년 7월 한국 출발 국제선 유류할증료 공시 반영 요약';
+  ko.seoSummaryP = '2026년 7월 한국 출발 국제선 유류할증료는 <strong>대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공</strong> 공식 공시가 확인되어 반영되었습니다. 대한항공은 46,400원~344,000원, 아시아나항공은 48,500원~275,800원, 제주항공은 USD 30~72, 진에어는 USD 27~79, 에어부산은 USD 30~74, 이스타항공은 USD 30~72 기준입니다. 아직 7월 공시가 확인되지 않은 항공사는 6월 기준 또는 공시 대기 상태로 구분합니다.';
+  ko.surchargeIntro = '아래는 2026년 6월 공시와 2026년 7월 공식 공시를 비교하는 항공사별 목록입니다. 7월 공식 공시가 확인된 대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공은 7월 금액을 반영하고, 미공시 항공사는 공시 대기 상태로 표시합니다.';
+  ko.analysisH3 = '2026년 6월 → 7월 유류할증료 공식 공시 반영 현황';
+  ko.analysisBullets = [
+    '<strong>대한항공</strong> 2026년 7월 공식 공시 반영: 46,400원~344,000원.',
+    '<strong>아시아나항공</strong> 2026년 7월 공식 공시 반영: 48,500원~275,800원.',
+    '<strong>제주항공</strong> 2026년 7월 USD 공식 공시 반영: USD 30~72.',
+    '<strong>진에어</strong> 2026년 7월 USD 공식 공시 반영: USD 27~79.',
+    '<strong>에어부산</strong> 2026년 7월 USD 공식 공시 반영: USD 30~74.',
+    '<strong>이스타항공</strong> 2026년 7월 USD 공식 공시 반영: USD 30~72.',
+    '<strong>미공시 항공사</strong>는 7월 금액을 임의 생성하지 않고 6월 기준 또는 공시 대기 상태로 분리 표시합니다.'
+  ];
+  ko.expandHint = '6월→7월 비교';
+  ko.compareTitle = '6월 vs 7월 유류할증료 비교';
+  ko.aprNotice = '6월 공식 공지';
+  ko.mayNotice = '7월 공식 공지';
+  ko.mayBasedLabel = '7월 기준 (공식 공시)';
+  ko.aprBasedLabel = '6월 기준';
+  ko.statusText = function(upd,nxt,base){return '갱신: '+upd+' · '+nxt+' 공식 공지 기준 ('+base+' 비교 포함)';};
+
+  en.seoSummaryH2 = '📋 July 2026 Korea-Departure Fuel Surcharge Filing Summary';
+  en.seoSummaryP = 'July 2026 official filings are reflected for <strong>Korean Air, Asiana Airlines, Jeju Air, Jin Air, Air Busan and Eastar Jet</strong>. Korean Air is KRW 46,400-344,000, Asiana is KRW 48,500-275,800, Jeju Air is USD 30-72, Jin Air is USD 27-79, Air Busan is USD 30-74 and Eastar Jet is USD 30-72. Airlines without verified July notices remain on June basis or pending status.';
+  en.surchargeIntro = 'This table compares June 2026 filings with July 2026 official filings where verified. Korean Air, Asiana, Jeju Air, Jin Air, Air Busan and Eastar Jet use July amounts; unverified airlines remain separated as pending.';
+  en.analysisH3 = 'June to July 2026 Fuel Surcharge Filing Status';
+  en.analysisBullets = [
+    '<strong>Korean Air</strong> July 2026 filing reflected: KRW 46,400-344,000.',
+    '<strong>Asiana Airlines</strong> July 2026 filing reflected: KRW 48,500-275,800.',
+    '<strong>Jeju Air</strong> July 2026 USD filing reflected: USD 30-72.',
+    '<strong>Jin Air</strong> July 2026 USD filing reflected: USD 27-79.',
+    '<strong>Air Busan</strong> July 2026 USD filing reflected: USD 30-74.',
+    '<strong>Eastar Jet</strong> July 2026 USD filing reflected: USD 30-72.',
+    '<strong>Pending airlines</strong> are not estimated and remain separated on June basis or pending status.'
+  ];
+  en.expandHint = 'June→July comparison';
+  en.compareTitle = 'June vs July fuel surcharge comparison';
+  en.aprNotice = 'June official notice';
+  en.mayNotice = 'July official notice';
+  en.mayBasedLabel = 'July basis (official filing)';
+  en.aprBasedLabel = 'June basis';
+  en.statusText = function(upd,nxt,base){return 'Updated: '+upd+' · '+nxt+' official notice basis (includes '+base+' comparison)';};
+})();
 
 window.initNav({
   onLangChange:function(){ renderTable(); },

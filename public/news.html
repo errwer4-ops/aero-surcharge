@@ -1042,7 +1042,7 @@ function renderCompareBox(){
 
   ul.innerHTML = ['news.compare.li1','news.compare.li2','news.compare.li3','news.compare.li4',
                   'news.compare.li5','news.compare.li6','news.compare.li7','news.compare.li8',
-                  'news.compare.li9']
+                  'news.compare.li9','news.compare.li10']
     .map(function(k){
       var v = window.t(k);
       /* t() 실패(키 원문 그대로)면 현재언어 → en → ko 순 fallback */
@@ -2834,7 +2834,8 @@ var FIXED_NEWS = [
    tags:['환율','USDKRW']}
 ];
 
-FIXED_NEWS = (window.AERO_NEWS_CARDS_20260617 || [])
+FIXED_NEWS = (window.AERO_NEWS_CARDS_20260618 || [])
+  .concat(window.AERO_NEWS_CARDS_20260617 || [])
   .concat(window.AERO_NEWS_CARDS_20260616 || [])
   .concat(window.AERO_NEWS_CARDS_20260615 || [])
   .concat(window.AERO_NEWS_CARDS_20260612 || [])
@@ -5077,6 +5078,220 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
   window.PAGE_I18N_OVERRIDE.en = window.PAGE_I18N_OVERRIDE.en || {};
   Object.assign(window.PAGE_I18N_OVERRIDE.ko, ko);
   Object.assign(window.PAGE_I18N_OVERRIDE.en, en);
+  ['ja','zh','fr','de'].forEach(function(lang){
+    window.PAGE_I18N_OVERRIDE[lang] = window.PAGE_I18N_OVERRIDE[lang] || {};
+    Object.assign(window.PAGE_I18N_OVERRIDE[lang], en);
+  });
+})();
+
+(function(){
+  window.PAGE_I18N_OVERRIDE = window.PAGE_I18N_OVERRIDE || {};
+  var ko = {
+    'news.metaTitle':'2026년 7월 유류할증료 공시 반영 뉴스 | 대한항공·아시아나·제주항공·진에어·에어부산·이스타항공',
+    'news.metaDesc':'2026.06.17 KST 기준 대한항공, 아시아나항공, 제주항공, 진에어, 에어부산, 이스타항공의 2026년 7월 한국 출발 국제선 유류할증료 공식 공시 반영 뉴스입니다.',
+    'news.pageTitle':'2026년 7월 유류할증료 공시 반영 뉴스',
+    'news.pageSub':'2026.06.17 KST 기준 · 7월 공시 인하 반영 · 8월 전망은 forecast에서 별도 확인',
+    'news.summary.title':'2026년 7월 공식 공시 반영 요약',
+    'news.summary.updated':'2026.06.17 KST 기준',
+    'news.summary.li1':'대한항공 2026년 7월 공시 반영: 46,400원~344,000원',
+    'news.summary.li2':'아시아나항공 2026년 7월 공시 반영: 48,500원~275,800원',
+    'news.summary.li3':'제주항공 2026년 7월 USD 공시 반영: USD 30~72',
+    'news.summary.li4':'진에어 2026년 7월 USD 공시 반영: USD 27~79',
+    'news.summary.li5':'에어부산 2026년 7월 USD 공시 반영: USD 30~74',
+    'news.summary.li6':'이스타항공 2026년 7월 USD 공시 반영: USD 30~72',
+    'news.officialTitle':'주요 항공사 2026년 7월 국제선 유류할증료 공식 공시',
+    'news.officialNotice':'2026.06.17 KST 기준 · 대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공 7월 공시 확인 · 미공시 항공사는 공시 전',
+    'news.official.ke':'7월 공식 공시 반영: 46,400원~344,000원 · <a href="https://www.koreanair.com/contents/footer/customer-support/notice/2026/2607-infuel?pageNum=1" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">공식 공지 ↗</a>',
+    'news.official.oz':'7월 공식 공시 반영: 48,500원~275,800원 · <a href="https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202606160002529424&dispCt=all&page=1&searchOption=0&searchText=" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">공식 공지 ↗</a>',
+    'news.official.lj':'7월 USD 공식 공시 반영: USD 27~79 · <a href="https://www.jinair.com/company/announce/announceView?anceSeq=28218&searchWord=&searchKey=titlCtn&page=1" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">공식 공지 ↗</a>',
+    'news.official.7c':'7월 USD 공식 공시 반영: USD 30~72 · <a href="https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000729" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">공식 공지 ↗</a>',
+    'news.official.bx':'7월 USD 공식 공시 반영: USD 30~74 · <a href="https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4377" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">공식 공지 ↗</a>',
+    'news.official.ze':'7월 USD 공식 공시 반영: USD 30~72 · <a href="https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=608&lang=KR" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">공식 공지 ↗</a>',
+    'news.official.rs':'7월 공시 전 · 확인 전까지 6월 공시 기준과 분리 표시',
+    'news.official.tw':'7월 공시 전 · 확인 전까지 6월 공시 기준과 분리 표시',
+    'news.official.yp':'7월 공시 전 · 확인 전까지 6월 공시 기준과 분리 표시',
+    'news.official.desc':'* 2026년 7월 공시 확인 항공사: KE·OZ·7C·LJ·BX·ZE. 미공시 항공사는 임의 금액을 생성하지 않고 공시 전 상태로 표시합니다. 최종 금액은 발권 전 각 항공사 공식 공지를 확인하세요.',
+    'news.compareTitle':'전월 대비: 6월 → 7월 변화 (공식 공시 기준)',
+    'news.compare.li1':'대한항공: 6월 61,500원~451,500원 → 7월 46,400원~344,000원',
+    'news.compare.li2':'아시아나항공: 6월 68,000원~382,800원 → 7월 48,500원~275,800원',
+    'news.compare.li3':'제주항공(7C): 6월 USD 43~103 → 7월 USD 30~72',
+    'news.compare.li4':'진에어(LJ): 6월 USD 36~115 → 7월 USD 27~79',
+    'news.compare.li5':'에어부산(BX): 6월 USD 43~106 → 7월 USD 30~74',
+    'news.compare.li6':'이스타항공(ZE): 6월 USD 43~103 → 7월 USD 30~72',
+    'news.compare.li7':'에어서울: 7월 공시 전 · 확인 전까지 6월 공시 기준 참고만 가능',
+    'news.compare.li8':'티웨이항공: 7월 공시 전 · 확인 전까지 6월 KRW 공시 기준 참고만 가능',
+    'news.compare.li9':'공통: 7월 공식 공시 확인 항공사만 확정 처리하고, 나머지는 공시 전으로 분리',
+    'news.marketTitle':'7월 공시 반영 이후 확인할 시장 지표',
+    'news.dataRef':'2026.06.17 KST 기준 · 7월 공시 반영 이후 8월 전망 참고 지표',
+    'news.brent':'국제유가: 7월 공시 금액은 이미 확인된 항공사에 반영됐으므로, 이후 유가 흐름은 미공시 항공사와 다음 공시월의 참고 지표입니다.',
+    'news.mops':'항공유 가격(MOPS): 7월 공식 공시가 시작된 이후에도 MOPS는 다음 조정 가능성과 미공시 항공사의 공시 방향을 확인하는 핵심 지표입니다.',
+    'news.fx':'원달러 환율: 제주항공·진에어·에어부산·이스타항공처럼 USD 공시 항공사는 원문 통화가 중요하며, 원화 체감액은 결제 시점 환율에 따라 달라질 수 있습니다.',
+    'news.geo':'지정학 리스크: 호르무즈 해협 통항 정상화 기대는 긍정적이지만, 보험료와 공급망 정상화 지연은 다음 공시월 변수로 계속 확인해야 합니다.',
+    'news.marketSummary':'공식 공시 금액은 항공사별 원문 기준으로 반영하고, MOPS·IATA 항공유·원달러 환율 수치는 8월 전망 참고 지표로 분리합니다.',
+    'news.fxDominance':'핵심 상태: 7월 공시 확인 KE·OZ·7C·LJ·BX·ZE · 미공시 항공사는 공시 전 · 다음 변수는 MOPS·환율·항공유 가격',
+    'news.decisionTitle':'결론: 7월 공식 공시는 확인 항공사만 확정 반영, 미공시 항공사는 대기',
+    'news.decisionLine1':'대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공은 2026년 7월 공식 공시 확인 항공사입니다.',
+    'news.decisionLine2':'에어서울·티웨이항공·에어프레미아 등은 공식 확인 전까지 공시 전 상태로 표시해야 합니다.',
+    'news.decisionShort':'단거리: 7월 공식 공시 확인 항공사 기준 비교',
+    'news.decisionMid':'중거리: 항공사별 거리 구간과 통화 기준을 원문 그대로 확인',
+    'news.decisionLong':'장거리·성수기: 7월 공식 유류할증료와 실제 항공권 총액을 함께 비교',
+    'news.forecastCta.title':'2026년 8월 유류할증료 전망 확인',
+    'news.forecastCta.desc':'7월 공시 인하 이후 MOPS, 환율, 국제유가, 호르무즈 리스크를 기준으로 다음 공시월 방향을 확인하세요.',
+    'news.forecastCta.btn':'8월 전망 보기 →'
+  };
+  var en = {
+    'news.metaTitle':'July 2026 Fuel Surcharge Notice News | KE, OZ, 7C, LJ, BX, ZE',
+    'news.metaDesc':'As of June 17, 2026 KST, July 2026 Korea-origin international fuel surcharge notices are reflected for Korean Air, Asiana, Jeju Air, Jin Air, Air Busan and Eastar Jet.',
+    'news.pageTitle':'July 2026 Fuel Surcharge Notice News',
+    'news.pageSub':'June 17, 2026 KST · July official cuts reflected · August outlook stays separated in forecast',
+    'news.summary.title':'July 2026 Official Notice Summary',
+    'news.summary.updated':'As of June 17, 2026 KST',
+    'news.summary.li1':'Korean Air July notice reflected: KRW 46,400-344,000',
+    'news.summary.li2':'Asiana July notice reflected: KRW 48,500-275,800',
+    'news.summary.li3':'Jeju Air July USD notice reflected: USD 30-72',
+    'news.summary.li4':'Jin Air July USD notice reflected: USD 27-79',
+    'news.summary.li5':'Air Busan July USD notice reflected: USD 30-74',
+    'news.summary.li6':'Eastar Jet July USD notice reflected: USD 30-72',
+    'news.officialTitle':'July 2026 Official Fuel Surcharge Notices',
+    'news.officialNotice':'As of June 17, 2026 KST · KE/OZ/7C/LJ/BX/ZE July notices verified · other airlines pending',
+    'news.official.ke':'July official notice reflected: KRW 46,400-344,000 · <a href="https://www.koreanair.com/contents/footer/customer-support/notice/2026/2607-infuel?pageNum=1" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">Official notice ↗</a>',
+    'news.official.oz':'July official notice reflected: KRW 48,500-275,800 · <a href="https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202606160002529424&dispCt=all&page=1&searchOption=0&searchText=" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">Official notice ↗</a>',
+    'news.official.lj':'July USD official notice reflected: USD 27-79 · <a href="https://www.jinair.com/company/announce/announceView?anceSeq=28218&searchWord=&searchKey=titlCtn&page=1" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">Official notice ↗</a>',
+    'news.official.7c':'July USD official notice reflected: USD 30-72 · <a href="https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000729" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">Official notice ↗</a>',
+    'news.official.bx':'July USD official notice reflected: USD 30-74 · <a href="https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4377" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">Official notice ↗</a>',
+    'news.official.ze':'July USD official notice reflected: USD 30-72 · <a href="https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=608&lang=KR" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">Official notice ↗</a>',
+    'news.official.rs':'July notice pending · separated from June filing data until verified',
+    'news.official.tw':'July notice pending · separated from June filing data until verified',
+    'news.official.yp':'July notice pending · separated from June filing data until verified',
+    'news.official.desc':'* July 2026 verified airlines: KE, OZ, 7C, LJ, BX and ZE. Pending airlines are not estimated and remain marked as pending until official notices are verified.',
+    'news.compareTitle':'June to July changes based on official filings',
+    'news.compare.li1':'Korean Air: June KRW 61,500-451,500 → July KRW 46,400-344,000',
+    'news.compare.li2':'Asiana: June KRW 68,000-382,800 → July KRW 48,500-275,800',
+    'news.compare.li3':'Jeju Air: June USD 43-103 → July USD 30-72',
+    'news.compare.li4':'Jin Air: June USD 36-115 → July USD 27-79',
+    'news.compare.li5':'Air Busan: June USD 43-106 → July USD 30-74',
+    'news.compare.li6':'Eastar Jet: June USD 43-103 → July USD 30-72',
+    'news.compare.li7':'Air Seoul: July notice pending · June filing is reference only until verified',
+    'news.compare.li8':"T'way Air: July notice pending · June KRW filing is reference only until verified",
+    'news.compare.li9':'Overall: only airlines with verified July official notices are treated as confirmed; others remain pending',
+    'news.marketTitle':'Market indicators to watch after July notices',
+    'news.dataRef':'After July official filings · As of June 17, 2026 KST',
+    'news.brent':'Oil prices: since July notices have already started to be reflected, later oil moves are reference indicators for pending airlines and the next filing month.',
+    'news.mops':'Jet fuel price (MOPS): after July official notices started, MOPS remains a key indicator for the next adjustment and pending airline filings.',
+    'news.fx':'USD/KRW: for USD-filed airlines such as Jeju Air, Jin Air, Air Busan and Eastar Jet, original notice currency matters; KRW-equivalent cost can change by payment-date FX.',
+    'news.geo':'Geopolitical risk: Hormuz normalization hopes are positive, but vessel insurance and supply-chain delays still need monitoring.',
+    'news.marketSummary':'Official amounts are reflected by each airline original notice. MOPS, IATA jet fuel and USD/KRW remain reference indicators for the August outlook.',
+    'news.fxDominance':'Status: KE/OZ/7C/LJ/BX/ZE verified · pending airlines separated · next variables: MOPS, FX and jet fuel',
+    'news.decisionTitle':'Conclusion: July notices are confirmed only for verified airlines',
+    'news.decisionLine1':'Korean Air, Asiana, Jeju Air, Jin Air, Air Busan and Eastar Jet have verified July 2026 notices.',
+    'news.decisionLine2':'Air Seoul, Tway and Air Premia should remain pending until official notices are verified.',
+    'news.forecastCta.title':'Check the August 2026 fuel surcharge outlook',
+    'news.forecastCta.desc':'Review MOPS, FX, oil and Hormuz risks after the July official cuts.',
+    'news.forecastCta.btn':'View August outlook →'
+  };
+  Object.assign(window.PAGE_I18N_OVERRIDE.ko || (window.PAGE_I18N_OVERRIDE.ko = {}), ko);
+  Object.assign(window.PAGE_I18N_OVERRIDE.en || (window.PAGE_I18N_OVERRIDE.en = {}), en);
+  ['ja','zh','fr','de'].forEach(function(lang){
+    window.PAGE_I18N_OVERRIDE[lang] = window.PAGE_I18N_OVERRIDE[lang] || {};
+    Object.assign(window.PAGE_I18N_OVERRIDE[lang], en);
+  });
+})();
+
+(function(){
+  window.PAGE_I18N_OVERRIDE = window.PAGE_I18N_OVERRIDE || {};
+  var ko = {
+    'news.metaTitle':'2026년 7월 유류할증료 공시 반영 뉴스 | 19단계 적용·MOPS 하락·8월 전망',
+    'news.metaDesc':'2026.06.18 09:00 KST 기준 2026년 7월 국제선 유류할증료 19단계 적용, MOPS 평균 338.3센트, 원달러 환율과 호르무즈 해협 변수를 정리한 유류할증료 뉴스입니다.',
+    'news.pageTitle':'2026년 7월 유류할증료 공시 반영 뉴스',
+    'news.pageSub':'2026.06.18 09:00 KST 기준 · 7월 19단계 적용 · MOPS 평균 하락 · 8월 전망 변수 분리',
+    'news.summary.title':'2026년 7월 유류할증료 공시 반영 핵심',
+    'news.summary.updated':'2026.06.18 09:00 KST 기준',
+    'news.summary.li1':'2026년 7월 한국 출발 국제선 유류할증료는 19단계 적용 상태입니다.',
+    'news.summary.li2':'6월 27단계에서 7월 19단계로 8단계 낮아졌습니다.',
+    'news.summary.li3':'MOPS 평균은 2026.05.16~2026.06.15 기준 갤런당 338.3센트입니다.',
+    'news.summary.li4':'6월 기준 MOPS 410.02센트 대비 약 17.5% 낮아졌습니다.',
+    'news.summary.li5':'항공사별 공시 카드와 별도로 오늘 기준 시장·기관·8월 전망 카드를 추가했습니다.',
+    'news.summary.li6':'8월 유류할증료는 아직 전망 단계이며 MOPS·환율·호르무즈 변수를 분리해서 봐야 합니다.',
+    'news.marketTitle':'7월 공시 반영 이후 확인할 시장 지표',
+    'news.dataRef':'2026.06.18 09:00 KST 기준 · 7월 공시 반영 이후 8월 전망 참고 지표',
+    'news.brent':'국제유가: 미국·이란 긴장 완화는 유가 부담을 낮추는 요인이지만, 호르무즈 해협 물류 정상화가 완료됐다고 보기는 어렵습니다.',
+    'news.mops':'항공유 가격(MOPS): 7월 산정 기준 MOPS 평균은 갤런당 338.3센트로 6월 기준 410.02센트 대비 약 17.5% 낮아졌습니다. 8월은 2026.06.16~2026.07.15 MOPS 흐름을 확인해야 합니다.',
+    'news.fx':'원달러 환율: 2026.06.18 기준 1달러당 약 1,515.50원 수준의 높은 환율 구간은 항공권 총액 체감 인하를 제한할 수 있습니다.',
+    'news.geo':'지정학 리스크: 호르무즈 해협 재개방 기대는 긍정적이지만 선박 보험료, 안전 점검, 공급망 정상화 지연은 8월 전망의 변수로 남아 있습니다.',
+    'news.marketSummary':'7월 유류할증료는 공시 반영 단계이며, 8월 유류할증료는 MOPS·원달러 환율·호르무즈 해협 정상화 속도에 따라 달라질 전망입니다.',
+    'news.fxDominance':'핵심 수치: 7월 19단계 · 6월 대비 8단계 인하 · MOPS 338.3센트 · 원달러 환율 약 1,515.50원',
+    'news.decisionTitle':'결론: 7월은 공시 반영, 8월은 전망으로 분리',
+    'news.decisionLine1':'2026년 7월 국제선 유류할증료는 19단계 적용으로 공시 반영 단계입니다.',
+    'news.decisionLine2':'8월 전망은 추가 인하 가능성을 열어두되, 높은 환율과 호르무즈 해협 리스크 때문에 급격한 인하로 단정하지 않습니다.',
+    'news.decisionShort':'단거리: 7월 공시 금액과 항공권 총액 함께 확인',
+    'news.decisionMid':'중거리: MOPS 하락 효과와 환율 영향을 함께 비교',
+    'news.decisionLong':'장거리·성수기: 유류할증료 인하보다 항공권 운임·세금·좌석 상황 영향도 큼',
+    'news.forecastCta.title':'2026년 8월 유류할증료 전망 확인',
+    'news.forecastCta.desc':'7월 공시 반영 이후 MOPS, 원달러 환율, 국제유가, 호르무즈 해협 변수를 기준으로 다음 달 방향을 확인하세요.',
+    'news.forecastCta.btn':'8월 전망 보기 →'
+  };
+  var en = {
+    'news.metaTitle':'July 2026 Fuel Surcharge News | Level 19, MOPS Drop and August Outlook',
+    'news.metaDesc':'As of June 18, 2026 09:00 KST, July 2026 Korea-origin international fuel surcharge applies Level 19. Review MOPS, USD/KRW and Hormuz variables for the August outlook.',
+    'news.pageTitle':'July 2026 Fuel Surcharge Notice News',
+    'news.pageSub':'June 18, 2026 09:00 KST · July Level 19 · lower MOPS average · August outlook separated',
+    'news.summary.title':'July 2026 Official Notice Key Points',
+    'news.summary.updated':'As of June 18, 2026 09:00 KST',
+    'news.summary.li1':'July 2026 Korea-origin international fuel surcharge applies Level 19.',
+    'news.summary.li2':'The level moved down from June Level 27 to July Level 19.',
+    'news.summary.li3':'The MOPS average for the July calculation period is 338.3 cents per gallon.',
+    'news.summary.li4':'That is about 17.5% lower than the June basis of 410.02 cents.',
+    'news.summary.li5':'Today’s market and institution cards were added separately from airline-specific notice cards.',
+    'news.summary.li6':'August remains an outlook stage and should be reviewed through MOPS, FX and Hormuz variables.',
+    'news.marketTitle':'Market indicators after July official notices',
+    'news.dataRef':'As of June 18, 2026 09:00 KST · post-July notice indicators for August outlook',
+    'news.brent':'Oil prices: easing U.S.-Iran tension can reduce oil pressure, but Hormuz logistics should not be treated as fully normalized.',
+    'news.mops':'Jet fuel price (MOPS): the July calculation average is 338.3 cents per gallon, about 17.5% lower than the June basis of 410.02 cents. August depends on the June 16-July 15 MOPS trend.',
+    'news.fx':'USD/KRW: around KRW 1,515.50 per USD, the high FX zone can limit the felt reduction in total airfare.',
+    'news.geo':'Geopolitical risk: Hormuz reopening expectations are positive, but vessel insurance, safety checks and supply-chain delays remain August variables.',
+    'news.marketSummary':'July is an official notice reflection stage. August remains an outlook driven by MOPS, USD/KRW and Hormuz normalization speed.',
+    'news.fxDominance':'Key figures: July Level 19 · down 8 levels vs June · MOPS 338.3 cents · USD/KRW about KRW 1,515.50',
+    'news.decisionTitle':'Conclusion: separate July notice data from the August outlook',
+    'news.decisionLine1':'July 2026 international fuel surcharge is an official notice reflection stage at Level 19.',
+    'news.decisionLine2':'For August, additional cuts are possible but should not be assumed sharply because FX and Hormuz risks remain.',
+    'news.forecastCta.title':'Check the August 2026 fuel surcharge outlook',
+    'news.forecastCta.desc':'Review MOPS, USD/KRW, oil prices and Hormuz risk after the July official notice cuts.',
+    'news.forecastCta.btn':'View August outlook →'
+  };
+  Object.assign(window.PAGE_I18N_OVERRIDE.ko || (window.PAGE_I18N_OVERRIDE.ko = {}), ko);
+  Object.assign(window.PAGE_I18N_OVERRIDE.en || (window.PAGE_I18N_OVERRIDE.en = {}), en);
+  ['ja','zh','fr','de'].forEach(function(lang){
+    window.PAGE_I18N_OVERRIDE[lang] = window.PAGE_I18N_OVERRIDE[lang] || {};
+    Object.assign(window.PAGE_I18N_OVERRIDE[lang], en);
+  });
+})();
+
+(function(){
+  window.PAGE_I18N_OVERRIDE = window.PAGE_I18N_OVERRIDE || {};
+  var ko = {
+    'news.officialNotice':'2026.06.18 09:00 KST 기준 · 대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공 7월 공시 확인 · 미공시 항공사는 공시 전',
+    'news.official.rs':'7월 공시 전',
+    'news.official.tw':'7월 공시 전',
+    'news.official.yp':'7월 공시 전',
+    'news.official.desc':'* 2026년 7월 공시 확인 항공사: KE·OZ·7C·LJ·BX·ZE. 미공시 항공사는 임의 금액을 생성하지 않고 공시 전으로 표시합니다. 최종 금액은 발권 전 각 항공사 공식 공지를 확인하세요.',
+    'news.compare.li7':'에어서울: 7월 공시 전',
+    'news.compare.li8':'티웨이항공: 7월 공시 전',
+    'news.compare.li9':'에어프레미아: 7월 공시 전',
+    'news.compare.li10':'공통: 7월 공식 공시 확인 항공사만 확정 처리하고, 나머지는 공시 전으로 분리'
+  };
+  var en = {
+    'news.officialNotice':'As of June 18, 2026 09:00 KST · KE/OZ/7C/LJ/BX/ZE July notices verified · unverified airlines remain pending',
+    'news.official.rs':'July notice pending',
+    'news.official.tw':'July notice pending',
+    'news.official.yp':'July notice pending',
+    'news.official.desc':'* July 2026 verified airlines: KE, OZ, 7C, LJ, BX and ZE. Pending airlines are not estimated and remain marked as pending until official notices are verified.',
+    'news.compare.li7':'Air Seoul: July notice pending',
+    'news.compare.li8':"T'way Air: July notice pending",
+    'news.compare.li9':'Air Premia: July notice pending',
+    'news.compare.li10':'Overall: only airlines with verified July official notices are treated as confirmed; others remain pending'
+  };
+  Object.assign(window.PAGE_I18N_OVERRIDE.ko || (window.PAGE_I18N_OVERRIDE.ko = {}), ko);
+  Object.assign(window.PAGE_I18N_OVERRIDE.en || (window.PAGE_I18N_OVERRIDE.en = {}), en);
   ['ja','zh','fr','de'].forEach(function(lang){
     window.PAGE_I18N_OVERRIDE[lang] = window.PAGE_I18N_OVERRIDE[lang] || {};
     Object.assign(window.PAGE_I18N_OVERRIDE[lang], en);
