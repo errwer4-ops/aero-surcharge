@@ -935,7 +935,40 @@ window._JULY_2026_OFFICIAL_OVERRIDES = {
         { group: 6, label: '6군', amount: 72, currency: 'USD' },
       ],
     },
-  },  BX: {
+  },
+  RS: {
+    '2026.07': {
+      sourceType: 'official_notice', status: 'official_verified', confidence: 'fresh', currency: 'KRW',
+      surchargeSchema: 'mileage_band',
+      officialNoticeUrl: 'https://flyairseoul.com/CW/ko/noticeContent.do?seq=10914&pageNo=1',
+      verifiedAt: '2026-06-18T00:00:00+09:00',
+      items: [
+        { distanceRange: '300-700',   label: '300~700mi',     amount: 54500, currency: 'KRW' },
+        { distanceRange: '700-1100',  label: '700~1,100mi',   amount: 62100, currency: 'KRW' },
+        { distanceRange: '1100-1500', label: '1,100~1,500mi', amount: 80300, currency: 'KRW' },
+        { distanceRange: '1500-1900', label: '1,500~1,900mi', amount: 90900, currency: 'KRW' },
+        { distanceRange: '1900-2300', label: '1,900~2,300mi', amount: 93900, currency: 'KRW' },
+      ],
+    },
+  },
+  YP: {
+    '2026.07': {
+      sourceType: 'official_notice', status: 'official_verified', confidence: 'fresh', currency: 'USD',
+      surchargeSchema: 'mileage_band',
+      officialNoticeUrl: 'https://www.airpremia.com/a/ko/customer/notice/728',
+      verifiedAt: '2026-06-18T00:00:00+09:00',
+      items: [
+        { distanceRange: '0-999',     label: 'ICN-NRT', amount: 33,  currency: 'USD', route: 'ICN-NRT' },
+        { distanceRange: '1000-1499', label: 'ICN-HKG', amount: 44,  currency: 'USD', route: 'ICN-HKG' },
+        { distanceRange: '1500-1999', label: 'ICN-DAD', amount: 58,  currency: 'USD', route: 'ICN-DAD' },
+        { distanceRange: '2000-2499', label: 'ICN-BKK', amount: 75,  currency: 'USD', route: 'ICN-BKK' },
+        { distanceRange: '4000-4999', label: 'ICN-HNL', amount: 130, currency: 'USD', route: 'ICN-HNL' },
+        { distanceRange: '5000-6499', label: 'ICN-LAX/ICN-SFO', amount: 164, currency: 'USD', route: 'ICN-LAX/ICN-SFO' },
+        { distanceRange: '6500+',     label: 'ICN-IAD/ICN-EWR', amount: 205, currency: 'USD', route: 'ICN-IAD/ICN-EWR' },
+      ],
+    },
+  },
+  BX: {
     '2026.07': {
       sourceType: 'official_notice', status: 'official_verified', confidence: 'fresh', currency: 'USD',
       surchargeSchema: 'mileage_band',
@@ -1055,6 +1088,9 @@ window.loadAirlineMeta = async function() {
   /* YP(에어프레미아)2026년 6월 공식 PDF 공시 데이터 강제 주입 — official_verified · USD 공시 */
   if (!window.MANUAL_OVERRIDES['YP']) window.MANUAL_OVERRIDES['YP'] = {};
   window.MANUAL_OVERRIDES['YP']['2026.06'] = window._YP_OFFICIAL_OVERRIDE['2026.06'];
+  if (window._JULY_2026_OFFICIAL_OVERRIDES && window._JULY_2026_OFFICIAL_OVERRIDES['YP']) {
+    window.MANUAL_OVERRIDES['YP']['2026.07'] = window._JULY_2026_OFFICIAL_OVERRIDES['YP']['2026.07'];
+  }
   return window.AIRLINE_META;
 };
 
@@ -7064,6 +7100,87 @@ window.AERO_MARKET_BRIEF_20260618 = {
   window.AERO_NEWS_CARDS_20260618 = cards.concat(window.AERO_NEWS_CARDS_20260618 || []);
 })();
 window.AERO_NEWS_LATEST=window.AERO_MARKET_BRIEF_20260618;
+
+window.AERO_NEWS_CARDS_20260618 = [
+  {
+    id:'news-20260618-air-seoul-july-official',
+    slug:'air-seoul-july-2026-fuel-surcharge-official-notice',
+    category:'airline',
+    topic:'official-notice',
+    priority:0,
+    date:'2026-06-18',
+    updatedAt:'2026.06.18 KST',
+    badge:'NEW',
+    aiSummary:true,
+    relevanceScore:1,
+    title:'에어서울 2026년 7월 국제선 유류할증료 공식 공시 - 6월 대비 전 구간 인하',
+    aiBrief:'에어서울은 2026년 7월 한국 출발 국제선 유류할증료를 공식 공시했고, 6월 대비 모든 KRW 구간이 인하됐습니다.',
+    summary:'에어서울이 2026년 7월 한국 출발 국제선 유류할증료를 공식 공시했습니다.\n\n■ 적용 기간: 2026년 7월 1일~7월 31일 (발권일 기준)\n■ 공시 통화: KRW\n■ 공시 상태: 공식 공시 확인\n\n■ 6월 → 7월 변화:\n• 300~700mi: 75,300원 → 54,500원\n• 700~1,100mi: 87,100원 → 62,100원\n• 1,100~1,500mi: 109,200원 → 80,300원\n• 1,500~1,900mi: 125,500원 → 90,900원\n• 1,900~2,300mi: 132,800원 → 93,900원\n\n에어서울은 KRW 기준 공시 항공사이므로 실제 발권 시점의 항공권 총액, 운임, 세금과 함께 확인해야 합니다.',
+    impact:'에어서울 7월 공식 공시 반영 완료. 6월 대비 전 구간 인하가 확인되며, 최저 54,500원·최고 93,900원 기준으로 표시합니다.',
+    tags:['에어서울','에어서울 유류할증료','2026년 7월 유류할증료','국제선 유류할증료','KRW 공시'],
+    sourceRefs:[{name:'Air Seoul official notice',url:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=10914&pageNo=1'}],
+    faq:[
+      {q:'2026년 7월 에어서울 유류할증료는 얼마인가요?',a:'에어서울 2026년 7월 한국 출발 국제선 유류할증료는 거리 구간별 54,500원, 62,100원, 80,300원, 90,900원, 93,900원입니다.'},
+      {q:'에어서울 7월 유류할증료는 6월보다 내렸나요?',a:'네. 공식 공시 기준으로 모든 KRW 구간이 6월 대비 인하됐습니다.'}
+    ],
+    links:[{href:'airlines.html',label:'항공사별 7월 공시 보기'},{href:'fuel-surcharge-korea.html',label:'6월→7월 비교 보기'}],
+    i18n:{
+      en:{
+        updatedAt:'Updated 2026.06.18 KST',
+        title:'Air Seoul July 2026 International Fuel Surcharge Official Notice - All KRW Bands Down vs June',
+        aiBrief:'Air Seoul has published its July 2026 Korea-departure international fuel surcharge, with all KRW bands lower than June.',
+        summary:'Air Seoul has published its July 2026 Korea-departure international fuel surcharge notice.\n\nApplied period: July 1-31, 2026 (ticketing date basis)\nCurrency: KRW\nStatus: official notice verified\n\nJune to July changes:\n- 300-700mi: KRW 75,300 to KRW 54,500\n- 700-1,100mi: KRW 87,100 to KRW 62,100\n- 1,100-1,500mi: KRW 109,200 to KRW 80,300\n- 1,500-1,900mi: KRW 125,500 to KRW 90,900\n- 1,900-2,300mi: KRW 132,800 to KRW 93,900\n\nAir Seoul is a KRW-filing airline, so travelers should compare the surcharge with total airfare, base fare and taxes at ticketing.',
+        impact:'Air Seoul July official notice reflected. All KRW bands are lower than June, from KRW 54,500 to KRW 93,900.',
+        tags:['Air Seoul','Air Seoul fuel surcharge','July 2026 fuel surcharge','international fuel surcharge','KRW filing'],
+        sourceRefs:[{name:'Air Seoul official notice',url:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=10914&pageNo=1'}],
+        faq:[
+          {q:'How much is Air Seoul fuel surcharge in July 2026?',a:'Air Seoul July 2026 Korea-departure international fuel surcharge is KRW 54,500, 62,100, 80,300, 90,900 and 93,900 by distance band.'},
+          {q:'Did Air Seoul July surcharge fall from June?',a:'Yes. The official notice shows all KRW distance bands down from June.'}
+        ],
+        links:[{href:'airlines.html',label:'View July airline notices'},{href:'fuel-surcharge-korea.html',label:'Compare June to July'}]
+      }
+    }
+  },
+  {
+    id:'news-20260618-air-premia-july-official',
+    slug:'air-premia-july-2026-fuel-surcharge-official-notice',
+    category:'airline',
+    topic:'official-notice',
+    priority:0,
+    date:'2026-06-18',
+    updatedAt:'2026.06.18 KST',
+    badge:'NEW',
+    aiSummary:true,
+    relevanceScore:1,
+    title:'에어프레미아 2026년 7월 국제선 유류할증료 공식 공시 - 장거리 USD 구간 인하',
+    aiBrief:'에어프레미아는 2026년 7월 한국 출발 국제선 유류할증료를 USD 기준으로 공시했고, 6월 대비 전 구간 인하됐습니다.',
+    summary:'에어프레미아가 2026년 7월 한국 출발 국제선 유류할증료를 공식 공시했습니다.\n\n■ 적용 기간: 2026년 7월 1일~7월 31일 (결제일 기준)\n■ 공시 통화: USD\n■ 공시 기준: 편도 / mile\n■ 공시 상태: 공식 공시 확인\n\n■ 6월 → 7월 변화:\n• ~999mi: USD 48 → USD 33\n• 1,000~1,499mi: USD 64 → USD 44\n• 1,500~1,999mi: USD 83 → USD 58\n• 2,000~2,499mi: USD 107 → USD 75\n• 4,000~4,999mi: USD 187 → USD 130\n• 5,000~6,499mi: USD 236 → USD 164\n• 6,500mi~: USD 296 → USD 205\n\n에어프레미아는 미국 장거리 노선 비중이 커서 유류할증료와 환율을 함께 보는 것이 중요합니다.',
+    impact:'에어프레미아 7월 공식 공시 반영 완료. 단거리 ICN-NRT는 USD 33, 장거리 ICN-IAD/ICN-EWR 구간은 USD 205로 확인됩니다.',
+    tags:['에어프레미아','에어프레미아 유류할증료','2026년 7월 유류할증료','국제선 유류할증료','USD 공시'],
+    sourceRefs:[{name:'Air Premia official notice',url:'https://www.airpremia.com/a/ko/customer/notice/728'}],
+    faq:[
+      {q:'2026년 7월 에어프레미아 유류할증료는 얼마인가요?',a:'에어프레미아 2026년 7월 한국 출발 국제선 유류할증료는 USD 33부터 USD 205까지 거리 구간별로 공시됐습니다.'},
+      {q:'에어프레미아 7월 유류할증료는 6월보다 내렸나요?',a:'네. 공식 공시 기준으로 USD 48~296이던 6월 구간이 7월에는 USD 33~205로 전 구간 인하됐습니다.'}
+    ],
+    links:[{href:'airlines.html',label:'항공사별 7월 공시 보기'},{href:'fuel-surcharge-korea.html',label:'6월→7월 비교 보기'}],
+    i18n:{
+      en:{
+        updatedAt:'Updated 2026.06.18 KST',
+        title:'Air Premia July 2026 International Fuel Surcharge Official Notice - Long-haul USD Bands Down',
+        aiBrief:'Air Premia has published its July 2026 Korea-departure international fuel surcharge in USD, with all bands lower than June.',
+        summary:'Air Premia has published its July 2026 Korea-departure international fuel surcharge notice.\n\nApplied period: July 1-31, 2026 (payment date basis)\nCurrency: USD\nBasis: one-way / mile\nStatus: official notice verified\n\nJune to July changes:\n- Up to 999mi: USD 48 to USD 33\n- 1,000-1,499mi: USD 64 to USD 44\n- 1,500-1,999mi: USD 83 to USD 58\n- 2,000-2,499mi: USD 107 to USD 75\n- 4,000-4,999mi: USD 187 to USD 130\n- 5,000-6,499mi: USD 236 to USD 164\n- 6,500mi and above: USD 296 to USD 205\n\nBecause Air Premia has a high share of long-haul U.S. routes, travelers should review both surcharge and USD/KRW effects.',
+        impact:'Air Premia July official notice reflected. ICN-NRT is USD 33, while long-haul ICN-IAD/ICN-EWR bands are shown at USD 205.',
+        tags:['Air Premia','Air Premia fuel surcharge','July 2026 fuel surcharge','international fuel surcharge','USD filing'],
+        sourceRefs:[{name:'Air Premia official notice',url:'https://www.airpremia.com/a/ko/customer/notice/728'}],
+        faq:[
+          {q:'How much is Air Premia fuel surcharge in July 2026?',a:'Air Premia July 2026 Korea-departure international fuel surcharge is published from USD 33 to USD 205 by distance band.'},
+          {q:'Did Air Premia July surcharge fall from June?',a:'Yes. The official notice shows all bands down from June USD 48-296 to July USD 33-205.'}
+        ],
+        links:[{href:'airlines.html',label:'View July airline notices'},{href:'fuel-surcharge-korea.html',label:'Compare June to July'}]
+      }
+    }
+  }
+].concat(window.AERO_NEWS_CARDS_20260618 || []);
 
 /*
  * News taxonomy and sourcing policy:

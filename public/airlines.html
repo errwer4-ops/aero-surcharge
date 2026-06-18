@@ -852,7 +852,17 @@ var OFFICIAL_COMPARE_DATA = {
 /* ── 공식 공시 완료 항공사 목록 ── */
 var JUNE_OFFICIAL_CODES = ['KE', 'OZ', 'LJ', 'BX', 'ZE', 'RS', 'TW', '7C', 'YP'];
 function hasJuneOfficial(code){ return JUNE_OFFICIAL_CODES.indexOf(code) >= 0; }
-var JULY_OFFICIAL_CODES = ['KE', 'OZ', '7C', 'LJ', 'BX', 'ZE'];
+if (OFFICIAL_COMPARE_DATA.RS && Array.isArray(OFFICIAL_COMPARE_DATA.RS)) {
+  [54500, 62100, 80300, 90900, 93900].forEach(function(amount, idx) {
+    if (OFFICIAL_COMPARE_DATA.RS[idx]) OFFICIAL_COMPARE_DATA.RS[idx].v5 = amount;
+  });
+}
+if (OFFICIAL_COMPARE_DATA.YP && Array.isArray(OFFICIAL_COMPARE_DATA.YP)) {
+  [33, 44, 58, 75, 130, 164, 205].forEach(function(amount, idx) {
+    if (OFFICIAL_COMPARE_DATA.YP[idx]) OFFICIAL_COMPARE_DATA.YP[idx].v5 = amount;
+  });
+}
+var JULY_OFFICIAL_CODES = ['KE', 'OZ', '7C', 'LJ', 'BX', 'ZE', 'RS', 'YP'];
 function hasJulyOfficial(code){ return JULY_OFFICIAL_CODES.indexOf(code) >= 0; }
 
 /* ══════════════════════════════════════════════════════
@@ -872,12 +882,12 @@ async function loadData(){
   var NOTICE_URL_PATCH={
     KE:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2607-infuel?pageNum=1',
     OZ:'https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202606160002529424&dispCt=all&page=1&searchOption=0&searchText=',
-    YP:'https://www.airpremia.com/a/ko/customer/notice/668',
+    YP:'https://www.airpremia.com/a/ko/customer/notice/728',
     '7C':'https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000729',
     LJ:'https://www.jinair.com/company/announce/announceView?anceSeq=28218&searchWord=&searchKey=titlCtn&page=1',
     TW:'https://www.twayair.com/app/customerCenter/notice/retrieve/12577',
     ZE:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=608&lang=KR',
-    RS:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1',
+    RS:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=10914&pageNo=1',
     BX:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4377',
   };
   var NOTICE_URL_MAY={

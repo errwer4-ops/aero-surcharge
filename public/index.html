@@ -1323,6 +1323,21 @@ var JULY_PENDING_NOTICE_LINKS = {
 };
 
 /* 최소 변동률 계산 (랜딩 배지용) */
+if (_OFFICIAL_AMT.RS && Array.isArray(_OFFICIAL_AMT.RS.rows)) {
+  [54500, 62100, 80300, 90900, 93900].forEach(function(amount, idx) {
+    if (_OFFICIAL_AMT.RS.rows[idx]) _OFFICIAL_AMT.RS.rows[idx].july = amount;
+  });
+}
+if (_OFFICIAL_AMT.YP && Array.isArray(_OFFICIAL_AMT.YP.rows)) {
+  [33, 44, 58, 75, 130, 164, 205].forEach(function(amount, idx) {
+    if (_OFFICIAL_AMT.YP.rows[idx]) _OFFICIAL_AMT.YP.rows[idx].july = amount;
+  });
+}
+JULY_2026_NOTICE_LINKS.RS = 'https://flyairseoul.com/CW/ko/noticeContent.do?seq=10914&pageNo=1';
+JULY_2026_NOTICE_LINKS.YP = 'https://www.airpremia.com/a/ko/customer/notice/728';
+delete JULY_PENDING_NOTICE_LINKS.RS;
+delete JULY_PENDING_NOTICE_LINKS.YP;
+
 function _calcMinRate(code){
   var d=_OFFICIAL_AMT[code]; if(!d||!d.rows||!d.rows.length) return null;
   var hasJuly = d.rows.some(function(r){return r.june>0 && r.july!=null;});

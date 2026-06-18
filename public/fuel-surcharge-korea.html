@@ -584,8 +584,8 @@
     LJ:'https://www.jinair.com/company/announce/announceView?anceSeq=28218&searchWord=&searchKey=titlCtn&page=1',
     TW:'https://www.twayair.com/app/customerService/notice',
     ZE:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=608&lang=KR',
-    RS:'https://flyairseoul.com/CW/ko/noticeList.do',
-    YP:'https://www.airpremia.com/a/ko/customer/notice',
+    RS:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=10914&pageNo=1',
+    YP:'https://www.airpremia.com/a/ko/customer/notice/728',
     BX:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4377'
   };
   KOREA_AIRLINES = [
@@ -599,6 +599,27 @@
     {code:'YP',name:{ko:'에어프레미아',en:'Air Premia',ja:'Air Premia',zh:'Air Premia',fr:'Air Premia',de:'Air Premia'},currency:'USD',apr:{minKRW:48*USD_TO_KRW,maxKRW:296*USD_TO_KRW,minOrig:48,maxOrig:296},may:null,change:'pending',url:JULY_NOTICE_URLS.YP,domain:'airpremia.com',julyOfficial:false},
     {code:'BX',name:{ko:'에어부산',en:'Air Busan',ja:'Air Busan',zh:'Air Busan',fr:'Air Busan',de:'Air Busan'},currency:'USD',apr:{minKRW:43*USD_TO_KRW,maxKRW:106*USD_TO_KRW,minOrig:43,maxOrig:106},may:{minKRW:30*USD_TO_KRW,maxKRW:74*USD_TO_KRW,minOrig:30,maxOrig:74},change:'decrease',url:JULY_NOTICE_URLS.BX,domain:'airbusan.com',julyOfficial:true}
   ];
+
+  KOREA_AIRLINES.forEach(function(carrier) {
+    if (carrier.code === 'RS') {
+      carrier.name.ko = '에어서울';
+      carrier.currency = 'KRW';
+      carrier.apr = {minKRW:75300,maxKRW:132800};
+      carrier.may = {minKRW:54500,maxKRW:93900};
+      carrier.change = 'decrease';
+      carrier.url = JULY_NOTICE_URLS.RS;
+      carrier.julyOfficial = true;
+    }
+    if (carrier.code === 'YP') {
+      carrier.name.ko = '에어프레미아';
+      carrier.currency = 'USD';
+      carrier.apr = {minKRW:48*USD_TO_KRW,maxKRW:296*USD_TO_KRW,minOrig:48,maxOrig:296};
+      carrier.may = {minKRW:33*USD_TO_KRW,maxKRW:205*USD_TO_KRW,minOrig:33,maxOrig:205};
+      carrier.change = 'decrease';
+      carrier.url = JULY_NOTICE_URLS.YP;
+      carrier.julyOfficial = true;
+    }
+  });
 
   var KOREA_202607_I18N = {
     ko:{
@@ -821,6 +842,31 @@
   /* ═══════════════════════════════════════════
      6. initNav 연결 — 언어·통화 변경 시 재렌더
   ═══════════════════════════════════════════ */
+  Object.assign(window.I18N.ko || (window.I18N.ko = {}), {
+    'korea.pageSub':'2026년 6월 vs 7월 공식 공시 비교',
+    'korea.h1':'한국 출발 국제선 유류할증료 6월 vs 7월 비교',
+    'korea.currentBasis.title':'현재 적용 기준: 2026년 7월 유류할증료 공시 반영',
+    'korea.currentBasis.desc':'2026년 6월 공시와 2026년 7월 공식 공시를 비교합니다. 대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공·에어서울·에어프레미아는 7월 공시를 반영했고, 티웨이항공은 공시 예정으로 표시합니다.',
+    'korea.sectionTitle':'항공사별 2026년 6월 → 7월 유류할증료 비교',
+    'korea.tableNote':'2026년 7월 공식 공시가 확인된 대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공·에어서울·에어프레미아는 7월 금액을 반영했습니다. 티웨이항공은 7월 공시 예정으로 표시합니다.',
+    'korea.change.pending':'공시 예정',
+    'korea.pendingNotice':'공시 예정',
+    'korea.source.label':'공식 공지 ↗',
+    'korea.source.pending':'공지 확인 전',
+    'korea.footnote':'※ 6월 금액과 7월 금액은 항공사별 공시 통화와 거리 구간 체계를 유지해 표시합니다. 7월 공시 확인 항공사: 대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공·에어서울·에어프레미아. 티웨이항공은 공시 예정 상태로 유지합니다.'
+  });
+  Object.assign(window.I18N.en || (window.I18N.en = {}), {
+    'korea.currentBasis.desc':'This page compares June 2026 filings with July 2026 official notices. Korean Air, Asiana, Jeju Air, Jin Air, Air Busan, Eastar Jet, Air Seoul and Air Premia are reflected; Tway Air remains pending.',
+    'korea.tableNote':'July 2026 official notices are reflected for Korean Air, Asiana Airlines, Jeju Air, Jin Air, Air Busan, Eastar Jet, Air Seoul and Air Premia. Tway Air is marked as pending.',
+    'korea.change.pending':'Pending notice',
+    'korea.pendingNotice':'Pending notice',
+    'korea.footnote':'June and July amounts preserve each airline official currency and distance-band structure. Verified July airlines: KE/OZ/7C/LJ/BX/ZE/RS/YP. Tway Air remains pending.'
+  });
+  ['ja','zh','fr','de'].forEach(function(lang){
+    window.I18N[lang] = window.I18N[lang] || {};
+    Object.assign(window.I18N[lang], window.I18N.en);
+  });
+
   window.initNav({
     onLangChange: function () {
       renderKoreaTable();

@@ -5298,6 +5298,40 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
   });
 })();
 
+(function(){
+  window.PAGE_I18N_OVERRIDE = window.PAGE_I18N_OVERRIDE || {};
+  var ko = {
+    'news.officialNotice':'2026.06.18 KST 기준 · 대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공·에어서울·에어프레미아 7월 공시 확인 · 티웨이항공은 공시 전',
+    'news.official.rs':'7월 공식 공시 반영: 54,500원~93,900원 · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10914&pageNo=1" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">공식 공지 ↗</a>',
+    'news.official.tw':'7월 공시 전 · 확인 전까지 6월 KRW 공시 기준과 분리 표시',
+    'news.official.yp':'7월 USD 공식 공시 반영: USD 33~205 · <a href="https://www.airpremia.com/a/ko/customer/notice/728" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">공식 공지 ↗</a>',
+    'news.official.desc':'* 2026년 7월 공시 확인 항공사: KE·OZ·7C·LJ·BX·ZE·RS·YP. 티웨이항공은 임의 금액을 생성하지 않고 공시 전 상태로 표시합니다. 최종 금액은 발권 전 각 항공사 공식 공지를 확인하세요.',
+    'news.compare.li7':'에어서울(RS): 6월 75,300원~132,800원 → 7월 54,500원~93,900원',
+    'news.compare.li8':'티웨이항공: 7월 공시 전 · 확인 전까지 6월 KRW 공시 기준 참고만 가능',
+    'news.compare.li9':'에어프레미아(YP): 6월 USD 48~296 → 7월 USD 33~205',
+    'news.compare.li10':'공통: 7월 공식 공시 확인 항공사만 확정 처리하고, 티웨이항공은 공시 전으로 분리',
+    'news.fxDominance':'핵심 상태: 7월 공시 확인 KE·OZ·7C·LJ·BX·ZE·RS·YP · 티웨이항공은 공시 전 · 다음 변수는 MOPS·환율·항공유 가격',
+    'news.decisionLine1':'대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공·에어서울·에어프레미아는 2026년 7월 공식 공시 확인 항공사입니다.',
+    'news.decisionLine2':'티웨이항공은 공식 확인 전까지 공시 전 상태로 표시해야 합니다.'
+  };
+  var en = {
+    'news.officialNotice':'As of June 18, 2026 KST · KE/OZ/7C/LJ/BX/ZE/RS/YP July notices verified · Tway Air remains pending',
+    'news.official.rs':'July official notice reflected: KRW 54,500-93,900 · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10914&pageNo=1" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">Official notice ↗</a>',
+    'news.official.tw':'July notice pending · separated from June KRW filing data until verified',
+    'news.official.yp':'July USD official notice reflected: USD 33-205 · <a href="https://www.airpremia.com/a/ko/customer/notice/728" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">Official notice ↗</a>',
+    'news.official.desc':'* July 2026 verified airlines: KE, OZ, 7C, LJ, BX, ZE, RS and YP. Tway Air is not estimated and remains marked as pending until its official notice is verified.',
+    'news.compare.li7':'Air Seoul (RS): June KRW 75,300-132,800 → July KRW 54,500-93,900',
+    'news.compare.li8':"T'way Air: July notice pending · June KRW filing is reference only until verified",
+    'news.compare.li9':'Air Premia (YP): June USD 48-296 → July USD 33-205',
+    'news.compare.li10':'Overall: only airlines with verified July official notices are treated as confirmed; Tway Air remains pending',
+    'news.fxDominance':'Status: KE/OZ/7C/LJ/BX/ZE/RS/YP verified · Tway Air pending · next variables: MOPS, FX and jet fuel',
+    'news.decisionLine1':'Korean Air, Asiana, Jeju Air, Jin Air, Air Busan, Eastar Jet, Air Seoul and Air Premia have verified July 2026 notices.',
+    'news.decisionLine2':'Tway Air should remain pending until its official notice is verified.'
+  };
+  Object.assign(window.PAGE_I18N_OVERRIDE.ko || (window.PAGE_I18N_OVERRIDE.ko = {}), ko);
+  Object.assign(window.PAGE_I18N_OVERRIDE.en || (window.PAGE_I18N_OVERRIDE.en = {}), en);
+})();
+
 window.initNav({
   onLangChange:function(){
     /* _shared.js의 initNav 래퍼가 applyLanguage()를 먼저 실행 */
