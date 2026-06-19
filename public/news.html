@@ -265,7 +265,7 @@
     <div class="official-item" id="officialBx"><strong>에어부산</strong> — 7월 USD 공식 공시 반영: USD 30~74 · <a href="https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4377" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">공식 공지 ↗</a></div>
     <div class="official-item" id="officialZe"><strong>이스타항공</strong> — 7월 공시 전 · 확인 전까지 6월 공시 기준과 분리 표시</div>
     <div class="official-item" id="officialRs"><strong>에어서울</strong> — 7월 공시 전 · 확인 전까지 6월 공시 기준과 분리 표시</div>
-    <div class="official-item" id="officialTw"><strong>티웨이항공(TW)</strong> — 7월 공시 전 · 확인 전까지 6월 공시 기준과 분리 표시</div>
+    <div class="official-item" id="officialTw"><strong>티웨이항공(TW)</strong> — 7월 공식 공시 반영 · 33,400원~233,800원, 6군 해당 없음</div>
     <div class="official-item" id="officialYp"><strong>에어프레미아</strong> — 7월 공시 전 · 확인 전까지 6월 공시 기준과 분리 표시</div>
     <div class="official-desc"  id="officialDesc">* 2026년 7월 공시 확인 항공사: KE·OZ·7C·LJ·BX·ZE. 미공시 항공사는 임의 금액을 생성하지 않고 공시 전으로 표시합니다. 최종 금액은 발권일 기준 각 항공사 공식 공지를 확인하세요.</div>
   </div>
@@ -292,7 +292,7 @@
       <li>에어부산(BX): 6월 USD 43~106 → 7월 USD 30~74</li>
       <li>이스타항공: 7월 공시 전 — 확인 전까지 6월 공시 기준 참고만 가능</li>
       <li>에어서울: 7월 공시 전 — 확인 전까지 6월 공시 기준 참고만 가능</li>
-      <li>티웨이항공: 7월 공시 전 — 확인 전까지 6월 KRW 공시 기준 참고만 가능</li>
+      <li>티웨이항공: 6월 47,400원~327,000원 → 7월 33,400원~233,800원, 6군 해당 없음</li>
       <li>공통: 7월 공식 공시 확인 항공사만 확정 처리하고, 나머지는 공시 전으로 분리</li>
     </ul>
   </div>
@@ -327,7 +327,7 @@
   <div style="background:#FFF8E1;border:1px solid #FFD54F;border-radius:12px;padding:14px 16px;margin-bottom:18px;font-size:13px;font-weight:600;color:#5D4037;">
     <span data-i18n="news.decisionTitle">결론: 7월 공식 공시는 일부 항공사부터 확정 반영, 미공시 항공사는 대기</span><br>
     <span data-i18n="news.decisionLine1">→ 대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공은 2026년 7월 공식 공시 확인 항공사입니다.</span><br>
-    <span data-i18n="news.decisionLine2">→ 에어부산까지 7월 공식 공시가 확인됐고, 에어서울·티웨이항공·에어프레미아 등은 확인 전까지 공시 전으로 표시해야 합니다.</span><br><br>
+    <span data-i18n="news.decisionLine2">→ 티웨이항공까지 7월 공식 공시가 확인됐고, 8월은 아직 전망 단계로 분리해야 합니다.</span><br><br>
     <strong data-i18n="news.decisionShort">단거리: 대한항공·아시아나·제주항공·진에어·에어부산 7월 공식 공시 기준 비교</strong><br>
     <strong data-i18n="news.decisionMid">중거리: 항공사별 거리 구간과 통화 기준을 동일하게 맞추지 말고 원문 기준으로 확인</strong><br>
     <strong data-i18n="news.decisionLong" style="color:#D84315;font-weight:400;">장거리·성수기: 7월 공식 유류할증료와 실제 항공권 총액을 함께 비교</strong>
@@ -2834,7 +2834,8 @@ var FIXED_NEWS = [
    tags:['환율','USDKRW']}
 ];
 
-FIXED_NEWS = (window.AERO_NEWS_CARDS_20260618 || [])
+FIXED_NEWS = (window.AERO_NEWS_CARDS_20260619 || [])
+  .concat(window.AERO_NEWS_CARDS_20260618 || [])
   .concat(window.AERO_NEWS_CARDS_20260617 || [])
   .concat(window.AERO_NEWS_CARDS_20260616 || [])
   .concat(window.AERO_NEWS_CARDS_20260615 || [])
@@ -4936,7 +4937,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
     'news.compare.li5':'에어부산(BX): 6월 USD 43~106 → 7월 USD 30~74',
     'news.compare.li6':'Eastar Jet (ZE): June USD 43-103 → July USD 30-72',
     'news.compare.li7':'에어서울: 7월 공시 전 — 확인 전까지 6월 공시 기준 참고만 가능',
-    'news.compare.li8':'티웨이항공: 7월 공시 전 — 확인 전까지 6월 KRW 공시 기준 참고만 가능',
+    'news.compare.li8':'티웨이항공: 6월 47,400원~327,000원 → 7월 33,400원~233,800원, 6군 해당 없음',
     'news.compare.li9':'공통: 7월 공식 공시 확인 항공사만 확정 처리하고, 나머지는 공시 전으로 분리',
     'news.marketTitle':'7월 공시 반영 이후 확인할 시장 지표',
     'news.dataRef':'2026.06.16 KST 기준 7월 공식 공시 반영 이후 점검',
@@ -4948,7 +4949,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
     'news.fxDominance':'핵심 상태: 7월 공시 확인 KE·OZ·7C·LJ·BX·ZE · 미공시 항공사는 공시 전 · 다음 변수는 MOPS·환율·항공유 가격',
     'news.decisionTitle':'결론: 7월 공식 공시는 일부 항공사부터 확정 반영, 미공시 항공사는 대기',
     'news.decisionLine1':'→ 대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공은 2026년 7월 공식 공시 확인 항공사입니다.',
-    'news.decisionLine2':'→ 에어서울·티웨이항공·에어프레미아 등은 확인 전까지 공시 전으로 표시해야 합니다.',
+    'news.decisionLine2':'→ 티웨이항공까지 7월 공식 공시가 확인됐고, 8월은 아직 전망 단계로 분리해야 합니다.',
     'news.decisionShort':'단거리: 대한항공·아시아나·제주항공·진에어 7월 공식 공시 기준 비교',
     'news.decisionMid':'중거리: 항공사별 거리 구간과 통화 기준을 동일하게 맞추지 말고 원문 기준으로 확인',
     'news.decisionLong':'장거리·성수기: 7월 공식 유류할증료와 실제 항공권 총액을 함께 비교',
@@ -4989,7 +4990,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
     'news.compare.li5':'Air Busan (BX): June USD 43-106 → July USD 30-74',
     'news.compare.li6':'Eastar Jet (ZE): June USD 43-103 → July USD 30-72',
     'news.compare.li7':'Air Seoul: July notice pending · June filing is reference only until verified',
-    'news.compare.li8':"T'way Air: July notice pending · June KRW filing is reference only until verified",
+    'news.compare.li8':"T'way Air (TW): June KRW 47,400-327,000 → July KRW 33,400-233,800, Group 6 not applicable",
     'news.compare.li9':'Overall: only airlines with verified July official notices are treated as confirmed; others remain pending',
     'news.brent':'Oil prices: since July notices have already started to be reflected for some airlines, later oil moves are reference indicators for pending airlines and the next filing month.',
     'news.mops':'Jet fuel price (MOPS): after July official notices started, MOPS remains a key indicator for the next adjustment and pending airline filings.',
@@ -5119,7 +5120,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
     'news.compare.li5':'에어부산(BX): 6월 USD 43~106 → 7월 USD 30~74',
     'news.compare.li6':'이스타항공(ZE): 6월 USD 43~103 → 7월 USD 30~72',
     'news.compare.li7':'에어서울: 7월 공시 전 · 확인 전까지 6월 공시 기준 참고만 가능',
-    'news.compare.li8':'티웨이항공: 7월 공시 전 · 확인 전까지 6월 KRW 공시 기준 참고만 가능',
+    'news.compare.li8':'티웨이항공: 6월 47,400원~327,000원 → 7월 33,400원~233,800원, 6군 해당 없음',
     'news.compare.li9':'공통: 7월 공식 공시 확인 항공사만 확정 처리하고, 나머지는 공시 전으로 분리',
     'news.marketTitle':'7월 공시 반영 이후 확인할 시장 지표',
     'news.dataRef':'2026.06.17 KST 기준 · 7월 공시 반영 이후 8월 전망 참고 지표',
@@ -5131,7 +5132,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
     'news.fxDominance':'핵심 상태: 7월 공시 확인 KE·OZ·7C·LJ·BX·ZE · 미공시 항공사는 공시 전 · 다음 변수는 MOPS·환율·항공유 가격',
     'news.decisionTitle':'결론: 7월 공식 공시는 확인 항공사만 확정 반영, 미공시 항공사는 대기',
     'news.decisionLine1':'대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공은 2026년 7월 공식 공시 확인 항공사입니다.',
-    'news.decisionLine2':'에어서울·티웨이항공·에어프레미아 등은 공식 확인 전까지 공시 전 상태로 표시해야 합니다.',
+    'news.decisionLine2':'티웨이항공까지 7월 공식 공시가 확인됐고, 8월은 아직 전망 단계로 분리해야 합니다.',
     'news.decisionShort':'단거리: 7월 공식 공시 확인 항공사 기준 비교',
     'news.decisionMid':'중거리: 항공사별 거리 구간과 통화 기준을 원문 그대로 확인',
     'news.decisionLong':'장거리·성수기: 7월 공식 유류할증료와 실제 항공권 총액을 함께 비교',
@@ -5172,7 +5173,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
     'news.compare.li5':'Air Busan: June USD 43-106 → July USD 30-74',
     'news.compare.li6':'Eastar Jet: June USD 43-103 → July USD 30-72',
     'news.compare.li7':'Air Seoul: July notice pending · June filing is reference only until verified',
-    'news.compare.li8':"T'way Air: July notice pending · June KRW filing is reference only until verified",
+    'news.compare.li8':"T'way Air (TW): June KRW 47,400-327,000 → July KRW 33,400-233,800, Group 6 not applicable",
     'news.compare.li9':'Overall: only airlines with verified July official notices are treated as confirmed; others remain pending',
     'news.marketTitle':'Market indicators to watch after July notices',
     'news.dataRef':'After July official filings · As of June 17, 2026 KST',
@@ -5275,7 +5276,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
     'news.official.yp':'7월 공시 전',
     'news.official.desc':'* 2026년 7월 공시 확인 항공사: KE·OZ·7C·LJ·BX·ZE. 미공시 항공사는 임의 금액을 생성하지 않고 공시 전으로 표시합니다. 최종 금액은 발권 전 각 항공사 공식 공지를 확인하세요.',
     'news.compare.li7':'에어서울: 7월 공시 전',
-    'news.compare.li8':'티웨이항공: 7월 공시 전',
+    'news.compare.li8':'티웨이항공: 6월 47,400원~327,000원 → 7월 33,400원~233,800원, 6군 해당 없음',
     'news.compare.li9':'에어프레미아: 7월 공시 전',
     'news.compare.li10':'공통: 7월 공식 공시 확인 항공사만 확정 처리하고, 나머지는 공시 전으로 분리'
   };
@@ -5286,7 +5287,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
     'news.official.yp':'July notice pending',
     'news.official.desc':'* July 2026 verified airlines: KE, OZ, 7C, LJ, BX and ZE. Pending airlines are not estimated and remain marked as pending until official notices are verified.',
     'news.compare.li7':'Air Seoul: July notice pending',
-    'news.compare.li8':"T'way Air: July notice pending",
+    'news.compare.li8':"T'way Air (TW): June KRW 47,400-327,000 → July KRW 33,400-233,800, Group 6 not applicable",
     'news.compare.li9':'Air Premia: July notice pending',
     'news.compare.li10':'Overall: only airlines with verified July official notices are treated as confirmed; others remain pending'
   };
@@ -5301,35 +5302,81 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
 (function(){
   window.PAGE_I18N_OVERRIDE = window.PAGE_I18N_OVERRIDE || {};
   var ko = {
-    'news.officialNotice':'2026.06.18 KST 기준 · 대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공·에어서울·에어프레미아 7월 공시 확인 · 티웨이항공은 공시 전',
+    'news.officialNotice':'2026.06.19 09:00 KST 기준 · 대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공·에어서울·에어프레미아·티웨이항공 7월 공시 확인',
     'news.official.rs':'7월 공식 공시 반영: 54,500원~93,900원 · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10914&pageNo=1" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">공식 공지 ↗</a>',
     'news.official.tw':'7월 공시 전 · 확인 전까지 6월 KRW 공시 기준과 분리 표시',
     'news.official.yp':'7월 USD 공식 공시 반영: USD 33~205 · <a href="https://www.airpremia.com/a/ko/customer/notice/728" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">공식 공지 ↗</a>',
-    'news.official.desc':'* 2026년 7월 공시 확인 항공사: KE·OZ·7C·LJ·BX·ZE·RS·YP. 티웨이항공은 임의 금액을 생성하지 않고 공시 전 상태로 표시합니다. 최종 금액은 발권 전 각 항공사 공식 공지를 확인하세요.',
+    'news.official.desc':'* 2026년 7월 공시 확인 항공사: KE·OZ·7C·LJ·BX·ZE·RS·YP·TW. 티웨이항공은 2026.06.19 공식 공지 표 기준으로 반영했습니다. 최종 금액은 발권 전 각 항공사 공식 공지를 확인하세요.',
     'news.compare.li7':'에어서울(RS): 6월 75,300원~132,800원 → 7월 54,500원~93,900원',
-    'news.compare.li8':'티웨이항공: 7월 공시 전 · 확인 전까지 6월 KRW 공시 기준 참고만 가능',
+    'news.compare.li8':'티웨이항공: 6월 47,400원~327,000원 → 7월 33,400원~233,800원, 6군 해당 없음',
     'news.compare.li9':'에어프레미아(YP): 6월 USD 48~296 → 7월 USD 33~205',
-    'news.compare.li10':'공통: 7월 공식 공시 확인 항공사만 확정 처리하고, 티웨이항공은 공시 전으로 분리',
-    'news.fxDominance':'핵심 상태: 7월 공시 확인 KE·OZ·7C·LJ·BX·ZE·RS·YP · 티웨이항공은 공시 전 · 다음 변수는 MOPS·환율·항공유 가격',
+    'news.compare.li10':'공통: 7월 공식 공시 확인 항공사만 확정 처리하고, 8월은 전망 단계로 분리',
+    'news.fxDominance':'핵심 상태: 7월 공시 확인 KE·OZ·7C·LJ·BX·ZE·RS·YP·TW · 다음 변수는 MOPS·환율·항공유 가격',
     'news.decisionLine1':'대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공·에어서울·에어프레미아는 2026년 7월 공식 공시 확인 항공사입니다.',
-    'news.decisionLine2':'티웨이항공은 공식 확인 전까지 공시 전 상태로 표시해야 합니다.'
+    'news.decisionLine2':'티웨이항공까지 7월 공식 공시가 확인됐고, 8월은 아직 전망 단계로 분리해야 합니다.'
   };
   var en = {
-    'news.officialNotice':'As of June 18, 2026 KST · KE/OZ/7C/LJ/BX/ZE/RS/YP July notices verified · Tway Air remains pending',
+    'news.officialNotice':'As of June 19, 2026 09:00 KST · KE/OZ/7C/LJ/BX/ZE/RS/YP/TW July notices verified',
     'news.official.rs':'July official notice reflected: KRW 54,500-93,900 · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10914&pageNo=1" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">Official notice ↗</a>',
     'news.official.tw':'July notice pending · separated from June KRW filing data until verified',
     'news.official.yp':'July USD official notice reflected: USD 33-205 · <a href="https://www.airpremia.com/a/ko/customer/notice/728" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">Official notice ↗</a>',
     'news.official.desc':'* July 2026 verified airlines: KE, OZ, 7C, LJ, BX, ZE, RS and YP. Tway Air is not estimated and remains marked as pending until its official notice is verified.',
     'news.compare.li7':'Air Seoul (RS): June KRW 75,300-132,800 → July KRW 54,500-93,900',
-    'news.compare.li8':"T'way Air: July notice pending · June KRW filing is reference only until verified",
+    'news.compare.li8':"T'way Air (TW): June KRW 47,400-327,000 → July KRW 33,400-233,800, Group 6 not applicable",
     'news.compare.li9':'Air Premia (YP): June USD 48-296 → July USD 33-205',
-    'news.compare.li10':'Overall: only airlines with verified July official notices are treated as confirmed; Tway Air remains pending',
+    'news.compare.li10':'Overall: verified July notices are factual data; August remains an outlook based on MOPS, FX and Hormuz variables.',
     'news.fxDominance':'Status: KE/OZ/7C/LJ/BX/ZE/RS/YP verified · Tway Air pending · next variables: MOPS, FX and jet fuel',
     'news.decisionLine1':'Korean Air, Asiana, Jeju Air, Jin Air, Air Busan, Eastar Jet, Air Seoul and Air Premia have verified July 2026 notices.',
     'news.decisionLine2':'Tway Air should remain pending until its official notice is verified.'
   };
   Object.assign(window.PAGE_I18N_OVERRIDE.ko || (window.PAGE_I18N_OVERRIDE.ko = {}), ko);
   Object.assign(window.PAGE_I18N_OVERRIDE.en || (window.PAGE_I18N_OVERRIDE.en = {}), en);
+})();
+
+(function(){
+  window.PAGE_I18N_OVERRIDE = window.PAGE_I18N_OVERRIDE || {};
+  var ko = {
+    'news.metaTitle':'2026년 7월 유류할증료 공시 반영 | 티웨이항공 7월 공시·6월 19일 시장 점검',
+    'news.metaDesc':'2026.06.19 09:00 KST 기준 티웨이항공 2026년 7월 한국발 국제선 유류할증료 공지, 원달러 환율 1,536원대 재상승, 호르무즈 해협 리스크와 이스라엘-이란 신규 폭격 미확인 상황을 정리합니다.',
+    'news.pageTitle':'2026년 7월 유류할증료 공시 반영 뉴스',
+    'news.pageSub':'2026.06.19 09:00 KST 기준 · 티웨이항공 7월 공시 확인 · 환율 재상승·호르무즈 리스크 점검',
+    'news.officialNotice':'2026.06.19 09:00 KST 기준 · 대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공·에어서울·에어프레미아·티웨이항공 7월 공시 확인',
+    'news.official.tw':'7월 공식 공시 반영: 33,400원~233,800원, 6군 해당 없음 · <a href="https://www.twayair.com/app/customerCenter/notice/retrieve/12654" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">공식 공지 ↗</a>',
+    'news.official.desc':'* 2026년 7월 공시 확인 항공사: KE·OZ·7C·LJ·BX·ZE·RS·YP·TW. 티웨이항공은 2026.06.19 공식 공지 표 기준으로 반영했습니다. 최종 결제 전 각 항공사 공식 공지를 확인하세요.',
+    'news.compare.li8':'티웨이항공(TW): 6월 47,400원~327,000원 → 7월 33,400원~233,800원, 6군 해당 없음',
+    'news.compare.li10':'공통: 7월 공식 공시 확인 항공사만 확정 처리하고, 8월은 MOPS·환율·호르무즈 변수 기반 전망으로 분리',
+    'news.fxDominance':'핵심 상태: 7월 공시 확인 KE·OZ·7C·LJ·BX·ZE·RS·YP·TW · USD/KRW 약 1,536원대 · 신규 이란 본토 폭격 확인 안 됨',
+    'news.marketSummary':'7월은 공시 반영 단계이고, 8월은 MOPS 338.3 cents/gal 흐름과 원달러 환율 1,536원대 재상승, 호르무즈 정상화 지연을 함께 보는 전망 단계입니다.',
+    'news.fx':'원달러 환율: 6월 18일 기준 약 1,515.50원에서 6월 19일 오전 약 1,536원대로 재상승했습니다. MOPS 하락은 8월 유류할증료 하방 요인이지만 원화 약세는 항공권 총액 체감 인하 폭을 제한할 수 있습니다.',
+    'news.geo':'지정학 리스크: 2026.06.19 09:00 KST 기준 이스라엘의 신규 이란 본토 폭격은 주요 외신에서 확인되지 않습니다. 다만 호르무즈 해협 정상화 지연, 보험료, 선박 안전 점검은 리스크 프리미엄으로 남아 있습니다.',
+    'news.decisionTitle':'결론: 티웨이 7월 공시 반영, 8월은 보합 또는 소폭 인하 전망',
+    'news.decisionLine1':'티웨이항공까지 2026년 7월 한국발 국제선 유류할증료 공시가 확인되어 7월 확정 데이터 범위가 확대됐습니다.',
+    'news.decisionLine2':'8월 유류할증료는 보합 또는 소폭 인하 가능성이 우세하지만, 원달러 환율 1,536원대 재상승과 호르무즈 정상화 지연 때문에 큰 폭 인하는 단정하기 어렵습니다.'
+  };
+  var en = {
+    'news.metaTitle':'July 2026 Fuel Surcharge Notices | Tway July Notice and June 19 Market Update',
+    'news.metaDesc':'As of June 19, 2026 09:00 KST, this page reflects Tway Air July 2026 Korea-departure international fuel surcharge notice, USD/KRW near KRW 1,536, Hormuz risk and no confirmed new Israel strike on Iran.',
+    'news.pageTitle':'July 2026 Fuel Surcharge Notice News',
+    'news.pageSub':'As of June 19, 2026 09:00 KST · Tway July notice verified · FX rebound and Hormuz risk checked',
+    'news.officialNotice':'As of June 19, 2026 09:00 KST · KE/OZ/7C/LJ/BX/ZE/RS/YP/TW July notices verified',
+    'news.official.tw':'July official notice reflected: KRW 33,400-233,800, Group 6 not applicable · <a href="https://www.twayair.com/app/customerCenter/notice/retrieve/12654" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">Official notice ↗</a>',
+    'news.official.desc':'* July 2026 verified airlines: KE, OZ, 7C, LJ, BX, ZE, RS, YP and TW. Tway Air is reflected from its June 19 official notice table.',
+    'news.compare.li8':"T'way Air (TW): June KRW 47,400-327,000 → July KRW 33,400-233,800, Group 6 not applicable",
+    'news.compare.li10':'Overall: verified July notices are factual data; August remains an outlook based on MOPS, FX and Hormuz variables.',
+    'news.fxDominance':'Status: KE/OZ/7C/LJ/BX/ZE/RS/YP/TW verified · USD/KRW near KRW 1,536 · no confirmed new strike on mainland Iran',
+    'news.marketSummary':'July is an official notice reflection stage. August remains an outlook based on MOPS at 338.3 cents/gal, USD/KRW near KRW 1,536 and Hormuz normalization delays.',
+    'news.fx':'USD/KRW: from about KRW 1,515.50 on June 18 to around KRW 1,536 on the morning of June 19. Lower MOPS is a downside factor, but weaker KRW can limit total airfare relief.',
+    'news.geo':'Geopolitical risk: as of June 19, 2026 09:00 KST, major wire reports do not confirm a new Israeli strike on mainland Iran. Hormuz normalization, insurance and vessel checks remain risk-premium factors.',
+    'news.decisionTitle':'Conclusion: Tway July notice reflected; August remains flat to slightly lower outlook',
+    'news.decisionLine1':"T'way Air's July 2026 Korea-departure international fuel surcharge notice is now verified, expanding the factual July dataset.",
+    'news.decisionLine2':'August is more likely flat to slightly lower, but USD/KRW near KRW 1,536 and Hormuz delays limit any large-cut assumption.'
+  };
+  Object.assign(window.PAGE_I18N_OVERRIDE.ko || (window.PAGE_I18N_OVERRIDE.ko = {}), ko);
+  Object.assign(window.PAGE_I18N_OVERRIDE.en || (window.PAGE_I18N_OVERRIDE.en = {}), en);
+  ['ja','zh','fr','de'].forEach(function(lang){
+    window.PAGE_I18N_OVERRIDE[lang] = window.PAGE_I18N_OVERRIDE[lang] || {};
+    Object.assign(window.PAGE_I18N_OVERRIDE[lang], en);
+  });
 })();
 
 window.initNav({

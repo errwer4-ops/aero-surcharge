@@ -248,7 +248,7 @@
       "name": "티웨이항공",
       "logo": "🔴",
       "alliance": "LCC",
-      "officialNoticeUrl": "https://www.twayair.com/app/customerCenter/notice",
+      "officialNoticeUrl": "https://www.twayair.com/app/customerCenter/notice/retrieve/12654",
       "hasOfficialNotice": true,
       "isVisibleToUser": true,
       "excludeFromPublicLists": false,

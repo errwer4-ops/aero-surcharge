@@ -5048,6 +5048,84 @@ function renderForecastPage() {
   }
 })();
 
+/* 2026.06.19 09:00 KST update: TW July notice + FX rebound + no confirmed new Israel strike */
+(function(){
+  var ko = {
+    'fore.metaTitle':'2026년 8월 유류할증료 전망 | 2026.06.19 환율·MOPS·호르무즈·티웨이 공시 반영',
+    'fore.metaDesc':'2026.06.19 09:00 KST 기준 7월 유류할증료 19단계와 MOPS 평균 338.3 cents/gal을 기준으로 2026년 8월 유류할증료를 전망합니다. 원달러 환율 1,536원대 재상승, 호르무즈 정상화 지연, 티웨이항공 7월 공시 확인을 함께 반영합니다.',
+    'fore.pageTitle':'2026년 8월 유류할증료 전망',
+    'fore.pageSub':'2026.06.19 09:00 KST 기준 · 7월 19단계 공시 이후 · MOPS 하락·환율 재상승·호르무즈 리스크 점검',
+    'fore.h1':'2026년 8월 국제선 유류할증료 전망 - MOPS 하락과 환율 재상승의 균형',
+    'fore.notice':'<strong>안내:</strong> 2026년 7월 유류할증료는 공시 완료 항공사에 한해 사실 데이터로 반영합니다. 2026년 8월 유류할증료는 아직 공시 전이므로 보합 또는 소폭 인하 가능성 중심의 전망으로만 표시합니다.',
+    'fore.intro':'2026.06.19 09:00 KST 기준 2026년 7월 한국 출발 국제선 유류할증료는 6월 27단계에서 7월 19단계로 8단계 낮아졌고, 티웨이항공까지 7월 공식 공시가 확인됐습니다. MOPS 평균 338.3 cents/gal은 8월 유류할증료 하방 요인이지만, 원달러 환율이 1,536원대까지 재상승했고 호르무즈 해협 정상화 지연 리스크가 남아 있어 큰 폭 인하는 단정하기 어렵습니다.',
+    'fore.indicator.th':['항목','2026.06.19 09:00 KST 기준','8월 유류할증료 영향'],
+    'fore.indicator.rows':[
+      ['7월 공식 단계','2026년 7월 국제선 유류할증료 19단계 적용','8월 전망의 기준선'],
+      ['공시 확인 항공사','KE·OZ·7C·LJ·BX·ZE·RS·YP·TW','7월 사실 데이터로 반영'],
+      ['MOPS 평균','338.3 cents/gal','8월 인하 압력을 만드는 하방 요인'],
+      ['MOPS 전월 기준','6월 기준 410.02 cents/gal 대비 약 17.5% 하락','보합 또는 소폭 인하 가능성 확대'],
+      ['원달러 환율','6월 18일 약 1,515.50원 → 6월 19일 오전 약 1,536원대','큰 폭 인하와 항공권 총액 체감 인하 제한'],
+      ['호르무즈 해협','재개방 기대는 있으나 보험료·안전 점검·물류 정상화 지연','리스크 프리미엄 잔존'],
+      ['이스라엘-이란','신규 이란 본토 폭격은 주요 외신 기준 확인 안 됨','단기 유가 급등 근거는 약화, 리스크는 잔존'],
+      ['8월 산정 기간','2026.06.16~2026.07.15 MOPS 흐름 확인 필요','8월 공시 방향의 핵심 변수']
+    ],
+    'fore.summary.updated':'2026.06.19 09:00 KST 기준',
+    'fore.summary.items':[
+      '8월 전망: 보합 또는 소폭 인하 가능성이 우세',
+      '7월 공시 기준: 6월 27단계 → 7월 19단계, 8단계 인하',
+      '7월 공시 확인 항공사: KE·OZ·7C·LJ·BX·ZE·RS·YP·TW',
+      '티웨이항공 7월 공식 공시 반영: 33,400원~233,800원, 6군 해당 없음',
+      'MOPS 평균: 338.3 cents/gal, 6월 기준 410.02 cents/gal 대비 약 17.5% 하락',
+      '제한 요인: USD/KRW 1,536원대 재상승, 호르무즈 물류 정상화 지연, 보험료 부담',
+      '판단: MOPS 하락은 하방 요인이나 큰 폭 인하 확정 표현은 금지'
+    ],
+    'fore.verdict.line1':'현재 기준으로 2026년 8월 국제선 유류할증료는 보합 또는 소폭 인하 가능성이 우세합니다.',
+    'fore.verdict.line2':'다만 원달러 환율이 1,536원대까지 상승하면서 큰 폭 인하 또는 항공권 총액 체감 인하를 단정하기 어렵고, 호르무즈 정상화 지연도 인하 폭 제한 요인입니다.',
+    'fore.predict.items':[
+      {label:'8월 전망',val:'보합 또는 소폭 인하 가능성 우세',cls:'down'},
+      {label:'7월 적용 단계',val:'19단계',cls:'down'},
+      {label:'공시 확인 항공사',val:'KE·OZ·7C·LJ·BX·ZE·RS·YP·TW',cls:'down'},
+      {label:'MOPS 평균',val:'338.3 cents/gal',cls:'down'},
+      {label:'USD/KRW',val:'약 1,536원대',cls:'plain'},
+      {label:'중동 리스크',val:'신규 이란 본토 폭격 미확인, 호르무즈 리스크 잔존',cls:'plain'}
+    ],
+    'fore.market.fx':'원달러 환율: 2026.06.18 기준 약 1,515.50원에서 2026.06.19 오전 약 1,536원대로 재상승했습니다. MOPS 하락은 유류할증료 하방 요인이지만 원화 약세는 실제 항공권 총액 체감 인하 폭을 제한할 수 있습니다.',
+    'fore.market.geo':'호르무즈 해협: 재개방 기대는 유가 하방 요인이지만 보험료, 선박 안전 점검, 물류 정상화 지연 때문에 리스크 프리미엄은 남아 있습니다. 2026.06.19 09:00 KST 기준 이스라엘의 신규 이란 본토 폭격은 주요 외신에서 확인되지 않습니다.',
+    'fore.market.fx2':'핵심 수치: 7월 19단계 · MOPS 338.3 cents/gal · USD/KRW 약 1,536원대 · 8월 전망은 보합 또는 소폭 인하 가능성 우세',
+    'fore.basis.body':'2026년 7월 유류할증료 19단계 적용과 KE·OZ·7C·LJ·BX·ZE·RS·YP·TW 7월 공시는 사실 데이터입니다. 2026년 8월 유류할증료는 아직 공시 전이므로 MOPS 평균, 원달러 환율, 국제유가, 호르무즈 해협 정상화 속도를 종합한 전망으로만 표시합니다.',
+    'fore.faq.title':'2026년 8월 유류할증료 전망 FAQ',
+    'fore.faq.items':[
+      {q:'2026년 8월 유류할증료는 인하되나요?',a:'2026.06.19 기준 MOPS 평균 하락으로 보합 또는 소폭 인하 가능성이 우세하지만, 8월 공시는 아직 확정 전입니다. 원달러 환율 상승과 호르무즈 해협 정상화 지연은 인하 폭을 제한할 수 있습니다.'},
+      {q:'티웨이항공 2026년 7월 국제선 유류할증료는 공시됐나요?',a:'2026.06.19 기준 티웨이항공의 2026년 7월 한국발 국제선 유류할증료 공지가 확인됩니다. 공식 표 기준 1군 33,400원, 2군 59,200원, 3군 74,400원, 4군 97,200원, 5군 104,700원, 6군 해당 없음, 7군 233,800원입니다.'},
+      {q:'이스라엘이 이란을 새로 폭격했나요?',a:'2026.06.19 09:00 KST 기준 주요 외신에서 이스라엘의 신규 이란 본토 폭격은 확인되지 않습니다. 다만 6월 초 충돌 이력과 중동 긴장은 남아 있어 국제유가와 항공유 가격의 리스크 요인으로 계속 확인해야 합니다.'},
+      {q:'환율 상승은 유류할증료 전망에 어떤 영향을 주나요?',a:'원달러 환율이 1,536원대까지 오르면 MOPS 하락으로 유류할증료가 낮아질 가능성이 있어도 실제 항공권 총액의 체감 인하 폭은 제한될 수 있습니다.'}
+    ]
+  };
+  var en = {
+    'fore.metaTitle':'August 2026 Fuel Surcharge Outlook | Jun 19 FX, MOPS, Hormuz and Tway Notice',
+    'fore.metaDesc':'As of June 19, 2026 09:00 KST, this August 2026 fuel surcharge outlook uses July Level 19, MOPS average 338.3 cents/gal, USD/KRW near KRW 1,536, Hormuz delay risk and Tway July notice verification.',
+    'fore.pageTitle':'August 2026 Fuel Surcharge Outlook',
+    'fore.pageSub':'As of June 19, 2026 09:00 KST · after July Level 19 · lower MOPS, FX rebound and Hormuz risk checked',
+    'fore.h1':'August 2026 International Fuel Surcharge Outlook - Lower MOPS vs FX Rebound',
+    'fore.notice':'<strong>Notice:</strong> July 2026 is factual notice data only for verified airlines. August 2026 remains an outlook and is not confirmed.',
+    'fore.intro':'As of June 19, 2026 09:00 KST, July Korea-departure international fuel surcharge is Level 19 and Tway Air has now verified its July notice. Lower MOPS at 338.3 cents/gal supports a flat to slightly lower August outlook, but USD/KRW near KRW 1,536 and delayed Hormuz normalization limit any large-cut assumption.',
+    'fore.summary.items':['August outlook: flat to slightly lower is more likely','July baseline: Level 27 to Level 19, down 8 levels','Verified July airlines: KE/OZ/7C/LJ/BX/ZE/RS/YP/TW','Tway July notice reflected: KRW 33,400-233,800, Group 6 not applicable','MOPS average: 338.3 cents/gal, about 17.5% below June basis','Limiting factors: USD/KRW near KRW 1,536, Hormuz logistics delay and insurance costs','Do not describe August as confirmed before airline notices'],
+    'fore.market.fx':'USD/KRW: after about KRW 1,515.50 on June 18, the rate rebounded to around KRW 1,536 on the morning of June 19. Lower MOPS is a downside factor, but weaker KRW can limit total airfare relief.',
+    'fore.market.geo':'Hormuz: reopening hopes are oil-negative, but insurance, vessel checks and logistics delays keep risk premium alive. As of June 19, 2026 09:00 KST, major wire reports do not confirm a new Israeli strike on mainland Iran.',
+    'fore.basis.body':'July 2026 Level 19 and verified KE/OZ/7C/LJ/BX/ZE/RS/YP/TW notices are factual data. August 2026 remains an outlook based on MOPS, USD/KRW, oil prices and Hormuz normalization speed.',
+    'fore.faq.title':'August 2026 Fuel Surcharge Outlook FAQ',
+    'fore.faq.items':ko['fore.faq.items']
+  };
+  Object.assign(FORE_I18N.ko, ko);
+  Object.assign(FORE_I18N.en, en);
+  ['ja','zh','fr','de'].forEach(function(lang){ Object.assign(FORE_I18N[lang] || (FORE_I18N[lang] = {}), en); });
+  if(window.I18N){
+    Object.assign(window.I18N.ko || (window.I18N.ko = {}), ko);
+    Object.assign(window.I18N.en || (window.I18N.en = {}), en);
+    ['ja','zh','fr','de'].forEach(function(lang){ Object.assign(window.I18N[lang] || (window.I18N[lang] = {}), en); });
+  }
+})();
+
 window.initNav({
   onLangChange: function() { renderForecastPage(); },
   onCurrChange: function() { renderForecastPage(); },

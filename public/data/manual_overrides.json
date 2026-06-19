@@ -380,6 +380,25 @@
       "currency": "KRW",
       "sourceType": "official_notice",
       "confidence": "fresh"
+    },
+    "2026.07": {
+      "group_tiers": [
+        { "group": 1, "label": "1군 (~600mi)", "amount": 33400, "currency": "KRW" },
+        { "group": 2, "label": "2군 (600~1,200mi)", "amount": 59200, "currency": "KRW" },
+        { "group": 3, "label": "3군 (1,200~1,800mi)", "amount": 74400, "currency": "KRW" },
+        { "group": 4, "label": "4군 (1,800~2,400mi)", "amount": 97200, "currency": "KRW" },
+        { "group": 5, "label": "5군 (2,400~4,000mi)", "amount": 104700, "currency": "KRW" },
+        { "group": 6, "label": "6군 (4,000~5,000mi)", "amount": null, "currency": "KRW" },
+        { "group": 7, "label": "7군 (5,000mi+)", "amount": 233800, "currency": "KRW" }
+      ],
+      "currency": "KRW",
+      "sourceType": "official_notice",
+      "status": "official_verified",
+      "confidence": "fresh",
+      "surchargeSchema": "group_tier",
+      "officialNoticeUrl": "https://www.twayair.com/app/customerCenter/notice/retrieve/12654",
+      "verifiedAt": "2026-06-19T09:00:00+09:00",
+      "appliedPeriod": "2026-07-01~2026-07-31"
     }
   },
   "ZE": {

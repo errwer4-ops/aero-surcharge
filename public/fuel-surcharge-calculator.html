@@ -543,9 +543,9 @@ var SAVING_COMPARE_DATA = {
     { label:'1,900~2,299mi', may:165000, june:132800 }
   ]},
   TW: { name:'티웨이항공', currency:'KRW', rows:[
-    { label:'1군 (~600mi)', may:58600, june:47400 }, { label:'2군 (600~1,200mi)', may:103600, june:82900 },
-    { label:'3군 (1,200~1,800mi)', may:129100, june:103600 }, { label:'4군 (1,800~2,400mi)', may:168200, june:134700 },
-    { label:'5군 (2,400~4,000mi)', may:180200, june:145000 }, { label:'7군 (5,000mi~)', may:406900, june:327000 }
+    { label:'1군 (~600mi)', may:58600, june:47400, july:33400 }, { label:'2군 (600~1,200mi)', may:103600, june:82900, july:59200 },
+    { label:'3군 (1,200~1,800mi)', may:129100, june:103600, july:74400 }, { label:'4군 (1,800~2,400mi)', may:168200, june:134700, july:97200 },
+    { label:'5군 (2,400~4,000mi)', may:180200, june:145000, july:104700 }, { label:'7군 (5,000mi~)', may:406900, june:327000, july:233800 }
   ]},
   YP: { name:'에어프레미아', currency:'USD', rows:[
     { label:'인천-나리타', may:59, june:48 }, { label:'인천-홍콩', may:78, june:64 },
@@ -1520,7 +1520,7 @@ var SAVING_INDEX_ROUTE_MAP = null;
       ],
       en: [
         'Fuel surcharge calculator FAQ',
-        ['Is the fuel surcharge based on travel date or ticketing date?', 'It is generally applied by the ticketing date, not the travel date. This calculator compares amounts based on confirmed June 2026 official filings.'],
+        ['Is the fuel surcharge based on travel date or ticketing date?', 'It is generally applied by the ticketing date, not the travel date. This calculator compares verified July 2026 official filings where available and separates airlines still awaiting July filing confirmation.'],
         ['Which routes does this calculator use?', 'It compares Korea-origin international routes using the official published surcharge data held by this site. When multiple airlines operate the selected route, it shows airline-by-airline amounts.'],
         ['Is the surcharge share always calculated against low fares?', 'No. The share is shown only when the low-fare airline code exactly matches official published surcharge data on this site. Airlines without official data are excluded from share calculations.'],
         ['How is a round trip calculated?', 'Round trip mode doubles the one-way surcharge amount and then multiplies it by the selected passenger count.'],
@@ -1571,11 +1571,11 @@ var SAVING_INDEX_ROUTE_MAP = null;
       ],
       en: [
         'Fuel surcharge calculator FAQ',
-        ['Is the fuel surcharge based on travel date or ticketing date?', 'It is generally applied by the ticketing date, not the travel date. This calculator compares confirmed June 2026 official filing amounts.'],
+        ['Is the fuel surcharge based on travel date or ticketing date?', 'It is generally applied by the ticketing date, not the travel date. This calculator compares verified July 2026 official filing amounts where available.'],
         ['Which routes does this calculator use?', 'It compares Korea-origin international routes using the official published surcharge data held by this site. When multiple airlines operate the selected route, it shows airline-by-airline amounts.'],
         ['Does the result exactly match the final payment amount?', 'No. This calculator is a comparison tool based on officially published fuel surcharges. The final ticket price can vary by fare, taxes, exchange rate, booking channel, and airline policy, so always check the official notice before ticketing.'],
         ['How is a round trip calculated?', 'Round trip mode doubles the one-way surcharge amount and then multiplies it by the selected passenger count.'],
-        ['Can this calculator calculate July 2026 fuel surcharges?', 'Not yet. July fuel surcharge amounts will be added after official airline notices are verified. Before filing confirmation, use the July outlook page for jet fuel, USD/KRW and oil-price variables.']
+        ['Can this calculator calculate July 2026 fuel surcharges?', 'Yes for airlines whose July 2026 official notices have been verified. Airlines without verified July notices remain separated as pending or June-basis reference data.']
       ],
       ja: [
         '燃油サーチャージ計算機 FAQ',
@@ -1999,7 +1999,7 @@ var PAGE_I18N = {
     'calc.official.item.oz': '✈️ 아시아나항공: <a href="https://www.flyasiana.com" target="_blank" rel="noopener">flyasiana.com 공식 공지 확인 ↗</a>',
     'calc.official.item.7c': '✈️ 제주항공: <a href="https://www.jejuair.net" target="_blank" rel="noopener">jejuair.net 공식 공지 확인 ↗</a>',
     'calc.official.item.lj': '✈️ 진에어: <a href="https://www.jinair.com" target="_blank" rel="noopener">jinair.com 공식 공지 확인 ↗</a>',
-    'calc.official.item.tw': '✈️ 티웨이항공: <a href="https://www.twayair.com" target="_blank" rel="noopener">twayair.com 공식 공지 확인 ↗</a>',
+    'calc.official.item.tw': '✈️ 티웨이항공: <a href="https://www.twayair.com/app/customerCenter/notice/retrieve/12654" target="_blank" rel="noopener">twayair.com 공식 공지 확인 ↗</a>',
     'calc.official.item.ze': '✈️ 이스타항공: <a href="https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=608&lang=KR" target="_blank" rel="noopener">eastarjet.com 공식 공지 확인 ↗</a>',
     'calc.official.item.rs': '✈️ 에어서울: <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10914&pageNo=1" target="_blank" rel="noopener">flyairseoul.com 공식 공지 확인 ↗</a>',
     'calc.official.item.yp': '✈️ 에어프레미아: <a href="https://www.airpremia.com/a/ko/customer/notice/728" target="_blank" rel="noopener">airpremia.com 공식 공지 확인 ↗</a>',
@@ -2011,7 +2011,7 @@ var PAGE_I18N = {
     'calc.pageTitle':  '🧮 Fuel Surcharge Calculator',
     'calc.pageSub':    'Compare Korea-departure international fuel surcharges before travel, study abroad, or business trips',
     'calc.h1':         'Fuel Surcharge Calculator: Compare Airfare Costs Before Travel or Study Abroad',
-    'calc.notice':     '<strong>Notice:</strong> Select an origin and destination to compare confirmed June 2026 official fuel surcharge differences by airline.',
+    'calc.notice':     '<strong>Notice:</strong> Select an origin and destination to compare verified July 2026 official fuel surcharge differences by airline where available.',
     'calc.alert':      'Fuel surcharges are applied based on the <strong>ticketing date, not the travel date</strong>. Results are for comparison based on official filing amounts; check the airline notice and booking screen before final ticketing.',
     'calc.intro':      'Use this calculator before issuing international tickets for travel, study abroad, or business trips. It compares official Korea-departure fuel surcharge data by route, airline, ticketing month, round trip, and passenger count.',
     'calc.answer.title':'For travel or study abroad, ticketing month can change your cost',
@@ -2021,7 +2021,7 @@ var PAGE_I18N = {
     'calc.card2.title':'Distance-Based Tiers',
     'calc.card2.body': 'Different amounts apply for short-haul routes (Japan, China, Southeast Asia) versus long-haul routes (Americas, Europe).',
     'calc.card3.title':'Airline Difference Basis',
-    'calc.card3.body': 'The calculator compares confirmed June 2026 official filing amounts for airlines on the same route, adjusted for one-way or round-trip and passenger count.',
+    'calc.card3.body': 'The calculator compares verified July 2026 official filing amounts for airlines on the same route, adjusted for one-way or round-trip and passenger count.',
     'calc.section.structure': '📖 Surcharge Calculation Structure',
     'calc.guide.what.title':  '💡 What Is a Fuel Surcharge?',
     'calc.guide.what.body':   'A fuel surcharge (also called a fuel levy) is an add-on fee charged separately from the base airfare to recover the cost of rising jet fuel prices. Airlines announce it monthly, and it appears as a distinct line item when you book or purchase a ticket.',
@@ -2080,7 +2080,7 @@ var PAGE_I18N = {
     'calc.official.item.oz': '✈️ Asiana Airlines: <a href="https://www.flyasiana.com" target="_blank" rel="noopener">flyasiana.com — Official Notice ↗</a>',
     'calc.official.item.7c': '✈️ Jeju Air: <a href="https://www.jejuair.net" target="_blank" rel="noopener">jejuair.net — Official Notice ↗</a>',
     'calc.official.item.lj': '✈️ Jin Air: <a href="https://www.jinair.com" target="_blank" rel="noopener">jinair.com — Official Notice ↗</a>',
-    'calc.official.item.tw': "✈️ T'way Air: <a href=\"https://www.twayair.com\" target=\"_blank\" rel=\"noopener\">twayair.com — Official Notice ↗</a>",
+    'calc.official.item.tw': "✈️ T'way Air: <a href=\"https://www.twayair.com/app/customerCenter/notice/retrieve/12654\" target=\"_blank\" rel=\"noopener\">twayair.com — Official Notice ↗</a>",
     'calc.official.item.ze': '✈️ Eastar Jet: <a href="https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=608&lang=KR" target="_blank" rel="noopener">eastarjet.com — Official Notice ↗</a>',
     'calc.official.item.rs': '✈️ Air Seoul: <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10914&pageNo=1" target="_blank" rel="noopener">flyairseoul.com — Official Notice ↗</a>',
     'calc.official.item.yp': '✈️ Air Premia: <a href="https://www.airpremia.com/a/ko/customer/notice/728" target="_blank" rel="noopener">airpremia.com — Official Notice ↗</a>',
@@ -2159,7 +2159,7 @@ var PAGE_I18N = {
     'calc.official.item.oz': '✈️ アシアナ航空: <a href="https://www.flyasiana.com" target="_blank" rel="noopener">flyasiana.com 公式案内を確認 ↗</a>',
     'calc.official.item.7c': '✈️ チェジュ航空: <a href="https://www.jejuair.net" target="_blank" rel="noopener">jejuair.net 公式案内を確認 ↗</a>',
     'calc.official.item.lj': '✈️ ジンエアー: <a href="https://www.jinair.com" target="_blank" rel="noopener">jinair.com 公式案内を確認 ↗</a>',
-    'calc.official.item.tw': '✈️ ティーウェイ航空: <a href="https://www.twayair.com" target="_blank" rel="noopener">twayair.com 公式案内を確認 ↗</a>',
+    'calc.official.item.tw': '✈️ ティーウェイ航空: <a href="https://www.twayair.com/app/customerCenter/notice/retrieve/12654" target="_blank" rel="noopener">twayair.com 公式案内を確認 ↗</a>',
     'calc.official.item.ze': '✈️ イースター航空: <a href="https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=608&lang=KR" target="_blank" rel="noopener">eastarjet.com 公式案内を確認 ↗</a>',
     'calc.official.item.rs': '✈️ エアソウル: <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10914&pageNo=1" target="_blank" rel="noopener">flyairseoul.com 公式案内を確認 ↗</a>',
     'calc.official.item.yp': '✈️ エアプレミア: <a href="https://www.airpremia.com/a/ko/customer/notice/728" target="_blank" rel="noopener">airpremia.com 公式案内を確認 ↗</a>',
@@ -2238,7 +2238,7 @@ var PAGE_I18N = {
     'calc.official.item.oz': '✈️ 韩亚航空: <a href="https://www.flyasiana.com" target="_blank" rel="noopener">flyasiana.com 查看官方公告 ↗</a>',
     'calc.official.item.7c': '✈️ 济州航空: <a href="https://www.jejuair.net" target="_blank" rel="noopener">jejuair.net 查看官方公告 ↗</a>',
     'calc.official.item.lj': '✈️ 真航空: <a href="https://www.jinair.com" target="_blank" rel="noopener">jinair.com 查看官方公告 ↗</a>',
-    'calc.official.item.tw': '✈️ 德威航空: <a href="https://www.twayair.com" target="_blank" rel="noopener">twayair.com 查看官方公告 ↗</a>',
+    'calc.official.item.tw': '✈️ 德威航空: <a href="https://www.twayair.com/app/customerCenter/notice/retrieve/12654" target="_blank" rel="noopener">twayair.com 查看官方公告 ↗</a>',
     'calc.official.item.ze': '✈️ 易思达航空: <a href="https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=608&lang=KR" target="_blank" rel="noopener">eastarjet.com 查看官方公告 ↗</a>',
     'calc.official.item.rs': '✈️ 首尔航空: <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10914&pageNo=1" target="_blank" rel="noopener">flyairseoul.com 查看官方公告 ↗</a>',
     'calc.official.item.yp': '✈️ 高丽航空: <a href="https://www.airpremia.com/a/ko/customer/notice/728" target="_blank" rel="noopener">airpremia.com 查看官方公告 ↗</a>',
@@ -2281,19 +2281,19 @@ var PAGE_I18N = {
     },
     en: {
       'calc.metaTitle':'Fuel Surcharge Calculator — Compare confirmed June filings by route',
-      'calc.metaDesc':'Compare confirmed June 2026 official fuel surcharges for Korea-departure international flights by route, airline, round trip and passenger count, and check July filing preparation status.',
-      'calc.pageSub':'Based on confirmed June 2026 official filings · Korea-departure international fuel surcharge comparison',
+      'calc.metaDesc':'Compare verified July 2026 official fuel surcharges for Korea-departure international flights by route, airline, round trip and passenger count, and separate airlines still awaiting July filing verification.',
+      'calc.pageSub':'Based on verified July 2026 official filings where available · Korea-departure international fuel surcharge comparison',
       'calc.h1':'Fuel Surcharge Calculator: Compare airline costs based on confirmed June 2026 filings',
-      'calc.notice':'<strong>Notice:</strong> This calculator compares route-level fuel surcharges based on confirmed June 2026 official airline filings.',
-      'calc.alert':'July fuel surcharges are not officially confirmed yet. Results are based on confirmed June filings; July amounts will be added after official airline notices are verified.',
-      'calc.intro':'Use this calculator to compare confirmed June 2026 official fuel surcharges before issuing international tickets for travel, study abroad or business trips. July surcharges remain pre-filing outlook data and are not shown as confirmed calculated values.',
+      'calc.notice':'<strong>Notice:</strong> This calculator compares route-level fuel surcharges based on verified July 2026 official airline filings where available.',
+      'calc.alert':'July fuel surcharges are reflected for airlines with verified official notices. Airlines without verified July notices remain separated as pending or June-basis reference data.',
+      'calc.intro':'Use this calculator to compare verified July 2026 official fuel surcharges before issuing international tickets for travel, study abroad or business trips. Airlines without verified July notices remain separated as pending or June-basis reference data.',
       'calc.answer.title':'The current calculation baseline is confirmed June 2026 filings',
-      'calc.answer.body':'For the selected route, the calculator shows lower June 2026 official surcharge amounts and airline-by-airline differences. July fuel surcharges will be added after official notices are verified.',
+      'calc.answer.body':'For the selected route, the calculator shows verified July 2026 official surcharge amounts where available and separates airlines still awaiting July notice verification.',
       'calc.readiness.title':'July fuel surcharges are not calculated values yet',
       'calc.readiness.badge':'Pre-filing · preparing',
-      'calc.readiness.body':'This calculator currently compares confirmed June 2026 official airline filing data. July fuel surcharges will be entered separately after official notices are verified. Until then, use the outlook page for jet fuel, USD/KRW and oil-price variables.',
+      'calc.readiness.body':'This calculator currently reflects verified July 2026 official airline filing data where available. Airlines without verified July notices remain separated, while the forecast page covers jet fuel, USD/KRW and oil-price variables.',
       'calc.readiness.link':'View July 2026 fuel surcharge outlook →',
-      'calc.card3.body':'The calculator compares June 2026 official filing amounts for airlines on the same route, adjusted for one-way or round-trip and passenger count. July amounts will be added after filing verification.',
+      'calc.card3.body':'The calculator compares verified July 2026 official filing amounts for airlines on the same route, adjusted for one-way or round-trip and passenger count.',
       'calc.related.june':'🔮 July 2026 Outlook'
     },
     ja: {
