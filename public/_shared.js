@@ -303,6 +303,50 @@ window.AERO_MARKET_NUMBERS_20260619 = Object.assign({}, window.AERO_MARKET_NUMBE
 });
 window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260619;
 
+window.AERO_MARKET_NUMBERS_20260622 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
+  asOf: '2026.06.22 07:00 KST',
+  usdKrw: 1527.00,
+  mopsUsdPerGallon: 3.383,
+  mopsCentsPerGallon: 338.3,
+  referenceAsOf: {
+    mops: '2026.05.16~2026.06.15 average reference for July filing / August outlook baseline',
+    usdKrw: '2026.06.22 07:00 KST market snapshot',
+    geo: 'Hormuz reopening remains conditional after Iran-linked report on Lebanon ceasefire and oil waivers'
+  },
+  sources: {
+    usdKrw: 'USD/KRW around 1,527 KRW as of 2026.06.22 07:00 KST reference',
+    mops: 'July fuel surcharge calculation reference: MOPS average 338.3 cents/gal',
+    geo: 'Reuters 2026.06.21: Hormuz will not reopen until Lebanon ceasefire holds and oil waivers are issued'
+  }
+});
+window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260622;
+
+(function(){
+  var koMarket = {
+    marketDataRef: '2026.06.22 07:00 KST 기준',
+    marketBrent: '국제유가: 호르무즈 해협 재개방 기대는 남아 있지만 조건부 정상화 이슈로 단기 리스크 프리미엄이 다시 확인되고 있습니다.',
+    marketMops: '항공유 가격(MOPS): 338.3 cents/gal 기준은 8월 유류할증료 하방 요인이지만, 8월 공시가 확정된 것은 아닙니다.',
+    marketFx: '원달러 환율: 1달러당 약 1,527원대의 높은 환율 구간은 항공권 총액 체감 인하 폭을 제한할 수 있습니다.',
+    marketGeo: '호르무즈 해협: 재개방은 조건부로 남아 있으며 보험료, 선박 안전 점검, 물류 정상화 지연을 계속 확인해야 합니다.',
+    marketOutlook: '2026년 8월 국제선 유류할증료는 보합 또는 소폭 인하 가능성이 우세하지만, 환율과 호르무즈 리스크 때문에 큰 폭 인하는 단정하기 어렵습니다.'
+  };
+  var enMarket = {
+    marketDataRef: 'As of 2026.06.22 07:00 KST',
+    marketBrent: 'Oil prices: Hormuz reopening hopes remain, but conditional normalization has brought the risk premium back into focus.',
+    marketMops: 'MOPS jet fuel: 338.3 cents/gal supports downside pressure for August, but the August filing is not confirmed.',
+    marketFx: 'USD/KRW: around KRW 1,527 per USD remains high enough to limit perceived total airfare relief.',
+    marketGeo: 'Strait of Hormuz: reopening remains conditional; insurance, vessel safety checks and logistics delays still need monitoring.',
+    marketOutlook: 'August 2026 international fuel surcharge is more likely flat or slightly lower, but FX and Hormuz risks make a large cut uncertain.'
+  };
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), koMarket);
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), enMarket);
+    ['ja','zh','fr','de'].forEach(function(lang){
+      Object.assign(window.I18N_SHARED[lang] || (window.I18N_SHARED[lang] = {}), enMarket);
+    });
+  }
+})();
+
 window.marketMoney = function(usdAmount, unit) {
   if (usdAmount == null) return '—';
   var c = window.getCurrentCurr ? window.getCurrentCurr() : (window.SHARED_STATE.curr || 'KRW');
@@ -1005,7 +1049,7 @@ window._JULY_2026_OFFICIAL_OVERRIDES = {
       sourceType: 'official_notice', status: 'official_verified', confidence: 'fresh', currency: 'KRW',
       surchargeSchema: 'group_tier',
       officialNoticeUrl: 'https://www.twayair.com/app/customerCenter/notice/retrieve/12654',
-      verifiedAt: '2026-06-19T09:00:00+09:00',
+      verifiedAt: '2026-06-19T08:42:00+09:00',
       group_tiers: [
         { group: 1, label: '1군 (~600mi)', amount: 33400, currency: 'KRW' },
         { group: 2, label: '2군 (600~1,200mi)', amount: 59200, currency: 'KRW' },
@@ -1068,7 +1112,7 @@ window._TW_OFFICIAL_OVERRIDE = {
     sourceType: 'official_notice', status: 'official_verified', confidence: 'fresh', currency: 'KRW',
     surchargeSchema: 'group_tier',
     officialNoticeUrl: 'https://www.twayair.com/app/customerCenter/notice/retrieve/12654',
-    verifiedAt: '2026-06-19T09:00:00+09:00',
+    verifiedAt: '2026-06-19T08:42:00+09:00',
     group_tiers: [
       { group: 1, label: '1군 (~600mi)', amount: 33400, currency: 'KRW' },
       { group: 2, label: '2군 (600~1,200mi)', amount: 59200, currency: 'KRW' },
@@ -7020,7 +7064,7 @@ window.AERO_NEWS_LATEST=window.AERO_MARKET_BRIEF_20260616;
         updatedAt:'Updated 2026.06.17 KST',
         title:'Eastar Jet July 2026 International Fuel Surcharge Official Notice - All USD Groups Down vs June',
         aiBrief:'Eastar Jet has published its July 2026 Korea-departure international fuel surcharge, with all USD groups lower than June.',
-        summary:'Eastar Jet has published its July 2026 Korea-departure international fuel surcharge notice.\n\nApplied period: July 1-31, 2026 (ticketing date basis)\nCurrency: USD\nStatus: official notice verified\n\nJune to July changes:\n- Group 1: USD 43 to USD 30\n- Group 2: USD 54 to USD 38\n- Group 3: USD 66 to USD 45\n- Group 4: USD 79 to USD 55\n- Group 5: USD 89 to USD 62\n- Group 6: USD 103 to USD 72\n\nVerified July notices now include Korean Air, Asiana Airlines, Jeju Air, Jin Air, Air Busan and Eastar Jet. Air Seoul, Tway Air and Air Premia remain pending until official notices are verified.',
+        summary:'Eastar Jet has published its July 2026 Korea-departure international fuel surcharge notice.\n\nApplied period: July 1-31, 2026 (ticketing date basis)\nCurrency: USD\nStatus: official notice verified\n\nJune to July changes:\n- Group 1: USD 43 to USD 30\n- Group 2: USD 54 to USD 38\n- Group 3: USD 66 to USD 45\n- Group 4: USD 79 to USD 55\n- Group 5: USD 89 to USD 62\n- Group 6: USD 103 to USD 72\n\nVerified July notices now include Korean Air, Asiana Airlines, Jeju Air, Jin Air, Air Busan, Eastar Jet, Air Seoul, Air Premia and Tway Air.',
         impact:'Eastar Jet July official notice reflected. All USD groups are lower than June and are displayed using the airline official USD filing.',
         tags:['Eastar Jet','July 2026 fuel surcharge','international fuel surcharge','USD filing','airline official notice'],
         sourceRefs:card.sourceRefs,
@@ -7285,13 +7329,13 @@ window.AERO_NEWS_CARDS_20260619 = [
     aiSummary:true,
     relevanceScore:1,
     title:'이스라엘-이란 신규 폭격 확인 안 됨 - 호르무즈 리스크는 완전 해소 전',
-    aiBrief:'신규 이란 본토 폭격은 확인되지 않았지만 호르무즈 해협 정상화와 중동 리스크 프리미엄은 계속 확인해야 합니다.',
-    summary:'2026.06.19 09:00 KST 기준, 이스라엘이 새로 이란 본토를 폭격했다는 내용은 주요 외신에서 확인되지 않습니다. 다만 6월 초 이스라엘-이란 직접 충돌 이력, 미국-이란 합의에 대한 이스라엘의 반발, 레바논·헤즈볼라 방면 긴장은 남아 있습니다. 따라서 호르무즈 해협 재개방 기대는 유가 하방 요인이지만, 리스크 프리미엄이 완전히 사라졌다고 보기는 어렵습니다.',
+    aiBrief:'신규 이란 본토 공격은 확인되지 않았지만 호르무즈 해협 정상화와 중동 리스크 프리미엄은 계속 확인해야 합니다.',
+    summary:'2026.06.19 09:00 KST 기준, 이스라엘의 신규 이란 본토 공격 보도은 주요 외신에서 확인되지 않습니다. 다만 6월 초 이스라엘-이란 직접 충돌 이력, 미국-이란 합의에 대한 이스라엘의 반발, 레바논·헤즈볼라 방면 긴장은 남아 있습니다. 따라서 호르무즈 해협 재개방 기대는 유가 하방 요인이지만, 리스크 프리미엄이 완전히 사라졌다고 보기는 어렵습니다.',
     impact:'신규 폭격 미확인으로 단기 유가 급등 근거는 약화됐지만, 지정학 리스크는 8월 유류할증료 인하 폭을 제한할 수 있습니다.',
     tags:['이스라엘','이란','호르무즈 해협','국제유가','유류할증료 전망'],
     sourceRefs:[{name:'UKMTO Maritime Security',url:'https://www.ukmto.org/'}],
     faq:[
-      {q:'이스라엘이 이란을 새로 폭격했나요?',a:'2026.06.19 09:00 KST 기준 주요 외신에서 이스라엘의 신규 이란 본토 폭격은 확인되지 않습니다.'},
+      {q:'이스라엘이 이란 본토 공격이 새로 확인됐나요?',a:'2026.06.19 09:00 KST 기준 주요 외신에서 이스라엘의 신규 이란 본토 공격은 확인되지 않습니다.'},
       {q:'호르무즈 해협 리스크는 유류할증료에 어떤 영향을 주나요?',a:'호르무즈 정상화 지연과 보험료 부담은 항공유 가격과 MOPS 전망에 영향을 주어 8월 유류할증료 인하 폭을 제한할 수 있습니다.'}
     ],
     links:[{href:'forecast.html',label:'2026년 8월 전망 보기'}],
@@ -7313,6 +7357,87 @@ window.AERO_NEWS_CARDS_20260619 = [
     }
   }
 ].concat(window.AERO_NEWS_CARDS_20260619 || []);
+
+window.AERO_NEWS_CARDS_20260622 = [
+  {
+    id:'news-20260622-hormuz-conditional-reopening',
+    slug:'hormuz-conditional-reopening-august-2026-fuel-surcharge-outlook',
+    category:'market',
+    topic:'geopolitics',
+    priority:1,
+    date:'2026-06-22',
+    updatedAt:'2026.06.22 07:00 KST',
+    badge:'NEW',
+    aiSummary:true,
+    relevanceScore:1,
+    title:'호르무즈 해협 재개방 기대 후퇴 - 8월 유류할증료 인하 폭 제한 변수',
+    aiBrief:'호르무즈 해협 재개방 기대는 유가 하방 요인이지만, 조건부 정상화와 보험료 부담은 8월 유류할증료 인하 폭을 제한할 수 있습니다.',
+    summary:'2026.06.22 07:00 KST 기준, 6월 19일에는 호르무즈 해협 재개방 기대가 유가 하방 요인으로 작용했지만 6월 21일 이후 이란 측 조건부 정상화 보도로 물류 정상화 지연과 리스크 프리미엄이 다시 부각됐습니다.\n\nMOPS 평균 338.3 cents/gal은 2026년 8월 유류할증료 하방 요인이지만, 호르무즈 해협의 보험료·선박 안전 점검·물류 정상화 지연은 큰 폭 인하를 제한할 수 있습니다.',
+    impact:'MOPS 하락은 유지되지만 지정학 리스크가 남아 있어 8월 유류할증료는 보합 또는 소폭 인하 가능성 중심으로 봐야 하며, 큰 폭 인하로 단정하면 안 됩니다.',
+    tags:['호르무즈 해협','MOPS','2026년 8월 유류할증료','국제유가','환율'],
+    sourceRefs:[{name:'Reuters market context',url:'https://www.reuters.com/'}],
+    faq:[
+      {q:'호르무즈 해협 이슈가 8월 유류할증료에 영향을 주나요?',a:'네. 재개방 기대는 유가 하방 요인이지만 조건부 정상화, 보험료, 선박 안전 점검 지연은 항공유 가격과 MOPS 전망에 리스크로 남을 수 있습니다.'},
+      {q:'2026년 8월 유류할증료는 인하가 정해졌나요?',a:'아닙니다. 2026.06.22 기준으로는 보합 또는 소폭 인하 가능성이 우세하지만, 8월 공시는 아직 발표 전입니다.'}
+    ],
+    links:[{href:'forecast.html',label:'8월 전망 보기'},{href:'news.html',label:'시장 뉴스 보기'}],
+    i18n:{
+      en:{
+        updatedAt:'Updated 2026.06.22 07:00 KST',
+        title:'Hormuz reopening hopes fade - a limiting factor for August 2026 fuel surcharge cuts',
+        aiBrief:'Hormuz reopening hopes are oil-negative, but conditional normalization and insurance costs can limit the scale of any August fuel surcharge cut.',
+        summary:'As of June 22, 2026 07:00 KST, Hormuz reopening hopes seen on June 19 were partly offset after reports that reopening remains conditional on Lebanon ceasefire stability and oil waivers.\n\nMOPS at 338.3 cents/gal supports downside pressure for the August 2026 fuel surcharge, but insurance, vessel safety checks and logistics delays can limit any large cut.',
+        impact:'Lower MOPS remains supportive, but geopolitical risk means August should be described as flat to slightly lower, not as a confirmed sharp cut.',
+        tags:['Strait of Hormuz','MOPS','August 2026 fuel surcharge','oil prices','FX'],
+        sourceRefs:[{name:'Reuters market context',url:'https://www.reuters.com/'}],
+        faq:[
+          {q:'Does Hormuz affect the August 2026 fuel surcharge outlook?',a:'Yes. Reopening hopes are oil-negative, but conditional normalization, insurance and vessel checks can keep jet fuel risk premium alive.'},
+          {q:'Is the August 2026 fuel surcharge cut confirmed?',a:'No. As of June 22, 2026, flat to slightly lower is the leading outlook, but the August filing is not confirmed.'}
+        ],
+        links:[{href:'forecast.html',label:'View August outlook'},{href:'news.html',label:'View market news'}]
+      }
+    }
+  },
+  {
+    id:'news-20260622-tway-july-official-reflected',
+    slug:'tway-air-july-2026-fuel-surcharge-official-reflected-june-22',
+    category:'airline',
+    topic:'official-notice',
+    priority:1,
+    date:'2026-06-22',
+    updatedAt:'2026.06.22 07:00 KST',
+    badge:'UPDATE',
+    aiSummary:true,
+    relevanceScore:1,
+    title:'티웨이항공 2026년 7월 한국발 국제선 유류할증료 공식 공시 반영',
+    aiBrief:'티웨이항공 2026년 7월 한국발 국제선 유류할증료 공지가 공식 확인되어 미반영 상태에서 공식 반영 상태로 정리했습니다.',
+    summary:'티웨이항공은 2026.06.19 08:42에 2026년 7월 한국발 국제선 유류할증료 공지를 게시했습니다. 적용 기간은 2026.07.01~2026.07.31 발권 기준입니다.\n\n공식 표 기준 금액은 1군 33,400원, 2군 59,200원, 3군 74,400원, 4군 97,200원, 5군 104,700원, 6군 해당 없음, 7군 233,800원입니다. 이에 따라 2026년 7월 공식 공시 확인 항공사는 KE·OZ·7C·LJ·BX·ZE·RS·YP·TW로 정리합니다.',
+    impact:'티웨이항공을 7월 공식 공시 반영 항공사에 포함하고, 기존 미반영 문구와 6월 fallback 표시를 제거해야 합니다.',
+    tags:['티웨이항공','TW','2026년 7월 유류할증료','한국발 국제선','공식 공시'],
+    sourceRefs:[{name:'Tway Air official notice',url:'https://www.twayair.com/app/customerCenter/notice/retrieve/12654'}],
+    faq:[
+      {q:'티웨이항공 2026년 7월 유류할증료는 공시됐나요?',a:'네. 2026.06.19 08:42 기준 티웨이항공 2026년 7월 한국발 국제선 유류할증료 공지가 확인됐습니다.'},
+      {q:'티웨이항공 2026년 7월 유류할증료 금액은 얼마인가요?',a:'공식 표 기준 1군 33,400원, 2군 59,200원, 3군 74,400원, 4군 97,200원, 5군 104,700원, 6군 해당 없음, 7군 233,800원입니다.'}
+    ],
+    links:[{href:'airlines.html',label:'항공사별 공시 보기'},{href:'fuel-surcharge-korea.html',label:'6월 vs 7월 비교'}],
+    i18n:{
+      en:{
+        updatedAt:'Updated 2026.06.22 07:00 KST',
+        title:"T'way Air July 2026 Korea-departure international fuel surcharge officially reflected",
+        aiBrief:"T'way Air's July 2026 notice is verified and has been moved from pending to official reflected status.",
+        summary:"T'way Air posted its July 2026 Korea-departure international fuel surcharge notice at 08:42 KST on June 19, 2026. The ticketing period is July 1-31, 2026.\n\nThe official table lists KRW 33,400, 59,200, 74,400, 97,200, 104,700, no Group 6 amount, and KRW 233,800 for Group 7. Verified July airlines are KE, OZ, 7C, LJ, BX, ZE, RS, YP and TW.",
+        impact:"T'way Air is included in verified July notices; old pending wording and June fallback display should be removed.",
+        tags:["T'way Air",'TW','July 2026 fuel surcharge','Korea-departure international','official notice'],
+        sourceRefs:[{name:'Tway Air official notice',url:'https://www.twayair.com/app/customerCenter/notice/retrieve/12654'}],
+        faq:[
+          {q:"Has T'way Air published its July 2026 fuel surcharge?",a:"Yes. T'way Air's July 2026 Korea-departure international fuel surcharge notice was posted at 08:42 KST on June 19, 2026."},
+          {q:"How much is T'way Air's July 2026 surcharge?",a:"The official table lists KRW 33,400, 59,200, 74,400, 97,200, 104,700, no Group 6 amount, and KRW 233,800 for Group 7."}
+        ],
+        links:[{href:'airlines.html',label:'View airline notices'},{href:'fuel-surcharge-korea.html',label:'Compare June to July'}]
+      }
+    }
+  }
+].concat(window.AERO_NEWS_CARDS_20260622 || window.AERO_NEWS_CARDS_20260619 || []);
 
 /*
  * News taxonomy and sourcing policy:

@@ -5,6 +5,32 @@
   },
   "items": [
     {
+      "id": "news-20260622-hormuz-conditional-reopening",
+      "category": "market",
+      "title": "호르무즈 해협 재개방 기대 후퇴 - 8월 유류할증료 인하 폭 제한 변수",
+      "summary": "2026.06.22 07:00 KST 기준 호르무즈 해협 재개방은 조건부 이슈로 남아 있습니다. MOPS 평균 338.3 cents/gal은 8월 유류할증료 하방 요인이지만 보험료, 선박 안전 점검, 물류 정상화 지연은 큰 폭 인하를 제한할 수 있습니다.",
+      "sourceUrl": "https://www.reuters.com/",
+      "sourceName": "Reuters market context",
+      "date": "2026-06-22",
+      "priority": 1,
+      "tags": ["호르무즈 해협", "MOPS", "2026년 8월 유류할증료", "국제유가", "환율"],
+      "aiSummary": true,
+      "relevanceScore": 1.0
+    },
+    {
+      "id": "news-20260622-tway-july-official-reflected",
+      "category": "airline",
+      "title": "티웨이항공 2026년 7월 한국발 국제선 유류할증료 공식 공시 반영",
+      "summary": "티웨이항공은 2026.06.19 08:42에 2026년 7월 한국발 국제선 유류할증료 공지를 게시했습니다. 공식 표 기준 금액은 1군 33,400원, 2군 59,200원, 3군 74,400원, 4군 97,200원, 5군 104,700원, 6군 해당 없음, 7군 233,800원입니다.",
+      "sourceUrl": "https://www.twayair.com/app/customerCenter/notice/retrieve/12654",
+      "sourceName": "Tway Air official notice",
+      "date": "2026-06-22",
+      "priority": 1,
+      "tags": ["티웨이항공", "TW", "2026년 7월 유류할증료", "한국발 국제선", "공식 공시"],
+      "aiSummary": true,
+      "relevanceScore": 1.0
+    },
+    {
       "id": "news-001",
       "category": "airline",
       "title": "대한항공 2026년 4월 국제선 유류할증료 공지",
