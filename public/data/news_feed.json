@@ -1,9 +1,48 @@
 {
   "meta": {
-    "lastUpdated": "2026-04-09T00:00:00.000Z",
+    "lastUpdated": "2026-06-23T06:55:00+09:00",
     "note": "참고 소식 데이터. 공식 공지 및 시장 지표 기반 참고용 정보입니다."
   },
   "items": [
+    {
+      "id": "news-20260623-iata-jet-fuel-drop",
+      "category": "market",
+      "title": "IATA 항공유 14.2% 하락 - 8월 유류할증료 하방 압력 강화",
+      "summary": "2026.06.23 06:55 KST 기준 IATA 글로벌 항공유 평균은 119.17달러/bbl로 전주 대비 14.2% 하락했습니다. 7월 공시 기준 MOPS 평균 338.3 cents/gal과 함께 보면 2026년 8월 유류할증료는 보합 또는 소폭 인하 가능성이 우세합니다. 다만 원달러 환율이 약 1,534원대에 머물고 있어 실제 항공권 총액의 체감 인하 폭은 제한될 수 있습니다.",
+      "sourceUrl": "https://www.iata.org/",
+      "sourceName": "IATA Jet Fuel Price Monitor",
+      "date": "2026-06-23",
+      "priority": 1,
+      "tags": ["IATA 항공유", "MOPS", "2026년 8월 유류할증료", "원달러 환율", "항공유 가격"],
+      "aiSummary": true,
+      "relevanceScore": 1.0
+    },
+    {
+      "id": "news-20260623-hormuz-partial-traffic-recovery",
+      "category": "market",
+      "title": "호르무즈 해협 일부 통항 회복 - 정상화 완료는 아님",
+      "summary": "2026.06.23 06:55 KST 기준 호르무즈 해협의 일부 유조선 통항은 회복됐지만 완전 정상화로 보기는 어렵습니다. 미국-이란 협상과 이란 원유 판매 임시 허용 흐름은 유가 하방 요인이지만 보험료, 선박 안전 점검, 물류 정상화 속도는 여전히 확인해야 합니다.",
+      "sourceUrl": "https://www.reuters.com/",
+      "sourceName": "Reuters market context",
+      "date": "2026-06-23",
+      "priority": 1,
+      "tags": ["호르무즈 해협", "미국-이란 협상", "국제유가", "유류할증료 전망", "중동 리스크"],
+      "aiSummary": true,
+      "relevanceScore": 1.0
+    },
+    {
+      "id": "news-20260623-usdkrw-1534-total-airfare",
+      "category": "market",
+      "title": "USD/KRW 1,534원대 - 항공유 하락에도 체감 인하 제한",
+      "summary": "2026.06.23 06:55 KST 기준 원달러 환율은 약 1,534원대입니다. IATA 항공유와 국제유가 하락은 8월 유류할증료 하방 요인이지만 높은 환율은 원화 기준 항공권 총액의 체감 인하 폭을 줄일 수 있습니다. 특히 USD 기준 공시 항공사는 결제 시점 환율에 더 민감합니다.",
+      "sourceUrl": "forecast.html",
+      "sourceName": "USD/KRW market snapshot",
+      "date": "2026-06-23",
+      "priority": 2,
+      "tags": ["원달러 환율", "USD/KRW", "항공권 총액", "유류할증료", "환율 영향"],
+      "aiSummary": true,
+      "relevanceScore": 0.98
+    },
     {
       "id": "news-20260622-hormuz-conditional-reopening",
       "category": "market",
