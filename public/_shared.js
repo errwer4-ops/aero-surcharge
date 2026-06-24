@@ -377,6 +377,35 @@ window.AERO_MARKET_NUMBERS_20260624 = Object.assign({}, window.AERO_MARKET_NUMBE
 });
 window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260624;
 
+window.AERO_MARKET_NUMBERS_20260625 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
+  asOf: '2026.06.25 07:00 KST',
+  usdKrw: 1532.00,
+  usdKrwLabel: '약 1,530원대 초중반',
+  mopsUsdPerGallon: 3.383,
+  mopsCentsPerGallon: 338.3,
+  iataJetFuelUsdPerBbl: 119.17,
+  iataJetFuelWeeklyChangePct: -14.2,
+  brentUsdPerBbl: 73.74,
+  wtiUsdPerBbl: 70.34,
+  hormuzOilFlowLast24hBbl: 20000000,
+  referenceAsOf: {
+    mops: '2026.05.16~2026.06.15 average reference for July filing / August outlook baseline',
+    augustSurchargeWindow: '2026.06.16~2026.07.15 average window for August 2026 surcharge',
+    usdKrw: '2026.06.25 07:00 KST market snapshot',
+    iataJetFuel: 'Latest IATA weekly global jet fuel average reference',
+    brentWti: '2026.06.24 oil market close / 2026.06.25 07:00 KST reference',
+    geo: 'Hormuz crude flows improved, but normalization is not complete'
+  },
+  sources: {
+    usdKrw: 'USD/KRW around low-to-mid 1,530 KRW range as of 2026.06.25 07:00 KST reference',
+    mops: 'July fuel surcharge calculation reference: MOPS average 338.3 cents/gal',
+    iataJetFuel: 'IATA Jet Fuel Price Monitor: global average jet fuel around 119.17 USD/bbl, down 14.2% WoW',
+    brentWti: 'Reuters 2026.06.24: Brent 73.74 USD/bbl, WTI 70.34 USD/bbl',
+    geo: 'Reuters 2026.06.24: around 20 million barrels of oil exited Hormuz in the last 24 hours, but risks remain'
+  }
+});
+window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260625;
+
 (function(){
   var koMarket = {
     marketDataRef: '2026.06.23 06:55 KST 기준',
@@ -7794,6 +7823,132 @@ window.AERO_NEWS_CARDS_20260624 = [
   }
 ].concat(window.AERO_NEWS_CARDS_20260623 || window.AERO_NEWS_CARDS_20260622 || window.AERO_NEWS_CARDS_20260619 || []);
 
+window.AERO_NEWS_CARDS_20260625 = [
+  {
+    id:'news-20260625-brent-wti-august-downside',
+    slug:'brent-wti-lower-august-2026-fuel-surcharge-june-25',
+    category:'market',
+    topic:'oil',
+    priority:1,
+    date:'2026-06-25',
+    updatedAt:'2026.06.25 07:00 KST',
+    badge:'NEW',
+    aiSummary:true,
+    relevanceScore:1,
+    title:'브렌트유 73달러대·WTI 70달러대 - 8월 유류할증료 하방 압력 강화',
+    aiBrief:'브렌트유 73.74달러/bbl, WTI 70.34달러/bbl 수준은 2026년 8월 국제선 유류할증료의 보합 또는 소폭 인하 전망을 강화합니다.',
+    summary:'2026.06.25 07:00 KST 기준 브렌트유는 73.74달러/bbl, WTI는 70.34달러/bbl 수준까지 내려왔습니다. 호르무즈 해협 공급 차질 우려 완화와 걸프 지역 원유 흐름 회복 신호가 국제유가 하락 요인입니다.\n\n국제유가 하락과 IATA 글로벌 항공유 가격 하락은 2026년 8월 국제선 유류할증료의 하방 압력을 강화합니다. 다만 원달러 환율이 약 1,530원대 초중반이고 호르무즈 해협 정상화가 완전히 확인된 것은 아니므로 큰 폭 인하는 단정하기 어렵습니다.',
+    impact:'국제유가 하락은 8월 유류할증료 하방 요인이지만, 환율과 호르무즈 변수가 인하 폭을 제한할 수 있습니다.',
+    tags:['브렌트유','WTI','2026년 8월 유류할증료','국제유가','MOPS'],
+    sourceRefs:[
+      {name:'Reuters oil market reference',url:'https://www.reuters.com/'},
+      {name:'IATA Fuel Price Monitor',url:'https://www.iata.org/en/publications/economics/fuel-monitor/'}
+    ],
+    faq:[
+      {q:'브렌트유와 WTI 하락은 8월 유류할증료 인하를 확정하나요?',a:'아닙니다. 유가 하락은 하방 요인이지만 8월 유류할증료 공시는 아직 발표 전이며 MOPS 평균, 환율, 항공사 정책이 함께 반영됩니다.'},
+      {q:'2026년 8월 유류할증료 전망은 무엇인가요?',a:'2026.06.25 07:00 KST 기준으로는 보합 또는 소폭 인하 가능성이 우세하지만 큰 폭 인하는 단정하기 어렵습니다.'}
+    ],
+    links:[{href:'forecast.html',label:'8월 전망 보기'},{href:'fuel-surcharge-graph.html',label:'유류할증료 추이 보기'}],
+    i18n:{
+      en:{
+        updatedAt:'Updated 2026.06.25 07:00 KST',
+        title:'Brent near USD 73 and WTI near USD 70 - August surcharge downside pressure strengthens',
+        aiBrief:'Brent around USD 73.74/bbl and WTI around USD 70.34/bbl strengthen the flat-to-slightly-lower August 2026 fuel surcharge outlook.',
+        summary:'As of June 25, 2026 07:00 KST, Brent is around USD 73.74/bbl and WTI around USD 70.34/bbl. Easing Strait of Hormuz supply-disruption fears and improving Gulf crude flows are key drivers behind lower oil prices.\n\nLower crude oil and lower IATA global jet fuel strengthen downside pressure for August 2026 international fuel surcharges. However, USD/KRW in the low-to-mid KRW 1,530 range and incomplete Hormuz normalization make a large cut uncertain.',
+        impact:'Lower crude oil is a downside factor for August surcharges, but FX and Hormuz variables can limit the size of any cut.',
+        tags:['Brent','WTI','August 2026 fuel surcharge','oil prices','MOPS'],
+        sourceRefs:[
+          {name:'Reuters oil market reference',url:'https://www.reuters.com/'},
+          {name:'IATA Fuel Price Monitor',url:'https://www.iata.org/en/publications/economics/fuel-monitor/'}
+        ],
+        faq:[
+          {q:'Does lower Brent and WTI confirm an August surcharge cut?',a:'No. Lower crude oil is a downside factor, but August notices are not published yet and depend on MOPS averages, FX and airline policies.'},
+          {q:'What is the August 2026 fuel surcharge outlook?',a:'As of June 25, 2026 07:00 KST, flat to slightly lower is more likely, but a large cut is uncertain.'}
+        ],
+        links:[{href:'forecast.html',label:'View August outlook'},{href:'fuel-surcharge-graph.html',label:'View surcharge trend'}]
+      }
+    }
+  },
+  {
+    id:'news-20260625-hormuz-oil-flow-not-normalized',
+    slug:'hormuz-oil-flow-improves-not-normalized-june-25',
+    category:'market',
+    topic:'hormuz',
+    priority:1,
+    date:'2026-06-25',
+    updatedAt:'2026.06.25 07:00 KST',
+    badge:'NEW',
+    aiSummary:true,
+    relevanceScore:1,
+    title:'호르무즈 해협 원유 흐름 회복 - 완전 정상화는 아님',
+    aiBrief:'최근 24시간 동안 약 2,000만 배럴의 원유가 호르무즈 해협을 빠져나가며 흐름 회복 신호가 나타났지만, 물류 정상화는 아직 완전하지 않습니다.',
+    summary:'2026.06.25 07:00 KST 기준 최근 24시간 동안 약 2,000만 배럴의 원유가 호르무즈 해협을 빠져나가며 원유 흐름 회복 신호가 나타났습니다. 이는 국제유가 급등 우려를 낮추는 요인입니다.\n\n다만 부유 기뢰, 군사 호위, 감독 통항, 높은 탱커 운임, 선박 대기 문제가 남아 있어 완전 정상화로 보기는 어렵습니다. 따라서 호르무즈 리스크는 약해졌지만 2026년 8월 유류할증료의 큰 폭 인하를 제한하는 변수로 남습니다.',
+    impact:'원유 흐름 회복은 유가 하방 요인이지만, 완전 정상화 전까지는 리스크 프리미엄이 남아 8월 인하 폭을 제한할 수 있습니다.',
+    tags:['호르무즈 해협','원유 흐름','국제유가','유조선','유류할증료 전망'],
+    sourceRefs:[{name:'Reuters Hormuz shipping context',url:'https://www.reuters.com/'}],
+    faq:[
+      {q:'호르무즈 해협은 정상화됐나요?',a:'아닙니다. 원유 흐름 회복 신호는 있지만 부유 기뢰, 군사 호위, 감독 통항, 높은 운임과 선박 대기 문제가 남아 있습니다.'},
+      {q:'호르무즈 해협 흐름 회복은 유류할증료에 어떤 영향을 주나요?',a:'국제유가와 항공유 가격의 급등 우려를 낮추지만 완전 정상화 전까지는 유류할증료 인하 폭을 제한할 수 있습니다.'}
+    ],
+    links:[{href:'forecast.html',label:'호르무즈 영향 보기'},{href:'news.html',label:'시장 뉴스 보기'}],
+    i18n:{
+      en:{
+        updatedAt:'Updated 2026.06.25 07:00 KST',
+        title:'Strait of Hormuz crude flow improves - not fully normalized',
+        aiBrief:'Around 20 million barrels of oil exited Hormuz in the last 24 hours, but floating mines, escorts, supervised transit, high tanker rates and vessel queues remain.',
+        summary:'As of June 25, 2026 07:00 KST, around 20 million barrels of oil exited the Strait of Hormuz in the last 24 hours, signaling an improvement in crude flows. This lowers the near-term oil spike concern.\n\nHowever, floating mines, military escorts, supervised transit, high tanker freight rates and vessel queues remain. Hormuz risk has eased but has not disappeared, and it can still limit the scale of any August fuel surcharge cut.',
+        impact:'Improving flows are oil-negative, but risk premium remains until full normalization is confirmed.',
+        tags:['Strait of Hormuz','crude flow','oil prices','tankers','fuel surcharge outlook'],
+        sourceRefs:[{name:'Reuters Hormuz shipping context',url:'https://www.reuters.com/'}],
+        faq:[
+          {q:'Has the Strait of Hormuz normalized?',a:'No. Crude flows have improved, but mines, escorts, supervised transit, high rates and vessel queues remain.'},
+          {q:'How does improved Hormuz flow affect fuel surcharges?',a:'It lowers oil-spike risk, but incomplete normalization can still limit the size of any surcharge cut.'}
+        ],
+        links:[{href:'forecast.html',label:'View Hormuz impact'},{href:'news.html',label:'View market news'}]
+      }
+    }
+  },
+  {
+    id:'news-20260625-usdkrw-1530s-airfare-relief',
+    slug:'usdkrw-1530s-limits-airfare-relief-june-25',
+    category:'market',
+    topic:'fx',
+    priority:2,
+    date:'2026-06-25',
+    updatedAt:'2026.06.25 07:00 KST',
+    badge:'NEW',
+    aiSummary:true,
+    relevanceScore:0.97,
+    title:'USD/KRW 1,530원대 초중반 - 유가 하락에도 체감 인하 제한',
+    aiBrief:'원달러 환율은 약 1,530원대 초중반으로, 유가와 항공유 하락이 항공권 총액 인하로 온전히 체감되는 것을 제한할 수 있습니다.',
+    summary:'2026.06.25 07:00 KST 기준 원달러 환율은 약 1,530원대 초중반입니다. 브렌트유, WTI, IATA 글로벌 항공유 가격 하락은 8월 유류할증료 하방 요인이지만 높은 환율은 원화 기준 항공권 총액 체감 인하 폭을 제한할 수 있습니다.\n\n특히 제주항공, 진에어, 에어부산, 이스타항공, 에어프레미아처럼 USD 기준 공시를 쓰는 항공사는 결제 시점 환율에 따라 원화 체감액이 달라질 수 있습니다.',
+    impact:'환율은 8월 유류할증료 전망에서 인하 폭과 항공권 총액 체감액을 제한하는 변수로 유지됩니다.',
+    tags:['원달러 환율','USD/KRW','항공권 총액','유류할증료','환율 영향'],
+    sourceRefs:[{name:'Bank of Korea ECOS',url:'https://ecos.bok.or.kr/'}],
+    faq:[
+      {q:'원달러 환율이 높으면 유류할증료 체감액이 달라지나요?',a:'네. USD 기준 공시 항공사는 결제 시점 환율에 따라 원화 체감액이 달라질 수 있고, KRW 기준 항공권 총액 인하도 제한될 수 있습니다.'},
+      {q:'항공유가 내려도 항공권 총액이 바로 내려가나요?',a:'아닙니다. 항공유, 환율, 운임, 세금, 좌석 상황이 함께 반영되므로 총액 인하가 즉시 보장되지는 않습니다.'}
+    ],
+    links:[{href:'fuel-surcharge-calculator.html',label:'항공권 총액 계산하기'},{href:'airlines.html',label:'항공사별 공시 보기'}],
+    i18n:{
+      en:{
+        updatedAt:'Updated 2026.06.25 07:00 KST',
+        title:'USD/KRW in the low-to-mid 1,530s - lower oil may not fully reduce total airfare',
+        aiBrief:'USD/KRW in the low-to-mid KRW 1,530 range can limit how much lower oil and jet fuel are felt in total airfare.',
+        summary:'As of June 25, 2026 07:00 KST, USD/KRW is in the low-to-mid KRW 1,530 range. Lower Brent, WTI and IATA global jet fuel are downside factors for August surcharges, but elevated FX can limit perceived total airfare relief in KRW.\n\nUSD-denominated airlines such as Jeju Air, Jin Air, Air Busan, Eastar Jet and Air Premia remain sensitive to payment-date FX rates.',
+        impact:'FX remains a limiting factor for the scale of August surcharge and total airfare relief.',
+        tags:['USD/KRW','foreign exchange','total airfare','fuel surcharge','FX impact'],
+        sourceRefs:[{name:'Bank of Korea ECOS',url:'https://ecos.bok.or.kr/'}],
+        faq:[
+          {q:'Does high USD/KRW affect fuel surcharge burden?',a:'Yes. For USD-denominated airline notices, the KRW amount felt by travelers can vary by payment-date FX rates.'},
+          {q:'Will lower jet fuel immediately lower total airfare?',a:'Not necessarily. Fuel, FX, base fare, taxes and seat availability all affect total airfare.'}
+        ],
+        links:[{href:'fuel-surcharge-calculator.html',label:'Calculate total airfare'},{href:'airlines.html',label:'View airline notices'}]
+      }
+    }
+  }
+].concat(window.AERO_NEWS_CARDS_20260624 || window.AERO_NEWS_CARDS_20260623 || window.AERO_NEWS_CARDS_20260622 || window.AERO_NEWS_CARDS_20260619 || []);
+
 /*
  * News taxonomy and sourcing policy:
  * categories are limited to airline, institution, and market.
@@ -8107,6 +8262,34 @@ Object.assign(window.I18N_SHARED.de,{marketDataRef:'Stand 2026.06.16 09:30 KST',
     marketOutlook: 'August 2026 international fuel surcharge is more likely flat or slightly lower, but FX and incomplete Hormuz normalization make a large cut uncertain.'
   };
   window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260624 || window.AERO_MARKET_NUMBERS_LATEST;
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), koMarket);
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), enMarket);
+    ['ja','zh','fr','de'].forEach(function(lang){
+      Object.assign(window.I18N_SHARED[lang] || (window.I18N_SHARED[lang] = {}), enMarket);
+    });
+  }
+})();
+
+/* 2026.06.25 07:00 KST final shared market text override. */
+(function(){
+  var koMarket = {
+    marketDataRef: '2026.06.25 07:00 KST 기준',
+    marketBrent: '국제유가: 브렌트유는 73.74달러/bbl, WTI는 70.34달러/bbl 수준까지 내려왔습니다. 호르무즈 해협 공급 차질 우려 완화와 걸프 지역 원유 흐름 회복이 유가 하락 요인입니다.',
+    marketMops: '항공유 가격(MOPS): 7월 공시 기준 평균은 338.3 cents/gal입니다. IATA 글로벌 항공유는 119.17달러/bbl로 전주 대비 14.2% 하락해 8월 유류할증료 하방 압력을 유지합니다.',
+    marketFx: '원달러 환율: 약 1,530원대 초중반입니다. 항공유와 국제유가 하락에도 높은 환율은 원화 기준 항공권 총액 체감 인하 폭을 제한할 수 있습니다.',
+    marketGeo: '호르무즈 해협: 최근 24시간 동안 약 2,000만 배럴의 원유가 해협을 빠져나가며 흐름 회복 신호가 나타났습니다. 다만 부유 기뢰, 군사 호위, 감독 통항, 높은 탱커 운임, 선박 대기 문제가 남아 있어 완전 정상화로 보기는 어렵습니다.',
+    marketOutlook: '2026년 8월 국제선 유류할증료는 보합 또는 소폭 인하 가능성이 우세합니다. 전일보다 하방 압력은 강해졌지만, 환율 부담과 호르무즈 리스크 잔존으로 큰 폭 인하는 단정하기 어렵습니다.'
+  };
+  var enMarket = {
+    marketDataRef: 'As of 2026.06.25 07:00 KST',
+    marketBrent: 'Oil prices: Brent is down to around USD 73.74/bbl and WTI around USD 70.34/bbl. Easing Strait of Hormuz supply-disruption concerns and recovering Gulf crude flows are driving oil lower.',
+    marketMops: 'MOPS jet fuel: the July filing baseline remains 338.3 cents/gal. IATA global jet fuel is around USD 119.17/bbl, down 14.2% WoW, keeping downside pressure for August fuel surcharges.',
+    marketFx: 'USD/KRW: in the low-to-mid KRW 1,530 range. Even with lower oil and jet fuel, elevated FX can limit the perceived KRW-based reduction in total airfare.',
+    marketGeo: 'Strait of Hormuz: around 20 million barrels of oil exited the strait in the last 24 hours, signaling improved flows. However, floating mines, military escorts, supervised transit, high tanker rates and vessel queues remain, so full normalization is not confirmed.',
+    marketOutlook: 'August 2026 international fuel surcharge is more likely flat or slightly lower. Downside pressure is stronger than yesterday, but FX burden and remaining Hormuz risk make a large cut uncertain.'
+  };
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260625 || window.AERO_MARKET_NUMBERS_LATEST;
   if (window.I18N_SHARED) {
     Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), koMarket);
     Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), enMarket);
