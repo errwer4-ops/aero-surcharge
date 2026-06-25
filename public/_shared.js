@@ -406,6 +406,40 @@ window.AERO_MARKET_NUMBERS_20260625 = Object.assign({}, window.AERO_MARKET_NUMBE
 });
 window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260625;
 
+window.AERO_MARKET_NUMBERS_20260626 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
+  asOf: '2026.06.26 07:00 KST',
+  usdKrw: 1538.00,
+  usdKrwLabel: '1,530원대~1,540원대 중반',
+  mopsUsdPerGallon: 3.383,
+  mopsCentsPerGallon: 338.3,
+  iataJetFuelUsdPerBbl: 119.17,
+  iataJetFuelWeeklyChangePct: -14.2,
+  brentUsdPerBbl: 75.26,
+  wtiUsdPerBbl: 71.92,
+  brentPreviousLowUsdPerBbl: 73.74,
+  wtiPreviousLowUsdPerBbl: 70.34,
+  hormuzCrudeShipmentBbl: 10000000,
+  hormuzCrudeShipmentPrevDayBbl: 10800000,
+  mideastFuelOilExportsTonnes: 2400000,
+  mideastFuelOilExportsBpd: 508000,
+  referenceAsOf: {
+    mops: '2026.05.16~2026.06.15 average reference for July filing / August outlook baseline',
+    augustSurchargeWindow: '2026.06.16~2026.07.15 average window for August 2026 surcharge',
+    usdKrw: '2026.06.26 07:00 KST market snapshot; use label due to source variance',
+    iataJetFuel: 'Latest IATA weekly global jet fuel average reference',
+    brentWti: '2026.06.25 oil market close / 2026.06.26 07:00 KST reference',
+    geo: 'Hormuz crude shipments recovered, but vessel safety risk resurfaced after a ship was hit near Oman'
+  },
+  sources: {
+    usdKrw: 'USD/KRW shown across low 1,530s to mid 1,540s range around 2026.06.26 07:00 KST reference',
+    mops: 'July fuel surcharge calculation reference: MOPS average 338.3 cents/gal',
+    iataJetFuel: 'IATA Fuel Price Monitor: global average jet fuel around 119.17 USD/bbl, down 14.2% WoW',
+    brentWti: 'Reuters 2026.06.25: Brent 75.26 USD/bbl, WTI 71.92 USD/bbl after vessel-hit risk near Oman',
+    geo: 'Reuters 2026.06.25: crude shipments through Hormuz highest since the war began, but safety risks remain'
+  }
+});
+window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260626;
+
 (function(){
   var koMarket = {
     marketDataRef: '2026.06.23 06:55 KST 기준',
@@ -7949,6 +7983,120 @@ window.AERO_NEWS_CARDS_20260625 = [
   }
 ].concat(window.AERO_NEWS_CARDS_20260624 || window.AERO_NEWS_CARDS_20260623 || window.AERO_NEWS_CARDS_20260622 || window.AERO_NEWS_CARDS_20260619 || []);
 
+window.AERO_NEWS_CARDS_20260626 = [
+  {
+    id:'news-20260626-brent-rebound-hormuz-safety-risk',
+    slug:'brent-rebounds-hormuz-vessel-safety-risk-june-26',
+    category:'market',
+    topic:'oil',
+    priority:1,
+    date:'2026-06-26',
+    updatedAt:'2026.06.26 07:00 KST',
+    badge:'NEW',
+    aiSummary:true,
+    relevanceScore:1,
+    title:'브렌트유 75달러대 반등 - 호르무즈 선박 안전 리스크 재부각',
+    aiBrief:'브렌트유 75.26달러/bbl, WTI 71.92달러/bbl 반등은 8월 유류할증료의 큰 폭 인하 기대를 제한하는 변수입니다.',
+    summary:'2026.06.26 07:00 KST 기준 브렌트유는 전일 저점 73.74달러/bbl에서 75.26달러/bbl로, WTI는 70.34달러/bbl에서 71.92달러/bbl로 반등했습니다. 오만 인근 선박 피격 이슈로 호르무즈·해상 안전 리스크 프리미엄이 일부 되살아난 영향입니다.\n\n8월 유류할증료는 여전히 보합 또는 소폭 인하 가능성이 우세하지만, 국제유가 반등과 해상 안전 리스크 때문에 큰 폭 인하로 단정하기는 어렵습니다.',
+    impact:'8월 유류할증료 전망은 보합 또는 소폭 인하 가능성 우세를 유지하되, 큰 폭 인하 제한 요인이 강화됐습니다.',
+    tags:['브렌트유','WTI','호르무즈 해협','2026년 8월 유류할증료','국제유가'],
+    sourceRefs:[{name:'Reuters oil and shipping market context',url:'https://www.reuters.com/'}],
+    faq:[
+      {q:'브렌트유 반등은 8월 유류할증료 인하를 막나요?',a:'반등 자체가 인하를 막는 것은 아니지만, 큰 폭 인하를 단정하기 어렵게 만드는 제한 요인입니다.'},
+      {q:'2026년 8월 유류할증료 전망은 바뀌었나요?',a:'보합 또는 소폭 인하 가능성 우세는 유지되지만, 전일보다 인하 폭 제한 문구를 더 강하게 볼 필요가 있습니다.'}
+    ],
+    links:[{href:'forecast.html',label:'8월 전망 보기'},{href:'fuel-surcharge-graph.html',label:'유류할증료 추이 보기'}],
+    i18n:{en:{
+      updatedAt:'Updated 2026.06.26 07:00 KST',
+      title:'Brent rebounds to USD 75 - Hormuz vessel safety risk returns',
+      aiBrief:'Brent at USD 75.26/bbl and WTI at USD 71.92/bbl limit expectations for a large August fuel surcharge cut.',
+      summary:'As of June 26, 2026 07:00 KST, Brent rebounded from the previous low of USD 73.74/bbl to USD 75.26/bbl, while WTI rose from USD 70.34/bbl to USD 71.92/bbl. A vessel-hit incident near Oman revived part of the Hormuz and maritime safety risk premium.\n\nAugust surcharges are still more likely flat or slightly lower, but the oil rebound and safety risk make a large cut uncertain.',
+      impact:'The flat-to-slightly-lower August outlook remains, but limiting factors for a large cut have strengthened.',
+      tags:['Brent','WTI','Strait of Hormuz','August 2026 fuel surcharge','oil prices'],
+      sourceRefs:[{name:'Reuters oil and shipping market context',url:'https://www.reuters.com/'}],
+      faq:[
+        {q:'Does the Brent rebound prevent an August fuel surcharge cut?',a:'Not by itself, but it makes a large cut less certain.'},
+        {q:'Has the August 2026 outlook changed?',a:'Flat or slightly lower remains more likely, but the language around the limited size of any cut should be stronger than yesterday.'}
+      ],
+      links:[{href:'forecast.html',label:'View August outlook'},{href:'fuel-surcharge-graph.html',label:'View surcharge trend'}]
+    }}
+  },
+  {
+    id:'news-20260626-hormuz-flow-recovery-vessel-risk',
+    slug:'hormuz-crude-flow-recovery-vessel-risk-june-26',
+    category:'market',
+    topic:'hormuz',
+    priority:1,
+    date:'2026-06-26',
+    updatedAt:'2026.06.26 07:00 KST',
+    badge:'NEW',
+    aiSummary:true,
+    relevanceScore:1,
+    title:'호르무즈 원유 물동량 회복 - 선박 안전 리스크는 여전',
+    aiBrief:'호르무즈 원유 수송은 전월 이후 최고 수준까지 회복됐지만, 오만 인근 선박 피격 이슈로 완전 정상화로 보기는 어렵습니다.',
+    summary:'호르무즈 해협을 통한 원유 선적은 전월 이후 최고 수준까지 회복됐습니다. 6월 25일에는 최소 6척이 약 1,000만 배럴을 이송했고, 6월 24일에는 약 1,080만 배럴이 이동했습니다. 중동 연료유 수출도 6월 240만 톤, 하루 약 50만 8천 배럴 수준으로 4개월 만의 최고치를 전망합니다.\n\n다만 오만 인근 선박 피격과 안전 통항 지원 중단 이슈로 선박 안전 리스크가 다시 부각돼 전면 정상화로 보기에는 이릅니다.',
+    impact:'원유 공급 우려 완화는 유가 하락 요인이지만, 선박 안전 리스크는 유류할증료 인하 폭을 제한하는 변수입니다.',
+    tags:['호르무즈 해협','원유 물동량','유조선','해상 안전','유류할증료 전망'],
+    sourceRefs:[{name:'Reuters Hormuz shipping context',url:'https://www.reuters.com/'}],
+    faq:[
+      {q:'호르무즈 해협은 정상화됐나요?',a:'원유 물동량은 회복됐지만 오만 인근 선박 피격과 안전 통항 지원 중단 이슈가 있어 완전 정상화로 보기는 어렵습니다.'},
+      {q:'호르무즈 물동량 회복은 유류할증료에 어떤 의미인가요?',a:'공급 우려 완화는 하방 요인이지만, 선박 안전 리스크가 남아 인하 폭은 제한될 수 있습니다.'}
+    ],
+    links:[{href:'forecast.html',label:'호르무즈 영향 보기'},{href:'news.html',label:'시장 뉴스 보기'}],
+    i18n:{en:{
+      updatedAt:'Updated 2026.06.26 07:00 KST',
+      title:'Hormuz crude flow recovers - vessel safety risk remains',
+      aiBrief:'Hormuz crude shipments recovered to the highest level since the prior month, but vessel safety risk near Oman keeps full normalization uncertain.',
+      summary:'Crude shipments through the Strait of Hormuz recovered to the highest level since the previous month. On June 25, at least six vessels moved about 10 million barrels, after roughly 10.8 million barrels moved on June 24. Middle East fuel-oil exports are also projected near 2.4 million tonnes in June, or about 508,000 bpd, a four-month high.\n\nHowever, a vessel-hit incident near Oman and paused safe-transit support keep maritime safety risk in focus, so full normalization is not confirmed.',
+      impact:'Improved flows ease supply concerns, but vessel safety risk can limit the size of any surcharge cut.',
+      tags:['Strait of Hormuz','crude flows','tankers','maritime safety','fuel surcharge outlook'],
+      sourceRefs:[{name:'Reuters Hormuz shipping context',url:'https://www.reuters.com/'}],
+      faq:[
+        {q:'Has the Strait of Hormuz normalized?',a:'Crude flows have recovered, but the Oman vessel incident and safe-transit concerns mean full normalization is not confirmed.'},
+        {q:'What does Hormuz flow recovery mean for fuel surcharges?',a:'It is a downside factor through lower supply concern, but maritime safety risk can limit the size of any cut.'}
+      ],
+      links:[{href:'forecast.html',label:'View Hormuz impact'},{href:'news.html',label:'View market news'}]
+    }}
+  },
+  {
+    id:'news-20260626-usdkrw-high-range-limits-relief',
+    slug:'usdkrw-high-range-limits-airfare-relief-june-26',
+    category:'market',
+    topic:'fx',
+    priority:2,
+    date:'2026-06-26',
+    updatedAt:'2026.06.26 07:00 KST',
+    badge:'NEW',
+    aiSummary:true,
+    relevanceScore:0.97,
+    title:'USD/KRW 높은 구간 유지 - 항공유 하락에도 체감 인하 제한',
+    aiBrief:'원달러 환율이 1,530원대~1,540원대 중반의 높은 구간에 머물러 항공권 총액 체감 인하 폭을 제한할 수 있습니다.',
+    summary:'원달러 환율은 1,530원대~1,540원대 중반의 높은 구간에 머물고 있습니다. 항공유와 MOPS 하락은 8월 유류할증료 하방 요인이지만, 높은 환율은 KRW 기준 유류할증료와 실제 항공권 총액의 체감 인하 폭을 제한할 수 있습니다.\n\n특히 USD 기준 공시 항공사는 결제 시점 환율에 따라 원화 체감액이 달라질 수 있습니다.',
+    impact:'8월 전망에서 환율은 여전히 인하 폭 제한 요인입니다.',
+    tags:['원달러 환율','USD/KRW','항공권 총액','유류할증료','환율 영향'],
+    sourceRefs:[{name:'Bank of Korea ECOS',url:'https://ecos.bok.or.kr/'}],
+    faq:[
+      {q:'환율이 높으면 유류할증료 인하가 줄어드나요?',a:'항공유가 내려도 환율이 높은 구간에 있으면 원화 기준 체감 인하 폭이 제한될 수 있습니다.'},
+      {q:'USD 기준 공시 항공사는 무엇을 봐야 하나요?',a:'공시 금액뿐 아니라 결제 시점 환율을 함께 확인해야 실제 원화 부담을 판단할 수 있습니다.'}
+    ],
+    links:[{href:'fuel-surcharge-calculator.html',label:'항공권 총액 계산하기'},{href:'airlines.html',label:'항공사별 공시 보기'}],
+    i18n:{en:{
+      updatedAt:'Updated 2026.06.26 07:00 KST',
+      title:'USD/KRW remains high - lower jet fuel may not fully reduce total airfare',
+      aiBrief:'USD/KRW in the low 1,530s to mid 1,540s can limit perceived total airfare relief.',
+      summary:'USD/KRW remains in a high range from the low 1,530s to mid 1,540s. Lower jet fuel and MOPS are downside factors for August surcharges, but elevated FX can limit perceived KRW-based relief in both fuel surcharges and total airfare.\n\nFor USD-denominated airline notices, payment-date FX remains important.',
+      impact:'FX remains a limiting factor for the size of any August surcharge relief.',
+      tags:['USD/KRW','foreign exchange','total airfare','fuel surcharge','FX impact'],
+      sourceRefs:[{name:'Bank of Korea ECOS',url:'https://ecos.bok.or.kr/'}],
+      faq:[
+        {q:'Does high FX reduce the impact of lower fuel surcharges?',a:'Yes. Even if jet fuel falls, high USD/KRW can limit the KRW-based relief felt by travelers.'},
+        {q:'What should users check for USD-denominated airlines?',a:'They should check both the official surcharge and the payment-date exchange rate.'}
+      ],
+      links:[{href:'fuel-surcharge-calculator.html',label:'Calculate total airfare'},{href:'airlines.html',label:'View airline notices'}]
+    }}
+  }
+].concat(window.AERO_NEWS_CARDS_20260625 || window.AERO_NEWS_CARDS_20260624 || window.AERO_NEWS_CARDS_20260623 || window.AERO_NEWS_CARDS_20260622 || window.AERO_NEWS_CARDS_20260619 || []);
+
 /*
  * News taxonomy and sourcing policy:
  * categories are limited to airline, institution, and market.
@@ -8290,6 +8438,34 @@ Object.assign(window.I18N_SHARED.de,{marketDataRef:'Stand 2026.06.16 09:30 KST',
     marketOutlook: 'August 2026 international fuel surcharge is more likely flat or slightly lower. Downside pressure is stronger than yesterday, but FX burden and remaining Hormuz risk make a large cut uncertain.'
   };
   window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260625 || window.AERO_MARKET_NUMBERS_LATEST;
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), koMarket);
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), enMarket);
+    ['ja','zh','fr','de'].forEach(function(lang){
+      Object.assign(window.I18N_SHARED[lang] || (window.I18N_SHARED[lang] = {}), enMarket);
+    });
+  }
+})();
+
+/* 2026.06.26 07:00 KST final shared market text override. */
+(function(){
+  var koMarket = {
+    marketDataRef: '2026.06.26 07:00 KST 기준',
+    marketBrent: '국제유가: 브렌트유는 전일 저점 73.74달러/bbl에서 75.26달러/bbl로, WTI는 70.34달러/bbl에서 71.92달러/bbl로 반등했습니다. 오만 인근 선박 피격 이슈로 호르무즈·해상 안전 리스크 프리미엄이 일부 되살아났습니다.',
+    marketMops: '항공유 가격(MOPS): 7월 공시 기준 평균은 338.3 cents/gal입니다. IATA 글로벌 항공유는 119.17달러/bbl로 전주 대비 14.2% 하락해 8월 유류할증료 하방 압력은 유지됩니다.',
+    marketFx: '원달러 환율: 1,530원대~1,540원대 중반의 높은 구간입니다. 항공유와 국제유가 하락에도 높은 환율은 원화 기준 항공권 총액 체감 인하 폭을 제한할 수 있습니다.',
+    marketGeo: '호르무즈 해협: 원유 물동량은 전월 이후 최고 수준까지 회복됐지만, 오만 인근 선박 피격과 안전 통항 지원 중단 보도로 선박 안전 리스크가 다시 부각됐습니다. 물동량 회복과 안전 리스크가 동시에 존재합니다.',
+    marketOutlook: '2026년 8월 국제선 유류할증료는 보합 또는 소폭 인하 가능성이 우세합니다. 다만 전일보다 리스크 프리미엄이 일부 되살아나 큰 폭 인하를 단정하기는 어렵고, 환율·호르무즈 안전 리스크가 인하 폭을 제한할 수 있습니다.'
+  };
+  var enMarket = {
+    marketDataRef: 'As of 2026.06.26 07:00 KST',
+    marketBrent: 'Oil prices: Brent rebounded from the previous low of USD 73.74/bbl to USD 75.26/bbl, while WTI rose from USD 70.34/bbl to USD 71.92/bbl after a vessel-hit incident near Oman revived some maritime safety risk premium.',
+    marketMops: 'MOPS jet fuel: the July filing baseline remains 338.3 cents/gal. IATA global jet fuel is around USD 119.17/bbl, down 14.2% WoW, so downside pressure for August remains.',
+    marketFx: 'USD/KRW: the rate remains in a high range from the low 1,530s to mid 1,540s, which can limit perceived airfare relief despite lower oil and jet fuel prices.',
+    marketGeo: 'Strait of Hormuz: crude flows recovered to the highest level since the previous month, but a vessel-hit incident near Oman and paused safety-transit support brought maritime safety risk back into focus.',
+    marketOutlook: 'August 2026 international fuel surcharge is still more likely flat or slightly lower. However, the risk premium has partially returned, and FX plus Hormuz safety risks can limit the size of any cut.'
+  };
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260626 || window.AERO_MARKET_NUMBERS_LATEST;
   if (window.I18N_SHARED) {
     Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), koMarket);
     Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), enMarket);
