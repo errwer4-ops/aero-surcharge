@@ -627,7 +627,7 @@
       'korea.pageSub':'2026년 6월·7월 항공사별 공식 공시 비교',
       'korea.h1':'한국 출발 국제선 유류할증료 6월·7월 비교',
       'korea.currentBasis.title':'🔥 현재 적용 기준: 2026년 7월 유류할증료 공시 반영',
-      'korea.currentBasis.desc':'2026년 6월 공시와 2026년 7월 공식 공시를 비교합니다. 아직 7월 공시가 확인되지 않은 항공사는 공시 예정으로 표시합니다.',
+      'korea.currentBasis.desc':'2026년 6월 공시와 2026년 7월 공식 공시를 비교합니다. 7월 공시는 반영 완료 상태이며, 8월 공시는 아직 전이므로 금액을 임의 생성하지 않습니다.',
       'korea.aff.top.title':'✈️ 7월 유류할증료 기준, 항공권 총액도 함께 확인하세요',
       'korea.aff.top.desc':'유류할증료는 발권 시점 기준으로 적용됩니다. 7월 공시 금액과 실제 항공권 총액을 함께 비교하세요.',
       'korea.aff.top.btn':'항공권 총액 확인하기 →',
@@ -635,7 +635,7 @@
       'korea.aff.bottom.desc':'7월 공시 이후 실제 여행비는 항공권 총액과 숙소 비용을 함께 봐야 정확합니다.',
       'korea.aff.bottom.btn':'전체 여행 비용 확인하기 →',
       'korea.sectionTitle':'✈️ 항공사별 2026년 6월·7월 유류할증료 비교',
-      'korea.tableNote':'※ 2026년 7월 공식 공시가 확인된 대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공은 7월 금액을 반영했습니다. 미공시 항공사는 7월 칸을 공시 예정으로 표시합니다.',
+      'korea.tableNote':'※ 2026년 7월 한국 출발 국제선 유류할증료 공식 공시가 반영되었습니다. 8월 유류할증료는 아직 공시 전이므로 forecast 페이지에서 시장 변수를 준비 관점으로 확인합니다.',
       'korea.th.airline':'항공사',
       'korea.th.currency':'공시 통화',
       'korea.th.apr':'2026년 6월',
@@ -645,11 +645,11 @@
       'korea.change.major':'인하',
       'korea.change.minor':'변동',
       'korea.change.decrease':'6월 대비 인하',
-      'korea.change.pending':'공시 예정',
-      'korea.pendingNotice':'공시 예정',
+      'korea.change.pending':'8월 공시 준비',
+      'korea.pendingNotice':'8월 공시 전',
       'korea.source.label':'공식 공지 ↗',
       'korea.source.pending':'공지 확인 ↗',
-      'korea.footnote':'※ 6월·7월 금액은 항공사별 공시 통화와 구간 체계를 유지한 최소~최대 요약입니다. 대한항공·아시아나항공은 원화 기준, 제주항공·진에어는 USD 기준 공시입니다. 미공시 항공사는 7월 금액을 임의 생성하지 않습니다.',
+      'korea.footnote':'※ 6월·7월 금액은 항공사별 공시 통화와 구간 체계를 유지한 최소~최대 요약입니다. 2026년 8월 금액은 항공사 공식 공지 확인 전까지 임의 생성하지 않습니다.',
       'korea.officialLinkTitle':'🔗 2026년 7월 유류할증료 공식 공지',
       'korea.officialLinkSuffix':'확인',
       'korea.related.may':'📅 2026년 7월 공시',
@@ -697,7 +697,7 @@
   });
   document.title = '한국 출발 국제선 유류할증료 비교 | 2026년 6월·7월 공식 공시';
   var descMeta = document.querySelector('meta[name="description"]');
-  if(descMeta) descMeta.setAttribute('content','2026년 6월과 7월 한국 출발 국제선 유류할증료를 항공사별로 비교합니다. 대한항공, 아시아나항공, 제주항공, 진에어 7월 공식 공시를 반영하고 미공시 항공사는 공시 예정으로 표시합니다.');
+  if(descMeta) descMeta.setAttribute('content','2026년 6월과 7월 한국 출발 국제선 유류할증료를 항공사별 공식 공시 기준으로 비교합니다. 2026년 8월 공시는 아직 전이므로 금액을 임의 생성하지 않습니다.');
 
   /* ═══════════════════════════════════════════
      3. 금액 포맷 헬퍼
@@ -846,26 +846,67 @@
     'korea.pageSub':'2026년 6월 vs 7월 공식 공시 비교',
     'korea.h1':'한국 출발 국제선 유류할증료 6월 vs 7월 비교',
     'korea.currentBasis.title':'현재 적용 기준: 2026년 7월 유류할증료 공시 반영',
-    'korea.currentBasis.desc':'2026년 6월 공시와 2026년 7월 공식 공시를 비교합니다. 대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공·에어서울·에어프레미아는 7월 공시를 반영했고, 티웨이항공은 공시 예정으로 표시합니다.',
+    'korea.currentBasis.desc':'2026년 6월 공시와 2026년 7월 공식 공시를 비교합니다. 7월 공시는 반영 완료 상태이며, 8월 공시는 아직 전이므로 금액을 임의 생성하지 않습니다.',
     'korea.sectionTitle':'항공사별 2026년 6월 → 7월 유류할증료 비교',
-    'korea.tableNote':'2026년 7월 공식 공시가 확인된 대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공·에어서울·에어프레미아는 7월 금액을 반영했습니다. 티웨이항공은 7월 공시 예정으로 표시합니다.',
-    'korea.change.pending':'공시 예정',
-    'korea.pendingNotice':'공시 예정',
+    'korea.tableNote':'2026년 7월 한국 출발 국제선 유류할증료 공식 공시가 반영되었습니다. 8월 유류할증료는 아직 공시 전이므로 forecast 페이지에서 시장 변수를 준비 관점으로 확인합니다.',
+    'korea.change.pending':'8월 공시 준비',
+    'korea.pendingNotice':'8월 공시 전',
     'korea.source.label':'공식 공지 ↗',
     'korea.source.pending':'공지 확인 전',
-    'korea.footnote':'※ 6월 금액과 7월 금액은 항공사별 공시 통화와 거리 구간 체계를 유지해 표시합니다. 7월 공시 확인 항공사: 대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공·에어서울·에어프레미아. 티웨이항공은 공시 예정 상태로 유지합니다.'
+    'korea.footnote':'※ 6월 금액과 7월 금액은 항공사별 공시 통화와 거리 구간 체계를 유지해 표시합니다. 2026년 8월 금액은 항공사 공식 공지 확인 전까지 임의 생성하지 않습니다.'
   });
   Object.assign(window.I18N.en || (window.I18N.en = {}), {
-    'korea.currentBasis.desc':'This page compares June 2026 filings with July 2026 official notices. Korean Air, Asiana, Jeju Air, Jin Air, Air Busan, Eastar Jet, Air Seoul and Air Premia are reflected; Tway Air remains pending.',
+    'korea.currentBasis.desc':'This page compares June 2026 filings with July 2026 official filings. July filings are reflected; August 2026 amounts are not filed yet and are not estimated.',
     'korea.tableNote':'July 2026 official notices are reflected for Korean Air, Asiana Airlines, Jeju Air, Jin Air, Air Busan, Eastar Jet, Air Seoul and Air Premia. Tway Air is marked as pending.',
     'korea.change.pending':'Pending notice',
     'korea.pendingNotice':'Pending notice',
-    'korea.footnote':'June and July amounts preserve each airline official currency and distance-band structure. Verified July airlines: KE/OZ/7C/LJ/BX/ZE/RS/YP. Tway Air remains pending.'
+    'korea.footnote':'June and July amounts preserve each airline official currency and distance-band structure. August 2026 amounts are not created before official airline notices are confirmed.'
   });
   ['ja','zh','fr','de'].forEach(function(lang){
     window.I18N[lang] = window.I18N[lang] || {};
     Object.assign(window.I18N[lang], window.I18N.en);
   });
+
+  /* 2026.07.03 KST: all July filings reflected; August remains pre-filing. */
+  Object.assign(window.I18N.ko || (window.I18N.ko = {}), {
+    'korea.pageTitle':'한국 출발 국제선 유류할증료 조회',
+    'korea.pageSub':'2026년 6월 vs 7월 공식 공시 비교 · 8월 공시 준비',
+    'korea.h1':'한국 출발 국제선 유류할증료 6월 vs 7월 비교',
+    'korea.currentBasis.title':'현재 적용 기준: 2026년 7월 유류할증료 공식 공시 반영 완료',
+    'korea.currentBasis.desc':'2026년 6월 공시와 2026년 7월 공식 공시를 비교합니다. 7월 공시는 반영 완료 상태이며, 8월 공시는 아직 전이므로 금액을 임의 생성하지 않습니다.',
+    'korea.sectionTitle':'항공사별 2026년 6월 → 7월 유류할증료 비교',
+    'korea.tableNote':'2026년 7월 한국 출발 국제선 유류할증료 공식 공시가 반영되었습니다. 8월 유류할증료는 아직 공시 전이므로 forecast 페이지에서 MOPS·환율·호르무즈 변수를 준비 관점으로 확인합니다.',
+    'korea.change.pending':'8월 공시 준비',
+    'korea.pendingNotice':'8월 공시 전',
+    'korea.source.label':'공식 공지 ↗',
+    'korea.source.pending':'8월 공시 전',
+    'korea.footnote':'※ 6월·7월 금액은 항공사별 공시 통화와 거리 구간 체계를 유지합니다. 2026년 8월 금액은 항공사 공식 공지 확인 전까지 임의 생성하지 않습니다.',
+    'korea.related.may':'📌 2026년 7월 공식 공시',
+    'korea.related.jun':'🔮 2026년 8월 공시 준비와 전망'
+  });
+  Object.assign(window.I18N.en || (window.I18N.en = {}), {
+    'korea.pageTitle':'Korea Departure Fuel Surcharge',
+    'korea.pageSub':'June vs July 2026 official filing comparison · preparing August filings',
+    'korea.h1':'Korea departure fuel surcharge: June vs July 2026',
+    'korea.currentBasis.title':'Current basis: July 2026 official filings fully reflected',
+    'korea.currentBasis.desc':'This page compares June 2026 filings with July 2026 official filings. July filings are reflected; August 2026 amounts are not filed yet and are not estimated.',
+    'korea.sectionTitle':'Fuel surcharge comparison by airline: June to July 2026',
+    'korea.tableNote':'July 2026 Korea-departure international fuel surcharge filings are reflected. August 2026 remains pre-filing, so MOPS, FX and Hormuz variables are tracked on the forecast page.',
+    'korea.change.pending':'August filing preparation',
+    'korea.pendingNotice':'August not filed yet',
+    'korea.source.label':'Official notice ↗',
+    'korea.source.pending':'August not filed yet',
+    'korea.footnote':'June and July amounts preserve each airline official currency and distance-band structure. August 2026 amounts are not created before official airline notices are confirmed.',
+    'korea.related.may':'📌 July 2026 official filings',
+    'korea.related.jun':'🔮 August 2026 filing preparation and outlook'
+  });
+  ['ja','zh','fr','de'].forEach(function(lang){
+    window.I18N[lang] = window.I18N[lang] || {};
+    Object.assign(window.I18N[lang], window.I18N.en);
+  });
+  document.title = '한국 출발 국제선 유류할증료 비교 | 2026년 6월 vs 7월 공식 공시';
+  var finalDescMeta = document.querySelector('meta[name="description"]');
+  if(finalDescMeta) finalDescMeta.setAttribute('content','2026년 6월과 7월 한국 출발 국제선 유류할증료를 항공사별 공식 공시 기준으로 비교합니다. 2026년 8월 공시는 아직 전이므로 금액을 임의 생성하지 않습니다.');
 
   window.initNav({
     onLangChange: function () {

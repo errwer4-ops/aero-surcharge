@@ -1804,8 +1804,8 @@ buildOfficialSection = function(cd, al, miles, isRT, dep, arr){
       : '<td class="route-amt-current" style="color:var(--muted)">-</td>';
     var julyCell = julyAmt != null
       ? '<td class="route-amt-next" style="color:#059669;font-weight:700">' + fmt(toKRW(julyAmt)) + '</td>'
-      : '<td class="route-amt-next"><span class="prepub">공시 예정</span></td>';
-    var diffCell = '<td style="font-size:11px;color:var(--muted);text-align:center">공시 예정</td>';
+      : '<td class="route-amt-next"><span class="prepub">8월 공시 준비</span></td>';
+    var diffCell = '<td style="font-size:11px;color:var(--muted);text-align:center">8월 공시 준비</td>';
     if(juneAmt != null && julyAmt != null){
       var diff = toKRW(julyAmt) - toKRW(juneAmt);
       var pct = ((julyAmt - juneAmt) / juneAmt) * 100;
@@ -1823,7 +1823,7 @@ buildOfficialSection = function(cd, al, miles, isRT, dep, arr){
   var thead = '<thead><tr>'
     + '<th>' + window.t('index.card.distanceBand') + '</th>'
     + '<th class="th-may">2026.06</th>'
-    + '<th class="th-apr">' + (hasJuly ? '2026.07 공식 공시' : '2026.07 공시 예정') + '</th>'
+    + '<th class="th-apr">' + (hasJuly ? '2026.07 공식 공시' : '2026.08 공시 준비') + '</th>'
     + (hasJune ? '<th style="font-size:10px;color:var(--muted);text-align:center">' + window.t('index.card.diff') + '</th>' : '')
     + '</tr></thead>';
 
@@ -2348,6 +2348,27 @@ renderLanding = function(){
     document.getElementById('statusDot').className = 'status-dot';
   }
 };
+
+/* 2026.07.03 KST: July filings complete; highlight August filing preparation. */
+(function applyAugustPreparationIndexCopy(){
+  var ko = {
+    'index.quick.jul.name':'2026년 8월 유류할증료 공시 준비',
+    'index.quick.jul.desc':'7월 공시 완료 이후 · MOPS·환율·호르무즈 변수 점검',
+    'index.quick.compare.name':'2026년 6월 → 7월 유류할증료 비교',
+    'index.quick.compare.desc':'7월 공식 공시 반영 완료 · 항공사별 6월 대비 비교'
+  };
+  var en = {
+    'index.quick.jul.name':'August 2026 fuel surcharge filing preparation',
+    'index.quick.jul.desc':'After July filings · MOPS, FX and Hormuz variables',
+    'index.quick.compare.name':'June to July 2026 fuel surcharge comparison',
+    'index.quick.compare.desc':'July filings reflected · airline-by-airline comparison'
+  };
+  var packs = { ko: ko, en: en, ja: en, zh: en, fr: en, de: en };
+  Object.keys(packs).forEach(function(lang){
+    window.I18N[lang] = window.I18N[lang] || {};
+    Object.assign(window.I18N[lang], packs[lang]);
+  });
+})();
 
 window.initNav({
   onLangChange:function(){

@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>항공사별 유류할증료 — 2026년 7월 공식 공시 반영</title>
-  <meta name="description" content="대한항공, 아시아나항공, 제주항공, 진에어의 2026년 7월 한국 출발 국제선 유류할증료 공식 공시와 미공시 항공사 대기 상태를 확인합니다."/>
+  <meta name="description" content="2026년 7월 한국 출발 국제선 유류할증료 공식 공시 반영 완료 현황과 8월 공시 준비 상태를 항공사별로 확인합니다."/>
   <meta name="google-adsense-account" content="ca-pub-4285114770383510">
 
   <link rel="canonical" href="https://aero-surcharge.com/airlines.html"/>
   <meta property="og:title" content="항공사별 유류할증료 — 2026년 7월 공식 공시 반영"/>
-  <meta property="og:description" content="대한항공, 아시아나항공, 제주항공, 진에어의 2026년 7월 공식 공시와 미공시 항공사 대기 상태를 확인합니다."/>
+  <meta property="og:description" content="2026년 7월 한국 출발 국제선 유류할증료 공식 공시 반영 완료 현황과 8월 공시 준비 상태를 확인합니다."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.com/airlines.html"/>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
@@ -565,15 +565,15 @@ var AIRLINES_I18N = {
   var en = AIRLINES_I18N.en;
   if (ko) {
     ko.seoSummaryH2 = '📋 2026년 7월 한국 출발 국제선 유류할증료 공시 반영 요약';
-    ko.seoSummaryP = '2026년 7월 한국 출발 국제선 유류할증료는 <strong>대한항공·아시아나항공·제주항공·진에어</strong> 공식 공시가 확인되어 반영되었습니다. 대한항공은 46,400원~344,000원, 아시아나항공은 48,500원~275,800원, 제주항공은 USD 30~72, 진에어는 USD 27~79 기준입니다. 아직 7월 공시가 확인되지 않은 항공사는 6월 기준 또는 공시 대기 상태로 구분합니다.';
-    ko.surchargeIntro = '아래는 2026년 6월 공시와 2026년 7월 공식 공시를 비교하는 항공사별 목록입니다. 7월 공식 공시가 확인된 대한항공·아시아나항공·제주항공·진에어는 7월 금액을 반영하고, 미공시 항공사는 공시 대기 상태로 표시합니다.';
+    ko.seoSummaryP = '2026년 7월 한국 출발 국제선 유류할증료 공식 공시가 반영되었습니다. 2026년 8월 유류할증료는 아직 공시 전이므로 금액을 임의 생성하지 않고 forecast 페이지에서 시장 변수를 준비 관점으로 점검합니다.';
+    ko.surchargeIntro = '아래는 2026년 6월 공시와 2026년 7월 공식 공시를 비교하는 항공사별 목록입니다. 7월 공시는 반영 완료 상태이며, 8월 공시는 아직 전이므로 전망과 준비 상태로만 구분합니다.';
     ko.analysisH3 = '2026년 6월 → 7월 유류할증료 공식 공시 반영 현황';
     ko.analysisBullets = [
       '<strong>대한항공</strong> 2026년 7월 공식 공시 반영: 46,400원~344,000원.',
       '<strong>아시아나항공</strong> 2026년 7월 공식 공시 반영: 48,500원~275,800원.',
       '<strong>제주항공</strong> 2026년 7월 공식 공시 반영: USD 30~72.',
       '<strong>진에어</strong> 2026년 7월 공식 공시 반영: USD 27~79.',
-      '<strong>미공시 항공사</strong>는 7월 금액을 임의 생성하지 않고 6월 기준 또는 공시 대기 상태로 분리 표시합니다.',
+      '<strong>8월 공시 준비</strong>는 forecast 페이지에서 별도 관리하며, 공식 공지 전까지 금액을 생성하지 않습니다.',
       '항공사별 운항거리 구간과 통화 기준이 다르므로 각 항공사 공식 공시 기준을 그대로 유지합니다.'
     ];
     ko.expandHint = '6월→7월 비교';
@@ -1071,7 +1071,7 @@ function renderTable(){
     var juneOfficialBadge=hasJulyOfficial(al.code)
       ?'<span style="font-size:11px;background:#e8f5e9;color:#1b5e20;border-radius:6px;padding:2px 7px;font-weight:700">7월 공식 공시 반영</span>'
       :(hasJuneOfficial(al.code)
-        ?'<span style="font-size:11px;background:#E0F2FE;color:#075985;border-radius:6px;padding:2px 7px;font-weight:700">7월 공시 대기</span>'
+        ?'<span style="font-size:11px;background:#E0F2FE;color:#075985;border-radius:6px;padding:2px 7px;font-weight:700">8월 공시 준비</span>'
         :'<span style="font-size:11px;background:#FFF8E1;color:#F57F17;border-radius:6px;padding:2px 7px;font-weight:700;border:1px solid #FFE082;">미공지</span>');
     var srcLabel=juneOfficialBadge;
 
@@ -1109,7 +1109,7 @@ function renderTable(){
     } else if(repMonth){
       var tbd=hasJuneOfficial(al.code)
         ? (lang==='ko'?'(6월 기준 · 7월 대기)':'(June basis · July pending)')
-        : (lang==='ko'?'(공시 전)':'(TBD)');
+        : (lang==='ko'?'(8월 공시 전)':'(August TBD)');
       periodDisplay=BASE_MONTH+' '+tbd;
     } else {
       periodDisplay='—';
@@ -1202,8 +1202,8 @@ document.getElementById('searchInput').addEventListener('input',function(e){
   var ko = AIRLINES_I18N.ko || {};
   var en = AIRLINES_I18N.en || {};
   ko.seoSummaryH2 = '📋 2026년 7월 한국 출발 국제선 유류할증료 공시 반영 요약';
-  ko.seoSummaryP = '2026년 7월 한국 출발 국제선 유류할증료는 <strong>대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공</strong> 공식 공시가 확인되어 반영되었습니다. 대한항공은 46,400원~344,000원, 아시아나항공은 48,500원~275,800원, 제주항공은 USD 30~72, 진에어는 USD 27~79, 에어부산은 USD 30~74, 이스타항공은 USD 30~72 기준입니다. 아직 7월 공시가 확인되지 않은 항공사는 6월 기준 또는 공시 대기 상태로 구분합니다.';
-  ko.surchargeIntro = '아래는 2026년 6월 공시와 2026년 7월 공식 공시를 비교하는 항공사별 목록입니다. 7월 공식 공시가 확인된 대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공은 7월 금액을 반영하고, 미공시 항공사는 공시 대기 상태로 표시합니다.';
+  ko.seoSummaryP = '2026년 7월 한국 출발 국제선 유류할증료 공식 공시가 반영되었습니다. 2026년 8월 유류할증료는 아직 공시 전이므로 금액을 임의 생성하지 않고 forecast 페이지에서 시장 변수를 준비 관점으로 점검합니다.';
+  ko.surchargeIntro = '아래는 2026년 6월 공시와 2026년 7월 공식 공시를 비교하는 항공사별 목록입니다. 7월 공시는 반영 완료 상태이며, 8월 공시는 아직 전이므로 전망과 준비 상태로만 구분합니다.';
   ko.analysisH3 = '2026년 6월 → 7월 유류할증료 공식 공시 반영 현황';
   ko.analysisBullets = [
     '<strong>대한항공</strong> 2026년 7월 공식 공시 반영: 46,400원~344,000원.',
@@ -1212,7 +1212,7 @@ document.getElementById('searchInput').addEventListener('input',function(e){
     '<strong>진에어</strong> 2026년 7월 USD 공식 공시 반영: USD 27~79.',
     '<strong>에어부산</strong> 2026년 7월 USD 공식 공시 반영: USD 30~74.',
     '<strong>이스타항공</strong> 2026년 7월 USD 공식 공시 반영: USD 30~72.',
-    '<strong>미공시 항공사</strong>는 7월 금액을 임의 생성하지 않고 6월 기준 또는 공시 대기 상태로 분리 표시합니다.'
+    '<strong>8월 공시 준비</strong>는 forecast 페이지에서 별도 관리하며, 공식 공지 전까지 금액을 생성하지 않습니다.'
   ];
   ko.expandHint = '6월→7월 비교';
   ko.compareTitle = '6월 vs 7월 유류할증료 비교';
@@ -1242,6 +1242,63 @@ document.getElementById('searchInput').addEventListener('input',function(e){
   en.mayBasedLabel = 'July basis (official filing)';
   en.aprBasedLabel = 'June basis';
   en.statusText = function(upd,nxt,base){return 'Updated: '+upd+' · '+nxt+' official notice basis (includes '+base+' comparison)';};
+})();
+
+/* 2026.07.03 KST: July filings are fully reflected; prepare August without estimated amounts. */
+(function applyAugustPreparationAirlinesCopy(){
+  var officialAirlinesKo = '대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공·에어서울·에어프레미아·티웨이항공';
+  var officialAirlinesEn = 'Korean Air, Asiana Airlines, Jeju Air, Jin Air, Air Busan, Eastar Jet, Air Seoul, Air Premia and Tway Air';
+  var ko = AIRLINES_I18N.ko || (AIRLINES_I18N.ko = {});
+  var en = AIRLINES_I18N.en || (AIRLINES_I18N.en = {});
+
+  ko.seoSummaryH2 = '2026년 7월 한국 출발 국제선 유류할증료 공시 반영 완료';
+  ko.seoSummaryP = '2026년 7월 한국 출발 국제선 유류할증료는 <strong>' + officialAirlinesKo + '</strong> 공식 공시 기준으로 반영되었습니다. 8월 유류할증료는 아직 공시 전이므로 금액을 임의 생성하지 않고, forecast 페이지에서 MOPS·환율·호르무즈 해협 변수를 공시 준비 관점으로 점검합니다.';
+  ko.surchargeIntro = '아래 목록은 2026년 6월 공시와 2026년 7월 공식 공시를 비교합니다. 7월 공시는 반영 완료 상태이며, 8월 공시는 아직 전이므로 전망과 준비 상태로만 구분합니다.';
+  ko.analysisH3 = '2026년 7월 유류할증료 공식 공시 반영 완료 및 8월 준비';
+  ko.analysisBullets = [
+    '<strong>7월 공시 반영 완료</strong>: ' + officialAirlinesKo + '의 2026년 7월 한국 출발 국제선 유류할증료를 항공사별 공식 통화와 구간 체계대로 유지합니다.',
+    '<strong>6월 대비 비교</strong>: 기존 6월 공시 데이터는 삭제하지 않고 7월 공시와 비교할 수 있게 보존합니다.',
+    '<strong>8월 공시 준비</strong>: 2026년 8월 금액은 아직 공시 전이므로 확정값처럼 표시하지 않습니다.',
+    '<strong>전망 기준</strong>: MOPS, 원달러 환율, 호르무즈 해협 리스크를 forecast 페이지에서 별도로 추적합니다.',
+    '항공사별 운항거리 구간과 KRW/USD 공시 통화는 각 항공사 공식 공지 기준을 그대로 유지합니다.'
+  ];
+  ko.expandHint = '6월→7월 비교';
+  ko.compareTitle = '6월 vs 7월 유류할증료 비교';
+  ko.aprNotice = '6월 공식 공시';
+  ko.mayNotice = '7월 공식 공시';
+  ko.mayBasedLabel = '7월 기준';
+  ko.aprBasedLabel = '6월 기준';
+  ko.notPublished = '8월 공시 준비';
+  ko.noNotice = '8월 공시 전';
+  ko.statusText = function(upd,nxt,base){ return '갱신: ' + upd + ' · 7월 공식 공시 반영 완료 · 8월 공시 준비 중'; };
+
+  en.seoSummaryH2 = 'July 2026 Korea-departure fuel surcharge filings fully reflected';
+  en.seoSummaryP = 'July 2026 Korea-departure international fuel surcharge filings are reflected for <strong>' + officialAirlinesEn + '</strong>. August 2026 amounts are not filed yet, so the site does not create estimated amounts and tracks MOPS, USD/KRW and Hormuz variables on the forecast page.';
+  en.surchargeIntro = 'This table compares June 2026 filings with July 2026 official filings. July filings are fully reflected; August remains a pre-filing outlook and preparation state.';
+  en.analysisH3 = 'July 2026 filings reflected; August filing preparation';
+  en.analysisBullets = [
+    '<strong>July filings reflected</strong>: ' + officialAirlinesEn + ' are maintained using each airline official currency and distance-band structure.',
+    '<strong>June comparison preserved</strong>: June filing data remains available for comparison with July.',
+    '<strong>August preparation</strong>: August 2026 amounts are not shown as confirmed before airline notices are published.',
+    '<strong>Forecast variables</strong>: MOPS, USD/KRW and Hormuz Strait risk are tracked separately on the forecast page.',
+    'Distance bands and KRW/USD units follow each airline official notice.'
+  ];
+  en.expandHint = 'June to July comparison';
+  en.compareTitle = 'June vs July fuel surcharge comparison';
+  en.aprNotice = 'June official notice';
+  en.mayNotice = 'July official notice';
+  en.mayBasedLabel = 'July basis';
+  en.aprBasedLabel = 'June basis';
+  en.notPublished = 'August filing preparation';
+  en.noNotice = 'August not filed yet';
+  en.statusText = function(upd,nxt,base){ return 'Updated: ' + upd + ' · July official filings reflected · preparing August filings'; };
+
+  ['ja','zh','fr','de'].forEach(function(lang){
+    AIRLINES_I18N[lang] = AIRLINES_I18N[lang] || {};
+    ['seoSummaryH2','seoSummaryP','surchargeIntro','analysisH3','analysisBullets','expandHint','compareTitle','aprNotice','mayNotice','mayBasedLabel','aprBasedLabel','notPublished','noNotice','statusText'].forEach(function(key){
+      AIRLINES_I18N[lang][key] = en[key];
+    });
+  });
 })();
 
 window.initNav({
