@@ -9055,6 +9055,109 @@ Object.assign(window.I18N_SHARED.de,{marketDataRef:'Stand 2026.06.16 09:30 KST',
   }
 })();
 
+/* 2026.07.03 11:00 KST market numbers, shared text and news card final override. */
+(function(){
+  window.AERO_MARKET_NUMBERS_20260703 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
+    asOf: '2026.07.03 11:00 KST',
+    usdKrw: 1539.00,
+    usdKrwLabel: '약 1,538~1,540원대',
+    mopsUsdPerGallon: 3.383,
+    mopsCentsPerGallon: 338.3,
+    mopsUsdPerBbl: 142.09,
+    iataJetFuelUsdPerBbl: 116.63,
+    iataJetFuelWeeklyChangePct: -2.1,
+    brentUsdPerBbl: 71.80,
+    brentUsdPerBblLabel: '약 70~72달러대',
+    wtiUsdPerBbl: 68.69,
+    wtiUsdPerBblLabel: '약 68~69달러대',
+    referenceAsOf: {
+      mops: '2026.05.16~2026.06.15 average reference for July 2026 filing; August 2026 surcharge window is still in progress',
+      augustSurchargeWindow: '2026.06.16~2026.07.15 average window for August 2026 surcharge; not finalized yet',
+      usdKrw: '2026.07.03 11:00 KST reference; around KRW 1,538~1,540 per USD',
+      iataJetFuel: 'IATA Fuel Price Monitor latest weekly global jet fuel average',
+      brentWti: '2026.07.02~2026.07.03 market reference; use range label due to source variance',
+      geo: 'Hormuz flows have partially recovered, but Iran-approved route warning, vessel safety, insurance and logistics risks remain'
+    },
+    sources: {
+      usdKrw: 'USD/KRW around KRW 1,538~1,540 as of 2026.07.03 11:00 KST reference',
+      mops: 'July 2026 fuel surcharge calculation reference: MOPS average 338.3 cents/gal',
+      iataJetFuel: 'IATA Fuel Price Monitor: global average jet fuel 116.63 USD/bbl, down 2.1% WoW',
+      brentWti: 'Brent around low-70 USD/bbl range and WTI around high-60 USD/bbl range after Hormuz flow recovery',
+      geo: 'Hormuz transit has partially recovered, but Iran route-control warning and shipping safety risks remain'
+    }
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260703;
+
+  var koMarket = {
+    marketDataRef: '2026.07.03 11:00 KST 기준',
+    marketBrent: '국제유가: Brent는 약 70~72달러/bbl, WTI는 약 68~69달러/bbl 구간입니다. 호르무즈 통항 회복 기대와 공급 불안 완화로 전월 고점 대비 낮아졌지만, 지정학 리스크 프리미엄이 완전히 사라졌다고 보기는 어렵습니다.',
+    marketMops: '항공유 가격(MOPS): 7월 공시 산정 기준 MOPS 평균은 338.3 cents/gal입니다. IATA 글로벌 항공유는 116.63달러/bbl로 전주 대비 2.1% 하락해 8월 유류할증료에는 하방 요인입니다. 다만 8월 산정 기간 평균은 아직 확정 전입니다.',
+    marketFx: '원달러 환율: 약 1,538~1,540원대입니다. 7월 1일의 1,550원 안팎보다 다소 낮아졌지만 여전히 높은 구간이어서 항공유 하락분이 원화 기준 유류할증료 인하로 온전히 반영되기는 어렵습니다.',
+    marketGeo: '호르무즈 해협: 통항 회복 기대는 커졌지만 이란의 승인 항로 요구와 강경 대응 경고가 나오며 선박 안전, 보험료, 물류 지연, 우회 비용 리스크가 남아 있습니다. 완전 정상화가 아니라 부분 회복으로 보는 것이 적절합니다.',
+    marketOutlook: '2026년 7월 국제선 유류할증료는 인하 금액으로 발권일 기준 적용 중입니다. 2026년 8월 유류할증료는 보합 또는 소폭 인하 가능성이 우세하지만, 고환율과 호르무즈 통항 리스크 때문에 큰 폭 인하는 단정하기 어렵습니다.'
+  };
+  var enMarket = {
+    marketDataRef: 'As of 2026.07.03 11:00 KST',
+    marketBrent: 'Oil prices: Brent is in the low USD 70s/bbl and WTI is in the high USD 60s/bbl. Prices are lower than the previous spike as Hormuz flows partially recover, but the geopolitical risk premium has not fully disappeared.',
+    marketMops: 'Jet fuel price (MOPS): the July filing average remains 338.3 cents/gal. IATA global jet fuel is USD 116.63/bbl, down 2.1% WoW, which is a downside factor for August surcharges. However, the August averaging window is not finalized yet.',
+    marketFx: 'USD/KRW: around KRW 1,538~1,540 per USD. This is slightly lower than the July 1 level near KRW 1,550, but still elevated enough to limit KRW-based surcharge relief.',
+    marketGeo: "Strait of Hormuz: transit recovery has improved, but Iran's approved-route warning keeps vessel safety, insurance, logistics delay and rerouting risks in place. Treat this as partial recovery, not full normalization.",
+    marketOutlook: 'July 2026 international fuel surcharges are now being applied at lower levels. August 2026 is more likely flat or slightly lower, but elevated FX and Hormuz transit risk make a large cut uncertain.'
+  };
+  if(window.I18N_SHARED){
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), koMarket);
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), enMarket);
+    ['ja','zh','fr','de'].forEach(function(lang){
+      Object.assign(window.I18N_SHARED[lang] || (window.I18N_SHARED[lang] = {}), enMarket);
+    });
+  }
+
+  window.AERO_NEWS_CARDS_20260703 = [
+    {
+      id:'market-20260703-hormuz-fx-mops',
+      slug:'market-20260703-hormuz-fx-mops',
+      date:'2026-07-03',
+      updatedAt:'2026.07.03 11:00 KST',
+      priority:1,
+      category:'market',
+      topic:'market',
+      title:'2026.07.03 기준: 7월 유류할증료 인하 적용 중, 8월은 보합·소폭 인하 가능성',
+      aiBrief:'MOPS와 IATA 항공유 하락은 8월 유류할증료 하방 요인이지만, 원달러 환율 1,538~1,540원대와 호르무즈 통항 통제 리스크가 큰 폭 인하를 제한할 수 있습니다.',
+      summary:'2026년 7월 한국발 국제선 유류할증료는 인하 적용 중입니다. 8월은 보합 또는 소폭 인하 가능성이 우세하지만 아직 공시 전이며, 호르무즈 해협은 부분 회복 상태로 봐야 합니다.',
+      impact:'7월은 발권일 기준 인하 적용 중인 사실 데이터입니다. 8월은 MOPS·항공유 하락이 하방 요인이지만 환율과 호르무즈 리스크 때문에 인하 확정 또는 큰 폭 인하로 단정하면 안 됩니다.',
+      sourceName:'시장 지표 기반 분석',
+      tags:['2026년 8월 유류할증료 전망','MOPS','IATA 항공유','원달러 환율','호르무즈 해협'],
+      faq:[
+        {q:'2026년 8월 유류할증료는 인하되나요?',a:'2026.07.03 11:00 KST 기준으로는 보합 또는 소폭 인하 가능성이 우세하지만, 아직 8월 공식 공시는 발표 전입니다.'},
+        {q:'호르무즈 해협은 정상화됐나요?',a:'통항 회복 기대는 커졌지만 승인 항로 요구와 선박 안전·보험료·물류 지연 리스크가 남아 있어 완전 정상화로 보기는 어렵습니다.'}
+      ],
+      links:[{href:'forecast.html',label:'8월 전망 보기 →'}],
+      i18n:{
+        en:{
+          updatedAt:'Updated 2026.07.03 11:00 KST',
+          title:'As of Jul 3, 2026: July surcharge cuts apply, August is likely flat or slightly lower',
+          aiBrief:'Lower MOPS and IATA jet fuel are downside factors for August surcharges, but USD/KRW around 1,538~1,540 and Hormuz transit-control risk can limit a large cut.',
+          summary:'July 2026 Korea-departure international fuel surcharges are being applied at lower levels. August is more likely flat or slightly lower, but official notices are not out yet and Hormuz should be treated as partial recovery.',
+          impact:'July is factual ticketing-date application data. August remains an outlook and should not be described as a confirmed or large cut.',
+          sourceName:'Market indicator analysis',
+          tags:['August 2026 fuel surcharge outlook','MOPS','IATA jet fuel','USD/KRW','Strait of Hormuz'],
+          faq:[
+            {q:'Will August 2026 fuel surcharges fall?',a:'As of July 3, 2026 11:00 KST, flat or slightly lower is more likely, but official August notices have not been published.'},
+            {q:'Has the Strait of Hormuz normalized?',a:'Transit recovery has improved, but approved-route warnings, vessel safety, insurance and logistics risks remain.'}
+          ],
+          links:[{href:'forecast.html',label:'View August outlook →'}]
+        }
+      }
+    }
+  ].concat(window.AERO_NEWS_CARDS_20260701 || []);
+  ['ja','zh','fr','de'].forEach(function(lang){
+    window.AERO_NEWS_CARDS_20260703.forEach(function(card){
+      card.i18n = card.i18n || {};
+      if(!card.i18n[lang]) card.i18n[lang] = card.i18n.en;
+    });
+  });
+})();
+
 var _origInitNav = window.initNav;
 window.initNav = function(opts){
   opts = opts || {};
