@@ -138,15 +138,15 @@
       'jj.card2.body':'매월 국토교통부 기준에 따라 다음 달 적용 유류할증료를 공시합니다.',
       'jj.card3.title':'공식 확인',
       'jj.card3.body':'정확한 금액은 jejuair.net에서 반드시 확인하세요.',
-      'jj.sectionTitle':'📊 2026년 6월·7월 유류할증료 비교 (USD 공시)',
+      'jj.sectionTitle':'📊 2026년 6월·7월 유류할증료 비교 (USD 공시 · 7월 공식 공시 반영)',
       'jj.th.range':'구분/거리',
       'jj.th.route':'노선 예시',
       'jj.th.jun':'2026년 6월',
       'jj.th.jul':'2026년 7월',
       'jj.th.diffjul':'6→7월 변동',
       'jj.filingBadge':'USD 공시',
+      'jj.badge.official':'공식',
       'jj.footnote':'※ USD 공시 기준, 편도. 6월·7월 비교표. 7월 적용 기간: 2026.07.01~07.31 (발권일 기준). 출처: 제주항공 2026년 7월 공식 공지. 통화 선택 시 참고 환산값이 표시됩니다.',
-      'jj.sectionTitle':'📊 2026년 6월·7월 유류할증료 비교 (USD 공시 · 7월 공식 공시 완료)',
       'jj.officialTitle':'🔗 공식 유류할증료 공지 바로가기',
       'jj.officialSite':'공식 사이트',
       'jj.relatedTitle':'🔗 관련 페이지',
@@ -183,15 +183,15 @@
       'jj.card2.body':'Next month\'s surcharge is published monthly per Ministry of Land guidelines.',
       'jj.card3.title':'Official confirmation',
       'jj.card3.body':'Always confirm exact amounts at jejuair.net.',
-      'jj.sectionTitle':'📊 Jun/Jul 2026 Fuel Surcharge Comparison (USD filing)',
+      'jj.sectionTitle':'📊 Jun/Jul 2026 Fuel Surcharge Comparison (USD · July official filing reflected)',
       'jj.th.range':'Distance/Zone',
       'jj.th.route':'Route examples',
       'jj.th.jun':'Jun 2026',
       'jj.th.jul':'Jul 2026',
       'jj.th.diffjul':'Jun→Jul',
       'jj.filingBadge':'USD filing',
+      'jj.badge.official':'Official',
       'jj.footnote':'※ USD filing, one-way. Jun/Jul comparison. July period: 2026.07.01-07.31 (ticketing date). Source: Jeju Air July 2026 official notice. Currency selector shows reference conversion.',
-      'jj.sectionTitle':'📊 Jun/Jul 2026 Fuel Surcharge Comparison (USD · July official filing complete)',
       'jj.officialTitle':'🔗 Official Surcharge Announcement',
       'jj.officialSite':'Official site',
       'jj.relatedTitle':'🔗 Related pages',
@@ -227,15 +227,15 @@
       'jj.card2.body':'毎月、翌月の適用サーチャージを公示します。',
       'jj.card3.title':'公式確認',
       'jj.card3.body':'正確な金額はjejuair.netで必ずご確認ください。',
-      'jj.sectionTitle':'📊 2026年6月・7月 燃油サーチャージ比較 (USD公示)',
+      'jj.sectionTitle':'📊 2026年6月・7月 燃油サーチャージ比較 (USD公示 · 7月公式公示反映)',
       'jj.th.range':'区間/距離',
       'jj.th.route':'主要路線例',
       'jj.th.jun':'2026年6月',
       'jj.th.jul':'2026年7月',
       'jj.th.diffjul':'6月→7月',
       'jj.filingBadge':'USD公示',
+      'jj.badge.official':'公式',
       'jj.footnote':'※ USD公示・片道基準。6月・7月比較表。7月適用期間: 2026.07.01〜07.31（発券日基準）。出典: チェジュ航空2026年7月公式公示。通貨選択時は参考換算額を表示します。',
-      'jj.sectionTitle':'📊 2026年6月・7月 燃油サーチャージ比較 (USD公示 · 7月公式公示反映)',
       'jj.officialTitle':'🔗 公式燃油サーチャージ公示',
       'jj.officialSite':'公式サイト',
       'jj.relatedTitle':'🔗 関連ページ',
@@ -271,15 +271,15 @@
       'jj.card2.body':'每月公布下月适用的燃油附加费。',
       'jj.card3.title':'官方确认',
       'jj.card3.body':'请务必在jejuair.net确认准确金额。',
-      'jj.sectionTitle':'📊 2026年6月·7月燃油附加费对比 (USD公告)',
+      'jj.sectionTitle':'📊 2026年6月·7月燃油附加费对比 (USD公告 · 已反映7月官方公告)',
       'jj.th.range':'区间/距离',
       'jj.th.route':'主要航线示例',
       'jj.th.jun':'2026年6月',
       'jj.th.jul':'2026年7月',
       'jj.th.diffjul':'6月→7月',
       'jj.filingBadge':'USD公告',
+      'jj.badge.official':'官方',
       'jj.footnote':'※ USD公告，单程基准。6月·7月对比。7月适用期间: 2026.07.01~07.31（出票日基准）。来源: 济州航空2026年7月官方公告。选择货币时显示参考换算金额。',
-      'jj.sectionTitle':'📊 2026年6月·7月燃油附加费对比 (USD公告 · 7月官方公告已反映)',
       'jj.officialTitle':'🔗 官方燃油附加费公告',
       'jj.officialSite':'官方网站',
       'jj.relatedTitle':'🔗 相关页面',
@@ -337,12 +337,14 @@ function fmtFS(amt, base) {
 function fmtDiff(prev, next, base) {
   if (prev == null || next == null) return '—';
   var delta = next - prev;
-  var sign = delta > 0 ? '+' : delta < 0 ? '-' : '';
-  return sign + localizeFilingBadge(window.fmtAmtDisplay(Math.abs(toKRW(delta, base)), base, 1), base);
+  var sign = delta >= 0 ? '+' : '';
+  var pct = ((delta / prev) * 100).toFixed(1);
+  var color = delta < 0 ? 'color:#075985;' : 'color:#C62828;';
+  return '<span style="' + color + '">' + sign + pct + '%</span>';
 }
 function localizeFilingBadge(html, base) {
   if (!base || base === 'KRW') return html;
-  return String(html).replace(base + '공시', window.t(AIRLINE_PAGE_DATA.i18nPrefix + '.filingBadge'));
+  return String(html).replace(base + '공시', ' ' + window.t(AIRLINE_PAGE_DATA.i18nPrefix + '.filingBadge'));
 }
 
 /* ── 테이블 렌더 ── */
@@ -359,7 +361,7 @@ function renderSurchargeTable() {
     var route = lang==='en'?r.routeEn : lang==='ja'?r.routeJa : lang==='zh'?r.routeZh : r.routeKo;
     var range = localizeRange(r.range, lang);
     var junCell = r.jun == null ? '<td>—</td>' : '<td>' + fmtFS(r.jun, AIRLINE_PAGE_DATA.baseCurrency) + '</td>';
-    var julCell = r.jul == null ? '<td>—</td>' : '<td><strong style="color:#1b5e20;">' + fmtFS(r.jul, AIRLINE_PAGE_DATA.baseCurrency) + '</strong></td>';
+    var julCell = r.jul == null ? '<td>—</td>' : '<td><strong style="color:#1b5e20;">' + fmtFS(r.jul, AIRLINE_PAGE_DATA.baseCurrency) + '</strong> <span style="font-size:10px;background:#d1fae5;color:#065f46;padding:1px 5px;border-radius:4px;font-weight:700;">' + window.t(px + '.badge.official') + '</span></td>';
     var diffJulCell = (r.jun == null || r.jul == null)
       ? '<td style="font-size:11px;color:#1b5e20;">—</td>'
       : '<td style="font-size:11px;color:#1b5e20;">' + fmtDiff(r.jun, r.jul, AIRLINE_PAGE_DATA.baseCurrency) + '</td>';
