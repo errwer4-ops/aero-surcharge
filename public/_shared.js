@@ -10427,6 +10427,81 @@ Object.assign(window.I18N_SHARED.de,{marketDataRef:'Stand 2026.06.16 09:30 KST',
   window.AERO_NEWS_LATEST = cards[0];
 })();
 
+/* 2026.07.17 20:55 KST market snapshot: August Level 14 confirmed, September window in progress. */
+window.AERO_MARKET_NUMBERS_20260717 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
+  asOf: '2026.07.17 20:55 KST',
+  usdKrw: 1487.03,
+  usdKrwLabel: '약 1,487원',
+  usdKrwPreviousRef: 1487.56,
+  usdKrwOpen: 1479.35,
+  usdKrwHigh: 1488.53,
+  usdKrwLow: 1476.77,
+  usdKrwChangePct: 0.52,
+  brentUsdPerBbl: 86.01,
+  brentUsdPerBblLabel: '약 86달러/bbl',
+  brentChangePct: 2.11,
+  wtiUsdPerBbl: 80.87,
+  wtiUsdPerBblLabel: '약 81달러/bbl',
+  wtiChangePct: 2.43,
+  crudeWeeklyChangePctApprox: 13,
+  augustSurchargeStage: 14,
+  julySurchargeStage: 19,
+  augustStageChangeVsJuly: -5,
+  augustMopsAverageUsdPerBbl: 119.06,
+  augustMopsAverageCentsPerGallon: 283.48,
+  augustMopsPreviousUsdPerBbl: 142.09,
+  augustMopsAverageChangePct: -16.2,
+  augustMopsWindow: '2026.06.16~2026.07.15',
+  septemberMopsWindow: '2026.07.16~2026.08.15',
+  septemberMopsAverageStatus: 'in_progress',
+  septemberSurchargeStatus: 'forecast_only_not_announced',
+  hormuzCommodityVesselsJuly16: 3,
+  hormuzVesselsJuly15: 11,
+  hormuzPrewarDailyAverageVessels: 125,
+  hormuzStatus: 'traffic_severely_restricted_not_legal_full_closure',
+  hormuzVlcclngStatus: 'continued_transit_not_confirmed_as_of_2026_07_16',
+  referenceAsOf: {
+    augustInternationalSurcharge: 'August 2026 Korea-departure international surcharge confirmed at Level 14, five levels below July Level 19',
+    augustMops: '119.06 USD/bbl and 283.48 cents/gal are the 2026.06.16~2026.07.15 average used for August filing, not current MOPS',
+    septemberMops: 'September calculation window 2026.07.16~2026.08.15 is in progress; no September stage or amount is confirmed',
+    usdKrw: 'Public USD/KRW quote around 2026.07.17 20:55 KST',
+    brentWti: 'Public oil quote around 2026.07.17 20:55 KST; UI should use rounded labels',
+    geo: 'Hormuz transit severely restricted: July 16 commodity-vessel count near 3 vs July 15 near 11 and pre-war average near 125; do not call it a legal full closure'
+  },
+  sources: {
+    augustFiling: 'Airline official notices and Yonhap coverage of August Level 14 filing',
+    usdKrw: 'USD/KRW market snapshot near 2026.07.17 20:55 KST',
+    oil: 'Reuters oil market reference near 2026.07.17',
+    hormuz: 'Hormuz transit market briefing near 2026.07.17'
+  }
+});
+window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260717;
+window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1487.03 });
+
+(function(){
+  var koMarket = {
+    marketDataRef: '2026.07.17 20:55 KST 기준',
+    marketBrent: '국제유가: Brent는 약 86달러/bbl, WTI는 약 81달러/bbl입니다. 2026.07.17 20:55 KST 전후 공개 시세 기준 일중 약 2%, 주간 약 13% 상승했습니다. 미국·이란 긴장과 호르무즈·바브엘만데브 운송 리스크는 9월 유류할증료 산정 구간의 상방 압력입니다.',
+    marketMops: '항공유 가격(MOPS): 8월 공시 산정 평균은 119.06달러/bbl, 283.48 cents/gal입니다. 이 값은 2026.06.16~2026.07.15 과거 평균이며, 현재 MOPS나 9월 산정 평균이 아닙니다. 9월 산정 기간은 2026.07.16~2026.08.15로 진행 중입니다.',
+    marketFx: '원달러 환율: USD/KRW는 약 1,487원입니다. 8월 확정 공시 금액을 바꾸지는 않지만, 9월 산정과 USD 공시 항공사의 원화 체감액에는 영향을 줄 수 있습니다.',
+    marketGeo: '호르무즈 해협: 7월 16일 상품선 통항은 3척 수준으로 줄었습니다. 7월 15일 11척, 전쟁 전 일평균 약 125척과 비교하면 사실상 마비에 가까운 수준입니다. 다만 법적 전면 봉쇄 또는 모든 선박 통항 중단으로 단정하지는 않습니다.',
+    marketOutlook: '2026년 8월 국제선 유류할증료는 14단계로 인하 확정됐습니다. 2026년 9월은 산정 기간이 진행 중이며, 유가 반등·환율 약 1,487원·호르무즈 통항 급감 때문에 산정 초반 상방 압력이 커졌습니다. 단계와 금액은 아직 확정할 수 없습니다.'
+  };
+  var enMarket = {
+    marketDataRef: 'As of 2026.07.17 20:55 KST',
+    marketBrent: 'Oil prices: Brent is around USD 86/bbl and WTI around USD 81/bbl based on public quotes near 2026.07.17 20:55 KST, up about 2% on the day and roughly 13% on the week. U.S.-Iran tension and Hormuz/Bab al-Mandeb transport risks are upside pressures for the September calculation window.',
+    marketMops: 'Jet fuel price (MOPS): the August filing average is USD 119.06/bbl, or 283.48 cents/gal. This is the past 2026.06.16~2026.07.15 average, not current MOPS or the September average. The September window runs 2026.07.16~2026.08.15 and is in progress.',
+    marketFx: 'USD/KRW is around KRW 1,487. It does not change confirmed August notices, but it can affect September calculation and KRW-equivalent burden for USD-notice airlines.',
+    marketGeo: 'Strait of Hormuz: commodity-vessel transit reportedly fell to around 3 vessels on July 16, versus 11 on July 15 and a pre-war daily average near 125. Do not describe this as a legal full closure or all traffic stopped.',
+    marketOutlook: 'August 2026 international fuel surcharge is confirmed lower at Level 14. September is still in calculation, with early upside pressure from oil rebound, USD/KRW around KRW 1,487 and sharply reduced Hormuz traffic. No September stage or amount is confirmed.'
+  };
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), koMarket);
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), enMarket);
+    ['ja','zh','fr','de'].forEach(function(lang){ Object.assign(window.I18N_SHARED[lang] || (window.I18N_SHARED[lang] = {}), enMarket); });
+  }
+})();
+
 var _origInitNav = window.initNav;
 window.initNav = function(opts){
   opts = opts || {};

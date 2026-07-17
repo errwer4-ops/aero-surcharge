@@ -306,7 +306,7 @@
       <div class="calc-readiness-badge" data-i18n="calc.readiness.badge">7월 완료 · 8월 준비 중</div>
     </div>
     <div class="calc-readiness-body" data-i18n="calc.readiness.body">
-      현재 계산기는 2026년 7월 한국 출발 국제선 유류할증료 공식 공시를 반영합니다. 2026년 8월 유류할증료는 아직 공시 전이므로 금액을 임의 생성하지 않습니다.
+      현재 계산기는 2026년 7월 한국 출발 국제선 유류할증료 공식 공시를 기준으로 비교하고, 2026년 8월 공식 공지가 확인된 항공사만 8월 금액을 함께 표시합니다.
     </div>
     <a class="calc-readiness-link" href="forecast.html" data-i18n="calc.readiness.link">2026년 7월 공시 반영 현황 보기 →</a>
   </section>
@@ -409,7 +409,7 @@
       </div>
       <div class="faq-item">
         <div class="faq-q">2026년 7월 유류할증료도 계산되나요?</div>
-        <div class="faq-a">네. 현재 계산기는 2026년 7월 한국 출발 국제선 유류할증료 공식 공시를 반영합니다. 2026년 8월 금액은 아직 공시 전이므로 임의 계산값으로 표시하지 않습니다.</div>
+        <div class="faq-a">네. 현재 계산기는 2026년 7월 한국 출발 국제선 유류할증료 공식 공시를 기준으로 표시합니다. 2026년 8월 금액은 공식 공지가 확인된 항공사만 반영합니다.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">왕복 항공권은 어떻게 계산하나요?</div>
@@ -667,7 +667,7 @@ var SAVING_RANGE_PATCHES = {
   OZ:['0-499','500-999','1000-1499','1500-1999','2000-2499','2500-2999','3000-3999','4000-4999','5000+'],
   '7C':['0-499','500-999','1000-1499','1500-1999','2000-2499','2500+'],
   LJ:['0-599','600-1199','1200-1799','1800-2399','2400-3599'],
-      BX:['0-499','500-999','1000-1499','1500-1999','2000-2499','2500+'],
+      BX:['0-699','700-1299','1300-1999','2000+','2000+','2000+'],
       RS:['300-699','700-1099','1100-1499','1500-1899','1900-2299'],
       TW:['0-600','600-1200','1200-1800','1800-2400','2400-4000','5000+'],
       YP:['0-999','1000-1499','1500-1999','2000-2499','4000-4999','5000-6499','6500+'],
@@ -680,6 +680,41 @@ Object.keys(SAVING_RANGE_PATCHES).forEach(function(code) {
     if (data.rows[idx]) data.rows[idx].range = range;
   });
 });
+
+var JULY_2026_OFFICIAL_AMOUNTS = {
+  KE:[46400,62400,86400,108800,139200,147200,214400,318400,344000],
+  OZ:[48500,71200,94000,116700,139400,162200,184900,230400,275800],
+  '7C':[30,38,46,55,62,72],
+  LJ:[27,37,61,67,79],
+  BX:[30,54,64,74,74,74],
+  RS:[54500,62100,80300,90900,93900],
+  TW:[33400,59200,74400,97200,104700,233800],
+  YP:[33,44,58,75,130,164,205],
+  ZE:[30,38,45,55,62,72]
+};
+var AUGUST_2026_OFFICIAL_AMOUNTS = {
+  KE:[35200,49600,64000,80000,99200,100800,160000,225600,259200],
+  OZ:[36600,53400,70200,86900,103700,120500,137300,170800,202900],
+  LJ:[20,27,44,49,59],
+  BX:[22,40,47,54,54,54]
+};
+function applyOfficialSurchargePatches() {
+  Object.keys(JULY_2026_OFFICIAL_AMOUNTS).forEach(function(code) {
+    var data = SAVING_COMPARE_DATA[code];
+    if (!data || !Array.isArray(data.rows)) return;
+    JULY_2026_OFFICIAL_AMOUNTS[code].forEach(function(amount, idx) {
+      if (data.rows[idx]) data.rows[idx].julyOfficial = amount;
+    });
+  });
+  Object.keys(AUGUST_2026_OFFICIAL_AMOUNTS).forEach(function(code) {
+    var data = SAVING_COMPARE_DATA[code];
+    if (!data || !Array.isArray(data.rows)) return;
+    AUGUST_2026_OFFICIAL_AMOUNTS[code].forEach(function(amount, idx) {
+      if (data.rows[idx]) data.rows[idx].augustOfficial = amount;
+    });
+  });
+}
+applyOfficialSurchargePatches();
 
 var SAVING_DESTINATIONS = [
   { code:'FUK', name:'후쿠오카', miles:350, airlines:['KE','OZ','7C','LJ','BX','TW','ZE'] },
@@ -775,11 +810,13 @@ var SAVING_INDEX_ROUTE_MAP = null;
   var myRealTripHomeUrl = 'https://www.myrealtrip.com/';
   function toKRW(amount, currency) { return currency === 'USD' ? Math.round(amount * usdRate) : amount; }
   var SAVING_UI_TEXT = {
-    ko: { count:'{n}개', noDataTitle:'비교 데이터 없음', noDataBody:'현재 선택한 목적지는 비교 가능한 항공사 데이터가 없습니다.', noDataCell:'비교 가능한 항공사 데이터가 없습니다.', bestJune:'{name} {amount}', saveHeadline:'현재 공시 기준 항공사별 차이 최대 {amount}', extraHeadline:'최저 공시 대비 {amount} 차이', sameHeadline:'항공사별 금액 동일', thAirline:'항공사', thMay:'7월 공식 공시', thJune:'8월 공식 공지', thSaving:'현재 최저 대비', julyPending:'공식 공지 준비중', routeSep:' · ', affiliateTitle:'{dest} 항공권 총액도 함께 확인하세요', affiliateSave:'현재 2026년 7월 공식 공시 기준 항공사별 유류할증료 차이는 최대 {amount}입니다. 2026년 8월 금액은 아직 공지 전이므로 실제 운임, 세금, 좌석 상황까지 함께 비교해보세요.', affiliateNeutral:'현재 공시 기준 항공사별 차이가 작습니다. 2026년 8월 금액은 공식 공지 확인 후 반영되므로 실제 항공권 총액과 일정 조건을 함께 비교해보세요.', affiliateBtn:'{dest} 항공권 총액 보기', affiliateAria:'{dest} 항공권 총액 확인하기' },
-    en: { count:'{n}', noDataTitle:'No comparison data', noDataBody:'No comparable airline data is available for the selected destination.', noDataCell:'No comparable airline data is available.', bestJune:'{name} {amount}', saveHeadline:'Up to {amount} airline difference based on current filings', extraHeadline:'{amount} above the lowest filing', sameHeadline:'Same amount by airline', thAirline:'Airline', thMay:'July official filing', thJune:'August official notice', thSaving:'vs current lowest', julyPending:'Preparing official notice', routeSep:' · ', affiliateTitle:'Check total airfare for {dest}', affiliateSave:'Based on July 2026 official filings, airline surcharge differences can be up to {amount}. August 2026 amounts are not published yet, so compare actual fare, taxes, and seat availability too.', affiliateNeutral:'Airline differences are small based on current filings. August 2026 amounts will be added only after official notices are confirmed, so compare total airfare and schedule conditions together.', affiliateBtn:'View {dest} airfare totals', affiliateAria:'Check {dest} airfare totals' },
-    ja: { count:'{n}社', noDataTitle:'比較データなし', noDataBody:'選択した目的地で比較可能な航空会社データがありません。', noDataCell:'比較可能な航空会社データがありません。', bestJune:'{name} {amount}', saveHeadline:'現在の公示基準で航空会社別差額は最大{amount}', extraHeadline:'最安公示比{amount}差', sameHeadline:'航空会社別金額は同じ', thAirline:'航空会社', thMay:'7月公式公示', thJune:'8月公式告知', thSaving:'現在最安比', julyPending:'公式告知準備中', routeSep:' · ', affiliateTitle:'{dest}航空券の総額も確認', affiliateSave:'2026年7月公式公示基準で航空会社別燃油サーチャージ差額は最大{amount}です。2026年8月金額はまだ告知前なので、運賃・税金・座席状況もあわせて確認してください。', affiliateNeutral:'現在の公示基準では航空会社別差額が小さい場合があります。2026年8月金額は公式告知確認後に反映されるため、航空券総額と日程条件もあわせて比較してください。', affiliateBtn:'{dest}航空券総額を見る', affiliateAria:'{dest}航空券総額を確認' },
-    zh: { count:'{n}家', noDataTitle:'无比较数据', noDataBody:'当前目的地没有可比较的航空公司数据。', noDataCell:'没有可比较的航空公司数据。', bestJune:'{name} {amount}', saveHeadline:'按当前公告，航司差异最高{amount}', extraHeadline:'较最低公告高{amount}', sameHeadline:'各航司金额相同', thAirline:'航空公司', thMay:'7月官方公告', thJune:'8月官方通知', thSaving:'较当前最低', julyPending:'官方通知准备中', routeSep:' · ', affiliateTitle:'也可查看{dest}机票总价', affiliateSave:'按2026年7月官方公告，各航司燃油附加费差异最高为{amount}。2026年8月金额尚未公布，建议同时比较实际票价、税费和座位情况。', affiliateNeutral:'按当前公告，各航司差异可能较小。2026年8月金额将在官方通知确认后反映，请同时比较机票总价和行程条件。', affiliateBtn:'查看{dest}机票总价', affiliateAria:'查看{dest}机票总价' }
+    ko: { count:'{n}개', noDataTitle:'비교 데이터 없음', noDataBody:'현재 선택한 목적지는 비교 가능한 항공사 데이터가 없습니다.', noDataCell:'비교 가능한 항공사 데이터가 없습니다.', bestJune:'{name} {amount}', saveHeadline:'현재 공시 기준 항공사별 차이 최대 {amount}', extraHeadline:'최저 공시 대비 {amount} 차이', sameHeadline:'항공사별 금액 동일', thAirline:'항공사', thMay:'7월 공식 공시', thJune:'8월 공식 공지', thSaving:'현재 최저 대비', julyPending:'8월 유류할증료 공시 예정', routeSep:' · ', affiliateTitle:'{dest} 항공권 총액도 함께 확인하세요', affiliateSave:'현재 2026년 7월 공식 공시 기준 항공사별 유류할증료 차이는 최대 {amount}입니다. 2026년 8월 금액은 공식 공지 확인 후 반영되므로 실제 운임, 세금, 좌석 상황까지 함께 비교해보세요.', affiliateNeutral:'현재 공시 기준 항공사별 차이가 작습니다. 2026년 8월 금액은 공식 공지 확인 후 반영되므로 실제 항공권 총액과 일정 조건을 함께 비교해보세요.', affiliateBtn:'{dest} 항공권 총액 보기', affiliateAria:'{dest} 항공권 총액 확인하기' },
+    en: { count:'{n}', noDataTitle:'No comparison data', noDataBody:'No comparable airline data is available for the selected destination.', noDataCell:'No comparable airline data is available.', bestJune:'{name} {amount}', saveHeadline:'Up to {amount} airline difference based on current filings', extraHeadline:'{amount} above the lowest filing', sameHeadline:'Same amount by airline', thAirline:'Airline', thMay:'July official filing', thJune:'August official notice', thSaving:'vs current lowest', julyPending:'August filing pending', routeSep:' · ', affiliateTitle:'Check total airfare for {dest}', affiliateSave:'Based on July 2026 official filings, airline surcharge differences can be up to {amount}. August 2026 amounts are added only after official notices are confirmed, so compare actual fare, taxes, and seat availability too.', affiliateNeutral:'Airline differences are small based on current filings. August 2026 amounts will be added only after official notices are confirmed, so compare total airfare and schedule conditions together.', affiliateBtn:'View {dest} airfare totals', affiliateAria:'Check {dest} airfare totals' },
+    ja: { count:'{n}社', noDataTitle:'比較データなし', noDataBody:'選択した目的地で比較可能な航空会社データがありません。', noDataCell:'比較可能な航空会社データがありません。', bestJune:'{name} {amount}', saveHeadline:'現在の公示基準で航空会社別差額は最大{amount}', extraHeadline:'最安公示比{amount}差', sameHeadline:'航空会社別金額は同じ', thAirline:'航空会社', thMay:'7月公式公示', thJune:'8月公式告知', thSaving:'現在最安比', julyPending:'8月燃油サーチャージ公示予定', routeSep:' · ', affiliateTitle:'{dest}航空券の総額も確認', affiliateSave:'2026年7月公式公示基準で航空会社別燃油サーチャージ差額は最大{amount}です。2026年8月金額は公式告知確認後に反映されるため、運賃・税金・座席状況もあわせて確認してください。', affiliateNeutral:'現在の公示基準では航空会社別差額が小さい場合があります。2026年8月金額は公式告知確認後に反映されるため、航空券総額と日程条件もあわせて比較してください。', affiliateBtn:'{dest}航空券総額を見る', affiliateAria:'{dest}航空券総額を確認' },
+    zh: { count:'{n}家', noDataTitle:'无比较数据', noDataBody:'当前目的地没有可比较的航空公司数据。', noDataCell:'没有可比较的航空公司数据。', bestJune:'{name} {amount}', saveHeadline:'按当前公告，航司差异最高{amount}', extraHeadline:'较最低公告高{amount}', sameHeadline:'各航司金额相同', thAirline:'航空公司', thMay:'7月官方公告', thJune:'8月官方通知', thSaving:'较当前最低', julyPending:'8月燃油附加费公告待发布', routeSep:' · ', affiliateTitle:'也可查看{dest}机票总价', affiliateSave:'按2026年7月官方公告，各航司燃油附加费差异最高为{amount}。2026年8月金额将在官方通知确认后反映，建议同时比较实际票价、税费和座位情况。', affiliateNeutral:'按当前公告，各航司差异可能较小。2026年8月金额将在官方通知确认后反映，请同时比较机票总价和行程条件。', affiliateBtn:'查看{dest}机票总价', affiliateAria:'查看{dest}机票总价' }
   };
+  SAVING_UI_TEXT.fr = Object.assign({}, SAVING_UI_TEXT.en, { julyPending:'Publication août à venir' });
+  SAVING_UI_TEXT.de = Object.assign({}, SAVING_UI_TEXT.en, { julyPending:'August-Mitteilung ausstehend' });
   function langCode() {
     return (window.SHARED_STATE && window.SHARED_STATE.lang) || (window.getCurrentLang && window.getCurrentLang()) || 'ko';
   }
@@ -1176,7 +1213,7 @@ var SAVING_INDEX_ROUTE_MAP = null;
     if (bestSaving >= 150000) return '현재 2026년 7월 공식 공시 기준으로 항공사별 차이가 큽니다. 같은 노선이라도 항공사 선택에 따라 가족 여행 체감 비용이 달라질 수 있습니다.';
     if (bestSaving >= 80000) return '항공사 선택에 따라 체감 비용이 달라질 수 있습니다. 2026년 7월 공식 공시 기준 금액과 실제 항공권 총액을 함께 비교해보세요.';
     if (bestSaving >= 30000) return '현재 최저 공시는 ' + cheapestName + ' 쪽이 유리합니다. 실제 발권 전 항공권 총액도 함께 확인하세요.';
-    if (bestSaving > 0) return '차이는 작지만 여러 명이 함께 발권하면 체감 금액이 커질 수 있습니다. 8월 금액은 아직 공시 전이므로 현재는 7월 공식 공시 기준으로 비교하세요.';
+    if (bestSaving > 0) return '차이는 작지만 여러 명이 함께 발권하면 체감 금액이 커질 수 있습니다. 8월 금액은 공식 공지가 확인된 항공사만 반영되므로 미공시 항공사는 7월 공식 공시 기준으로 비교하세요.';
     return '이 목적지는 현재 공시 기준 항공사별 유류할증료 차이가 없습니다. 실제 운임과 좌석 조건도 함께 확인하세요.';
   }
   function getRouteDep(route) {
@@ -1373,7 +1410,7 @@ var SAVING_INDEX_ROUTE_MAP = null;
     if (!root) return;
     applyLiveFareStaticText();
     var dict = {
-      ko:['유류할증료 항공사별 비교 계산기','노선별 2026년 7월 유류할증료 비교','같은 노선의 취항 항공사를 자동으로 묶어 2026년 7월 공식 공시 기준 최저 금액과 항공사별 차이를 표로 보여줍니다.','2026.07 공식 공시 반영 완료 · 2026.08 공시 준비','출발지','도착지','인원','여정','편도 또는 왕복 선택','편도','왕복','비교 항공사','현재 최저 유류할증료','항공권 총액 확인','※ 유류할증료는 발권일 기준으로 적용됩니다. 현재 계산기는 2026년 7월 공식 공시 기준으로 비교하며, 2026년 8월 금액은 공식 공지 확인 전까지 임의 생성하지 않습니다.'],
+      ko:['유류할증료 항공사별 비교 계산기','노선별 2026년 7월 유류할증료 비교','같은 노선의 취항 항공사를 자동으로 묶어 2026년 7월 공식 공시 기준 최저 금액과 항공사별 차이를 표로 보여줍니다.','2026.07 공식 공시 기준 · 2026.08 일부 공시 반영','출발지','도착지','인원','여정','편도 또는 왕복 선택','편도','왕복','비교 항공사','현재 최저 유류할증료','항공권 총액 확인','※ 유류할증료는 발권일 기준으로 적용됩니다. 현재 계산기는 2026년 7월 공식 공시 기준으로 비교하며, 2026년 8월 금액은 공식 공지 확인 항공사만 반영합니다.'],
       en:['Fuel surcharge airline comparison calculator','Route Fuel Surcharge Comparison: July 2026','Compares airlines on the same route using verified July 2026 filings where available and separates pending airlines.','July 2026 partial official filings reflected','Origin','Destination','Passengers','Trip','Choose one-way or round-trip','One-way','Round-trip','Airlines compared','Current lowest surcharge','Check total airfare','※ Fuel surcharges are applied by ticketing date. This calculator reflects verified July 2026 filings where available and keeps pending airlines separate.'],
       ja:['燃油サーチャージ航空会社別比較計算機','路線別 2026年7月 燃油サーチャージ比較','7月公式公示が確認された航空会社は7月金額を反映し、未確認の航空会社は別途区分します。','2026年7月 一部公式公示反映','出発地','到着地','人数','旅程','片道または往復を選択','片道','往復','比較航空会社','現在の最安サーチャージ','航空券総額を確認','※ 燃油サーチャージは発券日基準で適用されます。7月公式公示が確認された航空会社のみ7月金額を反映します。'],
       zh:['燃油附加费航空公司比较计算器','按航线比较2026年7月燃油附加费','已确认7月官方公告的航司使用7月金额，未公告航司单独区分。','已反映2026年7月部分官方公告','出发地','目的地','人数','行程','选择单程或往返','单程','往返','比较航空公司','当前最低燃油附加费','查看机票总价','※ 燃油附加费按出票日适用。仅对已确认7月官方公告的航司反映7月金额。']
@@ -1567,7 +1604,7 @@ var SAVING_INDEX_ROUTE_MAP = null;
         ['이 계산기는 어떤 노선을 기준으로 하나요?', '사이트가 보유한 한국 출발 국제선 공식 공시 데이터를 기준으로 출발지와 도착지를 나누어 비교합니다. 선택한 노선에 취항하는 항공사가 2개 이상이면 항공사별 금액을 함께 보여줍니다.'],
         ['계산 결과가 실제 결제 금액과 완전히 같나요?', '아닙니다. 이 계산기는 공식 공시 유류할증료를 기준으로 한 비교용 도구입니다. 실제 항공권 결제 금액은 운임, 세금, 환율, 예약 채널, 항공사 정책에 따라 달라질 수 있으므로 최종 발권 전 공식 공지를 확인해야 합니다.'],
         ['왕복 항공권은 어떻게 계산하나요?', '왕복을 선택하면 편도 유류할증료 기준 금액에 2를 곱해 비교합니다. 인원을 늘리면 선택한 인원 수까지 반영해 총 차이 금액을 계산합니다.'],
-        ['2026년 7월 유류할증료도 계산되나요?', '네. 현재 계산기는 2026년 7월 한국 출발 국제선 유류할증료 공식 공시를 반영합니다. 2026년 8월 금액은 아직 공시 전이므로 임의 계산값으로 표시하지 않습니다.']
+        ['2026년 7월 유류할증료도 계산되나요?', '네. 현재 계산기는 2026년 7월 한국 출발 국제선 유류할증료 공식 공시를 기준으로 비교합니다. 2026년 8월 금액은 공식 공지가 확인된 항공사만 반영합니다.']
       ],
       en: [
         'Fuel surcharge calculator FAQ',
@@ -1674,15 +1711,20 @@ var SAVING_INDEX_ROUTE_MAP = null;
         SAVING_COMPARE_DATA[code] = {
           name: base.name || code,
           currency: item.currency || base.currency || 'KRW',
-          rows: item.rows.map(function(row) {
+          rows: item.rows.map(function(row, idx) {
             var next = Object.assign({}, row);
             if (next.july != null) next.may = next.july;
             else next.may = null;
             if (next.june == null && row.june != null) next.june = row.june;
+            if (base.rows && base.rows[idx]) {
+              if (base.rows[idx].julyOfficial != null) next.julyOfficial = base.rows[idx].julyOfficial;
+              if (base.rows[idx].augustOfficial != null) next.augustOfficial = base.rows[idx].augustOfficial;
+            }
             return next;
           })
         };
       });
+      applyOfficialSurchargePatches();
     }
     if (indexData && indexData.routeMap) {
       SAVING_INDEX_ROUTE_MAP = indexData.routeMap;
@@ -1799,9 +1841,9 @@ var SAVING_INDEX_ROUTE_MAP = null;
     paxEl.value = pax;
     var multiplier = pax * selectedTrip;
     var results = dest.airlines.map(function(code){ return findRow(code, dest.miles, dest.code); }).filter(Boolean).map(function(item) {
-      var baseNative = item.row.june;
-      var currentNative = item.row.july != null ? item.row.july : item.row.june;
-      var hasJuly = item.row.july != null;
+      var baseNative = item.row.julyOfficial != null ? item.row.julyOfficial : (item.row.july != null ? item.row.july : item.row.june);
+      var currentNative = item.row.augustOfficial != null ? item.row.augustOfficial : baseNative;
+      var hasAugust = item.row.augustOfficial != null;
       var mayTotal = toKRW(baseNative, item.currency) * multiplier;
       var juneTotal = toKRW(currentNative, item.currency) * multiplier;
       return {
@@ -1811,7 +1853,7 @@ var SAVING_INDEX_ROUTE_MAP = null;
         currency:item.currency,
         mayNative:baseNative * multiplier,
         juneNative:currentNative * multiplier,
-        hasJuly:hasJuly,
+        hasAugust:hasAugust,
         mayTotal:mayTotal,
         juneTotal:juneTotal,
         saving:mayTotal - juneTotal
@@ -1850,8 +1892,8 @@ var SAVING_INDEX_ROUTE_MAP = null;
           + '</div>'
           + '<div class="saving-mobile-route">' + esc(routeDisplayName(dest)) + esc(st('routeSep')) + esc(item.band) + '</div>'
           + '<div class="saving-mobile-grid">'
-          + '<div class="saving-mobile-cell"><div class="saving-mobile-label">' + esc(st('thMay')) + '</div><div class="saving-mobile-value">' + fmtKRW(item.juneTotal) + nativeText(item.juneNative, item.currency) + '</div></div>'
-          + '<div class="saving-mobile-cell"><div class="saving-mobile-label">' + esc(st('thJune')) + '</div><div class="saving-mobile-value">' + esc(st('julyPending')) + '</div></div>'
+          + '<div class="saving-mobile-cell"><div class="saving-mobile-label">' + esc(st('thMay')) + '</div><div class="saving-mobile-value">' + fmtKRW(item.mayTotal) + nativeText(item.mayNative, item.currency) + '</div></div>'
+          + '<div class="saving-mobile-cell"><div class="saving-mobile-label">' + esc(st('thJune')) + '</div><div class="saving-mobile-value">' + (item.hasAugust ? fmtKRW(item.juneTotal) + nativeText(item.juneNative, item.currency) : esc(st('julyPending'))) + '</div></div>'
           + '<div class="saving-mobile-cell"><div class="saving-mobile-label">' + esc(st('thSaving')) + '</div><div class="saving-mobile-value good">' + fmtKRW(item.lowestDiff) + '</div></div>'
           + '<div class="saving-mobile-cell"><div class="saving-mobile-label">' + esc(st('thAirline')) + '</div><div class="saving-mobile-value">' + esc(item.code) + '</div></div>'
           + '</div>'
@@ -1865,8 +1907,8 @@ var SAVING_INDEX_ROUTE_MAP = null;
         return '<tr class="' + (item.code === cheapest.code ? 'best-row' : '') + '">'
           + '<td><span class="saving-airline-name">' + esc(airlineDisplayName(item.code, item.name)) + ' (' + item.code + ')</span>'
           + '<span class="saving-route-note">' + esc(routeDisplayName(dest)) + esc(st('routeSep')) + esc(item.band) + '</span></td>'
-          + '<td>' + fmtKRW(item.juneTotal) + nativeText(item.juneNative, item.currency) + '</td>'
-          + '<td>' + esc(st('julyPending')) + '</td>'
+          + '<td>' + fmtKRW(item.mayTotal) + nativeText(item.mayNative, item.currency) + '</td>'
+          + '<td>' + (item.hasAugust ? fmtKRW(item.juneTotal) + nativeText(item.juneNative, item.currency) : esc(st('julyPending'))) + '</td>'
           + '<td class="saving-positive">' + fmtKRW(item.lowestDiff) + '</td>'
           + '</tr>';
       }).join('')
@@ -2344,17 +2386,17 @@ var PAGE_I18N = {
 (function applyJulyCalculatorCopy(){
   var ko = {
     'calc.metaTitle':'유류할증료 계산기 — 2026년 7월 공식 공시 반영 노선별 비교',
-    'calc.metaDesc':'한국 출발 국제선 항공권의 2026년 7월 공식 유류할증료를 노선·항공사·왕복·인원별로 비교하고, 2026년 8월 공시 준비 상태를 함께 확인합니다.',
-    'calc.notice':'<strong>안내:</strong> 2026년 7월 한국 출발 국제선 유류할증료 공식 공시를 반영했습니다. 8월 유류할증료는 아직 공시 전이므로 금액을 임의 생성하지 않습니다.',
+    'calc.metaDesc':'한국 출발 국제선 항공권의 2026년 7월 공식 유류할증료를 노선·항공사·왕복·인원별로 비교하고, 2026년 8월 공식 공지 확인 항공사는 8월 금액을 함께 확인합니다.',
+    'calc.notice':'<strong>안내:</strong> 2026년 7월 한국 출발 국제선 유류할증료 공식 공시를 기준으로 비교합니다. 8월 유류할증료는 공식 공지가 확인된 항공사만 금액을 반영합니다.',
     'calc.alert':'유류할증료는 <strong>탑승일이 아닌 발권일 기준</strong>으로 적용됩니다. 계산 결과는 공식 공시 금액 기준의 비교 정보이며, 최종 결제 전 항공사 공지와 예약 화면을 함께 확인하세요.',
     'calc.intro':'해외여행, 유학, 출장처럼 국제선 항공권을 미리 준비할 때 2026년 7월 공식 공시 기준 유류할증료를 항공사별로 비교하는 계산기입니다. 8월 공시는 준비 단계로 별도 추적합니다.',
-    'calc.answer.body':'선택한 노선에서 2026년 7월 공식 공시 기준 항공사별 유류할증료 차이를 보여줍니다. 8월 유류할증료는 아직 공시 전이므로 forecast 페이지에서 시장 변수를 전망으로 확인하세요.',
-    'calc.card3.body':'같은 노선에 취항하는 항공사의 2026년 7월 공식 공시 금액을 편도·왕복과 인원 수에 맞춰 비교합니다. 8월 공시 전까지는 7월 공식 공시 기준을 유지합니다.',
-    'calc.readiness.title':'7월 공식 공시 확인 항공사 반영',
-    'calc.readiness.badge':'7월 완료 · 8월 준비 중',
-    'calc.readiness.body':'현재 계산기는 2026년 7월 공식 공시를 반영합니다. 2026년 8월 유류할증료는 아직 공시 전이므로 금액을 확정값처럼 표시하지 않고, forecast 페이지에서 시장 변수와 공시 준비 상태만 제공합니다.',
-    'calc.readiness.link':'2026년 7월 공시 반영 현황 보기 →',
-    'calc.related.june':'📌 2026년 7월 공시 반영 현황'
+    'calc.answer.body':'선택한 노선에서 2026년 7월 공식 공시 기준 항공사별 유류할증료 차이를 보여주고, 8월 공식 공지가 확인된 항공사는 8월 금액을 함께 표시합니다.',
+    'calc.card3.body':'같은 노선에 취항하는 항공사의 2026년 7월 공식 공시 금액을 편도·왕복과 인원 수에 맞춰 비교합니다. 8월 금액은 공식 공지 확인 항공사만 반영합니다.',
+    'calc.readiness.title':'7월 공식 공시 기준 · 8월 일부 공시 반영',
+    'calc.readiness.badge':'7월 기준 · 8월 확인분 반영',
+    'calc.readiness.body':'현재 계산기는 2026년 7월 공식 공시를 기준으로 비교합니다. 2026년 8월 유류할증료는 대한항공·아시아나항공·진에어·에어부산처럼 공식 공지가 확인된 항공사만 금액을 표시하고, 나머지는 공시 예정으로 구분합니다.',
+    'calc.readiness.link':'2026년 8월 공시 준비와 전망 보기 →',
+    'calc.related.june':'📌 2026년 8월 공시 준비와 전망'
   };
   var en = {
     'calc.metaTitle':'Fuel Surcharge Calculator — July 2026 Official Filings by Route',
@@ -2387,26 +2429,26 @@ var PAGE_I18N = {
     'calc.metaDesc':'한국 출발 국제선 항공권의 2026년 7월 공식 유류할증료를 노선·항공사·왕복·인원별로 비교하고, 2026년 8월 공시 준비 상태를 함께 확인합니다.',
     'calc.pageSub':'2026년 7월 공식 공시 기준 · 2026년 8월 공시 준비 중',
     'calc.h1':'유류할증료 계산기: 2026년 7월 공식 공시 기준 항공사별 비용 비교',
-    'calc.notice':'<strong>안내:</strong> ' + airlinesKo + '의 2026년 7월 한국 출발 국제선 유류할증료 공식 공시를 반영했습니다. 8월 유류할증료는 아직 공시 전이므로 금액을 임의 생성하지 않습니다.',
+    'calc.notice':'<strong>안내:</strong> ' + airlinesKo + '의 2026년 7월 한국 출발 국제선 유류할증료 공식 공시를 기준으로 비교합니다. 8월 유류할증료는 공식 공지가 확인된 항공사만 금액을 반영합니다.',
     'calc.alert':'유류할증료는 <strong>탑승일이 아닌 발권일 기준</strong>으로 적용됩니다. 현재 계산 결과는 2026년 7월 공식 공시 기준 비교 정보이며, 8월 금액은 항공사 공식 공지 확인 후 별도 반영합니다.',
     'calc.intro':'해외여행, 유학, 출장처럼 국제선 항공권을 미리 준비할 때 2026년 7월 공식 공시 기준 유류할증료를 항공사별로 비교하는 계산기입니다. 8월 공시는 준비 단계로 별도 추적합니다.',
     'calc.answer.title':'현재 계산 기준은 2026년 7월 공식 공시입니다',
-    'calc.answer.body':'선택한 노선에서 2026년 7월 공식 공시 기준 항공사별 유류할증료 차이를 보여줍니다. 8월 유류할증료는 아직 공시 전이므로 forecast 페이지에서 MOPS·환율·호르무즈 변수를 전망으로 확인하세요.',
-    'calc.card3.body':'같은 노선에 취항하는 항공사의 2026년 7월 공식 공시 금액을 편도·왕복과 인원 수에 맞춰 비교합니다. 8월 공시 전까지는 7월 공식 공시 기준을 유지합니다.',
-    'calc.readiness.title':'7월 공식 공시 반영 완료 · 8월 공시 준비',
-    'calc.readiness.badge':'7월 완료 · 8월 준비 중',
-    'calc.readiness.body':'현재 계산기는 ' + airlinesKo + '의 2026년 7월 공식 공시를 반영합니다. 2026년 8월 유류할증료는 아직 공시 전이므로 금액을 확정값처럼 표시하지 않고, forecast 페이지에서 시장 변수와 공시 준비 상태만 제공합니다.',
+    'calc.answer.body':'선택한 노선에서 2026년 7월 공식 공시 기준 항공사별 유류할증료 차이를 보여주고, 8월 공식 공지가 확인된 항공사는 8월 금액을 함께 표시합니다.',
+    'calc.card3.body':'같은 노선에 취항하는 항공사의 2026년 7월 공식 공시 금액을 편도·왕복과 인원 수에 맞춰 비교합니다. 8월 금액은 공식 공지 확인 항공사만 반영합니다.',
+    'calc.readiness.title':'7월 공식 공시 기준 · 8월 일부 공시 반영',
+    'calc.readiness.badge':'7월 기준 · 8월 확인분 반영',
+    'calc.readiness.body':'현재 계산기는 2026년 7월 공식 공시를 기준으로 비교합니다. 2026년 8월 유류할증료는 대한항공·아시아나항공·진에어·에어부산처럼 공식 공지가 확인된 항공사만 금액을 표시하고, 나머지는 공시 예정으로 구분합니다.',
     'calc.readiness.link':'2026년 8월 공시 준비와 전망 보기 →',
     'calc.related.june':'📌 2026년 8월 공시 준비와 전망',
     'calc.faq.july.title':'2026년 7월 유류할증료도 계산되나요?',
-    'calc.faq.july.body':'네. 현재 계산기는 2026년 7월 한국 출발 국제선 유류할증료 공식 공시를 반영합니다. 2026년 8월 금액은 아직 공시 전이므로 임의 계산값으로 표시하지 않습니다.'
+    'calc.faq.july.body':'네. 현재 계산기는 2026년 7월 한국 출발 국제선 유류할증료 공식 공시를 기준으로 비교합니다. 2026년 8월 금액은 공식 공지가 확인된 항공사만 반영합니다.'
   };
   var en = {
     'calc.metaTitle':'Fuel Surcharge Calculator | July 2026 Official Filing Comparison',
     'calc.metaDesc':'Compare July 2026 official fuel surcharge filings for Korea-origin international flights by route, airline, trip type and passenger count, and track August filing preparation.',
     'calc.pageSub':'July 2026 official filings · August 2026 filing preparation',
     'calc.h1':'Fuel Surcharge Calculator: Compare airline costs using July 2026 official filings',
-    'calc.notice':'<strong>Notice:</strong> July 2026 Korea-departure fuel surcharge filings are reflected for ' + airlinesEn + '. August 2026 amounts are not filed yet, so estimated amounts are not created.',
+    'calc.notice':'<strong>Notice:</strong> July 2026 Korea-departure fuel surcharge filings are used as the comparison baseline. August 2026 amounts are shown only for airlines with confirmed official notices.',
     'calc.alert':'Fuel surcharges apply by <strong>ticketing date</strong>, not boarding date. Results compare July 2026 official filings; August amounts will be added only after official airline notices are confirmed.',
     'calc.intro':'Use this calculator to compare July 2026 official fuel surcharge filings before booking international travel, study-abroad or business-trip tickets. August filings are tracked separately as preparation.',
     'calc.answer.title':'The current calculation baseline is July 2026 official filings',
