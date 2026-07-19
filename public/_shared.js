@@ -8278,7 +8278,7 @@ window.AERO_NEWS_CARDS_20260629 = [
     title:'항공유 가격은 하락했지만, 8월 유류할증료 큰 폭 인하는 아직 불확실',
     aiBrief:'MOPS 338.3 cents/gal과 IATA 항공유 119.17달러/bbl은 하방 요인이지만 8월 산정 기간은 아직 진행 중입니다.',
     summary:'7월 공시 산정 기준 MOPS 평균은 338.3 cents/gal이고, IATA 글로벌 항공유 가격은 119.17달러/bbl로 전주 대비 14.2% 하락했습니다. 이는 2026년 8월 유류할증료의 하방 요인입니다.\n\n다만 8월 산정 기간은 아직 완료되지 않았고, 싱가포르 항공유·정제유 수급과 환율, 호르무즈 리스크가 남아 있어 큰 폭 인하를 단정하기는 어렵습니다.',
-    impact:'항공유 하락은 긍정적이지만 8월 공시 전에는 확정 표현을 피해야 합니다.',
+    impact:'항공유 하락은 긍정적이지만 당시에는 8월 공식 공시 이전이므로 확정 표현을 피해야 했습니다.',
     tags:['MOPS','IATA 항공유','항공유 가격','8월 유류할증료','정제유 수급'],
     sourceRefs:[{name:'IATA Fuel Price Monitor',url:'https://www.iata.org/en/publications/economics/fuel-monitor/'}],
     faq:[
@@ -10073,7 +10073,7 @@ Object.assign(window.I18N_SHARED.de,{marketDataRef:'Stand 2026.06.16 09:30 KST',
       links: [{ href: 'forecast.html', label: '국제유가 반영 전망 보기' }],
       faq: [
         { q: 'Brent와 WTI 상승은 유류할증료에 어떤 의미인가요?', a: '유가 상승은 항공유 가격의 상방 압력으로 이어질 수 있어 8월 국제선 유류할증료 인하 기대를 약화시킬 수 있습니다.' },
-        { q: '7월 유류할증료에도 바로 영향이 있나요?', a: '7월 한국발 국제선 유류할증료는 이미 발권일 기준 인하 적용 중인 확정 데이터입니다. 이번 유가 흐름은 주로 8월 공시 전 전망 변수입니다.' }
+        { q: '7월 유류할증료에도 바로 영향이 있나요?', a: '7월 한국발 국제선 유류할증료는 이미 발권일 기준 인하 적용 중인 확정 데이터입니다. 당시 유가 흐름은 주로 8월 공식 공시 이전 전망 변수였습니다.' }
       ],
       i18n: { en: {
         updatedAt: 'Updated 2026.07.15 08:10 KST',
@@ -10478,22 +10478,70 @@ window.AERO_MARKET_NUMBERS_20260717 = Object.assign({}, window.AERO_MARKET_NUMBE
 window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260717;
 window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1487.03 });
 
+/* 2026.07.20 07:00 KST market snapshot: August confirmed, September risk watch. */
+window.AERO_MARKET_NUMBERS_20260720 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
+  asOf: '2026.07.20 07:00 KST',
+  lastUpdated: '2026-07-20T07:00:00+09:00',
+  currentMonthNotice: '2026-08',
+  forecastTargetMonth: '2026-09',
+  usdKrw: 1487.00,
+  usdKrwLabel: '약 1,487원대',
+  usdKrwReferenceType: 'previous_close_and_offshore_reference_before_seoul_open',
+  brentUsdPerBbl: 88.10,
+  brentUsdPerBblLabel: '88.10달러/bbl',
+  brentChangePct: 4.6,
+  wtiUsdPerBbl: 82.49,
+  wtiUsdPerBblLabel: '82.49달러/bbl',
+  wtiChangePct: 4.5,
+  crudeWeeklyChangePctApprox: 16,
+  augustSurchargeStage: 14,
+  julySurchargeStage: 19,
+  augustStageChangeVsJuly: -5,
+  augustMopsAverageUsdPerBbl: 119.06,
+  augustMopsPreviousUsdPerBbl: 142.09,
+  augustMopsAverageChangePct: -16.2,
+  augustMopsWindow: '2026.06.16~2026.07.15',
+  septemberMopsWindow: '2026.07.16~2026.08.15',
+  septemberMopsAverageStatus: 'in_progress',
+  septemberSurchargeStatus: 'forecast_only_not_announced',
+  hormuzCommodityCarriersRecent: 14,
+  hormuzPostDealDailyAverage: 34,
+  hormuzJune24Peak: 59,
+  hormuzStatus: 'traffic_again_reduced_not_full_blockade',
+  referenceAsOf: {
+    augustInternationalSurcharge: 'August 2026 Korea-departure international surcharge confirmed at Level 14, five levels below July Level 19',
+    augustMops: '119.06 USD/bbl is the 2026.06.16~2026.07.15 average used for August filing; oil and Hormuz events after 2026.07.16 are not reflected in August',
+    septemberMops: 'September calculation window 2026.07.16~2026.08.15 is in progress; no September stage or amount is confirmed',
+    usdKrw: 'Around KRW 1,487 per USD before Seoul spot market open on 2026.07.20, using previous close/offshore reference',
+    brentWti: 'Brent 88.10 USD/bbl and WTI 82.49 USD/bbl latest close reference; both benchmarks up about 16% on the week',
+    geo: 'Hormuz commodity-vessel traffic has again slowed; use traffic reduction and insurance-risk language, not full-blockade language'
+  },
+  sources: {
+    augustFiling: 'Korean Air and Asiana official August notices; other airline official August notices already reflected in site data',
+    usdKrw: 'Previous close/offshore reference before Seoul market open, 2026.07.20 07:00 KST',
+    oil: 'WSJ oil market close reference for Brent 88.10 and WTI 82.49',
+    hormuz: 'Reuters Connect Hormuz traffic report citing renewed U.S.-Iran strikes and commodity-carrier traffic reduction'
+  }
+});
+window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260720;
+window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1487.00 });
+
 (function(){
   var koMarket = {
-    marketDataRef: '2026.07.17 20:55 KST 기준',
-    marketBrent: '국제유가: Brent는 약 86달러/bbl, WTI는 약 81달러/bbl입니다. 2026.07.17 20:55 KST 전후 공개 시세 기준 일중 약 2%, 주간 약 13% 상승했습니다. 미국·이란 긴장과 호르무즈·바브엘만데브 운송 리스크는 9월 유류할증료 산정 구간의 상방 압력입니다.',
-    marketMops: '항공유 가격(MOPS): 8월 공시 산정 평균은 119.06달러/bbl, 283.48 cents/gal입니다. 이 값은 2026.06.16~2026.07.15 과거 평균이며, 현재 MOPS나 9월 산정 평균이 아닙니다. 9월 산정 기간은 2026.07.16~2026.08.15로 진행 중입니다.',
-    marketFx: '원달러 환율: USD/KRW는 약 1,487원입니다. 8월 확정 공시 금액을 바꾸지는 않지만, 9월 산정과 USD 공시 항공사의 원화 체감액에는 영향을 줄 수 있습니다.',
-    marketGeo: '호르무즈 해협: 7월 16일 상품선 통항은 3척 수준으로 줄었습니다. 7월 15일 11척, 전쟁 전 일평균 약 125척과 비교하면 사실상 마비에 가까운 수준입니다. 다만 법적 전면 봉쇄 또는 모든 선박 통항 중단으로 단정하지는 않습니다.',
-    marketOutlook: '2026년 8월 국제선 유류할증료는 14단계로 인하 확정됐습니다. 2026년 9월은 산정 기간이 진행 중이며, 유가 반등·환율 약 1,487원·호르무즈 통항 급감 때문에 산정 초반 상방 압력이 커졌습니다. 단계와 금액은 아직 확정할 수 없습니다.'
+    marketDataRef: '2026.07.20 07:00 KST 기준',
+    marketBrent: '국제유가: 최신 종가 기준 Brent는 88.10달러/bbl, WTI는 82.49달러/bbl입니다. 두 지표 모두 주간 약 16% 상승해 9월 유류할증료 산정 초반의 상방 압력이 커졌습니다.',
+    marketMops: '항공유 가격(MOPS): 8월 공시에 반영된 산정 평균은 119.06달러/bbl로 직전 142.09달러/bbl 대비 약 16.2% 낮습니다. 이 값은 2026.06.16~2026.07.15 과거 평균이며, 7월 16일 이후 유가·호르무즈 악화는 8월 공시에 반영되지 않고 9월 산정 변수로 봐야 합니다.',
+    marketFx: '원달러 환율: 2026.07.20 07:00 KST는 서울 외환시장 개장 전이므로 약 1,487원대 전일 종가·해외 참고값으로 표시합니다. 높은 환율은 9월 산정과 USD 공시 항공사의 원화 체감액에 영향을 줄 수 있습니다.',
+    marketGeo: '호르무즈 해협: 통항량이 다시 감소했고 일부 집계에서 상품선 통항이 하루 14척 수준까지 줄어든 것으로 보도됐습니다. 전면 봉쇄로 단정하지 말고 통항 감소, 보험료, 우회·지연 비용 리스크로 반영합니다.',
+    marketOutlook: '2026년 8월 국제선 유류할증료는 14단계 인하가 확정됐습니다. 2026년 9월은 산정 기간이 진행 중이며, 유가 급등·환율 1,487원대·호르무즈 통항 감소 때문에 보합 또는 재상승 압력을 함께 봐야 합니다. 단계와 금액은 아직 확정할 수 없습니다.'
   };
   var enMarket = {
-    marketDataRef: 'As of 2026.07.17 20:55 KST',
-    marketBrent: 'Oil prices: Brent is around USD 86/bbl and WTI around USD 81/bbl based on public quotes near 2026.07.17 20:55 KST, up about 2% on the day and roughly 13% on the week. U.S.-Iran tension and Hormuz/Bab al-Mandeb transport risks are upside pressures for the September calculation window.',
-    marketMops: 'Jet fuel price (MOPS): the August filing average is USD 119.06/bbl, or 283.48 cents/gal. This is the past 2026.06.16~2026.07.15 average, not current MOPS or the September average. The September window runs 2026.07.16~2026.08.15 and is in progress.',
-    marketFx: 'USD/KRW is around KRW 1,487. It does not change confirmed August notices, but it can affect September calculation and KRW-equivalent burden for USD-notice airlines.',
-    marketGeo: 'Strait of Hormuz: commodity-vessel transit reportedly fell to around 3 vessels on July 16, versus 11 on July 15 and a pre-war daily average near 125. Do not describe this as a legal full closure or all traffic stopped.',
-    marketOutlook: 'August 2026 international fuel surcharge is confirmed lower at Level 14. September is still in calculation, with early upside pressure from oil rebound, USD/KRW around KRW 1,487 and sharply reduced Hormuz traffic. No September stage or amount is confirmed.'
+    marketDataRef: 'As of 2026.07.20 07:00 KST',
+    marketBrent: 'Oil prices: latest close references put Brent at USD 88.10/bbl and WTI at USD 82.49/bbl. Both benchmarks are up about 16% on the week, adding early upside pressure to the September calculation window.',
+    marketMops: 'Jet fuel price (MOPS): the August filing average is USD 119.06/bbl, about 16.2% below the previous USD 142.09/bbl reference. This is the past 2026.06.16~2026.07.15 average; oil and Hormuz deterioration after July 16 belongs to the September calculation window, not the confirmed August filing.',
+    marketFx: 'USD/KRW: 2026.07.20 07:00 KST is before the Seoul FX market open, so the site uses an around-KRW-1,487 previous-close/offshore reference. Elevated FX can affect September calculation and KRW-equivalent burden for USD-notice airlines.',
+    marketGeo: 'Strait of Hormuz: traffic has slowed again, with some commodity-carrier counts reported near 14 vessels in a day. Treat this as reduced traffic plus insurance, rerouting and delay risk, not a confirmed full blockade.',
+    marketOutlook: 'August 2026 international fuel surcharge is confirmed lower at Level 14. September is still in calculation; higher oil, KRW 1,487-range FX and reduced Hormuz traffic mean flat or renewed upside pressure should be monitored. No September stage or amount is confirmed.'
   };
   if (window.I18N_SHARED) {
     Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), koMarket);

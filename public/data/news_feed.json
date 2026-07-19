@@ -1,9 +1,74 @@
 {
   "meta": {
-    "lastUpdated": "2026-06-23T06:55:00+09:00",
+    "lastUpdated": "2026-07-20T07:00:00+09:00",
     "note": "참고 소식 데이터. 공식 공지 및 시장 지표 기반 참고용 정보입니다."
   },
   "items": [
+    {
+      "id": "news-20260720-hormuz-traffic-slows-again",
+      "category": "market",
+      "title": "호르무즈 통항량 다시 감소 - 9월 유류할증료 상방 압력",
+      "summary": "2026.07.20 07:00 KST 기준 호르무즈 해협 상품선 통항량은 다시 감소한 상태입니다. 일부 집계에서는 하루 상품선 통항이 14척 수준으로 줄어든 것으로 보도됐으며, 이는 6월 중순 합의 이후 평균 34척과 6월 24일 고점 59척보다 낮습니다. 8월 유류할증료는 이미 14단계로 확정됐지만, 7월 16일 이후 통항 감소는 9월 산정 초반 상방 압력으로 봐야 합니다.",
+      "sourceUrl": "https://www.reutersconnect.com/item/hormuz-traffic-nearly-halts-as-renewed-us-iran-strikes-rattle-energy-shipping/dGFnOnJldXRlcnMuY29tLDIwMjY6bmV3c21sX09XQU5BQ0FBVklERU8yMDI2MDcwOTQxOTMwMDc3",
+      "sourceName": "Reuters Connect",
+      "date": "2026-07-20",
+      "priority": 1,
+      "tags": ["호르무즈 해협", "국제유가", "MOPS", "2026년 9월 유류할증료", "항공유 가격"],
+      "aiSummary": true,
+      "relevanceScore": 1.0
+    },
+    {
+      "id": "news-20260720-gulf-bypass-routes",
+      "category": "market",
+      "title": "걸프 산유국, 호르무즈 우회 수출 확대",
+      "summary": "호르무즈 해협 불안이 이어지면서 걸프 산유국은 파이프라인과 대체 항만을 활용한 우회 수출을 확대하고 있습니다. 우회로는 전면 공급 중단 위험을 낮추지만 운송 기간, 보험료, 물류 비용을 높일 수 있어 항공유 가격 프리미엄을 완전히 제거하지는 못합니다.",
+      "sourceUrl": "forecast.html",
+      "sourceName": "Aero Surcharge market analysis",
+      "date": "2026-07-20",
+      "priority": 2,
+      "tags": ["호르무즈 우회", "걸프 산유국", "항공유", "물류비", "유류할증료 전망"],
+      "aiSummary": true,
+      "relevanceScore": 0.98
+    },
+    {
+      "id": "news-20260720-red-sea-bypass-risk",
+      "category": "market",
+      "title": "호르무즈 우회로인 홍해도 불안 확대",
+      "summary": "호르무즈 해협을 우회하더라도 홍해와 주변 항로의 보안 리스크가 남아 있습니다. 우회 수출이 늘어나는 상황에서 홍해까지 불안하면 선박 보험료와 지연 비용이 함께 올라 항공유 가격과 9월 유류할증료 전망의 변수로 작용할 수 있습니다.",
+      "sourceUrl": "forecast.html",
+      "sourceName": "Aero Surcharge market analysis",
+      "date": "2026-07-20",
+      "priority": 2,
+      "tags": ["홍해", "해상 물류", "보험료", "항공유 가격", "국제선 유류할증료"],
+      "aiSummary": true,
+      "relevanceScore": 0.96
+    },
+    {
+      "id": "news-20260720-us-iran-energy-tension",
+      "category": "market",
+      "title": "미국·이란 충돌 지속, 에너지 시장 긴장",
+      "summary": "미국·이란 충돌과 호르무즈 해협 주변 긴장이 이어지며 Brent는 88.10달러/bbl, WTI는 82.49달러/bbl까지 상승했습니다. 유가는 최근 주간 약 16% 상승했고, 이는 9월 유류할증료 산정 초반 항공유 가격 상방 압력으로 연결될 수 있습니다.",
+      "sourceUrl": "https://www.wsj.com/livecoverage/stock-market-today-dow-sp-500-nasdaq-07-17-2026/card/u-s-oil-prices-rise-back-above-80-a-barrel-k70nkTnzP5foqLykrpZR",
+      "sourceName": "Wall Street Journal",
+      "date": "2026-07-20",
+      "priority": 1,
+      "tags": ["미국 이란", "Brent", "WTI", "국제유가", "항공유 가격"],
+      "aiSummary": true,
+      "relevanceScore": 1.0
+    },
+    {
+      "id": "news-20260720-iran-vessel-incident-claim",
+      "category": "market",
+      "title": "이란의 선박 사고 주장, 독립 확인은 아직",
+      "summary": "이란 측 선박 사고 또는 공격 관련 주장은 시장 불안을 키우는 요인이지만, 독립 확인 전에는 확정 사실로 단정하지 않아야 합니다. 사이트에서는 확인된 통항 감소와 공개 유가 흐름은 반영하되, 미확인 주장은 9월 전망의 리스크 요인으로만 분리합니다.",
+      "sourceUrl": "news.html",
+      "sourceName": "Aero Surcharge editorial note",
+      "date": "2026-07-20",
+      "priority": 2,
+      "tags": ["이란", "선박 사고", "호르무즈 해협", "시장 리스크", "유류할증료 전망"],
+      "aiSummary": true,
+      "relevanceScore": 0.94
+    },
     {
       "id": "news-20260623-iata-jet-fuel-drop",
       "category": "market",
