@@ -4,14 +4,14 @@
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>유류할증료 조회 — 2026년 8월 공식 공시 일부 반영</title>
-  <meta name="description" content="한국 출발 국제선 항공사별 유류할증료를 노선·거리구간별로 비교합니다. 2026년 8월 대한항공·아시아나항공·진에어·에어부산 공식 공시 금액을 반영하고, 미공시 항공사는 8월 유류할증료 공시 예정으로 표시합니다."
+  <meta name="description" content="한국 출발 국제선 항공사별 유류할증료를 노선·거리구간별로 비교합니다. 2026년 8월 대한항공·아시아나항공·진에어·에어부산·티웨이항공·이스타항공·에어서울 공식 공시 금액을 반영하고, 미공시 항공사는 8월 유류할증료 공시 예정으로 표시합니다."
         data-i18n-page-title="index.title"
         data-i18n-page-desc="index.metaDesc"/>
   <meta name="google-adsense-account" content="ca-pub-4285114770383510">
 
   <link rel="canonical" href="https://aero-surcharge.com/"/>
   <meta property="og:title" content="유류할증료 조회 — 2026년 8월 공식 공시 일부 반영"/>
-  <meta property="og:description" content="2026년 8월 대한항공·아시아나항공·진에어·에어부산 공식 공시 금액을 반영하고, 미공시 항공사는 8월 유류할증료 공시 예정으로 표시합니다."/>
+  <meta property="og:description" content="2026년 8월 대한항공·아시아나항공·진에어·에어부산·티웨이항공·이스타항공·에어서울 공식 공시 금액을 반영하고, 미공시 항공사는 8월 유류할증료 공시 예정으로 표시합니다."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.com/"/>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
@@ -2374,18 +2374,24 @@ renderLanding = function(){
   });
 })();
 
-/* 2026.07.17 KST: August international filings reflected for KE/OZ/LJ/BX. */
+/* 2026.07.21 KST: August international filings reflected for KE/OZ/LJ/BX/TW/ZE/RS. */
 var AUGUST_2026_NOTICE_LINKS = {
   KE: 'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2608-infuel?pageNum=1',
   OZ: 'https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202607160002529775&dispCt=all&page=1&searchOption=0&searchText=',
   LJ: 'https://www.jinair.com/company/announce/announceView?anceSeq=28415&searchWord=&searchKey=titlCtn&page=1',
-  BX: 'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4389'
+  BX: 'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4389',
+  TW: 'https://www.twayair.com/app/customerCenter/notice/retrieve/12671',
+  ZE: 'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=634&lang=KR&searchWord=&searchIndex=1',
+  RS: 'https://flyairseoul.com/CW/ko/noticeContent.do?seq=10983&pageNo=1'
 };
 var AUGUST_2026_OFFICIAL_AMOUNTS = {
   KE:[35200,49600,64000,80000,99200,100800,160000,225600,259200],
   OZ:[36600,53400,70200,86900,103700,120500,137300,170800,202900],
   LJ:[20,27,44,49,59],
-  BX:[22,40,47,54]
+  BX:[22,40,47,54],
+  TW:[24400,44300,55000,70200,76300,null,171000],
+  ZE:[22,28,34,40,45,52],
+  RS:[39700,47300,58000,67100,71700]
 };
 function hasAugustOfficial(code) {
   var d = _OFFICIAL_AMT[code];
@@ -2586,7 +2592,41 @@ renderLanding = function(){
     'index.quick.compare.name':'July to August 2026 fuel surcharge comparison',
     'index.quick.compare.desc':'August notices partly reflected; pending airlines separated',
     'index.quick.jul.name':'August 2026 fuel surcharge notice status',
-    'index.quick.jul.desc':'August notices confirmed for KE, OZ, LJ and BX'
+    'index.quick.jul.desc':'August notices confirmed for KE, OZ, LJ, BX, TW, ZE and RS'
+  };
+  var packs = { ko: ko, en: en, ja: en, zh: en, fr: en, de: en };
+  Object.keys(packs).forEach(function(lang){
+    window.I18N[lang] = window.I18N[lang] || {};
+    Object.assign(window.I18N[lang], packs[lang]);
+  });
+})();
+
+(function applyAugustTwZeRsIndexCopy(){
+  var ko = {
+    'index.title':'유류할증료 조회 — 2026년 8월 공식 공시 일부 반영',
+    'index.metaDesc':'한국 출발 국제선 항공사별 유류할증료를 노선·거리구간별로 비교하고, 대한항공·아시아나항공·진에어·에어부산·티웨이항공·이스타항공·에어서울 2026년 8월 공식 공시 금액과 미공시 항공사의 공시 예정 상태를 확인합니다.',
+    'index.signal1':'📢 8월 공시 확인: 대한항공·아시아나·진에어·에어부산·티웨이·이스타·에어서울',
+    'index.signal2':'🧮 노선별 7월 기준과 8월 공식 공시 금액 비교',
+    'index.signal3':'⏳ 제주항공·에어프레미아는 8월 유류할증료 공시 예정',
+    'index.meta.suffix':'한국 출발 국제선 · 2026년 8월 공식 공시 일부 반영',
+    'aff.myrealtrip.desc':'유류할증료는 발권 시점 기준으로 적용됩니다. 7월 공식 공시와 8월 확인 공시 금액을 함께 보고 예약 타이밍을 판단하세요.',
+    'index.quick.compare.name':'2026년 7월 → 8월 유류할증료 비교',
+    'index.quick.compare.desc':'8월 공식 공시 일부 반영 · 미공시 항공사는 공시 예정',
+    'index.quick.jul.name':'2026년 8월 유류할증료 공시 현황',
+    'index.quick.jul.desc':'대한항공·아시아나·진에어·에어부산·티웨이·이스타·에어서울 8월 공시 확인'
+  };
+  var en = {
+    'index.title':'Fuel Surcharge Lookup — August 2026 Notices Partly Reflected',
+    'index.metaDesc':'Compare Korea-departure international fuel surcharges by airline, route and mileage band. August 2026 official notices are reflected for Korean Air, Asiana, Jin Air, Air Busan, Tway Air, Eastar Jet and Air Seoul; pending airlines are separated.',
+    'index.signal1':'August notices confirmed: KE, OZ, LJ, BX, TW, ZE, RS',
+    'index.signal2':'Compare July baseline and confirmed August amounts by route',
+    'index.signal3':'Jeju Air and Air Premia remain marked as August filing pending',
+    'index.meta.suffix':'Korea departures · August 2026 official notices partly reflected',
+    'aff.myrealtrip.desc':'Fuel surcharges apply by ticketing date. Compare July official filings and confirmed August notices before deciding booking timing.',
+    'index.quick.compare.name':'July to August 2026 fuel surcharge comparison',
+    'index.quick.compare.desc':'August notices partly reflected; pending airlines separated',
+    'index.quick.jul.name':'August 2026 fuel surcharge notice status',
+    'index.quick.jul.desc':'August notices confirmed for KE, OZ, LJ, BX, TW, ZE and RS'
   };
   var packs = { ko: ko, en: en, ja: en, zh: en, fr: en, de: en };
   Object.keys(packs).forEach(function(lang){

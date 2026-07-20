@@ -1,9 +1,107 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-20T07:00:00+09:00",
+    "lastUpdated": "2026-07-21T06:55:00+09:00",
     "note": "참고 소식 데이터. 공식 공지 및 시장 지표 기반 참고용 정보입니다."
   },
   "items": [
+    {
+      "id": "news-20260721-august-tw-ze-rs-official",
+      "category": "airline",
+      "title": "티웨이·이스타·에어서울, 2026년 8월 국제선 유류할증료 인하 공시",
+      "summary": "티웨이항공은 7월 33,400원~233,800원에서 8월 24,400원~171,000원으로 약 25.2~27.8% 인하됐고 6군은 해당 없음입니다. 이스타항공은 7월 USD 30~72에서 8월 USD 22~52로 약 25.7~27.3% 인하됐습니다. 에어서울은 7월 54,500원~93,900원에서 8월 39,700원~71,700원으로 약 23.8~27.2% 인하됐습니다.",
+      "sourceUrl": "https://www.twayair.com/app/customerCenter/notice/retrieve/12671",
+      "sourceName": "티웨이·이스타·에어서울 공식 공지",
+      "date": "2026-07-21",
+      "updatedAt": "2026-07-21T06:55:00+09:00",
+      "priority": 1,
+      "tags": [
+        "티웨이항공",
+        "이스타항공",
+        "에어서울",
+        "2026년 8월 유류할증료",
+        "한국발 국제선"
+      ],
+      "aiSummary": true,
+      "relevanceScore": 1
+    },
+    {
+      "id": "news-20260721-iata-jet-fuel-spike",
+      "category": "market",
+      "title": "IATA 글로벌 항공유 평균 149.40달러, 주간 17.6% 상승",
+      "summary": "IATA 글로벌 항공유 주간 평균은 149.40달러/bbl로 전주 대비 17.6% 상승했습니다. 이는 한국 유류할증료 산정용 싱가포르 MOPS 평균과 같은 값이 아닙니다.",
+      "sourceUrl": "https://www.iata.org/en/publications/economics/fuel-monitor/",
+      "sourceName": "IATA Jet Fuel Price Monitor",
+      "date": "2026-07-21",
+      "updatedAt": "2026-07-21T06:55:00+09:00",
+      "priority": 2,
+      "tags": [
+        "IATA 항공유",
+        "MOPS",
+        "2026년 9월 유류할증료",
+        "항공유 가격"
+      ],
+      "aiSummary": true,
+      "relevanceScore": 0.98
+    },
+    {
+      "id": "news-20260721-usdkrw-1476",
+      "category": "market",
+      "title": "원·달러 환율 약 1,476원, 원화 강세는 일부 완화 요인",
+      "summary": "2026.07.21 06:55 KST 기준 원·달러 환율은 약 1,476원입니다. 한국 외환시장의 24시간 거래 시간대에 확인한 참고 시세이며, 실시간 변동으로 출처별 소수점 값에는 차이가 있을 수 있습니다.",
+      "sourceUrl": "forecast.html",
+      "sourceName": "USD/KRW market snapshot",
+      "date": "2026-07-21",
+      "updatedAt": "2026-07-21T06:55:00+09:00",
+      "priority": 2,
+      "tags": [
+        "원달러 환율",
+        "USD/KRW",
+        "항공권 총액",
+        "유류할증료"
+      ],
+      "aiSummary": true,
+      "relevanceScore": 0.98
+    },
+    {
+      "id": "news-20260721-brent-wti-close",
+      "category": "market",
+      "title": "Brent 89.22달러·WTI 83.23달러 마감",
+      "summary": "Brent는 89.22달러/bbl, WTI는 83.23달러/bbl 기준입니다. 협상 기대가 상승 폭을 제한했지만 해상 리스크가 유가를 지지했습니다.",
+      "sourceUrl": "https://www.reuters.com/business/energy/brent-oil-tops-90-us-iran-intensify-attacks-middle-east-2026-07-20/",
+      "sourceName": "Reuters oil market report",
+      "date": "2026-07-21",
+      "updatedAt": "2026-07-21T06:55:00+09:00",
+      "priority": 2,
+      "tags": [
+        "Brent",
+        "WTI",
+        "국제유가",
+        "호르무즈 해협",
+        "항공유"
+      ],
+      "aiSummary": true,
+      "relevanceScore": 0.98
+    },
+    {
+      "id": "news-20260721-hormuz-sts-transit-reduced",
+      "category": "market",
+      "title": "호르무즈 통항과 오만만 원유 환적 동시 감소",
+      "summary": "호르무즈 직접 통항과 오만만 선박 간 원유 환적이 모두 줄었습니다. 최근 VLCC·슈퍼탱커 통항은 하루 평균 2척 수준으로 낮아졌습니다.",
+      "sourceUrl": "https://www.reuters.com/world/middle-east/oil-transfer-activity-gulf-oman-slows-following-ship-attacks-data-shows-2026-07-20/",
+      "sourceName": "Reuters shipping data report",
+      "date": "2026-07-21",
+      "updatedAt": "2026-07-21T06:55:00+09:00",
+      "priority": 2,
+      "tags": [
+        "호르무즈 해협",
+        "오만만",
+        "원유 환적",
+        "VLCC",
+        "유류할증료 전망"
+      ],
+      "aiSummary": true,
+      "relevanceScore": 0.98
+    },
     {
       "id": "news-20260720-hormuz-traffic-slows-again",
       "category": "market",
@@ -13,9 +111,15 @@
       "sourceName": "Reuters Connect",
       "date": "2026-07-20",
       "priority": 1,
-      "tags": ["호르무즈 해협", "국제유가", "MOPS", "2026년 9월 유류할증료", "항공유 가격"],
+      "tags": [
+        "호르무즈 해협",
+        "국제유가",
+        "MOPS",
+        "2026년 9월 유류할증료",
+        "항공유 가격"
+      ],
       "aiSummary": true,
-      "relevanceScore": 1.0
+      "relevanceScore": 1
     },
     {
       "id": "news-20260720-gulf-bypass-routes",
@@ -26,7 +130,13 @@
       "sourceName": "Aero Surcharge market analysis",
       "date": "2026-07-20",
       "priority": 2,
-      "tags": ["호르무즈 우회", "걸프 산유국", "항공유", "물류비", "유류할증료 전망"],
+      "tags": [
+        "호르무즈 우회",
+        "걸프 산유국",
+        "항공유",
+        "물류비",
+        "유류할증료 전망"
+      ],
       "aiSummary": true,
       "relevanceScore": 0.98
     },
@@ -39,7 +149,13 @@
       "sourceName": "Aero Surcharge market analysis",
       "date": "2026-07-20",
       "priority": 2,
-      "tags": ["홍해", "해상 물류", "보험료", "항공유 가격", "국제선 유류할증료"],
+      "tags": [
+        "홍해",
+        "해상 물류",
+        "보험료",
+        "항공유 가격",
+        "국제선 유류할증료"
+      ],
       "aiSummary": true,
       "relevanceScore": 0.96
     },
@@ -52,9 +168,15 @@
       "sourceName": "Wall Street Journal",
       "date": "2026-07-20",
       "priority": 1,
-      "tags": ["미국 이란", "Brent", "WTI", "국제유가", "항공유 가격"],
+      "tags": [
+        "미국 이란",
+        "Brent",
+        "WTI",
+        "국제유가",
+        "항공유 가격"
+      ],
       "aiSummary": true,
-      "relevanceScore": 1.0
+      "relevanceScore": 1
     },
     {
       "id": "news-20260720-iran-vessel-incident-claim",
@@ -65,7 +187,13 @@
       "sourceName": "Aero Surcharge editorial note",
       "date": "2026-07-20",
       "priority": 2,
-      "tags": ["이란", "선박 사고", "호르무즈 해협", "시장 리스크", "유류할증료 전망"],
+      "tags": [
+        "이란",
+        "선박 사고",
+        "호르무즈 해협",
+        "시장 리스크",
+        "유류할증료 전망"
+      ],
       "aiSummary": true,
       "relevanceScore": 0.94
     },
@@ -78,9 +206,15 @@
       "sourceName": "IATA Jet Fuel Price Monitor",
       "date": "2026-06-23",
       "priority": 1,
-      "tags": ["IATA 항공유", "MOPS", "2026년 8월 유류할증료", "원달러 환율", "항공유 가격"],
+      "tags": [
+        "IATA 항공유",
+        "MOPS",
+        "2026년 8월 유류할증료",
+        "원달러 환율",
+        "항공유 가격"
+      ],
       "aiSummary": true,
-      "relevanceScore": 1.0
+      "relevanceScore": 1
     },
     {
       "id": "news-20260623-hormuz-partial-traffic-recovery",
@@ -91,9 +225,15 @@
       "sourceName": "Reuters market context",
       "date": "2026-06-23",
       "priority": 1,
-      "tags": ["호르무즈 해협", "미국-이란 협상", "국제유가", "유류할증료 전망", "중동 리스크"],
+      "tags": [
+        "호르무즈 해협",
+        "미국-이란 협상",
+        "국제유가",
+        "유류할증료 전망",
+        "중동 리스크"
+      ],
       "aiSummary": true,
-      "relevanceScore": 1.0
+      "relevanceScore": 1
     },
     {
       "id": "news-20260623-usdkrw-1534-total-airfare",
@@ -104,7 +244,13 @@
       "sourceName": "USD/KRW market snapshot",
       "date": "2026-06-23",
       "priority": 2,
-      "tags": ["원달러 환율", "USD/KRW", "항공권 총액", "유류할증료", "환율 영향"],
+      "tags": [
+        "원달러 환율",
+        "USD/KRW",
+        "항공권 총액",
+        "유류할증료",
+        "환율 영향"
+      ],
       "aiSummary": true,
       "relevanceScore": 0.98
     },
@@ -117,9 +263,15 @@
       "sourceName": "Reuters market context",
       "date": "2026-06-22",
       "priority": 1,
-      "tags": ["호르무즈 해협", "MOPS", "2026년 8월 유류할증료", "국제유가", "환율"],
+      "tags": [
+        "호르무즈 해협",
+        "MOPS",
+        "2026년 8월 유류할증료",
+        "국제유가",
+        "환율"
+      ],
       "aiSummary": true,
-      "relevanceScore": 1.0
+      "relevanceScore": 1
     },
     {
       "id": "news-20260622-tway-july-official-reflected",
@@ -130,9 +282,15 @@
       "sourceName": "Tway Air official notice",
       "date": "2026-06-22",
       "priority": 1,
-      "tags": ["티웨이항공", "TW", "2026년 7월 유류할증료", "한국발 국제선", "공식 공시"],
+      "tags": [
+        "티웨이항공",
+        "TW",
+        "2026년 7월 유류할증료",
+        "한국발 국제선",
+        "공식 공시"
+      ],
       "aiSummary": true,
-      "relevanceScore": 1.0
+      "relevanceScore": 1
     },
     {
       "id": "news-001",
@@ -143,9 +301,13 @@
       "sourceName": "대한항공 공지사항",
       "date": "2026-03-20",
       "priority": 1,
-      "tags": ["KE", "공식공지", "유류할증료"],
+      "tags": [
+        "KE",
+        "공식공지",
+        "유류할증료"
+      ],
       "aiSummary": false,
-      "relevanceScore": 1.0
+      "relevanceScore": 1
     },
     {
       "id": "news-002",
@@ -156,7 +318,11 @@
       "sourceName": "아시아나항공 공지사항",
       "date": "2026-03-20",
       "priority": 1,
-      "tags": ["OZ", "공식공지", "유류할증료"],
+      "tags": [
+        "OZ",
+        "공식공지",
+        "유류할증료"
+      ],
       "aiSummary": false,
       "relevanceScore": 0.95
     },
@@ -169,7 +335,11 @@
       "sourceName": "시장 지표 참고",
       "date": "2026-04-01",
       "priority": 2,
-      "tags": ["유가", "Brent", "시장"],
+      "tags": [
+        "유가",
+        "Brent",
+        "시장"
+      ],
       "aiSummary": true,
       "relevanceScore": 0.85
     },
@@ -182,9 +352,13 @@
       "sourceName": "외환시장 참고",
       "date": "2026-04-01",
       "priority": 3,
-      "tags": ["환율", "원달러", "시장"],
+      "tags": [
+        "환율",
+        "원달러",
+        "시장"
+      ],
       "aiSummary": true,
-      "relevanceScore": 0.80
+      "relevanceScore": 0.8
     }
   ]
 }

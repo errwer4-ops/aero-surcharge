@@ -1327,6 +1327,71 @@ window._JULY_2026_OFFICIAL_OVERRIDES = {
   },
 };
 
+window._AUGUST_2026_OFFICIAL_OVERRIDES = {
+  ZE: {
+    '2026.08': {
+      sourceType: 'official_notice', status: 'official_verified', confidence: 'fresh', currency: 'USD',
+      surchargeSchema: 'group_tier',
+      officialNoticeUrl: 'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=634&lang=KR&searchWord=&searchIndex=1',
+      verifiedAt: '2026-07-20T00:00:00+09:00',
+      applicableFrom: '2026-08-01',
+      applicableTo: '2026-08-31',
+      ticketingBasis: true,
+      oneWay: true,
+      note: '이스타항공 2026년 8월 한국발 국제선 유류할증료 공식 공지 기준. 좌석을 점유하지 않는 만 2세 미만 유아는 면제.',
+      group_tiers: [
+        { group: 1, label: '1군', amount: 22, currency: 'USD' },
+        { group: 2, label: '2군', amount: 28, currency: 'USD' },
+        { group: 3, label: '3군', amount: 34, currency: 'USD' },
+        { group: 4, label: '4군', amount: 40, currency: 'USD' },
+        { group: 5, label: '5군', amount: 45, currency: 'USD' },
+        { group: 6, label: '6군', amount: 52, currency: 'USD' },
+      ],
+    },
+  },
+  RS: {
+    '2026.08': {
+      sourceType: 'official_notice', status: 'official_verified', confidence: 'fresh', currency: 'KRW',
+      surchargeSchema: 'mileage_band',
+      officialNoticeUrl: 'https://flyairseoul.com/CW/ko/noticeContent.do?seq=10983&pageNo=1',
+      verifiedAt: '2026-07-20T00:00:00+09:00',
+      applicableFrom: '2026-08-01',
+      applicableTo: '2026-08-31',
+      ticketingBasis: true,
+      oneWay: true,
+      items: [
+        { distanceRange: '300-700', label: '300~700mi', amount: 39700, currency: 'KRW', routes: ['다카마쓰', '후쿠오카', '오사카', '요나고'] },
+        { distanceRange: '700-1100', label: '700~1,100mi', amount: 47300, currency: 'KRW', routes: ['도쿄'] },
+        { distanceRange: '1100-1500', label: '1,100~1,500mi', amount: 58000, currency: 'KRW', routes: ['장자제'] },
+        { distanceRange: '1500-1900', label: '1,500~1,900mi', amount: 67100, currency: 'KRW', routes: ['다낭'] },
+        { distanceRange: '1900-2300', label: '1,900~2,300mi', amount: 71700, currency: 'KRW', routes: ['나트랑', '괌'] },
+      ],
+    },
+  },
+  TW: {
+    '2026.08': {
+      sourceType: 'official_notice', status: 'official_verified', confidence: 'fresh', currency: 'KRW',
+      surchargeSchema: 'group_tier',
+      officialNoticeUrl: 'https://www.twayair.com/app/customerCenter/notice/retrieve/12671',
+      verifiedAt: '2026-07-20T10:52:00+09:00',
+      applicableFrom: '2026-08-01',
+      applicableTo: '2026-08-31',
+      ticketingBasis: true,
+      oneWay: true,
+      note: '티웨이항공 2026년 8월 한국발 국제선 유류할증료 공식 공지 기준. 6군은 해당 없음으로 0원이 아니라 금액 미적용(null) 처리.',
+      group_tiers: [
+        { group: 1, label: '1군 (~600mi)', amount: 24400, currency: 'KRW' },
+        { group: 2, label: '2군 (600~1,200mi)', amount: 44300, currency: 'KRW' },
+        { group: 3, label: '3군 (1,200~1,800mi)', amount: 55000, currency: 'KRW' },
+        { group: 4, label: '4군 (1,800~2,400mi)', amount: 70200, currency: 'KRW' },
+        { group: 5, label: '5군 (2,400~4,000mi)', amount: 76300, currency: 'KRW' },
+        { group: 6, label: '6군 (4,000~5,000mi)', amount: null, currency: 'KRW' },
+        { group: 7, label: '7군 (5,000mi+)', amount: 171000, currency: 'KRW' },
+      ],
+    },
+  },
+};
+
 /* ─────────────────────────────────────────────
    TW(티웨이항공)2026년 6월 공식 공시 하드코딩 데이터
    작성일:2026.05.21 17:15 · KRW 공시 (판도 기준)
@@ -1435,6 +1500,14 @@ window.loadAirlineMeta = async function() {
   Object.keys(window._JULY_2026_OFFICIAL_OVERRIDES || {}).forEach(function(code) {
     if (!window.MANUAL_OVERRIDES[code]) window.MANUAL_OVERRIDES[code] = {};
     var months = window._JULY_2026_OFFICIAL_OVERRIDES[code] || {};
+    Object.keys(months).forEach(function(month) {
+      window.MANUAL_OVERRIDES[code][month] = months[month];
+    });
+  });
+  /* 2026년 8월 공식 공시 완료 항공사 — ZE/RS/TW */
+  Object.keys(window._AUGUST_2026_OFFICIAL_OVERRIDES || {}).forEach(function(code) {
+    if (!window.MANUAL_OVERRIDES[code]) window.MANUAL_OVERRIDES[code] = {};
+    var months = window._AUGUST_2026_OFFICIAL_OVERRIDES[code] || {};
     Object.keys(months).forEach(function(month) {
       window.MANUAL_OVERRIDES[code][month] = months[month];
     });
@@ -10526,22 +10599,82 @@ window.AERO_MARKET_NUMBERS_20260720 = Object.assign({}, window.AERO_MARKET_NUMBE
 window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260720;
 window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1487.00 });
 
+/* 2026.07.21 06:55 KST market snapshot: TW/ZE/RS August notices confirmed, September calculation pressure watch. */
+window.AERO_MARKET_NUMBERS_20260721 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
+  asOf: '2026.07.21 06:55 KST',
+  lastUpdated: '2026-07-21T06:55:00+09:00',
+  currentMonthNotice: '2026-08',
+  forecastTargetMonth: '2026-09',
+  usdKrw: 1475.9,
+  usdKrwLabel: '약 1,476원',
+  usdKrwReferenceType: 'korea_24h_spot_reference',
+  brentUsdPerBbl: 89.22,
+  brentUsdPerBblLabel: '89.22달러/bbl',
+  brentIntradayHighUsdPerBbl: 91.42,
+  brentChangePct: 1.3,
+  wtiUsdPerBbl: 83.23,
+  wtiUsdPerBblLabel: '83.23달러/bbl',
+  wtiIntradayHighUsdPerBbl: 85.39,
+  wtiChangePct: 0.9,
+  iataJetFuelUsdPerBbl: 149.40,
+  iataJetFuelWeeklyChangePct: 17.6,
+  augustSurchargeStage: 14,
+  julySurchargeStage: 19,
+  augustStageChangeVsJuly: -5,
+  augustMopsAverageUsdPerBbl: 119.06,
+  previousMopsAverageUsdPerBbl: 142.09,
+  augustMopsAverageChangePct: -16.2,
+  augustMopsWindow: '2026.06.16~2026.07.15',
+  septemberCalculationFrom: '2026-07-16',
+  septemberCalculationTo: '2026-08-15',
+  septemberMopsWindow: '2026.07.16~2026.08.15',
+  septemberMopsAverageStatus: 'in_progress',
+  septemberSurchargeStatus: 'forecast_only_not_announced',
+  currentSingaporeMopsExactValue: null,
+  augustOfficialConfirmedAirlines: ['KE', 'OZ', 'LJ', 'BX', 'TW', 'ZE', 'RS'],
+  augustOfficialPendingAirlines: ['7C', 'YP'],
+  hormuzSupertankerDailyAverage: 2,
+  hormuzSupertankerPreviousWeekAverage: 5,
+  hormuzSupertankerLateJuneEarlyJulyAverage: 8,
+  hormuzStsPairsLatest: 1,
+  hormuzStsPairsPreviousWeek: 3,
+  hormuzStatus: 'direct_transit_and_gulf_of_oman_sts_transfer_reduced_not_full_blockade',
+  referenceAsOf: {
+    augustInternationalSurcharge: 'August 2026 Korea-departure international surcharge confirmed for KE/OZ/LJ/BX/TW/ZE/RS; 7C and YP remain pending unless official August notice is verified',
+    augustMops: '119.06 USD/bbl is the 2026.06.16~2026.07.15 average used for August filing; it is not the current Singapore daily MOPS quote',
+    septemberMops: 'September calculation window 2026.07.16~2026.08.15 is in progress; no September stage or amount is confirmed',
+    iataJetFuel: 'IATA global weekly jet fuel average is 149.40 USD/bbl, up 17.6% week on week; this is not the same as Singapore MOPS used for Korea surcharge calculation',
+    usdKrw: 'Korea USD/KRW 24-hour trading reference around 2026.07.21 06:55 KST; displayed as about KRW 1,476',
+    brentWti: 'Prior close references: Brent 89.22 USD/bbl and WTI 83.23 USD/bbl; intraday highs were higher',
+    geo: 'Hormuz direct supertanker transit and Gulf of Oman ship-to-ship transfer activity both reduced; do not describe it as all ships halted or a confirmed full closure'
+  },
+  sources: {
+    augustFiling: 'Airline official August notices: KE/OZ/LJ/BX/TW/ZE/RS',
+    usdKrw: 'Korea USD/KRW 24-hour market snapshot near 2026.07.21 06:55 KST',
+    iataJetFuel: 'IATA Jet Fuel Price Monitor weekly global average',
+    oil: 'Reuters oil market report and prior close references',
+    hormuz: 'Reuters shipping and satellite data report on reduced Hormuz/STs activity'
+  }
+});
+window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260721;
+window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1476 });
+
 (function(){
   var koMarket = {
-    marketDataRef: '2026.07.20 07:00 KST 기준',
-    marketBrent: '국제유가: 최신 종가 기준 Brent는 88.10달러/bbl, WTI는 82.49달러/bbl입니다. 두 지표 모두 주간 약 16% 상승해 9월 유류할증료 산정 초반의 상방 압력이 커졌습니다.',
-    marketMops: '항공유 가격(MOPS): 8월 공시에 반영된 산정 평균은 119.06달러/bbl로 직전 142.09달러/bbl 대비 약 16.2% 낮습니다. 이 값은 2026.06.16~2026.07.15 과거 평균이며, 7월 16일 이후 유가·호르무즈 악화는 8월 공시에 반영되지 않고 9월 산정 변수로 봐야 합니다.',
-    marketFx: '원달러 환율: 2026.07.20 07:00 KST는 서울 외환시장 개장 전이므로 약 1,487원대 전일 종가·해외 참고값으로 표시합니다. 높은 환율은 9월 산정과 USD 공시 항공사의 원화 체감액에 영향을 줄 수 있습니다.',
-    marketGeo: '호르무즈 해협: 통항량이 다시 감소했고 일부 집계에서 상품선 통항이 하루 14척 수준까지 줄어든 것으로 보도됐습니다. 전면 봉쇄로 단정하지 말고 통항 감소, 보험료, 우회·지연 비용 리스크로 반영합니다.',
-    marketOutlook: '2026년 8월 국제선 유류할증료는 14단계 인하가 확정됐습니다. 2026년 9월은 산정 기간이 진행 중이며, 유가 급등·환율 1,487원대·호르무즈 통항 감소 때문에 보합 또는 재상승 압력을 함께 봐야 합니다. 단계와 금액은 아직 확정할 수 없습니다.'
+    marketDataRef: '2026.07.21 06:55 KST 기준',
+    marketBrent: '국제유가: 최신 종가 기준 Brent는 89.22달러/bbl, WTI는 83.23달러/bbl입니다. 미국·이란 협상 기대가 상승 폭을 제한했지만, 후티의 사우디 해상 봉쇄 위협과 호르무즈 리스크가 유가를 지지했습니다.',
+    marketMops: '항공유 가격(MOPS): 8월 공시에 반영된 산정 평균은 119.06달러/bbl로 직전 142.09달러/bbl 대비 약 16.2% 낮습니다. 반면 IATA 글로벌 항공유 주간 평균은 149.40달러/bbl로 전주 대비 17.6% 상승했습니다. IATA 수치는 싱가포르 MOPS 산정 평균과 같은 값이 아닙니다.',
+    marketFx: '원달러 환율: 2026.07.21 06:55 KST 기준 약 1,476원입니다. 한국 외환시장의 24시간 거래 시간대에 확인한 참고 시세이며, 실시간 변동으로 출처별 소수점 값에는 차이가 있을 수 있습니다.',
+    marketGeo: '호르무즈 해협: 직접 통항과 오만만 선박 간 원유 환적이 동시에 줄었습니다. 최근 VLCC·슈퍼탱커 통항은 하루 평균 2척 수준으로 이전 주 5척, 6월 말~7월 초 8척보다 낮습니다. 전면 봉쇄나 모든 선박 통항 중단으로 단정하지 않습니다.',
+    marketOutlook: '2026년 8월 국제선 유류할증료는 14단계 인하가 확정됐고, 티웨이·이스타·에어서울도 8월 공시가 확인됐습니다. 2026년 9월은 산정 기간이 진행 중이며 IATA 항공유 급등, Brent·WTI 반등, 호르무즈 물류 감소가 상방 압력입니다. 단계와 금액은 아직 확정할 수 없습니다.'
   };
   var enMarket = {
-    marketDataRef: 'As of 2026.07.20 07:00 KST',
-    marketBrent: 'Oil prices: latest close references put Brent at USD 88.10/bbl and WTI at USD 82.49/bbl. Both benchmarks are up about 16% on the week, adding early upside pressure to the September calculation window.',
-    marketMops: 'Jet fuel price (MOPS): the August filing average is USD 119.06/bbl, about 16.2% below the previous USD 142.09/bbl reference. This is the past 2026.06.16~2026.07.15 average; oil and Hormuz deterioration after July 16 belongs to the September calculation window, not the confirmed August filing.',
-    marketFx: 'USD/KRW: 2026.07.20 07:00 KST is before the Seoul FX market open, so the site uses an around-KRW-1,487 previous-close/offshore reference. Elevated FX can affect September calculation and KRW-equivalent burden for USD-notice airlines.',
-    marketGeo: 'Strait of Hormuz: traffic has slowed again, with some commodity-carrier counts reported near 14 vessels in a day. Treat this as reduced traffic plus insurance, rerouting and delay risk, not a confirmed full blockade.',
-    marketOutlook: 'August 2026 international fuel surcharge is confirmed lower at Level 14. September is still in calculation; higher oil, KRW 1,487-range FX and reduced Hormuz traffic mean flat or renewed upside pressure should be monitored. No September stage or amount is confirmed.'
+    marketDataRef: 'As of 2026.07.21 06:55 KST',
+    marketBrent: 'Oil prices: latest close references put Brent at USD 89.22/bbl and WTI at USD 83.23/bbl. Renewed U.S.-Iran negotiation hopes capped gains, while Houthi threats and Hormuz risk supported oil.',
+    marketMops: 'Jet fuel price (MOPS): the August filing average is USD 119.06/bbl, about 16.2% below the previous USD 142.09/bbl reference. However, IATA global weekly jet fuel averaged USD 149.40/bbl, up 17.6% week on week. The IATA figure is not the same as the Singapore MOPS average used for Korea surcharge calculation.',
+    marketFx: 'USD/KRW: as of 2026.07.21 06:55 KST, the reference level is about KRW 1,476. This is during Korea USD/KRW 24-hour trading, and decimals can differ by real-time source.',
+    marketGeo: 'Strait of Hormuz: both direct transit and Gulf of Oman ship-to-ship oil transfer activity have slowed. Recent VLCC/supertanker transit averaged about two per day, below five the previous week and eight in late June/early July. Do not describe this as all ships halted or a confirmed full blockade.',
+    marketOutlook: 'August 2026 international fuel surcharge is confirmed lower at Level 14, and Tway, Eastar Jet and Air Seoul August notices are now verified. September is still in calculation; higher IATA jet fuel, Brent/WTI rebound and reduced Hormuz logistics activity create upside pressure. No September stage or amount is confirmed.'
   };
   if (window.I18N_SHARED) {
     Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), koMarket);

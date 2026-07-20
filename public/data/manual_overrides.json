@@ -1,12 +1,13 @@
 {
   "_meta": {
     "description": "2026.04 및 일부 2026.05 공식 공지 기준 수동 오버라이드. official_surcharge_feed보다 우선 적용.",
-    "lastUpdated": "2026-05-26T21:59:47+09:00",
-    "period": "2026.06",
+    "lastUpdated": "2026-07-21T06:55:00+09:00",
+    "period": "2026.08",
     "appliedOrigins": [
       "KR"
     ],
-    "_note": "한국 출발 국제선 전용. 타국 출발은 supportedOrigins 체크로 서비스 준비중 처리."
+    "_note": "한국 출발 국제선 전용. 타국 출발은 supportedOrigins 체크로 서비스 준비중 처리.",
+    "note": "2026.08 official notices reflected for KE/OZ/LJ/BX/TW/ZE/RS where verified. 7C/YP remain pending unless verified."
   },
   "KE": {
     "_meta": {
@@ -383,13 +384,48 @@
     },
     "2026.07": {
       "group_tiers": [
-        { "group": 1, "label": "1군 (~600mi)", "amount": 33400, "currency": "KRW" },
-        { "group": 2, "label": "2군 (600~1,200mi)", "amount": 59200, "currency": "KRW" },
-        { "group": 3, "label": "3군 (1,200~1,800mi)", "amount": 74400, "currency": "KRW" },
-        { "group": 4, "label": "4군 (1,800~2,400mi)", "amount": 97200, "currency": "KRW" },
-        { "group": 5, "label": "5군 (2,400~4,000mi)", "amount": 104700, "currency": "KRW" },
-        { "group": 6, "label": "6군 (4,000~5,000mi)", "amount": null, "currency": "KRW" },
-        { "group": 7, "label": "7군 (5,000mi+)", "amount": 233800, "currency": "KRW" }
+        {
+          "group": 1,
+          "label": "1군 (~600mi)",
+          "amount": 33400,
+          "currency": "KRW"
+        },
+        {
+          "group": 2,
+          "label": "2군 (600~1,200mi)",
+          "amount": 59200,
+          "currency": "KRW"
+        },
+        {
+          "group": 3,
+          "label": "3군 (1,200~1,800mi)",
+          "amount": 74400,
+          "currency": "KRW"
+        },
+        {
+          "group": 4,
+          "label": "4군 (1,800~2,400mi)",
+          "amount": 97200,
+          "currency": "KRW"
+        },
+        {
+          "group": 5,
+          "label": "5군 (2,400~4,000mi)",
+          "amount": 104700,
+          "currency": "KRW"
+        },
+        {
+          "group": 6,
+          "label": "6군 (4,000~5,000mi)",
+          "amount": null,
+          "currency": "KRW"
+        },
+        {
+          "group": 7,
+          "label": "7군 (5,000mi+)",
+          "amount": 233800,
+          "currency": "KRW"
+        }
       ],
       "currency": "KRW",
       "sourceType": "official_notice",
@@ -399,6 +435,64 @@
       "officialNoticeUrl": "https://www.twayair.com/app/customerCenter/notice/retrieve/12654",
       "verifiedAt": "2026-06-19T09:00:00+09:00",
       "appliedPeriod": "2026-07-01~2026-07-31"
+    },
+    "2026.08": {
+      "sourceType": "official_notice",
+      "status": "official_verified",
+      "confidence": "fresh",
+      "currency": "KRW",
+      "surchargeSchema": "group_tier",
+      "officialNoticeUrl": "https://www.twayair.com/app/customerCenter/notice/retrieve/12671",
+      "verifiedAt": "2026-07-20T10:52:00+09:00",
+      "applicableFrom": "2026-08-01",
+      "applicableTo": "2026-08-31",
+      "ticketingBasis": true,
+      "oneWay": true,
+      "note": "티웨이항공 2026년 8월 한국발 국제선 유류할증료 공식 공지 기준. 6군은 해당 없음으로 0원이 아니라 금액 미적용(null) 처리.",
+      "group_tiers": [
+        {
+          "group": 1,
+          "label": "1군 (~600mi)",
+          "amount": 24400,
+          "currency": "KRW"
+        },
+        {
+          "group": 2,
+          "label": "2군 (600~1,200mi)",
+          "amount": 44300,
+          "currency": "KRW"
+        },
+        {
+          "group": 3,
+          "label": "3군 (1,200~1,800mi)",
+          "amount": 55000,
+          "currency": "KRW"
+        },
+        {
+          "group": 4,
+          "label": "4군 (1,800~2,400mi)",
+          "amount": 70200,
+          "currency": "KRW"
+        },
+        {
+          "group": 5,
+          "label": "5군 (2,400~4,000mi)",
+          "amount": 76300,
+          "currency": "KRW"
+        },
+        {
+          "group": 6,
+          "label": "6군 (4,000~5,000mi)",
+          "amount": null,
+          "currency": "KRW"
+        },
+        {
+          "group": 7,
+          "label": "7군 (5,000mi+)",
+          "amount": 171000,
+          "currency": "KRW"
+        }
+      ]
     }
   },
   "ZE": {
@@ -479,16 +573,45 @@
       "sourceType": "official_notice",
       "confidence": "fresh",
       "surchargeSchema": "group_tier"
-    }
-,
+    },
     "2026.06": {
       "group_tiers": [
-        { "group": 1, "label": "1군", "amount": 43, "currency": "USD" },
-        { "group": 2, "label": "2군", "amount": 54, "currency": "USD" },
-        { "group": 3, "label": "3군", "amount": 66, "currency": "USD" },
-        { "group": 4, "label": "4군", "amount": 79, "currency": "USD" },
-        { "group": 5, "label": "5군", "amount": 89, "currency": "USD" },
-        { "group": 6, "label": "6군", "amount": 103, "currency": "USD" }
+        {
+          "group": 1,
+          "label": "1군",
+          "amount": 43,
+          "currency": "USD"
+        },
+        {
+          "group": 2,
+          "label": "2군",
+          "amount": 54,
+          "currency": "USD"
+        },
+        {
+          "group": 3,
+          "label": "3군",
+          "amount": 66,
+          "currency": "USD"
+        },
+        {
+          "group": 4,
+          "label": "4군",
+          "amount": 79,
+          "currency": "USD"
+        },
+        {
+          "group": 5,
+          "label": "5군",
+          "amount": 89,
+          "currency": "USD"
+        },
+        {
+          "group": 6,
+          "label": "6군",
+          "amount": 103,
+          "currency": "USD"
+        }
       ],
       "currency": "USD",
       "sourceType": "official_notice",
@@ -498,12 +621,42 @@
     },
     "2026.07": {
       "group_tiers": [
-        { "group": 1, "label": "1군", "amount": 30, "currency": "USD" },
-        { "group": 2, "label": "2군", "amount": 38, "currency": "USD" },
-        { "group": 3, "label": "3군", "amount": 45, "currency": "USD" },
-        { "group": 4, "label": "4군", "amount": 55, "currency": "USD" },
-        { "group": 5, "label": "5군", "amount": 62, "currency": "USD" },
-        { "group": 6, "label": "6군", "amount": 72, "currency": "USD" }
+        {
+          "group": 1,
+          "label": "1군",
+          "amount": 30,
+          "currency": "USD"
+        },
+        {
+          "group": 2,
+          "label": "2군",
+          "amount": 38,
+          "currency": "USD"
+        },
+        {
+          "group": 3,
+          "label": "3군",
+          "amount": 45,
+          "currency": "USD"
+        },
+        {
+          "group": 4,
+          "label": "4군",
+          "amount": 55,
+          "currency": "USD"
+        },
+        {
+          "group": 5,
+          "label": "5군",
+          "amount": 62,
+          "currency": "USD"
+        },
+        {
+          "group": 6,
+          "label": "6군",
+          "amount": 72,
+          "currency": "USD"
+        }
       ],
       "currency": "USD",
       "sourceType": "official_notice",
@@ -512,7 +665,60 @@
       "officialNoticeUrl": "https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=608&lang=KR",
       "verifiedAt": "2026-06-17",
       "appliedPeriod": "2026-07-01~2026-07-31"
-    }  },
+    },
+    "2026.08": {
+      "sourceType": "official_notice",
+      "status": "official_verified",
+      "confidence": "fresh",
+      "currency": "USD",
+      "surchargeSchema": "group_tier",
+      "officialNoticeUrl": "https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=634&lang=KR&searchWord=&searchIndex=1",
+      "verifiedAt": "2026-07-20T00:00:00+09:00",
+      "applicableFrom": "2026-08-01",
+      "applicableTo": "2026-08-31",
+      "ticketingBasis": true,
+      "oneWay": true,
+      "note": "이스타항공 2026년 8월 한국발 국제선 유류할증료 공식 공지 기준. 좌석을 점유하지 않는 만 2세 미만 유아는 면제.",
+      "group_tiers": [
+        {
+          "group": 1,
+          "label": "1군",
+          "amount": 22,
+          "currency": "USD"
+        },
+        {
+          "group": 2,
+          "label": "2군",
+          "amount": 28,
+          "currency": "USD"
+        },
+        {
+          "group": 3,
+          "label": "3군",
+          "amount": 34,
+          "currency": "USD"
+        },
+        {
+          "group": 4,
+          "label": "4군",
+          "amount": 40,
+          "currency": "USD"
+        },
+        {
+          "group": 5,
+          "label": "5군",
+          "amount": 45,
+          "currency": "USD"
+        },
+        {
+          "group": 6,
+          "label": "6군",
+          "amount": 52,
+          "currency": "USD"
+        }
+      ]
+    }
+  },
   "RS": {
     "_meta": {
       "source": "에어서울 공식 공지 2026-04",
@@ -552,6 +758,70 @@
       "currency": "KRW",
       "sourceType": "official_notice",
       "confidence": "fresh"
+    },
+    "2026.08": {
+      "sourceType": "official_notice",
+      "status": "official_verified",
+      "confidence": "fresh",
+      "currency": "KRW",
+      "surchargeSchema": "mileage_band",
+      "officialNoticeUrl": "https://flyairseoul.com/CW/ko/noticeContent.do?seq=10983&pageNo=1",
+      "verifiedAt": "2026-07-20T00:00:00+09:00",
+      "applicableFrom": "2026-08-01",
+      "applicableTo": "2026-08-31",
+      "ticketingBasis": true,
+      "oneWay": true,
+      "items": [
+        {
+          "distanceRange": "300-700",
+          "label": "300~700mi",
+          "amount": 39700,
+          "currency": "KRW",
+          "routes": [
+            "다카마쓰",
+            "후쿠오카",
+            "오사카",
+            "요나고"
+          ]
+        },
+        {
+          "distanceRange": "700-1100",
+          "label": "700~1,100mi",
+          "amount": 47300,
+          "currency": "KRW",
+          "routes": [
+            "도쿄"
+          ]
+        },
+        {
+          "distanceRange": "1100-1500",
+          "label": "1,100~1,500mi",
+          "amount": 58000,
+          "currency": "KRW",
+          "routes": [
+            "장자제"
+          ]
+        },
+        {
+          "distanceRange": "1500-1900",
+          "label": "1,500~1,900mi",
+          "amount": 67100,
+          "currency": "KRW",
+          "routes": [
+            "다낭"
+          ]
+        },
+        {
+          "distanceRange": "1900-2300",
+          "label": "1,900~2,300mi",
+          "amount": 71700,
+          "currency": "KRW",
+          "routes": [
+            "나트랑",
+            "괌"
+          ]
+        }
+      ]
     }
   },
   "BX": {
