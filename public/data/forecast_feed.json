@@ -1,20 +1,20 @@
 {
   "meta": {
-    "generatedAt": "2026-07-20T21:58:59.633Z",
+    "generatedAt": "2026-07-21T22:55:05.076Z",
     "modelVersion": "rule-engine-v2-market-watch",
     "basePeriod": "2026.08",
     "forecastTargetPeriod": "2026.09",
     "sourceAirlines": 9,
     "inputs": {
-      "brentUSD": 89.22,
-      "wtiUSD": 83.23,
+      "brentUSD": 82.5,
+      "wtiUSD": 78.3,
       "jetFuelSpread": 14.2,
-      "usdKrw": 1475.9,
-      "usdJpy": 162.48,
+      "usdKrw": 1479,
+      "usdJpy": 162.47,
       "geopoliticalRiskScore": 0.35,
       "baselineBrentUSD": 75,
       "marketDataSource": "live",
-      "marketFetchedAt": "2026-07-21T06:55:00+09:00"
+      "marketFetchedAt": "2026-07-21T22:53:59.873Z"
     },
     "disclaimer": "2026년 8월 국제선 유류할증료 14단계는 확정 공시 데이터입니다. 2026년 9월 유류할증료는 산정 기간이 진행 중이므로 단계와 금액을 확정하거나 임의 생성하지 않습니다.",
     "lastUpdated": "2026-07-21T06:55:00+09:00",

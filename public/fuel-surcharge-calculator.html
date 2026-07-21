@@ -2522,6 +2522,36 @@ var PAGE_I18N = {
   });
 })();
 
+(function applyJejuAugustCalculatorUpdate(){
+  AUGUST_2026_OFFICIAL_AMOUNTS['7C'] = [22, 28, 34, 40, 45, 52];
+  if (typeof applyOfficialSurchargePatches === 'function') applyOfficialSurchargePatches();
+  var confirmedKo = '대한항공·아시아나항공·진에어·에어부산·티웨이항공·이스타항공·에어서울·제주항공';
+  var confirmedEn = 'Korean Air, Asiana Airlines, Jin Air, Air Busan, Tway Air, Eastar Jet, Air Seoul and Jeju Air';
+  var ko = {
+    'calc.metaTitle':'유류할증료 계산기 | 2026년 7월·8월 공식 공시 노선별 비교',
+    'calc.metaDesc':'한국 출발 국제선 항공권의 2026년 7월 공식 공시와 2026년 8월 공식 공시 확인 항공사의 유류할증료를 노선·항공사·왕복·인원별로 비교합니다.',
+    'calc.notice':'<strong>안내:</strong> 현재 계산기는 2026년 7월 공식 공시를 기준으로 비교하고, ' + confirmedKo + '의 2026년 8월 공식 공시 금액을 함께 표시합니다. 에어프레미아는 8월 유류할증료 공시 예정으로 구분합니다.',
+    'calc.readiness.body':'현재 계산기는 2026년 7월 공식 공시를 기준으로 비교합니다. 2026년 8월 유류할증료는 ' + confirmedKo + '처럼 공식 공지가 확인된 항공사만 금액을 표시하고, 에어프레미아는 공시 예정으로 구분합니다.',
+    'calc.faq.july.body':'일부 반영됐습니다. 대한항공·아시아나항공·진에어·에어부산·티웨이항공·이스타항공·에어서울·제주항공은 2026년 8월 공식 공시 금액을 표시하고, 아직 확인되지 않은 항공사는 공시 예정으로 표시합니다.'
+  };
+  var en = {
+    'calc.metaTitle':'Fuel Surcharge Calculator | July and August 2026 Official Filing Comparison',
+    'calc.metaDesc':'Compare July 2026 official fuel surcharge filings and confirmed August 2026 official notices for Korea-origin international flights by route, airline, trip type and passenger count.',
+    'calc.notice':'<strong>Notice:</strong> The calculator compares July 2026 official filings and shows August 2026 official amounts for ' + confirmedEn + '. Air Premia remains marked as August filing pending.',
+    'calc.readiness.body':'The calculator reflects confirmed August 2026 official notices for ' + confirmedEn + '. Air Premia remains separated as pending.',
+    'calc.faq.july.body':'Partly. Confirmed August 2026 official amounts are shown for Korean Air, Asiana Airlines, Jin Air, Air Busan, Tway Air, Eastar Jet, Air Seoul and Jeju Air. Pending airlines are marked separately.'
+  };
+  var packs = { ko: ko, en: en, ja: en, zh: en, fr: en, de: en };
+  Object.keys(packs).forEach(function(lang){
+    window.I18N[lang] = window.I18N[lang] || {};
+    Object.assign(window.I18N[lang], packs[lang]);
+    if (window.PAGE_I18N && PAGE_I18N[lang]) Object.assign(PAGE_I18N[lang], packs[lang]);
+  });
+  var desc = document.querySelector('meta[name="description"]');
+  if(desc) desc.setAttribute('content', ko['calc.metaDesc']);
+  if (window.renderSavingCalculator) window.renderSavingCalculator();
+})();
+
 window.initNav({
   onLangChange: function() {
     if (window.renderSavingCalculator) window.renderSavingCalculator();

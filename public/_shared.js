@@ -10712,4 +10712,115 @@ window.initNav = function(opts){
   window.applyLanguage();
 };
 
+/* 2026.07.22 07:00 KST update: Jeju Air August notice verified + market snapshot. */
+(function(){
+  var jejuNoticeUrl = 'https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000739';
+  window._7C_OFFICIAL_OVERRIDE = window._7C_OFFICIAL_OVERRIDE || {};
+  window._7C_OFFICIAL_OVERRIDE['2026.08'] = {
+    airlineCode: '7C',
+    airlineName: '제주항공',
+    sourceType: 'official_notice',
+    status: 'official_verified',
+    confidence: 'fresh',
+    currency: 'USD',
+    surchargeSchema: 'mileage_band',
+    officialNoticeUrl: jejuNoticeUrl,
+    verifiedAt: '2026-07-22T07:00:00+09:00',
+    applicableFrom: '2026-08-01',
+    applicableTo: '2026-08-31',
+    ticketingBasis: true,
+    oneWay: true,
+    items: [
+      { distanceRange: '1~500mile', label: '1~500마일', amount: 22, currency: 'USD' },
+      { distanceRange: '500~1000mile', label: '500~1000마일', amount: 28, currency: 'USD' },
+      { distanceRange: '1000~1500mile', label: '1000~1500마일', amount: 34, currency: 'USD' },
+      { distanceRange: '1500~2000mile', label: '1500~2000마일', amount: 40, currency: 'USD' },
+      { distanceRange: '2000~2500mile', label: '2000~2500마일', amount: 45, currency: 'USD' },
+      { distanceRange: '2500mile+', label: '2500마일 이상', amount: 52, currency: 'USD' }
+    ]
+  };
+  window._AUGUST_2026_OFFICIAL_OVERRIDES = window._AUGUST_2026_OFFICIAL_OVERRIDES || {};
+  window._AUGUST_2026_OFFICIAL_OVERRIDES['7C'] = {
+    '2026.08': window._7C_OFFICIAL_OVERRIDE['2026.08']
+  };
+  if (window.MANUAL_OVERRIDES) {
+    window.MANUAL_OVERRIDES['7C'] = window.MANUAL_OVERRIDES['7C'] || {};
+    window.MANUAL_OVERRIDES['7C']['2026.08'] = window._7C_OFFICIAL_OVERRIDE['2026.08'];
+  }
+
+  window.AERO_MARKET_NUMBERS_20260722 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
+    asOf: '2026.07.22 07:00 KST',
+    lastUpdated: '2026-07-22T07:00:00+09:00',
+    currentMonthNotice: '2026-08',
+    forecastTargetMonth: '2026-09',
+    usdKrw: 1482,
+    usdKrwLabel: '약 1,482원',
+    usdKrwValueType: 'rounded_reference',
+    brentUsdPerBbl: 91.01,
+    brentUsdPerBblLabel: '91.01달러/bbl',
+    wtiUsdPerBbl: 84.91,
+    wtiUsdPerBblLabel: '84.91달러/bbl',
+    iataJetFuelUsdPerBbl: 149.40,
+    iataJetFuelWeeklyChangePct: 17.6,
+    augustMopsAverageUsdPerBbl: 119.06,
+    previousMopsAverageUsdPerBbl: 142.09,
+    augustMopsAverageChangePct: -16.2,
+    augustSurchargeLevel: 14,
+    augustSurchargeStage: 14,
+    julySurchargeLevel: 19,
+    julySurchargeStage: 19,
+    augustStageChangeVsJuly: -5,
+    septemberCalculationFrom: '2026-07-16',
+    septemberCalculationTo: '2026-08-15',
+    septemberMopsAverageStatus: 'in_progress',
+    septemberSurchargeStatus: 'forecast_only_not_announced',
+    currentSingaporeMopsExactValue: null,
+    augustOfficialConfirmedAirlines: ['KE', 'OZ', 'LJ', 'BX', 'TW', 'ZE', 'RS', '7C'],
+    augustOfficialPendingAirlines: ['YP'],
+    hormuzCommodityVessels: 4,
+    hormuzCommodityVesselsPreviousDay: 7,
+    hormuzVlccObserved: 0,
+    hormuzLngCarrierObserved: 0,
+    hormuzStatus: 'reduced_commodity_vessel_flow_not_full_blockade',
+    referenceAsOf: {
+      usdKrw: '2026.07.22 07:00 KST rounded reference',
+      oil: '2026.07.21 market close',
+      iataJetFuel: 'latest IATA weekly global average',
+      augustMops: '2026.06.16~2026.07.15 average used for August surcharge',
+      hormuz: 'Reuters 2026.07.21 Kpler shipping data'
+    },
+    sources: {
+      augustFiling: 'Airline official August notices: KE/OZ/LJ/BX/TW/ZE/RS/7C',
+      usdKrw: 'USD/KRW rounded reference around 2026.07.22 07:00 KST',
+      iataJetFuel: 'IATA Jet Fuel Price Monitor weekly global average',
+      oil: 'Reuters oil market close references',
+      hormuz: 'Reuters 2026.07.21 Kpler shipping data'
+    }
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260722;
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1482 });
+
+  var koMarket = {
+    marketDataRef: '2026.07.22 07:00 KST 기준',
+    marketBrent: '국제유가: 2026.07.21 종가 기준 Brent는 91.01달러/bbl, WTI는 84.91달러/bbl입니다. 9월 유류할증료 산정 초반에는 유가 반등이 상방 변수입니다.',
+    marketMops: '항공유 가격(MOPS): 8월 공시에 사용된 산정 평균은 119.06달러/bbl로 직전 142.09달러/bbl 대비 약 16.2% 낮았습니다. 반면 IATA 글로벌 항공유 주간 평균은 149.40달러/bbl로 전주 대비 17.6% 상승했습니다. IATA 수치는 현재 싱가포르 MOPS나 9월 산정 평균이 아닙니다.',
+    marketFx: '원달러 환율: 2026.07.22 07:00 KST 기준 약 1,482원입니다. USD 공시 항공사의 원화 체감액은 결제 시점 환율에 따라 달라질 수 있습니다.',
+    marketGeo: '호르무즈 해협: Reuters/Kpler 기준 상품선 통항은 전일 7척에서 4척으로 줄었고 VLCC와 LNG 운반선 관측은 없었습니다. 전면 봉쇄로 단정하지 않되 물류·보험료 리스크는 남아 있습니다.',
+    marketOutlook: '2026년 8월 국제선 유류할증료는 14단계로 확정됐고 제주항공까지 공식 공시가 확인됐습니다. 2026년 9월은 산정 기간이 진행 중이며 Brent·WTI 반등, IATA 항공유 상승, 호르무즈 물류 감소를 함께 봐야 합니다.'
+  };
+  var enMarket = {
+    marketDataRef: 'As of 2026.07.22 07:00 KST',
+    marketBrent: 'Oil prices: Brent closed at USD 91.01/bbl and WTI at USD 84.91/bbl on 2026.07.21. The rebound is an early upside variable for September calculation.',
+    marketMops: 'Jet fuel price (MOPS): the August filing average was USD 119.06/bbl, about 16.2% below the previous USD 142.09/bbl reference. IATA global weekly jet fuel averaged USD 149.40/bbl, up 17.6% week on week. The IATA figure is not current Singapore MOPS or the September average.',
+    marketFx: 'USD/KRW: about KRW 1,482 as of 2026.07.22 07:00 KST. KRW-equivalent burden for USD-notice airlines can vary by payment-time FX.',
+    marketGeo: 'Strait of Hormuz: Reuters/Kpler data showed commodity vessels down to four from seven the previous day, with no observed VLCC or LNG carrier. Do not describe this as a full blockade, but logistics and insurance risk remain.',
+    marketOutlook: 'August 2026 international fuel surcharge is confirmed at Level 14, and Jeju Air August notice is now verified. September is still in calculation; Brent/WTI rebound, higher IATA jet fuel and reduced Hormuz activity must be tracked together.'
+  };
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), koMarket);
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), enMarket);
+    ['ja','zh','fr','de'].forEach(function(lang){ Object.assign(window.I18N_SHARED[lang] || (window.I18N_SHARED[lang] = {}), enMarket); });
+  }
+})();
+
 })();
