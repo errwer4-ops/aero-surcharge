@@ -10823,4 +10823,95 @@ window.initNav = function(opts){
   }
 })();
 
+/* 2026.07.23 07:00 KST update: oil rebound, Hormuz/Red Sea logistics risk, September outlook pressure. */
+(function(){
+  window.AERO_MARKET_NUMBERS_20260723 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
+    asOf: '2026.07.23 07:00 KST',
+    lastUpdated: '2026-07-23T07:00:00+09:00',
+    currentMonthNotice: '2026-08',
+    forecastTargetMonth: '2026-09',
+    usdKrw: 1482,
+    usdKrwLabel: '약 1,482원',
+    usdKrwValueType: 'rounded_near_time_reference',
+    usdKrwReferenceTime: '2026.07.23 07:00 전후 공개 시세',
+    brentUsdPerBbl: 94.07,
+    brentUsdPerBblLabel: '94.07달러/bbl',
+    brentDailyChangeUsd: 3.06,
+    brentDailyChangePct: 3.4,
+    wtiUsdPerBbl: 86.83,
+    wtiUsdPerBblLabel: '86.83달러/bbl',
+    wtiDailyChangePct: 2.3,
+    augustMopsAverageUsdPerBbl: 119.06,
+    previousMopsAverageUsdPerBbl: 142.09,
+    augustMopsAverageChangePct: -16.2,
+    iataJetFuelUsdPerBbl: 149.40,
+    iataJetFuelWeeklyChangePct: 17.6,
+    augustSurchargeLevel: 14,
+    augustSurchargeStage: 14,
+    julySurchargeLevel: 19,
+    julySurchargeStage: 19,
+    augustStageChangeVsJuly: -5,
+    septemberCalculationFrom: '2026-07-16',
+    septemberCalculationTo: '2026-08-15',
+    septemberMopsAverageStatus: 'in_progress',
+    septemberSurchargeStatus: 'forecast_only_not_announced',
+    septemberSurchargeConfirmed: false,
+    currentSingaporeMopsExactValue: null,
+    augustOfficialConfirmedAirlines: ['KE', 'OZ', 'LJ', 'BX', 'TW', 'ZE', 'RS', '7C'],
+    augustOfficialPendingAirlines: ['YP'],
+    hormuzCommodityVesselsObserved: 3,
+    hormuzCommodityVesselsPreviousDay: 4,
+    hormuzVlccObservedInDataset: false,
+    hormuzLngCarrierObservedInDataset: false,
+    hormuzStatus: 'reduced_commodity_vessel_flow_not_full_blockade',
+    redSeaTankersRerouted: 5,
+    cmaCgmEmergencySurchargeUsdMin: 65,
+    cmaCgmEmergencySurchargeUsdMax: 165,
+    outlookDirection: 'upward_pressure_increased',
+    outlookConfidence: 'medium',
+    referenceAsOf: {
+      usdKrw: '2026.07.23 07:00 전후 공개 시세, 반올림 표시',
+      oil: '2026.07.22 미국 시장 종가',
+      iataJetFuel: 'IATA 최신 글로벌 주간 항공유 평균',
+      augustMops: '2026.06.16~2026.07.15 평균, 8월 공시 산정값',
+      hormuz: 'Reuters 2026.07.22, Kpler 상품선 통항 자료',
+      redSea: 'Reuters 2026.07.22 선박 항로 변경 자료',
+      shippingSurcharge: 'Reuters 2026.07.22 CMA CGM 발표'
+    },
+    sources: {
+      augustFiling: 'Airline official August notices: KE/OZ/LJ/BX/TW/ZE/RS/7C',
+      usdKrw: 'Latest USD/KRW quote around 2026.07.23 07:00 KST',
+      iataJetFuel: 'IATA Jet Fuel Price Monitor weekly global average',
+      oil: 'Reuters 2026.07.22 oil market close references',
+      hormuz: 'Reuters 2026.07.22 Kpler shipping data',
+      redSea: 'Reuters 2026.07.22 tanker rerouting data',
+      shippingSurcharge: 'Reuters 2026.07.22 CMA CGM emergency surcharge report'
+    }
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260723;
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1482 });
+
+  var koMarket = {
+    marketDataRef: '2026.07.23 07:00 KST 기준',
+    marketBrent: '국제유가: 2026.07.22 미국 시장 종가 기준 Brent는 94.07달러/bbl, WTI는 86.83달러/bbl입니다. 이미 확정된 8월 공시가 아니라 9월 유류할증료 산정 기간의 상방 변수입니다.',
+    marketMops: '항공유 가격(MOPS): 8월 공시에 사용된 싱가포르 MOPS 평균은 119.06달러/bbl입니다. 최신 IATA 글로벌 항공유 주간 평균은 149.40달러/bbl로 전주 대비 17.6% 상승했지만, 이는 당일 싱가포르 MOPS나 9월 산정 평균이 아닙니다.',
+    marketFx: '원달러 환율: 2026.07.23 07:00 전후 공개 시세 기준 약 1,482원입니다. 환율이 뚜렷하게 하락하지 않은 상황에서 유가와 항공유 상승 압력을 상쇄하는 효과는 제한적입니다.',
+    marketGeo: '호르무즈 해협: Reuters/Kpler 기준 상품선 통항은 월요일 4척에서 화요일 3척으로 줄었고, 해당 집계에서 VLCC와 LNG 운반선은 관측되지 않았습니다. 전면 봉쇄로 단정하지 않되 정상 수준과는 거리가 있습니다.',
+    marketOutlook: '2026년 8월 국제선 유류할증료는 14단계로 확정됐습니다. 2026년 9월은 아직 공시 전이며 IATA 항공유 상승, Brent·WTI 반등, 호르무즈 통항 감소, 홍해 항로 변경으로 재상승 압력이 추가 확대됐습니다.'
+  };
+  var enMarket = {
+    marketDataRef: 'As of 2026.07.23 07:00 KST',
+    marketBrent: 'Oil prices: Brent closed at USD 94.07/bbl and WTI at USD 86.83/bbl on 2026.07.22. This affects the September calculation window, not the already confirmed August notices.',
+    marketMops: 'Jet fuel price (MOPS): the August filing MOPS average was USD 119.06/bbl. IATA global weekly jet fuel is USD 149.40/bbl, up 17.6% week on week, but this is not current Singapore MOPS or the September average.',
+    marketFx: 'USD/KRW: about KRW 1,482 around 2026.07.23 07:00 KST. FX has not fallen enough to offset higher oil and jet-fuel pressure.',
+    marketGeo: 'Strait of Hormuz: Reuters/Kpler data showed commodity-vessel crossings down to three from four, with no VLCC or LNG carrier observed in the cited dataset. This is not a confirmed full blockade, but traffic remains far from normal.',
+    marketOutlook: 'August 2026 international fuel surcharge is confirmed at Level 14. September is not announced yet, and upside pressure has increased from higher IATA jet fuel, Brent/WTI rebound, reduced Hormuz traffic and Red Sea rerouting.'
+  };
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), koMarket);
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), enMarket);
+    ['ja','zh','fr','de'].forEach(function(lang){ Object.assign(window.I18N_SHARED[lang] || (window.I18N_SHARED[lang] = {}), enMarket); });
+  }
+})();
+
 })();
