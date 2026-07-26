@@ -11,6 +11,7 @@ const apiHandlers = {
   "/api/myrealtrip/reservations": require("../api/myrealtrip/reservations"),
   "/api/myrealtrip/revenues": require("../api/myrealtrip/revenues"),
   "/api/myrealtrip/flights": require("../api/myrealtrip/flights"),
+  "/api/travel/plan": require("../api/travel/plan"),
 };
 
 const contentTypes = {
