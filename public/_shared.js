@@ -556,6 +556,198 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
       Object.assign(window.I18N_SHARED[lang] || (window.I18N_SHARED[lang] = {}), enMarket);
     });
   }
+/* 2026.07.28 08:30 KST final market override: August confirmed, September outlook with latest FX, oil, IATA jet fuel and shipping risk. */
+(function(){
+  window.AERO_MARKET_NUMBERS_20260728 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
+    asOf: '2026.07.28 08:30 KST',
+    lastUpdated: '2026-07-28T08:30:00+09:00',
+    currentMonthNotice: '2026-08',
+    forecastTargetMonth: '2026-09',
+    usdKrw: 1466,
+    usdKrwLabel: '약 1,466원',
+    usdKrwRangeLabel: '약 1,465~1,467원대',
+    usdKrwValueType: 'rounded_near_time_reference',
+    usdKrwReferenceTime: '2026.07.28 08:30 KST 전후 공개 시세',
+    brentUsdPerBbl: 88.36,
+    brentUsdPerBblLabel: '88.36달러/bbl',
+    brentDailyChangeUsd: -8.42,
+    brentDailyChangePct: -8.7,
+    brentReferenceType: '2026.07.27 market close',
+    wtiUsdPerBbl: 82.61,
+    wtiUsdPerBblLabel: '82.61달러/bbl',
+    wtiDailyChangeUsd: -6.70,
+    wtiDailyChangePct: -7.5,
+    wtiReferenceType: '2026.07.27 market close',
+    augustMopsAverageUsdPerBbl: 119.06,
+    previousMopsAverageUsdPerBbl: 142.09,
+    augustMopsAverageChangePct: -16.2,
+    iataJetFuelUsdPerBbl: 160.06,
+    iataJetFuelWeeklyChangePct: 7.1,
+    augustSurchargeLevel: 14,
+    augustSurchargeStage: 14,
+    julySurchargeLevel: 19,
+    julySurchargeStage: 19,
+    augustStageChangeVsJuly: -5,
+    septemberCalculationFrom: '2026-07-16',
+    septemberCalculationTo: '2026-08-15',
+    septemberMopsAverageStatus: 'in_progress',
+    septemberSurchargeStatus: 'forecast_only_not_announced',
+    septemberSurchargeConfirmed: false,
+    currentSingaporeMopsExactValue: null,
+    augustOfficialConfirmedAirlines: ['KE', 'OZ', 'LJ', 'BX', 'TW', 'ZE', 'RS', '7C'],
+    augustOfficialPendingAirlines: ['YP'],
+    hormuzWeekendDailyCrossingsMax: 9,
+    hormuzWeekendCrossingsLabel: '하루 10척 미만',
+    hormuzEstimatedNormalSharePct: 15,
+    hormuzStatus: 'severely_restricted_not_fully_closed',
+    babElMandebCommodityVessels: 11,
+    babElMandebTankerVessels: 7,
+    babElMandebStatus: 'multi_month_daily_low',
+    usIranDiplomaticContactOngoing: true,
+    usIranFormalCeasefireConfirmed: false,
+    usIranFinalAgreementConfirmed: false,
+    usIranStrikeResumptionRisk: true,
+    iranReportedVesselsTurnedBack: 6,
+    iranClaimIndependentlyConfirmed: false,
+    outlookDirection: 'upward_pressure_remains_short_term_spike_risk_eased',
+    outlookConfidence: 'medium',
+    marketVolatility: 'very_high',
+    referenceAsOf: {
+      usdKrw: '2026.07.28 08:30 KST 전후 공개 시세, 반올림 표시',
+      oil: '2026.07.27 시장 종가',
+      iataJetFuel: 'IATA 최신 글로벌 주간 항공유 평균',
+      augustMops: '2026.06.16~2026.07.15 평균, 8월 공시 산정값',
+      hormuz: 'Reuters 2026.07.26~2026.07.27, Kpler 통항 자료',
+      babElMandeb: 'Reuters 2026.07.27, Kpler 상품선 통항 자료',
+      usIran: 'Reuters 2026.07.27 협상 접촉 및 통항 부진 보도'
+    },
+    sources: {
+      augustFiling: 'Airline official August notices: KE/OZ/LJ/BX/TW/ZE/RS/7C; YP official amount pending visual check',
+      usdKrw: 'USD/KRW rounded reference around 2026.07.28 08:30 KST',
+      iataJetFuel: 'IATA Jet Fuel Price Monitor weekly global average',
+      oil: 'Reuters 2026.07.27 market close references',
+      hormuz: 'Reuters 2026.07.27 Kpler Strait of Hormuz shipping data',
+      babElMandeb: 'Reuters 2026.07.27 Kpler Bab el-Mandeb shipping data',
+      usIran: 'Reuters 2026.07.27 U.S.-Iran diplomatic contact and strike-risk context'
+    }
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260728;
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1466 });
+
+  var koMarket = {
+    marketDataRef: '2026.07.28 08:30 KST 기준',
+    marketBrent: '국제유가: 2026.07.27 종가 기준 Brent는 88.36달러/bbl, WTI는 82.61달러/bbl입니다. 미국·이란 공격 중단 기대가 반영되며 하루 기준 급락했지만, 해상 운송 정상화가 확인된 것은 아닙니다.',
+    marketMops: '항공유 가격(MOPS): 8월 공시에 사용된 싱가포르 MOPS 기간 평균은 119.06달러/bbl입니다. 최신 IATA 글로벌 항공유 주간 평균은 160.06달러/bbl로 전주 대비 7.1% 상승했습니다. IATA 수치는 현재 싱가포르 MOPS나 9월 산정 평균이 아닙니다.',
+    marketFx: '원달러 환율: 2026.07.28 08:30 전후 공개 시세 기준 약 1,466원입니다. 7월 중순 고점보다 낮아 원화 환산 부담은 일부 완화됐지만 항공유 상승 압력을 모두 상쇄하지는 못합니다.',
+    marketGeo: '호르무즈 해협: 주말 상품선 통항은 하루 10척 미만으로 정상 수준의 약 15%에 그친 것으로 분석됩니다. 완전 봉쇄로 단정하지 않되, 통항 제한·보험료·지연 리스크가 남아 있습니다.',
+    marketOutlook: '2026년 8월 국제선 유류할증료는 14단계 인하로 확정됐습니다. 2026년 9월은 아직 산정 기간 중이며, 현재 판단은 상승 압력 우세·단기 급등 위험 일부 완화·변동성 매우 높음입니다.'
+  };
+  var enMarket = {
+    marketDataRef: 'As of 2026.07.28 08:30 KST',
+    marketBrent: 'Oil prices: Brent closed at USD 88.36/bbl and WTI at USD 82.61/bbl on 2026.07.27. Prices fell sharply on hopes around a U.S.-Iran pause, but maritime logistics have not normalized.',
+    marketMops: 'Jet fuel price (MOPS): the Singapore MOPS average used for August notices was USD 119.06/bbl. Latest IATA global weekly jet fuel averaged USD 160.06/bbl, up 7.1% week on week. The IATA figure is not current Singapore MOPS or the September calculation average.',
+    marketFx: 'USD/KRW: about KRW 1,466 around 2026.07.28 08:30 KST. This is lower than mid-July stress levels and partly eases KRW conversion burden, but it does not offset all jet-fuel pressure.',
+    marketGeo: 'Strait of Hormuz: weekend commodity-vessel crossings were below ten per day, estimated around 15% of pre-crisis normal flow. Do not describe it as a full blockade, but traffic limits, insurance and delay risk remain.',
+    marketOutlook: 'August 2026 international fuel surcharge is confirmed at Level 14. September is still in calculation; current view is upward pressure remains, short-term spike risk has eased, and volatility is very high.'
+  };
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), koMarket);
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), enMarket);
+    ['ja','zh','fr','de'].forEach(function(lang){
+      Object.assign(window.I18N_SHARED[lang] || (window.I18N_SHARED[lang] = {}), enMarket);
+    });
+  }
+})();
+
+/* 2026.07.28 08:30 KST terminal override. Keep this last so older dated blocks cannot replace the active market snapshot. */
+(function(){
+  window.AERO_MARKET_NUMBERS_20260728 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
+    asOf: '2026.07.28 08:30 KST',
+    lastUpdated: '2026-07-28T08:30:00+09:00',
+    currentMonthNotice: '2026-08',
+    forecastTargetMonth: '2026-09',
+    usdKrw: 1466,
+    usdKrwLabel: '약 1,466원',
+    usdKrwReferenceTime: '2026.07.28 08:30 KST 전후 공개 시세',
+    brentUsdPerBbl: 88.36,
+    brentUsdPerBblLabel: '88.36달러/bbl',
+    brentDailyChangeUsd: -8.42,
+    brentDailyChangePct: -8.7,
+    wtiUsdPerBbl: 82.61,
+    wtiUsdPerBblLabel: '82.61달러/bbl',
+    wtiDailyChangeUsd: -6.70,
+    wtiDailyChangePct: -7.5,
+    augustMopsAverageUsdPerBbl: 119.06,
+    previousMopsAverageUsdPerBbl: 142.09,
+    augustMopsAverageChangePct: -16.2,
+    iataJetFuelUsdPerBbl: 160.06,
+    iataJetFuelWeeklyChangePct: 7.1,
+    augustSurchargeLevel: 14,
+    augustSurchargeStage: 14,
+    julySurchargeLevel: 19,
+    julySurchargeStage: 19,
+    augustStageChangeVsJuly: -5,
+    septemberCalculationFrom: '2026-07-16',
+    septemberCalculationTo: '2026-08-15',
+    septemberMopsAverageStatus: 'in_progress',
+    septemberSurchargeStatus: 'forecast_only_not_announced',
+    septemberSurchargeConfirmed: false,
+    currentSingaporeMopsExactValue: null,
+    augustOfficialConfirmedAirlines: ['KE', 'OZ', 'LJ', 'BX', 'TW', 'ZE', 'RS', '7C'],
+    augustOfficialPendingAirlines: ['YP'],
+    hormuzCommodityVesselsObserved: 'below_10_per_day',
+    hormuzNormalFlowSharePct: 15,
+    hormuzStatus: 'severely_restricted_not_full_blockade',
+    babElMandebCommodityVesselsObserved: 11,
+    babElMandebTankersObserved: 7,
+    babElMandebStatus: 'multi_month_low',
+    usIranDiplomaticContact: true,
+    usIranFormalCeasefire: false,
+    usIranFinalAgreement: false,
+    iranVesselsTurnedBackClaim: 6,
+    iranVesselsTurnedBackClaimConfirmed: false,
+    outlookDirection: 'upward_pressure_remains_short_term_spike_risk_eased',
+    outlookConfidence: 'medium',
+    volatility: 'very_high',
+    referenceAsOf: {
+      usdKrw: '2026.07.28 08:30 KST 전후 공개 시세, 반올림 표시',
+      oil: '2026.07.27 시장 종가',
+      iataJetFuel: 'IATA 최신 글로벌 주간 항공유 평균',
+      augustMops: '2026.06.16~2026.07.15 평균, 8월 공시 산정값',
+      septemberMops: '2026.07.16~2026.08.15 산정 기간 진행 중, 평균 미확정',
+      hormuz: 'Reuters 2026.07.26~2026.07.27, Kpler 통항 자료',
+      babElMandeb: 'Reuters 2026.07.27, Kpler 상품선 통항 자료',
+      usIran: 'Reuters 2026.07.27 협상 접촉 및 통항 부진 보도'
+    }
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260728;
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1466 });
+
+  var koMarket = {
+    marketDataRef: '2026.07.28 08:30 KST 기준',
+    marketBrent: '국제유가: 2026.07.27 종가 기준 Brent는 88.36달러/bbl, WTI는 82.61달러/bbl입니다. 미국·이란 공격 중단 기대가 반영되며 하루 기준 급락했지만, 해상 운송 정상화가 확인된 것은 아닙니다.',
+    marketMops: '항공유 가격(MOPS): 8월 공시에 사용된 싱가포르 MOPS 기간 평균은 119.06달러/bbl입니다. 최신 IATA 글로벌 항공유 주간 평균은 160.06달러/bbl로 전주 대비 7.1% 상승했습니다. IATA 수치는 현재 싱가포르 MOPS나 9월 산정 평균이 아닙니다.',
+    marketFx: '원달러 환율: 2026.07.28 08:30 전후 공개 시세 기준 약 1,466원입니다. 7월 중순 고점보다 낮아 원화 환산 부담은 일부 완화됐지만 항공유 상승 압력을 모두 상쇄하지는 못합니다.',
+    marketGeo: '호르무즈 해협: 주말 상품선 통항은 하루 10척 미만으로 정상 수준의 약 15%에 그친 것으로 분석됩니다. 바브엘만데브 상품선 통항도 11척 수준으로 줄어 전면 봉쇄는 아니지만 운송 리스크가 남아 있습니다.',
+    marketOutlook: '2026년 8월 국제선 유류할증료는 14단계 인하로 확정됐습니다. 2026년 9월은 아직 산정 기간 중이며, 현재 판단은 상승 압력 우세·단기 급등 위험 일부 완화·변동성 매우 높음입니다.'
+  };
+  var enMarket = {
+    marketDataRef: 'As of 2026.07.28 08:30 KST',
+    marketBrent: 'Oil prices: Brent closed at USD 88.36/bbl and WTI at USD 82.61/bbl on 2026.07.27. Prices fell sharply on hopes around a U.S.-Iran pause, but maritime logistics have not normalized.',
+    marketMops: 'Jet fuel price (MOPS): the Singapore MOPS average used for August notices was USD 119.06/bbl. Latest IATA global weekly jet fuel averaged USD 160.06/bbl, up 7.1% week on week. The IATA figure is not current Singapore MOPS or the September calculation average.',
+    marketFx: 'USD/KRW: about KRW 1,466 around 2026.07.28 08:30 KST. This is lower than mid-July stress levels and partly eases KRW conversion burden, but it does not offset all jet-fuel pressure.',
+    marketGeo: 'Strait of Hormuz: weekend commodity-vessel crossings were below ten per day, estimated around 15% of normal flow. Bab el-Mandeb commodity traffic also fell to around 11 vessels, so this is not a full blockade but transport risk remains.',
+    marketOutlook: 'August 2026 international fuel surcharge is confirmed at Level 14. September is still in calculation; current view is upward pressure remains, short-term spike risk has eased, and volatility is very high.'
+  };
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), koMarket);
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), enMarket);
+    ['ja','zh','fr','de'].forEach(function(lang){
+      Object.assign(window.I18N_SHARED[lang] || (window.I18N_SHARED[lang] = {}), enMarket);
+    });
+  }
+})();
+
 })();
 
 (function(){
