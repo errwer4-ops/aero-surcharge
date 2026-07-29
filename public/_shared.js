@@ -750,6 +750,116 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
 
 })();
 
+/* 2026.07.29 08:30 KST terminal market override. Keep this last so older dated blocks cannot replace the active snapshot. */
+(function(){
+  window.AERO_MARKET_NUMBERS_20260729 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
+    asOf: '2026.07.29 08:30 KST',
+    lastUpdated: '2026-07-29T08:30:00+09:00',
+    currentMonthNotice: '2026-08',
+    forecastTargetMonth: '2026-09',
+    usdKrw: 1454,
+    usdKrwLabel: '약 1,454원',
+    usdKrwRangeLabel: '약 1,453~1,454원대',
+    usdKrwMin: 1452.83,
+    usdKrwMax: 1454.21,
+    usdKrwValueType: 'rounded_near_time_reference',
+    usdKrwReferenceTime: '2026.07.29 08:30 KST 전후 공개 시세',
+    brentUsdPerBbl: 84.09,
+    brentDailyChangeUsd: -4.27,
+    brentDailyChangePct: -4.8,
+    brentThreeSessionChangePct: -16.0,
+    brentReferenceType: '2026.07.28 market close',
+    wtiUsdPerBbl: 79.26,
+    wtiDailyChangeUsd: -3.35,
+    wtiDailyChangePct: -4.1,
+    wtiReferenceType: '2026.07.28 market close',
+    augustMopsAverageUsdPerBbl: 119.06,
+    augustMopsAverageCentsPerGallon: 283.48,
+    previousMopsAverageUsdPerBbl: 142.09,
+    previousMopsAverageCentsPerGallon: 338.3,
+    augustMopsAverageChangePct: -16.2,
+    iataJetFuelUsdPerBbl: 160.06,
+    iataJetFuelWeeklyChangePct: 7.1,
+    currentSingaporeMopsExactValue: null,
+    septemberCalculationFrom: '2026-07-16',
+    septemberCalculationTo: '2026-08-15',
+    septemberSurchargeConfirmed: false,
+    septemberMopsAverageStatus: 'in_progress',
+    septemberSurchargeStatus: 'forecast_only_not_announced',
+    augustSurchargeLevel: 14,
+    augustSurchargeStage: 14,
+    julySurchargeLevel: 19,
+    julySurchargeStage: 19,
+    augustStageChangeVsJuly: -5,
+    augustOfficialConfirmedAirlines: ['KE','OZ','LJ','BX','TW','ZE','RS','7C'],
+    augustOfficialPendingAirlines: ['YP'],
+    hormuzCommodityVessels: 6,
+    hormuzPreviousDayCommodityVessels: 7,
+    hormuzInboundVessels: 4,
+    hormuzOutboundVessels: 2,
+    hormuzSuezmaxObserved: 1,
+    hormuzVlccWithAisOffObserved: 1,
+    hormuzStatus: 'severely_restricted_not_fully_closed',
+    hormuzRegionalManagementProposal: true,
+    hormuzManagementAgreementReached: false,
+    iranCounterProposalReported: true,
+    babElMandebCommodityVessels: 28,
+    babElMandebPreviousDayVessels: 11,
+    babElMandebMonthlyHighVessels: 46,
+    babElMandebInboundVessels: 12,
+    babElMandebOutboundVessels: 16,
+    babElMandebInboundTankers: 4,
+    babElMandebOutboundTankers: 10,
+    babElMandebStatus: 'partial_recovery_not_normalized',
+    jazanRefineryCapacityBpd: 400000,
+    jazanRefineryShutdownReported: true,
+    jazanCrudeProductionShutdown: false,
+    usIranDirectStrikesPaused: true,
+    usIranFormalCeasefireConfirmed: false,
+    usIranFinalAgreementConfirmed: false,
+    usIranStrikeResumptionRisk: true,
+    outlookDirection: 'upward_pressure_remains_spike_risk_further_eased_downside_factors_expanded',
+    outlookConfidence: 'medium',
+    marketVolatility: 'very_high',
+    referenceAsOf: {
+      usdKrw: '2026.07.29 08:30 KST 전후 공개 시세, 반올림 표시',
+      oil: '2026.07.28 미국 시장 종가',
+      iataJetFuel: 'IATA 최신 글로벌 주간 항공유 평균',
+      augustMops: '2026.06.16~2026.07.15 평균, 8월 공시 산정값',
+      hormuz: 'Reuters 2026.07.28, Kpler 선박 추적 자료',
+      hormuzManagement: 'Reuters 2026.07.28 오만 중재안 및 이란 역제안',
+      babElMandeb: 'Reuters 2026.07.28, Kpler 선박 추적 자료',
+      jazan: 'Reuters 2026.07.28 지잔 정유공장 관련 보도'
+    }
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260729;
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1454 });
+
+  var koMarket = {
+    marketDataRef: '2026.07.29 08:30 KST 기준',
+    marketBrent: '국제유가: 2026.07.28 미국 시장 종가 기준 Brent는 84.09달러/bbl, WTI는 79.26달러/bbl입니다. Brent는 하루 4.8% 하락했고 최근 3거래일 기준 약 16% 낮아져 9월 유류할증료의 급등 위험은 추가 완화됐습니다.',
+    marketMops: '항공유 가격(MOPS): 8월 공시에 사용된 싱가포르 MOPS 평균은 119.06달러/bbl, 283.48 cents/gal입니다. 최신 IATA 글로벌 항공유 주간 평균은 160.06달러/bbl로 전주 대비 7.1% 상승했지만, 이는 현재 싱가포르 MOPS나 9월 산정 평균이 아닙니다.',
+    marketFx: '원달러 환율: 2026.07.29 08:30 전후 공개 시세 기준 약 1,454원입니다. 직전 1,466원대보다 낮아 USD 공시 항공사의 원화 환산 부담은 일부 완화됐습니다.',
+    marketGeo: '호르무즈 해협: Reuters/Kpler 기준 상품선 통항은 6척으로 전일 7척보다 줄었고, 입항 4척·출항 2척, Suezmax 1척과 AIS를 끈 VLCC 1척이 관측됐습니다. 전면 봉쇄는 아니지만 정상화도 아닙니다. 바브엘만데브는 28척으로 전일 11척보다 회복됐지만 월중 고점 46척에는 못 미칩니다.',
+    marketOutlook: '2026년 8월 국제선 유류할증료는 14단계로 확정됐습니다. 2026년 9월은 산정 기간이 진행 중이며, 유가와 환율 하락으로 하락 변수는 확대됐지만 IATA 항공유 상승, 호르무즈 제한 운항, 지잔 정유공장 차질 때문에 상승 압력과 높은 변동성은 남아 있습니다.'
+  };
+  var enMarket = {
+    marketDataRef: 'As of 2026.07.29 08:30 KST',
+    marketBrent: 'Oil prices: Brent closed at USD 84.09/bbl and WTI at USD 79.26/bbl on 2026.07.28. Brent fell 4.8% on the day and about 16% over three sessions, further easing near-term spike risk for the September surcharge window.',
+    marketMops: 'Jet fuel price (MOPS): the August filing MOPS average was USD 119.06/bbl, or 283.48 cents/gal. Latest IATA global weekly jet fuel averaged USD 160.06/bbl, up 7.1% week on week, but this is not current Singapore MOPS or the September calculation average.',
+    marketFx: 'USD/KRW: about KRW 1,454 around 2026.07.29 08:30 KST, below the previous KRW 1,466 area and partly easing KRW conversion burden for USD-notice airlines.',
+    marketGeo: 'Strait of Hormuz: Reuters/Kpler data showed six commodity vessels versus seven the previous day, with four inbound, two outbound, one Suezmax and one VLCC with AIS off observed. This is not a full blockade, but it is not normalization either. Bab el-Mandeb recovered to 28 vessels from 11, still below the monthly high of 46.',
+    marketOutlook: 'August 2026 international fuel surcharge is confirmed at Level 14. September is still in calculation: lower oil and FX expand downside variables, while higher IATA jet fuel, restricted Hormuz traffic and Jazan refinery disruption keep upward pressure and very high volatility in place.'
+  };
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), koMarket);
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), enMarket);
+    ['ja','zh','fr','de'].forEach(function(lang){
+      Object.assign(window.I18N_SHARED[lang] || (window.I18N_SHARED[lang] = {}), enMarket);
+    });
+  }
+})();
+
 (function(){
   var koMarket = {
     marketDataRef: '2026.06.22 07:00 KST 기준',
