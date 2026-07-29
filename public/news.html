@@ -8967,6 +8967,11 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
     window.PAGE_I18N_OVERRIDE[lang] = window.PAGE_I18N_OVERRIDE[lang] || {};
     Object.assign(window.PAGE_I18N_OVERRIDE[lang], en);
   });
+  window.PAGE_I18N_OVERRIDE.ko['news.marketBrief'] = '8월 국제선 유류할증료는 14단계로 확정됐고, 9월 유류할증료는 아직 산정 기간 중입니다. 7월 29일 기준 유가와 환율 하락은 완화 요인이지만 IATA 항공유 상승, 호르무즈 제한 운항, 지잔 정유공장 차질, 카스피해 이란 상선 피격, 09:37 이후 확인된 이라크 내 친이란 무장단체 시설 타격 보도로 지정학적 변동성은 다시 높아졌습니다.';
+  window.PAGE_I18N_OVERRIDE.en['news.marketBrief'] = 'August international fuel surcharge is confirmed at Level 14, while September remains in calculation. Lower oil and FX ease pressure, but higher IATA jet fuel, restricted Hormuz traffic, Jazan refinery disruption, the Caspian Iranian merchant-vessel incident and the post-09:37 KST Iraq militia strike report keep geopolitical volatility elevated.';
+  ['ja','zh','fr','de'].forEach(function(lang){
+    window.PAGE_I18N_OVERRIDE[lang]['news.marketBrief'] = window.PAGE_I18N_OVERRIDE.en['news.marketBrief'];
+  });
 
   var cards = [
     {
@@ -9110,6 +9115,68 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
       faq:[{q:'IATA 160.06달러는 싱가포르 MOPS인가요?',a:'아닙니다. IATA 글로벌 항공유 주간 평균이며, 국내 유류할증료 산정용 싱가포르 MOPS와 구분해야 합니다.'}]
     }
   ];
+  cards.push(
+    {
+      id:'ukraine-caspian-iran-vessel-20260729',
+      slug:'ukraine-drone-caspian-iran-merchant-vessel-july-2026',
+      category:'market',
+      priority:2,
+      date:'2026-07-29',
+      updatedAt:'2026-07-29T08:30:00+09:00',
+      badge:'지정학',
+      aiSummary:true,
+      relevanceScore:.88,
+      title:'우크라이나 드론, 카스피해 이란 상선 피격…확전 자제 논의',
+      aiBrief:'카스피해 이란 상선 피격으로 사상자가 발생했지만, 우크라이나는 의도적인 민간 선박 공격이 아니었다고 설명했습니다.',
+      summary:'카스피해의 이란 상선이 우크라이나 드론 공격을 받아 선원 1명이 사망하고 1명이 부상했습니다. 우크라이나 외무장관은 이란 측에 해당 공격이 의도적이지 않았으며 민간 선박을 목표로 하지 않았다고 설명했고, 양국은 확전 자제 필요성을 논의했습니다. 이 사안은 이란 본토 공격이 아니라 카스피해 상선 피격으로 구분해야 합니다.',
+      impact:'직접적인 항공유 공급 중단이나 MOPS 급등 근거는 아닙니다. 다만 카스피해까지 전선이 확대될 수 있다는 보조 지정학 리스크로, 9월 유류할증료 전망에서는 변동성 재상승 요인으로만 제한해 해석합니다.',
+      sourceName:'외신 보도 종합',
+      sourceUrl:'news.html',
+      tags:['우크라이나','이란 상선','카스피해','지정학 리스크','유류할증료 전망'],
+      links:[{href:'forecast.html',label:'9월 지정학 변수 보기'}],
+      faq:[{q:'우크라이나가 이란 본토를 공격한 건가요?',a:'아닙니다. 보도된 장소는 카스피해의 이란 상선이며, 이란 본토 공격으로 표현하면 안 됩니다.'}]
+    },
+    {
+      id:'us-saudi-iraq-militia-strike-20260729',
+      slug:'us-saudi-iraq-iran-backed-militia-strike-july-2026',
+      category:'market',
+      priority:2,
+      date:'2026-07-29',
+      updatedAt:'2026-07-29T09:37:00+09:00',
+      badge:'속보',
+      aiSummary:true,
+      relevanceScore:.9,
+      title:'미국·사우디, 이라크 내 친이란 무장단체 시설 공동 타격',
+      aiBrief:'2026.07.29 09:37 KST 이후 공개된 보도로, 공격 장소는 이란 영토가 아니라 이라크입니다.',
+      summary:'미국과 사우디군이 7월 28일 이라크 내 이란 연계 무장단체 시설을 공동 타격했다는 보도가 2026.07.29 09:37 KST경 공개됐습니다. 이 내용은 기존 08:30 기준 시장 본문에 소급 반영하지 않고 08:30 이후 추가 속보로 구분합니다. 공격 장소는 이란 영토가 아니라 이라크 내 친이란 무장단체 시설로 명확히 구분합니다.',
+      impact:'이라크 내 공격은 중동 충돌 범위 확대 가능성을 높이는 상방 리스크입니다. 다만 직접적인 항공유 공급 중단이 확인된 것은 아니므로 9월 유류할증료 인상을 확정하는 근거로 사용하지 않습니다.',
+      sourceName:'09:37 KST 이후 외신 속보',
+      sourceUrl:'news.html',
+      tags:['미국 사우디','이라크','친이란 무장단체','지정학 리스크','국제유가'],
+      links:[{href:'forecast.html',label:'속보 반영 전망 보기'}],
+      faq:[{q:'미국과 사우디가 이란을 직접 공격했나요?',a:'아닙니다. 이번 보도는 이란 영토가 아니라 이라크 내 친이란 무장단체 시설 타격으로 구분해야 합니다.'}]
+    },
+    {
+      id:'us-iran-strike-timeline-20260729',
+      slug:'us-iran-direct-strike-paused-not-ceasefire-july-2026',
+      category:'market',
+      priority:2,
+      date:'2026-07-29',
+      updatedAt:'2026-07-29T08:30:00+09:00',
+      badge:'시간순 정리',
+      aiSummary:true,
+      relevanceScore:.86,
+      title:'미국의 이란 직접 공습 경과, 중단 상태지만 정식 휴전은 아님',
+      aiBrief:'미국의 과거 이란 군사시설 공격, 현재 직접 공습 중단, 향후 재개 위험을 분리해 봐야 합니다.',
+      summary:'미국은 앞서 이란 군 지휘소, 미사일·드론 발사시설, 해상전력과 방공시설 등을 여러 차례 공격했습니다. 이후 직접 공습이 일시 중단된 상태로 관측되지만, 정식 휴전이나 최종 합의가 확인된 것은 아닙니다. 따라서 과거 공격, 현재 중단 상태, 향후 재개 위험을 시간순으로 구분해야 합니다.',
+      impact:'공격 중단은 단기 유가 급등 위험을 낮추는 요인이지만, 정식 휴전이 아니므로 지정학 리스크 프리미엄이 완전히 사라졌다고 보기 어렵습니다.',
+      sourceName:'미국·이란 충돌 경과 정리',
+      sourceUrl:'forecast.html',
+      tags:['미국 이란','공습 일시 중단','정식 휴전 아님','호르무즈 해협','국제유가'],
+      links:[{href:'forecast.html',label:'미국·이란 변수 보기'}],
+      faq:[{q:'미국과 이란의 정식 휴전이 체결됐나요?',a:'아닙니다. 직접 공습이 일시 중단된 상태로 보되, 정식 휴전이나 최종 합의로 표현하면 안 됩니다.'}]
+    }
+  );
   cards.forEach(function(card){
     card.i18n = card.i18n || {};
     card.i18n.en = {

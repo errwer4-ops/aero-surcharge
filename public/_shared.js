@@ -750,6 +750,51 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
 
 })();
 
+/* 2026.07.29 KST supplemental geopolitical override.
+   Keep at file end because older dated market blocks are accumulated above. */
+(function(){
+  var base = window.AERO_MARKET_NUMBERS_20260729 || window.AERO_MARKET_NUMBERS_LATEST || {};
+  window.AERO_MARKET_NUMBERS_20260729 = Object.assign({}, base, {
+    asOf: '2026.07.29 08:30 KST',
+    lastUpdated: '2026-07-29T09:37:00+09:00',
+    geopoliticalSupplementAsOf: '2026.07.29 09:37 KST',
+    ukraineCaspianIranMerchantVesselIncident: true,
+    ukraineCaspianIncidentCasualties: { killed: 1, injured: 1 },
+    ukraineCaspianIncidentDirectIranTerritoryAttack: false,
+    ukraineCaspianIncidentClassification: 'secondary_geopolitical_risk_not_direct_mops_variable',
+    usSaudiIraqMilitiaStrikeReported: true,
+    usSaudiIraqMilitiaStrikePublishedAt: '2026-07-29T09:37:00+09:00',
+    usSaudiIraqMilitiaStrikeTargetTerritory: 'Iraq',
+    usSaudiDirectIranTerritoryStrike: false,
+    usIranDirectStrikesPaused: true,
+    usIranFormalCeasefireConfirmed: false,
+    usIranStrikeResumptionRisk: true,
+    saudiDirectIranTerritoryStrikeNewInJuly: false,
+    geopoliticalVolatility: 're_rising',
+    outlookDirection: 'upward_pressure_remains_spike_risk_eased_but_geopolitical_volatility_re_rising'
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260729;
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1454 });
+
+  var koMarket = {
+    marketDataRef: '2026.07.29 08:30 KST 기준 · 09:37 이후 지정학 속보 별도 반영',
+    marketGeo: '호르무즈 해협은 상품선 6척으로 제한 운항 상태입니다. 추가로 카스피해 이란 상선 피격은 이란 본토 공격이 아니라 해상 상선 사건으로 분류하며, 미국·사우디의 이라크 내 친이란 무장단체 시설 타격 보도는 이란 영토 공격이 아니라 09:37 이후 속보로 구분합니다.',
+    marketOutlook: '2026년 9월 유류할증료는 아직 산정 기간 중입니다. 유가와 환율 하락은 완화 요인이지만 카스피해 상선 피격과 이라크 내 친이란 무장단체 시설 타격 보도로 군사적 충돌 범위 확대 가능성, 즉 지정학적 변동성이 다시 높아졌습니다. 다만 직접적인 항공유 공급 중단은 확인되지 않았으므로 9월 인상 단정 근거로 쓰지 않습니다.'
+  };
+  var enMarket = {
+    marketDataRef: 'As of 2026.07.29 08:30 KST · post-09:37 geopolitical breaking update separated',
+    marketGeo: 'Hormuz remains restricted at six commodity vessels. The Caspian Iranian merchant-vessel incident should not be described as an attack on Iranian territory, while the U.S.-Saudi strike report concerns Iran-linked militia facilities in Iraq and is treated as a post-09:37 KST breaking update.',
+    marketOutlook: 'September 2026 fuel surcharge is still in calculation. Lower oil and FX are easing factors, but the Caspian vessel incident and Iraq militia strike report have lifted geopolitical volatility again. No direct jet-fuel supply shutdown is confirmed, so this does not confirm a September surcharge increase.'
+  };
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), koMarket);
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), enMarket);
+    ['ja','zh','fr','de'].forEach(function(lang){
+      Object.assign(window.I18N_SHARED[lang] || (window.I18N_SHARED[lang] = {}), enMarket);
+    });
+  }
+})();
+
 /* 2026.07.29 08:30 KST terminal market override. Keep this last so older dated blocks cannot replace the active snapshot. */
 (function(){
   window.AERO_MARKET_NUMBERS_20260729 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {

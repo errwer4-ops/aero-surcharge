@@ -8144,6 +8144,26 @@ function renderForecastPage() {
     Object.assign(window.I18N.en || (window.I18N.en = {}), en);
     ['ja','zh','fr','de'].forEach(function(lang){ Object.assign(window.I18N[lang] || (window.I18N[lang] = {}), en); });
   }
+  var koSupplement = {
+    'fore.verdict.line3': '→ Brent·WTI 추가 급락과 환율 하락은 하방 변수입니다. 다만 IATA 항공유 160.06달러, 호르무즈 6척 제한 운항, 지잔 정유공장 차질, 카스피해 이란 상선 피격, 09:37 이후 확인된 이라크 내 친이란 무장단체 시설 타격 보도로 군사적 충돌 범위 확대 가능성과 지정학적 변동성은 다시 높아졌습니다.',
+    'fore.market.geo': '호르무즈 해협: 상품선 통항은 6척으로 전일 7척보다 줄었고, 입항 4척·출항 2척으로 집계됩니다. 바브엘만데브 상품선 통항은 28척으로 전일보다 회복됐지만 월중 고점 46척에는 못 미칩니다. 추가로 카스피해 이란 상선 피격은 이란 본토 공격이 아니라 해상 사고성 충돌로 구분하며, 09:37 이후 공개된 미국·사우디의 이라크 내 친이란 무장단체 시설 타격은 이란 영토 공격이 아니라 이라크 내 공격으로 분리합니다.',
+    'fore.market.summary': '→ 2026년 8월 유류할증료는 14단계 인하로 확정됐습니다. 2026년 9월 유류할증료는 아직 공시 전이며, 유가와 환율 하락은 완화 요인, IATA 항공유 상승·호르무즈 제한 운항·지잔 정유공장 차질·카스피해 상선 피격·이라크 내 친이란 무장단체 시설 타격은 지정학적 변동성 재상승 요인입니다. 직접적인 항공유 공급 중단이 확인된 것은 아니므로 9월 인상 단정 근거로 쓰지 않습니다.',
+    'fore.market.fx2': '핵심 수치: 8월 14단계 확정 · 8월 산정 MOPS 119.06달러/bbl / 283.48 cents/gal · 직전 MOPS 142.09달러/bbl / 338.3 cents/gal · IATA 항공유 160.06달러/bbl · USD/KRW 약 1,454원 · Brent 84.09달러 · WTI 79.26달러 · 호르무즈 6척 · 바브엘만데브 28척 · 카스피해 상선 피격 · 이라크 내 친이란 무장단체 시설 타격 속보'
+  };
+  var enSupplement = {
+    'fore.verdict.line3': 'Lower Brent/WTI and lower USD/KRW expand downside variables, but IATA jet fuel at USD 160.06, restricted Hormuz traffic, Jazan refinery disruption, the Caspian Iranian merchant-vessel incident and the post-09:37 KST Iraq militia strike report have lifted geopolitical volatility again.',
+    'fore.market.geo': 'Strait of Hormuz: commodity crossings were six vessels, down from seven the previous day, with four inbound and two outbound. Bab el-Mandeb recovered to 28 vessels from 11, still below the monthly high of 46. The Caspian Iranian merchant-vessel incident should not be described as an attack on Iranian territory, and the U.S.-Saudi strike report is about Iran-linked militia facilities in Iraq, not Iranian territory.',
+    'fore.market.summary': '→ August 2026 is confirmed at Level 14. September 2026 is not yet announced: lower oil and FX are easing factors, while higher IATA jet fuel, restricted Hormuz traffic, Jazan refinery disruption, the Caspian vessel incident and Iraq militia strike report raise geopolitical volatility. They do not confirm any direct jet-fuel supply shutdown or surcharge increase.',
+    'fore.market.fx2': 'Key figures: August Level 14 confirmed · August MOPS USD 119.06/bbl / 283.48 cents/gal · previous MOPS USD 142.09/bbl / 338.3 cents/gal · IATA jet fuel USD 160.06/bbl · USD/KRW about KRW 1,454 · Brent USD 84.09 · WTI USD 79.26 · Hormuz 6 vessels · Bab el-Mandeb 28 vessels · Caspian vessel incident · Iraq militia strike report'
+  };
+  Object.assign(FORE_I18N.ko, koSupplement);
+  Object.assign(FORE_I18N.en, enSupplement);
+  ['ja','zh','fr','de'].forEach(function(lang){ Object.assign(FORE_I18N[lang] || (FORE_I18N[lang] = {}), enSupplement); });
+  if(window.I18N){
+    Object.assign(window.I18N.ko || (window.I18N.ko = {}), koSupplement);
+    Object.assign(window.I18N.en || (window.I18N.en = {}), enSupplement);
+    ['ja','zh','fr','de'].forEach(function(lang){ Object.assign(window.I18N[lang] || (window.I18N[lang] = {}), enSupplement); });
+  }
   window.AERO_MARKET_NUMBERS_20260729 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
     asOf:'2026.07.29 08:30 KST',
     lastUpdated:'2026-07-29T08:30:00+09:00',
@@ -8179,6 +8199,13 @@ function renderForecastPage() {
     hormuzOutboundVessels:2,
     babElMandebCommodityVessels:28,
     babElMandebPreviousDayVessels:11,
+    ukraineCaspianIranMerchantVesselIncident:true,
+    ukraineCaspianIncidentDirectIranTerritoryAttack:false,
+    usSaudiIraqMilitiaStrikeReported:true,
+    usSaudiIraqMilitiaStrikePublishedAt:'2026-07-29T09:37:00+09:00',
+    usSaudiIraqMilitiaStrikeTargetTerritory:'Iraq',
+    saudiDirectIranTerritoryStrikeNewInJuly:false,
+    geopoliticalVolatility:'re_rising',
     outlookDirection:'upward_pressure_remains_spike_risk_further_eased_downside_factors_expanded',
     outlookConfidence:'medium',
     marketVolatility:'very_high'
