@@ -9271,6 +9271,27 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
   });
 })();
 
+/* 2026.07.29 archive guard: keep July 27-28 cards visible as previous news.
+   The latest override updates active market context, but historical cards
+   should remain available in the archive instead of being hidden. */
+(function(){
+  var archiveCards = []
+    .concat(window.AERO_NEWS_CARDS_20260728 || [])
+    .concat(window.AERO_NEWS_CARDS_20260727 || []);
+  var seen = {};
+  (FIXED_NEWS || []).forEach(function(card){
+    if(card && card.id) seen[card.id] = true;
+  });
+  var restored = archiveCards.filter(function(card){
+    return card && card.id && !seen[card.id] &&
+      (card.date === '2026-07-28' || card.date === '2026-07-27');
+  });
+  if(restored.length){
+    FIXED_NEWS = (FIXED_NEWS || []).concat(restored);
+    window.AERO_NEWS_CARDS_20260729 = (window.AERO_NEWS_CARDS_20260729 || []).concat(restored);
+  }
+})();
+
 window.initNav({
   onLangChange:function(){
     /* _shared.js의 initNav 래퍼가 applyLanguage()를 먼저 실행 */
