@@ -426,7 +426,7 @@ var FORE_I18N = {
       { name:'티웨이항공',    url:'https://www.twayair.com',    domain:'twayair.com' },
       { name:'이스타항공',    url:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=608&lang=KR',  domain:'eastarjet.com' },
       { name:'에어서울',      url:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1',   domain:'flyairseoul.com' },
-      { name:'에어프레미아',  url:'https://www.airpremia.com',  domain:'airpremia.com' },
+      { name:'에어프레미아',  url:'https://www.airpremia.com/a/ko/customer/notice/758',  domain:'airpremia.com' },
       { name:'에어부산',      url:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4377', domain:'airbusan.com' },
     ],
     'fore.related.items': [
@@ -525,7 +525,7 @@ var FORE_I18N = {
       { name:"T'way Air",       url:'https://www.twayair.com',    domain:'twayair.com' },
       { name:'Eastar Jet',      url:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=608&lang=KR',  domain:'eastarjet.com' },
       { name:'Air Seoul',       url:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=10802&pageNo=1',   domain:'flyairseoul.com' },
-      { name:'Air Premia',      url:'https://www.airpremia.com',  domain:'airpremia.com' },
+      { name:'Air Premia',      url:'https://www.airpremia.com/a/ko/customer/notice/758',  domain:'airpremia.com' },
       { name:'Air Busan',       url:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4377', domain:'airbusan.com' },
     ],
     'fore.related.items': [
@@ -8227,6 +8227,214 @@ function renderForecastPage() {
       if (data && data['@type'] === 'FAQPage' && String(data['@id'] || '').indexOf('forecast.html#faq-') !== -1) {
         data['@id'] = 'https://aero-surcharge.com/forecast.html#faq-20260729';
         data.dateModified = '2026-07-29T08:30:00+09:00';
+        data.mainEntity = ko['fore.faq.items'].map(function(item){
+          return {'@type':'Question', name:item.q, acceptedAnswer:{'@type':'Answer', text:item.a}};
+        });
+        node.textContent = JSON.stringify(data);
+      }
+    } catch(e) {}
+  });
+})();
+
+/* 2026.07.30 08:55 KST terminal override: August confirmed, September outlook only. */
+(function(){
+  var ko = {
+    'fore.metaTitle': '2026년 8월 유류할증료 14단계 확정·9월 전망 | 7월 30일 유가·환율',
+    'fore.metaDesc': '2026.07.30 08:55 KST 기준 2026년 8월 국제선 유류할증료 14단계 확정 이후 Brent 90.74달러, WTI 84.46달러, 원달러 환율 약 1,444원, IATA 항공유 160.06달러 흐름이 9월 유류할증료에 미칠 영향을 전망합니다.',
+    'fore.pageTitle': '2026년 8월 유류할증료 14단계 확정과 9월 전망',
+    'fore.pageSub': '2026.07.30 08:55 KST 기준 · 8월 14단계 확정 · Brent 90.74달러 · WTI 84.46달러 · 환율 약 1,444원 · IATA 항공유 160.06달러',
+    'fore.h1': '2026년 9월 국제선 유류할증료 전망 — 유가 급반등과 해상 리스크 재확대',
+    'fore.section.indicators': '2026년 9월 유류할증료 전망 핵심 지표',
+    'fore.predict.title': '2026년 9월 유류할증료 전망 핵심 지표',
+    'fore.predict.subtitle': '8월 14단계 확정 · IATA 항공유 · USD/KRW · 국제유가',
+    'fore.predict.footnote': '* 2026년 8월 국제선 유류할증료는 14단계로 확정됐습니다. 2026년 9월 유류할증료는 아직 공시 전이므로 단계, 금액, 확률을 확정값처럼 표시하지 않습니다. IATA 160.06달러는 글로벌 주간 항공유 평균입니다.',
+    'fore.predict.items': [
+      { label:'8월 확정 단계', val:'14단계 · 7월 19단계 대비 5단계 인하', cls:'down' },
+      { label:'8월 산정 MOPS', val:'119.06달러/bbl · 283.48 cents/gal · 직전 평균 대비 약 16.2% 하락', cls:'down' },
+      { label:'IATA 항공유', val:'160.06달러/bbl · 전주 대비 7.1% 상승', cls:'up' },
+      { label:'USD/KRW', val:'약 1,444원 · USD 공시 항공사의 원화 환산 부담 완화', cls:'down' },
+      { label:'국제유가', val:'Brent 90.74달러 · WTI 84.46달러 · 하루 약 7% 급반등', cls:'up' },
+      { label:'9월 판단', val:'상승 압력 재강화 · 급등 위험 재확대 · 환율 완화 효과 유지 · 변동성 극도로 높음', cls:'plain' }
+    ],
+    'fore.notice': '<strong>참고:</strong> 이 사이트는 한국 출발 국제선 유류할증료를 중심으로 다룹니다. 2026년 8월 국제선 유류할증료는 14단계로 확정됐습니다. 2026년 9월은 아직 공시 전이므로 단계·금액·확률은 전망으로만 다룹니다.',
+    'fore.intro': '2026년 8월 한국 출발 국제선 유류할증료는 7월 19단계에서 14단계로 5단계 인하가 확정됐습니다. 8월 공시 산정에 쓰인 싱가포르 MOPS 평균은 119.06달러/bbl, 283.48 cents/gal로 직전 평균 142.09달러/bbl 대비 약 16.2% 낮았습니다. 그러나 2026.07.30 08:55 KST 기준 Brent 90.74달러, WTI 84.46달러로 국제유가가 급반등했고 IATA 글로벌 항공유도 160.06달러/bbl로 전주 대비 7.1% 상승했습니다. 환율은 약 1,444원으로 완화됐지만 2026년 9월 유류할증료 전망은 상승 압력 재강화와 높은 변동성으로 봐야 합니다.',
+    'fore.indicator.th': ['항목','2026.07.30 08:55 KST 기준 상태','9월 유류할증료 영향'],
+    'fore.indicator.footnote': '* 2026년 8월 유류할증료는 확정 공시 데이터입니다. 2026년 9월 유류할증료는 아직 공시 전이며, 단계·금액·확률을 임의 생성하지 않습니다.',
+    'fore.indicator.rows': [
+      ['8월 유류할증료', '14단계 확정 · 7월 19단계 대비 5단계 인하', '이미 확정된 사실 데이터'],
+      ['8월 산정 MOPS', '119.06달러/bbl · 283.48 cents/gal', '8월 인하 근거'],
+      ['IATA 항공유', '160.06달러/bbl · 전주 대비 7.1% 상승', '항공유 시장 상방 압력 신호'],
+      ['Brent', '90.74달러/bbl · 7.91% 상승', '유가 급반등으로 상승 압력 확대'],
+      ['WTI', '84.46달러/bbl · 6.56% 상승', '유가 급반등으로 상승 압력 확대'],
+      ['USD/KRW', '약 1,444원', 'USD 공시 항공사의 원화 환산 부담 완화']
+    ],
+    'fore.summary.updated': '2026.07.30 08:55 KST 기준 · 8월 14단계 확정 · 유가 급반등·항공유 상승·환율 완화',
+    'fore.summary.title': '2026년 9월 유류할증료 전망 요약',
+    'fore.summary.items': [
+      '2026년 8월 국제선 유류할증료는 14단계로 확정',
+      'Brent 90.74달러, WTI 84.46달러로 국제유가 급반등',
+      'IATA 글로벌 항공유 160.06달러/bbl, 전주 대비 7.1% 상승',
+      '원달러 환율 약 1,444원으로 환율 부담은 완화',
+      '9월 전망은 상승 압력 재강화, 급등 위험 재확대, 환율 완화 효과 유지, 변동성 극도로 높음'
+    ],
+    'fore.verdict.title': '2026년 9월 유류할증료 전망',
+    'fore.verdict.line1': '2026년 8월 국제선 유류할증료는 14단계로 확정된 사실 데이터입니다.',
+    'fore.verdict.line2': '2026년 9월 국제선 유류할증료는 아직 공시 전입니다.',
+    'fore.verdict.line3': '→ 환율 약 1,444원은 완화 요인이지만 Brent·WTI 급반등, IATA 항공유 160.06달러, 이란 관련 제재와 지정학 충돌 범위 확대 가능성으로 상승 압력과 급등 위험이 다시 커졌습니다. 다만 직접적인 항공유 공급 중단이 확인된 것은 아니므로 9월 인상 확정으로 표현하지 않습니다.',
+    'fore.verdict.short': '단거리 국제선: 8월 14단계와 항공사별 공시 금액은 확정, 9월은 공시 전이라 금액 예측 금지',
+    'fore.verdict.long': '장거리·성수기: 항공유·유가·환율 흐름을 함께 확인하되 9월 공시 전까지 단계와 금액을 단정하지 않음',
+    'fore.scenario.items': [
+      { title:'보합 시나리오', factor:'8월 인하 기준이 유지되고 환율 완화가 이어지는 경우입니다.', traveler:'단거리와 중거리 국제선은 8월 대비 큰 체감 변화가 제한될 수 있습니다.', strategy:'8월 확정 공시 금액과 항공권 총액을 우선 비교하세요.' },
+      { title:'소폭 인상 시나리오', factor:'Brent·WTI 급반등과 IATA 항공유 상승이 평균 가격에 반영되는 경우입니다.', traveler:'장거리·성수기 노선은 유류할증료와 운임을 함께 확인해야 합니다.', strategy:'발권 전 항공사별 공시와 결제 시점 환율을 같이 확인하세요.' },
+      { title:'변동성 확대 시나리오', factor:'이란 관련 제재와 지정학 충돌 범위 확대 가능성이 다시 부각되는 경우입니다.', traveler:'공시 전까지 9월 금액을 단정하기 어렵습니다.', strategy:'공식 공시 전에는 단계·금액 예측보다 총액 비교와 알림 확인이 우선입니다.' }
+    ],
+    'fore.mops.analysis.title': 'MOPS·IATA 항공유와 2026년 9월 유류할증료 전망',
+    'fore.mops.analysis.body': '2026년 8월 공시에 반영된 싱가포르 MOPS 평균은 119.06달러/bbl, 283.48 cents/gal로 직전 평균 142.09달러/bbl 대비 약 16.2% 낮았습니다. 이 수치는 8월 14단계 인하의 근거입니다. 반면 2026.07.30 기준 최신 IATA 글로벌 주간 항공유 평균은 160.06달러/bbl로 전주 대비 7.1% 상승했습니다. 9월 유류할증료 판단은 확정 공시 전까지 국제유가, 항공유 평균, 원달러 환율을 중심으로 확인해야 합니다.',
+    'fore.booking.title': '항공권 예약 판단 가이드',
+    'fore.booking.items': [
+      '8월 발권: 8월 국제선 유류할증료는 14단계로 확정됐으므로 항공사별 8월 공식 공시 금액으로 총액을 비교하세요.',
+      'USD 공시 항공사: 제주항공, 진에어, 에어부산, 이스타항공, 에어프레미아는 USD 공시 금액과 결제 시점 원달러 환율을 함께 확인하세요.',
+      '9월 이후 발권: 9월 유류할증료는 아직 공시 전입니다. 유가 급반등, IATA 항공유 상승, 환율 흐름을 계속 확인해야 합니다.',
+      '주의: 9월 단계·금액·확률은 아직 확정 전이므로 임의 숫자로 표시하지 않습니다.'
+    ],
+    'fore.myrealtrip.title': '8월 공시 금액 확인 후 실제 항공권 총액 비교하기',
+    'fore.myrealtrip.desc': '2026년 8월 한국 출발 국제선 유류할증료는 14단계로 확정됐습니다. 유류할증료는 발권일 기준으로 적용되므로 항공권 운임, 세금, 좌석 상황, 결제 시점 환율을 포함한 최종 결제 총액을 함께 비교하세요.',
+    'fore.myrealtrip.btn': '항공권 총액 확인하기 →',
+    'fore.market.title': '시장 브리핑: 8월 공시 확정 이후 9월 변수',
+    'fore.market.brent': '국제유가: 2026.07.29 종가 기준 Brent는 90.74달러/bbl로 6.65달러, 7.91% 상승했고 WTI는 84.46달러/bbl로 5.20달러, 6.56% 상승했습니다. 이는 확정된 8월 공시가 아니라 9월 전망의 상방 변수입니다.',
+    'fore.market.mops': '항공유 가격(MOPS): 8월 공시에 사용된 싱가포르 MOPS 평균은 119.06달러/bbl, 283.48 cents/gal입니다. 최신 IATA 글로벌 주간 항공유 평균은 160.06달러/bbl로 전주 대비 7.1% 상승했습니다.',
+    'fore.market.fx': '원달러 환율: 2026.07.30 08:55 KST 전후 기준 약 1,444원입니다. 환율 완화는 USD 공시 항공사의 원화 환산 부담을 낮추지만 유가와 항공유 급반등을 모두 상쇄한다고 단정하기 어렵습니다.',
+    'fore.market.geo': '지정학 리스크: 중동과 해상 운송 불확실성은 국제유가와 항공유 가격의 변동성을 키우는 보조 변수입니다.',
+    'fore.market.summary': '→ 2026년 8월 유류할증료는 14단계 인하로 확정됐습니다. 2026년 9월은 아직 공시 전이며 유가 급반등, IATA 항공유 상승, 이란 관련 제재와 지정학 리스크로 상승 압력과 급등 위험이 다시 커졌습니다.',
+    'fore.market.fx2': '핵심 수치: 8월 14단계 확정 · 8월 산정 MOPS 119.06달러/bbl / 283.48 cents/gal · 직전 MOPS 142.09달러/bbl / 338.3 cents/gal · IATA 항공유 160.06달러/bbl · USD/KRW 약 1,444원 · Brent 90.74달러 · WTI 84.46달러',
+    'fore.basis.title': '8월 공시 데이터와 9월 전망 기준',
+    'fore.basis.body': '2026년 8월 한국 출발 국제선 유류할증료는 14단계로 확정된 공시 데이터입니다. 2026년 9월 유류할증료는 아직 공시 전이므로 MOPS 평균, IATA 항공유, USD/KRW, Brent·WTI를 기준으로 전망만 제공합니다.',
+    'fore.keyvars.items': ['2026년 9월 유류할증료 전망', '2026년 8월 유류할증료 확정', 'MOPS', 'IATA 항공유 가격', '원달러 환율', 'USD/KRW', 'Brent', 'WTI', '한국발 국제선 유류할증료'],
+    'fore.faq.items': [
+      {q:'2026년 8월 국제선 유류할증료는 몇 단계인가요?', a:'2026년 8월 한국 출발 국제선 유류할증료는 14단계로 확정됐습니다. 7월 19단계보다 5단계 낮습니다.'},
+      {q:'2026년 9월 유류할증료 인상이 확정됐나요?', a:'아닙니다. 2026년 9월 유류할증료는 아직 산정 기간이 진행 중이며 공시 전입니다.'},
+      {q:'IATA 항공유 160.06달러는 싱가포르 MOPS인가요?', a:'아닙니다. IATA 글로벌 주간 항공유 평균이며, 국내 유류할증료 산정 기준과는 구분해야 합니다.'},
+      {q:'환율 하락으로 9월 유류할증료가 내려가나요?', a:'환율 약 1,444원은 완화 요인이지만 유가와 항공유 급반등, 해상운송 리스크를 함께 봐야 합니다.'}
+    ]
+  };
+  var en = {
+    'fore.metaTitle': 'August 2026 Level 14 Confirmed and September Fuel Surcharge Outlook | July 30 Oil and FX',
+    'fore.metaDesc': 'As of 2026.07.30 08:55 KST, this page analyzes confirmed August 2026 Level 14 international fuel surcharge and the September outlook with Brent USD 90.74, WTI USD 84.46, USD/KRW around KRW 1,444 and IATA jet fuel USD 160.06.',
+    'fore.pageTitle': 'August 2026 Level 14 Confirmed and September Outlook',
+    'fore.pageSub': 'As of 2026.07.30 08:55 KST · August Level 14 confirmed · Brent USD 90.74 · WTI USD 84.46 · USD/KRW around KRW 1,444 · IATA jet fuel USD 160.06',
+    'fore.h1': 'September 2026 International Fuel Surcharge Outlook - oil rebound and renewed maritime risk',
+    'fore.section.indicators': 'Key Indicators for September 2026 Fuel Surcharge Outlook',
+    'fore.predict.title': 'Key Indicators for September 2026 Fuel Surcharge Outlook',
+    'fore.predict.subtitle': 'August Level 14 confirmed · IATA jet fuel · USD/KRW · oil prices',
+    'fore.predict.footnote': '* August 2026 international fuel surcharge is confirmed at Level 14. September 2026 is not announced yet, so no stage, amount or probability should be shown as confirmed. IATA USD 160.06 is a global weekly jet-fuel average.',
+    'fore.predict.items': [
+      {label:'August confirmed level', val:'Level 14 · five levels below July Level 19', cls:'down'},
+      {label:'August filing MOPS', val:'USD 119.06/bbl · 283.48 cents/gal · about 16.2% below previous average', cls:'down'},
+      {label:'IATA jet fuel', val:'USD 160.06/bbl · up 7.1% week on week', cls:'up'},
+      {label:'USD/KRW', val:'Around KRW 1,444 · FX relief for USD-notice airlines', cls:'down'},
+      {label:'Oil prices', val:'Brent USD 90.74 · WTI USD 84.46 · roughly 7% daily rebound', cls:'up'},
+      {label:'September view', val:'Upside pressure re-strengthened · spike risk re-expanded · FX relief remains · volatility extremely high', cls:'plain'}
+    ],
+    'fore.notice': '<strong>Note:</strong> This site focuses on Korea-departure international fuel surcharges. August 2026 is confirmed at Level 14. September 2026 is not announced yet and should only be discussed as an outlook.',
+    'fore.intro': 'August 2026 Korea-departure international fuel surcharge is confirmed at Level 14, five levels below July Level 19. The Singapore MOPS average used for August filing was USD 119.06/bbl, or 283.48 cents/gal, about 16.2% below the previous USD 142.09/bbl reference. As of 2026.07.30 08:55 KST, Brent rebounded to USD 90.74 and WTI to USD 84.46, while IATA global weekly jet fuel reached USD 160.06/bbl, up 7.1% week on week. USD/KRW eased to around KRW 1,444, but September volatility remains extremely high.',
+    'fore.indicator.th': ['Item','Status as of 2026.07.30 08:55 KST','Impact on September surcharge'],
+    'fore.indicator.footnote': '* August 2026 fuel surcharge is confirmed factual data. September 2026 is not announced yet, so no stage, amount or probability should be generated.',
+    'fore.indicator.rows': ko['fore.indicator.rows'],
+    'fore.summary.updated': 'As of 2026.07.30 08:55 KST · August Level 14 confirmed · oil rebound, higher jet fuel and FX relief',
+    'fore.summary.title': 'September 2026 Fuel Surcharge Outlook Summary',
+    'fore.summary.items': ko['fore.summary.items'],
+    'fore.verdict.title': 'September 2026 Fuel Surcharge Outlook',
+    'fore.verdict.line1': 'August 2026 international fuel surcharge is confirmed factual data at Level 14.',
+    'fore.verdict.line2': 'September 2026 international fuel surcharge is not yet announced.',
+    'fore.verdict.line3': 'USD/KRW around KRW 1,444 is an easing factor, but Brent/WTI rebound, IATA jet fuel at USD 160.06, Iran-related sanctions and broader geopolitical risk have re-expanded upside pressure and spike risk. This does not confirm a September increase.',
+    'fore.verdict.short': 'Short-haul international: August Level 14 and airline notices are confirmed; do not estimate September amounts before notices.',
+    'fore.verdict.long': 'Long-haul and peak-season routes: track jet fuel, oil and FX together, but do not conclude September stages or amounts before official notices.',
+    'fore.scenario.items': [
+      { title:'Flat Scenario', factor:'The August cut baseline holds and FX relief continues.', traveler:'Short- and mid-haul international routes may see limited visible change versus August.', strategy:'Compare confirmed August surcharges with the total airfare first.' },
+      { title:'Modest Increase Scenario', factor:'Brent/WTI rebound and higher IATA jet fuel feed into average fuel prices.', traveler:'Long-haul and peak-season routes require checking both surcharge and base fare.', strategy:'Check airline notices and payment-time FX before ticketing.' },
+      { title:'Higher Volatility Scenario', factor:'Iran-related sanctions and wider geopolitical collision risk regain attention.', traveler:'September amounts cannot be concluded before official notices.', strategy:'Before official notices, prioritize total-fare comparison and notice alerts over stage or amount guesses.' }
+    ],
+    'fore.mops.analysis.title': 'MOPS, IATA Jet Fuel and the September 2026 Fuel Surcharge Outlook',
+    'fore.mops.analysis.body': ko['fore.mops.analysis.body'],
+    'fore.booking.title': 'Booking Decision Guide',
+    'fore.booking.items': ko['fore.booking.items'],
+    'fore.myrealtrip.title': 'After checking August notices, compare the actual total airfare',
+    'fore.myrealtrip.desc': 'August 2026 Korea-departure international fuel surcharge is confirmed at Level 14. Since surcharges apply by ticketing date, compare the final payment total including fare, taxes, seat availability and payment-time FX.',
+    'fore.myrealtrip.btn': 'Check total airfare now →',
+    'fore.market.title': 'Market Briefing: September Variables After August Notices',
+    'fore.market.brent': 'Oil prices: Brent closed at USD 90.74/bbl, up USD 6.65 or 7.91%, and WTI closed at USD 84.46/bbl, up USD 5.20 or 6.56%, on 2026.07.29. This is an upside variable for the September outlook, not a change to confirmed August notices.',
+    'fore.market.mops': 'Jet fuel price (MOPS): the August filing Singapore MOPS average was USD 119.06/bbl, or 283.48 cents/gal. Latest IATA global weekly jet fuel averaged USD 160.06/bbl, up 7.1% week on week.',
+    'fore.market.fx': 'USD/KRW: about KRW 1,444 around 2026.07.30 08:55 KST. FX relief helps USD-notice airlines in KRW terms, but it does not fully offset renewed oil and jet-fuel upside.',
+    'fore.market.geo': 'Geopolitical risk: Middle East and maritime uncertainty remain supporting variables for oil and jet-fuel volatility.',
+    'fore.market.summary': '→ August 2026 is confirmed at Level 14. September 2026 is not yet announced: oil rebound, higher IATA jet fuel, Iran-related sanctions and geopolitical risk have re-expanded upside pressure and spike risk.',
+    'fore.market.fx2': 'Key figures: August Level 14 confirmed · August MOPS USD 119.06/bbl / 283.48 cents/gal · previous MOPS USD 142.09/bbl / 338.3 cents/gal · IATA jet fuel USD 160.06/bbl · USD/KRW about KRW 1,444 · Brent USD 90.74 · WTI USD 84.46',
+    'fore.basis.title': 'August Notice Data and September Outlook Basis',
+    'fore.basis.body': 'August 2026 Korea-departure international fuel surcharge is confirmed factual data at Level 14. September 2026 is not announced yet and should only be discussed as an outlook based on MOPS, IATA jet fuel, USD/KRW and Brent/WTI.',
+    'fore.keyvars.items': ['September 2026 fuel surcharge outlook', 'August 2026 confirmed fuel surcharge', 'MOPS', 'IATA jet fuel price', 'USD/KRW', 'Brent', 'WTI', 'Korea-departure international fuel surcharge'],
+    'fore.faq.items': ko['fore.faq.items']
+  };
+  Object.assign(FORE_I18N.ko, ko);
+  Object.assign(FORE_I18N.en, en);
+  ['ja','zh','fr','de'].forEach(function(lang){ Object.assign(FORE_I18N[lang] || (FORE_I18N[lang] = {}), en); });
+  if(window.I18N){
+    Object.assign(window.I18N.ko || (window.I18N.ko = {}), ko);
+    Object.assign(window.I18N.en || (window.I18N.en = {}), en);
+    ['ja','zh','fr','de'].forEach(function(lang){ Object.assign(window.I18N[lang] || (window.I18N[lang] = {}), en); });
+  }
+  window.AERO_MARKET_NUMBERS_20260730 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
+    asOf:'2026.07.30 08:55 KST',
+    lastUpdated:'2026-07-30T08:55:00+09:00',
+    currentMonthNotice:'2026-08',
+    forecastTargetMonth:'2026-09',
+    usdKrw:1444,
+    usdKrwLabel:'약 1,444원',
+    brentUsdPerBbl:90.74,
+    brentDailyChangeUsd:6.65,
+    brentDailyChangePct:7.91,
+    wtiUsdPerBbl:84.46,
+    wtiDailyChangeUsd:5.20,
+    wtiDailyChangePct:6.56,
+    augustMopsAverageUsdPerBbl:119.06,
+    augustMopsAverageCentsPerGallon:283.48,
+    previousMopsAverageUsdPerBbl:142.09,
+    previousMopsAverageCentsPerGallon:338.3,
+    augustMopsAverageChangePct:-16.2,
+    iataJetFuelUsdPerBbl:160.06,
+    iataJetFuelWeeklyChangePct:7.1,
+    currentSingaporeMopsExactValue:null,
+    currentSingaporeMopsDisplay:'MOPS 최신 공시 기준 확인 중',
+    augustSurchargeLevel:14,
+    augustSurchargeStage:14,
+    julySurchargeLevel:19,
+    julySurchargeStage:19,
+    augustStageChangeVsJuly:-5,
+    septemberCalculationFrom:'2026-07-16',
+    septemberCalculationTo:'2026-08-15',
+    septemberSurchargeConfirmed:false,
+    augustOfficialConfirmedAirlines:['KE','OZ','LJ','BX','TW','ZE','RS','7C','YP'],
+    augustOfficialPendingAirlines:[],
+    geopoliticalVolatility:'extremely_high',
+    outlookDirection:'upward_pressure_restrengthened_spike_risk_reexpanded_fx_relief_remains',
+    outlookConfidence:'medium',
+    marketVolatility:'extremely_high'
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260730;
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1444 });
+  document.title = ko['fore.metaTitle'];
+  var desc = document.querySelector('meta[name="description"]');
+  if(desc) desc.setAttribute('content', ko['fore.metaDesc']);
+  var ogTitle = document.querySelector('meta[property="og:title"]');
+  if(ogTitle) ogTitle.setAttribute('content', ko['fore.metaTitle']);
+  var ogDesc = document.querySelector('meta[property="og:description"]');
+  if(ogDesc) ogDesc.setAttribute('content', ko['fore.metaDesc']);
+  var mod = document.querySelector('meta[property="article:modified_time"]');
+  if(mod) mod.setAttribute('content', '2026-07-30T08:55:00+09:00');
+  document.querySelectorAll('script[type="application/ld+json"]').forEach(function(node){
+    try {
+      var data = JSON.parse(node.textContent || '{}');
+      if (data && data['@type'] === 'FAQPage' && String(data['@id'] || '').indexOf('forecast.html#faq-') !== -1) {
+        data['@id'] = 'https://aero-surcharge.com/forecast.html#faq-20260730';
+        data.dateModified = '2026-07-30T08:55:00+09:00';
         data.mainEntity = ko['fore.faq.items'].map(function(item){
           return {'@type':'Question', name:item.q, acceptedAnswer:{'@type':'Answer', text:item.a}};
         });

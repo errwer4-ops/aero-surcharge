@@ -659,6 +659,167 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
   }
 })();
 
+/* 2026.07.30 08:55 KST final update: Air Premia August notice, oil spike, FX, IATA jet fuel and maritime risk. */
+(function(){
+  var confirmedAugustAirlines = ['KE', 'OZ', 'LJ', 'BX', 'TW', 'ZE', 'RS', '7C', 'YP'];
+  var airPremiaAugust = {
+    airlineCode: 'YP',
+    airlineName: '에어프레미아',
+    code: 'YP',
+    period: '2026.08',
+    sourceType: 'official_notice_pdf',
+    status: 'official_verified',
+    confidence: 'fresh',
+    currency: 'USD',
+    surchargeSchema: 'mileage_band',
+    officialNoticeUrl: 'https://www.airpremia.com/',
+    exactNoticeUrlVerification: 'homepage_notice_list_and_user_provided_pdf_verified',
+    sourceName: 'Air Premia official PDF: 2026.08 에어프레미아 유류할증료.pdf',
+    sourceFile: 'C:/Users/jiwoo/OneDrive/Desktop/사이드/유류할증료/2026.08 유류할증료/2026.08 에어프레미아 유류할증료.pdf',
+    publishedAt: '2026-07-29T16:09:03+09:00',
+    verifiedAt: '2026-07-30T08:55:00+09:00',
+    applicableFrom: '2026-08-01',
+    applicableTo: '2026-08-31',
+    ticketingBasis: true,
+    paymentDateBasis: true,
+    oneWay: true,
+    note: '2026년 8월 한국발 국제선 편도/mile 기준 USD 공시. 공식 PDF에 1,500~1,999마일 구간은 별도 행이 없어 임의 생성하지 않음.',
+    items: [
+      { distanceRange: '0-999', label: '~999마일', amount: 25, currency: 'USD', route: 'ICN-NRT', routes: ['인천-나리타'] },
+      { distanceRange: '1000-1499', label: '1,000~1,499마일', amount: 32, currency: 'USD', route: 'ICN-HKG', routes: ['인천-홍콩'] },
+      { distanceRange: '2000-2499', label: '2,000~2,499마일', amount: 54, currency: 'USD', route: 'ICN-BKK', routes: ['인천-방콕'] },
+      { distanceRange: '4000-4999', label: '4,000~4,999마일', amount: 95, currency: 'USD', route: 'ICN-HNL', routes: ['인천-호놀룰루'] },
+      { distanceRange: '5000-6499', label: '5,000~6,499마일', amount: 118, currency: 'USD', route: 'ICN-LAX/ICN-SFO', routes: ['인천-로스앤젤레스', '인천-샌프란시스코'] },
+      { distanceRange: '6500+', label: '6,500마일 이상', amount: 148, currency: 'USD', route: 'ICN-IAD/ICN-EWR', routes: ['인천-워싱턴 D.C.', '인천-뉴욕'] }
+    ]
+  };
+  window._YP_OFFICIAL_OVERRIDE = window._YP_OFFICIAL_OVERRIDE || {};
+  window._YP_OFFICIAL_OVERRIDE['2026.08'] = airPremiaAugust;
+  window._AUGUST_2026_OFFICIAL_OVERRIDES = window._AUGUST_2026_OFFICIAL_OVERRIDES || {};
+  window._AUGUST_2026_OFFICIAL_OVERRIDES.YP = Object.assign({}, window._AUGUST_2026_OFFICIAL_OVERRIDES.YP || {}, {
+    '2026.08': airPremiaAugust
+  });
+  window.MANUAL_OVERRIDES = window.MANUAL_OVERRIDES || {};
+  window.MANUAL_OVERRIDES.YP = window.MANUAL_OVERRIDES.YP || {};
+  window.MANUAL_OVERRIDES.YP['2026.08'] = airPremiaAugust;
+  window.AERO_AUGUST_2026_CONFIRMED_AIRLINES = confirmedAugustAirlines.slice();
+  window.AERO_AUGUST_2026_PENDING_AIRLINES = [];
+
+  window.AERO_MARKET_NUMBERS_20260730 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
+    asOf: '2026.07.30 08:55 KST',
+    lastUpdated: '2026-07-30T08:55:00+09:00',
+    currentMonthNotice: '2026-08',
+    forecastTargetMonth: '2026-09',
+    usdKrw: 1444,
+    usdKrwLabel: '약 1,444원',
+    usdKrwValueType: 'rounded_near_time_reference',
+    usdKrwReferenceTime: '2026.07.30 08:55 KST 전후 공개 시세',
+    brentUsdPerBbl: 90.74,
+    brentDailyChangeUsd: 6.65,
+    brentDailyChangePct: 7.91,
+    brentReferenceType: '2026.07.29 market close',
+    wtiUsdPerBbl: 84.46,
+    wtiDailyChangeUsd: 5.20,
+    wtiDailyChangePct: 6.56,
+    wtiReferenceType: '2026.07.29 market close',
+    augustMopsAverageUsdPerBbl: 119.06,
+    augustMopsAverageCentsPerGallon: 283.48,
+    previousMopsAverageUsdPerBbl: 142.09,
+    previousMopsAverageCentsPerGallon: 338.3,
+    augustMopsAverageChangePct: -16.2,
+    augustMopsPeriod: '2026.06.16~2026.07.15',
+    iataJetFuelUsdPerBbl: 160.06,
+    iataJetFuelWeeklyChangePct: 7.1,
+    currentSingaporeMopsExactValue: null,
+    currentSingaporeMopsStatus: 'daily_price_checking_public_confirmation_in_progress',
+    currentSingaporeMopsDisplay: '일별 싱가포르 MOPS 현물가는 공개 자료 확인 중',
+    augustSurchargeLevel: 14,
+    augustSurchargeStage: 14,
+    julySurchargeLevel: 19,
+    julySurchargeStage: 19,
+    augustStageChangeVsJuly: -5,
+    augustOfficialConfirmedAirlines: confirmedAugustAirlines.slice(),
+    augustOfficialPendingAirlines: [],
+    septemberCalculationFrom: '2026-07-16',
+    septemberCalculationTo: '2026-08-15',
+    septemberMopsAverageStatus: 'in_progress',
+    septemberSurchargeStatus: 'forecast_only_not_announced',
+    septemberSurchargeConfirmed: false,
+    hormuzVessels20260728: 8,
+    hormuzInbound20260728: 5,
+    hormuzOutbound20260728: 3,
+    hormuzVessels20260729Preliminary: 1,
+    hormuzLatestCountIsPreliminary: true,
+    hormuzStatus: 'severely_restricted_not_fully_closed',
+    babElMandebVessels20260728: 39,
+    babElMandebVessels20260729Preliminary: 5,
+    babElMandebLatestCountIsPreliminary: true,
+    babElMandebStatus: 'high_daily_volatility_not_normalized',
+    omanRegionalManagementProposalRejected: true,
+    hormuzManagementAgreementReached: false,
+    usSaudiStrikeLocation: 'Iraq',
+    usSaudiStrikeTarget: 'Iran-backed armed group facilities',
+    iranMainlandDirectlyStruckByUsSaudiInThisOperation: false,
+    iranRetaliatoryAttacksReported: true,
+    usAdditionalStrikeWarningReported: true,
+    ukraineIranianVesselIncidentLocation: 'Caspian Sea',
+    ukraineIranianVesselIncidentType: 'Iranian merchant vessel struck',
+    iranMainlandStruckByUkraine: false,
+    newIranSanctionsEntities: 10,
+    newIranSanctionsTankers: 8,
+    egyptUSOwnedVesselDroneStrikeConfirmed: false,
+    outlookDirection: 'upward_pressure_restrengthened_spike_risk_reexpanded_fx_relief_remains',
+    outlookConfidence: 'medium',
+    marketVolatility: 'extremely_high',
+    referenceAsOf: {
+      usdKrw: '2026.07.30 08:55 KST 전후 공개 시세, 반올림 표시',
+      oil: '2026.07.29 market close',
+      iataJetFuel: 'IATA Fuel Price Monitor latest weekly global average',
+      augustMops: '2026.06.16~2026.07.15 average used for August surcharge',
+      hormuz: '2026.07.28 confirmed vessel count and 2026.07.29 preliminary observation',
+      babElMandeb: '2026.07.28 confirmed vessel count and 2026.07.29 preliminary observation',
+      airPremia: 'User-provided Air Premia official PDF visually verified on 2026.07.30'
+    },
+    sources: {
+      augustFiling: 'Airline official August notices: KE/OZ/LJ/BX/TW/ZE/RS/7C/YP',
+      usdKrw: 'Latest USD/KRW quote around 2026.07.30 08:55 KST',
+      iataJetFuel: 'IATA Jet Fuel Price Monitor weekly global average',
+      oil: '2026.07.29 oil market close references',
+      maritime: 'Hormuz and Bab el-Mandeb vessel-count monitoring references',
+      airPremia: '2026.08 에어프레미아 유류할증료.pdf'
+    }
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260730;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {
+    '2026-07-30': window.AERO_MARKET_NUMBERS_20260730
+  });
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1444 });
+
+  var koMarket = {
+    marketDataRef: '2026.07.30 08:55 KST 기준',
+    marketBrent: '국제유가: 2026.07.29 종가 기준 Brent는 90.74달러/bbl로 7.91%, WTI는 84.46달러/bbl로 6.56% 급반등했습니다. 이미 확정된 8월 공시가 아니라 9월 산정 기간의 상방 변수입니다.',
+    marketMops: '항공유 가격(MOPS): 8월 공시에 사용된 싱가포르 MOPS 평균은 119.06달러/bbl, 283.48 cents/gal입니다. 최신 IATA 글로벌 항공유 주간 평균은 160.06달러/bbl로 전주 대비 7.1% 상승했지만, 이는 일별 싱가포르 MOPS 현물가나 9월 산정 평균이 아닙니다.',
+    marketFx: '원달러 환율: 2026.07.30 08:55 KST 전후 기준 약 1,444원입니다. 환율 완화는 USD 공시 항공사의 원화 환산 부담을 낮추지만, 유가와 항공유 급반등을 모두 상쇄한다고 단정하기는 어렵습니다.',
+    marketGeo: '호르무즈 해협: 2026.07.28 상품선 8척, 입항 5척·출항 3척이 관측됐고 7월 29일 잠정 관측은 1척입니다. 전면 봉쇄도 정상화도 아니며 극도로 제한적인 통항 상태입니다.',
+    marketOutlook: '2026년 8월 국제선 유류할증료는 14단계로 확정됐고 에어프레미아까지 8월 공시 금액이 확인됐습니다. 2026년 9월은 산정 기간이 진행 중이며 유가 급반등, IATA 항공유 상승, 호르무즈·바브엘만데브 통항 불안으로 상승 압력과 급등 위험이 다시 커졌습니다.'
+  };
+  var enMarket = {
+    marketDataRef: 'As of 2026.07.30 08:55 KST',
+    marketBrent: 'Oil prices: Brent closed at USD 90.74/bbl, up 7.91%, and WTI at USD 84.46/bbl, up 6.56%, on 2026.07.29. This is an upside variable for the September calculation window, not a change to confirmed August notices.',
+    marketMops: 'Jet fuel price (MOPS): the August filing Singapore MOPS average was USD 119.06/bbl, or 283.48 cents/gal. IATA global weekly jet fuel averaged USD 160.06/bbl, up 7.1% week on week, but this is not daily Singapore MOPS spot pricing or the September calculation average.',
+    marketFx: 'USD/KRW: about KRW 1,444 around 2026.07.30 08:55 KST. FX relief can reduce KRW-equivalent burden for USD-notice airlines, but it does not fully offset the renewed oil and jet-fuel spike.',
+    marketGeo: 'Strait of Hormuz: eight commodity vessels were observed on 2026.07.28, with five inbound and three outbound; the 2026.07.29 preliminary observation is one vessel. This is neither a full blockade nor normalization, but traffic remains severely restricted.',
+    marketOutlook: 'August 2026 international fuel surcharge is confirmed at Level 14, and Air Premia August notice amounts are now verified. September is still in calculation, with renewed upside pressure from the oil rebound, higher IATA jet fuel and Hormuz/Bab el-Mandeb shipping instability.'
+  };
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), koMarket);
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), enMarket);
+    ['ja','zh','fr','de'].forEach(function(lang){
+      Object.assign(window.I18N_SHARED[lang] || (window.I18N_SHARED[lang] = {}), enMarket);
+    });
+  }
+})();
+
 /* 2026.07.28 08:30 KST terminal override. Keep this last so older dated blocks cannot replace the active market snapshot. */
 (function(){
   window.AERO_MARKET_NUMBERS_20260728 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
@@ -748,6 +909,121 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
   }
 })();
 
+})();
+
+/* 2026.07.30 08:55 KST terminal guard: keep the newest market snapshot and Air Premia August data active. */
+(function(){
+  var confirmedAugustAirlines = ['KE', 'OZ', 'LJ', 'BX', 'TW', 'ZE', 'RS', '7C', 'YP'];
+  var airPremiaAugust = {
+    airlineCode: 'YP',
+    airlineName: '에어프레미아',
+    code: 'YP',
+    period: '2026.08',
+    sourceType: 'official_notice_pdf',
+    status: 'official_verified',
+    confidence: 'fresh',
+    currency: 'USD',
+    surchargeSchema: 'mileage_band',
+    officialNoticeUrl: 'https://www.airpremia.com/',
+    exactNoticeUrlVerification: 'homepage_notice_list_and_user_provided_pdf_verified',
+    sourceName: 'Air Premia official PDF: 2026.08 에어프레미아 유류할증료.pdf',
+    sourceFile: 'C:/Users/jiwoo/OneDrive/Desktop/사이드/유류할증료/2026.08 유류할증료/2026.08 에어프레미아 유류할증료.pdf',
+    publishedAt: '2026-07-29T16:09:03+09:00',
+    verifiedAt: '2026-07-30T08:55:00+09:00',
+    applicableFrom: '2026-08-01',
+    applicableTo: '2026-08-31',
+    ticketingBasis: true,
+    paymentDateBasis: true,
+    oneWay: true,
+    note: '2026년 8월 한국발 국제선 편도/mile 기준 USD 공시. 공식 PDF에 1,500~1,999마일 구간은 별도 행이 없어 임의 생성하지 않음.',
+    items: [
+      { distanceRange: '0-999', label: '~999마일', amount: 25, currency: 'USD', route: 'ICN-NRT', routes: ['인천-나리타'] },
+      { distanceRange: '1000-1499', label: '1,000~1,499마일', amount: 32, currency: 'USD', route: 'ICN-HKG', routes: ['인천-홍콩'] },
+      { distanceRange: '2000-2499', label: '2,000~2,499마일', amount: 54, currency: 'USD', route: 'ICN-BKK', routes: ['인천-방콕'] },
+      { distanceRange: '4000-4999', label: '4,000~4,999마일', amount: 95, currency: 'USD', route: 'ICN-HNL', routes: ['인천-호놀룰루'] },
+      { distanceRange: '5000-6499', label: '5,000~6,499마일', amount: 118, currency: 'USD', route: 'ICN-LAX/ICN-SFO', routes: ['인천-로스앤젤레스', '인천-샌프란시스코'] },
+      { distanceRange: '6500+', label: '6,500마일 이상', amount: 148, currency: 'USD', route: 'ICN-IAD/ICN-EWR', routes: ['인천-워싱턴 D.C.', '인천-뉴욕'] }
+    ]
+  };
+  window._YP_OFFICIAL_OVERRIDE = window._YP_OFFICIAL_OVERRIDE || {};
+  window._YP_OFFICIAL_OVERRIDE['2026.08'] = airPremiaAugust;
+  window._AUGUST_2026_OFFICIAL_OVERRIDES = window._AUGUST_2026_OFFICIAL_OVERRIDES || {};
+  window._AUGUST_2026_OFFICIAL_OVERRIDES.YP = Object.assign({}, window._AUGUST_2026_OFFICIAL_OVERRIDES.YP || {}, {
+    '2026.08': airPremiaAugust
+  });
+  window.MANUAL_OVERRIDES = window.MANUAL_OVERRIDES || {};
+  window.MANUAL_OVERRIDES.YP = window.MANUAL_OVERRIDES.YP || {};
+  window.MANUAL_OVERRIDES.YP['2026.08'] = airPremiaAugust;
+  window.AERO_AUGUST_2026_CONFIRMED_AIRLINES = confirmedAugustAirlines.slice();
+  window.AERO_AUGUST_2026_PENDING_AIRLINES = [];
+  window.AERO_MARKET_NUMBERS_20260730 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
+    asOf: '2026.07.30 08:55 KST',
+    lastUpdated: '2026-07-30T08:55:00+09:00',
+    currentMonthNotice: '2026-08',
+    forecastTargetMonth: '2026-09',
+    usdKrw: 1444,
+    usdKrwLabel: '약 1,444원',
+    brentUsdPerBbl: 90.74,
+    brentDailyChangeUsd: 6.65,
+    brentDailyChangePct: 7.91,
+    brentReferenceType: '2026.07.29 market close',
+    wtiUsdPerBbl: 84.46,
+    wtiDailyChangeUsd: 5.20,
+    wtiDailyChangePct: 6.56,
+    wtiReferenceType: '2026.07.29 market close',
+    augustMopsAverageUsdPerBbl: 119.06,
+    augustMopsAverageCentsPerGallon: 283.48,
+    previousMopsAverageUsdPerBbl: 142.09,
+    previousMopsAverageCentsPerGallon: 338.3,
+    augustMopsAverageChangePct: -16.2,
+    augustMopsPeriod: '2026.06.16~2026.07.15',
+    iataJetFuelUsdPerBbl: 160.06,
+    iataJetFuelWeeklyChangePct: 7.1,
+    currentSingaporeMopsExactValue: null,
+    currentSingaporeMopsStatus: 'daily_price_checking_public_confirmation_in_progress',
+    currentSingaporeMopsDisplay: '일별 싱가포르 MOPS 현물가는 공개 자료 확인 중',
+    augustSurchargeLevel: 14,
+    augustSurchargeStage: 14,
+    julySurchargeLevel: 19,
+    julySurchargeStage: 19,
+    augustStageChangeVsJuly: -5,
+    augustOfficialConfirmedAirlines: confirmedAugustAirlines.slice(),
+    augustOfficialPendingAirlines: [],
+    septemberCalculationFrom: '2026-07-16',
+    septemberCalculationTo: '2026-08-15',
+    septemberMopsAverageStatus: 'in_progress',
+    septemberSurchargeStatus: 'forecast_only_not_announced',
+    septemberSurchargeConfirmed: false,
+    hormuzVessels20260728: 8,
+    hormuzInbound20260728: 5,
+    hormuzOutbound20260728: 3,
+    hormuzVessels20260729Preliminary: 1,
+    hormuzLatestCountIsPreliminary: true,
+    hormuzStatus: 'severely_restricted_not_fully_closed',
+    babElMandebVessels20260728: 39,
+    babElMandebVessels20260729Preliminary: 5,
+    babElMandebLatestCountIsPreliminary: true,
+    babElMandebStatus: 'high_daily_volatility_not_normalized',
+    omanRegionalManagementProposalRejected: true,
+    hormuzManagementAgreementReached: false,
+    usSaudiStrikeLocation: 'Iraq',
+    iranMainlandDirectlyStruckByUsSaudiInThisOperation: false,
+    iranRetaliatoryAttacksReported: true,
+    usAdditionalStrikeWarningReported: true,
+    ukraineIranianVesselIncidentLocation: 'Caspian Sea',
+    iranMainlandStruckByUkraine: false,
+    newIranSanctionsEntities: 10,
+    newIranSanctionsTankers: 8,
+    egyptUSOwnedVesselDroneStrikeConfirmed: false,
+    outlookDirection: 'upward_pressure_restrengthened_spike_risk_reexpanded_fx_relief_remains',
+    outlookConfidence: 'medium',
+    marketVolatility: 'extremely_high'
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260730;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {
+    '2026-07-30': window.AERO_MARKET_NUMBERS_20260730
+  });
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1444 });
 })();
 
 /* 2026.07.29 KST supplemental geopolitical override.

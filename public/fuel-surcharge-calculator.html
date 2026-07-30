@@ -1413,8 +1413,8 @@ var SAVING_INDEX_ROUTE_MAP = null;
     if (!root) return;
     applyLiveFareStaticText();
     var dict = {
-      ko:['유류할증료 항공사별 비교 계산기','노선별 2026년 7월 유류할증료 비교','같은 노선의 취항 항공사를 자동으로 묶어 2026년 7월 공식 공시 기준 최저 금액과 항공사별 차이를 표로 보여줍니다.','2026.07 공식 공시 기준 · 2026.08 일부 공시 반영','출발지','도착지','인원','여정','편도 또는 왕복 선택','편도','왕복','비교 항공사','현재 최저 유류할증료','항공권 총액 확인','※ 유류할증료는 발권일 기준으로 적용됩니다. 현재 계산기는 2026년 7월 공식 공시 기준으로 비교하며, 2026년 8월 금액은 공식 공지 확인 항공사만 반영합니다.'],
-      en:['Fuel surcharge airline comparison calculator','Route Fuel Surcharge Comparison: July 2026','Compares airlines on the same route using verified July 2026 filings where available and separates pending airlines.','July 2026 partial official filings reflected','Origin','Destination','Passengers','Trip','Choose one-way or round-trip','One-way','Round-trip','Airlines compared','Current lowest surcharge','Check total airfare','※ Fuel surcharges are applied by ticketing date. This calculator reflects verified July 2026 filings where available and keeps pending airlines separate.'],
+      ko:['유류할증료 항공사별 비교 계산기','노선별 2026년 7월·8월 유류할증료 비교','같은 노선의 취항 항공사를 자동으로 묶어 2026년 7월 공식 공시 기준 금액과 2026년 8월 공식 공시 확인 금액의 차이를 표로 보여줍니다.','2026.07 공식 공시 기준 · 2026.08 공식 공시 반영','출발지','도착지','인원','여정','편도 또는 왕복 선택','편도','왕복','비교 항공사','현재 최저 유류할증료','항공권 총액 확인','※ 유류할증료는 발권일 기준으로 적용됩니다. 현재 계산기는 2026년 7월 공식 공시 기준으로 비교하며, 2026년 8월 금액은 공식 공지 확인 항공사만 반영합니다.'],
+      en:['Fuel surcharge airline comparison calculator','Route Fuel Surcharge Comparison: July and August 2026','Compares airlines on the same route using July 2026 official filings and confirmed August 2026 notice amounts.','August 2026 official notices reflected','Origin','Destination','Passengers','Trip','Choose one-way or round-trip','One-way','Round-trip','Airlines compared','Current lowest surcharge','Check total airfare','※ Fuel surcharges are applied by ticketing date. This calculator compares July 2026 filings with confirmed August 2026 notices.'],
       ja:['燃油サーチャージ航空会社別比較計算機','路線別 2026年7月 燃油サーチャージ比較','7月公式公示が確認された航空会社は7月金額を反映し、未確認の航空会社は別途区分します。','2026年7月 一部公式公示反映','出発地','到着地','人数','旅程','片道または往復を選択','片道','往復','比較航空会社','現在の最安サーチャージ','航空券総額を確認','※ 燃油サーチャージは発券日基準で適用されます。7月公式公示が確認された航空会社のみ7月金額を反映します。'],
       zh:['燃油附加费航空公司比较计算器','按航线比较2026年7月燃油附加费','已确认7月官方公告的航司使用7月金额，未公告航司单独区分。','已反映2026年7月部分官方公告','出发地','目的地','人数','行程','选择单程或往返','单程','往返','比较航空公司','当前最低燃油附加费','查看机票总价','※ 燃油附加费按出票日适用。仅对已确认7月官方公告的航司反映7月金额。']
     };
@@ -1422,14 +1422,14 @@ var SAVING_INDEX_ROUTE_MAP = null;
       ko: [
         ['공식 공시 기반', '항공사 공식 공시 데이터'],
         ['발권일 기준', '실제 발권일 금액 적용'],
-        ['2026.07 일부 반영', '7월 공식 공시 확인분 반영'],
+        ['2026.08 공시 반영', '8월 공식 공시 확인분 반영'],
         '유류할증료 계산하기',
         '유류할증료 계산 기준'
       ],
       en: [
         ['Official filing basis', 'Airline published data'],
         ['Ticketing-date basis', 'Applied by issue date'],
-        ['June 2026 reflected', 'June 2026 filings included'],
+        ['August 2026 reflected', 'August 2026 notices included'],
         'Calculate fuel surcharge',
         'Fuel surcharge calculation basis'
       ],
@@ -2047,7 +2047,7 @@ var PAGE_I18N = {
     'calc.official.item.tw': '✈️ 티웨이항공: <a href="https://www.twayair.com/app/customerCenter/notice/retrieve/12654" target="_blank" rel="noopener">twayair.com 공식 공지 확인 ↗</a>',
     'calc.official.item.ze': '✈️ 이스타항공: <a href="https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=608&lang=KR" target="_blank" rel="noopener">eastarjet.com 공식 공지 확인 ↗</a>',
     'calc.official.item.rs': '✈️ 에어서울: <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10914&pageNo=1" target="_blank" rel="noopener">flyairseoul.com 공식 공지 확인 ↗</a>',
-    'calc.official.item.yp': '✈️ 에어프레미아: <a href="https://www.airpremia.com/a/ko/customer/notice/728" target="_blank" rel="noopener">airpremia.com 공식 공지 확인 ↗</a>',
+    'calc.official.item.yp': '✈️ 에어프레미아: <a href="https://www.airpremia.com/a/ko/customer/notice/758" target="_blank" rel="noopener">airpremia.com 공식 공지 확인 ↗</a>',
     'calc.official.item.bx': '✈️ 에어부산: <a href="https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4377" target="_blank" rel="noopener">airbusan.com 공식 공지 확인 ↗</a>',
   },
   en: {
@@ -2128,7 +2128,7 @@ var PAGE_I18N = {
     'calc.official.item.tw': "✈️ T'way Air: <a href=\"https://www.twayair.com/app/customerCenter/notice/retrieve/12654\" target=\"_blank\" rel=\"noopener\">twayair.com — Official Notice ↗</a>",
     'calc.official.item.ze': '✈️ Eastar Jet: <a href="https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=608&lang=KR" target="_blank" rel="noopener">eastarjet.com — Official Notice ↗</a>',
     'calc.official.item.rs': '✈️ Air Seoul: <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10914&pageNo=1" target="_blank" rel="noopener">flyairseoul.com — Official Notice ↗</a>',
-    'calc.official.item.yp': '✈️ Air Premia: <a href="https://www.airpremia.com/a/ko/customer/notice/728" target="_blank" rel="noopener">airpremia.com — Official Notice ↗</a>',
+    'calc.official.item.yp': '✈️ Air Premia: <a href="https://www.airpremia.com/a/ko/customer/notice/758" target="_blank" rel="noopener">airpremia.com — Official Notice ↗</a>',
     'calc.official.item.bx': '✈️ Air Busan: <a href="https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4377" target="_blank" rel="noopener">airbusan.com — Official Notice ↗</a>',
   },
   ja: {
@@ -2207,7 +2207,7 @@ var PAGE_I18N = {
     'calc.official.item.tw': '✈️ ティーウェイ航空: <a href="https://www.twayair.com/app/customerCenter/notice/retrieve/12654" target="_blank" rel="noopener">twayair.com 公式案内を確認 ↗</a>',
     'calc.official.item.ze': '✈️ イースター航空: <a href="https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=608&lang=KR" target="_blank" rel="noopener">eastarjet.com 公式案内を確認 ↗</a>',
     'calc.official.item.rs': '✈️ エアソウル: <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10914&pageNo=1" target="_blank" rel="noopener">flyairseoul.com 公式案内を確認 ↗</a>',
-    'calc.official.item.yp': '✈️ エアプレミア: <a href="https://www.airpremia.com/a/ko/customer/notice/728" target="_blank" rel="noopener">airpremia.com 公式案内を確認 ↗</a>',
+    'calc.official.item.yp': '✈️ エアプレミア: <a href="https://www.airpremia.com/a/ko/customer/notice/758" target="_blank" rel="noopener">airpremia.com 公式案内を確認 ↗</a>',
     'calc.official.item.bx': '✈️ エアプサン: <a href="https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4377" target="_blank" rel="noopener">airbusan.com 公式案内を確認 ↗</a>',
   },
   zh: {
@@ -2286,7 +2286,7 @@ var PAGE_I18N = {
     'calc.official.item.tw': '✈️ 德威航空: <a href="https://www.twayair.com/app/customerCenter/notice/retrieve/12654" target="_blank" rel="noopener">twayair.com 查看官方公告 ↗</a>',
     'calc.official.item.ze': '✈️ 易思达航空: <a href="https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=608&lang=KR" target="_blank" rel="noopener">eastarjet.com 查看官方公告 ↗</a>',
     'calc.official.item.rs': '✈️ 首尔航空: <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10914&pageNo=1" target="_blank" rel="noopener">flyairseoul.com 查看官方公告 ↗</a>',
-    'calc.official.item.yp': '✈️ 高丽航空: <a href="https://www.airpremia.com/a/ko/customer/notice/728" target="_blank" rel="noopener">airpremia.com 查看官方公告 ↗</a>',
+    'calc.official.item.yp': '✈️ 高丽航空: <a href="https://www.airpremia.com/a/ko/customer/notice/758" target="_blank" rel="noopener">airpremia.com 查看官方公告 ↗</a>',
     'calc.official.item.bx': '✈️ 釜山航空: <a href="https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4377" target="_blank" rel="noopener">airbusan.com 查看官方公告 ↗</a>',
   },
 };
@@ -2550,6 +2550,98 @@ var PAGE_I18N = {
   var desc = document.querySelector('meta[name="description"]');
   if(desc) desc.setAttribute('content', ko['calc.metaDesc']);
   if (window.renderSavingCalculator) window.renderSavingCalculator();
+})();
+
+(function applyAirPremiaAugustCalculatorUpdate(){
+  var airPremiaNoticeUrl = 'https://www.airpremia.com/a/ko/customer/notice/758';
+  var confirmedKo = '대한항공·아시아나항공·진에어·에어부산·티웨이항공·이스타항공·에어서울·제주항공·에어프레미아';
+  var confirmedEn = 'Korean Air, Asiana Airlines, Jin Air, Air Busan, Tway Air, Eastar Jet, Air Seoul, Jeju Air and Air Premia';
+
+  AUGUST_2026_OFFICIAL_AMOUNTS.YP = [25, 32, null, 54, 95, 118, 148];
+  if (typeof applyOfficialSurchargePatches === 'function') applyOfficialSurchargePatches();
+
+  if (window.SAVING_COMPARE_DATA && SAVING_COMPARE_DATA.YP && Array.isArray(SAVING_COMPARE_DATA.YP.rows)) {
+    SAVING_COMPARE_DATA.YP.rows.forEach(function(row, idx) {
+      if (idx === 2) {
+        row.augustOfficial = null;
+        row.augustNote = '2026년 8월 에어프레미아 공식 PDF에 해당 구간 별도 행 없음';
+      }
+    });
+  }
+
+  var ko = {
+    'calc.metaTitle':'유류할증료 계산기 | 2026년 7월·8월 공식 공시 노선별 비교',
+    'calc.metaDesc':'한국 출발 국제선 항공권의 2026년 7월 공식 유류할증료와 2026년 8월 공식 공시 금액을 노선, 항공사, 편도·왕복, 인원별로 비교합니다.',
+    'calc.pageSub':'2026년 7월 공식 공시 기준 · 2026년 8월 공식 공시 반영',
+    'calc.h1':'유류할증료 계산기: 7월 기준과 8월 공식 공시 금액 비교',
+    'calc.notice':'<strong>안내:</strong> 현재 계산기는 2026년 7월 공식 공시를 기준으로 비교하고, ' + confirmedKo + '의 2026년 8월 공식 공시 금액을 함께 표시합니다.',
+    'calc.readiness.title':'7월 공시 기준 · 8월 공식 공시 반영',
+    'calc.readiness.badge':'7월 기준 · 8월 확인분 반영',
+    'calc.readiness.body':'현재 계산기는 2026년 7월 공식 공시를 기준으로 비교합니다. 2026년 8월 유류할증료는 ' + confirmedKo + '처럼 공식 공시가 확인된 항공사만 금액을 표시합니다. 에어프레미아 1,500~1,999마일 구간은 공식 PDF에 별도 행이 없어 임의 금액을 생성하지 않습니다.',
+    'calc.readiness.link':'2026년 8월 공시 현황 보기 →',
+    'calc.related.june':'👉 2026년 8월 공시 현황',
+    'calc.faq.july.title':'계산기에 2026년 8월 유류할증료도 반영되나요?',
+    'calc.faq.july.body':'반영됐습니다. 대한항공·아시아나항공·진에어·에어부산·티웨이항공·이스타항공·에어서울·제주항공·에어프레미아의 2026년 8월 공식 공시 금액을 표시합니다. 에어프레미아 1,500~1,999마일 구간처럼 공식 표에 없는 구간은 임의 금액을 만들지 않습니다.',
+    'calc.official.item.yp':'✈️ 에어프레미아: <a href="' + airPremiaNoticeUrl + '" target="_blank" rel="noopener">8월 공식 공지</a>'
+  };
+  var en = {
+    'calc.metaTitle':'Fuel Surcharge Calculator | July and August 2026 Official Filing Comparison',
+    'calc.metaDesc':'Compare July 2026 official fuel surcharge filings and confirmed August 2026 official notice amounts for Korea-origin international flights by route, airline, trip type and passenger count.',
+    'calc.pageSub':'July 2026 official filings · August 2026 official notices reflected',
+    'calc.h1':'Fuel Surcharge Calculator: Compare July baseline and August official notices',
+    'calc.notice':'<strong>Notice:</strong> The calculator compares July 2026 official filings and shows August 2026 official amounts for ' + confirmedEn + '.',
+    'calc.readiness.title':'July filings reflected · August notices reflected',
+    'calc.readiness.badge':'July baseline · August confirmed amounts',
+    'calc.readiness.body':'The calculator reflects confirmed August 2026 official notices for ' + confirmedEn + '. Air Premia’s 1,500-1,999 mile band is left blank because the official PDF has no separate row for that band.',
+    'calc.readiness.link':'View August 2026 notice status →',
+    'calc.related.june':'👉 August 2026 notice status',
+    'calc.faq.july.title':'Does the calculator include August 2026 fuel surcharges?',
+    'calc.faq.july.body':'Yes. Confirmed August 2026 official amounts are shown for Korean Air, Asiana Airlines, Jin Air, Air Busan, Tway Air, Eastar Jet, Air Seoul, Jeju Air and Air Premia. No invented amount is used where the official table has no separate band.',
+    'calc.official.item.yp':'✈️ Air Premia: <a href="' + airPremiaNoticeUrl + '" target="_blank" rel="noopener">August official notice</a>'
+  };
+  var packs = { ko: ko, en: en, ja: en, zh: en, fr: en, de: en };
+  Object.keys(packs).forEach(function(lang){
+    window.I18N[lang] = window.I18N[lang] || {};
+    Object.assign(window.I18N[lang], packs[lang]);
+    if (window.PAGE_I18N && PAGE_I18N[lang]) Object.assign(PAGE_I18N[lang], packs[lang]);
+  });
+  function fixSurfaceCopy(){
+    var replacements = {
+      '2026.07 일부 반영':'2026.08 공시 반영',
+      '7월 공식 공시 확인분 반영':'8월 공식 공시 확인분 반영',
+      '2026.08 일부 공시 반영':'2026.08 공식 공시 반영',
+      'July 2026 partial official filings reflected':'August 2026 official notices reflected',
+      'June 2026 reflected':'August 2026 reflected',
+      'June 2026 filings included':'August 2026 notices included'
+    };
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    var node;
+    while ((node = walker.nextNode())) {
+      Object.keys(replacements).forEach(function(from) {
+        if (node.nodeValue.indexOf(from) !== -1) {
+          node.nodeValue = node.nodeValue.split(from).join(replacements[from]);
+        }
+      });
+    }
+  }
+  var previousRender = window.renderSavingCalculator;
+  if (typeof previousRender === 'function') {
+    window.renderSavingCalculator = function(){
+      previousRender.apply(this, arguments);
+      fixSurfaceCopy();
+    };
+  }
+  var previousUpdate = window.updateSavingCalculator;
+  if (typeof previousUpdate === 'function') {
+    window.updateSavingCalculator = function(){
+      previousUpdate.apply(this, arguments);
+      fixSurfaceCopy();
+    };
+  }
+  var desc = document.querySelector('meta[name="description"]');
+  if(desc) desc.setAttribute('content', ko['calc.metaDesc']);
+  if (window.renderSavingCalculator) window.renderSavingCalculator();
+  fixSurfaceCopy();
 })();
 
 window.initNav({
