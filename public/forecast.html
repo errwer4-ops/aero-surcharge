@@ -8444,6 +8444,122 @@ function renderForecastPage() {
   });
 })();
 
+/* 2026.07.31 08:50 KST full update guard: restore full market context before Kuwait supplement. */
+(function(){
+  var ko = {
+    'fore.metaTitle': '2026년 8월 유류할증료 14단계 확정·9월 전망 | 7월 31일 환율·MOPS·호르무즈',
+    'fore.metaDesc': '2026.07.31 08:50 KST 기준 8월 국제선 유류할증료 14단계 확정, 원달러 환율 약 1,422원, MOPS 119.06달러, IATA 항공유 160.06달러, Brent 89.03달러, WTI 83.59달러를 반영한 9월 전망입니다.',
+    'fore.pageSub': '2026.07.31 08:50 KST 기준 · 8월 14단계 확정 · 환율 1,422원 · Brent 89.03달러 · WTI 83.59달러',
+    'fore.predict.subtitle': '8월 14단계 확정 · MOPS · IATA 항공유 · USD/KRW · 국제유가',
+    'fore.predict.footnote': '* 2026년 8월 국제선 유류할증료는 14단계로 확정됐습니다. 2026년 9월 유류할증료는 아직 공시 전이며, 아래 지표는 전망 변수입니다.',
+    'fore.predict.items': [
+      { label:'8월 확정 단계', val:'14단계 · 7월 19단계 대비 5단계 인하', cls:'down' },
+      { label:'원달러 환율', val:'약 1,422원 · USD 공시 항공사의 원화 환산 부담 완화', cls:'down' },
+      { label:'8월 산정 MOPS', val:'119.06달러/bbl · 283.48 cents/gal', cls:'down' },
+      { label:'IATA 항공유', val:'160.06달러/bbl · 글로벌 항공유 하방 경직성 확인', cls:'up' },
+      { label:'국제유가', val:'Brent 89.03달러 · WTI 83.59달러', cls:'up' },
+      { label:'9월 판단', val:'상승 압력 우세 · 급등 위험 일부 완화 · 환율 완화 효과 확대 · 항공유 하방 경직성 지속', cls:'plain' }
+    ],
+    'fore.indicator.footnote': '* 2026년 9월 단계·금액은 아직 공시 전입니다. 8월 확정 공시와 9월 전망 변수를 분리해 표시합니다.',
+    'fore.indicator.rows': [
+      ['8월 유류할증료', '14단계 확정', '7월 19단계 대비 5단계 인하'],
+      ['원달러 환율', '약 1,422원', 'USD 공시 항공사 원화 체감액 완화'],
+      ['8월 산정 MOPS 평균', '119.06달러/bbl · 283.48 cents/gal', '8월 인하의 공시 산정 근거'],
+      ['IATA 글로벌 항공유', '160.06달러/bbl', '항공유 하방 경직성 변수'],
+      ['유럽 항공유 정제마진', '배럴당 80달러 이상', '정제유 공급 프리미엄 변수'],
+      ['국제유가', 'Brent 89.03달러 · WTI 83.59달러', '급등 위험은 일부 완화됐지만 높은 변동성 유지']
+    ],
+    'fore.summary.updated': '2026.07.31 08:50 KST 기준 · 8월 14단계 확정 · 환율 1,422원 · MOPS 119.06달러 · IATA 항공유 160.06달러 · 호르무즈 12척',
+    'fore.summary.items': [
+      '2026년 8월 국제선 유류할증료는 14단계로 확정',
+      '원달러 환율 약 1,422원으로 환율 완화 효과 확대',
+      '8월 산정 MOPS 평균은 119.06달러/bbl, IATA 글로벌 항공유는 160.06달러/bbl',
+      '유럽 항공유 정제마진은 배럴당 80달러 이상으로 항공유 하방 경직성 지속',
+      'Brent 89.03달러, WTI 83.59달러로 급등 위험은 일부 완화됐지만 높은 수준 유지',
+      '지정학 리스크는 직접 공급 중단 확정이 아니라 보조 상승 변수로만 반영',
+      '9월 전망은 상승 압력 우세, 급등 위험 일부 완화, 환율 완화 효과 확대, 항공유 하방 경직성 지속'
+    ],
+    'fore.verdict.line3': '→ 원달러 환율 약 1,422원은 완화 요인이지만 IATA 항공유 160.06달러, 유럽 항공유 정제마진 80달러 이상, 국제유가 변동성 때문에 9월 전망은 상승 압력 우세를 유지합니다. 지정학 리스크는 직접 공급 중단 확정이 아니라 보조 변수로만 반영합니다.',
+    'fore.mops.analysis.body': '2026년 8월 국제선 유류할증료는 14단계로 확정됐고, 이때 반영된 싱가포르 MOPS 평균은 119.06달러/bbl, 283.48 cents/gal입니다. 이 값은 8월 인하의 공시 산정 근거입니다.\n\n2026.07.31 08:50 KST 기준 9월 전망에서 확인할 변수는 IATA 글로벌 항공유 160.06달러/bbl, 유럽 항공유 정제마진 배럴당 80달러 이상, Brent 89.03달러, WTI 83.59달러, 원달러 환율 약 1,422원입니다. 환율은 완화 요인이지만 항공유 가격과 정제마진은 하방 경직성을 보여줍니다.',
+    'fore.market.brent': '국제유가: Brent는 89.03달러/bbl, WTI는 83.59달러/bbl입니다. 직전 급등 위험은 일부 완화됐지만 9월 유류할증료 전망에서는 여전히 높은 변동성 구간입니다.',
+    'fore.market.mops': '항공유 가격(MOPS): 8월 공시에 사용된 MOPS 평균은 119.06달러/bbl입니다. IATA 글로벌 항공유는 160.06달러/bbl, 유럽 항공유 정제마진은 배럴당 80달러 이상으로 항공유 하방 경직성이 남아 있습니다.',
+    'fore.market.fx': '원달러 환율: 약 1,422원으로 USD 공시 항공사의 원화 환산 부담은 완화됐습니다. 다만 항공유와 지정학 리스크를 모두 상쇄한다고 단정하지 않습니다.',
+    'fore.market.geo': '지정학 리스크: 호르무즈 상품선 통항은 12척으로 일부 회복됐고 7월 11일 이후 첫 QatarEnergy LNG선 출항이 확인됐습니다. 그러나 미국의 이란 혁명수비대 목표물 공격, 이란의 미군 대상 미사일 공격, 이집트 가스선 2척 드론 피격 공식 확인, 사우디 주도 14개국 해상방위 연합 추진, 사우디 지잔·쿠웨이트 알주르·러시아 페름 정유시설 차질, 우크라이나의 카스피해 이란 상선 피격, 쿠웨이트 중국 기업 소유 건물 피해는 보조 상승 리스크입니다.',
+    'fore.market.summary': '→ 2026년 8월 유류할증료는 14단계로 확정됐습니다. 2026년 9월 전망은 상승 압력 우세, 급등 위험 일부 완화, 환율 완화 효과 확대, 항공유 하방 경직성 지속으로 정리합니다. 쿠웨이트 중국 기업 소유 건물 피해는 직접 연료 공급 중단이 아니라 걸프 지역 상업 시설·물류·보험·보안 비용의 보조 리스크입니다.',
+    'fore.market.fx2': '핵심 수치: 8월 14단계 확정 · USD/KRW 약 1,422원 · 8월 산정 MOPS 119.06달러/bbl · IATA 항공유 160.06달러/bbl · 유럽 항공유 정제마진 80달러 이상 · Brent 89.03달러 · WTI 83.59달러',
+    'fore.basis.body': '2026년 8월 한국 출발 국제선 유류할증료는 14단계로 확정된 사실 데이터입니다. 2026년 9월 유류할증료는 아직 공시 전이며, 환율·MOPS·IATA 항공유·정제마진·국제유가와 주요 지정학 리스크를 종합한 전망으로만 표시합니다.',
+    'fore.keyvars.items': ['2026년 9월 유류할증료 전망', '2026년 8월 유류할증료 14단계', 'MOPS', 'IATA 항공유', '원달러 환율', '국제유가', '한국발 국제선 유류할증료'],
+    'fore.faq.items': [
+      {q:'2026년 8월 국제선 유류할증료는 몇 단계인가요?', a:'2026년 8월 한국 출발 국제선 유류할증료는 14단계로 확정됐습니다.'},
+      {q:'2026년 9월 유류할증료는 인상이 확정됐나요?', a:'아닙니다. 2026년 9월 유류할증료는 아직 공시 전입니다. 현재는 상승 압력 우세로 보지만 확정 표현을 쓰면 안 됩니다.'},
+      {q:'환율 1,422원은 유류할증료에 어떤 의미인가요?', a:'USD 공시 항공사의 원화 환산 부담을 낮추는 완화 요인입니다. 다만 항공유 가격과 지정학 리스크를 모두 상쇄한다고 단정할 수는 없습니다.'},
+      {q:'쿠웨이트 중국 기업 소유 건물 피해가 항공유 공급 중단인가요?', a:'현재 공개 정보로는 정유시설이나 항공유 시설 피해, 직접 공급 중단이 확인되지 않았습니다. 보조 지정학 리스크로만 반영합니다.'}
+    ]
+  };
+  var en = {
+    'fore.metaTitle': 'August Level 14 Confirmed and September Fuel Surcharge Outlook | July 31 FX, MOPS and Hormuz',
+    'fore.metaDesc': 'As of 2026.07.31 08:50 KST, this page summarizes August Level 14, USD/KRW around 1,422, MOPS USD 119.06, IATA jet fuel USD 160.06, Brent USD 89.03 and WTI USD 83.59 for the September outlook.',
+    'fore.pageSub': 'As of 2026.07.31 08:50 KST · August Level 14 confirmed · USD/KRW 1,422 · Brent 89.03 · WTI 83.59',
+    'fore.predict.subtitle': 'August Level 14 · MOPS · IATA jet fuel · USD/KRW · oil prices',
+    'fore.predict.items': ko['fore.predict.items'],
+    'fore.indicator.footnote': ko['fore.indicator.footnote'],
+    'fore.indicator.rows': ko['fore.indicator.rows'],
+    'fore.summary.updated': ko['fore.summary.updated'],
+    'fore.summary.items': ko['fore.summary.items'],
+    'fore.verdict.line3': ko['fore.verdict.line3'],
+    'fore.mops.analysis.body': ko['fore.mops.analysis.body'],
+    'fore.market.brent': ko['fore.market.brent'],
+    'fore.market.mops': ko['fore.market.mops'],
+    'fore.market.fx': ko['fore.market.fx'],
+    'fore.market.geo': ko['fore.market.geo'],
+    'fore.market.summary': ko['fore.market.summary'],
+    'fore.market.fx2': ko['fore.market.fx2'],
+    'fore.basis.body': ko['fore.basis.body'],
+    'fore.keyvars.items': ko['fore.keyvars.items'],
+    'fore.faq.items': ko['fore.faq.items']
+  };
+  Object.assign(FORE_I18N.ko, ko);
+  Object.assign(FORE_I18N.en, en);
+  ['ja','zh','fr','de'].forEach(function(lang){ Object.assign(FORE_I18N[lang] || (FORE_I18N[lang] = {}), en); });
+  if(window.I18N){
+    Object.assign(window.I18N.ko || (window.I18N.ko = {}), ko);
+    Object.assign(window.I18N.en || (window.I18N.en = {}), en);
+    ['ja','zh','fr','de'].forEach(function(lang){ Object.assign(window.I18N[lang] || (window.I18N[lang] = {}), en); });
+  }
+  window.AERO_MARKET_NUMBERS_20260731 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
+    asOf:'2026.07.31 08:50 KST',
+    lastUpdated:'2026-07-31T08:50:00+09:00',
+    usdKrw:1422,
+    brentUsdPerBbl:89.03,
+    wtiUsdPerBbl:83.59,
+    augustMopsAverageUsdPerBbl:119.06,
+    iataJetFuelUsdPerBbl:160.06,
+    europeJetFuelCrackSpreadUsdPerBblMin:80,
+    hormuzCommodityVesselsObserved:12,
+    firstQatarEnergyLngSinceJuly11:true,
+    babElMandebSourceDiscrepancy:true,
+    usIranAttackSequenceRisk:true,
+    egyptGasShipsDroneHitConfirmed:true,
+    saudiLedFourteenNationMaritimeDefenseCoalition:true,
+    refineryDisruptions:['Saudi Jazan','Kuwait Al Zour','Russia Perm'],
+    caspianIranianMerchantVesselHit:true,
+    kuwaitChineseOwnedBuildingDamageReported:true,
+    kuwaitChineseOwnedBuildingWorkerDeaths:1,
+    directJetFuelSupplyDisruptionConfirmed:false,
+    septemberOutlook:'upward_pressure_dominant_spike_risk_partly_eased_fx_relief_expanded_jet_fuel_downside_sticky'
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260731;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-07-31': window.AERO_MARKET_NUMBERS_20260731});
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1422 });
+  document.title = ko['fore.metaTitle'];
+  var desc = document.querySelector('meta[name="description"]');
+  if(desc) desc.setAttribute('content', ko['fore.metaDesc']);
+  var ogTitle = document.querySelector('meta[property="og:title"]');
+  if(ogTitle) ogTitle.setAttribute('content', ko['fore.metaTitle']);
+  var ogDesc = document.querySelector('meta[property="og:description"]');
+  if(ogDesc) ogDesc.setAttribute('content', ko['fore.metaDesc']);
+})();
+
 window.initNav({
   onLangChange: function() { renderForecastPage(); },
   onCurrChange: function() { renderForecastPage(); },

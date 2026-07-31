@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-07-30T01:35:00.434Z",
+    "generatedAt": "2026-07-31T00:56:26.012Z",
     "modelVersion": "rule-engine-v2-market-watch",
     "basePeriod": "2026.08",
     "forecastTargetPeriod": "2026.09",
@@ -9,12 +9,12 @@
       "brentUSD": 82.5,
       "wtiUSD": 78.3,
       "jetFuelSpread": 14.2,
-      "usdKrw": 1449,
-      "usdJpy": 163.54,
+      "usdKrw": 1429,
+      "usdJpy": 160.57,
       "geopoliticalRiskScore": 0.35,
       "baselineBrentUSD": 75,
       "marketDataSource": "live",
-      "marketFetchedAt": "2026-07-30T01:33:57.467Z"
+      "marketFetchedAt": "2026-07-31T00:55:22.741Z"
     },
     "disclaimer": "2026년 8월 국제선 유류할증료 14단계는 확정 공시 데이터입니다. 2026년 9월 유류할증료는 산정 기간이 진행 중이므로 단계와 금액을 확정하거나 임의 생성하지 않습니다.",
     "lastUpdated": "2026-07-21T06:55:00+09:00",

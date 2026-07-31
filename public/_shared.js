@@ -659,6 +659,148 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
   }
 })();
 
+/* 2026.07.31 08:50 KST absolute final guard.
+   This block must stay after the Kuwait-only supplement so shared copy keeps the full update. */
+(function(){
+  var base = window.AERO_MARKET_NUMBERS_20260731 || window.AERO_MARKET_NUMBERS_LATEST || {};
+  window.AERO_MARKET_NUMBERS_20260731 = Object.assign({}, base, {
+    asOf: '2026.07.31 08:50 KST',
+    lastUpdated: '2026-07-31T08:50:00+09:00',
+    currentMonthNotice: '2026-08',
+    forecastTargetMonth: '2026-09',
+    augustSurchargeLevel: 14,
+    augustSurchargeStage: 14,
+    septemberSurchargeConfirmed: false,
+    usdKrw: 1422,
+    usdKrwLabel: '약 1,422원',
+    augustMopsAverageUsdPerBbl: 119.06,
+    augustMopsAverageCentsPerGallon: 283.48,
+    iataJetFuelUsdPerBbl: 160.06,
+    europeJetFuelCrackSpreadUsdPerBblMin: 80,
+    brentUsdPerBbl: 89.03,
+    wtiUsdPerBbl: 83.59,
+    hormuzCommodityVesselsObserved: 12,
+    firstQatarEnergyLngSinceJuly11: true,
+    babElMandebSourceDiscrepancy: true,
+    airPremiaAugustUsdMin: 25,
+    airPremiaAugustUsdMax: 148,
+    usIranAttackSequenceRisk: true,
+    egyptGasShipsDroneHitConfirmed: true,
+    saudiLedFourteenNationMaritimeDefenseCoalition: true,
+    refineryDisruptions: ['Saudi Jazan', 'Kuwait Al Zour', 'Russia Perm'],
+    caspianIranianMerchantVesselHit: true,
+    kuwaitChineseOwnedBuildingDamageReported: true,
+    kuwaitChineseOwnedBuildingWorkerDeaths: 1,
+    energyFacilityConfirmed: false,
+    refineryFacilityConfirmed: false,
+    jetFuelFacilityConfirmed: false,
+    directOilSupplyDisruptionConfirmed: false,
+    directJetFuelSupplyDisruptionConfirmed: false,
+    outlookDirection: 'upward_pressure_dominant_spike_risk_partly_eased_fx_relief_expanded_jet_fuel_downside_sticky',
+    marketVolatility: 'high'
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260731;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {
+    '2026-07-31': window.AERO_MARKET_NUMBERS_20260731
+  });
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1422 });
+
+  var koMarket = {
+    marketDataRef: '2026.07.31 08:50 KST 기준',
+    marketBrent: '국제유가: Brent는 89.03달러/bbl, WTI는 83.59달러/bbl입니다. 직전 급등 위험은 일부 완화됐지만 2026년 9월 유류할증료 산정 기간에는 여전히 높은 변동성 변수입니다.',
+    marketMops: '항공유 가격(MOPS): 8월 공시에 사용된 싱가포르 MOPS 평균은 119.06달러/bbl, 283.48 cents/gal입니다. IATA 글로벌 항공유 160.06달러/bbl과 유럽 항공유 정제마진 배럴당 80달러 이상은 항공유 하방 경직성 변수로 봅니다.',
+    marketFx: '원달러 환율: 약 1,422원으로 USD 공시 항공사의 원화 환산 부담은 완화됐습니다. 다만 항공유 가격과 지정학 리스크를 모두 상쇄한다고 단정하지 않습니다.',
+    marketGeo: '지정학 리스크: 호르무즈 상품선 통항은 12척이고 7월 11일 이후 첫 QatarEnergy LNG선 출항이 확인됐습니다. 바브엘만데브 통항량은 출처별 차이가 있습니다. 미국의 이란 혁명수비대 목표물 공격, 이란의 미군 대상 미사일 공격, 이집트 가스선 2척 드론 피격 공식 확인, 사우디 주도 14개국 해상방위 연합 추진, 지잔·알주르·페름 정유시설 차질, 카스피해 이란 상선 피격, 쿠웨이트 중국 기업 소유 건물 피해는 보조 상승 리스크입니다.',
+    marketOutlook: '2026년 8월 국제선 유류할증료는 14단계로 확정됐고 에어프레미아 8월 공식 금액은 USD 25~148로 반영됐습니다. 2026년 9월 전망은 상승 압력 우세, 급등 위험 일부 완화, 환율 완화 효과 확대, 항공유 하방 경직성 지속으로 정리합니다.'
+  };
+  var enMarket = {
+    marketDataRef: 'As of 2026.07.31 08:50 KST',
+    marketBrent: 'Oil prices: Brent is USD 89.03/bbl and WTI is USD 83.59/bbl. Spike risk has partly eased from the prior surge, but volatility remains high for the September calculation window.',
+    marketMops: 'Jet fuel price (MOPS): the August filing Singapore MOPS average was USD 119.06/bbl, or 283.48 cents/gal. IATA global jet fuel at USD 160.06/bbl and European jet-fuel crack spreads above USD 80/bbl point to sticky jet-fuel downside.',
+    marketFx: 'USD/KRW: around KRW 1,422 eases KRW-equivalent burden for USD-notice airlines, but it does not fully offset jet-fuel and geopolitical risk.',
+    marketGeo: 'Geopolitical risk: Hormuz commodity-vessel traffic is observed at 12 vessels and the first QatarEnergy LNG vessel since July 11 has departed. Bab el-Mandeb traffic differs by source. US strikes on IRGC targets, Iranian missile attacks on US forces, confirmed drone hits on two Egyptian gas ships, a Saudi-led 14-nation maritime defense coalition, Jazan/Al Zour/Perm refinery disruptions, the Caspian Iranian merchant-vessel incident and the damaged Chinese company-owned building in Kuwait remain supporting upside risks.',
+    marketOutlook: 'August 2026 international fuel surcharge is confirmed at Level 14, and Air Premia August official amounts are reflected at USD 25-148. The September outlook is: upside pressure dominant, spike risk partly eased, FX relief expanded and jet-fuel downside remains sticky.'
+  };
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), koMarket);
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), enMarket);
+    ['ja','zh','fr','de'].forEach(function(lang){
+      Object.assign(window.I18N_SHARED[lang] || (window.I18N_SHARED[lang] = {}), enMarket);
+    });
+  }
+})();
+
+/* 2026.07.31 08:50 KST full update guard.
+   Keep the complete market context after the Kuwait incident supplement. */
+(function(){
+  var base = window.AERO_MARKET_NUMBERS_20260731 || window.AERO_MARKET_NUMBERS_LATEST || {};
+  window.AERO_MARKET_NUMBERS_20260731 = Object.assign({}, base, {
+    asOf: '2026.07.31 08:50 KST',
+    lastUpdated: '2026-07-31T08:50:00+09:00',
+    currentMonthNotice: '2026-08',
+    forecastTargetMonth: '2026-09',
+    augustSurchargeLevel: 14,
+    augustSurchargeStage: 14,
+    septemberSurchargeConfirmed: false,
+    usdKrw: 1422,
+    usdKrwLabel: '약 1,422원',
+    augustMopsAverageUsdPerBbl: 119.06,
+    augustMopsAverageCentsPerGallon: 283.48,
+    iataJetFuelUsdPerBbl: 160.06,
+    europeJetFuelCrackSpreadUsdPerBblMin: 80,
+    brentUsdPerBbl: 89.03,
+    wtiUsdPerBbl: 83.59,
+    hormuzCommodityVesselsObserved: 12,
+    firstQatarEnergyLngSinceJuly11: true,
+    babElMandebSourceDiscrepancy: true,
+    airPremiaAugustUsdMin: 25,
+    airPremiaAugustUsdMax: 148,
+    usIranAttackSequenceRisk: true,
+    egyptGasShipsDroneHitConfirmed: true,
+    saudiLedFourteenNationMaritimeDefenseCoalition: true,
+    refineryDisruptions: ['Saudi Jazan', 'Kuwait Al Zour', 'Russia Perm'],
+    caspianIranianMerchantVesselHit: true,
+    kuwaitChineseOwnedBuildingDamageReported: true,
+    kuwaitChineseOwnedBuildingWorkerDeaths: 1,
+    energyFacilityConfirmed: false,
+    refineryFacilityConfirmed: false,
+    jetFuelFacilityConfirmed: false,
+    directOilSupplyDisruptionConfirmed: false,
+    directJetFuelSupplyDisruptionConfirmed: false,
+    outlookDirection: 'upward_pressure_dominant_spike_risk_partly_eased_fx_relief_expanded_jet_fuel_downside_sticky',
+    marketVolatility: 'high'
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260731;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {
+    '2026-07-31': window.AERO_MARKET_NUMBERS_20260731
+  });
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1422 });
+
+  var koMarket = {
+    marketDataRef: '2026.07.31 08:50 KST 기준',
+    marketBrent: '국제유가: Brent는 89.03달러/bbl, WTI는 83.59달러/bbl입니다. 직전 급등 위험은 일부 완화됐지만 2026년 9월 유류할증료 산정 기간에는 여전히 높은 변동성 변수입니다.',
+    marketMops: '항공유 가격(MOPS): 8월 공시에 사용된 싱가포르 MOPS 평균은 119.06달러/bbl, 283.48 cents/gal입니다. IATA 글로벌 항공유 160.06달러/bbl과 유럽 항공유 정제마진 배럴당 80달러 이상은 항공유 하방 경직성 변수로 봅니다.',
+    marketFx: '원달러 환율: 약 1,422원으로 USD 공시 항공사의 원화 환산 부담은 완화됐습니다. 다만 항공유 가격과 지정학 리스크를 모두 상쇄한다고 단정하지 않습니다.',
+    marketGeo: '지정학 리스크: 호르무즈 상품선 통항은 12척이고 7월 11일 이후 첫 QatarEnergy LNG선 출항이 확인됐습니다. 바브엘만데브 통항량은 출처별 차이가 있습니다. 미국의 이란 혁명수비대 목표물 공격, 이란의 미군 대상 미사일 공격, 이집트 가스선 2척 드론 피격 공식 확인, 사우디 주도 14개국 해상방위 연합 추진, 지잔·알주르·페름 정유시설 차질, 카스피해 이란 상선 피격, 쿠웨이트 중국 기업 소유 건물 피해는 보조 상승 리스크입니다.',
+    marketOutlook: '2026년 8월 국제선 유류할증료는 14단계로 확정됐고 에어프레미아 8월 공식 금액은 USD 25~148로 반영됐습니다. 2026년 9월 전망은 상승 압력 우세, 급등 위험 일부 완화, 환율 완화 효과 확대, 항공유 하방 경직성 지속으로 정리합니다.'
+  };
+  var enMarket = {
+    marketDataRef: 'As of 2026.07.31 08:50 KST',
+    marketBrent: 'Oil prices: Brent is USD 89.03/bbl and WTI is USD 83.59/bbl. Spike risk has partly eased from the prior surge, but volatility remains high for the September calculation window.',
+    marketMops: 'Jet fuel price (MOPS): the August filing Singapore MOPS average was USD 119.06/bbl, or 283.48 cents/gal. IATA global jet fuel at USD 160.06/bbl and European jet-fuel crack spreads above USD 80/bbl point to sticky jet-fuel downside.',
+    marketFx: 'USD/KRW: around KRW 1,422 eases KRW-equivalent burden for USD-notice airlines, but it does not fully offset jet-fuel and geopolitical risk.',
+    marketGeo: 'Geopolitical risk: Hormuz commodity-vessel traffic is observed at 12 vessels and the first QatarEnergy LNG vessel since July 11 has departed. Bab el-Mandeb traffic differs by source. US strikes on IRGC targets, Iranian missile attacks on US forces, confirmed drone hits on two Egyptian gas ships, a Saudi-led 14-nation maritime defense coalition, Jazan/Al Zour/Perm refinery disruptions, the Caspian Iranian merchant-vessel incident and the damaged Chinese company-owned building in Kuwait remain supporting upside risks.',
+    marketOutlook: 'August 2026 international fuel surcharge is confirmed at Level 14, and Air Premia August official amounts are reflected at USD 25-148. The September outlook is: upside pressure dominant, spike risk partly eased, FX relief expanded and jet-fuel downside remains sticky.'
+  };
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), koMarket);
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), enMarket);
+    ['ja','zh','fr','de'].forEach(function(lang){
+      Object.assign(window.I18N_SHARED[lang] || (window.I18N_SHARED[lang] = {}), enMarket);
+    });
+  }
+})();
+
 /* 2026.07.30 08:55 KST final update: Air Premia August notice, oil spike, FX, IATA jet fuel and maritime risk. */
 (function(){
   var confirmedAugustAirlines = ['KE', 'OZ', 'LJ', 'BX', 'TW', 'ZE', 'RS', '7C', 'YP'];
@@ -11636,4 +11778,137 @@ window.initNav = function(opts){
   }
 })();
 
+})();
+
+/* 2026.07.31 08:50 KST final guard.
+   This supplement is intentionally placed after all accumulated overrides. */
+(function(){
+  var base = window.AERO_MARKET_NUMBERS_20260730 || window.AERO_MARKET_NUMBERS_LATEST || {};
+  window.AERO_MARKET_NUMBERS_20260731 = Object.assign({}, base, {
+    asOf: '2026.07.31 08:50 KST',
+    lastUpdated: '2026-07-31T08:50:00+09:00',
+    currentMonthNotice: '2026-08',
+    forecastTargetMonth: '2026-09',
+    kuwaitChineseOwnedBuildingDamageReported: true,
+    kuwaitChineseOwnedBuildingWorkerDeaths: 1,
+    kuwaitChineseCompanyNamePubliclyConfirmed: false,
+    chineseCompanyIntentionalTargetConfirmed: false,
+    incidentLocationCountry: 'Kuwait',
+    incidentLocationArea: 'northern Kuwait',
+    chinaMainlandAttacked: false,
+    iranMainlandIncident: false,
+    energyFacilityConfirmed: false,
+    refineryFacilityConfirmed: false,
+    jetFuelFacilityConfirmed: false,
+    directOilSupplyDisruptionConfirmed: false,
+    directJetFuelSupplyDisruptionConfirmed: false,
+    mopsSpikeConfirmedByIncident: false,
+    septemberSurchargeIncreaseConfirmedByIncident: false,
+    geopoliticalCommercialAssetRisk: 'increased',
+    logisticsInsuranceRisk: 'increased',
+    marketVolatility: 'extremely_high',
+    sourceNotes: Object.assign({}, base.sourceNotes || {}, {
+      kuwaitChineseOwnedBuilding: 'Kuwait Defence Ministry statement reported by AP/Reuters, 2026-07-30/31. Company name, intentional targeting, refinery/jet-fuel link and direct supply disruption are not confirmed.'
+    })
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260731;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {
+    '2026-07-31': window.AERO_MARKET_NUMBERS_20260731
+  });
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / (base.usdKrw || 1444) });
+
+  var koMarket = {
+    marketDataRef: '2026.07.31 08:50 KST 기준',
+    marketBrent: '국제유가: Brent·WTI 급반등 이후 2026년 9월 유류할증료 산정 기간의 상방 변수가 커졌습니다. 이미 확정된 8월 공시가 아니라 9월 전망 변수로 분리해서 봐야 합니다.',
+    marketMops: '항공유 가격(MOPS): 8월 공시에 사용된 싱가포르 MOPS 평균은 119.06달러/bbl, 283.48 cents/gal입니다. 최신 IATA 글로벌 항공유 160.06달러/bbl은 상방 신호지만, 9월 평균 MOPS 확정값은 아닙니다.',
+    marketFx: '원달러 환율: 약 1,444원 구간은 USD 공시 항공사의 원화 환산 부담을 낮추는 완화 요인입니다. 다만 유가와 항공유 급반등을 모두 상쇄한다고 단정하기는 어렵습니다.',
+    marketGeo: '지정학 리스크: 쿠웨이트 국방부는 이란 공격으로 쿠웨이트 북부의 중국 기업 소유 건물이 크게 파손되고 근로자 1명이 사망했다고 밝혔습니다. 중국 본토 피해, 중국 기업 의도 표적, 정유·항공유 시설 피해, 직접 공급 중단은 확인되지 않았습니다.',
+    marketOutlook: '2026년 8월 국제선 유류할증료는 14단계로 확정됐고, 2026년 9월은 아직 산정 기간 중입니다. 쿠웨이트 중국 기업 소유 건물 피해는 직접 연료 공급 차질이 아니라 걸프 지역 상업 시설·물류·보험·보안 비용의 보조 상승 리스크로 반영합니다.'
+  };
+  var enMarket = {
+    marketDataRef: 'As of 2026.07.31 08:50 KST',
+    marketBrent: 'Oil prices: after the Brent/WTI rebound, upside variables have increased for the September calculation window. This affects the September outlook, not the already confirmed August notices.',
+    marketMops: 'Jet fuel price (MOPS): the August filing Singapore MOPS average was USD 119.06/bbl, or 283.48 cents/gal. IATA global jet fuel at USD 160.06/bbl is an upside signal, but it is not a confirmed September MOPS average.',
+    marketFx: 'USD/KRW: around KRW 1,444 is an easing factor for USD-notice airlines in KRW terms, but it does not fully offset renewed oil and jet-fuel upside.',
+    marketGeo: 'Geopolitical risk: Kuwait’s Defence Ministry said an Iranian attack damaged a Chinese company-owned building in northern Kuwait and killed one worker. Damage in mainland China, intentional targeting of the Chinese company, refinery/jet-fuel facility damage and direct supply disruption are not confirmed.',
+    marketOutlook: 'August 2026 international fuel surcharge is confirmed at Level 14, while September remains in calculation. The Kuwait incident is treated as supporting Gulf commercial-asset, logistics, insurance and security-cost risk, not confirmed fuel-supply disruption.'
+  };
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), koMarket);
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), enMarket);
+    ['ja','zh','fr','de'].forEach(function(lang){
+      Object.assign(window.I18N_SHARED[lang] || (window.I18N_SHARED[lang] = {}), enMarket);
+    });
+  }
+})();
+
+/* 2026.07.31 08:50 KST absolute final guard.
+   This block must stay after the Kuwait-only supplement so shared copy keeps the full update. */
+(function(){
+  var base = window.AERO_MARKET_NUMBERS_20260731 || window.AERO_MARKET_NUMBERS_LATEST || {};
+  window.AERO_MARKET_NUMBERS_20260731 = Object.assign({}, base, {
+    asOf: '2026.07.31 08:50 KST',
+    lastUpdated: '2026-07-31T08:50:00+09:00',
+    currentMonthNotice: '2026-08',
+    forecastTargetMonth: '2026-09',
+    augustSurchargeLevel: 14,
+    augustSurchargeStage: 14,
+    septemberSurchargeConfirmed: false,
+    usdKrw: 1422,
+    usdKrwLabel: '약 1,422원',
+    augustMopsAverageUsdPerBbl: 119.06,
+    augustMopsAverageCentsPerGallon: 283.48,
+    iataJetFuelUsdPerBbl: 160.06,
+    europeJetFuelCrackSpreadUsdPerBblMin: 80,
+    brentUsdPerBbl: 89.03,
+    wtiUsdPerBbl: 83.59,
+    hormuzCommodityVesselsObserved: 12,
+    firstQatarEnergyLngSinceJuly11: true,
+    babElMandebSourceDiscrepancy: true,
+    airPremiaAugustUsdMin: 25,
+    airPremiaAugustUsdMax: 148,
+    usIranAttackSequenceRisk: true,
+    egyptGasShipsDroneHitConfirmed: true,
+    saudiLedFourteenNationMaritimeDefenseCoalition: true,
+    refineryDisruptions: ['Saudi Jazan', 'Kuwait Al Zour', 'Russia Perm'],
+    caspianIranianMerchantVesselHit: true,
+    kuwaitChineseOwnedBuildingDamageReported: true,
+    kuwaitChineseOwnedBuildingWorkerDeaths: 1,
+    energyFacilityConfirmed: false,
+    refineryFacilityConfirmed: false,
+    jetFuelFacilityConfirmed: false,
+    directOilSupplyDisruptionConfirmed: false,
+    directJetFuelSupplyDisruptionConfirmed: false,
+    outlookDirection: 'upward_pressure_dominant_spike_risk_partly_eased_fx_relief_expanded_jet_fuel_downside_sticky',
+    marketVolatility: 'high'
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260731;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {
+    '2026-07-31': window.AERO_MARKET_NUMBERS_20260731
+  });
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1422 });
+
+  var koMarket = {
+    marketDataRef: '2026.07.31 08:50 KST 기준',
+    marketBrent: '국제유가: Brent는 89.03달러/bbl, WTI는 83.59달러/bbl입니다. 직전 급등 위험은 일부 완화됐지만 2026년 9월 유류할증료 산정 기간에는 여전히 높은 변동성 변수입니다.',
+    marketMops: '항공유 가격(MOPS): 8월 공시에 사용된 싱가포르 MOPS 평균은 119.06달러/bbl, 283.48 cents/gal입니다. IATA 글로벌 항공유 160.06달러/bbl과 유럽 항공유 정제마진 배럴당 80달러 이상은 항공유 하방 경직성 변수로 봅니다.',
+    marketFx: '원달러 환율: 약 1,422원으로 USD 공시 항공사의 원화 환산 부담은 완화됐습니다. 다만 항공유 가격과 지정학 리스크를 모두 상쇄한다고 단정하지 않습니다.',
+    marketGeo: '지정학 리스크: 호르무즈 상품선 통항은 12척이고 7월 11일 이후 첫 QatarEnergy LNG선 출항이 확인됐습니다. 바브엘만데브 통항량은 출처별 차이가 있습니다. 미국의 이란 혁명수비대 목표물 공격, 이란의 미군 대상 미사일 공격, 이집트 가스선 2척 드론 피격 공식 확인, 사우디 주도 14개국 해상방위 연합 추진, 지잔·알주르·페름 정유시설 차질, 카스피해 이란 상선 피격, 쿠웨이트 중국 기업 소유 건물 피해는 보조 상승 리스크입니다.',
+    marketOutlook: '2026년 8월 국제선 유류할증료는 14단계로 확정됐고 에어프레미아 8월 공식 금액은 USD 25~148로 반영됐습니다. 2026년 9월 전망은 상승 압력 우세, 급등 위험 일부 완화, 환율 완화 효과 확대, 항공유 하방 경직성 지속으로 정리합니다.'
+  };
+  var enMarket = {
+    marketDataRef: 'As of 2026.07.31 08:50 KST',
+    marketBrent: 'Oil prices: Brent is USD 89.03/bbl and WTI is USD 83.59/bbl. Spike risk has partly eased from the prior surge, but volatility remains high for the September calculation window.',
+    marketMops: 'Jet fuel price (MOPS): the August filing Singapore MOPS average was USD 119.06/bbl, or 283.48 cents/gal. IATA global jet fuel at USD 160.06/bbl and European jet-fuel crack spreads above USD 80/bbl point to sticky jet-fuel downside.',
+    marketFx: 'USD/KRW: around KRW 1,422 eases KRW-equivalent burden for USD-notice airlines, but it does not fully offset jet-fuel and geopolitical risk.',
+    marketGeo: 'Geopolitical risk: Hormuz commodity-vessel traffic is observed at 12 vessels and the first QatarEnergy LNG vessel since July 11 has departed. Bab el-Mandeb traffic differs by source. US strikes on IRGC targets, Iranian missile attacks on US forces, confirmed drone hits on two Egyptian gas ships, a Saudi-led 14-nation maritime defense coalition, Jazan/Al Zour/Perm refinery disruptions, the Caspian Iranian merchant-vessel incident and the damaged Chinese company-owned building in Kuwait remain supporting upside risks.',
+    marketOutlook: 'August 2026 international fuel surcharge is confirmed at Level 14, and Air Premia August official amounts are reflected at USD 25-148. The September outlook is: upside pressure dominant, spike risk partly eased, FX relief expanded and jet-fuel downside remains sticky.'
+  };
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), koMarket);
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), enMarket);
+    ['ja','zh','fr','de'].forEach(function(lang){
+      Object.assign(window.I18N_SHARED[lang] || (window.I18N_SHARED[lang] = {}), enMarket);
+    });
+  }
 })();

@@ -9609,6 +9609,246 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
   }
 })();
 
+/* 2026.07.31 08:50 KST supplement: Kuwait Chinese-owned building incident, framed as supporting geopolitical risk only. */
+(function(){
+  var card = {
+    id:'iran-kuwait-chinese-owned-building-20260731',
+    slug:'iran-attack-kuwait-chinese-owned-building-july-31-2026',
+    category:'market',
+    priority:1,
+    date:'2026-07-31',
+    updatedAt:'2026-07-31T08:50:00+09:00',
+    badge:'지정학',
+    aiSummary:true,
+    relevanceScore:.96,
+    title:'이란 공격, 쿠웨이트 중국 기업 소유 건물 피해…근로자 1명 사망',
+    aiBrief:'쿠웨이트 북부의 중국 기업 소유 건물이 이란 공격으로 피해를 보고 근로자 1명이 사망했습니다. 다만 중국 기업이 의도적 표적이었는지, 정유·항공유 시설 피해인지는 확인되지 않았습니다.',
+    summary:'쿠웨이트 국방부는 이란의 공격으로 쿠웨이트 북부에 있는 중국 기업 소유 건물이 크게 파손되고 근로자 1명이 사망했다고 밝혔습니다. 이 사건은 중국 본토나 중국 측 자체를 겨냥한 공격으로 표현할 사안이 아니며, 공개 정보상 해당 중국 기업이 의도적 표적이었는지 또는 피해 건물이 정유·항공유 관련 시설인지는 확인되지 않았습니다.',
+    impact:'직접적인 원유·항공유 공급 중단이나 MOPS 급등 확정 근거로 쓰지 않습니다. 다만 걸프 지역 상업 시설과 물류·보험·보안 비용 변동성을 키우는 보조 지정학 리스크로 반영합니다.',
+    sourceName:'Kuwait Defence Ministry · AP/Reuters 보도',
+    sourceUrl:'https://apnews.com/article/8dc77ed6a65f389ea4af84635d2473bd',
+    tags:['이란','쿠웨이트','중국 기업','걸프 지역','지정학 리스크','유류할증료 전망'],
+    links:[{href:'forecast.html', label:'9월 전망 영향 보기'}],
+    faq:[
+      {q:'중국이 직접 공격 대상이었나요?', a:'그렇게 단정하지 않습니다. 공개 정보상 쿠웨이트 북부의 중국 기업 소유 건물이 피해를 본 사건이며, 중국 본토 피해나 중국 기업에 대한 의도적 공격으로 확인되지 않았습니다.'},
+      {q:'정유시설이나 항공유 시설이 공격받았나요?', a:'현재 공개 정보로는 피해 건물이 정유시설이나 항공유 공급시설이라는 사실이 확인되지 않았습니다. 따라서 직접적인 연료 공급 중단으로 해석하지 않습니다.'}
+    ],
+    verification:{
+      buildingOwnerType:'Chinese company-owned building',
+      location:'Northern Kuwait',
+      companyNamePubliclyConfirmed:false,
+      intentionalChineseCompanyTargetConfirmed:false,
+      chinaMainlandAttack:false,
+      oilOrJetFuelFacilityConfirmed:false,
+      directFuelSupplyDisruptionConfirmed:false
+    }
+  };
+  card.i18n = {
+    en:{
+      updatedAt:'Updated 2026-07-31 08:50 KST',
+      title:'Iranian attack damages Chinese company-owned building in Kuwait; one worker killed',
+      aiBrief:'A Chinese company-owned building in northern Kuwait was damaged in an Iranian attack, killing one worker. It is not confirmed that the Chinese company was an intentional target or that the site was an oil or jet-fuel facility.',
+      summary:'Kuwait’s Defence Ministry said an Iranian attack hit a building owned by a Chinese company in northern Kuwait, causing major damage and killing one worker. This should not be framed as a strike on China itself or mainland China. Public information does not confirm that the Chinese company was intentionally targeted, or that the damaged building was related to refining or jet-fuel supply.',
+      impact:'This is not evidence of confirmed oil or jet-fuel supply disruption or an automatic MOPS spike. It is treated as supporting geopolitical risk for Gulf commercial assets, logistics, insurance and security costs.',
+      sourceName:'Kuwait Defence Ministry · AP/Reuters reports',
+      tags:['Iran','Kuwait','Chinese company','Gulf risk','geopolitical risk','fuel surcharge outlook'],
+      links:[{href:'forecast.html', label:'See September outlook impact'}],
+      faq:[
+        {q:'Was China itself the direct target?', a:'That is not confirmed. The reported incident concerns a Chinese company-owned building in northern Kuwait, with no confirmed mainland China damage or confirmed intentional targeting of the Chinese company.'},
+        {q:'Was an oil or jet-fuel facility attacked?', a:'Public reporting does not confirm that the damaged building was a refinery or jet-fuel facility, so it should not be treated as confirmed fuel-supply disruption.'}
+      ]
+    }
+  };
+  ['ja','zh','fr','de'].forEach(function(lang){ card.i18n[lang] = card.i18n.en; });
+  var ids = {};
+  ids[card.id] = true;
+  window.AERO_NEWS_CARDS_20260731 = [card].concat((window.AERO_NEWS_CARDS_20260730 || []).filter(function(item){
+    return item && !ids[item.id];
+  }));
+  FIXED_NEWS = (window.AERO_NEWS_CARDS_20260731 || []).concat((FIXED_NEWS || []).filter(function(item){
+    return item && !ids[item.id];
+  }));
+  window.AERO_MARKET_NUMBERS_20260731 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
+    asOf:'2026.07.31 08:50 KST',
+    lastUpdated:'2026-07-31T08:50:00+09:00',
+    kuwaitChineseOwnedBuildingDamageReported:true,
+    kuwaitChineseOwnedBuildingWorkerDeaths:1,
+    kuwaitChineseCompanyNamePubliclyConfirmed:false,
+    chineseCompanyIntentionalTargetConfirmed:false,
+    chinaMainlandAttacked:false,
+    energyFacilityConfirmed:false,
+    refineryFacilityConfirmed:false,
+    jetFuelFacilityConfirmed:false,
+    directOilSupplyDisruptionConfirmed:false,
+    directJetFuelSupplyDisruptionConfirmed:false,
+    geopoliticalCommercialAssetRisk:'increased',
+    logisticsInsuranceRisk:'increased',
+    marketVolatility:'extremely_high'
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260731;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {
+    '2026-07-31': window.AERO_MARKET_NUMBERS_20260731
+  });
+  window.PAGE_I18N_OVERRIDE = window.PAGE_I18N_OVERRIDE || {};
+  window.PAGE_I18N_OVERRIDE.ko = Object.assign({}, window.PAGE_I18N_OVERRIDE.ko || {}, {
+    'news.metaTitle':'2026년 8월 유류할증료 공시와 9월 전망 뉴스 | 7월 31일 쿠웨이트 지정학 리스크',
+    'news.metaDesc':'2026.07.31 08:50 KST 기준 2026년 8월 국제선 유류할증료 공시와 9월 전망을 정리합니다. 쿠웨이트 북부 중국 기업 소유 건물 피해는 직접 공급 중단이 아닌 걸프 지역 지정학 보조 리스크로 반영합니다.',
+    'news.marketSummary':'2026년 8월 국제선 유류할증료는 주요 항공사 기준 공시가 확인됐고, 2026년 9월은 아직 산정 기간 중입니다. 쿠웨이트 북부 중국 기업 소유 건물 피해는 직접적인 항공유 공급 중단이 아니라 걸프 지역 상업 시설·물류·보험·보안 비용 변동성을 키우는 보조 지정학 리스크로 봅니다.',
+    'news.decisionLine2':'→ 쿠웨이트 북부 중국 기업 소유 건물 피해가 확인됐지만, 중국 본토 피해·정유시설 공격·항공유 공급 중단으로 단정하지 않습니다.'
+  });
+  window.PAGE_I18N_OVERRIDE.en = Object.assign({}, window.PAGE_I18N_OVERRIDE.en || {}, {
+    'news.metaTitle':'August 2026 Fuel Surcharge Notices and September Outlook News | July 31 Kuwait Geopolitical Risk',
+    'news.metaDesc':'As of 2026.07.31 08:50 KST, this news update treats the damaged Chinese company-owned building in northern Kuwait as supporting Gulf geopolitical risk, not confirmed fuel-supply disruption.'
+  });
+  ['ja','zh','fr','de'].forEach(function(lang){
+    window.PAGE_I18N_OVERRIDE[lang] = Object.assign({}, window.PAGE_I18N_OVERRIDE[lang] || {}, window.PAGE_I18N_OVERRIDE.en);
+  });
+  document.title = window.PAGE_I18N_OVERRIDE.ko['news.metaTitle'];
+  var desc = document.querySelector('meta[name="description"]');
+  if(desc) desc.setAttribute('content', window.PAGE_I18N_OVERRIDE.ko['news.metaDesc']);
+  var mod = document.querySelector('meta[property="article:modified_time"]');
+  if(mod) mod.setAttribute('content', '2026-07-31T08:50:00+09:00');
+})();
+
+/* 2026.07.31 08:50 KST full market context guard.
+   Keep the Kuwait incident as one card, but do not collapse the news set to that incident only. */
+(function(){
+  var cards = [
+    {
+      id:'july31-market-full-brief-20260731',
+      slug:'july-31-2026-fuel-surcharge-market-brief',
+      category:'market',
+      priority:1,
+      date:'2026-07-31',
+      updatedAt:'2026-07-31T08:50:00+09:00',
+      badge:'시장 종합',
+      aiSummary:true,
+      relevanceScore:.98,
+      title:'7월 31일 시장 브리핑: 환율 1,422원·MOPS 119.06·IATA 항공유 160.06달러',
+      aiBrief:'8월 국제선 유류할증료는 14단계로 확정됐고, 9월 전망은 상승 압력 우세지만 급등 위험은 일부 완화된 상태입니다.',
+      summary:'2026.07.31 08:50 KST 기준 2026년 8월 국제선 유류할증료는 14단계로 확정됐습니다. 에어프레미아 8월 공식 금액은 USD 25~148로 반영됐고, 원달러 환율은 약 1,422원으로 내려 USD 공시 항공사의 원화 환산 부담을 낮추는 방향입니다. 8월 산정 MOPS 평균은 119.06달러/bbl, IATA 글로벌 항공유는 160.06달러/bbl, Brent는 89.03달러, WTI는 83.59달러입니다.',
+      impact:'9월 전망은 상승 압력 우세, 급등 위험 일부 완화, 환율 완화 효과 확대, 항공유 하방 경직성 지속으로 정리합니다. 9월 공시 전이므로 단계나 금액 확정 표현은 사용하지 않습니다.',
+      sourceName:'7월 31일 시장 지표 종합',
+      sourceUrl:'forecast.html',
+      tags:['2026년 9월 유류할증료 전망','MOPS','IATA 항공유','원달러 환율','국제유가'],
+      links:[{href:'forecast.html', label:'9월 전망 보기'}],
+      faq:[{q:'2026년 9월 유류할증료는 인상이 확정됐나요?', a:'아닙니다. 현재는 상승 압력이 우세하지만 9월 유류할증료는 아직 공시 전입니다.'}]
+    },
+    {
+      id:'hormuz-qatarenergy-babelmandeb-20260731',
+      slug:'hormuz-qatarenergy-bab-el-mandeb-shipping-july-31-2026',
+      category:'market',
+      priority:1,
+      date:'2026-07-31',
+      updatedAt:'2026-07-31T08:50:00+09:00',
+      badge:'해상 운송',
+      aiSummary:true,
+      relevanceScore:.96,
+      title:'호르무즈 상품선 12척·QatarEnergy LNG선 출항, 해상 운송 리스크 완화 신호',
+      aiBrief:'호르무즈 상품선 통항 12척과 7월 11일 이후 첫 QatarEnergy LNG선 출항은 완화 신호지만 정상화 확정은 아닙니다.',
+      summary:'호르무즈 해협에서는 상품선 통항 12척이 관측됐고, 7월 11일 이후 첫 QatarEnergy LNG선 출항도 확인됐습니다. 이는 전면 봉쇄나 극단적 통항 중단 우려를 낮추는 완화 신호입니다. 다만 바브엘만데브 통항량은 출처별 차이가 있어 단일 숫자로 확정하지 않고, 홍해·보험료·우회 비용 변수로 분리해 봐야 합니다.',
+      impact:'해상 운송 리스크는 일부 완화됐지만 완전 정상화로 단정하지 않습니다. 9월 유류할증료 전망에서는 급등 위험을 낮추는 요인과 보험료·물류비 상승 리스크를 함께 반영합니다.',
+      sourceName:'해상 통항 모니터링 종합',
+      sourceUrl:'forecast.html',
+      tags:['호르무즈 해협','QatarEnergy','바브엘만데브','LNG','해상 운송'],
+      links:[{href:'forecast.html', label:'해상 변수 보기'}],
+      faq:[{q:'호르무즈 해협이 정상화됐나요?', a:'상품선 12척과 QatarEnergy LNG선 출항은 완화 신호지만 완전 정상화로 단정하지 않습니다.'}]
+    },
+    {
+      id:'gulf-security-refinery-risk-20260731',
+      slug:'gulf-security-refinery-risk-july-31-2026',
+      category:'market',
+      priority:1,
+      date:'2026-07-31',
+      updatedAt:'2026-07-31T08:50:00+09:00',
+      badge:'지정학',
+      aiSummary:true,
+      relevanceScore:.95,
+      title:'미국·이란 공격과 정유시설 차질, 항공유 하방 경직성 유지',
+      aiBrief:'미국의 이란 혁명수비대 목표물 공격, 이란의 미군 대상 미사일 공격, 이집트 가스선 드론 피격과 정유시설 차질이 보조 상승 리스크입니다.',
+      summary:'미국의 이란 혁명수비대 목표물 공격, 이란의 미군 대상 미사일 공격, 이집트 가스선 2척 드론 피격 공식 확인, 사우디 주도 14개국 해상방위 연합 추진은 걸프 지역 긴장이 완전히 해소되지 않았다는 신호입니다. 여기에 사우디 지잔, 쿠웨이트 알주르, 러시아 페름 정유시설 차질은 유럽 항공유 정제마진 배럴당 80달러 이상 흐름과 함께 항공유 하방 경직성을 키웁니다.',
+      impact:'직접적인 한국발 국제선 유류할증료 9월 단계 확정 근거는 아니지만, 항공유 가격이 쉽게 내려가지 않는 배경으로 반영합니다.',
+      sourceName:'걸프 안보·정유시설 리스크 종합',
+      sourceUrl:'forecast.html',
+      tags:['미국 이란','이집트 가스선','해상방위','정유시설','항공유'],
+      links:[{href:'forecast.html', label:'지정학 변수 보기'}],
+      faq:[{q:'정유시설 차질만으로 9월 유류할증료 인상이 확정되나요?', a:'아닙니다. 공급 프리미엄과 항공유 하방 경직성 변수로만 반영합니다.'}]
+    }
+  ];
+  cards.forEach(function(card){
+    card.i18n = card.i18n || {};
+    card.i18n.en = {
+      updatedAt:'Updated 2026-07-31 08:50 KST',
+      title:card.title,
+      aiBrief:card.aiBrief,
+      summary:card.summary,
+      impact:card.impact,
+      sourceName:card.sourceName,
+      tags:card.tags,
+      links:card.links,
+      faq:card.faq
+    };
+    ['ja','zh','fr','de'].forEach(function(lang){ card.i18n[lang] = card.i18n.en; });
+  });
+  var seen = {};
+  var existing = window.AERO_NEWS_CARDS_20260731 || window.AERO_NEWS_CARDS_20260730 || [];
+  window.AERO_NEWS_CARDS_20260731 = cards.concat(existing).filter(function(card){
+    if(!card || seen[card.id]) return false;
+    seen[card.id] = true;
+    return true;
+  });
+  FIXED_NEWS = window.AERO_NEWS_CARDS_20260731.concat((FIXED_NEWS || []).filter(function(card){
+    return card && !seen[card.id];
+  }));
+  window.AERO_MARKET_NUMBERS_20260731 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
+    asOf:'2026.07.31 08:50 KST',
+    lastUpdated:'2026-07-31T08:50:00+09:00',
+    usdKrw:1422,
+    brentUsdPerBbl:89.03,
+    wtiUsdPerBbl:83.59,
+    augustMopsAverageUsdPerBbl:119.06,
+    iataJetFuelUsdPerBbl:160.06,
+    europeJetFuelCrackSpreadUsdPerBblMin:80,
+    hormuzCommodityVesselsObserved:12,
+    firstQatarEnergyLngSinceJuly11:true,
+    airPremiaAugustUsdMin:25,
+    airPremiaAugustUsdMax:148,
+    babElMandebSourceDiscrepancy:true,
+    egyptGasShipsDroneHitConfirmed:true,
+    saudiLedFourteenNationMaritimeDefenseCoalition:true,
+    refineryDisruptions:['Saudi Jazan','Kuwait Al Zour','Russia Perm'],
+    caspianIranianMerchantVesselHit:true,
+    kuwaitChineseOwnedBuildingDamageReported:true,
+    kuwaitChineseOwnedBuildingWorkerDeaths:1,
+    directJetFuelSupplyDisruptionConfirmed:false,
+    septemberOutlook:'upward_pressure_dominant_spike_risk_partly_eased_fx_relief_expanded_jet_fuel_downside_sticky'
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260731;
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1422 });
+  window.PAGE_I18N_OVERRIDE = window.PAGE_I18N_OVERRIDE || {};
+  window.PAGE_I18N_OVERRIDE.ko = Object.assign({}, window.PAGE_I18N_OVERRIDE.ko || {}, {
+    'news.metaTitle':'2026년 8월 유류할증료 공시와 9월 전망 뉴스 | 7월 31일 환율·MOPS·호르무즈',
+    'news.metaDesc':'2026.07.31 08:50 KST 기준 8월 국제선 유류할증료 14단계 확정, 에어프레미아 USD 25~148, 환율 1,422원, MOPS 119.06달러, IATA 항공유 160.06달러, Brent 89.03달러, WTI 83.59달러, 호르무즈 12척, QatarEnergy LNG선 출항과 걸프 지정학 리스크를 정리합니다.',
+    'news.marketSummary':'2026년 8월 국제선 유류할증료는 14단계로 확정됐고 에어프레미아 8월 공식 금액은 USD 25~148로 반영됐습니다. 2026년 9월 전망은 상승 압력 우세, 급등 위험 일부 완화, 환율 완화 효과 확대, 항공유 하방 경직성 지속으로 정리합니다.',
+    'news.fxDominance':'핵심 상태: 8월 14단계 확정 · 에어프레미아 USD 25~148 · 환율 약 1,422원 · MOPS 119.06달러 · IATA 항공유 160.06달러 · Brent 89.03달러 · WTI 83.59달러 · 호르무즈 12척',
+    'news.decisionLine2':'→ 호르무즈 12척과 QatarEnergy LNG선 출항은 완화 신호지만, 미국·이란 공격, 이집트 가스선 드론 피격, 정유시설 차질, 카스피해 상선 피격, 쿠웨이트 중국 기업 소유 건물 피해로 항공유 하방 경직성은 남아 있습니다.'
+  });
+  window.PAGE_I18N_OVERRIDE.en = Object.assign({}, window.PAGE_I18N_OVERRIDE.en || {}, {
+    'news.metaTitle':'August 2026 Fuel Surcharge Notices and September Outlook News | July 31 FX, MOPS and Hormuz',
+    'news.metaDesc':'As of 2026.07.31 08:50 KST, this update summarizes August Level 14, Air Premia USD 25-148, USD/KRW 1,422, MOPS USD 119.06, IATA jet fuel USD 160.06, Brent USD 89.03, WTI USD 83.59, Hormuz 12 vessels, QatarEnergy LNG departure and Gulf geopolitical risk.'
+  });
+  ['ja','zh','fr','de'].forEach(function(lang){
+    window.PAGE_I18N_OVERRIDE[lang] = Object.assign({}, window.PAGE_I18N_OVERRIDE[lang] || {}, window.PAGE_I18N_OVERRIDE.en);
+  });
+  document.title = window.PAGE_I18N_OVERRIDE.ko['news.metaTitle'];
+  var desc = document.querySelector('meta[name="description"]');
+  if(desc) desc.setAttribute('content', window.PAGE_I18N_OVERRIDE.ko['news.metaDesc']);
+  var ogTitle = document.querySelector('meta[property="og:title"]');
+  if(ogTitle) ogTitle.setAttribute('content', window.PAGE_I18N_OVERRIDE.ko['news.metaTitle']);
+  var ogDesc = document.querySelector('meta[property="og:description"]');
+  if(ogDesc) ogDesc.setAttribute('content', window.PAGE_I18N_OVERRIDE.ko['news.metaDesc']);
+})();
+
 window.initNav({
   onLangChange:function(){
     /* _shared.js의 initNav 래퍼가 applyLanguage()를 먼저 실행 */
