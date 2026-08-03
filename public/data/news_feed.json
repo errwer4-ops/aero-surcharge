@@ -1,9 +1,51 @@
 {
   "meta": {
-    "lastUpdated": "2026-07-21T06:55:00+09:00",
+    "lastUpdated": "2026-08-04T07:00:00+09:00",
     "note": "참고 소식 데이터. 공식 공지 및 시장 지표 기반 참고용 정보입니다."
   },
   "items": [
+    {
+      "id": "market-oil-20260804",
+      "category": "market",
+      "title": "Brent 83.77달러·WTI 80.34달러, 외교 기대에 급락",
+      "summary": "2026.08.03 미국 시장 종가 기준 Brent는 83.77달러/bbl, WTI는 80.34달러/bbl로 마감했습니다. Brent의 7.0% 하락에는 근월물 계약 교체 효과가 일부 포함되며 동일 계약 기준 하락률은 약 4.7%입니다.",
+      "sourceUrl": "https://www.reuters.com/business/energy/oil-tumbles-trump-cancels-attack-iran-reach-nuclear-deal-2026-08-03/",
+      "sourceName": "Reuters",
+      "date": "2026-08-04",
+      "updatedAt": "2026-08-04T07:00:00+09:00",
+      "priority": 1,
+      "tags": ["Brent", "WTI", "국제유가", "유류할증료 전망"],
+      "aiSummary": true,
+      "relevanceScore": 0.99
+    },
+    {
+      "id": "iata-jet-fuel-15877-20260804",
+      "category": "market",
+      "title": "IATA 글로벌 항공유 158.77달러, 주간 0.8% 하락",
+      "summary": "최신 IATA 글로벌 항공유 주간 평균은 158.77달러/bbl로 전주 대비 0.8% 하락했습니다. 이 값은 국내 유류할증료 산정용 싱가포르 MOPS 일별 가격이나 9월 산정 평균이 아닙니다.",
+      "sourceUrl": "https://www.iata.org/en/publications/economics/fuel-monitor/",
+      "sourceName": "IATA Jet Fuel Price Monitor",
+      "date": "2026-08-04",
+      "updatedAt": "2026-08-04T07:00:00+09:00",
+      "priority": 1,
+      "tags": ["IATA 항공유", "MOPS", "유류할증료 전망"],
+      "aiSummary": true,
+      "relevanceScore": 0.98
+    },
+    {
+      "id": "hormuz-red-sea-shipping-20260804",
+      "category": "market",
+      "title": "호르무즈 통항 감소와 사우디 VLCC 6척 우회, 해상운송 위험 지속",
+      "summary": "호르무즈 상품선 통항은 금요일 19척에서 토요일 10척으로 감소했고, 일요일에는 이란 LPG 선박 1척 통과만 공개 확인됐습니다. 바브엘만데브 상품선 통항은 28척, 27척, 18척으로 줄었고 사우디 VLCC 6척은 희망봉 방향으로 우회했습니다.",
+      "sourceUrl": "https://www.reuters.com/world/middle-east/six-saudi-tankers-turn-away-gulf-aden-ship-tracking-data-shows-2026-08-03/",
+      "sourceName": "Reuters · Kpler",
+      "date": "2026-08-04",
+      "updatedAt": "2026-08-04T07:00:00+09:00",
+      "priority": 1,
+      "tags": ["호르무즈 해협", "홍해", "VLCC", "해상보험", "유류할증료 전망"],
+      "aiSummary": true,
+      "relevanceScore": 0.97
+    },
     {
       "id": "news-20260721-august-tw-ze-rs-official",
       "category": "airline",
