@@ -2,13 +2,13 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>항공사별 유류할증료 — 2026년 7월 공식 공시 반영</title>
-  <meta name="description" content="2026년 7월 한국 출발 국제선 유류할증료 공식 공시 반영 완료 현황과 8월 공시 준비 상태를 항공사별로 확인합니다."/>
+  <title>항공사별 유류할증료 | 2026년 8월 14단계 적용 현황</title>
+  <meta name="description" content="2026년 8월 5일 기준 한국 출발 국제선 유류할증료 14단계 적용 현황과 항공사별 공식 공시 링크, 7월 대비 8월 비교, 9월 공시 전 전망 변수를 정리합니다."/>
   <meta name="google-adsense-account" content="ca-pub-4285114770383510">
 
   <link rel="canonical" href="https://aero-surcharge.com/airlines.html"/>
-  <meta property="og:title" content="항공사별 유류할증료 — 2026년 7월 공식 공시 반영"/>
-  <meta property="og:description" content="2026년 7월 한국 출발 국제선 유류할증료 공식 공시 반영 완료 현황과 8월 공시 준비 상태를 확인합니다."/>
+  <meta property="og:title" content="항공사별 유류할증료 | 2026년 8월 14단계 적용 현황"/>
+  <meta property="og:description" content="2026년 8월 5일 기준 한국 출발 국제선 유류할증료 14단계 적용 현황과 항공사별 공식 공시 링크, 7월 대비 8월 비교를 확인합니다."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.com/airlines.html"/>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
@@ -228,8 +228,8 @@
    B. 통화 표시 통일: 선택통화 메인 + 원본공시 보조
 ════════════════════════════════════════════════════════ */
 
-var BASE_MONTH = '2026.06';
-var NEXT_MONTH = '2026.07';
+var BASE_MONTH = '2026.07';
+var NEXT_MONTH = '2026.08';
 
 /* ══════════════════════════════════════════════════════
    A. 다국어 사전 (ko/en/ja/zh/fr/de)
@@ -888,7 +888,7 @@ async function loadData(){
     TW:'https://www.twayair.com/app/customerCenter/notice/retrieve/12577',
     ZE:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=608&lang=KR',
     RS:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=10914&pageNo=1',
-    BX:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4377',
+    BX:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4389',
   };
   var NOTICE_URL_MAY={
     KE:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2605-infuel?pageNum=1',
@@ -930,16 +930,27 @@ function getCompareRowsMileageBand(code, feedAl){
   var rows4=window.resolveAllRoutes(feedAl,code,BASE_MONTH)||[];
   var rows5=window.resolveAllRoutes(feedAl,code,NEXT_MONTH)||[];
   if(!rows4.length&&!rows5.length) return [];
+  function bandKey(row){
+    var range=(row&&row.distanceRange)||'';
+    var first=String(range).match(/\d+/);
+    if(first) return 'm'+parseInt(first[0],10);
+    return (row&&row.label)||range;
+  }
   var seen={}, union=[];
-  rows4.forEach(function(r){seen[r.distanceRange]=true; union.push({src4:r,src5:null});});
+  rows4.forEach(function(r){var key=bandKey(r); seen[key]=true; union.push({key:key,src4:r,src5:null});});
   rows5.forEach(function(r5){
-    if(!seen[r5.distanceRange]) union.push({src4:null,src5:r5});
-    else{var item=union.find(function(u){return u.src4&&u.src4.distanceRange===r5.distanceRange;}); if(item) item.src5=r5;}
+    var key=bandKey(r5);
+    if(!seen[key]) union.push({key:key,src4:null,src5:r5});
+    else{var item=union.find(function(u){return u.key===key;}); if(item) item.src5=r5;}
   });
+  function compareAmount(row){
+    if(!row) return null;
+    return row.currency==='USD' ? row.amount : row.amountKRW;
+  }
   return union.map(function(u){
     var r4=u.src4, r5=u.src5, rep=r4||r5;
     return {band:rep.label||rep.distanceRange||'—', routes:(rep.routeNames||[]).join(', '),
-            v4:r4?r4.amountKRW:null, cur4:(r4||r5).currency, v5:r5?r5.amountKRW:null, cur5:r5?r5.currency:null};
+            v4:compareAmount(r4), cur4:(r4||r5).currency, v5:compareAmount(r5), cur5:r5?r5.currency:null};
   });
 }
 function getCompareRowsGroupTier(code, feedAl){
@@ -949,10 +960,17 @@ function getCompareRowsGroupTier(code, feedAl){
   return gtr4.tiers.map(function(t4){
     var t5=gtr5&&gtr5.tiers?gtr5.tiers.find(function(t){return t.group===t4.group;}):null;
     return {band:t4.label||t4.group||'—', routes:(t4.routeNames||[]).join(', '),
-            v4:t4.amountKRW, cur4:t4.currency, v5:t5?t5.amountKRW:null, cur5:t5?t5.currency:null};
+            v4:t4.currency==='USD'?t4.amount:t4.amountKRW, cur4:t4.currency,
+            v5:t5?(t5.currency==='USD'?t5.amount:t5.amountKRW):null, cur5:t5?t5.currency:null};
   });
 }
 function getCompareRows(code, feedAl){
+  if(window.AIRLINES_USE_DYNAMIC_MONTHS_20260805){
+    var dynamicRows = window.isGroupTierSchema(code)
+      ? getCompareRowsGroupTier(code, feedAl)
+      : getCompareRowsMileageBand(code, feedAl);
+    if(dynamicRows && dynamicRows.length) return dynamicRows;
+  }
   if(OFFICIAL_COMPARE_DATA[code]){
     return OFFICIAL_COMPARE_DATA[code].map(function(d){
       return {band:d.band, routes:d.routes, v4:d.v4, cur4:d.cur, v5:d.v5, cur5:d.cur};
@@ -1002,6 +1020,10 @@ function buildCompareTableHtml(code, feedAl){
 /* ── 대표 금액 ── */
 var REP_MILES=342;
 function getRepAmount(code, feedAl){
+  if(window.AIRLINES_USE_DYNAMIC_MONTHS_20260805){
+    var dynamicRep = getDynamicRepAmount(code, feedAl);
+    if(dynamicRep) return dynamicRep;
+  }
   var hc=OFFICIAL_COMPARE_DATA[code];
   if(hc&&hc.length){
     var row=hc.find(function(d){return d.v5!=null;})||hc[0];
@@ -1012,6 +1034,26 @@ function getRepAmount(code, feedAl){
       return {amountKRW:krwVal, amountRaw:rawVal, currency:row.cur, label:row.band, month:mon};
     }
   }
+  function tryMonth(month){
+    if(window.isGroupTierSchema(code)){
+      var gtr=window.resolveGroupTiers(code,feedAl,month); if(!gtr) return null;
+      var g=window.resolveZEGroup(REP_MILES,gtr);
+      var tier=g!=null?gtr.tiers.find(function(t){return t.group===g;}):gtr.tiers[0];
+      return tier?{amountKRW:tier.amountKRW,amountRaw:tier.amount,currency:tier.currency,label:tier.label,month:month}:null;
+    }
+    var routes=window.resolveAllRoutes(feedAl,code,month); if(!routes||!routes.length) return null;
+    var matched=routes.find(function(r){
+      if(!r.distanceRange) return false;
+      if(r.distanceRange.endsWith('+')) return REP_MILES>=parseInt(r.distanceRange);
+      var p=r.distanceRange.split('-');
+      return p.length===2&&REP_MILES>=parseInt(p[0])&&REP_MILES<parseInt(p[1]);
+    })||routes[0];
+    return matched?{amountKRW:matched.amountKRW,amountRaw:matched.amount,currency:matched.currency,label:matched.label,month:month}:null;
+  }
+  return tryMonth(NEXT_MONTH)||tryMonth(BASE_MONTH);
+}
+
+function getDynamicRepAmount(code, feedAl){
   function tryMonth(month){
     if(window.isGroupTierSchema(code)){
       var gtr=window.resolveGroupTiers(code,feedAl,month); if(!gtr) return null;
@@ -1069,10 +1111,10 @@ function renderTable(){
     /* 데이터 source 배지 */
     var src=al.officialDataSource||'unknown';
     var juneOfficialBadge=hasJulyOfficial(al.code)
-      ?'<span style="font-size:11px;background:#e8f5e9;color:#1b5e20;border-radius:6px;padding:2px 7px;font-weight:700">7월 공식 공시 반영</span>'
+      ?'<span style="font-size:11px;background:#e8f5e9;color:#1b5e20;border-radius:6px;padding:2px 7px;font-weight:700">'+(T('nextOfficialBadge')||'8월 공식 공시 반영')+'</span>'
       :(hasJuneOfficial(al.code)
-        ?'<span style="font-size:11px;background:#E0F2FE;color:#075985;border-radius:6px;padding:2px 7px;font-weight:700">8월 공시 준비</span>'
-        :'<span style="font-size:11px;background:#FFF8E1;color:#F57F17;border-radius:6px;padding:2px 7px;font-weight:700;border:1px solid #FFE082;">미공지</span>');
+        ?'<span style="font-size:11px;background:#E0F2FE;color:#075985;border-radius:6px;padding:2px 7px;font-weight:700">'+(T('pendingOfficialBadge')||'공시 확인 필요')+'</span>'
+        :'<span style="font-size:11px;background:#FFF8E1;color:#F57F17;border-radius:6px;padding:2px 7px;font-weight:700;border:1px solid #FFE082;">'+(T('missingNoticeBadge')||'미공지')+'</span>');
     var srcLabel=juneOfficialBadge;
 
     /* 대표 금액 */
@@ -1107,9 +1149,11 @@ function renderTable(){
     if(repMonth===NEXT_MONTH){
       periodDisplay=NEXT_MONTH;
     } else if(repMonth){
-      var tbd=hasJuneOfficial(al.code)
-        ? (lang==='ko'?'(6월 기준 · 7월 대기)':'(June basis · July pending)')
-        : (lang==='ko'?'(8월 공시 전)':'(August TBD)');
+      var tbd=window.AIRLINES_USE_DYNAMIC_MONTHS_20260805
+        ? (lang==='ko'?'(8월 공시 확인 필요)':'(August filing check needed)')
+        : (hasJuneOfficial(al.code)
+          ? (lang==='ko'?'(6월 기준 · 7월 대기)':'(June basis · July pending)')
+          : (lang==='ko'?'(8월 공시 전)':'(August TBD)'));
       periodDisplay=BASE_MONTH+' '+tbd;
     } else {
       periodDisplay='—';
@@ -1133,7 +1177,7 @@ function renderTable(){
 
     /* detail: 5월/6월 비교표 링크 */
     var detailSrcLinks='';
-    var juneOff=hasJuneOfficial(al.code);
+    var juneOff=hasJulyOfficial(al.code);
     /* 5월 공지 링크 (May URL) */
     var mayUrl=al.officialNoticeUrlMay||al.officialNoticeUrl;
     if(mayUrl)
@@ -1147,7 +1191,7 @@ function renderTable(){
     if(!juneOff)
       detailSrcLinks+='<span class="detail-src-link" style="font-size:11px;color:var(--muted);padding:3px 8px;border:1px solid var(--line);border-radius:5px;cursor:default;">미공지</span>';
 
-    var detailBaseBadge=hasJuneOfficial(al.code)
+    var detailBaseBadge=hasJulyOfficial(al.code)
       ?'<span style="font-size:10px;background:#e8f5e9;color:#1b5e20;border-radius:4px;padding:1px 6px;margin-left:6px;font-weight:700;">'+T('mayBasedLabel')+'</span>'
       :'<span style="font-size:10px;background:#FFF8E1;color:#F57F17;border-radius:4px;padding:1px 6px;margin-left:6px;border:1px solid #FFE082;">'+T('aprBasedLabel')+'</span>';
     var detailInner='<div class="detail-header">'
@@ -1296,6 +1340,121 @@ document.getElementById('searchInput').addEventListener('input',function(e){
   ['ja','zh','fr','de'].forEach(function(lang){
     AIRLINES_I18N[lang] = AIRLINES_I18N[lang] || {};
     ['seoSummaryH2','seoSummaryP','surchargeIntro','analysisH3','analysisBullets','expandHint','compareTitle','aprNotice','mayNotice','mayBasedLabel','aprBasedLabel','notPublished','noNotice','statusText'].forEach(function(key){
+      AIRLINES_I18N[lang][key] = en[key];
+    });
+  });
+})();
+
+/* 2026.08.05 07:20 KST: August 2026 official application guard. */
+(function applyAugustOfficialAirlinesCopy20260805(){
+  BASE_MONTH = '2026.07';
+  NEXT_MONTH = '2026.08';
+  window.AIRLINES_USE_DYNAMIC_MONTHS_20260805 = true;
+
+  var market = window.AERO_MARKET_NUMBERS_20260805 || window.AERO_MARKET_NUMBERS_LATEST || {};
+  window._AUGUST_2026_OFFICIAL_OVERRIDES = window._AUGUST_2026_OFFICIAL_OVERRIDES || {};
+  window._AUGUST_2026_OFFICIAL_OVERRIDES.BX = Object.assign({}, window._AUGUST_2026_OFFICIAL_OVERRIDES.BX || {}, {
+    '2026.08': {
+      sourceType: 'official_notice',
+      status: 'official_verified',
+      confidence: 'fresh',
+      currency: 'USD',
+      surchargeSchema: 'mileage_band',
+      officialNoticeUrl: 'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4389',
+      verifiedAt: '2026-07-17T00:00:00+09:00',
+      applicableFrom: '2026-08-01',
+      applicableTo: '2026-08-31',
+      ticketingBasis: true,
+      oneWay: true,
+      items: [
+        { distanceRange: '0-699', label: '1구간 (~699mi)', amount: 22, currency: 'USD' },
+        { distanceRange: '700-1299', label: '2구간 (700~1,299mi)', amount: 39, currency: 'USD' },
+        { distanceRange: '1300-1999', label: '3구간 (1,300~1,999mi)', amount: 46, currency: 'USD' },
+        { distanceRange: '2000+', label: '4구간 (2,000mi~)', amount: 54, currency: 'USD' },
+      ],
+    },
+  });
+  var confirmedCodes = market.augustOfficialConfirmedAirlines || ['KE','OZ','LJ','BX','TW','ZE','RS','7C','YP'];
+  JULY_OFFICIAL_CODES = confirmedCodes.slice();
+  JUNE_OFFICIAL_CODES = ['KE','OZ','LJ','BX','TW','ZE','RS','7C','YP'];
+  hasJulyOfficial = function(code){ return JULY_OFFICIAL_CODES.indexOf(code) >= 0; };
+  hasJuneOfficial = function(code){ return JUNE_OFFICIAL_CODES.indexOf(code) >= 0; };
+
+  var ko = AIRLINES_I18N.ko || (AIRLINES_I18N.ko = {});
+  var en = AIRLINES_I18N.en || (AIRLINES_I18N.en = {});
+  var asOf = market.asOf || '2026.08.05 07:20 KST';
+  var usdKrw = market.usdKrw || 1430;
+  var brent = market.brent || 79.36;
+  var wti = market.wti || 75.77;
+  var augustMops = market.augustMops || 119.06;
+  var confirmedAirlinesKo = '대한항공·아시아나항공·제주항공·진에어·에어부산·이스타항공·에어서울·티웨이항공·에어프레미아';
+  var confirmedAirlinesEn = 'Korean Air, Asiana Airlines, Jeju Air, Jin Air, Air Busan, Eastar Jet, Air Seoul, Tway Air and Air Premia';
+
+  ko.pageTitle = '항공사별 유류할증료';
+  ko.pageSub = asOf + ' 기준 · 2026년 8월 14단계 적용 중 · 7월 19단계 대비 5단계 인하';
+  ko.introTitle = '항공사별 2026년 8월 유류할증료 공시 현황';
+  ko.introBody = '2026년 8월 한국 출발 국제선 유류할증료는 14단계로 적용 중입니다. 7월 19단계 대비 5단계 낮아졌으며, 표는 항공사별 공식 공시·수동 검증 데이터 기준으로 2026년 7월과 8월을 비교합니다. 9월 유류할증료는 아직 공시 전이므로 확정 단계나 금액처럼 표시하지 않습니다.';
+  ko.betaDesc = '현재 한국 출발 국제선 유류할증료를 중심으로 제공하며, 8월 공시 금액과 항공사별 공식 링크를 우선 반영합니다. 실제 발권 금액은 항공사 공지와 결제 통화 기준을 함께 확인하세요.';
+  ko.betaNote = '9월은 산정 기간이 진행 중인 전망 구간입니다. 공시 전 단계·금액·확률을 확정값처럼 표시하지 않습니다.';
+  ko.krOnlyNote = '현재 한국 출발 국제선 주요 항공사 기준입니다. USD 공시 항공사의 원화 체감액은 결제 시점 환율에 따라 달라질 수 있습니다.';
+  ko.seoSummaryH2 = '2026년 8월 한국 출발 국제선 유류할증료 14단계 적용 현황';
+  ko.seoSummaryP = '2026년 8월 한국 출발 국제선 유류할증료는 <strong>14단계</strong>로 적용 중이며, 2026년 7월 19단계 대비 5단계 인하되었습니다. 8월 산정 기준 MOPS 평균은 <strong>USD ' + augustMops + '/bbl</strong>입니다. ' + asOf + ' 기준 시장 참고값은 USD/KRW 약 <strong>' + Number(usdKrw).toLocaleString('ko-KR') + '원</strong>, Brent <strong>USD ' + brent + '/bbl</strong>, WTI <strong>USD ' + wti + '/bbl</strong>이며, 이는 9월 전망 변수로만 봅니다.';
+  ko.surchargeIntro = '아래 목록은 2026년 7월 공식 공시와 2026년 8월 적용 공시/검증 데이터를 비교합니다. 8월은 적용 중인 공식 구간이고, 9월은 아직 공시 전 전망 구간입니다.';
+  ko.analysisH3 = '2026년 7월 → 8월 유류할증료 반영 현황';
+  ko.analysisBullets = [
+    '<strong>8월 적용 단계</strong>: 한국 출발 국제선 유류할증료는 14단계 적용 중이며 7월 19단계보다 5단계 낮습니다.',
+    '<strong>항공사별 반영</strong>: ' + confirmedAirlinesKo + '의 8월 공시 또는 검증 데이터를 우선 표시합니다.',
+    '<strong>비교 기준</strong>: 상세 표는 2026년 7월 금액과 2026년 8월 금액을 나란히 보여 줍니다.',
+    '<strong>시장 참고값</strong>: MOPS 119.06은 8월 산정 평균이고, IATA Jet Fuel Monitor USD 158.77/bbl은 같은 날 싱가포르 MOPS가 아닙니다.',
+    '<strong>9월 주의</strong>: 2026년 9월 유류할증료는 공시 전이므로 확정 단계·금액을 생성하지 않습니다.'
+  ];
+  ko.expandHint = '7월→8월 비교';
+  ko.compareTitle = '7월 vs 8월 유류할증료 비교';
+  ko.aprNotice = '7월 공식 공시';
+  ko.mayNotice = '8월 공식 공시';
+  ko.mayBasedLabel = '8월 기준';
+  ko.aprBasedLabel = '7월 기준';
+  ko.notPublished = '8월 공시 확인 필요';
+  ko.noNotice = '공식 공시 확인 필요';
+  ko.nextOfficialBadge = '8월 공식 공시 반영';
+  ko.pendingOfficialBadge = '공시 확인 필요';
+  ko.missingNoticeBadge = '미공지';
+  ko.statusText = function(upd,nxt,base){ return '갱신: ' + asOf + ' · 8월 14단계 적용 중 · 7월 19단계 대비 5단계 인하'; };
+
+  en.pageTitle = 'Airline fuel surcharge index';
+  en.pageSub = asOf + ' · August 2026 Level 14 in effect · down five levels from July Level 19';
+  en.introTitle = 'August 2026 airline fuel surcharge filing status';
+  en.introBody = 'August 2026 Korea-departure international fuel surcharge is in effect at Level 14, five levels lower than July Level 19. The table compares July 2026 and August 2026 by airline using official or manually verified filing data. September remains pre-filing, so no confirmed stage or amount is shown.';
+  en.betaDesc = 'This page focuses on Korea-departure international fuel surcharges and prioritizes August filing amounts plus official airline links. Check each airline notice and payment currency before ticketing.';
+  en.betaNote = 'September is still in the calculation window. Pre-filing stages, amounts and probabilities are not displayed as confirmed values.';
+  en.krOnlyNote = 'Current coverage focuses on major Korea-departure international carriers. KRW-equivalent amounts for USD filings can move with payment-time FX.';
+  en.seoSummaryH2 = 'August 2026 Korea-departure fuel surcharge: Level 14 in effect';
+  en.seoSummaryP = 'August 2026 Korea-departure international fuel surcharge is in effect at <strong>Level 14</strong>, down five levels from July Level 19. The August calculation MOPS average is <strong>USD ' + augustMops + '/bbl</strong>. As of ' + asOf + ', market references are USD/KRW around <strong>' + Number(usdKrw).toLocaleString('en-US') + '</strong>, Brent <strong>USD ' + brent + '/bbl</strong> and WTI <strong>USD ' + wti + '/bbl</strong>; these are only September outlook variables.';
+  en.surchargeIntro = 'The list below compares July 2026 official filings with August 2026 applied filing or verified data. August is already in effect; September is still pre-filing outlook.';
+  en.analysisH3 = 'July to August 2026 fuel surcharge filing status';
+  en.analysisBullets = [
+    '<strong>August stage</strong>: Korea-departure international fuel surcharge is in effect at Level 14, five levels below July Level 19.',
+    '<strong>Airline coverage</strong>: August official or verified data is prioritized for ' + confirmedAirlinesEn + '.',
+    '<strong>Comparison basis</strong>: Detail tables compare July 2026 and August 2026 amounts side by side.',
+    '<strong>Market references</strong>: MOPS 119.06 is the August calculation average; IATA Jet Fuel Monitor USD 158.77/bbl is not the same-day Singapore MOPS quote.',
+    '<strong>September caution</strong>: September 2026 fuel surcharge is not filed yet, so confirmed stages or amounts are not generated.'
+  ];
+  en.expandHint = 'July to August comparison';
+  en.compareTitle = 'July vs August fuel surcharge comparison';
+  en.aprNotice = 'July official notice';
+  en.mayNotice = 'August official notice';
+  en.mayBasedLabel = 'August basis';
+  en.aprBasedLabel = 'July basis';
+  en.notPublished = 'August filing check needed';
+  en.noNotice = 'Official notice check needed';
+  en.nextOfficialBadge = 'August official filing reflected';
+  en.pendingOfficialBadge = 'Notice check needed';
+  en.missingNoticeBadge = 'No notice';
+  en.statusText = function(upd,nxt,base){ return 'Updated: ' + asOf + ' · August Level 14 in effect · five levels below July Level 19'; };
+
+  ['ja','zh','fr','de'].forEach(function(lang){
+    AIRLINES_I18N[lang] = AIRLINES_I18N[lang] || {};
+    ['pageTitle','pageSub','introTitle','introBody','betaDesc','betaNote','krOnlyNote','seoSummaryH2','seoSummaryP','surchargeIntro','analysisH3','analysisBullets','expandHint','compareTitle','aprNotice','mayNotice','mayBasedLabel','aprBasedLabel','notPublished','noNotice','nextOfficialBadge','pendingOfficialBadge','missingNoticeBadge','statusText'].forEach(function(key){
       AIRLINES_I18N[lang][key] = en[key];
     });
   });
