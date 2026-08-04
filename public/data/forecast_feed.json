@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generatedAt": "2026-08-03T22:37:15.208Z",
-    "modelVersion": "manual-market-override-20260804",
+    "generatedAt": "2026-08-04T22:50:03.860Z",
+    "modelVersion": "manual-market-override-20260805",
     "basePeriod": "2026.08",
     "forecastTargetPeriod": "2026.09",
     "sourceAirlines": 9,
@@ -9,15 +9,15 @@
       "brentUSD": 82.5,
       "wtiUSD": 78.3,
       "jetFuelSpread": 14.2,
-      "usdKrw": 1441,
-      "usdJpy": 158.06,
+      "usdKrw": 1429,
+      "usdJpy": 157.16,
       "geopoliticalRiskScore": 0.35,
       "baselineBrentUSD": 75,
       "marketDataSource": "live",
-      "marketFetchedAt": "2026-08-03T22:36:12.326Z"
+      "marketFetchedAt": "2026-08-04T22:49:00.519Z"
     },
-    "disclaimer": "2026년 8월 국제선 유류할증료는 14단계로 적용 중인 확정 공시 데이터입니다. 2026년 9월 유류할증료는 산정 기간이 진행 중이므로 단계와 금액, 확률을 확정값으로 표시하지 않습니다.",
-    "lastUpdated": "2026-08-04T07:00:00+09:00",
+    "disclaimer": "2026년 8월 국제선 유류할증료는 14단계로 적용 중인 확정 공시 데이터입니다. 2026년 9월 유류할증료는 산정 기간 진행 중이므로 단계·금액·확률을 확정값으로 표시하지 않습니다.",
+    "lastUpdated": "2026-08-05T07:20:00+09:00",
     "currentMonthNotice": "2026-08",
     "forecastTargetMonth": "2026-09"
   },
@@ -32,7 +32,7 @@
       "currentStage": 14,
       "predictedMin": null,
       "predictedMax": null,
-      "direction": "upward_pressure_remains_spike_risk_sharply_eased",
+      "direction": "upward_pressure_remains_spike_risk_further_eased",
       "confidence": "medium",
       "volatility": "extremely_high",
       "drivers": [
@@ -49,38 +49,38 @@
         {
           "factor": "IATA 글로벌 항공유 158.77달러/bbl, 전주 대비 0.8% 하락",
           "impact": "easing_partial",
-          "weight": 0.16
+          "weight": 0.15
         },
         {
-          "factor": "USD/KRW 약 1,429원",
+          "factor": "USD/KRW 약 1,430원",
           "impact": "easing",
           "weight": 0.14
         },
         {
-          "factor": "Brent 83.77달러와 WTI 80.34달러 급락",
+          "factor": "Brent 79.36달러와 WTI 75.77달러 급락",
           "impact": "easing",
-          "weight": 0.15
+          "weight": 0.16
         },
         {
-          "factor": "호르무즈 주말 통항 감소, GasLog Shanghai 사건, 이라크 원유 위험 할인",
+          "factor": "호르무즈 공개 확인 통항 6척과 이란 통제권 요구",
           "impact": "upside",
-          "weight": 0.12
+          "weight": 0.13
         },
         {
-          "factor": "사우디 VLCC 6척 희망봉 우회와 홍해 보험 고위험 구역 확대",
+          "factor": "바브엘만데브 공개 확인 통항 20척과 홍해 우회 위험 지속",
           "impact": "upside",
-          "weight": 0.08
+          "weight": 0.07
         }
       ],
       "disclaimer": "2026년 9월 산정 기간은 2026.07.16~2026.08.15입니다. 단계와 금액은 공식 공시 전까지 표시하지 않습니다.",
-      "summary": "2026년 8월 국제선 유류할증료는 14단계로 적용 중입니다. 2026년 9월 전망은 상승 압력 유지, 단기 급등 위험 크게 완화, 환율 완화 효과 확대, 해상운송 위험 지속으로 정리합니다."
+      "summary": "2026년 8월 국제선 유류할증료는 14단계로 적용 중입니다. 2026년 9월 전망은 상승 압력 유지, 단기 급등 위험 추가 완화, 환율 완화 효과 유지, 호르무즈 통제권 협상 불확실성 지속으로 정리합니다."
     }
   ],
   "latest": {
-    "asOf": "2026.08.04 07:00 KST",
+    "asOf": "2026.08.05 07:20 KST",
     "currentMonthNotice": "2026-08",
     "forecastTargetMonth": "2026-09",
-    "summary": "8월 국제선 유류할증료는 14단계 적용 중입니다. 9월은 IATA 항공유 158.77달러, USD/KRW 약 1,429원, Brent 83.77달러, WTI 80.34달러, 호르무즈·홍해 운송 리스크를 함께 보되 단계와 금액은 확정하지 않습니다.",
+    "summary": "8월 국제선 유류할증료는 14단계 적용 중입니다. 9월은 IATA 항공유 158.77달러, USD/KRW 약 1,430원, Brent 79.36달러, WTI 75.77달러, 호르무즈 공개 확인 6척과 바브엘만데브 공개 확인 20척을 함께 보되 단계와 금액은 확정하지 않습니다.",
     "status": "forecast_only_not_announced"
   }
 }

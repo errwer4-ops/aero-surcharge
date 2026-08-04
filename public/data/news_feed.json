@@ -1,9 +1,167 @@
 {
   "meta": {
-    "lastUpdated": "2026-08-04T07:00:00+09:00",
-    "note": "참고 소식 데이터. 공식 공지 및 시장 지표 기반 참고용 정보입니다."
+    "lastUpdated": "2026-08-05T07:20:00+09:00",
+    "note": "참고 뉴스 데이터: 공식 공시 및 시장 지표 기반 참고 정보입니다."
   },
   "items": [
+    {
+      "id": "market-oil-20260805",
+      "category": "market",
+      "title": "Brent 79.36달러·WTI 75.77달러, 협상 기대에 추가 급락",
+      "summary": "미국과 카타르 관계자들이 호르무즈 통항 중재 진전을 언급하면서 국제유가가 추가로 하락했습니다. 다만 이란은 미국과의 직접 협상을 부인하고 있고 통제권 합의도 아직 이뤄지지 않았습니다.",
+      "sourceUrl": "https://www.reuters.com/business/energy/oil-ticks-up-after-selloff-talks-end-us-iran-war-remain-uncertain-2026-08-04/",
+      "sourceName": "Reuters",
+      "date": "2026-08-05",
+      "updatedAt": "2026-08-05T07:20:00+09:00",
+      "priority": 1,
+      "tags": [
+        "Brent",
+        "WTI",
+        "국제유가",
+        "호르무즈",
+        "유류할증료 전망"
+      ],
+      "aiSummary": true,
+      "relevanceScore": 0.99
+    },
+    {
+      "id": "usd-krw-1430-20260805",
+      "category": "market",
+      "title": "원·달러 환율 약 1,430원, 환율 완화 효과 유지",
+      "summary": "원달러 환율은 전일 약 1,429원과 비슷하고, 7월 중순 1,480원대보다는 낮습니다. 달러 기준 항공사의 원화 환산 부담을 줄이는 완화 요인이 유지됩니다.",
+      "sourceUrl": "https://www.investing.com/currencies/usd-krw",
+      "sourceName": "Investing.com USD/KRW",
+      "date": "2026-08-05",
+      "updatedAt": "2026-08-05T07:20:00+09:00",
+      "priority": 1,
+      "tags": [
+        "원달러 환율",
+        "USD/KRW",
+        "항공권 총액",
+        "유류할증료"
+      ],
+      "aiSummary": true,
+      "relevanceScore": 0.98
+    },
+    {
+      "id": "hormuz-traffic-20260805",
+      "category": "market",
+      "title": "호르무즈 공개 추적 통항 6척, 정상 수준에는 크게 미달",
+      "summary": "화요일 공개 선박 추적 기준 호르무즈 통항은 상품선 6척으로 확인됐습니다. 확인 선박은 이란 측 항로를 이용한 것으로 보이지만, AIS 비공개 선박은 집계에서 빠질 수 있어 전체 통항량 확정값으로 단정하지 않습니다.",
+      "sourceUrl": "https://www.reuters.com/world/middle-east/shipping-traffic-key-gulf-waterways-little-changed-uncertain-peace-talks-2026-08-04/",
+      "sourceName": "Reuters · Kpler",
+      "date": "2026-08-05",
+      "updatedAt": "2026-08-05T07:20:00+09:00",
+      "priority": 1,
+      "tags": [
+        "호르무즈 해협",
+        "Kpler",
+        "AIS",
+        "선박 추적",
+        "유류할증료 전망"
+      ],
+      "aiSummary": true,
+      "relevanceScore": 0.98
+    },
+    {
+      "id": "iran-hormuz-control-20260805",
+      "category": "market",
+      "title": "이란, 호르무즈 입항 통제·출항 감시 권한 요구",
+      "summary": "이란은 오만과 논의 중인 임시 통항안에서 걸프만으로 들어오는 선박에 대한 통제권과, 나가는 선박의 이동 정보 확인 및 필요 시 개입 권한을 요구하는 것으로 보도됐습니다. 최종 합의는 아직 없습니다.",
+      "sourceUrl": "https://www.reuters.com/world/middle-east/iran-demands-hormuz-inbound-control-outbound-oversight-source-says-2026-08-04/",
+      "sourceName": "Reuters",
+      "date": "2026-08-05",
+      "updatedAt": "2026-08-05T07:20:00+09:00",
+      "priority": 1,
+      "tags": [
+        "이란",
+        "오만",
+        "호르무즈 해협",
+        "통제권",
+        "협상"
+      ],
+      "aiSummary": true,
+      "relevanceScore": 0.97
+    },
+    {
+      "id": "us-iran-mediation-20260805",
+      "category": "market",
+      "title": "미국·카타르는 중재 진전 언급, 이란은 직접 협상 부인",
+      "summary": "미국과 카타르 관계자들은 호르무즈 관련 중재가 진전되고 있다고 밝혔습니다. 그러나 이란은 미국과 직접 협상 중이 아니며 예정된 회담도 없다는 입장을 유지하고 있습니다.",
+      "sourceUrl": "https://www.reuters.com/world/middle-east/status-us-iran-talks-uncertain-ship-struck-hormuz-2026-08-04/",
+      "sourceName": "Reuters",
+      "date": "2026-08-05",
+      "updatedAt": "2026-08-05T07:20:00+09:00",
+      "priority": 2,
+      "tags": [
+        "미국",
+        "이란",
+        "카타르",
+        "오만",
+        "호르무즈"
+      ],
+      "aiSummary": true,
+      "relevanceScore": 0.96
+    },
+    {
+      "id": "bab-el-mandeb-traffic-20260805",
+      "category": "market",
+      "title": "바브엘만데브 공개 통항 20척, 우회 위험은 지속",
+      "summary": "바브엘만데브 해협에서는 화요일 공개 추적 기준 상품선 20척이 확인됐습니다. 일부 통항은 이어지고 있지만 후티 위협과 사우디 선박의 우회 운항은 계속됩니다.",
+      "sourceUrl": "https://www.reuters.com/world/middle-east/shipping-traffic-key-gulf-waterways-little-changed-uncertain-peace-talks-2026-08-04/",
+      "sourceName": "Reuters · Kpler",
+      "date": "2026-08-05",
+      "updatedAt": "2026-08-05T07:20:00+09:00",
+      "priority": 2,
+      "tags": [
+        "바브엘만데브",
+        "홍해",
+        "Kpler",
+        "탱커",
+        "벌크선"
+      ],
+      "aiSummary": true,
+      "relevanceScore": 0.95
+    },
+    {
+      "id": "aramco-supply-loss-20260805",
+      "category": "market",
+      "title": "Aramco, 글로벌 원유 공급 손실 26억 배럴 추산",
+      "summary": "Aramco 경영진은 위기 이후 글로벌 시장에서 약 26억 배럴의 원유 공급이 사라진 것으로 추산했습니다. 하루 210만 배럴 재고를 회복하더라도 약 18개월이 걸릴 수 있다는 평가도 제시했습니다.",
+      "sourceUrl": "https://www.reuters.com/business/energy/aramco-posts-44-increase-net-profit-2026-08-04/",
+      "sourceName": "Reuters",
+      "date": "2026-08-05",
+      "updatedAt": "2026-08-05T07:20:00+09:00",
+      "priority": 3,
+      "tags": [
+        "Aramco",
+        "원유 공급",
+        "정유 체계",
+        "항공유",
+        "유류할증료 전망"
+      ],
+      "aiSummary": true,
+      "relevanceScore": 0.94
+    },
+    {
+      "id": "iata-jet-fuel-15877-20260805",
+      "category": "market",
+      "title": "IATA 글로벌 항공유 158.77달러, 주간 0.8% 하락",
+      "summary": "IATA 글로벌 항공유 주간 평균은 158.77달러/bbl로 전주 대비 0.8% 하락했습니다. 이 지표는 한국 유류할증료 산정용 싱가포르 MOPS 일별 가격이나 9월 산정 평균과 구분해야 합니다.",
+      "sourceUrl": "https://www.iata.org/en/publications/economics/fuel-monitor/",
+      "sourceName": "IATA Jet Fuel Price Monitor",
+      "date": "2026-08-05",
+      "updatedAt": "2026-08-05T07:20:00+09:00",
+      "priority": 3,
+      "tags": [
+        "IATA 항공유",
+        "MOPS",
+        "항공유 가격",
+        "유류할증료 전망"
+      ],
+      "aiSummary": true,
+      "relevanceScore": 0.93
+    },
     {
       "id": "market-oil-20260804",
       "category": "market",
@@ -14,7 +172,12 @@
       "date": "2026-08-04",
       "updatedAt": "2026-08-04T07:00:00+09:00",
       "priority": 1,
-      "tags": ["Brent", "WTI", "국제유가", "유류할증료 전망"],
+      "tags": [
+        "Brent",
+        "WTI",
+        "국제유가",
+        "유류할증료 전망"
+      ],
       "aiSummary": true,
       "relevanceScore": 0.99
     },
@@ -28,7 +191,11 @@
       "date": "2026-08-04",
       "updatedAt": "2026-08-04T07:00:00+09:00",
       "priority": 1,
-      "tags": ["IATA 항공유", "MOPS", "유류할증료 전망"],
+      "tags": [
+        "IATA 항공유",
+        "MOPS",
+        "유류할증료 전망"
+      ],
       "aiSummary": true,
       "relevanceScore": 0.98
     },
@@ -42,7 +209,13 @@
       "date": "2026-08-04",
       "updatedAt": "2026-08-04T07:00:00+09:00",
       "priority": 1,
-      "tags": ["호르무즈 해협", "홍해", "VLCC", "해상보험", "유류할증료 전망"],
+      "tags": [
+        "호르무즈 해협",
+        "홍해",
+        "VLCC",
+        "해상보험",
+        "유류할증료 전망"
+      ],
       "aiSummary": true,
       "relevanceScore": 0.97
     },

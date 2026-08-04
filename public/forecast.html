@@ -3,23 +3,23 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>2026년 8월 유류할증료 적용·9월 전망 | 8월 4일 환율·MOPS·호르무즈</title>
-  <meta name="description" content="2026년 8월 4일 기준 8월 국제선 유류할증료 14단계 적용과 9월 전망을 원달러 환율 1,429원, MOPS 119.06달러, IATA 항공유 158.77달러, Brent 83.77달러, WTI 80.34달러, 호르무즈와 홍해 해상운송 리스크로 분석합니다." data-i18n-page-desc="fore.metaDesc"/>
+  <title>2026년 8월 유류할증료 적용·9월 전망 | 8월 5일 환율·MOPS·호르무즈</title>
+  <meta name="description" content="2026년 8월 5일 기준 8월 국제선 유류할증료 14단계 적용 현황과 9월 전망을 원달러 환율 1,430원, MOPS 119.06달러, IATA 항공유 158.77달러, Brent 79.36달러, WTI 75.77달러, 호르무즈 통항 및 통제권 협상으로 분석합니다." data-i18n-page-desc="fore.metaDesc"/>
   <meta name="google-adsense-account" content="ca-pub-4285114770383510">
   <meta data-i18n-page-title="fore.metaTitle"/>
   <link rel="canonical" href="https://aero-surcharge.com/forecast.html"/>
-  <meta property="og:title" content="2026년 8월 유류할증료 적용·9월 전망 | 8월 4일 환율·MOPS·호르무즈"/>
-  <meta property="og:description" content="2026년 8월 4일 기준 8월 국제선 유류할증료 14단계 적용과 9월 전망을 원달러 환율 1,429원, MOPS 119.06달러, IATA 항공유 158.77달러, Brent 83.77달러, WTI 80.34달러, 호르무즈와 홍해 해상운송 리스크로 분석합니다."/>
+  <meta property="og:title" content="2026년 8월 유류할증료 적용·9월 전망 | 8월 5일 환율·MOPS·호르무즈"/>
+  <meta property="og:description" content="2026년 8월 5일 기준 8월 국제선 유류할증료 14단계 적용 현황과 9월 전망을 원달러 환율 1,430원, MOPS 119.06달러, IATA 항공유 158.77달러, Brent 79.36달러, WTI 75.77달러, 호르무즈 통항 및 통제권 협상으로 분석합니다."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.com/forecast.html"/>
-  <meta property="article:modified_time" content="2026-08-04T07:00:00+09:00"/>
+  <meta property="article:modified_time" content="2026-08-05T07:20:00+09:00"/>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "@id": "https://aero-surcharge.com/forecast.html#faq-20260804",
-  "dateModified": "2026-08-04T07:00:00+09:00",
+  "@id": "https://aero-surcharge.com/forecast.html#faq-20260805",
+  "dateModified": "2026-08-05T07:20:00+09:00",
   "mainEntity": [
     {
       "@type": "Question",
@@ -2451,11 +2451,14 @@ function renderForecastFaq() {
 function syncForecastStructuredData() {
   var items = td('fore.faq.items');
   if (!Array.isArray(items)) return;
+  var market = window.AERO_MARKET_NUMBERS_LATEST || {};
+  var modified = market.lastUpdated || '2026-08-05T07:20:00+09:00';
+  var slugDate = String(modified).slice(0, 10).replace(/-/g, '') || '20260805';
   var payload = {
     '@context': 'https://schema.org',
     '@type': 'FAQPage',
-    '@id': 'https://aero-surcharge.com/forecast.html#faq-20260622',
-    dateModified: '2026-07-10T07:00:00+09:00',
+    '@id': 'https://aero-surcharge.com/forecast.html#faq-' + slugDate,
+    dateModified: modified,
     mainEntity: items.filter(function(it){ return it && it.q && it.a; }).map(function(it) {
       return {
         '@type': 'Question',
@@ -8971,6 +8974,271 @@ function renderForecastPage() {
       if (data && data['@type'] === 'FAQPage' && String(data['@id'] || '').indexOf('forecast.html#faq-') !== -1) {
         data['@id'] = 'https://aero-surcharge.com/forecast.html#faq-20260804';
         data.dateModified = '2026-08-04T07:00:00+09:00';
+        data.mainEntity = ko['fore.faq.items'].map(function(item){
+          return {'@type':'Question', name:item.q, acceptedAnswer:{'@type':'Answer', text:item.a}};
+        });
+        node.textContent = JSON.stringify(data);
+      }
+    } catch(e) {}
+  });
+})();
+
+
+
+/* 2026.08.05 07:20 KST terminal forecast guard. */
+(function(){
+  var ko = {
+    'fore.metaTitle': '2026년 8월 유류할증료 적용·9월 전망 | 8월 5일 환율·MOPS·호르무즈',
+    'fore.metaDesc': '2026년 8월 5일 기준 8월 국제선 유류할증료 14단계 적용 현황과 9월 전망을 원달러 환율 1,430원, MOPS 119.06달러, IATA 항공유 158.77달러, Brent 79.36달러, WTI 75.77달러, 호르무즈 통항 및 통제권 협상으로 분석합니다.',
+    'fore.pageTitle': '2026년 8월 유류할증료 적용과 9월 전망',
+    'fore.pageSub': '2026.08.05 07:20 KST 기준 · 8월 14단계 적용 중 · 원달러 약 1,430원 · IATA 항공유 158.77달러 · Brent 79.36달러 · WTI 75.77달러 · 호르무즈 공개 확인 6척',
+    'fore.h1': '2026년 9월 국제선 유류할증료 전망 — 상승 압력은 남고 급등 위험은 추가 완화',
+    'fore.section.indicators': '2026년 9월 유류할증료 전망 핵심 지표',
+    'fore.predict.title': '2026년 9월 유류할증료 전망 핵심 지표',
+    'fore.predict.subtitle': '8월 14단계 적용 중 · MOPS 평균 · IATA 항공유 · USD/KRW',
+    'fore.predict.footnote': '* 2026년 8월 국제선 유류할증료는 14단계로 적용 중입니다. 2026년 9월 유류할증료는 아직 공시 전이므로 단계·금액·확률을 확정값처럼 표시하지 않습니다. IATA 158.77달러는 글로벌 주간 항공유 평균이며 당일 싱가포르 MOPS가 아닙니다.',
+    'fore.predict.items': [
+      { label:'8월 적용 단계', val:'14단계 · 7월 19단계 대비 5단계 인하', cls:'down' },
+      { label:'8월 산정 MOPS', val:'119.06달러/bbl · 2026.06.16~2026.07.15 평균', cls:'down' },
+      { label:'IATA 항공유', val:'158.77달러/bbl · 전주 대비 0.8% 하락', cls:'down' },
+      { label:'USD/KRW', val:'약 1,430원 · 환율 완화 효과 유지', cls:'down' },
+      { label:'국제유가', val:'Brent 79.36달러 · WTI 75.77달러 · 8월 4일 종가 기준', cls:'down' },
+      { label:'9월 판단', val:'상승 압력 유지 · 단기 급등 위험 추가 완화 · 통제권 협상 불확실성 지속', cls:'plain' }
+    ],
+    'fore.notice': '<strong>참고:</strong> 이 사이트는 한국 출발 국제선 유류할증료를 중심으로 다룹니다. 2026년 8월 국제선 유류할증료는 14단계로 적용 중이며, 2026년 9월 유류할증료는 아직 공시 전 전망 단계입니다.',
+    'fore.intro': '2026.08.05 07:20 KST 기준 2026년 8월 한국 출발 국제선 유류할증료는 14단계로 적용 중입니다. 8월 산정에 반영된 싱가포르 MOPS 평균은 119.06달러/bbl이며, 최신 IATA 글로벌 항공유 주간 평균은 158.77달러/bbl로 전주 대비 0.8% 하락했습니다. 원달러 환율은 약 1,430원으로 7월 중순 1,480원대보다 낮아 환율 완화 효과가 유지됩니다. 2026년 8월 4일 미국 시장 확정 종가는 Brent 79.36달러, WTI 75.77달러로 크게 낮아졌습니다. 다만 호르무즈 공개 확인 통항은 화요일 6척에 그쳤고, 이란은 입항 통제와 출항 감시 권한을 요구하고 있어 9월 전망은 상승 압력 유지·단기 급등 위험 추가 완화·환율 완화 효과 유지·호르무즈 통제권 협상 불확실성 지속으로 정리합니다.',
+    'fore.indicator.th': ['항목','2026.08.05 07:20 KST 기준 상태','9월 유류할증료 영향'],
+    'fore.indicator.footnote': '* 2026년 9월 유류할증료는 아직 공시 전입니다. 수치는 확정 공시가 아니라 전망 변수로만 사용합니다.',
+    'fore.indicator.rows': [
+      ['8월 유류할증료', '14단계 적용 중', '7월 19단계 대비 낮아진 확정 기준선'],
+      ['8월 산정 MOPS', '119.06달러/bbl', '8월 인하의 공시 산정 근거'],
+      ['IATA 글로벌 항공유', '158.77달러/bbl · 전주 대비 0.8% 하락', '항공유 급등 압력 일부 완화'],
+      ['원달러 환율', '약 1,430원', '원화 환산 부담 완화 효과 유지'],
+      ['국제유가', 'Brent 79.36달러 · WTI 75.77달러', '8월 4일 확정 종가 기준 완화 변수'],
+      ['9월 전망', '상승 압력 유지 · 급등 위험 추가 완화', '단계·금액 확정 금지']
+    ],
+    'fore.summary.updated': '2026.08.05 07:20 KST 기준 · 8월 14단계 적용 중 · 환율 1,430원 · MOPS 119.06달러 · IATA 항공유 158.77달러',
+    'fore.summary.title': '2026년 9월 유류할증료 전망 요약',
+    'fore.summary.items': [
+      '2026년 8월 국제선 유류할증료는 14단계로 적용 중입니다.',
+      '8월 산정 MOPS 평균은 119.06달러/bbl이며 2026.06.16~2026.07.15 기간 평균입니다.',
+      'IATA 글로벌 항공유는 158.77달러/bbl로 전주 대비 0.8% 하락했습니다.',
+      'IATA 수치는 당일 싱가포르 MOPS나 9월 산정 평균이 아닙니다.',
+      '원달러 환율은 약 1,430원으로 7월 중순보다 낮아 환율 완화 효과가 유지됩니다.',
+      'Brent 79.36달러, WTI 75.77달러는 2026.08.04 미국 시장 최신 확정 종가입니다.',
+      '호르무즈 공개 확인 통항은 화요일 6척이지만 AIS 비공개 선박은 빠질 수 있어 전체 통항량 확정값으로 단정하지 않습니다.',
+      '미국·카타르 측은 중재 진전을 언급하지만 이란은 미국과의 직접 협상과 예정 회담을 부인합니다.',
+      '이란의 입항 통제·출항 감시 요구는 보도된 협상안이며 최종 합의나 전면 개방으로 표현하지 않습니다.'
+    ],
+    'fore.verdict.title': '2026년 9월 유류할증료 전망',
+    'fore.verdict.line1': '2026년 8월 국제선 유류할증료는 14단계로 적용 중인 확정 데이터입니다.',
+    'fore.verdict.line2': '2026년 9월 국제선 유류할증료는 아직 공시 전입니다.',
+    'fore.verdict.line3': '→ 현재 판단은 상승 압력 유지·단기 급등 위험 추가 완화·환율 완화 효과 유지·호르무즈 통제권 협상 불확실성 지속입니다. Brent 79.36달러, WTI 75.77달러, 원달러 약 1,430원, IATA 항공유 주간 0.8% 하락은 완화 요인입니다. 반면 호르무즈 공개 확인 통항 6척, 이란의 입항 통제·출항 감시 요구, 홍해 우회와 글로벌 정유 체계 여유 부족은 상승 압력입니다. 9월 단계와 금액은 확정하지 않습니다.',
+    'fore.verdict.short': '단거리 국제선: 8월 14단계 확정 금액을 기준으로 총액 비교',
+    'fore.verdict.long': '장거리·성수기: 9월 공시 전까지 항공유·환율·유가·호르무즈 협상을 함께 확인',
+    'fore.scenario.items': [
+      { title:'완화 시나리오', factor:'Brent·WTI 하락, IATA 항공유 주간 하락, 원달러 환율 1,430원, OPEC+ 증산 계획이 이어지는 경우입니다.', traveler:'USD 공시 항공사의 원화 환산 부담은 낮은 상태가 유지될 수 있습니다.', strategy:'8월 확정 공시 금액과 실제 항공권 총액을 우선 비교하세요.' },
+      { title:'상승 압력 유지 시나리오', factor:'호르무즈 공개 통항이 낮고 이란의 통제권 요구와 홍해 우회가 지속되는 경우입니다.', traveler:'장거리·성수기 노선은 유류할증료와 운임을 함께 확인해야 합니다.', strategy:'공식 공시 전까지 단계·금액을 단정하지 말고 결제 시점 환율을 확인하세요.' },
+      { title:'변동성 확대 시나리오', factor:'통제권 협상이 결렬되거나 선박 공격·보험료 상승이 재확대되는 경우입니다.', traveler:'USD 공시 항공사는 원화 환산액 변동이 커질 수 있습니다.', strategy:'최종 결제 총액과 항공사 공지 업데이트를 함께 확인하세요.' }
+    ],
+    'fore.mops.analysis.title': 'MOPS·IATA 항공유와 2026년 9월 유류할증료 전망',
+    'fore.mops.analysis.body': '2026년 8월 공시에 반영된 싱가포르 MOPS 평균은 119.06달러/bbl입니다. 이 값은 2026.06.16~2026.07.15 기간 평균이며, 8월 14단계 적용의 산정 근거입니다.\n\n2026.08.05 07:20 KST 기준 최신 IATA 글로벌 항공유 주간 평균은 158.77달러/bbl로 전주 대비 0.8% 하락했습니다. 이 값은 글로벌 항공유 참고 지표이며, 국내 국제선 유류할증료 산정에 직접 쓰이는 싱가포르 MOPS 일별 가격이나 9월 산정 평균과는 구분해야 합니다. 8월 5일 당일 싱가포르 MOPS 현물가는 무료 공개 자료에서 정확한 값을 확인하지 못했습니다.\n\n9월 전망은 아직 공시 전이므로 2026.07.16~2026.08.15 전체 싱가포르 MOPS 평균, 적용 환율, Brent·WTI, IATA 항공유, 호르무즈와 홍해 해상운송 리스크를 함께 확인해야 합니다.',
+    'fore.booking.title': '항공권 예약 판단 가이드',
+    'fore.booking.items': [
+      '8월 발권: 8월 국제선 유류할증료는 14단계로 적용 중이므로 항공사별 8월 공식 공시 금액으로 총액을 비교하세요.',
+      'USD 공시 항공사: 제주항공·진에어·에어부산·이스타항공은 결제 시점 원달러 환율에 따라 원화 체감액이 달라질 수 있습니다.',
+      '9월 이후 발권: 9월 유류할증료는 아직 공시 전입니다. 항공유, 환율, 국제유가, 호르무즈 협상 업데이트를 확인하세요.',
+      '주의: 9월 단계·금액·확률은 공식 공시 전까지 임의로 만들지 않습니다.'
+    ],
+    'fore.market.title': '시장 브리핑: 8월 공시 적용 이후 9월 변수',
+    'fore.market.brent': '국제유가: 2026.08.04 미국 시장 최신 확정 종가 기준 Brent는 79.36달러/bbl, WTI는 75.77달러/bbl입니다. Brent는 일간 5.3%, WTI는 일간 5.7% 하락했습니다. 이 값은 8월 5일 실시간 가격이 아니라 8월 4일 확정 종가입니다.',
+    'fore.market.mops': '항공유 가격(MOPS): 8월 공시에 사용된 MOPS 평균은 119.06달러/bbl입니다. 최신 IATA 글로벌 항공유 주간 평균은 158.77달러/bbl로 전주 대비 0.8% 하락했지만, 이는 현재 싱가포르 MOPS나 9월 산정 평균이 아닙니다.',
+    'fore.market.fx': '원달러 환율: 약 1,430원으로 전일 약 1,429원과 비슷하며 7월 중순 1,480원대보다 낮습니다. USD 공시 항공사의 환율 완화 효과는 유지됩니다.',
+    'fore.market.geo': '지정학 리스크: 화요일 호르무즈 공개 추적 통항은 상품선 6척, 탱커 3척과 벌크선 3척으로 확인됐습니다. 5척은 걸프만 진입, 1척은 이탈로 파악되며 확인 선박은 이란 측 항로를 이용한 것으로 보입니다. 다만 AIS 비공개 선박은 집계에서 빠질 수 있어 전체 통항량 확정값으로 단정하지 않습니다. 이란은 입항 통제와 출항 감시 권한을 요구하지만 최종 합의는 아직 없습니다.',
+    'fore.market.summary': '→ 2026년 9월 전망은 상승 압력 유지입니다. 다만 유가 급락, 항공유 주간 하락, 환율 완화, 미국·카타르 측 중재 진전 언급, OPEC+ 9월 증산 계획은 단기 급등 위험을 추가로 낮춥니다. 호르무즈 통제권 협상과 홍해 우회 위험은 계속 확인해야 합니다.',
+    'fore.market.fx2': '핵심 수치: 8월 14단계 적용 중 · USD/KRW 약 1,430원 · 8월 산정 MOPS 119.06달러/bbl · IATA 항공유 158.77달러/bbl · Brent 79.36달러 · WTI 75.77달러 · 호르무즈 공개 확인 6척 · 바브엘만데브 공개 확인 20척',
+    'fore.basis.title': '8월 공시 데이터와 9월 전망 기준',
+    'fore.basis.body': '2026년 8월 한국 출발 국제선 유류할증료는 14단계로 적용 중인 확정 데이터입니다. 2026년 9월 유류할증료는 아직 공시 전이며, MOPS 산정 평균, IATA 항공유, 원달러 환율, Brent·WTI, 호르무즈·오만·홍해 해상 리스크를 종합한 전망으로만 표시합니다.',
+    'fore.keyvars.items': ['2026년 9월 유류할증료 전망', '2026년 8월 유류할증료 14단계', 'MOPS', 'IATA 항공유 가격', '원달러 환율', '호르무즈 해협', '바브엘만데브', 'OPEC+ 증산', '한국발 국제선 유류할증료'],
+    'fore.faq.items': [
+      {q:'2026년 8월 국제선 유류할증료는 몇 단계인가요?', a:'2026년 8월 한국 출발 국제선 유류할증료는 14단계로 적용 중입니다. 7월 19단계보다 5단계 낮습니다.'},
+      {q:'2026년 9월 유류할증료는 인상이 확정됐나요?', a:'아닙니다. 호르무즈와 항공유 가격으로 상승 압력은 남아 있지만 국제유가와 환율 하락으로 완화 요인도 커졌습니다.'},
+      {q:'IATA 항공유 158.77달러는 싱가포르 MOPS인가요?', a:'아닙니다. IATA 글로벌 주간 항공유 평균이며 국내 유류할증료 산정용 싱가포르 MOPS와 다른 지표입니다.'},
+      {q:'국제유가가 70달러대로 내려가면 9월 유류할증료도 내려가나요?', a:'유가 하락은 완화 요인이지만 실제 산정에는 2026.07.16~2026.08.15 전체 싱가포르 MOPS 평균과 적용 환율이 사용되므로 인하를 확정할 수 없습니다.'},
+      {q:'호르무즈 해협은 완전히 봉쇄됐나요?', a:'아닙니다. 일부 선박은 통항하고 있지만 공개 추적 통항량은 정상 수준보다 낮습니다.'},
+      {q:'호르무즈 통항량은 정확히 6척인가요?', a:'공개 선박 추적에서 6척이 확인됐지만 AIS를 끈 선박이 있을 수 있어 실제 전체 통항량과 다를 수 있습니다.'},
+      {q:'미국과 이란은 직접 협상 중인가요?', a:'미국과 중재국은 진전을 언급하지만 이란은 미국과의 직접 협상과 예정 회담을 부인하고 있습니다.'},
+      {q:'이란이 호르무즈 통제권을 확보했나요?', a:'이란은 입항 통제와 출항 감시 권한을 요구하고 있지만 최종 합의가 이뤄진 것은 아닙니다.'},
+      {q:'바브엘만데브는 정상화됐나요?', a:'일부 상품선과 탱커 통항은 이어지고 있지만 후티 위협과 우회 운항이 계속돼 정상화가 완료된 상태는 아닙니다.'},
+      {q:'Aramco의 26억 배럴 수치는 공식 확정 통계인가요?', a:'아닙니다. Aramco 경영진이 제시한 글로벌 공급 손실 추산입니다.'}
+    ]
+  };
+  var en = {
+    'fore.metaTitle': 'August Fuel Surcharge Applied and September Outlook | Aug 5 FX, MOPS and Hormuz',
+    'fore.metaDesc': 'As of 2026.08.05 07:20 KST, this page reviews August Level 14 fuel surcharge and the September outlook with USD/KRW around 1,430, MOPS USD 119.06, IATA jet fuel USD 158.77, Brent USD 79.36, WTI USD 75.77 and Hormuz control talks.',
+    'fore.pageTitle': 'August 2026 Fuel Surcharge Applied and September Outlook',
+    'fore.pageSub': 'As of 2026.08.05 07:20 KST · August Level 14 in effect · USD/KRW around 1,430 · IATA jet fuel USD 158.77 · Brent USD 79.36 · WTI USD 75.77',
+    'fore.h1': 'September 2026 International Fuel Surcharge Outlook - upward pressure remains, spike risk further eased',
+    'fore.section.indicators': ko['fore.section.indicators'],
+    'fore.predict.title': ko['fore.predict.title'],
+    'fore.predict.subtitle': ko['fore.predict.subtitle'],
+    'fore.predict.footnote': ko['fore.predict.footnote'],
+    'fore.predict.items': ko['fore.predict.items'],
+    'fore.notice': ko['fore.notice'],
+    'fore.intro': ko['fore.intro'],
+    'fore.indicator.th': ['Item','Status as of 2026.08.05 07:20 KST','Impact on September surcharge'],
+    'fore.indicator.rows': ko['fore.indicator.rows'],
+    'fore.indicator.footnote': ko['fore.indicator.footnote'],
+    'fore.summary.updated': ko['fore.summary.updated'],
+    'fore.summary.title': 'September 2026 Fuel Surcharge Outlook Summary',
+    'fore.summary.items': ko['fore.summary.items'],
+    'fore.verdict.title': ko['fore.verdict.title'],
+    'fore.verdict.line1': ko['fore.verdict.line1'],
+    'fore.verdict.line2': ko['fore.verdict.line2'],
+    'fore.verdict.line3': ko['fore.verdict.line3'],
+    'fore.verdict.short': ko['fore.verdict.short'],
+    'fore.verdict.long': ko['fore.verdict.long'],
+    'fore.scenario.items': ko['fore.scenario.items'],
+    'fore.mops.analysis.title': ko['fore.mops.analysis.title'],
+    'fore.mops.analysis.body': ko['fore.mops.analysis.body'],
+    'fore.booking.title': 'Booking Decision Guide',
+    'fore.booking.items': ko['fore.booking.items'],
+    'fore.market.title': ko['fore.market.title'],
+    'fore.market.brent': ko['fore.market.brent'],
+    'fore.market.mops': ko['fore.market.mops'],
+    'fore.market.fx': ko['fore.market.fx'],
+    'fore.market.geo': ko['fore.market.geo'],
+    'fore.market.summary': ko['fore.market.summary'],
+    'fore.market.fx2': ko['fore.market.fx2'],
+    'fore.basis.title': ko['fore.basis.title'],
+    'fore.basis.body': ko['fore.basis.body'],
+    'fore.keyvars.items': ko['fore.keyvars.items'],
+    'fore.faq.items': ko['fore.faq.items']
+  };
+  Object.assign(FORE_I18N.ko, ko);
+  Object.assign(FORE_I18N.en, en);
+  ['ja','zh','fr','de'].forEach(function(lang){ Object.assign(FORE_I18N[lang] || (FORE_I18N[lang] = {}), en); });
+  if(window.I18N){
+    Object.assign(window.I18N.ko || (window.I18N.ko = {}), ko);
+    Object.assign(window.I18N.en || (window.I18N.en = {}), en);
+    ['ja','zh','fr','de'].forEach(function(lang){ Object.assign(window.I18N[lang] || (window.I18N[lang] = {}), en); });
+  }
+  window.AERO_MARKET_NUMBERS_20260805 = Object.assign({}, window.AERO_MARKET_NUMBERS_20260805 || window.AERO_MARKET_NUMBERS_LATEST || {}, {
+    asOf: '2026.08.05 07:20 KST',
+    lastUpdated: '2026-08-05T07:20:00+09:00',
+    currentMonthNotice: '2026-08',
+    forecastTargetMonth: '2026-09',
+    augustSurchargeLevel: 14,
+    augustSurchargeStage: 14,
+    julySurchargeStage: 19,
+    augustStageChangeFromJuly: -5,
+    septemberSurchargeConfirmed: false,
+    septemberCalculationFrom: '2026-07-16',
+    septemberCalculationTo: '2026-08-15',
+    usdKrw: 1430,
+    usdKrwLabel: '약 1,430원',
+    usdKrwValueType: 'rounded_near_time_reference',
+    usdKrwReferenceTime: '2026.08.05 07:20 KST 전후 공개 거래 시세',
+    augustMopsAverageUsdPerBbl: 119.06,
+    previousMopsAverageUsdPerBbl: 142.09,
+    augustMopsAverageCentsPerGallon: 283.48,
+    iataJetFuelUsdPerBbl: 158.77,
+    iataJetFuelWeeklyChangePct: -0.8,
+    currentSingaporeMopsExactValue: null,
+    currentSingaporeMopsStatus: 'not_publicly_verified',
+    brentUsdPerBbl: 79.36,
+    brentDailyChangeUsd: -4.41,
+    brentDailyChangePct: -5.3,
+    brentReferenceType: '2026.08.04 market close',
+    wtiUsdPerBbl: 75.77,
+    wtiDailyChangeUsd: -4.57,
+    wtiDailyChangePct: -5.7,
+    wtiReferenceType: '2026.08.04 market close',
+    hormuzObservedCommodityVessels: 6,
+    hormuzObservedTankers: 3,
+    hormuzObservedBulkCarriers: 3,
+    hormuzObservedInboundVessels: 5,
+    hormuzObservedOutboundVessels: 1,
+    hormuzPreviousObservedVessels: 7,
+    hormuzObservedShipsUsedIranianRoute: true,
+    hormuzObservedTrafficIsTotalConfirmed: false,
+    hormuzAisCoverageLimitation: true,
+    hormuzStatus: 'extremely_restricted_not_fully_closed',
+    iranRequestsHormuzInboundControl: true,
+    iranRequestsOutboundMovementOversight: true,
+    iranRequestsRightToInterveneOutbound: true,
+    hormuzControlAgreementReached: false,
+    hormuzFullReopeningConfirmed: false,
+    usSaysMediationProgress: true,
+    qatarSaysMediationProgress: true,
+    omanMediationOngoing: true,
+    iranDeniesDirectUsTalks: true,
+    iranDeniesScheduledUsMeeting: true,
+    usIranFormalDirectTalksConfirmed: false,
+    usIranFormalCeasefireConfirmed: false,
+    usIranFinalAgreementConfirmed: false,
+    babElMandebObservedCommodityVessels: 20,
+    babElMandebObservedTankers: 12,
+    babElMandebObservedBulkCarriers: 8,
+    babElMandebObservedOutboundVessels: 12,
+    babElMandebObservedInboundVessels: 8,
+    babElMandebTrafficIsTotalConfirmed: false,
+    saudiTankerReroutingContinues: true,
+    redSeaShippingNormalized: false,
+    aramcoEstimatedLostGlobalOilBarrels: 2600000000,
+    aramcoEstimateNotIndependentOfficialTotal: true,
+    aramcoEstimatedRecoveryRateBpd: 2100000,
+    aramcoEstimatedRecoveryMonths: 18,
+    globalRefiningSpareCapacityStatus: 'very_tight',
+    jetFuelDownsideRigidity: 'high',
+    opecSeptemberQuotaIncreaseBpd: 188000,
+    opecActualSupplyIncreaseConfirmed: false,
+    opecSupplyProblemResolved: false,
+    outlookDirection: 'upward_pressure_remains_spike_risk_further_eased_fx_relief_maintained_hormuz_control_uncertainty',
+    outlookConfidence: 'medium',
+    marketVolatility: 'extremely_high',
+    referenceAsOf: {
+      usdKrw: '2026.08.05 07:20 KST 전후 공개 시세, 반올림 표시',
+      oil: '2026.08.04 미국 시장 종가',
+      augustMops: '2026.06.16~2026.07.15 기간 평균',
+      iataJetFuel: 'IATA 최신 글로벌 항공유 주간 평균',
+      hormuz: 'Reuters 및 Kpler 2026.08.04 공개 선박 추적 자료',
+      hormuzControl: 'Reuters 2026.08.04 이란·오만 통항 통제 요구 보도',
+      diplomacy: 'Reuters 2026.08.04 미국·카타르·오만·이란 발표',
+      redSea: 'Reuters 및 Kpler 바브엘만데브 선박 추적 자료',
+      aramco: 'Reuters 2026.08.04 Aramco 경영진 추산',
+      opec: 'OPEC+ 2026년 9월 생산 쿼터 결정'
+    },
+    usIranDiplomacy: {
+      usSaysProgress: true,
+      qatarSaysProgress: true,
+      omanMediationOngoing: true,
+      iranDeniesDirectTalks: true,
+      iranDeniesScheduledMeeting: true,
+      formalDirectNegotiations: false,
+      formalCeasefire: false,
+      finalAgreement: false,
+      hormuzFullReopening: false
+    }
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260805;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-05': window.AERO_MARKET_NUMBERS_20260805});
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1430 });
+  document.title = ko['fore.metaTitle'];
+  var desc = document.querySelector('meta[name="description"]');
+  if(desc) desc.setAttribute('content', ko['fore.metaDesc']);
+  var ogTitle = document.querySelector('meta[property="og:title"]');
+  if(ogTitle) ogTitle.setAttribute('content', ko['fore.metaTitle']);
+  var ogDesc = document.querySelector('meta[property="og:description"]');
+  if(ogDesc) ogDesc.setAttribute('content', ko['fore.metaDesc']);
+  var mod = document.querySelector('meta[property="article:modified_time"]');
+  if(mod) mod.setAttribute('content', '2026-08-05T07:20:00+09:00');
+  document.querySelectorAll('script[type="application/ld+json"]').forEach(function(node){
+    try {
+      var data = JSON.parse(node.textContent || '{}');
+      if (data && data['@type'] === 'FAQPage') {
+        data['@id'] = 'https://aero-surcharge.com/forecast.html#faq-20260805';
+        data.dateModified = '2026-08-05T07:20:00+09:00';
         data.mainEntity = ko['fore.faq.items'].map(function(item){
           return {'@type':'Question', name:item.q, acceptedAnswer:{'@type':'Answer', text:item.a}};
         });
