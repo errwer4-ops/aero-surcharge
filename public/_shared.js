@@ -12692,3 +12692,138 @@ window.initNav = function(opts){
     });
   }
 })();
+
+/* 2026.08.07 07:30 KST final terminal shared guard. */
+(function(){
+  var base = window.AERO_MARKET_NUMBERS_20260806 || window.AERO_MARKET_NUMBERS_LATEST || {};
+  window.AERO_MARKET_NUMBERS_20260807 = Object.assign({}, base, {
+  "asOf": "2026.08.07 07:30 KST",
+  "lastUpdated": "2026-08-07T07:30:00+09:00",
+  "currentMonthNotice": "2026-08",
+  "forecastTargetMonth": "2026-09",
+  "augustSurchargeLevel": 14,
+  "augustSurchargeStage": 14,
+  "julySurchargeStage": 19,
+  "augustStageChangeFromJuly": -5,
+  "septemberSurchargeConfirmed": false,
+  "septemberCalculationFrom": "2026-07-16",
+  "septemberCalculationTo": "2026-08-15",
+  "usdKrw": 1423,
+  "usdKrwLabel": "약 1,423원",
+  "usdKrwValueType": "rounded_near_time_reference",
+  "usdKrwReferenceTime": "2026.08.07 07:30 KST 전후 공개 거래 시세",
+  "augustMopsAverageUsdPerBbl": 119.06,
+  "augustMopsAverageCentsPerGallon": 283.48,
+  "previousMopsAverageUsdPerBbl": 142.09,
+  "iataJetFuelUsdPerBbl": 158.77,
+  "iataJetFuelWeeklyChangePct": -0.8,
+  "currentSingaporeMopsExactValue": null,
+  "currentSingaporeMopsStatus": "not_publicly_verified",
+  "brentUsdPerBbl": 82.49,
+  "brentDailyChangeUsd": 3.04,
+  "brentDailyChangePct": 3.83,
+  "brentReferenceType": "2026.08.06 market close",
+  "wtiUsdPerBbl": 77.29,
+  "wtiDailyChangeUsd": 2.07,
+  "wtiDailyChangePct": 2.75,
+  "wtiReferenceType": "2026.08.06 market close",
+  "hormuzObservedCommodityVessels": 2,
+  "hormuzPreviousObservedCommodityVessels": 8,
+  "hormuzObservedInboundVessels": 1,
+  "hormuzObservedOutboundVessels": 1,
+  "hormuzObservedInboundShipType": "coal_bulk_carrier",
+  "hormuzObservedOutboundShipType": "commodity_carrier",
+  "hormuzObservedTrafficIsTotalConfirmed": false,
+  "hormuzAisCoverageLimitation": true,
+  "hormuzPrewarDailyTrafficEstimateMin": 130,
+  "hormuzPrewarDailyTrafficEstimateMax": 140,
+  "hormuzStatus": "extremely_restricted_traffic_declined",
+  "iranParliamentVesselRestrictionBillUnderReview": true,
+  "iranVesselRestrictionBillEnacted": false,
+  "iranBillTargetsUsIsraeliAndHostileVessels": true,
+  "iranBillMaximumCargoValueFinePct": 20,
+  "iranBillFineLegallyEffective": false,
+  "proposedHormuzDealReported": true,
+  "proposedHormuzDealFinalAgreementConfirmed": false,
+  "proposedHormuzDealShippingIndustryFeasible": false,
+  "iranRequestedTransitFeePctMin": 5,
+  "iranRequestedTransitFeePctMax": 7,
+  "omanDiscussedTransitFeePctApprox": 3,
+  "usSupportsFeeFreeTransit": true,
+  "iranHormuzManagementEntitySanctionRisk": true,
+  "shippingPaymentAssetFreezeRisk": true,
+  "lloydsInsuranceTerminationRiskReported": true,
+  "babElMandebObservedCommodityVessels": 1,
+  "babElMandebPreviousObservedCommodityVessels": 20,
+  "babElMandebObservedShipType": "dry_bulk_carrier",
+  "babElMandebObservedTrafficIsTotalConfirmed": false,
+  "redSeaShippingStatus": "extremely_restricted_traffic_declined",
+  "houthiClaimedSaudiTankerAttacks": true,
+  "saudiConfirmedTankerDamage": false,
+  "houthiClaimedYemeniBaseAttacks": true,
+  "yemeniGovernmentTroopsKilledReportedMin": 30,
+  "houthiFullCasualtyClaimIndependentlyVerified": false,
+  "saudiImminentAttackWarningReported": true,
+  "saudiWarningIsIntelligenceAssessment": true,
+  "saudiAttackActuallyStartedConfirmed": false,
+  "saudiPotentialAttackDirections": [
+    "north",
+    "south"
+  ],
+  "saudiPotentialTargetsMentioned": [
+    "energy_infrastructure",
+    "ports",
+    "airports",
+    "civilian_facilities",
+    "economic_facilities"
+  ],
+  "saudiObservedDroneMissileMovementClaimed": true,
+  "saudiMilitaryResponseReadinessReported": true,
+  "turkeySaudiPakistanDefenceAgreementSigningPlanned": true,
+  "turkeySaudiPakistanDefenceAgreementSignedConfirmed": false,
+  "turkeySaudiPakistanSigningExpectedDate": "2026-08-07",
+  "chinaFuelExportExpansionPlanStillRelevant": true,
+  "chinaFuelExportActualFinalVolumeConfirmed": false,
+  "outlookDirection": "upward_pressure_reexpanded_fx_relief_maintained_spike_risk_reaccelerated_shipping_uncertainty_deepened",
+  "outlookConfidence": "medium",
+  "marketVolatility": "extremely_high",
+  "referenceAsOf": {
+    "usdKrw": "2026.08.07 07:30 KST 전후 공개 시세, 반올림 표시",
+    "oil": "2026.08.06 미국 시장 종가",
+    "augustMops": "2026.06.16~2026.07.15 기간 평균",
+    "iataJetFuel": "IATA 최신 글로벌 항공유 주간 평균",
+    "hormuz": "Reuters 및 Kpler 2026.08.06 공개 선박 추적 자료",
+    "iranBill": "Reuters 2026.08.06 이란 의회 법안 검토 보도",
+    "proposedPassageDeal": "Reuters 2026.08.06 해운업계 평가",
+    "redSea": "Reuters 및 Kpler 2026.08.06 바브엘만데브 자료",
+    "saudiWarning": "Reuters 2026.08.06 사우디 고위 당국자 발언",
+    "defenceAgreement": "Reuters 2026.08.06 공동방위협정 서명 예정 보도"
+  }
+});
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {
+    '2026-08-05': window.AERO_MARKET_NUMBERS_20260805,
+    '2026-08-06': window.AERO_MARKET_NUMBERS_20260806,
+    '2026-08-07': window.AERO_MARKET_NUMBERS_20260807
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_SNAPSHOTS['2026-08-07'];
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1423 });
+  if (window.I18N_SHARED) {
+    var koMarket = {
+      marketDataRef: '2026.08.07 07:30 KST 기준',
+      marketOil: '국제유가: 2026.08.06 미국 시장 종가 기준 Brent 82.49달러/bbl, WTI 77.29달러/bbl입니다. 각각 일간 3.83%, 2.75% 반등했습니다.',
+      marketMops: '항공유: 8월 산정 MOPS 평균은 119.06달러/bbl이며, IATA 글로벌 항공유 주간 평균은 158.77달러/bbl로 전주 대비 0.8% 하락했습니다. IATA 수치는 당일 싱가포르 MOPS가 아닙니다.',
+      marketFx: '원달러 환율: 2026.08.07 07:30 KST 전후 공개 시세 기준 약 1,423원입니다.',
+      marketGeo: '해상운송: 호르무즈 공개 확인 통항은 전일 8척에서 2척, 바브엘만데브는 20척에서 1척으로 줄었습니다. 공개 추적 기준이며 전체 통항량 확정값은 아닙니다.',
+      marketSummary: '8월 국제선 유류할증료는 14단계 적용 중입니다. 9월 전망은 상승 압력 재확대, 환율 완화 유지, 단기 급등 위험 재상승, 해상운송 불확실성 심화입니다.'
+    };
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), koMarket);
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), {
+      marketDataRef: 'As of 2026.08.07 07:30 KST',
+      marketOil: 'Oil: Brent settled at USD 82.49/bbl and WTI at USD 77.29/bbl on the 2026.08.06 U.S. close.',
+      marketMops: 'Jet fuel: August filing MOPS average is USD 119.06/bbl. IATA global jet fuel is USD 158.77/bbl, down 0.8% week over week, and is not same-day Singapore MOPS.',
+      marketFx: 'USD/KRW: about KRW 1,423 around 2026.08.07 07:30 KST.',
+      marketGeo: 'Shipping: publicly observed Hormuz traffic fell from 8 vessels to 2; Bab el-Mandeb fell from 20 to 1. These are not confirmed total traffic counts.',
+      marketSummary: 'August international fuel surcharge remains Level 14. September pressure has re-expanded while FX relief remains.'
+    });
+  }
+})();
