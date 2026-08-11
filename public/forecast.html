@@ -9842,14 +9842,221 @@ function renderForecastPage() {
     'fore.pageSub': 'As of 2026.08.10 09:00 KST · August Level 14 in effect · USD/KRW around 1,408 · August MOPS USD 119.06 · July Singapore jet fuel USD 139.22 · IATA jet fuel USD 158.77',
     'fore.h1': 'September 2026 International Fuel Surcharge Outlook - jet fuel pressure versus FX relief'
   };
+  Object.assign(en, {
+    'fore.notice': '<strong>Note:</strong> This site focuses on international fuel surcharges for Korea departures. The August 2026 international surcharge is in effect at Level 14, while the September 2026 surcharge is still an outlook before official filing.',
+    'fore.intro': 'As of 2026.08.10 09:00 KST, the August 2026 Korea-departure international fuel surcharge is in effect at Level 14. The passenger MOPS average used for August is USD 119.06/bbl. Korean Air Cargo shows a July 2026 Singapore jet fuel monthly reference of USD 139.22/bbl, but this is not the confirmed September passenger MOPS because the passenger calculation window is different. IATA global jet fuel is USD 158.77/bbl and USD/KRW is around 1,408. Current view: jet fuel upward pressure continues, FX relief has expanded, Hormuz reopening remains uncertain, and Red Sea/Gulf risk has re-expanded.',
+    'fore.section.indicators': 'Key Indicators for the September 2026 Fuel Surcharge Outlook',
+    'fore.predict.title': 'Key Indicators for the September 2026 Fuel Surcharge Outlook',
+    'fore.predict.subtitle': 'August Level 14 in effect · MOPS average · IATA jet fuel · USD/KRW',
+    'fore.predict.footnote': '* The August 2026 international fuel surcharge is in effect at Level 14. September 2026 is not announced yet, so no stage, amount or probability should be shown as confirmed. USD 139.22 is a July monthly reference, not the September calculation MOPS.',
+    'fore.predict.items': [
+      { label:'August applied level', val:'Level 14 · down 5 levels from July Level 19', cls:'down' },
+      { label:'August MOPS average', val:'USD 119.06/bbl · 2026.06.16~07.15 average', cls:'down' },
+      { label:'July jet fuel reference', val:'USD 139.22/bbl · Korean Air Cargo monthly average · not September MOPS', cls:'up' },
+      { label:'IATA jet fuel', val:'USD 158.77/bbl · down 0.8% week on week', cls:'down' },
+      { label:'USD/KRW', val:'around 1,408 · stronger FX relief', cls:'down' },
+      { label:'September view', val:'Jet fuel pressure continues · FX relief expands · reopening uncertainty persists', cls:'plain' }
+    ],
+    'fore.indicator.th': ['Item','Status as of 2026.08.10 09:00 KST','Impact on September surcharge'],
+    'fore.indicator.footnote': '* September 2026 fuel surcharges are not officially announced yet. Figures are outlook variables only, not confirmed filings.',
+    'fore.indicator.rows': [
+      ['August fuel surcharge', 'Level 14 in effect', 'Confirmed lower baseline versus July Level 19'],
+      ['August MOPS average', 'USD 119.06/bbl · 283.48 cents/gal', 'Calculation basis behind the August reduction'],
+      ['July jet fuel monthly average', 'USD 139.22/bbl · Korean Air Cargo reference', 'Recent jet fuel reference only, not confirmed September MOPS'],
+      ['IATA global jet fuel', 'USD 158.77/bbl · down 0.8% week on week', 'Global weekly reference indicator'],
+      ['USD/KRW', 'around 1,408', 'Expanded relief for KRW conversion burden'],
+      ['September outlook', 'Jet fuel pressure continues · FX relief expands', 'Do not confirm stage or amount yet']
+    ],
+    'fore.summary.updated': 'As of 2026.08.10 09:00 KST · August Level 14 in effect · FX 1,408 · August MOPS USD 119.06 · July jet fuel USD 139.22',
+    'fore.summary.title': 'September 2026 Fuel Surcharge Outlook Summary',
+    'fore.summary.items': [
+      'The August 2026 international fuel surcharge is in effect at Level 14.',
+      'The September 2026 stage and airline amounts have not been officially announced yet.',
+      'The August passenger MOPS average is USD 119.06/bbl, 283.48 cents/gal, for 2026.06.16~07.15.',
+      'Korean Air Cargo lists the July 2026 Singapore jet fuel monthly reference at USD 139.22/bbl.',
+      'USD 139.22 is not the confirmed September passenger MOPS.',
+      'IATA global jet fuel is USD 158.77/bbl, down 0.8% week on week.',
+      'USD/KRW is around 1,408, so FX relief has expanded strongly.',
+      'Brent around USD 84.5 and WTI around USD 78.9 are public intraday quotes around 2026.08.10 09:00 KST, not final closes.'
+    ],
+    'fore.verdict.title': 'September 2026 Fuel Surcharge Outlook',
+    'fore.verdict.line1': 'The August 2026 international fuel surcharge is confirmed and in effect at Level 14.',
+    'fore.verdict.line2': 'The September 2026 international fuel surcharge has not been announced yet.',
+    'fore.verdict.line3': 'Current view: jet fuel upward pressure continues, FX relief has expanded strongly, Hormuz reopening remains uncertain, and Red Sea/Gulf military risk has re-expanded. July jet fuel at USD 139.22 and IATA at USD 158.77 are upside references, while USD/KRW around 1,408 is a strong easing factor. Do not confirm the September stage or amount.',
+    'fore.verdict.short': 'Short-haul international: compare total fares using the confirmed August Level 14 surcharge.',
+    'fore.verdict.long': 'Long-haul and peak-season trips: check jet fuel, FX, oil and Hormuz negotiations before the September filing.',
+    'fore.scenario.items': [
+      { title:'Easing scenario', factor:'USD/KRW around 1,408 and lower weekly IATA jet fuel continue.', traveler:'KRW conversion burden may ease for USD-filed airlines.', strategy:'Compare the confirmed August surcharge with the actual total ticket price first.' },
+      { title:'Upside-pressure scenario', factor:'July jet fuel at USD 139.22, rising intraday oil and Hormuz reopening uncertainty persist.', traveler:'Long-haul and peak-season routes require checking surcharge plus base fare together.', strategy:'Do not assume any September stage or amount before official airline notices.' },
+      { title:'Volatility scenario', factor:'ADNOC vessel risk, the Jazan fire, the Mocha port attack or other shipping/energy facility risks escalate.', traveler:'KRW-equivalent amounts for USD-filed airlines may swing more.', strategy:'Check the final payment total and airline notice updates together.' }
+    ],
+    'fore.mops.analysis.title': 'Separate MOPS, July Jet Fuel Monthly Average and IATA Jet Fuel',
+    'fore.mops.analysis.body': 'The passenger MOPS average reflected in the August 2026 filing is USD 119.06/bbl, or 283.48 cents/gal. It covers 2026.06.16~2026.07.15 and is the calculation basis for August Level 14.\n\nKorean Air Cargo lists the July 2026 Singapore jet fuel monthly reference at USD 3.3147/gal, or USD 139.22/bbl. This is useful evidence that the recent jet fuel environment is higher than the August calculation period, but it is not the confirmed September passenger MOPS because the September passenger calculation window is 2026.07.16~2026.08.15.\n\nIATA global jet fuel is USD 158.77/bbl, down 0.8% week on week. It is not current Singapore MOPS and not the September calculation average.',
+    'fore.booking.title': 'Ticket Booking Guide',
+    'fore.booking.items': [
+      'August ticketing: use each airline official August notice because the August international surcharge is in effect at Level 14.',
+      'USD-filed airlines: Jeju Air, Jin Air, Air Busan and Eastar Jet can feel different in KRW depending on payment-time USD/KRW.',
+      'September or later ticketing: September surcharges are not announced yet. Keep the roles of 119.06, 139.22 and 158.77 separate.',
+      'Caution: do not invent September stage, amount or probability before official notices.'
+    ],
+    'fore.market.title': 'Market Brief: FX Relief Versus Jet Fuel Pressure',
+    'fore.market.brent': 'Oil: based on public intraday quotes around 2026.08.10 09:00 KST, Brent is around USD 84.5/bbl and WTI around USD 78.9/bbl. These are not final closing prices.',
+    'fore.market.mops': 'Jet fuel: August passenger MOPS is USD 119.06/bbl, Korean Air Cargo July Singapore jet fuel monthly reference is USD 139.22/bbl, and IATA global jet fuel is USD 158.77/bbl. These are three different indicators.',
+    'fore.market.fx': 'FX: USD/KRW is around 1,408, lower than around 1,423 on Aug 7. FX relief for USD-filed airlines has expanded.',
+    'fore.market.geo': 'Geopolitical risk: the latest quantified Hormuz data is Thursday 4 vessels and Monday-Thursday 33 vessels. This is not Aug 10 same-day traffic. Bab el-Mandeb counts differ: Kpler 26 vessels and LSEG 28 vessels.',
+    'fore.market.summary': 'The September outlook has both continued jet fuel upward pressure and stronger FX relief. Hormuz reopening uncertainty and Red Sea/Gulf risk still need monitoring.',
+    'fore.market.fx2': 'Key figures: August Level 14 in effect · USD/KRW around 1,408 · August MOPS USD 119.06/bbl · July jet fuel monthly average USD 139.22/bbl · IATA jet fuel USD 158.77/bbl · Brent around USD 84.5 · WTI around USD 78.9',
+    'fore.basis.title': 'August Filing Data and September Outlook Basis',
+    'fore.basis.body': 'The August 2026 Korea-departure international fuel surcharge is confirmed and in effect at Level 14. September 2026 is not announced yet, so USD 119.06, USD 139.22 and USD 158.77 are shown only after separating their roles.',
+    'fore.keyvars.items': ['September 2026 fuel surcharge outlook', 'August 2026 Level 14 surcharge', 'August MOPS 119.06', 'July jet fuel monthly average 139.22', 'IATA jet fuel 158.77', 'USD/KRW 1,408', 'Korea-departure international fuel surcharge'],
+    'fore.faq.items': [
+      { q:'What level is the August 2026 international fuel surcharge?', a:'It is in effect at Level 14.' },
+      { q:'Is the September 2026 surcharge confirmed?', a:'No. The official September stage and airline amounts have not been announced yet.' },
+      { q:'Is USD 139.22 the September MOPS?', a:'No. It is Korean Air Cargo’s July 2026 Singapore jet fuel monthly reference and differs from the September passenger calculation window.' },
+      { q:'Is USD 158.77 current Singapore MOPS?', a:'No. It is the IATA global weekly jet fuel average.' },
+      { q:'Does USD/KRW around 1,408 guarantee a lower surcharge?', a:'No. Lower FX is an easing factor, but the full jet fuel average and official airline filings decide the September surcharge.' }
+    ]
+  });
+  var localizedForecast = {
+    ja: Object.assign({}, en, {
+      'fore.metaTitle': '8月燃油サーチャージ適用と9月見通し | 8月10日為替・MOPS・ホルムズ',
+      'fore.metaDesc': '2026.08.10 09:00 KST時点で、8月MOPS 119.06ドル、7月シンガポール航空燃料139.22ドル、IATA航空燃料158.77ドル、USD/KRW約1,408を区別します。',
+      'fore.pageTitle': '2026年8月燃油サーチャージ適用と9月見通し',
+      'fore.pageSub': '2026.08.10 09:00 KST時点 · 8月は14段階適用中 · USD/KRW約1,408 · 8月MOPS 119.06ドル · 7月航空燃料139.22ドル · IATA 158.77ドル',
+      'fore.h1': '2026年9月国際線燃油サーチャージ見通し - 航空燃料圧力と為替緩和',
+      'fore.notice': '<strong>注:</strong> このサイトは韓国発国際線の燃油サーチャージを中心に扱います。2026年8月の国際線サーチャージは14段階で適用中で、2026年9月分は公式発表前の見通しです。',
+      'fore.intro': '2026.08.10 09:00 KST時点で、2026年8月の韓国発国際線燃油サーチャージは14段階で適用中です。8月旅客算定MOPS平均は119.06ドル/bblです。Korean Air Cargoの2026年7月シンガポール航空燃料月平均参考値は139.22ドル/bblですが、9月旅客算定期間とは異なるため、9月確定MOPSとしては使いません。IATAグローバル航空燃料は158.77ドル/bbl、USD/KRWは約1,408です。',
+      'fore.section.indicators': '2026年9月燃油サーチャージ見通しの主要指標',
+      'fore.predict.title': '2026年9月燃油サーチャージ見通しの主要指標',
+      'fore.predict.subtitle': '8月14段階適用中 · MOPS平均 · IATA航空燃料 · USD/KRW',
+      'fore.predict.footnote': '* 2026年9月分はまだ公式発表前です。段階・金額・確率を確定値として表示しません。139.22ドルは7月月平均参考値で、9月算定MOPSではありません。',
+      'fore.predict.items': [
+        { label:'8月適用段階', val:'14段階 · 7月19段階から5段階低下', cls:'down' },
+        { label:'8月算定MOPS', val:'119.06ドル/bbl · 2026.06.16~07.15平均', cls:'down' },
+        { label:'7月航空燃料参考値', val:'139.22ドル/bbl · Korean Air Cargo月平均 · 9月MOPSではない', cls:'up' },
+        { label:'IATA航空燃料', val:'158.77ドル/bbl · 前週比0.8%下落', cls:'down' },
+        { label:'USD/KRW', val:'約1,408 · 為替緩和が拡大', cls:'down' },
+        { label:'9月判断', val:'航空燃料上昇圧力継続 · 為替緩和拡大 · 再開不確実性継続', cls:'plain' }
+      ],
+      'fore.indicator.th': ['項目','2026.08.10 09:00 KST時点','9月サーチャージへの影響'],
+      'fore.indicator.rows': [
+        ['8月燃油サーチャージ','14段階適用中','7月19段階より低い確定基準線'],
+        ['8月算定MOPS','119.06ドル/bbl · 283.48 cents/gal','8月引き下げの算定根拠'],
+        ['7月航空燃料月平均','139.22ドル/bbl · Korean Air Cargo参考値','最近の航空燃料環境の参考、9月確定MOPSではない'],
+        ['IATAグローバル航空燃料','158.77ドル/bbl · 前週比0.8%下落','グローバル週次参考指標'],
+        ['USD/KRW','約1,408','ウォン換算負担の緩和拡大'],
+        ['9月見通し','航空燃料圧力継続 · 為替緩和拡大','段階・金額の確定禁止']
+      ],
+      'fore.summary.title': '2026年9月燃油サーチャージ見通し要約',
+      'fore.market.title': '市場ブリーフ: 為替緩和と航空燃料圧力',
+      'fore.market.fx2': '主要数値: 8月14段階適用中 · USD/KRW約1,408 · 8月MOPS 119.06ドル/bbl · 7月航空燃料月平均139.22ドル/bbl · IATA 158.77ドル/bbl · Brent約84.5ドル · WTI約78.9ドル'
+    }),
+    zh: Object.assign({}, en, {
+      'fore.metaTitle': '8月燃油附加费适用与9月展望 | 8月10日汇率、MOPS、霍尔木兹',
+      'fore.metaDesc': '截至2026.08.10 09:00 KST，本页区分8月MOPS 119.06美元、7月新加坡航油139.22美元、IATA航油158.77美元及USD/KRW约1,408。',
+      'fore.pageTitle': '2026年8月燃油附加费适用与9月展望',
+      'fore.pageSub': '截至2026.08.10 09:00 KST · 8月14阶段适用中 · USD/KRW约1,408 · 8月MOPS 119.06美元 · 7月航油139.22美元 · IATA 158.77美元',
+      'fore.h1': '2026年9月国际线燃油附加费展望 - 航油压力与汇率缓和',
+      'fore.notice': '<strong>提示:</strong> 本站主要跟踪韩国出发国际线燃油附加费。2026年8月国际线附加费正在按14阶段适用，2026年9月仍为官方公告前的展望。',
+      'fore.intro': '截至2026.08.10 09:00 KST，2026年8月韩国出发国际线燃油附加费正在按14阶段适用。8月旅客计算MOPS均值为119.06美元/bbl。Korean Air Cargo公布的2026年7月新加坡航油月均参考值为139.22美元/bbl，但与9月旅客计算周期不同，因此不能作为9月确定MOPS。',
+      'fore.section.indicators': '2026年9月燃油附加费展望核心指标',
+      'fore.predict.title': '2026年9月燃油附加费展望核心指标',
+      'fore.predict.subtitle': '8月14阶段适用中 · MOPS均值 · IATA航油 · USD/KRW',
+      'fore.predict.footnote': '* 2026年9月燃油附加费尚未公告，不显示确定阶段、金额或概率。139.22美元是7月月均参考值，不是9月计算MOPS。',
+      'fore.predict.items': [
+        { label:'8月适用阶段', val:'14阶段 · 较7月19阶段下降5阶段', cls:'down' },
+        { label:'8月计算MOPS', val:'119.06美元/bbl · 2026.06.16~07.15均值', cls:'down' },
+        { label:'7月航油参考值', val:'139.22美元/bbl · Korean Air Cargo月均 · 非9月MOPS', cls:'up' },
+        { label:'IATA航油', val:'158.77美元/bbl · 周环比下降0.8%', cls:'down' },
+        { label:'USD/KRW', val:'约1,408 · 汇率缓和扩大', cls:'down' },
+        { label:'9月判断', val:'航油上行压力持续 · 汇率缓和扩大 · 重开不确定性持续', cls:'plain' }
+      ],
+      'fore.indicator.th': ['项目','截至2026.08.10 09:00 KST','对9月附加费影响'],
+      'fore.indicator.rows': [
+        ['8月燃油附加费','14阶段适用中','较7月19阶段更低的确定基准'],
+        ['8月计算MOPS','119.06美元/bbl · 283.48 cents/gal','8月下调的计算依据'],
+        ['7月航油月均','139.22美元/bbl · Korean Air Cargo参考值','近期航油环境参考，不是9月确定MOPS'],
+        ['IATA全球航油','158.77美元/bbl · 周环比下降0.8%','全球周度参考指标'],
+        ['USD/KRW','约1,408','韩元换算负担缓和扩大'],
+        ['9月展望','航油压力持续 · 汇率缓和扩大','不得确定阶段或金额']
+      ],
+      'fore.summary.title': '2026年9月燃油附加费展望摘要',
+      'fore.market.title': '市场简报：汇率缓和与航油压力',
+      'fore.market.fx2': '核心数值：8月14阶段适用中 · USD/KRW约1,408 · 8月MOPS 119.06美元/bbl · 7月航油月均139.22美元/bbl · IATA航油158.77美元/bbl · Brent约84.5美元 · WTI约78.9美元'
+    }),
+    fr: Object.assign({}, en, {
+      'fore.metaTitle': 'Surtaxe carburant d’août et perspective de septembre | FX, MOPS et Hormuz du 10 août',
+      'fore.pageTitle': 'Surtaxe carburant d’août 2026 et perspective de septembre',
+      'fore.pageSub': 'Au 2026.08.10 09:00 KST · Niveau 14 en août · USD/KRW env. 1 408 · MOPS août 119,06 USD · carburant juillet 139,22 USD · IATA 158,77 USD',
+      'fore.h1': 'Perspective de septembre 2026 - pression du kérosène et soulagement du change',
+      'fore.notice': '<strong>Note :</strong> Ce site suit surtout les surtaxes carburant des vols internationaux au départ de Corée. Août 2026 est appliqué au niveau 14; septembre reste une perspective avant annonce officielle.',
+      'fore.intro': 'Au 2026.08.10 09:00 KST, la surtaxe carburant internationale au départ de Corée pour août 2026 est appliquée au niveau 14. Le MOPS passager utilisé pour août est de 119,06 USD/bbl. La moyenne mensuelle de juillet publiée par Korean Air Cargo est de 139,22 USD/bbl, mais ce n’est pas le MOPS passager confirmé de septembre.',
+      'fore.section.indicators': 'Indicateurs clés pour la surtaxe carburant de septembre 2026',
+      'fore.predict.title': 'Indicateurs clés pour septembre 2026',
+      'fore.predict.subtitle': 'Niveau 14 en août · moyenne MOPS · carburant IATA · USD/KRW',
+      'fore.predict.footnote': '* Septembre 2026 n’est pas encore annoncé. Ne pas afficher de niveau, montant ou probabilité comme confirmé. 139,22 USD est une référence mensuelle de juillet, pas le MOPS de septembre.',
+      'fore.predict.items': [
+        { label:'Niveau appliqué en août', val:'Niveau 14 · 5 niveaux sous juillet', cls:'down' },
+        { label:'MOPS d’août', val:'119,06 USD/bbl · moyenne 2026.06.16~07.15', cls:'down' },
+        { label:'Référence kérosène juillet', val:'139,22 USD/bbl · moyenne Korean Air Cargo · pas MOPS septembre', cls:'up' },
+        { label:'Carburant IATA', val:'158,77 USD/bbl · -0,8% sur une semaine', cls:'down' },
+        { label:'USD/KRW', val:'env. 1 408 · soulagement FX accru', cls:'down' },
+        { label:'Vue septembre', val:'Pression kérosène persistante · soulagement FX accru · réouverture incertaine', cls:'plain' }
+      ],
+      'fore.indicator.th': ['Élément','État au 2026.08.10 09:00 KST','Impact septembre'],
+      'fore.indicator.rows': [
+        ['Surtaxe d’août','Niveau 14 appliqué','Base confirmée plus basse que juillet'],
+        ['MOPS d’août','119,06 USD/bbl · 283,48 cents/gal','Base du recul d’août'],
+        ['Moyenne carburant juillet','139,22 USD/bbl · référence Korean Air Cargo','Référence récente, pas MOPS septembre confirmé'],
+        ['Carburant IATA mondial','158,77 USD/bbl · -0,8% sur une semaine','Indicateur hebdomadaire mondial'],
+        ['USD/KRW','env. 1 408','Soulagement de conversion KRW accru'],
+        ['Perspective septembre','Pression kérosène · soulagement FX','Ne pas confirmer niveau ou montant']
+      ],
+      'fore.summary.title': 'Résumé de la perspective de septembre 2026',
+      'fore.market.title': 'Brief marché : change favorable contre pression kérosène',
+      'fore.market.fx2': 'Chiffres clés : août niveau 14 · USD/KRW env. 1 408 · MOPS août 119,06 USD/bbl · carburant juillet 139,22 USD/bbl · IATA 158,77 USD/bbl · Brent env. 84,5 USD · WTI env. 78,9 USD'
+    }),
+    de: Object.assign({}, en, {
+      'fore.metaTitle': 'August-Treibstoffzuschlag und September-Ausblick | FX, MOPS und Hormuz am 10. August',
+      'fore.pageTitle': 'Treibstoffzuschlag August 2026 und September-Ausblick',
+      'fore.pageSub': 'Stand 2026.08.10 09:00 KST · August Stufe 14 · USD/KRW ca. 1.408 · August-MOPS 119,06 USD · Juli-Kerosin 139,22 USD · IATA 158,77 USD',
+      'fore.h1': 'Ausblick September 2026 - Kerosindruck gegen Entlastung durch Wechselkurs',
+      'fore.notice': '<strong>Hinweis:</strong> Diese Seite fokussiert internationale Treibstoffzuschläge ab Korea. August 2026 gilt auf Stufe 14; September ist vor offizieller Veröffentlichung nur ein Ausblick.',
+      'fore.intro': 'Stand 2026.08.10 09:00 KST gilt der internationale Treibstoffzuschlag ab Korea für August 2026 auf Stufe 14. Der für August verwendete Passagier-MOPS liegt bei 119,06 USD/bbl. Korean Air Cargo nennt für Juli 2026 einen Singapur-Kerosin-Monatswert von 139,22 USD/bbl, dieser ist aber nicht der bestätigte September-MOPS.',
+      'fore.section.indicators': 'Schlüsselindikatoren für den Treibstoffzuschlag September 2026',
+      'fore.predict.title': 'Schlüsselindikatoren für September 2026',
+      'fore.predict.subtitle': 'August Stufe 14 · MOPS-Durchschnitt · IATA-Kerosin · USD/KRW',
+      'fore.predict.footnote': '* September 2026 ist noch nicht offiziell veröffentlicht. Stufe, Betrag oder Wahrscheinlichkeit nicht als bestätigt anzeigen. 139,22 USD ist ein Juli-Monatswert, kein September-MOPS.',
+      'fore.predict.items': [
+        { label:'August-Stufe', val:'Stufe 14 · 5 Stufen unter Juli', cls:'down' },
+        { label:'August-MOPS', val:'119,06 USD/bbl · Durchschnitt 2026.06.16~07.15', cls:'down' },
+        { label:'Juli-Kerosinreferenz', val:'139,22 USD/bbl · Korean Air Cargo Monatswert · nicht September-MOPS', cls:'up' },
+        { label:'IATA-Kerosin', val:'158,77 USD/bbl · -0,8% zur Vorwoche', cls:'down' },
+        { label:'USD/KRW', val:'ca. 1.408 · stärkere FX-Entlastung', cls:'down' },
+        { label:'September-Bewertung', val:'Kerosindruck bleibt · FX-Entlastung wächst · Wiedereröffnung unsicher', cls:'plain' }
+      ],
+      'fore.indicator.th': ['Punkt','Stand 2026.08.10 09:00 KST','Auswirkung September'],
+      'fore.indicator.rows': [
+        ['August-Zuschlag','Stufe 14 in Kraft','Bestätigte niedrigere Basis als Juli'],
+        ['August-MOPS','119,06 USD/bbl · 283,48 cents/gal','Berechnungsbasis für August-Senkung'],
+        ['Juli-Kerosin-Monatswert','139,22 USD/bbl · Korean Air Cargo Referenz','Aktuelle Referenz, kein bestätigter September-MOPS'],
+        ['IATA globales Kerosin','158,77 USD/bbl · -0,8% zur Vorwoche','Globaler Wochenindikator'],
+        ['USD/KRW','ca. 1.408','KRW-Umrechnungsentlastung wächst'],
+        ['September-Ausblick','Kerosindruck bleibt · FX-Entlastung wächst','Stufe und Betrag nicht bestätigen']
+      ],
+      'fore.summary.title': 'Zusammenfassung Ausblick September 2026',
+      'fore.market.title': 'Marktbrief: FX-Entlastung gegen Kerosindruck',
+      'fore.market.fx2': 'Kennzahlen: August Stufe 14 · USD/KRW ca. 1.408 · August-MOPS 119,06 USD/bbl · Juli-Kerosin 139,22 USD/bbl · IATA 158,77 USD/bbl · Brent ca. 84,5 USD · WTI ca. 78,9 USD'
+    })
+  };
   Object.keys(ko).forEach(function(key){ if(en[key] === undefined) en[key] = ko[key]; });
   Object.assign(FORE_I18N.ko, ko);
   Object.assign(FORE_I18N.en, en);
-  ['ja','zh','fr','de'].forEach(function(lang){ Object.assign(FORE_I18N[lang] || (FORE_I18N[lang] = {}), en); });
+  ['ja','zh','fr','de'].forEach(function(lang){ Object.assign(FORE_I18N[lang] || (FORE_I18N[lang] = {}), localizedForecast[lang] || en); });
   if(window.I18N){
     Object.assign(window.I18N.ko || (window.I18N.ko = {}), ko);
     Object.assign(window.I18N.en || (window.I18N.en = {}), en);
-    ['ja','zh','fr','de'].forEach(function(lang){ Object.assign(window.I18N[lang] || (window.I18N[lang] = {}), en); });
+    ['ja','zh','fr','de'].forEach(function(lang){ Object.assign(window.I18N[lang] || (window.I18N[lang] = {}), localizedForecast[lang] || en); });
   }
   window.AERO_MARKET_NUMBERS_20260810 = Object.assign({}, window.AERO_MARKET_NUMBERS_20260810 || window.AERO_MARKET_NUMBERS_LATEST || {}, {
   "asOf": "2026.08.10 09:00 KST",
@@ -9973,6 +10180,1013 @@ function renderForecastPage() {
   });
 })();
 
+
+/* 2026.08.11 09:30 KST terminal forecast guard. */
+(function(){
+  var packs = {
+  "ko": {
+    "news.metaTitle": "2026년 8월 유류할증료·9월 전망 뉴스 | 8월 11일 환율·MOPS·호르무즈",
+    "news.metaDesc": "2026년 8월 11일 기준 국제선 유류할증료와 9월 전망을 원달러 환율, MOPS, IATA 항공유, 국제유가, 호르무즈 통항과 정제제품 공급 상황으로 정리합니다.",
+    "news.pageTitle": "2026년 8월 유류할증료와 9월 전망 뉴스",
+    "news.pageSub": "2026.08.11 09:30 KST 기준 · 8월 14단계 적용 중 · 원달러 약 1,418원 · 8월 산정 MOPS 119.06달러 · IATA 항공유 146.93달러(-7.5%) · Brent 87.72달러 · WTI 82.13달러",
+    "news.summary.updated": "2026.08.11 09:30 KST 기준 · 8월 14단계 적용 중 · 9월 공시 전 전망",
+    "news.summary.title": "2026년 8월 유류할증료와 9월 전망 요약",
+    "news.summary.li1": "2026년 8월 한국발 국제선 유류할증료는 14단계로 적용 중입니다.",
+    "news.summary.li2": "2026년 9월 국제선 유류할증료 단계와 항공사별 금액은 아직 공식 공시 전입니다.",
+    "news.summary.li3": "IATA 글로벌 항공유는 146.93달러/bbl로 전주 대비 7.5% 하락했습니다.",
+    "news.summary.li4": "IATA 146.93달러는 싱가포르 MOPS나 9월 산정 평균이 아닙니다.",
+    "news.summary.li5": "원달러 환율은 약 1,418원으로 전날 1,408원보다 올라 환율 완화 효과가 일부 축소됐습니다.",
+    "news.summary.li6": "Brent 87.72달러와 WTI 82.13달러는 2026년 8월 10일 미국 시장 확정 종가입니다.",
+    "news.summary.li7": "호르무즈 최신 정량자료는 목요일 4척, 월~목 33척이며 8월 11일 당일 전체 통항량이 아닙니다.",
+    "news.summary.li8": "정제제품 공급 불안, Jazan 재가동 연기, ADNOC 피해 영향은 상승 위험으로 남아 있습니다.",
+    "news.summary.li9": "OPEC 7월 생산은 전월보다 117만 bpd 증가했지만 여전히 쿼터보다 낮습니다.",
+    "news.summary.li10": "현재 판단은 항공유 가격 완화 확대, 국제유가 재상승, 환율 완화폭 축소, 호르무즈 및 정제제품 공급 위험 지속입니다.",
+    "news.dataRef": "2026.08.11 09:30 KST 기준 · 8월 14단계 적용 중 · 9월 공시 전 전망",
+    "news.marketTitle": "8월 11일 시장 브리핑: 항공유 급락과 원유 재상승의 분리",
+    "news.brent": "국제유가: 2026년 8월 10일 미국 시장 확정 종가 기준 Brent는 87.72달러/bbl(+4.99%), WTI는 82.13달러/bbl(+5.05%)입니다.",
+    "news.mops": "항공유: 8월 여객 산정 MOPS는 119.06달러/bbl, 7월 싱가포르 항공유 월평균 참고값은 139.22달러/bbl, IATA 글로벌 항공유는 146.93달러/bbl입니다. 세 값은 서로 다른 지표입니다.",
+    "news.fx": "원달러 환율: 2026.08.11 09:30 KST 전후 공개 시세 기준 약 1,418원입니다. 전날 1,408원보다 올라 환율 완화 효과는 일부 축소됐습니다.",
+    "news.geo": "호르무즈: 공개 정량자료는 목요일 4척, 월~목 누적 33척입니다. 8월 11일 당일 전체 통항량이나 전면 재개방으로 표현하지 않습니다.",
+    "news.marketSummary": "9월 전망은 항공유 가격 완화 확대와 국제유가 재상승이 엇갈립니다. 환율 완화폭은 축소됐고, 호르무즈 및 정제제품 공급 위험은 지속됩니다.",
+    "news.fxDominance": "핵심 상태: 2026.08.11 09:30 KST · 8월 14단계 · USD/KRW 약 1,418원 · 8월 MOPS 119.06달러 · 7월 항공유 139.22달러 · IATA 146.93달러 · Brent 87.72달러 · WTI 82.13달러",
+    "news.decisionTitle": "결론: 8월 14단계 적용 중, 9월은 항공유 완화와 원유·정제제품 위험이 맞서는 구간",
+    "news.decisionLine1": "→ 2026년 8월 한국발 국제선 유류할증료는 14단계로 적용 중인 확정 데이터입니다.",
+    "news.decisionLine2": "→ 9월 단계와 금액은 아직 확정하지 않습니다. IATA 항공유는 내려갔지만 국제유가, 환율 반등, 정제제품 공급 위험이 남아 있습니다.",
+    "news.forecastCta.desc": "8월 국제선 유류할증료는 14단계로 적용 중입니다. 9월 전망은 MOPS, IATA 항공유, 환율, 국제유가, 호르무즈와 정제제품 공급 위험을 분리해 확인해야 합니다.",
+    "fore.metaTitle": "2026년 8월 유류할증료 적용·9월 전망 | 8월 11일 환율·MOPS·호르무즈",
+    "fore.metaDesc": "2026년 8월 11일 기준 8월 국제선 유류할증료 적용 현황과 9월 전망을 원달러 환율, MOPS, IATA 항공유, 국제유가, 호르무즈 및 정제제품 공급 위험으로 분석합니다.",
+    "fore.pageTitle": "2026년 8월 유류할증료 적용과 9월 전망",
+    "fore.pageSub": "2026.08.11 09:30 KST 기준 · 8월 14단계 적용 중 · USD/KRW 약 1,418원 · 8월 MOPS 119.06달러 · IATA 146.93달러 · Brent 87.72달러 · WTI 82.13달러",
+    "fore.h1": "2026년 9월 국제선 유류할증료 전망 - 항공유 완화와 원유 재상승의 충돌",
+    "fore.notice": "<strong>참고:</strong> 2026년 8월 국제선 유류할증료는 14단계로 적용 중이며, 2026년 9월 유류할증료는 아직 공식 단계와 항공사별 금액이 확정되지 않았습니다.",
+    "fore.intro": "2026.08.11 09:30 KST 기준 2026년 8월 한국 출발 국제선 유류할증료는 14단계로 적용 중입니다. 최신 IATA 글로벌 항공유는 146.93달러/bbl로 전주 대비 7.5% 하락해 항공유 측 상승 압력이 상당 부분 완화됐습니다. 반면 Brent는 87.72달러, WTI는 82.13달러로 2026년 8월 10일 미국 시장에서 약 5% 상승했고, 원달러 환율은 약 1,418원으로 전날보다 올라 환율 완화 효과가 일부 줄었습니다. 호르무즈 전면 개방은 미확정이며 정제제품 공급 위험도 지속됩니다.",
+    "fore.section.indicators": "2026년 9월 유류할증료 전망 핵심 지표",
+    "fore.predict.title": "2026년 9월 유류할증료 전망 핵심 지표",
+    "fore.predict.subtitle": "8월 14단계 · IATA 항공유 하락 · 원유 재상승 · USD/KRW",
+    "fore.predict.footnote": "* 2026년 9월 유류할증료는 아직 공시 전입니다. 146.93달러는 IATA 글로벌 항공유 주간 평균이며 싱가포르 MOPS나 9월 산정 평균이 아닙니다.",
+    "fore.predict.items": [
+      {
+        "label": "8월 적용 단계",
+        "val": "14단계 · 7월 19단계 대비 5단계 인하",
+        "cls": "down"
+      },
+      {
+        "label": "8월 산정 MOPS",
+        "val": "119.06달러/bbl · 2026.06.16~07.15 평균",
+        "cls": "down"
+      },
+      {
+        "label": "IATA 항공유",
+        "val": "146.93달러/bbl · 전주 대비 7.5% 하락",
+        "cls": "down"
+      },
+      {
+        "label": "USD/KRW",
+        "val": "약 1,418원 · 전날보다 완화폭 축소",
+        "cls": "plain"
+      },
+      {
+        "label": "국제유가",
+        "val": "Brent 87.72달러 · WTI 82.13달러 · 8월 10일 종가",
+        "cls": "up"
+      },
+      {
+        "label": "9월 판단",
+        "val": "항공유 완화 확대 · 원유 재상승 · 정제제품 위험 지속",
+        "cls": "plain"
+      }
+    ],
+    "fore.indicator.th": [
+      "항목",
+      "2026.08.11 09:30 KST 기준 상태",
+      "9월 유류할증료 영향"
+    ],
+    "fore.indicator.rows": [
+      [
+        "8월 유류할증료",
+        "14단계 적용 중",
+        "7월 19단계 대비 낮아진 확정 기준선"
+      ],
+      [
+        "8월 산정 MOPS",
+        "119.06달러/bbl · 283.48 cents/gal",
+        "8월 인하의 공시 산정 근거"
+      ],
+      [
+        "IATA 글로벌 항공유",
+        "146.93달러/bbl · 전주 대비 7.5% 하락",
+        "항공유 측 상승 압력 완화"
+      ],
+      [
+        "원달러 환율",
+        "약 1,418원",
+        "전날보다 환율 완화 효과 축소"
+      ],
+      [
+        "국제유가",
+        "Brent 87.72달러 · WTI 82.13달러 · 8월 10일 종가",
+        "원유 측 상승 압력 재확대"
+      ],
+      [
+        "9월 전망",
+        "항공유 완화 확대 · 원유 재상승 · 정제제품 위험 지속",
+        "단계·금액 확정 금지"
+      ]
+    ],
+    "fore.summary.updated": "2026.08.11 09:30 KST 기준 · 8월 14단계 · 환율 1,418원 · IATA 146.93달러 · Brent 87.72달러",
+    "fore.summary.title": "2026년 9월 유류할증료 전망 요약",
+    "fore.summary.items": [
+      "2026년 8월 국제선 유류할증료는 14단계로 적용 중입니다.",
+      "2026년 9월 국제선 유류할증료 단계와 항공사별 금액은 아직 공식 공시 전입니다.",
+      "8월 여객 산정 MOPS 평균은 119.06달러/bbl, 283.48 cents/gal입니다.",
+      "대한항공 Cargo의 7월 싱가포르 항공유 월평균 참고값은 139.22달러/bbl입니다.",
+      "IATA 글로벌 항공유는 146.93달러/bbl로 전주 대비 7.5% 하락했습니다.",
+      "IATA 146.93달러는 싱가포르 MOPS나 9월 산정 평균이 아닙니다.",
+      "원달러 환율은 약 1,418원으로 전날보다 환율 완화 효과가 일부 축소됐습니다.",
+      "Brent 87.72달러와 WTI 82.13달러는 2026년 8월 10일 미국 시장 확정 종가입니다."
+    ],
+    "fore.verdict.title": "2026년 9월 유류할증료 전망",
+    "fore.verdict.line1": "2026년 8월 국제선 유류할증료는 14단계로 적용 중인 확정 데이터입니다.",
+    "fore.verdict.line2": "2026년 9월 국제선 유류할증료는 아직 공시 전입니다.",
+    "fore.verdict.short": "단거리 국제선: 8월 14단계 확정 금액을 기준으로 총액 비교",
+    "fore.verdict.long": "장거리·성수기: 항공유 하락, 원유 재상승, 환율과 정제제품 위험을 함께 확인",
+    "fore.mops.analysis.title": "MOPS·7월 항공유 월평균·IATA 항공유 구분",
+    "fore.mops.analysis.body": "2026년 8월 공시에 반영된 여객 산정 MOPS 평균은 119.06달러/bbl, 283.48 cents/gal입니다. 이 값은 2026.06.16~2026.07.15 기간 평균이며 8월 14단계 적용의 산정 근거입니다.\n\n대한항공 Cargo의 2026년 7월 싱가포르 항공유 월평균 참고값은 139.22달러/bbl입니다. 이 값은 9월 여객 산정 기간 전체 평균과 다르므로 9월 확정 MOPS로 직접 사용할 수 없습니다.\n\nIATA 글로벌 항공유 주간 평균은 146.93달러/bbl로 전주 대비 7.5% 하락했습니다. 이는 글로벌 주간 항공유 지표이며 현재 싱가포르 MOPS나 9월 산정 평균이 아닙니다.",
+    "fore.market.title": "시장 브리핑: 항공유 급락과 원유 재상승",
+    "fore.market.brent": "국제유가: 2026년 8월 10일 미국 시장 확정 종가 기준 Brent는 87.72달러/bbl(+4.99%), WTI는 82.13달러/bbl(+5.05%)입니다.",
+    "fore.market.mops": "항공유: 8월 MOPS 119.06달러, 7월 싱가포르 항공유 월평균 139.22달러, IATA 글로벌 항공유 146.93달러는 서로 다른 지표입니다.",
+    "fore.market.fx": "원달러 환율: 2026.08.11 09:30 KST 전후 약 1,418원으로 전날 1,408원보다 올라 환율 완화 효과가 일부 축소됐습니다.",
+    "fore.market.geo": "호르무즈: 최신 공개 정량자료는 목요일 4척, 월~목 33척입니다. 8월 11일 당일 전체 통항량이나 전면 재개방으로 쓰지 않습니다.",
+    "fore.market.summary": "현재 판단은 항공유 가격 완화 확대, 국제유가 재상승, 환율 완화폭 축소, 호르무즈 및 정제제품 공급 위험 지속입니다.",
+    "fore.market.fx2": "핵심 수치: 8월 14단계 · USD/KRW 약 1,418원 · 8월 MOPS 119.06달러/bbl · 7월 항공유 139.22달러/bbl · IATA 146.93달러/bbl · Brent 87.72달러 · WTI 82.13달러",
+    "fore.basis.title": "8월 공시 데이터와 9월 전망 기준",
+    "fore.basis.body": "2026년 8월 한국 출발 국제선 유류할증료는 14단계 확정 데이터입니다. 2026년 9월 단계와 금액은 2026.07.16~08.15 전체 싱가포르 MOPS 평균, 적용 환율, 항공사 공식 공시가 확인돼야 확정됩니다.",
+    "fore.faq.items": [
+      {
+        "q": "2026년 8월 국제선 유류할증료는 몇 단계인가요?",
+        "a": "14단계로 적용 중입니다."
+      },
+      {
+        "q": "2026년 9월 국제선 유류할증료는 확정됐나요?",
+        "a": "아닙니다. 공식 단계와 항공사별 금액은 아직 확정되지 않았습니다."
+      },
+      {
+        "q": "IATA 항공유 146.93달러면 9월 유류할증료도 내려가나요?",
+        "a": "강한 완화 요인이지만 실제 유류할증료는 7월 16일~8월 15일 전체 싱가포르 MOPS 평균과 적용 환율 등을 기준으로 하므로 현재 인하를 확정할 수 없습니다."
+      },
+      {
+        "q": "146.93달러가 현재 싱가포르 MOPS인가요?",
+        "a": "아닙니다. IATA 글로벌 항공유 주간 평균입니다."
+      },
+      {
+        "q": "139.22달러는 9월 산정 MOPS인가요?",
+        "a": "아닙니다. 대한항공 Cargo가 공개한 7월 싱가포르 항공유 월평균이며 9월 산정 기간과 다릅니다."
+      },
+      {
+        "q": "호르무즈 최신 통항량은 4척인가요?",
+        "a": "가장 최근 공개된 구체적 정량자료에서 목요일 4척이 확인됐다는 의미이며 8월 11일 당일 전체 통항량은 아닙니다."
+      },
+      {
+        "q": "OPEC 증산으로 공급 문제가 해결됐나요?",
+        "a": "아닙니다. 7월 생산은 늘었지만 쿼터보다 낮고 중동 해상운송 차질도 지속됩니다."
+      }
+    ]
+  },
+  "en": {
+    "news.metaTitle": "August Fuel Surcharge and September Outlook News | Aug 11 FX, MOPS and Hormuz",
+    "news.metaDesc": "As of 2026.08.11 09:30 KST, this update separates August MOPS, IATA jet fuel, USD/KRW, crude oil closes, Hormuz traffic and refined-product supply risk.",
+    "news.pageTitle": "August 2026 Fuel Surcharge and September Outlook News",
+    "news.pageSub": "As of 2026.08.11 09:30 KST · August Level 14 in effect · USD/KRW around 1,418 · August MOPS USD 119.06 · IATA jet fuel USD 146.93 (-7.5%) · Brent USD 87.72 · WTI USD 82.13",
+    "news.summary.updated": "As of 2026.08.11 09:30 KST · August Level 14 in effect · September outlook before official filing",
+    "news.summary.title": "August 2026 Fuel Surcharge and September Outlook Summary",
+    "news.summary.li1": "The August 2026 Korea-departure international fuel surcharge is in effect at Level 14.",
+    "news.summary.li2": "The September 2026 stage and airline amounts have not been officially announced yet.",
+    "news.summary.li3": "IATA global jet fuel is USD 146.93/bbl, down 7.5% week on week.",
+    "news.summary.li4": "USD 146.93 is not Singapore MOPS or the September calculation average.",
+    "news.summary.li5": "USD/KRW is around 1,418, so FX relief has narrowed versus yesterday around 1,408.",
+    "news.summary.li6": "Brent USD 87.72 and WTI USD 82.13 are Aug 10 U.S. market closing prices.",
+    "news.summary.li7": "The latest Hormuz quantified data is Thursday 4 vessels and Monday-Thursday 33 vessels, not Aug 11 same-day traffic.",
+    "news.summary.li8": "Refined-product tightness, the Jazan restart delay and ADNOC vessel impacts remain upside risks.",
+    "news.summary.li9": "OPEC July output rose by 1.17 million bpd month on month but remained below quota.",
+    "news.summary.li10": "Current view: jet fuel relief expanded, crude rebounded, FX relief narrowed, and Hormuz/refining risks persist.",
+    "news.marketTitle": "Aug 11 Market Brief: Jet Fuel Drop Versus Crude Rebound",
+    "news.brent": "Oil: at the Aug 10 U.S. market close, Brent was USD 87.72/bbl (+4.99%) and WTI was USD 82.13/bbl (+5.05%).",
+    "news.mops": "Jet fuel: August passenger MOPS is USD 119.06/bbl, July Singapore jet fuel monthly reference is USD 139.22/bbl, and IATA global jet fuel is USD 146.93/bbl. These are different indicators.",
+    "news.fx": "FX: USD/KRW is around 1,418 near 2026.08.11 09:30 KST, up from around 1,408 yesterday, so FX relief has narrowed.",
+    "news.geo": "Hormuz: quantified public data remains Thursday 4 vessels and Monday-Thursday 33 vessels. Do not describe this as Aug 11 same-day traffic or full reopening.",
+    "news.marketSummary": "The September outlook is mixed: jet fuel relief has expanded, crude oil has rebounded, FX relief has narrowed, and Hormuz/refined-product risks persist.",
+    "news.fxDominance": "Key status: 2026.08.11 09:30 KST · August Level 14 · USD/KRW around 1,418 · August MOPS USD 119.06 · July jet fuel USD 139.22 · IATA USD 146.93 · Brent USD 87.72 · WTI USD 82.13",
+    "news.decisionTitle": "Conclusion: August Level 14 is in effect; September balances jet fuel relief against crude/refining risk",
+    "news.decisionLine1": "→ The August 2026 Korea-departure international fuel surcharge is confirmed and in effect at Level 14.",
+    "news.decisionLine2": "→ Do not confirm the September stage or amount. IATA jet fuel fell, but crude, FX rebound and refined-product risk remain.",
+    "fore.metaTitle": "August Fuel Surcharge Applied and September Outlook | Aug 11 FX, MOPS and Hormuz",
+    "fore.metaDesc": "As of 2026.08.11 09:30 KST, this page separates August Level 14, August MOPS USD 119.06, IATA jet fuel USD 146.93, USD/KRW around 1,418, crude closes and Hormuz risk.",
+    "fore.pageTitle": "August 2026 Fuel Surcharge Applied and September Outlook",
+    "fore.pageSub": "As of 2026.08.11 09:30 KST · August Level 14 in effect · USD/KRW around 1,418 · August MOPS USD 119.06 · IATA USD 146.93 · Brent USD 87.72 · WTI USD 82.13",
+    "fore.h1": "September 2026 International Fuel Surcharge Outlook - jet fuel relief versus crude rebound",
+    "fore.notice": "<strong>Note:</strong> August 2026 international fuel surcharge is in effect at Level 14. September 2026 stage and airline amounts are not officially confirmed yet.",
+    "fore.intro": "As of 2026.08.11 09:30 KST, the August 2026 Korea-departure international fuel surcharge is in effect at Level 14. IATA global jet fuel fell to USD 146.93/bbl, down 7.5% week on week, easing jet-fuel-side pressure. However Brent closed at USD 87.72 and WTI at USD 82.13 on Aug 10, while USD/KRW rose to around 1,418. Hormuz full reopening is not confirmed and refined-product supply risk persists.",
+    "fore.section.indicators": "Key Indicators for the September 2026 Fuel Surcharge Outlook",
+    "fore.predict.title": "Key Indicators for the September 2026 Fuel Surcharge Outlook",
+    "fore.predict.subtitle": "August Level 14 · IATA jet fuel drop · crude rebound · USD/KRW",
+    "fore.predict.footnote": "* September 2026 is not announced yet. USD 146.93 is IATA global weekly jet fuel, not Singapore MOPS or the September calculation average.",
+    "fore.predict.items": [
+      {
+        "label": "August applied level",
+        "val": "Level 14 · down 5 levels from July Level 19",
+        "cls": "down"
+      },
+      {
+        "label": "August MOPS average",
+        "val": "USD 119.06/bbl · 2026.06.16~07.15 average",
+        "cls": "down"
+      },
+      {
+        "label": "IATA jet fuel",
+        "val": "USD 146.93/bbl · down 7.5% week on week",
+        "cls": "down"
+      },
+      {
+        "label": "USD/KRW",
+        "val": "around 1,418 · FX relief narrowed",
+        "cls": "plain"
+      },
+      {
+        "label": "Crude oil",
+        "val": "Brent USD 87.72 · WTI USD 82.13 · Aug 10 close",
+        "cls": "up"
+      },
+      {
+        "label": "September view",
+        "val": "Jet fuel relief expanded · crude rebounded · refining risk persists",
+        "cls": "plain"
+      }
+    ],
+    "fore.indicator.th": [
+      "Item",
+      "Status as of 2026.08.11 09:30 KST",
+      "Impact on September surcharge"
+    ],
+    "fore.indicator.rows": [
+      [
+        "August fuel surcharge",
+        "Level 14 in effect",
+        "Confirmed lower baseline versus July Level 19"
+      ],
+      [
+        "August MOPS average",
+        "USD 119.06/bbl · 283.48 cents/gal",
+        "Calculation basis behind the August reduction"
+      ],
+      [
+        "IATA global jet fuel",
+        "USD 146.93/bbl · down 7.5% week on week",
+        "Eases jet-fuel-side upside pressure"
+      ],
+      [
+        "USD/KRW",
+        "around 1,418",
+        "FX relief narrowed versus yesterday"
+      ],
+      [
+        "Crude oil",
+        "Brent USD 87.72 · WTI USD 82.13 · Aug 10 close",
+        "Crude-side upside pressure returned"
+      ],
+      [
+        "September outlook",
+        "Jet fuel relief expanded · crude rebound · refining risk persists",
+        "Do not confirm stage or amount"
+      ]
+    ],
+    "fore.summary.title": "September 2026 Fuel Surcharge Outlook Summary"
+  },
+  "ja": {
+    "news.metaTitle": "August Fuel Surcharge and September Outlook News | Aug 11 FX, MOPS and Hormuz",
+    "news.metaDesc": "As of 2026.08.11 09:30 KST, this update separates August MOPS, IATA jet fuel, USD/KRW, crude oil closes, Hormuz traffic and refined-product supply risk.",
+    "news.pageTitle": "August 2026 Fuel Surcharge and September Outlook News",
+    "news.pageSub": "As of 2026.08.11 09:30 KST · August Level 14 in effect · USD/KRW around 1,418 · August MOPS USD 119.06 · IATA jet fuel USD 146.93 (-7.5%) · Brent USD 87.72 · WTI USD 82.13",
+    "news.summary.updated": "As of 2026.08.11 09:30 KST · August Level 14 in effect · September outlook before official filing",
+    "news.summary.title": "August 2026 Fuel Surcharge and September Outlook Summary",
+    "news.summary.li1": "The August 2026 Korea-departure international fuel surcharge is in effect at Level 14.",
+    "news.summary.li2": "The September 2026 stage and airline amounts have not been officially announced yet.",
+    "news.summary.li3": "IATA global jet fuel is USD 146.93/bbl, down 7.5% week on week.",
+    "news.summary.li4": "USD 146.93 is not Singapore MOPS or the September calculation average.",
+    "news.summary.li5": "USD/KRW is around 1,418, so FX relief has narrowed versus yesterday around 1,408.",
+    "news.summary.li6": "Brent USD 87.72 and WTI USD 82.13 are Aug 10 U.S. market closing prices.",
+    "news.summary.li7": "The latest Hormuz quantified data is Thursday 4 vessels and Monday-Thursday 33 vessels, not Aug 11 same-day traffic.",
+    "news.summary.li8": "Refined-product tightness, the Jazan restart delay and ADNOC vessel impacts remain upside risks.",
+    "news.summary.li9": "OPEC July output rose by 1.17 million bpd month on month but remained below quota.",
+    "news.summary.li10": "Current view: jet fuel relief expanded, crude rebounded, FX relief narrowed, and Hormuz/refining risks persist.",
+    "news.marketTitle": "Aug 11 Market Brief: Jet Fuel Drop Versus Crude Rebound",
+    "news.brent": "Oil: at the Aug 10 U.S. market close, Brent was USD 87.72/bbl (+4.99%) and WTI was USD 82.13/bbl (+5.05%).",
+    "news.mops": "Jet fuel: August passenger MOPS is USD 119.06/bbl, July Singapore jet fuel monthly reference is USD 139.22/bbl, and IATA global jet fuel is USD 146.93/bbl. These are different indicators.",
+    "news.fx": "FX: USD/KRW is around 1,418 near 2026.08.11 09:30 KST, up from around 1,408 yesterday, so FX relief has narrowed.",
+    "news.geo": "Hormuz: quantified public data remains Thursday 4 vessels and Monday-Thursday 33 vessels. Do not describe this as Aug 11 same-day traffic or full reopening.",
+    "news.marketSummary": "The September outlook is mixed: jet fuel relief has expanded, crude oil has rebounded, FX relief has narrowed, and Hormuz/refined-product risks persist.",
+    "news.fxDominance": "Key status: 2026.08.11 09:30 KST · August Level 14 · USD/KRW around 1,418 · August MOPS USD 119.06 · July jet fuel USD 139.22 · IATA USD 146.93 · Brent USD 87.72 · WTI USD 82.13",
+    "news.decisionTitle": "Conclusion: August Level 14 is in effect; September balances jet fuel relief against crude/refining risk",
+    "news.decisionLine1": "→ The August 2026 Korea-departure international fuel surcharge is confirmed and in effect at Level 14.",
+    "news.decisionLine2": "→ Do not confirm the September stage or amount. IATA jet fuel fell, but crude, FX rebound and refined-product risk remain.",
+    "fore.metaTitle": "August Fuel Surcharge Applied and September Outlook | Aug 11 FX, MOPS and Hormuz",
+    "fore.metaDesc": "As of 2026.08.11 09:30 KST, this page separates August Level 14, August MOPS USD 119.06, IATA jet fuel USD 146.93, USD/KRW around 1,418, crude closes and Hormuz risk.",
+    "fore.pageTitle": "August 2026 Fuel Surcharge Applied and September Outlook",
+    "fore.pageSub": "As of 2026.08.11 09:30 KST · August Level 14 in effect · USD/KRW around 1,418 · August MOPS USD 119.06 · IATA USD 146.93 · Brent USD 87.72 · WTI USD 82.13",
+    "fore.h1": "September 2026 International Fuel Surcharge Outlook - jet fuel relief versus crude rebound",
+    "fore.notice": "<strong>Note:</strong> August 2026 international fuel surcharge is in effect at Level 14. September 2026 stage and airline amounts are not officially confirmed yet.",
+    "fore.intro": "As of 2026.08.11 09:30 KST, the August 2026 Korea-departure international fuel surcharge is in effect at Level 14. IATA global jet fuel fell to USD 146.93/bbl, down 7.5% week on week, easing jet-fuel-side pressure. However Brent closed at USD 87.72 and WTI at USD 82.13 on Aug 10, while USD/KRW rose to around 1,418. Hormuz full reopening is not confirmed and refined-product supply risk persists.",
+    "fore.section.indicators": "Key Indicators for the September 2026 Fuel Surcharge Outlook",
+    "fore.predict.title": "Key Indicators for the September 2026 Fuel Surcharge Outlook",
+    "fore.predict.subtitle": "August Level 14 · IATA jet fuel drop · crude rebound · USD/KRW",
+    "fore.predict.footnote": "* September 2026 is not announced yet. USD 146.93 is IATA global weekly jet fuel, not Singapore MOPS or the September calculation average.",
+    "fore.predict.items": [
+      {
+        "label": "August applied level",
+        "val": "Level 14 · down 5 levels from July Level 19",
+        "cls": "down"
+      },
+      {
+        "label": "August MOPS average",
+        "val": "USD 119.06/bbl · 2026.06.16~07.15 average",
+        "cls": "down"
+      },
+      {
+        "label": "IATA jet fuel",
+        "val": "USD 146.93/bbl · down 7.5% week on week",
+        "cls": "down"
+      },
+      {
+        "label": "USD/KRW",
+        "val": "around 1,418 · FX relief narrowed",
+        "cls": "plain"
+      },
+      {
+        "label": "Crude oil",
+        "val": "Brent USD 87.72 · WTI USD 82.13 · Aug 10 close",
+        "cls": "up"
+      },
+      {
+        "label": "September view",
+        "val": "Jet fuel relief expanded · crude rebounded · refining risk persists",
+        "cls": "plain"
+      }
+    ],
+    "fore.indicator.th": [
+      "Item",
+      "Status as of 2026.08.11 09:30 KST",
+      "Impact on September surcharge"
+    ],
+    "fore.indicator.rows": [
+      [
+        "August fuel surcharge",
+        "Level 14 in effect",
+        "Confirmed lower baseline versus July Level 19"
+      ],
+      [
+        "August MOPS average",
+        "USD 119.06/bbl · 283.48 cents/gal",
+        "Calculation basis behind the August reduction"
+      ],
+      [
+        "IATA global jet fuel",
+        "USD 146.93/bbl · down 7.5% week on week",
+        "Eases jet-fuel-side upside pressure"
+      ],
+      [
+        "USD/KRW",
+        "around 1,418",
+        "FX relief narrowed versus yesterday"
+      ],
+      [
+        "Crude oil",
+        "Brent USD 87.72 · WTI USD 82.13 · Aug 10 close",
+        "Crude-side upside pressure returned"
+      ],
+      [
+        "September outlook",
+        "Jet fuel relief expanded · crude rebound · refining risk persists",
+        "Do not confirm stage or amount"
+      ]
+    ],
+    "fore.summary.title": "September 2026 Fuel Surcharge Outlook Summary"
+  },
+  "zh": {
+    "news.metaTitle": "August Fuel Surcharge and September Outlook News | Aug 11 FX, MOPS and Hormuz",
+    "news.metaDesc": "As of 2026.08.11 09:30 KST, this update separates August MOPS, IATA jet fuel, USD/KRW, crude oil closes, Hormuz traffic and refined-product supply risk.",
+    "news.pageTitle": "August 2026 Fuel Surcharge and September Outlook News",
+    "news.pageSub": "As of 2026.08.11 09:30 KST · August Level 14 in effect · USD/KRW around 1,418 · August MOPS USD 119.06 · IATA jet fuel USD 146.93 (-7.5%) · Brent USD 87.72 · WTI USD 82.13",
+    "news.summary.updated": "As of 2026.08.11 09:30 KST · August Level 14 in effect · September outlook before official filing",
+    "news.summary.title": "August 2026 Fuel Surcharge and September Outlook Summary",
+    "news.summary.li1": "The August 2026 Korea-departure international fuel surcharge is in effect at Level 14.",
+    "news.summary.li2": "The September 2026 stage and airline amounts have not been officially announced yet.",
+    "news.summary.li3": "IATA global jet fuel is USD 146.93/bbl, down 7.5% week on week.",
+    "news.summary.li4": "USD 146.93 is not Singapore MOPS or the September calculation average.",
+    "news.summary.li5": "USD/KRW is around 1,418, so FX relief has narrowed versus yesterday around 1,408.",
+    "news.summary.li6": "Brent USD 87.72 and WTI USD 82.13 are Aug 10 U.S. market closing prices.",
+    "news.summary.li7": "The latest Hormuz quantified data is Thursday 4 vessels and Monday-Thursday 33 vessels, not Aug 11 same-day traffic.",
+    "news.summary.li8": "Refined-product tightness, the Jazan restart delay and ADNOC vessel impacts remain upside risks.",
+    "news.summary.li9": "OPEC July output rose by 1.17 million bpd month on month but remained below quota.",
+    "news.summary.li10": "Current view: jet fuel relief expanded, crude rebounded, FX relief narrowed, and Hormuz/refining risks persist.",
+    "news.marketTitle": "Aug 11 Market Brief: Jet Fuel Drop Versus Crude Rebound",
+    "news.brent": "Oil: at the Aug 10 U.S. market close, Brent was USD 87.72/bbl (+4.99%) and WTI was USD 82.13/bbl (+5.05%).",
+    "news.mops": "Jet fuel: August passenger MOPS is USD 119.06/bbl, July Singapore jet fuel monthly reference is USD 139.22/bbl, and IATA global jet fuel is USD 146.93/bbl. These are different indicators.",
+    "news.fx": "FX: USD/KRW is around 1,418 near 2026.08.11 09:30 KST, up from around 1,408 yesterday, so FX relief has narrowed.",
+    "news.geo": "Hormuz: quantified public data remains Thursday 4 vessels and Monday-Thursday 33 vessels. Do not describe this as Aug 11 same-day traffic or full reopening.",
+    "news.marketSummary": "The September outlook is mixed: jet fuel relief has expanded, crude oil has rebounded, FX relief has narrowed, and Hormuz/refined-product risks persist.",
+    "news.fxDominance": "Key status: 2026.08.11 09:30 KST · August Level 14 · USD/KRW around 1,418 · August MOPS USD 119.06 · July jet fuel USD 139.22 · IATA USD 146.93 · Brent USD 87.72 · WTI USD 82.13",
+    "news.decisionTitle": "Conclusion: August Level 14 is in effect; September balances jet fuel relief against crude/refining risk",
+    "news.decisionLine1": "→ The August 2026 Korea-departure international fuel surcharge is confirmed and in effect at Level 14.",
+    "news.decisionLine2": "→ Do not confirm the September stage or amount. IATA jet fuel fell, but crude, FX rebound and refined-product risk remain.",
+    "fore.metaTitle": "August Fuel Surcharge Applied and September Outlook | Aug 11 FX, MOPS and Hormuz",
+    "fore.metaDesc": "As of 2026.08.11 09:30 KST, this page separates August Level 14, August MOPS USD 119.06, IATA jet fuel USD 146.93, USD/KRW around 1,418, crude closes and Hormuz risk.",
+    "fore.pageTitle": "August 2026 Fuel Surcharge Applied and September Outlook",
+    "fore.pageSub": "As of 2026.08.11 09:30 KST · August Level 14 in effect · USD/KRW around 1,418 · August MOPS USD 119.06 · IATA USD 146.93 · Brent USD 87.72 · WTI USD 82.13",
+    "fore.h1": "September 2026 International Fuel Surcharge Outlook - jet fuel relief versus crude rebound",
+    "fore.notice": "<strong>Note:</strong> August 2026 international fuel surcharge is in effect at Level 14. September 2026 stage and airline amounts are not officially confirmed yet.",
+    "fore.intro": "As of 2026.08.11 09:30 KST, the August 2026 Korea-departure international fuel surcharge is in effect at Level 14. IATA global jet fuel fell to USD 146.93/bbl, down 7.5% week on week, easing jet-fuel-side pressure. However Brent closed at USD 87.72 and WTI at USD 82.13 on Aug 10, while USD/KRW rose to around 1,418. Hormuz full reopening is not confirmed and refined-product supply risk persists.",
+    "fore.section.indicators": "Key Indicators for the September 2026 Fuel Surcharge Outlook",
+    "fore.predict.title": "Key Indicators for the September 2026 Fuel Surcharge Outlook",
+    "fore.predict.subtitle": "August Level 14 · IATA jet fuel drop · crude rebound · USD/KRW",
+    "fore.predict.footnote": "* September 2026 is not announced yet. USD 146.93 is IATA global weekly jet fuel, not Singapore MOPS or the September calculation average.",
+    "fore.predict.items": [
+      {
+        "label": "August applied level",
+        "val": "Level 14 · down 5 levels from July Level 19",
+        "cls": "down"
+      },
+      {
+        "label": "August MOPS average",
+        "val": "USD 119.06/bbl · 2026.06.16~07.15 average",
+        "cls": "down"
+      },
+      {
+        "label": "IATA jet fuel",
+        "val": "USD 146.93/bbl · down 7.5% week on week",
+        "cls": "down"
+      },
+      {
+        "label": "USD/KRW",
+        "val": "around 1,418 · FX relief narrowed",
+        "cls": "plain"
+      },
+      {
+        "label": "Crude oil",
+        "val": "Brent USD 87.72 · WTI USD 82.13 · Aug 10 close",
+        "cls": "up"
+      },
+      {
+        "label": "September view",
+        "val": "Jet fuel relief expanded · crude rebounded · refining risk persists",
+        "cls": "plain"
+      }
+    ],
+    "fore.indicator.th": [
+      "Item",
+      "Status as of 2026.08.11 09:30 KST",
+      "Impact on September surcharge"
+    ],
+    "fore.indicator.rows": [
+      [
+        "August fuel surcharge",
+        "Level 14 in effect",
+        "Confirmed lower baseline versus July Level 19"
+      ],
+      [
+        "August MOPS average",
+        "USD 119.06/bbl · 283.48 cents/gal",
+        "Calculation basis behind the August reduction"
+      ],
+      [
+        "IATA global jet fuel",
+        "USD 146.93/bbl · down 7.5% week on week",
+        "Eases jet-fuel-side upside pressure"
+      ],
+      [
+        "USD/KRW",
+        "around 1,418",
+        "FX relief narrowed versus yesterday"
+      ],
+      [
+        "Crude oil",
+        "Brent USD 87.72 · WTI USD 82.13 · Aug 10 close",
+        "Crude-side upside pressure returned"
+      ],
+      [
+        "September outlook",
+        "Jet fuel relief expanded · crude rebound · refining risk persists",
+        "Do not confirm stage or amount"
+      ]
+    ],
+    "fore.summary.title": "September 2026 Fuel Surcharge Outlook Summary"
+  },
+  "fr": {
+    "news.metaTitle": "August Fuel Surcharge and September Outlook News | Aug 11 FX, MOPS and Hormuz",
+    "news.metaDesc": "As of 2026.08.11 09:30 KST, this update separates August MOPS, IATA jet fuel, USD/KRW, crude oil closes, Hormuz traffic and refined-product supply risk.",
+    "news.pageTitle": "August 2026 Fuel Surcharge and September Outlook News",
+    "news.pageSub": "As of 2026.08.11 09:30 KST · August Level 14 in effect · USD/KRW around 1,418 · August MOPS USD 119.06 · IATA jet fuel USD 146.93 (-7.5%) · Brent USD 87.72 · WTI USD 82.13",
+    "news.summary.updated": "As of 2026.08.11 09:30 KST · August Level 14 in effect · September outlook before official filing",
+    "news.summary.title": "August 2026 Fuel Surcharge and September Outlook Summary",
+    "news.summary.li1": "The August 2026 Korea-departure international fuel surcharge is in effect at Level 14.",
+    "news.summary.li2": "The September 2026 stage and airline amounts have not been officially announced yet.",
+    "news.summary.li3": "IATA global jet fuel is USD 146.93/bbl, down 7.5% week on week.",
+    "news.summary.li4": "USD 146.93 is not Singapore MOPS or the September calculation average.",
+    "news.summary.li5": "USD/KRW is around 1,418, so FX relief has narrowed versus yesterday around 1,408.",
+    "news.summary.li6": "Brent USD 87.72 and WTI USD 82.13 are Aug 10 U.S. market closing prices.",
+    "news.summary.li7": "The latest Hormuz quantified data is Thursday 4 vessels and Monday-Thursday 33 vessels, not Aug 11 same-day traffic.",
+    "news.summary.li8": "Refined-product tightness, the Jazan restart delay and ADNOC vessel impacts remain upside risks.",
+    "news.summary.li9": "OPEC July output rose by 1.17 million bpd month on month but remained below quota.",
+    "news.summary.li10": "Current view: jet fuel relief expanded, crude rebounded, FX relief narrowed, and Hormuz/refining risks persist.",
+    "news.marketTitle": "Aug 11 Market Brief: Jet Fuel Drop Versus Crude Rebound",
+    "news.brent": "Oil: at the Aug 10 U.S. market close, Brent was USD 87.72/bbl (+4.99%) and WTI was USD 82.13/bbl (+5.05%).",
+    "news.mops": "Jet fuel: August passenger MOPS is USD 119.06/bbl, July Singapore jet fuel monthly reference is USD 139.22/bbl, and IATA global jet fuel is USD 146.93/bbl. These are different indicators.",
+    "news.fx": "FX: USD/KRW is around 1,418 near 2026.08.11 09:30 KST, up from around 1,408 yesterday, so FX relief has narrowed.",
+    "news.geo": "Hormuz: quantified public data remains Thursday 4 vessels and Monday-Thursday 33 vessels. Do not describe this as Aug 11 same-day traffic or full reopening.",
+    "news.marketSummary": "The September outlook is mixed: jet fuel relief has expanded, crude oil has rebounded, FX relief has narrowed, and Hormuz/refined-product risks persist.",
+    "news.fxDominance": "Key status: 2026.08.11 09:30 KST · August Level 14 · USD/KRW around 1,418 · August MOPS USD 119.06 · July jet fuel USD 139.22 · IATA USD 146.93 · Brent USD 87.72 · WTI USD 82.13",
+    "news.decisionTitle": "Conclusion: August Level 14 is in effect; September balances jet fuel relief against crude/refining risk",
+    "news.decisionLine1": "→ The August 2026 Korea-departure international fuel surcharge is confirmed and in effect at Level 14.",
+    "news.decisionLine2": "→ Do not confirm the September stage or amount. IATA jet fuel fell, but crude, FX rebound and refined-product risk remain.",
+    "fore.metaTitle": "August Fuel Surcharge Applied and September Outlook | Aug 11 FX, MOPS and Hormuz",
+    "fore.metaDesc": "As of 2026.08.11 09:30 KST, this page separates August Level 14, August MOPS USD 119.06, IATA jet fuel USD 146.93, USD/KRW around 1,418, crude closes and Hormuz risk.",
+    "fore.pageTitle": "August 2026 Fuel Surcharge Applied and September Outlook",
+    "fore.pageSub": "As of 2026.08.11 09:30 KST · August Level 14 in effect · USD/KRW around 1,418 · August MOPS USD 119.06 · IATA USD 146.93 · Brent USD 87.72 · WTI USD 82.13",
+    "fore.h1": "September 2026 International Fuel Surcharge Outlook - jet fuel relief versus crude rebound",
+    "fore.notice": "<strong>Note:</strong> August 2026 international fuel surcharge is in effect at Level 14. September 2026 stage and airline amounts are not officially confirmed yet.",
+    "fore.intro": "As of 2026.08.11 09:30 KST, the August 2026 Korea-departure international fuel surcharge is in effect at Level 14. IATA global jet fuel fell to USD 146.93/bbl, down 7.5% week on week, easing jet-fuel-side pressure. However Brent closed at USD 87.72 and WTI at USD 82.13 on Aug 10, while USD/KRW rose to around 1,418. Hormuz full reopening is not confirmed and refined-product supply risk persists.",
+    "fore.section.indicators": "Key Indicators for the September 2026 Fuel Surcharge Outlook",
+    "fore.predict.title": "Key Indicators for the September 2026 Fuel Surcharge Outlook",
+    "fore.predict.subtitle": "August Level 14 · IATA jet fuel drop · crude rebound · USD/KRW",
+    "fore.predict.footnote": "* September 2026 is not announced yet. USD 146.93 is IATA global weekly jet fuel, not Singapore MOPS or the September calculation average.",
+    "fore.predict.items": [
+      {
+        "label": "August applied level",
+        "val": "Level 14 · down 5 levels from July Level 19",
+        "cls": "down"
+      },
+      {
+        "label": "August MOPS average",
+        "val": "USD 119.06/bbl · 2026.06.16~07.15 average",
+        "cls": "down"
+      },
+      {
+        "label": "IATA jet fuel",
+        "val": "USD 146.93/bbl · down 7.5% week on week",
+        "cls": "down"
+      },
+      {
+        "label": "USD/KRW",
+        "val": "around 1,418 · FX relief narrowed",
+        "cls": "plain"
+      },
+      {
+        "label": "Crude oil",
+        "val": "Brent USD 87.72 · WTI USD 82.13 · Aug 10 close",
+        "cls": "up"
+      },
+      {
+        "label": "September view",
+        "val": "Jet fuel relief expanded · crude rebounded · refining risk persists",
+        "cls": "plain"
+      }
+    ],
+    "fore.indicator.th": [
+      "Item",
+      "Status as of 2026.08.11 09:30 KST",
+      "Impact on September surcharge"
+    ],
+    "fore.indicator.rows": [
+      [
+        "August fuel surcharge",
+        "Level 14 in effect",
+        "Confirmed lower baseline versus July Level 19"
+      ],
+      [
+        "August MOPS average",
+        "USD 119.06/bbl · 283.48 cents/gal",
+        "Calculation basis behind the August reduction"
+      ],
+      [
+        "IATA global jet fuel",
+        "USD 146.93/bbl · down 7.5% week on week",
+        "Eases jet-fuel-side upside pressure"
+      ],
+      [
+        "USD/KRW",
+        "around 1,418",
+        "FX relief narrowed versus yesterday"
+      ],
+      [
+        "Crude oil",
+        "Brent USD 87.72 · WTI USD 82.13 · Aug 10 close",
+        "Crude-side upside pressure returned"
+      ],
+      [
+        "September outlook",
+        "Jet fuel relief expanded · crude rebound · refining risk persists",
+        "Do not confirm stage or amount"
+      ]
+    ],
+    "fore.summary.title": "September 2026 Fuel Surcharge Outlook Summary"
+  },
+  "de": {
+    "news.metaTitle": "August Fuel Surcharge and September Outlook News | Aug 11 FX, MOPS and Hormuz",
+    "news.metaDesc": "As of 2026.08.11 09:30 KST, this update separates August MOPS, IATA jet fuel, USD/KRW, crude oil closes, Hormuz traffic and refined-product supply risk.",
+    "news.pageTitle": "August 2026 Fuel Surcharge and September Outlook News",
+    "news.pageSub": "As of 2026.08.11 09:30 KST · August Level 14 in effect · USD/KRW around 1,418 · August MOPS USD 119.06 · IATA jet fuel USD 146.93 (-7.5%) · Brent USD 87.72 · WTI USD 82.13",
+    "news.summary.updated": "As of 2026.08.11 09:30 KST · August Level 14 in effect · September outlook before official filing",
+    "news.summary.title": "August 2026 Fuel Surcharge and September Outlook Summary",
+    "news.summary.li1": "The August 2026 Korea-departure international fuel surcharge is in effect at Level 14.",
+    "news.summary.li2": "The September 2026 stage and airline amounts have not been officially announced yet.",
+    "news.summary.li3": "IATA global jet fuel is USD 146.93/bbl, down 7.5% week on week.",
+    "news.summary.li4": "USD 146.93 is not Singapore MOPS or the September calculation average.",
+    "news.summary.li5": "USD/KRW is around 1,418, so FX relief has narrowed versus yesterday around 1,408.",
+    "news.summary.li6": "Brent USD 87.72 and WTI USD 82.13 are Aug 10 U.S. market closing prices.",
+    "news.summary.li7": "The latest Hormuz quantified data is Thursday 4 vessels and Monday-Thursday 33 vessels, not Aug 11 same-day traffic.",
+    "news.summary.li8": "Refined-product tightness, the Jazan restart delay and ADNOC vessel impacts remain upside risks.",
+    "news.summary.li9": "OPEC July output rose by 1.17 million bpd month on month but remained below quota.",
+    "news.summary.li10": "Current view: jet fuel relief expanded, crude rebounded, FX relief narrowed, and Hormuz/refining risks persist.",
+    "news.marketTitle": "Aug 11 Market Brief: Jet Fuel Drop Versus Crude Rebound",
+    "news.brent": "Oil: at the Aug 10 U.S. market close, Brent was USD 87.72/bbl (+4.99%) and WTI was USD 82.13/bbl (+5.05%).",
+    "news.mops": "Jet fuel: August passenger MOPS is USD 119.06/bbl, July Singapore jet fuel monthly reference is USD 139.22/bbl, and IATA global jet fuel is USD 146.93/bbl. These are different indicators.",
+    "news.fx": "FX: USD/KRW is around 1,418 near 2026.08.11 09:30 KST, up from around 1,408 yesterday, so FX relief has narrowed.",
+    "news.geo": "Hormuz: quantified public data remains Thursday 4 vessels and Monday-Thursday 33 vessels. Do not describe this as Aug 11 same-day traffic or full reopening.",
+    "news.marketSummary": "The September outlook is mixed: jet fuel relief has expanded, crude oil has rebounded, FX relief has narrowed, and Hormuz/refined-product risks persist.",
+    "news.fxDominance": "Key status: 2026.08.11 09:30 KST · August Level 14 · USD/KRW around 1,418 · August MOPS USD 119.06 · July jet fuel USD 139.22 · IATA USD 146.93 · Brent USD 87.72 · WTI USD 82.13",
+    "news.decisionTitle": "Conclusion: August Level 14 is in effect; September balances jet fuel relief against crude/refining risk",
+    "news.decisionLine1": "→ The August 2026 Korea-departure international fuel surcharge is confirmed and in effect at Level 14.",
+    "news.decisionLine2": "→ Do not confirm the September stage or amount. IATA jet fuel fell, but crude, FX rebound and refined-product risk remain.",
+    "fore.metaTitle": "August Fuel Surcharge Applied and September Outlook | Aug 11 FX, MOPS and Hormuz",
+    "fore.metaDesc": "As of 2026.08.11 09:30 KST, this page separates August Level 14, August MOPS USD 119.06, IATA jet fuel USD 146.93, USD/KRW around 1,418, crude closes and Hormuz risk.",
+    "fore.pageTitle": "August 2026 Fuel Surcharge Applied and September Outlook",
+    "fore.pageSub": "As of 2026.08.11 09:30 KST · August Level 14 in effect · USD/KRW around 1,418 · August MOPS USD 119.06 · IATA USD 146.93 · Brent USD 87.72 · WTI USD 82.13",
+    "fore.h1": "September 2026 International Fuel Surcharge Outlook - jet fuel relief versus crude rebound",
+    "fore.notice": "<strong>Note:</strong> August 2026 international fuel surcharge is in effect at Level 14. September 2026 stage and airline amounts are not officially confirmed yet.",
+    "fore.intro": "As of 2026.08.11 09:30 KST, the August 2026 Korea-departure international fuel surcharge is in effect at Level 14. IATA global jet fuel fell to USD 146.93/bbl, down 7.5% week on week, easing jet-fuel-side pressure. However Brent closed at USD 87.72 and WTI at USD 82.13 on Aug 10, while USD/KRW rose to around 1,418. Hormuz full reopening is not confirmed and refined-product supply risk persists.",
+    "fore.section.indicators": "Key Indicators for the September 2026 Fuel Surcharge Outlook",
+    "fore.predict.title": "Key Indicators for the September 2026 Fuel Surcharge Outlook",
+    "fore.predict.subtitle": "August Level 14 · IATA jet fuel drop · crude rebound · USD/KRW",
+    "fore.predict.footnote": "* September 2026 is not announced yet. USD 146.93 is IATA global weekly jet fuel, not Singapore MOPS or the September calculation average.",
+    "fore.predict.items": [
+      {
+        "label": "August applied level",
+        "val": "Level 14 · down 5 levels from July Level 19",
+        "cls": "down"
+      },
+      {
+        "label": "August MOPS average",
+        "val": "USD 119.06/bbl · 2026.06.16~07.15 average",
+        "cls": "down"
+      },
+      {
+        "label": "IATA jet fuel",
+        "val": "USD 146.93/bbl · down 7.5% week on week",
+        "cls": "down"
+      },
+      {
+        "label": "USD/KRW",
+        "val": "around 1,418 · FX relief narrowed",
+        "cls": "plain"
+      },
+      {
+        "label": "Crude oil",
+        "val": "Brent USD 87.72 · WTI USD 82.13 · Aug 10 close",
+        "cls": "up"
+      },
+      {
+        "label": "September view",
+        "val": "Jet fuel relief expanded · crude rebounded · refining risk persists",
+        "cls": "plain"
+      }
+    ],
+    "fore.indicator.th": [
+      "Item",
+      "Status as of 2026.08.11 09:30 KST",
+      "Impact on September surcharge"
+    ],
+    "fore.indicator.rows": [
+      [
+        "August fuel surcharge",
+        "Level 14 in effect",
+        "Confirmed lower baseline versus July Level 19"
+      ],
+      [
+        "August MOPS average",
+        "USD 119.06/bbl · 283.48 cents/gal",
+        "Calculation basis behind the August reduction"
+      ],
+      [
+        "IATA global jet fuel",
+        "USD 146.93/bbl · down 7.5% week on week",
+        "Eases jet-fuel-side upside pressure"
+      ],
+      [
+        "USD/KRW",
+        "around 1,418",
+        "FX relief narrowed versus yesterday"
+      ],
+      [
+        "Crude oil",
+        "Brent USD 87.72 · WTI USD 82.13 · Aug 10 close",
+        "Crude-side upside pressure returned"
+      ],
+      [
+        "September outlook",
+        "Jet fuel relief expanded · crude rebound · refining risk persists",
+        "Do not confirm stage or amount"
+      ]
+    ],
+    "fore.summary.title": "September 2026 Fuel Surcharge Outlook Summary"
+  }
+};
+  Object.keys(packs).forEach(function(lang){
+    FORE_I18N[lang] = FORE_I18N[lang] || {};
+    Object.assign(FORE_I18N[lang], packs[lang]);
+    if (window.I18N) { window.I18N[lang] = window.I18N[lang] || {}; Object.assign(window.I18N[lang], packs[lang]); }
+  });
+  window.AERO_MARKET_NUMBERS_20260811 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
+  "asOf": "2026.08.11 09:30 KST",
+  "lastUpdated": "2026-08-11T09:30:00+09:00",
+  "currentMonthNotice": "2026-08",
+  "forecastTargetMonth": "2026-09",
+  "augustSurchargeLevel": 14,
+  "augustPassengerSurchargeStage": 14,
+  "julySurchargeStage": 19,
+  "augustStageChangeFromJuly": -5,
+  "septemberSurchargeConfirmed": false,
+  "septemberPassengerSurchargeConfirmed": false,
+  "septemberCalculationFrom": "2026-07-16",
+  "septemberCalculationTo": "2026-08-15",
+  "usdKrw": 1418,
+  "usdKrwLabel": "약 1,418원",
+  "usdKrwValueType": "rounded_near_time_reference",
+  "usdKrwReferenceTime": "2026.08.11 09:30 KST 전후 공개 시세",
+  "augustMopsAverageUsdPerBbl": 119.06,
+  "augustMopsAverageCentsPerGallon": 283.48,
+  "augustPassengerMopsAverageUsdPerBbl": 119.06,
+  "augustPassengerMopsAverageCentsPerGallon": 283.48,
+  "augustPassengerMopsCalculationFrom": "2026-06-16",
+  "augustPassengerMopsCalculationTo": "2026-07-15",
+  "julySingaporeJetFuelMonthlyAverageUsdPerBbl": 139.22,
+  "julySingaporeJetFuelMonthlyAverageUsdPerGallon": 3.3147,
+  "julySingaporeJetFuelMonthlyAverageSource": "Korean Air Cargo",
+  "julySingaporeJetFuelIsSeptemberPassengerMops": false,
+  "iataJetFuelUsdPerBbl": 146.93,
+  "iataJetFuelWeeklyChangePct": -7.5,
+  "iataJetFuelIsSingaporeMops": false,
+  "currentSingaporeMopsExactValue": null,
+  "currentSingaporeMopsStatus": "not_publicly_verified",
+  "brentUsdPerBbl": 87.72,
+  "brentUsdPerBblApprox": 87.72,
+  "brentDailyChangeUsd": 4.17,
+  "brentDailyChangePct": 4.99,
+  "brentReferenceType": "2026.08.10 market close",
+  "wtiUsdPerBbl": 82.13,
+  "wtiUsdPerBblApprox": 82.13,
+  "wtiDailyChangeUsd": 3.95,
+  "wtiDailyChangePct": 5.05,
+  "wtiReferenceType": "2026.08.10 market close",
+  "oilReferenceType": "2026.08.10 market close",
+  "oilReferenceTime": "2026.08.10 U.S. market close",
+  "hormuzLatestQuantifiedTrafficReferenceDay": "2026-08-06",
+  "hormuzLatestQuantifiedDailyVessels": 4,
+  "hormuzMondayToThursdayVessels": 33,
+  "hormuzPreviousWeekSamePeriodVessels": 50,
+  "hormuzLatestTrafficIsTodayValue": false,
+  "hormuzTodayExactTrafficConfirmed": false,
+  "hormuzWeekendAndMondayExactTrafficConfirmed": false,
+  "hormuzWeekendCurrentExactTrafficConfirmed": false,
+  "hormuzOutboundCrudeTankersThisWeek": 6,
+  "hormuzInboundVesselsThisWeek": 21,
+  "hormuzStatus": "traffic_restricted_reopening_not_confirmed",
+  "hormuzFullReopeningConfirmed": false,
+  "iranOmanTechnicalRouteDealFinalStageReported": true,
+  "iranOmanTechnicalDealEqualsFullReopening": false,
+  "iranDemandsUsCompensation": true,
+  "iranDemandsEndMilitaryThreats": true,
+  "iranDemandsEndAttacksOnAllies": true,
+  "iranDemandsEndPortBlockade": true,
+  "iranDemandsSanctionsRelief": true,
+  "iranDemandsFrozenAssetsReturn": true,
+  "usIranDirectTalksConfirmed": false,
+  "mediatorMessagesOngoing": true,
+  "globalDieselSupplyTight": true,
+  "usUltraLowSulfurDieselDailyChangePct": 7.4,
+  "usUltraLowSulfurDieselUsdPerGallon": 4.19,
+  "jazanRestartExpectedDate": "2026-08-30",
+  "jazanRefineryCapacityBpd": 400000,
+  "jazanFullCapacityCurrentSupplyLossConfirmed": false,
+  "opecJulyProductionBpd": 19850000,
+  "opecJulyProductionMonthlyIncreaseBpd": 1170000,
+  "opecProductionStillBelowQuota": true,
+  "adnocReportedAffectedVessels": 15,
+  "adnocReportedWarAffectedVessels": 15,
+  "adnocReportedCrewDeaths": 1,
+  "adnocReportedCrewInjuries": 20,
+  "adnocAllAttacksAttributedToIran": false,
+  "adnocAllFifteenAttackAttributionConfirmedAsIran": false,
+  "adnocGasQuarterlyProfitUsd": 665000000,
+  "adnocGasQuarterlyProfitChangePctYoY": -52,
+  "outlookDirection": "jet_fuel_relief_expanded_crude_rebounded_fx_relief_narrowed_hormuz_and_refining_risk_persists",
+  "outlookConfidence": "medium",
+  "marketVolatility": "extremely_high",
+  "referenceAsOf": {
+    "usdKrw": "2026.08.11 09:30 KST 전후 공개 시세",
+    "augustPassengerMops": "2026.06.16~07.15 8월 여객 유류할증료 산정 평균",
+    "julySingaporeJetFuel": "Korean Air Cargo 2026년 7월 월평균",
+    "iataJetFuel": "IATA 최신 글로벌 항공유 주간 평균",
+    "oil": "2026.08.10 미국 시장 확정 종가",
+    "hormuz": "Reuters/Kpler 최신 공개 정량자료",
+    "iranOman": "Reuters 최신 이란·오만 협상 보도",
+    "diesel": "Reuters 2026.08.10 정제제품 시장 보도",
+    "opec": "Reuters 2026.08.10 OPEC 조사",
+    "adnoc": "Reuters/ADNOC 관련 최신 보도"
+  }
+});
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260811;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-11': window.AERO_MARKET_NUMBERS_20260811});
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1418 });
+  document.title = packs.ko['fore.metaTitle'];
+  var desc = document.querySelector('meta[name="description"]'); if(desc) desc.setAttribute('content', packs.ko['fore.metaDesc']);
+  var ogTitle = document.querySelector('meta[property="og:title"]'); if(ogTitle) ogTitle.setAttribute('content', packs.ko['fore.metaTitle']);
+  var ogDesc = document.querySelector('meta[property="og:description"]'); if(ogDesc) ogDesc.setAttribute('content', packs.ko['fore.metaDesc']);
+  var mod = document.querySelector('meta[property="article:modified_time"]'); if(mod) mod.setAttribute('content', '2026-08-11T09:30:00+09:00');
+  document.querySelectorAll('script[type="application/ld+json"]').forEach(function(node){
+    try {
+      var data = JSON.parse(node.textContent || '{}');
+      if (data && data['@type'] === 'FAQPage') {
+        data['@id'] = 'https://aero-surcharge.com/forecast.html#faq-20260811';
+        data.dateModified = '2026-08-11T09:30:00+09:00';
+        data.mainEntity = packs.ko['fore.faq.items'].map(function(item){ return {'@type':'Question', name:item.q, acceptedAnswer:{'@type':'Answer', text:item.a}}; });
+        node.textContent = JSON.stringify(data);
+      }
+    } catch(e) {}
+  });
+})();
+
+/* 2026.08.11 09:30 KST multilingual terminal overlay. */
+(function(){
+  if (window.AERO_MARKET_NUMBERS_LATEST && window.AERO_MARKET_NUMBERS_LATEST.asOf === '2026.08.11 09:30 KST') {
+    Object.assign(window.AERO_MARKET_NUMBERS_LATEST, {
+      iataGlobalJetFuelUsdBbl: 146.93,
+      iataGlobalJetFuelWeeklyPct: -7.5,
+      brentUsdBbl: 87.72,
+      wtiUsdBbl: 82.13,
+      augustInternationalStage: 14,
+      septemberOfficialConfirmed: false,
+      opecJulyOutputMillionBpd: 19.85,
+      adnocAffectedVessels: 15,
+      adnocCrewDeaths: 1,
+      adnocCrewInjuries: 20,
+      sources: {
+        augustFiling: 'Korean airline official August 2026 notices; Korea-departure international surcharge Level 14 in effect',
+        usdKrw: 'USD/KRW rounded public reference around 2026.08.11 09:30 KST',
+        augustPassengerMops: 'Passenger surcharge MOPS average for 2026.06.16~2026.07.15',
+        julySingaporeJetFuel: 'Korean Air Cargo July 2026 Singapore jet fuel monthly average, reference only',
+        iataJetFuel: 'IATA Jet Fuel Price Monitor global weekly average, not Singapore MOPS',
+        oil: 'Reuters/market close references for 2026.08.10 U.S. market close',
+        hormuz: 'Reuters/Kpler latest quantified Hormuz traffic, not Aug 11 same-day total',
+        iranOman: 'Reuters Iran-Oman technical route talks, full reopening not confirmed',
+        diesel: 'Reuters refined-product/diesel supply report; diesel is not jet fuel',
+        opec: 'Reuters OPEC July output survey',
+        adnoc: 'Reuters/ADNOC vessel impact and ADNOC Gas Q2 profit reports'
+      }
+    });
+  }
+  var overlay = {
+    ja: {
+      "fore.metaTitle": "2026年8月燃油サーチャージ適用・9月見通し | 8月11日為替・MOPS・ホルムズ",
+      "fore.metaDesc": "2026年8月11日09:30 KST時点で、8月14段階、8月MOPS USD 119.06、IATAジェット燃料 USD 146.93、USD/KRW約1,418、原油終値、ホルムズリスクを分けて整理します。",
+      "fore.pageTitle": "2026年8月燃油サーチャージ適用と9月見通し",
+      "fore.pageSub": "2026.08.11 09:30 KST時点 · 8月14段階適用中 · USD/KRW約1,418 · 8月MOPS USD 119.06 · IATA USD 146.93 · Brent USD 87.72 · WTI USD 82.13",
+      "fore.h1": "2026年9月国際線燃油サーチャージ見通し - ジェット燃料緩和と原油反発の衝突",
+      "fore.notice": "<strong>参考:</strong> 2026年8月の国際線燃油サーチャージは14段階で適用中です。2026年9月の段階と航空会社別金額はまだ公式確定していません。",
+      "fore.intro": "2026.08.11 09:30 KST時点で、2026年8月の韓国発国際線燃油サーチャージは14段階で適用中です。最新IATAグローバル航空燃料はUSD 146.93/bblで前週比7.5%下落し、航空燃料側の上昇圧力はかなり緩和しました。一方、BrentはUSD 87.72、WTIはUSD 82.13で2026年8月10日の米国市場で約5%上昇し、USD/KRWは約1,418へ上昇しました。ホルムズの全面再開は未確認で、精製品供給リスクも続きます。",
+      "fore.section.indicators": "2026年9月燃油サーチャージ見通しの主要指標",
+      "fore.predict.title": "2026年9月燃油サーチャージ見通しの主要指標",
+      "fore.predict.subtitle": "8月14段階 · IATA航空燃料下落 · 原油反発 · USD/KRW",
+      "fore.predict.footnote": "* 2026年9月燃油サーチャージはまだ公示前です。USD 146.93はIATAグローバル航空燃料の週平均で、シンガポールMOPSや9月算定平均ではありません。",
+      "fore.predict.items": [
+        {"label":"8月適用段階","val":"14段階 · 7月19段階から5段階低下","cls":"down"},
+        {"label":"8月算定MOPS","val":"USD 119.06/bbl · 2026.06.16~07.15平均","cls":"down"},
+        {"label":"IATA航空燃料","val":"USD 146.93/bbl · 前週比7.5%下落","cls":"down"},
+        {"label":"USD/KRW","val":"約1,418 · 為替緩和幅は縮小","cls":"plain"},
+        {"label":"国際原油","val":"Brent USD 87.72 · WTI USD 82.13 · 8月10日終値","cls":"up"},
+        {"label":"9月判断","val":"航空燃料緩和拡大 · 原油反発 · 精製リスク継続","cls":"plain"}
+      ],
+      "fore.indicator.th": ["項目","2026.08.11 09:30 KST時点の状態","9月サーチャージへの影響"],
+      "fore.indicator.rows": [
+        ["8月燃油サーチャージ","14段階適用中","7月19段階より低い確定基準線"],
+        ["8月算定MOPS","USD 119.06/bbl · 283.48 cents/gal","8月引き下げの公示算定根拠"],
+        ["IATAグローバル航空燃料","USD 146.93/bbl · 前週比7.5%下落","航空燃料側の上昇圧力を緩和"],
+        ["USD/KRW","約1,418","前日より為替緩和効果が縮小"],
+        ["国際原油","Brent USD 87.72 · WTI USD 82.13 · 8月10日終値","原油側の上昇圧力が再拡大"],
+        ["9月見通し","航空燃料緩和拡大 · 原油反発 · 精製リスク継続","段階・金額の確定禁止"]
+      ],
+      "fore.summary.title": "2026年9月燃油サーチャージ見通し要約",
+      "fore.market.title": "市場ブリーフ: ジェット燃料急落と原油反発"
+    },
+    zh: {
+      "fore.metaTitle": "2026年8月燃油附加费执行与9月展望 | 8月11日汇率、MOPS与霍尔木兹",
+      "fore.metaDesc": "截至2026年8月11日09:30 KST，区分8月第14档、8月MOPS USD 119.06、IATA航油 USD 146.93、USD/KRW约1,418、原油收盘与霍尔木兹风险。",
+      "fore.pageTitle": "2026年8月燃油附加费执行与9月展望",
+      "fore.pageSub": "截至2026.08.11 09:30 KST · 8月第14档执行中 · USD/KRW约1,418 · 8月MOPS USD 119.06 · IATA USD 146.93 · Brent USD 87.72 · WTI USD 82.13",
+      "fore.h1": "2026年9月国际线燃油附加费展望 - 航油缓和与原油反弹的冲突",
+      "fore.notice": "<strong>参考：</strong>2026年8月国际线燃油附加费正在按第14档执行，2026年9月档位和各航司金额尚未正式确认。",
+      "fore.intro": "截至2026.08.11 09:30 KST，2026年8月韩国出发国际线燃油附加费按第14档执行。最新IATA全球航油为USD 146.93/bbl，周环比下降7.5%，航油端上行压力明显缓和。但Brent为USD 87.72、WTI为USD 82.13，2026年8月10日美国市场约上涨5%，USD/KRW也升至约1,418。霍尔木兹尚未确认全面开放，成品油供应风险仍在。",
+      "fore.section.indicators": "2026年9月燃油附加费展望关键指标",
+      "fore.predict.title": "2026年9月燃油附加费展望关键指标",
+      "fore.predict.subtitle": "8月第14档 · IATA航油下跌 · 原油反弹 · USD/KRW",
+      "fore.predict.footnote": "* 2026年9月燃油附加费尚未公告。USD 146.93是IATA全球航油周均值，不是新加坡MOPS或9月计算平均值。",
+      "fore.predict.items": [
+        {"label":"8月执行档位","val":"第14档 · 较7月第19档下降5档","cls":"down"},
+        {"label":"8月计算MOPS","val":"USD 119.06/bbl · 2026.06.16~07.15平均","cls":"down"},
+        {"label":"IATA航油","val":"USD 146.93/bbl · 周环比下降7.5%","cls":"down"},
+        {"label":"USD/KRW","val":"约1,418 · 汇率缓和幅度收窄","cls":"plain"},
+        {"label":"国际油价","val":"Brent USD 87.72 · WTI USD 82.13 · 8月10日收盘","cls":"up"},
+        {"label":"9月判断","val":"航油缓和扩大 · 原油反弹 · 炼油风险持续","cls":"plain"}
+      ],
+      "fore.indicator.th": ["项目","截至2026.08.11 09:30 KST的状态","对9月附加费影响"],
+      "fore.indicator.rows": [
+        ["8月燃油附加费","第14档执行中","较7月第19档更低的确定基准"],
+        ["8月计算MOPS","USD 119.06/bbl · 283.48 cents/gal","8月下调的公告计算依据"],
+        ["IATA全球航油","USD 146.93/bbl · 周环比下降7.5%","缓和航油端上行压力"],
+        ["USD/KRW","约1,418","较前日汇率缓和效果收窄"],
+        ["国际油价","Brent USD 87.72 · WTI USD 82.13 · 8月10日收盘","原油端上行压力再扩大"],
+        ["9月展望","航油缓和扩大 · 原油反弹 · 炼油风险持续","不得确认档位或金额"]
+      ],
+      "fore.summary.title": "2026年9月燃油附加费展望摘要",
+      "fore.market.title": "市场简报：航油急跌与原油反弹"
+    },
+    fr: {
+      "fore.metaTitle": "Surtaxe carburant d'août appliquée et perspectives de septembre | FX, MOPS et Ormuz au 11 août",
+      "fore.metaDesc": "Au 11 août 2026 09:30 KST, cette page distingue le niveau 14 d'août, MOPS août USD 119.06, jet IATA USD 146.93, USD/KRW env. 1,418, clôtures du brut et risque Ormuz.",
+      "fore.pageTitle": "Surtaxe carburant d'août 2026 appliquée et perspectives de septembre",
+      "fore.pageSub": "Au 2026.08.11 09:30 KST · août niveau 14 appliqué · USD/KRW env. 1,418 · MOPS août USD 119.06 · IATA USD 146.93 · Brent USD 87.72 · WTI USD 82.13",
+      "fore.h1": "Perspectives de la surtaxe carburant internationale de septembre 2026 - détente du jet fuel contre rebond du brut",
+      "fore.notice": "<strong>Note :</strong> La surtaxe carburant internationale d'août 2026 est appliquée au niveau 14. Le niveau et les montants par compagnie pour septembre 2026 ne sont pas encore officiellement confirmés.",
+      "fore.intro": "Au 2026.08.11 09:30 KST, la surtaxe carburant internationale au départ de Corée pour août 2026 est appliquée au niveau 14. Le carburéacteur mondial IATA est tombé à USD 146.93/bbl, en baisse de 7.5% sur une semaine, ce qui réduit fortement la pression liée au jet fuel. En revanche, Brent a clôturé à USD 87.72 et WTI à USD 82.13 le 10 août, tandis que l'USD/KRW est remonté autour de 1,418. La réouverture complète d'Ormuz n'est pas confirmée et le risque sur les produits raffinés persiste.",
+      "fore.section.indicators": "Indicateurs clés pour les perspectives de septembre 2026",
+      "fore.predict.title": "Indicateurs clés pour les perspectives de septembre 2026",
+      "fore.predict.subtitle": "Août niveau 14 · baisse du jet IATA · rebond du brut · USD/KRW",
+      "fore.predict.footnote": "* La surtaxe de septembre 2026 n'est pas encore annoncée. USD 146.93 est la moyenne hebdomadaire mondiale IATA, pas le MOPS de Singapour ni la moyenne de calcul de septembre.",
+      "fore.predict.items": [
+        {"label":"Niveau appliqué en août","val":"Niveau 14 · baisse de 5 niveaux vs juillet niveau 19","cls":"down"},
+        {"label":"MOPS moyen d'août","val":"USD 119.06/bbl · moyenne 2026.06.16~07.15","cls":"down"},
+        {"label":"Jet fuel IATA","val":"USD 146.93/bbl · -7.5% sur une semaine","cls":"down"},
+        {"label":"USD/KRW","val":"env. 1,418 · détente FX réduite","cls":"plain"},
+        {"label":"Pétrole brut","val":"Brent USD 87.72 · WTI USD 82.13 · clôture du 10 août","cls":"up"},
+        {"label":"Lecture septembre","val":"Détente jet fuel accrue · brut en rebond · risque raffinage persistant","cls":"plain"}
+      ],
+      "fore.indicator.th": ["Élément","État au 2026.08.11 09:30 KST","Impact sur septembre"],
+      "fore.indicator.rows": [
+        ["Surtaxe carburant d'août","Niveau 14 appliqué","Base confirmée plus basse que juillet niveau 19"],
+        ["MOPS moyen d'août","USD 119.06/bbl · 283.48 cents/gal","Base de calcul de la baisse d'août"],
+        ["Jet fuel mondial IATA","USD 146.93/bbl · -7.5% sur une semaine","Réduit la pression haussière du jet fuel"],
+        ["USD/KRW","env. 1,418","Détente FX réduite par rapport à la veille"],
+        ["Pétrole brut","Brent USD 87.72 · WTI USD 82.13 · clôture du 10 août","Pression haussière du brut revenue"],
+        ["Perspectives septembre","Détente jet fuel accrue · rebond du brut · risque raffinage persistant","Ne pas confirmer niveau ni montant"]
+      ],
+      "fore.summary.title": "Résumé des perspectives de septembre 2026",
+      "fore.market.title": "Brief marché : forte baisse du jet fuel et rebond du brut"
+    },
+    de: {
+      "fore.metaTitle": "August-Treibstoffzuschlag und September-Ausblick | FX, MOPS und Hormus am 11. August",
+      "fore.metaDesc": "Stand 11.08.2026 09:30 KST trennt diese Seite August Stufe 14, August-MOPS USD 119.06, IATA-Jetfuel USD 146.93, USD/KRW ca. 1,418, Rohöl-Schlusskurse und Hormus-Risiko.",
+      "fore.pageTitle": "August 2026 Treibstoffzuschlag in Kraft und September-Ausblick",
+      "fore.pageSub": "Stand 2026.08.11 09:30 KST · August Stufe 14 in Kraft · USD/KRW ca. 1,418 · August-MOPS USD 119.06 · IATA USD 146.93 · Brent USD 87.72 · WTI USD 82.13",
+      "fore.h1": "Ausblick internationaler Treibstoffzuschlag September 2026 - Jetfuel-Entlastung gegen Rohöl-Rebound",
+      "fore.notice": "<strong>Hinweis:</strong> Der internationale Treibstoffzuschlag für August 2026 gilt auf Stufe 14. Die September-Stufe und airline-spezifischen Beträge sind noch nicht offiziell bestätigt.",
+      "fore.intro": "Stand 2026.08.11 09:30 KST gilt der internationale Treibstoffzuschlag ab Korea für August 2026 auf Stufe 14. IATA Global Jet Fuel fiel auf USD 146.93/bbl, 7.5% unter Vorwoche, wodurch der Jetfuel-Aufwärtsdruck deutlich nachließ. Gleichzeitig schlossen Brent bei USD 87.72 und WTI bei USD 82.13 am 10. August, während USD/KRW auf etwa 1,418 stieg. Eine vollständige Wiederöffnung von Hormus ist nicht bestätigt, Raffinerieprodukt-Risiken bestehen weiter.",
+      "fore.section.indicators": "Kernindikatoren für den September-2026-Ausblick",
+      "fore.predict.title": "Kernindikatoren für den September-2026-Ausblick",
+      "fore.predict.subtitle": "August Stufe 14 · IATA-Jetfuel fällt · Rohöl-Rebound · USD/KRW",
+      "fore.predict.footnote": "* Der Treibstoffzuschlag für September 2026 ist noch nicht veröffentlicht. USD 146.93 ist der globale wöchentliche IATA-Jetfuel-Wert, nicht Singapore MOPS oder der September-Berechnungsdurchschnitt.",
+      "fore.predict.items": [
+        {"label":"August-Stufe","val":"Stufe 14 · 5 Stufen unter Juli Stufe 19","cls":"down"},
+        {"label":"August-MOPS","val":"USD 119.06/bbl · Durchschnitt 2026.06.16~07.15","cls":"down"},
+        {"label":"IATA-Jetfuel","val":"USD 146.93/bbl · 7.5% unter Vorwoche","cls":"down"},
+        {"label":"USD/KRW","val":"ca. 1,418 · FX-Entlastung kleiner","cls":"plain"},
+        {"label":"Rohöl","val":"Brent USD 87.72 · WTI USD 82.13 · Schluss 10. August","cls":"up"},
+        {"label":"September-Sicht","val":"Jetfuel-Entlastung stärker · Rohöl-Rebound · Raffinerierisiko bleibt","cls":"plain"}
+      ],
+      "fore.indicator.th": ["Punkt","Stand 2026.08.11 09:30 KST","Auswirkung auf September"],
+      "fore.indicator.rows": [
+        ["August-Treibstoffzuschlag","Stufe 14 in Kraft","Bestätigte niedrigere Basis gegenüber Juli Stufe 19"],
+        ["August-MOPS","USD 119.06/bbl · 283.48 cents/gal","Berechnungsbasis der August-Senkung"],
+        ["IATA Global Jet Fuel","USD 146.93/bbl · 7.5% unter Vorwoche","Dämpft Jetfuel-Aufwärtsdruck"],
+        ["USD/KRW","ca. 1,418","FX-Entlastung gegenüber Vortag kleiner"],
+        ["Rohöl","Brent USD 87.72 · WTI USD 82.13 · Schluss 10. August","Rohöl-Aufwärtsdruck zurück"],
+        ["September-Ausblick","Jetfuel-Entlastung stärker · Rohöl-Rebound · Raffinerierisiko bleibt","Stufe/Betrag nicht bestätigen"]
+      ],
+      "fore.summary.title": "Zusammenfassung September-2026-Ausblick",
+      "fore.market.title": "Marktbriefing: Jetfuel fällt stark, Rohöl erholt sich"
+    }
+  };
+  Object.keys(overlay).forEach(function(lang){
+    Object.assign(FORE_I18N[lang] || (FORE_I18N[lang] = {}), overlay[lang]);
+    if (window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], overlay[lang]);
+  });
+})();
 
 window.initNav({
   onLangChange: function() { renderForecastPage(); },

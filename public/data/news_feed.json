@@ -1,9 +1,191 @@
 {
   "meta": {
-    "lastUpdated": "2026-08-10T09:00:00+09:00",
-    "note": "참고 뉴스 데이터입니다. 공식 공시와 시장 지표를 구분해 표시합니다."
+    "lastUpdated": "2026-08-11T09:30:00+09:00",
+    "note": "참고 뉴스 데이터입니다. 공식 공시와 시장 지표를 구분해 표시합니다.",
+    "asOf": "2026.08.11 09:30 KST",
+    "currentMonthNotice": "2026-08",
+    "forecastTargetMonth": "2026-09"
   },
   "items": [
+    {
+      "id": "iata-jetfuel-14693-20260811",
+      "slug": "iata-jetfuel-14693-aug-11-2026",
+      "category": "market",
+      "priority": 1,
+      "date": "2026-08-11",
+      "updatedAt": "2026-08-11T09:30:00+09:00",
+      "badge": "항공유",
+      "aiSummary": true,
+      "relevanceScore": 1,
+      "title": "IATA 글로벌 항공유 146.93달러, 주간 7.5% 급락",
+      "aiBrief": "IATA 최신 글로벌 항공유 주간 평균은 146.93달러/bbl로 전주 대비 7.5% 하락했습니다.",
+      "summary": "IATA 글로벌 항공유는 158.77달러에서 146.93달러/bbl로 낮아졌습니다. 9월 유류할증료 전망에서 항공유 측 상승 압력을 완화하는 강한 신호지만, 국내 여객 유류할증료 산정용 싱가포르 MOPS 일별 가격이나 9월 산정 평균은 아닙니다.",
+      "impact": "항공유 완화 요인이 커졌지만 9월 단계와 금액은 아직 확정하지 않습니다.",
+      "sourceName": "IATA Fuel Price Monitor",
+      "sourceUrl": "https://www.iata.org/en/publications/economics/fuel-monitor/",
+      "tags": [
+        "IATA",
+        "항공유",
+        "146.93",
+        "유류할증료 전망"
+      ]
+    },
+    {
+      "id": "oil-close-20260810-20260811",
+      "slug": "brent-wti-close-aug-10-2026",
+      "category": "market",
+      "priority": 1,
+      "date": "2026-08-11",
+      "updatedAt": "2026-08-11T09:30:00+09:00",
+      "badge": "국제유가",
+      "aiSummary": true,
+      "relevanceScore": 0.99,
+      "title": "Brent 87.72달러·WTI 82.13달러, 하루 약 5% 급등",
+      "aiBrief": "8월 10일 미국 시장 확정 종가 기준 Brent는 4.99%, WTI는 5.05% 상승했습니다.",
+      "summary": "호르무즈 전면 재개방 기대가 후퇴하면서 국제유가가 다시 큰 폭으로 올랐습니다. Brent는 87.72달러/bbl, WTI는 82.13달러/bbl로 마감했습니다. 이는 8월 11일 실시간 가격이 아니라 2026년 8월 10일 미국 시장 확정 종가입니다.",
+      "impact": "원유 재상승은 9월 전망의 상승 요인이지만 IATA 항공유 급락과 방향이 다를 수 있습니다.",
+      "sourceName": "Reuters / market close",
+      "sourceUrl": "https://www.reuters.com/business/energy/oil-rises-uncertainty-continues-over-reopening-strait-2026-08-09/",
+      "tags": [
+        "Brent",
+        "WTI",
+        "종가",
+        "호르무즈"
+      ]
+    },
+    {
+      "id": "usd-krw-1418-20260811",
+      "slug": "usd-krw-1418-aug-11-2026",
+      "category": "market",
+      "priority": 1,
+      "date": "2026-08-11",
+      "updatedAt": "2026-08-11T09:30:00+09:00",
+      "badge": "환율",
+      "aiSummary": true,
+      "relevanceScore": 0.98,
+      "title": "원달러 약 1,418원, 전날보다 환율 완화폭 축소",
+      "aiBrief": "8월 11일 09:30 KST 전후 원달러 환율은 약 1,418원입니다.",
+      "summary": "원달러 환율은 전날 최신값 약 1,408원보다 다시 올라 환율 측 완화 효과가 일부 줄었습니다. 다만 7월 중순 1,480원대와 비교하면 여전히 사전보다 낮은 구간입니다.",
+      "impact": "환율 완화는 남아 있지만 전날보다 강도는 줄었습니다.",
+      "sourceName": "Investing.com USD/KRW",
+      "sourceUrl": "https://www.investing.com/currencies/usd-krw",
+      "tags": [
+        "USD/KRW",
+        "환율",
+        "1,418"
+      ]
+    },
+    {
+      "id": "hormuz-talks-20260811",
+      "slug": "hormuz-technical-talks-not-full-reopening-aug-11-2026",
+      "category": "geo",
+      "priority": 1,
+      "date": "2026-08-11",
+      "updatedAt": "2026-08-11T09:30:00+09:00",
+      "badge": "호르무즈",
+      "aiSummary": true,
+      "relevanceScore": 0.97,
+      "title": "호르무즈 기술 협상 진전, 전면 개방은 여전히 미확정",
+      "aiBrief": "이란·오만 항로 협상은 최종 단계로 알려졌지만 미국·이란 직접 협상은 확인되지 않았습니다.",
+      "summary": "이란과 오만의 기술적 항로 협상은 최종 단계에 접근한 것으로 알려졌습니다. 그러나 이란은 보상, 제재 해제, 봉쇄 해제, 동결자산 반환 등을 요구하고 있어 전면 재개방 시점은 확정되지 않았습니다.",
+      "impact": "기술 협상 진전과 전면 개방을 같은 의미로 쓰지 않습니다.",
+      "sourceName": "Reuters",
+      "sourceUrl": "https://www.reuters.com/world/asia-pacific/iran-says-oman-deal-is-final-stages-us-must-act-open-hormuz-2026-08-09/",
+      "tags": [
+        "호르무즈",
+        "이란",
+        "오만",
+        "협상"
+      ]
+    },
+    {
+      "id": "diesel-refined-products-20260811",
+      "slug": "diesel-refined-products-supply-tight-aug-11-2026",
+      "category": "market",
+      "priority": 2,
+      "date": "2026-08-11",
+      "updatedAt": "2026-08-11T09:30:00+09:00",
+      "badge": "정제제품",
+      "aiSummary": true,
+      "relevanceScore": 0.96,
+      "title": "디젤 가격 급등, 글로벌 정제제품 공급 불안 지속",
+      "aiBrief": "미국 초저유황 디젤은 하루 7% 이상 오르며 정제제품 공급 긴장을 보여줍니다.",
+      "summary": "IATA 글로벌 항공유는 하락했지만 다른 정제제품 시장에서는 공급 긴장이 이어집니다. 미국 초저유황 디젤은 4.19달러/gal 수준, 하루 7.4% 상승으로 보도됐고, 정제마진도 급등했습니다.",
+      "impact": "항공유 하락만으로 정제제품 공급 문제가 해소됐다고 볼 수 없습니다.",
+      "sourceName": "Reuters",
+      "sourceUrl": "https://www.reuters.com/business/energy/diesel-prices-surge-tightening-global-supply-2026-08-10/",
+      "tags": [
+        "디젤",
+        "정제제품",
+        "공급위험"
+      ]
+    },
+    {
+      "id": "jazan-restart-20260811",
+      "slug": "jazan-refinery-restart-aug-30-2026",
+      "category": "geo",
+      "priority": 2,
+      "date": "2026-08-11",
+      "updatedAt": "2026-08-11T09:30:00+09:00",
+      "badge": "Jazan",
+      "aiSummary": true,
+      "relevanceScore": 0.95,
+      "title": "사우디 Jazan 정유시설 재가동 8월 30일로 연기",
+      "aiBrief": "40만 bpd 처리능력의 Jazan 정유시설 재가동이 8월 30일로 연기된 것으로 알려졌습니다.",
+      "summary": "Jazan 정유시설 재가동 일정은 2026년 8월 30일로 연기된 것으로 전해졌습니다. 다만 시설이 이미 오프라인이었던 만큼 40만 bpd 전체를 신규 공급 손실로 직접 계산해서는 안 됩니다.",
+      "impact": "정제제품 공급 불안을 키우는 요인이지만 신규 40만 bpd 손실 확정은 아닙니다.",
+      "sourceName": "Reuters",
+      "sourceUrl": "https://www.reuters.com/business/energy/diesel-prices-surge-tightening-global-supply-2026-08-10/",
+      "tags": [
+        "Jazan",
+        "정유시설",
+        "재가동"
+      ]
+    },
+    {
+      "id": "opec-output-20260811",
+      "slug": "opec-july-output-1985m-aug-11-2026",
+      "category": "institution",
+      "priority": 2,
+      "date": "2026-08-11",
+      "updatedAt": "2026-08-11T09:30:00+09:00",
+      "badge": "OPEC",
+      "aiSummary": true,
+      "relevanceScore": 0.94,
+      "title": "OPEC 7월 생산 1,985만 bpd, 전월보다 117만 bpd 증가",
+      "aiBrief": "Reuters 조사에서 OPEC 11개국 7월 생산이 전월보다 117만 bpd 증가했습니다.",
+      "summary": "OPEC 7월 원유 생산은 1,985만 bpd로 전월보다 117만 bpd 증가한 것으로 조사됐습니다. 공급 측 완화 요인이지만 생산량은 여전히 쿼터보다 낮아 OPEC 증산만으로 공급 문제가 해결됐다고 보지 않습니다.",
+      "impact": "공급 완화 요인이지만 중동 해상운송 차질을 상쇄한다고 단정하지 않습니다.",
+      "sourceName": "Reuters survey",
+      "sourceUrl": "https://www.reuters.com/business/energy/opec-oil-output-rises-further-july-led-by-gulf-producers-reuters-survey-shows-2026-08-10/",
+      "tags": [
+        "OPEC",
+        "생산량",
+        "공급"
+      ]
+    },
+    {
+      "id": "adnoc-operations-20260811",
+      "slug": "adnoc-vessels-gas-profit-aug-11-2026",
+      "category": "geo",
+      "priority": 2,
+      "date": "2026-08-11",
+      "updatedAt": "2026-08-11T09:30:00+09:00",
+      "badge": "ADNOC",
+      "aiSummary": true,
+      "relevanceScore": 0.94,
+      "title": "ADNOC, 분쟁 이후 선박 15척 피해 영향 보고",
+      "aiBrief": "ADNOC는 선박 15척이 공격 영향권에 있었고 승무원 1명 사망, 20명 부상이라고 밝혔습니다.",
+      "summary": "ADNOC는 분쟁 이후 자사 선박 15척이 공격 영향권에 있었고 승무원 1명 사망, 20명 부상이 있었다고 밝혔습니다. 다만 15건 전체의 공격 주체를 하나로 단정하지 않습니다. ADNOC Gas의 2분기 순이익은 6억6,500만 달러로 전년 대비 52% 감소했습니다.",
+      "impact": "해상운송과 에너지 기업 실적에 실제 영향이 반영되고 있음을 보여줍니다.",
+      "sourceName": "Reuters / ADNOC",
+      "sourceUrl": "https://www.reuters.com/world/middle-east/adnoc-says-attacks-vessels-staff-significantly-impacting-operations-2026-08-07/",
+      "tags": [
+        "ADNOC",
+        "선박피해",
+        "ADNOC Gas"
+      ]
+    },
     {
       "id": "usd-krw-1408-20260810",
       "slug": "usd-krw-1408-aug-10-2026",

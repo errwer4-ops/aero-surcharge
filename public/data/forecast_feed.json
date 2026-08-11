@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generatedAt": "2026-08-10T00:35:32.073Z",
-    "modelVersion": "manual-market-override-20260810",
+    "generatedAt": "2026-08-11T01:44:24.345Z",
+    "modelVersion": "manual-market-override-20260811",
     "basePeriod": "2026.08",
     "forecastTargetPeriod": "2026.09",
     "sourceAirlines": 9,
@@ -9,15 +9,15 @@
       "brentUSD": 82.5,
       "wtiUSD": 78.3,
       "jetFuelSpread": 14.2,
-      "usdKrw": 1410,
-      "usdJpy": 157.88,
+      "usdKrw": 1417,
+      "usdJpy": 158.96,
       "geopoliticalRiskScore": 0.35,
       "baselineBrentUSD": 75,
       "marketDataSource": "live",
-      "marketFetchedAt": "2026-08-10T00:34:28.935Z"
+      "marketFetchedAt": "2026-08-11T01:43:21.348Z"
     },
     "disclaimer": "2026년 8월 국제선 유류할증료는 14단계로 적용 중인 확정 공시 데이터입니다. 2026년 9월 유류할증료는 산정 기간 진행 중이므로 단계·금액·확률을 확정값으로 표시하지 않습니다.",
-    "lastUpdated": "2026-08-10T09:00:00+09:00",
+    "lastUpdated": "2026-08-11T09:30:00+09:00",
     "currentMonthNotice": "2026-08",
     "forecastTargetMonth": "2026-09"
   },
@@ -32,50 +32,50 @@
       "currentStage": 14,
       "predictedMin": null,
       "predictedMax": null,
-      "direction": "jet_fuel_upward_pressure_fx_relief_strong",
+      "direction": "jet_fuel_relief_expanded_crude_rebounded_fx_relief_narrowed_hormuz_and_refining_risk_persists",
       "confidence": "medium",
       "volatility": "extremely_high",
       "drivers": [
         {
           "factor": "2026년 8월 국제선 유류할증료 14단계 적용 중",
           "impact": "baseline",
-          "weight": 0.16
+          "weight": 0.14
         },
         {
           "factor": "8월 여객 산정 MOPS 평균 119.06달러/bbl",
           "impact": "baseline_cut_reflected",
-          "weight": 0.13
+          "weight": 0.12
         },
         {
-          "factor": "7월 싱가포르 항공유 월평균 139.22달러/bbl, 9월 MOPS 확정값 아님",
-          "impact": "upside_reference",
-          "weight": 0.18
-        },
-        {
-          "factor": "IATA 글로벌 항공유 158.77달러/bbl, 전주 대비 0.8% 하락",
-          "impact": "mixed_reference",
-          "weight": 0.13
-        },
-        {
-          "factor": "USD/KRW 약 1,408원",
+          "factor": "IATA 글로벌 항공유 146.93달러/bbl, 전주 대비 7.5% 하락",
           "impact": "easing",
-          "weight": 0.2
+          "weight": 0.19
         },
         {
-          "factor": "호르무즈 재개방 불확실성과 홍해·걸프 위험 재확대",
+          "factor": "USD/KRW 약 1,418원, 전날보다 환율 완화폭 축소",
+          "impact": "mixed",
+          "weight": 0.17
+        },
+        {
+          "factor": "Brent 87.72달러, WTI 82.13달러로 8월 10일 종가 약 5% 상승",
           "impact": "upside",
-          "weight": 0.2
+          "weight": 0.19
+        },
+        {
+          "factor": "호르무즈 전면 개방 미확정 및 정제제품 공급 위험 지속",
+          "impact": "upside",
+          "weight": 0.19
         }
       ],
       "disclaimer": "2026년 9월 산정 기간은 2026.07.16~2026.08.15입니다. 단계·금액·확률은 공식 공시 전까지 표시하지 않습니다.",
-      "summary": "2026년 8월 국제선 유류할증료는 14단계로 적용 중입니다. 2026년 9월 전망은 항공유 상승 압력 지속, 환율 완화 효과 크게 확대, 호르무즈 재개방 불확실성 지속, 홍해·걸프 위험 재확대로 정리합니다."
+      "summary": "2026년 8월 국제선 유류할증료는 14단계로 적용 중입니다. 2026년 9월 전망은 항공유 가격 완화 확대, 국제유가 재상승, 환율 완화폭 축소, 호르무즈 및 정제제품 공급 위험 지속으로 정리합니다."
     }
   ],
   "latest": {
-    "asOf": "2026.08.10 09:00 KST",
+    "asOf": "2026.08.11 09:30 KST",
     "currentMonthNotice": "2026-08",
     "forecastTargetMonth": "2026-09",
-    "summary": "8월 국제선 유류할증료는 14단계 적용 중입니다. 9월은 8월 산정 MOPS 119.06달러, 7월 항공유 월평균 참고값 139.22달러, IATA 항공유 158.77달러, USD/KRW 약 1,408원을 구분해 보되 단계와 금액은 확정하지 않습니다.",
+    "summary": "8월 국제선 유류할증료는 14단계 적용 중입니다. 9월은 8월 MOPS 119.06달러, 7월 항공유 월평균 139.22달러, IATA 항공유 146.93달러, USD/KRW 약 1,418원, Brent 87.72달러, WTI 82.13달러를 구분해 보되 단계와 금액은 확정하지 않습니다.",
     "status": "forecast_only_not_announced"
   }
 }
