@@ -13096,3 +13096,123 @@ window.initNav = function(opts){
     });
   }
 })();
+
+
+/* 2026.08.12 09:30 KST final terminal shared guard. */
+(function(){
+  var latest = {
+  asOf: '2026.08.12 09:30 KST',
+  lastUpdated: '2026-08-12T09:30:00+09:00',
+  currentMonthNotice: '2026-08',
+  forecastTargetMonth: '2026-09',
+  augustPassengerSurchargeStage: 14,
+  augustSurchargeStage: 14,
+  augustInternationalStage: 14,
+  julySurchargeStage: 19,
+  augustStageChangeVsJuly: -5,
+  septemberPassengerSurchargeConfirmed: false,
+  septemberSurchargeConfirmed: false,
+  septemberOfficialConfirmed: false,
+  septemberSurchargeStatus: 'forecast_only_not_announced',
+  septemberCalculationFrom: '2026-07-16',
+  septemberCalculationTo: '2026-08-15',
+  usdKrw: 1414,
+  usdKrwLabel: '약 1,414원',
+  usdKrwValueType: 'rounded_near_time_reference',
+  usdKrwReferenceTime: '2026.08.12 09:30 KST 전후 공개 시세',
+  augustMopsAverageUsdPerBbl: 119.06,
+  augustMopsAverageCentsPerGallon: 283.48,
+  augustPassengerMopsAverageUsdPerBbl: 119.06,
+  augustPassengerMopsAverageCentsPerGallon: 283.48,
+  augustPassengerMopsCalculationFrom: '2026-06-16',
+  augustPassengerMopsCalculationTo: '2026-07-15',
+  julySingaporeJetFuelMonthlyAverageUsdPerBbl: 139.22,
+  julySingaporeJetFuelMonthlyAverageUsdPerGallon: 3.3147,
+  julySingaporeJetFuelMonthlyAverageSource: 'Korean Air Cargo',
+  julySingaporeJetFuelIsSeptemberPassengerMops: false,
+  iataJetFuelUsdPerBbl: 146.93,
+  iataJetFuelWeeklyChangePct: -7.5,
+  iataGlobalJetFuelUsdBbl: 146.93,
+  iataGlobalJetFuelWeeklyPct: -7.5,
+  iataJetFuelIsSingaporeMops: false,
+  currentSingaporeMopsExactValue: null,
+  currentSingaporeMopsStatus: 'not_publicly_verified',
+  brentUsdPerBbl: 88.91,
+  brentUsdBbl: 88.91,
+  brentDailyChangeUsd: 1.19,
+  brentDailyChangePct: 1.4,
+  brentReferenceType: '2026.08.11 market close',
+  wtiUsdPerBbl: 83.20,
+  wtiUsdBbl: 83.20,
+  wtiDailyChangeUsd: 1.07,
+  wtiDailyChangePct: 1.3,
+  wtiReferenceType: '2026.08.11 market close',
+  oilReferenceType: '2026.08.11 market close',
+  oilReferenceTime: '2026.08.11 U.S. market close',
+  brentIntradayApprox: 89.4,
+  wtiIntradayApprox: 83.7,
+  intradayReferenceTime: '2026.08.12 09:30 KST around',
+  hormuzLatestQuantifiedTrafficDate: '2026-08-10',
+  hormuzLatestQuantifiedDailyVessels: 6,
+  hormuzInboundVessels: 4,
+  hormuzOutboundVessels: 2,
+  hormuzRecentTenDayAverageVesselsPerDay: 11,
+  hormuzPrewarDailyTrafficEstimateMin: 130,
+  hormuzPrewarDailyTrafficEstimateMax: 140,
+  hormuzTrafficIsTotalConfirmed: false,
+  hormuzLatestTrafficIsTodayValue: false,
+  hormuzAisCoverageLimitation: true,
+  hormuzFullReopeningConfirmed: false,
+  iranSaysHormuzRemainsClosedUntilUsChangesPolicy: true,
+  iranOmanTechnicalTalksContinue: true,
+  iranOmanTechnicalTalksEqualFullReopening: false,
+  babElMandebLatestQuantifiedTrafficDate: '2026-08-10',
+  babElMandebLatestQuantifiedDailyVessels: 25,
+  tihamahAttackConfirmed: true,
+  tihamahCrewDeathsReported: 4,
+  tihamahRescuerDeathsReported: 2,
+  tihamahTotalReportedInjuries: 10,
+  redSeaFatalCommercialShippingAttackConfirmed: true,
+  redSeaMilitaryRisk: 'very_high',
+  velaNovaUsStrikeReported: true,
+  velaNovaUsHellfireMissilesFired: 2,
+  velaNovaLocationContext: 'Gulf of Oman',
+  velaNovaIsHormuzInsideIncident: false,
+  usMaritimeBlockadeEnforcementRisk: true,
+  libyaSupplyRiskReported: true,
+  russiaRefineryAttackRiskReported: true,
+  outlookDirection: 'jet_fuel_relief_maintained_fx_relief_maintained_crude_upward_pressure_expanded_hormuz_red_sea_shipping_risk_deepened',
+  outlookConfidence: 'medium',
+  marketVolatility: 'extremely_high',
+  sources: {
+    augustFiling: 'Official August 2026 Korea-departure international fuel surcharge notices; Level 14 in effect',
+    usdKrw: 'USD/KRW rounded public reference around 2026.08.12 09:30 KST',
+    augustPassengerMops: 'Passenger surcharge MOPS average for 2026.06.16~2026.07.15',
+    julySingaporeJetFuel: 'Korean Air Cargo July 2026 Singapore jet fuel monthly average, reference only',
+    iataJetFuel: 'IATA Jet Fuel Price Monitor global weekly average, not Singapore MOPS',
+    oil: '2026.08.11 U.S. market close; intraday references are separated',
+    hormuz: 'Reuters/Kpler Aug 10 quantified Hormuz traffic, not Aug 12 same-day total',
+    redSea: 'Reuters/AP Red Sea and Gulf shipping attack reports',
+    velaNova: 'Reuters/major press reports on U.S. maritime blockade enforcement near Gulf of Oman',
+    libyaRussia: 'Reuters middle-east shipping context; auxiliary supply-risk variables'
+  }
+};
+  window.AERO_MARKET_NUMBERS_20260812 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {
+    '2026-08-10': window.AERO_MARKET_NUMBERS_20260810,
+    '2026-08-11': window.AERO_MARKET_NUMBERS_20260811,
+    '2026-08-12': window.AERO_MARKET_NUMBERS_20260812
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260812;
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1414 });
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), {
+      marketDataRef: '2026.08.12 09:30 KST 기준',
+      marketOil: '국제유가: 2026년 8월 11일 미국 시장 확정 종가 기준 Brent 88.91달러/bbl, WTI 83.20달러/bbl입니다. 8월 12일 오전 참고 시세는 별도로 Brent 약 89.4달러, WTI 약 83.7달러입니다.',
+      marketMops: '항공유: 8월 산정 MOPS 119.06달러, 7월 싱가포르 항공유 월평균 139.22달러, IATA 글로벌 항공유 146.93달러는 서로 다른 지표입니다.',
+      marketFx: '원달러 환율: 2026.08.12 09:30 KST 전후 공개 시세 기준 약 1,414원입니다.',
+      marketGeo: '호르무즈: 최신 공개 정량자료는 2026년 8월 10일 월요일 6척, 최근 10일 평균 약 11척입니다. 8월 12일 당일 전체 통항량이 아닙니다.',
+      marketSummary: '8월 국제선 유류할증료는 14단계 적용 중입니다. 9월 전망은 항공유 가격 완화 신호와 환율 완화 신호가 유지되지만 국제유가 상승 압력, 호르무즈·홍해 해상운송 위험이 심화된 혼합 국면입니다.'
+    });
+  }
+})();

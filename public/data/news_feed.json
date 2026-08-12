@@ -1,12 +1,215 @@
 {
   "meta": {
-    "lastUpdated": "2026-08-11T09:30:00+09:00",
+    "lastUpdated": "2026-08-12T09:30:00+09:00",
     "note": "참고 뉴스 데이터입니다. 공식 공시와 시장 지표를 구분해 표시합니다.",
-    "asOf": "2026.08.11 09:30 KST",
+    "asOf": "2026.08.12 09:30 KST",
     "currentMonthNotice": "2026-08",
     "forecastTargetMonth": "2026-09"
   },
   "items": [
+    {
+      "id": "hormuz-six-vessels-20260812",
+      "slug": "hormuz-six-vessels-aug-12-2026",
+      "category": "geo",
+      "priority": 1,
+      "date": "2026-08-12",
+      "updatedAt": "2026-08-12T09:30:00+09:00",
+      "badge": "호르무즈",
+      "aiSummary": true,
+      "relevanceScore": 1,
+      "title": "호르무즈 최신 공개 통항 6척, 최근 10일 평균 11척",
+      "aiBrief": "8월 10일 월요일 공개 선박 추적에서 호르무즈 통항 6척이 확인됐습니다.",
+      "summary": "최신 공개 Kpler 자료에 따르면 2026년 8월 10일 월요일 호르무즈 통항은 6척으로 확인됐습니다. 4척이 걸프만으로 진입했고 2척이 빠져나왔으며, 최근 10일 평균은 약 11척입니다. 전쟁 이전 하루 130~140척 수준과 비교하면 여전히 크게 낮지만 AIS 비활성 선박이 있을 수 있어 실제 전체 통항량을 6척으로 단정하지 않습니다.",
+      "impact": "호르무즈 전면 재개방은 아직 확정되지 않았고 해상운송 위험은 계속됩니다.",
+      "sourceName": "Reuters / Kpler",
+      "sourceUrl": "https://www.reuters.com/world/gulf-shipping-traffic-via-strait-hormuz-falls-six-vessels-2026-08-11/",
+      "tags": [
+        "호르무즈",
+        "6척",
+        "Kpler",
+        "AIS"
+      ],
+      "i18n": {
+        "en": {
+          "title": "Hormuz public traffic falls to 6 vessels; 10-day average near 11",
+          "aiBrief": "Public vessel tracking showed 6 Hormuz transits on Monday, Aug 10.",
+          "summary": "Kpler-based public tracking showed 6 vessels through Hormuz on Monday, Aug 10: 4 entered the Gulf and 2 exited. The recent 10-day average is about 11, far below pre-war traffic around 130 to 140 a day. This is not Aug 12 same-day total traffic and AIS limits remain.",
+          "impact": "Full reopening is not confirmed; maritime risk remains elevated."
+        },
+        "ja": {
+          "title": "ホルムズ最新公開通航は6隻、10日平均は約11隻"
+        },
+        "zh": {
+          "title": "霍尔木兹最新公开通行6艘，10日均值约11艘"
+        },
+        "fr": {
+          "title": "Ormuz: 6 navires selon les données publiques, moyenne 10 jours près de 11"
+        },
+        "de": {
+          "title": "Hormus: 6 Schiffe in öffentlichen Daten, 10-Tage-Schnitt etwa 11"
+        }
+      }
+    },
+    {
+      "id": "tihamah-red-sea-attack-20260812",
+      "slug": "tihamah-red-sea-attack-aug-12-2026",
+      "category": "geo",
+      "priority": 1,
+      "date": "2026-08-12",
+      "updatedAt": "2026-08-12T09:30:00+09:00",
+      "badge": "홍해",
+      "aiSummary": true,
+      "relevanceScore": 0.99,
+      "title": "홍해 상선 Tihamah 공격, 선원·구조대원 6명 사망 보도",
+      "aiBrief": "Tihamah 공격으로 선원 4명과 구조대원 2명이 사망한 것으로 보도됐습니다.",
+      "summary": "예멘 해역 바브엘만데브 인근에서 이집트 소유 화물선 Tihamah가 공격을 받아 선원 4명이 사망했고, 구조 작업 이후 추가 공격으로 예멘 구조대원 2명도 사망한 것으로 보도됐습니다. 선원·해안경비대·구조대원을 포함해 10명이 부상한 것으로 알려졌습니다. 홍해 해상운송 위험은 단순 우회 비용을 넘어 실제 인명 피해 단계로 높아졌습니다.",
+      "impact": "홍해 위험이 유류·정제제품 물류의 상방 압력으로 남습니다.",
+      "sourceName": "Reuters / AP",
+      "sourceUrl": "https://www.reuters.com/world/china/three-killed-attacks-ships-red-sea-gulf-sources-say-2026-08-11/",
+      "tags": [
+        "Tihamah",
+        "홍해",
+        "바브엘만데브",
+        "해상운송"
+      ]
+    },
+    {
+      "id": "oil-close-20260811-20260812",
+      "slug": "brent-wti-close-aug-11-2026",
+      "category": "market",
+      "priority": 1,
+      "date": "2026-08-12",
+      "updatedAt": "2026-08-12T09:30:00+09:00",
+      "badge": "국제유가",
+      "aiSummary": true,
+      "relevanceScore": 0.98,
+      "title": "Brent 88.91달러·WTI 83.20달러, 상승세 지속",
+      "aiBrief": "2026년 8월 11일 미국 시장 종가 기준 Brent는 88.91달러, WTI는 83.20달러입니다.",
+      "summary": "호르무즈 전면 재개방 기대가 약해지고 미국·이란 합의 기대가 흔들리면서 국제유가는 추가 상승했습니다. Brent는 88.91달러/bbl, WTI는 83.20달러/bbl로 마감했습니다. 8월 12일 오전 참고 시세에서는 Brent 약 89.4달러, WTI 약 83.7달러로 추가 상승 흐름이 이어졌지만, 이는 종가와 구분해 표시합니다.",
+      "impact": "원유 측 상승 압력이 항공유 완화 신호를 일부 상쇄합니다.",
+      "sourceName": "Reuters / market close",
+      "sourceUrl": "https://www.reuters.com/business/energy/oil-steadies-near-one-week-highs-us-iran-peace-deal-hopes-dim-2026-08-11/",
+      "tags": [
+        "Brent",
+        "WTI",
+        "종가",
+        "intraday"
+      ]
+    },
+    {
+      "id": "usd-krw-1414-20260812",
+      "slug": "usd-krw-1414-aug-12-2026",
+      "category": "market",
+      "priority": 1,
+      "date": "2026-08-12",
+      "updatedAt": "2026-08-12T09:30:00+09:00",
+      "badge": "환율",
+      "aiSummary": true,
+      "relevanceScore": 0.97,
+      "title": "원달러 약 1,414원, 환율 완화 효과 유지",
+      "aiBrief": "8월 12일 09:30 KST 전후 원달러 환율은 약 1,414원 수준입니다.",
+      "summary": "원달러 환율은 전날 약 1,418원에서 약 1,414원으로 다시 낮아졌습니다. 7월 중순 1,480원대와 비교하면 원화 강세에 따른 달러 기준 항공유의 원화 환산 부담 완화 효과가 유지되고 있습니다.",
+      "impact": "환율은 9월 유류할증료 상승 폭을 억제하는 완화 요인입니다.",
+      "sourceName": "Investing.com USD/KRW",
+      "sourceUrl": "https://www.investing.com/currencies/usd-krw",
+      "tags": [
+        "USD/KRW",
+        "환율",
+        "1,414"
+      ]
+    },
+    {
+      "id": "iran-hormuz-policy-20260812",
+      "slug": "iran-hormuz-policy-aug-12-2026",
+      "category": "geo",
+      "priority": 1,
+      "date": "2026-08-12",
+      "updatedAt": "2026-08-12T09:30:00+09:00",
+      "badge": "이란",
+      "aiSummary": true,
+      "relevanceScore": 0.96,
+      "title": "이란, 미국 정책 변화 전까지 호르무즈 개방 거부 입장 강화",
+      "aiBrief": "기술 협상과 별개로 이란은 미국의 정책 변화와 요구 수용 전까지 호르무즈를 열지 않겠다는 입장을 재확인했습니다.",
+      "summary": "이란·오만 기술 협상은 이어지고 있지만, 이란은 미국의 정책과 행동 변화 및 이란 측 요구 수용 전까지 호르무즈를 다시 열지 않겠다는 입장을 강화했습니다. 따라서 기술 합의 진전이 곧 상업 선박의 전면 정상 통항을 의미하지는 않습니다.",
+      "impact": "호르무즈 리스크는 완화되지 않았고 원유·제품 물류 프리미엄이 유지됩니다.",
+      "sourceName": "Reuters",
+      "sourceUrl": "https://www.reuters.com/world/middle-east/pakistan-says-us-iran-close-some-sort-deal-despite-attacks-shipping-2026-08-11/",
+      "tags": [
+        "이란",
+        "호르무즈",
+        "협상",
+        "개방"
+      ]
+    },
+    {
+      "id": "vela-nova-us-blockade-20260812",
+      "slug": "vela-nova-us-blockade-aug-12-2026",
+      "category": "geo",
+      "priority": 1,
+      "date": "2026-08-12",
+      "updatedAt": "2026-08-12T09:30:00+09:00",
+      "badge": "해상봉쇄",
+      "aiSummary": true,
+      "relevanceScore": 0.95,
+      "title": "미국, 걸프 오만 Vela Nova에 미사일 공격",
+      "aiBrief": "미국은 해상봉쇄 위반을 이유로 걸프 오만 인근 Vela Nova에 Hellfire 미사일 2발을 발사했다고 보도됐습니다.",
+      "summary": "미국 중부사령부는 파나마 국적 컨테이너선 Vela Nova가 이란 해상봉쇄를 위반하고 이란 항구로 향했다며 Hellfire 미사일 2발로 조향 장치를 무력화했다고 밝혔습니다. 이 사건은 호르무즈 내부 통항 데이터가 아니라 걸프 오만~호르무즈 접근 항로에서 발생한 해상봉쇄 집행 사례입니다.",
+      "impact": "현재 해상운송 위험은 이란·후티 공격뿐 아니라 미국 봉쇄 집행 위험까지 포함합니다.",
+      "sourceName": "Reuters / major press reports",
+      "sourceUrl": "https://www.reuters.com/world/china/three-killed-attacks-ships-red-sea-gulf-sources-say-2026-08-11/",
+      "tags": [
+        "Vela Nova",
+        "Hellfire",
+        "걸프 오만",
+        "해상봉쇄"
+      ]
+    },
+    {
+      "id": "iata-jetfuel-14693-20260812",
+      "slug": "iata-jetfuel-14693-aug-12-2026",
+      "category": "market",
+      "priority": 2,
+      "date": "2026-08-12",
+      "updatedAt": "2026-08-12T09:30:00+09:00",
+      "badge": "항공유",
+      "aiSummary": true,
+      "relevanceScore": 0.94,
+      "title": "IATA 글로벌 항공유 146.93달러, 주간 7.5% 하락 신호 유지",
+      "aiBrief": "IATA 최신 글로벌 항공유 주간 평균은 146.93달러/bbl, 전주 대비 -7.5%입니다.",
+      "summary": "IATA 글로벌 항공유 주간 평균은 146.93달러/bbl로 전주 대비 7.5% 하락했습니다. 이는 항공유 측 완화 신호지만 싱가포르 MOPS 일별 가격이나 9월 산정 평균이 아닙니다.",
+      "impact": "항공유 완화 요인은 유지되지만 9월 단계와 금액은 아직 확정하지 않습니다.",
+      "sourceName": "IATA Fuel Price Monitor",
+      "sourceUrl": "https://www.iata.org/en/publications/economics/fuel-monitor/",
+      "tags": [
+        "IATA",
+        "항공유",
+        "146.93",
+        "MOPS 구분"
+      ]
+    },
+    {
+      "id": "libya-russia-supply-risk-20260812",
+      "slug": "libya-russia-supply-risk-aug-12-2026",
+      "category": "geo",
+      "priority": 2,
+      "date": "2026-08-12",
+      "updatedAt": "2026-08-12T09:30:00+09:00",
+      "badge": "공급위험",
+      "aiSummary": true,
+      "relevanceScore": 0.93,
+      "title": "리비아·러시아 에너지시설 추가 공급 위험",
+      "aiBrief": "리비아 Zawiya 지역과 러시아 Orsk 정유시설 관련 보도는 보조 공급 위험으로 반영합니다.",
+      "summary": "중동 외 지역에서도 공급 위험 변수가 추가됐습니다. 리비아는 Zawiya 지역 에너지시설 공격 지속 시 불가항력 선언 가능성을 경고했고, 우크라이나는 러시아 Orsk 정유시설 공격을 발표했습니다. 이 뉴스는 MOPS 자체 수치가 아니라 글로벌 원유·정제제품 공급의 보조 위험 변수로만 처리합니다.",
+      "impact": "호르무즈 밖에서도 공급 프리미엄을 높일 수 있는 보조 변수입니다.",
+      "sourceName": "Reuters",
+      "sourceUrl": "https://www.reuters.com/world/middle-east/pakistan-says-us-iran-close-some-sort-deal-despite-attacks-shipping-2026-08-11/",
+      "tags": [
+        "리비아",
+        "러시아",
+        "정유시설",
+        "공급위험"
+      ]
+    },
     {
       "id": "iata-jetfuel-14693-20260811",
       "slug": "iata-jetfuel-14693-aug-11-2026",

@@ -13325,6 +13325,522 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
   });
 })();
 
+/* 2026.08.12 09:30 KST terminal news guard. */
+(function(){
+  var latest = {
+  asOf: '2026.08.12 09:30 KST',
+  lastUpdated: '2026-08-12T09:30:00+09:00',
+  currentMonthNotice: '2026-08',
+  forecastTargetMonth: '2026-09',
+  augustPassengerSurchargeStage: 14,
+  augustSurchargeStage: 14,
+  augustInternationalStage: 14,
+  julySurchargeStage: 19,
+  augustStageChangeVsJuly: -5,
+  septemberPassengerSurchargeConfirmed: false,
+  septemberSurchargeConfirmed: false,
+  septemberOfficialConfirmed: false,
+  septemberSurchargeStatus: 'forecast_only_not_announced',
+  septemberCalculationFrom: '2026-07-16',
+  septemberCalculationTo: '2026-08-15',
+  usdKrw: 1414,
+  usdKrwLabel: '약 1,414원',
+  usdKrwValueType: 'rounded_near_time_reference',
+  usdKrwReferenceTime: '2026.08.12 09:30 KST 전후 공개 시세',
+  augustMopsAverageUsdPerBbl: 119.06,
+  augustMopsAverageCentsPerGallon: 283.48,
+  augustPassengerMopsAverageUsdPerBbl: 119.06,
+  augustPassengerMopsAverageCentsPerGallon: 283.48,
+  augustPassengerMopsCalculationFrom: '2026-06-16',
+  augustPassengerMopsCalculationTo: '2026-07-15',
+  julySingaporeJetFuelMonthlyAverageUsdPerBbl: 139.22,
+  julySingaporeJetFuelMonthlyAverageUsdPerGallon: 3.3147,
+  julySingaporeJetFuelMonthlyAverageSource: 'Korean Air Cargo',
+  julySingaporeJetFuelIsSeptemberPassengerMops: false,
+  iataJetFuelUsdPerBbl: 146.93,
+  iataJetFuelWeeklyChangePct: -7.5,
+  iataGlobalJetFuelUsdBbl: 146.93,
+  iataGlobalJetFuelWeeklyPct: -7.5,
+  iataJetFuelIsSingaporeMops: false,
+  currentSingaporeMopsExactValue: null,
+  currentSingaporeMopsStatus: 'not_publicly_verified',
+  brentUsdPerBbl: 88.91,
+  brentUsdBbl: 88.91,
+  brentDailyChangeUsd: 1.19,
+  brentDailyChangePct: 1.4,
+  brentReferenceType: '2026.08.11 market close',
+  wtiUsdPerBbl: 83.20,
+  wtiUsdBbl: 83.20,
+  wtiDailyChangeUsd: 1.07,
+  wtiDailyChangePct: 1.3,
+  wtiReferenceType: '2026.08.11 market close',
+  oilReferenceType: '2026.08.11 market close',
+  oilReferenceTime: '2026.08.11 U.S. market close',
+  brentIntradayApprox: 89.4,
+  wtiIntradayApprox: 83.7,
+  intradayReferenceTime: '2026.08.12 09:30 KST around',
+  hormuzLatestQuantifiedTrafficDate: '2026-08-10',
+  hormuzLatestQuantifiedDailyVessels: 6,
+  hormuzInboundVessels: 4,
+  hormuzOutboundVessels: 2,
+  hormuzRecentTenDayAverageVesselsPerDay: 11,
+  hormuzPrewarDailyTrafficEstimateMin: 130,
+  hormuzPrewarDailyTrafficEstimateMax: 140,
+  hormuzTrafficIsTotalConfirmed: false,
+  hormuzLatestTrafficIsTodayValue: false,
+  hormuzAisCoverageLimitation: true,
+  hormuzFullReopeningConfirmed: false,
+  iranSaysHormuzRemainsClosedUntilUsChangesPolicy: true,
+  iranOmanTechnicalTalksContinue: true,
+  iranOmanTechnicalTalksEqualFullReopening: false,
+  babElMandebLatestQuantifiedTrafficDate: '2026-08-10',
+  babElMandebLatestQuantifiedDailyVessels: 25,
+  tihamahAttackConfirmed: true,
+  tihamahCrewDeathsReported: 4,
+  tihamahRescuerDeathsReported: 2,
+  tihamahTotalReportedInjuries: 10,
+  redSeaFatalCommercialShippingAttackConfirmed: true,
+  redSeaMilitaryRisk: 'very_high',
+  velaNovaUsStrikeReported: true,
+  velaNovaUsHellfireMissilesFired: 2,
+  velaNovaLocationContext: 'Gulf of Oman',
+  velaNovaIsHormuzInsideIncident: false,
+  usMaritimeBlockadeEnforcementRisk: true,
+  libyaSupplyRiskReported: true,
+  russiaRefineryAttackRiskReported: true,
+  outlookDirection: 'jet_fuel_relief_maintained_fx_relief_maintained_crude_upward_pressure_expanded_hormuz_red_sea_shipping_risk_deepened',
+  outlookConfidence: 'medium',
+  marketVolatility: 'extremely_high',
+  sources: {
+    augustFiling: 'Official August 2026 Korea-departure international fuel surcharge notices; Level 14 in effect',
+    usdKrw: 'USD/KRW rounded public reference around 2026.08.12 09:30 KST',
+    augustPassengerMops: 'Passenger surcharge MOPS average for 2026.06.16~2026.07.15',
+    julySingaporeJetFuel: 'Korean Air Cargo July 2026 Singapore jet fuel monthly average, reference only',
+    iataJetFuel: 'IATA Jet Fuel Price Monitor global weekly average, not Singapore MOPS',
+    oil: '2026.08.11 U.S. market close; intraday references are separated',
+    hormuz: 'Reuters/Kpler Aug 10 quantified Hormuz traffic, not Aug 12 same-day total',
+    redSea: 'Reuters/AP Red Sea and Gulf shipping attack reports',
+    velaNova: 'Reuters/major press reports on U.S. maritime blockade enforcement near Gulf of Oman',
+    libyaRussia: 'Reuters middle-east shipping context; auxiliary supply-risk variables'
+  }
+};
+  window.AERO_MARKET_NUMBERS_20260812 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260812;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-12': window.AERO_MARKET_NUMBERS_20260812});
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1414 });
+  if (typeof TODAY_MARKET !== 'undefined') {
+    Object.assign(TODAY_MARKET, {
+      brent: 'Brent 88.91달러/bbl · 8월 11일 종가',
+      wti: 'WTI 83.20달러/bbl · 8월 11일 종가',
+      mops: '8월 MOPS 119.06달러 · 7월 항공유 139.22달러 · IATA 146.93달러',
+      fx: 'USD/KRW 약 1,414원',
+      geo: '호르무즈 8월 10일 공개 통항 6척 · 최근 10일 평균 약 11척',
+      outlook: '항공유·환율 완화 신호 유지, 원유 상승 압력 확대, 호르무즈·홍해 위험 심화',
+      brentEn: 'Brent USD 88.91/bbl · Aug 11 close',
+      wtiEn: 'WTI USD 83.20/bbl · Aug 11 close',
+      mopsEn: 'August MOPS USD 119.06 · July jet fuel USD 139.22 · IATA USD 146.93',
+      fxEn: 'USD/KRW around 1,414',
+      geoEn: 'Hormuz Aug 10 public traffic: 6 vessels · 10-day average near 11',
+      outlookEn: 'Jet fuel and FX relief remain; crude upside and Hormuz/Red Sea risk deepened'
+    });
+  }
+  window.AERO_NEWS_CARDS_20260812 = [
+  {
+    "id": "hormuz-six-vessels-20260812",
+    "slug": "hormuz-six-vessels-aug-12-2026",
+    "category": "geo",
+    "priority": 1,
+    "date": "2026-08-12",
+    "updatedAt": "2026-08-12T09:30:00+09:00",
+    "badge": "호르무즈",
+    "aiSummary": true,
+    "relevanceScore": 1,
+    "title": "호르무즈 최신 공개 통항 6척, 최근 10일 평균 11척",
+    "aiBrief": "8월 10일 월요일 공개 선박 추적에서 호르무즈 통항 6척이 확인됐습니다.",
+    "summary": "최신 공개 Kpler 자료에 따르면 2026년 8월 10일 월요일 호르무즈 통항은 6척으로 확인됐습니다. 4척이 걸프만으로 진입했고 2척이 빠져나왔으며, 최근 10일 평균은 약 11척입니다. 전쟁 이전 하루 130~140척 수준과 비교하면 여전히 크게 낮지만 AIS 비활성 선박이 있을 수 있어 실제 전체 통항량을 6척으로 단정하지 않습니다.",
+    "impact": "호르무즈 전면 재개방은 아직 확정되지 않았고 해상운송 위험은 계속됩니다.",
+    "sourceName": "Reuters / Kpler",
+    "sourceUrl": "https://www.reuters.com/world/gulf-shipping-traffic-via-strait-hormuz-falls-six-vessels-2026-08-11/",
+    "tags": [
+      "호르무즈",
+      "6척",
+      "Kpler",
+      "AIS"
+    ],
+    "i18n": {
+      "en": {
+        "title": "Hormuz public traffic falls to 6 vessels; 10-day average near 11",
+        "aiBrief": "Public vessel tracking showed 6 Hormuz transits on Monday, Aug 10.",
+        "summary": "Kpler-based public tracking showed 6 vessels through Hormuz on Monday, Aug 10: 4 entered the Gulf and 2 exited. The recent 10-day average is about 11, far below pre-war traffic around 130 to 140 a day. This is not Aug 12 same-day total traffic and AIS limits remain.",
+        "impact": "Full reopening is not confirmed; maritime risk remains elevated."
+      },
+      "ja": {
+        "title": "ホルムズ最新公開通航は6隻、10日平均は約11隻"
+      },
+      "zh": {
+        "title": "霍尔木兹最新公开通行6艘，10日均值约11艘"
+      },
+      "fr": {
+        "title": "Ormuz: 6 navires selon les données publiques, moyenne 10 jours près de 11"
+      },
+      "de": {
+        "title": "Hormus: 6 Schiffe in öffentlichen Daten, 10-Tage-Schnitt etwa 11"
+      }
+    }
+  },
+  {
+    "id": "tihamah-red-sea-attack-20260812",
+    "slug": "tihamah-red-sea-attack-aug-12-2026",
+    "category": "geo",
+    "priority": 1,
+    "date": "2026-08-12",
+    "updatedAt": "2026-08-12T09:30:00+09:00",
+    "badge": "홍해",
+    "aiSummary": true,
+    "relevanceScore": 0.99,
+    "title": "홍해 상선 Tihamah 공격, 선원·구조대원 6명 사망 보도",
+    "aiBrief": "Tihamah 공격으로 선원 4명과 구조대원 2명이 사망한 것으로 보도됐습니다.",
+    "summary": "예멘 해역 바브엘만데브 인근에서 이집트 소유 화물선 Tihamah가 공격을 받아 선원 4명이 사망했고, 구조 작업 이후 추가 공격으로 예멘 구조대원 2명도 사망한 것으로 보도됐습니다. 선원·해안경비대·구조대원을 포함해 10명이 부상한 것으로 알려졌습니다. 홍해 해상운송 위험은 단순 우회 비용을 넘어 실제 인명 피해 단계로 높아졌습니다.",
+    "impact": "홍해 위험이 유류·정제제품 물류의 상방 압력으로 남습니다.",
+    "sourceName": "Reuters / AP",
+    "sourceUrl": "https://www.reuters.com/world/china/three-killed-attacks-ships-red-sea-gulf-sources-say-2026-08-11/",
+    "tags": [
+      "Tihamah",
+      "홍해",
+      "바브엘만데브",
+      "해상운송"
+    ]
+  },
+  {
+    "id": "oil-close-20260811-20260812",
+    "slug": "brent-wti-close-aug-11-2026",
+    "category": "market",
+    "priority": 1,
+    "date": "2026-08-12",
+    "updatedAt": "2026-08-12T09:30:00+09:00",
+    "badge": "국제유가",
+    "aiSummary": true,
+    "relevanceScore": 0.98,
+    "title": "Brent 88.91달러·WTI 83.20달러, 상승세 지속",
+    "aiBrief": "2026년 8월 11일 미국 시장 종가 기준 Brent는 88.91달러, WTI는 83.20달러입니다.",
+    "summary": "호르무즈 전면 재개방 기대가 약해지고 미국·이란 합의 기대가 흔들리면서 국제유가는 추가 상승했습니다. Brent는 88.91달러/bbl, WTI는 83.20달러/bbl로 마감했습니다. 8월 12일 오전 참고 시세에서는 Brent 약 89.4달러, WTI 약 83.7달러로 추가 상승 흐름이 이어졌지만, 이는 종가와 구분해 표시합니다.",
+    "impact": "원유 측 상승 압력이 항공유 완화 신호를 일부 상쇄합니다.",
+    "sourceName": "Reuters / market close",
+    "sourceUrl": "https://www.reuters.com/business/energy/oil-steadies-near-one-week-highs-us-iran-peace-deal-hopes-dim-2026-08-11/",
+    "tags": [
+      "Brent",
+      "WTI",
+      "종가",
+      "intraday"
+    ]
+  },
+  {
+    "id": "usd-krw-1414-20260812",
+    "slug": "usd-krw-1414-aug-12-2026",
+    "category": "market",
+    "priority": 1,
+    "date": "2026-08-12",
+    "updatedAt": "2026-08-12T09:30:00+09:00",
+    "badge": "환율",
+    "aiSummary": true,
+    "relevanceScore": 0.97,
+    "title": "원달러 약 1,414원, 환율 완화 효과 유지",
+    "aiBrief": "8월 12일 09:30 KST 전후 원달러 환율은 약 1,414원 수준입니다.",
+    "summary": "원달러 환율은 전날 약 1,418원에서 약 1,414원으로 다시 낮아졌습니다. 7월 중순 1,480원대와 비교하면 원화 강세에 따른 달러 기준 항공유의 원화 환산 부담 완화 효과가 유지되고 있습니다.",
+    "impact": "환율은 9월 유류할증료 상승 폭을 억제하는 완화 요인입니다.",
+    "sourceName": "Investing.com USD/KRW",
+    "sourceUrl": "https://www.investing.com/currencies/usd-krw",
+    "tags": [
+      "USD/KRW",
+      "환율",
+      "1,414"
+    ]
+  },
+  {
+    "id": "iran-hormuz-policy-20260812",
+    "slug": "iran-hormuz-policy-aug-12-2026",
+    "category": "geo",
+    "priority": 1,
+    "date": "2026-08-12",
+    "updatedAt": "2026-08-12T09:30:00+09:00",
+    "badge": "이란",
+    "aiSummary": true,
+    "relevanceScore": 0.96,
+    "title": "이란, 미국 정책 변화 전까지 호르무즈 개방 거부 입장 강화",
+    "aiBrief": "기술 협상과 별개로 이란은 미국의 정책 변화와 요구 수용 전까지 호르무즈를 열지 않겠다는 입장을 재확인했습니다.",
+    "summary": "이란·오만 기술 협상은 이어지고 있지만, 이란은 미국의 정책과 행동 변화 및 이란 측 요구 수용 전까지 호르무즈를 다시 열지 않겠다는 입장을 강화했습니다. 따라서 기술 합의 진전이 곧 상업 선박의 전면 정상 통항을 의미하지는 않습니다.",
+    "impact": "호르무즈 리스크는 완화되지 않았고 원유·제품 물류 프리미엄이 유지됩니다.",
+    "sourceName": "Reuters",
+    "sourceUrl": "https://www.reuters.com/world/middle-east/pakistan-says-us-iran-close-some-sort-deal-despite-attacks-shipping-2026-08-11/",
+    "tags": [
+      "이란",
+      "호르무즈",
+      "협상",
+      "개방"
+    ]
+  },
+  {
+    "id": "vela-nova-us-blockade-20260812",
+    "slug": "vela-nova-us-blockade-aug-12-2026",
+    "category": "geo",
+    "priority": 1,
+    "date": "2026-08-12",
+    "updatedAt": "2026-08-12T09:30:00+09:00",
+    "badge": "해상봉쇄",
+    "aiSummary": true,
+    "relevanceScore": 0.95,
+    "title": "미국, 걸프 오만 Vela Nova에 미사일 공격",
+    "aiBrief": "미국은 해상봉쇄 위반을 이유로 걸프 오만 인근 Vela Nova에 Hellfire 미사일 2발을 발사했다고 보도됐습니다.",
+    "summary": "미국 중부사령부는 파나마 국적 컨테이너선 Vela Nova가 이란 해상봉쇄를 위반하고 이란 항구로 향했다며 Hellfire 미사일 2발로 조향 장치를 무력화했다고 밝혔습니다. 이 사건은 호르무즈 내부 통항 데이터가 아니라 걸프 오만~호르무즈 접근 항로에서 발생한 해상봉쇄 집행 사례입니다.",
+    "impact": "현재 해상운송 위험은 이란·후티 공격뿐 아니라 미국 봉쇄 집행 위험까지 포함합니다.",
+    "sourceName": "Reuters / major press reports",
+    "sourceUrl": "https://www.reuters.com/world/china/three-killed-attacks-ships-red-sea-gulf-sources-say-2026-08-11/",
+    "tags": [
+      "Vela Nova",
+      "Hellfire",
+      "걸프 오만",
+      "해상봉쇄"
+    ]
+  },
+  {
+    "id": "iata-jetfuel-14693-20260812",
+    "slug": "iata-jetfuel-14693-aug-12-2026",
+    "category": "market",
+    "priority": 2,
+    "date": "2026-08-12",
+    "updatedAt": "2026-08-12T09:30:00+09:00",
+    "badge": "항공유",
+    "aiSummary": true,
+    "relevanceScore": 0.94,
+    "title": "IATA 글로벌 항공유 146.93달러, 주간 7.5% 하락 신호 유지",
+    "aiBrief": "IATA 최신 글로벌 항공유 주간 평균은 146.93달러/bbl, 전주 대비 -7.5%입니다.",
+    "summary": "IATA 글로벌 항공유 주간 평균은 146.93달러/bbl로 전주 대비 7.5% 하락했습니다. 이는 항공유 측 완화 신호지만 싱가포르 MOPS 일별 가격이나 9월 산정 평균이 아닙니다.",
+    "impact": "항공유 완화 요인은 유지되지만 9월 단계와 금액은 아직 확정하지 않습니다.",
+    "sourceName": "IATA Fuel Price Monitor",
+    "sourceUrl": "https://www.iata.org/en/publications/economics/fuel-monitor/",
+    "tags": [
+      "IATA",
+      "항공유",
+      "146.93",
+      "MOPS 구분"
+    ]
+  },
+  {
+    "id": "libya-russia-supply-risk-20260812",
+    "slug": "libya-russia-supply-risk-aug-12-2026",
+    "category": "geo",
+    "priority": 2,
+    "date": "2026-08-12",
+    "updatedAt": "2026-08-12T09:30:00+09:00",
+    "badge": "공급위험",
+    "aiSummary": true,
+    "relevanceScore": 0.93,
+    "title": "리비아·러시아 에너지시설 추가 공급 위험",
+    "aiBrief": "리비아 Zawiya 지역과 러시아 Orsk 정유시설 관련 보도는 보조 공급 위험으로 반영합니다.",
+    "summary": "중동 외 지역에서도 공급 위험 변수가 추가됐습니다. 리비아는 Zawiya 지역 에너지시설 공격 지속 시 불가항력 선언 가능성을 경고했고, 우크라이나는 러시아 Orsk 정유시설 공격을 발표했습니다. 이 뉴스는 MOPS 자체 수치가 아니라 글로벌 원유·정제제품 공급의 보조 위험 변수로만 처리합니다.",
+    "impact": "호르무즈 밖에서도 공급 프리미엄을 높일 수 있는 보조 변수입니다.",
+    "sourceName": "Reuters",
+    "sourceUrl": "https://www.reuters.com/world/middle-east/pakistan-says-us-iran-close-some-sort-deal-despite-attacks-shipping-2026-08-11/",
+    "tags": [
+      "리비아",
+      "러시아",
+      "정유시설",
+      "공급위험"
+    ]
+  }
+];
+  var seen = {};
+  window.AERO_NEWS_CARDS_20260812.forEach(function(card){ seen[card.id] = true; });
+  FIXED_NEWS = window.AERO_NEWS_CARDS_20260812.concat((FIXED_NEWS || []).filter(function(card){ return card && !seen[card.id]; }));
+  window.PAGE_I18N_OVERRIDE = window.PAGE_I18N_OVERRIDE || {};
+  var packs = {
+  "ko": {
+    "news.metaTitle": "2026년 8월 유류할증료·9월 전망 뉴스 | 8월 12일 환율·MOPS·호르무즈",
+    "news.metaDesc": "2026년 8월 12일 기준 국제선 유류할증료와 9월 전망을 원달러 환율, MOPS, IATA 항공유, 국제유가, 호르무즈 통항, 홍해 선박 공격과 최신 중동 해상운송 위험으로 정리합니다.",
+    "news.pageTitle": "2026년 8월 유류할증료와 9월 전망 뉴스",
+    "news.pageSub": "2026.08.12 09:30 KST 기준 · 8월 14단계 적용 중 · 원달러 약 1,414원 · IATA 항공유 146.93달러(-7.5%) · Brent 88.91달러 · WTI 83.20달러 · 호르무즈 최신 공개 통항 6척 · 홍해 Tihamah 사망자 발생",
+    "news.summary.updated": "2026.08.12 09:30 KST 기준 · 8월 14단계 적용 중 · 9월 공시 전 전망",
+    "news.summary.title": "2026년 8월 유류할증료와 9월 전망 요약",
+    "news.summary.li1": "2026년 8월 한국발 국제선 유류할증료는 14단계로 적용 중입니다.",
+    "news.summary.li2": "2026년 9월 국제선 유류할증료 단계와 항공사별 금액은 아직 공식 공시 전입니다.",
+    "news.summary.li3": "원달러 환율은 약 1,414원으로 전날 1,418원보다 낮아져 환율 완화 효과가 유지됩니다.",
+    "news.summary.li4": "8월 여객 산정 MOPS는 119.06달러/bbl, 283.48 cents/gal입니다.",
+    "news.summary.li5": "7월 싱가포르 항공유 월평균 139.22달러는 참고값이며 9월 산정 평균이 아닙니다.",
+    "news.summary.li6": "IATA 글로벌 항공유 146.93달러는 주간 평균이며 싱가포르 MOPS가 아닙니다.",
+    "news.summary.li7": "Brent 88.91달러와 WTI 83.20달러는 2026년 8월 11일 미국 시장 확정 종가입니다.",
+    "news.summary.li8": "호르무즈 최신 공개 통항 6척은 8월 10일 월요일 추적값이며 8월 12일 당일 전체 통항량이 아닙니다.",
+    "news.summary.li9": "Tihamah 공격과 Vela Nova 사건으로 홍해·걸프 오만 해상운송 위험이 실제 인명 피해와 봉쇄 집행 위험 단계로 높아졌습니다.",
+    "news.summary.li10": "현재 판단은 항공유·환율 완화 신호 유지, 국제유가 상승 압력 확대, 호르무즈·홍해 위험 심화입니다.",
+    "news.dataRef": "2026.08.12 09:30 KST 기준 · 8월 14단계 적용 중 · 9월 공시 전 전망",
+    "news.marketTitle": "8월 12일 시장 브리핑: 항공유·환율 완화와 원유·해상운송 위험의 충돌",
+    "news.brent": "국제유가: 2026년 8월 11일 미국 시장 확정 종가 기준 Brent는 88.91달러/bbl(+1.4%), WTI는 83.20달러/bbl(+1.3%)입니다. 8월 12일 오전 참고 시세는 Brent 약 89.4달러, WTI 약 83.7달러로 종가와 구분합니다.",
+    "news.mops": "항공유: 8월 산정 MOPS 119.06달러, 7월 싱가포르 항공유 월평균 139.22달러, IATA 글로벌 항공유 146.93달러는 서로 다른 지표입니다.",
+    "news.fx": "원달러 환율: 2026.08.12 09:30 KST 전후 약 1,414원입니다. 전날 1,418원보다 낮아져 환율 완화 효과가 유지됩니다.",
+    "news.geo": "호르무즈: 최신 공개 정량자료는 2026년 8월 10일 월요일 6척, 최근 10일 평균 약 11척입니다. 8월 12일 당일 전체 통항량이나 전면 재개방으로 표현하지 않습니다.",
+    "news.marketSummary": "9월 전망은 항공유 가격 완화 신호와 환율 완화 신호가 유지되지만, 국제유가 상승 압력과 호르무즈·홍해 해상운송 위험이 동시에 커진 혼합 국면입니다.",
+    "news.fxDominance": "핵심 상태: 2026.08.12 09:30 KST · 8월 14단계 · USD/KRW 약 1,414원 · 8월 MOPS 119.06달러 · 7월 항공유 139.22달러 · IATA 146.93달러 · Brent 88.91달러 · WTI 83.20달러 · 호르무즈 8월 10일 6척",
+    "news.decisionTitle": "결론: 8월 14단계 적용 중, 9월은 완화 요인과 해상운송 위험이 맞서는 구간",
+    "news.decisionLine1": "→ 2026년 8월 한국발 국제선 유류할증료는 14단계로 적용 중인 확정 데이터입니다.",
+    "news.decisionLine2": "→ 9월 단계와 금액은 아직 확정하지 않습니다. 항공유와 환율은 완화 요인이지만 원유 상승, 호르무즈 제한 통항, 홍해 공격과 미국 해상봉쇄 집행 위험이 남아 있습니다."
+  },
+  "en": {
+    "news.metaTitle": "August Fuel Surcharge and September Outlook News | Aug 12 FX, MOPS and Hormuz",
+    "news.metaDesc": "As of 2026.08.12 09:30 KST, this update separates August MOPS, IATA jet fuel, USD/KRW, crude closes, Hormuz traffic, Red Sea attack risk and maritime blockade risk.",
+    "news.pageTitle": "August 2026 Fuel Surcharge and September Outlook News",
+    "news.pageSub": "As of 2026.08.12 09:30 KST · August Level 14 in effect · USD/KRW around 1,414 · IATA jet fuel USD 146.93 (-7.5%) · Brent USD 88.91 · WTI USD 83.20 · Hormuz public traffic 6 vessels · Tihamah fatalities reported",
+    "news.summary.updated": "As of 2026.08.12 09:30 KST · August Level 14 in effect · September before official filing",
+    "news.summary.title": "August 2026 Fuel Surcharge and September Outlook Summary",
+    "news.summary.li1": "The August 2026 Korea-departure international fuel surcharge is in effect at Level 14.",
+    "news.summary.li2": "The September 2026 stage and airline amounts have not been officially announced yet.",
+    "news.summary.li3": "USD/KRW is around 1,414, lower than 1,418 yesterday, so FX relief is maintained.",
+    "news.summary.li4": "August passenger MOPS is USD 119.06/bbl and 283.48 cents/gal.",
+    "news.summary.li5": "July Singapore jet fuel monthly average USD 139.22 is a reference value, not the September calculation average.",
+    "news.summary.li6": "IATA global jet fuel USD 146.93 is a weekly global average, not Singapore MOPS.",
+    "news.summary.li7": "Brent USD 88.91 and WTI USD 83.20 are Aug 11 U.S. market closing prices.",
+    "news.summary.li8": "Hormuz public traffic of 6 vessels is the Monday Aug 10 tracking value, not Aug 12 same-day total traffic.",
+    "news.summary.li9": "The Tihamah attack and Vela Nova incident raise Red Sea and Gulf of Oman maritime risk.",
+    "news.summary.li10": "Current view: jet fuel and FX relief remain, while crude upside and Hormuz/Red Sea risks deepened.",
+    "news.marketTitle": "Aug 12 Market Brief: Jet Fuel and FX Relief Versus Crude and Shipping Risk",
+    "news.brent": "Oil: at the Aug 11 U.S. market close, Brent was USD 88.91/bbl (+1.4%) and WTI was USD 83.20/bbl (+1.3%). Aug 12 morning references around Brent USD 89.4 and WTI USD 83.7 are separated from closing prices.",
+    "news.mops": "Jet fuel: August MOPS USD 119.06, July Singapore jet fuel monthly average USD 139.22 and IATA global jet fuel USD 146.93 are separate indicators.",
+    "news.fx": "FX: USD/KRW is around 1,414 near 2026.08.12 09:30 KST, lower than 1,418 yesterday.",
+    "news.geo": "Hormuz: latest public quantified data is 6 vessels on Monday Aug 10 and a recent 10-day average near 11. Do not describe this as Aug 12 same-day traffic or full reopening.",
+    "news.marketSummary": "September remains mixed: jet fuel and FX relief are intact, but crude upside and Hormuz/Red Sea maritime risks have intensified.",
+    "news.fxDominance": "Key status: 2026.08.12 09:30 KST · August Level 14 · USD/KRW around 1,414 · August MOPS USD 119.06 · July jet fuel USD 139.22 · IATA USD 146.93 · Brent USD 88.91 · WTI USD 83.20 · Hormuz Aug 10: 6 vessels",
+    "news.decisionTitle": "Conclusion: August Level 14 is in effect; September balances relief against shipping risk",
+    "news.decisionLine1": "→ The August 2026 Korea-departure international fuel surcharge is confirmed and in effect at Level 14.",
+    "news.decisionLine2": "→ Do not confirm September stage or amount. Jet fuel and FX ease pressure, while crude, restricted Hormuz traffic, Red Sea attacks and U.S. blockade enforcement risk remain."
+  }
+};
+  var supplements = {
+  "ja": {
+    "news": {
+      "news.pageTitle": "2026年8月燃油サーチャージと9月見通しニュース",
+      "news.pageSub": "2026.08.12 09:30 KST時点 · 8月14段階適用中 · USD/KRW約1,414 · IATA USD 146.93 · Brent USD 88.91 · WTI USD 83.20 · ホルムズ公開通航6隻",
+      "news.summary.updated": "2026.08.12 09:30 KST時点 · 8月14段階適用中 · 9月は公式発表前",
+      "news.summary.title": "2026年8月燃油サーチャージと9月見通し要約"
+    },
+    "fore": {
+      "fore.pageTitle": "2026年8月燃油サーチャージ適用と9月見通し",
+      "fore.pageSub": "2026.08.12 09:30 KST時点 · 8月14段階適用中 · USD/KRW約1,414 · IATA USD 146.93 · Brent USD 88.91 · WTI USD 83.20",
+      "fore.h1": "2026年9月国際線燃油サーチャージ見通し - 航空燃料・為替緩和と海上輸送リスク",
+      "fore.predict.title": "2026年9月燃油サーチャージ見通しの主要指標",
+      "fore.section.indicators": "2026年9月燃油サーチャージ見通しの主要指標"
+    }
+  },
+  "zh": {
+    "news": {
+      "news.pageTitle": "2026年8月燃油附加费与9月展望新闻",
+      "news.pageSub": "截至2026.08.12 09:30 KST · 8月第14档执行中 · USD/KRW约1,414 · IATA USD 146.93 · Brent USD 88.91 · WTI USD 83.20 · 霍尔木兹公开通行6艘",
+      "news.summary.updated": "截至2026.08.12 09:30 KST · 8月第14档执行中 · 9月尚未官方公布",
+      "news.summary.title": "2026年8月燃油附加费与9月展望摘要"
+    },
+    "fore": {
+      "fore.pageTitle": "2026年8月燃油附加费执行与9月展望",
+      "fore.pageSub": "截至2026.08.12 09:30 KST · 8月第14档执行中 · USD/KRW约1,414 · IATA USD 146.93 · Brent USD 88.91 · WTI USD 83.20",
+      "fore.h1": "2026年9月国际线燃油附加费展望 - 航油和汇率缓和与海运风险",
+      "fore.predict.title": "2026年9月燃油附加费展望关键指标",
+      "fore.section.indicators": "2026年9月燃油附加费展望关键指标"
+    }
+  },
+  "fr": {
+    "news": {
+      "news.pageTitle": "Actualités sur la surtaxe carburant d'août 2026 et les perspectives de septembre",
+      "news.pageSub": "Au 2026.08.12 09:30 KST · août niveau 14 appliqué · USD/KRW env. 1,414 · IATA USD 146.93 · Brent USD 88.91 · WTI USD 83.20 · Ormuz 6 navires",
+      "news.summary.updated": "Au 2026.08.12 09:30 KST · niveau 14 appliqué en août · septembre avant annonce officielle",
+      "news.summary.title": "Résumé d'août 2026 et perspectives de septembre"
+    },
+    "fore": {
+      "fore.pageTitle": "Surtaxe carburant d'août 2026 appliquée et perspectives de septembre",
+      "fore.pageSub": "Au 2026.08.12 09:30 KST · août niveau 14 appliqué · USD/KRW env. 1,414 · IATA USD 146.93 · Brent USD 88.91 · WTI USD 83.20",
+      "fore.h1": "Perspectives de septembre 2026 - détente jet fuel/FX et risque maritime",
+      "fore.predict.title": "Indicateurs clés des perspectives de septembre 2026",
+      "fore.section.indicators": "Indicateurs clés des perspectives de septembre 2026"
+    }
+  },
+  "de": {
+    "news": {
+      "news.pageTitle": "Nachrichten zum Treibstoffzuschlag August 2026 und September-Ausblick",
+      "news.pageSub": "Stand 2026.08.12 09:30 KST · August Stufe 14 in Kraft · USD/KRW ca. 1,414 · IATA USD 146.93 · Brent USD 88.91 · WTI USD 83.20 · Hormus 6 Schiffe",
+      "news.summary.updated": "Stand 2026.08.12 09:30 KST · August Stufe 14 in Kraft · September vor offizieller Veröffentlichung",
+      "news.summary.title": "Zusammenfassung August 2026 und September-Ausblick"
+    },
+    "fore": {
+      "fore.pageTitle": "August 2026 Treibstoffzuschlag in Kraft und September-Ausblick",
+      "fore.pageSub": "Stand 2026.08.12 09:30 KST · August Stufe 14 in Kraft · USD/KRW ca. 1,414 · IATA USD 146.93 · Brent USD 88.91 · WTI USD 83.20",
+      "fore.h1": "Ausblick September 2026 - Jetfuel/FX-Entlastung und Schifffahrtsrisiko",
+      "fore.predict.title": "Kernindikatoren für den September-2026-Ausblick",
+      "fore.section.indicators": "Kernindikatoren für den September-2026-Ausblick"
+    }
+  }
+};
+  Object.assign(window.PAGE_I18N_OVERRIDE.ko || (window.PAGE_I18N_OVERRIDE.ko = {}), packs.ko);
+  Object.assign(window.PAGE_I18N_OVERRIDE.en || (window.PAGE_I18N_OVERRIDE.en = {}), packs.en);
+  ['ja','zh','fr','de'].forEach(function(lang){
+    window.PAGE_I18N_OVERRIDE[lang] = Object.assign({}, window.PAGE_I18N_OVERRIDE[lang] || {}, packs.en, supplements[lang] && supplements[lang].news);
+    if (window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], window.PAGE_I18N_OVERRIDE[lang]);
+  });
+  Object.keys(packs).forEach(function(lang){ if(window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], packs[lang]); });
+  document.title = packs.ko['news.metaTitle'];
+  var desc = document.querySelector('meta[name="description"]'); if(desc) desc.setAttribute('content', packs.ko['news.metaDesc']);
+  var ogTitle = document.querySelector('meta[property="og:title"]'); if(ogTitle) ogTitle.setAttribute('content', packs.ko['news.metaTitle']);
+  var ogDesc = document.querySelector('meta[property="og:description"]'); if(ogDesc) ogDesc.setAttribute('content', packs.ko['news.metaDesc']);
+  var mod = document.querySelector('meta[property="article:modified_time"]'); if(mod) mod.setAttribute('content', '2026-08-12T09:30:00+09:00');
+  var faqItems = [
+  {
+    "q": "2026년 8월 국제선 유류할증료는 몇 단계인가요?",
+    "a": "14단계로 적용 중입니다."
+  },
+  {
+    "q": "2026년 9월 국제선 유류할증료는 확정됐나요?",
+    "a": "아닙니다. 공식 단계와 항공사별 금액은 아직 확정되지 않았습니다."
+  },
+  {
+    "q": "최신 IATA 항공유 146.93달러는 싱가포르 MOPS인가요?",
+    "a": "아닙니다. IATA 글로벌 항공유 주간 평균입니다."
+  },
+  {
+    "q": "현재 싱가포르 MOPS는 얼마인가요?",
+    "a": "8월 12일 특정 공개 무료자료에서 정확한 일별 값을 확인하기 어렵습니다. 146.93달러는 IATA 지표이고, 139.22달러는 7월 월평균 참고값입니다."
+  },
+  {
+    "q": "호르무즈 최신 통항량은 6척인가요?",
+    "a": "2026년 8월 10일 월요일 공개 선박 추적에서 6척이 확인됐다는 의미입니다. 8월 12일 당일 전체 통항량을 뜻하지 않습니다."
+  },
+  {
+    "q": "호르무즈가 곧 다시 열리나요?",
+    "a": "기술 협상은 계속되고 있지만 이란의 조건부 입장이 강화돼 전면 재개방은 아직 확정되지 않았습니다."
+  },
+  {
+    "q": "홍해 선박 공격에서 사망자가 발생했나요?",
+    "a": "예. Tihamah 공격으로 선원 4명과 구조대원 2명이 사망한 것으로 보도됐습니다."
+  },
+  {
+    "q": "미국이 상선을 공격했나요?",
+    "a": "미국은 걸프 오만에서 Vela Nova가 해상봉쇄를 위반했다며 Hellfire 미사일 2발을 발사했다고 보도됐습니다."
+  },
+  {
+    "q": "항공유는 내렸는데 왜 국제유가는 오르나요?",
+    "a": "IATA 항공유는 주간 글로벌 평균이고 Brent·WTI는 원유 시장 가격입니다. 현재 두 시장이 서로 다른 방향성을 보이고 있습니다."
+  },
+  {
+    "q": "9월 유류할증료가 오를 가능성이 높나요?",
+    "a": "항공유와 환율은 완화 요인이지만 국제유가와 해상운송 위험은 상승 요인입니다. 공식 산정 전에는 방향을 확정하기 어렵습니다."
+  }
+];
+  document.querySelectorAll('script[type="application/ld+json"]').forEach(function(node){
+    try {
+      var data = JSON.parse(node.textContent || '{}');
+      if (data && data['@type'] === 'FAQPage') {
+        data['@id'] = 'https://aero-surcharge.com/news.html#faq-20260812';
+        data.dateModified = '2026-08-12T09:30:00+09:00';
+        data.mainEntity = faqItems.map(function(item){ return {'@type':'Question', name:item.q, acceptedAnswer:{'@type':'Answer', text:item.a}}; });
+        node.textContent = JSON.stringify(data);
+      }
+    } catch(e) {}
+  });
+})();
+
 window.initNav({
   onLangChange:function(){
     /* _shared.js의 initNav 래퍼가 applyLanguage()를 먼저 실행 */
