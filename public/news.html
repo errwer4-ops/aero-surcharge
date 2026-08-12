@@ -13841,6 +13841,590 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
   });
 })();
 
+/* 2026.08.12 card-level i18n completion guard. */
+(function(){
+  var enCards = {
+    'hormuz-six-vessels-20260812': {
+      title: 'Hormuz public traffic falls to 6 vessels; 10-day average near 11',
+      aiBrief: 'Public vessel tracking showed 6 Hormuz transits on Monday, Aug 10.',
+      summary: 'Kpler-based public tracking showed 6 vessels through Hormuz on Monday, Aug 10: 4 entered the Gulf and 2 exited. The recent 10-day average is about 11, far below pre-war traffic around 130 to 140 a day. This is not Aug 12 same-day total traffic and AIS limits remain.',
+      impact: 'Full reopening is not confirmed; maritime risk remains elevated.',
+      tags: ['Hormuz','6 vessels','Kpler','AIS']
+    },
+    'tihamah-red-sea-attack-20260812': {
+      title: 'Red Sea vessel Tihamah attack reportedly kills 6 crew and rescuers',
+      aiBrief: 'Reports say 4 crew members and 2 rescuers were killed after the Tihamah attack.',
+      summary: 'The Egypt-owned cargo vessel Tihamah was attacked near Bab el-Mandeb. Reports say 4 crew members died, and 2 Yemeni rescuers were later killed after an additional attack during rescue work. Ten people including crew, coast guard and rescue personnel were reported injured.',
+      impact: 'Red Sea risk is now a real casualty event and remains an upside pressure for fuel and refined-product logistics.',
+      tags: ['Tihamah','Red Sea','Bab el-Mandeb','shipping risk']
+    },
+    'oil-close-20260811-20260812': {
+      title: 'Brent USD 88.91 and WTI USD 83.20 extend the crude rebound',
+      aiBrief: 'At the Aug 11 U.S. market close, Brent was USD 88.91 and WTI was USD 83.20.',
+      summary: 'Crude rose again as hopes for a full Hormuz reopening and a quick U.S.-Iran deal weakened. Brent closed at USD 88.91/bbl and WTI at USD 83.20/bbl. Aug 12 morning references around Brent USD 89.4 and WTI USD 83.7 are intraday references and are separated from closing prices.',
+      impact: 'Crude-side upside pressure partly offsets the jet-fuel relief signal.',
+      tags: ['Brent','WTI','market close','intraday']
+    },
+    'usd-krw-1414-20260812': {
+      title: 'USD/KRW near 1,414 keeps FX relief in place',
+      aiBrief: 'USD/KRW was around 1,414 near 2026.08.12 09:30 KST.',
+      summary: 'USD/KRW moved down from around 1,418 yesterday to around 1,414. Compared with the mid-July area near 1,480, stronger KRW still reduces the KRW conversion burden for dollar-based jet fuel costs.',
+      impact: 'FX remains an easing factor that can restrain September surcharge upside.',
+      tags: ['USD/KRW','FX','1,414']
+    },
+    'iran-hormuz-policy-20260812': {
+      title: 'Iran hardens stance against reopening Hormuz before U.S. policy changes',
+      aiBrief: 'Iran reiterated that Hormuz would not reopen until U.S. policy changes and Iranian demands are addressed.',
+      summary: 'Iran-Oman technical talks continue, but Iran has reinforced its position that Hormuz will not be reopened until U.S. policy and behavior change and Iran-side demands are accepted. Technical progress does not automatically mean full commercial vessel normalization.',
+      impact: 'Hormuz risk is not resolved, keeping a logistics premium in crude and refined products.',
+      tags: ['Iran','Hormuz','talks','reopening']
+    },
+    'vela-nova-us-blockade-20260812': {
+      title: 'U.S. fires missiles at Vela Nova in Gulf of Oman blockade action',
+      aiBrief: 'The U.S. reportedly fired two Hellfire missiles at Vela Nova over an alleged blockade violation.',
+      summary: 'U.S. Central Command said the Panama-flagged container ship Vela Nova was heading toward an Iranian port in violation of the maritime blockade and that two Hellfire missiles disabled its steering. This is a Gulf of Oman access-route incident, not an inside-Hormuz traffic data point.',
+      impact: 'Shipping risk now includes U.S. blockade enforcement in addition to Iran and Houthi attack risk.',
+      tags: ['Vela Nova','Hellfire','Gulf of Oman','blockade']
+    },
+    'iata-jetfuel-14693-20260812': {
+      title: 'IATA global jet fuel stays at USD 146.93, down 7.5% weekly',
+      aiBrief: 'IATA global weekly jet fuel is USD 146.93/bbl, down 7.5% week on week.',
+      summary: 'IATA global weekly jet fuel is USD 146.93/bbl, down 7.5% week on week. This is a jet-fuel-side easing signal, but it is not a Singapore MOPS daily value or the September calculation average.',
+      impact: 'Jet fuel relief remains, but the September stage and amount are not confirmed.',
+      tags: ['IATA','jet fuel','146.93','MOPS distinction']
+    },
+    'libya-russia-supply-risk-20260812': {
+      title: 'Libya and Russia energy-site reports add auxiliary supply risk',
+      aiBrief: 'Reports on Libya Zawiya and Russia Orsk are treated as auxiliary supply-risk variables.',
+      summary: 'Additional supply-risk variables emerged outside the Middle East. Libya warned of possible force majeure if attacks on Zawiya-area energy facilities continue, while Ukraine announced an attack on Russia’s Orsk refinery. These are not MOPS values; they are auxiliary global crude and refined-product supply risks.',
+      impact: 'These factors can add a supply premium outside the Hormuz channel.',
+      tags: ['Libya','Russia','refinery','supply risk']
+    },
+    'iata-jetfuel-14693-20260811': {
+      tags: ['IATA','jet fuel','146.93','surcharge outlook']
+    },
+    'oil-close-20260810-20260811': {
+      tags: ['Brent','WTI','market close','Hormuz']
+    }
+  };
+  var titleOnly = {
+    ja: {
+      'hormuz-six-vessels-20260812': { title:'ホルムズ最新公開通航は6隻、10日平均は約11隻', tags:['ホルムズ','6隻','Kpler','AIS'] },
+      'tihamah-red-sea-attack-20260812': { title:'紅海のTihamah攻撃、船員・救助隊員6人死亡と報道', tags:['Tihamah','紅海','バブエルマンデブ','海上リスク'] },
+      'oil-close-20260811-20260812': { title:'Brent 88.91ドル、WTI 83.20ドルで原油反発が継続', tags:['Brent','WTI','終値','日中参考'] },
+      'usd-krw-1414-20260812': { title:'USD/KRW約1,414、為替緩和効果は維持', tags:['USD/KRW','為替','1,414'] },
+      'iran-hormuz-policy-20260812': { title:'イラン、米政策変更までホルムズ再開拒否姿勢を強化', tags:['イラン','ホルムズ','協議','再開'] },
+      'vela-nova-us-blockade-20260812': { title:'米国、オマーン湾のVela Novaにミサイル攻撃', tags:['Vela Nova','Hellfire','オマーン湾','封鎖'] },
+      'iata-jetfuel-14693-20260812': { title:'IATA航空燃料146.93ドル、週次7.5%下落シグナル維持', tags:['IATA','航空燃料','146.93','MOPS区分'] },
+      'libya-russia-supply-risk-20260812': { title:'リビア・ロシアのエネルギー施設報道が補助供給リスクに', tags:['リビア','ロシア','製油所','供給リスク'] }
+    },
+    zh: {
+      'hormuz-six-vessels-20260812': { title:'霍尔木兹最新公开通行6艘，10日均值约11艘', tags:['霍尔木兹','6艘','Kpler','AIS'] },
+      'tihamah-red-sea-attack-20260812': { title:'红海Tihamah遇袭，据报船员和救援人员6人死亡', tags:['Tihamah','红海','曼德海峡','航运风险'] },
+      'oil-close-20260811-20260812': { title:'Brent 88.91美元、WTI 83.20美元，原油反弹延续', tags:['Brent','WTI','收盘','盘中参考'] },
+      'usd-krw-1414-20260812': { title:'USD/KRW约1,414，汇率缓和效果维持', tags:['USD/KRW','汇率','1,414'] },
+      'iran-hormuz-policy-20260812': { title:'伊朗强化立场：美国政策改变前拒绝重开霍尔木兹', tags:['伊朗','霍尔木兹','谈判','重开'] },
+      'vela-nova-us-blockade-20260812': { title:'美国在阿曼湾对Vela Nova发射导弹', tags:['Vela Nova','Hellfire','阿曼湾','封锁'] },
+      'iata-jetfuel-14693-20260812': { title:'IATA全球航油146.93美元，周跌7.5%信号延续', tags:['IATA','航油','146.93','MOPS区分'] },
+      'libya-russia-supply-risk-20260812': { title:'利比亚和俄罗斯能源设施报道增加辅助供应风险', tags:['利比亚','俄罗斯','炼厂','供应风险'] }
+    },
+    fr: {
+      'hormuz-six-vessels-20260812': { title:'Ormuz: 6 navires dans les données publiques, moyenne 10 jours près de 11', tags:['Ormuz','6 navires','Kpler','AIS'] },
+      'tihamah-red-sea-attack-20260812': { title:'Attaque du Tihamah en mer Rouge: 6 morts rapportés', tags:['Tihamah','mer Rouge','Bab el-Mandeb','risque maritime'] },
+      'oil-close-20260811-20260812': { title:'Brent 88,91 USD et WTI 83,20 USD: le rebond du brut continue', tags:['Brent','WTI','clôture','intraday'] },
+      'usd-krw-1414-20260812': { title:'USD/KRW près de 1,414: détente FX maintenue', tags:['USD/KRW','change','1,414'] },
+      'iran-hormuz-policy-20260812': { title:'L’Iran durcit sa position sur la réouverture d’Ormuz', tags:['Iran','Ormuz','discussions','réouverture'] },
+      'vela-nova-us-blockade-20260812': { title:'Les États-Unis tirent sur le Vela Nova dans le golfe d’Oman', tags:['Vela Nova','Hellfire','golfe d’Oman','blocus'] },
+      'iata-jetfuel-14693-20260812': { title:'Jet fuel IATA à 146,93 USD, signal de baisse hebdomadaire de 7,5%', tags:['IATA','jet fuel','146.93','MOPS distinct'] },
+      'libya-russia-supply-risk-20260812': { title:'Libye et Russie ajoutent un risque d’offre auxiliaire', tags:['Libye','Russie','raffinerie','risque d’offre'] }
+    },
+    de: {
+      'hormuz-six-vessels-20260812': { title:'Hormus: 6 Schiffe in öffentlichen Daten, 10-Tage-Schnitt etwa 11', tags:['Hormus','6 Schiffe','Kpler','AIS'] },
+      'tihamah-red-sea-attack-20260812': { title:'Angriff auf Tihamah im Roten Meer: 6 Tote gemeldet', tags:['Tihamah','Rotes Meer','Bab el-Mandeb','Schifffahrtsrisiko'] },
+      'oil-close-20260811-20260812': { title:'Brent 88,91 USD und WTI 83,20 USD: Rohöl-Rebound hält an', tags:['Brent','WTI','Schlusskurs','intraday'] },
+      'usd-krw-1414-20260812': { title:'USD/KRW nahe 1,414: FX-Entlastung bleibt', tags:['USD/KRW','FX','1,414'] },
+      'iran-hormuz-policy-20260812': { title:'Iran verschärft Haltung gegen Hormus-Wiederöffnung', tags:['Iran','Hormus','Gespräche','Wiederöffnung'] },
+      'vela-nova-us-blockade-20260812': { title:'USA feuern im Golf von Oman auf Vela Nova', tags:['Vela Nova','Hellfire','Golf von Oman','Blockade'] },
+      'iata-jetfuel-14693-20260812': { title:'IATA-Jetfuel bei 146,93 USD, Wochensignal -7,5%', tags:['IATA','Jetfuel','146.93','MOPS getrennt'] },
+      'libya-russia-supply-risk-20260812': { title:'Libyen und Russland melden zusätzliche Angebotsrisiken', tags:['Libyen','Russland','Raffinerie','Angebotsrisiko'] }
+    }
+  };
+  function applyCard(card){
+    if(!card || !card.id) return;
+    card.i18n = card.i18n || {};
+    if(enCards[card.id]) card.i18n.en = Object.assign({}, card.i18n.en || {}, enCards[card.id]);
+    ['ja','zh','fr','de'].forEach(function(lang){
+      if(enCards[card.id] || (titleOnly[lang] && titleOnly[lang][card.id])){
+        card.i18n[lang] = Object.assign({}, card.i18n.en || {}, titleOnly[lang] && titleOnly[lang][card.id]);
+      }
+    });
+  }
+  (window.AERO_NEWS_CARDS_20260812 || []).forEach(applyCard);
+  (window.AERO_NEWS_CARDS_20260811 || []).forEach(applyCard);
+  (FIXED_NEWS || []).forEach(applyCard);
+})();
+
+/* 2026.08.12 full non-English section/card i18n guard. */
+(function(){
+  var pageI18n = {
+  "ja": {
+    "news.metaTitle": "2026年8月燃油サーチャージ・9月見通しニュース | 8月12日為替・MOPS・ホルムズ",
+    "news.metaDesc": "2026年8月12日時点の国際線燃油サーチャージと9月見通しを、為替、MOPS、IATA航空燃料、原油、ホルムズ通航、紅海船舶攻撃で整理します。",
+    "news.pageTitle": "2026年8月燃油サーチャージと9月見通しニュース",
+    "news.pageSub": "2026.08.12 09:30 KST時点 · 8月14段階適用中 · USD/KRW約1,414 · IATA航空燃料146.93ドル(-7.5%) · Brent 88.91ドル · WTI 83.20ドル · ホルムズ公開通航6隻",
+    "news.summary.updated": "2026.08.12 09:30 KST時点 · 8月14段階適用中 · 9月は公式発表前",
+    "news.summary.title": "2026年8月燃油サーチャージと9月見通し要約",
+    "news.summary.li1": "2026年8月の韓国発国際線燃油サーチャージは14段階で適用中です。",
+    "news.summary.li2": "2026年9月の段階と航空会社別金額はまだ公式発表されていません。",
+    "news.summary.li3": "USD/KRWは約1,414で、前日の1,418より低く、為替面の緩和効果が維持されています。",
+    "news.summary.li4": "8月旅客算定MOPSは119.06ドル/bbl、283.48 cents/galです。",
+    "news.summary.li5": "7月シンガポール航空燃料月平均139.22ドルは参考値で、9月算定平均ではありません。",
+    "news.summary.li6": "IATAグローバル航空燃料146.93ドルは週間平均であり、シンガポールMOPSではありません。",
+    "news.summary.li7": "Brent 88.91ドルとWTI 83.20ドルは2026年8月11日の米国市場終値です。",
+    "news.summary.li8": "ホルムズ公開通航6隻は8月10日の追跡値で、8月12日当日の全通航量ではありません。",
+    "news.summary.li9": "Tihamah攻撃とVela Nova事案で、紅海とオマーン湾の海上輸送リスクが高まりました。",
+    "news.summary.li10": "現在の判断は、航空燃料・為替の緩和継続、原油上昇圧力拡大、ホルムズ・紅海リスク深刻化です。",
+    "news.dataRef": "2026.08.12 09:30 KST時点 · 8月14段階適用中 · 9月公式発表前",
+    "news.marketTitle": "8月12日市場ブリーフ: 航空燃料・為替緩和と原油・海上輸送リスク",
+    "news.brent": "原油: 2026年8月11日の米国市場終値でBrentは88.91ドル/bbl(+1.4%)、WTIは83.20ドル/bbl(+1.3%)です。8月12日午前の参考値は終値と区別します。",
+    "news.mops": "航空燃料: 8月MOPS 119.06ドル、7月シンガポール航空燃料月平均139.22ドル、IATAグローバル航空燃料146.93ドルは別々の指標です。",
+    "news.fx": "為替: 2026.08.12 09:30 KST前後のUSD/KRWは約1,414です。",
+    "news.geo": "ホルムズ: 最新公開定量データは8月10日月曜日6隻、直近10日平均約11隻です。8月12日当日の全通航量や全面再開とは表現しません。",
+    "news.marketSummary": "9月見通しは混合状態です。航空燃料と為替は緩和要因ですが、原油上昇とホルムズ・紅海の海上輸送リスクが強まっています。",
+    "news.fxDominance": "主要状況: 2026.08.12 09:30 KST · 8月14段階 · USD/KRW約1,414 · 8月MOPS 119.06ドル · 7月航空燃料139.22ドル · IATA 146.93ドル · Brent 88.91ドル · WTI 83.20ドル",
+    "news.decisionTitle": "結論: 8月14段階は適用中、9月は緩和要因と海上輸送リスクが対立",
+    "news.decisionLine1": "→ 2026年8月の韓国発国際線燃油サーチャージは14段階で確定・適用中です。",
+    "news.decisionLine2": "→ 9月の段階と金額はまだ確定しません。航空燃料と為替は緩和要因ですが、原油上昇、ホルムズ制限通航、紅海攻撃、米国の封鎖執行リスクが残ります。"
+  },
+  "zh": {
+    "news.metaTitle": "2026年8月燃油附加费与9月展望新闻 | 8月12日汇率、MOPS与霍尔木兹",
+    "news.metaDesc": "截至2026年8月12日，按汇率、MOPS、IATA航油、国际油价、霍尔木兹通行、红海船舶袭击和海运风险整理国际线燃油附加费与9月展望。",
+    "news.pageTitle": "2026年8月燃油附加费与9月展望新闻",
+    "news.pageSub": "截至2026.08.12 09:30 KST · 8月第14档执行中 · USD/KRW约1,414 · IATA航油146.93美元(-7.5%) · Brent 88.91美元 · WTI 83.20美元 · 霍尔木兹公开通行6艘",
+    "news.summary.updated": "截至2026.08.12 09:30 KST · 8月第14档执行中 · 9月尚未官方公布",
+    "news.summary.title": "2026年8月燃油附加费与9月展望摘要",
+    "news.summary.li1": "2026年8月韩国出发国际线燃油附加费正在按第14档执行。",
+    "news.summary.li2": "2026年9月档位和各航司金额尚未正式公布。",
+    "news.summary.li3": "USD/KRW约1,414，低于前日1,418，汇率缓和效果仍在。",
+    "news.summary.li4": "8月旅客计算MOPS为119.06美元/bbl、283.48 cents/gal。",
+    "news.summary.li5": "7月新加坡航油月均139.22美元是参考值，不是9月计算平均值。",
+    "news.summary.li6": "IATA全球航油146.93美元是周均值，不是新加坡MOPS。",
+    "news.summary.li7": "Brent 88.91美元和WTI 83.20美元是2026年8月11日美国市场收盘价。",
+    "news.summary.li8": "霍尔木兹公开通行6艘是8月10日追踪值，不是8月12日当天全部通行量。",
+    "news.summary.li9": "Tihamah袭击和Vela Nova事件使红海和阿曼湾海运风险上升。",
+    "news.summary.li10": "当前判断是航油和汇率缓和仍在，原油上行压力扩大，霍尔木兹和红海风险加深。",
+    "news.dataRef": "截至2026.08.12 09:30 KST · 8月第14档执行中 · 9月尚未官方公布",
+    "news.marketTitle": "8月12日市场简报：航油/汇率缓和与原油/海运风险冲突",
+    "news.brent": "国际油价：按2026年8月11日美国市场收盘，Brent为88.91美元/bbl(+1.4%)，WTI为83.20美元/bbl(+1.3%)。8月12日上午参考价与收盘价分开显示。",
+    "news.mops": "航油：8月MOPS 119.06美元、7月新加坡航油月均139.22美元、IATA全球航油146.93美元是不同指标。",
+    "news.fx": "汇率：2026.08.12 09:30 KST前后USD/KRW约1,414。",
+    "news.geo": "霍尔木兹：最新公开定量数据为8月10日周一6艘，近10日均值约11艘。不得表述为8月12日当天全部通行量或全面重开。",
+    "news.marketSummary": "9月展望仍是混合局面：航油和汇率是缓和因素，但原油上行和霍尔木兹/红海海运风险正在加深。",
+    "news.fxDominance": "关键状态：2026.08.12 09:30 KST · 8月第14档 · USD/KRW约1,414 · 8月MOPS 119.06美元 · 7月航油139.22美元 · IATA 146.93美元 · Brent 88.91美元 · WTI 83.20美元",
+    "news.decisionTitle": "结论：8月第14档执行中，9月处于缓和因素与海运风险拉扯阶段",
+    "news.decisionLine1": "→ 2026年8月韩国出发国际线燃油附加费已确认为第14档并正在执行。",
+    "news.decisionLine2": "→ 9月档位和金额尚未确认。航油和汇率是缓和因素，但原油上涨、霍尔木兹受限通行、红海袭击和美国封锁执行风险仍在。"
+  },
+  "fr": {
+    "news.metaTitle": "Surtaxe carburant d'août 2026 et perspectives de septembre | FX, MOPS et Ormuz au 12 août",
+    "news.metaDesc": "Au 12 août 2026, cette page résume surtaxe carburant, FX, MOPS, jet fuel IATA, brut, trafic d'Ormuz, attaque en mer Rouge et risque maritime.",
+    "news.pageTitle": "Actualités sur la surtaxe carburant d'août 2026 et les perspectives de septembre",
+    "news.pageSub": "Au 2026.08.12 09:30 KST · août niveau 14 appliqué · USD/KRW env. 1,414 · jet IATA 146,93 USD(-7,5%) · Brent 88,91 USD · WTI 83,20 USD · Ormuz 6 navires",
+    "news.summary.updated": "Au 2026.08.12 09:30 KST · niveau 14 appliqué en août · septembre avant annonce officielle",
+    "news.summary.title": "Résumé de la surtaxe d'août 2026 et des perspectives de septembre",
+    "news.summary.li1": "La surtaxe internationale au départ de Corée pour août 2026 est appliquée au niveau 14.",
+    "news.summary.li2": "Le niveau et les montants par compagnie pour septembre 2026 ne sont pas encore annoncés.",
+    "news.summary.li3": "L'USD/KRW est autour de 1,414, inférieur aux 1,418 de la veille, ce qui maintient la détente FX.",
+    "news.summary.li4": "Le MOPS passager d'août est de 119,06 USD/bbl et 283,48 cents/gal.",
+    "news.summary.li5": "La moyenne mensuelle de juillet à Singapour, 139,22 USD, est une référence, pas la moyenne de calcul de septembre.",
+    "news.summary.li6": "Le jet fuel mondial IATA à 146,93 USD est une moyenne hebdomadaire, pas le MOPS de Singapour.",
+    "news.summary.li7": "Brent 88,91 USD et WTI 83,20 USD sont les clôtures américaines du 11 août 2026.",
+    "news.summary.li8": "Les 6 navires à Ormuz sont une valeur suivie le 10 août, pas le trafic total du 12 août.",
+    "news.summary.li9": "L'attaque du Tihamah et l'incident Vela Nova accroissent le risque maritime en mer Rouge et dans le golfe d'Oman.",
+    "news.summary.li10": "Lecture actuelle : détente jet fuel/FX maintenue, pression haussière du brut accrue, risques Ormuz/mer Rouge renforcés.",
+    "news.dataRef": "Au 2026.08.12 09:30 KST · août niveau 14 appliqué · septembre avant annonce officielle",
+    "news.marketTitle": "Brief marché du 12 août : détente jet fuel/FX contre brut et risque maritime",
+    "news.brent": "Pétrole : à la clôture américaine du 11 août 2026, Brent valait 88,91 USD/bbl (+1,4%) et WTI 83,20 USD/bbl (+1,3%). Les références du matin du 12 août sont séparées des clôtures.",
+    "news.mops": "Jet fuel : MOPS d'août 119,06 USD, moyenne Singapour de juillet 139,22 USD et IATA mondial 146,93 USD sont des indicateurs distincts.",
+    "news.fx": "Change : l'USD/KRW est autour de 1,414 près du 2026.08.12 09:30 KST.",
+    "news.geo": "Ormuz : les dernières données publiques sont 6 navires le lundi 10 août et une moyenne 10 jours près de 11. Ce n'est ni le trafic total du 12 août ni une réouverture complète.",
+    "news.marketSummary": "Les perspectives de septembre restent mixtes : jet fuel et change détendent, mais brut et risques Ormuz/mer Rouge montent.",
+    "news.fxDominance": "État clé : 2026.08.12 09:30 KST · août niveau 14 · USD/KRW env. 1,414 · MOPS août 119,06 USD · jet juillet 139,22 USD · IATA 146,93 USD · Brent 88,91 USD · WTI 83,20 USD",
+    "news.decisionTitle": "Conclusion : août niveau 14 appliqué; septembre oppose détente et risque maritime",
+    "news.decisionLine1": "→ La surtaxe internationale au départ de Corée pour août 2026 est confirmée au niveau 14.",
+    "news.decisionLine2": "→ Ne pas confirmer le niveau ni le montant de septembre. Jet fuel et change détendent, mais brut, Ormuz, mer Rouge et risque de blocus américain demeurent."
+  },
+  "de": {
+    "news.metaTitle": "Treibstoffzuschlag August 2026 und September-Ausblick | FX, MOPS und Hormus am 12. August",
+    "news.metaDesc": "Stand 12. August 2026: Treibstoffzuschlag, FX, MOPS, IATA-Jetfuel, Rohöl, Hormus-Verkehr, Rotes Meer und maritime Risiken.",
+    "news.pageTitle": "Nachrichten zum Treibstoffzuschlag August 2026 und September-Ausblick",
+    "news.pageSub": "Stand 2026.08.12 09:30 KST · August Stufe 14 in Kraft · USD/KRW ca. 1,414 · IATA-Jetfuel 146,93 USD(-7,5%) · Brent 88,91 USD · WTI 83,20 USD · Hormus 6 Schiffe",
+    "news.summary.updated": "Stand 2026.08.12 09:30 KST · August Stufe 14 in Kraft · September vor offizieller Veröffentlichung",
+    "news.summary.title": "Zusammenfassung: August 2026 Treibstoffzuschlag und September-Ausblick",
+    "news.summary.li1": "Der internationale Treibstoffzuschlag ab Korea für August 2026 gilt auf Stufe 14.",
+    "news.summary.li2": "September-Stufe und airline-spezifische Beträge sind noch nicht offiziell veröffentlicht.",
+    "news.summary.li3": "USD/KRW liegt bei etwa 1,414, unter 1,418 am Vortag; die FX-Entlastung bleibt bestehen.",
+    "news.summary.li4": "Der August-Passagier-MOPS liegt bei 119,06 USD/bbl und 283,48 cents/gal.",
+    "news.summary.li5": "Der Juli-Singapore-Jetfuel-Monatsdurchschnitt von 139,22 USD ist Referenz, nicht September-Durchschnitt.",
+    "news.summary.li6": "IATA Global Jet Fuel von 146,93 USD ist ein Wochendurchschnitt, kein Singapore MOPS.",
+    "news.summary.li7": "Brent 88,91 USD und WTI 83,20 USD sind US-Schlusskurse vom 11. August 2026.",
+    "news.summary.li8": "Die 6 Hormus-Schiffe sind ein Tracking-Wert vom 10. August, nicht der gesamte Verkehr am 12. August.",
+    "news.summary.li9": "Tihamah und Vela Nova erhöhen das maritime Risiko im Roten Meer und Golf von Oman.",
+    "news.summary.li10": "Aktuelle Sicht: Jetfuel/FX-Entlastung bleibt, Rohöl-Aufwärtsdruck wächst, Hormus-/Rotes-Meer-Risiken steigen.",
+    "news.dataRef": "Stand 2026.08.12 09:30 KST · August Stufe 14 in Kraft · September vor offizieller Veröffentlichung",
+    "news.marketTitle": "Marktbriefing 12. August: Jetfuel/FX-Entlastung gegen Rohöl und Schifffahrtsrisiko",
+    "news.brent": "Öl: Zum US-Schluss am 11. August 2026 lag Brent bei 88,91 USD/bbl (+1,4%) und WTI bei 83,20 USD/bbl (+1,3%). Morgenreferenzen vom 12. August sind von Schlusskursen getrennt.",
+    "news.mops": "Jetfuel: August-MOPS 119,06 USD, Juli-Singapore-Jetfuel 139,22 USD und IATA global 146,93 USD sind unterschiedliche Kennzahlen.",
+    "news.fx": "FX: USD/KRW liegt nahe 2026.08.12 09:30 KST bei etwa 1,414.",
+    "news.geo": "Hormus: Neueste öffentliche Daten zeigen 6 Schiffe am Montag, 10. August, und einen 10-Tage-Schnitt nahe 11. Nicht als Verkehr am 12. August oder vollständige Wiederöffnung darstellen.",
+    "news.marketSummary": "Der September-Ausblick bleibt gemischt: Jetfuel und FX entlasten, Rohöl und Hormus-/Rotes-Meer-Risiken steigen.",
+    "news.fxDominance": "Kernstand: 2026.08.12 09:30 KST · August Stufe 14 · USD/KRW ca. 1,414 · August-MOPS 119,06 USD · Juli-Jetfuel 139,22 USD · IATA 146,93 USD · Brent 88,91 USD · WTI 83,20 USD",
+    "news.decisionTitle": "Fazit: August Stufe 14 gilt; September balanciert Entlastung und maritime Risiken",
+    "news.decisionLine1": "→ Der internationale Treibstoffzuschlag ab Korea für August 2026 ist auf Stufe 14 bestätigt.",
+    "news.decisionLine2": "→ September-Stufe und Betrag nicht bestätigen. Jetfuel und FX entlasten, aber Rohöl, Hormus, Rotes Meer und US-Blockade-Risiko bleiben."
+  }
+};
+  Object.keys(pageI18n).forEach(function(lang){
+    window.PAGE_I18N_OVERRIDE = window.PAGE_I18N_OVERRIDE || {};
+    window.PAGE_I18N_OVERRIDE[lang] = Object.assign({}, window.PAGE_I18N_OVERRIDE[lang] || {}, pageI18n[lang]);
+    if(window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], pageI18n[lang]);
+  });
+  var cardBase = {
+  "ja": {
+    "hormuz-six-vessels-20260812": [
+      "ホルムズ最新公開通航は6隻、10日平均は約11隻",
+      "8月10日月曜日の公開船舶追跡でホルムズ通航6隻が確認されました。",
+      "Kplerベースの公開追跡では、8月10日月曜日のホルムズ通航は6隻でした。4隻が湾岸へ入り、2隻が出ました。直近10日平均は約11隻で、戦前の1日130〜140隻を大きく下回ります。これは8月12日当日の全通航量ではなく、AIS上の制約も残ります。",
+      "全面再開は未確認で、海上輸送リスクは高い状態です。",
+      [
+        "ホルムズ",
+        "6隻",
+        "Kpler",
+        "AIS"
+      ]
+    ],
+    "tihamah-red-sea-attack-20260812": [
+      "紅海のTihamah攻撃、船員・救助隊員6人死亡と報道",
+      "Tihamah攻撃で船員4人と救助隊員2人が死亡したと報じられています。",
+      "エジプト所有貨物船Tihamahがバブエルマンデブ付近で攻撃されました。船員4人が死亡し、救助作業中の追加攻撃でイエメン救助隊員2人も死亡したと報じられています。船員、沿岸警備、救助関係者を含む10人が負傷しました。",
+      "紅海リスクは実際の死傷者を伴う段階となり、燃料・精製品物流の上昇圧力です。",
+      [
+        "Tihamah",
+        "紅海",
+        "バブエルマンデブ",
+        "海上リスク"
+      ]
+    ],
+    "oil-close-20260811-20260812": [
+      "Brent 88.91ドル、WTI 83.20ドルで原油反発が継続",
+      "8月11日の米国市場終値でBrentは88.91ドル、WTIは83.20ドルです。",
+      "ホルムズ全面再開と米イラン合意への期待が弱まり、原油は再び上昇しました。Brentは88.91ドル/bbl、WTIは83.20ドル/bblで終了しました。8月12日午前のBrent約89.4ドル、WTI約83.7ドルは日中参考値で、終値とは区別します。",
+      "原油側の上昇圧力が航空燃料の緩和シグナルを一部相殺します。",
+      [
+        "Brent",
+        "WTI",
+        "終値",
+        "日中参考"
+      ]
+    ],
+    "usd-krw-1414-20260812": [
+      "USD/KRW約1,414、為替緩和効果は維持",
+      "2026.08.12 09:30 KST前後のUSD/KRWは約1,414です。",
+      "USD/KRWは前日の約1,418から約1,414へ低下しました。7月中旬の1,480付近と比べると、ウォン高によりドル建て航空燃料費のウォン換算負担はなお軽くなっています。",
+      "為替は9月サーチャージの上昇を抑える緩和要因です。",
+      [
+        "USD/KRW",
+        "為替",
+        "1,414"
+      ]
+    ],
+    "iran-hormuz-policy-20260812": [
+      "イラン、米政策変更までホルムズ再開拒否姿勢を強化",
+      "イランは米国の政策変更と要求受け入れまでホルムズを再開しない姿勢を再確認しました。",
+      "イラン・オマーン技術協議は続いていますが、イランは米国の政策と行動の変更、イラン側要求の受け入れまでホルムズを開かない姿勢を強めました。技術的進展は商業船の全面正常化を意味しません。",
+      "ホルムズリスクは解消されず、原油・製品物流のプレミアムが残ります。",
+      [
+        "イラン",
+        "ホルムズ",
+        "協議",
+        "再開"
+      ]
+    ],
+    "vela-nova-us-blockade-20260812": [
+      "米国、オマーン湾のVela Novaにミサイル攻撃",
+      "米国は封鎖違反を理由にVela NovaへHellfireミサイル2発を発射したと報じられています。",
+      "米中央軍は、パナマ船籍コンテナ船Vela Novaが海上封鎖に違反してイラン港へ向かったとして、Hellfireミサイル2発で操舵装置を無力化したと述べました。これはホルムズ内部通航データではなく、オマーン湾の接近航路での封鎖執行事例です。",
+      "海上輸送リスクにはイラン・フーシ派攻撃に加え、米国の封鎖執行リスクも含まれます。",
+      [
+        "Vela Nova",
+        "Hellfire",
+        "オマーン湾",
+        "封鎖"
+      ]
+    ],
+    "iata-jetfuel-14693-20260812": [
+      "IATA航空燃料146.93ドル、週次7.5%下落シグナル維持",
+      "IATAの週間グローバル航空燃料は146.93ドル/bbl、前週比7.5%下落です。",
+      "IATAグローバル航空燃料の週間平均は146.93ドル/bblで、前週比7.5%下落しました。これは航空燃料側の緩和シグナルですが、シンガポールMOPSの日次値や9月算定平均ではありません。",
+      "航空燃料緩和は残りますが、9月段階と金額は未確定です。",
+      [
+        "IATA",
+        "航空燃料",
+        "146.93",
+        "MOPS区分"
+      ]
+    ],
+    "libya-russia-supply-risk-20260812": [
+      "リビア・ロシアのエネルギー施設報道が補助供給リスクに",
+      "リビアZawiyaとロシアOrskの報道は補助的な供給リスクとして扱います。",
+      "中東以外でも供給リスクが出ています。リビアはZawiya周辺施設への攻撃継続時に不可抗力宣言の可能性を警告し、ウクライナはロシアOrsk製油所への攻撃を発表しました。これはMOPS値ではなく、世界の原油・精製品供給の補助リスクです。",
+      "ホルムズ以外でも供給プレミアムを高め得る要因です。",
+      [
+        "リビア",
+        "ロシア",
+        "製油所",
+        "供給リスク"
+      ]
+    ]
+  },
+  "zh": {
+    "hormuz-six-vessels-20260812": [
+      "霍尔木兹最新公开通行6艘，10日均值约11艘",
+      "8月10日周一公开船舶追踪显示霍尔木兹通行6艘。",
+      "基于Kpler的公开追踪显示，8月10日周一霍尔木兹通行6艘：4艘进入海湾、2艘驶出。近10日均值约11艘，远低于战前每日130至140艘水平。这不是8月12日当天全部通行量，AIS限制仍需说明。",
+      "全面重开尚未确认，海运风险仍处高位。",
+      [
+        "霍尔木兹",
+        "6艘",
+        "Kpler",
+        "AIS"
+      ]
+    ],
+    "tihamah-red-sea-attack-20260812": [
+      "红海Tihamah遇袭，据报船员和救援人员6人死亡",
+      "据报Tihamah袭击造成4名船员和2名救援人员死亡。",
+      "埃及所有货船Tihamah在曼德海峡附近遇袭。据报4名船员死亡，救援过程中再次遭袭导致2名也门救援人员死亡。包括船员、海岸警卫和救援人员在内共有10人受伤。",
+      "红海风险已进入实际人员伤亡阶段，并对燃料和成品油物流形成上行压力。",
+      [
+        "Tihamah",
+        "红海",
+        "曼德海峡",
+        "航运风险"
+      ]
+    ],
+    "oil-close-20260811-20260812": [
+      "Brent 88.91美元、WTI 83.20美元，原油反弹延续",
+      "8月11日美国市场收盘，Brent为88.91美元，WTI为83.20美元。",
+      "随着霍尔木兹全面重开和美伊快速协议的希望减弱，原油再次上涨。Brent收于88.91美元/bbl，WTI收于83.20美元/bbl。8月12日上午Brent约89.4美元、WTI约83.7美元为盘中参考价，需与收盘价分开。",
+      "原油端上行压力部分抵消航油缓和信号。",
+      [
+        "Brent",
+        "WTI",
+        "收盘",
+        "盘中参考"
+      ]
+    ],
+    "usd-krw-1414-20260812": [
+      "USD/KRW约1,414，汇率缓和效果维持",
+      "2026.08.12 09:30 KST前后USD/KRW约1,414。",
+      "USD/KRW从前日约1,418降至约1,414。与7月中旬约1,480相比，韩元走强仍可降低美元计价航油成本的韩元折算负担。",
+      "汇率仍是抑制9月燃油附加费上行的缓和因素。",
+      [
+        "USD/KRW",
+        "汇率",
+        "1,414"
+      ]
+    ],
+    "iran-hormuz-policy-20260812": [
+      "伊朗强化立场：美国政策改变前拒绝重开霍尔木兹",
+      "伊朗重申，在美国政策改变并满足伊朗要求前，不会重开霍尔木兹。",
+      "伊朗和阿曼技术谈判仍在继续，但伊朗强化了立场：除非美国政策和行动改变并接受伊朗方面要求，否则不会重新开放霍尔木兹。技术进展不等于商业船舶全面恢复正常通行。",
+      "霍尔木兹风险尚未解决，原油和成品油物流溢价仍在。",
+      [
+        "伊朗",
+        "霍尔木兹",
+        "谈判",
+        "重开"
+      ]
+    ],
+    "vela-nova-us-blockade-20260812": [
+      "美国在阿曼湾对Vela Nova发射导弹",
+      "据报美国以违反海上封锁为由，向Vela Nova发射两枚Hellfire导弹。",
+      "美国中央司令部称，巴拿马籍集装箱船Vela Nova涉嫌违反海上封锁并驶向伊朗港口，因此以两枚Hellfire导弹使其转向装置失效。该事件发生在阿曼湾接近航道，不是霍尔木兹内部通行数据。",
+      "当前海运风险不仅包括伊朗和胡塞袭击，也包括美国封锁执行风险。",
+      [
+        "Vela Nova",
+        "Hellfire",
+        "阿曼湾",
+        "封锁"
+      ]
+    ],
+    "iata-jetfuel-14693-20260812": [
+      "IATA全球航油146.93美元，周跌7.5%信号延续",
+      "IATA全球周均航油为146.93美元/bbl，周环比下降7.5%。",
+      "IATA全球航油周均值为146.93美元/bbl，周环比下降7.5%。这是航油端缓和信号，但不是新加坡MOPS日值，也不是9月计算平均值。",
+      "航油缓和仍在，但9月档位和金额尚未确认。",
+      [
+        "IATA",
+        "航油",
+        "146.93",
+        "MOPS区分"
+      ]
+    ],
+    "libya-russia-supply-risk-20260812": [
+      "利比亚和俄罗斯能源设施报道增加辅助供应风险",
+      "利比亚Zawiya和俄罗斯Orsk相关报道作为辅助供应风险处理。",
+      "中东以外也出现供应风险变量。利比亚警告称，如果Zawiya地区能源设施袭击持续，可能宣布不可抗力；乌克兰则宣布袭击俄罗斯Orsk炼厂。这些不是MOPS数值，而是全球原油和成品油供应的辅助风险。",
+      "这些因素可能在霍尔木兹以外增加供应溢价。",
+      [
+        "利比亚",
+        "俄罗斯",
+        "炼厂",
+        "供应风险"
+      ]
+    ]
+  }
+};
+  var enFallback = {
+    fr: {
+      'hormuz-six-vessels-20260812': ['Ormuz: 6 navires dans les données publiques, moyenne 10 jours près de 11','Le suivi public a montré 6 passages à Ormuz le lundi 10 août.','Les données publiques basées sur Kpler montrent 6 navires à Ormuz le lundi 10 août: 4 sont entrés dans le Golfe et 2 sont sortis. La moyenne récente sur 10 jours est proche de 11, très inférieure aux 130 à 140 navires par jour d’avant-guerre. Ce n’est pas le trafic total du 12 août et les limites AIS demeurent.','La réouverture complète n’est pas confirmée; le risque maritime reste élevé.',['Ormuz','6 navires','Kpler','AIS']],
+      'tihamah-red-sea-attack-20260812': ['Attaque du Tihamah en mer Rouge: 6 morts rapportés','Les rapports indiquent 4 membres d’équipage et 2 sauveteurs morts après l’attaque du Tihamah.','Le cargo égyptien Tihamah a été attaqué près de Bab el-Mandeb. Les rapports font état de 4 membres d’équipage morts, puis de 2 sauveteurs yéménites tués lors d’une attaque supplémentaire pendant les secours. Dix personnes, dont équipage, garde-côtes et sauveteurs, ont été blessées.','Le risque en mer Rouge est devenu un événement avec pertes humaines et reste haussier pour la logistique carburants/produits raffinés.',['Tihamah','mer Rouge','Bab el-Mandeb','risque maritime']],
+      'oil-close-20260811-20260812': ['Brent 88,91 USD et WTI 83,20 USD: le rebond du brut continue','À la clôture américaine du 11 août, Brent valait 88,91 USD et WTI 83,20 USD.','Le brut a encore progressé avec l’affaiblissement des espoirs de réouverture complète d’Ormuz et d’accord rapide USA-Iran. Brent a clôturé à 88,91 USD/bbl et WTI à 83,20 USD/bbl. Les références du matin du 12 août, Brent env. 89,4 USD et WTI env. 83,7 USD, sont intraday et séparées des clôtures.','La pression haussière du brut compense en partie le signal de détente du jet fuel.',['Brent','WTI','clôture','intraday']],
+      'usd-krw-1414-20260812': ['USD/KRW près de 1,414: détente FX maintenue','L’USD/KRW était autour de 1,414 près du 2026.08.12 09:30 KST.','L’USD/KRW est passé d’environ 1,418 la veille à environ 1,414. Par rapport à la zone de 1,480 mi-juillet, le won plus fort réduit encore le coût en KRW du jet fuel libellé en dollars.','Le change reste un facteur de détente qui limite le risque haussier de septembre.',['USD/KRW','change','1,414']],
+      'iran-hormuz-policy-20260812': ['L’Iran durcit sa position contre la réouverture d’Ormuz','L’Iran réaffirme qu’Ormuz ne rouvrira pas avant un changement de politique américaine et l’acceptation de ses demandes.','Les discussions techniques Iran-Oman continuent, mais l’Iran renforce sa position: Ormuz ne rouvrira pas sans changement de politique et de comportement américains et acceptation des demandes iraniennes. Les progrès techniques ne signifient pas une normalisation complète du trafic commercial.','Le risque Ormuz n’est pas résolu, ce qui maintient une prime logistique sur brut et produits raffinés.',['Iran','Ormuz','discussions','réouverture']],
+      'vela-nova-us-blockade-20260812': ['Les États-Unis tirent sur le Vela Nova dans le golfe d’Oman','Les États-Unis auraient tiré deux missiles Hellfire sur le Vela Nova pour violation présumée du blocus.','Le Commandement central américain a déclaré que le porte-conteneurs panaméen Vela Nova se dirigeait vers un port iranien en violation du blocus maritime et que deux missiles Hellfire avaient neutralisé sa direction. Il s’agit d’un incident dans le golfe d’Oman, pas d’une donnée de trafic à l’intérieur d’Ormuz.','Le risque maritime inclut maintenant l’application du blocus américain en plus des risques iranien et houthi.',['Vela Nova','Hellfire','golfe d’Oman','blocus']],
+      'iata-jetfuel-14693-20260812': ['Jet fuel IATA à 146,93 USD, signal hebdomadaire -7,5% maintenu','Le jet fuel mondial IATA est à 146,93 USD/bbl, en baisse de 7,5% sur une semaine.','La moyenne hebdomadaire mondiale IATA du jet fuel est de 146,93 USD/bbl, en baisse de 7,5%. C’est un signal de détente du jet fuel, mais pas une valeur quotidienne MOPS de Singapour ni la moyenne de calcul de septembre.','La détente jet fuel demeure, mais le niveau et le montant de septembre ne sont pas confirmés.',['IATA','jet fuel','146.93','MOPS distinct']],
+      'libya-russia-supply-risk-20260812': ['Libye et Russie ajoutent un risque d’offre auxiliaire','Les rapports sur Zawiya en Libye et Orsk en Russie sont traités comme risques d’offre auxiliaires.','Des variables de risque d’offre apparaissent hors Moyen-Orient. La Libye a averti d’une possible force majeure si les attaques contre les installations de Zawiya continuent, tandis que l’Ukraine a annoncé une attaque contre la raffinerie russe d’Orsk. Ce ne sont pas des valeurs MOPS mais des risques auxiliaires d’offre mondiale.','Ces facteurs peuvent ajouter une prime d’offre hors canal d’Ormuz.',['Libye','Russie','raffinerie','risque d’offre']]
+    },
+    de: {
+      'hormuz-six-vessels-20260812': ['Hormus: 6 Schiffe in öffentlichen Daten, 10-Tage-Schnitt etwa 11','Öffentliche Schiffsdaten zeigten am Montag, 10. August, 6 Hormus-Transite.','Kpler-basierte öffentliche Daten zeigten am Montag, 10. August, 6 Schiffe durch Hormus: 4 liefen in den Golf ein und 2 aus. Der jüngste 10-Tage-Schnitt liegt bei etwa 11, weit unter den 130 bis 140 Schiffen pro Tag vor dem Krieg. Dies ist nicht der gesamte Verkehr am 12. August; AIS-Grenzen bleiben.','Eine vollständige Wiederöffnung ist nicht bestätigt; das maritime Risiko bleibt hoch.',['Hormus','6 Schiffe','Kpler','AIS']],
+      'tihamah-red-sea-attack-20260812': ['Angriff auf Tihamah im Roten Meer: 6 Tote gemeldet','Berichte nennen 4 tote Besatzungsmitglieder und 2 tote Retter nach dem Angriff auf Tihamah.','Das ägyptische Frachtschiff Tihamah wurde nahe Bab el-Mandeb angegriffen. Berichte nennen 4 tote Besatzungsmitglieder; bei einem weiteren Angriff während der Rettung starben 2 jemenitische Retter. Zehn Personen einschließlich Besatzung, Küstenwache und Retter wurden verletzt.','Das Risiko im Roten Meer ist nun ein Ereignis mit Todesopfern und bleibt Aufwärtsdruck für Kraftstoff- und Produktlogistik.',['Tihamah','Rotes Meer','Bab el-Mandeb','Schifffahrtsrisiko']],
+      'oil-close-20260811-20260812': ['Brent 88,91 USD und WTI 83,20 USD: Rohöl-Rebound hält an','Zum US-Schluss am 11. August lag Brent bei 88,91 USD und WTI bei 83,20 USD.','Rohöl stieg erneut, da Hoffnungen auf eine vollständige Hormus-Wiederöffnung und eine schnelle US-Iran-Einigung schwanden. Brent schloss bei 88,91 USD/bbl, WTI bei 83,20 USD/bbl. Morgenreferenzen am 12. August von Brent etwa 89,4 USD und WTI etwa 83,7 USD sind intraday und von Schlusskursen getrennt.','Rohöl-Aufwärtsdruck gleicht das Jetfuel-Entlastungssignal teilweise aus.',['Brent','WTI','Schlusskurs','intraday']],
+      'usd-krw-1414-20260812': ['USD/KRW nahe 1,414: FX-Entlastung bleibt','USD/KRW lag nahe 2026.08.12 09:30 KST bei etwa 1,414.','USD/KRW fiel von etwa 1,418 am Vortag auf etwa 1,414. Gegenüber dem Bereich um 1,480 Mitte Juli senkt der stärkere Won weiter die KRW-Umrechnungslast dollarbasierter Jetfuel-Kosten.','FX bleibt ein Entlastungsfaktor, der September-Aufwärtsdruck begrenzen kann.',['USD/KRW','FX','1,414']],
+      'iran-hormuz-policy-20260812': ['Iran verschärft Haltung gegen Hormus-Wiederöffnung','Iran bekräftigt, Hormus nicht ohne US-Politikänderung und Erfüllung iranischer Forderungen zu öffnen.','Technische Iran-Oman-Gespräche laufen weiter, doch Iran verstärkt die Haltung, Hormus erst nach Änderung von US-Politik und Verhalten sowie Annahme iranischer Forderungen wieder zu öffnen. Technischer Fortschritt bedeutet keine vollständige Normalisierung kommerzieller Schifffahrt.','Das Hormus-Risiko ist nicht gelöst und hält eine Logistikprämie auf Rohöl und Produkte aufrecht.',['Iran','Hormus','Gespräche','Wiederöffnung']],
+      'vela-nova-us-blockade-20260812': ['USA feuern im Golf von Oman auf Vela Nova','Berichten zufolge feuerten die USA wegen eines mutmaßlichen Blockadeverstoßes zwei Hellfire-Raketen auf Vela Nova.','Das US Central Command erklärte, das panamaische Containerschiff Vela Nova sei unter Verstoß gegen die Seeblockade zu einem iranischen Hafen unterwegs gewesen; zwei Hellfire-Raketen hätten die Steuerung deaktiviert. Dies ist ein Ereignis im Golf von Oman, kein Verkehrswert innerhalb von Hormus.','Das maritime Risiko umfasst nun auch US-Blockadevollzug neben iranischen und Huthi-Risiken.',['Vela Nova','Hellfire','Golf von Oman','Blockade']],
+      'iata-jetfuel-14693-20260812': ['IATA-Jetfuel bei 146,93 USD, Wochensignal -7,5% bleibt','IATA Global Jet Fuel liegt bei 146,93 USD/bbl, 7,5% unter Vorwoche.','Der globale wöchentliche IATA-Jetfuel-Durchschnitt liegt bei 146,93 USD/bbl, 7,5% unter Vorwoche. Das ist ein Jetfuel-Entlastungssignal, aber kein täglicher Singapore-MOPS-Wert und nicht der September-Durchschnitt.','Jetfuel-Entlastung bleibt, doch September-Stufe und Betrag sind nicht bestätigt.',['IATA','Jetfuel','146.93','MOPS getrennt']],
+      'libya-russia-supply-risk-20260812': ['Libyen und Russland melden zusätzliche Angebotsrisiken','Berichte zu Zawiya in Libyen und Orsk in Russland gelten als ergänzende Angebotsrisiken.','Auch außerhalb des Nahen Ostens entstehen Angebotsrisiken. Libyen warnte vor möglicher höherer Gewalt bei weiteren Angriffen auf Energieanlagen bei Zawiya; die Ukraine meldete einen Angriff auf Russlands Orsk-Raffinerie. Das sind keine MOPS-Werte, sondern zusätzliche Angebotsrisiken.','Diese Faktoren können außerhalb von Hormus eine Angebotsprämie erhöhen.',['Libyen','Russland','Raffinerie','Angebotsrisiko']]
+    }
+  };
+  Object.assign(cardBase, enFallback);
+  function setCard(card){
+    if(!card || !card.id) return;
+    card.i18n = card.i18n || {};
+    Object.keys(cardBase).forEach(function(lang){
+      var row = cardBase[lang][card.id];
+      if(!row) return;
+      card.i18n[lang] = Object.assign({}, card.i18n[lang] || {}, {
+        title: row[0], aiBrief: row[1], summary: row[2], impact: row[3], tags: row[4]
+      });
+    });
+  }
+  (window.AERO_NEWS_CARDS_20260812 || []).forEach(setCard);
+  (FIXED_NEWS || []).forEach(setCard);
+})();
+
+/* 2026.08.12 visible i18n final pass for official sections and carried-over cards. */
+(function(){
+  var official = {
+    ja: {
+      'news.officialTitle': '主要航空会社 2026年8月国際線燃油サーチャージ公式公示',
+      'news.officialNotice': '2026.07.22 07:00 KST時点 · 大韓航空、アシアナ、ジンエアー、エアプサン、ティーウェイ、イースター、エアソウル、チェジュ、エアプレミアの8月公示を確認 · 2026.08.01~08.31発券分に適用',
+      'news.surchargeNote': '燃油サーチャージは予約日ではなく発券日基準で適用されます。8月公示は確定データで、9月金額はまだ発表前です。',
+      'news.forecastCta.title': 'サーチャージ確認後、実際の航空券総額も比較',
+      'news.forecastCta.desc': '発券日基準で燃油サーチャージが適用されます。7月公式額と実際の総額を合わせて確認してください。',
+      'news.forecastCta.btn': '航空券総額を見る',
+      'aff.myrealtrip.title': 'サーチャージ確認後、実際の航空券総額も比較',
+      'aff.myrealtrip.desc': '燃油サーチャージは発券日基準で適用されます。公式サーチャージ金額と実際の航空券総額を一緒に比較してください。',
+      'aff.myrealtrip.cta': '航空券価格を確認',
+      'news.official.ke': '8月公式公示反映: 35,200ウォン~259,200ウォン · 7月比 -20.5~-31.5% · <a href="https://www.koreanair.com/contents/footer/customer-support/notice/2026/2608-infuel?pageNum=1" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">公式案内 ↗</a>',
+      'news.official.oz': '8月公式公示反映: 36,600ウォン~202,900ウォン · 7月比 -24.5~-26.4% · <a href="https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202607160002529775&dispCt=all&page=1&searchOption=0&searchText=" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">公式案内 ↗</a>',
+      'news.official.lj': '8月USD公式公示反映: USD 20~59 · 7月比 -25.3~-27.9% · <a href="https://www.jinair.com/company/announce/announceView?anceSeq=28415&searchWord=&searchKey=titlCtn&page=1" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">公式案内 ↗</a>',
+      'news.official.bx': '8月USD公式公示反映: USD 22~54 · 7月比 -25.9~-27.0% · <a href="https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4389" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">公式案内 ↗</a>',
+      'news.official.tw': '8月公式公示反映: 24,400ウォン~171,000ウォン · 6群該当なし · 7月比 -25.2~-27.8% · <a href="https://www.twayair.com/app/customerCenter/notice/retrieve/12671" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">公式案内 ↗</a>',
+      'news.official.ze': '8月USD公式公示反映: USD 22~52 · 7月比 -25.7~-27.3% · <a href="https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=634&lang=KR&searchWord=&searchIndex=1" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">公式案内 ↗</a>',
+      'news.official.rs': '8月公式公示反映: 39,700ウォン~71,700ウォン · 7月比 -23.8~-27.2% · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10983&pageNo=1" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">公式案内 ↗</a>',
+      'news.official.7c': '8月USD公式公示反映: USD 22~52 · 7月比 -26.7~-27.8% · <a href="https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000739" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">公式案内 ↗</a>',
+      'news.official.yp': '8月USD公式公示反映: USD 25~148 · <a href="https://www.airpremia.com/a/ko/customer/notice/758" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">公式案内 ↗</a>'
+    },
+    zh: {
+      'news.officialTitle': '主要航空公司2026年8月国际线燃油附加费官方公告',
+      'news.officialNotice': '截至2026.07.22 07:00 KST · 大韩航空、韩亚航空、真航空、釜山航空、德威航空、易斯达航空、首尔航空、济州航空和Air Premia 8月公告已确认 · 适用于2026.08.01~08.31出票',
+      'news.surchargeNote': '燃油附加费按出票日而非预订日适用。8月公告为确定数据，9月金额尚未公布。',
+      'news.forecastCta.title': '确认附加费后，也请比较实际机票总价',
+      'news.forecastCta.desc': '燃油附加费按出票日适用。请同时比较7月官方附加费金额和实际机票总价。',
+      'news.forecastCta.btn': '立即查看机票总价',
+      'aff.myrealtrip.title': '确认附加费后，也请比较实际机票总价',
+      'aff.myrealtrip.desc': '燃油附加费按出票日适用。请同时比较官方附加费金额和实际机票总价。',
+      'aff.myrealtrip.cta': '查看机票价格',
+      'news.official.ke': '8月官方公告已反映: 35,200韩元~259,200韩元 · 较7月 -20.5~-31.5% · <a href="https://www.koreanair.com/contents/footer/customer-support/notice/2026/2608-infuel?pageNum=1" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">官方公告 ↗</a>',
+      'news.official.oz': '8月官方公告已反映: 36,600韩元~202,900韩元 · 较7月 -24.5~-26.4% · <a href="https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202607160002529775&dispCt=all&page=1&searchOption=0&searchText=" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">官方公告 ↗</a>',
+      'news.official.lj': '8月USD官方公告已反映: USD 20~59 · 较7月 -25.3~-27.9% · <a href="https://www.jinair.com/company/announce/announceView?anceSeq=28415&searchWord=&searchKey=titlCtn&page=1" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">官方公告 ↗</a>',
+      'news.official.bx': '8月USD官方公告已反映: USD 22~54 · 较7月 -25.9~-27.0% · <a href="https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4389" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">官方公告 ↗</a>',
+      'news.official.tw': '8月官方公告已反映: 24,400韩元~171,000韩元 · 第6区不适用 · 较7月 -25.2~-27.8% · <a href="https://www.twayair.com/app/customerCenter/notice/retrieve/12671" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">官方公告 ↗</a>',
+      'news.official.ze': '8月USD官方公告已反映: USD 22~52 · 较7月 -25.7~-27.3% · <a href="https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=634&lang=KR&searchWord=&searchIndex=1" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">官方公告 ↗</a>',
+      'news.official.rs': '8月官方公告已反映: 39,700韩元~71,700韩元 · 较7月 -23.8~-27.2% · <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=10983&pageNo=1" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">官方公告 ↗</a>',
+      'news.official.7c': '8月USD官方公告已反映: USD 22~52 · 较7月 -26.7~-27.8% · <a href="https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000739" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">官方公告 ↗</a>',
+      'news.official.yp': '8月USD官方公告已反映: USD 25~148 · <a href="https://www.airpremia.com/a/ko/customer/notice/758" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">官方公告 ↗</a>'
+    },
+    fr: {
+      'news.officialTitle': 'Avis officiels des principales compagnies pour août 2026',
+      'news.officialNotice': 'Au 2026.07.22 07:00 KST · avis d’août confirmés pour Korean Air, Asiana, Jin Air, Air Busan, Tway, Eastar Jet, Air Seoul, Jeju Air et Air Premia · applicable aux billets émis du 2026.08.01 au 2026.08.31',
+      'news.surchargeNote': 'La surtaxe carburant s’applique selon la date d’émission du billet. Les avis d’août sont confirmés; les montants de septembre ne sont pas encore publiés.',
+      'news.forecastCta.title': 'Après la surtaxe, comparez aussi le prix total',
+      'news.forecastCta.desc': 'La surtaxe dépend de la date d’émission. Comparez les montants officiels de juillet avec le prix total réel.',
+      'news.forecastCta.btn': 'Voir le prix total',
+      'aff.myrealtrip.title': 'Après la surtaxe, comparez aussi le prix total',
+      'aff.myrealtrip.desc': 'La surtaxe dépend de la date d’émission. Comparez les montants officiels avec le prix total réel.',
+      'aff.myrealtrip.cta': 'Voir les tarifs'
+    },
+    de: {
+      'news.officialTitle': 'Offizielle August-2026-Mitteilungen wichtiger Airlines',
+      'news.officialNotice': 'Stand 2026.07.22 07:00 KST · August-Mitteilungen für Korean Air, Asiana, Jin Air, Air Busan, Tway, Eastar Jet, Air Seoul, Jeju Air und Air Premia bestätigt · gültig für Tickets vom 2026.08.01 bis 2026.08.31',
+      'news.surchargeNote': 'Treibstoffzuschläge gelten nach Ausstellungsdatum, nicht nach Buchungsdatum. August ist bestätigt; September-Beträge sind noch nicht veröffentlicht.',
+      'news.forecastCta.title': 'Nach dem Zuschlag auch den Gesamtpreis vergleichen',
+      'news.forecastCta.desc': 'Der Zuschlag gilt nach Ticketausstellung. Vergleichen Sie die offiziellen Juli-Beträge mit dem tatsächlichen Gesamtpreis.',
+      'news.forecastCta.btn': 'Gesamtpreis ansehen',
+      'aff.myrealtrip.title': 'Nach dem Zuschlag auch den Gesamtpreis vergleichen',
+      'aff.myrealtrip.desc': 'Der Zuschlag gilt nach Ticketausstellung. Vergleichen Sie offizielle Zuschläge mit dem tatsächlichen Gesamtpreis.',
+      'aff.myrealtrip.cta': 'Flugpreise prüfen'
+    }
+  };
+  var carried = {
+    ja: {
+      'iata-jetfuel-14693-20260811': ['IATA航空燃料146.93ドル、週次7.5%下落','IATAグローバル航空燃料は146.93ドル/bblへ下落しました。','IATA航空燃料は158.77ドルから146.93ドル/bblへ低下しました。9月見通しでは航空燃料側の上昇圧力を和らげる強い材料ですが、シンガポールMOPSや9月算定平均ではありません。','航空燃料の緩和材料は拡大しましたが、9月段階と金額はまだ確定していません。',['IATA','航空燃料','146.93','9月見通し']],
+      'oil-close-20260810-20260811': ['Brent 87.72ドル・WTI 82.13ドル、約5%上昇','8月10日の米市場終値でBrentは4.99%、WTIは5.05%上昇しました。','ホルムズ全面再開への期待が後退し、原油は大きく反発しました。Brentは87.72ドル/bbl、WTIは82.13ドル/bblで終了しました。これは8月11日のリアルタイム価格ではなく、2026年8月10日の米市場終値です。','原油反発は上昇要因ですが、IATA航空燃料は反対方向に動いています。',['Brent','WTI','終値','ホルムズ']]
+    },
+    zh: {
+      'iata-jetfuel-14693-20260811': ['IATA全球航油降至146.93美元，周跌7.5%','IATA全球航油周均降至146.93美元/bbl。','IATA全球航油从158.77美元降至146.93美元/bbl。该数值强烈缓和9月展望中的航油侧压力，但不是新加坡MOPS，也不是9月计算均值。','航油缓和因素扩大，但9月档位和金额尚未确定。',['IATA','航油','146.93','9月展望']],
+      'oil-close-20260810-20260811': ['Brent 87.72美元、WTI 82.13美元，约涨5%','8月10日美国市场收盘，Brent上涨4.99%，WTI上涨5.05%。','随着霍尔木兹全面重开预期降温，原油大幅反弹。Brent收于87.72美元/bbl，WTI收于82.13美元/bbl。这是2026年8月10日美国市场收盘价，不是8月11日实时价。','原油反弹是上行因素，但IATA航油走势相反。',['Brent','WTI','收盘','霍尔木兹']]
+    },
+    fr: {
+      'iata-jetfuel-14693-20260811': ['Le jet fuel IATA tombe à 146,93 USD, -7,5% sur la semaine','La moyenne mondiale IATA est descendue à 146,93 USD/bbl.','Le jet fuel IATA est passé de 158,77 à 146,93 USD/bbl. C’est un signal de détente pour septembre, mais ce n’est pas le MOPS Singapour ni la moyenne de calcul de septembre.','La détente jet fuel s’élargit, sans confirmation du niveau de septembre.',['IATA','jet fuel','146.93','septembre']],
+      'oil-close-20260810-20260811': ['Brent 87,72 USD et WTI 82,13 USD, environ +5%','À la clôture américaine du 10 août, Brent a gagné 4,99% et WTI 5,05%.','Le brut a rebondi avec le recul des attentes de réouverture complète d’Ormuz. Brent a clôturé à 87,72 USD/bbl et WTI à 82,13 USD/bbl. Ce sont les clôtures américaines du 10 août, pas des prix temps réel du 11 août.','Le rebond du brut est haussier, alors que le jet fuel IATA évolue en sens inverse.',['Brent','WTI','clôture','Ormuz']]
+    },
+    de: {
+      'iata-jetfuel-14693-20260811': ['IATA-Jetfuel fällt auf 146,93 USD, -7,5% zur Vorwoche','Der globale IATA-Wochenwert fiel auf 146,93 USD/bbl.','IATA-Jetfuel sank von 158,77 auf 146,93 USD/bbl. Das entlastet den September-Ausblick, ist aber weder Singapore MOPS noch der September-Berechnungsdurchschnitt.','Jetfuel entlastet stärker, doch September-Stufe und Betrag sind nicht bestätigt.',['IATA','Jetfuel','146.93','September']],
+      'oil-close-20260810-20260811': ['Brent 87,72 USD und WTI 82,13 USD, etwa +5%','Zum US-Schluss am 10. August stieg Brent um 4,99% und WTI um 5,05%.','Rohöl erholte sich deutlich, weil Hoffnungen auf eine vollständige Hormus-Wiederöffnung nachließen. Brent schloss bei 87,72 USD/bbl, WTI bei 82,13 USD/bbl. Dies sind US-Schlusskurse vom 10. August, keine Echtzeitpreise vom 11. August.','Der Rohöl-Rebound ist Aufwärtsdruck, während IATA-Jetfuel in die andere Richtung lief.',['Brent','WTI','Schlusskurs','Hormus']]
+    }
+  };
+  Object.keys(official).forEach(function(lang){
+    window.PAGE_I18N_OVERRIDE = window.PAGE_I18N_OVERRIDE || {};
+    window.PAGE_I18N_OVERRIDE[lang] = Object.assign({}, window.PAGE_I18N_OVERRIDE[lang] || {}, official[lang]);
+    if(window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], official[lang]);
+  });
+  function apply(card){
+    if(!card || !card.id) return;
+    card.i18n = card.i18n || {};
+    Object.keys(carried).forEach(function(lang){
+      var row = carried[lang][card.id];
+      if(!row) return;
+      card.i18n[lang] = Object.assign({}, card.i18n[lang] || {}, {title:row[0], aiBrief:row[1], summary:row[2], impact:row[3], tags:row[4]});
+    });
+  }
+  (window.AERO_NEWS_CARDS_20260811 || []).forEach(apply);
+  (FIXED_NEWS || []).forEach(apply);
+})();
+
 window.initNav({
   onLangChange:function(){
     /* _shared.js의 initNav 래퍼가 applyLanguage()를 먼저 실행 */

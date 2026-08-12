@@ -11729,6 +11729,316 @@ function renderForecastPage() {
   var mod = document.querySelector('meta[property="article:modified_time"]'); if(mod) mod.setAttribute('content', '2026-08-12T09:30:00+09:00');
 })();
 
+/* 2026.08.12 forecast FAQ i18n completion guard. */
+(function(){
+  var faq = {
+    en: [
+      {q:'What level is the August 2026 international fuel surcharge?',a:'It is in effect at Level 14.'},
+      {q:'Is the September 2026 international fuel surcharge confirmed?',a:'No. The official stage and airline-specific amounts have not been confirmed yet.'},
+      {q:'Is the latest IATA jet fuel price of USD 146.93 Singapore MOPS?',a:'No. It is the IATA global weekly jet fuel average.'},
+      {q:'What is the current Singapore MOPS?',a:'A precise free public daily value for Aug 12 is not verified here. USD 146.93 is IATA, while USD 139.22 is the July monthly reference.'},
+      {q:'Is the latest Hormuz traffic 6 vessels?',a:'It means public vessel tracking showed 6 vessels on Monday, Aug 10. It is not total same-day traffic for Aug 12.'},
+      {q:'Will Hormuz reopen soon?',a:'Technical talks continue, but Iran has strengthened its conditional stance, so full reopening is not confirmed.'},
+      {q:'Were there fatalities in the Red Sea vessel attack?',a:'Yes. Reports say 4 crew members and 2 rescuers died after the Tihamah attack.'},
+      {q:'Did the United States fire on a vessel?',a:'Reports say the U.S. fired two Hellfire missiles at Vela Nova in the Gulf of Oman over an alleged blockade violation.'},
+      {q:'Why is crude rising while jet fuel is lower?',a:'IATA jet fuel is a global weekly jet fuel average, while Brent and WTI are crude-market prices. The two markets are currently moving differently.'},
+      {q:'Is a September surcharge increase likely?',a:'Jet fuel and FX are easing factors, while crude oil and maritime risk are upside factors. Direction cannot be confirmed before official calculation.'}
+    ],
+    ja: [
+      {q:'2026年8月の国際線燃油サーチャージは何段階ですか。',a:'14段階で適用中です。'},
+      {q:'2026年9月の国際線燃油サーチャージは確定しましたか。',a:'いいえ。公式段階と航空会社別金額はまだ確定していません。'},
+      {q:'IATA航空燃料146.93ドルはシンガポールMOPSですか。',a:'いいえ。IATAのグローバル週間航空燃料平均です。'},
+      {q:'現在のシンガポールMOPSはいくらですか。',a:'8月12日の正確な無料公開日次値はここでは確認していません。146.93ドルはIATA、139.22ドルは7月月平均参考値です。'},
+      {q:'ホルムズ最新通航は6隻ですか。',a:'8月10日月曜日の公開船舶追跡で6隻が確認されたという意味です。8月12日当日の全通航量ではありません。'},
+      {q:'ホルムズはすぐ再開されますか。',a:'技術協議は続いていますが、イランの条件付き姿勢が強まり、全面再開は未確定です。'},
+      {q:'紅海の船舶攻撃で死者は出ましたか。',a:'はい。Tihamah攻撃で船員4人と救助隊員2人が死亡したと報じられています。'},
+      {q:'米国が船舶に発砲しましたか。',a:'米国がオマーン湾でVela NovaにHellfireミサイル2発を発射したと報じられています。'},
+      {q:'航空燃料が下がる一方で原油が上がるのはなぜですか。',a:'IATA航空燃料は週間グローバル平均で、BrentとWTIは原油市場価格です。現在は異なる方向に動いています。'},
+      {q:'9月の燃油サーチャージは上がりそうですか。',a:'航空燃料と為替は緩和要因ですが、原油と海上輸送リスクは上昇要因です。公式算定前に方向は確定できません。'}
+    ],
+    zh: [
+      {q:'2026年8月国际线燃油附加费是第几档？',a:'正在按第14档执行。'},
+      {q:'2026年9月国际线燃油附加费已经确定了吗？',a:'没有。官方档位和各航司金额尚未确认。'},
+      {q:'最新IATA航油146.93美元是新加坡MOPS吗？',a:'不是。这是IATA全球航油周均值。'},
+      {q:'当前新加坡MOPS是多少？',a:'这里未确认8月12日准确的免费公开日值。146.93美元是IATA指标，139.22美元是7月月均参考值。'},
+      {q:'霍尔木兹最新通行是6艘吗？',a:'这表示8月10日周一公开船舶追踪显示6艘，不是8月12日当天全部通行量。'},
+      {q:'霍尔木兹会很快重开吗？',a:'技术谈判仍在继续，但伊朗条件立场加强，全面重开尚未确认。'},
+      {q:'红海船舶袭击造成死亡了吗？',a:'是的。据报Tihamah袭击造成4名船员和2名救援人员死亡。'},
+      {q:'美国是否向船舶开火？',a:'据报美国在阿曼湾以涉嫌违反封锁为由向Vela Nova发射两枚Hellfire导弹。'},
+      {q:'为什么航油下降而原油上涨？',a:'IATA航油是全球周均航油指标，Brent和WTI是原油市场价格。目前两个市场方向不同。'},
+      {q:'9月燃油附加费上涨可能性高吗？',a:'航油和汇率是缓和因素，原油和海运风险是上行因素。官方计算前不能确认方向。'}
+    ],
+    fr: [
+      {q:'Quel est le niveau de la surtaxe carburant internationale d’août 2026 ?',a:'Elle est appliquée au niveau 14.'},
+      {q:'La surtaxe internationale de septembre 2026 est-elle confirmée ?',a:'Non. Le niveau officiel et les montants par compagnie ne sont pas encore confirmés.'},
+      {q:'Le prix IATA de 146,93 USD est-il le MOPS de Singapour ?',a:'Non. C’est la moyenne hebdomadaire mondiale IATA du carburéacteur.'},
+      {q:'Quel est le MOPS actuel de Singapour ?',a:'La valeur quotidienne gratuite précise du 12 août n’est pas vérifiée ici. 146,93 USD est l’indicateur IATA et 139,22 USD est la référence mensuelle de juillet.'},
+      {q:'Le dernier trafic d’Ormuz est-il de 6 navires ?',a:'Cela signifie que le suivi public a montré 6 navires le lundi 10 août. Ce n’est pas le trafic total du 12 août.'},
+      {q:'Ormuz va-t-il rouvrir bientôt ?',a:'Les discussions techniques continuent, mais la position conditionnelle de l’Iran s’est durcie; la réouverture complète n’est pas confirmée.'},
+      {q:'Y a-t-il eu des morts dans l’attaque en mer Rouge ?',a:'Oui. Les rapports indiquent 4 membres d’équipage et 2 sauveteurs morts après l’attaque du Tihamah.'},
+      {q:'Les États-Unis ont-ils tiré sur un navire ?',a:'Des rapports indiquent que les États-Unis ont tiré deux missiles Hellfire sur le Vela Nova dans le golfe d’Oman.'},
+      {q:'Pourquoi le brut monte-t-il alors que le jet fuel baisse ?',a:'Le jet fuel IATA est une moyenne hebdomadaire mondiale, tandis que Brent et WTI sont des prix du marché du brut. Les deux marchés divergent actuellement.'},
+      {q:'Une hausse de septembre est-elle probable ?',a:'Jet fuel et change sont des facteurs de détente, mais brut et risque maritime sont haussiers. La direction ne peut pas être confirmée avant le calcul officiel.'}
+    ],
+    de: [
+      {q:'Welche Stufe hat der internationale Treibstoffzuschlag im August 2026?',a:'Er gilt auf Stufe 14.'},
+      {q:'Ist der internationale Treibstoffzuschlag für September 2026 bestätigt?',a:'Nein. Offizielle Stufe und airline-spezifische Beträge sind noch nicht bestätigt.'},
+      {q:'Ist der IATA-Wert von 146,93 USD Singapore MOPS?',a:'Nein. Es ist der globale wöchentliche IATA-Jetfuel-Durchschnitt.'},
+      {q:'Wie hoch ist der aktuelle Singapore MOPS?',a:'Ein genauer kostenloser Tageswert für den 12. August ist hier nicht verifiziert. 146,93 USD ist IATA, 139,22 USD ist die Juli-Monatsreferenz.'},
+      {q:'Liegt der neueste Hormus-Verkehr bei 6 Schiffen?',a:'Das bedeutet, dass öffentliche Verfolgungsdaten am Montag, 10. August, 6 Schiffe zeigten. Es ist nicht der gesamte Verkehr am 12. August.'},
+      {q:'Wird Hormus bald wieder geöffnet?',a:'Technische Gespräche laufen, aber Irans bedingte Haltung hat sich verschärft; vollständige Wiederöffnung ist nicht bestätigt.'},
+      {q:'Gab es Tote beim Angriff im Roten Meer?',a:'Ja. Berichte nennen 4 tote Besatzungsmitglieder und 2 tote Retter nach dem Angriff auf Tihamah.'},
+      {q:'Haben die USA auf ein Schiff gefeuert?',a:'Berichten zufolge feuerten die USA im Golf von Oman zwei Hellfire-Raketen auf Vela Nova.'},
+      {q:'Warum steigt Rohöl, obwohl Jetfuel fällt?',a:'IATA-Jetfuel ist ein globaler Wochendurchschnitt, Brent und WTI sind Rohölmarktpreise. Die Märkte bewegen sich derzeit unterschiedlich.'},
+      {q:'Ist ein September-Anstieg wahrscheinlich?',a:'Jetfuel und FX wirken entlastend, Rohöl und maritime Risiken wirken aufwärts. Vor offizieller Berechnung ist keine Richtung bestätigt.'}
+    ]
+  };
+  Object.keys(faq).forEach(function(lang){
+    Object.assign(FORE_I18N[lang] || (FORE_I18N[lang] = {}), {'fore.faq.items': faq[lang]});
+    if(window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], {'fore.faq.items': faq[lang]});
+  });
+})();
+
+/* 2026.08.12 full forecast FAQ i18n guard. */
+(function(){
+  var faq = {
+  "ja": [
+    [
+      "2026年8月の国際線燃油サーチャージは何段階ですか。",
+      "14段階で適用中です。"
+    ],
+    [
+      "2026年9月の国際線燃油サーチャージは確定しましたか。",
+      "いいえ。公式段階と航空会社別金額はまだ確定していません。"
+    ],
+    [
+      "IATA航空燃料146.93ドルはシンガポールMOPSですか。",
+      "いいえ。IATAのグローバル週間航空燃料平均です。"
+    ],
+    [
+      "現在のシンガポールMOPSはいくらですか。",
+      "8月12日の正確な無料公開日次値はここでは確認していません。146.93ドルはIATA、139.22ドルは7月月平均参考値です。"
+    ],
+    [
+      "ホルムズ最新通航は6隻ですか。",
+      "8月10日月曜日の公開船舶追跡で6隻が確認されたという意味です。8月12日当日の全通航量ではありません。"
+    ],
+    [
+      "ホルムズはすぐ再開されますか。",
+      "技術協議は続いていますが、イランの条件付き姿勢が強まり、全面再開は未確定です。"
+    ],
+    [
+      "紅海の船舶攻撃で死者は出ましたか。",
+      "はい。Tihamah攻撃で船員4人と救助隊員2人が死亡したと報じられています。"
+    ],
+    [
+      "米国が船舶に発砲しましたか。",
+      "米国がオマーン湾でVela NovaにHellfireミサイル2発を発射したと報じられています。"
+    ],
+    [
+      "航空燃料が下がる一方で原油が上がるのはなぜですか。",
+      "IATA航空燃料は週間グローバル平均で、BrentとWTIは原油市場価格です。現在は異なる方向に動いています。"
+    ],
+    [
+      "9月の燃油サーチャージは上がりそうですか。",
+      "航空燃料と為替は緩和要因ですが、原油と海上輸送リスクは上昇要因です。公式算定前に方向は確定できません。"
+    ]
+  ],
+  "zh": [
+    [
+      "2026年8月国际线燃油附加费是第几档？",
+      "正在按第14档执行。"
+    ],
+    [
+      "2026年9月国际线燃油附加费已经确定了吗？",
+      "没有。官方档位和各航司金额尚未确认。"
+    ],
+    [
+      "最新IATA航油146.93美元是新加坡MOPS吗？",
+      "不是。这是IATA全球航油周均值。"
+    ],
+    [
+      "当前新加坡MOPS是多少？",
+      "这里未确认8月12日准确的免费公开日值。146.93美元是IATA指标，139.22美元是7月月均参考值。"
+    ],
+    [
+      "霍尔木兹最新通行是6艘吗？",
+      "这表示8月10日周一公开船舶追踪显示6艘，不是8月12日当天全部通行量。"
+    ],
+    [
+      "霍尔木兹会很快重开吗？",
+      "技术谈判仍在继续，但伊朗条件立场加强，全面重开尚未确认。"
+    ],
+    [
+      "红海船舶袭击造成死亡了吗？",
+      "是的。据报Tihamah袭击造成4名船员和2名救援人员死亡。"
+    ],
+    [
+      "美国是否向船舶开火？",
+      "据报美国在阿曼湾以涉嫌违反封锁为由向Vela Nova发射两枚Hellfire导弹。"
+    ],
+    [
+      "为什么航油下降而原油上涨？",
+      "IATA航油是全球周均航油指标，Brent和WTI是原油市场价格。目前两个市场方向不同。"
+    ],
+    [
+      "9月燃油附加费上涨可能性高吗？",
+      "航油和汇率是缓和因素，原油和海运风险是上行因素。官方计算前不能确认方向。"
+    ]
+  ]
+};
+  ['ja','zh'].forEach(function(lang){
+    var arr = faq[lang].map(function(row){ return {q: row[0], a: row[1]}; });
+    Object.assign(FORE_I18N[lang] || (FORE_I18N[lang] = {}), {'fore.faq.items': arr});
+    if(window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], {'fore.faq.items': arr});
+  });
+})();
+
+/* 2026.08.12 visible forecast i18n final pass. */
+(function(){
+  var packs = {
+    ja: {
+      'fore.indicator.footnote': '* 2026年9月の燃油サーチャージはまだ公式発表前です。数値は確定公示ではなく見通し変数です。',
+      'fore.notice': '<strong>案内:</strong> 2026年8月の国際線燃油サーチャージは14段階で適用中です。2026年9月の段階と航空会社別金額はまだ公式確定していません。',
+      'fore.intro': '2026.08.12 09:30 KST時点で、2026年8月の韓国発国際線燃油サーチャージは14段階で適用中です。IATAグローバル航空燃料は146.93ドル/bblで前週比7.5%下落し、USD/KRWは約1,414まで緩和しました。一方で8月11日の米市場終値はBrent 88.91ドル、WTI 83.20ドルで、ホルムズ公開通航は8月10日6隻、紅海とオマーン湾の海上輸送リスクは深まりました。',
+      'fore.predict.footnote': '* 2026年9月は未発表です。146.93ドルはIATAグローバル週間航空燃料で、シンガポールMOPSや9月算定平均ではありません。',
+      'fore.predict.subtitle': '8月14段階 · IATA航空燃料下落 · USD/KRW 1,414 · 原油上昇 · ホルムズ/紅海リスク',
+      'fore.predict.items': [
+        {label:'8月適用段階',val:'14段階 · 7月19段階から5段階低下',cls:'down'},
+        {label:'8月MOPS平均',val:'119.06ドル/bbl · 2026.06.16~07.15平均',cls:'down'},
+        {label:'IATA航空燃料',val:'146.93ドル/bbl · 前週比7.5%下落',cls:'down'},
+        {label:'USD/KRW',val:'約1,414 · 為替緩和維持',cls:'down'},
+        {label:'原油',val:'Brent 88.91ドル · WTI 83.20ドル · 8月11日終値',cls:'up'},
+        {label:'海上輸送リスク',val:'ホルムズ8月10日6隻 · Tihamah死者 · Vela Nova封鎖執行',cls:'up'}
+      ],
+      'fore.indicator.th': ['項目','2026.08.12 09:30 KST時点','9月サーチャージへの影響'],
+      'fore.indicator.rows': [
+        ['8月燃油サーチャージ','14段階適用中','7月19段階より低い確定基準線'],
+        ['8月MOPS平均','119.06ドル/bbl · 283.48 cents/gal','8月引き下げの公示算定根拠'],
+        ['IATAグローバル航空燃料','146.93ドル/bbl · 前週比7.5%下落','航空燃料側の上昇圧力を緩和'],
+        ['USD/KRW','約1,414','為替緩和効果を維持'],
+        ['原油','Brent 88.91ドル · WTI 83.20ドル · 8月11日終値','原油側の上昇圧力が拡大'],
+        ['ホルムズ・紅海','ホルムズ8月10日6隻 · 10日平均約11隻 · Tihamah死者報道','海上輸送リスクが深刻化']
+      ],
+      'fore.summary.updated': '2026.08.12 09:30 KST時点 · 8月14段階 · USD/KRW 1,414 · IATA 146.93ドル · Brent 88.91ドル',
+      'fore.summary.title': '2026年9月燃油サーチャージ見通し要約',
+      'fore.summary.items': [
+        '2026年8月の国際線燃油サーチャージは14段階で適用中です。',
+        '2026年9月の段階と航空会社別金額はまだ公式発表されていません。',
+        '8月旅客MOPSは119.06ドル/bbl、283.48 cents/galです。',
+        '大韓航空Cargoの7月シンガポール航空燃料月平均参考値は139.22ドル/bblです。',
+        'IATAグローバル航空燃料は146.93ドル/bblで前週比7.5%下落しました。',
+        'USD/KRWは約1,414で、為替面の緩和効果が維持されています。',
+        'Brent 88.91ドルとWTI 83.20ドルは8月11日の米市場終値です。',
+        'ホルムズ6隻は8月10日の公開追跡値であり、8月12日当日の全通航量ではありません。'
+      ],
+      'fore.verdict.title': '2026年9月燃油サーチャージ見通し',
+      'fore.verdict.line1': '2026年8月韓国発国際線燃油サーチャージは14段階で確定しています。',
+      'fore.verdict.line2': '2026年9月国際線燃油サーチャージはまだ発表前です。',
+      'fore.verdict.short': '緩和要因: IATA航空燃料下落、USD/KRW約1,414',
+      'fore.verdict.long': '上昇要因: Brent・WTI上昇、ホルムズ制限通航、Tihamah死者、Vela Nova封鎖執行リスク',
+      'fore.mops.analysis.title': 'MOPS・7月シンガポール航空燃料・IATA航空燃料の区分',
+      'fore.mops.analysis.body': '8月旅客MOPSは119.06ドル/bbl、283.48 cents/galで、2026.06.16~2026.07.15平均です。\n\n大韓航空Cargoの7月シンガポール航空燃料月平均は139.22ドル/bblで、9月算定平均ではありません。\n\nIATAグローバル週間航空燃料は146.93ドル/bbl、前週比7.5%下落です。これはシンガポールMOPSではありません。',
+      'fore.market.title': '市場ブリーフ: 航空燃料・為替緩和と原油・海上輸送リスク',
+      'fore.market.brent': '原油: 8月11日の米市場終値でBrentは88.91ドル/bbl、WTIは83.20ドル/bblです。8月12日朝の参考値は終値と区別します。',
+      'fore.market.mops': '航空燃料: 8月MOPS 119.06ドル、7月シンガポール航空燃料139.22ドル、IATA航空燃料146.93ドルは別々の指標です。',
+      'fore.market.fx': '為替: 2026.08.12 09:30 KST前後のUSD/KRWは約1,414です。',
+      'fore.market.geo': 'ホルムズ: 最新の公開定量データは8月10日月曜日6隻、直近10日平均約11隻です。8月12日当日の全通航量や全面再開ではありません。',
+      'fore.market.summary': '現在の判断は、航空燃料と為替の緩和が残る一方、原油上昇とホルムズ・紅海の海上輸送リスクが深まった状態です。',
+      'fore.market.fx2': '主要数値: 8月14段階 · USD/KRW約1,414 · 8月MOPS 119.06ドル/bbl · 7月航空燃料139.22ドル/bbl · IATA 146.93ドル/bbl · Brent 88.91ドル · WTI 83.20ドル',
+      'fore.basis.title': '8月公示データと9月見通し基準',
+      'fore.basis.body': '2026年8月韓国発国際線燃油サーチャージは14段階の確定データです。9月の段階と金額は2026.07.16~08.15全期間のシンガポールMOPS平均、適用為替、航空会社の公式公示が確認されてから確定します。'
+    },
+    zh: {
+      'fore.indicator.footnote': '* 2026年9月燃油附加费尚未正式公布。数值仅为展望变量，不是确定公告。',
+      'fore.notice': '<strong>提示:</strong> 2026年8月国际线燃油附加费正在按第14档执行。2026年9月档位和各航司金额尚未正式确认。',
+      'fore.intro': '截至2026.08.12 09:30 KST，2026年8月韩国出发国际线燃油附加费正在按第14档执行。IATA全球航油为146.93美元/bbl，周跌7.5%，USD/KRW缓和至约1,414。但8月11日美国市场收盘价为Brent 88.91美元、WTI 83.20美元，霍尔木兹8月10日公开通行为6艘，红海和阿曼湾海运风险加深。',
+      'fore.predict.footnote': '* 2026年9月尚未公布。146.93美元是IATA全球周均航油，不是新加坡MOPS，也不是9月计算均值。',
+      'fore.predict.subtitle': '8月第14档 · IATA航油下跌 · USD/KRW 1,414 · 原油上涨 · 霍尔木兹/红海风险',
+      'fore.predict.items': [
+        {label:'8月执行档位',val:'第14档 · 较7月第19档低5档',cls:'down'},
+        {label:'8月MOPS均值',val:'119.06美元/bbl · 2026.06.16~07.15平均',cls:'down'},
+        {label:'IATA航油',val:'146.93美元/bbl · 周跌7.5%',cls:'down'},
+        {label:'USD/KRW',val:'约1,414 · 汇率缓和维持',cls:'down'},
+        {label:'原油',val:'Brent 88.91美元 · WTI 83.20美元 · 8月11日收盘',cls:'up'},
+        {label:'海运风险',val:'霍尔木兹8月10日6艘 · Tihamah死亡 · Vela Nova封锁执行',cls:'up'}
+      ],
+      'fore.indicator.th': ['项目','截至2026.08.12 09:30 KST','对9月附加费影响'],
+      'fore.indicator.rows': [
+        ['8月燃油附加费','第14档执行中','较7月第19档更低的确定基准线'],
+        ['8月MOPS均值','119.06美元/bbl · 283.48 cents/gal','8月下调的公告计算依据'],
+        ['IATA全球航油','146.93美元/bbl · 周跌7.5%','缓和航油侧上行压力'],
+        ['USD/KRW','约1,414','汇率缓和效果维持'],
+        ['国际油价','Brent 88.91美元 · WTI 83.20美元 · 8月11日收盘','原油侧上行压力扩大'],
+        ['霍尔木兹/红海','霍尔木兹8月10日6艘 · 近10日均值约11艘 · Tihamah死亡报道','海运风险加深']
+      ],
+      'fore.summary.updated': '截至2026.08.12 09:30 KST · 8月第14档 · USD/KRW 1,414 · IATA 146.93美元 · Brent 88.91美元',
+      'fore.summary.title': '2026年9月燃油附加费展望摘要',
+      'fore.summary.items': [
+        '2026年8月国际线燃油附加费正在按第14档执行。',
+        '2026年9月档位和各航司金额尚未正式公布。',
+        '8月旅客MOPS为119.06美元/bbl、283.48 cents/gal。',
+        '大韩航空Cargo的7月新加坡航油月均参考值为139.22美元/bbl。',
+        'IATA全球航油为146.93美元/bbl，周跌7.5%。',
+        'USD/KRW约1,414，汇率缓和效果仍在。',
+        'Brent 88.91美元和WTI 83.20美元是8月11日美国市场收盘价。',
+        '霍尔木兹6艘是8月10日公开追踪值，不是8月12日当天全部通行量。'
+      ],
+      'fore.verdict.title': '2026年9月燃油附加费展望',
+      'fore.verdict.line1': '2026年8月韩国出发国际线燃油附加费已确定为第14档。',
+      'fore.verdict.line2': '2026年9月国际线燃油附加费尚未公布。',
+      'fore.verdict.short': '缓和因素: IATA航油下降、USD/KRW约1,414',
+      'fore.verdict.long': '上行因素: Brent/WTI上涨、霍尔木兹限制通行、Tihamah死亡、Vela Nova封锁执行风险',
+      'fore.mops.analysis.title': '区分MOPS、7月新加坡航油和IATA航油',
+      'fore.mops.analysis.body': '8月旅客MOPS为119.06美元/bbl、283.48 cents/gal，适用2026.06.16~2026.07.15平均。\n\n大韩航空Cargo的7月新加坡航油月均值为139.22美元/bbl，不是9月计算均值。\n\nIATA全球周均航油为146.93美元/bbl，周跌7.5%。它不是新加坡MOPS。',
+      'fore.market.title': '市场简报: 航油/汇率缓和与原油/海运风险',
+      'fore.market.brent': '原油: 8月11日美国市场收盘，Brent为88.91美元/bbl，WTI为83.20美元/bbl。8月12日上午参考价需与收盘价区分。',
+      'fore.market.mops': '航油: 8月MOPS 119.06美元、7月新加坡航油139.22美元、IATA全球航油146.93美元是不同指标。',
+      'fore.market.fx': '汇率: 2026.08.12 09:30 KST前后USD/KRW约1,414。',
+      'fore.market.geo': '霍尔木兹: 最新公开量化数据为8月10日周一6艘，近10日均值约11艘。不是8月12日当天通行量，也不是全面重开。',
+      'fore.market.summary': '当前判断: 航油和汇率缓和仍在，原油上行扩大，霍尔木兹/红海海运风险加深。',
+      'fore.market.fx2': '关键数值: 8月第14档 · USD/KRW约1,414 · 8月MOPS 119.06美元/bbl · 7月航油139.22美元/bbl · IATA 146.93美元/bbl · Brent 88.91美元 · WTI 83.20美元',
+      'fore.basis.title': '8月公告数据与9月展望依据',
+      'fore.basis.body': '2026年8月韩国出发国际线燃油附加费为第14档确定数据。9月档位和金额需要确认2026.07.16~08.15完整新加坡MOPS均值、适用汇率和航空公司官方公告后才能确定。'
+    }
+  };
+  var aliases = {
+    fr: {
+      'fore.indicator.footnote': '* Les surtaxes carburant de septembre 2026 ne sont pas encore officiellement annoncées. Les chiffres sont des variables de perspective, pas des avis confirmés.',
+      'fore.notice': '<strong>Note:</strong> La surtaxe internationale d’août 2026 est appliquée au niveau 14. Le niveau et les montants par compagnie pour septembre ne sont pas encore confirmés.',
+      'fore.intro': 'Au 2026.08.12 09:30 KST, la surtaxe internationale au départ de Corée pour août 2026 est appliquée au niveau 14. Le jet fuel mondial IATA est à 146,93 USD/bbl, -7,5% sur une semaine, et USD/KRW s’est détendu vers 1,414. En revanche, Brent a clôturé à 88,91 USD et WTI à 83,20 USD le 11 août; le suivi public d’Ormuz affichait 6 navires le 10 août, et le risque maritime mer Rouge/golfe d’Oman s’est accru.',
+      'fore.predict.footnote': '* Septembre 2026 n’est pas encore annoncé. 146,93 USD est le jet fuel hebdomadaire mondial IATA, pas le MOPS Singapour ni la moyenne de calcul de septembre.',
+      'fore.indicator.th': ['Élément','État au 2026.08.12 09:30 KST','Impact sur septembre'],
+      'fore.summary.title': 'Résumé des perspectives de septembre 2026',
+      'fore.summary.items': ['La surtaxe internationale d’août 2026 est appliquée au niveau 14.','Le niveau et les montants par compagnie pour septembre ne sont pas encore annoncés.','Le MOPS passager d’août est de 119,06 USD/bbl et 283,48 cents/gal.','La référence mensuelle de juillet à Singapour est de 139,22 USD/bbl.','Le jet fuel mondial IATA est à 146,93 USD/bbl, -7,5% sur une semaine.','USD/KRW autour de 1,414 maintient la détente FX.','Brent 88,91 USD et WTI 83,20 USD sont les clôtures américaines du 11 août.','Les 6 navires à Ormuz sont une valeur suivie du 10 août, pas le total du 12 août.'],
+      'fore.verdict.line1': 'La surtaxe internationale au départ de Corée pour août 2026 est confirmée au niveau 14.',
+      'fore.verdict.line2': 'La surtaxe internationale de septembre 2026 n’est pas encore annoncée.',
+      'fore.verdict.short': 'Facteurs de détente: jet fuel IATA plus bas et USD/KRW autour de 1,414',
+      'fore.verdict.long': 'Facteurs haussiers: Brent/WTI plus élevés, trafic limité à Ormuz, décès du Tihamah et risque Vela Nova',
+      'fore.indicator.rows': [['Surtaxe d’août','Niveau 14 appliqué','Base confirmée plus basse que juillet niveau 19'],['MOPS août','119,06 USD/bbl · 283,48 cents/gal','Base de calcul de la baisse d’août'],['Jet fuel IATA','146,93 USD/bbl · -7,5% sur une semaine','Réduit la pression côté jet fuel'],['USD/KRW','environ 1,414','Détente FX maintenue'],['Pétrole','Brent 88,91 USD · WTI 83,20 USD · clôture du 11 août','Pression haussière du brut accrue'],['Ormuz/mer Rouge','Ormuz 10 août: 6 navires · moyenne 10 jours près de 11 · décès Tihamah','Risque maritime accru']]
+    },
+    de: {
+      'fore.indicator.footnote': '* September-2026-Treibstoffzuschläge sind noch nicht offiziell veröffentlicht. Zahlen sind Ausblicksvariablen, keine bestätigten Mitteilungen.',
+      'fore.notice': '<strong>Hinweis:</strong> Der internationale August-2026-Treibstoffzuschlag gilt auf Stufe 14. September-Stufe und Airline-Beträge sind noch nicht offiziell bestätigt.',
+      'fore.intro': 'Stand 2026.08.12 09:30 KST gilt der internationale Treibstoffzuschlag ab Korea für August 2026 auf Stufe 14. IATA Global Jet Fuel liegt bei 146,93 USD/bbl, 7,5% unter Vorwoche, und USD/KRW entspannte sich auf etwa 1,414. Gleichzeitig schlossen Brent bei 88,91 USD und WTI bei 83,20 USD am 11. August; öffentliche Hormus-Daten zeigten 6 Schiffe am 10. August, und das Risiko im Roten Meer/Golf von Oman stieg.',
+      'fore.predict.footnote': '* September 2026 ist noch nicht veröffentlicht. 146,93 USD ist der globale IATA-Wochenwert, nicht Singapore MOPS oder der September-Durchschnitt.',
+      'fore.indicator.th': ['Punkt','Stand 2026.08.12 09:30 KST','Auswirkung auf September'],
+      'fore.summary.title': 'Zusammenfassung des September-2026-Ausblicks',
+      'fore.summary.items': ['Der internationale August-2026-Zuschlag gilt auf Stufe 14.','September-Stufe und Airline-Beträge sind noch nicht veröffentlicht.','Der August-Passagier-MOPS beträgt 119,06 USD/bbl und 283,48 cents/gal.','Der Juli-Singapore-Jetfuel-Monatswert beträgt 139,22 USD/bbl.','IATA Global Jet Fuel liegt bei 146,93 USD/bbl, 7,5% unter Vorwoche.','USD/KRW um 1,414 hält die FX-Entlastung aufrecht.','Brent 88,91 USD und WTI 83,20 USD sind US-Schlusskurse vom 11. August.','6 Hormus-Schiffe ist ein öffentlicher Tracking-Wert vom 10. August, nicht der Gesamtverkehr am 12. August.'],
+      'fore.verdict.line1': 'Der internationale Treibstoffzuschlag ab Korea für August 2026 ist auf Stufe 14 bestätigt.',
+      'fore.verdict.line2': 'Der internationale Treibstoffzuschlag für September 2026 ist noch nicht veröffentlicht.',
+      'fore.verdict.short': 'Entlastung: niedrigerer IATA-Jetfuel und USD/KRW um 1,414',
+      'fore.verdict.long': 'Aufwärtsdruck: höhere Brent/WTI, begrenzter Hormus-Verkehr, Tihamah-Tote und Vela-Nova-Risiko',
+      'fore.indicator.rows': [['August-Zuschlag','Stufe 14 in Kraft','Bestätigte niedrigere Basis gegenüber Juli Stufe 19'],['August MOPS','119,06 USD/bbl · 283,48 cents/gal','Berechnungsbasis der August-Senkung'],['IATA Jetfuel','146,93 USD/bbl · -7,5% zur Vorwoche','Mindert Jetfuel-Druck'],['USD/KRW','etwa 1,414','FX-Entlastung bleibt'],['Rohöl','Brent 88,91 USD · WTI 83,20 USD · Schluss 11. August','Rohöl-Aufwärtsdruck steigt'],['Hormus/Rotes Meer','Hormus 10. Aug: 6 Schiffe · 10-Tage-Schnitt ca. 11 · Tihamah-Tote','Maritimes Risiko steigt']]
+    }
+  };
+  Object.assign(packs, aliases);
+  Object.keys(packs).forEach(function(lang){
+    Object.assign(FORE_I18N[lang] || (FORE_I18N[lang] = {}), packs[lang]);
+    if(window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], packs[lang]);
+  });
+})();
+
 window.initNav({
   onLangChange: function() { renderForecastPage(); },
   onCurrChange: function() { renderForecastPage(); },
