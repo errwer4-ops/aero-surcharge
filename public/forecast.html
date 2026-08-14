@@ -12200,6 +12200,354 @@ function renderForecastPage() {
   var mod = document.querySelector('meta[property="article:modified_time"]'); if(mod) mod.setAttribute('content', '2026-08-13T09:00:00+09:00');
 })();
 
+/* 2026.08.14 09:25 KST terminal forecast page guard. */
+(function(){
+  var latestMarket = {
+    asOf: '2026.08.14 09:25 KST',
+    lastUpdated: '2026-08-14T09:25:00+09:00',
+    currentMonthNotice: '2026-08',
+    forecastTargetMonth: '2026-09',
+    augustInternationalStage: 14,
+    septemberOfficialStage: null,
+    septemberOfficialAmounts: null,
+    septemberInternationalOfficialConfirmed: false,
+    septemberSurchargeStatus: 'official_notice_pending',
+    augustDomesticOneWayKrw: 16500,
+    septemberDomesticOneWayKrw: 20900,
+    domesticSurchargeChangeKrw: 4400,
+    domesticSurchargeChangePct: 26.7,
+    usdKrw: 1416.48,
+    usdKrwRange: '1,416~1,418',
+    usdJpy: 159.4,
+    jpyKrw100: 889.4,
+    brentUsdPerBbl: 87.07,
+    brentUsdBbl: 87.07,
+    wtiUsdPerBbl: 81.25,
+    wtiUsdBbl: 81.25,
+    brentDailyChangePct: -2.1,
+    wtiDailyChangePct: -2.4,
+    passengerMopsUsdPerBbl: 119.06,
+    passengerMopsCentsPerGal: 283.48,
+    currentSingaporeMopsExactValue: null,
+    currentSingaporeMopsStatus: 'not_publicly_verified_2026_08_14'
+  };
+  window.AERO_MARKET_NUMBERS_20260814 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latestMarket);
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-14': window.AERO_MARKET_NUMBERS_20260814});
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260814;
+  window.RATES = Object.assign({}, window.RATES || {}, {USD: 1 / 1416.48, JPY: 1 / 8.894});
+  var packs = {
+    ko: {
+      'fore.metaTitle': '2026년 8월 유류할증료 적용·9월 전망 | 8월 14일 환율·MOPS·호르무즈',
+      'fore.metaDesc': '2026년 8월 14일 09:25 KST 기준 8월 국제선 유류할증료 14단계, 9월 국내선 20,900원, 9월 국제선 공시 대기와 환율·항공유·호르무즈·유가 변수를 정리합니다.',
+      'fore.pageTitle': '2026년 8월 유류할증료 적용과 9월 전망',
+      'fore.pageSub': '2026.08.14 09:25 KST 기준 · 8월 국제선 14단계 적용 중 · 9월 국내선 20,900원/편도 · 9월 국제선 공식 공시 대기 · USD/KRW 약 1,416~1,418원 · Brent 약 87.1달러 · WTI 약 81.3달러',
+      'fore.h1': '2026년 9월 국제선 유류할증료 전망 - 공시 대기와 시장 변수',
+      'fore.notice': '<strong>안내:</strong> 2026년 8월 한국 출발 국제선 유류할증료는 14단계로 적용 중입니다. 2026년 9월 국제선 단계와 항공사별 금액은 아직 공식 공시 전입니다.',
+      'fore.intro': '2026.08.14 09:25 KST 기준, 8월 국제선 유류할증료는 기존 공식 공시대로 14단계입니다. 9월 국내선 유류할증료는 대한항공·아시아나 기준 16,500원에서 20,900원으로 올랐지만, 이 인상률을 국제선에 직접 적용하지 않습니다. 9월 국제선은 항공사 공식 공시 전이며 현재 판단은 인상 압력 우세입니다.',
+      'fore.indicator.th': ['항목','2026.08.14 09:25 KST 기준 상태','9월 국제선 전망 영향'],
+      'fore.indicator.rows': [
+        ['환율','USD/KRW 약 1,416~1,418원 · JPY/KRW 100엔 약 889.4원','하락 요인입니다. 다만 환율만으로 9월 단계를 확정할 수 없습니다.'],
+        ['항공유/MOPS','8월 산정 MOPS 119.06달러/bbl · 최신 공개 MOPS 일별 평균 확인 제한','최근 항공유 가격 상승은 상승 요인입니다. 현재 일별 MOPS 값은 확정 표시하지 않습니다.'],
+        ['호르무즈','ADNOC 관련 선박 2척 공격 보도 · 통항은 정상 대비 한 자릿수 수준','강한 상승 압력입니다. 운송·보험·정제제품 공급 위험이 커졌습니다.'],
+        ['국제유가','Brent 약 87.1달러 · WTI 약 81.3달러 · 8월 13일 2%대 하락','혼조입니다. 중동 공급 위험과 수요 둔화·재고 증가가 맞섭니다.'],
+        ['9월 국내선','16,500원 → 20,900원/편도 · +4,400원 · +26.7%','국내선은 인상 확정입니다. 국제선 산식에는 직접 대입하지 않습니다.'],
+        ['9월 국제선','주요 항공사 공식 단계·금액 아직 공시 전','인상 압력 우세 · 공식 공시 대기입니다.']
+      ],
+      'fore.indicator.footnote': '* 2026년 9월 국제선 유류할증료는 아직 공식 공시 전입니다. 위 항목은 전망 변수이며 확정 단계·금액·확률이 아닙니다.',
+      'fore.summary.updated': '2026.08.14 09:25 KST 기준 · 8월 국제선 14단계 · 9월 국제선 공시 대기',
+      'fore.summary.title': '2026년 9월 국제선 유류할증료 전망 요약',
+      'fore.summary.items': [
+        '2026년 8월 한국 출발 국제선 유류할증료는 14단계로 적용 중입니다.',
+        '2026년 9월 국제선 단계와 항공사별 금액은 아직 공식 공시 전입니다.',
+        '9월 국내선은 20,900원/편도로 8월 16,500원보다 4,400원 올랐습니다.',
+        'USD/KRW 약 1,416~1,418원은 환율 측 하락 요인입니다.',
+        '최신 공개 MOPS 일별 평균가격은 확인 제한 상태이므로 임의 숫자를 넣지 않습니다.',
+        '8월 산정 MOPS 119.06달러/bbl은 기존 8월 공시 산정 평균입니다.',
+        'Brent 약 87.1달러와 WTI 약 81.3달러는 재고 증가와 수요 둔화로 2%대 하락했습니다.',
+        '호르무즈 공격·통항 제한은 강한 상승 압력으로 남아 있습니다.'
+      ],
+      'fore.verdict.title': '2026년 9월 국제선 전망',
+      'fore.verdict.line1': '환율은 개선됐지만 항공유와 호르무즈 해협 리스크가 이를 상쇄하고 있습니다.',
+      'fore.verdict.line2': '9월 국내선은 인상 공시가 반영됐지만, 9월 국제선은 공식 공시 전입니다.',
+      'fore.verdict.short': '하락 요인: USD/KRW 약 1,416~1,418원',
+      'fore.verdict.long': '상승 요인: 항공유 상승 압력, 호르무즈 고위험, 9월 국내선 +26.7%',
+      'fore.market.title': '시장 브리핑: 환율 개선과 항공유·호르무즈 위험',
+      'fore.market.brent': '국제유가: 8월 13일 미국 시장 종가 기준 Brent는 약 87.1달러/bbl, WTI는 약 81.3달러/bbl입니다. 두 유종 모두 2%대 하락했지만 중동 공급 위험은 남아 있습니다.',
+      'fore.market.mops': '항공유: 8월 산정 MOPS 119.06달러/bbl은 기존 공시 평균입니다. 8월 14일 현재 일별 싱가포르 MOPS 평균은 신뢰 가능한 무료 공개자료로 확정 표시하지 않습니다.',
+      'fore.market.fx': '환율: USD/KRW 약 1,416~1,418원, USD/JPY 약 159.4, 100엔 약 889.4원입니다.',
+      'fore.market.geo': '호르무즈: ADNOC 관련 선박 공격과 한 자릿수 통항 추적으로 통항 위험이 매우 높습니다. 추적업체별 숫자는 합산·평균 처리하지 않습니다.',
+      'fore.market.summary': '현재 판단은 환율 하락 요인보다 항공유·호르무즈 상승 압력이 더 우세한 공시 대기 국면입니다.',
+      'fore.market.fx2': '핵심 수치: 2026.08.14 09:25 KST · 8월 국제선 14단계 · USD/KRW 약 1,416~1,418원 · 9월 국내선 20,900원 · Brent 87.1달러 · WTI 81.3달러 · 9월 국제선 공시 대기',
+      'fore.basis.title': '8월 공시 데이터와 9월 전망 기준',
+      'fore.basis.body': '9월 국제선 유류할증료는 2026.07.16~08.15 전체 싱가포르 MOPS 평균, 적용 환율, 항공사 공식 공시가 확인돼야 확정됩니다. 9월 국내선 인상과 국제유가·호르무즈 뉴스는 전망 변수이며 국제선 단계나 금액을 직접 확정하지 않습니다.',
+      'fore.predict.title': '2026년 9월 국제선 유류할증료 전망 핵심 지표',
+      'fore.predict.subtitle': '8월 14단계 · 9월 국제선 공시 대기 · 환율 하락 요인 vs 항공유·호르무즈 상승 압력',
+      'fore.predict.items': [
+        {label:'환율', val:'USD/KRW 약 1,416~1,418원 · 하락 요인', cls:'down'},
+        {label:'항공유/MOPS', val:'최신 공개 일별 MOPS 확인 제한 · 상승 압력', cls:'up'},
+        {label:'호르무즈', val:'ADNOC 관련 선박 공격 · 통항 위험 매우 높음', cls:'up'},
+        {label:'국제유가', val:'Brent 87.1달러 · WTI 81.3달러 · 혼조', cls:'plain'},
+        {label:'9월 국내선', val:'20,900원/편도 · +26.7%', cls:'up'},
+        {label:'9월 국제선', val:'공식 단계·금액 공시 대기', cls:'plain'}
+      ],
+      'fore.predict.footnote': '* 2026년 9월 국제선 단계·금액·확률은 표시하지 않습니다. 공식 공시 전 전망 변수만 분리합니다.',
+      'fore.faq.title': '자주 묻는 질문',
+      'fore.faq.items': [
+        {q:'2026년 9월 국제선 유류할증료는 확정됐나요?', a:'아닙니다. 주요 항공사의 공식 단계와 금액은 아직 공시 전입니다.'},
+        {q:'9월 국내선 20,900원을 국제선에 적용하나요?', a:'아닙니다. 국내선 공시는 별도이며 국제선 단계와 금액을 직접 계산하는 기준이 아닙니다.'},
+        {q:'현재 싱가포르 MOPS는 얼마인가요?', a:'8월 14일 현재 신뢰 가능한 무료 공개자료로 일별 평균가격을 확정 표시하지 않습니다.'},
+        {q:'환율이 내려가면 9월 국제선도 내려가나요?', a:'환율은 하락 요인이지만 항공유와 호르무즈 위험이 상승 요인입니다. 환율만으로 확정할 수 없습니다.'},
+        {q:'현재 전망은 무엇인가요?', a:'인상 압력 우세이지만 공식 공시 대기 상태입니다.'}
+      ]
+    }
+  };
+  packs.en = {
+    'fore.metaTitle': 'August 2026 Fuel Surcharge and September Outlook | Aug 14 FX, MOPS and Hormuz',
+    'fore.pageTitle': 'August 2026 Fuel Surcharge and September Outlook',
+    'fore.pageSub': 'As of 2026.08.14 09:25 KST · August international Level 14 in effect · September domestic KRW 20,900 one-way · September international notice pending · USD/KRW around 1,416-1,418',
+    'fore.notice': '<strong>Note:</strong> August 2026 Korea-departure international fuel surcharge is in effect at Level 14. September international stages and airline amounts have not been officially announced.',
+    'fore.summary.title': 'September 2026 International Surcharge Outlook',
+    'fore.summary.items': ['August international surcharge is in effect at Level 14.','September international stage and airline amounts are not officially announced yet.','September domestic surcharge is KRW 20,900 one-way, up KRW 4,400 from August.','USD/KRW around 1,416-1,418 is a downside FX factor.','No verified public daily Singapore MOPS average is displayed for Aug 14.','Brent around USD 87.1 and WTI around USD 81.3 fell more than 2%.','Hormuz attack and traffic disruption remain strong upside pressure.'],
+    'fore.indicator.th': ['Factor','Status as of 2026.08.14 09:25 KST','Impact on September international'],
+    'fore.indicator.rows': [['FX','USD/KRW around 1,416-1,418','Downside factor, but not enough to confirm the stage.'],['Jet fuel/MOPS','August calculation MOPS USD 119.06/bbl; current daily MOPS not publicly verified','Upside pressure without displaying an invented daily value.'],['Hormuz','Two ADNOC-related vessels reportedly attacked; traffic remains far below normal','Strong upside pressure.'],['Oil','Brent around USD 87.1; WTI around USD 81.3','Mixed: supply risk versus inventories and weaker demand.'],['September domestic','KRW 16,500 to KRW 20,900 one-way','Domestic increase confirmed; not directly applied to international.'],['September international','Official stage and airline amounts pending','Upside pressure dominant; official notice pending.']],
+    'fore.verdict.line1': 'FX improved, but jet fuel and Hormuz risks offset the relief.',
+    'fore.verdict.line2': 'September domestic is confirmed higher, while September international remains officially pending.',
+    'fore.predict.items': [{label:'FX',val:'USD/KRW around 1,416-1,418 · downside',cls:'down'},{label:'Jet fuel/MOPS',val:'Current public daily MOPS not verified · upside pressure',cls:'up'},{label:'Hormuz',val:'ADNOC-related vessel attacks · very high traffic risk',cls:'up'},{label:'Oil',val:'Brent 87.1 · WTI 81.3 · mixed',cls:'plain'},{label:'September domestic',val:'KRW 20,900 one-way · +26.7%',cls:'up'},{label:'September international',val:'Official stage and amounts pending',cls:'plain'}],
+    'fore.faq.items': [{q:'Is the September 2026 international surcharge confirmed?',a:'No. Official airline stages and amounts have not been announced yet.'},{q:'Does the KRW 20,900 domestic surcharge apply to international routes?',a:'No. Domestic notices are separate and do not directly set international stages.'},{q:'What is the current Singapore MOPS?',a:'A verified public daily average for Aug 14 is not displayed.'}]
+  };
+  packs.ja = Object.assign({}, packs.en, {
+    'fore.pageTitle': '2026年8月燃油サーチャージ適用と9月見通し',
+    'fore.pageSub': '2026.08.14 09:25 KST時点 · 8月国際線14段階適用中 · 9月国内線20,900ウォン/片道 · 9月国際線は公式発表待ち',
+    'fore.summary.title': '2026年9月国際線サーチャージ見通し',
+    'fore.summary.items': ['8月の国際線サーチャージは14段階で適用中です。','9月国際線の段階と航空会社別金額はまだ公式発表前です。','9月国内線は片道20,900ウォンで、8月より4,400ウォン上昇しました。','USD/KRW約1,416～1,418は為替面の下落要因です。','8月14日の公開日次シンガポールMOPS平均は確定表示しません。','ホルムズ攻撃と通航制限は強い上昇圧力です。']
+  });
+  packs.zh = Object.assign({}, packs.en, {
+    'fore.pageTitle': '2026年8月燃油附加费执行与9月展望',
+    'fore.pageSub': '截至2026.08.14 09:25 KST · 8月国际线第14档执行中 · 9月国内线单程20,900韩元 · 9月国际线等待官方公告',
+    'fore.summary.title': '2026年9月国际线燃油附加费展望',
+    'fore.summary.items': ['8月国际线燃油附加费按第14档执行。','9月国际线档位和各航司金额尚未官方公布。','9月国内线单程20,900韩元，较8月增加4,400韩元。','USD/KRW约1,416~1,418是汇率下行因素。','8月14日公开日度新加坡MOPS均价不作确定显示。','霍尔木兹袭击和通行受限仍是强上行压力。']
+  });
+  packs.fr = Object.assign({}, packs.en, {
+    'fore.pageTitle': 'Surtaxe carburant août 2026 et perspectives de septembre',
+    'fore.pageSub': 'Au 2026.08.14 09:25 KST · international août niveau 14 · domestique septembre 20 900 KRW aller simple · international septembre en attente',
+    'fore.summary.title': 'Perspectives septembre 2026 pour l’international',
+    'fore.summary.items': ['La surtaxe internationale d’août est au niveau 14.','Le niveau et les montants internationaux de septembre ne sont pas encore annoncés.','La surtaxe domestique de septembre est de 20 900 KRW aller simple.','USD/KRW autour de 1 416-1 418 est un facteur baissier.','Aucune moyenne MOPS quotidienne publique vérifiée du 14 août n’est affichée.','Ormuz reste une forte pression haussière.']
+  });
+  packs.de = Object.assign({}, packs.en, {
+    'fore.pageTitle': 'Treibstoffzuschlag August 2026 und September-Ausblick',
+    'fore.pageSub': 'Stand 2026.08.14 09:25 KST · August international Stufe 14 · September Inland 20.900 KRW einfach · September international ausstehend',
+    'fore.summary.title': 'September 2026 Ausblick für internationale Zuschläge',
+    'fore.summary.items': ['Der internationale August-Zuschlag gilt auf Stufe 14.','September-Stufe und Airline-Beträge sind noch nicht offiziell veröffentlicht.','Der Inland-Zuschlag im September beträgt 20.900 KRW einfach.','USD/KRW um 1.416-1.418 ist ein FX-Entlastungsfaktor.','Kein verifizierter öffentlicher Tages-MOPS für den 14. August wird angezeigt.','Hormus bleibt starker Aufwärtsdruck.']
+  });
+  Object.keys(packs).forEach(function(lang){
+    Object.assign(FORE_I18N[lang] || (FORE_I18N[lang] = {}), packs[lang]);
+    if(window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], packs[lang]);
+  });
+  document.title = packs.ko['fore.metaTitle'];
+  var desc = document.querySelector('meta[name="description"]'); if(desc) desc.setAttribute('content', packs.ko['fore.metaDesc']);
+  var ogTitle = document.querySelector('meta[property="og:title"]'); if(ogTitle) ogTitle.setAttribute('content', packs.ko['fore.metaTitle']);
+  var ogDesc = document.querySelector('meta[property="og:description"]'); if(ogDesc) ogDesc.setAttribute('content', packs.ko['fore.metaDesc']);
+  var mod = document.querySelector('meta[property="article:modified_time"]'); if(mod) mod.setAttribute('content', '2026-08-14T09:25:00+09:00');
+})();
+
+/* 2026.08.14 forecast non-Korean stale-text cleanup guard. */
+(function(){
+  var sharedRows = {
+    en: {
+      'fore.h1':'September 2026 International Fuel Surcharge Outlook - official notice pending',
+      'fore.notice':'<strong>Note:</strong> August 2026 Korea-departure international fuel surcharge is in effect at Level 14. September international stages and airline amounts are still pending official airline notices.',
+      'fore.intro':'As of 2026.08.14 09:25 KST, August international fuel surcharge remains at official Level 14. September domestic surcharge has risen from KRW 16,500 to KRW 20,900 one-way, but that domestic increase is not applied directly to international routes. September international surcharge is still officially pending; the current view is upside pressure dominant.',
+      'fore.summary.updated':'As of 2026.08.14 09:25 KST · August international Level 14 · September international official notice pending',
+      'fore.indicator.th':['Factor','Status as of 2026.08.14 09:25 KST','Impact on September international'],
+      'fore.indicator.rows':[['FX','USD/KRW around 1,416-1,418; 100 JPY around KRW 889.4','Downside factor, but not enough to confirm the stage.'],['Jet fuel/MOPS','August calculation MOPS USD 119.06/bbl; current daily MOPS not publicly verified','Upside pressure without displaying an invented daily value.'],['Hormuz','ADNOC-linked vessel attack reports; traffic remains far below normal','Strong upside pressure through transport, insurance and refined-product risk.'],['Oil','Brent around USD 87.1; WTI around USD 81.3; down more than 2% on Aug 13','Mixed: Middle East supply risk versus inventories and weaker demand.'],['September domestic','KRW 16,500 to KRW 20,900 one-way; +26.7%','Domestic increase confirmed, not a direct international formula input.'],['September international','Official stage and airline amounts still pending','Upside pressure dominant; official notice pending.']],
+      'fore.market.title':'Market brief: FX relief versus jet fuel and Hormuz risk',
+      'fore.market.brent':'Oil: Brent was around USD 87.1/bbl and WTI around USD 81.3/bbl at the Aug 13 U.S. close. Both fell more than 2%, but Middle East supply risk remains.',
+      'fore.market.mops':'Jet fuel: August calculation MOPS of USD 119.06/bbl is the existing August notice average. A verified public daily Singapore MOPS average for Aug 14 is not displayed.',
+      'fore.market.fx':'FX: USD/KRW around 1,416-1,418, USD/JPY around 159.4, and 100 JPY around KRW 889.4.',
+      'fore.market.geo':'Hormuz: ADNOC-linked vessel attacks and single-digit traffic tracking keep transit risk very high. Provider counts are not merged or averaged.',
+      'fore.market.summary':'Current view: FX is a downside factor, but jet fuel and Hormuz risks make upside pressure dominant while official September international notices are pending.',
+      'fore.basis.body':'September international surcharge is confirmed only after the full 2026.07.16-08.15 Singapore MOPS average, applicable exchange rate and airline official notices are available. Domestic surcharge increases, oil prices and Hormuz news are outlook variables, not confirmed international stages or amounts.'
+    },
+    ja: {
+      'fore.h1':'2026年9月国際線燃油サーチャージ見通し - 公式発表待ち',
+      'fore.notice':'<strong>注意:</strong> 2026年8月の韓国発国際線燃油サーチャージは14段階で適用中です。9月国際線の段階と航空会社別金額はまだ公式発表前です。',
+      'fore.intro':'2026.08.14 09:25 KST時点で、8月国際線は公式公示どおり14段階です。9月国内線は片道16,500ウォンから20,900ウォンへ上昇しましたが、この国内線上昇率を国際線に直接適用しません。9月国際線は公式発表待ちで、現時点では上昇圧力が優勢です。',
+      'fore.summary.updated':'2026.08.14 09:25 KST時点 · 8月国際線14段階 · 9月国際線は公式発表待ち',
+      'fore.indicator.th':['項目','2026.08.14 09:25 KST時点','9月国際線への影響'],
+      'fore.indicator.rows':[['為替','USD/KRW約1,416～1,418、100円約889.4ウォン','下落要因ですが段階は確定できません。'],['航空燃料/MOPS','8月算定MOPS 119.06ドル/bbl、最新日次MOPSは公開確認制限','日次値を作らず、上昇圧力として扱います。'],['ホルムズ','ADNOC関連船攻撃、通航は通常を大きく下回る','輸送・保険・精製品リスクで強い上昇圧力です。'],['原油','Brent約87.1ドル、WTI約81.3ドル、8月13日に2%超下落','中東供給リスクと在庫・需要弱化の混合です。'],['9月国内線','16,500ウォンから20,900ウォン/片道、+26.7%','国内線は確定、国際線への直接入力ではありません。'],['9月国際線','公式段階・金額はまだ公示前','上昇圧力優勢、公式発表待ちです。']],
+      'fore.market.title':'市場ブリーフ: 為替緩和と航空燃料・ホルムズリスク',
+      'fore.market.summary':'現在の見方は、為替は下落要因ですが、航空燃料とホルムズリスクが上回る公式発表待ち局面です。'
+    },
+    zh: {
+      'fore.h1':'2026年9月国际线燃油附加费展望 - 等待官方公告',
+      'fore.notice':'<strong>注意:</strong> 2026年8月韩国出发国际线燃油附加费按第14档执行。9月国际线档位和各航司金额仍等待官方公告。',
+      'fore.intro':'截至2026.08.14 09:25 KST，8月国际线仍按官方公告第14档执行。9月国内线单程从16,500韩元升至20,900韩元，但该国内线涨幅不能直接套用于国际线。9月国际线仍等待官方公告，当前判断为上行压力占优。',
+      'fore.summary.updated':'截至2026.08.14 09:25 KST · 8月国际线第14档 · 9月国际线等待官方公告',
+      'fore.indicator.th':['项目','截至2026.08.14 09:25 KST的状态','对9月国际线影响'],
+      'fore.indicator.rows':[['汇率','USD/KRW约1,416~1,418，100日元约889.4韩元','下行因素，但不能确认档位。'],['航油/MOPS','8月计算MOPS 119.06美元/bbl，最新日度MOPS公开确认受限','不显示编造日度值，仅作为上行压力。'],['霍尔木兹','ADNOC相关船舶遇袭，通行远低正常','运输、保险和成品油风险带来强上行压力。'],['原油','Brent约87.1美元，WTI约81.3美元，8月13日跌超2%','中东供应风险与库存、需求走弱并存。'],['9月国内线','16,500韩元升至20,900韩元/单程，+26.7%','国内线已确认，但不是国际线直接公式输入。'],['9月国际线','官方档位和金额仍未公告','上行压力占优，等待官方公告。']],
+      'fore.market.title':'市场简报: 汇率缓和与航油、霍尔木兹风险',
+      'fore.market.summary':'当前判断是汇率为下行因素，但航油和霍尔木兹风险更强，国际线仍处官方公告等待阶段。'
+    },
+    fr: {
+      'fore.h1':'Perspectives de surtaxe internationale septembre 2026 - annonce officielle en attente',
+      'fore.notice':'<strong>Note:</strong> La surtaxe internationale au départ de Corée pour août 2026 est appliquée au niveau 14. Les niveaux et montants internationaux de septembre attendent encore les annonces officielles.',
+      'fore.intro':'Au 2026.08.14 09:25 KST, la surtaxe internationale d’août reste au niveau officiel 14. La surtaxe domestique de septembre passe de 16 500 à 20 900 KRW aller simple, mais cette hausse domestique ne s’applique pas directement aux routes internationales. L’international de septembre reste en attente, avec une pression haussière dominante.',
+      'fore.summary.updated':'Au 2026.08.14 09:25 KST · août international niveau 14 · avis officiel international de septembre en attente',
+      'fore.indicator.th':['Facteur','État au 2026.08.14 09:25 KST','Impact sur septembre international'],
+      'fore.market.title':'Brief marché: détente FX contre risque jet fuel et Ormuz',
+      'fore.market.summary':'Le change est baissier, mais les risques jet fuel et Ormuz dominent pendant l’attente des avis officiels internationaux de septembre.'
+    },
+    de: {
+      'fore.h1':'Ausblick internationaler Treibstoffzuschlag September 2026 - offizielle Mitteilung ausstehend',
+      'fore.notice':'<strong>Hinweis:</strong> Der internationale Zuschlag ab Korea für August 2026 gilt auf Stufe 14. September-Stufen und Airline-Beträge sind noch nicht offiziell veröffentlicht.',
+      'fore.intro':'Stand 2026.08.14 09:25 KST bleibt der internationale August-Zuschlag offiziell auf Stufe 14. Der Inlandszuschlag September steigt einfach von 16.500 auf 20.900 KRW, doch diese Inlandserhöhung wird nicht direkt auf internationale Routen übertragen. International September ist noch ausstehend; Aufwärtsdruck überwiegt.',
+      'fore.summary.updated':'Stand 2026.08.14 09:25 KST · August international Stufe 14 · September international offiziell ausstehend',
+      'fore.indicator.th':['Faktor','Stand 2026.08.14 09:25 KST','Wirkung auf September international'],
+      'fore.market.title':'Marktbrief: FX-Entlastung gegen Jetfuel- und Hormusrisiko',
+      'fore.market.summary':'FX wirkt entlastend, aber Jetfuel- und Hormusrisiken dominieren, solange offizielle September-Mitteilungen ausstehen.'
+    }
+  };
+  Object.keys(sharedRows).forEach(function(lang){
+    var pack = Object.assign({}, sharedRows.en, sharedRows[lang]);
+    Object.assign(FORE_I18N[lang] || (FORE_I18N[lang] = {}), pack);
+    if(window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], pack);
+  });
+})();
+
+/* 2026.08.14 forecast cleanup: keep only international outlook items. */
+(function(){
+  var packs = {
+    ko: {
+      'fore.metaTitle':'2026년 8월 국제선 유류할증료 적용·9월 전망 | 8월 14일 환율·MOPS·호르무즈',
+      'fore.metaDesc':'2026년 8월 14일 09:25 KST 기준 8월 국제선 유류할증료 14단계와 9월 국제선 공식 공시 대기 상태를 환율, 항공유, 호르무즈, 국제유가 변수로 정리합니다.',
+      'fore.pageTitle':'2026년 8월 국제선 유류할증료 적용과 9월 전망',
+      'fore.pageSub':'2026.08.14 09:25 KST 기준 · 8월 국제선 14단계 적용 중 · 9월 국제선 공식 공시 대기 · USD/KRW 약 1,416~1,418원 · Brent 약 87.1달러 · WTI 약 81.3달러',
+      'fore.h1':'2026년 9월 국제선 유류할증료 전망 - 공식 공시 대기',
+      'fore.notice':'<strong>안내:</strong> 2026년 8월 한국 출발 국제선 유류할증료는 14단계로 적용 중입니다. 2026년 9월 국제선 단계와 항공사별 금액은 아직 공식 공시 전입니다.',
+      'fore.intro':'2026.08.14 09:25 KST 기준, 8월 국제선 유류할증료는 기존 공식 공시대로 14단계입니다. 9월 국제선은 항공사 공식 공시 전이며, 환율은 하락 요인이지만 항공유와 호르무즈 해협 리스크가 이를 상쇄하는 국면입니다.',
+      'fore.indicator.th':['항목','2026.08.14 09:25 KST 기준 상태','9월 국제선 전망 영향'],
+      'fore.indicator.rows':[
+        ['환율','USD/KRW 약 1,416~1,418원 · JPY/KRW 100엔 약 889.4원','하락 요인입니다. 다만 환율만으로 9월 단계를 확정할 수 없습니다.'],
+        ['항공유/MOPS','8월 산정 MOPS 119.06달러/bbl · 최신 공개 MOPS 일별 평균 확인 제한','현재 일별 MOPS 값을 임의로 표시하지 않습니다. 항공유 방향성은 상승 압력으로 봅니다.'],
+        ['호르무즈','ADNOC 관련 선박 공격 보도 · 통항은 정상 대비 크게 낮은 수준','강한 상승 압력입니다. 운송·보험·정제제품 공급 위험이 커졌습니다.'],
+        ['국제유가','Brent 약 87.1달러 · WTI 약 81.3달러 · 8월 13일 2%대 하락','혼조입니다. 중동 공급 위험과 수요 둔화·재고 증가가 맞섭니다.'],
+        ['9월 국제선','주요 항공사 공식 단계·금액 아직 공시 전','인상 압력 우세 · 공식 공시 대기입니다.']
+      ],
+      'fore.indicator.footnote':'* 2026년 9월 국제선 유류할증료는 아직 공식 공시 전입니다. 위 항목은 전망 변수이며 확정 단계·금액·확률이 아닙니다.',
+      'fore.summary.updated':'2026.08.14 09:25 KST 기준 · 8월 국제선 14단계 · 9월 국제선 공시 대기',
+      'fore.summary.title':'2026년 9월 국제선 유류할증료 전망 요약',
+      'fore.summary.items':[
+        '2026년 8월 한국 출발 국제선 유류할증료는 14단계로 적용 중입니다.',
+        '2026년 9월 국제선 단계와 항공사별 금액은 아직 공식 공시 전입니다.',
+        'USD/KRW 약 1,416~1,418원은 환율 측 하락 요인입니다.',
+        '최신 공개 MOPS 일별 평균가격은 확인 제한 상태이므로 임의 숫자를 넣지 않습니다.',
+        '8월 산정 MOPS 119.06달러/bbl은 기존 8월 공시 산정 평균입니다.',
+        'Brent 약 87.1달러와 WTI 약 81.3달러는 재고 증가와 수요 둔화로 2%대 하락했습니다.',
+        '호르무즈 공격·통항 제한은 강한 상승 압력으로 남아 있습니다.'
+      ],
+      'fore.verdict.title':'2026년 9월 국제선 전망',
+      'fore.verdict.line1':'환율은 개선됐지만 항공유와 호르무즈 해협 리스크가 이를 상쇄하고 있습니다.',
+      'fore.verdict.line2':'2026년 9월 국제선은 공식 단계와 항공사별 금액이 아직 공시되지 않았습니다.',
+      'fore.verdict.short':'하락 요인: USD/KRW 약 1,416~1,418원',
+      'fore.verdict.long':'상승 요인: 항공유 상승 압력과 호르무즈 고위험',
+      'fore.market.title':'시장 브리핑: 환율 개선과 항공유·호르무즈 위험',
+      'fore.market.brent':'국제유가: 8월 13일 미국 시장 종가 기준 Brent는 약 87.1달러/bbl, WTI는 약 81.3달러/bbl입니다. 두 유종 모두 2%대 하락했지만 중동 공급 위험은 남아 있습니다.',
+      'fore.market.mops':'항공유: 8월 산정 MOPS 119.06달러/bbl은 기존 공시 평균입니다. 8월 14일 현재 일별 싱가포르 MOPS 평균은 신뢰 가능한 무료 공개자료로 확정 표시하지 않습니다.',
+      'fore.market.fx':'환율: USD/KRW 약 1,416~1,418원, USD/JPY 약 159.4, 100엔 약 889.4원입니다.',
+      'fore.market.geo':'호르무즈: ADNOC 관련 선박 공격과 한 자릿수 통항 추적으로 통항 위험이 매우 높습니다. 추적업체별 숫자는 합산·평균 처리하지 않습니다.',
+      'fore.market.summary':'현재 판단은 환율 하락 요인보다 항공유·호르무즈 상승 압력이 더 우세한 공시 대기 국면입니다.',
+      'fore.market.fx2':'핵심 수치: 2026.08.14 09:25 KST · 8월 국제선 14단계 · USD/KRW 약 1,416~1,418원 · Brent 87.1달러 · WTI 81.3달러 · 9월 국제선 공시 대기',
+      'fore.basis.title':'8월 공시 데이터와 9월 전망 기준',
+      'fore.basis.body':'9월 국제선 유류할증료는 2026.07.16~08.15 전체 싱가포르 MOPS 평균, 적용 환율, 항공사 공식 공시가 확인돼야 확정됩니다. 국제유가·호르무즈 뉴스는 전망 변수이며 국제선 단계나 금액을 직접 확정하지 않습니다.',
+      'fore.predict.title':'2026년 9월 국제선 유류할증료 전망 핵심 지표',
+      'fore.predict.subtitle':'8월 14단계 · 9월 국제선 공시 대기 · 환율 하락 요인 vs 항공유·호르무즈 상승 압력',
+      'fore.predict.items':[
+        {label:'환율', val:'USD/KRW 약 1,416~1,418원 · 하락 요인', cls:'down'},
+        {label:'항공유/MOPS', val:'최신 공개 일별 MOPS 확인 제한 · 상승 압력', cls:'up'},
+        {label:'호르무즈', val:'ADNOC 관련 선박 공격 · 통항 위험 매우 높음', cls:'up'},
+        {label:'국제유가', val:'Brent 87.1달러 · WTI 81.3달러 · 혼조', cls:'plain'},
+        {label:'9월 국제선', val:'공식 단계·금액 공시 대기', cls:'plain'}
+      ],
+      'fore.predict.footnote':'* 2026년 9월 국제선 단계·금액·확률은 표시하지 않습니다. 공식 공시 전 전망 변수만 분리합니다.',
+      'fore.faq.title':'자주 묻는 질문',
+      'fore.faq.items':[
+        {q:'2026년 9월 국제선 유류할증료는 확정됐나요?', a:'아닙니다. 주요 항공사의 공식 단계와 금액은 아직 공시 전입니다.'},
+        {q:'현재 싱가포르 MOPS는 얼마인가요?', a:'8월 14일 현재 신뢰 가능한 무료 공개자료로 일별 평균가격을 확정 표시하지 않습니다.'},
+        {q:'환율이 내려가면 9월 국제선도 내려가나요?', a:'환율은 하락 요인이지만 항공유와 호르무즈 위험이 상승 요인입니다. 환율만으로 확정할 수 없습니다.'},
+        {q:'현재 전망은 무엇인가요?', a:'인상 압력 우세이지만 공식 공시 대기 상태입니다.'}
+      ]
+    }
+  };
+  packs.en = Object.assign({}, packs.ko, {
+    'fore.metaTitle':'August 2026 International Fuel Surcharge and September Outlook | Aug 14 FX, MOPS and Hormuz',
+    'fore.metaDesc':'As of 2026.08.14 09:25 KST: August international Level 14 and September international notice pending, with FX, jet fuel, Hormuz and oil variables separated.',
+    'fore.pageTitle':'August 2026 International Fuel Surcharge and September Outlook',
+    'fore.pageSub':'As of 2026.08.14 09:25 KST · August international Level 14 in effect · September international notice pending · USD/KRW around 1,416-1,418 · Brent around USD 87.1 · WTI around USD 81.3',
+    'fore.h1':'September 2026 International Fuel Surcharge Outlook - official notice pending',
+    'fore.notice':'<strong>Note:</strong> August 2026 Korea-departure international fuel surcharge is in effect at Level 14. September international stages and airline amounts are still pending official airline notices.',
+    'fore.intro':'As of 2026.08.14 09:25 KST, August international fuel surcharge remains at official Level 14. September international surcharge is still pending airline notices; FX is a downside factor, while jet fuel and Hormuz risks offset that relief.',
+    'fore.indicator.th':['Factor','Status as of 2026.08.14 09:25 KST','Impact on September international'],
+    'fore.indicator.rows':[['FX','USD/KRW around 1,416-1,418; 100 JPY around KRW 889.4','Downside factor, but not enough to confirm the stage.'],['Jet fuel/MOPS','August calculation MOPS USD 119.06/bbl; current daily MOPS not publicly verified','Do not display an invented daily MOPS value; direction is upside pressure.'],['Hormuz','ADNOC-linked vessel attack reports; traffic remains far below normal','Strong upside pressure through transport, insurance and refined-product risk.'],['Oil','Brent around USD 87.1; WTI around USD 81.3; down more than 2% on Aug 13','Mixed: Middle East supply risk versus inventories and weaker demand.'],['September international','Official stage and airline amounts still pending','Upside pressure dominant; official notice pending.']],
+    'fore.summary.updated':'As of 2026.08.14 09:25 KST · August international Level 14 · September international official notice pending',
+    'fore.summary.title':'September 2026 International Surcharge Outlook',
+    'fore.summary.items':['August international surcharge is in effect at Level 14.','September international stage and airline amounts are not officially announced yet.','USD/KRW around 1,416-1,418 is a downside FX factor.','No verified public daily Singapore MOPS average is displayed for Aug 14.','August calculation MOPS remains USD 119.06/bbl.','Brent around USD 87.1 and WTI around USD 81.3 fell more than 2%.','Hormuz attack and traffic disruption remain strong upside pressure.'],
+    'fore.verdict.line1':'FX improved, but jet fuel and Hormuz risks offset the relief.',
+    'fore.verdict.line2':'September 2026 international stages and airline amounts are still pending official notices.',
+    'fore.verdict.short':'Downside factor: USD/KRW around 1,416-1,418',
+    'fore.verdict.long':'Upside factors: jet fuel pressure and very high Hormuz risk',
+    'fore.predict.items':[{label:'FX',val:'USD/KRW around 1,416-1,418 · downside',cls:'down'},{label:'Jet fuel/MOPS',val:'Current public daily MOPS not verified · upside pressure',cls:'up'},{label:'Hormuz',val:'ADNOC-linked vessel attacks · very high traffic risk',cls:'up'},{label:'Oil',val:'Brent 87.1 · WTI 81.3 · mixed',cls:'plain'},{label:'September international',val:'Official stage and amounts pending',cls:'plain'}],
+    'fore.faq.items':[{q:'Is the September 2026 international surcharge confirmed?',a:'No. Official airline stages and amounts have not been announced yet.'},{q:'What is the current Singapore MOPS?',a:'A verified public daily average for Aug 14 is not displayed.'},{q:'Does lower FX guarantee a lower surcharge?',a:'No. FX is a downside factor, but jet fuel and Hormuz risks are upside factors.'}]
+  });
+  packs.ja = Object.assign({}, packs.en, {
+    'fore.pageTitle':'2026年8月国際線燃油サーチャージ適用と9月見通し',
+    'fore.pageSub':'2026.08.14 09:25 KST時点 · 8月国際線14段階適用中 · 9月国際線は公式発表待ち · USD/KRW約1,416～1,418',
+    'fore.h1':'2026年9月国際線燃油サーチャージ見通し - 公式発表待ち',
+    'fore.notice':'<strong>注意:</strong> 2026年8月の韓国発国際線燃油サーチャージは14段階で適用中です。9月国際線の段階と航空会社別金額はまだ公式発表前です。',
+    'fore.intro':'2026.08.14 09:25 KST時点で、8月国際線は公式公示どおり14段階です。9月国際線は公式発表待ちで、為替は下落要因ですが航空燃料とホルムズリスクがそれを相殺しています。',
+    'fore.indicator.th':['項目','2026.08.14 09:25 KST時点','9月国際線への影響'],
+    'fore.indicator.rows':[['為替','USD/KRW約1,416～1,418、100円約889.4ウォン','下落要因ですが段階は確定できません。'],['航空燃料/MOPS','8月算定MOPS 119.06ドル/bbl、最新日次MOPSは公開確認制限','日次値を作らず、上昇圧力として扱います。'],['ホルムズ','ADNOC関連船攻撃、通航は通常を大きく下回る','輸送・保険・精製品リスクで強い上昇圧力です。'],['原油','Brent約87.1ドル、WTI約81.3ドル、8月13日に2%超下落','中東供給リスクと在庫・需要弱化の混合です。'],['9月国際線','公式段階・金額はまだ公示前','上昇圧力優勢、公式発表待ちです。']],
+    'fore.summary.title':'2026年9月国際線サーチャージ見通し',
+    'fore.summary.items':['8月の国際線サーチャージは14段階で適用中です。','9月国際線の段階と航空会社別金額はまだ公式発表前です。','USD/KRW約1,416～1,418は為替面の下落要因です。','8月14日の公開日次シンガポールMOPS平均は確定表示しません。','8月算定MOPSは119.06ドル/bblです。','ホルムズ攻撃と通航制限は強い上昇圧力です。']
+  });
+  packs.zh = Object.assign({}, packs.en, {
+    'fore.pageTitle':'2026年8月国际线燃油附加费执行与9月展望',
+    'fore.pageSub':'截至2026.08.14 09:25 KST · 8月国际线第14档执行中 · 9月国际线等待官方公告 · USD/KRW约1,416~1,418',
+    'fore.h1':'2026年9月国际线燃油附加费展望 - 等待官方公告',
+    'fore.notice':'<strong>注意:</strong> 2026年8月韩国出发国际线燃油附加费按第14档执行。9月国际线档位和各航司金额仍等待官方公告。',
+    'fore.intro':'截至2026.08.14 09:25 KST，8月国际线仍按官方公告第14档执行。9月国际线仍等待官方公告，汇率是下行因素，但航油和霍尔木兹风险抵消该缓和。',
+    'fore.indicator.th':['项目','截至2026.08.14 09:25 KST的状态','对9月国际线影响'],
+    'fore.indicator.rows':[['汇率','USD/KRW约1,416~1,418，100日元约889.4韩元','下行因素，但不能确认档位。'],['航油/MOPS','8月计算MOPS 119.06美元/bbl，最新日度MOPS公开确认受限','不显示编造日度值，仅作为上行压力。'],['霍尔木兹','ADNOC相关船舶遇袭，通行远低正常','运输、保险和成品油风险带来强上行压力。'],['原油','Brent约87.1美元，WTI约81.3美元，8月13日跌超2%','中东供应风险与库存、需求走弱并存。'],['9月国际线','官方档位和金额仍未公告','上行压力占优，等待官方公告。']],
+    'fore.summary.title':'2026年9月国际线燃油附加费展望',
+    'fore.summary.items':['8月国际线燃油附加费按第14档执行。','9月国际线档位和各航司金额尚未官方公布。','USD/KRW约1,416~1,418是汇率下行因素。','8月14日公开日度新加坡MOPS均价不作确定显示。','8月计算MOPS为119.06美元/bbl。','霍尔木兹袭击和通行受限仍是强上行压力。']
+  });
+  packs.fr = Object.assign({}, packs.en, {
+    'fore.pageTitle':'Surtaxe carburant internationale août 2026 et perspectives septembre',
+    'fore.pageSub':'Au 2026.08.14 09:25 KST · international août niveau 14 · international septembre en attente · USD/KRW autour de 1 416-1 418',
+    'fore.h1':'Perspectives de surtaxe internationale septembre 2026 - annonce officielle en attente',
+    'fore.notice':'<strong>Note:</strong> La surtaxe internationale au départ de Corée pour août 2026 est appliquée au niveau 14. Les niveaux et montants internationaux de septembre attendent encore les annonces officielles.',
+    'fore.intro':'Au 2026.08.14 09:25 KST, la surtaxe internationale d’août reste au niveau officiel 14. L’international de septembre est en attente; le change est baissier, mais le jet fuel et Ormuz compensent cette détente.',
+    'fore.indicator.th':['Facteur','État au 2026.08.14 09:25 KST','Impact sur septembre international'],
+    'fore.indicator.rows':[['Change','USD/KRW autour de 1 416-1 418; 100 JPY autour de 889,4 KRW','Facteur baissier, insuffisant pour confirmer le niveau.'],['Jet fuel/MOPS','MOPS d’août 119,06 USD/bbl; MOPS quotidien actuel non vérifié publiquement','Pas de valeur quotidienne inventée; pression haussière.'],['Ormuz','Attaques de navires liés à ADNOC; trafic très inférieur à la normale','Forte pression haussière via transport, assurance et produits raffinés.'],['Pétrole','Brent env. 87,1 USD; WTI env. 81,3 USD; baisse de plus de 2% le 13 août','Mixte: risque d’offre contre stocks et demande faible.'],['International septembre','Niveau et montants officiels encore en attente','Pression haussière dominante; avis officiel en attente.']],
+    'fore.summary.title':'Perspectives septembre 2026 pour l’international',
+    'fore.summary.items':['La surtaxe internationale d’août est au niveau 14.','Le niveau et les montants internationaux de septembre ne sont pas encore annoncés.','USD/KRW autour de 1 416-1 418 est un facteur baissier.','Aucune moyenne MOPS quotidienne publique vérifiée du 14 août n’est affichée.','Le MOPS de calcul d’août reste 119,06 USD/bbl.','Ormuz reste une forte pression haussière.']
+  });
+  packs.de = Object.assign({}, packs.en, {
+    'fore.pageTitle':'Internationaler Treibstoffzuschlag August 2026 und September-Ausblick',
+    'fore.pageSub':'Stand 2026.08.14 09:25 KST · August international Stufe 14 · September international ausstehend · USD/KRW um 1.416-1.418',
+    'fore.h1':'Ausblick internationaler Treibstoffzuschlag September 2026 - offizielle Mitteilung ausstehend',
+    'fore.notice':'<strong>Hinweis:</strong> Der internationale Zuschlag ab Korea für August 2026 gilt auf Stufe 14. September-Stufen und Airline-Beträge sind noch nicht offiziell veröffentlicht.',
+    'fore.intro':'Stand 2026.08.14 09:25 KST bleibt der internationale August-Zuschlag offiziell auf Stufe 14. International September ist noch ausstehend; FX entlastet, aber Jetfuel- und Hormusrisiken gleichen dies aus.',
+    'fore.indicator.th':['Faktor','Stand 2026.08.14 09:25 KST','Wirkung auf September international'],
+    'fore.indicator.rows':[['FX','USD/KRW um 1.416-1.418; 100 JPY um 889,4 KRW','Entlastungsfaktor, aber keine bestätigte Stufe.'],['Jetfuel/MOPS','August-MOPS 119,06 USD/bbl; aktueller Tages-MOPS nicht öffentlich verifiziert','Kein erfundener Tageswert; Aufwärtsdruck.'],['Hormus','Angriffe auf ADNOC-nahe Schiffe; Verkehr weit unter normal','Starker Aufwärtsdruck über Transport, Versicherung und Produkte.'],['Öl','Brent ca. 87,1 USD; WTI ca. 81,3 USD; am 13. Aug. über 2% tiefer','Gemischt: Angebotsrisiko gegen Lager und schwache Nachfrage.'],['September international','Offizielle Stufe und Beträge noch ausstehend','Aufwärtsdruck dominiert; offizielle Mitteilung ausstehend.']],
+    'fore.summary.title':'September 2026 Ausblick für internationale Zuschläge',
+    'fore.summary.items':['Der internationale August-Zuschlag gilt auf Stufe 14.','September-Stufe und Airline-Beträge sind noch nicht offiziell veröffentlicht.','USD/KRW um 1.416-1.418 ist ein FX-Entlastungsfaktor.','Kein verifizierter öffentlicher Tages-MOPS für den 14. August wird angezeigt.','Der August-Berechnungs-MOPS bleibt 119,06 USD/bbl.','Hormus bleibt starker Aufwärtsdruck.']
+  });
+  Object.keys(packs).forEach(function(lang){
+    Object.assign(FORE_I18N[lang] || (FORE_I18N[lang] = {}), packs[lang]);
+    if(window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], packs[lang]);
+  });
+})();
+
 window.initNav({
   onLangChange: function() { renderForecastPage(); },
   onCurrChange: function() { renderForecastPage(); },

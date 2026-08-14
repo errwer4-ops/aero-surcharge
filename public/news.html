@@ -14810,6 +14810,342 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
   (FIXED_NEWS || []).forEach(apply);
 })();
 
+/* 2026.08.14 09:25 KST terminal news update and card i18n guard. */
+(function(){
+  function local(title, brief, summary, impact, tags){
+    return {title:title, aiBrief:brief, summary:summary, impact:impact, tags:tags};
+  }
+  function make(row){
+    var ko = row.i18n.ko;
+    return {
+      id: row.id,
+      slug: row.slug,
+      category: row.category,
+      priority: row.priority,
+      date: '2026-08-14',
+      updatedAt: '2026-08-14T09:25:00+09:00',
+      badge: row.badge,
+      aiSummary: true,
+      relevanceScore: row.score || 0.95,
+      currentMonthNotice: '2026-08',
+      forecastTargetMonth: '2026-09',
+      title: ko.title,
+      aiBrief: ko.aiBrief,
+      summary: ko.summary,
+      impact: ko.impact,
+      sourceName: row.sourceName,
+      sourceUrl: row.sourceUrl,
+      tags: ko.tags,
+      i18n: row.i18n
+    };
+  }
+  var rows = [
+    make({
+      id:'adnoc-vessels-attacked-20260814', slug:'adnoc-vessels-attacked-hormuz-aug-14-2026', category:'geo', priority:1, badge:'지정학', score:0.99, sourceName:'Reuters', sourceUrl:'https://www.reuters.com/world/middle-east/',
+      i18n:{
+        ko:local('호르무즈 긴장 재고조 - ADNOC 관련 선박 2척 공격','UAE는 호르무즈 해협 인근에서 ADNOC 관련 선박 2척이 공격받았다고 밝혔습니다.','UAE 발표에 따르면 8월 13일 밤 UTC, 한국시간 8월 14일 새벽 호르무즈 해협 인근에서 ADNOC와 관련된 선박 2척이 공격을 받았습니다. 부상자는 보고되지 않았지만 UAE는 이를 고의적 적대 행위로 규정했습니다. 최근 일주일 사이 두 번째 ADNOC 관련 중대 사건입니다.','호르무즈 통항 위험이 매우 높아져 9월 국제선 유류할증료 전망의 강한 상승 압력으로 반영합니다.',['호르무즈','ADNOC','선박 공격','공급 위험']),
+        en:local('Hormuz tensions re-escalate as two ADNOC-linked vessels are attacked','The UAE said two ADNOC-linked vessels were attacked near the Strait of Hormuz.','The UAE said two ADNOC-linked vessels were attacked near Hormuz late Aug 13 UTC, early Aug 14 KST. No injuries were reported, but the UAE called it a deliberate hostile act and a second major ADNOC-related incident in a week.','Hormuz traffic risk is very high and adds strong upside pressure to the September international outlook.',['Hormuz','ADNOC','vessel attack','supply risk']),
+        ja:local('ホルムズ緊張再燃 - ADNOC関連船2隻が攻撃','UAEはホルムズ海峡付近でADNOC関連船2隻が攻撃されたと発表しました。','UAEによると、8月13日夜UTC、韓国時間8月14日未明にADNOC関連船2隻が攻撃されました。負傷者は報告されていませんが、意図的な敵対行為とされます。','ホルムズ通航リスクは非常に高く、9月国際線見通しの強い上昇圧力です。',['ホルムズ','ADNOC','船舶攻撃','供給リスク']),
+        zh:local('霍尔木兹紧张再升温 - 两艘ADNOC相关船舶遇袭','阿联酋称两艘ADNOC相关船舶在霍尔木兹海峡附近遭到攻击。','阿联酋表示，8月13日夜间UTC、韩国时间8月14日凌晨，两艘ADNOC相关船舶在霍尔木兹附近遭袭。未报告人员受伤，但被称为蓄意敌对行为。','霍尔木兹通行风险极高，是9月国际线展望的强上行压力。',['霍尔木兹','ADNOC','船舶攻击','供应风险']),
+        fr:local('Ormuz: deux navires liés à ADNOC attaqués','Les Émirats arabes unis indiquent que deux navires liés à ADNOC ont été attaqués près d’Ormuz.','Selon les Émirats arabes unis, deux navires liés à ADNOC ont été attaqués près d’Ormuz dans la nuit du 13 août UTC, au petit matin du 14 août KST. Aucun blessé n’est signalé.','Le risque de transit à Ormuz devient très élevé et ajoute une forte pression haussière.',['Ormuz','ADNOC','attaque','risque d’offre']),
+        de:local('Hormus: zwei ADNOC-nahe Schiffe angegriffen','Die VAE berichten von Angriffen auf zwei ADNOC-nahe Schiffe nahe der Straße von Hormus.','Nach Angaben der VAE wurden spät am 13. August UTC, früh am 14. August KST, zwei ADNOC-nahe Schiffe nahe Hormus angegriffen. Verletzte wurden nicht gemeldet.','Das Hormus-Risiko ist sehr hoch und wirkt stark aufwärts auf den September-Ausblick.',['Hormus','ADNOC','Schiffsangriff','Angebotsrisiko'])
+      }
+    }),
+    make({
+      id:'us-force-option-hormuz-20260814', slug:'us-force-option-hormuz-aug-14-2026', category:'geo', priority:2, badge:'지정학', score:0.98, sourceName:'Al Jazeera / market reports', sourceUrl:'https://www.aljazeera.com/news/',
+      i18n:{
+        ko:local('미국, 해상봉쇄를 넘는 무력 사용 가능성 시사','미국은 압박 유지를 위해 필요하면 해상 통제를 넘어서는 조치도 검토할 수 있다고 밝혔습니다.','미국은 호르무즈와 주변 해역 압박을 유지하기 위해 해상봉쇄나 통제 범위를 넘는 무력 사용 가능성을 배제하지 않았습니다. 이란은 제재와 동결자산 조건이 풀리지 않는 한 정상화가 어렵다는 입장을 유지합니다.','정치·군사 불확실성이 통항 정상화 기대를 낮추며 상승 요인으로 남습니다.',['미국','호르무즈','해상봉쇄','무력 옵션']),
+        en:local('U.S. signals possible force beyond maritime blockade','The U.S. said it may consider action beyond maritime control if needed to maintain pressure.','The U.S. did not rule out force beyond blockade or maritime control to keep pressure around Hormuz. Iran maintains that normalization is difficult while sanctions and frozen-asset conditions remain unmet.','Political and military uncertainty lowers reopening confidence and remains an upside factor.',['U.S.','Hormuz','blockade','force option']),
+        ja:local('米国、海上封鎖を超える武力行使の可能性を示唆','米国は圧力維持のため必要なら海上管理を超える措置も検討し得るとしました。','米国はホルムズ周辺の圧力維持のため、封鎖や海上管理を超える武力行使の可能性を排除しませんでした。','政治・軍事不確実性は再開期待を下げ、上昇要因として残ります。',['米国','ホルムズ','封鎖','武力オプション']),
+        zh:local('美国暗示可能采取超出海上封锁的武力措施','美国称为维持压力，必要时可能考虑超出海上管制的行动。','美国没有排除在霍尔木兹周边采取超出封锁或海上管制范围的武力措施。伊朗称制裁和冻结资产条件未满足前正常化困难。','政治和军事不确定性降低重开预期，仍是上行因素。',['美国','霍尔木兹','封锁','武力选项']),
+        fr:local('Les États-Unis évoquent une option de force au-delà du blocus','Washington indique que des mesures au-delà du contrôle maritime peuvent être envisagées.','Les États-Unis n’excluent pas l’usage de la force au-delà du blocus ou du contrôle maritime autour d’Ormuz. L’Iran maintient que la normalisation reste difficile.','L’incertitude politique et militaire reste un facteur haussier.',['États-Unis','Ormuz','blocus','option militaire']),
+        de:local('USA deuten Gewaltoption über Seeblockade hinaus an','Washington kann bei Bedarf Maßnahmen über maritime Kontrolle hinaus prüfen.','Die USA schließen Gewalt über Blockade oder maritime Kontrolle rund um Hormus nicht aus. Iran hält eine Normalisierung ohne erfüllte Bedingungen für schwierig.','Politisch-militärische Unsicherheit bleibt ein Aufwärtsfaktor.',['USA','Hormus','Blockade','Gewaltoption'])
+      }
+    }),
+    make({
+      id:'hormuz-traffic-depressed-20260814', slug:'hormuz-traffic-depressed-aug-14-2026', category:'geo', priority:3, badge:'지정학', score:0.97, sourceName:'Public vessel tracking reports', sourceUrl:'https://www.reuters.com/world/middle-east/',
+      i18n:{
+        ko:local('호르무즈 통항, 정상 130~140척 대비 한 자릿수 수준 지속','최근 공개 추적은 화요일 6척, 수요일 8척, 목요일 5척 이하 수준으로 정상 대비 크게 낮습니다.','전쟁 전 호르무즈 해협 하루 통항은 약 130~140척으로 추정됐지만 최근 공개 추적은 한 자릿수 수준에 머물렀습니다. 추적업체별 기준 차이가 있어 정확한 단일 수치로 합치지 않습니다.','통항 정상화 지연은 항공유·정제제품 운송비와 보험료 부담을 키우는 요인입니다.',['호르무즈','통항량','정상 대비 급감','AIS']),
+        en:local('Hormuz traffic remains in single digits versus normal 130-140 vessels','Recent public tracking showed traffic far below normal levels.','Pre-war Hormuz traffic was estimated near 130-140 vessels per day. Recent public tracking stayed in single digits; provider methods differ, so the figures are not merged into one exact total.','Delayed normalization increases transport and insurance pressure for jet fuel and refined products.',['Hormuz','traffic','far below normal','AIS']),
+        ja:local('ホルムズ通航、通常130～140隻に対し一桁水準が続く','最近の公開追跡は通常比で大きく低い水準です。','戦前のホルムズ通航は1日約130～140隻と推定されます。最近の公開追跡は一桁水準で、追跡会社ごとの差があるため単一の確定値には統合しません。','正常化遅延は航空燃料と精製品の輸送・保険負担を高めます。',['ホルムズ','通航量','通常比急減','AIS']),
+        zh:local('霍尔木兹通行仍为个位数，远低于正常130~140艘','近期公开追踪显示通行远低于正常水平。','战前霍尔木兹日通行约130~140艘。近期公开追踪维持个位数，因供应商口径不同，不合并为单一精确总数。','正常化延迟会推高航油和成品油运输、保险压力。',['霍尔木兹','通行量','远低正常','AIS']),
+        fr:local('Le trafic d’Ormuz reste à un chiffre contre 130-140 navires','Le suivi public récent reste très inférieur à la normale.','Avant-guerre, Ormuz voyait environ 130-140 navires par jour. Les données publiques récentes restent à un chiffre; les méthodes diffèrent, donc elles ne sont pas fusionnées en un total exact.','La normalisation retardée augmente transport et assurance.',['Ormuz','trafic','très sous normal','AIS']),
+        de:local('Hormus-Verkehr bleibt einstellig statt normal 130-140 Schiffe','Öffentliche Daten liegen weiter weit unter normalen Niveaus.','Vor dem Krieg lag der Hormus-Verkehr bei geschätzt 130-140 Schiffen pro Tag. Jüngste öffentliche Daten bleiben einstellig; wegen unterschiedlicher Methoden werden sie nicht verschmolzen.','Verzögerte Normalisierung erhöht Transport- und Versicherungskosten.',['Hormus','Verkehr','weit unter normal','AIS'])
+      }
+    }),
+    make({
+      id:'domestic-surcharge-20900-202609', slug:'domestic-surcharge-20900-september-2026', category:'surcharge', priority:4, badge:'공시', score:0.96, sourceName:'Korean Air / Asiana notices', sourceUrl:'https://www.koreanair.com/',
+      i18n:{
+        ko:local('9월 국내선 유류할증료 20,900원, 8월보다 26.7% 인상','대한항공·아시아나 9월 국내선 유류할증료가 16,500원에서 20,900원으로 올랐습니다.','2026년 9월 국내선 유류할증료는 편도 20,900원으로 8월 16,500원 대비 4,400원, 26.7% 인상됐습니다. 단, 국내선 공시는 국제선 유류할증료 단계와 항공사별 금액을 직접 확정하는 자료가 아닙니다.','국내선 인상은 항공유 부담 확대 신호지만 9월 국제선은 별도 공식 공시가 필요합니다.',['국내선','9월','20,900원','+26.7%']),
+        en:local('September domestic surcharge rises to KRW 20,900, up 26.7%','Korean Air and Asiana domestic surcharge increased from KRW 16,500 to KRW 20,900.','The September 2026 domestic surcharge is KRW 20,900 one-way, up KRW 4,400 or 26.7% from August. Domestic notices do not directly confirm international surcharge stages or airline amounts.','The increase signals higher fuel burden, but September international still needs official notices.',['domestic','September','KRW 20,900','+26.7%']),
+        ja:local('9月国内線サーチャージ20,900ウォン、8月比26.7%上昇','大韓航空・アシアナの9月国内線サーチャージは16,500ウォンから20,900ウォンへ上がりました。','2026年9月国内線は片道20,900ウォンで、8月比4,400ウォン、26.7%上昇です。ただし国内線公示は国際線段階や金額を直接確定するものではありません。','国内線上昇は燃料負担のシグナルですが、国際線は別途公式発表が必要です。',['国内線','9月','20,900ウォン','+26.7%']),
+        zh:local('9月国内线燃油附加费20,900韩元，较8月上涨26.7%','大韩航空和韩亚9月国内线从16,500韩元升至20,900韩元。','2026年9月国内线单程20,900韩元，较8月增加4,400韩元，涨幅26.7%。但国内线公告不能直接确认国际线档位或各航司金额。','国内线涨价显示燃油负担上升，但国际线仍需官方公告。',['国内线','9月','20,900韩元','+26.7%']),
+        fr:local('La surtaxe domestique de septembre monte à 20 900 KRW, +26,7%','Korean Air et Asiana augmentent la surtaxe domestique de 16 500 à 20 900 KRW.','La surtaxe domestique de septembre 2026 est de 20 900 KRW aller simple, soit +4 400 KRW et +26,7% par rapport à août. Cela ne confirme pas directement les niveaux internationaux.','La hausse domestique signale une pression carburant, mais l’international attend une annonce officielle.',['domestique','septembre','20 900 KRW','+26,7%']),
+        de:local('Inlandszuschlag September steigt auf 20.900 KRW, +26,7%','Korean Air und Asiana erhöhen den Inland-Zuschlag von 16.500 auf 20.900 KRW.','Der September-2026-Inlandszuschlag beträgt 20.900 KRW einfach, 4.400 KRW oder 26,7% mehr als im August. Das bestätigt internationale Stufen nicht direkt.','Der Anstieg zeigt höhere Fuel-Kosten, doch international braucht offizielle Mitteilungen.',['Inland','September','20.900 KRW','+26,7%'])
+      }
+    }),
+    make({
+      id:'oil-falls-inventory-demand-20260814', slug:'oil-falls-inventory-demand-aug-14-2026', category:'market', priority:5, badge:'시장', score:0.95, sourceName:'Dow Jones / MarketWatch', sourceUrl:'https://www.marketwatch.com/',
+      i18n:{
+        ko:local('Brent 87.1달러·WTI 81.3달러, 재고 증가와 수요 둔화로 2%대 하락','8월 13일 유가는 미국 원유재고 증가와 수요 둔화 전망에 밀렸습니다.','Brent는 약 87.07달러, WTI는 약 81.25달러로 마감해 각각 2%대 하락했습니다. 미국 원유재고는 1,740만 배럴 증가해 4억2,440만 배럴로 집계됐고, 수요 둔화 전망이 중동 공급 위험의 상승 압력을 제한했습니다.','유가는 혼조 변수입니다. 공급 위험은 남아 있지만 재고와 수요 약세가 단기 상승폭을 제한합니다.',['Brent','WTI','재고 증가','수요 둔화']),
+        en:local('Brent USD 87.1 and WTI USD 81.3 fall more than 2%','Oil fell on Aug 13 as U.S. crude inventories rose and demand forecasts weakened.','Brent closed near USD 87.07 and WTI near USD 81.25, both down more than 2%. U.S. crude inventories increased by 17.4 million barrels to 424.4 million barrels, limiting upside from Middle East supply risk.','Oil is mixed: supply risk remains, but inventories and demand weakness cap near-term upside.',['Brent','WTI','inventory build','weak demand']),
+        ja:local('Brent 87.1ドル・WTI 81.3ドル、在庫増と需要鈍化で2%超下落','8月13日の原油は米在庫増と弱い需要見通しに押されました。','Brentは約87.07ドル、WTIは約81.25ドルで引け、いずれも2%超下落しました。米原油在庫は1,740万バレル増の4億2,440万バレルです。','原油は混合要因です。供給リスクは残りますが、在庫と需要弱さが上値を抑えます。',['Brent','WTI','在庫増','需要鈍化']),
+        zh:local('Brent 87.1美元、WTI 81.3美元，库存和需求拖累下跌超2%','8月13日油价受美国原油库存增加和需求预期走弱拖累。','Brent收于约87.07美元，WTI约81.25美元，均下跌超过2%。美国原油库存增加1,740万桶至4.244亿桶。','油价是混合变量：供应风险仍在，但库存和需求走弱限制短线上涨。',['Brent','WTI','库存增加','需求走弱']),
+        fr:local('Brent 87,1 USD et WTI 81,3 USD baissent de plus de 2%','Le pétrole recule le 13 août avec la hausse des stocks américains et une demande plus faible.','Brent clôture près de 87,07 USD et WTI près de 81,25 USD, tous deux en baisse de plus de 2%. Les stocks américains augmentent de 17,4 millions de barils à 424,4 millions.','Le pétrole est mixte: risque d’offre, mais stocks et demande faible limitent la hausse.',['Brent','WTI','stocks','demande faible']),
+        de:local('Brent 87,1 USD und WTI 81,3 USD fallen über 2%','Öl fiel am 13. August wegen höherer US-Lagerbestände und schwächerer Nachfrage.','Brent schloss nahe 87,07 USD, WTI nahe 81,25 USD, beide über 2% tiefer. US-Rohölbestände stiegen um 17,4 Mio. Barrel auf 424,4 Mio.','Öl ist gemischt: Angebotsrisiko bleibt, Lager und schwache Nachfrage begrenzen Aufwärtsdruck.',['Brent','WTI','Lageraufbau','schwache Nachfrage'])
+      }
+    }),
+    make({
+      id:'iea-supply-demand-split-20260814', slug:'iea-supply-demand-split-aug-14-2026', category:'supply', priority:6, badge:'공급', score:0.94, sourceName:'IEA / Reuters', sourceUrl:'https://www.iea.org/',
+      i18n:{
+        ko:local('IEA, 중동 차질로 공급 전망 하향 - 수요 둔화는 유가 상승 제한','IEA 공급 전망은 중동 공급 차질을 반영하지만 수요 약세도 함께 봐야 합니다.','IEA는 2026년 글로벌 원유 공급 전망을 430만 bpd 낮추고 3분기 공급 부족을 180만 bpd로 제시했습니다. 다만 수요 전망 약화와 OPEC 견해 차이도 있어, 이는 현재 MOPS 값이나 국제선 단계 확정값이 아니라 공급 구조 리스크 변수입니다.','공급 차질은 상승 요인이지만 수요 약화는 국제유가 상승폭을 제한합니다.',['IEA','공급 전망','수요 둔화','중동']),
+        en:local('IEA cuts supply outlook, while weak demand caps oil upside','IEA supply figures show Middle East disruption risk, but demand weakness must be separated.','IEA lowered its 2026 global oil supply outlook by 4.3 million bpd and put the Q3 deficit near 1.8 million bpd. This is a supply-structure risk variable, not a current MOPS value or confirmed surcharge stage.','Supply disruption is upside pressure, but weak demand limits crude upside.',['IEA','supply outlook','weak demand','Middle East']),
+        ja:local('IEA、中東混乱で供給見通し下方修正 - 需要鈍化は上値を制限','IEAの供給数字は混乱リスクを示しますが、需要弱化と分けて見る必要があります。','IEAは2026年世界石油供給見通しを430万bpd引き下げ、3四半期不足を180万bpdとしました。これは現在MOPS値や確定サーチャージ段階ではありません。','供給混乱は上昇要因ですが、需要弱化は原油上昇を制限します。',['IEA','供給見通し','需要鈍化','中東']),
+        zh:local('IEA下调供应展望，但需求走弱限制油价上行','IEA供应数据反映中东扰动风险，但必须与需求疲软分开看。','IEA将2026年全球原油供应展望下调430万桶/日，并预计三季度缺口约180万桶/日。这不是当前MOPS值或确认档位。','供应扰动是上行压力，但需求疲软限制原油涨幅。',['IEA','供应展望','需求走弱','中东']),
+        fr:local('L’IEA baisse l’offre prévue, mais la demande faible limite le pétrole','Les chiffres IEA montrent le risque d’offre au Moyen-Orient, à séparer de la demande.','L’IEA abaisse de 4,3 millions b/j sa prévision d’offre mondiale 2026 et voit un déficit T3 proche de 1,8 million b/j. Ce n’est pas un MOPS courant ni un niveau confirmé.','La perturbation d’offre est haussière, mais la demande faible limite le brut.',['IEA','offre','demande faible','Moyen-Orient']),
+        de:local('IEA senkt Angebotsausblick, schwache Nachfrage begrenzt Öl','IEA-Zahlen zeigen Nahost-Angebotsrisiko, müssen aber von Nachfrageschwäche getrennt werden.','Die IEA senkt den globalen Ölangebotsausblick 2026 um 4,3 Mio. bpd und sieht im Q3 ein Defizit von etwa 1,8 Mio. bpd. Das ist kein aktueller MOPS und keine bestätigte Stufe.','Angebotsstörung wirkt aufwärts, schwache Nachfrage begrenzt Rohöl.',['IEA','Angebotsausblick','schwache Nachfrage','Nahost'])
+      }
+    })
+  ];
+  window.AERO_NEWS_CARDS_20260814 = rows;
+  var seen = {};
+  rows.forEach(function(card){ seen[card.id] = true; });
+  FIXED_NEWS = rows.concat((FIXED_NEWS || []).filter(function(card){ return card && !seen[card.id]; }));
+  var packs = {
+    ko: {
+      'news.metaTitle':'2026년 8월 유류할증료·9월 전망 뉴스 | 8월 14일 환율·호르무즈·국내선',
+      'news.metaDesc':'2026년 8월 14일 09:25 KST 기준 8월 국제선 14단계, 9월 국내선 20,900원, 9월 국제선 공시 대기, 호르무즈 선박 공격과 유가·환율 변수를 정리합니다.',
+      'news.pageTitle':'2026년 8월 유류할증료와 9월 전망 뉴스',
+      'news.pageSub':'2026.08.14 09:25 KST 기준 · 8월 국제선 14단계 적용 중 · 9월 국내선 20,900원/편도 · 9월 국제선 공식 공시 대기 · USD/KRW 약 1,416~1,418원 · Brent 87.1달러 · WTI 81.3달러 · 호르무즈 위험 매우 높음',
+      'news.summary.updated':'2026.08.14 09:25 KST 기준 · 8월 국제선 14단계 · 9월 국제선 공식 공시 대기',
+      'news.summary.title':'2026년 8월 유류할증료와 9월 전망 요약',
+      'news.summary.li1':'2026년 8월 한국 출발 국제선 유류할증료는 14단계로 적용 중입니다.',
+      'news.summary.li2':'2026년 9월 국제선 단계와 항공사별 금액은 아직 공식 공시 전입니다.',
+      'news.summary.li3':'9월 국내선 유류할증료는 20,900원/편도로 8월보다 4,400원, 26.7% 올랐습니다.',
+      'news.summary.li4':'USD/KRW 약 1,416~1,418원은 환율 측 하락 요인이지만 단독으로 국제선 단계를 확정하지 않습니다.',
+      'news.summary.li5':'8월 산정 MOPS 119.06달러/bbl은 기존 8월 공시 평균이며, 8월 14일 현재 일별 MOPS 값은 확정 표시하지 않습니다.',
+      'news.summary.li6':'호르무즈 ADNOC 관련 선박 공격과 통항 급감은 강한 상승 압력입니다.',
+      'news.summary.li7':'Brent 약 87.1달러, WTI 약 81.3달러는 재고 증가와 수요 둔화로 2%대 하락했습니다.',
+      'news.summary.li8':'IEA 공급 전망 악화는 공급 위험을 보여주지만, 수요 둔화는 유가 상승폭을 제한합니다.',
+      'news.summary.li9':'현재 판단은 환율 개선보다 항공유·호르무즈 리스크가 더 우세한 공시 대기 국면입니다.',
+      'news.summary.li10':'9월 국제선은 인상 압력 우세로 보되, 확정 단계·금액·확률은 표시하지 않습니다.',
+      'news.dataRef':'2026.08.14 09:25 KST 기준 · 8월 국제선 14단계 · 9월 국제선 공식 발표 전',
+      'news.marketTitle':'8월 14일 시장 브리핑: 환율 개선과 항공유·호르무즈 위험',
+      'news.brent':'국제유가: 8월 13일 미국 시장 종가 기준 Brent 약 87.1달러/bbl, WTI 약 81.3달러/bbl입니다.',
+      'news.mops':'항공유: 8월 산정 MOPS 119.06달러/bbl은 기존 8월 공시 산정 평균입니다. 8월 14일 현재 일별 싱가포르 MOPS 평균은 확정 표시하지 않습니다.',
+      'news.fx':'환율: USD/KRW 약 1,416~1,418원, USD/JPY 약 159.4, 100엔 약 889.4원입니다.',
+      'news.geo':'호르무즈: ADNOC 관련 선박 2척 공격 보도와 한 자릿수 통항 추적으로 통항 위험이 매우 높습니다. 추적업체별 숫자는 합산·평균 처리하지 않습니다.',
+      'news.marketSummary':'9월 국제선은 공식 공시 전입니다. 환율은 하락 요인이지만 항공유와 호르무즈 리스크가 더 크게 작용하는 국면입니다.',
+      'news.fxDominance':'핵심 수치: 2026.08.14 09:25 KST · 8월 국제선 14단계 · 9월 국내선 20,900원 · USD/KRW 약 1,416~1,418원 · Brent 87.1달러 · WTI 81.3달러 · 9월 국제선 공시 대기',
+      'news.decisionTitle':'결론: 8월 국제선 14단계 적용, 9월 국제선은 공시 대기',
+      'news.decisionLine1':'→ 2026년 8월 한국 출발 국제선 유류할증료는 14단계로 확정 적용 중입니다.',
+      'news.decisionLine2':'→ 2026년 9월 국제선은 인상 압력 우세지만 공식 단계와 금액은 아직 확정하지 않습니다.',
+      'news.forecastCta.title':'9월 국제선 유류할증료 전망 자세히 보기',
+      'news.forecastCta.desc':'국내선 인상, 환율, 항공유, Brent/WTI, 호르무즈 통항 위험을 공식 공시와 분리해 확인합니다.',
+      'news.forecastCta.btn':'9월 전망 보기 →'
+    }
+  };
+  packs.en = Object.assign({}, packs.ko, {
+    'news.pageTitle':'August 2026 Fuel Surcharge and September Outlook News',
+    'news.pageSub':'As of 2026.08.14 09:25 KST · August international Level 14 · September domestic KRW 20,900 one-way · September international notice pending · USD/KRW around 1,416-1,418 · Hormuz risk very high',
+    'news.summary.title':'August fuel surcharge and September outlook summary',
+    'news.summary.li1':'August Korea-departure international fuel surcharge is in effect at Level 14.',
+    'news.summary.li2':'September international stage and airline amounts have not been officially announced.',
+    'news.summary.li3':'September domestic surcharge is KRW 20,900 one-way, up 26.7% from August.',
+    'news.summary.li4':'USD/KRW around 1,416-1,418 is a downside FX factor, but not enough to confirm international stages.',
+    'news.summary.li5':'August calculation MOPS remains USD 119.06/bbl; no verified public daily Aug 14 MOPS value is displayed.',
+    'news.summary.li6':'Hormuz vessel attacks and depressed traffic are strong upside pressure.',
+    'news.summary.li7':'Brent near USD 87.1 and WTI near USD 81.3 fell more than 2% on inventories and weaker demand.',
+    'news.summary.li8':'IEA supply risk is separated from weaker demand.',
+    'news.summary.li9':'Current view: jet fuel and Hormuz risk outweigh FX relief.',
+    'news.summary.li10':'September international is notice pending; no confirmed stage, amount or probability is shown.'
+  });
+  packs.ja = Object.assign({}, packs.en, {'news.pageTitle':'2026年8月燃油サーチャージと9月見通しニュース','news.pageSub':'2026.08.14 09:25 KST時点 · 8月国際線14段階 · 9月国内線20,900ウォン · 9月国際線は公式発表待ち'});
+  packs.zh = Object.assign({}, packs.en, {'news.pageTitle':'2026年8月燃油附加费与9月展望新闻','news.pageSub':'截至2026.08.14 09:25 KST · 8月国际线第14档 · 9月国内线20,900韩元 · 9月国际线等待官方公告'});
+  packs.fr = Object.assign({}, packs.en, {'news.pageTitle':'Actualités surtaxe carburant août 2026 et perspectives septembre','news.pageSub':'Au 2026.08.14 09:25 KST · international août niveau 14 · domestique septembre 20 900 KRW · international septembre en attente'});
+  packs.de = Object.assign({}, packs.en, {'news.pageTitle':'News zum Treibstoffzuschlag August 2026 und September-Ausblick','news.pageSub':'Stand 2026.08.14 09:25 KST · August international Stufe 14 · September Inland 20.900 KRW · September international ausstehend'});
+  window.PAGE_I18N_OVERRIDE = window.PAGE_I18N_OVERRIDE || {};
+  Object.keys(packs).forEach(function(lang){
+    window.PAGE_I18N_OVERRIDE[lang] = Object.assign({}, window.PAGE_I18N_OVERRIDE[lang] || {}, packs[lang]);
+    if(window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], window.PAGE_I18N_OVERRIDE[lang]);
+  });
+  document.title = packs.ko['news.metaTitle'];
+  var desc = document.querySelector('meta[name="description"]'); if(desc) desc.setAttribute('content', packs.ko['news.metaDesc']);
+  var ogTitle = document.querySelector('meta[property="og:title"]'); if(ogTitle) ogTitle.setAttribute('content', packs.ko['news.metaTitle']);
+  var ogDesc = document.querySelector('meta[property="og:description"]'); if(ogDesc) ogDesc.setAttribute('content', packs.ko['news.metaDesc']);
+  var mod = document.querySelector('meta[property="article:modified_time"]'); if(mod) mod.setAttribute('content', '2026-08-14T09:25:00+09:00');
+})();
+
+/* 2026.08.14 news section i18n completion guard. */
+(function(){
+  var packs = {
+    en: {
+      'news.metaTitle':'August 2026 Fuel Surcharge and September Outlook News | Aug 14 FX, Hormuz and Domestic Notice',
+      'news.metaDesc':'As of 2026.08.14 09:25 KST: August international Level 14, September international notice pending, September domestic KRW 20,900, Hormuz attacks, oil and FX variables.',
+      'news.pageTitle':'August 2026 Fuel Surcharge and September Outlook News',
+      'news.pageSub':'As of 2026.08.14 09:25 KST · August international Level 14 · September domestic KRW 20,900 one-way · September international notice pending · USD/KRW around 1,416-1,418 · Brent USD 87.1 · WTI USD 81.3 · Hormuz risk very high',
+      'news.summary.updated':'As of 2026.08.14 09:25 KST · August international Level 14 · September international official notice pending',
+      'news.summary.title':'August fuel surcharge and September outlook summary',
+      'news.summary.li1':'August Korea-departure international fuel surcharge is in effect at Level 14.',
+      'news.summary.li2':'September international stage and airline amounts have not been officially announced.',
+      'news.summary.li3':'September domestic surcharge is KRW 20,900 one-way, up KRW 4,400 or 26.7% from August.',
+      'news.summary.li4':'USD/KRW around 1,416-1,418 is a downside FX factor, but it does not confirm the international stage by itself.',
+      'news.summary.li5':'August calculation MOPS remains USD 119.06/bbl; no verified public daily Aug 14 MOPS value is displayed.',
+      'news.summary.li6':'ADNOC-linked vessel attacks and depressed Hormuz traffic are strong upside pressure.',
+      'news.summary.li7':'Brent near USD 87.1 and WTI near USD 81.3 fell more than 2% on inventories and weaker demand.',
+      'news.summary.li8':'IEA supply risk should be separated from weaker demand signals.',
+      'news.summary.li9':'Current view: jet fuel and Hormuz risk outweigh FX relief while official international notices are pending.',
+      'news.summary.li10':'September international is upside-biased, but no confirmed stage, amount or probability is shown.',
+      'news.dataRef':'As of 2026.08.14 09:25 KST · August international Level 14 · September international pre-notice',
+      'news.marketTitle':'Aug 14 market brief: FX relief versus jet fuel and Hormuz risk',
+      'news.brent':'Oil: Brent was around USD 87.1/bbl and WTI around USD 81.3/bbl at the Aug 13 U.S. close. Inventories and weaker demand offset part of the Middle East supply risk.',
+      'news.mops':'Jet fuel: August calculation MOPS of USD 119.06/bbl is the existing August notice average. A verified public daily Singapore MOPS average for Aug 14 is not displayed.',
+      'news.fx':'FX: USD/KRW around 1,416-1,418, USD/JPY around 159.4, and 100 JPY around KRW 889.4.',
+      'news.geo':'Hormuz: ADNOC-linked vessel attacks and single-digit traffic tracking keep transit risk very high. Provider counts are not merged or averaged.',
+      'news.marketSummary':'September international remains pre-notice. FX is a downside factor, but jet fuel and Hormuz risks are stronger upside factors.',
+      'news.fxDominance':'Key figures: 2026.08.14 09:25 KST · August international Level 14 · September domestic KRW 20,900 · USD/KRW around 1,416-1,418 · Brent USD 87.1 · WTI USD 81.3 · September international notice pending',
+      'news.decisionTitle':'Conclusion: August international Level 14, September international notice pending',
+      'news.decisionLine1':'→ August 2026 Korea-departure international fuel surcharge is confirmed in effect at Level 14.',
+      'news.decisionLine2':'→ September 2026 international is upside-biased, but official stages and amounts are not confirmed yet.',
+      'news.forecastCta.title':'See the September international surcharge outlook',
+      'news.forecastCta.desc':'Check domestic notice, FX, jet fuel, Brent/WTI and Hormuz risk separately from official international notices.',
+      'news.forecastCta.btn':'View September outlook →'
+    },
+    ja: {
+      'news.metaTitle':'2026年8月燃油サーチャージ・9月見通しニュース | 8月14日為替・ホルムズ・国内線',
+      'news.metaDesc':'2026.08.14 09:25 KST時点の8月国際線14段階、9月国際線公式発表待ち、9月国内線20,900ウォン、ホルムズ攻撃、原油と為替を整理します。',
+      'news.pageTitle':'2026年8月燃油サーチャージと9月見通しニュース',
+      'news.pageSub':'2026.08.14 09:25 KST時点 · 8月国際線14段階 · 9月国内線20,900ウォン/片道 · 9月国際線は公式発表待ち · USD/KRW約1,416～1,418 · Brent 87.1ドル · WTI 81.3ドル · ホルムズリスク非常に高い',
+      'news.summary.updated':'2026.08.14 09:25 KST時点 · 8月国際線14段階 · 9月国際線は公式発表待ち',
+      'news.summary.title':'8月燃油サーチャージと9月見通し要約',
+      'news.summary.li1':'8月の韓国発国際線燃油サーチャージは14段階で適用中です。',
+      'news.summary.li2':'9月国際線の段階と航空会社別金額はまだ公式発表前です。',
+      'news.summary.li3':'9月国内線は片道20,900ウォンで、8月より4,400ウォン、26.7%上昇しました。',
+      'news.summary.li4':'USD/KRW約1,416～1,418は為替面の下落要因ですが、国際線段階を単独で確定しません。',
+      'news.summary.li5':'8月算定MOPSは119.06ドル/bblで、8月14日の日次MOPS公開確定値は表示しません。',
+      'news.summary.li6':'ADNOC関連船攻撃とホルムズ通航急減は強い上昇圧力です。',
+      'news.summary.li7':'Brent約87.1ドル、WTI約81.3ドルは在庫増と需要鈍化で2%超下落しました。',
+      'news.summary.li8':'IEAの供給リスクは需要弱化シグナルと分けて見ます。',
+      'news.summary.li9':'現在は為替緩和より航空燃料・ホルムズリスクが優勢な公式発表待ち局面です。',
+      'news.summary.li10':'9月国際線は上昇圧力優勢ですが、確定段階・金額・確率は表示しません。',
+      'news.dataRef':'2026.08.14 09:25 KST時点 · 8月国際線14段階 · 9月国際線公式発表前',
+      'news.marketTitle':'8月14日市場ブリーフ: 為替緩和と航空燃料・ホルムズリスク',
+      'news.brent':'原油: 8月13日の米市場終値でBrentは約87.1ドル/bbl、WTIは約81.3ドル/bblです。在庫増と需要鈍化が中東供給リスクの一部を相殺しました。',
+      'news.mops':'航空燃料: 8月算定MOPS 119.06ドル/bblは既存の8月公示平均です。8月14日の日次シンガポールMOPS平均は公開確定値として表示しません。',
+      'news.fx':'為替: USD/KRW約1,416～1,418、USD/JPY約159.4、100円約889.4ウォンです。',
+      'news.geo':'ホルムズ: ADNOC関連船攻撃と一桁水準の通航追跡により、通航リスクは非常に高い状態です。追跡会社別の数値は合算・平均しません。',
+      'news.marketSummary':'9月国際線は公式発表前です。為替は下落要因ですが、航空燃料とホルムズリスクがより強く作用しています。',
+      'news.fxDominance':'主要数値: 2026.08.14 09:25 KST · 8月国際線14段階 · 9月国内線20,900ウォン · USD/KRW約1,416～1,418 · Brent 87.1ドル · WTI 81.3ドル · 9月国際線公式発表待ち',
+      'news.decisionTitle':'結論: 8月国際線14段階、9月国際線は公式発表待ち',
+      'news.decisionLine1':'→ 2026年8月の韓国発国際線燃油サーチャージは14段階で確定適用中です。',
+      'news.decisionLine2':'→ 2026年9月国際線は上昇圧力優勢ですが、公式段階と金額はまだ確定していません。',
+      'news.forecastCta.title':'9月国際線燃油サーチャージ見通しを詳しく見る',
+      'news.forecastCta.desc':'国内線公示、為替、航空燃料、Brent/WTI、ホルムズリスクを公式国際線公示と分けて確認します。',
+      'news.forecastCta.btn':'9月見通しを見る →'
+    },
+    zh: {
+      'news.metaTitle':'2026年8月燃油附加费与9月展望新闻 | 8月14日汇率、霍尔木兹、国内线',
+      'news.metaDesc':'截至2026.08.14 09:25 KST，整理8月国际线第14档、9月国际线等待官方公告、9月国内线20,900韩元、霍尔木兹袭击、油价和汇率。',
+      'news.pageTitle':'2026年8月燃油附加费与9月展望新闻',
+      'news.pageSub':'截至2026.08.14 09:25 KST · 8月国际线第14档 · 9月国内线单程20,900韩元 · 9月国际线等待官方公告 · USD/KRW约1,416~1,418 · Brent 87.1美元 · WTI 81.3美元 · 霍尔木兹风险极高',
+      'news.summary.updated':'截至2026.08.14 09:25 KST · 8月国际线第14档 · 9月国际线等待官方公告',
+      'news.summary.title':'8月燃油附加费与9月展望摘要',
+      'news.summary.li1':'8月韩国出发国际线燃油附加费按第14档执行。',
+      'news.summary.li2':'9月国际线档位和各航司金额尚未官方公布。',
+      'news.summary.li3':'9月国内线单程20,900韩元，较8月增加4,400韩元，涨幅26.7%。',
+      'news.summary.li4':'USD/KRW约1,416~1,418是汇率下行因素，但不能单独确认国际线档位。',
+      'news.summary.li5':'8月计算MOPS仍为119.06美元/bbl；不显示8月14日公开日度MOPS确定值。',
+      'news.summary.li6':'ADNOC相关船舶遇袭和霍尔木兹通行骤降是强上行压力。',
+      'news.summary.li7':'Brent约87.1美元、WTI约81.3美元因库存增加和需求走弱下跌超过2%。',
+      'news.summary.li8':'IEA供应风险应与需求走弱信号分开看。',
+      'news.summary.li9':'当前处于官方公告等待阶段，航油和霍尔木兹风险强于汇率缓和。',
+      'news.summary.li10':'9月国际线偏上行，但不显示确认档位、金额或概率。',
+      'news.dataRef':'截至2026.08.14 09:25 KST · 8月国际线第14档 · 9月国际线官方公告前',
+      'news.marketTitle':'8月14日市场简报：汇率缓和与航油、霍尔木兹风险',
+      'news.brent':'原油：8月13日美国市场收盘，Brent约87.1美元/bbl，WTI约81.3美元/bbl。库存增加和需求走弱部分抵消中东供应风险。',
+      'news.mops':'航油：8月计算MOPS 119.06美元/bbl是现有8月公告均值。8月14日新加坡MOPS日均价不作公开确定值显示。',
+      'news.fx':'汇率：USD/KRW约1,416~1,418，USD/JPY约159.4，100日元约889.4韩元。',
+      'news.geo':'霍尔木兹：ADNOC相关船舶遇袭和个位数通行追踪使通行风险极高。不同追踪商数字不合并、不取平均。',
+      'news.marketSummary':'9月国际线仍未官方公布。汇率是下行因素，但航油和霍尔木兹风险影响更强。',
+      'news.fxDominance':'关键数值：2026.08.14 09:25 KST · 8月国际线第14档 · 9月国内线20,900韩元 · USD/KRW约1,416~1,418 · Brent 87.1美元 · WTI 81.3美元 · 9月国际线等待公告',
+      'news.decisionTitle':'结论：8月国际线第14档，9月国际线等待公告',
+      'news.decisionLine1':'→ 2026年8月韩国出发国际线燃油附加费按第14档确定执行。',
+      'news.decisionLine2':'→ 2026年9月国际线上行压力占优，但官方档位和金额尚未确认。',
+      'news.forecastCta.title':'查看9月国际线燃油附加费展望',
+      'news.forecastCta.desc':'将国内线公告、汇率、航油、Brent/WTI和霍尔木兹风险与国际线官方公告分开确认。',
+      'news.forecastCta.btn':'查看9月展望 →'
+    },
+    fr: {
+      'news.metaTitle':'Actualités surtaxe carburant août 2026 et perspectives septembre | change, Ormuz, domestique',
+      'news.metaDesc':'Au 2026.08.14 09:25 KST: international août niveau 14, international septembre en attente, domestique septembre 20 900 KRW, Ormuz, pétrole et change.',
+      'news.pageTitle':'Actualités surtaxe carburant août 2026 et perspectives septembre',
+      'news.pageSub':'Au 2026.08.14 09:25 KST · international août niveau 14 · domestique septembre 20 900 KRW aller simple · international septembre en attente · USD/KRW autour de 1 416-1 418 · Brent 87,1 USD · WTI 81,3 USD · risque Ormuz très élevé',
+      'news.summary.updated':'Au 2026.08.14 09:25 KST · août international niveau 14 · avis officiel international de septembre en attente',
+      'news.summary.title':'Résumé surtaxe août et perspectives septembre',
+      'news.summary.li1':'La surtaxe internationale au départ de Corée pour août est appliquée au niveau 14.',
+      'news.summary.li2':'Le niveau et les montants internationaux de septembre ne sont pas encore annoncés officiellement.',
+      'news.summary.li3':'La surtaxe domestique de septembre est de 20 900 KRW aller simple, +4 400 KRW ou +26,7%.',
+      'news.summary.li4':'USD/KRW autour de 1 416-1 418 est un facteur baissier, mais ne confirme pas le niveau international.',
+      'news.summary.li5':'Le MOPS de calcul d’août reste 119,06 USD/bbl; aucun MOPS quotidien public vérifié du 14 août n’est affiché.',
+      'news.summary.li6':'Les attaques de navires liés à ADNOC et le faible trafic d’Ormuz sont une forte pression haussière.',
+      'news.summary.li7':'Brent vers 87,1 USD et WTI vers 81,3 USD ont baissé de plus de 2% avec les stocks et la demande faible.',
+      'news.summary.li8':'Le risque d’offre IEA doit être séparé des signaux de demande faible.',
+      'news.summary.li9':'Le jet fuel et Ormuz dominent la détente FX pendant l’attente des avis officiels.',
+      'news.summary.li10':'Septembre international est haussier, mais aucun niveau, montant ou probabilité confirmé n’est affiché.',
+      'news.dataRef':'Au 2026.08.14 09:25 KST · international août niveau 14 · international septembre avant avis officiel',
+      'news.marketTitle':'Brief marché du 14 août: détente FX contre jet fuel et Ormuz',
+      'news.brent':'Pétrole: Brent autour de 87,1 USD/bbl et WTI autour de 81,3 USD/bbl à la clôture américaine du 13 août. Stocks et demande faible compensent une partie du risque moyen-oriental.',
+      'news.mops':'Jet fuel: le MOPS de calcul d’août 119,06 USD/bbl est la moyenne d’avis existante. Aucune moyenne quotidienne MOPS Singapour vérifiée du 14 août n’est affichée.',
+      'news.fx':'Change: USD/KRW autour de 1 416-1 418, USD/JPY autour de 159,4 et 100 JPY autour de 889,4 KRW.',
+      'news.geo':'Ormuz: attaques de navires liés à ADNOC et trafic à un chiffre maintiennent un risque très élevé. Les comptages fournisseurs ne sont ni fusionnés ni moyennés.',
+      'news.marketSummary':'L’international de septembre reste avant avis officiel. Le change est baissier, mais jet fuel et Ormuz pèsent davantage.',
+      'news.fxDominance':'Chiffres clés: 2026.08.14 09:25 KST · août international niveau 14 · domestique septembre 20 900 KRW · USD/KRW 1 416-1 418 · Brent 87,1 USD · WTI 81,3 USD · international septembre en attente',
+      'news.decisionTitle':'Conclusion: août international niveau 14, septembre international en attente',
+      'news.decisionLine1':'→ La surtaxe internationale au départ de Corée pour août 2026 est confirmée au niveau 14.',
+      'news.decisionLine2':'→ Septembre international est sous pression haussière, mais les niveaux et montants officiels ne sont pas confirmés.',
+      'news.forecastCta.title':'Voir les perspectives internationales de septembre',
+      'news.forecastCta.desc':'Séparer avis domestique, change, jet fuel, Brent/WTI et Ormuz des avis officiels internationaux.',
+      'news.forecastCta.btn':'Voir septembre →'
+    },
+    de: {
+      'news.metaTitle':'News zum Treibstoffzuschlag August 2026 und September-Ausblick | FX, Hormus, Inland',
+      'news.metaDesc':'Stand 2026.08.14 09:25 KST: August international Stufe 14, September international ausstehend, September Inland 20.900 KRW, Hormus, Öl und FX.',
+      'news.pageTitle':'News zum Treibstoffzuschlag August 2026 und September-Ausblick',
+      'news.pageSub':'Stand 2026.08.14 09:25 KST · August international Stufe 14 · September Inland 20.900 KRW einfach · September international ausstehend · USD/KRW um 1.416-1.418 · Brent 87,1 USD · WTI 81,3 USD · Hormus-Risiko sehr hoch',
+      'news.summary.updated':'Stand 2026.08.14 09:25 KST · August international Stufe 14 · September international offiziell ausstehend',
+      'news.summary.title':'Zusammenfassung August-Zuschlag und September-Ausblick',
+      'news.summary.li1':'Der internationale Zuschlag ab Korea für August gilt auf Stufe 14.',
+      'news.summary.li2':'September-Stufe und Airline-Beträge international sind noch nicht offiziell veröffentlicht.',
+      'news.summary.li3':'Der Inlandszuschlag September beträgt 20.900 KRW einfach, 4.400 KRW oder 26,7% mehr als im August.',
+      'news.summary.li4':'USD/KRW um 1.416-1.418 ist ein FX-Entlastungsfaktor, bestätigt aber keine internationale Stufe.',
+      'news.summary.li5':'Der August-Berechnungs-MOPS bleibt 119,06 USD/bbl; kein verifizierter Tages-MOPS für den 14. August wird angezeigt.',
+      'news.summary.li6':'ADNOC-nahe Schiffsangriffe und niedriger Hormus-Verkehr sind starker Aufwärtsdruck.',
+      'news.summary.li7':'Brent nahe 87,1 USD und WTI nahe 81,3 USD fielen wegen Lageraufbau und schwacher Nachfrage über 2%.',
+      'news.summary.li8':'IEA-Angebotsrisiko ist von schwacher Nachfrage zu trennen.',
+      'news.summary.li9':'Jetfuel und Hormus überwiegen FX-Entlastung, solange offizielle Mitteilungen ausstehen.',
+      'news.summary.li10':'September international ist aufwärtsgerichtet, aber ohne bestätigte Stufe, Beträge oder Wahrscheinlichkeit.',
+      'news.dataRef':'Stand 2026.08.14 09:25 KST · August international Stufe 14 · September international vor offizieller Mitteilung',
+      'news.marketTitle':'Marktbrief 14. August: FX-Entlastung gegen Jetfuel- und Hormusrisiko',
+      'news.brent':'Öl: Brent um 87,1 USD/bbl und WTI um 81,3 USD/bbl zum US-Schluss am 13. August. Lageraufbau und schwache Nachfrage gleichen einen Teil des Nahostrisikos aus.',
+      'news.mops':'Jetfuel: Der August-Berechnungs-MOPS 119,06 USD/bbl ist die bestehende August-Durchschnittsbasis. Kein verifizierter täglicher Singapore-MOPS für den 14. August wird angezeigt.',
+      'news.fx':'FX: USD/KRW um 1.416-1.418, USD/JPY um 159,4 und 100 JPY um 889,4 KRW.',
+      'news.geo':'Hormus: ADNOC-nahe Schiffsangriffe und einstellige Verkehrsdaten halten das Transitrisiko sehr hoch. Anbieterzahlen werden nicht gemischt oder gemittelt.',
+      'news.marketSummary':'September international ist noch vor offizieller Mitteilung. FX entlastet, aber Jetfuel- und Hormusrisiken wirken stärker.',
+      'news.fxDominance':'Kennzahlen: 2026.08.14 09:25 KST · August international Stufe 14 · September Inland 20.900 KRW · USD/KRW 1.416-1.418 · Brent 87,1 USD · WTI 81,3 USD · September international ausstehend',
+      'news.decisionTitle':'Fazit: August international Stufe 14, September international ausstehend',
+      'news.decisionLine1':'→ Der internationale Treibstoffzuschlag ab Korea für August 2026 gilt bestätigt auf Stufe 14.',
+      'news.decisionLine2':'→ September international ist aufwärtsgerichtet, aber offizielle Stufen und Beträge sind noch nicht bestätigt.',
+      'news.forecastCta.title':'September-Ausblick international ansehen',
+      'news.forecastCta.desc':'Inlandsmitteilung, FX, Jetfuel, Brent/WTI und Hormusrisiko getrennt von internationalen offiziellen Mitteilungen prüfen.',
+      'news.forecastCta.btn':'September ansehen →'
+    }
+  };
+  window.PAGE_I18N_OVERRIDE = window.PAGE_I18N_OVERRIDE || {};
+  Object.keys(packs).forEach(function(lang){
+    window.PAGE_I18N_OVERRIDE[lang] = Object.assign({}, window.PAGE_I18N_OVERRIDE[lang] || {}, packs[lang]);
+    if(window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], window.PAGE_I18N_OVERRIDE[lang]);
+  });
+})();
 
 window.initNav({
   onLangChange:function(){

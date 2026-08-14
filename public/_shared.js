@@ -659,6 +659,175 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
   }
 })();
 
+/* 2026.08.14 09:25 KST final terminal shared guard. */
+(function(){
+  var latest = {
+    asOf: '2026.08.14 09:25 KST',
+    lastUpdated: '2026-08-14T09:25:00+09:00',
+    currentMonthNotice: '2026-08',
+    forecastTargetMonth: '2026-09',
+    augustPassengerSurchargeStage: 14,
+    augustSurchargeStage: 14,
+    augustInternationalStage: 14,
+    julySurchargeStage: 19,
+    septemberPassengerSurchargeConfirmed: false,
+    septemberSurchargeConfirmed: false,
+    septemberOfficialConfirmed: false,
+    septemberInternationalOfficialConfirmed: false,
+    septemberSurchargeStatus: 'official_notice_pending',
+    septemberCalculationFrom: '2026-07-16',
+    septemberCalculationTo: '2026-08-15',
+    augustDomesticOneWayKrw: 16500,
+    septemberDomesticOneWayKrw: 20900,
+    domesticSurchargeChangeKrw: 4400,
+    domesticSurchargeChangePct: 26.7,
+    usdKrw: 1416.48,
+    usdKrwLabel: '약 1,416~1,418원',
+    usdKrwRange: '1,416~1,418',
+    jpyKrw: 8.894,
+    jpyKrw100: 889.4,
+    usdJpy: 159.4,
+    augustMopsAverageUsdPerBbl: 119.06,
+    augustMopsAverageCentsPerGallon: 283.48,
+    augustPassengerMopsAverageUsdPerBbl: 119.06,
+    augustPassengerMopsAverageCentsPerGallon: 283.48,
+    currentSingaporeMopsExactValue: null,
+    currentSingaporeMopsStatus: 'not_publicly_verified_2026_08_14',
+    brentUsdPerBbl: 87.07,
+    brentUsdBbl: 87.07,
+    wtiUsdPerBbl: 81.25,
+    wtiUsdBbl: 81.25,
+    brentDailyChangePct: -2.1,
+    wtiDailyChangePct: -2.4,
+    oilReferenceType: '2026.08.13 market close / 2026.08.14 morning reference',
+    usCrudeInventoryBuildBbl: 17400000,
+    usCrudeInventoriesBbl: 424400000,
+    hormuzTrafficRisk: 'very_high',
+    hormuzPrewarDailyTrafficEstimateMin: 130,
+    hormuzPrewarDailyTrafficEstimateMax: 140,
+    hormuzRecentTuesdayVessels: 6,
+    hormuzRecentWednesdayVessels: 8,
+    hormuzRecentThursdayMaxVessels: 5,
+    hormuzTrafficProviderNumbersDiffer: true,
+    hormuzFullReopeningConfirmed: false,
+    adnocRelatedVesselsAttacked: 2,
+    adnocAttackInjuriesReported: false,
+    usMayUseForceBeyondBlockade: true,
+    iranReopeningConditionsUnmet: true,
+    iea2026GlobalOilSupplyForecastCutBpd: 4300000,
+    ieaQ3SupplyDeficitBpd: 1800000,
+    outlookDirection: 'fx_downside_jetfuel_upside_hormuz_strong_upside_oil_mixed_international_notice_pending',
+    outlookConfidence: 'medium'
+  };
+  window.AERO_MARKET_NUMBERS_20260814 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {
+    '2026-08-12': window.AERO_MARKET_NUMBERS_20260812,
+    '2026-08-13': window.AERO_MARKET_NUMBERS_20260813,
+    '2026-08-14': window.AERO_MARKET_NUMBERS_20260814
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260814;
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1416.48, JPY: 1 / 8.894 });
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), {
+      marketDataRef: '2026.08.14 09:25 KST 기준',
+      marketOil: '국제유가: 8월 13일 미국 시장 종가 기준 Brent 약 87.1달러/bbl, WTI 약 81.3달러/bbl입니다. 두 유종 모두 2%대 하락했고, 미국 원유재고 증가와 수요 둔화 전망이 공급 리스크를 일부 상쇄했습니다.',
+      marketMops: '항공유: 8월 산정 MOPS 119.06달러/bbl은 기존 8월 공시 산정 평균입니다. 8월 14일 현재 싱가포르 MOPS 일별 평균은 신뢰 가능한 무료 공개자료로 확정 표시하지 않습니다.',
+      marketFx: '원달러 환율: 2026.08.14 09:25 KST 전후 공개 참고값 기준 약 1,416~1,418원입니다.',
+      marketGeo: '호르무즈: ADNOC 관련 선박 2척 공격 보도와 한 자릿수 통항 추적이 겹치며 통항 위험은 매우 높은 상태입니다. 추적업체별 숫자는 합산하거나 평균 내지 않습니다.',
+      marketSummary: '8월 국제선 유류할증료는 14단계 적용 중입니다. 9월 국내선은 20,900원/편도로 공시됐지만, 9월 국제선 단계와 금액은 아직 공식 공시 전입니다.'
+    });
+  }
+})();
+
+/* 2026.08.14 09:25 KST final terminal shared guard. */
+(function(){
+  var latest = {
+    asOf: '2026.08.14 09:25 KST',
+    lastUpdated: '2026-08-14T09:25:00+09:00',
+    currentMonthNotice: '2026-08',
+    forecastTargetMonth: '2026-09',
+    augustPassengerSurchargeStage: 14,
+    augustSurchargeStage: 14,
+    augustInternationalStage: 14,
+    julySurchargeStage: 19,
+    septemberPassengerSurchargeConfirmed: false,
+    septemberSurchargeConfirmed: false,
+    septemberOfficialConfirmed: false,
+    septemberInternationalOfficialConfirmed: false,
+    septemberSurchargeStatus: 'official_notice_pending',
+    septemberCalculationFrom: '2026-07-16',
+    septemberCalculationTo: '2026-08-15',
+    augustDomesticOneWayKrw: 16500,
+    septemberDomesticOneWayKrw: 20900,
+    domesticSurchargeChangeKrw: 4400,
+    domesticSurchargeChangePct: 26.7,
+    usdKrw: 1416.48,
+    usdKrwLabel: '약 1,416~1,418원',
+    usdKrwRange: '1,416~1,418',
+    jpyKrw: 8.894,
+    jpyKrw100: 889.4,
+    usdJpy: 159.4,
+    augustMopsAverageUsdPerBbl: 119.06,
+    augustMopsAverageCentsPerGallon: 283.48,
+    augustPassengerMopsAverageUsdPerBbl: 119.06,
+    augustPassengerMopsAverageCentsPerGallon: 283.48,
+    currentSingaporeMopsExactValue: null,
+    currentSingaporeMopsStatus: 'not_publicly_verified_2026_08_14',
+    brentUsdPerBbl: 87.07,
+    brentUsdBbl: 87.07,
+    wtiUsdPerBbl: 81.25,
+    wtiUsdBbl: 81.25,
+    brentDailyChangePct: -2.1,
+    wtiDailyChangePct: -2.4,
+    oilReferenceType: '2026.08.13 market close / 2026.08.14 morning reference',
+    usCrudeInventoryBuildBbl: 17400000,
+    usCrudeInventoriesBbl: 424400000,
+    hormuzTrafficRisk: 'very_high',
+    hormuzPrewarDailyTrafficEstimateMin: 130,
+    hormuzPrewarDailyTrafficEstimateMax: 140,
+    hormuzRecentTuesdayVessels: 6,
+    hormuzRecentWednesdayVessels: 8,
+    hormuzRecentThursdayMaxVessels: 5,
+    hormuzTrafficProviderNumbersDiffer: true,
+    hormuzFullReopeningConfirmed: false,
+    adnocRelatedVesselsAttacked: 2,
+    adnocAttackInjuriesReported: false,
+    usMayUseForceBeyondBlockade: true,
+    iranReopeningConditionsUnmet: true,
+    iea2026GlobalOilSupplyForecastCutBpd: 4300000,
+    ieaQ3SupplyDeficitBpd: 1800000,
+    outlookDirection: 'fx_downside_jetfuel_upside_hormuz_strong_upside_oil_mixed_international_notice_pending',
+    outlookConfidence: 'medium',
+    sources: {
+      augustFiling: 'Official August 2026 Korea-departure international fuel surcharge notices; Level 14 in effect',
+      domesticSurcharge: 'Korean Air and Asiana September 2026 domestic fuel surcharge notices',
+      usdKrw: 'USD/KRW public reference around 2026.08.14 09:25 KST',
+      oil: 'Aug 13 U.S. market close: Brent 87.07, WTI 81.25; inventory build and demand weakness separated from supply risk',
+      mops: 'Current daily Singapore MOPS not publicly verified; August calculation average remains 119.06 USD/bbl',
+      hormuz: 'Public reports on ADNOC-related vessel attacks and sharply depressed Hormuz traffic; provider counts are not merged',
+      iea: 'IEA supply outlook variable only, not a surcharge calculation input'
+    }
+  };
+  window.AERO_MARKET_NUMBERS_20260814 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {
+    '2026-08-12': window.AERO_MARKET_NUMBERS_20260812,
+    '2026-08-13': window.AERO_MARKET_NUMBERS_20260813,
+    '2026-08-14': window.AERO_MARKET_NUMBERS_20260814
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260814;
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1416.48, JPY: 1 / 8.894 });
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), {
+      marketDataRef: '2026.08.14 09:25 KST 기준',
+      marketOil: '국제유가: 8월 13일 미국 시장 종가 기준 Brent 약 87.1달러/bbl, WTI 약 81.3달러/bbl입니다. 두 유종 모두 2%대 하락했고, 미국 원유재고 증가와 수요 둔화 전망이 공급 리스크를 일부 상쇄했습니다.',
+      marketMops: '항공유: 8월 산정 MOPS 119.06달러/bbl은 기존 8월 공시 산정 평균입니다. 8월 14일 현재 싱가포르 MOPS 일별 평균은 신뢰 가능한 무료 공개자료로 확정 표시하지 않습니다.',
+      marketFx: '원달러 환율: 2026.08.14 09:25 KST 전후 공개 참고값 기준 약 1,416~1,418원입니다.',
+      marketGeo: '호르무즈: ADNOC 관련 선박 2척 공격 보도와 한 자릿수 통항 추적이 겹치며 통항 위험은 매우 높은 상태입니다. 추적업체별 숫자는 합산하거나 평균 내지 않습니다.',
+      marketSummary: '8월 국제선 유류할증료는 14단계 적용 중입니다. 9월 국내선은 20,900원/편도로 공시됐지만, 9월 국제선 단계와 금액은 아직 공식 공시 전입니다.'
+    });
+  }
+})();
+
 /* 2026.08.03 07:00 KST absolute final guard.
    Keep this last so shared market copy is not rolled back by older accumulated guards. */
 (function(){
@@ -13329,6 +13498,76 @@ window.initNav = function(opts){
       marketFx: '원달러 환율: 2026.08.13 09:00 KST 전후 공개 시세 기준 약 1,417원입니다.',
       marketGeo: '호르무즈: 최신 공개 정량자료는 2026년 8월 11일 Kpler 8척, LSEG 11척입니다. 두 값을 평균 내지 않고 추적업체별 공개 집계로 분리합니다.',
       marketSummary: '8월 국제선 유류할증료는 14단계 적용 중입니다. 9월 전망은 항공유 가격 완화와 환율 완화가 남아 있지만 국제유가 고점, 호르무즈·홍해·정제제품 공급 위험이 지속되는 혼합 국면입니다.'
+    });
+  }
+})();
+
+/* 2026.08.14 09:25 KST terminal shared override. */
+(function(){
+  var latest = {
+    asOf: '2026.08.14 09:25 KST',
+    lastUpdated: '2026-08-14T09:25:00+09:00',
+    currentMonthNotice: '2026-08',
+    forecastTargetMonth: '2026-09',
+    augustPassengerSurchargeStage: 14,
+    augustSurchargeStage: 14,
+    augustInternationalStage: 14,
+    julySurchargeStage: 19,
+    septemberSurchargeConfirmed: false,
+    septemberOfficialConfirmed: false,
+    septemberInternationalOfficialConfirmed: false,
+    septemberSurchargeStatus: 'official_notice_pending',
+    augustDomesticOneWayKrw: 16500,
+    septemberDomesticOneWayKrw: 20900,
+    domesticSurchargeChangeKrw: 4400,
+    domesticSurchargeChangePct: 26.7,
+    usdKrw: 1416.48,
+    usdKrwLabel: '약 1,416~1,418원',
+    usdKrwRange: '1,416~1,418',
+    jpyKrw: 8.894,
+    jpyKrw100: 889.4,
+    usdJpy: 159.4,
+    augustMopsAverageUsdPerBbl: 119.06,
+    augustMopsAverageCentsPerGallon: 283.48,
+    currentSingaporeMopsExactValue: null,
+    currentSingaporeMopsStatus: 'not_publicly_verified_2026_08_14',
+    brentUsdPerBbl: 87.07,
+    brentUsdBbl: 87.07,
+    wtiUsdPerBbl: 81.25,
+    wtiUsdBbl: 81.25,
+    brentDailyChangePct: -2.1,
+    wtiDailyChangePct: -2.4,
+    oilReferenceType: '2026.08.13 market close / 2026.08.14 morning reference',
+    usCrudeInventoryBuildBbl: 17400000,
+    usCrudeInventoriesBbl: 424400000,
+    hormuzTrafficRisk: 'very_high',
+    hormuzPrewarDailyTrafficEstimateMin: 130,
+    hormuzPrewarDailyTrafficEstimateMax: 140,
+    hormuzRecentTuesdayVessels: 6,
+    hormuzRecentWednesdayVessels: 8,
+    hormuzRecentThursdayMaxVessels: 5,
+    hormuzTrafficProviderNumbersDiffer: true,
+    hormuzFullReopeningConfirmed: false,
+    adnocRelatedVesselsAttacked: 2,
+    adnocAttackInjuriesReported: false,
+    usMayUseForceBeyondBlockade: true,
+    iranReopeningConditionsUnmet: true,
+    iea2026GlobalOilSupplyForecastCutBpd: 4300000,
+    ieaQ3SupplyDeficitBpd: 1800000,
+    outlookDirection: 'fx_downside_jetfuel_upside_hormuz_strong_upside_oil_mixed_international_notice_pending'
+  };
+  window.AERO_MARKET_NUMBERS_20260814 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-14': window.AERO_MARKET_NUMBERS_20260814});
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260814;
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1416.48, JPY: 1 / 8.894 });
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), {
+      marketDataRef: '2026.08.14 09:25 KST 기준',
+      marketOil: '국제유가: 8월 13일 미국 시장 종가 기준 Brent 약 87.1달러/bbl, WTI 약 81.3달러/bbl입니다. 두 유종 모두 2%대 하락했고 미국 원유재고 증가와 수요 둔화 전망이 공급 리스크를 일부 상쇄했습니다.',
+      marketMops: '항공유: 8월 산정 MOPS 119.06달러/bbl은 기존 8월 공시 산정 평균입니다. 8월 14일 현재 싱가포르 MOPS 일별 평균은 신뢰 가능한 무료 공개자료로 확정 표시하지 않습니다.',
+      marketFx: '원달러 환율: 2026.08.14 09:25 KST 전후 공개 참고값 기준 약 1,416~1,418원입니다.',
+      marketGeo: '호르무즈: ADNOC 관련 선박 2척 공격 보도와 한 자릿수 통항 추적이 겹치며 통항 위험은 매우 높은 상태입니다. 추적업체별 숫자는 합산하거나 평균 내지 않습니다.',
+      marketSummary: '8월 국제선 유류할증료는 14단계 적용 중입니다. 9월 국내선은 20,900원/편도로 공시됐지만, 9월 국제선 단계와 금액은 아직 공식 공시 전입니다.'
     });
   }
 })();
