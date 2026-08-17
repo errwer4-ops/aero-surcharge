@@ -1,32 +1,23 @@
 {
   "meta": {
-    "generatedAt": "2026-08-14T09:25:00+09:00",
-    "modelVersion": "manual-market-override-20260814",
+    "generatedAt": "2026-08-17T22:31:45.060Z",
+    "modelVersion": "manual-market-override-20260818",
     "basePeriod": "2026.08",
     "forecastTargetPeriod": "2026.09",
-    "sourceAirlines": 9,
+    "sourceAirlines": 8,
     "inputs": {
-      "usdKrw": 1416.48,
-      "usdKrwRange": "1,416~1,418",
-      "usdJpy": 159.4,
-      "jpyKrw": 8.894,
-      "jpyKrw100": 889.4,
-      "brentUSD": 87.07,
-      "wtiUSD": 81.25,
-      "brentDailyChangePct": -2.1,
-      "wtiDailyChangePct": -2.4,
-      "usCrudeInventoryBuildBbl": 17400000,
-      "usCrudeInventoriesBbl": 424400000,
-      "augustMopsUSD": 119.06,
-      "augustMopsCentsPerGallon": 283.48,
-      "currentSingaporeMopsExactValue": null,
-      "currentSingaporeMopsStatus": "not_publicly_verified_2026_08_14",
-      "hormuzTrafficRisk": "very_high",
-      "marketDataSource": "manual_public_reference",
-      "marketFetchedAt": "2026-08-14T09:25:00+09:00"
+      "brentUSD": 82.5,
+      "wtiUSD": 78.3,
+      "jetFuelSpread": 14.2,
+      "usdKrw": 1415,
+      "usdJpy": 159.2,
+      "geopoliticalRiskScore": 0.35,
+      "baselineBrentUSD": 75,
+      "marketDataSource": "live",
+      "marketFetchedAt": "2026-08-17T22:30:42.138Z"
     },
-    "disclaimer": "2026년 8월 국제선 유류할증료는 14단계 적용 중인 확정 공시 데이터입니다. 2026년 9월 국제선 유류할증료는 아직 공식 단계·금액·확률을 확정값으로 표시하지 않습니다.",
-    "lastUpdated": "2026-08-14T09:25:00+09:00",
+    "disclaimer": "2026년 8월 국제선 유류할증료는 14단계 적용 중인 확정 공시 데이터입니다. 2026년 9월 국제선은 에어부산 공식 공시가 확인되어 공시 시작 상태이지만, 다른 항공사의 단계·금액은 공식 공시 확인 전까지 확정값으로 표시하지 않습니다. 당일 Singapore MOPS 값은 공개 확정값이 없어 임의 표시하지 않습니다.",
+    "lastUpdated": "2026-08-18T07:00:00+09:00",
     "currentMonthNotice": "2026-08",
     "forecastTargetMonth": "2026-09"
   },
@@ -43,7 +34,7 @@
       "predictedMax": null,
       "officialStage": null,
       "officialAmounts": null,
-      "direction": "upside_pressure_dominant_official_notice_pending",
+      "direction": "increase_phase_entered_airline_notices_in_progress",
       "confidence": "medium",
       "volatility": "very_high",
       "drivers": [
@@ -53,40 +44,40 @@
           "weight": 0.12
         },
         {
-          "factor": "USD/KRW 약 1,416~1,418원",
+          "factor": "USD/KRW 약 1,415원",
           "impact": "downside_fx_relief",
-          "weight": 0.16
+          "weight": 0.14
         },
         {
-          "factor": "8월 산정 MOPS 119.06달러/bbl은 기존 공시 평균이며 8월 14일 일별 MOPS는 공개 확정값 없음",
+          "factor": "당일 Singapore MOPS 공개 확정값 없음. 139.22달러/bbl은 2026년 7월 Singapore Jet Fuel 월평균 참고값",
           "impact": "mops_value_not_invented",
-          "weight": 0.12
+          "weight": 0.1
         },
         {
-          "factor": "최근 항공유 가격 상승 압력과 정제제품 공급 우려",
-          "impact": "upside_jet_fuel",
-          "weight": 0.2
-        },
-        {
-          "factor": "호르무즈 ADNOC 관련 선박 공격과 통항 급감",
-          "impact": "strong_upside_geopolitical",
+          "factor": "중동 정유차질, 낮은 제트유 재고, 국제유가 재상승",
+          "impact": "strong_upside_jet_fuel",
           "weight": 0.24
         },
         {
-          "factor": "Brent 약 87.1달러, WTI 약 81.3달러는 재고 증가와 수요 둔화로 2%대 하락",
-          "impact": "mixed_oil",
-          "weight": 0.1
+          "factor": "호르무즈 Kpler 추적 해당 원자재 운송선 일요일 0척",
+          "impact": "extreme_upside_geopolitical",
+          "weight": 0.28
+        },
+        {
+          "factor": "Brent 90.87달러, WTI 84.50달러",
+          "impact": "upside_oil",
+          "weight": 0.12
         }
       ],
-      "disclaimer": "2026년 9월 국제선 단계와 항공사별 금액은 공식 공시 전입니다. 환율, 국제유가, 호르무즈 뉴스는 전망 변수이며 국제선 확정값이 아닙니다.",
-      "summary": "환율은 하락 요인이지만 항공유 가격 상승 압력과 호르무즈 통항 위험이 이를 상쇄합니다. 2026년 9월 국제선은 인상 압력 우세로 보되 공식 공시 대기 상태입니다."
+      "disclaimer": "에어부산 외 주요 항공사의 2026년 9월 국제선 단계와 항공사별 금액은 공식 공시 확인 전입니다. 환율, 국제유가, 호르무즈 뉴스는 전망 변수이며 다른 항공사의 국제선 확정값이 아닙니다.",
+      "summary": "환율은 하락 요인이지만 항공유 가격 상승 압력과 호르무즈 통항 위험이 이를 압도합니다. 에어부산 9월 국제선 공시 확인으로 2026년 9월 국제선은 인상 국면에 진입했으며 항공사별 공시가 진행 중입니다."
     }
   ],
   "latest": {
-    "asOf": "2026.08.14 09:25 KST",
+    "asOf": "2026.08.18 07:00 KST",
     "currentMonthNotice": "2026-08",
     "forecastTargetMonth": "2026-09",
-    "summary": "8월 국제선은 14단계 적용 중입니다. 9월 국제선 단계와 금액은 아직 공식 공시 전입니다. USD/KRW 약 1,416~1,418원은 하락 요인, 항공유와 호르무즈 위험은 상승 요인입니다.",
-    "status": "official_notice_pending"
+    "summary": "8월 국제선은 14단계 적용 중입니다. 9월 국제선은 에어부산 공시 확인으로 공시 시작 단계입니다. USD/KRW 약 1,415원은 하락 요인, 항공유와 호르무즈 위험은 강한 상승 요인입니다.",
+    "status": "partial_notices_started"
   }
 }

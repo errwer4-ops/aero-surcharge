@@ -12548,6 +12548,270 @@ function renderForecastPage() {
   });
 })();
 
+/* 2026.08.18 final forecast override: international-only outlook and full locale packs. */
+(function(){
+  var updatedIso = '2026-08-18T07:00:00+09:00';
+  window.AERO_MARKET_NUMBERS_20260818 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
+    asOf: '2026.08.18 07:00 KST',
+    lastUpdated: updatedIso,
+    currentMonth: '2026-08',
+    forecastMonth: '2026-09',
+    augustInternationalStage: 14,
+    septemberInternationalStatus: 'partial_notices_started',
+    septemberInternationalConfirmedAirlines: ['BX'],
+    septemberInternationalPendingAirlines: ['KE','OZ','7C','LJ','TW','RS','ZE'],
+    usdKrw: 1415,
+    usdKrwRange: '1,414~1,416',
+    usdJpy: 159.38,
+    jpyKrw: 8.88,
+    jpyKrw100: 888,
+    brent: 90.87,
+    wti: 84.50,
+    julySingaporeJetFuelAvgBbl: 139.22,
+    julySingaporeJetFuelAvgGal: 3.3147,
+    currentMops: null,
+    currentMopsStatus: 'not_publicly_verified',
+    hormuzRisk: 'extreme'
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260818;
+  if(window.RATES){
+    window.RATES.USD = 1 / 1415;
+    window.RATES.JPY = 1 / 8.88;
+  }
+  var packs = {
+    ko: {
+      'fore.metaTitle':'2026년 8월 국제선 유류할증료 적용·9월 전망 | 8월 18일 환율·항공유·호르무즈',
+      'fore.metaDesc':'2026년 8월 18일 07:00 KST 기준 8월 국제선 14단계와 9월 국제선 공시 시작 상태를 환율, 항공유, 국제유가, 호르무즈 변수로 정리합니다.',
+      'fore.pageTitle':'2026년 8월 국제선 유류할증료 적용과 9월 전망',
+      'fore.pageSub':'2026.08.18 07:00 KST 기준 · 8월 국제선 14단계 적용 중 · 9월 국제선 공시 시작 · 에어부산 일부 구간 공식 인상 확인 · USD/KRW 약 1,415원 · Brent 90.87달러 · WTI 84.50달러',
+      'fore.h1':'2026년 9월 국제선 유류할증료 전망 - 공시 시작',
+      'fore.notice':'<strong>안내:</strong> 2026년 8월 한국 출발 국제선 유류할증료는 14단계로 적용 중입니다. 9월 국제선은 에어부산 공식 공시가 확인되어 일부 항공사 공시 완료·주요 항공사 추가 공시 대기 상태입니다.',
+      'fore.intro':'2026.08.18 07:00 KST 기준, 8월 국제선 유류할증료는 기존 공식 공시대로 14단계입니다. 9월 국제선은 에어부산 일부 구간 인상이 공식 확인되며 공시 단계로 진입했습니다. 환율은 하락 요인이지만 항공유, 국제유가, 호르무즈 해협 리스크가 더 강한 상승 압력입니다.',
+      'fore.indicator.th':['항목','2026.08.18 07:00 KST 기준 상태','9월 국제선 전망 영향'],
+      'fore.indicator.rows':[
+        ['환율','USD/KRW 약 1,415원 · 100엔 약 888원','하락 요인입니다. 다만 산정기간 평균 항공유와 평균 환율이 필요하므로 당일 환율만으로 확정하지 않습니다.'],
+        ['항공유/MOPS','확인 가능한 기준값은 2026년 7월 Singapore Jet Fuel 평균 139.22달러/bbl · 당일 MOPS는 공개 확정값 없음','강한 상승 요인입니다. 현재 일별 MOPS 값을 임의로 표시하지 않습니다.'],
+        ['국제유가','8월 17일 미국 종가 Brent 90.87달러 · WTI 84.50달러','상승 압력입니다. Brent가 다시 90달러를 넘어서 단기 항공유 부담이 커졌습니다.'],
+        ['호르무즈','Kpler 추적 해당 원자재 운송선 기준 토요일 5척, 일요일 0척','강한 상승 위험 ↑↑↑ 입니다. 모든 선박 0척으로 일반화하지 않습니다.'],
+        ['9월 국제선','에어부산 공식 공시 확인 · 주요 항공사 추가 공시 대기','인상 국면 진입 · 항공사별 공시 진행 중입니다.']
+      ],
+      'fore.indicator.footnote':'* 위 항목은 9월 국제선 전망 변수입니다. 에어부산 외 항공사 금액은 공식 공시 확인 전까지 확정값으로 표시하지 않습니다.',
+      'fore.summary.updated':'2026.08.18 07:00 KST 기준 · 8월 국제선 14단계 · 9월 국제선 공시 시작',
+      'fore.summary.title':'2026년 9월 국제선 유류할증료 전망 요약',
+      'fore.summary.items':[
+        '2026년 8월 한국 출발 국제선 유류할증료는 기존 공식 공시대로 14단계 적용 중입니다.',
+        '2026년 9월 국제선은 에어부산 공식 공시 확인으로 공시 시작 단계입니다.',
+        '에어부산 일부 구간은 USD 47에서 USD 71, 일부 장거리 구간은 USD 54에서 USD 82 수준으로 인상됐습니다.',
+        'USD/KRW 약 1,415원은 환율 측 하락 요인이지만 단독으로 국제선 단계를 확정하지 않습니다.',
+        '당일 Singapore MOPS는 공개 확정값이 없어 임의 수치를 표시하지 않습니다.',
+        '2026년 7월 Singapore Jet Fuel 평균 139.22달러/bbl은 월평균 참고값으로만 표시합니다.',
+        'Brent 90.87달러와 WTI 84.50달러는 단기 유가 상승 압력을 보여줍니다.',
+        '호르무즈 통항 급감과 이란의 공세적 군사태세 경고는 강한 상승 위험입니다.',
+        '종합 판단은 환율 ↓ / 항공유 ↑↑ / 호르무즈 ↑↑↑ → 9월 국제선 인상 국면 진입입니다.'
+      ],
+      'fore.verdict.title':'2026년 9월 국제선 전망',
+      'fore.verdict.line1':'환율은 하락 요인이지만 항공유와 호르무즈 해협 리스크가 이를 압도하고 있습니다.',
+      'fore.verdict.line2':'에어부산 9월 국제선 인상이 공식 확인되며 상승 흐름이 실제 공시 단계로 들어섰습니다.',
+      'fore.verdict.short':'하락 요인: USD/KRW 약 1,415원',
+      'fore.verdict.long':'상승 요인: 항공유 ↑↑ · 호르무즈 ↑↑↑ · Brent 90.87달러',
+      'fore.market.title':'시장 브리핑: 환율 하락 요인보다 항공유·호르무즈 위험 우세',
+      'fore.market.brent':'국제유가: 8월 17일 미국 시장 종가 기준 Brent는 90.87달러/bbl, WTI는 84.50달러/bbl입니다. 미국-이란 협상 교착, 호르무즈 통항 감소, 공급 우려가 가격을 다시 끌어올렸습니다.',
+      'fore.market.mops':'항공유: 당일 Singapore MOPS 일별 값은 공개 확정값이 없어 표시하지 않습니다. 확인 가능한 기준값은 대한항공 Cargo 기준 2026년 7월 Singapore Jet Fuel 평균 3.3147달러/gal, 139.22달러/bbl입니다.',
+      'fore.market.fx':'환율: USD/KRW 약 1,415원, USD/JPY 약 159.38, 100엔 약 888원입니다. 환율은 하락 요인이지만 산정기간 평균과 항공유 가격이 함께 필요합니다.',
+      'fore.market.geo':'호르무즈: Kpler가 추적한 해당 원자재 운송선 기준 일요일 통항이 0척으로 집계됐습니다. 이는 전체 선박이 정확히 0척이라는 의미가 아니라 공개 추적 범위의 급격한 위축 신호입니다.',
+      'fore.market.summary':'현재 판단은 9월 국제선 공시 시작 · 상승 압력 현실화입니다. 에어부산 외 주요 항공사는 공식 공시 확인 전까지 공시 대기로 둡니다.',
+      'fore.market.fx2':'핵심 수치: 2026.08.18 07:00 KST · 8월 국제선 14단계 · 9월 국제선 공시 시작 · USD/KRW 약 1,415원 · Brent 90.87달러 · WTI 84.50달러 · 7월 Singapore Jet Fuel 평균 139.22달러/bbl',
+      'fore.basis.title':'8월 적용 데이터와 9월 공시 진행 기준',
+      'fore.basis.body':'9월 국제선 유류할증료는 항공사별 공식 공시로 확정됩니다. 에어부산 공시는 확인됐지만 다른 주요 항공사는 확인 전까지 공시 대기로 유지합니다. 원유, 환율, 호르무즈 뉴스는 전망 변수이며 다른 항공사의 금액을 직접 확정하지 않습니다.',
+      'fore.predict.title':'2026년 9월 국제선 유류할증료 전망 핵심 지표',
+      'fore.predict.subtitle':'9월 국제선 공시 시작 · 환율 ↓ / 항공유 ↑↑ / 호르무즈 ↑↑↑',
+      'fore.predict.items':[
+        {label:'환율', val:'USD/KRW 약 1,415원 · 하락 요인', cls:'down'},
+        {label:'항공유/MOPS', val:'당일 MOPS 미표시 · 7월 월평균 139.22달러/bbl 참고 · 강한 상승 요인', cls:'up'},
+        {label:'국제유가', val:'Brent 90.87달러 · WTI 84.50달러 · 상승 압력', cls:'up'},
+        {label:'호르무즈', val:'Kpler 추적 일요일 0척 · 강한 상승 위험 ↑↑↑', cls:'up'},
+        {label:'9월 국제선', val:'에어부산 공시 확인 · 항공사별 공시 진행 중', cls:'up'}
+      ],
+      'fore.predict.footnote':'* 국내선 인상률을 국제선에 직접 적용하지 않습니다. forecast 핵심 지표는 국제선 전망 변수만 표시합니다.',
+      'fore.faq.title':'자주 묻는 질문',
+      'fore.faq.items':[
+        {q:'2026년 9월 국제선 유류할증료는 확정됐나요?', a:'에어부산 9월 한국 출발 국제선 공시는 확인됐습니다. 다른 주요 항공사는 공식 공시 확인 전까지 대기 상태로 표시합니다.'},
+        {q:'현재 싱가포르 MOPS는 얼마인가요?', a:'2026년 8월 18일 현재 신뢰 가능한 무료 공개자료로 당일 일별 MOPS를 확정 표시하지 않습니다. 139.22달러/bbl은 2026년 7월 Singapore Jet Fuel 월평균 참고값입니다.'},
+        {q:'환율이 내려가면 9월 국제선도 내려가나요?', a:'환율은 하락 요인이지만 항공유, 국제유가, 호르무즈 위험이 강한 상승 요인입니다. 환율만으로 확정할 수 없습니다.'},
+        {q:'현재 전망은 무엇인가요?', a:'9월 국제선 공시가 시작됐고 상승 압력이 현실화되는 국면입니다. 항공사별 공식 공시를 계속 확인해야 합니다.'}
+      ]
+    }
+  };
+  packs.en = Object.assign({}, packs.ko, {
+    'fore.metaTitle':'August 2026 International Fuel Surcharge and September Outlook | Aug 18 FX, Jet Fuel and Hormuz',
+    'fore.metaDesc':'As of 2026.08.18 07:00 KST: August international Level 14 and September international notices have started, with FX, jet fuel, oil and Hormuz variables separated.',
+    'fore.pageTitle':'August 2026 International Fuel Surcharge and September Outlook',
+    'fore.pageSub':'As of 2026.08.18 07:00 KST · August international Level 14 in effect · September international notices started · Air Busan official increase confirmed on some segments · USD/KRW around 1,415 · Brent USD 90.87 · WTI USD 84.50',
+    'fore.h1':'September 2026 International Fuel Surcharge Outlook - notices started',
+    'fore.notice':'<strong>Note:</strong> August 2026 Korea-departure international surcharge remains at Level 14. September international notices have started: Air Busan is confirmed, while major airlines remain pending.',
+    'fore.intro':'As of 2026.08.18 07:00 KST, August international fuel surcharge remains at official Level 14. September international has entered the notice phase after Air Busan confirmed increases on some segments. FX is a downside factor, but jet fuel, crude oil and Hormuz risks are stronger upside pressure.',
+    'fore.indicator.th':['Factor','Status as of 2026.08.18 07:00 KST','Impact on September international'],
+    'fore.indicator.rows':[['FX','USD/KRW around 1,415; 100 JPY around KRW 888','Downside factor, but daily FX alone cannot confirm the stage.'],['Jet fuel/MOPS','Verified reference: July 2026 Singapore Jet Fuel average USD 139.22/bbl; no public confirmed daily MOPS','Strong upside factor. No invented daily MOPS is displayed.'],['Oil','Aug 17 U.S. close: Brent USD 90.87; WTI USD 84.50','Upside pressure as Brent moved back above USD 90.'],['Hormuz','Kpler-tracked commodity vessels: 5 Saturday, 0 Sunday','Strong upside risk ↑↑↑, without generalizing this to every vessel.'],['September international','Air Busan official notice confirmed; major airlines still pending','Increase phase entered; airline notices in progress.']],
+    'fore.summary.updated':'As of 2026.08.18 07:00 KST · August international Level 14 · September international notices started',
+    'fore.summary.title':'September 2026 International Surcharge Outlook',
+    'fore.summary.items':['August Korea-departure international surcharge remains in effect at official Level 14.','September international notices have started with Air Busan confirmed.','Air Busan examples rose from USD 47 to USD 71 and from USD 54 to USD 82 on some longer segments.','USD/KRW around 1,415 is a downside FX factor but does not confirm international stages alone.','No current daily Singapore MOPS value is displayed because it is not publicly verified.','USD 139.22/bbl is shown only as the July 2026 Singapore Jet Fuel monthly average reference.','Brent USD 90.87 and WTI USD 84.50 show renewed short-term oil pressure.','Hormuz traffic deterioration and Iran posture warnings are strong upside risks.','Overall: FX down / jet fuel up / Hormuz up strongly -> September international has entered an increase phase.'],
+    'fore.verdict.line1':'FX is a downside factor, but jet fuel and Hormuz risks dominate.',
+    'fore.verdict.line2':'Air Busan’s September international increase is officially confirmed, so the upward trend has moved into actual airline notices.',
+    'fore.verdict.short':'Downside factor: USD/KRW around 1,415',
+    'fore.verdict.long':'Upside factors: jet fuel ↑↑ · Hormuz ↑↑↑ · Brent USD 90.87',
+    'fore.market.title':'Market brief: jet fuel and Hormuz risk dominate FX relief',
+    'fore.market.brent':'Oil: at the Aug 17 U.S. close, Brent was USD 90.87/bbl and WTI was USD 84.50/bbl. Stalled U.S.-Iran talks, lower Hormuz traffic and supply concerns pushed prices higher.',
+    'fore.market.mops':'Jet fuel: no verified public daily Singapore MOPS value is displayed. The confirmed reference is Korean Air Cargo’s July 2026 Singapore Jet Fuel average of USD 3.3147/gal and USD 139.22/bbl.',
+    'fore.market.fx':'FX: USD/KRW around 1,415, USD/JPY around 159.38, and 100 JPY around KRW 888. FX is a downside factor, but surcharge decisions use calculation-period averages and airline notices.',
+    'fore.market.geo':'Hormuz: Kpler-tracked commodity vessel traffic registered zero on Sunday. This is a sharp contraction within that tracked scope, not a claim that every vessel type was exactly zero.',
+    'fore.market.summary':'Current view: September international notices have started and upside pressure is materializing. Non-Air Busan major airlines remain pending until official notices are confirmed.',
+    'fore.market.fx2':'Key figures: 2026.08.18 07:00 KST · August international Level 14 · September international notices started · USD/KRW around 1,415 · Brent USD 90.87 · WTI USD 84.50 · July Singapore Jet Fuel average USD 139.22/bbl',
+    'fore.basis.body':'September international surcharge is confirmed by airline official notices. Air Busan is confirmed, while other major airlines remain pending until official notices are verified. Oil, FX and Hormuz are outlook variables and do not directly set other airlines’ amounts.',
+    'fore.predict.subtitle':'September international notices started · FX ↓ / jet fuel ↑↑ / Hormuz ↑↑↑',
+    'fore.predict.items':[{label:'FX',val:'USD/KRW around 1,415 · downside',cls:'down'},{label:'Jet fuel/MOPS',val:'No daily MOPS shown · July average USD 139.22/bbl reference · strong upside',cls:'up'},{label:'Oil',val:'Brent USD 90.87 · WTI USD 84.50 · upside pressure',cls:'up'},{label:'Hormuz',val:'Kpler-tracked Sunday zero · strong upside risk ↑↑↑',cls:'up'},{label:'September international',val:'Air Busan confirmed · airline notices in progress',cls:'up'}],
+    'fore.faq.items':[{q:'Is the September 2026 international surcharge confirmed?',a:'Air Busan’s September Korea-departure international notice is confirmed. Other major airlines remain pending until their official notices are verified.'},{q:'What is the current Singapore MOPS?',a:'No verified public daily MOPS is displayed for Aug 18. USD 139.22/bbl is the July 2026 Singapore Jet Fuel monthly average reference.'},{q:'Does lower FX guarantee a lower surcharge?',a:'No. FX is a downside factor, but jet fuel, oil and Hormuz risks are strong upside factors.'},{q:'What is the current outlook?',a:'September international notices have started and upside pressure is materializing. Airline official notices still need to be checked one by one.'}]
+  });
+  packs.ja = Object.assign({}, packs.en, {
+    'fore.pageTitle':'2026年8月国際線燃油サーチャージ適用と9月見通し',
+    'fore.pageSub':'2026.08.18 07:00 KST時点 · 8月国際線14段階適用中 · 9月国際線の公示開始 · エアプサン一部区間の公式引き上げ確認 · USD/KRW約1,415 · Brent 90.87ドル · WTI 84.50ドル',
+    'fore.h1':'2026年9月国際線燃油サーチャージ見通し - 公示開始',
+    'fore.notice':'<strong>注意:</strong> 2026年8月の韓国発国際線燃油サーチャージは14段階で適用中です。9月国際線はエアプサン公示が確認され、主要航空会社は追加公示待ちです。',
+    'fore.intro':'2026.08.18 07:00 KST時点で、8月国際線は14段階のままです。9月国際線はエアプサン一部区間の引き上げ確認により公示段階に入りました。為替は下落要因ですが、航空燃料・原油・ホルムズリスクがより強い上昇圧力です。',
+    'fore.indicator.th':['項目','2026.08.18 07:00 KST時点','9月国際線への影響'],
+    'fore.indicator.rows':[['為替','USD/KRW約1,415、100円約888ウォン','下落要因ですが、当日為替だけでは段階を確定できません。'],['航空燃料/MOPS','確認可能な基準は2026年7月Singapore Jet Fuel平均139.22ドル/bbl、当日MOPSは未確認','強い上昇要因です。日次MOPSを作って表示しません。'],['原油','8月17日米終値 Brent 90.87ドル、WTI 84.50ドル','Brentが90ドルを再び超え、上昇圧力です。'],['ホルムズ','Kpler追跡の対象商品船は土曜5隻、日曜0隻','強い上昇リスク↑↑↑です。全船舶0隻とは一般化しません。'],['9月国際線','エアプサン公式公示確認、主要航空会社は追加公示待ち','引き上げ局面入り、航空会社別公示が進行中です。']],
+    'fore.summary.updated':'2026.08.18 07:00 KST時点 · 8月国際線14段階 · 9月国際線公示開始',
+    'fore.summary.title':'2026年9月国際線サーチャージ見通し',
+    'fore.summary.items':['8月の韓国発国際線燃油サーチャージは14段階で適用中です。','9月国際線はエアプサン公示確認により公示開始段階です。','USD/KRW約1,415は為替面の下落要因ですが、単独では国際線段階を確定しません。','当日Singapore MOPSは公開確定値がないため表示しません。','139.22ドル/bblは2026年7月Singapore Jet Fuel月平均の参考値です。','Brent 90.87ドル、WTI 84.50ドルは短期原油上昇圧力を示します。','ホルムズ通航急減とイラン警告は強い上昇リスクです。','総合判断は為替↓ / 航空燃料↑↑ / ホルムズ↑↑↑、9月国際線は引き上げ局面入りです。']
+  });
+  packs.zh = Object.assign({}, packs.en, {
+    'fore.pageTitle':'2026年8月国际线燃油附加费执行与9月展望',
+    'fore.pageSub':'截至2026.08.18 07:00 KST · 8月国际线第14档执行中 · 9月国际线公告开始 · 釜山航空部分区间官方上调确认 · USD/KRW约1,415 · Brent 90.87美元 · WTI 84.50美元',
+    'fore.h1':'2026年9月国际线燃油附加费展望 - 公告开始',
+    'fore.notice':'<strong>注意:</strong> 2026年8月韩国出发国际线燃油附加费按第14档执行。9月国际线已确认釜山航空公告，主要航司仍等待追加公告。',
+    'fore.intro':'截至2026.08.18 07:00 KST，8月国际线仍为官方第14档。9月国际线因釜山航空部分区间上调确认而进入公告阶段。汇率是下行因素，但航油、油价和霍尔木兹风险形成更强上行压力。',
+    'fore.indicator.th':['项目','截至2026.08.18 07:00 KST的状态','对9月国际线影响'],
+    'fore.indicator.rows':[['汇率','USD/KRW约1,415，100日元约888韩元','下行因素，但不能仅凭当日汇率确认档位。'],['航油/MOPS','可确认参考为2026年7月Singapore Jet Fuel均价139.22美元/bbl；当日MOPS未公开确认','强上行因素。不显示编造日度MOPS。'],['原油','8月17日美国收盘 Brent 90.87美元，WTI 84.50美元','Brent重回90美元上方，形成上行压力。'],['霍尔木兹','Kpler追踪的相关大宗商品船：周六5艘、周日0艘','强上行风险↑↑↑，不泛化为所有船舶0艘。'],['9月国际线','釜山航空官方公告确认，主要航司仍待公告','进入上调阶段，各航司公告进行中。']],
+    'fore.summary.updated':'截至2026.08.18 07:00 KST · 8月国际线第14档 · 9月国际线公告开始',
+    'fore.summary.title':'2026年9月国际线燃油附加费展望',
+    'fore.summary.items':['8月韩国出发国际线燃油附加费仍按官方第14档执行。','9月国际线因釜山航空公告确认而进入公告开始阶段。','USD/KRW约1,415是汇率下行因素，但不能单独确认国际线档位。','当日Singapore MOPS无公开确认值，因此不显示。','139.22美元/bbl仅作为2026年7月Singapore Jet Fuel月均参考。','Brent 90.87美元、WTI 84.50美元显示短期油价上行压力。','霍尔木兹通行骤降和伊朗警告是强上行风险。','综合判断为汇率↓ / 航油↑↑ / 霍尔木兹↑↑↑，9月国际线进入上调阶段。']
+  });
+  packs.fr = Object.assign({}, packs.en, {
+    'fore.pageTitle':'Surtaxe carburant internationale août 2026 et perspectives septembre',
+    'fore.pageSub':'Au 2026.08.18 07:00 KST · international août niveau 14 · avis septembre commencés · hausse officielle Air Busan confirmée sur certains segments · USD/KRW autour de 1 415 · Brent 90,87 USD · WTI 84,50 USD',
+    'fore.h1':'Perspectives de surtaxe internationale septembre 2026 - avis commencés',
+    'fore.notice':'<strong>Note:</strong> La surtaxe internationale au départ de Corée pour août reste au niveau 14. Les avis de septembre ont commencé avec Air Busan confirmé; les grandes compagnies restent en attente.',
+    'fore.intro':'Au 2026.08.18 07:00 KST, août international reste au niveau officiel 14. Septembre international entre dans la phase d’avis après la confirmation Air Busan sur certains segments. Le change est baissier, mais jet fuel, pétrole et Ormuz dominent à la hausse.',
+    'fore.indicator.th':['Facteur','État au 2026.08.18 07:00 KST','Impact sur septembre international'],
+    'fore.indicator.rows':[['Change','USD/KRW autour de 1 415; 100 JPY autour de 888 KRW','Facteur baissier, sans confirmer le niveau à lui seul.'],['Jet fuel/MOPS','Référence vérifiée: moyenne Singapore Jet Fuel juillet 2026 à 139,22 USD/bbl; pas de MOPS quotidien confirmé','Fort facteur haussier. Aucun MOPS quotidien inventé.'],['Pétrole','Clôture US du 17 août: Brent 90,87 USD; WTI 84,50 USD','Pression haussière avec Brent de nouveau au-dessus de 90 USD.'],['Ormuz','Navires matières premières suivis par Kpler: 5 samedi, 0 dimanche','Risque haussier fort ↑↑↑, sans généraliser à tous les navires.'],['International septembre','Avis officiel Air Busan confirmé; grandes compagnies en attente','Phase de hausse engagée; avis par compagnie en cours.']],
+    'fore.summary.updated':'Au 2026.08.18 07:00 KST · août international niveau 14 · avis internationaux septembre commencés',
+    'fore.summary.title':'Perspectives septembre 2026 pour l’international',
+    'fore.summary.items':['La surtaxe internationale au départ de Corée pour août reste au niveau 14.','Les avis internationaux de septembre ont commencé avec Air Busan confirmé.','USD/KRW autour de 1 415 est un facteur FX baissier, insuffisant seul pour confirmer les niveaux.','Aucun MOPS quotidien Singapour confirmé n’est affiché.','139,22 USD/bbl est seulement la moyenne mensuelle Singapore Jet Fuel de juillet 2026.','Brent 90,87 USD et WTI 84,50 USD montrent une pression pétrolière à court terme.','La chute du trafic d’Ormuz et les avertissements iraniens sont des risques haussiers forts.','Conclusion: FX ↓ / jet fuel ↑↑ / Ormuz ↑↑↑, septembre international entre en phase de hausse.']
+  });
+  packs.de = Object.assign({}, packs.en, {
+    'fore.pageTitle':'Internationaler Treibstoffzuschlag August 2026 und September-Ausblick',
+    'fore.pageSub':'Stand 2026.08.18 07:00 KST · August international Stufe 14 · September-Mitteilungen gestartet · Air Busan-Erhöhung auf einigen Segmenten bestätigt · USD/KRW um 1.415 · Brent 90,87 USD · WTI 84,50 USD',
+    'fore.h1':'Ausblick internationaler Treibstoffzuschlag September 2026 - Mitteilungen gestartet',
+    'fore.notice':'<strong>Hinweis:</strong> Der internationale Zuschlag ab Korea für August gilt weiter auf Stufe 14. September-Mitteilungen haben begonnen: Air Busan ist bestätigt, große Airlines stehen noch aus.',
+    'fore.intro':'Stand 2026.08.18 07:00 KST bleibt August international auf offizieller Stufe 14. September international ist nach der bestätigten Air-Busan-Erhöhung auf einigen Segmenten in die Mitteilungsphase eingetreten. FX entlastet, aber Jetfuel, Rohöl und Hormusrisiken wirken stärker aufwärts.',
+    'fore.indicator.th':['Faktor','Stand 2026.08.18 07:00 KST','Wirkung auf September international'],
+    'fore.indicator.rows':[['FX','USD/KRW um 1.415; 100 JPY um 888 KRW','Entlastungsfaktor, aber Tages-FX bestätigt keine Stufe allein.'],['Jetfuel/MOPS','Verifizierte Referenz: Singapore Jet Fuel Juli 2026 im Schnitt 139,22 USD/bbl; kein bestätigter Tages-MOPS','Starker Aufwärtsfaktor. Kein erfundener Tages-MOPS.'],['Öl','US-Schluss 17. Aug.: Brent 90,87 USD; WTI 84,50 USD','Aufwärtsdruck, Brent wieder über 90 USD.'],['Hormus','Von Kpler verfolgte Rohstoffschiffe: 5 Samstag, 0 Sonntag','Starkes Aufwärtsrisiko ↑↑↑, ohne dies auf alle Schiffe zu verallgemeinern.'],['September international','Air Busan offiziell bestätigt; große Airlines ausstehend','Erhöhungsphase eingetreten; Airline-Mitteilungen laufen.']],
+    'fore.summary.updated':'Stand 2026.08.18 07:00 KST · August international Stufe 14 · September international Mitteilungen gestartet',
+    'fore.summary.title':'September 2026 Ausblick für internationale Zuschläge',
+    'fore.summary.items':['Der internationale Zuschlag ab Korea für August gilt weiter auf Stufe 14.','September-Mitteilungen haben mit bestätigtem Air Busan begonnen.','USD/KRW um 1.415 entlastet über FX, bestätigt internationale Stufen aber nicht allein.','Kein bestätigter täglicher Singapore-MOPS wird angezeigt.','139,22 USD/bbl ist nur die Monatsreferenz für Singapore Jet Fuel Juli 2026.','Brent 90,87 USD und WTI 84,50 USD zeigen kurzfristigen Öldruck.','Der Rückgang im Hormus-Verkehr und iranische Warnungen sind starke Aufwärtsrisiken.','Gesamt: FX ↓ / Jetfuel ↑↑ / Hormus ↑↑↑, September international ist in der Erhöhungsphase.']
+  });
+  Object.keys(packs).forEach(function(lang){
+    Object.assign(FORE_I18N[lang] || (FORE_I18N[lang] = {}), packs[lang]);
+    if(window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], packs[lang]);
+  });
+  document.title = packs.ko['fore.metaTitle'];
+  var desc = document.querySelector('meta[name="description"]'); if(desc) desc.setAttribute('content', packs.ko['fore.metaDesc']);
+  var ogTitle = document.querySelector('meta[property="og:title"]'); if(ogTitle) ogTitle.setAttribute('content', packs.ko['fore.metaTitle']);
+  var ogDesc = document.querySelector('meta[property="og:description"]'); if(ogDesc) ogDesc.setAttribute('content', packs.ko['fore.metaDesc']);
+  var mod = document.querySelector('meta[property="article:modified_time"]'); if(mod) mod.setAttribute('content', updatedIso);
+})();
+
+/* 2026.08.18 forecast non-English section completion guard. */
+(function(){
+  var packs = {
+    ja: {
+      'fore.verdict.title':'2026年9月国際線見通し',
+      'fore.verdict.line1':'為替は下落要因ですが、航空燃料とホルムズリスクが上回っています。',
+      'fore.verdict.line2':'エアプサンの9月国際線引き上げが公式確認され、上昇流れは実際の公示段階に入りました。',
+      'fore.verdict.short':'下落要因: USD/KRW約1,415',
+      'fore.verdict.long':'上昇要因: 航空燃料↑↑ · ホルムズ↑↑↑ · Brent 90.87ドル',
+      'fore.market.title':'市場ブリーフ: 為替緩和より航空燃料・ホルムズリスクが優勢',
+      'fore.market.brent':'原油: 8月17日米市場終値でBrent 90.87ドル/bbl、WTI 84.50ドル/bblです。米イラン協議停滞、ホルムズ通航減少、供給懸念が価格を押し上げました。',
+      'fore.market.mops':'航空燃料: 当日Singapore MOPS日次値は公開確定値がないため表示しません。確認可能な基準は2026年7月Singapore Jet Fuel平均3.3147ドル/gal、139.22ドル/bblです。',
+      'fore.market.fx':'為替: USD/KRW約1,415、USD/JPY約159.38、100円約888ウォンです。為替は下落要因ですが、サーチャージは算定期間平均と公式公示が必要です。',
+      'fore.market.geo':'ホルムズ: Kpler追跡対象の商品船は日曜0隻でした。これは追跡範囲内の急減であり、全船舶が0隻という意味ではありません。',
+      'fore.market.summary':'現在の判断は9月国際線公示開始、上昇圧力の現実化です。エアプサン以外は公式確認まで待機です。',
+      'fore.market.fx2':'主要数値: 2026.08.18 07:00 KST · 8月国際線14段階 · 9月国際線公示開始 · USD/KRW約1,415 · Brent 90.87ドル · WTI 84.50ドル · 7月Singapore Jet Fuel平均139.22ドル/bbl',
+      'fore.basis.title':'8月適用データと9月公示進行基準',
+      'fore.basis.body':'9月国際線燃油サーチャージは航空会社別公式公示で確定します。エアプサンは確認済みですが、他の主要航空会社は公式確認まで待機です。',
+      'fore.predict.title':'2026年9月国際線燃油サーチャージ見通し主要指標',
+      'fore.predict.subtitle':'9月国際線公示開始 · 為替↓ / 航空燃料↑↑ / ホルムズ↑↑↑',
+      'fore.predict.items':[{label:'為替',val:'USD/KRW約1,415 · 下落要因',cls:'down'},{label:'航空燃料/MOPS',val:'当日MOPS非表示 · 7月平均139.22ドル/bbl参考 · 強い上昇要因',cls:'up'},{label:'原油',val:'Brent 90.87ドル · WTI 84.50ドル · 上昇圧力',cls:'up'},{label:'ホルムズ',val:'Kpler追跡で日曜0隻 · 強い上昇リスク↑↑↑',cls:'up'},{label:'9月国際線',val:'エアプサン確認 · 航空会社別公示進行中',cls:'up'}],
+      'fore.faq.items':[{q:'2026年9月国際線は確定しましたか?',a:'エアプサンの9月韓国発国際線公示は確認済みです。他の主要航空会社は公式確認まで待機です。'},{q:'現在のSingapore MOPSはいくらですか?',a:'8月18日の信頼できる公開日次MOPSは確定表示しません。139.22ドル/bblは2026年7月月平均参考値です。'},{q:'為替が下がれば9月国際線も下がりますか?',a:'為替は下落要因ですが、航空燃料・原油・ホルムズリスクが強い上昇要因です。'},{q:'現在の見通しは?',a:'9月国際線公示が始まり、上昇圧力が現実化しています。'}]
+    },
+    zh: {
+      'fore.verdict.title':'2026年9月国际线展望',
+      'fore.verdict.line1':'汇率是下行因素，但航油和霍尔木兹风险占上风。',
+      'fore.verdict.line2':'釜山航空9月国际线上调已官方确认，上行趋势进入实际公告阶段。',
+      'fore.verdict.short':'下行因素：USD/KRW约1,415',
+      'fore.verdict.long':'上行因素：航油↑↑ · 霍尔木兹↑↑↑ · Brent 90.87美元',
+      'fore.market.title':'市场简报：航油和霍尔木兹风险强于汇率缓和',
+      'fore.market.brent':'原油：8月17日美国收盘Brent 90.87美元/bbl，WTI 84.50美元/bbl。美伊谈判停滞、霍尔木兹通行减少和供应担忧推高价格。',
+      'fore.market.mops':'航油：当日Singapore MOPS无公开确认值，因此不显示。可确认参考为2026年7月Singapore Jet Fuel均价3.3147美元/gal、139.22美元/bbl。',
+      'fore.market.fx':'汇率：USD/KRW约1,415，USD/JPY约159.38，100日元约888韩元。汇率是下行因素，但附加费需看计算期均值和官方公告。',
+      'fore.market.geo':'霍尔木兹：Kpler追踪的相关大宗商品船周日为0艘。这是追踪范围内急剧萎缩，不代表所有船舶均为0艘。',
+      'fore.market.summary':'当前判断为9月国际线公告开始，上行压力兑现。釜山航空以外航司在官方确认前保持等待。',
+      'fore.market.fx2':'关键数值：2026.08.18 07:00 KST · 8月国际线第14档 · 9月国际线公告开始 · USD/KRW约1,415 · Brent 90.87美元 · WTI 84.50美元 · 7月Singapore Jet Fuel均价139.22美元/bbl',
+      'fore.basis.title':'8月执行数据与9月公告进展标准',
+      'fore.basis.body':'9月国际线燃油附加费由各航司官方公告确认。釜山航空已确认，其他主要航司在官方确认前保持等待。',
+      'fore.predict.title':'2026年9月国际线燃油附加费展望核心指标',
+      'fore.predict.subtitle':'9月国际线公告开始 · 汇率↓ / 航油↑↑ / 霍尔木兹↑↑↑',
+      'fore.predict.items':[{label:'汇率',val:'USD/KRW约1,415 · 下行因素',cls:'down'},{label:'航油/MOPS',val:'不显示当日MOPS · 7月均价139.22美元/bbl参考 · 强上行因素',cls:'up'},{label:'原油',val:'Brent 90.87美元 · WTI 84.50美元 · 上行压力',cls:'up'},{label:'霍尔木兹',val:'Kpler追踪周日0艘 · 强上行风险↑↑↑',cls:'up'},{label:'9月国际线',val:'釜山航空确认 · 各航司公告进行中',cls:'up'}],
+      'fore.faq.items':[{q:'2026年9月国际线燃油附加费确定了吗?',a:'釜山航空9月韩国出发国际线公告已确认。其他主要航司在官方确认前保持等待。'},{q:'当前Singapore MOPS是多少?',a:'8月18日未显示可信公开日度MOPS。139.22美元/bbl是2026年7月月均参考。'},{q:'汇率下降是否保证9月国际线下降?',a:'不保证。汇率是下行因素，但航油、油价和霍尔木兹风险是强上行因素。'},{q:'当前展望是什么?',a:'9月国际线公告已经开始，上行压力正在兑现。'}]
+    },
+    fr: {
+      'fore.verdict.title':'Perspectives internationales septembre 2026',
+      'fore.verdict.line1':'Le change est baissier, mais jet fuel et Ormuz dominent.',
+      'fore.verdict.line2':'La hausse Air Busan de septembre est confirmée et le mouvement haussier entre dans les avis réels.',
+      'fore.market.title':'Brief marché: jet fuel et Ormuz dominent la détente FX',
+      'fore.market.brent':'Pétrole: à la clôture américaine du 17 août, Brent vaut 90,87 USD/bbl et WTI 84,50 USD/bbl. Les discussions États-Unis-Iran bloquées et le trafic Ormuz réduit soutiennent les prix.',
+      'fore.market.mops':'Jet fuel: aucun MOPS quotidien Singapour confirmé n’est affiché. La référence vérifiée est la moyenne juillet 2026 à 3,3147 USD/gal et 139,22 USD/bbl.',
+      'fore.market.fx':'Change: USD/KRW autour de 1 415, USD/JPY autour de 159,38 et 100 JPY autour de 888 KRW. Le calcul utilise les moyennes de période et les avis officiels.',
+      'fore.market.geo':'Ormuz: les navires matières premières suivis par Kpler affichent zéro passage dimanche. Ce n’est pas une généralisation à tous les navires.',
+      'fore.market.summary':'Vue actuelle: les avis internationaux de septembre ont commencé et la pression haussière se matérialise. Hors Air Busan, les grandes compagnies restent en attente.',
+      'fore.market.fx2':'Chiffres clés: 2026.08.18 07:00 KST · août international niveau 14 · avis septembre commencés · USD/KRW env. 1 415 · Brent 90,87 USD · WTI 84,50 USD · moyenne Singapore Jet Fuel juillet 139,22 USD/bbl',
+      'fore.predict.title':'Indicateurs clés pour septembre international 2026',
+      'fore.predict.subtitle':'Avis septembre commencés · FX ↓ / jet fuel ↑↑ / Ormuz ↑↑↑',
+      'fore.predict.items':[{label:'Change',val:'USD/KRW env. 1 415 · baissier',cls:'down'},{label:'Jet fuel/MOPS',val:'Pas de MOPS quotidien · moyenne juillet 139,22 USD/bbl · fort haussier',cls:'up'},{label:'Pétrole',val:'Brent 90,87 USD · WTI 84,50 USD · pression haussière',cls:'up'},{label:'Ormuz',val:'Kpler dimanche zéro · risque haussier fort ↑↑↑',cls:'up'},{label:'Septembre international',val:'Air Busan confirmé · avis par compagnie en cours',cls:'up'}],
+      'fore.faq.items':[{q:'La surtaxe internationale de septembre 2026 est-elle confirmée?',a:'L’avis Air Busan est confirmé. Les autres grandes compagnies restent en attente de confirmation officielle.'},{q:'Quel est le MOPS Singapour actuel?',a:'Aucun MOPS quotidien public vérifié du 18 août n’est affiché. 139,22 USD/bbl est la moyenne mensuelle de juillet 2026.'},{q:'Un FX plus bas garantit-il une baisse?',a:'Non. Le change est baissier, mais jet fuel, pétrole et Ormuz sont fortement haussiers.'},{q:'Quelle est la vue actuelle?',a:'Les avis de septembre ont commencé et la pression haussière se matérialise.'}]
+    },
+    de: {
+      'fore.verdict.title':'Ausblick September 2026 international',
+      'fore.verdict.line1':'FX entlastet, aber Jetfuel- und Hormusrisiken dominieren.',
+      'fore.verdict.line2':'Die September-Erhöhung von Air Busan ist offiziell bestätigt, der Aufwärtstrend ist in tatsächliche Airline-Mitteilungen übergegangen.',
+      'fore.market.title':'Marktbrief: Jetfuel und Hormus dominieren FX-Entlastung',
+      'fore.market.brent':'Öl: Zum US-Schluss am 17. August lag Brent bei 90,87 USD/bbl und WTI bei 84,50 USD/bbl. Stockende US-Iran-Gespräche und weniger Hormus-Verkehr stützten die Preise.',
+      'fore.market.mops':'Jetfuel: Kein bestätigter täglicher Singapore-MOPS wird angezeigt. Verifizierte Referenz ist der Juli-2026-Durchschnitt von 3,3147 USD/gal und 139,22 USD/bbl.',
+      'fore.market.fx':'FX: USD/KRW um 1.415, USD/JPY um 159,38 und 100 JPY um 888 KRW. Entscheidend sind Periodendurchschnitte und offizielle Mitteilungen.',
+      'fore.market.geo':'Hormus: Von Kpler verfolgte Rohstoffschiffe registrierten am Sonntag null Passagen. Das wird nicht auf alle Schiffe verallgemeinert.',
+      'fore.market.summary':'Aktuelle Sicht: September-Mitteilungen international haben begonnen und Aufwärtsdruck materialisiert sich. Außer Air Busan bleiben große Airlines ausstehend.',
+      'fore.market.fx2':'Kennzahlen: 2026.08.18 07:00 KST · August international Stufe 14 · September-Mitteilungen gestartet · USD/KRW um 1.415 · Brent 90,87 USD · WTI 84,50 USD · Singapore Jet Fuel Juli 139,22 USD/bbl',
+      'fore.predict.title':'Kennzahlen für September 2026 international',
+      'fore.predict.subtitle':'September-Mitteilungen gestartet · FX ↓ / Jetfuel ↑↑ / Hormus ↑↑↑',
+      'fore.predict.items':[{label:'FX',val:'USD/KRW um 1.415 · entlastend',cls:'down'},{label:'Jetfuel/MOPS',val:'Kein Tages-MOPS · Juli-Schnitt 139,22 USD/bbl · stark aufwärts',cls:'up'},{label:'Öl',val:'Brent 90,87 USD · WTI 84,50 USD · Aufwärtsdruck',cls:'up'},{label:'Hormus',val:'Kpler Sonntag null · starkes Aufwärtsrisiko ↑↑↑',cls:'up'},{label:'September international',val:'Air Busan bestätigt · Airline-Mitteilungen laufen',cls:'up'}],
+      'fore.faq.items':[{q:'Ist September 2026 international bestätigt?',a:'Air Busan ist bestätigt. Andere große Airlines bleiben bis zur offiziellen Bestätigung ausstehend.'},{q:'Wie hoch ist der aktuelle Singapore-MOPS?',a:'Kein verifizierter öffentlicher Tages-MOPS vom 18. August wird angezeigt. 139,22 USD/bbl ist der Monatsdurchschnitt Juli 2026.'},{q:'Garantiert niedriger FX einen niedrigeren Zuschlag?',a:'Nein. FX entlastet, aber Jetfuel, Öl und Hormus sind starke Aufwärtsfaktoren.'},{q:'Wie lautet der aktuelle Ausblick?',a:'September-Mitteilungen haben begonnen und Aufwärtsdruck materialisiert sich.'}]
+    }
+  };
+  Object.keys(packs).forEach(function(lang){
+    Object.assign(FORE_I18N[lang] || (FORE_I18N[lang] = {}), packs[lang]);
+    if(window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], packs[lang]);
+  });
+})();
+
 window.initNav({
   onLangChange: function() { renderForecastPage(); },
   onCurrChange: function() { renderForecastPage(); },

@@ -15147,6 +15147,304 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
   });
 })();
 
+/* 2026.08.18 final news override: latest cards and full locale packs. */
+(function(){
+  var updatedIso = '2026-08-18T07:00:00+09:00';
+  function local(title, aiBrief, summary, impact, tags){
+    return {title:title, aiBrief:aiBrief, summary:summary, impact:impact, tags:tags || []};
+  }
+  function make(cfg){
+    var base = Object.assign({
+      date: '2026-08-18T07:00:00+09:00',
+      publishedAt: '2026-08-18T07:00:00+09:00',
+      updatedAt: updatedIso,
+      currentMonth: '2026-08',
+      forecastTargetMonth: '2026-09',
+      aiType: 'market',
+      importance: 'high'
+    }, cfg);
+    var ko = base.i18n.ko;
+    Object.assign(base, ko);
+    return base;
+  }
+  var rows = [
+    make({
+      id:'hormuz-kpler-zero-sunday-20260818', slug:'hormuz-kpler-zero-sunday-aug-18-2026', category:'geopolitics', priority:1, badge:'호르무즈', score:0.99, sourceName:'Reuters / Kpler', sourceUrl:'https://www.reuters.com/',
+      i18n:{
+        ko:local('호르무즈 원자재 운송 통항 사실상 마비 수준', 'Kpler가 추적한 해당 원자재 운송선 기준 일요일 통항이 0척으로 집계됐습니다.', 'Kpler 관련 보도 기준 해당 원자재 운송선 통항은 토요일 약 5척, 일요일 0척으로 줄었습니다. 전쟁 이전 하루 130척 이상이 통과하던 항로와 비교하면 극도로 위축된 수준입니다. 단, 모든 선박이 정확히 0척이라고 일반화하지 않습니다.', '호르무즈 공급망 리스크를 최고 수준의 상승 압력으로 반영합니다.', ['호르무즈','Kpler','통항 0척','공급 위험']),
+        en:local('Hormuz commodity-vessel traffic nears standstill', 'Kpler-tracked commodity vessels registered zero Sunday transits.', 'Kpler-related reporting put the tracked commodity-vessel count at about 5 on Saturday and zero on Sunday. That is extremely depressed versus pre-war traffic above 130 vessels a day, but it should not be generalized as every vessel type being exactly zero.', 'Hormuz supply-chain risk is treated as the strongest upside pressure.', ['Hormuz','Kpler','zero Sunday','supply risk']),
+        ja:local('ホルムズの商品船通航、事実上停止水準', 'Kpler追跡対象の商品船は日曜日の通航が0隻でした。', 'Kpler関連報道では、対象商品船の通航は土曜約5隻、日曜0隻でした。戦争前の1日130隻超と比べ極端に低い水準ですが、全船舶が0隻という意味ではありません。', 'ホルムズ供給網リスクを最も強い上昇圧力として反映します。', ['ホルムズ','Kpler','日曜0隻','供給リスク']),
+        zh:local('霍尔木兹大宗商品船通行接近停滞', 'Kpler追踪的相关大宗商品船周日通行登记为0艘。', 'Kpler相关报道显示，相关大宗商品船周六约5艘、周日0艘。与战前每天130艘以上相比极度萎缩，但不能泛化为所有船舶都为0艘。', '霍尔木兹供应链风险按最强上行压力处理。', ['霍尔木兹','Kpler','周日0艘','供应风险']),
+        fr:local('Le trafic de matières premières via Ormuz frôle l’arrêt', 'Les navires matières premières suivis par Kpler affichent zéro passage dimanche.', 'Selon les données liées à Kpler, le trafic suivi était d’environ 5 navires samedi et zéro dimanche, très loin des plus de 130 navires par jour avant-guerre. Cela ne signifie pas que tous les types de navires étaient exactement à zéro.', 'Le risque Ormuz est traité comme la plus forte pression haussière.', ['Ormuz','Kpler','zéro dimanche','risque d’offre']),
+        de:local('Rohstoffschiff-Verkehr durch Hormus nahe Stillstand', 'Von Kpler verfolgte Rohstoffschiffe registrierten am Sonntag null Passagen.', 'Kpler-bezogene Berichte nennen etwa 5 verfolgte Rohstoffschiffe am Samstag und null am Sonntag. Das ist extrem niedrig gegenüber mehr als 130 Schiffen pro Tag vor dem Krieg, bedeutet aber nicht, dass alle Schiffstypen exakt null waren.', 'Das Hormus-Lieferkettenrisiko wird als stärkster Aufwärtsdruck behandelt.', ['Hormus','Kpler','Sonntag null','Angebotsrisiko'])
+      }
+    }),
+    make({
+      id:'iran-offensive-posture-warning-20260818', slug:'iran-offensive-posture-warning-aug-18-2026', category:'geopolitics', priority:2, badge:'지정학', score:0.98, sourceName:'Reuters', sourceUrl:'https://www.reuters.com/',
+      i18n:{
+        ko:local('이란, 외교 실패 시 호르무즈 공세적 군사태세 경고', '이란은 미국과의 외교가 실패할 경우 호르무즈 주변에서 더 공세적인 태세를 취할 수 있다고 경고했습니다.', '미국-이란 협상이 교착된 가운데 이란은 외교가 실패할 경우 호르무즈 해협과 주변 지역에서 보다 공세적인 군사태세로 전환할 수 있다는 취지의 경고를 내놨습니다. 이는 실제 공격 발생이 아니라 위험 신호입니다.', '정상화 가능성을 낮추고 해상운송·보험 프리미엄을 높이는 변수입니다.', ['이란','미국-이란','호르무즈','군사태세']),
+        en:local('Iran warns of more offensive Hormuz posture if diplomacy fails', 'Iran warned it could shift to a more offensive posture around Hormuz if diplomacy with the U.S. fails.', 'With U.S.-Iran talks stalled, Iran warned it could adopt a more offensive military posture around the Strait of Hormuz if diplomacy fails. This is a risk signal, not confirmation that an attack has occurred.', 'It weakens normalization expectations and supports shipping and insurance risk premiums.', ['Iran','U.S.-Iran','Hormuz','military posture']),
+        ja:local('イラン、外交失敗ならホルムズで攻勢的態勢を警告', '米国との外交が失敗すれば、ホルムズ周辺でより攻勢的な態勢に移る可能性を示しました。', '米イラン協議が停滞する中、イランは外交が失敗した場合にホルムズ海峡周辺でより攻勢的な軍事態勢を取る可能性を警告しました。これは実際の攻撃発生ではなくリスク信号です。', '正常化期待を弱め、海運・保険プレミアムを押し上げます。', ['イラン','米イラン','ホルムズ','軍事態勢']),
+        zh:local('伊朗警告若外交失败或强化霍尔木兹攻势姿态', '伊朗称若与美国外交失败，可能在霍尔木兹周边采取更具攻势的军事姿态。', '在美伊谈判停滞之际，伊朗警告若外交失败，可能在霍尔木兹海峡及周边转向更具攻势的军事姿态。这是风险信号，并非实际攻击已经发生。', '这削弱正常化预期，并推高航运和保险风险溢价。', ['伊朗','美伊','霍尔木兹','军事姿态']),
+        fr:local('L’Iran avertit d’une posture plus offensive si la diplomatie échoue', 'Téhéran dit pouvoir durcir sa posture autour d’Ormuz si la diplomatie avec Washington échoue.', 'Alors que les discussions États-Unis-Iran sont bloquées, l’Iran avertit qu’il pourrait adopter une posture militaire plus offensive autour du détroit d’Ormuz si la diplomatie échoue. Ce n’est pas la confirmation d’une attaque.', 'Cela réduit les attentes de normalisation et soutient les primes transport-assurance.', ['Iran','États-Unis-Iran','Ormuz','posture militaire']),
+        de:local('Iran warnt vor offensiverer Hormus-Haltung bei Scheitern der Diplomatie', 'Iran könnte um Hormus offensiver auftreten, falls die Diplomatie mit den USA scheitert.', 'Bei stockenden US-Iran-Gesprächen warnte Iran, bei Scheitern der Diplomatie eine offensivere militärische Haltung um die Straße von Hormus einzunehmen. Das ist ein Risikosignal, keine bestätigte Attacke.', 'Es schwächt Normalisierungserwartungen und stützt Transport- und Versicherungsprämien.', ['Iran','USA-Iran','Hormus','Militärhaltung'])
+      }
+    }),
+    make({
+      id:'oil-brent-9087-wti-8450-20260818', slug:'brent-9087-wti-8450-aug-18-2026', category:'market', priority:3, badge:'시장', score:0.97, sourceName:'WSJ / MarketWatch', sourceUrl:'https://www.marketwatch.com/',
+      i18n:{
+        ko:local('Brent 90.87달러·WTI 84.50달러, 원유 상승 압력 재개', '8월 17일 미국시장 종가에서 Brent와 WTI가 각각 2%대 상승했습니다.', '8월 17일 미국시장 종가 기준 Brent는 90.87달러/bbl, WTI는 84.50달러/bbl로 올랐습니다. 미국-이란 협상 교착, 호르무즈 통항 감소, 공급 우려가 가격 상승 배경입니다.', 'Brent가 90달러를 다시 넘어서며 9월 국제선 전망의 항공유 상승 위험을 키웁니다.', ['Brent','WTI','국제유가','상승 압력']),
+        en:local('Brent USD 90.87 and WTI USD 84.50 revive oil upside', 'Brent and WTI rose more than 2% at the Aug 17 U.S. close.', 'At the Aug 17 U.S. close, Brent rose to USD 90.87/bbl and WTI to USD 84.50/bbl. Stalled U.S.-Iran talks, lower Hormuz traffic and supply concerns drove the move.', 'Brent back above USD 90 increases jet-fuel upside risk for September international surcharges.', ['Brent','WTI','oil','upside pressure']),
+        ja:local('Brent 90.87ドル・WTI 84.50ドル、原油上昇圧力が再開', '8月17日の米市場終値でBrentとWTIが2%超上昇しました。', '8月17日米市場終値でBrentは90.87ドル/bbl、WTIは84.50ドル/bblに上昇しました。米イラン協議停滞、ホルムズ通航減少、供給懸念が背景です。', 'Brentの90ドル回復は9月国際線の航空燃料上昇リスクを高めます。', ['Brent','WTI','原油','上昇圧力']),
+        zh:local('Brent 90.87美元、WTI 84.50美元，油价上行压力重启', '8月17日美国收盘，Brent和WTI均上涨逾2%。', '8月17日美国市场收盘，Brent升至90.87美元/bbl，WTI升至84.50美元/bbl。美伊谈判停滞、霍尔木兹通行减少和供应担忧推动上涨。', 'Brent重回90美元上方，提高9月国际线航油上行风险。', ['Brent','WTI','油价','上行压力']),
+        fr:local('Brent 90,87 USD et WTI 84,50 USD relancent la pression pétrole', 'Brent et WTI montent de plus de 2% à la clôture américaine du 17 août.', 'À la clôture américaine du 17 août, Brent atteint 90,87 USD/bbl et WTI 84,50 USD/bbl. Les discussions États-Unis-Iran bloquées, le trafic Ormuz plus faible et les craintes d’offre expliquent la hausse.', 'Brent au-dessus de 90 USD accroît le risque jet fuel pour septembre international.', ['Brent','WTI','pétrole','pression haussière']),
+        de:local('Brent 90,87 USD und WTI 84,50 USD beleben Ölaufwärtsdruck', 'Brent und WTI stiegen zum US-Schluss am 17. August um über 2%.', 'Zum US-Schluss am 17. August stieg Brent auf 90,87 USD/bbl und WTI auf 84,50 USD/bbl. Stockende US-Iran-Gespräche, weniger Hormus-Verkehr und Angebotsängste trieben die Preise.', 'Brent über 90 USD erhöht Jetfuel-Aufwärtsrisiken für September international.', ['Brent','WTI','Öl','Aufwärtsdruck'])
+      }
+    }),
+    make({
+      id:'airbusan-september-international-surcharge-20260818', slug:'airbusan-september-international-surcharge-aug-18-2026', category:'official', priority:4, badge:'공시', score:0.97, sourceName:'Air Busan official notice', sourceUrl:'https://m.airbusan.com/content/common/customercenter/noticeDetail?id=4399',
+      i18n:{
+        ko:local('에어부산, 9월 국제선 유류할증료 인상 공식 공시', '에어부산이 2026년 9월 한국 출발 국제선 유류할증료를 공시했습니다.', '에어부산은 2026년 9월 1일~9월 30일 발권분 한국 출발 국제선 유류할증료를 공시했습니다. 공식 공지에서 확인 가능한 일부 구간은 USD 47에서 USD 71, 방콕·발리 등 일부 장거리 구간은 USD 54에서 USD 82 수준으로 올랐습니다.', '9월 국제선 유류할증료가 전망이 아니라 실제 항공사 공시 단계로 진입했음을 보여줍니다.', ['에어부산','9월 국제선','공식 공시','인상']),
+        en:local('Air Busan officially raises September international surcharge', 'Air Busan announced September 2026 Korea-departure international fuel surcharges.', 'Air Busan announced fuel surcharges for Korea-departure international tickets issued from Sep 1 to Sep 30, 2026. Confirmed examples in the notice include USD 47 to USD 71 and some longer routes such as Bangkok and Bali from USD 54 to USD 82.', 'This shows September international surcharges have moved from forecast into actual airline notices.', ['Air Busan','September international','official notice','increase']),
+        ja:local('エアプサン、9月国際線燃油サーチャージ引き上げを公式公示', 'エアプサンが2026年9月の韓国発国際線燃油サーチャージを公示しました。', 'エアプサンは2026年9月1日から9月30日発券分の韓国発国際線燃油サーチャージを公示しました。確認できる一部区間では47ドルから71ドル、バンコク・バリなど一部長距離は54ドルから82ドルです。', '9月国際線が予測ではなく実際の航空会社公示段階に入ったことを示します。', ['エアプサン','9月国際線','公式公示','引き上げ']),
+        zh:local('釜山航空官方上调9月国际线燃油附加费', '釜山航空发布2026年9月韩国出发国际线燃油附加费公告。', '釜山航空公告适用于2026年9月1日至9月30日出票的韩国出发国际线燃油附加费。公告中可确认的部分区间从47美元升至71美元，曼谷、巴厘等部分较长区间从54美元升至82美元。', '这表明9月国际线已从预测进入实际航司公告阶段。', ['釜山航空','9月国际线','官方公告','上调']),
+        fr:local('Air Busan relève officiellement la surtaxe internationale de septembre', 'Air Busan annonce les surtaxes internationales au départ de Corée pour septembre 2026.', 'Air Busan a publié les surtaxes pour les billets internationaux au départ de Corée émis du 1er au 30 septembre 2026. Des exemples confirmés passent de 47 à 71 USD et, pour certaines routes plus longues comme Bangkok ou Bali, de 54 à 82 USD.', 'Septembre international passe de la prévision aux avis réels de compagnie.', ['Air Busan','septembre international','avis officiel','hausse']),
+        de:local('Air Busan erhöht September-Zuschlag international offiziell', 'Air Busan veröffentlichte die September-2026-Zuschläge ab Korea.', 'Air Busan veröffentlichte Zuschläge für internationale Tickets ab Korea mit Ausstellung vom 1. bis 30. September 2026. Bestätigte Beispiele steigen von 47 auf 71 USD und einige längere Strecken wie Bangkok und Bali von 54 auf 82 USD.', 'September international ist damit von der Prognose in tatsächliche Airline-Mitteilungen übergegangen.', ['Air Busan','September international','offiziell','Erhöhung'])
+      }
+    }),
+    make({
+      id:'aramco-hormuz-bypass-supply-20260818', slug:'aramco-hormuz-bypass-supply-aug-18-2026', category:'supply', priority:5, badge:'공급', score:0.95, sourceName:'Reuters / market reports', sourceUrl:'https://www.reuters.com/',
+      i18n:{
+        ko:local('Saudi Aramco, 호르무즈 우회 원유 공급 확대', '호르무즈 차질 장기화 가능성에 대비해 우회 인도 방안이 확대되고 있습니다.', 'Saudi Aramco는 일부 아시아 고객에게 Fujairah 인근 STS, Yanbu, Sidi Kerir 등 호르무즈 외부 인도 방안을 제시한 것으로 보도됐습니다. 이는 장기 폐쇄 확정이 아니라 시장 참여자들의 차질 대비 움직임입니다.', '우회 공급은 일부 차질을 완화하지만 운송비와 물류 부담을 높일 수 있습니다.', ['Saudi Aramco','호르무즈 우회','STS','물류비']),
+        en:local('Saudi Aramco expands Hormuz-bypass crude supply options', 'Bypass delivery options are expanding as markets prepare for prolonged Hormuz disruption risk.', 'Saudi Aramco reportedly offered some Asian customers delivery options outside Hormuz, including STS near Fujairah, Yanbu and Sidi Kerir. This does not confirm a long-term closure; it shows market preparation for disruption risk.', 'Bypass supply can ease some disruption but may add freight and logistics costs.', ['Saudi Aramco','Hormuz bypass','STS','logistics cost']),
+        ja:local('Saudi Aramco、ホルムズ迂回の原油供給を拡大', 'ホルムズ混乱長期化リスクに備え、迂回引き渡し案が広がっています。', 'Saudi Aramcoは一部アジア顧客にFujairah近郊STS、Yanbu、Sidi Kerirなどホルムズ外での引き渡し案を提示したと報じられました。長期閉鎖の確定ではなく、混乱への備えです。', '迂回供給は一部混乱を緩和しますが、輸送・物流コストを増やし得ます。', ['Saudi Aramco','ホルムズ迂回','STS','物流費']),
+        zh:local('Saudi Aramco扩大绕开霍尔木兹的原油供应选择', '市场为霍尔木兹扰动长期化风险准备替代交付方案。', '据报Saudi Aramco向部分亚洲客户提出霍尔木兹外交付方案，包括Fujairah附近STS、Yanbu和Sidi Kerir。这并不确认长期关闭，而是市场对扰动风险的准备。', '绕行供应可缓解部分中断，但可能增加运费和物流成本。', ['Saudi Aramco','绕开霍尔木兹','STS','物流成本']),
+        fr:local('Saudi Aramco élargit les options de livraison hors Ormuz', 'Les options de livraison alternatives se développent face au risque de perturbation prolongée.', 'Saudi Aramco aurait proposé à certains clients asiatiques des livraisons hors Ormuz, dont STS près de Fujairah, Yanbu et Sidi Kerir. Cela ne confirme pas une fermeture durable; c’est une préparation au risque.', 'Ces routes peuvent limiter certaines perturbations mais augmenter fret et logistique.', ['Saudi Aramco','contournement Ormuz','STS','coûts logistiques']),
+        de:local('Saudi Aramco erweitert Rohöl-Lieferoptionen außerhalb von Hormus', 'Alternative Lieferwege nehmen zu, da Märkte längere Hormus-Störungen einkalkulieren.', 'Saudi Aramco bot Berichten zufolge einigen asiatischen Kunden Lieferungen außerhalb von Hormus an, darunter STS nahe Fujairah, Yanbu und Sidi Kerir. Das bestätigt keine langfristige Schließung, sondern Vorbereitung auf Störungsrisiko.', 'Umgehungslieferungen können Störungen mildern, aber Fracht- und Logistikkosten erhöhen.', ['Saudi Aramco','Hormus-Umgehung','STS','Logistikkosten'])
+      }
+    }),
+    make({
+      id:'gs-caltex-us-mars-crude-20260818', slug:'gs-caltex-us-mars-crude-aug-18-2026', category:'supply', priority:6, badge:'한국', score:0.94, sourceName:'Reuters / trade reports', sourceUrl:'https://www.reuters.com/',
+      i18n:{
+        ko:local('호르무즈 차질에 GS칼텍스 등 아시아 정유사 미국산 원유 확대', 'GS칼텍스가 11월 도착분 미국 Mars 원유 약 200만 배럴을 확보한 것으로 전해졌습니다.', '호르무즈 공급 불안이 지속되면서 한국과 일본 등 아시아 정유사들이 미국산 원유 확보를 늘리고 있습니다. GS칼텍스는 11월 도착분 미국 Mars 원유 약 200만 배럴을 구매한 것으로 보도됐습니다.', '공급 다변화는 물량 확보에 도움이 되지만 장거리 운송비 부담을 키울 수 있습니다.', ['GS칼텍스','미국산 원유','Mars','공급 다변화']),
+        en:local('GS Caltex and Asian refiners buy more U.S. crude amid Hormuz risk', 'GS Caltex reportedly bought about 2 million barrels of U.S. Mars crude for November arrival.', 'As Hormuz supply risk persists, Asian refiners in Korea and Japan are increasing U.S. crude purchases. GS Caltex reportedly bought about 2 million barrels of U.S. Mars crude for November arrival.', 'Diversification helps secure barrels but can increase long-haul freight costs.', ['GS Caltex','U.S. crude','Mars','diversification']),
+        ja:local('ホルムズ不安でGSカルテックスなどが米国産原油を拡大', 'GSカルテックスは11月到着の米Mars原油約200万バレルを購入したと報じられました。', 'ホルムズ供給不安が続く中、韓国や日本のアジア精製会社は米国産原油の確保を増やしています。GSカルテックスは11月到着の米Mars原油約200万バレルを購入したと報じられました。', '供給多角化は確保に役立ちますが、長距離輸送費を増やす可能性があります。', ['GSカルテックス','米国産原油','Mars','多角化']),
+        zh:local('霍尔木兹风险下GS Caltex等亚洲炼厂增加美国原油采购', '据报GS Caltex购买约200万桶11月到港美国Mars原油。', '随着霍尔木兹供应不安持续，韩国、日本等亚洲炼厂增加美国原油采购。据报GS Caltex购买约200万桶11月到港的美国Mars原油。', '供应多元化有助于保障供应量，但可能增加长距离运费。', ['GS Caltex','美国原油','Mars','供应多元化']),
+        fr:local('GS Caltex et des raffineurs asiatiques achètent plus de brut américain', 'GS Caltex aurait acheté environ 2 millions de barils de brut Mars américain pour novembre.', 'Avec le risque Ormuz persistant, des raffineurs coréens et japonais augmentent leurs achats de brut américain. GS Caltex aurait acheté environ 2 millions de barils de Mars américain pour livraison en novembre.', 'La diversification sécurise les volumes mais peut accroître les coûts de transport longue distance.', ['GS Caltex','brut américain','Mars','diversification']),
+        de:local('GS Caltex und asiatische Raffinerien kaufen mehr US-Rohöl wegen Hormus-Risiko', 'GS Caltex kaufte Berichten zufolge rund 2 Mio. Barrel US-Mars-Rohöl für November.', 'Bei anhaltendem Hormus-Risiko erhöhen Raffinerien in Korea und Japan US-Rohölkäufe. GS Caltex kaufte Berichten zufolge rund 2 Mio. Barrel US-Mars-Rohöl mit Ankunft im November.', 'Diversifizierung sichert Mengen, kann aber Langstrecken-Frachtkosten erhöhen.', ['GS Caltex','US-Rohöl','Mars','Diversifizierung'])
+      }
+    })
+  ];
+  window.AERO_NEWS_CARDS_20260818 = rows;
+  var replaceIds = {
+    'hormuz-kpler-zero-sunday-20260818': true,
+    'iran-offensive-posture-warning-20260818': true,
+    'oil-brent-9087-wti-8450-20260818': true,
+    'airbusan-september-international-surcharge-20260818': true,
+    'aramco-hormuz-bypass-supply-20260818': true,
+    'gs-caltex-us-mars-crude-20260818': true,
+    'hormuz-kpler-lseg-20260814': true,
+    'hormuz-kpler-lseg-20260813': true,
+    'hormuz-traffic-six-20260812': true
+  };
+  FIXED_NEWS = rows.concat((FIXED_NEWS || []).filter(function(card){ return card && !replaceIds[card.id]; }));
+  var packs = {
+    ko: {
+      'news.metaTitle':'2026년 8월 유류할증료·9월 전망 뉴스 | 8월 18일 환율·호르무즈·에어부산',
+      'news.metaDesc':'2026년 8월 18일 07:00 KST 기준 국내외 유류할증료, 원달러 환율, MOPS·항공유 가격과 호르무즈 해협 관련 최신 뉴스 및 시장 동향.',
+      'news.pageTitle':'2026년 8월 유류할증료와 9월 전망 뉴스',
+      'news.pageSub':'2026.08.18 07:00 KST 기준 · 8월 국제선 14단계 적용 중 · 9월 국제선 공시 시작 · 에어부산 일부 구간 공식 인상 확인 · 9월 국내선 20,900원/편도 · USD/KRW 약 1,415원 · Brent 90.87달러 · WTI 84.50달러 · 호르무즈 위험 극도로 높음',
+      'news.summary.updated':'2026.08.18 07:00 KST 기준 · 8월 국제선 14단계 · 9월 국제선 공시 시작',
+      'news.summary.title':'2026년 8월 유류할증료와 9월 전망 요약',
+      'news.summary.li1':'2026년 8월 한국 출발 국제선 유류할증료는 기존 공식 공시대로 14단계 적용 중입니다.',
+      'news.summary.li2':'2026년 9월 국제선은 에어부산 공식 공시 확인으로 공시 시작 단계입니다.',
+      'news.summary.li3':'에어부산 일부 구간은 USD 47에서 USD 71, 방콕·발리 등 일부 장거리 구간은 USD 54에서 USD 82 수준으로 올랐습니다.',
+      'news.summary.li4':'9월 국내선 유류할증료는 20,900원/편도로 8월보다 4,400원, 26.7% 올랐지만 국제선 인상률로 직접 적용하지 않습니다.',
+      'news.summary.li5':'USD/KRW 약 1,415원은 환율 측 하락 요인이지만 단독으로 국제선 단계를 확정하지 않습니다.',
+      'news.summary.li6':'당일 Singapore MOPS는 공개 확정값이 없어 임의 수치를 표시하지 않습니다. 139.22달러/bbl은 2026년 7월 월평균 참고값입니다.',
+      'news.summary.li7':'Brent 90.87달러, WTI 84.50달러로 국제유가가 다시 상승했습니다.',
+      'news.summary.li8':'Kpler 추적 해당 원자재 운송선 기준 호르무즈 일요일 통항은 0척으로 집계됐습니다.',
+      'news.summary.li9':'이란의 공세적 군사태세 경고와 Aramco 우회 공급은 호르무즈 위험이 장기화될 수 있음을 보여줍니다.',
+      'news.summary.li10':'현재 판단은 환율 ↓ / 항공유 ↑↑ / 호르무즈 ↑↑↑ → 9월 국제선 인상 국면 진입입니다.',
+      'news.dataRef':'2026.08.18 07:00 KST 기준 · 8월 국제선 14단계 · 9월 국제선 공시 시작',
+      'news.marketTitle':'8월 18일 시장 브리핑: 9월 국제선 공시 시작과 호르무즈 위험 확대',
+      'news.brent':'국제유가: 8월 17일 미국 시장 종가 기준 Brent 90.87달러/bbl, WTI 84.50달러/bbl입니다. 미국-이란 협상 교착과 호르무즈 통항 감소가 가격을 밀어 올렸습니다.',
+      'news.mops':'항공유: 당일 Singapore MOPS 일별 값은 공개 확정값이 없어 표시하지 않습니다. 대한항공 Cargo 기준 2026년 7월 Singapore Jet Fuel 평균 3.3147달러/gal, 139.22달러/bbl만 월평균 참고값으로 표시합니다.',
+      'news.fx':'환율: USD/KRW 약 1,415원, USD/JPY 약 159.38, 100엔 약 888원입니다.',
+      'news.geo':'호르무즈: Kpler가 추적한 해당 원자재 운송선 기준 일요일 통항 0척으로 집계됐습니다. 모든 선박이 정확히 0척이라고 일반화하지 않습니다.',
+      'news.marketSummary':'9월 국제선은 에어부산 공시 확인으로 공시 시작 단계입니다. 다른 주요 항공사는 공식 공시 확인 전까지 대기로 유지합니다.',
+      'news.fxDominance':'핵심 수치: 2026.08.18 07:00 KST · 8월 국제선 14단계 · 9월 국제선 공시 시작 · 9월 국내선 20,900원 · USD/KRW 약 1,415원 · Brent 90.87달러 · WTI 84.50달러 · 7월 Singapore Jet Fuel 평균 139.22달러/bbl',
+      'news.decisionTitle':'결론: 9월 국제선 공시 시작, 상승 압력 현실화',
+      'news.decisionLine1':'→ 2026년 8월 한국 출발 국제선 유류할증료는 14단계로 확정 적용 중입니다.',
+      'news.decisionLine2':'→ 2026년 9월 국제선은 에어부산 인상 공시가 확인됐고, 다른 주요 항공사는 공식 공시를 계속 확인해야 합니다.',
+      'news.forecastCta.title':'9월 국제선 유류할증료 전망 자세히 보기',
+      'news.forecastCta.desc':'환율, 항공유, Brent/WTI, 호르무즈 통항 위험과 항공사별 공시 상태를 분리해 확인합니다.',
+      'news.forecastCta.btn':'9월 전망 보기 →'
+    }
+  };
+  packs.en = Object.assign({}, packs.ko, {
+    'news.metaTitle':'August 2026 Fuel Surcharge and September Outlook News | Aug 18 FX, Hormuz and Air Busan',
+    'news.metaDesc':'As of 2026.08.18 07:00 KST: latest fuel surcharge, FX, MOPS and jet fuel, Hormuz news and market trends.',
+    'news.pageTitle':'August 2026 Fuel Surcharge and September Outlook News',
+    'news.pageSub':'As of 2026.08.18 07:00 KST · August international Level 14 · September international notices started · Air Busan official increase confirmed on some segments · September domestic KRW 20,900 one-way · USD/KRW around 1,415 · Brent USD 90.87 · WTI USD 84.50 · Hormuz risk extreme',
+    'news.summary.updated':'As of 2026.08.18 07:00 KST · August international Level 14 · September international notices started',
+    'news.summary.title':'August fuel surcharge and September outlook summary',
+    'news.summary.li1':'August Korea-departure international surcharge remains in effect at official Level 14.',
+    'news.summary.li2':'September international notices have started after Air Busan’s official notice was confirmed.',
+    'news.summary.li3':'Air Busan examples rose from USD 47 to USD 71 and from USD 54 to USD 82 on some longer routes such as Bangkok and Bali.',
+    'news.summary.li4':'September domestic surcharge is KRW 20,900 one-way, up KRW 4,400 or 26.7%, but that rate is not applied directly to international routes.',
+    'news.summary.li5':'USD/KRW around 1,415 is a downside FX factor, but it does not confirm international stages alone.',
+    'news.summary.li6':'No current daily Singapore MOPS is displayed. USD 139.22/bbl is only the July 2026 monthly average reference.',
+    'news.summary.li7':'Brent USD 90.87 and WTI USD 84.50 show oil prices rising again.',
+    'news.summary.li8':'Kpler-tracked commodity vessels registered zero Hormuz transits on Sunday.',
+    'news.summary.li9':'Iran posture warnings and Aramco bypass supply show Hormuz risk may persist.',
+    'news.summary.li10':'Current view: FX ↓ / jet fuel ↑↑ / Hormuz ↑↑↑ -> September international has entered an increase phase.',
+    'news.dataRef':'As of 2026.08.18 07:00 KST · August international Level 14 · September international notices started',
+    'news.marketTitle':'Aug 18 market brief: September notices start and Hormuz risk rises',
+    'news.brent':'Oil: at the Aug 17 U.S. close, Brent was USD 90.87/bbl and WTI was USD 84.50/bbl. Stalled U.S.-Iran talks and lower Hormuz traffic lifted prices.',
+    'news.mops':'Jet fuel: no verified public daily Singapore MOPS value is displayed. Korean Air Cargo’s July 2026 Singapore Jet Fuel average of USD 3.3147/gal and USD 139.22/bbl is shown only as a monthly reference.',
+    'news.fx':'FX: USD/KRW around 1,415, USD/JPY around 159.38, and 100 JPY around KRW 888.',
+    'news.geo':'Hormuz: Kpler-tracked commodity vessels registered zero Sunday transits. This is not generalized as every vessel being exactly zero.',
+    'news.marketSummary':'September international notices have started with Air Busan confirmed. Other major airlines remain pending until official notices are verified.',
+    'news.fxDominance':'Key figures: 2026.08.18 07:00 KST · August international Level 14 · September international notices started · September domestic KRW 20,900 · USD/KRW around 1,415 · Brent USD 90.87 · WTI USD 84.50 · July Singapore Jet Fuel average USD 139.22/bbl',
+    'news.decisionTitle':'Conclusion: September international notices started, upside pressure materialized',
+    'news.decisionLine1':'→ August 2026 Korea-departure international surcharge is confirmed in effect at Level 14.',
+    'news.decisionLine2':'→ Air Busan’s September increase is confirmed, while other major airline notices still need official verification.',
+    'news.forecastCta.title':'See the September international surcharge outlook',
+    'news.forecastCta.desc':'Check FX, jet fuel, Brent/WTI, Hormuz traffic risk and airline notice status separately.',
+    'news.forecastCta.btn':'View September outlook →'
+  });
+  packs.ja = Object.assign({}, packs.en, {'news.pageTitle':'2026年8月燃油サーチャージと9月見通しニュース','news.pageSub':'2026.08.18 07:00 KST時点 · 8月国際線14段階 · 9月国際線公示開始 · エアプサン引き上げ確認 · USD/KRW約1,415 · Brent 90.87ドル · WTI 84.50ドル','news.summary.updated':'2026.08.18 07:00 KST時点 · 8月国際線14段階 · 9月国際線公示開始','news.summary.title':'8月燃油サーチャージと9月見通し要約'});
+  packs.zh = Object.assign({}, packs.en, {'news.pageTitle':'2026年8月燃油附加费与9月展望新闻','news.pageSub':'截至2026.08.18 07:00 KST · 8月国际线第14档 · 9月国际线公告开始 · 釜山航空上调确认 · USD/KRW约1,415 · Brent 90.87美元 · WTI 84.50美元','news.summary.updated':'截至2026.08.18 07:00 KST · 8月国际线第14档 · 9月国际线公告开始','news.summary.title':'8月燃油附加费与9月展望摘要'});
+  packs.fr = Object.assign({}, packs.en, {'news.pageTitle':'Actualités surtaxe carburant août 2026 et perspectives septembre','news.pageSub':'Au 2026.08.18 07:00 KST · international août niveau 14 · avis septembre commencés · hausse Air Busan confirmée · USD/KRW autour de 1 415 · Brent 90,87 USD · WTI 84,50 USD','news.summary.updated':'Au 2026.08.18 07:00 KST · août international niveau 14 · avis septembre commencés','news.summary.title':'Résumé surtaxe août et perspectives septembre'});
+  packs.de = Object.assign({}, packs.en, {'news.pageTitle':'News zum Treibstoffzuschlag August 2026 und September-Ausblick','news.pageSub':'Stand 2026.08.18 07:00 KST · August international Stufe 14 · September-Mitteilungen gestartet · Air Busan-Erhöhung bestätigt · USD/KRW um 1.415 · Brent 90,87 USD · WTI 84,50 USD','news.summary.updated':'Stand 2026.08.18 07:00 KST · August international Stufe 14 · September-Mitteilungen gestartet','news.summary.title':'Zusammenfassung August-Zuschlag und September-Ausblick'});
+  window.PAGE_I18N_OVERRIDE = window.PAGE_I18N_OVERRIDE || {};
+  Object.keys(packs).forEach(function(lang){
+    window.PAGE_I18N_OVERRIDE[lang] = Object.assign({}, window.PAGE_I18N_OVERRIDE[lang] || {}, packs[lang]);
+    if(window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], window.PAGE_I18N_OVERRIDE[lang]);
+  });
+  document.title = packs.ko['news.metaTitle'];
+  var desc = document.querySelector('meta[name="description"]'); if(desc) desc.setAttribute('content', packs.ko['news.metaDesc']);
+  var ogTitle = document.querySelector('meta[property="og:title"]'); if(ogTitle) ogTitle.setAttribute('content', packs.ko['news.metaTitle']);
+  var ogDesc = document.querySelector('meta[property="og:description"]'); if(ogDesc) ogDesc.setAttribute('content', packs.ko['news.metaDesc']);
+  var mod = document.querySelector('meta[property="article:modified_time"]'); if(mod) mod.setAttribute('content', updatedIso);
+})();
+
+/* 2026.08.18 news non-English section completion guard. */
+(function(){
+  var packs = {
+    ja: {
+      'news.summary.li1':'8月の韓国発国際線燃油サーチャージは公式14段階で適用中です。',
+      'news.summary.li2':'9月国際線はエアプサン公式公示確認により公示開始段階です。',
+      'news.summary.li3':'エアプサンの一部区間は47ドルから71ドル、一部長距離は54ドルから82ドルに上がりました。',
+      'news.summary.li4':'9月国内線は片道20,900ウォン、+26.7%ですが、この率を国際線へ直接適用しません。',
+      'news.summary.li5':'USD/KRW約1,415は為替面の下落要因ですが、国際線段階を単独で確定しません。',
+      'news.summary.li6':'当日Singapore MOPSは公開確定値がないため表示しません。139.22ドル/bblは2026年7月月平均の参考値です。',
+      'news.summary.li7':'Brent 90.87ドル、WTI 84.50ドルで原油は再び上昇しました。',
+      'news.summary.li8':'Kpler追跡対象の商品船はホルムズ日曜通航0隻でした。',
+      'news.summary.li9':'イラン警告とAramco迂回供給はホルムズリスク長期化の可能性を示します。',
+      'news.summary.li10':'現在の判断は為替↓ / 航空燃料↑↑ / ホルムズ↑↑↑、9月国際線は引き上げ局面入りです。',
+      'news.dataRef':'2026.08.18 07:00 KST時点 · 8月国際線14段階 · 9月国際線公示開始',
+      'news.marketTitle':'8月18日市場ブリーフ: 9月国際線公示開始とホルムズリスク拡大',
+      'news.brent':'原油: 8月17日米市場終値でBrent 90.87ドル/bbl、WTI 84.50ドル/bblです。米イラン協議停滞とホルムズ通航減少が価格を押し上げました。',
+      'news.mops':'航空燃料: 当日Singapore MOPS日次値は公開確定値がないため表示しません。139.22ドル/bblは2026年7月月平均参考値です。',
+      'news.fx':'為替: USD/KRW約1,415、USD/JPY約159.38、100円約888ウォンです。',
+      'news.geo':'ホルムズ: Kpler追跡対象の商品船は日曜0隻です。全船舶が正確に0隻という意味ではありません。',
+      'news.marketSummary':'9月国際線はエアプサン公示確認により公示開始段階です。他の主要航空会社は公式確認まで待機です。',
+      'news.fxDominance':'主要数値: 2026.08.18 07:00 KST · 8月国際線14段階 · 9月国際線公示開始 · 9月国内線20,900ウォン · USD/KRW約1,415 · Brent 90.87ドル · WTI 84.50ドル · 7月Singapore Jet Fuel平均139.22ドル/bbl',
+      'news.decisionTitle':'結論: 9月国際線公示開始、上昇圧力が現実化',
+      'news.decisionLine1':'→ 2026年8月の韓国発国際線燃油サーチャージは14段階で確定適用中です。',
+      'news.decisionLine2':'→ エアプサンの9月引き上げは確認済みで、他の主要航空会社は公式確認が必要です。',
+      'news.forecastCta.title':'9月国際線燃油サーチャージ見通しを詳しく見る',
+      'news.forecastCta.desc':'為替、航空燃料、Brent/WTI、ホルムズ通航リスク、航空会社別公示状況を分けて確認します。',
+      'news.forecastCta.btn':'9月見通しを見る →'
+    },
+    zh: {
+      'news.summary.li1':'8月韩国出发国际线燃油附加费仍按官方第14档执行。',
+      'news.summary.li2':'9月国际线因釜山航空官方公告确认而进入公告开始阶段。',
+      'news.summary.li3':'釜山航空部分区间从47美元升至71美元，部分长线从54美元升至82美元。',
+      'news.summary.li4':'9月国内线单程20,900韩元，涨幅26.7%，但该涨幅不直接套用于国际线。',
+      'news.summary.li5':'USD/KRW约1,415是汇率下行因素，但不能单独确认国际线档位。',
+      'news.summary.li6':'当日Singapore MOPS无公开确认值，因此不显示。139.22美元/bbl仅为2026年7月月均参考。',
+      'news.summary.li7':'Brent 90.87美元、WTI 84.50美元显示油价重新上涨。',
+      'news.summary.li8':'Kpler追踪的相关大宗商品船周日霍尔木兹通行登记为0艘。',
+      'news.summary.li9':'伊朗警告和Aramco绕行供应显示霍尔木兹风险可能持续。',
+      'news.summary.li10':'当前判断为汇率↓ / 航油↑↑ / 霍尔木兹↑↑↑，9月国际线进入上调阶段。',
+      'news.dataRef':'截至2026.08.18 07:00 KST · 8月国际线第14档 · 9月国际线公告开始',
+      'news.marketTitle':'8月18日市场简报：9月国际线公告开始与霍尔木兹风险扩大',
+      'news.brent':'原油：8月17日美国收盘Brent 90.87美元/bbl，WTI 84.50美元/bbl。美伊谈判停滞和霍尔木兹通行减少推高价格。',
+      'news.mops':'航油：当日Singapore MOPS无公开确认日度值，因此不显示。139.22美元/bbl仅为2026年7月月均参考。',
+      'news.fx':'汇率：USD/KRW约1,415，USD/JPY约159.38，100日元约888韩元。',
+      'news.geo':'霍尔木兹：Kpler追踪的相关大宗商品船周日0艘。这不等于所有船舶都准确为0艘。',
+      'news.marketSummary':'9月国际线因釜山航空公告确认进入公告开始阶段。其他主要航司在官方确认前保持等待。',
+      'news.fxDominance':'关键数值：2026.08.18 07:00 KST · 8月国际线第14档 · 9月国际线公告开始 · 9月国内线20,900韩元 · USD/KRW约1,415 · Brent 90.87美元 · WTI 84.50美元 · 7月Singapore Jet Fuel均价139.22美元/bbl',
+      'news.decisionTitle':'结论：9月国际线公告开始，上行压力兑现',
+      'news.decisionLine1':'→ 2026年8月韩国出发国际线燃油附加费按第14档确定执行。',
+      'news.decisionLine2':'→ 釜山航空9月上调已确认，其他主要航司仍需官方验证。',
+      'news.forecastCta.title':'查看9月国际线燃油附加费展望',
+      'news.forecastCta.desc':'分开查看汇率、航油、Brent/WTI、霍尔木兹通行风险和航司公告状态。',
+      'news.forecastCta.btn':'查看9月展望 →'
+    },
+    fr: {
+      'news.summary.li1':'La surtaxe internationale au départ de Corée pour août reste au niveau officiel 14.',
+      'news.summary.li2':'Les avis internationaux de septembre ont commencé avec la confirmation officielle d’Air Busan.',
+      'news.summary.li3':'Des exemples Air Busan passent de 47 à 71 USD et de 54 à 82 USD sur certaines routes longues.',
+      'news.summary.li4':'La surtaxe domestique de septembre est de 20 900 KRW, +26,7%, mais ce taux ne s’applique pas directement à l’international.',
+      'news.summary.li5':'USD/KRW autour de 1 415 est baissier, sans confirmer seul les niveaux internationaux.',
+      'news.summary.li6':'Aucun MOPS quotidien Singapour confirmé n’est affiché. 139,22 USD/bbl est seulement la moyenne mensuelle de juillet 2026.',
+      'news.summary.li7':'Brent 90,87 USD et WTI 84,50 USD montrent une nouvelle hausse du pétrole.',
+      'news.summary.li8':'Les navires matières premières suivis par Kpler affichent zéro passage dimanche à Ormuz.',
+      'news.summary.li9':'Les avertissements iraniens et les routes Aramco hors Ormuz signalent un risque persistant.',
+      'news.summary.li10':'Vue actuelle: FX ↓ / jet fuel ↑↑ / Ormuz ↑↑↑, septembre international entre en phase de hausse.',
+      'news.dataRef':'Au 2026.08.18 07:00 KST · international août niveau 14 · avis septembre commencés',
+      'news.marketTitle':'Brief marché du 18 août: avis septembre commencés et risque Ormuz accru',
+      'news.brent':'Pétrole: à la clôture américaine du 17 août, Brent vaut 90,87 USD/bbl et WTI 84,50 USD/bbl. Les discussions États-Unis-Iran bloquées et le trafic Ormuz réduit soutiennent les prix.',
+      'news.mops':'Jet fuel: aucun MOPS quotidien Singapour confirmé n’est affiché. 139,22 USD/bbl est seulement la moyenne mensuelle de juillet 2026.',
+      'news.fx':'Change: USD/KRW autour de 1 415, USD/JPY autour de 159,38 et 100 JPY autour de 888 KRW.',
+      'news.geo':'Ormuz: les navires matières premières suivis par Kpler affichent zéro passage dimanche. Ce n’est pas une généralisation à tous les navires.',
+      'news.marketSummary':'Les avis internationaux de septembre ont commencé avec Air Busan confirmé. Les autres grandes compagnies restent en attente de confirmation officielle.',
+      'news.fxDominance':'Chiffres clés: 2026.08.18 07:00 KST · août international niveau 14 · avis septembre commencés · domestique septembre 20 900 KRW · USD/KRW env. 1 415 · Brent 90,87 USD · WTI 84,50 USD · moyenne Singapore Jet Fuel juillet 139,22 USD/bbl',
+      'news.decisionTitle':'Conclusion: avis internationaux septembre commencés, pression haussière matérialisée',
+      'news.decisionLine1':'→ La surtaxe internationale au départ de Corée pour août 2026 est confirmée au niveau 14.',
+      'news.decisionLine2':'→ La hausse Air Busan de septembre est confirmée; les autres grandes compagnies exigent une vérification officielle.',
+      'news.forecastCta.title':'Voir les perspectives internationales de septembre',
+      'news.forecastCta.desc':'Séparer change, jet fuel, Brent/WTI, risque Ormuz et statut des avis par compagnie.',
+      'news.forecastCta.btn':'Voir septembre →'
+    },
+    de: {
+      'news.summary.li1':'Der internationale Zuschlag ab Korea für August gilt weiter auf offizieller Stufe 14.',
+      'news.summary.li2':'September-Mitteilungen international haben mit bestätigtem Air Busan begonnen.',
+      'news.summary.li3':'Air-Busan-Beispiele steigen von 47 auf 71 USD und auf einigen längeren Strecken von 54 auf 82 USD.',
+      'news.summary.li4':'Der Inlandszuschlag September beträgt 20.900 KRW, +26,7%, wird aber nicht direkt auf international übertragen.',
+      'news.summary.li5':'USD/KRW um 1.415 entlastet über FX, bestätigt internationale Stufen aber nicht allein.',
+      'news.summary.li6':'Kein bestätigter täglicher Singapore-MOPS wird angezeigt. 139,22 USD/bbl ist nur der Monatsdurchschnitt Juli 2026.',
+      'news.summary.li7':'Brent 90,87 USD und WTI 84,50 USD zeigen wieder steigende Ölpreise.',
+      'news.summary.li8':'Von Kpler verfolgte Rohstoffschiffe registrierten am Sonntag null Hormus-Passagen.',
+      'news.summary.li9':'Iran-Warnungen und Aramco-Umgehungsrouten zeigen anhaltendes Hormusrisiko.',
+      'news.summary.li10':'Aktuelle Sicht: FX ↓ / Jetfuel ↑↑ / Hormus ↑↑↑, September international ist in der Erhöhungsphase.',
+      'news.dataRef':'Stand 2026.08.18 07:00 KST · August international Stufe 14 · September-Mitteilungen gestartet',
+      'news.marketTitle':'Marktbrief 18. August: September-Mitteilungen gestartet und Hormusrisiko erhöht',
+      'news.brent':'Öl: Zum US-Schluss am 17. August lag Brent bei 90,87 USD/bbl und WTI bei 84,50 USD/bbl. Stockende US-Iran-Gespräche und weniger Hormus-Verkehr stützten die Preise.',
+      'news.mops':'Jetfuel: Kein bestätigter täglicher Singapore-MOPS wird angezeigt. 139,22 USD/bbl ist nur der Monatsdurchschnitt Juli 2026.',
+      'news.fx':'FX: USD/KRW um 1.415, USD/JPY um 159,38 und 100 JPY um 888 KRW.',
+      'news.geo':'Hormus: Von Kpler verfolgte Rohstoffschiffe registrierten am Sonntag null Passagen. Das wird nicht auf alle Schiffe verallgemeinert.',
+      'news.marketSummary':'September-Mitteilungen international haben mit Air Busan begonnen. Andere große Airlines bleiben bis zur offiziellen Bestätigung ausstehend.',
+      'news.fxDominance':'Kennzahlen: 2026.08.18 07:00 KST · August international Stufe 14 · September-Mitteilungen gestartet · September Inland 20.900 KRW · USD/KRW um 1.415 · Brent 90,87 USD · WTI 84,50 USD · Singapore Jet Fuel Juli 139,22 USD/bbl',
+      'news.decisionTitle':'Fazit: September-Mitteilungen international gestartet, Aufwärtsdruck materialisiert',
+      'news.decisionLine1':'→ Der internationale Zuschlag ab Korea für August 2026 gilt bestätigt auf Stufe 14.',
+      'news.decisionLine2':'→ Die September-Erhöhung von Air Busan ist bestätigt; andere große Airlines brauchen offizielle Prüfung.',
+      'news.forecastCta.title':'September-Ausblick international ansehen',
+      'news.forecastCta.desc':'FX, Jetfuel, Brent/WTI, Hormus-Verkehrsrisiko und Airline-Mitteilungen getrennt prüfen.',
+      'news.forecastCta.btn':'September ansehen →'
+    }
+  };
+  window.PAGE_I18N_OVERRIDE = window.PAGE_I18N_OVERRIDE || {};
+  Object.keys(packs).forEach(function(lang){
+    window.PAGE_I18N_OVERRIDE[lang] = Object.assign({}, window.PAGE_I18N_OVERRIDE[lang] || {}, packs[lang]);
+    if(window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], window.PAGE_I18N_OVERRIDE[lang]);
+  });
+})();
+
 window.initNav({
   onLangChange:function(){
     /* _shared.js의 initNav 래퍼가 applyLanguage()를 먼저 실행 */

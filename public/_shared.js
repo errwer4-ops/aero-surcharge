@@ -13502,11 +13502,11 @@ window.initNav = function(opts){
   }
 })();
 
-/* 2026.08.14 09:25 KST terminal shared override. */
+/* 2026.08.18 07:00 KST terminal shared override. */
 (function(){
   var latest = {
-    asOf: '2026.08.14 09:25 KST',
-    lastUpdated: '2026-08-14T09:25:00+09:00',
+    asOf: '2026.08.18 07:00 KST',
+    lastUpdated: '2026-08-18T07:00:00+09:00',
     currentMonthNotice: '2026-08',
     forecastTargetMonth: '2026-09',
     augustPassengerSurchargeStage: 14,
@@ -13514,60 +13514,69 @@ window.initNav = function(opts){
     augustInternationalStage: 14,
     julySurchargeStage: 19,
     septemberSurchargeConfirmed: false,
-    septemberOfficialConfirmed: false,
-    septemberInternationalOfficialConfirmed: false,
-    septemberSurchargeStatus: 'official_notice_pending',
+    septemberOfficialConfirmed: true,
+    septemberInternationalOfficialConfirmed: true,
+    septemberInternationalStatus: 'partial_notices_started',
+    septemberSurchargeStatus: 'partial_notices_started',
+    septemberInternationalConfirmedAirlines: ['BX'],
+    septemberInternationalPendingAirlines: ['KE','OZ','7C','LJ','TW','RS','ZE'],
+    airBusanSeptemberInternationalNoticeDate: '2026-08-14',
+    airBusanSeptemberInternationalTicketingFrom: '2026-09-01',
+    airBusanSeptemberInternationalTicketingTo: '2026-09-30',
     augustDomesticOneWayKrw: 16500,
     septemberDomesticOneWayKrw: 20900,
     domesticSurchargeChangeKrw: 4400,
     domesticSurchargeChangePct: 26.7,
-    usdKrw: 1416.48,
-    usdKrwLabel: '약 1,416~1,418원',
-    usdKrwRange: '1,416~1,418',
-    jpyKrw: 8.894,
-    jpyKrw100: 889.4,
-    usdJpy: 159.4,
+    usdKrw: 1415,
+    usdKrwLabel: '약 1,415원',
+    usdKrwRange: '1,414~1,416',
+    jpyKrw: 8.88,
+    jpyKrw100: 888,
+    usdJpy: 159.38,
     augustMopsAverageUsdPerBbl: 119.06,
     augustMopsAverageCentsPerGallon: 283.48,
     currentSingaporeMopsExactValue: null,
-    currentSingaporeMopsStatus: 'not_publicly_verified_2026_08_14',
-    brentUsdPerBbl: 87.07,
-    brentUsdBbl: 87.07,
-    wtiUsdPerBbl: 81.25,
-    wtiUsdBbl: 81.25,
-    brentDailyChangePct: -2.1,
-    wtiDailyChangePct: -2.4,
-    oilReferenceType: '2026.08.13 market close / 2026.08.14 morning reference',
-    usCrudeInventoryBuildBbl: 17400000,
-    usCrudeInventoriesBbl: 424400000,
-    hormuzTrafficRisk: 'very_high',
+    currentSingaporeMopsStatus: 'not_publicly_verified_2026_08_18',
+    julySingaporeJetFuelMonthlyAverageUsdPerBbl: 139.22,
+    julySingaporeJetFuelMonthlyAverageUsdPerGallon: 3.3147,
+    julySingaporeJetFuelMonthlyAverageSource: 'Korean Air Cargo',
+    brentUsdPerBbl: 90.87,
+    brentUsdBbl: 90.87,
+    wtiUsdPerBbl: 84.50,
+    wtiUsdBbl: 84.50,
+    brentDailyChangeUsd: 2.35,
+    wtiDailyChangeUsd: 2.10,
+    brentDailyChangePct: 2.65,
+    wtiDailyChangePct: 2.55,
+    oilReferenceType: '2026.08.17 U.S. market close',
+    oilReferenceTime: '2026.08.17 U.S. market close',
+    hormuzTrafficRisk: 'extreme',
+    hormuzRiskLabel: '극도로 높음',
     hormuzPrewarDailyTrafficEstimateMin: 130,
     hormuzPrewarDailyTrafficEstimateMax: 140,
-    hormuzRecentTuesdayVessels: 6,
-    hormuzRecentWednesdayVessels: 8,
-    hormuzRecentThursdayMaxVessels: 5,
+    hormuzKplerCommodityVesselsSaturday: 5,
+    hormuzKplerCommodityVesselsSunday: 0,
+    hormuzTrafficScope: 'Kpler-tracked commodity vessels, not all vessel types',
     hormuzTrafficProviderNumbersDiffer: true,
     hormuzFullReopeningConfirmed: false,
-    adnocRelatedVesselsAttacked: 2,
-    adnocAttackInjuriesReported: false,
-    usMayUseForceBeyondBlockade: true,
-    iranReopeningConditionsUnmet: true,
-    iea2026GlobalOilSupplyForecastCutBpd: 4300000,
-    ieaQ3SupplyDeficitBpd: 1800000,
-    outlookDirection: 'fx_downside_jetfuel_upside_hormuz_strong_upside_oil_mixed_international_notice_pending'
+    iranOffensivePostureWarning: true,
+    usIranTalksStatus: 'stalled',
+    aramcoHormuzBypassSupply: true,
+    gsCaltexUsMarsCrudeBbl: 2000000,
+    outlookDirection: 'fx_downside_jetfuel_strong_upside_hormuz_extreme_upside_international_notices_started'
   };
-  window.AERO_MARKET_NUMBERS_20260814 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
-  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-14': window.AERO_MARKET_NUMBERS_20260814});
-  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260814;
-  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1416.48, JPY: 1 / 8.894 });
+  window.AERO_MARKET_NUMBERS_20260818 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-18': window.AERO_MARKET_NUMBERS_20260818});
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260818;
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1415, JPY: 1 / 8.88 });
   if (window.I18N_SHARED) {
     Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), {
-      marketDataRef: '2026.08.14 09:25 KST 기준',
-      marketOil: '국제유가: 8월 13일 미국 시장 종가 기준 Brent 약 87.1달러/bbl, WTI 약 81.3달러/bbl입니다. 두 유종 모두 2%대 하락했고 미국 원유재고 증가와 수요 둔화 전망이 공급 리스크를 일부 상쇄했습니다.',
-      marketMops: '항공유: 8월 산정 MOPS 119.06달러/bbl은 기존 8월 공시 산정 평균입니다. 8월 14일 현재 싱가포르 MOPS 일별 평균은 신뢰 가능한 무료 공개자료로 확정 표시하지 않습니다.',
-      marketFx: '원달러 환율: 2026.08.14 09:25 KST 전후 공개 참고값 기준 약 1,416~1,418원입니다.',
-      marketGeo: '호르무즈: ADNOC 관련 선박 2척 공격 보도와 한 자릿수 통항 추적이 겹치며 통항 위험은 매우 높은 상태입니다. 추적업체별 숫자는 합산하거나 평균 내지 않습니다.',
-      marketSummary: '8월 국제선 유류할증료는 14단계 적용 중입니다. 9월 국내선은 20,900원/편도로 공시됐지만, 9월 국제선 단계와 금액은 아직 공식 공시 전입니다.'
+      marketDataRef: '2026.08.18 07:00 KST 기준',
+      marketOil: '국제유가: 8월 17일 미국 시장 종가 기준 Brent 90.87달러/bbl, WTI 84.50달러/bbl입니다. 미국-이란 협상 교착, 호르무즈 통항 감소, 공급 우려가 가격을 다시 끌어올렸습니다.',
+      marketMops: '항공유: 당일 Singapore MOPS 일별 값은 공개 확정값이 없어 표시하지 않습니다. 139.22달러/bbl은 대한항공 Cargo 기준 2026년 7월 Singapore Jet Fuel 월평균 참고값입니다.',
+      marketFx: '원달러 환율: 2026.08.18 07:00 KST 전후 공개 참고값 기준 약 1,415원입니다.',
+      marketGeo: '호르무즈: Kpler가 추적한 해당 원자재 운송선 기준 토요일 5척, 일요일 0척으로 집계됐습니다. 모든 선박이 정확히 0척이라고 일반화하지 않습니다.',
+      marketSummary: '8월 국제선 유류할증료는 14단계 적용 중입니다. 9월 국제선은 에어부산 공식 공시 확인으로 공시 시작 단계이며, 다른 주요 항공사는 공식 공시 확인 전까지 대기 상태입니다.'
     });
   }
 })();
