@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generatedAt": "2026-08-17T22:31:45.060Z",
-    "modelVersion": "manual-market-override-20260818",
+    "generatedAt": "2026-08-19T07:00:00+09:00",
+    "modelVersion": "manual-market-override-20260819",
     "basePeriod": "2026.08",
     "forecastTargetPeriod": "2026.09",
     "sourceAirlines": 8,
@@ -9,15 +9,15 @@
       "brentUSD": 82.5,
       "wtiUSD": 78.3,
       "jetFuelSpread": 14.2,
-      "usdKrw": 1415,
-      "usdJpy": 159.2,
+      "usdKrw": 1412.01,
+      "usdJpy": 159.55,
       "geopoliticalRiskScore": 0.35,
       "baselineBrentUSD": 75,
       "marketDataSource": "live",
-      "marketFetchedAt": "2026-08-17T22:30:42.138Z"
+      "marketFetchedAt": "2026-08-19T07:00:00+09:00"
     },
-    "disclaimer": "2026년 8월 국제선 유류할증료는 14단계 적용 중인 확정 공시 데이터입니다. 2026년 9월 국제선은 에어부산 공식 공시가 확인되어 공시 시작 상태이지만, 다른 항공사의 단계·금액은 공식 공시 확인 전까지 확정값으로 표시하지 않습니다. 당일 Singapore MOPS 값은 공개 확정값이 없어 임의 표시하지 않습니다.",
-    "lastUpdated": "2026-08-18T07:00:00+09:00",
+    "disclaimer": "2026년 8월 국제선 유류할증료는 14단계 적용 중인 확정 공시 데이터입니다. 2026년 9월 한국 출발 국제선 유류할증료는 21단계로 확정됐습니다. 149.29달러/bbl은 당일 Singapore MOPS가 아니라 2026.07.16~08.15 산정 항공유 평균입니다.",
+    "lastUpdated": "2026-08-19T07:00:00+09:00",
     "currentMonthNotice": "2026-08",
     "forecastTargetMonth": "2026-09"
   },
@@ -32,10 +32,10 @@
       "currentStage": 14,
       "predictedMin": null,
       "predictedMax": null,
-      "officialStage": null,
+      "officialStage": 21,
       "officialAmounts": null,
-      "direction": "increase_phase_entered_airline_notices_in_progress",
-      "confidence": "medium",
+      "direction": "level_21_confirmed_large_increase",
+      "confidence": "high",
       "volatility": "very_high",
       "drivers": [
         {
@@ -44,40 +44,40 @@
           "weight": 0.12
         },
         {
-          "factor": "USD/KRW 약 1,415원",
+          "factor": "USD/KRW 약 1,412원",
           "impact": "downside_fx_relief",
           "weight": 0.14
         },
         {
-          "factor": "당일 Singapore MOPS 공개 확정값 없음. 139.22달러/bbl은 2026년 7월 Singapore Jet Fuel 월평균 참고값",
-          "impact": "mops_value_not_invented",
-          "weight": 0.1
-        },
-        {
-          "factor": "중동 정유차질, 낮은 제트유 재고, 국제유가 재상승",
-          "impact": "strong_upside_jet_fuel",
-          "weight": 0.24
-        },
-        {
-          "factor": "호르무즈 Kpler 추적 해당 원자재 운송선 일요일 0척",
-          "impact": "extreme_upside_geopolitical",
+          "factor": "9월 산정 항공유 평균 149.29달러/bbl, 355.46 cents/gal. 당일 Singapore MOPS가 아니라 2026.07.16~08.15 평균",
+          "impact": "strong_upside_calculation_average",
           "weight": 0.28
         },
         {
-          "factor": "Brent 90.87달러, WTI 84.50달러",
+          "factor": "Brent 91.02달러, WTI 84.94달러",
           "impact": "upside_oil",
-          "weight": 0.12
+          "weight": 0.16
+        },
+        {
+          "factor": "호르무즈 극도로 제한된 통항과 일부 고위험 원유 선적 재개",
+          "impact": "extreme_upside_geopolitical",
+          "weight": 0.22
+        },
+        {
+          "factor": "9월 국제선 21단계 확정. KE·OZ·LJ·BX 9월 공시 확인",
+          "impact": "confirmed_official_stage",
+          "weight": 0.2
         }
       ],
-      "disclaimer": "에어부산 외 주요 항공사의 2026년 9월 국제선 단계와 항공사별 금액은 공식 공시 확인 전입니다. 환율, 국제유가, 호르무즈 뉴스는 전망 변수이며 다른 항공사의 국제선 확정값이 아닙니다.",
-      "summary": "환율은 하락 요인이지만 항공유 가격 상승 압력과 호르무즈 통항 위험이 이를 압도합니다. 에어부산 9월 국제선 공시 확인으로 2026년 9월 국제선은 인상 국면에 진입했으며 항공사별 공시가 진행 중입니다."
+      "disclaimer": "149.29달러/bbl은 당일 MOPS가 아니라 2026.07.16~08.15 9월 산정 평균입니다. 호르무즈는 완전 봉쇄나 전면 정상화로 단정하지 않습니다.",
+      "summary": "환율은 하락 요인이지만 9월 산정 항공유 평균 급등과 호르무즈 위험이 이를 압도했습니다. 2026년 9월 한국 출발 국제선 유류할증료는 21단계로 확정됐습니다."
     }
   ],
   "latest": {
-    "asOf": "2026.08.18 07:00 KST",
+    "asOf": "2026.08.19 07:00 KST",
     "currentMonthNotice": "2026-08",
     "forecastTargetMonth": "2026-09",
-    "summary": "8월 국제선은 14단계 적용 중입니다. 9월 국제선은 에어부산 공시 확인으로 공시 시작 단계입니다. USD/KRW 약 1,415원은 하락 요인, 항공유와 호르무즈 위험은 강한 상승 요인입니다.",
-    "status": "partial_notices_started"
+    "summary": "8월 국제선은 14단계 적용 중이고 9월 국제선은 21단계로 확정됐습니다. USD/KRW 약 1,412원은 하락 요인이지만 산정 항공유 평균 149.29달러/bbl과 호르무즈 위험이 인상 확정의 핵심입니다.",
+    "status": "level_21_confirmed"
   }
 }

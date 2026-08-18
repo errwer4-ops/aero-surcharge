@@ -12812,6 +12812,195 @@ function renderForecastPage() {
   });
 })();
 
+/* 2026.08.19 07:00 KST terminal forecast override. */
+(function(){
+  var updatedIso = '2026-08-19T07:00:00+09:00';
+  window.AERO_MARKET_NUMBERS_20260819 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
+    asOf: '2026.08.19 07:00 KST',
+    lastUpdated: updatedIso,
+    currentMonthNotice: '2026-08',
+    forecastTargetMonth: '2026-09',
+    augustInternationalStage: 14,
+    septemberInternationalStage: 21,
+    septemberInternationalStageChange: 7,
+    septemberInternationalOfficialConfirmed: true,
+    septemberInternationalConfirmedAirlines: ['KE','OZ','LJ','BX'],
+    septemberCalculationFrom: '2026-07-16',
+    septemberCalculationTo: '2026-08-15',
+    septemberCalculationJetFuelUsdPerBbl: 149.29,
+    septemberCalculationJetFuelCentsPerGallon: 355.46,
+    augustCalculationJetFuelUsdPerBbl: 119.06,
+    augustCalculationJetFuelCentsPerGallon: 283.48,
+    currentSingaporeMopsExactValue: null,
+    currentSingaporeMopsStatus: 'not_publicly_verified_2026_08_19',
+    usdKrw: 1412.01,
+    usdKrwLabel: '약 1,412원',
+    usdKrwRange: '1,408.73~1,417.31',
+    jpyKrw: 8.85,
+    jpyKrw100: 885,
+    brentUsdPerBbl: 91.02,
+    wtiUsdPerBbl: 84.94,
+    oilReferenceType: '2026.08.18 U.S. market close',
+    hormuzTrafficRisk: 'extreme_restricted_some_high_risk_shipments_resumed',
+    outlookDirection: 'fx_downside_jetfuel_strong_upside_oil_upside_hormuz_extreme_upside_september_international_level_21_confirmed'
+  });
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260819;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-19': window.AERO_MARKET_NUMBERS_20260819});
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1412.01, JPY: 1 / 8.85 });
+  var base = {
+    'fore.metaTitle':'2026년 9월 국제선 유류할증료 21단계 확정 | 8월 19일 환율·항공유·호르무즈',
+    'fore.metaDesc':'2026년 8월 19일 07:00 KST 기준 9월 한국 출발 국제선 유류할증료 21단계 확정, 9월 산정 항공유 평균 149.29달러/bbl, 환율과 호르무즈 위험을 구분해 정리합니다.',
+    'fore.pageTitle':'2026년 9월 국제선 유류할증료 21단계 확정',
+    'fore.pageSub':'2026.08.19 07:00 KST 기준 · 8월 국제선 14단계 적용 중 · 9월 국제선 21단계 확정 · KE·OZ·LJ·BX 9월 공시 확인 · USD/KRW 약 1,412원 · 9월 산정 항공유 평균 149.29달러/bbl · Brent 91.02달러 · WTI 84.94달러',
+    'fore.h1':'2026년 9월 국제선 유류할증료 - 21단계 확정',
+    'fore.notice':'<strong>확인:</strong> 2026년 9월 한국 출발 국제선 유류할증료는 21단계로 확정됐습니다. 8월 14단계에서 7단계 상승이며, 대한항공·아시아나·진에어·에어부산 9월 공시가 확인됐습니다.',
+    'fore.intro':'2026.08.19 07:00 KST 기준, 9월 국제선은 더 이상 단순 전망이 아니라 21단계 확정 상태입니다. 환율은 약 1,412원으로 하락 요인이지만, 9월 산정 항공유 평균 149.29달러/bbl과 호르무즈 위험이 이를 압도합니다.',
+    'fore.indicator.th':['항목','2026.08.19 07:00 KST 기준 상태','9월 국제선 영향'],
+    'fore.indicator.rows':[
+      ['환율','USD/KRW 약 1,412원 · 범위 1,408.73~1,417.31 · 100엔 약 885원','하락 요인입니다. 다만 확정 단계는 항공사 공식 공시와 산정기간 항공유 평균으로 결정됐습니다.'],
+      ['9월 산정 항공유 평균','2026.07.16~08.15 평균 149.29달러/bbl · 355.46 cents/gal','강한 상승 요인입니다. 이는 당일 MOPS가 아니라 9월 유류할증료 산정 평균입니다.'],
+      ['국제유가','8월 18일 미국 종가 Brent 91.02달러 · WTI 84.94달러','상승 압력입니다. Brent가 91달러대로 올라 단기 항공유 부담을 유지합니다.'],
+      ['호르무즈','극도로 제한된 통항 + 일부 고위험 원유 선적 재개','강한 상승 위험 ↑↑↑ 입니다. 전면 정상화나 완전 봉쇄로 단정하지 않습니다.'],
+      ['9월 국제선','8월 14단계 → 9월 21단계 확정 · KE·OZ·LJ·BX 공시 확인','대폭 인상 확정입니다. 일부 장거리 왕복은 8월 대비 부담 증가가 크게 나타납니다.']
+    ],
+    'fore.indicator.footnote':'* forecast 핵심 지표는 국제선에 직접 영향을 주는 항목만 표시합니다. 149.29달러/bbl은 당일 MOPS가 아니라 2026.07.16~08.15 산정 평균입니다.',
+    'fore.summary.updated':'2026.08.19 07:00 KST 기준 · 8월 국제선 14단계 · 9월 국제선 21단계 확정',
+    'fore.summary.title':'2026년 9월 국제선 유류할증료 확정 요약',
+    'fore.summary.items':[
+      '2026년 9월 한국 출발 국제선 유류할증료는 21단계로 확정됐습니다.',
+      '8월 국제선 14단계에서 9월 21단계로 7단계 상승했습니다.',
+      '대한항공·아시아나·진에어·에어부산 9월 국제선 공식 공시가 확인됐습니다.',
+      '9월 산정 항공유 평균은 2026.07.16~08.15 기준 149.29달러/bbl, 355.46 cents/gal입니다.',
+      '149.29달러/bbl은 당일 MOPS가 아니라 유류할증료 산정기간 평균입니다.',
+      'USD/KRW 약 1,412원은 하락 요인이지만 항공유 상승과 호르무즈 위험을 상쇄하지 못했습니다.',
+      'Brent 91.02달러와 WTI 84.94달러는 원유 측 상승 압력을 유지합니다.',
+      '호르무즈는 극도로 제한된 통항과 일부 고위험 선적 재개가 공존하는 상태입니다.',
+      '종합 판단: 환율 ↓ / 산정 항공유 ↑↑ / 국제유가 ↑ / 호르무즈 ↑↑↑ → 9월 국제선 21단계·대폭 인상 확정입니다.'
+    ],
+    'fore.verdict.title':'2026년 9월 국제선 확정 판단',
+    'fore.verdict.line1':'9월 국제선은 21단계로 확정됐고, 더 이상 에어부산만 공시된 부분 확인 상태가 아닙니다.',
+    'fore.verdict.line2':'환율 하락보다 산정기간 항공유 평균 급등과 호르무즈 위험이 더 크게 작용했습니다.',
+    'fore.verdict.short':'하락 요인: USD/KRW 약 1,412원',
+    'fore.verdict.long':'상승 요인: 9월 산정 항공유 149.29달러/bbl · Brent 91.02달러 · 호르무즈 ↑↑↑',
+    'fore.market.title':'시장 브리핑: 9월 국제선 21단계 확정',
+    'fore.market.brent':'국제유가: 8월 18일 미국 시장 종가 기준 Brent는 91.02달러/bbl, WTI는 84.94달러/bbl입니다. 유가 상승 압력이 항공유 부담을 유지합니다.',
+    'fore.market.mops':'항공유: 9월 유류할증료 산정 평균은 2026.07.16~08.15 기준 149.29달러/bbl, 355.46 cents/gal입니다. 이 값은 당일 Singapore MOPS가 아닙니다.',
+    'fore.market.fx':'환율: USD/KRW는 약 1,412원, 100엔은 약 885원입니다. 환율은 하락 요인이지만 9월 국제선 21단계 확정을 되돌릴 요인은 아닙니다.',
+    'fore.market.geo':'호르무즈: 실제 상태는 극도로 제한된 통항과 일부 고위험 원유 선적 재개가 공존합니다. 완전 봉쇄 또는 전면 정상화로 단정하지 않습니다.',
+    'fore.market.summary':'현재 판단은 9월 국제선 21단계·대폭 인상 확정입니다. 향후 관심은 10월 산정기간의 항공유 평균, 환율, 호르무즈 정상화 여부입니다.',
+    'fore.market.fx2':'핵심 수치: 2026.08.19 07:00 KST · 8월 국제선 14단계 · 9월 국제선 21단계 · USD/KRW 약 1,412원 · 9월 산정 항공유 평균 149.29달러/bbl · Brent 91.02달러 · WTI 84.94달러',
+    'fore.basis.title':'9월 확정 공시와 산정 기준',
+    'fore.basis.body':'9월 국제선 유류할증료는 항공사 공식 공시로 확정됐습니다. 대한항공, 아시아나항공, 진에어, 에어부산 9월 공시를 기준으로 8월 14단계에서 9월 21단계로 변경된 상태를 표시합니다.',
+    'fore.predict.title':'2026년 9월 국제선 유류할증료 핵심 지표',
+    'fore.predict.subtitle':'9월 국제선 21단계 확정 · 환율 ↓ / 산정 항공유 ↑↑ / 호르무즈 ↑↑↑',
+    'fore.predict.items':[
+      {label:'환율', val:'USD/KRW 약 1,412원 · 하락 요인', cls:'down'},
+      {label:'산정 항공유', val:'149.29달러/bbl · 2026.07.16~08.15 평균 · 강한 상승 요인', cls:'up'},
+      {label:'국제유가', val:'Brent 91.02달러 · WTI 84.94달러 · 상승 압력', cls:'up'},
+      {label:'호르무즈', val:'극도로 제한된 통항 + 일부 고위험 선적 재개 · 상승 위험 ↑↑↑', cls:'up'},
+      {label:'9월 국제선', val:'14단계 → 21단계 확정 · KE/OZ/LJ/BX 공시 확인', cls:'up'}
+    ],
+    'fore.predict.footnote':'* 국내선이나 별도 선박 집계 숫자를 forecast 핵심 지표로 추가하지 않습니다. 149.29달러/bbl은 산정 평균이며 당일 MOPS가 아닙니다.',
+    'fore.faq.title':'자주 묻는 질문',
+    'fore.faq.items':[
+      {q:'2026년 9월 국제선 유류할증료는 확정됐나요?', a:'네. 2026년 9월 한국 출발 국제선은 21단계로 확정됐고, 8월 14단계보다 7단계 높습니다.'},
+      {q:'149.29달러/bbl은 현재 MOPS인가요?', a:'아닙니다. 149.29달러/bbl은 2026.07.16~08.15 기간의 9월 유류할증료 산정 항공유 평균입니다. 당일 Singapore MOPS 값은 공개 실시간 확정값으로 표시하지 않습니다.'},
+      {q:'환율이 내려갔는데 왜 인상됐나요?', a:'USD/KRW 약 1,412원은 하락 요인이지만 산정기간 항공유 평균 급등과 호르무즈 위험이 더 크게 작용했습니다.'},
+      {q:'현재 호르무즈 상태는 어떻게 보나요?', a:'극도로 제한된 통항과 일부 고위험 원유 선적 재개가 공존합니다. 전면 정상화도, 완전 봉쇄도 아닙니다.'}
+    ]
+  };
+  var packs = { ko: base };
+  packs.en = Object.assign({}, base, {
+    'fore.metaTitle':'September 2026 International Fuel Surcharge Confirmed at Level 21 | Aug 19 FX, Jet Fuel and Hormuz',
+    'fore.metaDesc':'As of 2026.08.19 07:00 KST: September Korea-departure international surcharge is confirmed at Level 21; calculation-period jet fuel average is USD 149.29/bbl.',
+    'fore.pageTitle':'September 2026 International Fuel Surcharge Confirmed at Level 21',
+    'fore.pageSub':'As of 2026.08.19 07:00 KST · August international Level 14 · September international Level 21 confirmed · KE, OZ, LJ and BX notices confirmed · USD/KRW around 1,412 · September calculation jet fuel average USD 149.29/bbl · Brent USD 91.02 · WTI USD 84.94',
+    'fore.h1':'September 2026 International Fuel Surcharge - Level 21 confirmed',
+    'fore.notice':'<strong>Confirmed:</strong> September 2026 Korea-departure international surcharge is confirmed at Level 21, up 7 stages from August Level 14. KE, OZ, LJ and BX September notices are confirmed.',
+    'fore.intro':'As of 2026.08.19 07:00 KST, September international is no longer only an outlook or notice-start state; it is confirmed at Level 21. FX near KRW 1,412 is a downside factor, but the September calculation jet fuel average of USD 149.29/bbl and Hormuz risk dominate.',
+    'fore.indicator.th':['Factor','Status as of 2026.08.19 07:00 KST','Impact on September international'],
+    'fore.indicator.rows':[['FX','USD/KRW around 1,412; range 1,408.73-1,417.31; 100 JPY around KRW 885','Downside factor, but the confirmed stage is driven by airline notices and calculation-period jet fuel.'],['September calculation jet fuel average','2026.07.16-08.15 average USD 149.29/bbl; 355.46 cents/gal','Strong upside factor. This is the calculation average, not same-day MOPS.'],['Oil','Aug 18 U.S. close: Brent USD 91.02; WTI USD 84.94','Upside pressure as Brent moved into the USD 91 range.'],['Hormuz','Extremely restricted traffic plus some high-risk crude loadings resumed','Strong upside risk ↑↑↑. It is neither full normalization nor a complete blockade.'],['September international','August Level 14 -> September Level 21 confirmed; KE/OZ/LJ/BX notices confirmed','Large increase confirmed. Some long-haul round trips show a materially higher burden.']],
+    'fore.summary.updated':'As of 2026.08.19 07:00 KST · August international Level 14 · September international Level 21 confirmed',
+    'fore.summary.title':'September 2026 International Surcharge Confirmation Summary',
+    'fore.summary.items':['September 2026 Korea-departure international surcharge is confirmed at Level 21.','It rises 7 stages from August international Level 14.','KE, OZ, LJ and BX September international official notices are confirmed.','The September calculation jet fuel average is USD 149.29/bbl, or 355.46 cents/gal, for 2026.07.16-08.15.','USD 149.29/bbl is the calculation-period average, not same-day MOPS.','USD/KRW around 1,412 is a downside FX factor but did not offset jet fuel and Hormuz pressure.','Brent USD 91.02 and WTI USD 84.94 keep oil-side pressure elevated.','Hormuz remains extremely restricted, while some high-risk crude loadings have resumed.','Overall: FX down / calculation jet fuel up strongly / oil up / Hormuz up strongly -> September international Level 21 and a large increase are confirmed.'],
+    'fore.verdict.title':'September 2026 International Decision',
+    'fore.verdict.line1':'September international is confirmed at Level 21; it is no longer just Air Busan-only partial confirmation.',
+    'fore.verdict.line2':'The calculation-period jet fuel surge and Hormuz risk outweighed FX relief.',
+    'fore.verdict.short':'Downside factor: USD/KRW around 1,412',
+    'fore.verdict.long':'Upside factors: September calculation jet fuel USD 149.29/bbl · Brent USD 91.02 · Hormuz ↑↑↑',
+    'fore.market.title':'Market brief: September international Level 21 confirmed',
+    'fore.market.brent':'Oil: at the Aug 18 U.S. close, Brent was USD 91.02/bbl and WTI was USD 84.94/bbl. Oil pressure keeps jet-fuel cost risk elevated.',
+    'fore.market.mops':'Jet fuel: the September surcharge calculation average is USD 149.29/bbl and 355.46 cents/gal for 2026.07.16-08.15. This is not same-day Singapore MOPS.',
+    'fore.market.fx':'FX: USD/KRW is around 1,412 and 100 JPY around KRW 885. FX is a downside factor, but it does not undo the September Level 21 confirmation.',
+    'fore.market.geo':'Hormuz: actual conditions are extremely restricted traffic plus some resumed high-risk crude loadings. Do not describe it as full normalization or a complete blockade.',
+    'fore.market.summary':'Current view: September international Level 21 and a large increase are confirmed. Next focus is the October calculation-period jet fuel average, FX and Hormuz normalization.',
+    'fore.market.fx2':'Key figures: 2026.08.19 07:00 KST · August international Level 14 · September international Level 21 · USD/KRW around 1,412 · September calculation jet fuel average USD 149.29/bbl · Brent USD 91.02 · WTI USD 84.94',
+    'fore.basis.body':'September international surcharge is confirmed by airline official notices. KE, OZ, LJ and BX September notices are reflected as a move from August Level 14 to September Level 21.',
+    'fore.predict.subtitle':'September international Level 21 confirmed · FX ↓ / calculation jet fuel ↑↑ / Hormuz ↑↑↑',
+    'fore.predict.items':[{label:'FX',val:'USD/KRW around 1,412 · downside',cls:'down'},{label:'Calculation jet fuel',val:'USD 149.29/bbl · 2026.07.16-08.15 average · strong upside',cls:'up'},{label:'Oil',val:'Brent USD 91.02 · WTI USD 84.94 · upside pressure',cls:'up'},{label:'Hormuz',val:'Extremely restricted traffic + some high-risk loadings resumed · upside risk ↑↑↑',cls:'up'},{label:'September international',val:'Level 14 -> Level 21 confirmed · KE/OZ/LJ/BX notices confirmed',cls:'up'}],
+    'fore.faq.items':[{q:'Is the September 2026 international surcharge confirmed?',a:'Yes. September Korea-departure international is confirmed at Level 21, up 7 stages from August Level 14.'},{q:'Is USD 149.29/bbl current MOPS?',a:'No. It is the September surcharge calculation-period jet fuel average for 2026.07.16-08.15. Same-day Singapore MOPS is not displayed as a verified real-time public value.'},{q:'Why did it rise when FX fell?',a:'USD/KRW around 1,412 is a downside factor, but the jet fuel average surge and Hormuz risk were stronger.'},{q:'What is the current Hormuz state?',a:'Extremely restricted traffic plus some resumed high-risk crude loadings. It is neither full normalization nor a complete blockade.'}]
+  });
+  packs.ja = Object.assign({}, packs.en, {'fore.pageTitle':'2026年9月国際線燃油サーチャージ、21段階で確定','fore.pageSub':'2026.08.19 07:00 KST時点 · 8月国際線14段階 · 9月国際線21段階確定 · KE/OZ/LJ/BX公示確認 · USD/KRW約1,412 · 9月算定航空燃料平均149.29ドル/bbl','fore.h1':'2026年9月国際線燃油サーチャージ - 21段階確定','fore.summary.updated':'2026.08.19 07:00 KST時点 · 8月国際線14段階 · 9月国際線21段階確定','fore.summary.title':'2026年9月国際線サーチャージ確定要約'});
+  packs.zh = Object.assign({}, packs.en, {'fore.pageTitle':'2026年9月国际线燃油附加费确认第21档','fore.pageSub':'截至2026.08.19 07:00 KST · 8月国际线第14档 · 9月国际线第21档确认 · KE/OZ/LJ/BX公告确认 · USD/KRW约1,412 · 9月计算航油均价149.29美元/bbl','fore.h1':'2026年9月国际线燃油附加费 - 第21档确认','fore.summary.updated':'截至2026.08.19 07:00 KST · 8月国际线第14档 · 9月国际线第21档确认','fore.summary.title':'2026年9月国际线附加费确认摘要'});
+  packs.fr = Object.assign({}, packs.en, {'fore.pageTitle':'Surtaxe carburant internationale septembre 2026 confirmée au niveau 21','fore.pageSub':'Au 2026.08.19 07:00 KST · août international niveau 14 · septembre international niveau 21 confirmé · avis KE/OZ/LJ/BX confirmés · USD/KRW env. 1 412 · moyenne jet fuel de calcul 149,29 USD/bbl','fore.h1':'Surtaxe internationale septembre 2026 - niveau 21 confirmé','fore.summary.updated':'Au 2026.08.19 07:00 KST · août international niveau 14 · septembre international niveau 21 confirmé','fore.summary.title':'Résumé de confirmation septembre 2026'});
+  packs.de = Object.assign({}, packs.en, {'fore.pageTitle':'Internationaler Treibstoffzuschlag September 2026 auf Stufe 21 bestätigt','fore.pageSub':'Stand 2026.08.19 07:00 KST · August international Stufe 14 · September international Stufe 21 bestätigt · KE/OZ/LJ/BX bestätigt · USD/KRW um 1.412 · Berechnungs-Jetfuel 149,29 USD/bbl','fore.h1':'Internationaler Treibstoffzuschlag September 2026 - Stufe 21 bestätigt','fore.summary.updated':'Stand 2026.08.19 07:00 KST · August international Stufe 14 · September international Stufe 21 bestätigt','fore.summary.title':'Bestätigungszusammenfassung September 2026'});
+  Object.keys(packs).forEach(function(lang){
+    Object.assign(FORE_I18N[lang] || (FORE_I18N[lang] = {}), packs[lang]);
+    if(window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], packs[lang]);
+  });
+  document.title = packs.ko['fore.metaTitle'];
+  var desc = document.querySelector('meta[name="description"]'); if(desc) desc.setAttribute('content', packs.ko['fore.metaDesc']);
+  var ogTitle = document.querySelector('meta[property="og:title"]'); if(ogTitle) ogTitle.setAttribute('content', packs.ko['fore.metaTitle']);
+  var ogDesc = document.querySelector('meta[property="og:description"]'); if(ogDesc) ogDesc.setAttribute('content', packs.ko['fore.metaDesc']);
+  var mod = document.querySelector('meta[property="article:modified_time"]'); if(mod) mod.setAttribute('content', updatedIso);
+})();
+
+/* 2026.08.19 forecast non-English completion guard. */
+(function(){
+  var packs = {
+    ja: {
+      'fore.notice':'<strong>確認:</strong> 2026年9月の韓国発国際線燃油サーチャージは21段階で確定しました。8月14段階から7段階上昇し、KE・OZ・LJ・BXの9月公示が確認されています。',
+      'fore.intro':'2026.08.19 07:00 KST時点で、9月国際線は見通しではなく21段階の確定状態です。為替は下落要因ですが、9月算定航空燃料平均149.29ドル/bblとホルムズリスクが上回りました。',
+      'fore.indicator.th':['項目','2026.08.19 07:00 KST時点','9月国際線への影響'],
+      'fore.indicator.rows':[['為替','USD/KRW約1,412、100円約885ウォン','下落要因ですが、確定段階は公式公示と算定期間の航空燃料で決まりました。'],['9月算定航空燃料平均','2026.07.16～08.15平均149.29ドル/bbl、355.46 cents/gal','強い上昇要因です。当日MOPSではなく算定平均です。'],['原油','8月18日米終値 Brent 91.02ドル、WTI 84.94ドル','上昇圧力です。'],['ホルムズ','極度に制限された通航と一部高リスク原油積み出し再開','強い上昇リスク↑↑↑です。'],['9月国際線','8月14段階→9月21段階確定、KE/OZ/LJ/BX公示確認','大幅引き上げ確定です。']],
+      'fore.summary.items':['2026年9月の韓国発国際線燃油サーチャージは21段階で確定しました。','8月14段階から9月21段階へ7段階上昇しました。','KE・OZ・LJ・BXの9月国際線公式公示が確認されています。','9月算定航空燃料平均は149.29ドル/bbl、355.46 cents/galです。','149.29ドル/bblは当日MOPSではなく2026.07.16～08.15の算定平均です。','USD/KRW約1,412は下落要因ですが、上昇要因を相殺できませんでした。','Brent 91.02ドル、WTI 84.94ドルで原油側の上昇圧力が続きます。','ホルムズは制限通航と一部高リスク積み出し再開が併存します。','総合判断: 為替↓ / 算定航空燃料↑↑ / 原油↑ / ホルムズ↑↑↑ → 9月国際線21段階・大幅引き上げ確定です。'],
+      'fore.market.title':'市場ブリーフ: 9月国際線21段階確定','fore.market.mops':'航空燃料: 9月算定平均は2026.07.16～08.15基準で149.29ドル/bbl、355.46 cents/galです。当日Singapore MOPSではありません。','fore.predict.subtitle':'9月国際線21段階確定 · 為替↓ / 算定航空燃料↑↑ / ホルムズ↑↑↑'
+      ,'fore.indicator.footnote':'* 主要指標は国際線に直接関係する項目だけを表示します。149.29ドル/bblは当日MOPSではなく算定平均です。','fore.verdict.title':'2026年9月国際線確定判断','fore.verdict.line1':'9月国際線は21段階で確定しました。','fore.verdict.line2':'為替下落より算定航空燃料平均の急上昇とホルムズリスクが大きく作用しました。','fore.verdict.short':'下落要因: USD/KRW約1,412','fore.verdict.long':'上昇要因: 算定航空燃料149.29ドル/bbl · Brent 91.02ドル · ホルムズ↑↑↑','fore.market.brent':'原油: 8月18日米終値でBrent 91.02ドル/bbl、WTI 84.94ドル/bblです。','fore.market.fx':'為替: USD/KRW約1,412、100円約885ウォンです。','fore.market.geo':'ホルムズ: 極度に制限された通航と一部高リスク積み出し再開が併存します。','fore.market.summary':'現在の判断は9月国際線21段階・大幅引き上げ確定です。','fore.market.fx2':'主要数値: 2026.08.19 07:00 KST · 8月国際線14段階 · 9月国際線21段階 · USD/KRW約1,412 · 算定航空燃料149.29ドル/bbl · Brent 91.02ドル · WTI 84.94ドル','fore.basis.title':'9月確定公示と算定基準','fore.basis.body':'9月国際線燃油サーチャージは航空会社の公式公示で確定しました。','fore.predict.title':'2026年9月国際線燃油サーチャージ主要指標','fore.predict.items':[{label:'為替',val:'USD/KRW約1,412 · 下落要因',cls:'down'},{label:'算定航空燃料',val:'149.29ドル/bbl · 強い上昇要因',cls:'up'},{label:'原油',val:'Brent 91.02ドル · WTI 84.94ドル · 上昇圧力',cls:'up'},{label:'ホルムズ',val:'制限通航 + 一部高リスク積み出し再開 · 上昇リスク↑↑↑',cls:'up'},{label:'9月国際線',val:'14段階→21段階確定 · KE/OZ/LJ/BX確認',cls:'up'}],'fore.predict.footnote':'* 国内線や別の船舶集計は主要指標に追加しません。','fore.faq.items':[{q:'9月国際線は確定しましたか?',a:'はい。21段階で確定しました。'},{q:'149.29ドル/bblは現在MOPSですか?',a:'いいえ。2026.07.16～08.15の算定平均です。'},{q:'為替が下がったのになぜ上昇ですか?',a:'算定航空燃料平均とホルムズリスクがより強く作用しました。'},{q:'ホルムズの状態は?',a:'制限通航と一部高リスク積み出し再開が併存します。'}]
+    },
+    zh: {
+      'fore.notice':'<strong>确认:</strong> 2026年9月韩国出发国际线燃油附加费确认第21档，较8月第14档上升7档。KE、OZ、LJ、BX的9月公告已确认。',
+      'fore.intro':'截至2026.08.19 07:00 KST，9月国际线不再只是展望，而是第21档确认状态。汇率是下行因素，但9月计算航油均价149.29美元/bbl和霍尔木兹风险占上风。',
+      'fore.indicator.th':['项目','截至2026.08.19 07:00 KST的状态','对9月国际线影响'],
+      'fore.indicator.rows':[['汇率','USD/KRW约1,412，100日元约885韩元','下行因素，但确认档位由官方公告和计算期航油决定。'],['9月计算航油均价','2026.07.16~08.15均价149.29美元/bbl、355.46 cents/gal','强上行因素。这不是当日MOPS，而是计算均价。'],['原油','8月18日美国收盘 Brent 91.02美元，WTI 84.94美元','上行压力。'],['霍尔木兹','极度限制通行 + 部分高风险原油装运恢复','强上行风险↑↑↑。'],['9月国际线','8月第14档→9月第21档确认，KE/OZ/LJ/BX公告确认','大幅上调确认。']],
+      'fore.summary.items':['2026年9月韩国出发国际线燃油附加费确认第21档。','从8月国际线第14档升至9月第21档，上升7档。','KE、OZ、LJ、BX的9月国际线官方公告已确认。','9月计算航油均价为149.29美元/bbl、355.46 cents/gal。','149.29美元/bbl不是当日MOPS，而是2026.07.16~08.15计算均价。','USD/KRW约1,412是下行因素，但未抵消航油和霍尔木兹压力。','Brent 91.02美元、WTI 84.94美元显示油价压力维持。','霍尔木兹处于极度限制通行与部分高风险装运恢复并存状态。','综合判断：汇率↓ / 计算航油↑↑ / 原油↑ / 霍尔木兹↑↑↑ → 9月国际线第21档、大幅上调确认。'],
+      'fore.market.title':'市场简报：9月国际线第21档确认','fore.market.mops':'航油：9月计算均价为2026.07.16~08.15的149.29美元/bbl、355.46 cents/gal。这不是当日Singapore MOPS。','fore.predict.subtitle':'9月国际线第21档确认 · 汇率↓ / 计算航油↑↑ / 霍尔木兹↑↑↑'
+      ,'fore.indicator.footnote':'* 核心指标只显示直接影响国际线的项目。149.29美元/bbl不是当日MOPS，而是计算均价。','fore.verdict.title':'2026年9月国际线确认判断','fore.verdict.line1':'9月国际线已确认第21档。','fore.verdict.line2':'计算航油均价飙升和霍尔木兹风险强于汇率缓和。','fore.verdict.short':'下行因素：USD/KRW约1,412','fore.verdict.long':'上行因素：计算航油149.29美元/bbl · Brent 91.02美元 · 霍尔木兹↑↑↑','fore.market.brent':'原油：8月18日美国收盘Brent 91.02美元/bbl，WTI 84.94美元/bbl。','fore.market.fx':'汇率：USD/KRW约1,412，100日元约885韩元。','fore.market.geo':'霍尔木兹：极度限制通行与部分高风险装运恢复并存。','fore.market.summary':'当前判断为9月国际线第21档、大幅上调确认。','fore.market.fx2':'关键数值：2026.08.19 07:00 KST · 8月国际线第14档 · 9月国际线第21档 · USD/KRW约1,412 · 计算航油149.29美元/bbl · Brent 91.02美元 · WTI 84.94美元','fore.basis.title':'9月确认公告与计算依据','fore.basis.body':'9月国际线燃油附加费已由航司官方公告确认。','fore.predict.title':'2026年9月国际线燃油附加费核心指标','fore.predict.items':[{label:'汇率',val:'USD/KRW约1,412 · 下行因素',cls:'down'},{label:'计算航油',val:'149.29美元/bbl · 强上行因素',cls:'up'},{label:'原油',val:'Brent 91.02美元 · WTI 84.94美元 · 上行压力',cls:'up'},{label:'霍尔木兹',val:'限制通行 + 部分高风险装运恢复 · 上行风险↑↑↑',cls:'up'},{label:'9月国际线',val:'第14档→第21档确认 · KE/OZ/LJ/BX确认',cls:'up'}],'fore.predict.footnote':'* 不把国内线或其他船舶统计加入核心指标。','fore.faq.items':[{q:'9月国际线确定了吗?',a:'是，已确认第21档。'},{q:'149.29美元/bbl是当前MOPS吗?',a:'不是。这是2026.07.16~08.15的计算均价。'},{q:'汇率下降为什么仍上调?',a:'计算航油均价和霍尔木兹风险更强。'},{q:'霍尔木兹现状如何?',a:'限制通行与部分高风险装运恢复并存。'}]
+    },
+    fr: {
+      'fore.notice':'<strong>Confirmé:</strong> La surtaxe internationale au départ de Corée pour septembre 2026 est confirmée au niveau 21, soit +7 niveaux face à août. Les avis KE, OZ, LJ et BX sont confirmés.',
+      'fore.intro':'Au 2026.08.19 07:00 KST, septembre international est confirmé au niveau 21. Le change est baissier, mais la moyenne jet fuel de calcul à 149,29 USD/bbl et le risque Ormuz dominent.',
+      'fore.indicator.th':['Facteur','État au 2026.08.19 07:00 KST','Impact sur septembre international'],
+      'fore.indicator.rows':[['Change','USD/KRW env. 1 412; 100 JPY env. 885 KRW','Facteur baissier.'],['Moyenne jet fuel de calcul','Moyenne 2026.07.16-08.15: 149,29 USD/bbl; 355,46 cents/gal','Fort facteur haussier; ce n’est pas le MOPS du jour.'],['Pétrole','Brent 91,02 USD; WTI 84,94 USD','Pression haussière.'],['Ormuz','Trafic très restreint et reprise de certains chargements à haut risque','Risque haussier fort ↑↑↑.'],['International septembre','Niveau 14 → niveau 21 confirmé; KE/OZ/LJ/BX confirmés','Forte hausse confirmée.']],
+      'fore.summary.items':['Septembre international au départ de Corée est confirmé au niveau 21.','Il augmente de 7 niveaux depuis août niveau 14.','Les avis officiels KE, OZ, LJ et BX sont confirmés.','La moyenne jet fuel de calcul est 149,29 USD/bbl et 355,46 cents/gal.','149,29 USD/bbl est la moyenne de calcul, pas le MOPS du jour.','USD/KRW env. 1 412 est baissier mais insuffisant pour compenser.','Brent 91,02 USD et WTI 84,94 USD maintiennent la pression pétrole.','Ormuz combine trafic très restreint et certains chargements à haut risque.','Conclusion: FX ↓ / jet fuel de calcul ↑↑ / pétrole ↑ / Ormuz ↑↑↑ → niveau 21 confirmé.'],
+      'fore.market.title':'Brief marché: septembre international niveau 21 confirmé','fore.market.mops':'Jet fuel: la moyenne de calcul septembre est 149,29 USD/bbl pour 2026.07.16-08.15. Ce n’est pas le MOPS Singapour du jour.','fore.predict.subtitle':'Septembre international niveau 21 confirmé · FX ↓ / jet fuel de calcul ↑↑ / Ormuz ↑↑↑'
+      ,'fore.indicator.footnote':'* Les indicateurs clés affichent uniquement les facteurs directs pour l’international. 149,29 USD/bbl est une moyenne de calcul, pas le MOPS du jour.','fore.verdict.title':'Décision septembre 2026 international','fore.verdict.line1':'Septembre international est confirmé au niveau 21.','fore.verdict.line2':'La hausse du jet fuel de calcul et Ormuz dominent la détente FX.','fore.verdict.short':'Facteur baissier: USD/KRW env. 1 412','fore.verdict.long':'Facteurs haussiers: jet fuel de calcul 149,29 USD/bbl · Brent 91,02 USD · Ormuz ↑↑↑','fore.market.brent':'Pétrole: à la clôture US du 18 août, Brent vaut 91,02 USD/bbl et WTI 84,94 USD/bbl.','fore.market.fx':'Change: USD/KRW env. 1 412; 100 JPY env. 885 KRW.','fore.market.geo':'Ormuz: trafic très restreint et certains chargements à haut risque coexistent.','fore.market.summary':'Vue actuelle: septembre international niveau 21 et forte hausse confirmés.','fore.market.fx2':'Chiffres clés: 2026.08.19 07:00 KST · août niveau 14 · septembre niveau 21 · USD/KRW env. 1 412 · jet fuel de calcul 149,29 USD/bbl · Brent 91,02 · WTI 84,94','fore.basis.title':'Avis confirmés et base de calcul septembre','fore.basis.body':'La surtaxe internationale de septembre est confirmée par les avis officiels des compagnies.','fore.predict.title':'Indicateurs clés septembre international 2026','fore.predict.items':[{label:'Change',val:'USD/KRW env. 1 412 · baissier',cls:'down'},{label:'Jet fuel de calcul',val:'149,29 USD/bbl · fort haussier',cls:'up'},{label:'Pétrole',val:'Brent 91,02 USD · WTI 84,94 USD',cls:'up'},{label:'Ormuz',val:'Trafic restreint + chargements à haut risque · risque ↑↑↑',cls:'up'},{label:'International septembre',val:'Niveau 14 → 21 confirmé · KE/OZ/LJ/BX',cls:'up'}],'fore.predict.footnote':'* Aucun indicateur domestique ou comptage navire séparé n’est ajouté.','fore.faq.items':[{q:'Septembre international est-il confirmé?',a:'Oui, au niveau 21.'},{q:'149,29 USD/bbl est-il le MOPS actuel?',a:'Non, c’est la moyenne de calcul 2026.07.16-08.15.'},{q:'Pourquoi hausse malgré FX?',a:'Le jet fuel de calcul et Ormuz dominent.'},{q:'État d’Ormuz?',a:'Trafic restreint et certains chargements à haut risque coexistent.'}]
+    },
+    de: {
+      'fore.notice':'<strong>Bestätigt:</strong> Der internationale Zuschlag ab Korea für September 2026 ist auf Stufe 21 bestätigt, sieben Stufen höher als August. KE, OZ, LJ und BX sind bestätigt.',
+      'fore.intro':'Stand 2026.08.19 07:00 KST ist September international auf Stufe 21 bestätigt. FX entlastet, aber der Berechnungs-Jetfuel von 149,29 USD/bbl und Hormusrisiken dominieren.',
+      'fore.indicator.th':['Faktor','Stand 2026.08.19 07:00 KST','Wirkung auf September international'],
+      'fore.indicator.rows':[['FX','USD/KRW um 1.412; 100 JPY um 885 KRW','Entlastungsfaktor.'],['Berechnungs-Jetfuel','Durchschnitt 2026.07.16-08.15: 149,29 USD/bbl; 355,46 cents/gal','Starker Aufwärtsfaktor; kein Tages-MOPS.'],['Öl','Brent 91,02 USD; WTI 84,94 USD','Aufwärtsdruck.'],['Hormus','Extrem eingeschränkter Verkehr plus einige Hochrisiko-Ladungen','Starkes Aufwärtsrisiko ↑↑↑.'],['September international','Stufe 14 → Stufe 21 bestätigt; KE/OZ/LJ/BX bestätigt','Deutliche Erhöhung bestätigt.']],
+      'fore.summary.items':['September international ab Korea ist auf Stufe 21 bestätigt.','Das sind sieben Stufen mehr als August Stufe 14.','KE, OZ, LJ und BX sind offiziell bestätigt.','Der Berechnungs-Jetfuel liegt bei 149,29 USD/bbl und 355,46 cents/gal.','149,29 USD/bbl ist der Berechnungsdurchschnitt, nicht der Tages-MOPS.','USD/KRW um 1.412 entlastet, kompensiert aber nicht.','Brent 91,02 USD und WTI 84,94 USD halten Öldruck hoch.','Hormus bleibt extrem eingeschränkt mit einigen Hochrisiko-Ladungen.','Gesamt: FX ↓ / Berechnungs-Jetfuel ↑↑ / Öl ↑ / Hormus ↑↑↑ → Stufe 21 bestätigt.'],
+      'fore.market.title':'Marktbrief: September international Stufe 21 bestätigt','fore.market.mops':'Jetfuel: Der September-Berechnungsdurchschnitt beträgt 149,29 USD/bbl für 2026.07.16-08.15. Das ist nicht der tägliche Singapore-MOPS.','fore.predict.subtitle':'September international Stufe 21 bestätigt · FX ↓ / Berechnungs-Jetfuel ↑↑ / Hormus ↑↑↑'
+      ,'fore.indicator.footnote':'* Kernindikatoren zeigen nur direkte Faktoren für international. 149,29 USD/bbl ist der Berechnungsdurchschnitt, nicht Tages-MOPS.','fore.verdict.title':'Entscheidung September 2026 international','fore.verdict.line1':'September international ist auf Stufe 21 bestätigt.','fore.verdict.line2':'Berechnungs-Jetfuel und Hormusrisiko überwogen die FX-Entlastung.','fore.verdict.short':'Entlastungsfaktor: USD/KRW um 1.412','fore.verdict.long':'Aufwärtsfaktoren: Berechnungs-Jetfuel 149,29 USD/bbl · Brent 91,02 USD · Hormus ↑↑↑','fore.market.brent':'Öl: Zum US-Schluss am 18. August lag Brent bei 91,02 USD/bbl und WTI bei 84,94 USD/bbl.','fore.market.fx':'FX: USD/KRW um 1.412; 100 JPY um 885 KRW.','fore.market.geo':'Hormus: Extrem eingeschränkter Verkehr und einige Hochrisiko-Ladungen bestehen nebeneinander.','fore.market.summary':'Aktuelle Sicht: September international Stufe 21 und deutliche Erhöhung bestätigt.','fore.market.fx2':'Kennzahlen: 2026.08.19 07:00 KST · August Stufe 14 · September Stufe 21 · USD/KRW um 1.412 · Berechnungs-Jetfuel 149,29 USD/bbl · Brent 91,02 · WTI 84,94','fore.basis.title':'Bestätigte September-Mitteilungen und Berechnungsbasis','fore.basis.body':'Der internationale September-Zuschlag ist durch offizielle Airline-Mitteilungen bestätigt.','fore.predict.title':'Kernindikatoren September 2026 international','fore.predict.items':[{label:'FX',val:'USD/KRW um 1.412 · entlastend',cls:'down'},{label:'Berechnungs-Jetfuel',val:'149,29 USD/bbl · stark aufwärts',cls:'up'},{label:'Öl',val:'Brent 91,02 USD · WTI 84,94 USD',cls:'up'},{label:'Hormus',val:'Eingeschränkter Verkehr + Hochrisiko-Ladungen · Risiko ↑↑↑',cls:'up'},{label:'September international',val:'Stufe 14 → 21 bestätigt · KE/OZ/LJ/BX',cls:'up'}],'fore.predict.footnote':'* Keine Inlands- oder separaten Schiffszahlen als Kernindikator.','fore.faq.items':[{q:'Ist September international bestätigt?',a:'Ja, auf Stufe 21.'},{q:'Ist 149,29 USD/bbl aktueller MOPS?',a:'Nein, es ist der Berechnungsdurchschnitt 2026.07.16-08.15.'},{q:'Warum Erhöhung trotz FX?',a:'Berechnungs-Jetfuel und Hormus dominieren.'},{q:'Hormus-Zustand?',a:'Eingeschränkter Verkehr und einige Hochrisiko-Ladungen bestehen nebeneinander.'}]
+    }
+  };
+  Object.keys(packs).forEach(function(lang){
+    Object.assign(FORE_I18N[lang] || (FORE_I18N[lang] = {}), packs[lang]);
+    if(window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], packs[lang]);
+  });
+})();
+
 window.initNav({
   onLangChange: function() { renderForecastPage(); },
   onCurrChange: function() { renderForecastPage(); },

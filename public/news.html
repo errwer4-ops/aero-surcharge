@@ -325,7 +325,7 @@
 
   <!-- 비교 박스 -->
   <div class="compare-box">
-    <div class="compare-title" data-i18n="news.compareTitle">📊 전월 대비: 7월 → 8월 변화 (공식 공시 기준)</div>
+    <div class="compare-title" data-i18n="news.compareTitle">📊 전월 대비: 8월 → 9월 변화와 10월 예측 전환</div>
     <ul id="compareList">
       <li>대한항공: 7월 46,400원~344,000원 → 8월 35,200원~259,200원 (-20.5~-31.5%)</li>
       <li>아시아나항공: 7월 48,500원~275,800원 → 8월 36,600원~202,900원 (-24.5~-26.4%)</li>
@@ -7555,7 +7555,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
     'news.official.tw': '8월 유류할증료 공시 예정',
     'news.official.yp': '8월 유류할증료 공시 예정',
     'news.official.desc': '* 2026년 8월 공시 확인 항공사: KE·OZ·LJ·BX. 다른 항공사는 8월 공시 예정으로 분리하고, 최종 금액은 발권일 기준 각 항공사 공식 공지를 확인하세요.',
-    'news.compareTitle': '📊 전월 대비: 7월 → 8월 변화 (공식 공시 기준)',
+    'news.compareTitle': '📊 전월 대비: 8월 → 9월 변화와 10월 예측 전환',
     'news.compare.li1': '대한항공: 7월 46,400원~344,000원 → 8월 35,200원~259,200원 (-20.5~-31.5%)',
     'news.compare.li2': '아시아나항공: 7월 48,500원~275,800원 → 8월 36,600원~202,900원 (-24.5~-26.4%)',
     'news.compare.li3': '진에어(LJ): 7월 USD 27~79 → 8월 USD 20~59 (-25.3~-27.9%)',
@@ -7849,7 +7849,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
     'news.official.7c': '8월 유류할증료 공시 예정',
     'news.official.yp': '8월 유류할증료 공시 예정',
     'news.official.desc': '* 2026년 8월 공시 확인 항공사: KE·OZ·LJ·BX·TW·ZE·RS. 제주항공·에어프레미아는 8월 유류할증료 공시 예정으로 분리하고, 최종 금액은 발권일 기준 각 항공사 공식 공지를 확인하세요.',
-    'news.compareTitle': '📊 전월 대비: 7월 → 8월 변화 (공식 공시 기준)',
+    'news.compareTitle': '📊 전월 대비: 8월 → 9월 변화와 10월 예측 전환',
     'news.compare.li1': '대한항공: 7월 46,400원~344,000원 → 8월 35,200원~259,200원 (-20.5~-31.5%)',
     'news.compare.li2': '아시아나항공: 7월 48,500원~275,800원 → 8월 36,600원~202,900원 (-24.5~-26.4%)',
     'news.compare.li3': '진에어(LJ): 7월 USD 27~79 → 8월 USD 20~59 (-25.3~-27.9%)',
@@ -7976,7 +7976,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
     'news.official.7c': '8월 USD 공식 공시 반영: USD 22~52 · 7월 대비 -26.7~-27.8% · <a href="' + jejuUrl + '" target="_blank" rel="noopener" style="color:#075985;font-weight:700;">공식 공지 ↗</a>',
     'news.official.yp': '8월 유류할증료 공시 예정',
     'news.official.desc': '* 2026년 8월 공시 확인 항공사: KE·OZ·LJ·BX·TW·ZE·RS·7C. 에어프레미아는 8월 유류할증료 공시 예정으로 분리하고, 최종 금액은 발권일 기준 각 항공사 공식 공지를 확인하세요.',
-    'news.compareTitle': '📊 전월 대비: 7월 → 8월 변화 (공식 공시 기준)',
+    'news.compareTitle': '📊 전월 대비: 8월 → 9월 변화와 10월 예측 전환',
     'news.compare.li8': '제주항공(7C): 7월 USD 30~72 → 8월 USD 22~52 (-26.7~-27.8%)',
     'news.compare.li9': '에어프레미아(YP): 8월 유류할증료 공시 예정',
     'news.compare.li10': '공통: 8월 공식 공시 확인 항공사는 KE·OZ·LJ·BX·TW·ZE·RS·7C이며, 에어프레미아는 공시 예정으로 분리',
@@ -15247,7 +15247,12 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
     'hormuz-kpler-lseg-20260813': true,
     'hormuz-traffic-six-20260812': true
   };
-  FIXED_NEWS = rows.concat((FIXED_NEWS || []).filter(function(card){ return card && !replaceIds[card.id]; }));
+  FIXED_NEWS = rows.concat((FIXED_NEWS || []).filter(function(card){
+    if(!card || replaceIds[card.id]) return false;
+    var combined = [card.id, card.slug, card.title, card.summary, card.aiBrief].join(' ');
+    if(/kpler|lseg|Kpler|LSEG|0척|zero Sunday|zero Hormuz|0艘|0隻|zéro passage/.test(combined)) return false;
+    return true;
+  }));
   var packs = {
     ko: {
       'news.metaTitle':'2026년 8월 유류할증료·9월 전망 뉴스 | 8월 18일 환율·호르무즈·에어부산',
@@ -15445,16 +15450,371 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
   });
 })();
 
+/* 2026.08.19 07:00 KST terminal news override. */
+(function(){
+  var updatedIso = '2026-08-19T07:00:00+09:00';
+  function local(title, aiBrief, summary, impact, tags){
+    return { title:title, aiBrief:aiBrief, summary:summary, impact:impact, tags:tags };
+  }
+  function make(card){
+    var ko = card.i18n.ko;
+    return Object.assign({
+      date:'2026-08-19',
+      updatedAt:updatedIso,
+      aiSummary:true,
+      relevanceScore:card.score || 0.98,
+      currentMonthNotice:'2026-08',
+      forecastTargetMonth:'2026-09',
+      title:ko.title,
+      aiBrief:ko.aiBrief,
+      summary:ko.summary,
+      impact:ko.impact,
+      tags:ko.tags
+    }, card);
+  }
+  var rows = [
+    make({
+      id:'september-international-level-21-confirmed-20260819', slug:'september-international-level-21-confirmed-aug-19-2026', category:'official', priority:1, badge:'공시', score:1, sourceName:'KE/OZ/LJ/BX official notices', sourceUrl:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2609-infuel',
+      i18n:{
+        ko:local('9월 국제선, 8월보다 최소 12,800원·USD 9부터 더 비싸집니다', '대한항공·아시아나·진에어·에어부산 9월 공시 기준으로 최저 구간부터 인상이 확인됐습니다.', '2026년 9월 한국 출발 국제선 유류할증료는 8월보다 크게 올랐습니다. 원화 공시 항공사는 대한항공 최소 +12,800원, 아시아나 최소 +15,400원이고, 달러 공시 항공사는 진에어 최소 +USD 9, 에어부산 최소 +USD 24부터 더 냅니다.', '일반 이용자에게는 단계 표시보다 항공사별 최소 추가 부담액을 먼저 보여줍니다.', ['9월 국제선','최소 인상액','공식 공시','10월 예측']),
+        en:local('September international costs at least +KRW 12,800 or +USD 9 vs August', 'KE, OZ, LJ and BX notices show the minimum passenger increase by airline.', 'September 2026 Korea-departure international fuel surcharge increased meaningfully from August. Korean Air starts at +KRW 12,800, Asiana at +KRW 15,400, Jin Air at +USD 9 and Air Busan at +USD 24 versus August.', 'For travelers, show the minimum extra cost first instead of the stage label.', ['September international','minimum increase','official notice','October outlook']),
+        ja:local('9月国際線、8月比で最低12,800ウォン・9米ドルから上昇', 'KE・OZ・LJ・BXの公示から航空会社別の最低追加負担を表示します。', '2026年9月の韓国発国際線燃油サーチャージは8月より大きく上がりました。大韓航空は最低+12,800ウォン、アシアナは最低+15,400ウォン、ジンエアーは最低+9米ドル、エアプサンは最低+24米ドルです。', '利用者には段階表示より最低追加負担額を先に表示します。', ['9月国際線','最低上昇額','公式公示','10月予測']),
+        zh:local('9月国际线较8月至少上涨12,800韩元或9美元', 'KE、OZ、LJ和BX公告显示各航司最低额外负担。', '2026年9月韩国出发国际线燃油附加费较8月明显上升。大韩航空最低+12,800韩元，韩亚最低+15,400韩元，真航空最低+9美元，釜山航空最低+24美元。', '对普通旅客优先显示最低额外费用，而不是档位标签。', ['9月国际线','最低涨幅','官方公告','10月预测']),
+        fr:local('Septembre international: au moins +12 800 KRW ou +9 USD vs août', 'Les avis KE, OZ, LJ et BX indiquent la hausse minimale par compagnie.', 'La surtaxe carburant internationale au départ de Corée pour septembre 2026 augmente nettement par rapport à août. Korean Air commence à +12 800 KRW, Asiana à +15 400 KRW, Jin Air à +9 USD et Air Busan à +24 USD.', 'Pour les voyageurs, afficher d’abord le coût supplémentaire minimal.', ['septembre international','hausse minimale','avis officiel','prévision octobre']),
+        de:local('September international: mindestens +12.800 KRW oder +9 USD gegenüber August', 'KE, OZ, LJ und BX zeigen den Mindestanstieg je Airline.', 'Der internationale Treibstoffzuschlag ab Korea steigt im September 2026 deutlich gegenüber August. Korean Air beginnt bei +12.800 KRW, Asiana bei +15.400 KRW, Jin Air bei +9 USD und Air Busan bei +24 USD.', 'Für Reisende zuerst die Mindestmehrkosten statt der Stufe anzeigen.', ['September international','Mindestanstieg','offiziell','Oktober-Ausblick'])
+      }
+    }),
+    make({
+      id:'september-calculation-jetfuel-average-14929-20260819', slug:'september-calculation-jetfuel-average-14929-aug-19-2026', category:'market', priority:2, badge:'항공유', score:0.99, sourceName:'September surcharge calculation average', sourceUrl:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2609-infuel',
+      i18n:{
+        ko:local('9월 산정 항공유 평균 149.29달러/bbl', '9월 유류할증료 산정 평균은 2026.07.16~08.15 기준 149.29달러/bbl입니다.', '9월 국제선 유류할증료 산정 항공유 평균은 2026년 7월 16일부터 8월 15일까지 평균 149.29달러/bbl, 355.46 cents/gal입니다. 이 값은 당일 Singapore MOPS가 아니라 산정기간 평균입니다.', '당일 MOPS로 오해하지 않도록 산정 평균으로만 표시합니다.', ['산정 항공유','149.29','MOPS 구분','9월']),
+        en:local('September calculation jet fuel average: USD 149.29/bbl', 'The September surcharge calculation average for 2026.07.16-08.15 is USD 149.29/bbl.', 'The jet fuel average used for September international surcharge calculation is USD 149.29/bbl, or 355.46 cents/gal, for 2026.07.16-08.15. This is the calculation-period average, not same-day Singapore MOPS.', 'It is displayed only as the calculation average, not as current MOPS.', ['calculation jet fuel','149.29','MOPS distinction','September']),
+        ja:local('9月算定航空燃料平均149.29ドル/bbl', '9月サーチャージ算定平均は2026.07.16～08.15基準で149.29ドル/bblです。', '9月国際線サーチャージ算定に使う航空燃料平均は149.29ドル/bbl、355.46 cents/galです。これは当日Singapore MOPSではなく算定期間平均です。', '当日MOPSと誤解されないよう算定平均としてのみ表示します。', ['算定航空燃料','149.29','MOPS区分','9月']),
+        zh:local('9月计算航油均价149.29美元/bbl', '9月附加费计算均价为2026.07.16~08.15的149.29美元/bbl。', '9月国际线燃油附加费计算航油均价为149.29美元/bbl、355.46 cents/gal。这是计算期间均价，不是当日Singapore MOPS。', '仅作为计算均价显示，避免误认为当日MOPS。', ['计算航油','149.29','MOPS区分','9月']),
+        fr:local('Moyenne jet fuel de calcul septembre: 149,29 USD/bbl', 'La moyenne de calcul du 2026.07.16 au 08.15 est 149,29 USD/bbl.', 'La moyenne jet fuel utilisée pour la surtaxe internationale de septembre est 149,29 USD/bbl, soit 355,46 cents/gal. C’est une moyenne de période de calcul, pas le MOPS Singapour du jour.', 'Affichage uniquement comme moyenne de calcul, pas comme MOPS actuel.', ['jet fuel de calcul','149,29','distinction MOPS','septembre']),
+        de:local('September-Berechnungs-Jetfuel im Schnitt 149,29 USD/bbl', 'Der Berechnungsdurchschnitt für 2026.07.16-08.15 liegt bei 149,29 USD/bbl.', 'Der Jetfuel-Durchschnitt für den internationalen September-Zuschlag beträgt 149,29 USD/bbl bzw. 355,46 cents/gal. Das ist der Periodendurchschnitt, nicht der tägliche Singapore-MOPS.', 'Anzeige nur als Berechnungsdurchschnitt, nicht als aktueller MOPS.', ['Berechnungs-Jetfuel','149,29','MOPS-Trennung','September'])
+      }
+    }),
+    make({
+      id:'asiana-september-surcharge-52000-290100-20260819', slug:'asiana-september-surcharge-52000-290100-aug-19-2026', category:'official', priority:3, badge:'아시아나', score:0.98, sourceName:'Asiana official notice', sourceUrl:'https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202608180002530123',
+      i18n:{
+        ko:local('아시아나 9월 국제선, 8월보다 최소 15,400원 인상', '아시아나 9월 공시는 52,000~290,100원으로, 최저 구간부터 8월보다 15,400원 오릅니다.', '아시아나항공 9월 한국 출발 국제선 유류할증료는 52,000원~290,100원입니다. 8월 36,600원~202,900원과 비교하면 최저 구간은 +15,400원, 최고 구간은 +87,200원입니다.', '아시아나 이용자는 9월 발권 시 편도 기준 최소 15,400원 추가 부담부터 봐야 합니다.', ['아시아나','최소 +15,400원','9월 국제선','290,100원']),
+        en:local('Asiana posts September international at KRW 52,000-290,100', 'Asiana announced September Korea-departure international surcharges from KRW 52,000 to 290,100.', 'Asiana’s September Korea-departure international surcharge ranges from KRW 52,000 to KRW 290,100 by distance band, up across all bands from August KRW 36,600-202,900.', 'This supports the confirmed September increase for major Korean carriers.', ['Asiana','September international','KRW 52,000','KRW 290,100']),
+        ja:local('アシアナ9月国際線、52,000～290,100ウォンを公示', 'アシアナ航空は9月韓国発国際線サーチャージを52,000～290,100ウォンで公示しました。', 'アシアナ航空の9月韓国発国際線サーチャージは距離区分別に52,000～290,100ウォンです。8月36,600～202,900ウォンから全区分で上昇しました。', '主要航空会社の9月引き上げ確定根拠です。', ['アシアナ','9月国際線','52,000ウォン','290,100ウォン']),
+        zh:local('韩亚9月国际线公告52,000~290,100韩元', '韩亚航空公告9月韩国出发国际线燃油附加费为52,000~290,100韩元。', '韩亚航空9月韩国出发国际线燃油附加费按距离区间为52,000至290,100韩元，较8月36,600~202,900韩元全区间上调。', '这是主要韩国航司9月上调确认依据。', ['韩亚','9月国际线','52,000韩元','290,100韩元']),
+        fr:local('Asiana publie 52 000-290 100 KRW pour septembre international', 'Asiana annonce les surtaxes internationales de septembre entre 52 000 et 290 100 KRW.', 'La surtaxe internationale au départ de Corée d’Asiana en septembre va de 52 000 à 290 100 KRW selon la distance, en hausse sur tous les segments face à août.', 'C’est une base confirmée de hausse pour les grands transporteurs coréens.', ['Asiana','septembre international','52 000 KRW','290 100 KRW']),
+        de:local('Asiana veröffentlicht September international mit 52.000-290.100 KRW', 'Asiana gab September-Zuschläge ab Korea von 52.000 bis 290.100 KRW bekannt.', 'Asianas internationaler September-Zuschlag ab Korea reicht je Entfernungsband von 52.000 bis 290.100 KRW, in allen Bändern höher als im August.', 'Das stützt die bestätigte September-Erhöhung großer koreanischer Airlines.', ['Asiana','September international','52.000 KRW','290.100 KRW'])
+      }
+    }),
+    make({
+      id:'hormuz-projectile-restricted-traffic-20260819', slug:'hormuz-projectile-restricted-traffic-aug-19-2026', category:'geopolitics', priority:4, badge:'호르무즈', score:0.97, sourceName:'UKMTO / market reports', sourceUrl:'https://www.ukmto.org/',
+      i18n:{
+        ko:local('호르무즈, 제한 통항과 선박 피격 리스크 지속', '호르무즈는 극도로 제한된 통항과 일부 고위험 선적 재개가 공존합니다.', 'UKMTO에는 호르무즈를 빠져나오던 선박이 정체불명 발사체에 맞아 기관실 손상과 선원 1명 피해가 발생했다는 보고가 접수됐습니다. 공격 주체를 단정하지 않으며, 현재 상태는 전면 정상화가 아니라 극도로 제한된 통항과 일부 고위험 원유 선적 재개가 공존하는 국면입니다.', '해상운송·보험·정제제품 물류 프리미엄을 유지하는 상승 위험입니다.', ['호르무즈','UKMTO','선박 피격','통항 제한']),
+        en:local('Hormuz risk persists with restricted traffic and vessel incident', 'Hormuz remains extremely restricted while some high-risk loadings have resumed.', 'UKMTO received a report that a vessel exiting Hormuz was hit by an unknown projectile, causing engine-room damage and one crew casualty or injury. The attacker is not identified. Current conditions are extremely restricted traffic plus some resumed high-risk crude loadings, not full normalization.', 'This supports shipping, insurance and refined-product logistics risk premiums.', ['Hormuz','UKMTO','vessel incident','restricted traffic']),
+        ja:local('ホルムズ、制限通航と船舶被害リスクが継続', 'ホルムズは極度に制限された通航と一部高リスク積み出し再開が併存しています。', 'UKMTOには、ホルムズを出る船舶が正体不明の発射体に当たり機関室損傷と乗員1名の被害が出たとの報告が入りました。攻撃主体は断定しません。現状は全面正常化ではありません。', '海運・保険・精製品物流プレミアムを維持する上昇リスクです。', ['ホルムズ','UKMTO','船舶被害','通航制限']),
+        zh:local('霍尔木兹限制通行与船舶遇袭风险持续', '霍尔木兹仍处于极度限制通行，同时部分高风险装运恢复。', 'UKMTO收到报告称，一艘驶离霍尔木兹的船舶被不明发射物击中，造成机舱损坏和1名船员伤亡/受伤。攻击方未确认。当前不是全面正常化，而是极度限制通行与部分高风险原油装运恢复并存。', '这维持航运、保险和成品油物流风险溢价。', ['霍尔木兹','UKMTO','船舶事件','限制通行']),
+        fr:local('Risque Ormuz: trafic restreint et incident navire', 'Ormuz reste très restreint tandis que certains chargements à haut risque reprennent.', 'UKMTO a reçu un rapport indiquant qu’un navire sortant d’Ormuz a été touché par un projectile non identifié, avec dommage en salle des machines et une victime ou blessé parmi l’équipage. L’assaillant n’est pas identifié. Ce n’est pas une normalisation complète.', 'Cela maintient des primes de transport, assurance et logistique produits.', ['Ormuz','UKMTO','incident navire','trafic restreint']),
+        de:local('Hormus-Risiko hält an: eingeschränkter Verkehr und Schiffsvorfall', 'Hormus bleibt extrem eingeschränkt, während einige Hochrisiko-Ladungen wieder laufen.', 'UKMTO erhielt einen Bericht, dass ein aus Hormus auslaufendes Schiff von einem unbekannten Projektil getroffen wurde, mit Maschinenraumschaden und einem Besatzungsopfer oder Verletzten. Der Angreifer ist nicht identifiziert. Es ist keine vollständige Normalisierung.', 'Das hält Prämien für Schifffahrt, Versicherung und Produktlogistik hoch.', ['Hormus','UKMTO','Schiffsvorfall','eingeschränkter Verkehr'])
+      }
+    })
+  ];
+  window.AERO_NEWS_CARDS_20260819 = rows;
+  var replaceIds = {
+    'september-international-level-21-confirmed-20260819': true,
+    'september-calculation-jetfuel-average-14929-20260819': true,
+    'asiana-september-surcharge-52000-290100-20260819': true,
+    'hormuz-projectile-restricted-traffic-20260819': true,
+    'airbusan-september-international-surcharge-20260818': true,
+    'hormuz-kpler-zero-sunday-20260818': true,
+    'hormuz-kpler-lseg-20260814': true,
+    'hormuz-kpler-lseg-20260813': true
+  };
+  FIXED_NEWS = rows.concat((FIXED_NEWS || []).filter(function(card){ return card && !replaceIds[card.id]; }));
+  var packs = {
+    ko: {
+      'news.metaTitle':'2026년 9월 국제선 유류할증료 최소 인상액 뉴스 | 8월 19일 환율·항공유·호르무즈',
+      'news.metaDesc':'2026년 8월 19일 07:00 KST 기준 9월 한국 출발 국제선 유류할증료가 8월보다 항공사별 최소 얼마 오르는지 정리합니다.',
+      'news.pageTitle':'2026년 9월 국제선, 8월보다 최소 12,800원·USD 9부터 인상',
+      'news.pageSub':'2026.08.19 07:00 KST 기준 · 대한항공 최소 +12,800원 · 아시아나 최소 +15,400원 · 진에어 최소 +USD 9 · 에어부산 최소 +USD 24 · KE·OZ·LJ·BX 9월 공시 확인 · USD/KRW 약 1,412원 · 9월 산정 항공유 평균 149.29달러/bbl',
+      'news.summary.updated':'2026.08.19 07:00 KST 기준 · 9월 국제선 항공사별 최소 인상액 확인',
+      'news.summary.title':'2026년 9월 국제선 유류할증료, 8월 대비 추가 부담 요약',
+      'news.summary.li1':'대한항공은 9월 국제선 최저 구간이 48,000원으로, 8월보다 최소 12,800원 더 냅니다.',
+      'news.summary.li2':'아시아나는 9월 국제선 최저 구간이 52,000원으로, 8월보다 최소 15,400원 더 냅니다.',
+      'news.summary.li3':'진에어는 9월 국제선 최저 구간이 USD 29로, 8월보다 최소 USD 9 더 냅니다.',
+      'news.summary.li4':'에어부산은 9월 국제선 일부 구간이 USD 71부터로, 8월보다 최소 USD 24 더 냅니다.',
+      'news.summary.li5':'9월 산정 항공유 평균은 149.29달러/bbl, 355.46 cents/gal입니다.',
+      'news.summary.li6':'149.29달러/bbl은 당일 MOPS가 아니라 2026.07.16~08.15 산정 평균입니다.',
+      'news.summary.li7':'USD/KRW 약 1,412원은 하락 요인이지만, 산정 항공유 평균 상승분을 상쇄하지 못했습니다.',
+      'news.summary.li8':'Brent 91.02달러와 WTI 84.94달러로 원유 측 상승 압력이 유지됩니다.',
+      'news.summary.li9':'호르무즈는 극도로 제한된 통항과 일부 고위험 선적 재개가 공존합니다.',
+      'news.summary.li10':'현재 판단: 환율 ↓ / 산정 항공유 ↑↑ / 국제유가 ↑ / 호르무즈 ↑↑↑ → 9월 국제선은 항공사별 최소 추가 부담액부터 확인해야 합니다.',
+      'news.dataRef':'2026.08.19 07:00 KST 기준 · 9월 국제선 항공사별 최소 인상액 확인',
+      'news.marketTitle':'8월 19일 시장 브리핑: 9월 국제선 최소 인상액 확인',
+      'news.brent':'국제유가: 8월 18일 미국 시장 종가 기준 Brent 91.02달러/bbl, WTI 84.94달러/bbl입니다.',
+      'news.mops':'항공유: 9월 산정 평균은 2026.07.16~08.15 기준 149.29달러/bbl입니다. 이 값은 당일 Singapore MOPS가 아닙니다.',
+      'news.fx':'환율: USD/KRW 약 1,412원, 100엔 약 885원입니다.',
+      'news.geo':'호르무즈: 극도로 제한된 통항과 일부 고위험 원유 선적 재개가 공존합니다. 완전 봉쇄나 전면 정상화로 단정하지 않습니다.',
+      'news.marketSummary':'9월 국제선은 주요 항공사 공시 확인 상태이며, 일반 이용자에게는 단계보다 항공사별 최소 인상액이 핵심입니다.',
+      'news.fxDominance':'핵심 수치: 2026.08.19 07:00 KST · 대한항공 최소 +12,800원 · 아시아나 최소 +15,400원 · 진에어 최소 +USD 9 · 에어부산 최소 +USD 24 · USD/KRW 약 1,412원 · 산정 항공유 평균 149.29달러/bbl',
+      'news.decisionTitle':'결론: 9월 국제선은 8월보다 최소 12,800원·USD 9부터 더 냅니다',
+      'news.decisionLine1':'→ 2026년 9월 한국 출발 국제선은 대한항공 최소 +12,800원, 아시아나 최소 +15,400원, 진에어 최소 +USD 9, 에어부산 최소 +USD 24 인상입니다.',
+      'news.decisionLine2':'→ 환율 하락보다 산정 항공유 평균 급등과 호르무즈 위험이 더 크게 작용했습니다.',
+      'news.forecastCta.title':'항공사별 9월 최소 인상액 보기',
+      'news.forecastCta.desc':'단계보다 실제 추가 부담액을 먼저 확인하고, 이후 10월 예측 변수로 넘어갑니다.',
+      'news.forecastCta.btn':'최소 인상액 보기 →'
+    }
+  };
+  packs.en = Object.assign({}, packs.ko, {
+    'news.metaTitle':'September 2026 International Surcharge Minimum Increase News | Aug 19 FX, Jet Fuel and Hormuz',
+    'news.pageTitle':'September international surcharges start at +KRW 12,800 or +USD 9 vs August',
+    'news.pageSub':'As of 2026.08.19 07:00 KST · Korean Air minimum +KRW 12,800 · Asiana minimum +KRW 15,400 · Jin Air minimum +USD 9 · Air Busan minimum +USD 24 · KE/OZ/LJ/BX notices confirmed · USD/KRW around 1,412',
+    'news.summary.updated':'As of 2026.08.19 07:00 KST · Airline-by-airline minimum increases confirmed',
+    'news.summary.title':'September 2026 International Surcharge: extra cost vs August',
+    'news.summary.li1':'Korean Air starts at KRW 48,000 in September, at least KRW 12,800 higher than August.',
+    'news.summary.li2':'Asiana starts at KRW 52,000 in September, at least KRW 15,400 higher than August.',
+    'news.summary.li3':'Jin Air starts at USD 29 in September, at least USD 9 higher than August.',
+    'news.summary.li4':'Air Busan starts from USD 71 on some September bands, at least USD 24 higher than August.',
+    'news.summary.li5':'The September calculation jet fuel average is USD 149.29/bbl and 355.46 cents/gal.',
+    'news.summary.li6':'USD 149.29/bbl is the 2026.07.16-08.15 calculation average, not same-day MOPS.',
+    'news.summary.li7':'USD/KRW around 1,412 is a relief factor, but it did not offset the higher calculation jet fuel average.',
+    'news.summary.li8':'Brent USD 91.02 and WTI USD 84.94 keep oil-side pressure elevated.',
+    'news.summary.li9':'Hormuz remains extremely restricted while some high-risk loadings have resumed.',
+    'news.summary.li10':'Current view: FX down / calculation jet fuel up strongly / oil up / Hormuz up strongly -> show the minimum extra passenger cost first.',
+    'news.dataRef':'As of 2026.08.19 07:00 KST · September minimum airline increases confirmed',
+    'news.marketTitle':'Aug 19 market brief: September minimum increases confirmed',
+    'news.brent':'Oil: at the Aug 18 U.S. close, Brent was USD 91.02/bbl and WTI was USD 84.94/bbl.',
+    'news.mops':'Jet fuel: the September calculation average is USD 149.29/bbl for 2026.07.16-08.15. This is not same-day Singapore MOPS.',
+    'news.fx':'FX: USD/KRW around 1,412 and 100 JPY around KRW 885.',
+    'news.geo':'Hormuz: extremely restricted traffic and some resumed high-risk crude loadings coexist. Do not describe it as a complete blockade or full normalization.',
+    'news.marketSummary':'Major September international airline notices are verified; for travelers, the minimum extra cost matters more than the stage label.',
+    'news.fxDominance':'Key figures: 2026.08.19 07:00 KST · Korean Air +KRW 12,800 min · Asiana +KRW 15,400 min · Jin Air +USD 9 min · Air Busan +USD 24 min · USD/KRW around 1,412 · calculation jet fuel average USD 149.29/bbl',
+    'news.decisionTitle':'Conclusion: September costs at least +KRW 12,800 or +USD 9 more than August',
+    'news.decisionLine1':'→ September 2026 Korea-departure international surcharges rise by at least +KRW 12,800 for Korean Air, +KRW 15,400 for Asiana, +USD 9 for Jin Air and +USD 24 for Air Busan.',
+    'news.decisionLine2':'→ The jet fuel calculation average surge and Hormuz risk outweighed FX relief.',
+    'news.forecastCta.title':'See minimum September increases by airline',
+    'news.forecastCta.desc':'Check the actual extra cost first, then move to October forecast variables.',
+    'news.forecastCta.btn':'View minimum increases →'
+  });
+  packs.ja = Object.assign({}, packs.en, {'news.pageTitle':'2026年9月国際線、8月比で最低12,800ウォン・9米ドルから上昇','news.pageSub':'2026.08.19 07:00 KST時点 · 大韓航空最低+12,800ウォン · アシアナ最低+15,400ウォン · ジンエアー最低+9米ドル · エアプサン最低+24米ドル · KE/OZ/LJ/BX公示確認','news.summary.updated':'2026.08.19 07:00 KST時点 · 航空会社別の最低上昇額確認','news.summary.title':'2026年9月国際線サーチャージ、8月比追加負担'});
+  packs.zh = Object.assign({}, packs.en, {'news.pageTitle':'2026年9月国际线较8月至少上涨12,800韩元或9美元','news.pageSub':'截至2026.08.19 07:00 KST · 大韩航空最低+12,800韩元 · 韩亚最低+15,400韩元 · 真航空最低+9美元 · 釜山航空最低+24美元 · KE/OZ/LJ/BX公告确认','news.summary.updated':'截至2026.08.19 07:00 KST · 各航司最低涨幅确认','news.summary.title':'2026年9月国际线燃油附加费：较8月的额外负担'});
+  packs.fr = Object.assign({}, packs.en, {'news.pageTitle':'Septembre international: au moins +12 800 KRW ou +9 USD vs août','news.pageSub':'Au 2026.08.19 07:00 KST · Korean Air minimum +12 800 KRW · Asiana minimum +15 400 KRW · Jin Air minimum +9 USD · Air Busan minimum +24 USD · avis KE/OZ/LJ/BX confirmés','news.summary.updated':'Au 2026.08.19 07:00 KST · hausses minimales par compagnie confirmées','news.summary.title':'Surtaxe internationale septembre 2026: coût supplémentaire vs août'});
+  packs.de = Object.assign({}, packs.en, {'news.pageTitle':'September international: mindestens +12.800 KRW oder +9 USD gegenüber August','news.pageSub':'Stand 2026.08.19 07:00 KST · Korean Air min. +12.800 KRW · Asiana min. +15.400 KRW · Jin Air min. +9 USD · Air Busan min. +24 USD · KE/OZ/LJ/BX bestätigt','news.summary.updated':'Stand 2026.08.19 07:00 KST · Mindestanstiege je Airline bestätigt','news.summary.title':'September-2026 international: Mehrkosten gegenüber August'});
+  window.PAGE_I18N_OVERRIDE = window.PAGE_I18N_OVERRIDE || {};
+  Object.keys(packs).forEach(function(lang){
+    window.PAGE_I18N_OVERRIDE[lang] = Object.assign({}, window.PAGE_I18N_OVERRIDE[lang] || {}, packs[lang]);
+    if(window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], window.PAGE_I18N_OVERRIDE[lang]);
+  });
+  document.title = packs.ko['news.metaTitle'];
+  var desc = document.querySelector('meta[name="description"]'); if(desc) desc.setAttribute('content', packs.ko['news.metaDesc']);
+  var ogTitle = document.querySelector('meta[property="og:title"]'); if(ogTitle) ogTitle.setAttribute('content', packs.ko['news.metaTitle']);
+  var ogDesc = document.querySelector('meta[property="og:description"]'); if(ogDesc) ogDesc.setAttribute('content', packs.ko['news.metaDesc']);
+  var mod = document.querySelector('meta[property="article:modified_time"]'); if(mod) mod.setAttribute('content', updatedIso);
+})();
+
+/* 2026.08.19 news non-English completion guard. */
+(function(){
+  var packs = {
+    ja: {
+      'news.summary.li1':'大韓航空は9月国際線の最低区間が48,000ウォンで、8月より最低12,800ウォン高くなります。',
+      'news.summary.li2':'アシアナは9月国際線の最低区間が52,000ウォンで、8月より最低15,400ウォン高くなります。',
+      'news.summary.li3':'ジンエアーは9月国際線の最低区間が29米ドルで、8月より最低9米ドル高くなります。',
+      'news.summary.li4':'エアプサンは9月国際線の一部区間が71米ドルからで、8月より最低24米ドル高くなります。',
+      'news.summary.li5':'9月算定航空燃料平均は149.29ドル/bbl、355.46 cents/galです。',
+      'news.summary.li6':'149.29ドル/bblは当日MOPSではなく2026.07.16～08.15の算定平均です。',
+      'news.summary.li7':'USD/KRW約1,412は下落要因ですが、算定航空燃料平均の上昇を相殺できませんでした。',
+      'news.summary.li8':'Brent 91.02ドル、WTI 84.94ドルで原油側の上昇圧力が続きます。',
+      'news.summary.li9':'ホルムズは極度の制限通航と一部高リスク積み出し再開が併存します。',
+      'news.summary.li10':'現在の判断: 為替↓ / 算定航空燃料↑↑ / 原油↑ / ホルムズ↑↑↑ → 航空会社別の最低追加負担を先に確認します。',
+      'news.marketTitle':'8月19日市場ブリーフ: 9月国際線の最低上昇額確認',
+      'news.brent':'原油: 8月18日米市場終値でBrent 91.02ドル/bbl、WTI 84.94ドル/bblです。',
+      'news.mops':'航空燃料: 9月算定平均は2026.07.16～08.15基準で149.29ドル/bblです。当日Singapore MOPSではありません。',
+      'news.fx':'為替: USD/KRW約1,412、100円約885ウォンです。',
+      'news.geo':'ホルムズ: 極度に制限された通航と一部高リスク原油積み出し再開が併存します。',
+      'news.marketSummary':'9月国際線は主要航空会社の公示確認状態で、利用者には段階より最低追加負担額が重要です。',
+      'news.decisionTitle':'結論: 9月国際線は8月より最低12,800ウォン・9米ドルから上昇',
+      'news.decisionLine1':'→ 2026年9月の韓国発国際線は、大韓航空最低+12,800ウォン、アシアナ最低+15,400ウォン、ジンエアー最低+9米ドル、エアプサン最低+24米ドルです。',
+      'news.decisionLine2':'→ 為替下落より算定航空燃料平均の急上昇とホルムズリスクが大きく作用しました。'
+    },
+    zh: {
+      'news.summary.li1':'大韩航空9月国际线最低区间为48,000韩元，较8月至少增加12,800韩元。',
+      'news.summary.li2':'韩亚9月国际线最低区间为52,000韩元，较8月至少增加15,400韩元。',
+      'news.summary.li3':'真航空9月国际线最低区间为29美元，较8月至少增加9美元。',
+      'news.summary.li4':'釜山航空9月国际线部分区间从71美元起，较8月至少增加24美元。',
+      'news.summary.li5':'9月计算航油均价为149.29美元/bbl、355.46 cents/gal。',
+      'news.summary.li6':'149.29美元/bbl不是当日MOPS，而是2026.07.16~08.15计算均价。',
+      'news.summary.li7':'USD/KRW约1,412是下行因素，但未能抵消计算航油均价上涨。',
+      'news.summary.li8':'Brent 91.02美元、WTI 84.94美元显示油价压力维持。',
+      'news.summary.li9':'霍尔木兹处于极度限制通行与部分高风险装运恢复并存状态。',
+      'news.summary.li10':'当前判断：汇率↓ / 计算航油↑↑ / 原油↑ / 霍尔木兹↑↑↑ → 优先显示各航司最低额外负担。',
+      'news.marketTitle':'8月19日市场简报：9月国际线最低涨幅确认',
+      'news.brent':'原油：8月18日美国收盘Brent 91.02美元/bbl，WTI 84.94美元/bbl。',
+      'news.mops':'航油：9月计算均价为2026.07.16~08.15的149.29美元/bbl。这不是当日Singapore MOPS。',
+      'news.fx':'汇率：USD/KRW约1,412，100日元约885韩元。',
+      'news.geo':'霍尔木兹：极度限制通行与部分高风险原油装运恢复并存。',
+      'news.marketSummary':'9月国际线主要航司公告已验证；对旅客而言，最低额外费用比档位标签更重要。',
+      'news.decisionTitle':'结论：9月国际线较8月至少上涨12,800韩元或9美元',
+      'news.decisionLine1':'→ 2026年9月韩国出发国际线：大韩航空最低+12,800韩元，韩亚最低+15,400韩元，真航空最低+9美元，釜山航空最低+24美元。',
+      'news.decisionLine2':'→ 计算航油均价飙升和霍尔木兹风险强于汇率缓和。'
+    },
+    fr: {
+      'news.summary.li1':'Korean Air commence en septembre à 48 000 KRW, soit au moins +12 800 KRW par rapport à août.',
+      'news.summary.li2':'Asiana commence en septembre à 52 000 KRW, soit au moins +15 400 KRW par rapport à août.',
+      'news.summary.li3':'Jin Air commence en septembre à 29 USD, soit au moins +9 USD par rapport à août.',
+      'news.summary.li4':'Air Busan commence sur certains segments de septembre à 71 USD, soit au moins +24 USD par rapport à août.',
+      'news.summary.li5':'La moyenne jet fuel de calcul septembre est 149,29 USD/bbl et 355,46 cents/gal.',
+      'news.summary.li6':'149,29 USD/bbl est la moyenne 2026.07.16-08.15, pas le MOPS du jour.',
+      'news.summary.li7':'USD/KRW env. 1 412 aide à la baisse, mais ne compense pas la hausse de la moyenne jet fuel de calcul.',
+      'news.summary.li8':'Brent 91,02 USD et WTI 84,94 USD maintiennent la pression pétrole.',
+      'news.summary.li9':'Ormuz combine trafic très restreint et reprise de certains chargements à haut risque.',
+      'news.summary.li10':'Vue actuelle: FX ↓ / jet fuel de calcul ↑↑ / pétrole ↑ / Ormuz ↑↑↑ → afficher d’abord le coût supplémentaire minimal par compagnie.',
+      'news.marketTitle':'Brief marché du 19 août: hausses minimales de septembre confirmées',
+      'news.brent':'Pétrole: à la clôture américaine du 18 août, Brent vaut 91,02 USD/bbl et WTI 84,94 USD/bbl.',
+      'news.mops':'Jet fuel: la moyenne de calcul septembre est 149,29 USD/bbl pour 2026.07.16-08.15. Ce n’est pas le MOPS Singapour du jour.',
+      'news.fx':'Change: USD/KRW autour de 1 412; 100 JPY autour de 885 KRW.',
+      'news.geo':'Ormuz: trafic très restreint et reprise de certains chargements à haut risque coexistent.',
+      'news.marketSummary':'Les avis des grandes compagnies sont vérifiés; pour les voyageurs, la hausse minimale par compagnie est plus utile que le libellé de niveau.',
+      'news.decisionTitle':'Conclusion: septembre coûte au moins +12 800 KRW ou +9 USD vs août',
+      'news.decisionLine1':'→ Septembre international au départ de Corée augmente au minimum de +12 800 KRW chez Korean Air, +15 400 KRW chez Asiana, +9 USD chez Jin Air et +24 USD chez Air Busan.',
+      'news.decisionLine2':'→ La hausse du jet fuel de calcul et Ormuz ont dominé la détente FX.'
+    },
+    de: {
+      'news.summary.li1':'Korean Air beginnt im September bei 48.000 KRW, mindestens 12.800 KRW mehr als im August.',
+      'news.summary.li2':'Asiana beginnt im September bei 52.000 KRW, mindestens 15.400 KRW mehr als im August.',
+      'news.summary.li3':'Jin Air beginnt im September bei 29 USD, mindestens 9 USD mehr als im August.',
+      'news.summary.li4':'Air Busan beginnt auf einigen September-Strecken bei 71 USD, mindestens 24 USD mehr als im August.',
+      'news.summary.li5':'Der September-Berechnungs-Jetfuel liegt bei 149,29 USD/bbl und 355,46 cents/gal.',
+      'news.summary.li6':'149,29 USD/bbl ist der Durchschnitt 2026.07.16-08.15, nicht der Tages-MOPS.',
+      'news.summary.li7':'USD/KRW um 1.412 entlastet, gleicht den höheren Berechnungs-Jetfuel aber nicht aus.',
+      'news.summary.li8':'Brent 91,02 USD und WTI 84,94 USD halten Öldruck hoch.',
+      'news.summary.li9':'Hormus bleibt extrem eingeschränkt, mit einigen wieder aufgenommenen Hochrisiko-Ladungen.',
+      'news.summary.li10':'Aktuelle Sicht: FX ↓ / Berechnungs-Jetfuel ↑↑ / Öl ↑ / Hormus ↑↑↑ → zuerst die Mindestmehrkosten je Airline zeigen.',
+      'news.marketTitle':'Marktbrief 19. August: Mindestanstiege im September bestätigt',
+      'news.brent':'Öl: Zum US-Schluss am 18. August lag Brent bei 91,02 USD/bbl und WTI bei 84,94 USD/bbl.',
+      'news.mops':'Jetfuel: Der September-Berechnungsdurchschnitt beträgt 149,29 USD/bbl für 2026.07.16-08.15. Das ist nicht der tägliche Singapore-MOPS.',
+      'news.fx':'FX: USD/KRW um 1.412; 100 JPY um 885 KRW.',
+      'news.geo':'Hormus: Extrem eingeschränkter Verkehr und einige Hochrisiko-Ladungen bestehen nebeneinander.',
+      'news.marketSummary':'Die September-Mitteilungen großer Airlines sind verifiziert; für Reisende sind die Mindestmehrkosten wichtiger als die Stufenbezeichnung.',
+      'news.decisionTitle':'Fazit: September kostet mindestens +12.800 KRW oder +9 USD mehr als August',
+      'news.decisionLine1':'→ September international ab Korea steigt mindestens um +12.800 KRW bei Korean Air, +15.400 KRW bei Asiana, +9 USD bei Jin Air und +24 USD bei Air Busan.',
+      'news.decisionLine2':'→ Berechnungs-Jetfuel und Hormusrisiko überwogen die FX-Entlastung.'
+    }
+  };
+  window.PAGE_I18N_OVERRIDE = window.PAGE_I18N_OVERRIDE || {};
+  Object.keys(packs).forEach(function(lang){
+    window.PAGE_I18N_OVERRIDE[lang] = Object.assign({}, window.PAGE_I18N_OVERRIDE[lang] || {}, packs[lang]);
+    if(window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], window.PAGE_I18N_OVERRIDE[lang]);
+  });
+})();
+
+function removeStaleNewsCards(){
+  document.querySelectorAll('.news-card').forEach(function(card){
+    var txt = card.innerText || '';
+    var id = card.id || '';
+    if(/kpler|lseg|Kpler|LSEG|0척|zero Sunday|zero Hormuz|0艘|0隻|zéro passage/.test(id + ' ' + txt)){
+      card.remove();
+    }
+  });
+}
+
+function applySeptemberOfficialNewsUpdate(){
+  var lang = getCurrentLang();
+  var packs = {
+    ko: {
+      title:'📢 주요 항공사 2026년 9월 국제선 유류할증료 공식 공시',
+      notice:'✅ 2026.08.19 07:00 KST 기준 반영 · 대한항공 최소 +12,800원 · 아시아나 최소 +15,400원 · 진에어 최소 +USD 9 · 에어부산 최소 +USD 24 · 적용 기간 2026.09.01~09.30 · 발권일 기준',
+      items:[
+        ['대한항공','9월 48,000원~354,000원 · 8월 35,200원~259,200원 대비 최소 +12,800원, 최대 +94,800원','https://www.koreanair.com/contents/footer/customer-support/notice/2026/2609-infuel'],
+        ['아시아나항공','9월 52,000원~290,100원 · 8월 36,600원~202,900원 대비 최소 +15,400원, 최대 +87,200원','https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202608180002530123'],
+        ['진에어','9월 USD 29~89 · 8월 USD 20~59 대비 최소 +USD 9, 최대 +USD 30','https://www.jinair.com/company/announce/announceView?anceSeq=28662&searchWord=&searchKey=titlCtn&page=1'],
+        ['에어부산','9월 일부 구간 USD 71, 일부 장거리 USD 82 · 8월 대비 최소 +USD 24, 최대 +USD 28','https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4399']
+      ],
+      desc:'* 2026년 9월 공시 확인 항공사: KE·OZ·LJ·BX. 일반 이용자는 단계보다 8월 대비 최소 추가 부담액을 먼저 확인하세요.',
+      compareTitle:'📊 전월 대비: 8월 → 9월 변화와 10월 예측 전환',
+      compare:[
+        '공통: 9월 공시 확인으로 8월 대비 항공사별 최소 추가 부담액이 확정됐습니다.',
+        '대한항공: 8월 35,200원~259,200원 → 9월 48,000원~354,000원 · 최소 +12,800원',
+        '아시아나항공: 8월 36,600원~202,900원 → 9월 52,000원~290,100원 · 최소 +15,400원',
+        '진에어: 8월 USD 20~59 → 9월 USD 29~89 · 최소 +USD 9',
+        '에어부산: 8월 USD 47/54 기준 → 9월 USD 71/82 · 최소 +USD 24',
+        '9월 공시는 현재 확인 상태입니다. 뉴스/전망의 다음 초점은 10월 유류할증료 예측입니다.',
+        '10월 예측 핵심 변수: 8월 16일 이후 산정기간 항공유 평균, USD/KRW, Brent/WTI, 호르무즈 정상화 여부'
+      ]
+    },
+    en: {
+      title:'Major Airline September 2026 International Fuel Surcharge Notices',
+      notice:'As of 2026.08.19 07:00 KST · Korean Air minimum +KRW 12,800 · Asiana minimum +KRW 15,400 · Jin Air minimum +USD 9 · Air Busan minimum +USD 24 · applies to 2026.09.01-09.30 by ticketing date',
+      items:[
+        ['Korean Air','September KRW 48,000-354,000 · at least +KRW 12,800 and up to +KRW 94,800 vs August','https://www.koreanair.com/contents/footer/customer-support/notice/2026/2609-infuel'],
+        ['Asiana Airlines','September KRW 52,000-290,100 · at least +KRW 15,400 and up to +KRW 87,200 vs August','https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202608180002530123'],
+        ['Jin Air','September USD 29-89 · at least +USD 9 and up to +USD 30 vs August','https://www.jinair.com/company/announce/announceView?anceSeq=28662&searchWord=&searchKey=titlCtn&page=1'],
+        ['Air Busan','September some bands USD 71 and longer routes USD 82 · at least +USD 24 and up to +USD 28 vs August','https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4399']
+      ],
+      desc:'* Confirmed September notice airlines: KE/OZ/LJ/BX. For travelers, check the minimum extra cost versus August first.',
+      compareTitle:'Month-over-month: August to September changes and October outlook shift',
+      compare:['Common: September notices confirm each airline minimum extra cost versus August.','Korean Air: August KRW 35,200-259,200 -> September KRW 48,000-354,000 · minimum +KRW 12,800','Asiana: August KRW 36,600-202,900 -> September KRW 52,000-290,100 · minimum +KRW 15,400','Jin Air: August USD 20-59 -> September USD 29-89 · minimum +USD 9','Air Busan: August USD 47/54 basis -> September USD 71/82 · minimum +USD 24','September notices are now out. The next news/outlook focus moves to October surcharge forecasting.','October watchlist: post-Aug 16 calculation-period jet fuel average, USD/KRW, Brent/WTI and Hormuz normalization.']
+    }
+  };
+  packs.ja = packs.en; packs.zh = packs.en; packs.fr = packs.en; packs.de = packs.en;
+  var p = packs[lang] || packs.en;
+  var officialTitle = document.querySelector('.official-title');
+  if(officialTitle) officialTitle.textContent = p.title;
+  var officialNotice = document.querySelector('[data-i18n="news.officialNotice"]');
+  if(officialNotice) officialNotice.textContent = p.notice;
+  var ids = ['officialKe','officialOz','officialLj','officialBx'];
+  ids.forEach(function(id, idx){
+    var el = document.getElementById(id);
+    if(!el || !p.items[idx]) return;
+    var item = p.items[idx];
+    el.innerHTML = '<strong>'+item[0]+'</strong> — '+item[1]+' · <a href="'+item[2]+'" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">'+(lang==='ko'?'공식 공지':'Official notice')+' ↗</a>';
+    el.style.display = '';
+  });
+  ['officialTw','officialZe','officialRs','official7c','officialYp'].forEach(function(id){
+    var el = document.getElementById(id);
+    if(el) el.style.display = 'none';
+  });
+  var desc = document.getElementById('officialDesc');
+  if(desc) desc.textContent = p.desc;
+  var compareTitle = document.querySelector('.compare-title');
+  if(compareTitle) compareTitle.textContent = p.compareTitle;
+  var compareList = document.getElementById('compareList');
+  if(compareList) compareList.innerHTML = p.compare.map(function(line){ return '<li>'+line+'</li>'; }).join('');
+}
+
+function ensureSeptemberAirlineCards(){
+  if(!Array.isArray(FIXED_NEWS)) return;
+  var existing = {};
+  FIXED_NEWS.forEach(function(card){ if(card && card.id) existing[card.id] = true; });
+  function add(id, title, brief, summary, sourceName, sourceUrl, tags, i18n){
+    if(existing[id]) return;
+    FIXED_NEWS.unshift({
+      id:id, slug:id, category:'official', priority:2, date:'2026-08-19', updatedAt:'2026-08-19T07:00:00+09:00',
+      badge:'공시', aiSummary:true, relevanceScore:.98, currentMonthNotice:'2026-09', forecastTargetMonth:'2026-10',
+      title:title, aiBrief:brief, summary:summary, impact:'9월 공시 확정 내용을 반영하고, 이후 관찰 초점은 10월 예측으로 이동합니다.',
+      sourceName:sourceName, sourceUrl:sourceUrl, tags:tags, i18n:i18n || {}
+    });
+  }
+  add('korean-air-september-surcharge-20260819','대한항공 9월 국제선, 8월보다 최소 12,800원 인상','대한항공 9월 유류할증료는 48,000원~354,000원으로, 8월보다 편도 기준 최소 12,800원 더 냅니다.','대한항공 2026년 9월 한국 출발 국제선 유류할증료는 48,000원~354,000원입니다. 8월 35,200원~259,200원과 비교하면 최저 구간은 +12,800원, 최고 구간은 +94,800원입니다.','Korean Air official notice','https://www.koreanair.com/contents/footer/customer-support/notice/2026/2609-infuel',['대한항공','최소 +12,800원','9월 국제선','354,000원'],{en:{title:'Korean Air September international: at least +KRW 12,800 vs August',aiBrief:'Korean Air September surcharge is KRW 48,000-354,000, at least KRW 12,800 more one-way than August.',summary:'Korean Air September 2026 Korea-departure international fuel surcharge is KRW 48,000-354,000. Compared with August KRW 35,200-259,200, the lowest band rises by KRW 12,800 and the highest band by KRW 94,800.',impact:'September official notices are reflected; the next watch moves to October forecasting.',tags:['Korean Air','minimum +KRW 12,800','September international','KRW 354,000']}});
+  add('jinair-september-surcharge-20260819','진에어 9월 국제선, 8월보다 최소 USD 9 인상','진에어 9월 유류할증료는 USD 29~89로, 8월보다 편도 기준 최소 USD 9 더 냅니다.','진에어 2026년 9월 한국 출발 국제선 유류할증료는 거리 구간별 USD 29, 41, 67, 74, 89입니다. 8월 USD 20, 27, 44, 49, 59와 비교하면 최저 구간은 +USD 9, 최고 구간은 +USD 30입니다.','Jin Air official notice','https://www.jinair.com/company/announce/announceView?anceSeq=28662&searchWord=&searchKey=titlCtn&page=1',['진에어','최소 +USD 9','9월 국제선','USD 89'],{en:{title:'Jin Air September international: at least +USD 9 vs August',aiBrief:'Jin Air September surcharge is USD 29-89, at least USD 9 more one-way than August.',summary:'Jin Air September 2026 Korea-departure international fuel surcharge bands are USD 29, 41, 67, 74 and 89. Compared with August USD 20, 27, 44, 49 and 59, the lowest band rises by USD 9 and the highest band by USD 30.',impact:'September official notices are reflected; the next watch moves to October forecasting.',tags:['Jin Air','minimum +USD 9','September international','USD 89']}});
+  add('airbusan-september-surcharge-20260819','에어부산 9월 국제선, 8월보다 최소 USD 24 인상','에어부산 9월 공시는 일부 구간 USD 71, 일부 장거리 USD 82로, 8월보다 최소 USD 24 더 냅니다.','에어부산 2026년 9월 한국 출발 국제선 유류할증료는 공식 공시 기준 일부 구간 USD 71, 방콕·발리 등 일부 장거리 구간 USD 82 수준입니다. 8월 USD 47·54 기준과 비교하면 최소 +USD 24, 최대 +USD 28입니다.','Air Busan official notice','https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4399',['에어부산','최소 +USD 24','9월 국제선','USD 82'],{en:{title:'Air Busan September international: at least +USD 24 vs August',aiBrief:'Air Busan September notice shows some bands at USD 71 and longer routes at USD 82, at least USD 24 more than August.',summary:'Air Busan September 2026 Korea-departure international surcharge is shown at USD 71 on some bands and USD 82 on some longer routes. Compared with the August USD 47/54 basis, the increase starts at USD 24 and reaches USD 28.',impact:'September official notices are reflected; the next watch moves to October forecasting.',tags:['Air Busan','minimum +USD 24','September international','USD 82']}});
+}
+
 window.initNav({
   onLangChange:function(){
     /* _shared.js의 initNav 래퍼가 applyLanguage()를 먼저 실행 */
     /* 여기서 JS 렌더 함수를 추가로 재실행해 innerHTML 부분까지 커버 */
     reRenderAll();
+    ensureSeptemberAirlineCards();
+    applySeptemberOfficialNewsUpdate();
+    setTimeout(removeStaleNewsCards, 0);
   },
-  onCurrChange:function(){ reRenderAll(); }
+  onCurrChange:function(){ reRenderAll(); ensureSeptemberAirlineCards(); applySeptemberOfficialNewsUpdate(); setTimeout(removeStaleNewsCards, 0); }
 });
 
 loadNews();
+setTimeout(function(){ ensureSeptemberAirlineCards(); renderNews(); applySeptemberOfficialNewsUpdate(); removeStaleNewsCards(); }, 350);
+setTimeout(removeStaleNewsCards, 300);
+setTimeout(removeStaleNewsCards, 1000);
+setTimeout(applySeptemberOfficialNewsUpdate, 1000);
 </script>
 </body></html>
 

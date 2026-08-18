@@ -659,6 +659,144 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
   }
 })();
 
+/* 2026.08.19 07:00 KST final terminal shared override. */
+(function(){
+  var latest = {
+    asOf: '2026.08.19 07:00 KST',
+    lastUpdated: '2026-08-19T07:00:00+09:00',
+    currentMonthNotice: '2026-08',
+    forecastTargetMonth: '2026-09',
+    augustInternationalStage: 14,
+    augustSurchargeStage: 14,
+    septemberInternationalStage: 21,
+    septemberSurchargeStage: 21,
+    septemberInternationalStageChange: 7,
+    septemberInternationalOfficialConfirmed: true,
+    septemberSurchargeConfirmed: true,
+    septemberOfficialConfirmed: true,
+    septemberInternationalConfirmedAirlines: ['KE','OZ','LJ','BX'],
+    septemberSurchargeStatus: 'level_21_confirmed',
+    septemberCalculationFrom: '2026-07-16',
+    septemberCalculationTo: '2026-08-15',
+    septemberCalculationJetFuelUsdPerBbl: 149.29,
+    septemberCalculationJetFuelCentsPerGallon: 355.46,
+    septemberCalculationJetFuelIsSameDayMops: false,
+    currentSingaporeMopsExactValue: null,
+    currentSingaporeMopsStatus: 'not_publicly_verified_2026_08_19',
+    usdKrw: 1412.01,
+    usdKrwLabel: '약 1,412원',
+    usdKrwRange: '1,408.73~1,417.31',
+    jpyKrw: 8.85,
+    jpyKrw100: 885,
+    brentUsdPerBbl: 91.02,
+    brentUsdBbl: 91.02,
+    wtiUsdPerBbl: 84.94,
+    wtiUsdBbl: 84.94,
+    oilReferenceType: '2026.08.18 U.S. market close',
+    oilReferenceTime: '2026.08.18 U.S. market close',
+    hormuzTrafficRisk: 'extreme_restricted_some_high_risk_shipments_resumed',
+    hormuzRiskLabel: '극도로 높음',
+    hormuzFullReopeningConfirmed: false,
+    hormuzCompleteBlockadeConfirmed: false,
+    hormuzSomeHighRiskCrudeLoadingsResumed: true,
+    hormuzProjectileIncidentReportedByUkmto: true,
+    hormuzProjectileAttackerIdentified: false,
+    outlookDirection: 'fx_downside_jetfuel_strong_upside_oil_upside_hormuz_extreme_upside_september_international_level_21_confirmed'
+  };
+  window.AERO_MARKET_NUMBERS_20260819 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-19': window.AERO_MARKET_NUMBERS_20260819});
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260819;
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1412.01, JPY: 1 / 8.85 });
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), {
+      marketDataRef: '2026.08.19 07:00 KST 기준',
+      marketOil: '국제유가: 8월 18일 미국 시장 종가 기준 Brent 91.02달러/bbl, WTI 84.94달러/bbl입니다.',
+      marketMops: '항공유: 9월 유류할증료 산정 평균은 2026.07.16~08.15 기준 149.29달러/bbl, 355.46 cents/gal입니다. 이 값은 당일 Singapore MOPS가 아닙니다.',
+      marketFx: '원달러 환율: 2026.08.19 07:00 KST 기준 약 1,412원입니다.',
+      marketGeo: '호르무즈: 극도로 제한된 통항과 일부 고위험 원유 선적 재개가 공존합니다. 완전 봉쇄나 전면 정상화로 단정하지 않습니다.',
+      marketSummary: '8월 국제선은 14단계 적용 중이며 9월 국제선은 21단계로 확정됐습니다. KE·OZ·LJ·BX 9월 국제선 공식 공시가 확인됐습니다.'
+    });
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), {
+      marketDataRef: 'As of 2026.08.19 07:00 KST',
+      marketOil: 'Oil: at the Aug 18 U.S. close, Brent was USD 91.02/bbl and WTI was USD 84.94/bbl.',
+      marketMops: 'Jet fuel: the September surcharge calculation average is USD 149.29/bbl and 355.46 cents/gal for 2026.07.16-08.15. This is not same-day Singapore MOPS.',
+      marketFx: 'FX: USD/KRW was around 1,412 as of 2026.08.19 07:00 KST.',
+      marketGeo: 'Hormuz: extremely restricted traffic and some resumed high-risk crude loadings coexist. Do not describe it as a complete blockade or full normalization.',
+      marketSummary: 'August international remains Level 14, while September international is confirmed at Level 21. KE, OZ, LJ and BX September official notices are confirmed.'
+    });
+  }
+})();
+
+/* 2026.08.19 07:00 KST terminal shared override. */
+(function(){
+  var latest = {
+    asOf: '2026.08.19 07:00 KST',
+    lastUpdated: '2026-08-19T07:00:00+09:00',
+    currentMonthNotice: '2026-08',
+    forecastTargetMonth: '2026-09',
+    augustInternationalStage: 14,
+    augustSurchargeStage: 14,
+    septemberInternationalStage: 21,
+    septemberSurchargeStage: 21,
+    septemberInternationalStageChange: 7,
+    septemberInternationalOfficialConfirmed: true,
+    septemberSurchargeConfirmed: true,
+    septemberOfficialConfirmed: true,
+    septemberInternationalConfirmedAirlines: ['KE','OZ','LJ','BX'],
+    septemberSurchargeStatus: 'level_21_confirmed',
+    septemberCalculationFrom: '2026-07-16',
+    septemberCalculationTo: '2026-08-15',
+    septemberCalculationJetFuelUsdPerBbl: 149.29,
+    septemberCalculationJetFuelCentsPerGallon: 355.46,
+    septemberCalculationJetFuelIsSameDayMops: false,
+    augustCalculationJetFuelUsdPerBbl: 119.06,
+    augustCalculationJetFuelCentsPerGallon: 283.48,
+    currentSingaporeMopsExactValue: null,
+    currentSingaporeMopsStatus: 'not_publicly_verified_2026_08_19',
+    usdKrw: 1412.01,
+    usdKrwLabel: '약 1,412원',
+    usdKrwRange: '1,408.73~1,417.31',
+    jpyKrw: 8.85,
+    jpyKrw100: 885,
+    brentUsdPerBbl: 91.02,
+    brentUsdBbl: 91.02,
+    wtiUsdPerBbl: 84.94,
+    wtiUsdBbl: 84.94,
+    oilReferenceType: '2026.08.18 U.S. market close',
+    oilReferenceTime: '2026.08.18 U.S. market close',
+    hormuzTrafficRisk: 'extreme_restricted_some_high_risk_shipments_resumed',
+    hormuzRiskLabel: '극도로 높음',
+    hormuzFullReopeningConfirmed: false,
+    hormuzCompleteBlockadeConfirmed: false,
+    hormuzSomeHighRiskCrudeLoadingsResumed: true,
+    hormuzProjectileIncidentReportedByUkmto: true,
+    hormuzProjectileAttackerIdentified: false,
+    outlookDirection: 'fx_downside_jetfuel_strong_upside_oil_upside_hormuz_extreme_upside_september_international_level_21_confirmed'
+  };
+  window.AERO_MARKET_NUMBERS_20260819 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-19': window.AERO_MARKET_NUMBERS_20260819});
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260819;
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1412.01, JPY: 1 / 8.85 });
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), {
+      marketDataRef: '2026.08.19 07:00 KST 기준',
+      marketOil: '국제유가: 8월 18일 미국 시장 종가 기준 Brent 91.02달러/bbl, WTI 84.94달러/bbl입니다.',
+      marketMops: '항공유: 9월 유류할증료 산정 평균은 2026.07.16~08.15 기준 149.29달러/bbl, 355.46 cents/gal입니다. 이 값은 당일 Singapore MOPS가 아닙니다.',
+      marketFx: '원달러 환율: 2026.08.19 07:00 KST 기준 약 1,412원입니다.',
+      marketGeo: '호르무즈: 극도로 제한된 통항과 일부 고위험 원유 선적 재개가 공존합니다. 완전 봉쇄나 전면 정상화로 단정하지 않습니다.',
+      marketSummary: '8월 국제선은 14단계 적용 중이며 9월 국제선은 21단계로 확정됐습니다. KE·OZ·LJ·BX 9월 국제선 공식 공시가 확인됐습니다.'
+    });
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), {
+      marketDataRef: 'As of 2026.08.19 07:00 KST',
+      marketOil: 'Oil: at the Aug 18 U.S. close, Brent was USD 91.02/bbl and WTI was USD 84.94/bbl.',
+      marketMops: 'Jet fuel: the September surcharge calculation average is USD 149.29/bbl and 355.46 cents/gal for 2026.07.16-08.15. This is not same-day Singapore MOPS.',
+      marketFx: 'FX: USD/KRW was around 1,412 as of 2026.08.19 07:00 KST.',
+      marketGeo: 'Hormuz: extremely restricted traffic and some resumed high-risk crude loadings coexist. Do not describe it as a complete blockade or full normalization.',
+      marketSummary: 'August international remains Level 14, while September international is confirmed at Level 21. KE, OZ, LJ and BX September official notices are confirmed.'
+    });
+  }
+})();
+
 /* 2026.08.14 09:25 KST final terminal shared guard. */
 (function(){
   var latest = {
@@ -13577,6 +13715,74 @@ window.initNav = function(opts){
       marketFx: '원달러 환율: 2026.08.18 07:00 KST 전후 공개 참고값 기준 약 1,415원입니다.',
       marketGeo: '호르무즈: Kpler가 추적한 해당 원자재 운송선 기준 토요일 5척, 일요일 0척으로 집계됐습니다. 모든 선박이 정확히 0척이라고 일반화하지 않습니다.',
       marketSummary: '8월 국제선 유류할증료는 14단계 적용 중입니다. 9월 국제선은 에어부산 공식 공시 확인으로 공시 시작 단계이며, 다른 주요 항공사는 공식 공시 확인 전까지 대기 상태입니다.'
+    });
+  }
+})();
+
+/* 2026.08.19 07:00 KST actual final shared override. */
+(function(){
+  var latest = {
+    asOf: '2026.08.19 07:00 KST',
+    lastUpdated: '2026-08-19T07:00:00+09:00',
+    currentMonthNotice: '2026-08',
+    forecastTargetMonth: '2026-09',
+    augustInternationalStage: 14,
+    augustSurchargeStage: 14,
+    septemberInternationalStage: 21,
+    septemberSurchargeStage: 21,
+    septemberInternationalStageChange: 7,
+    septemberInternationalOfficialConfirmed: true,
+    septemberSurchargeConfirmed: true,
+    septemberOfficialConfirmed: true,
+    septemberInternationalConfirmedAirlines: ['KE','OZ','LJ','BX'],
+    septemberSurchargeStatus: 'level_21_confirmed',
+    septemberCalculationFrom: '2026-07-16',
+    septemberCalculationTo: '2026-08-15',
+    septemberCalculationJetFuelUsdPerBbl: 149.29,
+    septemberCalculationJetFuelCentsPerGallon: 355.46,
+    septemberCalculationJetFuelIsSameDayMops: false,
+    currentSingaporeMopsExactValue: null,
+    currentSingaporeMopsStatus: 'not_publicly_verified_2026_08_19',
+    usdKrw: 1412.01,
+    usdKrwLabel: '약 1,412원',
+    usdKrwRange: '1,408.73~1,417.31',
+    jpyKrw: 8.85,
+    jpyKrw100: 885,
+    brentUsdPerBbl: 91.02,
+    brentUsdBbl: 91.02,
+    wtiUsdPerBbl: 84.94,
+    wtiUsdBbl: 84.94,
+    oilReferenceType: '2026.08.18 U.S. market close',
+    oilReferenceTime: '2026.08.18 U.S. market close',
+    hormuzTrafficRisk: 'extreme_restricted_some_high_risk_shipments_resumed',
+    hormuzRiskLabel: '극도로 높음',
+    hormuzFullReopeningConfirmed: false,
+    hormuzCompleteBlockadeConfirmed: false,
+    hormuzSomeHighRiskCrudeLoadingsResumed: true,
+    hormuzProjectileIncidentReportedByUkmto: true,
+    hormuzProjectileAttackerIdentified: false,
+    outlookDirection: 'fx_downside_jetfuel_strong_upside_oil_upside_hormuz_extreme_upside_september_international_level_21_confirmed'
+  };
+  window.AERO_MARKET_NUMBERS_20260819 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-19': window.AERO_MARKET_NUMBERS_20260819});
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260819;
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1412.01, JPY: 1 / 8.85 });
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), {
+      marketDataRef: '2026.08.19 07:00 KST 기준',
+      marketOil: '국제유가: 8월 18일 미국 시장 종가 기준 Brent 91.02달러/bbl, WTI 84.94달러/bbl입니다.',
+      marketMops: '항공유: 9월 유류할증료 산정 평균은 2026.07.16~08.15 기준 149.29달러/bbl, 355.46 cents/gal입니다. 이 값은 당일 Singapore MOPS가 아닙니다.',
+      marketFx: '원달러 환율: 2026.08.19 07:00 KST 기준 약 1,412원입니다.',
+      marketGeo: '호르무즈: 극도로 제한된 통항과 일부 고위험 원유 선적 재개가 공존합니다. 완전 봉쇄나 전면 정상화로 단정하지 않습니다.',
+      marketSummary: '8월 국제선은 14단계 적용 중이며 9월 국제선은 21단계로 확정됐습니다. KE·OZ·LJ·BX 9월 국제선 공식 공시가 확인됐습니다.'
+    });
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), {
+      marketDataRef: 'As of 2026.08.19 07:00 KST',
+      marketOil: 'Oil: at the Aug 18 U.S. close, Brent was USD 91.02/bbl and WTI was USD 84.94/bbl.',
+      marketMops: 'Jet fuel: the September surcharge calculation average is USD 149.29/bbl and 355.46 cents/gal for 2026.07.16-08.15. This is not same-day Singapore MOPS.',
+      marketFx: 'FX: USD/KRW was around 1,412 as of 2026.08.19 07:00 KST.',
+      marketGeo: 'Hormuz: extremely restricted traffic and some resumed high-risk crude loadings coexist. Do not describe it as a complete blockade or full normalization.',
+      marketSummary: 'August international remains Level 14, while September international is confirmed at Level 21. KE, OZ, LJ and BX September official notices are confirmed.'
     });
   }
 })();
