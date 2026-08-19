@@ -2712,6 +2712,46 @@ renderLanding = function(){
   if(ogDesc) ogDesc.setAttribute('content', ko['index.metaDesc']);
 })();
 
+(function applySeptemberNoticeIndexTransition(){
+  var ko = {
+    'index.title':'유류할증료 조회 · 2026년 9월 공식 공시 반영',
+    'index.metaDesc':'한국 출발 국제선 항공사별 유류할증료를 노선·거리구간별로 비교합니다. 2026년 9월 대한항공·아시아나항공·진에어·에어부산·제주항공·이스타항공·에어서울 공식 공시 금액과 8월 대비 최소 인상액을 반영하고, 10월 공시 준비 상태를 분리합니다.',
+    'index.heroSub':'2026년 9월 공식 공시 반영 항공사와 10월 전망 준비 상태를 노선별로 확인하세요',
+    'index.signal1':'✈️ 9월 공시 확인: 대한항공·아시아나·진에어·에어부산·제주항공·이스타·에어서울',
+    'index.signal2':'💸 8월 대비 최소 인상: KE +12,800원 · OZ +15,400원 · LJ +USD 9 · BX +USD 24 · 7C/ZE +USD 11 · RS +18,000원',
+    'index.signal3':'📌 2026년 10월 유류할증료는 아직 공시 전 · 산정기간 추적 중',
+    'index.meta.suffix':'한국 출발 국제선 · 2026년 9월 공식 공시 반영 · 10월 준비',
+    'aff.myrealtrip.desc':'유류할증료는 발권 시점 기준으로 적용됩니다. 9월 공식 공시와 10월 전망 준비 상태를 함께 보고 예약 타이밍을 판단하세요.',
+    'index.quick.compare.name':'2026년 8월 → 9월 유류할증료 비교',
+    'index.quick.compare.desc':'9월 공식 공시 반영 · 항공사별 최소 추가 부담액 확인',
+    'index.quick.jul.name':'2026년 10월 유류할증료 전망 준비',
+    'index.quick.jul.desc':'10월 공시 전 · 2026.08.16~09.15 산정기간 변수 추적'
+  };
+  var en = {
+    'index.title':'Fuel Surcharge Lookup · September 2026 Official Notices Reflected',
+    'index.metaDesc':'Compare Korea-departure international fuel surcharges by airline, route and mileage band. September 2026 official notices are reflected for Korean Air, Asiana, Jin Air, Air Busan, Jeju Air, Eastar Jet and Air Seoul, with October filing preparation separated.',
+    'index.heroSub':'Check September 2026 confirmed notices and October preparation by route',
+    'index.signal1':'September notices confirmed: KE, OZ, LJ, BX, 7C, ZE, RS',
+    'index.signal2':'Minimum increase vs August: KE +KRW 12,800 · OZ +KRW 15,400 · LJ +USD 9 · BX +USD 24 · 7C/ZE +USD 11 · RS +KRW 18,000',
+    'index.signal3':'October 2026 surcharge is still pre-filing · calculation window tracking',
+    'index.meta.suffix':'Korea-departure international · September 2026 notices reflected · October preparation',
+    'aff.myrealtrip.desc':'Fuel surcharges apply by ticketing date. Check September official notices and October preparation before booking.',
+    'index.quick.compare.name':'August to September 2026 surcharge comparison',
+    'index.quick.compare.desc':'September notices reflected · minimum extra cost by airline',
+    'index.quick.jul.name':'October 2026 surcharge outlook preparation',
+    'index.quick.jul.desc':'Pre-filing · tracking the 2026.08.16-09.15 calculation window'
+  };
+  var packs = {ko:ko,en:en,ja:en,zh:en,fr:en,de:en};
+  Object.keys(packs).forEach(function(lang){
+    window.I18N[lang] = window.I18N[lang] || {};
+    Object.assign(window.I18N[lang], packs[lang]);
+  });
+  document.title = ko['index.title'];
+  var desc = document.querySelector('meta[name="description"]'); if(desc) desc.setAttribute('content', ko['index.metaDesc']);
+  var ogTitle = document.querySelector('meta[property="og:title"]'); if(ogTitle) ogTitle.setAttribute('content', ko['index.title']);
+  var ogDesc = document.querySelector('meta[property="og:description"]'); if(ogDesc) ogDesc.setAttribute('content', ko['index.metaDesc']);
+})();
+
 window.initNav({
   onLangChange:function(){
     renderLanding();

@@ -1,83 +1,73 @@
 {
   "meta": {
-    "generatedAt": "2026-08-19T07:00:00+09:00",
-    "modelVersion": "manual-market-override-20260819",
-    "basePeriod": "2026.08",
-    "forecastTargetPeriod": "2026.09",
+    "generatedAt": "2026-08-19T23:40:32.740Z",
+    "modelVersion": "manual-market-override-20260820",
+    "basePeriod": "2026.09",
+    "forecastTargetPeriod": "2026.10",
     "sourceAirlines": 8,
     "inputs": {
       "brentUSD": 82.5,
       "wtiUSD": 78.3,
       "jetFuelSpread": 14.2,
-      "usdKrw": 1412.01,
-      "usdJpy": 159.55,
+      "usdKrw": 1412,
+      "usdJpy": 159.59,
       "geopoliticalRiskScore": 0.35,
       "baselineBrentUSD": 75,
       "marketDataSource": "live",
-      "marketFetchedAt": "2026-08-19T07:00:00+09:00"
+      "marketFetchedAt": "2026-08-19T23:39:29.901Z"
     },
-    "disclaimer": "2026년 8월 국제선 유류할증료는 14단계 적용 중인 확정 공시 데이터입니다. 2026년 9월 한국 출발 국제선 유류할증료는 21단계로 확정됐습니다. 149.29달러/bbl은 당일 Singapore MOPS가 아니라 2026.07.16~08.15 산정 항공유 평균입니다.",
-    "lastUpdated": "2026-08-19T07:00:00+09:00",
-    "currentMonthNotice": "2026-08",
-    "forecastTargetMonth": "2026-09"
+    "disclaimer": "2026년 9월 한국 출발 국제선 유류할증료 공시는 KE·OZ·LJ·BX·7C·ZE·RS 기준 확인됐습니다. 2026년 10월 유류할증료는 아직 공시 전이며 2026.08.16~09.15 산정 기간을 추적합니다.",
+    "lastUpdated": "2026-08-20T07:00:00+09:00",
+    "currentMonthNotice": "2026-09",
+    "forecastTargetMonth": "2026-10"
   },
   "forecasts": [
     {
       "airlineCode": "ALL",
       "airlineName": "한국발 국제선",
-      "basePeriod": "2026.08",
-      "targetPeriod": "2026.09",
+      "basePeriod": "2026.09",
+      "targetPeriod": "2026.10",
       "distanceBand": "all",
       "distanceLabel": "전 구간",
-      "currentStage": 14,
+      "currentStage": 21,
       "predictedMin": null,
       "predictedMax": null,
-      "officialStage": 21,
+      "officialStage": null,
       "officialAmounts": null,
-      "direction": "level_21_confirmed_large_increase",
-      "confidence": "high",
+      "direction": "october_pre_filing_core_tracking",
+      "confidence": "low",
       "volatility": "very_high",
       "drivers": [
         {
-          "factor": "2026년 8월 한국 출발 국제선 유류할증료 14단계 적용 중",
-          "impact": "confirmed_baseline",
-          "weight": 0.12
-        },
-        {
-          "factor": "USD/KRW 약 1,412원",
-          "impact": "downside_fx_relief",
+          "factor": "2026년 9월 한국 출발 국제선 유류할증료 21단계 공시 확인",
+          "impact": "confirmed_baseline_for_october",
           "weight": 0.14
         },
         {
-          "factor": "9월 산정 항공유 평균 149.29달러/bbl, 355.46 cents/gal. 당일 Singapore MOPS가 아니라 2026.07.16~08.15 평균",
-          "impact": "strong_upside_calculation_average",
+          "factor": "USD/KRW 약 1,388원",
+          "impact": "strong_downside_fx_relief",
+          "weight": 0.18
+        },
+        {
+          "factor": "10월 산정 기간은 2026.08.16~09.15입니다. 9월 산정 평균 149.29달러/bbl은 기준선 참고값이며, 10월 산정 평균은 아직 집계 중입니다.",
+          "impact": "calculation_window_tracking",
           "weight": 0.28
         },
         {
-          "factor": "Brent 91.02달러, WTI 84.94달러",
-          "impact": "upside_oil",
-          "weight": 0.16
-        },
-        {
-          "factor": "호르무즈 극도로 제한된 통항과 일부 고위험 원유 선적 재개",
-          "impact": "extreme_upside_geopolitical",
-          "weight": 0.22
-        },
-        {
-          "factor": "9월 국제선 21단계 확정. KE·OZ·LJ·BX 9월 공시 확인",
-          "impact": "confirmed_official_stage",
+          "factor": "10월 국제선 공시는 아직 발표 전입니다. 공시 전 단계·금액·확률은 확정하지 않습니다.",
+          "impact": "pre_filing_caution",
           "weight": 0.2
         }
       ],
-      "disclaimer": "149.29달러/bbl은 당일 MOPS가 아니라 2026.07.16~08.15 9월 산정 평균입니다. 호르무즈는 완전 봉쇄나 전면 정상화로 단정하지 않습니다.",
-      "summary": "환율은 하락 요인이지만 9월 산정 항공유 평균 급등과 호르무즈 위험이 이를 압도했습니다. 2026년 9월 한국 출발 국제선 유류할증료는 21단계로 확정됐습니다."
+      "disclaimer": "10월 유류할증료는 아직 공시 전입니다. 149.29달러/bbl은 9월 산정 평균 기준선이며, 10월 산정 평균으로 사용하지 않습니다.",
+      "summary": "9월 공시는 KE·OZ·LJ·BX·7C·ZE·RS 기준 반영됐습니다. 10월 유류할증료는 10월 산정기간 항공유 평균과 USD/KRW 평균을 중심으로 추적하며, 공시 전 단계라 방향을 확정하지 않습니다."
     }
   ],
   "latest": {
-    "asOf": "2026.08.19 07:00 KST",
-    "currentMonthNotice": "2026-08",
-    "forecastTargetMonth": "2026-09",
-    "summary": "8월 국제선은 14단계 적용 중이고 9월 국제선은 21단계로 확정됐습니다. USD/KRW 약 1,412원은 하락 요인이지만 산정 항공유 평균 149.29달러/bbl과 호르무즈 위험이 인상 확정의 핵심입니다.",
-    "status": "level_21_confirmed"
+    "asOf": "2026.08.20 07:00 KST",
+    "currentMonthNotice": "2026-09",
+    "forecastTargetMonth": "2026-10",
+    "summary": "9월 국제선 공시는 KE·OZ·LJ·BX·7C·ZE·RS 기준 반영됐고, 10월 국제선은 공시 전 준비 단계입니다. 현재 forecast는 10월 산정기간 항공유 평균과 USD/KRW 평균을 중심으로 추적합니다.",
+    "status": "october_pre_filing_preparation"
   }
 }

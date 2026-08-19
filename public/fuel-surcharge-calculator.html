@@ -2644,14 +2644,145 @@ var PAGE_I18N = {
   fixSurfaceCopy();
 })();
 
+(function applySeptember2026CalculatorBaseline(){
+  var august = {
+    KE:[35200,49600,64000,80000,99200,100800,160000,225600,259200],
+    OZ:[36600,53400,70200,86900,103700,120500,137300,170800,202900],
+    LJ:[20,27,44,49,59],
+    BX:[22,40,47,54],
+    '7C':[22,28,34,40,45,52],
+    ZE:[22,28,34,40,45,52],
+    RS:[39700,47300,58000,67100,71700]
+  };
+  var september = {
+    KE:[48000,66000,91500,109500,153000,156000,216000,325500,354000],
+    OZ:[52000,76500,99600,124100,147200,171800,194900,242500,290100],
+    LJ:[29,41,67,74,89],
+    BX:[34,60,71,82],
+    '7C':[33,42,50,60,68,79],
+    ZE:[33,42,50,60,68,79],
+    RS:[57700,66400,86600,95300,99600]
+  };
+  Object.keys(august).forEach(function(code){
+    if (!SAVING_COMPARE_DATA[code] || !Array.isArray(SAVING_COMPARE_DATA[code].rows)) return;
+    SAVING_COMPARE_DATA[code].rows.forEach(function(row, idx){
+      if (august[code][idx] != null) row.may = august[code][idx];
+      if (september[code][idx] != null) row.june = september[code][idx];
+    });
+    JULY_2026_OFFICIAL_AMOUNTS[code] = august[code];
+    AUGUST_2026_OFFICIAL_AMOUNTS[code] = september[code];
+  });
+  if (typeof applyOfficialSurchargePatches === 'function') applyOfficialSurchargePatches();
+  var ko = {
+    'calc.metaTitle':'유류할증료 계산기 | 2026년 8월·9월 공식 공시 노선별 비교',
+    'calc.metaDesc':'한국 출발 국제선 항공권의 2026년 8월 공식 유류할증료와 2026년 9월 공식 공시 금액을 노선·항공사·왕복·인원별로 비교하고, 10월 공시 준비 상태를 함께 확인합니다.',
+    'calc.pageSub':'2026년 8월 공식 공시 기준 · 2026년 9월 공식 공시 반영 · 10월 공시 준비',
+    'calc.h1':'유류할증료 계산기: 8월 기준과 9월 공식 공시 금액 비교',
+    'calc.notice':'<strong>안내:</strong> 현재 계산기는 2026년 8월 공식 공시를 기준으로 비교하고, 대한항공·아시아나항공·진에어·에어부산·제주항공·이스타항공·에어서울의 2026년 9월 공식 공시 금액을 함께 표시합니다. 10월은 공시 전 준비 상태로 분리합니다.',
+    'calc.alert':'유류할증료는 <strong>탑승일이 아닌 발권일 기준</strong>으로 적용됩니다. 9월 금액은 공식 공시 확인 항공사만 반영하며, 최종 결제 전 항공사 예약 화면을 함께 확인하세요.',
+    'calc.intro':'해외여행, 유학, 출장 항공권을 준비할 때 2026년 8월 공식 공시와 9월 공식 공시 확인 금액을 항공사별로 비교하는 계산기입니다.',
+    'calc.answer.title':'현재 계산 기준은 8월 공식 공시와 9월 공식 공시 확인 금액입니다',
+    'calc.answer.body':'선택한 노선에서 2026년 8월 공식 공시 기준 항공사별 유류할증료 차이를 보여주고, 9월 공식 공지가 확인된 항공사는 9월 금액을 함께 표시합니다.',
+    'calc.card3.body':'같은 노선에 취항하는 항공사의 2026년 8월 공식 공시와 9월 공식 공시 확인 금액을 편도·왕복과 인원 수에 맞춰 비교합니다.',
+    'calc.readiness.title':'8월 공시 기준 · 9월 공식 공시 반영',
+    'calc.readiness.badge':'8월 기준 · 9월 확인분 반영',
+    'calc.readiness.body':'현재 계산기는 2026년 8월 공식 공시를 기준으로 비교합니다. 2026년 9월 유류할증료는 대한항공·아시아나항공·진에어·에어부산·제주항공·이스타항공·에어서울처럼 공식 공시가 확인된 항공사만 금액을 표시합니다. 10월은 공시 전 준비 상태입니다.',
+    'calc.readiness.link':'2026년 10월 전망 준비 보기 →',
+    'calc.related.june':'👉 2026년 10월 전망 준비',
+    'calc.faq.july.title':'계산기에 2026년 9월 유류할증료도 반영되나요?',
+    'calc.faq.july.body':'반영됐습니다. 대한항공·아시아나항공·진에어·에어부산·제주항공·이스타항공·에어서울의 2026년 9월 공식 공시 금액을 표시합니다. 10월은 아직 공시 전이라 확정 금액을 만들지 않습니다.',
+    thMay:'8월 공식 공시',
+    thJune:'9월 공식 공시',
+    julyPending:'10월 공시 준비'
+  };
+  var en = Object.assign({}, ko, {
+    'calc.metaTitle':'Fuel Surcharge Calculator | August and September 2026 Official Filing Comparison',
+    'calc.pageSub':'August 2026 official filings · September 2026 notices reflected · October preparation',
+    'calc.h1':'Fuel Surcharge Calculator: Compare August baseline and September official notices',
+    'calc.notice':'<strong>Notice:</strong> The calculator compares August 2026 official filings and shows September 2026 official amounts for Korean Air, Asiana, Jin Air, Air Busan, Jeju Air, Eastar Jet and Air Seoul. October remains pre-filing preparation.',
+    thMay:'August official notice',
+    thJune:'September official notice',
+    julyPending:'October filing preparation'
+  });
+  var packs = {ko:ko,en:en,ja:en,zh:en,fr:en,de:en};
+  Object.keys(packs).forEach(function(lang){
+    window.I18N[lang] = window.I18N[lang] || {};
+    Object.assign(window.I18N[lang], packs[lang]);
+    if (window.PAGE_I18N && PAGE_I18N[lang]) Object.assign(PAGE_I18N[lang], packs[lang]);
+  });
+  document.title = ko['calc.metaTitle'];
+  var desc = document.querySelector('meta[name="description"]'); if(desc) desc.setAttribute('content', ko['calc.metaDesc']);
+  var ogTitle = document.querySelector('meta[property="og:title"]'); if(ogTitle) ogTitle.setAttribute('content', ko['calc.metaTitle']);
+  var ogDesc = document.querySelector('meta[property="og:description"]'); if(ogDesc) ogDesc.setAttribute('content', ko['calc.metaDesc']);
+  function fixSeptemberSurfaceCopy(){
+    var replacements = {
+      '노선별 2026년 7월·8월 유류할증료 비교':'노선별 2026년 8월·9월 유류할증료 비교',
+      '같은 노선의 취항 항공사를 자동으로 묶어 2026년 7월 공식 공시 기준 금액과 2026년 8월 공식 공시 확인 금액의 차이를 표로 보여줍니다.':'같은 노선의 취항 항공사를 자동으로 묶어 2026년 8월 공식 공시 기준 금액과 2026년 9월 공식 공시 확인 금액의 차이를 표로 보여줍니다.',
+      '2026.07 공식 공시 기준 · 2026.08 공식 공시 반영':'2026.08 공식 공시 기준 · 2026.09 공식 공시 반영',
+      '2026년 7월 공식 공시 기준':'2026년 8월 공식 공시 기준',
+      '2026년 8월 공식 공시 확인':'2026년 9월 공식 공시 확인',
+      '2026년 8월 금액':'2026년 9월 금액',
+      '7월 공식 공시':'8월 공식 공시',
+      '8월 공식 공시':'9월 공식 공시'
+    };
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    var node;
+    while ((node = walker.nextNode())) {
+      Object.keys(replacements).forEach(function(from){
+        if (node.nodeValue.indexOf(from) !== -1) node.nodeValue = node.nodeValue.split(from).join(replacements[from]);
+      });
+      node.nodeValue = node.nodeValue
+        .replace('현재 계산기는 2026년 9월 공식 공시를 기준으로 비교합니다. 2026년 9월 유류할증료는', '현재 계산기는 2026년 8월 공식 공시를 기준으로 비교합니다. 2026년 9월 유류할증료는')
+        .replace('2026년 9월 공식 공시 기준 금액과 2026년 9월 공식 공시 확인 금액', '2026년 8월 공식 공시 기준 금액과 2026년 9월 공식 공시 확인 금액');
+    }
+  }
+  window._fixSeptemberCalculatorSurfaceCopy = fixSeptemberSurfaceCopy;
+  if (window.renderSavingCalculator) window.renderSavingCalculator();
+  fixSeptemberSurfaceCopy();
+  var previousRender = window.renderSavingCalculator;
+  if (typeof previousRender === 'function' && !previousRender.__septemberSurfaceWrapped) {
+    window.renderSavingCalculator = function(){
+      previousRender.apply(this, arguments);
+      fixSeptemberSurfaceCopy();
+    };
+    window.renderSavingCalculator.__septemberSurfaceWrapped = true;
+  }
+  setTimeout(fixSeptemberSurfaceCopy, 0);
+  setTimeout(fixSeptemberSurfaceCopy, 300);
+})();
+
 window.initNav({
   onLangChange: function() {
     if (window.renderSavingCalculator) window.renderSavingCalculator();
+    if (window._fixSeptemberCalculatorSurfaceCopy) window._fixSeptemberCalculatorSurfaceCopy();
+    if (window._fixSeptemberCalculatorTerminalSurfaceCopy) window._fixSeptemberCalculatorTerminalSurfaceCopy();
   },
   onCurrChange: function() {
     if (window.updateSavingCalculator) window.updateSavingCalculator();
+    if (window._fixSeptemberCalculatorSurfaceCopy) window._fixSeptemberCalculatorSurfaceCopy();
+    if (window._fixSeptemberCalculatorTerminalSurfaceCopy) window._fixSeptemberCalculatorTerminalSurfaceCopy();
   }
 });
+window._fixSeptemberCalculatorTerminalSurfaceCopy = function(){
+  var replacements = {
+    '2026년 9월 공식 공시 기준 · 2026년 9월 공식 공시 반영':'2026년 8월 공식 공시 기준 · 2026년 9월 공식 공시 반영',
+    '현재 계산기는 2026년 9월 공식 공시를 기준으로 비교하고':'현재 계산기는 2026년 8월 공식 공시를 기준으로 비교하고',
+    '2026년 9월 공식 공시와 9월 공식 공시 확인 금액':'2026년 8월 공식 공시와 9월 공식 공시 확인 금액',
+    '현재 계산 기준은 9월 공식 공시와 9월 공식 공시 확인 금액입니다':'현재 계산 기준은 8월 공식 공시와 9월 공식 공시 확인 금액입니다',
+    '선택한 노선에서 2026년 9월 공식 공시 기준':'선택한 노선에서 2026년 8월 공식 공시 기준',
+    '같은 노선에 취항하는 항공사의 2026년 9월 공식 공시와 9월 공식 공시 확인 금액':'같은 노선에 취항하는 항공사의 2026년 8월 공식 공시와 9월 공식 공시 확인 금액',
+    '현재 계산기는 2026년 9월 공식 공시를 기준으로 비교합니다. 2026년 9월 유류할증료는':'현재 계산기는 2026년 8월 공식 공시를 기준으로 비교합니다. 2026년 9월 유류할증료는'
+  };
+  var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  var node;
+  while((node = walker.nextNode())){
+    Object.keys(replacements).forEach(function(from){
+      if(node.nodeValue.indexOf(from) !== -1) node.nodeValue = node.nodeValue.split(from).join(replacements[from]);
+    });
+  }
+};
+setTimeout(function(){ if (window._fixSeptemberCalculatorSurfaceCopy) window._fixSeptemberCalculatorSurfaceCopy(); }, 600);
+setTimeout(function(){ if (window._fixSeptemberCalculatorTerminalSurfaceCopy) window._fixSeptemberCalculatorTerminalSurfaceCopy(); }, 700);
 </script>
 </body>
 </html>

@@ -561,8 +561,8 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
   window.AERO_MARKET_NUMBERS_20260728 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
     asOf: '2026.07.28 08:30 KST',
     lastUpdated: '2026-07-28T08:30:00+09:00',
-    currentMonthNotice: '2026-08',
-    forecastTargetMonth: '2026-09',
+    currentMonthNotice: '2026-09',
+    forecastTargetMonth: '2026-10',
     usdKrw: 1466,
     usdKrwLabel: '약 1,466원',
     usdKrwRangeLabel: '약 1,465~1,467원대',
@@ -659,13 +659,265 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
   }
 })();
 
+/* 2026.08.20 07:00 KST true terminal shared override. Keep this block last. */
+(function(){
+  var latest = {
+    asOf: '2026.08.20 07:00 KST',
+    lastUpdated: '2026-08-20T07:00:00+09:00',
+    currentAppliedMonth: '2026-08',
+    currentMonthNotice: '2026-09',
+    confirmedNoticeMonth: '2026-09',
+    forecastTargetMonth: '2026-10',
+    forecastTargetPeriod: '2026-10',
+    augustInternationalStage: 14,
+    septemberInternationalStage: 21,
+    septemberInternationalStageChange: 7,
+    septemberInternationalConfirmedAirlines: ['KE','OZ','LJ','BX','7C','ZE','RS'],
+    septemberCalculationFrom: '2026-07-16',
+    septemberCalculationTo: '2026-08-15',
+    septemberCalculationJetFuelUsdPerBbl: 149.29,
+    septemberCalculationJetFuelCentsPerGallon: 355.46,
+    septemberCalculationJetFuelIsSameDayMops: false,
+    octoberCalculationFrom: '2026-08-16',
+    octoberCalculationTo: '2026-09-15',
+    octoberCalculationStatus: 'in_progress_early',
+    octoberForecastConfidence: 'low',
+    octoberCalculationJetFuelAverageStatus: 'collecting',
+    octoberCalculationUsdKrwAverageStatus: 'collecting',
+    usdKrw: 1388,
+    usdKrwLabel: '약 1,388원',
+    brentUsdPerBbl: 91.62,
+    brentUsdBbl: 91.62,
+    wtiUsdPerBbl: 85.83,
+    wtiUsdBbl: 85.83,
+    oilReferenceType: '2026.08.19 U.S. market close',
+    oilReferenceTime: '2026.08.19 U.S. market close',
+    refiningSupplyRisk: 'high',
+    hormuzTrafficRisk: 'extreme_restricted_bypass_protected_transport',
+    hormuzKplerCommodityVesselsLatest: 6,
+    hormuzKplerCommodityVesselsPrevious: 9,
+    hormuzKplerCommodityVesselsTenDayAverage: 11,
+    usIranTalksStatus: 'stalled',
+    uaeIranTensionStatus: 'uae_claims_iran_denies',
+    logisticsCostRisk: 'high',
+    marketSummary: '10월 전망: 환율 ↓↓ vs 항공유 ↑↑ · 호르무즈 ↑↑↑ — 방향 불확실'
+  };
+  window.AERO_MARKET_NUMBERS_20260820 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260820;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-20': window.AERO_MARKET_NUMBERS_20260820});
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1388 });
+  var overrides = window._SEPTEMBER_2026_OFFICIAL_OVERRIDES || {};
+  Object.assign(overrides, {
+    '7C': {'2026.09': {sourceType:'official_notice', status:'official_verified', confidence:'fresh', currency:'USD', surchargeSchema:'mileage_band', officialNoticeUrl:'https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000751', verifiedAt:'2026-08-20T07:00:00+09:00', applicableFrom:'2026-09-01', applicableTo:'2026-09-30', ticketingBasis:true, oneWay:true, items:[{distanceRange:'1-500',label:'1~500mile 미만',amount:33,currency:'USD'},{distanceRange:'500-1000',label:'500~1,000mile 미만',amount:42,currency:'USD'},{distanceRange:'1000-1500',label:'1,000~1,500mile 미만',amount:50,currency:'USD'},{distanceRange:'1500-2000',label:'1,500~2,000mile 미만',amount:60,currency:'USD'},{distanceRange:'2000-2500',label:'2,000~2,500mile 미만',amount:68,currency:'USD'},{distanceRange:'2500+',label:'2,500mile 이상',amount:79,currency:'USD'}]}},
+    ZE: {'2026.09': {sourceType:'official_notice', status:'official_verified', confidence:'fresh', currency:'USD', surchargeSchema:'mileage_band', officialNoticeUrl:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=653&lang=KR&searchWord=&searchIndex=1', verifiedAt:'2026-08-20T07:00:00+09:00', applicableFrom:'2026-09-01', applicableTo:'2026-09-30', ticketingBasis:true, oneWay:true, items:[{distanceRange:'group-1',label:'1군',amount:33,currency:'USD'},{distanceRange:'group-2',label:'2군',amount:42,currency:'USD'},{distanceRange:'group-3',label:'3군',amount:50,currency:'USD'},{distanceRange:'group-4',label:'4군',amount:60,currency:'USD'},{distanceRange:'group-5',label:'5군',amount:68,currency:'USD'},{distanceRange:'group-6',label:'6군',amount:79,currency:'USD'}]}},
+    RS: {'2026.09': {sourceType:'official_notice', status:'official_verified', confidence:'fresh', currency:'KRW', surchargeSchema:'mileage_band', officialNoticeUrl:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=11048&pageNo=1', verifiedAt:'2026-08-20T07:00:00+09:00', applicableFrom:'2026-09-01', applicableTo:'2026-09-30', ticketingBasis:true, oneWay:true, items:[{distanceRange:'300-700',label:'300~700mi 미만',amount:57700,currency:'KRW'},{distanceRange:'700-1100',label:'700~1,100mi 미만',amount:66400,currency:'KRW'},{distanceRange:'1100-1500',label:'1,100~1,500mi 미만',amount:86600,currency:'KRW'},{distanceRange:'1500-1900',label:'1,500~1,900mi 미만',amount:95300,currency:'KRW'},{distanceRange:'1900-2300',label:'1,900~2,300mi 미만',amount:99600,currency:'KRW'}]}}
+  });
+  window._SEPTEMBER_2026_OFFICIAL_OVERRIDES = overrides;
+  var previousLoadAirlineMeta = window.loadAirlineMeta;
+  if (typeof previousLoadAirlineMeta === 'function' && !previousLoadAirlineMeta.__aeroAug20TerminalWrapped) {
+    var wrapped = async function(){
+      var result = await previousLoadAirlineMeta.apply(this, arguments);
+      var meta = window.AIRLINE_META || {};
+      Object.keys(window._SEPTEMBER_2026_OFFICIAL_OVERRIDES || {}).forEach(function(code){
+        meta[code] = meta[code] || {};
+        meta[code].monthlyOverrides = Object.assign({}, meta[code].monthlyOverrides || {}, window._SEPTEMBER_2026_OFFICIAL_OVERRIDES[code]);
+        var notice = window._SEPTEMBER_2026_OFFICIAL_OVERRIDES[code] && window._SEPTEMBER_2026_OFFICIAL_OVERRIDES[code]['2026.09'];
+        if (notice && notice.officialNoticeUrl) {
+          meta[code].officialNoticeUrl = notice.officialNoticeUrl;
+          meta[code].hasOfficialNotice = true;
+          meta[code].officialDataSource = 'official_notice';
+        }
+      });
+      return result;
+    };
+    wrapped.__aeroAug20TerminalWrapped = true;
+    window.loadAirlineMeta = wrapped;
+  }
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), {
+      marketDataRef: '2026.08.20 07:00 KST 기준',
+      marketOil: '국제유가: 8월 19일 미국 시장 종가 기준 Brent 91.62달러/bbl, WTI 85.83달러/bbl입니다. 원유가격은 항공유/MOPS의 보조지표로만 사용합니다.',
+      marketMops: '항공유: 9월 산정 평균은 149.29달러/bbl(2026.07.16~08.15)이며, 10월 산정기간 항공유 평균은 집계 중입니다. 149.29달러는 현재 MOPS가 아닙니다.',
+      marketFx: '원달러 환율: 2026.08.20 07:00 KST 기준 약 1,388원으로, 10월 유류할증료에는 강한 하락 요인입니다.',
+      marketGeo: '호르무즈: Kpler 추적 commodity vessel 통항량이 정상 대비 극도로 낮고, 우회·보호 수송이 병행되는 상태입니다. 완전 봉쇄나 정상화로 단정하지 않습니다.',
+      marketSummary: latest.marketSummary
+    });
+  }
+})();
+
+/* 2026.08.20 07:00 KST terminal shared forecast/September notice override. */
+(function(){
+  var latest = {
+    asOf: '2026.08.20 07:00 KST',
+    lastUpdated: '2026-08-20T07:00:00+09:00',
+    currentMonthNotice: '2026-09',
+    forecastTargetMonth: '2026-10',
+    currentAppliedMonth: '2026-08',
+    confirmedNoticeMonth: '2026-09',
+    forecastTargetPeriod: '2026-10',
+    augustInternationalStage: 14,
+    septemberInternationalStage: 21,
+    septemberInternationalStageChange: 7,
+    septemberInternationalOfficialConfirmed: true,
+    septemberSurchargeConfirmed: true,
+    septemberInternationalConfirmedAirlines: ['KE','OZ','LJ','BX','7C','ZE','RS'],
+    septemberCalculationFrom: '2026-07-16',
+    septemberCalculationTo: '2026-08-15',
+    septemberCalculationJetFuelUsdPerBbl: 149.29,
+    septemberCalculationJetFuelCentsPerGallon: 355.46,
+    septemberCalculationJetFuelIsSameDayMops: false,
+    octoberCalculationFrom: '2026-08-16',
+    octoberCalculationTo: '2026-09-15',
+    octoberCalculationStatus: 'in_progress_early',
+    octoberForecastConfidence: 'low',
+    octoberForecastDirection: 'uncertain_fx_downside_vs_jetfuel_hormuz_upside',
+    octoberCalculationJetFuelAverageStatus: 'collecting',
+    octoberCalculationUsdKrwAverageStatus: 'collecting',
+    usdKrw: 1388,
+    usdKrwLabel: '약 1,388원',
+    usdKrwReferenceTime: '2026-08-20 07:00 KST',
+    fxPressure: 'strong_downside',
+    jpyKrw100: 875,
+    brentUsdPerBbl: 91.62,
+    brentUsdBbl: 91.62,
+    wtiUsdPerBbl: 85.83,
+    wtiUsdBbl: 85.83,
+    oilReferenceType: '2026.08.19 U.S. market close',
+    oilReferenceTime: '2026.08.19 U.S. market close',
+    refiningSupplyRisk: 'high',
+    jetFuelInventoryRisk: 'high',
+    hormuzTrafficRisk: 'extreme_restricted_bypass_protected_transport',
+    hormuzRiskLabel: '극도로 높음',
+    hormuzKplerCommodityVesselsLatest: 6,
+    hormuzKplerCommodityVesselsPrevious: 9,
+    hormuzKplerCommodityVesselsTenDayAverage: 11,
+    hormuzTrafficScope: 'Kpler-tracked commodity vessels, not all vessel types',
+    hormuzFullReopeningConfirmed: false,
+    hormuzCompleteBlockadeConfirmed: false,
+    usIranTalksStatus: 'stalled',
+    uaeIranTensionStatus: 'uae_claims_iran_denies',
+    bypassSupplyBuffer: true,
+    logisticsCostRisk: 'high',
+    marketSummary: '9월 국제선 유류할증료는 21단계로 대폭 인상 확정됐고, 10월은 산정기간 초반입니다. 환율은 강한 하락 요인이지만 항공유·정유 공급·호르무즈 위험이 강한 상승 요인이라 방향은 아직 불확실합니다.'
+  };
+  window.AERO_MARKET_NUMBERS_20260820 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260820;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-20': window.AERO_MARKET_NUMBERS_20260820});
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1388 });
+
+  var extraSeptemberOverrides = {
+    '7C': {'2026.09': {sourceType:'official_notice', status:'official_verified', confidence:'fresh', currency:'USD', surchargeSchema:'mileage_band', officialNoticeUrl:'https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000751', verifiedAt:'2026-08-20T07:00:00+09:00', applicableFrom:'2026-09-01', applicableTo:'2026-09-30', ticketingBasis:true, oneWay:true, items:[
+      {distanceRange:'1-500', label:'1~500mile 미만', amount:33, currency:'USD'},
+      {distanceRange:'500-1000', label:'500~1,000mile 미만', amount:42, currency:'USD'},
+      {distanceRange:'1000-1500', label:'1,000~1,500mile 미만', amount:50, currency:'USD'},
+      {distanceRange:'1500-2000', label:'1,500~2,000mile 미만', amount:60, currency:'USD'},
+      {distanceRange:'2000-2500', label:'2,000~2,500mile 미만', amount:68, currency:'USD'},
+      {distanceRange:'2500+', label:'2,500mile 이상', amount:79, currency:'USD'}
+    ]}},
+    ZE: {'2026.09': {sourceType:'official_notice', status:'official_verified', confidence:'fresh', currency:'USD', surchargeSchema:'mileage_band', officialNoticeUrl:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=653&lang=KR&searchWord=&searchIndex=1', verifiedAt:'2026-08-20T07:00:00+09:00', applicableFrom:'2026-09-01', applicableTo:'2026-09-30', ticketingBasis:true, oneWay:true, items:[
+      {distanceRange:'group-1', label:'1군', amount:33, currency:'USD'},
+      {distanceRange:'group-2', label:'2군', amount:42, currency:'USD'},
+      {distanceRange:'group-3', label:'3군', amount:50, currency:'USD'},
+      {distanceRange:'group-4', label:'4군', amount:60, currency:'USD'},
+      {distanceRange:'group-5', label:'5군', amount:68, currency:'USD'},
+      {distanceRange:'group-6', label:'6군', amount:79, currency:'USD'}
+    ]}},
+    RS: {'2026.09': {sourceType:'official_notice', status:'official_verified', confidence:'fresh', currency:'KRW', surchargeSchema:'mileage_band', officialNoticeUrl:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=11048&pageNo=1', verifiedAt:'2026-08-20T07:00:00+09:00', applicableFrom:'2026-09-01', applicableTo:'2026-09-30', ticketingBasis:true, oneWay:true, items:[
+      {distanceRange:'300-700', label:'300~700mi 미만', amount:57700, currency:'KRW'},
+      {distanceRange:'700-1100', label:'700~1,100mi 미만', amount:66400, currency:'KRW'},
+      {distanceRange:'1100-1500', label:'1,100~1,500mi 미만', amount:86600, currency:'KRW'},
+      {distanceRange:'1500-1900', label:'1,500~1,900mi 미만', amount:95300, currency:'KRW'},
+      {distanceRange:'1900-2300', label:'1,900~2,300mi 미만', amount:99600, currency:'KRW'}
+    ]}}
+  };
+  window._SEPTEMBER_2026_OFFICIAL_OVERRIDES = Object.assign({}, window._SEPTEMBER_2026_OFFICIAL_OVERRIDES || {}, extraSeptemberOverrides);
+  var previousLoadAirlineMeta = window.loadAirlineMeta;
+  if (typeof previousLoadAirlineMeta === 'function' && !previousLoadAirlineMeta.__aeroAug20Wrapped) {
+    var wrappedLoadAirlineMeta = async function(){
+      var result = await previousLoadAirlineMeta.apply(this, arguments);
+      var meta = window.AIRLINE_META || {};
+      Object.keys(window._SEPTEMBER_2026_OFFICIAL_OVERRIDES || {}).forEach(function(code){
+        meta[code] = meta[code] || {};
+        meta[code].monthlyOverrides = Object.assign({}, meta[code].monthlyOverrides || {}, window._SEPTEMBER_2026_OFFICIAL_OVERRIDES[code]);
+        var notice = window._SEPTEMBER_2026_OFFICIAL_OVERRIDES[code] && window._SEPTEMBER_2026_OFFICIAL_OVERRIDES[code]['2026.09'];
+        if(notice && notice.officialNoticeUrl) {
+          meta[code].officialNoticeUrl = notice.officialNoticeUrl;
+          meta[code].hasOfficialNotice = true;
+          meta[code].officialDataSource = 'official_notice';
+        }
+      });
+      return result;
+    };
+    wrappedLoadAirlineMeta.__aeroAug20Wrapped = true;
+    window.loadAirlineMeta = wrappedLoadAirlineMeta;
+  }
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), {
+      marketDataRef: '2026.08.20 07:00 KST 기준',
+      marketOil: '국제유가: 8월 19일 미국 시장 종가 기준 Brent 91.62달러/bbl, WTI 85.83달러/bbl입니다. 원유가격은 항공유/MOPS의 보조지표로만 사용합니다.',
+      marketMops: '항공유: 9월 산정 평균은 149.29달러/bbl(2026.07.16~08.15)이며, 10월 산정기간 항공유 평균은 집계 중입니다. 149.29달러는 현재 MOPS가 아닙니다.',
+      marketFx: '원달러 환율: 2026.08.20 07:00 KST 기준 약 1,388원으로, 10월 유류할증료에는 강한 하락 요인입니다.',
+      marketGeo: '호르무즈: Kpler 추적 commodity vessel 통항량이 정상 대비 극도로 낮고, 우회·보호 수송이 병행되는 상태입니다. 완전 봉쇄나 정상화로 단정하지 않습니다.',
+      marketSummary: latest.marketSummary
+    });
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), {
+      marketDataRef: 'As of 2026.08.20 07:00 KST',
+      marketOil: 'Oil: at the Aug 19 U.S. close, Brent was USD 91.62/bbl and WTI USD 85.83/bbl. Crude is used only as a leading/supporting indicator, not as MOPS.',
+      marketMops: 'Jet fuel: the September calculation average is USD 149.29/bbl for 2026.07.16-08.15; the October calculation-period average is still being collected. USD 149.29 is not current MOPS.',
+      marketFx: 'FX: USD/KRW is around 1,388 as of 2026.08.20 07:00 KST, a strong downside factor for October.',
+      marketGeo: 'Hormuz: Kpler-tracked commodity vessel traffic remains extremely low versus normal, while bypass/protected transport is also used. It is neither full closure nor normalization.',
+      marketSummary: 'September is confirmed at Level 21. October is early in its calculation window: FX is strongly downside, while jet fuel, refining supply and Hormuz remain strong upside risks, so direction is still uncertain.'
+    });
+  }
+})();
+
+/* 2026.08.19 terminal sitewide 09/10 baseline guard. */
+(function(){
+  var latest = {
+    currentMonthNotice: '2026-09',
+    forecastTargetMonth: '2026-10',
+    octoberSurchargePreparation: true,
+    octoberCalculationFrom: '2026-08-16',
+    octoberCalculationTo: '2026-09-15',
+    marketSummary: '9월 국제선 공시는 KE·OZ·LJ·BX 기준 확인됐습니다. 사이트 기준은 9월 공시 반영과 10월 유류할증료 예측 준비로 전환합니다.'
+  };
+  window.AERO_MARKET_NUMBERS_20260819 = Object.assign({}, window.AERO_MARKET_NUMBERS_20260819 || window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260819;
+  var septemberOverrides = window._SEPTEMBER_2026_OFFICIAL_OVERRIDES || {
+    KE: {'2026.09': {sourceType:'official_notice', status:'official_verified', confidence:'fresh', currency:'KRW', surchargeSchema:'mileage_band', officialNoticeUrl:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2609-infuel', items:[{distanceRange:'0-499',label:'~499mi',amount:48000,currency:'KRW'},{distanceRange:'500-999',label:'500~999mi',amount:66000,currency:'KRW'},{distanceRange:'1000-1499',label:'1,000~1,499mi',amount:91500,currency:'KRW'},{distanceRange:'1500-1999',label:'1,500~1,999mi',amount:109500,currency:'KRW'},{distanceRange:'2000-2999',label:'2,000~2,999mi',amount:153000,currency:'KRW'},{distanceRange:'3000-3999',label:'3,000~3,999mi',amount:156000,currency:'KRW'},{distanceRange:'4000-4999',label:'4,000~4,999mi',amount:216000,currency:'KRW'},{distanceRange:'5000-6499',label:'5,000~6,499mi',amount:325500,currency:'KRW'},{distanceRange:'6500+',label:'6,500~9,999mi',amount:354000,currency:'KRW'}]}},
+    OZ: {'2026.09': {sourceType:'official_notice', status:'official_verified', confidence:'fresh', currency:'KRW', surchargeSchema:'mileage_band', officialNoticeUrl:'https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202608180002530123', items:[{distanceRange:'0-499',label:'~499mi',amount:52000,currency:'KRW'},{distanceRange:'500-999',label:'500~999mi',amount:76500,currency:'KRW'},{distanceRange:'1000-1499',label:'1,000~1,499mi',amount:99600,currency:'KRW'},{distanceRange:'1500-1999',label:'1,500~1,999mi',amount:124100,currency:'KRW'},{distanceRange:'2000-2499',label:'2,000~2,499mi',amount:147200,currency:'KRW'},{distanceRange:'2500-2999',label:'2,500~2,999mi',amount:171800,currency:'KRW'},{distanceRange:'3000-3999',label:'3,000~3,999mi',amount:194900,currency:'KRW'},{distanceRange:'4000-4999',label:'4,000~4,999mi',amount:242500,currency:'KRW'},{distanceRange:'5000+',label:'5,000mi~',amount:290100,currency:'KRW'}]}},
+    LJ: {'2026.09': {sourceType:'official_notice', status:'official_verified', confidence:'fresh', currency:'USD', surchargeSchema:'mileage_band', officialNoticeUrl:'https://www.jinair.com/company/announce/announceView?anceSeq=28662&searchWord=&searchKey=titlCtn&page=1', items:[{distanceRange:'1-599',label:'1~599mi',amount:29,currency:'USD'},{distanceRange:'600-1199',label:'600~1,199mi',amount:41,currency:'USD'},{distanceRange:'1200-1799',label:'1,200~1,799mi',amount:67,currency:'USD'},{distanceRange:'1800-2399',label:'1,800~2,399mi',amount:74,currency:'USD'},{distanceRange:'2400-3599',label:'2,400~3,599mi',amount:89,currency:'USD'}]}},
+    BX: {'2026.09': {sourceType:'official_notice', status:'official_verified', confidence:'fresh', currency:'USD', surchargeSchema:'mileage_band', officialNoticeUrl:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4399', items:[{distanceRange:'0-699',label:'1구간 (~699mi)',amount:34,currency:'USD'},{distanceRange:'700-1299',label:'2구간 (700~1,299mi)',amount:60,currency:'USD'},{distanceRange:'1300-1999',label:'3구간 (1,300~1,999mi)',amount:71,currency:'USD'},{distanceRange:'2000+',label:'4구간 (2,000mi~)',amount:82,currency:'USD'}]}}
+  };
+  window._SEPTEMBER_2026_OFFICIAL_OVERRIDES = septemberOverrides;
+  var previousLoadAirlineMeta = window.loadAirlineMeta;
+  if (typeof previousLoadAirlineMeta === 'function' && !previousLoadAirlineMeta.__terminalSeptember2026Wrapped) {
+    var wrapped = async function() {
+      var result = await previousLoadAirlineMeta.apply(this, arguments);
+      if (!window.MANUAL_OVERRIDES) window.MANUAL_OVERRIDES = {};
+      Object.keys(septemberOverrides).forEach(function(code) {
+        if (!window.MANUAL_OVERRIDES[code]) window.MANUAL_OVERRIDES[code] = {};
+        window.MANUAL_OVERRIDES[code]['2026.09'] = septemberOverrides[code]['2026.09'];
+        if (window.AIRLINE_META && window.AIRLINE_META[code]) {
+          window.AIRLINE_META[code].officialNoticeUrl = septemberOverrides[code]['2026.09'].officialNoticeUrl;
+          window.AIRLINE_META[code].hasOfficialNotice = true;
+          window.AIRLINE_META[code].officialDataSource = 'official_verified';
+        }
+      });
+      return result;
+    };
+    wrapped.__terminalSeptember2026Wrapped = true;
+    window.loadAirlineMeta = wrapped;
+  }
+})();
+
 /* 2026.08.19 07:00 KST final terminal shared override. */
 (function(){
   var latest = {
     asOf: '2026.08.19 07:00 KST',
     lastUpdated: '2026-08-19T07:00:00+09:00',
-    currentMonthNotice: '2026-08',
-    forecastTargetMonth: '2026-09',
+    currentMonthNotice: '2026-09',
+    forecastTargetMonth: '2026-10',
     augustInternationalStage: 14,
     augustSurchargeStage: 14,
     septemberInternationalStage: 21,
@@ -701,7 +953,11 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
     hormuzSomeHighRiskCrudeLoadingsResumed: true,
     hormuzProjectileIncidentReportedByUkmto: true,
     hormuzProjectileAttackerIdentified: false,
-    outlookDirection: 'fx_downside_jetfuel_strong_upside_oil_upside_hormuz_extreme_upside_september_international_level_21_confirmed'
+    octoberSurchargePreparation: true,
+    octoberForecastTargetMonth: '2026-10',
+    octoberCalculationFrom: '2026-08-16',
+    octoberCalculationTo: '2026-09-15',
+    outlookDirection: 'september_official_notices_reflected_october_forecast_preparation'
   };
   window.AERO_MARKET_NUMBERS_20260819 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
   window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-19': window.AERO_MARKET_NUMBERS_20260819});
@@ -714,7 +970,7 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
       marketMops: '항공유: 9월 유류할증료 산정 평균은 2026.07.16~08.15 기준 149.29달러/bbl, 355.46 cents/gal입니다. 이 값은 당일 Singapore MOPS가 아닙니다.',
       marketFx: '원달러 환율: 2026.08.19 07:00 KST 기준 약 1,412원입니다.',
       marketGeo: '호르무즈: 극도로 제한된 통항과 일부 고위험 원유 선적 재개가 공존합니다. 완전 봉쇄나 전면 정상화로 단정하지 않습니다.',
-      marketSummary: '8월 국제선은 14단계 적용 중이며 9월 국제선은 21단계로 확정됐습니다. KE·OZ·LJ·BX 9월 국제선 공식 공시가 확인됐습니다.'
+      marketSummary: '9월 국제선 공시는 KE·OZ·LJ·BX 기준 확인됐습니다. 사이트 기준은 9월 공시 반영과 10월 유류할증료 예측 준비로 전환합니다.'
     });
     Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), {
       marketDataRef: 'As of 2026.08.19 07:00 KST',
@@ -722,8 +978,86 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
       marketMops: 'Jet fuel: the September surcharge calculation average is USD 149.29/bbl and 355.46 cents/gal for 2026.07.16-08.15. This is not same-day Singapore MOPS.',
       marketFx: 'FX: USD/KRW was around 1,412 as of 2026.08.19 07:00 KST.',
       marketGeo: 'Hormuz: extremely restricted traffic and some resumed high-risk crude loadings coexist. Do not describe it as a complete blockade or full normalization.',
-      marketSummary: 'August international remains Level 14, while September international is confirmed at Level 21. KE, OZ, LJ and BX September official notices are confirmed.'
+      marketSummary: 'September international notices are confirmed for KE, OZ, LJ and BX. The site baseline now moves to September notice reflection and October surcharge forecast preparation.'
     });
+  }
+  var septemberOverrides = {
+    KE: {'2026.09': {
+      sourceType:'official_notice', status:'official_verified', confidence:'fresh', currency:'KRW',
+      surchargeSchema:'mileage_band', officialNoticeUrl:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2609-infuel',
+      verifiedAt:'2026-08-19T07:00:00+09:00', applicableFrom:'2026-09-01', applicableTo:'2026-09-30', ticketingBasis:true, oneWay:true,
+      items:[
+        {distanceRange:'0-499', label:'~499mi', amount:48000, currency:'KRW'},
+        {distanceRange:'500-999', label:'500~999mi', amount:66000, currency:'KRW'},
+        {distanceRange:'1000-1499', label:'1,000~1,499mi', amount:91500, currency:'KRW'},
+        {distanceRange:'1500-1999', label:'1,500~1,999mi', amount:109500, currency:'KRW'},
+        {distanceRange:'2000-2999', label:'2,000~2,999mi', amount:153000, currency:'KRW'},
+        {distanceRange:'3000-3999', label:'3,000~3,999mi', amount:156000, currency:'KRW'},
+        {distanceRange:'4000-4999', label:'4,000~4,999mi', amount:216000, currency:'KRW'},
+        {distanceRange:'5000-6499', label:'5,000~6,499mi', amount:325500, currency:'KRW'},
+        {distanceRange:'6500+', label:'6,500~9,999mi', amount:354000, currency:'KRW'}
+      ]
+    }},
+    OZ: {'2026.09': {
+      sourceType:'official_notice', status:'official_verified', confidence:'fresh', currency:'KRW',
+      surchargeSchema:'mileage_band', officialNoticeUrl:'https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202608180002530123',
+      verifiedAt:'2026-08-19T07:00:00+09:00', applicableFrom:'2026-09-01', applicableTo:'2026-09-30', ticketingBasis:true, oneWay:true,
+      items:[
+        {distanceRange:'0-499', label:'~499mi', amount:52000, currency:'KRW'},
+        {distanceRange:'500-999', label:'500~999mi', amount:76500, currency:'KRW'},
+        {distanceRange:'1000-1499', label:'1,000~1,499mi', amount:99600, currency:'KRW'},
+        {distanceRange:'1500-1999', label:'1,500~1,999mi', amount:124100, currency:'KRW'},
+        {distanceRange:'2000-2499', label:'2,000~2,499mi', amount:147200, currency:'KRW'},
+        {distanceRange:'2500-2999', label:'2,500~2,999mi', amount:171800, currency:'KRW'},
+        {distanceRange:'3000-3999', label:'3,000~3,999mi', amount:194900, currency:'KRW'},
+        {distanceRange:'4000-4999', label:'4,000~4,999mi', amount:242500, currency:'KRW'},
+        {distanceRange:'5000+', label:'5,000mi~', amount:290100, currency:'KRW'}
+      ]
+    }},
+    LJ: {'2026.09': {
+      sourceType:'official_notice', status:'official_verified', confidence:'fresh', currency:'USD',
+      surchargeSchema:'mileage_band', officialNoticeUrl:'https://www.jinair.com/company/announce/announceView?anceSeq=28662&searchWord=&searchKey=titlCtn&page=1',
+      verifiedAt:'2026-08-19T07:00:00+09:00', applicableFrom:'2026-09-01', applicableTo:'2026-09-30', ticketingBasis:true, oneWay:true,
+      items:[
+        {distanceRange:'1-599', label:'1~599mi', amount:29, currency:'USD'},
+        {distanceRange:'600-1199', label:'600~1,199mi', amount:41, currency:'USD'},
+        {distanceRange:'1200-1799', label:'1,200~1,799mi', amount:67, currency:'USD'},
+        {distanceRange:'1800-2399', label:'1,800~2,399mi', amount:74, currency:'USD'},
+        {distanceRange:'2400-3599', label:'2,400~3,599mi', amount:89, currency:'USD'}
+      ]
+    }},
+    BX: {'2026.09': {
+      sourceType:'official_notice', status:'official_verified', confidence:'fresh', currency:'USD',
+      surchargeSchema:'mileage_band', officialNoticeUrl:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4399',
+      verifiedAt:'2026-08-19T07:00:00+09:00', applicableFrom:'2026-09-01', applicableTo:'2026-09-30', ticketingBasis:true, oneWay:true,
+      items:[
+        {distanceRange:'0-699', label:'1구간 (~699mi)', amount:34, currency:'USD'},
+        {distanceRange:'700-1299', label:'2구간 (700~1,299mi)', amount:60, currency:'USD'},
+        {distanceRange:'1300-1999', label:'3구간 (1,300~1,999mi)', amount:71, currency:'USD'},
+        {distanceRange:'2000+', label:'4구간 (2,000mi~)', amount:82, currency:'USD'}
+      ]
+    }}
+  };
+  window._SEPTEMBER_2026_OFFICIAL_OVERRIDES = Object.assign({}, window._SEPTEMBER_2026_OFFICIAL_OVERRIDES || {}, septemberOverrides);
+  var previousLoadAirlineMeta = window.loadAirlineMeta;
+  if (typeof previousLoadAirlineMeta === 'function' && !previousLoadAirlineMeta.__september2026Wrapped) {
+    var wrappedLoadAirlineMeta = async function() {
+      var result = await previousLoadAirlineMeta.apply(this, arguments);
+      if (!window.MANUAL_OVERRIDES) window.MANUAL_OVERRIDES = {};
+      Object.keys(window._SEPTEMBER_2026_OFFICIAL_OVERRIDES || {}).forEach(function(code) {
+        if (!window.MANUAL_OVERRIDES[code]) window.MANUAL_OVERRIDES[code] = {};
+        var months = window._SEPTEMBER_2026_OFFICIAL_OVERRIDES[code] || {};
+        Object.keys(months).forEach(function(month) { window.MANUAL_OVERRIDES[code][month] = months[month]; });
+        if (window.AIRLINE_META && window.AIRLINE_META[code] && months['2026.09']) {
+          window.AIRLINE_META[code].officialNoticeUrl = months['2026.09'].officialNoticeUrl;
+          window.AIRLINE_META[code].hasOfficialNotice = true;
+          window.AIRLINE_META[code].officialDataSource = 'official_verified';
+        }
+      });
+      return result;
+    };
+    wrappedLoadAirlineMeta.__september2026Wrapped = true;
+    window.loadAirlineMeta = wrappedLoadAirlineMeta;
   }
 })();
 
@@ -732,8 +1066,8 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
   var latest = {
     asOf: '2026.08.19 07:00 KST',
     lastUpdated: '2026-08-19T07:00:00+09:00',
-    currentMonthNotice: '2026-08',
-    forecastTargetMonth: '2026-09',
+    currentMonthNotice: '2026-09',
+    forecastTargetMonth: '2026-10',
     augustInternationalStage: 14,
     augustSurchargeStage: 14,
     septemberInternationalStage: 21,
@@ -771,7 +1105,11 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
     hormuzSomeHighRiskCrudeLoadingsResumed: true,
     hormuzProjectileIncidentReportedByUkmto: true,
     hormuzProjectileAttackerIdentified: false,
-    outlookDirection: 'fx_downside_jetfuel_strong_upside_oil_upside_hormuz_extreme_upside_september_international_level_21_confirmed'
+    octoberSurchargePreparation: true,
+    octoberForecastTargetMonth: '2026-10',
+    octoberCalculationFrom: '2026-08-16',
+    octoberCalculationTo: '2026-09-15',
+    outlookDirection: 'september_official_notices_reflected_october_forecast_preparation'
   };
   window.AERO_MARKET_NUMBERS_20260819 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
   window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-19': window.AERO_MARKET_NUMBERS_20260819});
@@ -784,7 +1122,7 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
       marketMops: '항공유: 9월 유류할증료 산정 평균은 2026.07.16~08.15 기준 149.29달러/bbl, 355.46 cents/gal입니다. 이 값은 당일 Singapore MOPS가 아닙니다.',
       marketFx: '원달러 환율: 2026.08.19 07:00 KST 기준 약 1,412원입니다.',
       marketGeo: '호르무즈: 극도로 제한된 통항과 일부 고위험 원유 선적 재개가 공존합니다. 완전 봉쇄나 전면 정상화로 단정하지 않습니다.',
-      marketSummary: '8월 국제선은 14단계 적용 중이며 9월 국제선은 21단계로 확정됐습니다. KE·OZ·LJ·BX 9월 국제선 공식 공시가 확인됐습니다.'
+      marketSummary: '9월 국제선 공시는 KE·OZ·LJ·BX 기준 확인됐습니다. 사이트 기준은 9월 공시 반영과 10월 유류할증료 예측 준비로 전환합니다.'
     });
     Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), {
       marketDataRef: 'As of 2026.08.19 07:00 KST',
@@ -792,8 +1130,40 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
       marketMops: 'Jet fuel: the September surcharge calculation average is USD 149.29/bbl and 355.46 cents/gal for 2026.07.16-08.15. This is not same-day Singapore MOPS.',
       marketFx: 'FX: USD/KRW was around 1,412 as of 2026.08.19 07:00 KST.',
       marketGeo: 'Hormuz: extremely restricted traffic and some resumed high-risk crude loadings coexist. Do not describe it as a complete blockade or full normalization.',
-      marketSummary: 'August international remains Level 14, while September international is confirmed at Level 21. KE, OZ, LJ and BX September official notices are confirmed.'
+      marketSummary: 'September international notices are confirmed for KE, OZ, LJ and BX. The site baseline now moves to September notice reflection and October surcharge forecast preparation.'
     });
+  }
+  var septemberOverrides = {
+    KE: {'2026.09': {sourceType:'official_notice', status:'official_verified', confidence:'fresh', currency:'KRW', surchargeSchema:'mileage_band', officialNoticeUrl:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2609-infuel', verifiedAt:'2026-08-19T07:00:00+09:00', applicableFrom:'2026-09-01', applicableTo:'2026-09-30', ticketingBasis:true, oneWay:true, items:[{distanceRange:'0-499',label:'~499mi',amount:48000,currency:'KRW'},{distanceRange:'500-999',label:'500~999mi',amount:66000,currency:'KRW'},{distanceRange:'1000-1499',label:'1,000~1,499mi',amount:91500,currency:'KRW'},{distanceRange:'1500-1999',label:'1,500~1,999mi',amount:109500,currency:'KRW'},{distanceRange:'2000-2999',label:'2,000~2,999mi',amount:153000,currency:'KRW'},{distanceRange:'3000-3999',label:'3,000~3,999mi',amount:156000,currency:'KRW'},{distanceRange:'4000-4999',label:'4,000~4,999mi',amount:216000,currency:'KRW'},{distanceRange:'5000-6499',label:'5,000~6,499mi',amount:325500,currency:'KRW'},{distanceRange:'6500+',label:'6,500~9,999mi',amount:354000,currency:'KRW'}]}},
+    OZ: {'2026.09': {sourceType:'official_notice', status:'official_verified', confidence:'fresh', currency:'KRW', surchargeSchema:'mileage_band', officialNoticeUrl:'https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202608180002530123', verifiedAt:'2026-08-19T07:00:00+09:00', applicableFrom:'2026-09-01', applicableTo:'2026-09-30', ticketingBasis:true, oneWay:true, items:[{distanceRange:'0-499',label:'~499mi',amount:52000,currency:'KRW'},{distanceRange:'500-999',label:'500~999mi',amount:76500,currency:'KRW'},{distanceRange:'1000-1499',label:'1,000~1,499mi',amount:99600,currency:'KRW'},{distanceRange:'1500-1999',label:'1,500~1,999mi',amount:124100,currency:'KRW'},{distanceRange:'2000-2499',label:'2,000~2,499mi',amount:147200,currency:'KRW'},{distanceRange:'2500-2999',label:'2,500~2,999mi',amount:171800,currency:'KRW'},{distanceRange:'3000-3999',label:'3,000~3,999mi',amount:194900,currency:'KRW'},{distanceRange:'4000-4999',label:'4,000~4,999mi',amount:242500,currency:'KRW'},{distanceRange:'5000+',label:'5,000mi~',amount:290100,currency:'KRW'}]}},
+    LJ: {'2026.09': {sourceType:'official_notice', status:'official_verified', confidence:'fresh', currency:'USD', surchargeSchema:'mileage_band', officialNoticeUrl:'https://www.jinair.com/company/announce/announceView?anceSeq=28662&searchWord=&searchKey=titlCtn&page=1', verifiedAt:'2026-08-19T07:00:00+09:00', applicableFrom:'2026-09-01', applicableTo:'2026-09-30', ticketingBasis:true, oneWay:true, items:[{distanceRange:'1-599',label:'1~599mi',amount:29,currency:'USD'},{distanceRange:'600-1199',label:'600~1,199mi',amount:41,currency:'USD'},{distanceRange:'1200-1799',label:'1,200~1,799mi',amount:67,currency:'USD'},{distanceRange:'1800-2399',label:'1,800~2,399mi',amount:74,currency:'USD'},{distanceRange:'2400-3599',label:'2,400~3,599mi',amount:89,currency:'USD'}]}},
+    BX: {'2026.09': {sourceType:'official_notice', status:'official_verified', confidence:'fresh', currency:'USD', surchargeSchema:'mileage_band', officialNoticeUrl:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4399', verifiedAt:'2026-08-19T07:00:00+09:00', applicableFrom:'2026-09-01', applicableTo:'2026-09-30', ticketingBasis:true, oneWay:true, items:[{distanceRange:'0-699',label:'1구간 (~699mi)',amount:34,currency:'USD'},{distanceRange:'700-1299',label:'2구간 (700~1,299mi)',amount:60,currency:'USD'},{distanceRange:'1300-1999',label:'3구간 (1,300~1,999mi)',amount:71,currency:'USD'},{distanceRange:'2000+',label:'4구간 (2,000mi~)',amount:82,currency:'USD'}]}}
+  };
+  window._SEPTEMBER_2026_OFFICIAL_OVERRIDES = Object.assign({}, window._SEPTEMBER_2026_OFFICIAL_OVERRIDES || {}, septemberOverrides);
+  if (!window.MANUAL_OVERRIDES) window.MANUAL_OVERRIDES = {};
+  Object.keys(septemberOverrides).forEach(function(code) {
+    if (!window.MANUAL_OVERRIDES[code]) window.MANUAL_OVERRIDES[code] = {};
+    window.MANUAL_OVERRIDES[code]['2026.09'] = septemberOverrides[code]['2026.09'];
+  });
+  var previousLoadAirlineMeta = window.loadAirlineMeta;
+  if (typeof previousLoadAirlineMeta === 'function' && !previousLoadAirlineMeta.__september2026Wrapped) {
+    var wrappedLoadAirlineMeta = async function() {
+      var result = await previousLoadAirlineMeta.apply(this, arguments);
+      if (!window.MANUAL_OVERRIDES) window.MANUAL_OVERRIDES = {};
+      Object.keys(window._SEPTEMBER_2026_OFFICIAL_OVERRIDES || {}).forEach(function(code) {
+        if (!window.MANUAL_OVERRIDES[code]) window.MANUAL_OVERRIDES[code] = {};
+        var months = window._SEPTEMBER_2026_OFFICIAL_OVERRIDES[code] || {};
+        Object.keys(months).forEach(function(month) { window.MANUAL_OVERRIDES[code][month] = months[month]; });
+        if (window.AIRLINE_META && window.AIRLINE_META[code] && months['2026.09']) {
+          window.AIRLINE_META[code].officialNoticeUrl = months['2026.09'].officialNoticeUrl;
+          window.AIRLINE_META[code].hasOfficialNotice = true;
+          window.AIRLINE_META[code].officialDataSource = 'official_verified';
+        }
+      });
+      return result;
+    };
+    wrappedLoadAirlineMeta.__september2026Wrapped = true;
+    window.loadAirlineMeta = wrappedLoadAirlineMeta;
   }
 })();
 
@@ -13783,6 +14153,92 @@ window.initNav = function(opts){
       marketFx: 'FX: USD/KRW was around 1,412 as of 2026.08.19 07:00 KST.',
       marketGeo: 'Hormuz: extremely restricted traffic and some resumed high-risk crude loadings coexist. Do not describe it as a complete blockade or full normalization.',
       marketSummary: 'August international remains Level 14, while September international is confirmed at Level 21. KE, OZ, LJ and BX September official notices are confirmed.'
+    });
+  }
+})();
+
+/* 2026.08.20 07:00 KST true terminal shared override. Keep this block last. */
+(function(){
+  var latest = {
+    asOf: '2026.08.20 07:00 KST',
+    lastUpdated: '2026-08-20T07:00:00+09:00',
+    currentAppliedMonth: '2026-08',
+    currentMonthNotice: '2026-09',
+    confirmedNoticeMonth: '2026-09',
+    forecastTargetMonth: '2026-10',
+    forecastTargetPeriod: '2026-10',
+    augustInternationalStage: 14,
+    septemberInternationalStage: 21,
+    septemberInternationalStageChange: 7,
+    septemberInternationalConfirmedAirlines: ['KE','OZ','LJ','BX','7C','ZE','RS'],
+    septemberCalculationFrom: '2026-07-16',
+    septemberCalculationTo: '2026-08-15',
+    septemberCalculationJetFuelUsdPerBbl: 149.29,
+    septemberCalculationJetFuelCentsPerGallon: 355.46,
+    septemberCalculationJetFuelIsSameDayMops: false,
+    octoberCalculationFrom: '2026-08-16',
+    octoberCalculationTo: '2026-09-15',
+    octoberCalculationStatus: 'in_progress_early',
+    octoberForecastConfidence: 'low',
+    octoberCalculationJetFuelAverageStatus: 'collecting',
+    octoberCalculationUsdKrwAverageStatus: 'collecting',
+    usdKrw: 1388,
+    usdKrwLabel: '약 1,388원',
+    brentUsdPerBbl: 91.62,
+    brentUsdBbl: 91.62,
+    wtiUsdPerBbl: 85.83,
+    wtiUsdBbl: 85.83,
+    oilReferenceType: '2026.08.19 U.S. market close',
+    oilReferenceTime: '2026.08.19 U.S. market close',
+    refiningSupplyRisk: 'high',
+    hormuzTrafficRisk: 'extreme_restricted_bypass_protected_transport',
+    hormuzKplerCommodityVesselsLatest: 6,
+    hormuzKplerCommodityVesselsPrevious: 9,
+    hormuzKplerCommodityVesselsTenDayAverage: 11,
+    usIranTalksStatus: 'stalled',
+    uaeIranTensionStatus: 'uae_claims_iran_denies',
+    logisticsCostRisk: 'high',
+    marketSummary: '10월 전망: 환율 ↓↓ vs 항공유 ↑↑ · 호르무즈 ↑↑↑ — 방향 불확실'
+  };
+  window.AERO_MARKET_NUMBERS_20260820 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260820;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-20': window.AERO_MARKET_NUMBERS_20260820});
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1388 });
+  var overrides = window._SEPTEMBER_2026_OFFICIAL_OVERRIDES || {};
+  Object.assign(overrides, {
+    '7C': {'2026.09': {sourceType:'official_notice', status:'official_verified', confidence:'fresh', currency:'USD', surchargeSchema:'mileage_band', officialNoticeUrl:'https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000751', verifiedAt:'2026-08-20T07:00:00+09:00', applicableFrom:'2026-09-01', applicableTo:'2026-09-30', ticketingBasis:true, oneWay:true, items:[{distanceRange:'1-500',label:'1~500mile 미만',amount:33,currency:'USD'},{distanceRange:'500-1000',label:'500~1,000mile 미만',amount:42,currency:'USD'},{distanceRange:'1000-1500',label:'1,000~1,500mile 미만',amount:50,currency:'USD'},{distanceRange:'1500-2000',label:'1,500~2,000mile 미만',amount:60,currency:'USD'},{distanceRange:'2000-2500',label:'2,000~2,500mile 미만',amount:68,currency:'USD'},{distanceRange:'2500+',label:'2,500mile 이상',amount:79,currency:'USD'}]}},
+    ZE: {'2026.09': {sourceType:'official_notice', status:'official_verified', confidence:'fresh', currency:'USD', surchargeSchema:'mileage_band', officialNoticeUrl:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=653&lang=KR&searchWord=&searchIndex=1', verifiedAt:'2026-08-20T07:00:00+09:00', applicableFrom:'2026-09-01', applicableTo:'2026-09-30', ticketingBasis:true, oneWay:true, items:[{distanceRange:'group-1',label:'1군',amount:33,currency:'USD'},{distanceRange:'group-2',label:'2군',amount:42,currency:'USD'},{distanceRange:'group-3',label:'3군',amount:50,currency:'USD'},{distanceRange:'group-4',label:'4군',amount:60,currency:'USD'},{distanceRange:'group-5',label:'5군',amount:68,currency:'USD'},{distanceRange:'group-6',label:'6군',amount:79,currency:'USD'}]}},
+    RS: {'2026.09': {sourceType:'official_notice', status:'official_verified', confidence:'fresh', currency:'KRW', surchargeSchema:'mileage_band', officialNoticeUrl:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=11048&pageNo=1', verifiedAt:'2026-08-20T07:00:00+09:00', applicableFrom:'2026-09-01', applicableTo:'2026-09-30', ticketingBasis:true, oneWay:true, items:[{distanceRange:'300-700',label:'300~700mi 미만',amount:57700,currency:'KRW'},{distanceRange:'700-1100',label:'700~1,100mi 미만',amount:66400,currency:'KRW'},{distanceRange:'1100-1500',label:'1,100~1,500mi 미만',amount:86600,currency:'KRW'},{distanceRange:'1500-1900',label:'1,500~1,900mi 미만',amount:95300,currency:'KRW'},{distanceRange:'1900-2300',label:'1,900~2,300mi 미만',amount:99600,currency:'KRW'}]}}
+  });
+  window._SEPTEMBER_2026_OFFICIAL_OVERRIDES = overrides;
+  var previousLoadAirlineMeta = window.loadAirlineMeta;
+  if (typeof previousLoadAirlineMeta === 'function' && !previousLoadAirlineMeta.__aeroAug20TerminalWrapped) {
+    var wrapped = async function(){
+      var result = await previousLoadAirlineMeta.apply(this, arguments);
+      var meta = window.AIRLINE_META || {};
+      Object.keys(window._SEPTEMBER_2026_OFFICIAL_OVERRIDES || {}).forEach(function(code){
+        meta[code] = meta[code] || {};
+        meta[code].monthlyOverrides = Object.assign({}, meta[code].monthlyOverrides || {}, window._SEPTEMBER_2026_OFFICIAL_OVERRIDES[code]);
+        var notice = window._SEPTEMBER_2026_OFFICIAL_OVERRIDES[code] && window._SEPTEMBER_2026_OFFICIAL_OVERRIDES[code]['2026.09'];
+        if (notice && notice.officialNoticeUrl) {
+          meta[code].officialNoticeUrl = notice.officialNoticeUrl;
+          meta[code].hasOfficialNotice = true;
+          meta[code].officialDataSource = 'official_notice';
+        }
+      });
+      return result;
+    };
+    wrapped.__aeroAug20TerminalWrapped = true;
+    window.loadAirlineMeta = wrapped;
+  }
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), {
+      marketDataRef: '2026.08.20 07:00 KST 기준',
+      marketOil: '국제유가: 8월 19일 미국 시장 종가 기준 Brent 91.62달러/bbl, WTI 85.83달러/bbl입니다. 원유가격은 항공유/MOPS의 보조지표로만 사용합니다.',
+      marketMops: '항공유: 9월 산정 평균은 149.29달러/bbl(2026.07.16~08.15)이며, 10월 산정기간 항공유 평균은 집계 중입니다. 149.29달러는 현재 MOPS가 아닙니다.',
+      marketFx: '원달러 환율: 2026.08.20 07:00 KST 기준 약 1,388원으로, 10월 유류할증료에는 강한 하락 요인입니다.',
+      marketGeo: '호르무즈: Kpler 추적 commodity vessel 통항량이 정상 대비 극도로 낮고, 우회·보호 수송이 병행되는 상태입니다. 완전 봉쇄나 정상화로 단정하지 않습니다.',
+      marketSummary: latest.marketSummary
     });
   }
 })();

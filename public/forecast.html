@@ -13001,6 +13001,532 @@ function renderForecastPage() {
   });
 })();
 
+/* 2026.08.19 sitewide transition: September notices reflected, October forecast preparation. */
+(function(){
+  var ko = {
+    'fore.metaTitle':'2026년 10월 국제선 유류할증료 전망 준비 | 9월 공시 반영',
+    'fore.metaDesc':'2026년 8월 19일 07:00 KST 기준 9월 한국 출발 국제선 공시를 반영하고, 10월 유류할증료 공시 전 산정기간 변수만 분리해 추적합니다.',
+    'fore.pageTitle':'2026년 10월 국제선 유류할증료 전망 준비',
+    'fore.pageSub':'2026.08.19 07:00 KST 기준 · 9월 공시 KE/OZ/LJ/BX 반영 · 10월 공시 전 · 10월 산정기간 2026.08.16~09.15 추적 · USD/KRW 약 1,412원',
+    'fore.h1':'2026년 10월 국제선 유류할증료 전망 — 9월 공시 반영 이후 산정기간 추적',
+    'fore.section.indicators':'2026년 10월 유류할증료 전망 핵심 지표',
+    'fore.notice':'<strong>확인:</strong> 2026년 9월 한국 출발 국제선 공시는 대한항공·아시아나·진에어·에어부산 기준 반영됐습니다. 10월 유류할증료는 아직 공시 전이며 단계·금액·확률을 확정값처럼 표시하지 않습니다.',
+    'fore.intro':'2026.08.19 07:00 KST 기준 사이트의 전망 기준은 10월로 이동합니다. 9월 공시는 확정 기준선으로만 사용하고, 10월은 2026.08.16~09.15 산정기간의 항공유 평균, USD/KRW, Brent/WTI, 호르무즈 리스크를 분리해 추적합니다.',
+    'fore.indicator.th':['항목','현재 확인 상태','10월 전망에서의 의미'],
+    'fore.indicator.rows':[
+      ['9월 공시','KE·OZ·LJ·BX 9월 국제선 공식 공시 반영','10월 전망의 비교 기준선입니다.'],
+      ['10월 산정 기간','2026.08.16~2026.09.15 진행/추적','평균 산정 완료 전까지 단계·금액을 확정하지 않습니다.'],
+      ['환율','USD/KRW 약 1,412원','원화 환산 부담을 낮추는 완화 요인입니다.'],
+      ['항공유','9월 산정 평균 149.29달러/bbl은 기준선 참고값','10월 산정 평균으로 재사용하지 않고 새 기간 평균을 추적합니다.'],
+      ['국제유가·호르무즈','Brent 91.02달러·WTI 84.94달러, 호르무즈 위험 높음','10월 전망의 상방 리스크로 관찰합니다.']
+    ],
+    'fore.indicator.footnote':'* 10월은 공시 전입니다. 9월 확정 단계나 149.29달러/bbl을 10월 확정값처럼 사용하지 않습니다.',
+    'fore.summary.updated':'2026.08.19 07:00 KST 기준 · 9월 공시 반영 · 10월 공시 준비',
+    'fore.summary.title':'2026년 10월 국제선 유류할증료 전망 준비 요약',
+    'fore.summary.items':[
+      '9월 국제선 공시는 대한항공·아시아나·진에어·에어부산 기준 반영됐습니다.',
+      '10월 유류할증료는 아직 항공사 공식 공시 전입니다.',
+      '10월 산정 기간은 2026.08.16~09.15이며, 해당 기간 평균 항공유 가격을 새로 확인해야 합니다.',
+      '9월 산정 평균 149.29달러/bbl은 기준선 참고값이지 10월 산정 평균이 아닙니다.',
+      'USD/KRW 약 1,412원은 완화 요인이지만 향후 산정기간 환율 변동을 계속 봐야 합니다.',
+      'Brent 91.02달러와 WTI 84.94달러는 10월 전망의 원유 측 상방 변수입니다.',
+      '호르무즈는 완전 정상화로 단정하지 않고 물류·보험료 리스크로 분리해 추적합니다.',
+      '현재 판단: 9월 공시 반영 완료, 10월은 공시 전 준비 단계입니다.'
+    ],
+    'fore.verdict.title':'2026년 10월 국제선 전망 판단',
+    'fore.verdict.line1':'10월 국제선 유류할증료는 아직 공식 공시 전입니다.',
+    'fore.verdict.line2':'9월 공시는 기준선으로만 두고, 10월 산정기간 항공유 평균과 환율을 새로 확인해야 합니다.',
+    'fore.verdict.short':'완화 요인: USD/KRW 약 1,412원',
+    'fore.verdict.long':'상방 요인: Brent 91.02달러 · WTI 84.94달러 · 호르무즈 리스크',
+    'fore.market.title':'시장 브리핑: 10월 공시 준비로 전환',
+    'fore.market.summary':'현재 판단은 9월 공시 반영 완료, 10월 공시 전 준비입니다. 확정 단계·금액 대신 산정기간 항공유 평균, 환율, 국제유가, 호르무즈 정상화 여부를 추적합니다.',
+    'fore.market.fx2':'핵심 수치: 2026.08.19 07:00 KST · 9월 공시 KE/OZ/LJ/BX 반영 · 10월 산정기간 2026.08.16~09.15 · USD/KRW 약 1,412원 · Brent 91.02달러 · WTI 84.94달러',
+    'fore.basis.title':'9월 확정 공시와 10월 준비 기준',
+    'fore.basis.body':'9월 공시는 확정 기준선입니다. 10월 유류할증료는 2026.08.16~09.15 산정기간 평균과 항공사 공식 공시가 확인되기 전까지 전망 준비 상태로만 표시합니다.',
+    'fore.booking.title':'항공권 예약 판단 가이드',
+    'fore.booking.items':[
+      '9월 발권: KE/OZ/LJ/BX는 9월 공식 공시 금액을 기준으로 총액을 비교하세요.',
+      'USD 공시 항공사: 진에어·에어부산 등은 결제 시점 환율에 따라 원화 체감액이 달라질 수 있습니다.',
+      '10월 이후 발권: 아직 공시 전이므로 2026.08.16~09.15 산정기간 항공유 평균과 환율을 새로 확인해야 합니다.',
+      '주의: 10월 단계·금액·확률은 항공사 공식 공시 전까지 확정값처럼 표시하지 않습니다.'
+    ],
+    'fore.myrealtrip.title':'9월 공시 확인 후 실제 항공권 총액 비교하기',
+    'fore.myrealtrip.desc':'9월 유류할증료는 발권일 기준으로 적용됩니다. 유류할증료, 운임, 세금, 좌석 상황, 결제 시점 환율을 포함한 최종 결제 총액을 함께 비교하세요.',
+    'fore.myrealtrip.btn':'항공권 총액 확인하기 →',
+    'fore.cta.desc':'📍 9월 공시 기준 유류할증료를 노선별로 확인하세요',
+    'fore.cta.may':'👉 8월 vs 9월 비교 데이터 확인',
+    'fore.keyvars.title':'유류할증료 결정 핵심 변수',
+    'fore.keyvars.items':['9월 공식 공시 반영','10월 산정기간 2026.08.16~09.15','산정기간 항공유 평균','USD/KRW 환율','Brent·WTI 국제유가','호르무즈 물류 리스크','항공사 공식 공시 확인'],
+    'fore.aiNotice':'참고 콘텐츠 — 이 페이지는 2026년 9월 공식 공시를 기준선으로 반영하고, 2026년 10월 유류할증료는 공시 전 준비 상태로 분리해 정리한 참고용 자료입니다. 중요한 결정 전에는 각 항공사 공식 채널을 반드시 확인하세요.',
+    'fore.related.items':[
+      {href:'fuel-surcharge-calculator.html',label:'🧮 8월 vs 9월 유류할증료 비교',color:'#F0F9FF',border:'#7DD3FC',textColor:'#075985'},
+      {href:'airlines.html',label:'✈️ 항공사별 9월 공시 확인',color:'#F0FDF4',border:'#86EFAC',textColor:'#166534'},
+      {href:'index.html',label:'🇰🇷 한국 출발 유류할증료 조회',color:'#FFF7ED',border:'#FDBA74',textColor:'#9A3412'},
+      {href:'news.html',label:'📰 9월 공시 및 10월 준비 뉴스',color:'#FDF2F8',border:'#F9A8D4',textColor:'#9D174D'}
+    ],
+    'fore.predict.title':'2026년 10월 국제선 유류할증료 전망 핵심 지표',
+    'fore.predict.subtitle':'10월 공시 전 · 산정기간 항공유 평균과 환율 추적',
+    'fore.predict.items':[
+      {label:'9월 공시', val:'KE/OZ/LJ/BX 반영 완료 · 기준선', cls:'neutral'},
+      {label:'10월 산정기간', val:'2026.08.16~09.15 · 평균 산정 전', cls:'neutral'},
+      {label:'환율', val:'USD/KRW 약 1,412원 · 완화 요인', cls:'down'},
+      {label:'국제유가', val:'Brent 91.02달러 · WTI 84.94달러 · 상방 변수', cls:'up'},
+      {label:'호르무즈', val:'정상화 여부 미확정 · 물류 리스크 관찰', cls:'up'}
+    ],
+    'fore.predict.footnote':'* 10월 공시 전 단계·금액·확률을 생성하지 않습니다. 기존에 없던 국내선/선박 숫자 지표는 forecast 핵심 지표에 추가하지 않습니다.',
+    'fore.mops.analysis.title':'',
+    'fore.mops.analysis.body':'',
+    'fore.faq.items':[
+      {q:'2026년 10월 국제선 유류할증료는 확정됐나요?', a:'아닙니다. 10월은 아직 공시 전이며 2026.08.16~09.15 산정기간을 추적하는 단계입니다.'},
+      {q:'9월 21단계는 계속 보여야 하나요?', a:'9월 공시 확정 사실은 기준선으로만 표시하고, 10월 전망의 메인 문구는 공시 전 준비 상태로 표시합니다.'},
+      {q:'149.29달러/bbl은 10월 산정 평균인가요?', a:'아닙니다. 149.29달러/bbl은 9월 산정 평균입니다. 10월은 새 산정기간 평균을 별도로 확인해야 합니다.'}
+    ]
+  };
+  var en = Object.assign({}, ko, {
+    'fore.metaTitle':'October 2026 International Fuel Surcharge Outlook Preparation | September Notices Reflected',
+    'fore.pageTitle':'October 2026 International Fuel Surcharge Outlook Preparation',
+    'fore.pageSub':'As of 2026.08.19 07:00 KST · September KE/OZ/LJ/BX notices reflected · October pre-filing · tracking 2026.08.16-09.15 calculation window',
+    'fore.h1':'October 2026 International Fuel Surcharge Outlook - tracking the new calculation window',
+    'fore.section.indicators':'October 2026 Surcharge Outlook Indicators',
+    'fore.notice':'<strong>Confirmed:</strong> September notices are reflected for KE/OZ/LJ/BX. October is still pre-filing, so no stage, amount or probability is shown as confirmed.',
+    'fore.summary.title':'October 2026 International Surcharge Outlook Preparation Summary',
+    'fore.market.title':'Market brief: transition to October filing preparation',
+    'fore.predict.title':'October 2026 International Surcharge Outlook Indicators',
+    'fore.booking.title':'Airfare Booking Check',
+    'fore.booking.items':[
+      'September ticketing: compare total airfare using confirmed September notices for KE/OZ/LJ/BX.',
+      'USD-notice carriers: KRW impact can move with the payment-time exchange rate.',
+      'October or later ticketing: October is still pre-filing; recheck jet fuel average and FX for the 2026.08.16-09.15 calculation window.',
+      'Caution: do not display October stage, amount or probability as confirmed before official airline notices.'
+    ],
+    'fore.myrealtrip.title':'Compare total airfare after checking September notices',
+    'fore.myrealtrip.desc':'Fuel surcharges apply by ticketing date. Compare final payment totals including surcharge, base fare, taxes, seats and payment-time FX.',
+    'fore.myrealtrip.btn':'Check total airfare →',
+    'fore.cta.desc':'📍 Check route-level surcharges based on September notices',
+    'fore.cta.may':'👉 See August vs September comparison',
+    'fore.keyvars.items':['September official notices reflected','October calculation window 2026.08.16-09.15','Calculation-period jet fuel average','USD/KRW exchange rate','Brent and WTI crude','Hormuz logistics risk','Official airline notices'],
+    'fore.aiNotice':'Reference content — This page reflects September 2026 official notices as the baseline and separates October 2026 fuel surcharges as pre-filing preparation. Always check official airline channels before important decisions.'
+  });
+  var packs = {ko:ko,en:en,ja:en,zh:en,fr:en,de:en};
+  Object.keys(packs).forEach(function(lang){
+    Object.assign(FORE_I18N[lang] || (FORE_I18N[lang] = {}), packs[lang]);
+    if(window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], packs[lang]);
+  });
+  document.title = ko['fore.metaTitle'];
+  var desc = document.querySelector('meta[name="description"]'); if(desc) desc.setAttribute('content', ko['fore.metaDesc']);
+})();
+
+/* 2026.08.20 forecast terminal update: October uncertainty model. */
+(function(){
+  var ko = {
+    'fore.metaTitle':'2026년 10월 국제선 유류할증료 전망 | 환율·MOPS·호르무즈 분석',
+    'fore.metaDesc':'원달러 환율, MOPS·항공유 가격, 국제유가와 호르무즈 해협 상황을 분석해 2026년 10월 국제선 유류할증료 방향을 추적합니다.',
+    'fore.pageTitle':'2026년 10월 국제선 유류할증료 전망',
+    'fore.pageSub':'2026.08.20 07:00 KST 기준 · 9월 21단계 확정 · 10월 산정기간 초반 · USD/KRW 약 1,388원 · Brent 91.62달러 · WTI 85.83달러',
+    'fore.h1':'2026년 10월 국제선 유류할증료 전망 — 환율 ↓↓ vs 항공유 ↑↑ · 호르무즈 ↑↑↑',
+    'fore.section.indicators':'2026년 10월 유류할증료 전망 핵심 지표',
+    'fore.notice':'<strong>확인:</strong> 9월 국제선 유류할증료는 21단계로 대폭 인상이 확정됐습니다. 이제 forecast의 기준은 10월입니다. 10월은 산정기간 초반이라 단계·금액·확률을 확정하지 않습니다.',
+    'fore.intro':'10월 국제선 유류할증료는 아직 방향을 확정하기 어렵습니다. 원/달러 환율이 1,380원대까지 하락하면서 강한 인하 요인이 발생했지만, 항공유 가격과 중동 정유시설 차질, 호르무즈 해협의 극심한 공급망 위험이 계속되고 있습니다. 10월 산정기간의 평균 항공유 가격과 평균환율이 9월 기준치보다 얼마나 낮아지는지가 향후 방향을 결정할 전망입니다.',
+    'fore.indicator.th':['항목','2026.08.20 기준 확인 상태','10월 전망에서의 의미'],
+    'fore.indicator.rows':[
+      ['9월 기준선','9월 국제선 21단계 확정 · 산정 항공유 평균 149.29달러/bbl(2026.07.16~08.15)','10월 전망의 비교 기준입니다. 현재 MOPS로 표시하지 않습니다.'],
+      ['10월 산정기간','2026.08.16~2026.09.15 진행 중 · 산정 초기','예측 신뢰도 낮음. 누적 평균이 쌓이기 전 단계·금액 예측은 보류합니다.'],
+      ['환율','USD/KRW 약 1,388원','강한 하락 요인 ↓↓. 단 산정기간 평균환율은 아직 집계 중입니다.'],
+      ['10월 항공유 누적 평균','집계 중','9월 기준 149.29달러/bbl보다 낮아지는지가 핵심입니다.'],
+      ['국제유가','Brent 91.62달러 · WTI 85.83달러(8월 19일 미국시장 종가)','항공유/MOPS의 보조지표이며 상승 요인입니다.'],
+      ['정유 공급','중동 정유시설 차질·제트유 재고 부족 위험','항공유 가격 정상화를 제한하는 상승 위험 ↑↑ 입니다.'],
+      ['호르무즈','Kpler 추적 commodity vessel 통항량이 정상 대비 극도로 낮고 우회·보호 수송 병행','극도로 높은 위험 ↑↑↑. 완전 봉쇄나 정상화로 단정하지 않습니다.']
+    ],
+    'fore.indicator.footnote':'* 10월은 공시 전입니다. 9월 21단계와 149.29달러/bbl은 10월 확정값이 아니라 기준선입니다. 10월 항공유 누적 평균과 평균환율은 집계 중입니다.',
+    'fore.summary.updated':'2026.08.20 07:00 KST 기준 · 10월 산정기간 초반 · 예측 신뢰도 낮음',
+    'fore.summary.title':'2026년 10월 국제선 유류할증료 전망 요약',
+    'fore.summary.items':[
+      '9월 국제선 유류할증료는 21단계로 대폭 인상이 확정됐습니다.',
+      '10월 유류할증료는 아직 공식 공시 전이며 산정기간 초반입니다.',
+      '원/달러 환율은 약 1,388원으로 내려와 강한 하락 요인입니다.',
+      '다만 산정기간 평균환율은 아직 집계 중이며, 현재 환율만으로 10월 인하를 확정할 수 없습니다.',
+      '9월 산정 항공유 평균 149.29달러/bbl은 10월 전망의 기준선입니다.',
+      '10월 산정기간 항공유 누적 평균은 아직 집계 중입니다.',
+      'Brent 91.62달러와 WTI 85.83달러는 항공유 하락을 막는 보조 상승 변수입니다.',
+      '정유 공급 위험과 제트유 재고 부족은 항공유 가격의 강한 상승 요인입니다.',
+      '호르무즈는 극도로 제한된 공개 통항과 우회·보호 수송이 병행되는 상태라 정상화로 보기 어렵습니다.',
+      '현재 판단: 환율 하락 vs 항공유·호르무즈 상승의 충돌로 10월 방향은 아직 불확실합니다.'
+    ],
+    'fore.verdict.title':'2026년 10월 국제선 전망 판단',
+    'fore.verdict.line1':'10월 국제선 유류할증료는 아직 방향 불확실입니다.',
+    'fore.verdict.line2':'환율 1,380원대는 강한 인하 요인이지만, 항공유·정유 공급·호르무즈 위험이 강한 상승 요인으로 남아 있습니다.',
+    'fore.verdict.short':'하락 요인: USD/KRW 약 1,388원 · 원화 강세',
+    'fore.verdict.long':'상승 요인: 항공유 기준선 149.29달러/bbl · Brent 91.62달러 · 정유 공급 위험 · 호르무즈 ↑↑↑',
+    'fore.market.title':'시장 브리핑: 10월 전망은 방향 불확실',
+    'fore.market.brent':'국제유가: 8월 19일 미국 시장 종가 기준 Brent 91.62달러/bbl, WTI 85.83달러/bbl입니다. 원유는 MOPS가 아니라 항공유 가격의 보조·선행 지표입니다.',
+    'fore.market.mops':'항공유/MOPS: 9월 산정 평균은 149.29달러/bbl(2026.07.16~08.15)입니다. 10월 산정기간 항공유 누적 평균은 집계 중이며, 149.29달러를 현재 MOPS로 표시하지 않습니다.',
+    'fore.market.fx':'환율: USD/KRW 약 1,388원은 10월 유류할증료의 강한 하락 요인입니다. 다만 산정기간 전체 평균환율이 어떻게 형성되는지가 중요합니다.',
+    'fore.market.geo':'호르무즈: Kpler 공개 추적 commodity vessel 통항량은 정상 대비 극도로 낮고, 미국 측 보호·비공개 수송 주장과는 분리해서 봅니다. 우회 운송은 완충 요인이지만 정상화는 아닙니다.',
+    'fore.market.summary':'현재 판단은 환율 ↓↓ vs 항공유 ↑↑ · 호르무즈 ↑↑↑의 충돌입니다. 산정기간 초반이라 10월 방향은 아직 불확실합니다.',
+    'fore.market.fx2':'핵심 수치: 2026.08.20 07:00 KST · USD/KRW 약 1,388원 · 9월 산정 항공유 평균 149.29달러/bbl · 10월 산정기간 2026.08.16~09.15 · Brent 91.62달러 · WTI 85.83달러',
+    'fore.basis.title':'8월 현재 적용 · 9월 확정 · 10월 전망',
+    'fore.basis.body':'현재 적용월은 2026년 8월, 이미 공시된 다음 달은 2026년 9월, forecast 목표는 2026년 10월입니다. 9월은 확정 기준선으로 유지하고 10월은 산정기간 데이터가 쌓일 때까지 예측 보류/방향 불확실로 표시합니다.',
+    'fore.predict.title':'2026년 10월 국제선 유류할증료 전망 핵심 지표',
+    'fore.predict.subtitle':'환율 ↓↓ vs 항공유 ↑↑ · 호르무즈 ↑↑↑ — 방향 불확실',
+    'fore.predict.items':[
+      {label:'10월 전망', val:'방향 불확실 · 산정기간 초반', cls:'neutral'},
+      {label:'환율', val:'USD/KRW 약 1,388원 · 강한 하락 요인 ↓↓', cls:'down'},
+      {label:'9월 항공유 기준선', val:'149.29달러/bbl · 2026.07.16~08.15 평균', cls:'neutral'},
+      {label:'10월 항공유 누적 평균', val:'집계 중', cls:'neutral'},
+      {label:'Brent / WTI', val:'91.62달러 / 85.83달러 · 보조 상승 지표', cls:'up'},
+      {label:'정유 공급', val:'중동 차질·재고 부족 · 상승 위험 ↑↑', cls:'up'},
+      {label:'호르무즈', val:'극도로 높은 위험 ↑↑↑', cls:'up'},
+      {label:'예측 신뢰도', val:'낮음 · 산정기간 초반', cls:'neutral'}
+    ],
+    'fore.predict.footnote':'* 10월 단계·금액·확률은 항공사 공식 공시 전까지 확정값처럼 표시하지 않습니다. Brent/WTI를 MOPS로 환산하지 않습니다.',
+    'fore.booking.title':'항공권 예약 판단 가이드',
+    'fore.booking.items':['9월 발권: 9월 공식 공시 금액을 기준으로 항공권 총액을 비교하세요.','10월 이후 발권: 산정기간 초반이라 방향이 불확실합니다. 평균 항공유 가격과 평균환율 업데이트를 함께 확인하세요.','환율만 보고 인하를 확정하지 마세요. 항공유·정유 공급·호르무즈 위험이 강합니다.','장거리 노선은 유류할증료와 환율, 좌석 운임까지 포함한 총액 기준으로 판단하세요.'],
+    'fore.keyvars.items':['9월 21단계 확정','10월 산정기간 2026.08.16~09.15','USD/KRW 약 1,388원','9월 항공유 기준선 149.29달러/bbl','10월 항공유 누적 평균 집계 중','Brent 91.62달러','WTI 85.83달러','정유 공급 위험','호르무즈 극도로 높은 위험','예측 신뢰도 낮음'],
+    'fore.aiNotice':'참고 콘텐츠 — 이 페이지는 9월 확정 데이터를 10월 예측 기준선으로 사용하고, 산정기간 초반의 환율·항공유·정유 공급·호르무즈 변수를 분리해 정리한 참고용 자료입니다. 중요한 결정 전에는 각 항공사 공식 채널을 반드시 확인하세요.',
+    'fore.faq.items':[
+      {q:'2026년 10월 국제선 유류할증료는 확정됐나요?', a:'아닙니다. 10월은 아직 공시 전이며 산정기간 초반이라 방향도 확정하기 어렵습니다.'},
+      {q:'환율이 1,388원까지 내려갔으면 10월은 인하인가요?', a:'아직 확정할 수 없습니다. 환율은 강한 하락 요인이지만 항공유 가격, 정유 공급 위험, 호르무즈 리스크가 동시에 강한 상승 요인입니다.'},
+      {q:'149.29달러/bbl은 현재 MOPS인가요?', a:'아닙니다. 149.29달러/bbl은 9월 유류할증료 산정 평균입니다. 10월 산정기간 항공유 누적 평균은 집계 중입니다.'},
+      {q:'예측 신뢰도는 어느 정도인가요?', a:'낮음입니다. 2026.08.20 기준 10월 산정기간 초반이므로 충분한 평균 항공유·평균환율 데이터가 아직 쌓이지 않았습니다.'}
+    ]
+  };
+  var en = Object.assign({}, ko, {
+    'fore.metaTitle':'October 2026 International Fuel Surcharge Outlook | FX, MOPS and Hormuz',
+    'fore.metaDesc':'Track the October 2026 international fuel surcharge direction using USD/KRW, jet fuel/MOPS, crude oil and Hormuz risk.',
+    'fore.pageTitle':'October 2026 International Fuel Surcharge Outlook',
+    'fore.pageSub':'As of 2026.08.20 07:00 KST · September Level 21 confirmed · early October calculation window · USD/KRW around 1,388 · Brent USD 91.62 · WTI USD 85.83',
+    'fore.h1':'October 2026 International Surcharge Outlook - FX ↓↓ vs jet fuel ↑↑ and Hormuz ↑↑↑',
+    'fore.notice':'<strong>Confirmed:</strong> September international surcharges are confirmed at Level 21. Forecast now focuses on October. October is early in its calculation window, so no stage, amount or probability is confirmed.',
+    'fore.predict.subtitle':'FX ↓↓ vs jet fuel ↑↑ · Hormuz ↑↑↑ - direction uncertain',
+    'fore.market.summary':'Current view: FX downside conflicts with jet fuel, refining supply and Hormuz upside. October direction remains uncertain because the calculation window is still early.'
+  });
+  var ja = Object.assign({}, en, {
+    'fore.metaTitle':'2026年10月国際線燃油サーチャージ見通し | 為替・MOPS・ホルムズ',
+    'fore.metaDesc':'2026年10月国際線燃油サーチャージをUSD/KRW、航空燃料/MOPS、原油、ホルムズリスクで追跡します。',
+    'fore.pageTitle':'2026年10月国際線燃油サーチャージ見通し',
+    'fore.pageSub':'2026.08.20 07:00 KST時点 · 9月21段階確定 · 10月算定期間序盤 · USD/KRW約1,388 · Brent 91.62ドル · WTI 85.83ドル',
+    'fore.h1':'2026年10月国際線見通し — 為替↓↓ vs 航空燃料↑↑・ホルムズ↑↑↑',
+    'fore.notice':'<strong>確認:</strong> 9月国際線燃油サーチャージは21段階で確定しました。現在のforecastは10月を対象にします。10月は算定期間序盤のため、段階・金額・確率は確定していません。',
+    'fore.predict.subtitle':'為替↓↓ vs 航空燃料↑↑ · ホルムズ↑↑↑ — 方向不確実',
+    'fore.market.summary':'現在の見方: 為替の下押し要因と、航空燃料・精製供給・ホルムズの上昇要因が衝突しています。算定期間序盤のため10月方向はまだ不確実です。'
+  });
+  var zh = Object.assign({}, en, {
+    'fore.metaTitle':'2026年10月国际线燃油附加费展望 | 汇率、MOPS与霍尔木兹',
+    'fore.metaDesc':'通过USD/KRW、航油/MOPS、原油和霍尔木兹风险跟踪2026年10月国际线燃油附加费方向。',
+    'fore.pageTitle':'2026年10月国际线燃油附加费展望',
+    'fore.pageSub':'截至2026.08.20 07:00 KST · 9月第21档确认 · 10月计算期初期 · USD/KRW约1,388 · Brent 91.62美元 · WTI 85.83美元',
+    'fore.h1':'2026年10月国际线展望 — 汇率↓↓ vs 航油↑↑、霍尔木兹↑↑↑',
+    'fore.notice':'<strong>确认:</strong> 9月国际线燃油附加费已确认为第21档。forecast现在转向10月。10月仍处计算期初期，因此不确认档位、金额或概率。',
+    'fore.predict.subtitle':'汇率↓↓ vs 航油↑↑ · 霍尔木兹↑↑↑ — 方向不确定',
+    'fore.market.summary':'当前判断：汇率下行因素与航油、炼油供应和霍尔木兹上行风险相互拉扯。由于仍处计算期初期，10月方向尚不确定。'
+  });
+  var fr = Object.assign({}, en, {
+    'fore.metaTitle':'Perspective surtaxe carburant internationale octobre 2026 | FX, MOPS et Hormuz',
+    'fore.metaDesc':'Suivi de la direction de la surtaxe carburant internationale d’octobre 2026 via USD/KRW, carburéacteur/MOPS, pétrole et risque Hormuz.',
+    'fore.pageTitle':'Perspective surtaxe carburant internationale octobre 2026',
+    'fore.pageSub':'Au 2026.08.20 07:00 KST · niveau 21 confirmé en septembre · début de fenêtre de calcul octobre · USD/KRW env. 1,388 · Brent 91.62 USD · WTI 85.83 USD',
+    'fore.h1':'Perspective octobre 2026 — FX ↓↓ vs carburéacteur ↑↑ et Hormuz ↑↑↑',
+    'fore.notice':'<strong>Confirmé:</strong> la surtaxe internationale de septembre est confirmée au niveau 21. La page forecast se concentre désormais sur octobre; aucun niveau, montant ou probabilité n’est confirmé.',
+    'fore.predict.subtitle':'FX ↓↓ vs carburéacteur ↑↑ · Hormuz ↑↑↑ — direction incertaine'
+  });
+  var de = Object.assign({}, en, {
+    'fore.metaTitle':'Oktober-2026 internationaler Treibstoffzuschlag Ausblick | FX, MOPS und Hormuz',
+    'fore.metaDesc':'Ausblick auf den internationalen Treibstoffzuschlag Oktober 2026 anhand USD/KRW, Jetfuel/MOPS, Öl und Hormuz-Risiko.',
+    'fore.pageTitle':'Oktober-2026 internationaler Treibstoffzuschlag Ausblick',
+    'fore.pageSub':'Stand 2026.08.20 07:00 KST · September Stufe 21 bestätigt · frühes Oktober-Berechnungsfenster · USD/KRW ca. 1,388 · Brent 91.62 USD · WTI 85.83 USD',
+    'fore.h1':'Oktober-2026 Ausblick — FX ↓↓ vs Jetfuel ↑↑ und Hormuz ↑↑↑',
+    'fore.notice':'<strong>Bestätigt:</strong> der internationale September-Zuschlag ist auf Stufe 21 bestätigt. Forecast fokussiert nun Oktober; Stufe, Betrag und Wahrscheinlichkeit sind noch nicht bestätigt.',
+    'fore.predict.subtitle':'FX ↓↓ vs Jetfuel ↑↑ · Hormuz ↑↑↑ — Richtung unsicher'
+  });
+  var packs = {ko:ko,en:en,ja:ja,zh:zh,fr:fr,de:de};
+  Object.keys(packs).forEach(function(lang){
+    Object.assign(FORE_I18N[lang] || (FORE_I18N[lang] = {}), packs[lang]);
+    if(window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], packs[lang]);
+  });
+  document.title = ko['fore.metaTitle'];
+  var desc = document.querySelector('meta[name="description"]'); if(desc) desc.setAttribute('content', ko['fore.metaDesc']);
+  var ogTitle = document.querySelector('meta[property="og:title"]'); if(ogTitle) ogTitle.setAttribute('content', ko['fore.metaTitle']);
+  var ogDesc = document.querySelector('meta[property="og:description"]'); if(ogDesc) ogDesc.setAttribute('content', ko['fore.metaDesc']);
+  var mod = document.querySelector('meta[property="article:modified_time"]'); if(mod) mod.setAttribute('content', '2026-08-20T07:00:00+09:00');
+})();
+
+/* 2026.08.20 forecast cleanup: keep only the original core forecast variables. */
+(function(){
+  function buildLeanForecastPacks(){
+    var ko = {
+      'fore.metaTitle':'2026년 10월 국제선 유류할증료 전망',
+      'fore.metaDesc':'2026년 10월 국제선 유류할증료를 9월 확정 공시, 10월 산정기간, 환율, 항공유 산정 평균 중심으로 추적합니다.',
+      'fore.pageTitle':'2026년 10월 국제선 유류할증료 전망',
+      'fore.pageSub':'2026.08.20 07:00 KST 기준 · 9월 21단계 확정 · 10월 산정기간 2026.08.16~09.15 추적 · USD/KRW 약 1,388원',
+      'fore.h1':'2026년 10월 국제선 유류할증료 전망',
+      'fore.section.indicators':'2026년 10월 유류할증료 전망 핵심 지표',
+      'fore.notice':'<strong>확인:</strong> 9월 국제선 유류할증료는 확정됐고, forecast는 10월 산정기간을 추적합니다. 10월은 아직 공시 전이므로 단계·금액·확률을 확정하지 않습니다.',
+      'fore.intro':'10월 국제선 유류할증료는 아직 공시 전입니다. 이 페이지는 9월 확정 공시를 기준선으로 두고, 10월 산정기간의 항공유 평균과 환율 흐름만 분리해 추적합니다.',
+      'fore.indicator.th':['항목','현재 확인 상태','10월 전망에서의 의미'],
+      'fore.indicator.rows':[
+        ['9월 확정 기준선','9월 국제선 21단계 확정 · 산정 항공유 평균 149.29달러/bbl','10월 전망의 비교 기준입니다. 현재 MOPS나 10월 평균으로 표시하지 않습니다.'],
+        ['10월 산정기간','2026.08.16~2026.09.15 진행 중','산정기간 평균이 쌓이기 전까지 단계·금액 예측은 보류합니다.'],
+        ['환율','USD/KRW 약 1,388원','원화 환산 부담을 낮추는 요인입니다. 산정기간 평균환율은 별도로 확인해야 합니다.'],
+        ['10월 항공유 산정 평균','집계 중','9월 기준선보다 낮아지는지 확인해야 할 핵심 변수입니다.']
+      ],
+      'fore.indicator.footnote':'* 10월은 공시 전입니다. forecast 핵심 지표는 산정기간, 환율, 항공유 산정 평균으로만 제한합니다.',
+      'fore.summary.updated':'2026.08.20 07:00 KST 기준 · 10월 산정기간 추적',
+      'fore.summary.title':'2026년 10월 국제선 유류할증료 전망 요약',
+      'fore.summary.items':[
+        '9월 국제선 유류할증료는 확정 기준선으로 유지합니다.',
+        '10월 유류할증료는 아직 공식 공시 전입니다.',
+        '10월 산정기간은 2026.08.16~09.15입니다.',
+        'USD/KRW 약 1,388원은 원화 환산 부담을 낮추는 요인입니다.',
+        '9월 산정 항공유 평균 149.29달러/bbl은 10월 확정값이 아닙니다.',
+        '10월 항공유 산정 평균은 아직 집계 중입니다.',
+        '현재 forecast는 단계·금액·확률을 생성하지 않고 산정 변수를 추적합니다.'
+      ],
+      'fore.verdict.title':'2026년 10월 국제선 전망 판단',
+      'fore.verdict.line1':'10월 국제선 유류할증료는 아직 공시 전입니다.',
+      'fore.verdict.line2':'현재는 환율과 10월 항공유 산정 평균을 추적하는 단계입니다.',
+      'fore.verdict.short':'확인된 기준선: 9월 국제선 21단계',
+      'fore.verdict.long':'추적 변수: 10월 산정기간 항공유 평균 · 산정기간 평균환율',
+      'fore.market.title':'시장 브리핑: 10월 산정기간 추적',
+      'fore.market.brent':'기준선: 9월 산정 항공유 평균 149.29달러/bbl은 10월 확정값이 아닙니다.',
+      'fore.market.fx':'환율: USD/KRW 약 1,388원은 원화 환산 부담을 낮추는 요인입니다.',
+      'fore.market.mops':'항공유: 10월 산정기간 항공유 평균은 아직 집계 중입니다.',
+      'fore.market.geo':'공시 상태: 10월 국제선 유류할증료는 아직 항공사 공식 공시 전입니다.',
+      'fore.market.summary':'현재 판단은 10월 공시 전 준비입니다. 단계·금액·확률 대신 산정기간 항공유 평균과 환율을 추적합니다.',
+      'fore.market.fx2':'핵심 수치: 2026.08.20 07:00 KST · 10월 산정기간 2026.08.16~09.15 · USD/KRW 약 1,388원 · 9월 기준선 149.29달러/bbl',
+      'fore.basis.title':'9월 확정 · 10월 산정기간 추적',
+      'fore.basis.body':'현재 forecast 목표는 2026년 10월입니다. 9월 확정 공시는 기준선으로만 사용하고, 10월은 항공유 산정 평균과 평균환율이 쌓일 때까지 예측 보류로 표시합니다.',
+      'fore.predict.title':'2026년 10월 국제선 유류할증료 전망 핵심 지표',
+      'fore.predict.subtitle':'10월 공시 전 · 산정기간 항공유 평균과 환율 추적',
+      'fore.predict.items':[
+        {label:'10월 전망', val:'공시 전 · 예측 보류', cls:'neutral'},
+        {label:'9월 기준선', val:'21단계 · 149.29달러/bbl', cls:'neutral'},
+        {label:'10월 산정기간', val:'2026.08.16~09.15 진행 중', cls:'neutral'},
+        {label:'환율', val:'USD/KRW 약 1,388원', cls:'down'},
+        {label:'10월 항공유 평균', val:'집계 중', cls:'neutral'}
+      ],
+      'fore.predict.footnote':'* forecast 핵심 지표는 산정기간, 환율, 항공유 산정 평균으로만 제한합니다.',
+      'fore.booking.title':'항공권 예약 판단 가이드',
+      'fore.booking.items':['9월 발권은 9월 공식 공시 금액을 기준으로 총액을 비교하세요.','10월 이후 발권은 아직 공시 전이므로 산정기간 평균 항공유와 평균환율 업데이트를 확인하세요.','10월 단계·금액·확률은 항공사 공식 공시 전까지 확정값처럼 표시하지 않습니다.'],
+      'fore.keyvars.title':'핵심 변수',
+      'fore.keyvars.items':['9월 21단계 확정','10월 산정기간 2026.08.16~09.15','USD/KRW 약 1,388원','9월 항공유 기준선 149.29달러/bbl','10월 항공유 산정 평균 집계 중'],
+      'fore.aiNotice':'참고 콘텐츠 — 이 페이지는 9월 확정 데이터를 기준선으로 두고, 10월 산정기간 항공유 평균과 환율을 추적하는 참고용 자료입니다.',
+      'fore.related.title':'관련 유류할증료 정보',
+      'fore.related.items':[
+        {href:'fuel-surcharge-calculator.html',label:'8월 vs 9월 유류할증료 비교',color:'#F0F9FF',border:'#7DD3FC',textColor:'#075985'},
+        {href:'airlines.html',label:'항공사별 9월 공시 확인',color:'#F0FDF4',border:'#86EFAC',textColor:'#166534'},
+        {href:'index.html',label:'한국 출발 유류할증료 조회',color:'#FFF7ED',border:'#FDBA74',textColor:'#9A3412'},
+        {href:'news.html',label:'9월 공시 및 10월 준비 뉴스',color:'#FDF2F8',border:'#F9A8D4',textColor:'#9D174D'}
+      ],
+      'fore.faq.items':[
+        {q:'2026년 10월 국제선 유류할증료는 확정됐나요?', a:'아닙니다. 10월은 아직 공시 전입니다.'},
+        {q:'149.29달러/bbl은 10월 산정 평균인가요?', a:'아닙니다. 9월 산정 평균 기준선입니다.'},
+        {q:'현재 forecast에서 무엇을 봐야 하나요?', a:'10월 산정기간 항공유 평균과 평균환율입니다.'}
+      ]
+    };
+    var en = Object.assign({}, ko, {
+      'fore.metaTitle':'October 2026 International Fuel Surcharge Outlook',
+      'fore.metaDesc':'Track October 2026 international fuel surcharge preparation using the September confirmed baseline, October calculation window, FX and jet-fuel calculation average.',
+      'fore.pageTitle':'October 2026 International Fuel Surcharge Outlook',
+      'fore.pageSub':'As of 2026.08.20 07:00 KST · September Level 21 confirmed · tracking the 2026.08.16-09.15 October calculation window · USD/KRW around 1,388',
+      'fore.h1':'October 2026 International Fuel Surcharge Outlook',
+      'fore.section.indicators':'October 2026 Surcharge Outlook Core Indicators',
+      'fore.notice':'<strong>Confirmed:</strong> September is confirmed; forecast now tracks October. October is still pre-filing, so no stage, amount or probability is confirmed.',
+      'fore.intro':'October international fuel surcharges are not filed yet. This page keeps September as the confirmed baseline and tracks only the October calculation-period jet fuel average and FX.',
+      'fore.indicator.th':['Item','Current status','Meaning for October outlook'],
+      'fore.indicator.rows':[['September baseline','September Level 21 confirmed · jet-fuel calculation average USD 149.29/bbl','Baseline only, not current MOPS or the October average.'],['October calculation window','2026.08.16-2026.09.15 in progress','No stage or amount forecast until averages build.'],['FX','USD/KRW around 1,388','Lowers KRW conversion burden; calculation-period average FX must be checked separately.'],['October jet-fuel average','Collecting','Key variable to compare against the September baseline.']],
+      'fore.indicator.footnote':'* Forecast core indicators are limited to the calculation window, FX and the jet-fuel calculation average.',
+      'fore.summary.updated':'As of 2026.08.20 07:00 KST · tracking October calculation inputs',
+      'fore.summary.title':'October 2026 International Surcharge Outlook Summary',
+      'fore.summary.items':['September remains the confirmed baseline.','October is still pre-filing.','The October calculation window is 2026.08.16-09.15.','USD/KRW around 1,388 lowers KRW conversion burden.','USD 149.29/bbl is the September baseline, not an October value.','The October jet-fuel calculation average is still being collected.','The forecast does not create a stage, amount or probability before official notices.'],
+      'fore.verdict.title':'October 2026 Outlook',
+      'fore.verdict.line1':'October international surcharges are still pre-filing.',
+      'fore.verdict.line2':'The page is tracking FX and the October jet-fuel calculation average.',
+      'fore.verdict.short':'Confirmed baseline: September Level 21',
+      'fore.verdict.long':'Tracked variables: October jet-fuel average and calculation-period average FX',
+      'fore.market.title':'Market Brief: Tracking October Calculation Inputs',
+      'fore.market.brent':'Baseline: September jet-fuel calculation average USD 149.29/bbl is not an October confirmed value.',
+      'fore.market.fx':'FX: USD/KRW around 1,388 lowers KRW conversion burden.',
+      'fore.market.mops':'Jet fuel: the October calculation-period average is still being collected.',
+      'fore.market.geo':'Filing status: October international surcharge notices are not published yet.',
+      'fore.market.summary':'Current state: October pre-filing preparation. Track jet-fuel and FX averages, not stage, amount or probability.',
+      'fore.market.fx2':'Key figures: 2026.08.20 07:00 KST · October window 2026.08.16-09.15 · USD/KRW around 1,388 · September baseline USD 149.29/bbl',
+      'fore.basis.title':'September Confirmed · October Calculation Window Tracking',
+      'fore.basis.body':'The forecast target is October 2026. September official notices are used only as the confirmed baseline; October remains forecast-held until jet-fuel and FX averages build.',
+      'fore.predict.title':'October 2026 International Surcharge Core Indicators',
+      'fore.predict.subtitle':'Pre-filing · tracking jet-fuel average and FX',
+      'fore.predict.items':[{label:'October outlook',val:'Pre-filing · forecast held',cls:'neutral'},{label:'September baseline',val:'Level 21 · USD 149.29/bbl',cls:'neutral'},{label:'October window',val:'2026.08.16-09.15 in progress',cls:'neutral'},{label:'FX',val:'USD/KRW around 1,388',cls:'down'},{label:'October jet-fuel average',val:'Collecting',cls:'neutral'}],
+      'fore.predict.footnote':'* Forecast core indicators are limited to the calculation window, FX and the jet-fuel calculation average.',
+      'fore.booking.title':'Airfare Booking Check',
+      'fore.booking.items':['For September ticketing, compare totals using September official notices.','For October or later ticketing, check updated calculation-period jet-fuel and FX averages.','No October stage, amount or probability is shown as confirmed before official notices.'],
+      'fore.keyvars.title':'Core Variables',
+      'fore.keyvars.items':['September Level 21 confirmed','October calculation window 2026.08.16-09.15','USD/KRW around 1,388','September jet-fuel baseline USD 149.29/bbl','October jet-fuel average collecting'],
+      'fore.aiNotice':'Reference content — This page uses September as the baseline and tracks October calculation-period jet fuel and FX.',
+      'fore.related.title':'Related Fuel Surcharge Info',
+      'fore.related.items':[
+        {href:'fuel-surcharge-calculator.html',label:'August vs September Surcharge Comparison',color:'#F0F9FF',border:'#7DD3FC',textColor:'#075985'},
+        {href:'airlines.html',label:'September Notices by Airline',color:'#F0FDF4',border:'#86EFAC',textColor:'#166534'},
+        {href:'index.html',label:'Korea-Departure Surcharge Lookup',color:'#FFF7ED',border:'#FDBA74',textColor:'#9A3412'},
+        {href:'news.html',label:'September Notices and October Prep News',color:'#FDF2F8',border:'#F9A8D4',textColor:'#9D174D'}
+      ],
+      'fore.faq.items':[{q:'Is October 2026 international surcharge confirmed?',a:'No. October is still pre-filing.'},{q:'Is USD 149.29/bbl the October average?',a:'No. It is the September calculation baseline.'},{q:'What should I track now?',a:'The October calculation-period jet fuel average and average FX.'}]
+    });
+    var ja = Object.assign({}, en, {
+      'fore.metaTitle':'2026年10月国際線燃油サーチャージ見通し',
+      'fore.pageTitle':'2026年10月国際線燃油サーチャージ見通し',
+      'fore.pageSub':'2026.08.20 07:00 KST時点 · 9月21段階確定 · 10月算定期間2026.08.16~09.15を追跡 · USD/KRW約1,388',
+      'fore.h1':'2026年10月国際線燃油サーチャージ見通し',
+      'fore.section.indicators':'2026年10月見通しの主要指標',
+      'fore.notice':'<strong>確認:</strong> 9月は確定済みで、forecastは10月算定期間を追跡します。10月は公示前のため段階・金額・確率は確定しません。',
+      'fore.intro':'10月国際線燃油サーチャージはまだ公示前です。9月確定値を基準線にし、10月算定期間の航空燃料平均と為替だけを追跡します。',
+      'fore.indicator.th':['項目','現在の確認状態','10月見通しでの意味'],
+      'fore.indicator.rows':[['9月基準線','9月21段階確定 · 算定航空燃料平均149.29ドル/bbl','基準線のみで、現在MOPSや10月平均ではありません。'],['10月算定期間','2026.08.16~2026.09.15進行中','平均が蓄積するまで段階・金額予測は保留します。'],['為替','USD/KRW約1,388','ウォン換算負担を下げる要因です。算定期間平均為替は別途確認が必要です。'],['10月航空燃料平均','集計中','9月基準線との比較が核心です。']],
+      'fore.indicator.footnote':'* forecast主要指標は算定期間、為替、航空燃料算定平均に限定します。',
+      'fore.summary.updated':'2026.08.20 07:00 KST時点 · 10月算定入力を追跡',
+      'fore.summary.title':'2026年10月国際線見通し要約',
+      'fore.summary.items':['9月は確定基準線として維持します。','10月はまだ公示前です。','10月算定期間は2026.08.16~09.15です。','USD/KRW約1,388はウォン換算負担を下げます。','149.29ドル/bblは9月基準線で、10月値ではありません。','10月航空燃料平均は集計中です。','公式公示前に段階・金額・確率は作りません。'],
+      'fore.verdict.title':'2026年10月見通し判断',
+      'fore.verdict.line1':'10月国際線燃油サーチャージはまだ公示前です。',
+      'fore.verdict.line2':'現在は為替と10月航空燃料算定平均を追跡する段階です。',
+      'fore.verdict.short':'確認済み基準線: 9月21段階',
+      'fore.verdict.long':'追跡変数: 10月航空燃料平均 · 算定期間平均為替',
+      'fore.market.title':'市場ブリーフ: 10月算定期間を追跡',
+      'fore.market.brent':'基準線: 9月算定航空燃料平均149.29ドル/bblは10月確定値ではありません。',
+      'fore.market.fx':'為替: USD/KRW約1,388はウォン換算負担を下げる要因です。',
+      'fore.market.mops':'航空燃料: 10月算定期間平均はまだ集計中です。',
+      'fore.market.geo':'公示状態: 10月国際線燃油サーチャージはまだ公式公示前です。',
+      'fore.market.summary':'現在は10月公示前準備です。段階・金額・確率ではなく航空燃料平均と為替を追跡します。',
+      'fore.market.fx2':'主要数値: 2026.08.20 07:00 KST · 10月算定期間2026.08.16~09.15 · USD/KRW約1,388 · 9月基準線149.29ドル/bbl',
+      'fore.basis.title':'9月確定 · 10月算定期間追跡',
+      'fore.basis.body':'forecast目標は2026年10月です。9月公示は基準線としてのみ使用し、10月は航空燃料平均と為替平均が蓄積するまで予測保留で表示します。',
+      'fore.predict.title':'2026年10月国際線主要指標',
+      'fore.predict.subtitle':'公示前 · 航空燃料平均と為替を追跡',
+      'fore.predict.items':[{label:'10月見通し',val:'公示前 · 予測保留',cls:'neutral'},{label:'9月基準線',val:'21段階 · 149.29ドル/bbl',cls:'neutral'},{label:'10月算定期間',val:'2026.08.16~09.15進行中',cls:'neutral'},{label:'為替',val:'USD/KRW約1,388',cls:'down'},{label:'10月航空燃料平均',val:'集計中',cls:'neutral'}],
+      'fore.booking.title':'航空券予約チェック',
+      'fore.booking.items':['9月発券は9月公式公示金額で総額を比較してください。','10月以降の発券は算定期間の航空燃料平均と平均為替を確認してください。','公式公示前に10月段階・金額・確率を確定値として表示しません。'],
+      'fore.keyvars.title':'主要変数',
+      'fore.keyvars.items':['9月21段階確定','10月算定期間2026.08.16~09.15','USD/KRW約1,388','9月航空燃料基準線149.29ドル/bbl','10月航空燃料平均集計中'],
+      'fore.related.title':'関連燃油サーチャージ情報',
+      'fore.related.items':[
+        {href:'fuel-surcharge-calculator.html',label:'8月と9月のサーチャージ比較',color:'#F0F9FF',border:'#7DD3FC',textColor:'#075985'},
+        {href:'airlines.html',label:'航空会社別9月公示確認',color:'#F0FDF4',border:'#86EFAC',textColor:'#166534'},
+        {href:'index.html',label:'韓国発サーチャージ検索',color:'#FFF7ED',border:'#FDBA74',textColor:'#9A3412'},
+        {href:'news.html',label:'9月公示と10月準備ニュース',color:'#FDF2F8',border:'#F9A8D4',textColor:'#9D174D'}
+      ]
+    });
+    var zh = Object.assign({}, en, {
+      'fore.metaTitle':'2026年10月国际线燃油附加费展望',
+      'fore.pageTitle':'2026年10月国际线燃油附加费展望',
+      'fore.pageSub':'截至2026.08.20 07:00 KST · 9月第21档确认 · 跟踪10月计算期2026.08.16~09.15 · USD/KRW约1,388',
+      'fore.h1':'2026年10月国际线燃油附加费展望',
+      'fore.section.indicators':'2026年10月展望核心指标',
+      'fore.notice':'<strong>确认:</strong> 9月已确认，forecast现在跟踪10月计算期。10月仍未公告，因此不确认档位、金额或概率。',
+      'fore.intro':'10月国际线燃油附加费尚未公告。本页以9月确认值为基准线，只跟踪10月计算期航油均值和汇率。',
+      'fore.indicator.th':['项目','当前确认状态','对10月展望的意义'],
+      'fore.indicator.rows':[['9月基准线','9月第21档确认 · 计算航油均值149.29美元/bbl','仅为基准线，不是当前MOPS或10月均值。'],['10月计算期','2026.08.16~2026.09.15进行中','均值积累前不预测档位或金额。'],['汇率','USD/KRW约1,388','降低韩元折算负担；计算期平均汇率需另行确认。'],['10月航油均值','统计中','与9月基准线比较的核心变量。']],
+      'fore.indicator.footnote':'* forecast核心指标仅限计算期、汇率和航油计算均值。',
+      'fore.summary.updated':'截至2026.08.20 07:00 KST · 跟踪10月计算输入',
+      'fore.summary.title':'2026年10月国际线展望摘要',
+      'fore.summary.items':['9月保持为已确认基准线。','10月仍未公告。','10月计算期为2026.08.16~09.15。','USD/KRW约1,388降低韩元折算负担。','149.29美元/bbl是9月基准线，不是10月值。','10月航油计算均值仍在统计中。','官方公告前不生成档位、金额或概率。'],
+      'fore.verdict.title':'2026年10月展望判断',
+      'fore.verdict.line1':'10月国际线燃油附加费仍未公告。',
+      'fore.verdict.line2':'当前阶段只跟踪汇率和10月航油计算均值。',
+      'fore.verdict.short':'已确认基准线：9月第21档',
+      'fore.verdict.long':'跟踪变量：10月航油均值 · 计算期平均汇率',
+      'fore.market.title':'市场简报：跟踪10月计算期',
+      'fore.market.brent':'基准线：9月计算航油均值149.29美元/bbl不是10月确认值。',
+      'fore.market.fx':'汇率：USD/KRW约1,388降低韩元折算负担。',
+      'fore.market.mops':'航油：10月计算期均值仍在统计中。',
+      'fore.market.geo':'公告状态：10月国际线燃油附加费尚未由航空公司正式公告。',
+      'fore.market.summary':'当前为10月公告前准备。跟踪航油均值和汇率，而非档位、金额或概率。',
+      'fore.market.fx2':'关键数值：2026.08.20 07:00 KST · 10月计算期2026.08.16~09.15 · USD/KRW约1,388 · 9月基准线149.29美元/bbl',
+      'fore.basis.title':'9月确认 · 跟踪10月计算期',
+      'fore.basis.body':'forecast目标为2026年10月。9月官方公告仅作为确认基准线，10月在航油和汇率均值积累前保持预测保留。',
+      'fore.predict.title':'2026年10月国际线核心指标',
+      'fore.predict.subtitle':'公告前 · 跟踪航油均值和汇率',
+      'fore.predict.items':[{label:'10月展望',val:'公告前 · 预测保留',cls:'neutral'},{label:'9月基准线',val:'第21档 · 149.29美元/bbl',cls:'neutral'},{label:'10月计算期',val:'2026.08.16~09.15进行中',cls:'neutral'},{label:'汇率',val:'USD/KRW约1,388',cls:'down'},{label:'10月航油均值',val:'统计中',cls:'neutral'}],
+      'fore.booking.title':'机票预订检查',
+      'fore.booking.items':['9月出票请按9月官方公告金额比较总价。','10月以后出票请确认计算期航油均值和平均汇率更新。','官方公告前不把10月档位、金额或概率显示为确认值。'],
+      'fore.keyvars.title':'核心变量',
+      'fore.keyvars.items':['9月第21档确认','10月计算期2026.08.16~09.15','USD/KRW约1,388','9月航油基准线149.29美元/bbl','10月航油均值统计中'],
+      'fore.related.title':'相关燃油附加费信息',
+      'fore.related.items':[
+        {href:'fuel-surcharge-calculator.html',label:'8月与9月附加费比较',color:'#F0F9FF',border:'#7DD3FC',textColor:'#075985'},
+        {href:'airlines.html',label:'按航空公司查看9月公告',color:'#F0FDF4',border:'#86EFAC',textColor:'#166534'},
+        {href:'index.html',label:'韩国出发附加费查询',color:'#FFF7ED',border:'#FDBA74',textColor:'#9A3412'},
+        {href:'news.html',label:'9月公告与10月准备新闻',color:'#FDF2F8',border:'#F9A8D4',textColor:'#9D174D'}
+      ]
+    });
+    var fr = Object.assign({}, en, {
+      'fore.metaTitle':'Perspective surtaxe carburant internationale octobre 2026',
+      'fore.pageTitle':'Perspective surtaxe carburant internationale octobre 2026',
+      'fore.pageSub':'Au 2026.08.20 07:00 KST · niveau 21 confirmé en septembre · suivi de la fenêtre octobre 2026.08.16~09.15 · USD/KRW env. 1,388',
+      'fore.h1':'Perspective surtaxe carburant internationale octobre 2026',
+      'fore.notice':'<strong>Confirmé:</strong> septembre est confirmé; forecast suit désormais octobre. Octobre reste avant publication, sans niveau, montant ni probabilité confirmés.',
+      'fore.intro':'La surtaxe internationale d’octobre n’est pas encore publiée. La page garde septembre comme base confirmée et suit seulement la moyenne carburéacteur et le FX de la période de calcul.',
+      'fore.related.title':'Infos liées sur les surtaxes carburant',
+      'fore.related.items':[
+        {href:'fuel-surcharge-calculator.html',label:'Comparaison août vs septembre',color:'#F0F9FF',border:'#7DD3FC',textColor:'#075985'},
+        {href:'airlines.html',label:'Avis de septembre par compagnie',color:'#F0FDF4',border:'#86EFAC',textColor:'#166534'},
+        {href:'index.html',label:'Recherche surtaxe départ Corée',color:'#FFF7ED',border:'#FDBA74',textColor:'#9A3412'},
+        {href:'news.html',label:'Avis septembre et préparation octobre',color:'#FDF2F8',border:'#F9A8D4',textColor:'#9D174D'}
+      ]
+    });
+    var de = Object.assign({}, en, {
+      'fore.metaTitle':'Oktober-2026 internationaler Treibstoffzuschlag Ausblick',
+      'fore.pageTitle':'Oktober-2026 internationaler Treibstoffzuschlag Ausblick',
+      'fore.pageSub':'Stand 2026.08.20 07:00 KST · September Stufe 21 bestätigt · Oktober-Berechnungsfenster 2026.08.16~09.15 · USD/KRW ca. 1,388',
+      'fore.h1':'Oktober-2026 internationaler Treibstoffzuschlag Ausblick',
+      'fore.notice':'<strong>Bestätigt:</strong> September ist bestätigt; forecast verfolgt nun Oktober. Oktober ist noch vor Veröffentlichung, daher keine bestätigte Stufe, kein Betrag, keine Wahrscheinlichkeit.',
+      'fore.intro':'Der internationale Oktober-Zuschlag ist noch nicht veröffentlicht. Diese Seite nutzt September als bestätigte Basis und verfolgt nur Jetfuel-Durchschnitt und FX im Oktober-Berechnungszeitraum.',
+      'fore.related.title':'Verwandte Treibstoffzuschlag-Infos',
+      'fore.related.items':[
+        {href:'fuel-surcharge-calculator.html',label:'August-vs.-September Vergleich',color:'#F0F9FF',border:'#7DD3FC',textColor:'#075985'},
+        {href:'airlines.html',label:'September-Hinweise nach Airline',color:'#F0FDF4',border:'#86EFAC',textColor:'#166534'},
+        {href:'index.html',label:'Zuschlag ab Korea suchen',color:'#FFF7ED',border:'#FDBA74',textColor:'#9A3412'},
+        {href:'news.html',label:'September-Hinweise und Oktober-Vorbereitung',color:'#FDF2F8',border:'#F9A8D4',textColor:'#9D174D'}
+      ]
+    });
+    return {ko:ko,en:en,ja:ja,zh:zh,fr:fr,de:de};
+  }
+  function applyLeanForecastPacks(){
+    var packs = buildLeanForecastPacks();
+    Object.keys(packs).forEach(function(lang){
+      Object.assign(FORE_I18N[lang] || (FORE_I18N[lang] = {}), packs[lang]);
+      if(window.I18N && window.I18N[lang]) Object.assign(window.I18N[lang], packs[lang]);
+    });
+    var lang = (window.getCurrentLang ? window.getCurrentLang() : (localStorage.getItem('aero_lang') || document.documentElement.lang || 'ko')).toLowerCase().split('-')[0];
+    var pack = packs[lang] || packs.en;
+    document.title = pack['fore.metaTitle'];
+    var desc = document.querySelector('meta[name="description"]'); if(desc) desc.setAttribute('content', pack['fore.metaDesc']);
+    var ogTitle = document.querySelector('meta[property="og:title"]'); if(ogTitle) ogTitle.setAttribute('content', pack['fore.metaTitle']);
+    var ogDesc = document.querySelector('meta[property="og:description"]'); if(ogDesc) ogDesc.setAttribute('content', pack['fore.metaDesc']);
+  }
+  window.applyLeanForecastPacks = applyLeanForecastPacks;
+  var previousRenderForecastPage = renderForecastPage;
+  renderForecastPage = function(){
+    applyLeanForecastPacks();
+    previousRenderForecastPage();
+    applyLeanForecastPacks();
+  };
+  applyLeanForecastPacks();
+})();
+
+/* Remove legacy forecast-only analysis blocks that are not part of the October preparation surface. */
+(function(){
+  function cleanupForecastTransitionArtifacts(){
+    var mopsBox = document.getElementById('mopsAnalysisBox');
+    if(mopsBox){
+      mopsBox.innerHTML = '';
+      mopsBox.style.display = 'none';
+    }
+  }
+  var previousRenderForecastPage = renderForecastPage;
+  renderForecastPage = function(){
+    previousRenderForecastPage();
+    cleanupForecastTransitionArtifacts();
+  };
+})();
+
 window.initNav({
   onLangChange: function() { renderForecastPage(); },
   onCurrChange: function() { renderForecastPage(); },

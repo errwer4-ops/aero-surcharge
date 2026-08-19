@@ -424,7 +424,7 @@
   <div id="pagination" style="display:flex;justify-content:center;align-items:center;gap:6px;flex-wrap:wrap;margin:16px 0 8px;"></div>
 
   <!-- 유류할증료 결정 핵심 변수 섹션 -->
-  <div style="background:#E8F5E9;border:1px solid #A5D6A7;border-radius:12px;padding:14px 16px;margin-bottom:18px;margin-top:12px;">
+  <div id="newsKeyVariables" style="background:#E8F5E9;border:1px solid #A5D6A7;border-radius:12px;padding:14px 16px;margin-bottom:18px;margin-top:12px;">
     <div style="font-weight:700;margin-bottom:10px;color:#1B5E20;">🔑 유류할증료 결정 핵심 변수</div>
     <div style="display:flex;flex-wrap:wrap;gap:8px;">
       <div style="background:rgba(255,255,255,.75);border:1px solid #A5D6A7;border-radius:8px;padding:8px 14px;font-size:13px;color:#2E7D32;font-weight:600;">⛽ 국제 유가 (Brent)</div>
@@ -441,7 +441,7 @@
   </div>
 
   <!-- 관련 유류할증료 정보 내부 링크 섹션 -->
-  <div style="background:var(--white);border:1.5px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:18px;">
+  <div id="newsRelatedLinksBox" style="background:var(--white);border:1.5px solid var(--line);border-radius:12px;padding:18px 20px;margin-bottom:18px;">
     <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:14px;">🔗 관련 유류할증료 정보</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;">
       <a href="forecast.html" style="display:block;padding:10px 14px;background:linear-gradient(135deg,#EDE7F6,#F3E5F5);border:1.5px solid #CE93D8;border-radius:9px;font-size:12px;font-weight:700;color:#4527A0;text-decoration:none;">2026년 8월 유류할증료 전망</a>
@@ -15798,6 +15798,535 @@ function ensureSeptemberAirlineCards(){
   add('airbusan-september-surcharge-20260819','에어부산 9월 국제선, 8월보다 최소 USD 24 인상','에어부산 9월 공시는 일부 구간 USD 71, 일부 장거리 USD 82로, 8월보다 최소 USD 24 더 냅니다.','에어부산 2026년 9월 한국 출발 국제선 유류할증료는 공식 공시 기준 일부 구간 USD 71, 방콕·발리 등 일부 장거리 구간 USD 82 수준입니다. 8월 USD 47·54 기준과 비교하면 최소 +USD 24, 최대 +USD 28입니다.','Air Busan official notice','https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4399',['에어부산','최소 +USD 24','9월 국제선','USD 82'],{en:{title:'Air Busan September international: at least +USD 24 vs August',aiBrief:'Air Busan September notice shows some bands at USD 71 and longer routes at USD 82, at least USD 24 more than August.',summary:'Air Busan September 2026 Korea-departure international surcharge is shown at USD 71 on some bands and USD 82 on some longer routes. Compared with the August USD 47/54 basis, the increase starts at USD 24 and reaches USD 28.',impact:'September official notices are reflected; the next watch moves to October forecasting.',tags:['Air Busan','minimum +USD 24','September international','USD 82']}});
 }
 
+/* 2026.08.20 news terminal update: 7C/ZE/RS notices and October outlook. */
+(function(){
+  var previousEnsureSeptemberAirlineCards = ensureSeptemberAirlineCards;
+  ensureSeptemberAirlineCards = function(){
+    previousEnsureSeptemberAirlineCards();
+    if(!Array.isArray(FIXED_NEWS)) return;
+    var existing = {};
+    FIXED_NEWS.forEach(function(card){ if(card && card.id) existing[card.id] = true; });
+    function add(id, title, brief, summary, sourceName, sourceUrl, tags, i18n, category){
+      if(existing[id]) return;
+      FIXED_NEWS.unshift({
+        id:id, slug:id, category:category || 'official', priority:1, date:'2026-08-20', updatedAt:'2026-08-20T07:00:00+09:00',
+        badge:category === 'market' ? '시장' : '공시', aiSummary:true, relevanceScore:.99,
+        currentMonthNotice:'2026-09', forecastTargetMonth:'2026-10',
+        title:title, aiBrief:brief, summary:summary,
+        impact:'9월 확정 데이터는 10월 예측의 기준선으로 유지하고, 10월은 산정기간 초반이라 방향 불확실로 표시합니다.',
+        sourceName:sourceName, sourceUrl:sourceUrl, tags:tags, i18n:i18n || {}
+      });
+    }
+    add('october-forecast-fx-vs-jetfuel-hormuz-20260820',
+      '10월 전망: 환율 ↓↓ vs 항공유 ↑↑ · 호르무즈 ↑↑↑ — 방향 불확실',
+      '원/달러 환율은 약 1,388원까지 내려왔지만 항공유·정유 공급·호르무즈 위험이 강해 10월 방향은 아직 확정하기 어렵습니다.',
+      '2026.08.20 07:00 KST 기준 10월 국제선 유류할증료 산정기간은 초반입니다. USD/KRW 약 1,388원은 강한 하락 요인이지만, 9월 산정 항공유 평균 149.29달러/bbl을 기준으로 10월 누적 항공유 평균은 아직 집계 중입니다. Brent 91.62달러, WTI 85.83달러, 정유 공급 위험, 호르무즈 극도로 높은 위험이 상승 요인으로 남아 있어 현재 방향은 불확실합니다.',
+      'Aero Surcharge forecast update',
+      'forecast.html',
+      ['10월 전망','환율 1,388원','항공유','호르무즈','방향 불확실'],
+      {en:{title:'October outlook: FX downside vs jet fuel and Hormuz upside',aiBrief:'USD/KRW around 1,388 is a strong downside factor, but jet fuel, refining supply and Hormuz risk keep October direction uncertain.',summary:'As of 2026.08.20 07:00 KST, October is early in its calculation window. FX is strongly downside, while jet fuel, refining supply and Hormuz risks remain upside factors.',impact:'October remains pre-filing and uncertain.',tags:['October outlook','USD/KRW 1,388','jet fuel','Hormuz','uncertain direction']}},
+      'market');
+    add('jejuair-september-surcharge-20260820',
+      '제주항공 9월 국제선, 8월보다 최소 USD 11 인상',
+      '제주항공 9월 유류할증료는 USD 33~79로, 8월보다 최저 구간 기준 USD 11 더 냅니다.',
+      '제주항공 2026년 9월 한국 출발 국제선 유류할증료는 거리 구간별 USD 33, 42, 50, 60, 68, 79입니다. 8월 USD 22, 28, 34, 40, 45, 52와 비교하면 최저 구간은 +USD 11, 최고 구간은 +USD 27입니다.',
+      'Jeju Air official notice',
+      'https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000751',
+      ['제주항공','최소 +USD 11','9월 국제선','USD 79']);
+    add('eastarjet-september-surcharge-20260820',
+      '이스타항공 9월 국제선, 8월보다 최소 USD 11 인상',
+      '이스타항공 9월 유류할증료는 USD 33~79로, 8월보다 최저 구간 기준 USD 11 더 냅니다.',
+      '이스타항공 2026년 9월 한국 출발 국제선 유류할증료는 1~6군 기준 USD 33, 42, 50, 60, 68, 79입니다. 8월 USD 22, 28, 34, 40, 45, 52와 비교하면 최저 구간은 +USD 11, 최고 구간은 +USD 27입니다.',
+      'Eastar Jet official notice',
+      'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=653&lang=KR&searchWord=&searchIndex=1',
+      ['이스타항공','최소 +USD 11','9월 국제선','USD 79']);
+    add('airseoul-september-surcharge-20260820',
+      '에어서울 9월 국제선, 8월보다 최소 18,000원 인상',
+      '에어서울 9월 유류할증료는 57,700원~99,600원으로, 8월보다 최저 구간 기준 18,000원 더 냅니다.',
+      '에어서울 2026년 9월 한국 출발 국제선 유류할증료는 거리 구간별 57,700원, 66,400원, 86,600원, 95,300원, 99,600원입니다. 8월 39,700원, 47,300원, 58,000원, 67,100원, 71,700원과 비교하면 최저 구간은 +18,000원, 최대 인상 구간은 +28,600원입니다.',
+      'Air Seoul official notice',
+      'https://flyairseoul.com/CW/ko/noticeContent.do?seq=11048&pageNo=1',
+      ['에어서울','최소 +18,000원','9월 국제선','99,600원']);
+  };
+  var previousApplySeptemberOfficialNewsUpdate = applySeptemberOfficialNewsUpdate;
+  applySeptemberOfficialNewsUpdate = function(){
+    previousApplySeptemberOfficialNewsUpdate();
+    var lang = getCurrentLang();
+    var isKo = lang === 'ko';
+    var title = isKo ? '📢 주요 항공사 2026년 9월 국제선 유류할증료 공식 공시' : 'Major Airline September 2026 International Fuel Surcharge Notices';
+    var officialTitle = document.querySelector('.official-title');
+    if(officialTitle) officialTitle.textContent = title;
+    var officialNotice = document.querySelector('[data-i18n="news.officialNotice"]');
+    if(officialNotice) officialNotice.textContent = isKo
+      ? '✅ 2026.08.20 07:00 KST 기준 반영 · KE/OZ/LJ/BX/7C/ZE/RS 9월 공시 확인 · 10월 전망은 환율 ↓↓ vs 항공유 ↑↑ · 호르무즈 ↑↑↑ — 방향 불확실'
+      : 'As of 2026.08.20 07:00 KST · KE/OZ/LJ/BX/7C/ZE/RS September notices confirmed · October outlook remains uncertain';
+    var items = [
+      ['official7c','제주항공','9월 USD 33~79 · 8월 USD 22~52 대비 최소 +USD 11, 최대 +USD 27','https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000751'],
+      ['officialZe','이스타항공','9월 USD 33~79 · 8월 USD 22~52 대비 최소 +USD 11, 최대 +USD 27','https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=653&lang=KR&searchWord=&searchIndex=1'],
+      ['officialRs','에어서울','9월 57,700원~99,600원 · 8월 39,700원~71,700원 대비 최소 +18,000원, 최대 +28,600원','https://flyairseoul.com/CW/ko/noticeContent.do?seq=11048&pageNo=1']
+    ];
+    items.forEach(function(item){
+      var el = document.getElementById(item[0]);
+      if(!el) return;
+      el.innerHTML = '<strong>'+item[1]+'</strong> — '+item[2]+' · <a href="'+item[3]+'" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">'+(isKo?'공식 공지':'Official notice')+' ↗</a>';
+      el.style.display = '';
+    });
+    var desc = document.getElementById('officialDesc');
+    if(desc) desc.textContent = isKo
+      ? '* 2026년 9월 공시 확인 항공사: KE·OZ·LJ·BX·7C·ZE·RS. 일반 이용자는 8월 대비 최소 추가 부담액을 먼저 확인하세요.'
+      : '* Confirmed September notice airlines: KE/OZ/LJ/BX/7C/ZE/RS.';
+  };
+})();
+
+function applyAugust20NewsTerminalSurface(){
+  var lang = getCurrentLang();
+  var ko = {
+    'news.metaTitle':'2026년 9월 국제선 유류할증료 확정 및 10월 전망 뉴스 | 8월 20일 기준',
+    'news.metaDesc':'2026년 9월 한국 출발 국제선 유류할증료 공시를 KE·OZ·LJ·BX·7C·ZE·RS 기준으로 반영하고, 10월 유류할증료는 환율·항공유·호르무즈 변수 중심의 준비 단계로 구분합니다.',
+    'news.pageTitle':'2026년 9월 유류할증료 확정 및 10월 전망 뉴스',
+    'news.h1':'2026년 9월 유류할증료 확정 및 10월 전망 뉴스',
+    'news.pageSub':'2026.08.20 07:00 KST 기준 · KE/OZ/LJ/BX/7C/ZE/RS 9월 공시 확인 · USD/KRW 약 1,388원 · Brent 91.62달러 · WTI 85.83달러 · 10월 전망은 방향 불확실',
+    'news.summary.title':'2026년 9월 공시 반영 및 10월 전망 요약',
+    'news.summary.li1':'9월 국제선 유류할증료는 21단계로 확정됐고, KE·OZ·LJ·BX·7C·ZE·RS 공시를 반영했습니다.',
+    'news.summary.li2':'항공사별 8월 대비 최소 인상액은 KE +12,800원, OZ +15,400원, LJ +USD 9, BX +USD 24, 7C/ZE +USD 11, RS +18,000원입니다.',
+    'news.summary.li3':'10월 국제선 유류할증료는 아직 공시 전이며 2026.08.16~09.15 산정기간을 추적합니다.',
+    'news.summary.li4':'USD/KRW 약 1,388원은 10월 전망의 강한 완화 요인입니다.',
+    'news.summary.li5':'Brent 91.62달러, WTI 85.83달러와 항공유·정제공급 위험은 상승 요인입니다.',
+    'news.summary.li6':'호르무즈 위험은 높지만 완전 봉쇄나 정상화로 단정하지 않습니다.',
+    'news.summary.li7':'9월 산정 항공유 평균 149.29달러/bbl은 기준선이며, 10월 산정 평균은 아직 집계 중입니다.',
+    'news.summary.li8':'',
+    'news.summary.li9':'',
+    'news.summary.li10':'',
+    'news.fx':'환율: USD/KRW 약 1,388원입니다.',
+    'news.mops':'항공유: 9월 산정 평균 149.29달러/bbl은 기준선이며 10월 산정 평균은 아직 집계 중입니다.',
+    'news.geo':'호르무즈: Kpler 추적 원자재 운송선 통항은 낮은 수준으로, 통항 정상화와 완전 봉쇄 모두 확정하지 않습니다.',
+    'news.fxDominance':'핵심 수치: 2026.08.20 07:00 KST · 9월 21단계 확정 · KE/OZ/LJ/BX/7C/ZE/RS 공시 확인 · USD/KRW 약 1,388원 · Brent 91.62달러 · WTI 85.83달러'
+  };
+  var en = {
+    'news.metaTitle':'September 2026 Fuel Surcharge Notices and October Outlook News | Aug 20',
+    'news.metaDesc':'September 2026 Korea-departure notices are reflected for KE/OZ/LJ/BX/7C/ZE/RS; October remains a pre-filing outlook driven by FX, jet fuel and Hormuz risk.',
+    'news.pageTitle':'September 2026 Fuel Surcharge Notices and October Outlook',
+    'news.h1':'September 2026 Fuel Surcharge Notices and October Outlook',
+    'news.pageSub':'As of 2026.08.20 07:00 KST · KE/OZ/LJ/BX/7C/ZE/RS September notices confirmed · USD/KRW around 1,388 · Brent USD 91.62 · WTI USD 85.83 · October direction uncertain',
+    'news.summary.title':'September notices and October outlook summary',
+    'news.summary.li1':'September international surcharges are confirmed at Level 21, with KE/OZ/LJ/BX/7C/ZE/RS notices reflected.',
+    'news.summary.li2':'Minimum increases vs August: KE +KRW 12,800, OZ +KRW 15,400, LJ +USD 9, BX +USD 24, 7C/ZE +USD 11, RS +KRW 18,000.',
+    'news.summary.li3':'October remains pre-filing and tracks the 2026.08.16-09.15 calculation window.',
+    'news.summary.li4':'USD/KRW around 1,388 is a strong downside factor for October.',
+    'news.summary.li5':'Brent USD 91.62, WTI USD 85.83 and jet-fuel/refining risk remain upside factors.',
+    'news.summary.li6':'Hormuz risk remains high, but it is neither confirmed full closure nor normalization.',
+    'news.summary.li7':'The September jet-fuel average of USD 149.29/bbl is a baseline; the October average is still being collected.',
+    'news.summary.li8':'',
+    'news.summary.li9':'',
+    'news.summary.li10':'',
+    'news.fx':'FX: USD/KRW around 1,388.',
+    'news.mops':'Jet fuel: the September calculation average is USD 149.29/bbl as a baseline; the October calculation average is still being collected.',
+    'news.geo':'Hormuz: Kpler-tracked commodity traffic remains low; do not describe it as full closure or normalization.',
+    'news.fxDominance':'Key figures: 2026.08.20 07:00 KST · September Level 21 confirmed · KE/OZ/LJ/BX/7C/ZE/RS notices · USD/KRW around 1,388 · Brent USD 91.62 · WTI USD 85.83'
+  };
+  var ja = Object.assign({}, en, {
+    'news.metaTitle':'2026年9月燃油サーチャージ公示と10月見通しニュース | 8月20日基準',
+    'news.metaDesc':'韓国発国際線の2026年9月公示をKE/OZ/LJ/BX/7C/ZE/RS基準で反映し、10月は為替・航空燃料・ホルムズリスクを追跡する公示前見通しとして分離します。',
+    'news.pageTitle':'2026年9月燃油サーチャージ公示と10月見通し',
+    'news.h1':'2026年9月燃油サーチャージ公示と10月見通し',
+    'news.pageSub':'2026.08.20 07:00 KST時点 · KE/OZ/LJ/BX/7C/ZE/RSの9月公示確認 · USD/KRW約1,388 · Brent 91.62ドル · WTI 85.83ドル · 10月方向は不確実',
+    'news.summary.title':'9月公示反映と10月見通し要約',
+    'news.summary.li1':'9月国際線燃油サーチャージは21段階で確定し、KE/OZ/LJ/BX/7C/ZE/RS公示を反映しました。',
+    'news.summary.li2':'8月比の最低上昇額はKE +12,800ウォン、OZ +15,400ウォン、LJ +9米ドル、BX +24米ドル、7C/ZE +11米ドル、RS +18,000ウォンです。',
+    'news.summary.li3':'10月はまだ公示前で、2026.08.16~09.15の算定期間を追跡します。',
+    'news.summary.li4':'USD/KRW約1,388は10月見通しの強い下押し要因です。',
+    'news.summary.li5':'Brent 91.62ドル、WTI 85.83ドル、航空燃料・精製供給リスクは上昇要因です。',
+    'news.summary.li6':'ホルムズリスクは高いものの、完全封鎖または正常化とは断定しません。',
+    'news.summary.li7':'9月算定航空燃料平均149.29ドル/bblは基準線であり、10月平均はまだ集計中です。',
+    'news.summary.li8':'',
+    'news.summary.li9':'',
+    'news.summary.li10':'',
+    'news.fx':'為替: USD/KRWは約1,388です。',
+    'news.mops':'航空燃料: 9月算定平均149.29ドル/bblは基準線で、10月算定平均は集計中です。',
+    'news.geo':'ホルムズ: Kpler追跡の原材料輸送船通航は低水準で、完全封鎖・正常化のいずれとも断定しません。',
+    'news.fxDominance':'主要数値: 2026.08.20 07:00 KST · 9月21段階確定 · KE/OZ/LJ/BX/7C/ZE/RS公示 · USD/KRW約1,388 · Brent 91.62ドル · WTI 85.83ドル'
+  });
+  var zh = Object.assign({}, en, {
+    'news.metaTitle':'2026年9月燃油附加费公告与10月展望新闻 | 8月20日基准',
+    'news.metaDesc':'已按KE/OZ/LJ/BX/7C/ZE/RS反映2026年9月韩国出发国际线公告；10月仍为公告前展望，重点跟踪汇率、航油和霍尔木兹风险。',
+    'news.pageTitle':'2026年9月燃油附加费公告与10月展望',
+    'news.h1':'2026年9月燃油附加费公告与10月展望',
+    'news.pageSub':'截至2026.08.20 07:00 KST · KE/OZ/LJ/BX/7C/ZE/RS 9月公告确认 · USD/KRW约1,388 · Brent 91.62美元 · WTI 85.83美元 · 10月方向仍不确定',
+    'news.summary.title':'9月公告反映与10月展望摘要',
+    'news.summary.li1':'9月国际线燃油附加费已确认为第21档，并反映KE/OZ/LJ/BX/7C/ZE/RS公告。',
+    'news.summary.li2':'较8月最低上调额：KE +12,800韩元、OZ +15,400韩元、LJ +9美元、BX +24美元、7C/ZE +11美元、RS +18,000韩元。',
+    'news.summary.li3':'10月仍未公告，正在跟踪2026.08.16~09.15计算期。',
+    'news.summary.li4':'USD/KRW约1,388是10月展望中的强下行因素。',
+    'news.summary.li5':'Brent 91.62美元、WTI 85.83美元以及航油和炼油供应风险仍是上行因素。',
+    'news.summary.li6':'霍尔木兹风险仍高，但不应断定为完全封锁或正常化。',
+    'news.summary.li7':'9月计算航油均值149.29美元/bbl只是基准线，10月均值仍在统计中。',
+    'news.summary.li8':'',
+    'news.summary.li9':'',
+    'news.summary.li10':'',
+    'news.fx':'汇率：USD/KRW约1,388。',
+    'news.mops':'航油：9月计算均值149.29美元/bbl为基准线；10月计算均值仍在统计中。',
+    'news.geo':'霍尔木兹：Kpler追踪的原材料运输船通行仍处低位，不将其描述为完全封锁或正常化。',
+    'news.fxDominance':'关键数值：2026.08.20 07:00 KST · 9月第21档确认 · KE/OZ/LJ/BX/7C/ZE/RS公告 · USD/KRW约1,388 · Brent 91.62美元 · WTI 85.83美元'
+  });
+  var fr = Object.assign({}, en, {
+    'news.metaTitle':'Avis de surtaxe carburant septembre 2026 et perspective octobre | 20 août',
+    'news.metaDesc':'Les avis de septembre 2026 au départ de Corée sont reflétés pour KE/OZ/LJ/BX/7C/ZE/RS; octobre reste une perspective avant publication fondée sur FX, carburéacteur et Hormuz.',
+    'news.pageTitle':'Avis de septembre 2026 et perspective octobre',
+    'news.h1':'Avis de septembre 2026 et perspective octobre',
+    'news.pageSub':'Au 2026.08.20 07:00 KST · avis KE/OZ/LJ/BX/7C/ZE/RS confirmés · USD/KRW env. 1,388 · Brent 91.62 USD · WTI 85.83 USD · direction octobre incertaine',
+    'news.summary.title':'Résumé des avis de septembre et de la perspective octobre',
+    'news.summary.li1':'La surtaxe internationale de septembre est confirmée au niveau 21 avec les avis KE/OZ/LJ/BX/7C/ZE/RS reflétés.',
+    'news.summary.li2':'Hausse minimale vs août: KE +12 800 KRW, OZ +15 400 KRW, LJ +9 USD, BX +24 USD, 7C/ZE +11 USD, RS +18 000 KRW.',
+    'news.summary.li3':'Octobre reste avant publication et suit la fenêtre de calcul 2026.08.16~09.15.',
+    'news.summary.li4':'USD/KRW env. 1,388 est un facteur baissier important pour octobre.',
+    'news.summary.li5':'La moyenne carburéacteur de septembre sert seulement de base; la moyenne d’octobre est encore en collecte.',
+    'news.summary.li6':'Aucun niveau, montant ou probabilité d’octobre n’est confirmé avant publication officielle.',
+    'news.summary.li7':'Comparer le total billet après avoir vérifié la surtaxe officielle de septembre.',
+    'news.summary.li8':'',
+    'news.summary.li9':'',
+    'news.summary.li10':'',
+    'news.fx':'FX: USD/KRW env. 1,388.',
+    'news.mops':'Carburéacteur: la moyenne de septembre 149.29 USD/bbl sert de référence; la moyenne d’octobre est encore en collecte.',
+    'news.geo':'Hormuz: le trafic suivi par Kpler reste faible; ni fermeture totale ni normalisation ne sont confirmées.'
+  });
+  var de = Object.assign({}, en, {
+    'news.metaTitle':'September-2026 Treibstoffzuschlag und Oktober-Ausblick | 20. August',
+    'news.metaDesc':'September-2026 Hinweise ab Korea sind für KE/OZ/LJ/BX/7C/ZE/RS berücksichtigt; Oktober bleibt ein Vorab-Ausblick mit Fokus auf FX, Jetfuel und Hormuz.',
+    'news.pageTitle':'September-2026 Hinweise und Oktober-Ausblick',
+    'news.h1':'September-2026 Hinweise und Oktober-Ausblick',
+    'news.pageSub':'Stand 2026.08.20 07:00 KST · KE/OZ/LJ/BX/7C/ZE/RS September-Hinweise bestätigt · USD/KRW ca. 1,388 · Brent 91.62 USD · WTI 85.83 USD · Oktober-Richtung unsicher',
+    'news.summary.title':'Zusammenfassung September-Hinweise und Oktober-Ausblick',
+    'news.summary.li1':'Der internationale September-Zuschlag ist auf Stufe 21 bestätigt; KE/OZ/LJ/BX/7C/ZE/RS sind berücksichtigt.',
+    'news.summary.li2':'Mindestanstieg ggü. August: KE +12.800 KRW, OZ +15.400 KRW, LJ +9 USD, BX +24 USD, 7C/ZE +11 USD, RS +18.000 KRW.',
+    'news.summary.li3':'Oktober ist noch vor Veröffentlichung und verfolgt das Berechnungsfenster 2026.08.16~09.15.',
+    'news.summary.li4':'USD/KRW ca. 1,388 ist ein wichtiger Entlastungsfaktor für Oktober.',
+    'news.summary.li5':'Der September-Jetfuel-Durchschnitt dient nur als Basis; der Oktober-Durchschnitt wird noch gesammelt.',
+    'news.summary.li6':'Vor offizieller Veröffentlichung sind keine Oktober-Stufe, Beträge oder Wahrscheinlichkeiten bestätigt.',
+    'news.summary.li7':'Nach Prüfung des offiziellen September-Zuschlags den gesamten Ticketpreis vergleichen.',
+    'news.summary.li8':'',
+    'news.summary.li9':'',
+    'news.summary.li10':'',
+    'news.fx':'FX: USD/KRW ca. 1,388.',
+    'news.mops':'Jetfuel: der September-Durchschnitt 149.29 USD/bbl ist die Basis; der Oktober-Durchschnitt wird noch gesammelt.',
+    'news.geo':'Hormuz: Kpler-verfolgter Rohstoffverkehr bleibt niedrig; weder vollständige Schließung noch Normalisierung ist bestätigt.'
+  });
+  var packs = {ko: ko, en: en, ja: ja, zh: zh, fr: fr, de: de};
+  var pack = packs[lang] || en;
+  window.I18N = window.I18N || {};
+  Object.keys(packs).forEach(function(l){ window.I18N[l] = Object.assign(window.I18N[l] || {}, packs[l]); });
+  Object.keys(pack).forEach(function(key){
+    document.querySelectorAll('[data-i18n="'+key+'"]').forEach(function(el){ el.textContent = pack[key]; });
+  });
+  document.title = pack['news.metaTitle'];
+  var desc = document.querySelector('meta[name="description"]'); if(desc) desc.setAttribute('content', pack['news.metaDesc']);
+  var ogTitle = document.querySelector('meta[property="og:title"]'); if(ogTitle) ogTitle.setAttribute('content', pack['news.metaTitle']);
+  var ogDesc = document.querySelector('meta[property="og:description"]'); if(ogDesc) ogDesc.setAttribute('content', pack['news.metaDesc']);
+  var replacements = {
+    '2026년 9월 국제선, 8월보다 최소 12,800원·USD 9부터 인상':'2026년 9월 유류할증료 확정 및 10월 전망 뉴스',
+    '2026.08.19 07:00 KST 기준 · 대한항공 최소 +12,800원 · 아시아나 최소 +15,400원 · 진에어 최소 +USD 9 · 에어부산 최소 +USD 24 · KE·OZ·LJ·BX 9월 공시 확인 · USD/KRW 약 1,412원 · 9월 산정 항공유 평균 149.29달러/bbl':'2026.08.20 07:00 KST 기준 · KE/OZ/LJ/BX/7C/ZE/RS 9월 공시 확인 · USD/KRW 약 1,388원 · Brent 91.62달러 · WTI 85.83달러 · 10월 전망은 방향 불확실',
+    'USD/KRW 약 1,412원':'USD/KRW 약 1,388원',
+    '약 1,412원':'약 1,388원',
+    '1,412':'1,388',
+    'KE·OZ·LJ·BX 9월 공시 확인':'KE·OZ·LJ·BX·7C·ZE·RS 9월 공시 확인',
+    '2026.08.19 07:00 KST 기준 · 9월 국제선 항공사별 최소 인상액 확인':'2026.08.20 07:00 KST 기준 · 9월 공시 반영 및 10월 전망 준비',
+    '2026.08.19 07:00 KST':'2026.08.20 07:00 KST',
+    '8월 19일 시장 브리핑: 9월 국제선 최소 인상액 확인':'8월 20일 시장 브리핑: 9월 공시 반영 및 10월 전망 준비'
+  };
+  var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+  var node;
+  while((node = walker.nextNode())){
+    Object.keys(replacements).forEach(function(from){
+      if(node.nodeValue.indexOf(from) !== -1) node.nodeValue = node.nodeValue.split(from).join(replacements[from]);
+    });
+  }
+  hideRetiredNewsSummaryRows();
+  applyAugust20OfficialNoticeSurface(lang);
+  applyAugust20NewsStaticFooter(lang);
+  localizeAugust20NewsCards();
+  if(typeof renderNews === 'function' && !window.__aug20NewsRerendering){
+    window.__aug20NewsRerendering = true;
+    renderNews();
+    window.__aug20NewsRerendering = false;
+  }
+}
+window.applyAugust20NewsTerminalSurface = applyAugust20NewsTerminalSurface;
+function hideRetiredNewsSummaryRows(){
+  ['news.summary.li8','news.summary.li9','news.summary.li10'].forEach(function(key){
+    document.querySelectorAll('[data-i18n="'+key+'"]').forEach(function(el){
+      el.textContent = '';
+      el.style.display = 'none';
+    });
+  });
+}
+function applyAugust20OfficialNoticeSurface(lang){
+  var noticeUrl = {
+    officialKe:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2609-infuel',
+    officialOz:'https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202608180002530123',
+    officialLj:'https://www.jinair.com/company/announce/announceView?anceSeq=28662&searchWord=&searchKey=titlCtn&page=1',
+    officialBx:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4399',
+    official7c:'https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000751',
+    officialZe:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=653&lang=KR&searchWord=&searchIndex=1',
+    officialRs:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=11048&pageNo=1'
+  };
+  var packs = {
+    ko:{
+      title:'주요 항공사 2026년 9월 국제선 유류할증료 공식 공시',
+      notice:'2026.08.20 07:00 KST 기준 반영 · KE/OZ/LJ/BX/7C/ZE/RS 9월 공시 확인 · 10월은 공시 전 산정기간 추적',
+      link:'공식 공지',
+      desc:'* 2026년 9월 공시 확인 항공사: KE·OZ·LJ·BX·7C·ZE·RS. 일반 이용자는 8월 대비 최소 추가 부담액을 먼저 확인하세요.',
+      items:{
+        officialKe:['대한항공','9월 48,000원~354,000원 · 8월 대비 최소 +12,800원'],
+        officialOz:['아시아나항공','9월 52,000원~290,100원 · 8월 대비 최소 +15,400원'],
+        officialLj:['진에어','9월 USD 29~89 · 8월 대비 최소 +USD 9'],
+        officialBx:['에어부산','9월 USD 71/82 · 8월 대비 최소 +USD 24'],
+        official7c:['제주항공','9월 USD 33~79 · 8월 대비 최소 +USD 11'],
+        officialZe:['이스타항공','9월 USD 33~79 · 8월 대비 최소 +USD 11'],
+        officialRs:['에어서울','9월 57,700원~99,600원 · 8월 대비 최소 +18,000원']
+      }
+    },
+    en:{
+      title:'Major Airline September 2026 International Fuel Surcharge Notices',
+      notice:'As of 2026.08.20 07:00 KST · KE/OZ/LJ/BX/7C/ZE/RS September notices confirmed · October remains pre-filing',
+      link:'Official notice',
+      desc:'* Confirmed September notice airlines: KE/OZ/LJ/BX/7C/ZE/RS. Check each airline’s minimum increase versus August first.',
+      items:{
+        officialKe:['Korean Air','September KRW 48,000-354,000 · minimum +KRW 12,800 vs August'],
+        officialOz:['Asiana Airlines','September KRW 52,000-290,100 · minimum +KRW 15,400 vs August'],
+        officialLj:['Jin Air','September USD 29-89 · minimum +USD 9 vs August'],
+        officialBx:['Air Busan','September USD 71/82 · minimum +USD 24 vs August'],
+        official7c:['Jeju Air','September USD 33-79 · minimum +USD 11 vs August'],
+        officialZe:['Eastar Jet','September USD 33-79 · minimum +USD 11 vs August'],
+        officialRs:['Air Seoul','September KRW 57,700-99,600 · minimum +KRW 18,000 vs August']
+      }
+    },
+    ja:{
+      title:'主要航空会社 2026年9月国際線燃油サーチャージ公式公示',
+      notice:'2026.08.20 07:00 KST時点 · KE/OZ/LJ/BX/7C/ZE/RSの9月公示確認 · 10月は公示前',
+      link:'公式公示',
+      desc:'* 9月公示確認航空会社: KE/OZ/LJ/BX/7C/ZE/RS。8月比の最低追加負担を先に確認してください。',
+      items:{
+        officialKe:['大韓航空','9月48,000~354,000ウォン · 8月比最低+12,800ウォン'],
+        officialOz:['アシアナ航空','9月52,000~290,100ウォン · 8月比最低+15,400ウォン'],
+        officialLj:['ジンエアー','9月USD 29~89 · 8月比最低+9米ドル'],
+        officialBx:['エアプサン','9月USD 71/82 · 8月比最低+24米ドル'],
+        official7c:['チェジュ航空','9月USD 33~79 · 8月比最低+11米ドル'],
+        officialZe:['イースター航空','9月USD 33~79 · 8月比最低+11米ドル'],
+        officialRs:['エアソウル','9月57,700~99,600ウォン · 8月比最低+18,000ウォン']
+      }
+    },
+    zh:{
+      title:'主要航空公司2026年9月国际线燃油附加费官方公告',
+      notice:'截至2026.08.20 07:00 KST · KE/OZ/LJ/BX/7C/ZE/RS 9月公告确认 · 10月仍未公告',
+      link:'官方公告',
+      desc:'* 9月公告确认航司：KE/OZ/LJ/BX/7C/ZE/RS。请优先确认较8月的最低额外费用。',
+      items:{
+        officialKe:['大韩航空','9月48,000~354,000韩元 · 较8月至少+12,800韩元'],
+        officialOz:['韩亚航空','9月52,000~290,100韩元 · 较8月至少+15,400韩元'],
+        officialLj:['真航空','9月USD 29~89 · 较8月至少+9美元'],
+        officialBx:['釜山航空','9月USD 71/82 · 较8月至少+24美元'],
+        official7c:['济州航空','9月USD 33~79 · 较8月至少+11美元'],
+        officialZe:['易斯达航空','9月USD 33~79 · 较8月至少+11美元'],
+        officialRs:['首尔航空','9月57,700~99,600韩元 · 较8月至少+18,000韩元']
+      }
+    },
+    fr:{
+      title:'Avis officiels de septembre 2026 des principales compagnies',
+      notice:'Au 2026.08.20 07:00 KST · avis KE/OZ/LJ/BX/7C/ZE/RS confirmés · octobre reste avant publication',
+      link:'Avis officiel',
+      desc:'* Compagnies avec avis septembre confirmé: KE/OZ/LJ/BX/7C/ZE/RS. Vérifiez d’abord la hausse minimale vs août.',
+      items:{
+        officialKe:['Korean Air','septembre 48 000-354 000 KRW · minimum +12 800 KRW vs août'],
+        officialOz:['Asiana Airlines','septembre 52 000-290 100 KRW · minimum +15 400 KRW vs août'],
+        officialLj:['Jin Air','septembre 29-89 USD · minimum +9 USD vs août'],
+        officialBx:['Air Busan','septembre 71/82 USD · minimum +24 USD vs août'],
+        official7c:['Jeju Air','septembre 33-79 USD · minimum +11 USD vs août'],
+        officialZe:['Eastar Jet','septembre 33-79 USD · minimum +11 USD vs août'],
+        officialRs:['Air Seoul','septembre 57 700-99 600 KRW · minimum +18 000 KRW vs août']
+      }
+    },
+    de:{
+      title:'Offizielle September-2026 Hinweise der großen Airlines',
+      notice:'Stand 2026.08.20 07:00 KST · KE/OZ/LJ/BX/7C/ZE/RS bestätigt · Oktober noch vor Veröffentlichung',
+      link:'Offizieller Hinweis',
+      desc:'* Bestätigte September-Airlines: KE/OZ/LJ/BX/7C/ZE/RS. Zuerst den Mindestanstieg gegenüber August prüfen.',
+      items:{
+        officialKe:['Korean Air','September 48.000-354.000 KRW · mindestens +12.800 KRW ggü. August'],
+        officialOz:['Asiana Airlines','September 52.000-290.100 KRW · mindestens +15.400 KRW ggü. August'],
+        officialLj:['Jin Air','September USD 29-89 · mindestens +9 USD ggü. August'],
+        officialBx:['Air Busan','September USD 71/82 · mindestens +24 USD ggü. August'],
+        official7c:['Jeju Air','September USD 33-79 · mindestens +11 USD ggü. August'],
+        officialZe:['Eastar Jet','September USD 33-79 · mindestens +11 USD ggü. August'],
+        officialRs:['Air Seoul','September 57.700-99.600 KRW · mindestens +18.000 KRW ggü. August']
+      }
+    }
+  };
+  var p = packs[lang] || packs.en;
+  var title = document.querySelector('.official-title');
+  if(title) title.textContent = p.title;
+  var notice = document.querySelector('[data-i18n="news.officialNotice"]');
+  if(notice) notice.textContent = p.notice;
+  Object.keys(noticeUrl).forEach(function(id){
+    var el = document.getElementById(id);
+    var item = p.items[id];
+    if(!el || !item) return;
+    el.innerHTML = '<strong>'+item[0]+'</strong> — '+item[1]+' · <a href="'+noticeUrl[id]+'" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">'+p.link+' ↗</a>';
+    el.style.display = '';
+  });
+  var yp = document.getElementById('officialYp');
+  if(yp) yp.style.display = 'none';
+  var desc = document.getElementById('officialDesc');
+  if(desc) desc.textContent = p.desc;
+}
+function applyAugust20NewsStaticFooter(lang){
+  var packs = {
+    ko:{keyTitle:'핵심 확인 변수',chips:['9월 21단계 확정','항공사별 최소 인상액','10월 산정기간','USD/KRW 약 1,388원'],relatedTitle:'관련 유류할증료 정보',related:['10월 유류할증료 전망','유류할증료 변동 그래프','8월 vs 9월 비교','유류할증료 계산 방법','한국 출발 유류할증료 조회','항공사별 유류할증료'],prev:'‹ 이전',next:'다음 ›'},
+    en:{keyTitle:'Key Checks',chips:['September Level 21 confirmed','Minimum increase by airline','October calculation window','USD/KRW around 1,388'],relatedTitle:'Related Fuel Surcharge Info',related:['October surcharge outlook','Surcharge trend graph','August vs September comparison','How to calculate surcharges','Korea-departure surcharge lookup','Surcharge by airline'],prev:'‹ Previous',next:'Next ›'},
+    ja:{keyTitle:'主要確認項目',chips:['9月21段階確定','航空会社別最低上昇額','10月算定期間','USD/KRW約1,388'],relatedTitle:'関連燃油サーチャージ情報',related:['10月燃油サーチャージ見通し','サーチャージ推移グラフ','8月と9月の比較','サーチャージ計算方法','韓国発サーチャージ検索','航空会社別サーチャージ'],prev:'‹ 前へ',next:'次へ ›'},
+    zh:{keyTitle:'核心确认项目',chips:['9月第21档确认','各航司最低涨幅','10月计算期','USD/KRW约1,388'],relatedTitle:'相关燃油附加费信息',related:['10月燃油附加费展望','附加费趋势图','8月与9月比较','附加费计算方法','韩国出发附加费查询','按航空公司查看附加费'],prev:'‹ 上一页',next:'下一页 ›'},
+    fr:{keyTitle:'Points clés',chips:['Niveau 21 confirmé en septembre','Hausse minimale par compagnie','Fenêtre de calcul octobre','USD/KRW env. 1,388'],relatedTitle:'Infos liées sur les surtaxes carburant',related:['Perspective octobre','Graphique des tendances','Comparaison août vs septembre','Méthode de calcul','Recherche départ Corée','Surtaxe par compagnie'],prev:'‹ Précédent',next:'Suivant ›'},
+    de:{keyTitle:'Wichtige Prüfpunkte',chips:['September Stufe 21 bestätigt','Mindestanstieg je Airline','Oktober-Berechnungsfenster','USD/KRW ca. 1,388'],relatedTitle:'Verwandte Treibstoffzuschlag-Infos',related:['Oktober-Ausblick','Trenddiagramm','August-vs.-September Vergleich','Berechnungsmethode','Zuschlag ab Korea suchen','Zuschlag nach Airline'],prev:'‹ Zurück',next:'Weiter ›'}
+  };
+  var p = packs[lang] || packs.en;
+  var keyDirect = document.getElementById('newsKeyVariables');
+  if(keyDirect){
+    keyDirect.innerHTML = '<div style="font-weight:700;margin-bottom:10px;color:#1B5E20;">'+p.keyTitle+'</div>'
+      + '<div style="display:flex;flex-wrap:wrap;gap:8px;">'
+      + p.chips.map(function(label){ return '<div style="background:rgba(255,255,255,.75);border:1px solid #A5D6A7;border-radius:8px;padding:8px 14px;font-size:13px;color:#2E7D32;font-weight:600;">'+label+'</div>'; }).join('')
+      + '</div>';
+  }
+  var relatedDirect = document.getElementById('newsRelatedLinksBox');
+  if(relatedDirect){
+    var hrefs = ['forecast.html','fuel-surcharge-graph.html','fuel-surcharge-calculator.html','fuel-surcharge-calculator.html','index.html','airlines.html'];
+    relatedDirect.innerHTML = '<div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:14px;">'+p.relatedTitle+'</div>'
+      + '<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:8px;">'
+      + p.related.map(function(label, idx){ return '<a href="'+hrefs[idx]+'" style="display:block;padding:10px 14px;background:var(--bg);border:1.5px solid var(--line);border-radius:9px;font-size:12px;font-weight:700;color:var(--blue);text-decoration:none;">'+label+'</a>'; }).join('')
+      + '</div>';
+  }
+  var main = document.querySelector('main');
+  if(!main) return;
+  var boxes = Array.prototype.slice.call(main.querySelectorAll('div'));
+  var keyBox = document.getElementById('newsKeyVariables') || boxes.find(function(el){
+    return /유류할증료 결정 핵심 변수|Key Checks|主要確認項目|核心确认项目|Points clés|Wichtige Prüfpunkte/.test(el.innerText || '');
+  });
+  if(keyBox){
+    if(keyBox.firstElementChild) keyBox.firstElementChild.textContent = p.keyTitle;
+    Array.prototype.slice.call(keyBox.querySelectorAll('div[style*="font-size:13px"]')).filter(function(el){
+      return el.children.length === 0 && el.textContent.trim();
+    }).slice(0,4).forEach(function(el, idx){ el.textContent = p.chips[idx]; });
+  }
+  var relatedBox = document.getElementById('newsRelatedLinksBox') || boxes.find(function(el){
+    return /관련 유류할증료 정보|Related Fuel Surcharge Info|関連燃油サーチャージ情報|相关燃油附加费信息|Infos liées|Verwandte/.test(el.innerText || '');
+  });
+  if(relatedBox){
+    if(relatedBox.firstElementChild) relatedBox.firstElementChild.textContent = p.relatedTitle;
+    Array.prototype.slice.call(relatedBox.querySelectorAll('a')).forEach(function(a, idx){
+      if(p.related[idx]) a.textContent = p.related[idx];
+    });
+  }
+  var pager = document.getElementById('pagination');
+  if(pager){
+    Array.prototype.slice.call(pager.querySelectorAll('a,button')).forEach(function(el){
+      if(/이전|Previous|前へ|上一页|Précédent|Zurück/.test(el.textContent)) el.textContent = p.prev;
+      if(/다음|Next|次へ|下一页|Suivant|Weiter/.test(el.textContent)) el.textContent = p.next;
+    });
+  }
+}
+function localizeAugust20NewsCards(){
+  if(!Array.isArray(FIXED_NEWS)) return;
+  var feedDuplicateIds = {
+    'october-forecast-fx-jetfuel-hormuz-20260820': true,
+    'jejuair-september-surcharge-20260820': true,
+    'eastarjet-september-surcharge-20260820': true,
+    'airseoul-september-surcharge-20260820': true,
+    'september-international-level-21-confirmed-20260819': true,
+    'september-calculation-jetfuel-average-14929-20260819': true,
+    'asiana-september-surcharge-52000-290100-20260819': true
+  };
+  var feed = (typeof NEWS_DATA !== 'undefined' && NEWS_DATA) || window.NEWS_DATA;
+  if(feed && Array.isArray(feed.items)){
+    feed.items = feed.items.filter(function(item){
+      return !(item && feedDuplicateIds[item.id]);
+    });
+  }
+  var packs = {
+    'korean-air-september-surcharge-20260819': {
+      ja:{title:'大韓航空9月国際線、8月比最低+12,800ウォン', aiBrief:'9月は48,000~354,000ウォンで、8月より最低12,800ウォン上昇します。', summary:'大韓航空の2026年9月韓国発国際線燃油サーチャージは48,000~354,000ウォンです。8月35,200~259,200ウォン比で最低+12,800ウォン、最大+94,800ウォンです。', impact:'9月公示を反映し、次の確認対象は10月見通しです。', tags:['大韓航空','最低+12,800ウォン','9月国際線','354,000ウォン']},
+      zh:{title:'大韩航空9月国际线较8月至少+12,800韩元', aiBrief:'9月为48,000~354,000韩元，较8月至少增加12,800韩元。', summary:'大韩航空2026年9月韩国出发国际线燃油附加费为48,000~354,000韩元。较8月35,200~259,200韩元，最低+12,800韩元，最高+94,800韩元。', impact:'已反映9月公告，后续关注转向10月展望。', tags:['大韩航空','最低+12,800韩元','9月国际线','354,000韩元']},
+      fr:{title:'Korean Air septembre international: au moins +12 800 KRW vs août', aiBrief:'La surtaxe de septembre est de 48 000 à 354 000 KRW, soit au moins 12 800 KRW de plus qu’en août.', summary:'Korean Air septembre 2026 au départ de Corée: 48 000 à 354 000 KRW. La hausse vs août commence à 12 800 KRW et atteint 94 800 KRW.', impact:'Avis de septembre reflété; le suivi passe ensuite à octobre.', tags:['Korean Air','minimum +12 800 KRW','septembre international','354 000 KRW']},
+      de:{title:'Korean Air September international: mindestens +12.800 KRW ggü. August', aiBrief:'September liegt bei 48.000-354.000 KRW und beginnt 12.800 KRW über August.', summary:'Korean Air September 2026 ab Korea: 48.000-354.000 KRW. Gegenüber August 35.200-259.200 KRW steigt es um mindestens 12.800 KRW und bis zu 94.800 KRW.', impact:'September-Hinweis berücksichtigt; der nächste Fokus ist Oktober.', tags:['Korean Air','mindestens +12.800 KRW','September international','354.000 KRW']}
+    },
+    'jinair-september-surcharge-20260819': {
+      ja:{title:'ジンエアー9月国際線、8月比最低+9米ドル', aiBrief:'9月はUSD 29~89で、8月より最低9米ドル上昇します。', summary:'ジンエアーの2026年9月韓国発国際線はUSD 29、41、67、74、89です。8月比で最低+9米ドル、最大+30米ドルです。', impact:'9月公示を反映し、次の確認対象は10月見通しです。', tags:['ジンエアー','最低+9米ドル','9月国際線','USD 89']},
+      zh:{title:'真航空9月国际线较8月至少+9美元', aiBrief:'9月为USD 29~89，较8月至少增加9美元。', summary:'真航空2026年9月韩国出发国际线为USD 29、41、67、74、89。较8月最低+9美元，最高+30美元。', impact:'已反映9月公告，后续关注转向10月展望。', tags:['真航空','最低+9美元','9月国际线','USD 89']},
+      fr:{title:'Jin Air septembre international: au moins +9 USD vs août', aiBrief:'La surtaxe de septembre est de 29 à 89 USD, soit au moins 9 USD de plus qu’en août.', summary:'Jin Air septembre 2026 au départ de Corée: 29, 41, 67, 74 et 89 USD. La hausse vs août commence à 9 USD et atteint 30 USD.', impact:'Avis de septembre reflété; le suivi passe ensuite à octobre.', tags:['Jin Air','minimum +9 USD','septembre international','USD 89']},
+      de:{title:'Jin Air September international: mindestens +9 USD ggü. August', aiBrief:'September liegt bei USD 29-89 und beginnt 9 USD über August.', summary:'Jin Air September 2026 ab Korea: USD 29, 41, 67, 74 und 89. Gegenüber August steigt es um mindestens 9 USD und bis zu 30 USD.', impact:'September-Hinweis berücksichtigt; der nächste Fokus ist Oktober.', tags:['Jin Air','mindestens +9 USD','September international','USD 89']}
+    },
+    'airbusan-september-surcharge-20260819': {
+      ja:{title:'エアプサン9月国際線、8月比最低+24米ドル', aiBrief:'9月は一部区間USD 71、一部長距離USD 82で、8月より最低24米ドル上昇します。', summary:'エアプサンの2026年9月韓国発国際線は一部区間USD 71、一部長距離USD 82です。8月USD 47/54基準比で最低+24米ドル、最大+28米ドルです。', impact:'9月公示を反映し、次の確認対象は10月見通しです。', tags:['エアプサン','最低+24米ドル','9月国際線','USD 82']},
+      zh:{title:'釜山航空9月国际线较8月至少+24美元', aiBrief:'9月部分区间USD 71、部分长途USD 82，较8月至少增加24美元。', summary:'釜山航空2026年9月韩国出发国际线部分区间为USD 71，部分长途为USD 82。较8月USD 47/54基准，最低+24美元，最高+28美元。', impact:'已反映9月公告，后续关注转向10月展望。', tags:['釜山航空','最低+24美元','9月国际线','USD 82']},
+      fr:{title:'Air Busan septembre international: au moins +24 USD vs août', aiBrief:'Septembre affiche 71 USD sur certaines zones et 82 USD sur certaines longues routes, au moins 24 USD de plus qu’en août.', summary:'Air Busan septembre 2026 au départ de Corée: 71 USD sur certaines zones et 82 USD sur certaines longues routes. La hausse vs août commence à 24 USD et atteint 28 USD.', impact:'Avis de septembre reflété; le suivi passe ensuite à octobre.', tags:['Air Busan','minimum +24 USD','septembre international','USD 82']},
+      de:{title:'Air Busan September international: mindestens +24 USD ggü. August', aiBrief:'September zeigt USD 71 für einige Zonen und USD 82 für einige Langstrecken, mindestens 24 USD über August.', summary:'Air Busan September 2026 ab Korea: USD 71 für einige Zonen und USD 82 für einige Langstrecken. Gegenüber August USD 47/54 steigt es um mindestens 24 USD und bis zu 28 USD.', impact:'September-Hinweis berücksichtigt; der nächste Fokus ist Oktober.', tags:['Air Busan','mindestens +24 USD','September international','USD 82']}
+    },
+    'october-forecast-fx-vs-jetfuel-hormuz-20260820': {
+      en:{title:'October outlook: FX relief vs jet-fuel uncertainty', aiBrief:'USD/KRW around 1,388 is a relief factor, but October is still pre-filing.', summary:'October 2026 international fuel surcharges are still pre-filing. The September jet-fuel average of USD 149.29/bbl is only a baseline, while the October calculation-period average is still being collected.', impact:'Track calculation-period jet fuel and FX instead of treating October stage or amount as confirmed.', tags:['October outlook','USD/KRW 1,388','jet fuel','pre-filing']},
+      ja:{title:'10月見通し: 為替の緩和と航空燃料平均を追跡', aiBrief:'USD/KRW約1,388は緩和要因ですが、10月はまだ公示前です。', summary:'2026年10月国際線燃油サーチャージはまだ公示前です。9月算定平均149.29ドル/bblは基準線であり、10月算定期間の平均はまだ集計中です。', impact:'10月の段階や金額ではなく、算定期間の航空燃料平均と為替を追跡します。', tags:['10月見通し','USD/KRW 1,388','航空燃料','公示前']},
+      zh:{title:'10月展望：汇率缓和与航油均值跟踪', aiBrief:'USD/KRW约1,388是缓和因素，但10月仍未公告。', summary:'2026年10月国际线燃油附加费尚未公告。9月计算均值149.29美元/bbl仅为基准线，10月计算期均值仍在统计中。', impact:'不要把10月档位或金额当作已确认，应跟踪计算期航油均值和汇率。', tags:['10月展望','USD/KRW 1,388','航油','公告前']},
+      fr:{title:'Perspective octobre: FX favorable, moyenne carburéacteur à suivre', aiBrief:'USD/KRW env. 1,388 est un facteur favorable, mais octobre reste avant publication.', summary:'La surtaxe internationale d’octobre 2026 n’est pas encore publiée. La moyenne de septembre 149.29 USD/bbl sert seulement de base; la moyenne d’octobre est encore en collecte.', impact:'Suivre la moyenne carburéacteur et le FX de la période plutôt qu’un niveau ou montant confirmé.', tags:['octobre','USD/KRW 1,388','carburéacteur','avant publication']},
+      de:{title:'Oktober-Ausblick: FX-Entlastung, Jetfuel-Durchschnitt offen', aiBrief:'USD/KRW ca. 1,388 entlastet, aber Oktober ist noch vor Veröffentlichung.', summary:'Der internationale Oktober-Zuschlag 2026 ist noch nicht veröffentlicht. Der September-Durchschnitt 149,29 USD/bbl ist nur die Basis; der Oktober-Durchschnitt wird noch gesammelt.', impact:'Jetfuel- und FX-Durchschnitte verfolgen, keine Oktober-Stufe oder Beträge als bestätigt zeigen.', tags:['Oktober','USD/KRW 1,388','Jetfuel','vor Veröffentlichung']}
+    },
+    'jejuair-september-surcharge-20260820': {
+      en:{title:'Jeju Air September international: at least +USD 11 vs August', aiBrief:'Jeju Air September surcharge is USD 33-79, starting USD 11 above August.', summary:'Jeju Air September 2026 Korea-departure international surcharge is USD 33, 42, 50, 60, 68 and 79. Compared with August USD 22-52, the increase starts at USD 11 and reaches USD 27.', impact:'Jeju Air passengers should check the dollar-based extra cost before September ticketing.', tags:['Jeju Air','7C','minimum +USD 11','September']},
+      ja:{title:'チェジュ航空9月国際線、8月比最低+11米ドル', aiBrief:'9月はUSD 33~79で、8月より最低11米ドル上昇します。', summary:'チェジュ航空の2026年9月韓国発国際線はUSD 33、42、50、60、68、79です。8月USD 22~52比で最低+11米ドル、最大+27米ドルです。', impact:'9月発券前にドル建て追加負担を確認してください。', tags:['チェジュ航空','7C','最低+11米ドル','9月']},
+      zh:{title:'济州航空9月国际线较8月至少+11美元', aiBrief:'9月为USD 33~79，较8月至少增加11美元。', summary:'济州航空2026年9月韩国出发国际线为USD 33、42、50、60、68、79。较8月USD 22~52，最低+11美元，最高+27美元。', impact:'9月出票前应确认美元计价的额外负担。', tags:['济州航空','7C','最低+11美元','9月']},
+      fr:{title:'Jeju Air septembre international: au moins +11 USD vs août', aiBrief:'La surtaxe de septembre est de 33 à 79 USD, soit au moins 11 USD de plus qu’en août.', summary:'Jeju Air septembre 2026 au départ de Corée: 33, 42, 50, 60, 68 et 79 USD. La hausse vs août commence à 11 USD et va jusqu’à 27 USD.', impact:'Vérifier le surcoût en USD avant émission en septembre.', tags:['Jeju Air','7C','minimum +11 USD','septembre']},
+      de:{title:'Jeju Air September international: mindestens +11 USD ggü. August', aiBrief:'September liegt bei USD 33-79 und beginnt 11 USD über August.', summary:'Jeju Air September 2026 ab Korea: USD 33, 42, 50, 60, 68 und 79. Gegenüber August USD 22-52 steigt es um mindestens 11 USD und bis zu 27 USD.', impact:'Vor September-Ticketing den USD-Aufpreis prüfen.', tags:['Jeju Air','7C','mindestens +11 USD','September']}
+    },
+    'eastarjet-september-surcharge-20260820': {
+      en:{title:'Eastar Jet September international: at least +USD 11 vs August', aiBrief:'Eastar Jet September surcharge is USD 33-79, starting USD 11 above August.', summary:'Eastar Jet September 2026 Korea-departure international surcharge is USD 33, 42, 50, 60, 68 and 79. Compared with August USD 22-52, the increase starts at USD 11 and reaches USD 27.', impact:'Eastar Jet passengers should check the dollar-based extra cost before September ticketing.', tags:['Eastar Jet','ZE','minimum +USD 11','September']},
+      ja:{title:'イースター航空9月国際線、8月比最低+11米ドル', aiBrief:'9月はUSD 33~79で、8月より最低11米ドル上昇します。', summary:'イースター航空の2026年9月韓国発国際線はUSD 33、42、50、60、68、79です。8月USD 22~52比で最低+11米ドル、最大+27米ドルです。', impact:'9月発券前にドル建て追加負担を確認してください。', tags:['イースター航空','ZE','最低+11米ドル','9月']},
+      zh:{title:'易斯达航空9月国际线较8月至少+11美元', aiBrief:'9月为USD 33~79，较8月至少增加11美元。', summary:'易斯达航空2026年9月韩国出发国际线为USD 33、42、50、60、68、79。较8月USD 22~52，最低+11美元，最高+27美元。', impact:'9月出票前应确认美元计价的额外负担。', tags:['易斯达航空','ZE','最低+11美元','9月']},
+      fr:{title:'Eastar Jet septembre international: au moins +11 USD vs août', aiBrief:'La surtaxe de septembre est de 33 à 79 USD, soit au moins 11 USD de plus qu’en août.', summary:'Eastar Jet septembre 2026 au départ de Corée: 33, 42, 50, 60, 68 et 79 USD. La hausse vs août commence à 11 USD et va jusqu’à 27 USD.', impact:'Vérifier le surcoût en USD avant émission en septembre.', tags:['Eastar Jet','ZE','minimum +11 USD','septembre']},
+      de:{title:'Eastar Jet September international: mindestens +11 USD ggü. August', aiBrief:'September liegt bei USD 33-79 und beginnt 11 USD über August.', summary:'Eastar Jet September 2026 ab Korea: USD 33, 42, 50, 60, 68 und 79. Gegenüber August USD 22-52 steigt es um mindestens 11 USD und bis zu 27 USD.', impact:'Vor September-Ticketing den USD-Aufpreis prüfen.', tags:['Eastar Jet','ZE','mindestens +11 USD','September']}
+    },
+    'airseoul-september-surcharge-20260820': {
+      en:{title:'Air Seoul September international: at least +KRW 18,000 vs August', aiBrief:'Air Seoul September surcharge is KRW 57,700-99,600, starting KRW 18,000 above August.', summary:'Air Seoul September 2026 Korea-departure international surcharge is KRW 57,700, 66,400, 86,600, 95,300 and 99,600. Compared with August KRW 39,700-71,700, the increase starts at KRW 18,000 and reaches KRW 28,600.', impact:'Air Seoul passengers should check the KRW extra cost before September ticketing.', tags:['Air Seoul','RS','minimum +KRW 18,000','September']},
+      ja:{title:'エアソウル9月国際線、8月比最低+18,000ウォン', aiBrief:'9月は57,700~99,600ウォンで、8月より最低18,000ウォン上昇します。', summary:'エアソウルの2026年9月韓国発国際線は57,700、66,400、86,600、95,300、99,600ウォンです。8月比で最低+18,000ウォン、最大+28,600ウォンです。', impact:'9月発券前にウォン建て追加負担を確認してください。', tags:['エアソウル','RS','最低+18,000ウォン','9月']},
+      zh:{title:'首尔航空9月国际线较8月至少+18,000韩元', aiBrief:'9月为57,700~99,600韩元，较8月至少增加18,000韩元。', summary:'首尔航空2026年9月韩国出发国际线为57,700、66,400、86,600、95,300、99,600韩元。较8月最低+18,000韩元，最高+28,600韩元。', impact:'9月出票前应确认韩元计价的额外负担。', tags:['首尔航空','RS','最低+18,000韩元','9月']},
+      fr:{title:'Air Seoul septembre international: au moins +18 000 KRW vs août', aiBrief:'La surtaxe de septembre est de 57 700 à 99 600 KRW, soit au moins 18 000 KRW de plus qu’en août.', summary:'Air Seoul septembre 2026 au départ de Corée: 57 700, 66 400, 86 600, 95 300 et 99 600 KRW. La hausse vs août commence à 18 000 KRW et va jusqu’à 28 600 KRW.', impact:'Vérifier le surcoût en KRW avant émission en septembre.', tags:['Air Seoul','RS','minimum +18 000 KRW','septembre']},
+      de:{title:'Air Seoul September international: mindestens +18.000 KRW ggü. August', aiBrief:'September liegt bei KRW 57.700-99.600 und beginnt 18.000 KRW über August.', summary:'Air Seoul September 2026 ab Korea: KRW 57.700, 66.400, 86.600, 95.300 und 99.600. Gegenüber August steigt es um mindestens 18.000 KRW und bis zu 28.600 KRW.', impact:'Vor September-Ticketing den KRW-Aufpreis prüfen.', tags:['Air Seoul','RS','mindestens +18.000 KRW','September']}
+    }
+  };
+  FIXED_NEWS.forEach(function(card){
+    if(card && packs[card.id]){
+      card.i18n = card.i18n || {};
+      Object.keys(packs[card.id]).forEach(function(lang){
+        card.i18n[lang] = Object.assign({}, card.i18n[lang] || {}, packs[card.id][lang]);
+      });
+    }
+  });
+}
+if (typeof window.applyLanguage === 'function' && !window.applyLanguage.__aug20NewsSurfaceWrapped) {
+  var previousApplyLanguageAug20News = window.applyLanguage;
+  window.applyLanguage = function(){
+    var result = previousApplyLanguageAug20News.apply(this, arguments);
+    applyAugust20NewsTerminalSurface();
+    return result;
+  };
+  window.applyLanguage.__aug20NewsSurfaceWrapped = true;
+}
+if (typeof renderNews === 'function' && !renderNews.__aug20I18nWrapped) {
+  var previousRenderNewsAug20I18n = renderNews;
+  renderNews = function(){
+    localizeAugust20NewsCards();
+    var result = previousRenderNewsAug20I18n.apply(this, arguments);
+    hideRetiredNewsSummaryRows();
+    applyAugust20OfficialNoticeSurface(getCurrentLang());
+    applyAugust20NewsStaticFooter(getCurrentLang());
+    return result;
+  };
+  renderNews.__aug20I18nWrapped = true;
+}
+
 window.initNav({
   onLangChange:function(){
     /* _shared.js의 initNav 래퍼가 applyLanguage()를 먼저 실행 */
@@ -15805,16 +16334,17 @@ window.initNav({
     reRenderAll();
     ensureSeptemberAirlineCards();
     applySeptemberOfficialNewsUpdate();
+    applyAugust20NewsTerminalSurface();
     setTimeout(removeStaleNewsCards, 0);
   },
-  onCurrChange:function(){ reRenderAll(); ensureSeptemberAirlineCards(); applySeptemberOfficialNewsUpdate(); setTimeout(removeStaleNewsCards, 0); }
+  onCurrChange:function(){ reRenderAll(); ensureSeptemberAirlineCards(); applySeptemberOfficialNewsUpdate(); applyAugust20NewsTerminalSurface(); setTimeout(removeStaleNewsCards, 0); }
 });
 
 loadNews();
-setTimeout(function(){ ensureSeptemberAirlineCards(); renderNews(); applySeptemberOfficialNewsUpdate(); removeStaleNewsCards(); }, 350);
+setTimeout(function(){ ensureSeptemberAirlineCards(); renderNews(); applySeptemberOfficialNewsUpdate(); applyAugust20NewsTerminalSurface(); removeStaleNewsCards(); }, 350);
 setTimeout(removeStaleNewsCards, 300);
-setTimeout(removeStaleNewsCards, 1000);
-setTimeout(applySeptemberOfficialNewsUpdate, 1000);
+setTimeout(function(){ removeStaleNewsCards(); applyAugust20NewsTerminalSurface(); }, 1000);
+setTimeout(function(){ applySeptemberOfficialNewsUpdate(); applyAugust20NewsTerminalSurface(); }, 1000);
 </script>
 </body></html>
 
