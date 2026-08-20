@@ -1,12 +1,41 @@
 {
   "meta": {
-    "lastUpdated": "2026-08-20T07:00:00+09:00",
+    "lastUpdated": "2026-08-21T07:15:00+09:00",
     "note": "참고 뉴스 데이터입니다. 공식 공시와 시장 지표를 구분해 표시합니다.",
-    "asOf": "2026.08.20 07:00 KST",
+    "asOf": "2026.08.21 07:15 KST",
     "currentMonthNotice": "2026-09",
     "forecastTargetMonth": "2026-10"
   },
   "items": [
+    {
+      "id": "tway-september-surcharge-20260821",
+      "slug": "tway-september-surcharge-aug-21-2026",
+      "category": "official",
+      "priority": 1,
+      "date": "2026-08-21",
+      "updatedAt": "2026-08-21T07:15:00+09:00",
+      "badge": "티웨이",
+      "aiSummary": true,
+      "relevanceScore": 1,
+      "currentMonthNotice": "2026-09",
+      "forecastTargetMonth": "2026-10",
+      "title": "티웨이항공 9월 국제선, 8월 대비 최소 11,800원 인상",
+      "aiBrief": "티웨이 9월 한국발 국제선 유류할증료는 36,200원~247,500원이며 8월 대비 최소 +11,800원, 최대 +76,500원입니다.",
+      "summary": "티웨이항공은 2026.08.20 12:44에 9월 한국발 국제선 유류할증료를 공지했습니다. 1군 36,200원, 2군 62,200원, 3군 78,200원, 4군 101,300원, 5군 110,000원, 6군 해당 없음, 7군 247,500원입니다.",
+      "impact": "9월 공시 확인 항공사 목록에 TW를 추가하고, 카드 뉴스와 공식 공시 섹션에 8월 대비 최소 인상액을 반영합니다.",
+      "sourceName": "Tway Air official notice",
+      "sourceUrl": "https://www.twayair.com/app/customerCenter/notice/retrieve/12685",
+      "tags": ["티웨이항공", "TW", "최소 +11,800원", "9월 국제선"],
+      "i18n": {
+        "en": {
+          "title": "Tway Air September international: at least +KRW 11,800 vs August",
+          "aiBrief": "Tway September Korea-departure surcharge is KRW 36,200-247,500, up at least KRW 11,800 and up to KRW 76,500 versus August.",
+          "summary": "Tway posted its September Korea-departure international fuel surcharge notice on 2026.08.20 12:44. Amounts are KRW 36,200, 62,200, 78,200, 101,300, 110,000, no amount for group 6, and KRW 247,500 for group 7.",
+          "impact": "TW is added to the confirmed September notice list, cards and official notice section.",
+          "tags": ["Tway Air", "TW", "minimum +KRW 11,800", "September"]
+        }
+      }
+    },
     {
       "id": "october-forecast-fx-jetfuel-hormuz-20260820",
       "slug": "october-forecast-fx-jetfuel-hormuz-aug-20-2026",

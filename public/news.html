@@ -16327,6 +16327,186 @@ if (typeof renderNews === 'function' && !renderNews.__aug20I18nWrapped) {
   renderNews.__aug20I18nWrapped = true;
 }
 
+/* 2026.08.21 07:15 KST terminal news surface. */
+(function(){
+  var twayUrl = 'https://www.twayair.com/app/customerCenter/notice/retrieve/12685';
+  var noticeUrls = {
+    officialKe:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2609-infuel',
+    officialOz:'https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202608180002530123',
+    officialLj:'https://www.jinair.com/company/announce/announceView?anceSeq=28662&searchWord=&searchKey=titlCtn&page=1',
+    officialBx:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4399',
+    officialTw:twayUrl,
+    official7c:'https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000751',
+    officialZe:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=653&lang=KR&searchWord=&searchIndex=1',
+    officialRs:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=11048&pageNo=1'
+  };
+  function pagePack(lang){
+    var en = {
+      'news.metaTitle':'September 2026 Notices and October Outlook | Aug 21',
+      'news.metaDesc':'September notices now include Tway; October outlook shifts to slight upward pressure with low confidence.',
+      'news.pageTitle':'September 2026 Notices and October Outlook News',
+      'news.h1':'September 2026 Notices and October Outlook News',
+      'news.pageSub':'As of 2026.08.21 07:15 KST · KE/OZ/LJ/BX/TW/7C/ZE/RS September notices confirmed · USD/KRW around 1,394.4 · global jet fuel reference USD 158.91 · Brent 93.78 · WTI 87.83',
+      'news.summary.title':'September Notices and October Outlook Summary',
+      'news.summary.li1':'September international fuel surcharges are confirmed at Level 21 and now include Tway Air.',
+      'news.summary.li2':'Tway September surcharge is KRW 36,200-247,500, at least KRW 11,800 higher than August.',
+      'news.summary.li3':'October remains pre-filing; no stage, amount or probability is confirmed.',
+      'news.summary.li4':'USD/KRW around 1,394.4 is still a downside factor but has rebounded.',
+      'news.summary.li5':'IATA/Platts global weekly jet fuel at USD 158.91/bbl is a reference, not Singapore MOPS.',
+      'news.summary.li6':'Brent USD 93.78 and WTI USD 87.83 add upside pressure to jet fuel risk.',
+      'news.summary.li7':'Current October view: slight upward pressure, low confidence.',
+      'news.fx':'FX: USD/KRW around 1,394.4.',
+      'news.mops':'Jet fuel: September baseline USD 149.29/bbl; global weekly reference USD 158.91/bbl is not same-day Singapore MOPS.',
+      'news.brent':'Crude: Brent USD 93.78/bbl and WTI USD 87.83/bbl at the Aug 20 U.S. close.',
+      'news.geo':'Hormuz: Kpler-tracked commodity vessels were 9 on Tuesday and 9 on Wednesday; this is not an all-vessel count.',
+      'news.marketSummary':'→ October outlook: slight upward pressure with low confidence. FX relief is offset by jet fuel, crude, refining and Hormuz upside risks.',
+      'news.fxDominance':'Key figures: 2026.08.21 07:15 KST · September Level 21 confirmed · KE/OZ/LJ/BX/TW/7C/ZE/RS notices confirmed · USD/KRW around 1,394.4 · global jet fuel reference USD 158.91 · Brent 93.78 · WTI 87.83',
+      'news.forecastCta.title':'October 2026 Fuel Surcharge Outlook',
+      'news.forecastCta.desc':'Track October with calculation-period jet fuel and FX averages while keeping market references separate from confirmed MOPS.',
+      'news.forecastCta.btn':'View October Outlook →'
+    };
+    var ko = Object.assign({}, en, {
+      'news.metaTitle':'2026년 9월 공시 및 10월 전망 뉴스 | 8월 21일',
+      'news.metaDesc':'티웨이 9월 공시를 포함해 주요 항공사 9월 확정 공시와 10월 전망 전환 내용을 정리합니다.',
+      'news.pageTitle':'2026년 9월 공시 및 10월 전망 뉴스',
+      'news.h1':'2026년 9월 공시 및 10월 전망 뉴스',
+      'news.pageSub':'2026.08.21 07:15 KST 기준 · KE/OZ/LJ/BX/TW/7C/ZE/RS 9월 공시 확인 · USD/KRW 약 1,394.4원 · 글로벌 항공유 참고 158.91달러 · Brent 93.78 · WTI 87.83',
+      'news.summary.title':'9월 공시 및 10월 전망 요약',
+      'news.summary.li1':'9월 국제선 유류할증료는 21단계로 확정됐고 티웨이항공 공시도 반영했습니다.',
+      'news.summary.li2':'티웨이 9월 공시는 36,200원~247,500원이며 8월 대비 최소 +11,800원입니다.',
+      'news.summary.li3':'10월은 아직 공시 전이므로 단계·금액·확률은 확정하지 않습니다.',
+      'news.summary.li4':'USD/KRW 약 1,394.4원은 하락 요인이지만 전일 저점 대비 반등했습니다.',
+      'news.summary.li5':'IATA/Platts 글로벌 주간 항공유 158.91달러/bbl은 참고값이며 Singapore MOPS가 아닙니다.',
+      'news.summary.li6':'Brent 93.78달러와 WTI 87.83달러는 항공유 상승 위험을 키웁니다.',
+      'news.summary.li7':'현재 10월 전망은 상승 압력 소폭 우세, 신뢰도 낮음입니다.',
+      'news.fx':'환율: USD/KRW 약 1,394.4원.',
+      'news.mops':'항공유: 9월 기준선은 149.29달러/bbl, 글로벌 주간 참고값 158.91달러/bbl은 당일 Singapore MOPS가 아닙니다.',
+      'news.brent':'국제유가: 8월 20일 미국 종가 Brent 93.78달러/bbl, WTI 87.83달러/bbl.',
+      'news.geo':'호르무즈: Kpler 추적 commodity vessel은 화·수 각각 9척입니다. 전체 선박 수가 아닙니다.',
+      'news.marketSummary':'→ 10월 전망: 상승 압력 소폭 우세 · 신뢰도 낮음. 환율 완화보다 항공유·국제유가·정유 공급·호르무즈 상승 위험이 커졌습니다.',
+      'news.fxDominance':'핵심 수치: 2026.08.21 07:15 KST · 9월 21단계 확정 · KE/OZ/LJ/BX/TW/7C/ZE/RS 공시 확인 · USD/KRW 약 1,394.4원 · 글로벌 항공유 참고 158.91달러 · Brent 93.78달러 · WTI 87.83달러',
+      'news.forecastCta.title':'2026년 10월 유류할증료 전망',
+      'news.forecastCta.desc':'10월 산정기간 항공유·환율 평균을 추적하되, 시장 참고값과 확정 MOPS를 분리해 확인하세요.',
+      'news.forecastCta.btn':'10월 전망 보기 →'
+    });
+    var ja = Object.assign({}, en, {'news.metaTitle':'2026年9月公示と10月見通しニュース | 8月21日','news.pageTitle':'2026年9月公示と10月見通しニュース','news.h1':'2026年9月公示と10月見通しニュース','news.pageSub':'2026.08.21 07:15 KST時点 · KE/OZ/LJ/BX/TW/7C/ZE/RS 9月公示確認 · USD/KRW約1,394.4 · 世界航空燃料参考158.91ドル','news.summary.title':'9月公示と10月見通し要約','news.summary.li1':'9月国際線燃油サーチャージは21段階で確定し、ティーウェイ航空も反映しました。','news.summary.li2':'ティーウェイ9月公示は36,200~247,500ウォン、8月比最低+11,800ウォンです。','news.summary.li7':'現在の10月見通しは小幅な上昇圧力、信頼度低いです。'});
+    var zh = Object.assign({}, en, {'news.metaTitle':'2026年9月公告与10月展望新闻 | 8月21日','news.pageTitle':'2026年9月公告与10月展望新闻','news.h1':'2026年9月公告与10月展望新闻','news.pageSub':'截至2026.08.21 07:15 KST · KE/OZ/LJ/BX/TW/7C/ZE/RS 9月公告确认 · USD/KRW约1,394.4 · 全球航油参考158.91美元','news.summary.title':'9月公告与10月展望摘要','news.summary.li1':'9月国际线燃油附加费已确认为第21档，并已反映德威航空公告。','news.summary.li2':'德威航空9月公告为36,200~247,500韩元，较8月至少+11,800韩元。','news.summary.li7':'当前10月展望为上行压力略占优，可信度低。'});
+    var fr = Object.assign({}, en, {'news.metaTitle':'Avis septembre 2026 et perspective octobre | 21 août','news.pageTitle':'Avis septembre 2026 et perspective octobre','news.h1':'Avis septembre 2026 et perspective octobre','news.summary.li1':'Les avis internationaux de septembre sont confirmés au niveau 21 et incluent désormais Tway Air.','news.summary.li2':'Tway septembre: 36 200-247 500 KRW, au moins +11 800 KRW vs août.','news.summary.li7':'Perspective octobre actuelle: légère pression haussière, confiance faible.'});
+    var de = Object.assign({}, en, {'news.metaTitle':'September-2026 Hinweise und Oktober-Ausblick | 21. August','news.pageTitle':'September-2026 Hinweise und Oktober-Ausblick','news.h1':'September-2026 Hinweise und Oktober-Ausblick','news.summary.li1':'Die internationalen September-Zuschläge sind mit Stufe 21 bestätigt und enthalten nun Tway Air.','news.summary.li2':'Tway September: 36.200-247.500 KRW, mindestens +11.800 KRW ggü. August.','news.summary.li7':'Aktueller Oktober-Ausblick: leichter Aufwärtsdruck, geringe Sicherheit.'});
+    return {ko:ko,en:en,ja:ja,zh:zh,fr:fr,de:de}[lang] || en;
+  }
+  function cardI18n(en, ja, zh, fr, de){ return {en:en, ja:ja || en, zh:zh || en, fr:fr || en, de:de || en}; }
+  var aug21Cards = [
+    {id:'global-jetfuel-15891-20260821', category:'market', priority:1, date:'2026-08-21', updatedAt:'2026-08-21T07:15:00+09:00', badge:'항공유 참고', aiSummary:true, relevanceScore:1, currentMonthNotice:'2026-09', forecastTargetMonth:'2026-10', title:'글로벌 주간 항공유 158.91달러, 10월 상승 압력 참고값', aiBrief:'IATA/Platts 글로벌 주간 항공유 평균은 158.91달러/bbl로 전주 대비 8.2% 상승했습니다. 단, 당일 Singapore MOPS는 아닙니다.', summary:'9월 산정 평균 149.29달러/bbl과 별도로, 글로벌 주간 항공유 평균 158.91달러/bbl은 10월 전망에서 상승 압력 참고값입니다. 같은 날 Singapore MOPS 확정값으로 사용하지 않습니다.', impact:'forecast와 뉴스 카드에서 항공유 참고값과 MOPS 확정값을 분리해 표시합니다.', sourceName:'IATA / Platts reference', sourceUrl:'forecast.html', tags:['Jet Fuel','158.91','MOPS 아님','10월 전망'], i18n:cardI18n({title:'Global weekly jet fuel at USD 158.91, an upside reference for October', aiBrief:'The IATA/Platts global weekly jet-fuel average is USD 158.91/bbl, up 8.2% WoW. It is not same-day Singapore MOPS.', summary:'Separate from the September calculation average of USD 149.29/bbl, the global weekly average of USD 158.91/bbl is an upside reference for October. It is not used as confirmed same-day Singapore MOPS.', impact:'News and forecast surfaces now separate jet-fuel references from confirmed MOPS.', tags:['Jet fuel','158.91','not MOPS','October outlook']})},
+    {id:'brent-wti-rise-20260821', category:'market', priority:1, date:'2026-08-21', updatedAt:'2026-08-21T07:15:00+09:00', badge:'국제유가', aiSummary:true, relevanceScore:.99, title:'Brent 93.78달러·WTI 87.83달러, 항공유 상승 위험 지지', aiBrief:'8월 20일 미국 시장 종가 기준 Brent는 93.78달러, WTI는 87.83달러입니다.', summary:'국제유가는 직접 MOPS는 아니지만 항공유 가격의 보조·선행 지표입니다. Brent 93.78달러와 WTI 87.83달러는 10월 유류할증료 전망에서 상승 압력으로 분리 표시합니다.', impact:'10월 전망은 환율 완화만으로 하락 확정으로 보지 않습니다.', sourceName:'Market reference', sourceUrl:'forecast.html', tags:['Brent','WTI','보조지표','10월 전망'], i18n:cardI18n({title:'Brent USD 93.78 and WTI USD 87.83 support jet-fuel upside risk', aiBrief:'At the Aug 20 U.S. close, Brent was USD 93.78 and WTI was USD 87.83.', summary:'Crude is not MOPS, but it is a supporting indicator for jet fuel. Brent 93.78 and WTI 87.83 are shown as separated upside pressure for October.', impact:'The October view is not treated as a confirmed cut just because FX is softer.', tags:['Brent','WTI','supporting indicator','October outlook']})},
+    {id:'us-iran-sanctions-20260821', category:'geo', priority:2, date:'2026-08-21', updatedAt:'2026-08-21T07:15:00+09:00', badge:'지정학', aiSummary:true, relevanceScore:.98, title:'미국의 대이란 경제제재 강화, 협상 재개는 아직 확인 전', aiBrief:'군사공격이 아니라 경제제재 강화로 정리하며, 공식 협상 재개는 확인되지 않았습니다.', summary:'미국의 대이란 조치는 군사공격이 아닌 경제제재 강화로 반영합니다. 공식 협상 재개가 확인되지 않아 10월 전망에서는 지정학 불확실성 상승 요인으로만 표시합니다.', impact:'과장된 전쟁 표현이나 협상 재개 확정 표현을 제거합니다.', sourceName:'Geopolitical reference', sourceUrl:'forecast.html', tags:['이란','제재','협상 지연','지정학'], i18n:cardI18n({title:'U.S. strengthens Iran economic sanctions; talks are not confirmed to restart', aiBrief:'This is reflected as stronger economic sanctions, not a military attack, and formal talks are still unconfirmed.', summary:'The U.S. action is treated as stronger economic sanctions against Iran, not a military strike. Since formal talks are not confirmed to restart, it remains a geopolitical uncertainty factor.', impact:'The page avoids overstating war or confirmed negotiation restart.', tags:['Iran','sanctions','talks stalled','geopolitics']})},
+    {id:'hormuz-kpler-nine-20260821', category:'geo', priority:2, date:'2026-08-21', updatedAt:'2026-08-21T07:15:00+09:00', badge:'호르무즈', aiSummary:true, relevanceScore:.98, title:'호르무즈 Kpler 추적 commodity vessel 화·수 각각 9척', aiBrief:'Kpler 추적 commodity vessel 기준 화요일 9척, 수요일 9척으로 정상 대비 극도로 제한된 상태입니다.', summary:'이 숫자는 전체 선박 수가 아니라 Kpler가 추적한 commodity vessel 범위입니다. 완전 봉쇄나 정상화로 단정하지 않고, 10월 전망에서는 높은 물류·보험 리스크로 반영합니다.', impact:'forecast에는 선박 수를 단독 핵심 산정값이 아니라 위험 설명으로 분리합니다.', sourceName:'Kpler reference', sourceUrl:'forecast.html', tags:['호르무즈','Kpler','9척','위험'], i18n:cardI18n({title:'Hormuz: Kpler-tracked commodity vessels at 9 on both Tuesday and Wednesday', aiBrief:'Kpler-tracked commodity vessels were 9 on Tuesday and 9 on Wednesday, extremely restricted versus normal.', summary:'This is not an all-vessel count. It is kept as a logistics and insurance risk factor, not proof of full closure or normalization.', impact:'Forecast treats the vessel count as risk context, not as a standalone calculation input.', tags:['Hormuz','Kpler','9 vessels','risk']})},
+    {id:'saudi-bypass-supply-20260821', category:'market', priority:3, date:'2026-08-21', updatedAt:'2026-08-21T07:15:00+09:00', badge:'공급 완충', aiSummary:true, relevanceScore:.96, title:'사우디 우회 공급 최소 400만 배럴, 부분 완충이나 정상화는 아님', aiBrief:'PetroChina·Sinochem 대상 비호르무즈/Fujairah 관련 공급은 부분 완충 요인으로 반영합니다.', summary:'사우디 아람코의 비호르무즈 선적 및 Fujairah STS 관련 공급은 최소 400만 배럴 규모의 완충 요인입니다. 다만 호르무즈 정상화로 보지는 않습니다.', impact:'상승 위험을 일부 낮추는 요인이지만 10월 전망을 하락 확정으로 바꾸지는 않습니다.', sourceName:'Supply reference', sourceUrl:'forecast.html', tags:['사우디','우회 공급','400만 배럴','완충'], i18n:cardI18n({title:'Saudi bypass supply of at least 4 million barrels is a partial buffer, not normalization', aiBrief:'Non-Hormuz and Fujairah-related supply to PetroChina and Sinochem is treated as a partial buffer.', summary:'Saudi Aramco-related bypass supply is at least 4 million barrels. It lowers some stress but is not treated as a normalization of Hormuz.', impact:'It partly offsets upside risk but does not make October a confirmed downside case.', tags:['Saudi','bypass supply','4 million barrels','buffer']})},
+    {id:'usdkrw-rebound-1394-20260821', category:'fx', priority:3, date:'2026-08-21', updatedAt:'2026-08-21T07:15:00+09:00', badge:'환율', aiSummary:true, relevanceScore:.97, title:'USD/KRW 약 1,394.4원, 하락 요인은 유지되나 반등', aiBrief:'원/달러 환율은 약 1,394.4원으로 전일 저점 대비 반등해 강한 하락 신호가 약해졌습니다.', summary:'10월 산정기간 평균환율은 아직 집계 중입니다. 현재 환율은 9월 산정 평균 대비 부담을 낮추는 요인이지만, 반등 때문에 하락 압력은 전일보다 약합니다.', impact:'10월 전망 문구를 강한 하락 우세에서 상승 압력 소폭 우세로 조정합니다.', sourceName:'FX reference', sourceUrl:'forecast.html', tags:['USD/KRW','1,394.4','환율','10월 전망'], i18n:cardI18n({title:'USD/KRW around 1,394.4: still downside, but rebounding', aiBrief:'USD/KRW is around 1,394.4, rebounding from the prior low and weakening the strong downside signal.', summary:'The October average FX is still being collected. Current FX still lowers KRW conversion burden versus September, but the rebound makes the downside signal weaker than yesterday.', impact:'The October wording moves from strong downside dominance to slight upward pressure.', tags:['USD/KRW','1,394.4','FX','October outlook']})},
+    {id:'tway-september-surcharge-20260821', category:'official', priority:1, date:'2026-08-21', updatedAt:'2026-08-21T07:15:00+09:00', badge:'티웨이', aiSummary:true, relevanceScore:1, currentMonthNotice:'2026-09', forecastTargetMonth:'2026-10', title:'티웨이항공 9월 국제선, 8월 대비 최소 11,800원 인상', aiBrief:'티웨이 9월 한국발 국제선 유류할증료는 36,200원~247,500원이며 8월 대비 최소 +11,800원, 최대 +76,500원입니다.', summary:'티웨이항공은 2026.08.20 12:44에 9월 한국발 국제선 유류할증료를 공지했습니다. 1군 36,200원, 2군 62,200원, 3군 78,200원, 4군 101,300원, 5군 110,000원, 6군 해당 없음, 7군 247,500원입니다.', impact:'9월 공시 확인 항공사 목록에 TW를 추가하고, 카드 뉴스와 공식 공시 섹션에 8월 대비 최소 인상액을 반영합니다.', sourceName:'Tway Air official notice', sourceUrl:twayUrl, tags:['티웨이항공','TW','최소 +11,800원','9월 국제선'], i18n:cardI18n({title:'Tway Air September international: at least +KRW 11,800 vs August', aiBrief:'Tway September Korea-departure surcharge is KRW 36,200-247,500, up at least KRW 11,800 and up to KRW 76,500 versus August.', summary:'Tway posted its September Korea-departure international fuel surcharge notice on 2026.08.20 12:44. Amounts are KRW 36,200, 62,200, 78,200, 101,300, 110,000, no amount for group 6, and KRW 247,500 for group 7.', impact:'TW is added to the confirmed September notice list, cards and official notice section.', tags:['Tway Air','TW','minimum +KRW 11,800','September']},{title:'ティーウェイ航空9月国際線、8月比最低+11,800ウォン', aiBrief:'9月は36,200~247,500ウォンで、8月比最低+11,800ウォン、最大+76,500ウォンです。', summary:'ティーウェイ航空は2026.08.20 12:44に9月韓国発国際線燃油サーチャージを公示しました。1群36,200ウォン、2群62,200ウォン、3群78,200ウォン、4群101,300ウォン、5群110,000ウォン、6群該当なし、7群247,500ウォンです。', impact:'9月公示確認リストとカードにTWを追加します。', tags:['ティーウェイ','TW','最低+11,800ウォン','9月']},{title:'德威航空9月国际线较8月至少+11,800韩元', aiBrief:'9月为36,200~247,500韩元，较8月至少+11,800韩元，最高+76,500韩元。', summary:'德威航空于2026.08.20 12:44发布9月韩国出发国际线燃油附加费公告。1组36,200韩元、2组62,200韩元、3组78,200韩元、4组101,300韩元、5组110,000韩元、6组无适用金额、7组247,500韩元。', impact:'将TW加入9月确认公告列表和卡片。', tags:['德威航空','TW','最低+11,800韩元','9月']})}
+  ];
+  function ensureAug21NewsCards(){
+    if(!Array.isArray(FIXED_NEWS)) return;
+    var existing = {};
+    FIXED_NEWS.forEach(function(card){ if(card && card.id) existing[card.id] = true; });
+    aug21Cards.slice().reverse().forEach(function(card){ if(!existing[card.id]) FIXED_NEWS.unshift(card); });
+    var oldIds = {'october-forecast-fx-jetfuel-hormuz-20260820':true};
+    var feed = (typeof NEWS_DATA !== 'undefined' && NEWS_DATA) || window.NEWS_DATA;
+    if(feed && Array.isArray(feed.items)){
+      feed.items = feed.items.filter(function(item){ return !(item && oldIds[item.id]); });
+    }
+  }
+  function applyAug21OfficialSurface(lang){
+    var packs = {
+      ko:{title:'주요 항공사 2026년 9월 국제선 유류할증료 공식 공시', notice:'2026.08.21 07:15 KST 기준 반영 · KE/OZ/LJ/BX/TW/7C/ZE/RS 9월 공시 확인 · 10월은 공시 전 전망 단계', link:'공식 공지', desc:'* 2026년 9월 공시 확인 항공사: KE·OZ·LJ·BX·TW·7C·ZE·RS. 일반 이용자는 8월 대비 최소 추가 부담액을 먼저 확인하세요.', items:{officialKe:['대한항공','9월 48,000원~354,000원 · 8월 대비 최소 +12,800원'], officialOz:['아시아나항공','9월 52,000원~290,100원 · 8월 대비 최소 +15,400원'], officialLj:['진에어','9월 USD 29~89 · 8월 대비 최소 +USD 9'], officialBx:['에어부산','9월 USD 71/82 · 8월 대비 최소 +USD 24'], officialTw:['티웨이항공','9월 36,200원~247,500원 · 8월 대비 최소 +11,800원'], official7c:['제주항공','9월 USD 33~79 · 8월 대비 최소 +USD 11'], officialZe:['이스타항공','9월 USD 33~79 · 8월 대비 최소 +USD 11'], officialRs:['에어서울','9월 57,700원~99,600원 · 8월 대비 최소 +18,000원']}},
+      en:{title:'Major Airline September 2026 International Fuel Surcharge Official Notices', notice:'As of 2026.08.21 07:15 KST · KE/OZ/LJ/BX/TW/7C/ZE/RS September notices confirmed · October remains pre-filing', link:'Official notice', desc:'* Confirmed September notice airlines: KE/OZ/LJ/BX/TW/7C/ZE/RS. Check the minimum increase versus August first.', items:{officialKe:['Korean Air','September KRW 48,000-354,000 · minimum +KRW 12,800 vs August'], officialOz:['Asiana Airlines','September KRW 52,000-290,100 · minimum +KRW 15,400 vs August'], officialLj:['Jin Air','September USD 29-89 · minimum +USD 9 vs August'], officialBx:['Air Busan','September USD 71/82 · minimum +USD 24 vs August'], officialTw:['Tway Air','September KRW 36,200-247,500 · minimum +KRW 11,800 vs August'], official7c:['Jeju Air','September USD 33-79 · minimum +USD 11 vs August'], officialZe:['Eastar Jet','September USD 33-79 · minimum +USD 11 vs August'], officialRs:['Air Seoul','September KRW 57,700-99,600 · minimum +KRW 18,000 vs August']}}
+    };
+    var p = packs[lang] || packs.en;
+    var title = document.querySelector('.official-title'); if(title) title.textContent = p.title;
+    var notice = document.querySelector('[data-i18n="news.officialNotice"]'); if(notice) notice.textContent = p.notice;
+    var bx = document.getElementById('officialBx');
+    if(bx && !document.getElementById('officialTw')){
+      var tw = document.createElement(bx.tagName || 'div');
+      tw.id = 'officialTw';
+      bx.parentNode.insertBefore(tw, bx.nextSibling);
+    }
+    Object.keys(p.items).forEach(function(id){
+      var el = document.getElementById(id);
+      if(!el) return;
+      var item = p.items[id];
+      el.innerHTML = '<strong>'+item[0]+'</strong> — '+item[1]+' · <a href="'+noticeUrls[id]+'" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">'+p.link+' ↗</a>';
+      el.style.display = '';
+    });
+    var desc = document.getElementById('officialDesc'); if(desc) desc.textContent = p.desc;
+  }
+  function applyAug21NewsSurface(){
+    ensureAug21NewsCards();
+    ['ko','en','ja','zh','fr','de'].forEach(function(l){
+      window.I18N = window.I18N || {};
+      window.I18N[l] = Object.assign(window.I18N[l] || {}, pagePack(l));
+    });
+    var lang = (window.getCurrentLang ? window.getCurrentLang() : (localStorage.getItem('aero_lang') || document.documentElement.lang || 'ko')).toLowerCase().split('-')[0];
+    var p = pagePack(lang);
+    Object.keys(p).forEach(function(key){
+      document.querySelectorAll('[data-i18n="'+key+'"]').forEach(function(el){ el.textContent = p[key]; });
+    });
+    document.title = p['news.metaTitle'];
+    var desc = document.querySelector('meta[name="description"]'); if(desc) desc.setAttribute('content', p['news.metaDesc']);
+    applyAug21OfficialSurface(lang);
+    if(typeof applyAugust20NewsStaticFooter === 'function') applyAugust20NewsStaticFooter(lang);
+    document.querySelectorAll('[data-i18n="news.fxDominance"]').forEach(function(el){ el.textContent = p['news.fxDominance']; });
+    document.querySelectorAll('#newsKeyVariables div, #newsKeyVariables span').forEach(function(el){
+      el.textContent = el.textContent
+        .replace(/USD\/KRW 약 1,388원/g, lang === 'ko' ? 'USD/KRW 약 1,394.4원' : 'USD/KRW around 1,394.4')
+        .replace(/USD\/KRW約1,388/g, 'USD/KRW約1,394.4')
+        .replace(/USD\/KRW约1,388/g, 'USD/KRW约1,394.4')
+        .replace(/USD\/KRW env\. 1,388/g, 'USD/KRW env. 1,394.4')
+        .replace(/USD\/KRW ca\. 1,388/g, 'USD/KRW ca. 1,394.4')
+        .replace(/USD\/KRW around 1,388/g, 'USD/KRW around 1,394.4');
+    });
+    var replacements = {
+      '2026.08.20 07:00 KST 기준 · 항공사별 최소 인상액 확인':'2026.08.21 07:15 KST 기준 · 9월 공시 및 10월 전망 갱신',
+      'As of 2026.08.20 07:00 KST · airline-by-airline minimum increases confirmed':'As of 2026.08.21 07:15 KST · September notices and October outlook updated',
+      '2026.08.20 07:00 KST時点 · 航空会社別の最低上昇額確認':'2026.08.21 07:15 KST時点 · 9月公示と10月見通し更新',
+      '截至2026.08.20 07:00 KST · 各航司最低涨幅确认':'截至2026.08.21 07:15 KST · 9月公告与10月展望更新',
+      'Au 2026.08.20 07:00 KST · hausses minimales par compagnie confirmées':'Au 2026.08.21 07:15 KST · avis de septembre et perspective octobre mis à jour',
+      'Stand 2026.08.20 07:00 KST · Mindestanstiege je Airline bestätigt':'Stand 2026.08.21 07:15 KST · September-Hinweise und Oktober-Ausblick aktualisiert',
+      'USD/KRW約1,388':'USD/KRW約1,394.4',
+      'USD/KRW约1,388':'USD/KRW约1,394.4',
+      'USD/KRW env. 1,388':'USD/KRW env. 1,394.4',
+      'USD/KRW ca. 1,388':'USD/KRW ca. 1,394.4',
+      'USD/KRW around 1,388':'USD/KRW around 1,394.4',
+      'USD/KRW 약 1,388원':'USD/KRW 약 1,394.4원'
+    };
+    var walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT);
+    var node;
+    while((node = walker.nextNode())){
+      Object.keys(replacements).forEach(function(from){
+        if(node.nodeValue.indexOf(from) !== -1) node.nodeValue = node.nodeValue.split(from).join(replacements[from]);
+      });
+    }
+  }
+  window.applyAug21NewsSurface = applyAug21NewsSurface;
+  var previousRenderNewsAug21 = renderNews;
+  renderNews = function(){
+    ensureAug21NewsCards();
+    var result = previousRenderNewsAug21.apply(this, arguments);
+    applyAug21NewsSurface();
+    return result;
+  };
+  if (typeof window.applyLanguage === 'function' && !window.applyLanguage.__aug21NewsSurfaceWrapped) {
+    var previousApplyLanguageAug21 = window.applyLanguage;
+    window.applyLanguage = function(){
+      var result = previousApplyLanguageAug21.apply(this, arguments);
+      applyAug21NewsSurface();
+      return result;
+    };
+    window.applyLanguage.__aug21NewsSurfaceWrapped = true;
+  }
+  ensureAug21NewsCards();
+  setTimeout(applyAug21NewsSurface, 0);
+})();
+
 window.initNav({
   onLangChange:function(){
     /* _shared.js의 initNav 래퍼가 applyLanguage()를 먼저 실행 */

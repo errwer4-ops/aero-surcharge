@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generatedAt": "2026-08-19T23:40:32.740Z",
-    "modelVersion": "manual-market-override-20260820",
+    "generatedAt": "2026-08-20T23:06:51.722Z",
+    "modelVersion": "manual-october-direction-forecast-20260821",
     "basePeriod": "2026.09",
     "forecastTargetPeriod": "2026.10",
     "sourceAirlines": 8,
@@ -9,15 +9,15 @@
       "brentUSD": 82.5,
       "wtiUSD": 78.3,
       "jetFuelSpread": 14.2,
-      "usdKrw": 1412,
-      "usdJpy": 159.59,
+      "usdKrw": 1391,
+      "usdJpy": 158.55,
       "geopoliticalRiskScore": 0.35,
       "baselineBrentUSD": 75,
       "marketDataSource": "live",
-      "marketFetchedAt": "2026-08-19T23:39:29.901Z"
+      "marketFetchedAt": "2026-08-20T23:05:48.914Z"
     },
-    "disclaimer": "2026년 9월 한국 출발 국제선 유류할증료 공시는 KE·OZ·LJ·BX·7C·ZE·RS 기준 확인됐습니다. 2026년 10월 유류할증료는 아직 공시 전이며 2026.08.16~09.15 산정 기간을 추적합니다.",
-    "lastUpdated": "2026-08-20T07:00:00+09:00",
+    "disclaimer": "2026년 10월 유류할증료 단계·금액은 아직 공시 전입니다. 다만 10월 산정기간이 시작됐으므로 환율, MOPS/항공유, 국제유가를 기준으로 초기 방향성 예측을 시작합니다.",
+    "lastUpdated": "2026-08-21T07:15:00+09:00",
     "currentMonthNotice": "2026-09",
     "forecastTargetMonth": "2026-10"
   },
@@ -34,40 +34,50 @@
       "predictedMax": null,
       "officialStage": null,
       "officialAmounts": null,
-      "direction": "october_pre_filing_core_tracking",
+      "direction": "slight_upward_pressure_low_confidence",
       "confidence": "low",
-      "volatility": "very_high",
+      "volatility": "high",
       "drivers": [
         {
           "factor": "2026년 9월 한국 출발 국제선 유류할증료 21단계 공시 확인",
           "impact": "confirmed_baseline_for_october",
-          "weight": 0.14
-        },
-        {
-          "factor": "USD/KRW 약 1,388원",
-          "impact": "strong_downside_fx_relief",
           "weight": 0.18
         },
         {
-          "factor": "10월 산정 기간은 2026.08.16~09.15입니다. 9월 산정 평균 149.29달러/bbl은 기준선 참고값이며, 10월 산정 평균은 아직 집계 중입니다.",
-          "impact": "calculation_window_tracking",
+          "factor": "USD/KRW 약 1,394.4원",
+          "impact": "downside_fx_relief",
+          "weight": -0.18
+        },
+        {
+          "factor": "9월 MOPS/항공유 산정 기준선 149.29달러/bbl, 10월 평균 집계 중",
+          "impact": "mops_jetfuel_tracking",
           "weight": 0.28
         },
         {
-          "factor": "10월 국제선 공시는 아직 발표 전입니다. 공시 전 단계·금액·확률은 확정하지 않습니다.",
-          "impact": "pre_filing_caution",
-          "weight": 0.2
+          "factor": "국제유가 Brent 93.78달러/bbl, WTI 87.83달러/bbl",
+          "impact": "oil_side_upside_reference",
+          "weight": 0.16
+        },
+        {
+          "factor": "10월 산정 기간은 2026.08.16~09.15입니다.",
+          "impact": "calculation_window_in_progress",
+          "weight": 0.16
+        },
+        {
+          "factor": "10월 단계·금액은 항공사 공식 공시 전입니다.",
+          "impact": "stage_amount_not_confirmed",
+          "weight": 0.12
         }
       ],
-      "disclaimer": "10월 유류할증료는 아직 공시 전입니다. 149.29달러/bbl은 9월 산정 평균 기준선이며, 10월 산정 평균으로 사용하지 않습니다.",
-      "summary": "9월 공시는 KE·OZ·LJ·BX·7C·ZE·RS 기준 반영됐습니다. 10월 유류할증료는 10월 산정기간 항공유 평균과 USD/KRW 평균을 중심으로 추적하며, 공시 전 단계라 방향을 확정하지 않습니다."
+      "disclaimer": "이 항목은 방향성 예측입니다. 10월 단계·금액·확률을 확정값으로 표시하지 않습니다.",
+      "summary": "10월 유류할증료는 공시 전이지만 방향성 예측은 시작합니다. 환율은 하락 요인이고, MOPS/항공유 평균과 국제유가가 상승 압력 여부를 결정하는 핵심 변수입니다. 현재 초기 판단은 상승 압력 소폭 우세, 신뢰도 낮음입니다."
     }
   ],
   "latest": {
-    "asOf": "2026.08.20 07:00 KST",
+    "asOf": "2026.08.21 07:15 KST",
     "currentMonthNotice": "2026-09",
     "forecastTargetMonth": "2026-10",
-    "summary": "9월 국제선 공시는 KE·OZ·LJ·BX·7C·ZE·RS 기준 반영됐고, 10월 국제선은 공시 전 준비 단계입니다. 현재 forecast는 10월 산정기간 항공유 평균과 USD/KRW 평균을 중심으로 추적합니다.",
-    "status": "october_pre_filing_preparation"
+    "summary": "9월 국제선 공시는 KE·OZ·LJ·BX·TW·7C·ZE·RS 기준 반영됐고, 10월 국제선은 공시 전이지만 초기 방향성 예측을 시작합니다. 핵심 변수는 환율, MOPS/항공유, 국제유가입니다.",
+    "status": "october_direction_forecast_started"
   }
 }
