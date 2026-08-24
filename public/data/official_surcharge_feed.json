@@ -1,7 +1,7 @@
 {
   "meta": {
-    "lastUpdated": "2026-08-20T23:06:51.712Z",
-    "source": "official-multi-airline",
+    "lastUpdated": "2026-08-24T01:50:21.323Z",
+    "source": "official-multi-airline-manual-yp-september",
     "schemaVersion": "2.2.0",
     "regulatoryAssist": true,
     "stats": {
@@ -10,7 +10,7 @@
       "error": 35,
       "unsupported": 29
     },
-    "pipelineRun": "2026-08-20T23:06:51.712Z",
+    "pipelineRun": "2026-08-24T01:50:21.323Z",
     "_v33note": "2026-04 공식 공지 기준 전면 반영. group_tier 스키마(ZE) 추가."
   },
   "airlines": [
@@ -174,7 +174,7 @@
           "reason": "이전 피드 유지 (9구간) — carry_over 과거월 (2026.04, 4개월 전, 패널티 20%)"
         }
       ],
-      "lastPipelineRun": "2026-08-20T23:06:51.712Z",
+      "lastPipelineRun": "2026-08-24T01:50:21.323Z",
       "noticeUrl": "https://www.koreanair.com/contents/footer/customer-support/notice",
       "officialCurrencyNote": "KRW",
       "officialSourceUrl": "https://www.koreanair.com/contents/footer/customer-support/notice"
@@ -339,7 +339,7 @@
           "reason": "이전 피드 유지 (9구간) — carry_over 과거월 (2026.04, 4개월 전, 패널티 20%)"
         }
       ],
-      "lastPipelineRun": "2026-08-20T23:06:51.712Z",
+      "lastPipelineRun": "2026-08-24T01:50:21.323Z",
       "noticeUrl": "https://flyasiana.com/C/KR/KO/customer/notice/list",
       "officialCurrencyNote": "KRW",
       "officialSourceUrl": "https://flyasiana.com/C/KR/KO/customer/notice/list"
@@ -351,12 +351,12 @@
       "supported": true,
       "confidence": "fresh",
       "sourceType": "official_notice",
-      "unitType": null,
-      "reason": "YP: 2026.06 에어프레미아 국제선 유류할증료 공식 공지 반영",
+      "unitType": "one_way_mile",
+      "reason": "YP: 2026년 9월 국제선 한국발 유류할증료 공식 공지 반영",
       "sources": {
         "infoUrl": "https://www.airpremia.com/",
         "regulationUrls": [],
-        "noticeUrl": "https://www.airpremia.com/a/ko/customer/notice"
+        "noticeUrl": "https://www.airpremia.com/a/ko/customer/notice/772"
       },
       "regulatoryContext": {
         "primaryCountryCode": "KR",
@@ -371,139 +371,105 @@
           }
         ]
       },
-      "fetchedAt": "2026-05-26T21:59:47+09:00",
-      "note": "한국 출발 편도/mile 기준 USD 공시 금액",
-      "currentPeriod": "2026.06",
+      "fetchedAt": "2026-08-24T08:30:00+09:00",
+      "note": "2026년 9월 한국발 국제선 편도/mile 기준 USD 공시. 2026년 9월부터 발권일 기준 원/달러 환율 적용. 고정 KRW 금액으로 임의 환산하지 않음.",
+      "currentPeriod": "2026.09",
       "currency": "USD",
       "items": [
         {
           "distanceRange": "0-999",
           "label": "인천-나리타",
-          "amount": 48,
+          "amount": 37,
+          "current": 37,
           "currency": "USD",
           "route": "ICN-NRT",
-          "current": 48,
           "key": "YP_0-999",
-          "next": null,
-          "diff": null,
-          "spiked": false,
-          "verifiedAt": "2026-05-26T21:59:47+09:00",
-          "period": "2026.06",
+          "period": "2026.09",
           "dataQuality": "official_verified",
-          "_note": "에어프레미아 2026년 6월 공식 공시는 편도/mile 기준 USD 금액"
+          "verifiedAt": "2026-08-21T16:27:15+09:00",
+          "fxTreatment": "ticketing_date_usd_krw"
         },
         {
           "distanceRange": "1000-1499",
           "label": "인천-홍콩",
-          "amount": 64,
+          "amount": 49,
+          "current": 49,
           "currency": "USD",
           "route": "ICN-HKG",
-          "current": 64,
           "key": "YP_1000-1499",
-          "next": null,
-          "diff": null,
-          "spiked": false,
-          "verifiedAt": "2026-05-26T21:59:47+09:00",
-          "period": "2026.06",
+          "period": "2026.09",
           "dataQuality": "official_verified",
-          "_note": "에어프레미아 2026년 6월 공식 공시는 편도/mile 기준 USD 금액"
-        },
-        {
-          "distanceRange": "1500-1999",
-          "label": "인천-다낭",
-          "amount": 83,
-          "currency": "USD",
-          "route": "ICN-DAD",
-          "current": 83,
-          "key": "YP_1500-1999",
-          "next": null,
-          "diff": null,
-          "spiked": false,
-          "verifiedAt": "2026-05-26T21:59:47+09:00",
-          "period": "2026.06",
-          "dataQuality": "official_verified",
-          "_note": "에어프레미아 2026년 6월 공식 공시는 편도/mile 기준 USD 금액"
+          "verifiedAt": "2026-08-21T16:27:15+09:00",
+          "fxTreatment": "ticketing_date_usd_krw"
         },
         {
           "distanceRange": "2000-2499",
-          "label": "인천-방콕",
-          "amount": 107,
+          "label": "인천-호치민·방콕",
+          "amount": 83,
+          "current": 83,
           "currency": "USD",
-          "route": "ICN-BKK",
-          "current": 107,
+          "route": "ICN-SGN/ICN-BKK",
           "key": "YP_2000-2499",
-          "next": null,
-          "diff": null,
-          "spiked": false,
-          "verifiedAt": "2026-05-26T21:59:47+09:00",
-          "period": "2026.06",
+          "period": "2026.09",
           "dataQuality": "official_verified",
-          "_note": "에어프레미아 2026년 6월 공식 공시는 편도/mile 기준 USD 금액"
+          "verifiedAt": "2026-08-21T16:27:15+09:00",
+          "fxTreatment": "ticketing_date_usd_krw"
         },
         {
           "distanceRange": "4000-4999",
           "label": "인천-호놀룰루",
-          "amount": 187,
+          "amount": 144,
+          "current": 144,
           "currency": "USD",
           "route": "ICN-HNL",
-          "current": 187,
           "key": "YP_4000-4999",
-          "next": null,
-          "diff": null,
-          "spiked": false,
-          "verifiedAt": "2026-05-26T21:59:47+09:00",
-          "period": "2026.06",
+          "period": "2026.09",
           "dataQuality": "official_verified",
-          "_note": "에어프레미아 2026년 6월 공식 공시는 편도/mile 기준 USD 금액"
+          "verifiedAt": "2026-08-21T16:27:15+09:00",
+          "fxTreatment": "ticketing_date_usd_krw"
         },
         {
           "distanceRange": "5000-6499",
           "label": "인천-로스앤젤레스·샌프란시스코",
-          "amount": 236,
+          "amount": 182,
+          "current": 182,
           "currency": "USD",
           "route": "ICN-LAX/ICN-SFO",
-          "current": 236,
           "key": "YP_5000-6499",
-          "next": null,
-          "diff": null,
-          "spiked": false,
-          "verifiedAt": "2026-05-26T21:59:47+09:00",
-          "period": "2026.06",
+          "period": "2026.09",
           "dataQuality": "official_verified",
-          "_note": "에어프레미아 2026년 6월 공식 공시는 편도/mile 기준 USD 금액"
+          "verifiedAt": "2026-08-21T16:27:15+09:00",
+          "fxTreatment": "ticketing_date_usd_krw"
         },
         {
           "distanceRange": "6500+",
           "label": "인천-워싱턴 D.C.·뉴욕",
-          "amount": 296,
+          "amount": 228,
+          "current": 228,
           "currency": "USD",
           "route": "ICN-IAD/ICN-EWR",
-          "current": 296,
           "key": "YP_6500+",
-          "next": null,
-          "diff": null,
-          "spiked": false,
-          "verifiedAt": "2026-05-26T21:59:47+09:00",
-          "period": "2026.06",
+          "period": "2026.09",
           "dataQuality": "official_verified",
-          "_note": "에어프레미아 2026년 6월 공식 공시는 편도/mile 기준 USD 금액"
+          "verifiedAt": "2026-08-21T16:27:15+09:00",
+          "fxTreatment": "ticketing_date_usd_krw"
         }
       ],
-      "aiSummary": "YP: 2026년 6월 에어프레미아 공식 유류할증료 PDF 기준 7개 거리 구간 반영",
+      "aiSummary": "YP: 2026년 9월 에어프레미아 공식 공지 기준 USD 37~228 반영. 9월부터 발권일 기준 원/달러 환율 적용.",
       "candidatesSummary": [
         {
           "sourceType": "carry_over",
-          "confidence": 0.5,
-          "valid": true,
-          "routeCount": 7,
-          "reason": "이전 피드 유지 (7구간) — carry_over 과거월 (2026.06, 2개월 전, 패널티 10%)"
+          "confidence": 0.19999999999999996,
+          "valid": false,
+          "routeCount": 6,
+          "reason": "이전 피드 유지 (6구간) — carry_over 미래월 오염 (2026.09 > 2026.08) — 사용 불가"
         }
       ],
-      "lastPipelineRun": "2026-08-20T23:06:51.712Z",
-      "officialCurrencyNote": "USD, 편도/mile 기준",
-      "noticeUrl": "https://www.airpremia.com/a/ko/customer/notice",
-      "officialSourceUrl": "https://www.airpremia.com/a/ko/customer/notice",
-      "sourceFile": "C:/Users/jiwoo/OneDrive/Desktop/사이드/유류할증료/2026.06 유류할증료/2026.06 에어프레미아 유류할증료.pdf"
+      "lastPipelineRun": "2026-08-24T01:50:21.323Z",
+      "officialCurrencyNote": "USD + ticketing-date USD/KRW from September 2026",
+      "noticeUrl": "https://www.airpremia.com/a/ko/customer/notice/772",
+      "officialSourceUrl": "https://www.airpremia.com/a/ko/customer/notice/772",
+      "sourceFile": "C:/Users/jiwoo/OneDrive/Desktop/사이드/유류할증료/2026.09 유류할증료/2026.09 에어프레미아 유류할증료.pdf"
     },
     {
       "airlineId": "jin_air",
@@ -613,7 +579,7 @@
           "reason": "이전 피드 유지 (5구간) — carry_over 과거월 (2026.04, 4개월 전, 패널티 20%)"
         }
       ],
-      "lastPipelineRun": "2026-08-20T23:06:51.712Z",
+      "lastPipelineRun": "2026-08-24T01:50:21.323Z",
       "officialCurrencyNote": "USD",
       "noticeUrl": "https://www.jinair.com/company/announce/announceList",
       "officialSourceUrl": "https://www.jinair.com/company/announce/announceList"
@@ -739,7 +705,7 @@
           "reason": "이전 피드 유지 (6구간) — carry_over 과거월 (2026.04, 4개월 전, 패널티 20%)"
         }
       ],
-      "lastPipelineRun": "2026-08-20T23:06:51.712Z",
+      "lastPipelineRun": "2026-08-24T01:50:21.323Z",
       "officialCurrencyNote": "USD",
       "noticeUrl": "https://www.jejuair.net/ko/customerServiceCenter/notice.do",
       "officialSourceUrl": "https://www.jejuair.net/ko/customerServiceCenter/notice.do"
@@ -879,7 +845,7 @@
           "reason": "이전 피드 유지 (7구간) — carry_over 과거월 (2026.04, 4개월 전, 패널티 20%)"
         }
       ],
-      "lastPipelineRun": "2026-08-20T23:06:51.712Z",
+      "lastPipelineRun": "2026-08-24T01:50:21.323Z",
       "noticeUrl": "https://www.twayair.com/app/customerCenter/notice",
       "officialCurrencyNote": "KRW",
       "officialSourceUrl": "https://www.twayair.com/app/customerCenter/notice"
@@ -918,7 +884,7 @@
       "items": [],
       "aiSummary": "[mock] BX: 3개 구간 추출",
       "candidatesSummary": [],
-      "lastPipelineRun": "2026-08-20T23:06:51.712Z",
+      "lastPipelineRun": "2026-08-24T01:50:21.323Z",
       "noticeUrl": null,
       "officialCurrencyNote": null
     },

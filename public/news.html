@@ -16525,6 +16525,252 @@ setTimeout(function(){ ensureSeptemberAirlineCards(); renderNews(); applySeptemb
 setTimeout(removeStaleNewsCards, 300);
 setTimeout(function(){ removeStaleNewsCards(); applyAugust20NewsTerminalSurface(); }, 1000);
 setTimeout(function(){ applySeptemberOfficialNewsUpdate(); applyAugust20NewsTerminalSurface(); }, 1000);
+
+/* 2026.08.24 08:30 KST final news surface: Air Premia September notice and October forecast update. */
+(function(){
+  var ypUrl = 'https://www.airpremia.com/a/ko/customer/notice/772';
+  var twayUrl = 'https://www.twayair.com/app/customerCenter/notice/retrieve/12685';
+  var noticeUrls = {
+    officialKe:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2609-infuel',
+    officialOz:'https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202608180002530123',
+    officialLj:'https://www.jinair.com/company/announce/announceView?anceSeq=28662&searchWord=&searchKey=titlCtn&page=1',
+    officialBx:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4399',
+    officialTw:twayUrl,
+    official7c:'https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000751',
+    officialZe:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=653&lang=KR&searchWord=&searchIndex=1',
+    officialRs:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=11048&pageNo=1',
+    officialYp:ypUrl
+  };
+  function t(en, ja, zh, fr, de){ return {en:en, ja:ja || en, zh:zh || en, fr:fr || en, de:de || en}; }
+  function pagePack(lang){
+    var en = {
+      'news.metaTitle':'September 2026 Notices and October Outlook | Aug 24',
+      'news.metaDesc':'As of Aug 24, 2026, September notices now include Air Premia; October outlook is slight upward pressure, partly eased, with low confidence.',
+      'news.pageTitle':'September 2026 Notices and October Outlook News',
+      'news.h1':'September 2026 Notices and October Outlook News',
+      'news.pageSub':'As of 2026.08.24 08:30 KST · KE/OZ/LJ/BX/TW/7C/ZE/RS/YP September notices confirmed · USD/KRW around 1,386 · Singapore Jet Fuel 154.98 · global jet fuel 158.91 · Brent 93.45 · WTI 86.14',
+      'news.summary.title':'September Notices and October Outlook Summary',
+      'news.summary.updated':'As of 2026.08.24 08:30 KST · September notices confirmed · October forecast updated',
+      'news.summary.li1':'September international fuel surcharges are confirmed at Level 21, now including Air Premia.',
+      'news.summary.li2':'Air Premia September surcharge is USD 37-228, at least USD 12 higher than August; ticketing-date USD/KRW applies from September.',
+      'news.summary.li3':'October remains pre-filing; no stage, amount or probability is confirmed.',
+      'news.summary.li4':'USD/KRW around 1,386 is a stronger downside factor for KRW conversion amounts.',
+      'news.summary.li5':'Singapore Jet Fuel around USD 154.98 is a recent market value, while IATA/Platts global jet fuel USD 158.91 is a separate weekly reference.',
+      'news.summary.li6':'Brent around USD 93.45 and WTI around USD 86.14 have pulled back about 1%, but remain high.',
+      'news.summary.li7':'Hormuz remains extremely restricted; selective passage for some Iraqi tankers is a partial buffer, not reopening.',
+      'news.summary.li8':'The October calculation-period average FX and MOPS are still being collected.',
+      'news.summary.li9':'Do not treat current market references as confirmed October averages.',
+      'news.summary.li10':'Check the final amount again on each airline notice and payment screen.',
+      'news.dataRef':'As of 2026.08.24 08:30 KST · September notices confirmed for KE/OZ/LJ/BX/TW/7C/ZE/RS/YP · October calculation period in progress',
+      'news.fx':'FX: USD/KRW around 1,386; this affects KRW conversion amounts, not the stage by itself.',
+      'news.mops':'Jet fuel: September baseline USD 149.29/bbl; Singapore Jet Fuel recent value around USD 154.98/bbl; global weekly jet fuel USD 158.91/bbl is not same-day Singapore MOPS.',
+      'news.brent':'Crude: Brent around USD 93.45/bbl and WTI around USD 86.14/bbl, high but in short-term pullback.',
+      'news.geo':'Hormuz: public Kpler-tracked passage remains in single digits, around 7 vessels; selective Iraqi tanker passage is not free-navigation normalization.',
+      'news.marketSummary':'→ October outlook: slight upward pressure remains, but pressure is partly eased by stronger KRW, crude pullback and selective passage.',
+      'news.fxDominance':'Key figures: 2026.08.24 08:30 KST · September Level 21 confirmed · KE/OZ/LJ/BX/TW/7C/ZE/RS/YP notices confirmed · USD/KRW around 1,386 · Singapore Jet Fuel 154.98 · global jet fuel 158.91 · Brent 93.45 · WTI 86.14',
+      'news.compareTitle':'Month-over-month: August to September confirmed changes and October forecast',
+      'news.decisionTitle':'Conclusion: September is confirmed; October forecast is now the monitoring target',
+      'news.decisionLine1':'→ September official notices are confirmed for KE/OZ/LJ/BX/TW/7C/ZE/RS/YP.',
+      'news.decisionLine2':'→ October remains pre-filing; track calculation-period Singapore Jet Fuel average and average USD/KRW separately.',
+      'news.decisionShort':'Short-haul: compare confirmed September surcharges with the total fare',
+      'news.decisionMid':'Medium-haul: keep airline distance bands and notice currencies as published',
+      'news.decisionLong':'Long-haul and peak season: compare surcharge, base fare, taxes, seats and payment-time FX together',
+      'news.forecastCta.title':'October 2026 Fuel Surcharge Outlook',
+      'news.forecastCta.desc':'Track October with calculation-period Singapore Jet Fuel average and average FX, while keeping market references separate from confirmed MOPS.',
+      'news.forecastCta.btn':'View October Outlook →',
+      'news.surchargeNote':'Fuel surcharges apply by ticketing date. September official notices are confirmed for KE/OZ/LJ/BX/TW/7C/ZE/RS/YP.',
+      'news.curSummary':'→ September official notices are now the confirmed baseline. October remains a direction forecast until airline notices are published.',
+      'news.basisTitle':'September 2026 Notice Basis',
+      'news.basisBody':'Use the confirmed September notices as the current baseline. October notices are expected later, so do not create a fixed stage or amount yet.'
+    };
+    var ko = Object.assign({}, en, {
+      'news.metaTitle':'2026년 9월 공시 및 10월 전망 뉴스 | 8월 24일',
+      'news.metaDesc':'2026년 8월 24일 기준 에어프레미아 9월 공시를 포함한 주요 항공사 9월 확정 공시와 10월 유류할증료 전망을 정리합니다.',
+      'news.pageTitle':'2026년 9월 공시 및 10월 전망 뉴스',
+      'news.h1':'2026년 9월 공시 및 10월 전망 뉴스',
+      'news.pageSub':'2026.08.24 08:30 KST 기준 · KE/OZ/LJ/BX/TW/7C/ZE/RS/YP 9월 공시 확인 · USD/KRW 약 1,386원 · Singapore Jet Fuel 154.98달러 · 글로벌 항공유 158.91달러 · Brent 93.45 · WTI 86.14',
+      'news.summary.title':'9월 공시 및 10월 전망 요약',
+      'news.summary.updated':'2026.08.24 08:30 KST 기준 · 9월 공시 확인 · 10월 전망 갱신',
+      'news.summary.li1':'9월 국제선 유류할증료는 21단계로 확정됐고 에어프레미아 공시까지 반영했습니다.',
+      'news.summary.li2':'에어프레미아 9월 공시는 USD 37~228이며 8월 대비 최소 +USD 12입니다. 9월부터 발권일 기준 원/달러 환율이 적용됩니다.',
+      'news.summary.li3':'10월은 아직 공시 전이므로 단계·금액·확률은 확정하지 않습니다.',
+      'news.summary.li4':'USD/KRW 약 1,386원은 원화 환산액의 강한 하락 요인입니다.',
+      'news.summary.li5':'Singapore Jet Fuel 약 154.98달러는 최근 시장값이고, IATA/Platts 글로벌 항공유 158.91달러는 별도 주간 참고값입니다.',
+      'news.summary.li6':'Brent 약 93.45달러와 WTI 약 86.14달러는 약 1% 조정됐지만 여전히 높은 수준입니다.',
+      'news.summary.li7':'호르무즈는 일부 이라크 유조선 선택적 통과가 있었지만 자유항행 정상화는 아닙니다.',
+      'news.summary.li8':'10월 산정기간 평균환율과 MOPS 평균은 아직 집계 중입니다.',
+      'news.summary.li9':'현재 시장 참고값을 10월 확정 평균으로 표시하지 않습니다.',
+      'news.summary.li10':'최종 금액은 항공사 공식 공지와 결제 화면에서 다시 확인해야 합니다.',
+      'news.dataRef':'2026.08.24 08:30 KST 기준 · KE/OZ/LJ/BX/TW/7C/ZE/RS/YP 9월 공시 확인 · 10월 산정기간 진행 중',
+      'news.fx':'환율: USD/KRW 약 1,386원. 환율은 단계 자체보다 원화 환산액에 영향을 줍니다.',
+      'news.mops':'항공유: 9월 기준선은 149.29달러/bbl, Singapore Jet Fuel 최근값은 약 154.98달러/bbl, 글로벌 주간 항공유 158.91달러/bbl은 당일 Singapore MOPS가 아닙니다.',
+      'news.brent':'국제유가: Brent 약 93.45달러/bbl, WTI 약 86.14달러/bbl로 높은 수준이나 단기 조정입니다.',
+      'news.geo':'호르무즈: Kpler 공개 추적 기준 통항은 약 7척의 한 자릿수 수준입니다. 일부 이라크 유조선 선택적 허가는 자유항행 정상화가 아닙니다.',
+      'news.marketSummary':'→ 10월 전망: 상승 압력 소폭 우세 유지 · 이전보다 일부 완화. 원화 강세, 유가 조정, 선택적 통항이 일부 완충 요인입니다.',
+      'news.fxDominance':'핵심 수치: 2026.08.24 08:30 KST · 9월 21단계 확정 · KE/OZ/LJ/BX/TW/7C/ZE/RS/YP 공시 확인 · USD/KRW 약 1,386원 · Singapore Jet Fuel 154.98달러 · 글로벌 항공유 158.91달러 · Brent 93.45 · WTI 86.14',
+      'news.compareTitle':'전월 대비: 8월 → 9월 확정 변화와 10월 예측 전환',
+      'news.decisionTitle':'결론: 9월 공시는 확정, 이제 10월 전망을 추적',
+      'news.decisionLine1':'→ KE/OZ/LJ/BX/TW/7C/ZE/RS/YP의 2026년 9월 한국발 국제선 유류할증료 공식 공시가 확인됐습니다.',
+      'news.decisionLine2':'→ 10월은 아직 공시 전이므로 산정기간 Singapore Jet Fuel 평균과 평균환율을 분리해 추적합니다.',
+      'news.decisionShort':'단거리 국제선: 9월 확정 할증료와 항공권 총액을 함께 비교',
+      'news.decisionMid':'중거리 국제선: 항공사별 거리 구간과 공시 통화 기준을 원문대로 유지',
+      'news.decisionLong':'장거리·성수기: 할증료, 기본 운임, 세금, 좌석, 결제 시점 환율을 함께 비교',
+      'news.forecastCta.title':'2026년 10월 유류할증료 전망',
+      'news.forecastCta.desc':'10월 산정기간 Singapore Jet Fuel 평균과 평균환율을 추적하되, 최근 시장값과 확정 MOPS를 분리해 확인하세요.',
+      'news.forecastCta.btn':'10월 전망 보기 →',
+      'news.surchargeNote':'※ 유류할증료는 발권일 기준으로 적용됩니다. KE/OZ/LJ/BX/TW/7C/ZE/RS/YP의 9월 공식 공시가 반영되었습니다.',
+      'news.curSummary':'→ 9월 공식 공시는 현재 확정 기준선입니다. 10월은 항공사 공시 전까지 방향성 전망으로만 표시합니다.',
+      'news.basisTitle':'2026년 9월 유류할증료 공시 기준',
+      'news.basisBody':'현재 기준은 9월 확정 공시입니다. 10월 공시는 아직 발표 전이므로 특정 단계나 금액을 생성하지 않습니다.'
+    });
+    var ja = Object.assign({}, en, {'news.metaTitle':'2026年9月公示と10月見通しニュース | 8月24日','news.metaDesc':'2026年8月24日時点、Air Premiaを含む9月公示と10月見通しを整理します。','news.pageTitle':'2026年9月公示と10月見通しニュース','news.h1':'2026年9月公示と10月見通しニュース','news.pageSub':'2026.08.24 08:30 KST時点 · KE/OZ/LJ/BX/TW/7C/ZE/RS/YP 9月公示確認 · USD/KRW約1,386 · Singapore Jet Fuel 154.98ドル · 世界航空燃料158.91ドル · Brent 93.45 · WTI 86.14','news.summary.title':'9月公示と10月見通し要約','news.summary.updated':'2026.08.24 08:30 KST時点 · 9月公示確認 · 10月見通し更新','news.summary.li1':'9月国際線燃油サーチャージは21段階で確定し、エアプレミアも反映しました。','news.summary.li2':'エアプレミア9月公示はUSD 37~228、8月比最低+USD 12です。9月から発券日のUSD/KRWが適用されます。','news.summary.li3':'10月は公示前のため、段階・金額・確率は確定しません。','news.summary.li4':'USD/KRW約1,386はウォン換算額の下押し要因です。','news.summary.li5':'Singapore Jet Fuel約154.98ドルは最近の市場値、世界航空燃料158.91ドルは別の週次参考値です。','news.summary.li6':'Brent約93.45ドル、WTI約86.14ドルは短期調整ですが高水準です。','news.summary.li7':'ホルムズは一部イラクタンカーの選択的通過のみで、自由航行正常化ではありません。','news.summary.li8':'10月算定期間の平均為替とMOPSは集計中です。','news.summary.li9':'現在の市場参考値を10月確定平均として扱いません。','news.summary.li10':'最終金額は航空会社の公式公示と決済画面で再確認してください。','news.dataRef':'2026.08.24 08:30 KST時点 · KE/OZ/LJ/BX/TW/7C/ZE/RS/YP 9月公示確認 · 10月算定期間中','news.fx':'為替: USD/KRW約1,386。段階そのものよりウォン換算額に影響します。','news.mops':'航空燃料: 9月基準線149.29ドル/bbl、Singapore Jet Fuel最近値154.98ドル/bbl、世界週次航空燃料158.91ドル/bblは当日Singapore MOPSではありません。','news.brent':'原油: Brent約93.45ドル/bbl、WTI約86.14ドル/bbl。高水準ですが短期調整です。','news.geo':'ホルムズ: Kpler公開追跡では約7隻の一桁水準。一部イラクタンカーの選択的許可は自由航行正常化ではありません。','news.marketSummary':'→ 10月見通し: 小幅な上昇圧力は残るものの、ウォン高・原油調整・選択的通過で一部緩和。','news.fxDominance':'主要数値: 2026.08.24 08:30 KST · 9月21段階確定 · KE/OZ/LJ/BX/TW/7C/ZE/RS/YP公示確認 · USD/KRW約1,386 · Singapore Jet Fuel 154.98 · 世界航空燃料158.91 · Brent 93.45 · WTI 86.14','news.compareTitle':'前月比: 8月→9月確定変化と10月予測への移行','news.decisionTitle':'結論: 9月は確定、現在は10月見通しを追跡','news.decisionLine1':'→ KE/OZ/LJ/BX/TW/7C/ZE/RS/YPの9月韓国発国際線公示が確認されました。','news.decisionLine2':'→ 10月は公示前のため、算定期間のSingapore Jet Fuel平均と平均USD/KRWを分けて追跡します。','news.forecastCta.title':'2026年10月燃油サーチャージ見通し','news.forecastCta.desc':'10月算定期間のSingapore Jet Fuel平均と平均為替を追跡し、最近値と確定MOPSを区別してください。','news.forecastCta.btn':'10月見通しを見る →','news.surchargeNote':'燃油サーチャージは発券日基準です。KE/OZ/LJ/BX/TW/7C/ZE/RS/YPの9月公示を反映しました。','news.curSummary':'→ 9月公示は確定基準線です。10月は航空会社公示まで方向性予測のみです。','news.basisTitle':'2026年9月燃油サーチャージ公示基準','news.basisBody':'現在の基準は9月確定公示です。10月は未公示のため固定段階や金額を作りません。'});
+    var zh = Object.assign({}, ja, {'news.metaTitle':'2026年9月公告与10月展望新闻 | 8月24日','news.metaDesc':'截至2026年8月24日，整理包含Air Premia在内的9月公告和10月展望。','news.pageTitle':'2026年9月公告与10月展望新闻','news.h1':'2026年9月公告与10月展望新闻','news.pageSub':'截至2026.08.24 08:30 KST · KE/OZ/LJ/BX/TW/7C/ZE/RS/YP 9月公告确认 · USD/KRW约1,386 · Singapore Jet Fuel 154.98美元 · 全球航油158.91美元 · Brent 93.45 · WTI 86.14','news.summary.title':'9月公告与10月展望摘要','news.summary.updated':'截至2026.08.24 08:30 KST · 9月公告确认 · 10月展望更新','news.summary.li1':'9月国际线燃油附加费已确认为第21档，并已反映Air Premia公告。','news.summary.li2':'Air Premia 9月公告为USD 37~228，较8月至少+USD 12。9月起适用出票日USD/KRW。','news.summary.li3':'10月仍未公告，因此不确认档位、金额或概率。','news.summary.li4':'USD/KRW约1,386是韩元换算金额的下行因素。','news.summary.li5':'Singapore Jet Fuel约154.98美元是近期市场值，全球航油158.91美元是独立周度参考。','news.summary.li6':'Brent约93.45美元、WTI约86.14美元短期回调但仍处高位。','news.summary.li7':'霍尔木兹仅有部分伊拉克油轮选择性通行，并非自由航行正常化。','news.summary.li8':'10月计算期平均汇率和MOPS仍在统计中。','news.summary.li9':'不要把当前市场参考值当作10月确认均值。','news.summary.li10':'最终金额请在航空公司官方公告和付款页面再次确认。','news.dataRef':'截至2026.08.24 08:30 KST · KE/OZ/LJ/BX/TW/7C/ZE/RS/YP 9月公告确认 · 10月计算期进行中','news.fx':'汇率：USD/KRW约1,386，主要影响韩元换算金额，而非档位本身。','news.mops':'航油：9月基准线149.29美元/bbl；Singapore Jet Fuel近期值154.98美元/bbl；全球周度航油158.91美元/bbl不是当日Singapore MOPS。','news.brent':'原油：Brent约93.45美元/bbl，WTI约86.14美元/bbl，高位短期回调。','news.geo':'霍尔木兹：Kpler公开跟踪约7艘，仍为个位数水平。部分伊拉克油轮选择性许可并非自由航行正常化。','news.marketSummary':'→ 10月展望：上行压力略占优，但韩元走强、油价回调和选择性通行带来部分缓和。','news.fxDominance':'核心数据：2026.08.24 08:30 KST · 9月第21档确认 · KE/OZ/LJ/BX/TW/7C/ZE/RS/YP公告确认 · USD/KRW约1,386 · Singapore Jet Fuel 154.98 · 全球航油158.91 · Brent 93.45 · WTI 86.14','news.compareTitle':'环比：8月→9月确认变化与10月预测转换','news.decisionTitle':'结论：9月公告已确认，现在跟踪10月展望','news.decisionLine1':'→ KE/OZ/LJ/BX/TW/7C/ZE/RS/YP的9月韩国出发国际线公告已确认。','news.decisionLine2':'→ 10月仍未公告，应分别跟踪计算期Singapore Jet Fuel均值和平均USD/KRW。','news.forecastCta.title':'2026年10月燃油附加费展望','news.forecastCta.desc':'跟踪10月计算期Singapore Jet Fuel均值和平均汇率，并区分近期市场值与确认MOPS。','news.forecastCta.btn':'查看10月展望 →','news.surchargeNote':'燃油附加费按出票日适用。已反映KE/OZ/LJ/BX/TW/7C/ZE/RS/YP的9月官方公告。','news.curSummary':'→ 9月公告是当前确认基准线。10月在航空公司公告前仅显示方向性预测。','news.basisTitle':'2026年9月燃油附加费公告基准','news.basisBody':'当前基准为9月确认公告。10月尚未公告，不生成固定档位或金额。'});
+    var fr = Object.assign({}, en, {'news.metaTitle':'Avis septembre 2026 et perspective octobre | 24 août','news.metaDesc':'Au 24 août 2026, les avis de septembre incluent Air Premia; octobre reste une perspective directionnelle.','news.pageTitle':'Avis septembre 2026 et perspective octobre','news.h1':'Avis septembre 2026 et perspective octobre','news.pageSub':'Au 2026.08.24 08:30 KST · avis septembre KE/OZ/LJ/BX/TW/7C/ZE/RS/YP confirmés · USD/KRW env. 1 386 · Singapore Jet Fuel 154.98 · jet fuel mondial 158.91 · Brent 93.45 · WTI 86.14','news.summary.title':'Synthèse avis septembre et perspective octobre','news.summary.updated':'Au 2026.08.24 08:30 KST · avis septembre confirmés · perspective octobre mise à jour','news.summary.li1':'Les surtaxes internationales de septembre sont confirmées au niveau 21 et incluent Air Premia.','news.summary.li2':'Air Premia septembre: USD 37-228, au moins +USD 12 vs août; FX du jour d’émission dès septembre.','news.summary.li3':'Octobre reste avant publication; aucun niveau, montant ou probabilité n’est confirmé.','news.summary.li4':'USD/KRW env. 1 386 réduit fortement les montants convertis en KRW.','news.summary.li5':'Singapore Jet Fuel env. USD 154.98 est une valeur de marché récente; le jet fuel mondial USD 158.91 est une référence hebdomadaire séparée.','news.summary.li6':'Brent env. USD 93.45 et WTI env. USD 86.14 reculent à court terme mais restent élevés.','news.summary.li7':'Hormuz reste très limité; le passage sélectif de certains tankers irakiens n’est pas une normalisation.','news.summary.li8':'Le FX moyen et le MOPS moyen d’octobre sont encore en collecte.','news.summary.li9':'Ne pas traiter les références de marché comme moyennes confirmées d’octobre.','news.summary.li10':'Vérifiez le montant final dans l’avis officiel et l’écran de paiement.','news.dataRef':'Au 2026.08.24 08:30 KST · avis septembre KE/OZ/LJ/BX/TW/7C/ZE/RS/YP confirmés · période octobre en cours','news.fx':'FX: USD/KRW env. 1 386; cela affecte les montants KRW, pas le niveau à lui seul.','news.mops':'Jet fuel: base septembre USD 149.29/bbl; Singapore Jet Fuel récent USD 154.98/bbl; jet fuel mondial hebdo USD 158.91/bbl n’est pas le MOPS Singapore du jour.','news.brent':'Pétrole: Brent env. USD 93.45/bbl et WTI env. USD 86.14/bbl, élevés mais en repli court terme.','news.geo':'Hormuz: le suivi Kpler public reste autour de 7 navires. Le passage sélectif irakien n’est pas une normalisation de libre navigation.','news.marketSummary':'→ Perspective octobre: légère pression haussière, partiellement atténuée par le KRW plus fort, le repli du pétrole et le passage sélectif.','news.fxDominance':'Chiffres clés: 2026.08.24 08:30 KST · septembre niveau 21 confirmé · avis KE/OZ/LJ/BX/TW/7C/ZE/RS/YP confirmés · USD/KRW env. 1 386 · Singapore Jet Fuel 154.98 · jet fuel mondial 158.91 · Brent 93.45 · WTI 86.14','news.compareTitle':'Variation mensuelle: août → septembre confirmé et passage à la perspective octobre','news.decisionTitle':'Conclusion: septembre est confirmé; octobre est maintenant suivi','news.decisionLine1':'→ Les avis septembre KE/OZ/LJ/BX/TW/7C/ZE/RS/YP sont confirmés.','news.decisionLine2':'→ Octobre reste avant publication; suivez séparément la moyenne Singapore Jet Fuel et le FX moyen.','news.forecastCta.title':'Perspective surtaxe carburant octobre 2026','news.forecastCta.desc':'Suivez la moyenne Singapore Jet Fuel et le FX moyen d’octobre en séparant références récentes et MOPS confirmé.','news.forecastCta.btn':'Voir la perspective octobre →','news.surchargeNote':'Les surtaxes s’appliquent selon la date d’émission. Les avis septembre KE/OZ/LJ/BX/TW/7C/ZE/RS/YP sont reflétés.','news.curSummary':'→ Les avis septembre sont la base confirmée. Octobre reste une perspective directionnelle avant publication.','news.basisTitle':'Base des avis septembre 2026','news.basisBody':'La base actuelle est l’avis confirmé de septembre. Octobre n’étant pas publié, aucun niveau ou montant fixe n’est créé.'});
+    var de = Object.assign({}, en, {'news.metaTitle':'September-2026 Hinweise und Oktober-Ausblick | 24. August','news.metaDesc':'Stand 24. August 2026 enthalten die September-Hinweise Air Premia; Oktober bleibt ein Richtungsausblick.','news.pageTitle':'September-2026 Hinweise und Oktober-Ausblick','news.h1':'September-2026 Hinweise und Oktober-Ausblick','news.pageSub':'Stand 2026.08.24 08:30 KST · September-Hinweise KE/OZ/LJ/BX/TW/7C/ZE/RS/YP bestätigt · USD/KRW ca. 1.386 · Singapore Jet Fuel 154.98 · globales Jetfuel 158.91 · Brent 93.45 · WTI 86.14','news.summary.title':'Zusammenfassung September-Hinweise und Oktober-Ausblick','news.summary.updated':'Stand 2026.08.24 08:30 KST · September bestätigt · Oktober aktualisiert','news.summary.li1':'Die internationalen September-Zuschläge sind mit Stufe 21 bestätigt und enthalten Air Premia.','news.summary.li2':'Air Premia September: USD 37-228, mindestens +USD 12 ggü. August; FX am Ausstellungsdatum ab September.','news.summary.li3':'Oktober ist noch vor Veröffentlichung; Stufe, Beträge und Wahrscheinlichkeit sind nicht bestätigt.','news.summary.li4':'USD/KRW ca. 1.386 senkt KRW-Umrechnungsbeträge deutlich.','news.summary.li5':'Singapore Jet Fuel ca. USD 154.98 ist ein jüngster Marktwert; globales Jetfuel USD 158.91 ist eine separate Wochenreferenz.','news.summary.li6':'Brent ca. USD 93.45 und WTI ca. USD 86.14 korrigieren kurzfristig, bleiben aber hoch.','news.summary.li7':'Hormuz bleibt stark eingeschränkt; selektive Passage einzelner irakischer Tanker ist keine Normalisierung.','news.summary.li8':'Durchschnitts-FX und MOPS für Oktober werden noch gesammelt.','news.summary.li9':'Aktuelle Marktreferenzen sind keine bestätigten Oktober-Durchschnitte.','news.summary.li10':'Prüfen Sie Endbeträge in offiziellen Hinweisen und im Zahlungsbildschirm.','news.dataRef':'Stand 2026.08.24 08:30 KST · September-Hinweise KE/OZ/LJ/BX/TW/7C/ZE/RS/YP bestätigt · Oktober-Fenster läuft','news.fx':'FX: USD/KRW ca. 1.386; beeinflusst KRW-Beträge, nicht allein die Stufe.','news.mops':'Jetfuel: September-Basis USD 149.29/bbl; Singapore Jet Fuel zuletzt USD 154.98/bbl; globale Wochenreferenz USD 158.91/bbl ist nicht Tages-Singapore-MOPS.','news.brent':'Öl: Brent ca. USD 93.45/bbl und WTI ca. USD 86.14/bbl, hoch aber kurzfristig rückläufig.','news.geo':'Hormuz: öffentliche Kpler-Verfolgung ca. 7 Schiffe. Selektive irakische Tankerpassage ist keine freie Navigationsnormalisierung.','news.marketSummary':'→ Oktober-Ausblick: leichter Aufwärtsdruck bleibt, teilweise durch stärkeren KRW, Ölrückgang und selektive Passage entschärft.','news.fxDominance':'Kennzahlen: 2026.08.24 08:30 KST · September Stufe 21 bestätigt · Hinweise KE/OZ/LJ/BX/TW/7C/ZE/RS/YP bestätigt · USD/KRW ca. 1.386 · Singapore Jet Fuel 154.98 · globales Jetfuel 158.91 · Brent 93.45 · WTI 86.14','news.compareTitle':'Monatsvergleich: August → September bestätigt und Wechsel zum Oktober-Ausblick','news.decisionTitle':'Fazit: September bestätigt; jetzt Oktober-Ausblick verfolgen','news.decisionLine1':'→ September-Hinweise für KE/OZ/LJ/BX/TW/7C/ZE/RS/YP sind bestätigt.','news.decisionLine2':'→ Oktober ist noch vor Veröffentlichung; Singapore-Jet-Fuel-Durchschnitt und Durchschnitts-FX separat verfolgen.','news.forecastCta.title':'Oktober-2026 Treibstoffzuschlag-Ausblick','news.forecastCta.desc':'Verfolgen Sie Singapore-Jet-Fuel-Durchschnitt und Durchschnitts-FX für Oktober getrennt von aktuellen Marktreferenzen.','news.forecastCta.btn':'Oktober-Ausblick ansehen →','news.surchargeNote':'Treibstoffzuschläge gelten nach Ausstellungsdatum. September-Hinweise KE/OZ/LJ/BX/TW/7C/ZE/RS/YP sind berücksichtigt.','news.curSummary':'→ September-Hinweise sind die bestätigte Basis. Oktober bleibt bis zur Airline-Veröffentlichung ein Richtungsausblick.','news.basisTitle':'Basis September-2026 Hinweise','news.basisBody':'Aktuelle Basis ist der bestätigte September-Hinweis. Für Oktober werden noch keine feste Stufe oder Beträge erstellt.'});
+    return {ko:ko,en:en,ja:ja,zh:zh,fr:fr,de:de}[lang] || en;
+  }
+  var aug24Cards = [
+    {id:'hormuz-selective-iraqi-tankers-20260824', category:'geo', priority:1, date:'2026-08-24', updatedAt:'2026-08-24T08:30:00+09:00', badge:'호르무즈', aiSummary:true, relevanceScore:1, title:'호르무즈 일부 이라크 유조선 선택적 통과 허가', aiBrief:'이란이 일부 이라크 원유 운반선의 호르무즈 통과를 허가했지만 자유항행 정상화는 아닙니다.', summary:'공개 선박추적 기준 통항량은 여전히 한 자릿수 수준입니다. 이번 변화는 선택적 허가에 가까우며 완전 재개방이나 정상화로 표현하지 않습니다.', impact:'10월 전망에서 부분 완충 요인으로만 반영하고 호르무즈 위험도는 극도로 높은 수준으로 유지합니다.', sourceName:'Market / Kpler reference', sourceUrl:'forecast.html', tags:['호르무즈','선택적 통과','Kpler','10월 전망'], i18n:t({title:'Hormuz allows selective passage for some Iraqi tankers', aiBrief:'Iran allowed some Iraqi crude tankers to pass Hormuz, but this is not free-navigation normalization.', summary:'Public vessel tracking remains in single digits. The change is selective approval, not reopening.', impact:'Reflected as a partial buffer while Hormuz risk remains extremely high.', tags:['Hormuz','selective passage','Kpler','October outlook']})},
+    {id:'us-iran-sanctions-expected-20260824', category:'geo', priority:2, date:'2026-08-24', updatedAt:'2026-08-24T08:30:00+09:00', badge:'제재 예정', aiSummary:true, relevanceScore:.99, title:'미국, 대이란 추가 제재 발표 임박…에너지시장 긴장', aiBrief:'미국의 신규 대이란 제재는 한국시간 8월 25일 03:00 발표 예정이며 아직 발표된 것이 아닙니다.', summary:'구체적인 대상과 범위가 아직 공개되지 않았기 때문에 시장 불확실성이 이어집니다. 이란은 실패할 조치라는 취지로 반발했지만 공식 협상 재개는 확인되지 않았습니다.', impact:'뉴스와 forecast에서 “발표 예정”으로만 표시하고 이미 발표된 것으로 쓰지 않습니다.', sourceName:'Geopolitical reference', sourceUrl:'forecast.html', tags:['미국 제재','이란','발표 예정','불확실성'], i18n:t({title:'U.S. Iran sanctions expected; energy-market tension remains', aiBrief:'New U.S. Iran sanctions are expected at 2026.08.25 03:00 KST and are not yet announced.', summary:'Targets and scope are not public yet, keeping uncertainty elevated.', impact:'The page says expected, not announced.', tags:['U.S. sanctions','Iran','expected','uncertainty']})},
+    {id:'brent-wti-pullback-20260824', category:'market', priority:3, date:'2026-08-24', updatedAt:'2026-08-24T08:30:00+09:00', badge:'국제유가', aiSummary:true, relevanceScore:.98, title:'Brent·WTI 약 1% 조정…높은 수준은 유지', aiBrief:'Brent는 약 93.45달러, WTI는 약 86.14달러 수준으로 최근 고점에서 단기 조정됐습니다.', summary:'이번 하락은 호르무즈 정상화가 아니라 신규 대이란 제재 발표 대기, 차익실현, 최근 급등 이후 포지션 조정 성격으로 봅니다.', impact:'10월 전망에서 국제유가는 상승 압력 유지 · 단기 조정으로 표시합니다.', sourceName:'Market reference', sourceUrl:'forecast.html', tags:['Brent','WTI','단기 조정','국제유가'], i18n:t({title:'Brent and WTI pull back about 1%, but remain high', aiBrief:'Brent is around USD 93.45 and WTI around USD 86.14 after a short-term pullback.', summary:'The move is treated as profit-taking and positioning before expected Iran sanctions, not Hormuz normalization.', impact:'Oil is shown as high with short-term pullback.', tags:['Brent','WTI','pullback','crude']})},
+    {id:'singapore-jetfuel-15498-20260824', category:'market', priority:4, date:'2026-08-24', updatedAt:'2026-08-24T08:30:00+09:00', badge:'항공유', aiSummary:true, relevanceScore:.98, title:'Singapore Jet Fuel 154.98달러 수준, 10월 초반 상승 압력 유지', aiBrief:'8월 20일 기준 Singapore Jet Fuel 최근 시장값은 약 154.98달러/bbl로, 9월 산정 기준보다 높습니다.', summary:'이 값은 최근 시장 참고값이며 10월 산정기간 누적 평균이 아닙니다. 글로벌 주간 항공유 158.91달러와도 구분합니다.', impact:'MOPS/Jet Fuel은 상승 압력 ↑↑으로 유지하되 확정 평균처럼 표시하지 않습니다.', sourceName:'Jet fuel reference', sourceUrl:'forecast.html', tags:['Singapore Jet Fuel','154.98','MOPS','10월 전망'], i18n:t({title:'Singapore Jet Fuel near USD 154.98 keeps early October pressure', aiBrief:'The Aug 20 Singapore Jet Fuel market reference is around USD 154.98/bbl, above the September baseline.', summary:'It is a recent market reference, not the October cumulative average, and is separate from global weekly jet fuel.', impact:'Jet fuel remains upside pressure without being shown as a confirmed average.', tags:['Singapore Jet Fuel','154.98','MOPS','October outlook']})},
+    {id:'iran-crude-exports-drop-20260824', category:'geo', priority:5, date:'2026-08-24', updatedAt:'2026-08-24T08:30:00+09:00', badge:'공급', aiSummary:true, relevanceScore:.96, title:'호르무즈·미국 봉쇄 영향…이란 원유 수출 급감 추정', aiBrief:'8월 이란 원유 선적은 약 53만 bpd 수준으로 감소한 것으로 추정됩니다.', summary:'2025년 평균 약 140만 bpd와 비교하면 큰 감소입니다. 추정값이므로 확정 수치로 단정하지 않고 공급차질 참고 자료로 표시합니다.', impact:'중동 공급 위험이 실제 물량 감소로 이어질 수 있다는 위험 맥락을 제공합니다.', sourceName:'Export estimate reference', sourceUrl:'forecast.html', tags:['이란 원유','수출 감소','추정','공급 위험'], i18n:t({title:'Iran crude exports estimated to drop sharply amid Hormuz and U.S. blockade pressure', aiBrief:'Iran August crude loadings are estimated near 534,000 bpd.', summary:'Compared with a 2025 average around 1.4 million bpd, this is a sharp estimated decline.', impact:'Shown as estimated supply-risk context, not a confirmed exact figure.', tags:['Iran crude','exports','estimate','supply risk']})},
+    {id:'airpremia-september-surcharge-20260824', category:'official', priority:1, date:'2026-08-24', updatedAt:'2026-08-24T08:30:00+09:00', badge:'에어프레미아', aiSummary:true, relevanceScore:1, currentMonthNotice:'2026-09', forecastTargetMonth:'2026-10', title:'에어프레미아 9월 국제선, 8월 대비 최소 USD 12 인상', aiBrief:'에어프레미아 9월 한국발 국제선 유류할증료는 USD 37~228이며 9월부터 발권일 기준 원/달러 환율이 적용됩니다.', summary:'공식 공지 기준 나리타 USD 37, 홍콩 USD 49, 호치민·방콕 USD 83, 호놀룰루 USD 144, LA·샌프란시스코 USD 182, 뉴욕·워싱턴 USD 228입니다. 8월 USD 25~148 대비 최소 +USD 12, 최대 +USD 80입니다.', impact:'9월 공시 확인 항공사 목록에 YP를 추가하고, 고정 KRW 금액으로 임의 환산하지 않도록 표시합니다.', sourceName:'Air Premia official notice', sourceUrl:ypUrl, tags:['에어프레미아','YP','USD 37~228','발권일 환율'], i18n:t({title:'Air Premia September international: at least +USD 12 vs August', aiBrief:'Air Premia September Korea-departure surcharge is USD 37-228, with ticketing-date USD/KRW applied from September.', summary:'Official amounts: Narita USD 37, Hong Kong USD 49, Ho Chi Minh/Bangkok USD 83, Honolulu USD 144, LA/San Francisco USD 182, New York/Washington USD 228. Versus August USD 25-148, the increase is at least USD 12 and up to USD 80.', impact:'YP is added to confirmed September notices and is not converted into fixed KRW amounts.', tags:['Air Premia','YP','USD 37-228','ticketing FX']})}
+  ];
+  var cardLocales = {
+    ja: {
+      'hormuz-selective-iraqi-tankers-20260824': {title:'ホルムズ、一部イラクタンカーの選択的通過を許可', aiBrief:'一部イラク原油タンカーの通過は許可されましたが、自由航行の正常化ではありません。', summary:'公開船舶追跡では通航量はなお一桁水準です。今回の変化は選択的許可であり、完全再開や正常化とは表現しません。', impact:'10月見通しでは部分的な緩和材料にとどめ、ホルムズリスクは非常に高いままです。', tags:['ホルムズ','選択的通過','Kpler','10月見通し']},
+      'us-iran-sanctions-expected-20260824': {title:'米国の対イラン追加制裁が迫り、エネルギー市場の緊張続く', aiBrief:'新たな対イラン制裁は2026.08.25 03:00 KST発表予定で、まだ発表済みではありません。', summary:'対象と範囲はまだ公開されておらず、不確実性が続きます。', impact:'ニュースとforecastでは「発表予定」と表示し、発表済みとは書きません。', tags:['米国制裁','イラン','予定','不確実性']},
+      'brent-wti-pullback-20260824': {title:'Brent・WTIは約1%調整、ただし高水準維持', aiBrief:'Brentは約93.45ドル、WTIは約86.14ドルで短期調整しました。', summary:'この動きは利益確定と制裁発表待ちのポジション調整であり、ホルムズ正常化とは見ません。', impact:'10月見通しでは原油を高水準・短期調整として表示します。', tags:['Brent','WTI','短期調整','原油']},
+      'singapore-jetfuel-15498-20260824': {title:'Singapore Jet Fuel 154.98ドル水準、10月序盤の上昇圧力維持', aiBrief:'8月20日の市場参考値は約154.98ドル/bblで9月基準を上回ります。', summary:'これは最近の市場参考値であり、10月累積平均ではありません。世界週次航空燃料158.91ドルとも区別します。', impact:'Jet Fuelは上昇圧力として維持しますが、確定平均としては表示しません。', tags:['Singapore Jet Fuel','154.98','MOPS','10月見通し']},
+      'iran-crude-exports-drop-20260824': {title:'イラン原油輸出が大幅減少との推定', aiBrief:'8月のイラン原油積載は約53.4万bpdと推定されます。', summary:'2025年平均約140万bpdと比べ大きな減少です。推定値なので確定値とは断定しません。', impact:'中東供給リスクが実際の数量減少につながる可能性を示します。', tags:['イラン原油','輸出減','推定','供給リスク']},
+      'airpremia-september-surcharge-20260824': {title:'エアプレミア9月国際線、8月比最低+USD 12', aiBrief:'9月韓国発国際線はUSD 37~228で、9月から発券日のUSD/KRWが適用されます。', summary:'公式公示は成田USD 37、香港USD 49、ホーチミン・バンコクUSD 83、ホノルルUSD 144、LA・サンフランシスコUSD 182、ニューヨーク・ワシントンUSD 228です。8月USD 25~148比で最低+USD 12、最大+USD 80です。', impact:'YPを9月公示確認リストに追加し、固定KRW金額へ任意換算しません。', tags:['エアプレミア','YP','USD 37~228','発券日為替']}
+    },
+    zh: {
+      'hormuz-selective-iraqi-tankers-20260824': {title:'霍尔木兹允许部分伊拉克油轮选择性通行', aiBrief:'部分伊拉克原油油轮获准通行，但这并非自由航行正常化。', summary:'公开船舶跟踪仍为个位数水平。本次变化接近选择性许可，不表述为完全重开或正常化。', impact:'10月展望中仅作为部分缓冲因素，霍尔木兹风险仍维持极高。', tags:['霍尔木兹','选择性通行','Kpler','10月展望']},
+      'us-iran-sanctions-expected-20260824': {title:'美国对伊朗追加制裁临近，能源市场紧张延续', aiBrief:'新的对伊朗制裁预计在2026.08.25 03:00 KST发布，尚未发布。', summary:'具体对象和范围尚未公开，市场不确定性延续。', impact:'新闻和forecast仅标记为“预计发布”，不写成已经发布。', tags:['美国制裁','伊朗','预计','不确定性']},
+      'brent-wti-pullback-20260824': {title:'Brent和WTI回调约1%，但仍处高位', aiBrief:'Brent约93.45美元，WTI约86.14美元，短期回调。', summary:'该走势视为获利了结和制裁发布前的仓位调整，而非霍尔木兹正常化。', impact:'10月展望中原油显示为高位短期回调。', tags:['Brent','WTI','短期回调','原油']},
+      'singapore-jetfuel-15498-20260824': {title:'Singapore Jet Fuel约154.98美元，10月初期压力仍在', aiBrief:'8月20日市场参考约154.98美元/bbl，高于9月基准线。', summary:'这是近期市场参考值，不是10月累计平均，也需与全球周度航油158.91美元区分。', impact:'航油维持上行压力，但不显示为确认均值。', tags:['Singapore Jet Fuel','154.98','MOPS','10月展望']},
+      'iran-crude-exports-drop-20260824': {title:'伊朗原油出口估计大幅下降', aiBrief:'8月伊朗原油装载估计约53.4万bpd。', summary:'与2025年平均约140万bpd相比明显下降。该值为估计，不作为确定值表述。', impact:'提供中东供应风险可能转化为实际数量下降的背景。', tags:['伊朗原油','出口减少','估计','供应风险']},
+      'airpremia-september-surcharge-20260824': {title:'Air Premia 9月国际线较8月至少+USD 12', aiBrief:'9月韩国出发国际线为USD 37~228，9月起适用出票日USD/KRW。', summary:'官方金额为成田USD 37、香港USD 49、胡志明/曼谷USD 83、檀香山USD 144、洛杉矶/旧金山USD 182、纽约/华盛顿USD 228。较8月USD 25~148至少+USD 12，最高+USD 80。', impact:'将YP加入9月公告确认列表，并避免任意换算为固定KRW金额。', tags:['Air Premia','YP','USD 37~228','出票日汇率']}
+    },
+    fr: {
+      'hormuz-selective-iraqi-tankers-20260824': {title:'Hormuz autorise un passage sélectif de certains tankers irakiens', aiBrief:'Certains tankers irakiens peuvent passer, mais ce n’est pas une normalisation de libre navigation.', summary:'Le suivi public reste à un chiffre. Il s’agit d’une autorisation sélective, pas d’une réouverture complète.', impact:'Pris comme amortisseur partiel; le risque Hormuz reste très élevé.', tags:['Hormuz','passage sélectif','Kpler','octobre']},
+      'us-iran-sanctions-expected-20260824': {title:'Sanctions américaines contre l’Iran attendues; tension énergétique maintenue', aiBrief:'Les nouvelles sanctions sont attendues le 2026.08.25 03:00 KST et ne sont pas encore annoncées.', summary:'Cibles et périmètre ne sont pas encore publics, ce qui maintient l’incertitude.', impact:'La page indique “attendu”, pas “annoncé”.', tags:['sanctions US','Iran','attendu','incertitude']},
+      'brent-wti-pullback-20260824': {title:'Brent et WTI reculent d’environ 1%, mais restent élevés', aiBrief:'Brent est autour de USD 93.45 et WTI autour de USD 86.14 après un repli court terme.', summary:'Le mouvement est traité comme prise de bénéfices et positionnement avant sanctions, pas comme normalisation de Hormuz.', impact:'Le pétrole est affiché élevé avec repli court terme.', tags:['Brent','WTI','repli','pétrole']},
+      'singapore-jetfuel-15498-20260824': {title:'Singapore Jet Fuel près de USD 154.98 maintient la pression d’octobre', aiBrief:'La référence du 20 août est autour de USD 154.98/bbl, au-dessus de la base de septembre.', summary:'C’est une référence récente, pas la moyenne cumulée d’octobre, et elle est séparée du jet fuel mondial hebdomadaire.', impact:'Le jet fuel reste un facteur haussier sans être affiché comme moyenne confirmée.', tags:['Singapore Jet Fuel','154.98','MOPS','octobre']},
+      'iran-crude-exports-drop-20260824': {title:'Les exportations de brut iranien sont estimées en forte baisse', aiBrief:'Les chargements d’août sont estimés près de 534 000 bpd.', summary:'Face à une moyenne 2025 d’environ 1,4 million bpd, la baisse estimée est nette.', impact:'Contexte de risque d’offre, non chiffre définitif.', tags:['brut iranien','exportations','estimation','offre']},
+      'airpremia-september-surcharge-20260824': {title:'Air Premia septembre: au moins +USD 12 vs août', aiBrief:'La surcharge septembre Corée-départ est USD 37-228, avec FX du jour d’émission dès septembre.', summary:'Montants officiels: Narita USD 37, Hong Kong USD 49, Ho Chi Minh/Bangkok USD 83, Honolulu USD 144, LA/San Francisco USD 182, New York/Washington USD 228. Vs août USD 25-148, hausse de +USD 12 à +USD 80.', impact:'YP est ajouté aux avis septembre confirmés sans conversion KRW fixe.', tags:['Air Premia','YP','USD 37-228','FX émission']}
+    }
+  };
+  cardLocales.de = {
+    'hormuz-selective-iraqi-tankers-20260824': {title:'Hormuz erlaubt selektive Passage einiger irakischer Tanker', aiBrief:'Einige irakische Rohöltanker durften passieren, aber freie Navigation ist nicht normalisiert.', summary:'Öffentliche Verfolgung bleibt einstellig. Dies ist selektive Genehmigung, keine vollständige Wiederöffnung.', impact:'Nur als Teilpuffer berücksichtigt; Hormuz-Risiko bleibt sehr hoch.', tags:['Hormuz','selektive Passage','Kpler','Oktober']},
+    'us-iran-sanctions-expected-20260824': {title:'US-Iran-Sanktionen erwartet; Energiemarkt bleibt angespannt', aiBrief:'Neue Sanktionen werden 2026.08.25 03:00 KST erwartet und sind noch nicht angekündigt.', summary:'Ziele und Umfang sind noch nicht öffentlich, Unsicherheit bleibt erhöht.', impact:'Die Seite sagt erwartet, nicht angekündigt.', tags:['US-Sanktionen','Iran','erwartet','Unsicherheit']},
+    'brent-wti-pullback-20260824': {title:'Brent und WTI rund 1% zurück, aber weiter hoch', aiBrief:'Brent liegt bei ca. USD 93.45, WTI bei ca. USD 86.14 nach kurzfristigem Rückgang.', summary:'Der Schritt gilt als Gewinnmitnahme und Positionierung vor erwarteten Sanktionen, nicht als Hormuz-Normalisierung.', impact:'Öl wird als hoch mit kurzfristigem Rückgang gezeigt.', tags:['Brent','WTI','Rückgang','Öl']},
+    'singapore-jetfuel-15498-20260824': {title:'Singapore Jet Fuel nahe USD 154.98 hält Oktoberdruck aufrecht', aiBrief:'Die Referenz vom 20. August liegt bei ca. USD 154.98/bbl und über der September-Basis.', summary:'Es ist eine aktuelle Marktreferenz, nicht der kumulierte Oktober-Durchschnitt, und getrennt von globalem Wochen-Jetfuel.', impact:'Jetfuel bleibt Aufwärtsdruck, aber nicht als bestätigter Durchschnitt.', tags:['Singapore Jet Fuel','154.98','MOPS','Oktober']},
+    'iran-crude-exports-drop-20260824': {title:'Iranische Rohölexporte geschätzt stark gefallen', aiBrief:'August-Verladungen werden auf rund 534.000 bpd geschätzt.', summary:'Gegenüber dem 2025-Durchschnitt von etwa 1,4 Mio. bpd ist das ein deutlicher geschätzter Rückgang.', impact:'Als Angebotsrisiko-Kontext, nicht als endgültige Zahl.', tags:['Iran-Öl','Exporte','Schätzung','Angebot']},
+    'airpremia-september-surcharge-20260824': {title:'Air Premia September: mindestens +USD 12 ggü. August', aiBrief:'September-Zuschlag ab Korea ist USD 37-228, mit FX am Ausstellungsdatum ab September.', summary:'Offizielle Beträge: Narita USD 37, Hong Kong USD 49, Ho Chi Minh/Bangkok USD 83, Honolulu USD 144, LA/San Francisco USD 182, New York/Washington USD 228. Gegenüber August USD 25-148 beträgt der Anstieg +USD 12 bis +USD 80.', impact:'YP wird den bestätigten September-Hinweisen hinzugefügt, ohne feste KRW-Umrechnung.', tags:['Air Premia','YP','USD 37-228','Ausstellungs-FX']}
+  };
+  function applyCardLocales(){
+    aug24Cards.forEach(function(card){
+      card.i18n = card.i18n || {};
+      ['ja','zh','fr','de'].forEach(function(lang){
+        if(cardLocales[lang] && cardLocales[lang][card.id]){
+          card.i18n[lang] = Object.assign({}, card.i18n.en || {}, cardLocales[lang][card.id]);
+        }
+      });
+    });
+  }
+  function ensureAug24Cards(){
+    applyCardLocales();
+    if(!Array.isArray(FIXED_NEWS)) return;
+    var removeIds = {'hormuz-kpler-nine-20260821':true,'saudi-bypass-supply-20260821':true,'brent-wti-rise-20260821':true,'usdkrw-rebound-1394-20260821':true,'us-iran-sanctions-20260821':true,'october-forecast-fx-jetfuel-hormuz-20260820':true,'global-jetfuel-15891-20260821':true};
+    for(var i=FIXED_NEWS.length-1;i>=0;i--){ if(FIXED_NEWS[i] && removeIds[FIXED_NEWS[i].id]) FIXED_NEWS.splice(i,1); }
+    var existing = {}; FIXED_NEWS.forEach(function(card){ if(card && card.id) existing[card.id] = true; });
+    aug24Cards.slice().reverse().forEach(function(card){ if(!existing[card.id]) FIXED_NEWS.unshift(card); });
+    var feed = (typeof NEWS_DATA !== 'undefined' && NEWS_DATA) || window.NEWS_DATA;
+    if(feed && Array.isArray(feed.items)) feed.items = feed.items.filter(function(item){ return !(item && removeIds[item.id]); });
+  }
+  function scrubAug24NewsDom(){
+    var staleIds = ['hormuz-kpler-nine-20260821','saudi-bypass-supply-20260821','brent-wti-rise-20260821','usdkrw-rebound-1394-20260821','us-iran-sanctions-20260821','october-forecast-fx-jetfuel-hormuz-20260820','global-jetfuel-15891-20260821'];
+    staleIds.forEach(function(id){ var el = document.getElementById(id); if(el) el.remove(); });
+    var staleText = /(1,394\.4|93\.78|87\.83|Kpler 추적 commodity vessel|화·수 각각 9척|Saudi bypass|사우디 우회|2026\.08\.21 07:15)/;
+    document.querySelectorAll('.news-card').forEach(function(card){ if(staleText.test(card.innerText || '')) card.remove(); });
+  }
+  function applyAug24KeyVariables(lang){
+    var labels = {
+      ko:['핵심 확인 변수','9월 21단계 확정','항공사별 최소 인상액','10월 산정기간','USD/KRW 약 1,386원'],
+      en:['Key Check Variables','September Level 21 confirmed','Minimum increase by airline','October calculation window','USD/KRW around 1,386'],
+      ja:['主要確認項目','9月21段階確定','航空会社別最低上昇額','10月算定期間','USD/KRW約1,386'],
+      zh:['核心确认变量','9月第21档确认','各航空公司最低涨幅','10月计算期','USD/KRW约1,386'],
+      fr:['Points clés','Niveau 21 confirmé en septembre','Hausse minimale par compagnie','Fenêtre de calcul octobre','USD/KRW env. 1 386'],
+      de:['Wichtige Prüfpunkte','September Stufe 21 bestätigt','Mindestanstieg je Airline','Oktober-Berechnungsfenster','USD/KRW ca. 1.386']
+    };
+    var p = labels[lang] || labels.en;
+    var box = document.getElementById('newsKeyVariables');
+    if(!box) return;
+    box.innerHTML = '<div style="font-weight:700;margin-bottom:8px;">'+p[0]+'</div><div>'+p.slice(1).map(function(v){return '<span style="display:inline-block;margin:3px 6px 3px 0;padding:5px 8px;border:1px solid #BFDBFE;border-radius:999px;background:#EFF6FF;color:#0F172A;">'+v+'</span>';}).join('')+'</div>';
+  }
+  function applyAug24OfficialSurface(lang){
+    var packs = {
+      ko:{title:'주요 항공사 2026년 9월 국제선 유류할증료 공식 공시', notice:'2026.08.24 08:30 KST 기준 반영 · KE/OZ/LJ/BX/TW/7C/ZE/RS/YP 9월 공시 확인 · 10월은 공시 전 전망 단계', link:'공식 공지', desc:'* 2026년 9월 공시 확인 항공사: KE·OZ·LJ·BX·TW·7C·ZE·RS·YP. 에어프레미아는 USD 금액이며 9월부터 발권일 기준 원/달러 환율이 적용됩니다.', items:{officialKe:['대한항공','9월 48,000원~354,000원 · 8월 대비 최소 +12,800원'], officialOz:['아시아나항공','9월 52,000원~290,100원 · 8월 대비 최소 +15,400원'], officialLj:['진에어','9월 USD 29~89 · 8월 대비 최소 +USD 9'], officialBx:['에어부산','9월 USD 71/82 · 8월 대비 최소 +USD 24'], officialTw:['티웨이항공','9월 36,200원~247,500원 · 8월 대비 최소 +11,800원'], official7c:['제주항공','9월 USD 33~79 · 8월 대비 최소 +USD 11'], officialZe:['이스타항공','9월 USD 33~79 · 8월 대비 최소 +USD 11'], officialRs:['에어서울','9월 57,700원~99,600원 · 8월 대비 최소 +18,000원'], officialYp:['에어프레미아','9월 USD 37~228 · 8월 대비 최소 +USD 12 · 발권일 환율 적용']}},
+      en:{title:'Major Airline September 2026 International Fuel Surcharge Official Notices', notice:'As of 2026.08.24 08:30 KST · KE/OZ/LJ/BX/TW/7C/ZE/RS/YP September notices confirmed · October remains pre-filing', link:'Official notice', desc:'* Confirmed September notice airlines: KE/OZ/LJ/BX/TW/7C/ZE/RS/YP. Air Premia is USD-denominated and applies ticketing-date USD/KRW from September.', items:{officialKe:['Korean Air','September KRW 48,000-354,000 · minimum +KRW 12,800 vs August'], officialOz:['Asiana Airlines','September KRW 52,000-290,100 · minimum +KRW 15,400 vs August'], officialLj:['Jin Air','September USD 29-89 · minimum +USD 9 vs August'], officialBx:['Air Busan','September USD 71/82 · minimum +USD 24 vs August'], officialTw:['Tway Air','September KRW 36,200-247,500 · minimum +KRW 11,800 vs August'], official7c:['Jeju Air','September USD 33-79 · minimum +USD 11 vs August'], officialZe:['Eastar Jet','September USD 33-79 · minimum +USD 11 vs August'], officialRs:['Air Seoul','September KRW 57,700-99,600 · minimum +KRW 18,000 vs August'], officialYp:['Air Premia','September USD 37-228 · minimum +USD 12 vs August · ticketing-date FX applies']}}
+    };
+    packs.ja = {title:'主要航空会社 2026年9月国際線燃油サーチャージ公式公示', notice:'2026.08.24 08:30 KST時点 · KE/OZ/LJ/BX/TW/7C/ZE/RS/YP 9月公示確認 · 10月は公示前', link:'公式公示', desc:'* 9月公示確認航空会社: KE/OZ/LJ/BX/TW/7C/ZE/RS/YP。エアプレミアはUSD金額で、9月から発券日のUSD/KRWが適用されます。', items:{officialKe:['大韓航空','9月 48,000~354,000ウォン · 8月比最低+12,800ウォン'], officialOz:['アシアナ航空','9月 52,000~290,100ウォン · 8月比最低+15,400ウォン'], officialLj:['ジンエアー','9月 USD 29~89 · 8月比最低+USD 9'], officialBx:['エアプサン','9月 USD 71/82 · 8月比最低+USD 24'], officialTw:['ティーウェイ航空','9月 36,200~247,500ウォン · 8月比最低+11,800ウォン'], official7c:['チェジュ航空','9月 USD 33~79 · 8月比最低+USD 11'], officialZe:['イースター航空','9月 USD 33~79 · 8月比最低+USD 11'], officialRs:['エアソウル','9月 57,700~99,600ウォン · 8月比最低+18,000ウォン'], officialYp:['エアプレミア','9月 USD 37~228 · 8月比最低+USD 12 · 発券日為替適用']}};
+    packs.zh = {title:'主要航空公司2026年9月国际线燃油附加费官方公告', notice:'截至2026.08.24 08:30 KST · KE/OZ/LJ/BX/TW/7C/ZE/RS/YP 9月公告确认 · 10月仍未公告', link:'官方公告', desc:'* 9月公告确认航空公司：KE/OZ/LJ/BX/TW/7C/ZE/RS/YP。Air Premia为USD金额，9月起适用出票日USD/KRW。', items:{officialKe:['大韩航空','9月 48,000~354,000韩元 · 较8月至少+12,800韩元'], officialOz:['韩亚航空','9月 52,000~290,100韩元 · 较8月至少+15,400韩元'], officialLj:['真航空','9月 USD 29~89 · 较8月至少+USD 9'], officialBx:['釜山航空','9月 USD 71/82 · 较8月至少+USD 24'], officialTw:['德威航空','9月 36,200~247,500韩元 · 较8月至少+11,800韩元'], official7c:['济州航空','9月 USD 33~79 · 较8月至少+USD 11'], officialZe:['易斯达航空','9月 USD 33~79 · 较8月至少+USD 11'], officialRs:['首尔航空','9月 57,700~99,600韩元 · 较8月至少+18,000韩元'], officialYp:['Air Premia','9月 USD 37~228 · 较8月至少+USD 12 · 适用出票日汇率']}};
+    packs.fr = {title:'Avis officiels septembre 2026 des principales compagnies', notice:'Au 2026.08.24 08:30 KST · avis septembre KE/OZ/LJ/BX/TW/7C/ZE/RS/YP confirmés · octobre avant publication', link:'Avis officiel', desc:'* Compagnies confirmées pour septembre: KE/OZ/LJ/BX/TW/7C/ZE/RS/YP. Air Premia est libellée en USD avec FX du jour d’émission dès septembre.', items:{officialKe:['Korean Air','Septembre KRW 48,000-354,000 · minimum +KRW 12,800 vs août'], officialOz:['Asiana Airlines','Septembre KRW 52,000-290,100 · minimum +KRW 15,400 vs août'], officialLj:['Jin Air','Septembre USD 29-89 · minimum +USD 9 vs août'], officialBx:['Air Busan','Septembre USD 71/82 · minimum +USD 24 vs août'], officialTw:['Tway Air','Septembre KRW 36,200-247,500 · minimum +KRW 11,800 vs août'], official7c:['Jeju Air','Septembre USD 33-79 · minimum +USD 11 vs août'], officialZe:['Eastar Jet','Septembre USD 33-79 · minimum +USD 11 vs août'], officialRs:['Air Seoul','Septembre KRW 57,700-99,600 · minimum +KRW 18,000 vs août'], officialYp:['Air Premia','Septembre USD 37-228 · minimum +USD 12 vs août · FX émission']}};
+    packs.de = {title:'Offizielle September-2026 Hinweise der wichtigsten Airlines', notice:'Stand 2026.08.24 08:30 KST · September-Hinweise KE/OZ/LJ/BX/TW/7C/ZE/RS/YP bestätigt · Oktober noch nicht veröffentlicht', link:'Offizieller Hinweis', desc:'* Bestätigte September-Airlines: KE/OZ/LJ/BX/TW/7C/ZE/RS/YP. Air Premia ist in USD und nutzt ab September FX am Ausstellungsdatum.', items:{officialKe:['Korean Air','September KRW 48,000-354,000 · mindestens +KRW 12,800 ggü. August'], officialOz:['Asiana Airlines','September KRW 52,000-290,100 · mindestens +KRW 15,400 ggü. August'], officialLj:['Jin Air','September USD 29-89 · mindestens +USD 9 ggü. August'], officialBx:['Air Busan','September USD 71/82 · mindestens +USD 24 ggü. August'], officialTw:['Tway Air','September KRW 36,200-247,500 · mindestens +KRW 11,800 ggü. August'], official7c:['Jeju Air','September USD 33-79 · mindestens +USD 11 ggü. August'], officialZe:['Eastar Jet','September USD 33-79 · mindestens +USD 11 ggü. August'], officialRs:['Air Seoul','September KRW 57,700-99,600 · mindestens +KRW 18,000 ggü. August'], officialYp:['Air Premia','September USD 37-228 · mindestens +USD 12 ggü. August · Ausstellungs-FX']}};
+    var p = packs[lang] || packs.en;
+    var title = document.querySelector('.official-title'); if(title) title.textContent = p.title;
+    var notice = document.querySelector('[data-i18n="news.officialNotice"]'); if(notice) notice.textContent = p.notice;
+    var rs = document.getElementById('officialRs') || document.getElementById('officialTw') || document.getElementById('officialBx');
+    if(rs && !document.getElementById('officialYp')){
+      var yp = document.createElement(rs.tagName || 'div');
+      yp.id = 'officialYp';
+      rs.parentNode.insertBefore(yp, rs.nextSibling);
+    }
+    Object.keys(p.items).forEach(function(id){
+      var el = document.getElementById(id);
+      if(!el) return;
+      var item = p.items[id];
+      el.innerHTML = '<strong>'+item[0]+'</strong> — '+item[1]+' · <a href="'+noticeUrls[id]+'" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">'+p.link+' ↗</a>';
+      el.style.display = '';
+    });
+    var desc = document.getElementById('officialDesc'); if(desc) desc.textContent = p.desc;
+  }
+  function applyAug24NewsSurface(){
+    ensureAug24Cards();
+    ['ko','en','ja','zh','fr','de'].forEach(function(l){ window.I18N = window.I18N || {}; window.I18N[l] = Object.assign(window.I18N[l] || {}, pagePack(l)); });
+    var lang = (window.getCurrentLang ? window.getCurrentLang() : (localStorage.getItem('aero_lang') || document.documentElement.lang || 'ko')).toLowerCase().split('-')[0];
+    var p = pagePack(lang);
+    Object.keys(p).forEach(function(key){ document.querySelectorAll('[data-i18n="'+key+'"]').forEach(function(el){ el.textContent = p[key]; }); });
+    document.title = p['news.metaTitle'];
+    var desc = document.querySelector('meta[name="description"]'); if(desc) desc.setAttribute('content', p['news.metaDesc']);
+    applyAug24OfficialSurface(lang);
+    document.querySelectorAll('[data-i18n="news.fxDominance"]').forEach(function(el){ el.textContent = p['news.fxDominance']; });
+    applyAug24KeyVariables(lang);
+    scrubAug24NewsDom();
+  }
+  var previousRenderNewsAug24 = renderNews;
+  renderNews = function(){
+    ensureAug24Cards();
+    var result = previousRenderNewsAug24.apply(this, arguments);
+    applyAug24NewsSurface();
+    return result;
+  };
+  if (typeof window.applyLanguage === 'function' && !window.applyLanguage.__aug24NewsSurfaceWrapped) {
+    var previousApplyLanguageAug24 = window.applyLanguage;
+    window.applyLanguage = function(){
+      var result = previousApplyLanguageAug24.apply(this, arguments);
+      applyAug24NewsSurface();
+      return result;
+    };
+    window.applyLanguage.__aug24NewsSurfaceWrapped = true;
+  }
+  ensureAug24Cards();
+  setTimeout(applyAug24NewsSurface, 0);
+  setTimeout(applyAug24NewsSurface, 1200);
+})();
 </script>
 </body></html>
 

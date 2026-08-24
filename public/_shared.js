@@ -659,6 +659,239 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
   }
 })();
 
+/* 2026.08.24 08:30 KST true terminal guard. Keep this after all older market guards. */
+(function(){
+  var latest = {
+    asOf:'2026.08.24 08:30 KST',
+    lastUpdated:'2026-08-24T08:30:00+09:00',
+    currentAppliedMonth:'2026-08',
+    currentMonthNotice:'2026-09',
+    confirmedNoticeMonth:'2026-09',
+    forecastTargetMonth:'2026-10',
+    forecastTargetPeriod:'2026-10',
+    augustInternationalStage:14,
+    septemberInternationalStage:21,
+    septemberInternationalStageChange:7,
+    septemberInternationalConfirmedAirlines:['KE','OZ','LJ','BX','TW','7C','ZE','RS','YP'],
+    septemberCalculationFrom:'2026-07-16',
+    septemberCalculationTo:'2026-08-15',
+    septemberCalculationJetFuelUsdPerBbl:149.29,
+    septemberCalculationJetFuelCentsPerGallon:355.46,
+    augustCalculationJetFuelUsdPerBbl:119.06,
+    septemberVsAugustJetFuelChangeUsd:30.23,
+    septemberVsAugustJetFuelChangePct:25.4,
+    octoberCalculationFrom:'2026-08-16',
+    octoberCalculationTo:'2026-09-15',
+    octoberCalculationStatus:'in_progress_early',
+    octoberForecastConfidence:'low',
+    octoberForecastDirection:'slight_upward_pressure_partly_eased',
+    octoberCalculationJetFuelAverageStatus:'collecting',
+    octoberCalculationUsdKrwAverageStatus:'collecting',
+    usdKrw:1386,
+    usdKrwLabel:'약 1,386원',
+    usdKrwImpact:'krw_conversion_downside_not_direct_stage',
+    singaporeJetFuelRecentUsdPerBbl:154.98,
+    singaporeJetFuelRecentReferenceDate:'2026-08-20',
+    singaporeJetFuelRecentIsOctoberAverage:false,
+    globalJetFuelWeeklyUsdPerBbl:158.91,
+    globalJetFuelWeeklyChangePct:8.2,
+    globalJetFuelIsSingaporeMops:false,
+    brentUsdPerBbl:93.45,
+    brentUsdBbl:93.45,
+    wtiUsdPerBbl:86.14,
+    wtiUsdBbl:86.14,
+    oilStatus:'high_level_short_term_pullback',
+    hormuzTrafficRisk:'extremely_restricted_selective_passage',
+    hormuzSelectiveIraqiTankersApproved:true,
+    hormuzFreeNavigationNormalized:false,
+    hormuzKplerCommodityVesselsLatest:7,
+    hormuzKplerInbound:4,
+    hormuzKplerOutbound:3,
+    iranCrudeExportsEstimatedBpd:534000,
+    iranCrudeExportsIsEstimate:true,
+    usIranSanctionsStatus:'expected_not_announced',
+    usIranSanctionsExpectedAtKst:'2026-08-25T03:00:00+09:00',
+    marketSummary:'10월 전망: 상승 압력 소폭 우세 · 이전보다 일부 완화 · 신뢰도 낮음'
+  };
+  window.AERO_MARKET_NUMBERS_20260824 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260824;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-24': window.AERO_MARKET_NUMBERS_20260824});
+  window.RATES = Object.assign({}, window.RATES || {}, {USD:1/1386});
+  var ypSept = {
+    sourceType:'official_notice', status:'official_verified', confidence:'fresh', currency:'USD', surchargeSchema:'mileage_band',
+    officialNoticeUrl:'https://www.airpremia.com/a/ko/customer/notice/772',
+    verifiedAt:'2026-08-21T16:27:15+09:00', applicableFrom:'2026-09-01', applicableTo:'2026-09-30',
+    ticketingBasis:true, oneWay:true, fxTreatment:'ticketing_date_usd_krw_from_2026_09',
+    note:'2026년 9월부터 발권일 기준 원/달러 환율 적용. USD 공시 금액을 고정 KRW로 임의 환산하지 않음.',
+    items:[
+      {distanceRange:'0-999',label:'인천-나리타',amount:37,currency:'USD',route:'ICN-NRT'},
+      {distanceRange:'1000-1499',label:'인천-홍콩',amount:49,currency:'USD',route:'ICN-HKG'},
+      {distanceRange:'2000-2499',label:'인천-호치민·방콕',amount:83,currency:'USD',route:'ICN-SGN/ICN-BKK'},
+      {distanceRange:'4000-4999',label:'인천-호놀룰루',amount:144,currency:'USD',route:'ICN-HNL'},
+      {distanceRange:'5000-6499',label:'인천-로스앤젤레스·샌프란시스코',amount:182,currency:'USD',route:'ICN-LAX/ICN-SFO'},
+      {distanceRange:'6500+',label:'인천-워싱턴 D.C.·뉴욕',amount:228,currency:'USD',route:'ICN-IAD/ICN-EWR'}
+    ]
+  };
+  window._SEPTEMBER_2026_OFFICIAL_OVERRIDES = window._SEPTEMBER_2026_OFFICIAL_OVERRIDES || {};
+  window._SEPTEMBER_2026_OFFICIAL_OVERRIDES.YP = {'2026.09':ypSept};
+  window._YP_OFFICIAL_OVERRIDE = window._YP_OFFICIAL_OVERRIDE || {};
+  window._YP_OFFICIAL_OVERRIDE['2026.09'] = ypSept;
+  window.MANUAL_OVERRIDES = window.MANUAL_OVERRIDES || {};
+  window.MANUAL_OVERRIDES.YP = window.MANUAL_OVERRIDES.YP || {};
+  window.MANUAL_OVERRIDES.YP['2026.09'] = ypSept;
+  if (window.AIRLINE_META && window.AIRLINE_META.YP) {
+    window.AIRLINE_META.YP.monthlyOverrides = Object.assign({}, window.AIRLINE_META.YP.monthlyOverrides || {}, {'2026.09':ypSept});
+    window.AIRLINE_META.YP.officialNoticeUrl = ypSept.officialNoticeUrl;
+    window.AIRLINE_META.YP.hasOfficialNotice = true;
+    window.AIRLINE_META.YP.officialCurrencyNote = 'USD + ticketing-date USD/KRW from September 2026';
+  }
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), {
+      marketDataRef:'2026.08.24 08:30 KST 기준',
+      marketOil:'국제유가: Brent 약 93.45달러/bbl, WTI 약 86.14달러/bbl로 높은 수준이나 단기 조정입니다.',
+      marketMops:'항공유: 9월 산정 평균은 149.29달러/bbl이고, Singapore Jet Fuel 최근값 154.98달러/bbl 및 글로벌 항공유 158.91달러/bbl은 별도 참고값입니다. 10월 평균은 집계 중입니다.',
+      marketFx:'원달러 환율: 약 1,386원으로 원화 환산액 강한 하락 요인입니다. 단계 자체를 직접 낮추는 변수로 단정하지 않습니다.',
+      marketGeo:'호르무즈: Kpler 공개 추적 기준 한 자릿수 통항이며 일부 이라크 유조선 선택적 허가가 있었지만 자유항행 정상화는 아닙니다.',
+      marketSummary:latest.marketSummary
+    });
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), {
+      marketDataRef:'As of 2026.08.24 08:30 KST',
+      marketOil:'Crude: Brent around USD 93.45/bbl and WTI around USD 86.14/bbl, high but in short-term pullback.',
+      marketMops:'Jet fuel: September calculation average is USD 149.29/bbl; Singapore Jet Fuel recent USD 154.98/bbl and global jet fuel USD 158.91/bbl are separate references. October average is still collecting.',
+      marketFx:'USD/KRW: around 1,386, a strong downside factor for KRW conversion amounts, not a direct stage-setting variable.',
+      marketGeo:'Hormuz: Kpler public tracking remains in single digits and selective Iraqi tanker passage is not free-navigation normalization.',
+      marketSummary:'October outlook: slight upward pressure, partly eased, low confidence.'
+    });
+  }
+})();
+
+/* 2026.08.24 08:30 KST terminal shared market and Air Premia September notice guard. */
+(function(){
+  var latest = {
+    asOf: '2026.08.24 08:30 KST',
+    lastUpdated: '2026-08-24T08:30:00+09:00',
+    currentAppliedMonth: '2026-08',
+    currentMonthNotice: '2026-09',
+    confirmedNoticeMonth: '2026-09',
+    forecastTargetMonth: '2026-10',
+    forecastTargetPeriod: '2026-10',
+    augustInternationalStage: 14,
+    septemberInternationalStage: 21,
+    septemberInternationalStageChange: 7,
+    septemberInternationalConfirmedAirlines: ['KE','OZ','LJ','BX','TW','7C','ZE','RS','YP'],
+    septemberCalculationFrom: '2026-07-16',
+    septemberCalculationTo: '2026-08-15',
+    septemberCalculationJetFuelUsdPerBbl: 149.29,
+    septemberCalculationJetFuelCentsPerGallon: 355.46,
+    augustCalculationJetFuelUsdPerBbl: 119.06,
+    septemberVsAugustJetFuelChangeUsd: 30.23,
+    septemberVsAugustJetFuelChangePct: 25.4,
+    octoberCalculationFrom: '2026-08-16',
+    octoberCalculationTo: '2026-09-15',
+    octoberCalculationStatus: 'in_progress_early',
+    octoberForecastConfidence: 'low',
+    octoberForecastDirection: 'slight_upward_pressure_partly_eased',
+    octoberCalculationJetFuelAverageStatus: 'collecting',
+    octoberCalculationUsdKrwAverageStatus: 'collecting',
+    usdKrw: 1386,
+    usdKrwLabel: '약 1,386원',
+    usdKrwImpact: 'krw_conversion_downside_not_direct_stage',
+    singaporeJetFuelRecentUsdPerBbl: 154.98,
+    singaporeJetFuelRecentReferenceDate: '2026-08-20',
+    singaporeJetFuelRecentIsOctoberAverage: false,
+    globalJetFuelWeeklyUsdPerBbl: 158.91,
+    globalJetFuelWeeklyChangePct: 8.2,
+    globalJetFuelIsSingaporeMops: false,
+    brentUsdPerBbl: 93.45,
+    brentUsdBbl: 93.45,
+    wtiUsdPerBbl: 86.14,
+    wtiUsdBbl: 86.14,
+    oilStatus: 'high_level_short_term_pullback',
+    oilReferenceType: '2026.08.24 morning market reference',
+    hormuzTrafficRisk: 'extremely_restricted_selective_passage',
+    hormuzSelectiveIraqiTankersApproved: true,
+    hormuzFreeNavigationNormalized: false,
+    hormuzKplerCommodityVesselsLatest: 7,
+    hormuzKplerInbound: 4,
+    hormuzKplerOutbound: 3,
+    iranCrudeExportsEstimatedBpd: 534000,
+    iranCrudeExportsIsEstimate: true,
+    usIranSanctionsStatus: 'expected_not_announced',
+    usIranSanctionsExpectedAtKst: '2026-08-25T03:00:00+09:00',
+    marketSummary: '10월 전망: 상승 압력 소폭 우세 · 이전보다 일부 완화 · 신뢰도 낮음'
+  };
+  window.AERO_MARKET_NUMBERS_20260824 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260824;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-24': window.AERO_MARKET_NUMBERS_20260824});
+  window.RATES = Object.assign({}, window.RATES || {}, { USD: 1 / 1386 });
+
+  var ypSept = {
+    sourceType:'official_notice',
+    status:'official_verified',
+    confidence:'fresh',
+    currency:'USD',
+    surchargeSchema:'mileage_band',
+    officialNoticeUrl:'https://www.airpremia.com/a/ko/customer/notice/772',
+    verifiedAt:'2026-08-21T16:27:15+09:00',
+    applicableFrom:'2026-09-01',
+    applicableTo:'2026-09-30',
+    ticketingBasis:true,
+    oneWay:true,
+    fxTreatment:'ticketing_date_usd_krw_from_2026_09',
+    note:'2026년 9월부터 발권일 기준 원/달러 환율 적용. USD 공시 금액을 고정 KRW로 임의 환산하지 않음.',
+    items:[
+      {distanceRange:'0-999',label:'인천-나리타',amount:37,currency:'USD',route:'ICN-NRT'},
+      {distanceRange:'1000-1499',label:'인천-홍콩',amount:49,currency:'USD',route:'ICN-HKG'},
+      {distanceRange:'2000-2499',label:'인천-호치민·방콕',amount:83,currency:'USD',route:'ICN-SGN/ICN-BKK'},
+      {distanceRange:'4000-4999',label:'인천-호놀룰루',amount:144,currency:'USD',route:'ICN-HNL'},
+      {distanceRange:'5000-6499',label:'인천-로스앤젤레스·샌프란시스코',amount:182,currency:'USD',route:'ICN-LAX/ICN-SFO'},
+      {distanceRange:'6500+',label:'인천-워싱턴 D.C.·뉴욕',amount:228,currency:'USD',route:'ICN-IAD/ICN-EWR'}
+    ]
+  };
+  window._SEPTEMBER_2026_OFFICIAL_OVERRIDES = window._SEPTEMBER_2026_OFFICIAL_OVERRIDES || {};
+  window._SEPTEMBER_2026_OFFICIAL_OVERRIDES.YP = {'2026.09': ypSept};
+  window._YP_OFFICIAL_OVERRIDE = window._YP_OFFICIAL_OVERRIDE || {};
+  window._YP_OFFICIAL_OVERRIDE['2026.09'] = ypSept;
+
+  var previousLoadAirlineMetaAug24 = window.loadAirlineMeta;
+  if (typeof previousLoadAirlineMetaAug24 === 'function' && !previousLoadAirlineMetaAug24.__aeroAug24TerminalWrapped) {
+    var wrapped = async function(){
+      var result = await previousLoadAirlineMetaAug24.apply(this, arguments);
+      window.MANUAL_OVERRIDES = window.MANUAL_OVERRIDES || {};
+      window.MANUAL_OVERRIDES.YP = window.MANUAL_OVERRIDES.YP || {};
+      window.MANUAL_OVERRIDES.YP['2026.09'] = ypSept;
+      var meta = window.AIRLINE_META || {};
+      meta.YP = meta.YP || {};
+      meta.YP.monthlyOverrides = Object.assign({}, meta.YP.monthlyOverrides || {}, {'2026.09': ypSept});
+      meta.YP.officialNoticeUrl = ypSept.officialNoticeUrl;
+      meta.YP.hasOfficialNotice = true;
+      meta.YP.officialDataSource = 'official_notice';
+      meta.YP.officialCurrencyNote = 'USD + ticketing-date USD/KRW from September 2026';
+      return result;
+    };
+    wrapped.__aeroAug24TerminalWrapped = true;
+    window.loadAirlineMeta = wrapped;
+  }
+  if (window.I18N_SHARED) {
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), {
+      marketDataRef: '2026.08.24 08:30 KST 기준',
+      marketOil: '국제유가: Brent 약 93.45달러/bbl, WTI 약 86.14달러/bbl로 높은 수준이나 단기 조정입니다.',
+      marketMops: '항공유: 9월 산정 평균은 149.29달러/bbl이고, Singapore Jet Fuel 최근값 154.98달러/bbl 및 글로벌 항공유 158.91달러/bbl은 별도 참고값입니다. 10월 평균은 집계 중입니다.',
+      marketFx: '원달러 환율: 약 1,386원으로 원화 환산액 강한 하락 요인입니다. 단계 자체를 직접 낮추는 변수로 단정하지 않습니다.',
+      marketGeo: '호르무즈: Kpler 공개 추적 기준 한 자릿수 통항이며 일부 이라크 유조선 선택적 허가가 있었지만 자유항행 정상화는 아닙니다.',
+      marketSummary: latest.marketSummary
+    });
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), {
+      marketDataRef: 'As of 2026.08.24 08:30 KST',
+      marketOil: 'Crude: Brent around USD 93.45/bbl and WTI around USD 86.14/bbl, high but in short-term pullback.',
+      marketMops: 'Jet fuel: September calculation average is USD 149.29/bbl; Singapore Jet Fuel recent USD 154.98/bbl and global jet fuel USD 158.91/bbl are separate references. October average is still collecting.',
+      marketFx: 'USD/KRW: around 1,386, a strong downside factor for KRW conversion amounts, not a direct stage-setting variable.',
+      marketGeo: 'Hormuz: Kpler public tracking remains in single digits and selective Iraqi tanker passage is not free-navigation normalization.',
+      marketSummary: 'October outlook: slight upward pressure, partly eased, low confidence.'
+    });
+  }
+})();
+
 /* 2026.08.21 07:15 KST final shared guard. */
 (function(){
   var latest = {
@@ -14537,4 +14770,72 @@ window.initNav = function(opts){
       marketSummary: latest.marketSummary
     });
   }
+})();
+
+/* 2026.08.24 08:30 KST final reset after older guards. */
+(function(){
+  var latest = {
+    asOf:'2026.08.24 08:30 KST',
+    lastUpdated:'2026-08-24T08:30:00+09:00',
+    currentMonthNotice:'2026-09',
+    confirmedNoticeMonth:'2026-09',
+    forecastTargetMonth:'2026-10',
+    septemberInternationalStage:21,
+    septemberInternationalStageChange:7,
+    septemberInternationalConfirmedAirlines:['KE','OZ','LJ','BX','TW','7C','ZE','RS','YP'],
+    septemberCalculationJetFuelUsdPerBbl:149.29,
+    septemberCalculationJetFuelCentsPerGallon:355.46,
+    octoberCalculationFrom:'2026-08-16',
+    octoberCalculationTo:'2026-09-15',
+    octoberForecastDirection:'slight_upward_pressure_partly_eased',
+    octoberForecastConfidence:'low',
+    octoberCalculationJetFuelAverageStatus:'collecting',
+    octoberCalculationUsdKrwAverageStatus:'collecting',
+    usdKrw:1386,
+    usdKrwLabel:'약 1,386원',
+    singaporeJetFuelRecentUsdPerBbl:154.98,
+    singaporeJetFuelRecentIsOctoberAverage:false,
+    globalJetFuelWeeklyUsdPerBbl:158.91,
+    globalJetFuelIsSingaporeMops:false,
+    brentUsdPerBbl:93.45,
+    brentUsdBbl:93.45,
+    wtiUsdPerBbl:86.14,
+    wtiUsdBbl:86.14,
+    oilStatus:'high_level_short_term_pullback',
+    hormuzTrafficRisk:'extremely_restricted_selective_passage',
+    hormuzSelectiveIraqiTankersApproved:true,
+    hormuzFreeNavigationNormalized:false,
+    hormuzKplerCommodityVesselsLatest:7,
+    hormuzKplerInbound:4,
+    hormuzKplerOutbound:3,
+    iranCrudeExportsEstimatedBpd:534000,
+    iranCrudeExportsIsEstimate:true,
+    usIranSanctionsStatus:'expected_not_announced',
+    usIranSanctionsExpectedAtKst:'2026-08-25T03:00:00+09:00',
+    marketSummary:'10월 전망: 상승 압력 소폭 우세 · 이전보다 일부 완화 · 신뢰도 낮음'
+  };
+  window.AERO_MARKET_NUMBERS_20260824_FINAL = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260824_FINAL;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-24': window.AERO_MARKET_NUMBERS_20260824_FINAL});
+  window.RATES = Object.assign({}, window.RATES || {}, {USD:1/1386});
+  var ypSept = {
+    sourceType:'official_notice', status:'official_verified', confidence:'fresh', currency:'USD', surchargeSchema:'mileage_band',
+    officialNoticeUrl:'https://www.airpremia.com/a/ko/customer/notice/772',
+    verifiedAt:'2026-08-21T16:27:15+09:00', applicableFrom:'2026-09-01', applicableTo:'2026-09-30',
+    ticketingBasis:true, oneWay:true, fxTreatment:'ticketing_date_usd_krw_from_2026_09',
+    note:'2026년 9월부터 발권일 기준 원/달러 환율 적용. USD 공시 금액을 고정 KRW로 임의 환산하지 않음.',
+    items:[
+      {distanceRange:'0-999',label:'인천-나리타',amount:37,currency:'USD',route:'ICN-NRT'},
+      {distanceRange:'1000-1499',label:'인천-홍콩',amount:49,currency:'USD',route:'ICN-HKG'},
+      {distanceRange:'2000-2499',label:'인천-호치민·방콕',amount:83,currency:'USD',route:'ICN-SGN/ICN-BKK'},
+      {distanceRange:'4000-4999',label:'인천-호놀룰루',amount:144,currency:'USD',route:'ICN-HNL'},
+      {distanceRange:'5000-6499',label:'인천-로스앤젤레스·샌프란시스코',amount:182,currency:'USD',route:'ICN-LAX/ICN-SFO'},
+      {distanceRange:'6500+',label:'인천-워싱턴 D.C.·뉴욕',amount:228,currency:'USD',route:'ICN-IAD/ICN-EWR'}
+    ]
+  };
+  window._SEPTEMBER_2026_OFFICIAL_OVERRIDES = window._SEPTEMBER_2026_OFFICIAL_OVERRIDES || {};
+  window._SEPTEMBER_2026_OFFICIAL_OVERRIDES.YP = {'2026.09':ypSept};
+  window.MANUAL_OVERRIDES = window.MANUAL_OVERRIDES || {};
+  window.MANUAL_OVERRIDES.YP = window.MANUAL_OVERRIDES.YP || {};
+  window.MANUAL_OVERRIDES.YP['2026.09'] = ypSept;
 })();

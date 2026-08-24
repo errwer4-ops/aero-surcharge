@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
   <title>항공사별 유류할증료 | 2026년 9월 공시 반영 및 10월 준비</title>
-  <meta name="description" content="2026년 8월 19일 기준 한국 출발 국제선 9월 유류할증료 공시 반영 현황과 항공사별 8월 대비 최소 인상액, 10월 공시 준비 변수를 정리합니다."/>
+  <meta name="description" content="2026년 8월 24일 기준 한국 출발 국제선 9월 유류할증료 공시 반영 현황과 항공사별 8월 대비 최소 인상액, 10월 공시 준비 변수를 정리합니다."/>
   <meta name="google-adsense-account" content="ca-pub-4285114770383510">
 
   <link rel="canonical" href="https://aero-surcharge.com/airlines.html"/>
   <meta property="og:title" content="항공사별 유류할증료 | 2026년 9월 공시 반영 및 10월 준비"/>
-  <meta property="og:description" content="2026년 8월 19일 기준 대한항공·아시아나·진에어·에어부산 9월 공시와 8월 대비 최소 인상액, 10월 전망 준비 상태를 확인합니다."/>
+  <meta property="og:description" content="2026년 8월 24일 기준 KE·OZ·LJ·BX·TW·7C·ZE·RS·YP 9월 공시와 8월 대비 최소 인상액, 10월 전망 준비 상태를 확인합니다."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.com/airlines.html"/>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
@@ -214,7 +214,7 @@
       <a href="fuel-surcharge-calculator.html"       style="display:block;padding:9px 13px;background:var(--bg);border:1.5px solid var(--line);border-radius:9px;font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;">🧮 유류할증료 계산 방법</a>
       <a href="fuel-surcharge-2026-05.html"          style="display:block;padding:9px 13px;background:var(--bg);border:1.5px solid var(--line);border-radius:9px;font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;">📅 2026년 5월 유류할증료</a>
       <a href="fuel-surcharge-2026-05.html" style="display:block;padding:9px 13px;background:var(--bg);border:1.5px solid var(--line);border-radius:9px;font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;">✅ 2026년 6월 유류할증료</a>
-      <a href="forecast.html" style="display:block;padding:9px 13px;background:var(--bg);border:1.5px solid var(--line);border-radius:9px;font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;">🔮 2026년 8월 전망</a>
+      <a href="forecast.html" style="display:block;padding:9px 13px;background:var(--bg);border:1.5px solid var(--line);border-radius:9px;font-size:12px;font-weight:600;color:var(--blue);text-decoration:none;">🔮 2026년 10월 전망</a>
     </div>
   </section>
 
@@ -849,7 +849,7 @@ var OFFICIAL_COMPARE_DATA = {
   ],
 };
 
-var SEPTEMBER_2026_OFFICIAL_COMPARE_CODES = ['KE', 'OZ', 'LJ', 'BX', '7C', 'ZE', 'RS'];
+var SEPTEMBER_2026_OFFICIAL_COMPARE_CODES = ['KE', 'OZ', 'LJ', 'BX', 'TW', '7C', 'ZE', 'RS', 'YP'];
 var SEPTEMBER_2026_OFFICIAL_COMPARE_DATA = {
   KE: [
     { band:'~499',        routes:'인천-선양, 칭다오, 다롄, 옌지, 후쿠오카',                          v4:35200,  v5:48000,  cur:'KRW' },
@@ -881,8 +881,19 @@ var SEPTEMBER_2026_OFFICIAL_COMPARE_DATA = {
     { band:'2,400~3,599mi', routes:'인천-푸껫',                                                                                   v4:59, v5:89, cur:'USD' },
   ],
   BX: [
-    { band:'일부 중거리 구간', routes:'공식 공지 기준 일부 구간',                    v4:47, v5:71, cur:'USD' },
-    { band:'방콕·발리 등 장거리', routes:'방콕, 발리(덴파사르) 등 일부 장거리 구간', v4:54, v5:82, cur:'USD' },
+    { band:'1구간 (~699mi)',        routes:'부산/제주-후쿠오카, 오사카(간사이), 나가사키, 칭다오, 다카마쓰, 시즈오카', v4:22, v5:34, cur:'USD' },
+    { band:'2구간 (700~1,299mi)',   routes:'나리타, 삿포로, 시안, 홍콩, 마카오, 타이베이, 가오슝 외', v4:40, v5:60, cur:'USD' },
+    { band:'3구간 (1,300~1,999mi)', routes:'울란바토르, 세부, 다낭, 나트랑, 비엔티안, 코타키나발루, 괌 외', v4:47, v5:71, cur:'USD' },
+    { band:'4구간 (2,000mi~)',      routes:'방콕, 발리(덴파사르)', v4:54, v5:82, cur:'USD' },
+  ],
+  TW: [
+    { band:'1군 (~600mi)',        routes:'일본·중국 단거리 등', v4:24400,  v5:36200,  cur:'KRW' },
+    { band:'2군 (600~1,200mi)',   routes:'일본·대만·홍콩 등', v4:44300,  v5:62200,  cur:'KRW' },
+    { band:'3군 (1,200~1,800mi)', routes:'몽골·동남아 일부', v4:55000,  v5:78200,  cur:'KRW' },
+    { band:'4군 (1,800~2,400mi)', routes:'동남아 중거리', v4:70200,  v5:101300, cur:'KRW' },
+    { band:'5군 (2,400~4,000mi)', routes:'싱가포르·발리·중앙아시아 등', v4:76300,  v5:110000, cur:'KRW' },
+    { band:'6군 (4,000~5,000mi)', routes:'해당 없음', v4:null,   v5:null,   cur:'KRW' },
+    { band:'7군 (5,000mi+)',      routes:'장거리 운항 구간', v4:171000, v5:247500, cur:'KRW' },
   ],
   '7C': [
     { band:'1~500mile 미만', routes:'후쿠오카, 오사카(부산발), 마쓰야마, 오이타, 히로시마, 가고시마, 나가사키, 웨이하이, 옌타이 외', v4:22, v5:33, cur:'USD' },
@@ -907,6 +918,15 @@ var SEPTEMBER_2026_OFFICIAL_COMPARE_DATA = {
     { band:'1,500~1,900mi 미만', routes:'다낭', v4:67100, v5:95300, cur:'KRW' },
     { band:'1,900~2,300mi 미만', routes:'나트랑, 괌', v4:71700, v5:99600, cur:'KRW' },
   ],
+  YP: [
+    { band:'~999mi',        routes:'인천-나리타', v4:25,  v5:37,  cur:'USD' },
+    { band:'1,000~1,499mi', routes:'인천-홍콩', v4:32,  v5:49,  cur:'USD' },
+    { band:'1,500~1,999mi', routes:'해당 구간 공식 금액 없음', v4:null, v5:null, cur:'USD' },
+    { band:'2,000~2,499mi', routes:'인천-호치민·방콕', v4:54,  v5:83,  cur:'USD' },
+    { band:'4,000~4,999mi', routes:'인천-호놀룰루', v4:95,  v5:144, cur:'USD' },
+    { band:'5,000~6,499mi', routes:'인천-로스앤젤레스·샌프란시스코', v4:118, v5:182, cur:'USD' },
+    { band:'6,500mi~',      routes:'인천-뉴욕·워싱턴 D.C.', v4:148, v5:228, cur:'USD' },
+  ],
 };
 Object.keys(SEPTEMBER_2026_OFFICIAL_COMPARE_DATA).forEach(function(code){
   OFFICIAL_COMPARE_DATA[code] = SEPTEMBER_2026_OFFICIAL_COMPARE_DATA[code];
@@ -917,12 +937,12 @@ function hasSeptember2026Official(code){ return SEPTEMBER_2026_OFFICIAL_COMPARE_
 var JUNE_OFFICIAL_CODES = ['KE', 'OZ', 'LJ', 'BX', 'ZE', 'RS', 'TW', '7C', 'YP'];
 function hasJuneOfficial(code){ return JUNE_OFFICIAL_CODES.indexOf(code) >= 0; }
 if (OFFICIAL_COMPARE_DATA.RS && Array.isArray(OFFICIAL_COMPARE_DATA.RS)) {
-  [54500, 62100, 80300, 90900, 93900].forEach(function(amount, idx) {
+  [57700, 66400, 86600, 95300, 99600].forEach(function(amount, idx) {
     if (OFFICIAL_COMPARE_DATA.RS[idx]) OFFICIAL_COMPARE_DATA.RS[idx].v5 = amount;
   });
 }
 if (OFFICIAL_COMPARE_DATA.YP && Array.isArray(OFFICIAL_COMPARE_DATA.YP)) {
-  [33, 44, 58, 75, 130, 164, 205].forEach(function(amount, idx) {
+  [37, 49, null, 83, 144, 182, 228].forEach(function(amount, idx) {
     if (OFFICIAL_COMPARE_DATA.YP[idx]) OFFICIAL_COMPARE_DATA.YP[idx].v5 = amount;
   });
 }
@@ -946,10 +966,10 @@ async function loadData(){
   var NOTICE_URL_PATCH={
     KE:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2609-infuel',
     OZ:'https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202608180002530123',
-    YP:'https://www.airpremia.com/a/ko/customer/notice/728',
+    YP:'https://www.airpremia.com/a/ko/customer/notice/772',
     '7C':'https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000751',
     LJ:'https://www.jinair.com/company/announce/announceView?anceSeq=28662&searchWord=&searchKey=titlCtn&page=1',
-    TW:'https://www.twayair.com/app/customerCenter/notice/retrieve/12577',
+    TW:'https://www.twayair.com/app/customerCenter/notice/retrieve/12685',
     ZE:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=653&lang=KR&searchWord=&searchIndex=1',
     RS:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=11048&pageNo=1',
     BX:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4399',
@@ -1425,7 +1445,7 @@ document.getElementById('searchInput').addEventListener('input',function(e){
   });
 })();
 
-/* 2026.08.19 07:00 KST: September 2026 official application and October preparation guard. */
+/* 2026.08.24 08:30 KST: September 2026 official application and October preparation guard. */
 (function applyAugustOfficialAirlinesCopy20260805(){
   BASE_MONTH = '2026.08';
   NEXT_MONTH = '2026.09';
@@ -1454,36 +1474,36 @@ document.getElementById('searchInput').addEventListener('input',function(e){
       ],
     },
   });
-  var confirmedCodes = ['KE','OZ','LJ','BX','7C','ZE','RS'];
+  var confirmedCodes = ['KE','OZ','LJ','BX','TW','7C','ZE','RS','YP'];
   JULY_OFFICIAL_CODES = confirmedCodes.slice();
-  JUNE_OFFICIAL_CODES = ['KE','OZ','LJ','BX','TW','ZE','RS','7C','YP'];
+  JUNE_OFFICIAL_CODES = confirmedCodes.slice();
   hasJulyOfficial = function(code){ return JULY_OFFICIAL_CODES.indexOf(code) >= 0; };
   hasJuneOfficial = function(code){ return JUNE_OFFICIAL_CODES.indexOf(code) >= 0; };
 
   var ko = AIRLINES_I18N.ko || (AIRLINES_I18N.ko = {});
   var en = AIRLINES_I18N.en || (AIRLINES_I18N.en = {});
-  var asOf = market.asOf || '2026.08.20 07:00 KST';
+  var asOf = '2026.08.24 08:30 KST';
   var usdKrw = market.usdKrw || 1430;
   var brent = market.brent || 79.36;
   var wti = market.wti || 75.77;
   var septemberMops = market.septemberCalculationJetFuelUsdPerBbl || 149.29;
-  var confirmedAirlinesKo = '대한항공·아시아나항공·진에어·에어부산·제주항공·이스타항공·에어서울';
-  var confirmedAirlinesEn = 'Korean Air, Asiana Airlines, Jin Air, Air Busan, Jeju Air, Eastar Jet and Air Seoul';
+  var confirmedAirlinesKo = '대한항공·아시아나항공·진에어·에어부산·티웨이항공·제주항공·이스타항공·에어서울·에어프레미아';
+  var confirmedAirlinesEn = 'Korean Air, Asiana Airlines, Jin Air, Air Busan, Tway Air, Jeju Air, Eastar Jet, Air Seoul and Air Premia';
 
   ko.pageTitle = '항공사별 유류할증료';
   ko.pageSub = asOf + ' 기준 · 2026년 9월 공시 반영 · 10월 공시 준비 중';
   ko.introTitle = '항공사별 2026년 9월 유류할증료 공시 반영 현황';
-  ko.introBody = '2026년 9월 한국 출발 국제선 유류할증료 공시는 대한항공·아시아나항공·진에어·에어부산·제주항공·이스타항공·에어서울 기준으로 확인됐습니다. 표는 2026년 8월 공시와 9월 공시를 비교하고, 10월 유류할증료는 아직 공시 전이므로 예측 준비 상태로만 표시합니다.';
+  ko.introBody = '2026년 9월 한국 출발 국제선 유류할증료 공시는 대한항공·아시아나항공·진에어·에어부산·티웨이항공·제주항공·이스타항공·에어서울·에어프레미아 기준으로 확인됐습니다. 표는 2026년 8월 공시와 9월 공시를 비교하고, 10월 유류할증료는 아직 공시 전이므로 예측 준비 상태로만 표시합니다.';
   ko.betaDesc = '현재 한국 출발 국제선 유류할증료를 중심으로 제공하며, 9월 공시 금액과 항공사별 공식 링크를 우선 반영합니다. 실제 발권 금액은 항공사 공지와 결제 통화 기준을 함께 확인하세요.';
   ko.betaNote = '10월은 산정 기간이 진행 중인 전망 구간입니다. 공시 전 단계·금액·확률을 확정값처럼 표시하지 않습니다.';
   ko.krOnlyNote = '현재 한국 출발 국제선 주요 항공사 기준입니다. USD 공시 항공사의 원화 체감액은 결제 시점 환율에 따라 달라질 수 있습니다.';
   ko.seoSummaryH2 = '2026년 9월 한국 출발 국제선 유류할증료 공시 반영 현황';
-  ko.seoSummaryP = '2026년 9월 한국 출발 국제선 유류할증료는 대한항공 최소 <strong>+12,800원</strong>, 아시아나 최소 <strong>+15,400원</strong>, 진에어 최소 <strong>+USD 9</strong>, 에어부산 최소 <strong>+USD 24</strong>, 제주항공·이스타항공 최소 <strong>+USD 11</strong>, 에어서울 최소 <strong>+18,000원</strong> 인상으로 확인됐습니다. 9월 산정 항공유 평균은 <strong>USD ' + septemberMops + '/bbl</strong>이며, 10월 공시는 2026.08.16~09.15 산정 기간을 추적합니다.';
-  ko.surchargeIntro = '아래 목록은 2026년 8월 공식 공시와 2026년 9월 공식 공시를 비교합니다. 9월 공시 확인 항공사는 KE·OZ·LJ·BX·7C·ZE·RS이며, 10월은 아직 공시 전 전망 준비 구간입니다.';
+  ko.seoSummaryP = '2026년 9월 한국 출발 국제선 유류할증료는 대한항공 최소 <strong>+12,800원</strong>, 아시아나 최소 <strong>+15,400원</strong>, 진에어 최소 <strong>+USD 9</strong>, 에어부산 최소 <strong>+USD 12</strong>, 티웨이 최소 <strong>+11,800원</strong>, 제주항공·이스타항공 최소 <strong>+USD 11</strong>, 에어서울 최소 <strong>+18,000원</strong>, 에어프레미아 최소 <strong>+USD 12</strong> 인상으로 확인됐습니다. 9월 산정 항공유 평균은 <strong>USD ' + septemberMops + '/bbl</strong>이며, 10월 공시는 2026.08.16~09.15 산정 기간을 추적합니다.';
+  ko.surchargeIntro = '아래 목록은 2026년 8월 공식 공시와 2026년 9월 공식 공시를 비교합니다. 9월 공시 확인 항공사는 KE·OZ·LJ·BX·TW·7C·ZE·RS·YP이며, 10월은 아직 공시 전 전망 준비 구간입니다.';
   ko.analysisH3 = '2026년 8월 → 9월 유류할증료 반영 현황';
   ko.analysisBullets = [
     '<strong>9월 공시 반영</strong>: ' + confirmedAirlinesKo + '의 9월 공식 공시를 우선 표시합니다.',
-    '<strong>최소 추가 부담</strong>: 대한항공 +12,800원, 아시아나 +15,400원, 진에어 +USD 9, 에어부산 +USD 24, 제주항공·이스타항공 +USD 11, 에어서울 +18,000원부터 8월보다 더 냅니다.',
+    '<strong>최소 추가 부담</strong>: 대한항공 +12,800원, 아시아나 +15,400원, 진에어 +USD 9, 에어부산 +USD 12, 티웨이 +11,800원, 제주항공·이스타항공 +USD 11, 에어서울 +18,000원, 에어프레미아 +USD 12부터 8월보다 더 냅니다.',
     '<strong>비교 기준</strong>: 상세 표는 2026년 8월 금액과 2026년 9월 금액을 나란히 보여 줍니다.',
     '<strong>시장 참고값</strong>: 9월 산정 항공유 평균 149.29달러/bbl은 당일 Singapore MOPS가 아니라 2026.07.16~08.15 산정 평균입니다.',
     '<strong>10월 준비</strong>: 2026년 10월 유류할증료는 공시 전이므로 확정 단계·금액을 생성하지 않습니다.'
@@ -1504,17 +1524,17 @@ document.getElementById('searchInput').addEventListener('input',function(e){
   en.pageTitle = 'Airline fuel surcharge index';
   en.pageSub = asOf + ' · September 2026 notices reflected · October filing preparation';
   en.introTitle = 'September 2026 airline fuel surcharge filing status';
-  en.introBody = 'September 2026 Korea-departure international notices are confirmed for Korean Air, Asiana Airlines, Jin Air, Air Busan, Jeju Air, Eastar Jet and Air Seoul. The table compares August and September filings; October remains pre-filing and is shown only as a forecast-preparation state.';
+  en.introBody = 'September 2026 Korea-departure international notices are confirmed for Korean Air, Asiana Airlines, Jin Air, Air Busan, Tway Air, Jeju Air, Eastar Jet, Air Seoul and Air Premia. The table compares August and September filings; October remains pre-filing and is shown only as a forecast-preparation state.';
   en.betaDesc = 'This page focuses on Korea-departure international fuel surcharges and prioritizes September filing amounts plus official airline links. Check each airline notice and payment currency before ticketing.';
   en.betaNote = 'October is still in the calculation window. Pre-filing stages, amounts and probabilities are not displayed as confirmed values.';
   en.krOnlyNote = 'Current coverage focuses on major Korea-departure international carriers. KRW-equivalent amounts for USD filings can move with payment-time FX.';
   en.seoSummaryH2 = 'September 2026 Korea-departure fuel surcharge notices reflected';
-  en.seoSummaryP = 'September 2026 Korea-departure international surcharges are confirmed for KE/OZ/LJ/BX/7C/ZE/RS. Minimum increases versus August start at Korean Air <strong>+KRW 12,800</strong>, Asiana <strong>+KRW 15,400</strong>, Jin Air <strong>+USD 9</strong>, Air Busan <strong>+USD 24</strong>, Jeju Air and Eastar Jet <strong>+USD 11</strong>, and Air Seoul <strong>+KRW 18,000</strong>. October filing preparation tracks the 2026.08.16-09.15 calculation window.';
-  en.surchargeIntro = 'The list below compares August 2026 official filings with September 2026 official filings. KE/OZ/LJ/BX/7C/ZE/RS September notices are confirmed; October remains pre-filing outlook preparation.';
+  en.seoSummaryP = 'September 2026 Korea-departure international surcharges are confirmed for KE/OZ/LJ/BX/TW/7C/ZE/RS/YP. Minimum increases versus August start at Korean Air <strong>+KRW 12,800</strong>, Asiana <strong>+KRW 15,400</strong>, Jin Air <strong>+USD 9</strong>, Air Busan <strong>+USD 12</strong>, Tway Air <strong>+KRW 11,800</strong>, Jeju Air and Eastar Jet <strong>+USD 11</strong>, Air Seoul <strong>+KRW 18,000</strong>, and Air Premia <strong>+USD 12</strong>. October filing preparation tracks the 2026.08.16-09.15 calculation window.';
+  en.surchargeIntro = 'The list below compares August 2026 official filings with September 2026 official filings. KE/OZ/LJ/BX/TW/7C/ZE/RS/YP September notices are confirmed; October remains pre-filing outlook preparation.';
   en.analysisH3 = 'August to September 2026 fuel surcharge filing status';
   en.analysisBullets = [
     '<strong>September notices</strong>: September official notices are prioritized for ' + confirmedAirlinesEn + '.',
-    '<strong>Minimum extra cost</strong>: Korean Air +KRW 12,800, Asiana +KRW 15,400, Jin Air +USD 9, Air Busan +USD 24, Jeju Air and Eastar Jet +USD 11, and Air Seoul +KRW 18,000 versus August.',
+    '<strong>Minimum extra cost</strong>: Korean Air +KRW 12,800, Asiana +KRW 15,400, Jin Air +USD 9, Air Busan +USD 12, Tway Air +KRW 11,800, Jeju Air and Eastar Jet +USD 11, Air Seoul +KRW 18,000, and Air Premia +USD 12 versus August.',
     '<strong>Comparison basis</strong>: Detail tables compare August 2026 and September 2026 amounts side by side.',
     '<strong>Market references</strong>: September calculation jet fuel average USD 149.29/bbl is the 2026.07.16-08.15 average, not same-day Singapore MOPS.',
     '<strong>October caution</strong>: October 2026 fuel surcharge is not filed yet, so confirmed stages or amounts are not generated.'
@@ -1537,6 +1557,102 @@ document.getElementById('searchInput').addEventListener('input',function(e){
     ['pageTitle','pageSub','introTitle','introBody','betaDesc','betaNote','krOnlyNote','seoSummaryH2','seoSummaryP','surchargeIntro','analysisH3','analysisBullets','expandHint','compareTitle','aprNotice','mayNotice','mayBasedLabel','aprBasedLabel','notPublished','noNotice','nextOfficialBadge','pendingOfficialBadge','missingNoticeBadge','statusText'].forEach(function(key){
       AIRLINES_I18N[lang][key] = en[key];
     });
+  });
+  Object.assign(AIRLINES_I18N.ja, {
+    pageTitle: '航空会社別燃油サーチャージ',
+    pageSub: asOf + ' 基準 · 2026年9月公示反映 · 10月公示準備中',
+    introTitle: '航空会社別 2026年9月燃油サーチャージ公示反映状況',
+    introBody: '2026年9月の韓国発国際線燃油サーチャージ公示はKE/OZ/LJ/BX/TW/7C/ZE/RS/YPで確認済みです。表では2026年8月公示と9月公示を比較し、10月は公示前の準備状態としてのみ表示します。',
+    betaDesc: '韓国発国際線燃油サーチャージを中心に、9月公示金額と航空会社公式リンクを優先反映しています。',
+    betaNote: '10月は算定期間中です。公示前の段階・金額・確率を確定値として表示しません。',
+    krOnlyNote: '現在は韓国発国際線の主要航空会社基準です。USD公示のウォン換算体感額は決済時の為替で変動します。',
+    seoSummaryH2: '2026年9月 韓国発国際線燃油サーチャージ公示反映状況',
+    seoSummaryP: '9月公示はKE/OZ/LJ/BX/TW/7C/ZE/RS/YPで確認済みです。8月比の最低増加額は大韓航空 <strong>+12,800ウォン</strong>、アシアナ <strong>+15,400ウォン</strong>、ジンエアー <strong>+USD 9</strong>、エアプサン <strong>+USD 12</strong>、ティーウェイ <strong>+11,800ウォン</strong>、済州航空・イースター航空 <strong>+USD 11</strong>、エアソウル <strong>+18,000ウォン</strong>、エアプレミア <strong>+USD 12</strong>です。',
+    surchargeIntro: '下の一覧は2026年8月公式公示と2026年9月公式公示を比較します。10月はまだ公示前の見通し準備段階です。',
+    analysisH3: '2026年8月 → 9月 燃油サーチャージ反映状況',
+    analysisBullets: [
+      '<strong>9月公示反映</strong>: ' + confirmedAirlinesEn + ' の9月公式公示を優先表示します。',
+      '<strong>比較基準</strong>: 詳細表は2026年8月金額と2026年9月金額を並べて表示します。',
+      '<strong>10月準備</strong>: 2026年10月燃油サーチャージは公示前のため、確定段階・金額を生成しません。'
+    ],
+    expandHint: '8月→9月比較',
+    compareTitle: '8月 vs 9月 燃油サーチャージ比較',
+    aprNotice: '8月公式公示',
+    mayNotice: '9月公式公示',
+    mayBasedLabel: '9月基準',
+    aprBasedLabel: '8月基準',
+    notPublished: '10月公示準備',
+    noNotice: '公式公示確認が必要',
+    nextOfficialBadge: '9月公式公示反映',
+    pendingOfficialBadge: '10月公示準備',
+    missingNoticeBadge: '未公示',
+    statusText: function(){ return '更新: ' + asOf + ' · 9月公示反映 · 10月公示準備中'; }
+  });
+  Object.assign(AIRLINES_I18N.zh, {
+    pageTitle: '各航空公司燃油附加费',
+    pageSub: '截至 ' + asOf + ' · 已反映2026年9月公告 · 准备10月公告',
+    introTitle: '各航空公司2026年9月燃油附加费公告反映情况',
+    introBody: '2026年9月韩国出发国际线燃油附加费公告已确认KE/OZ/LJ/BX/TW/7C/ZE/RS/YP。表格比较2026年8月与9月公告，10月仍为公告前准备状态。',
+    betaDesc: '本页以韩国出发国际线燃油附加费为中心，优先反映9月公告金额及航空公司官方链接。',
+    betaNote: '10月仍处于计算期间。公告前的档位、金额和概率不作为确定值显示。',
+    krOnlyNote: '当前基于韩国出发国际线主要航空公司。USD公告的韩元折算体感金额会随付款时汇率变化。',
+    seoSummaryH2: '2026年9月韩国出发国际线燃油附加费公告反映情况',
+    seoSummaryP: '9月公告已确认KE/OZ/LJ/BX/TW/7C/ZE/RS/YP。较8月至少增加：大韩航空 <strong>+12,800韩元</strong>，韩亚航空 <strong>+15,400韩元</strong>，真航空 <strong>+USD 9</strong>，釜山航空 <strong>+USD 12</strong>，德威航空 <strong>+11,800韩元</strong>，济州航空/易斯达航空 <strong>+USD 11</strong>，首尔航空 <strong>+18,000韩元</strong>，Air Premia <strong>+USD 12</strong>。',
+    surchargeIntro: '下方列表比较2026年8月官方公告与2026年9月官方公告。10月仍为公告前展望准备阶段。',
+    analysisH3: '2026年8月 → 9月燃油附加费反映情况',
+    analysisBullets: [
+      '<strong>已反映9月公告</strong>: 优先显示 ' + confirmedAirlinesEn + ' 的9月官方公告。',
+      '<strong>比较基准</strong>: 详细表并列显示2026年8月和2026年9月金额。',
+      '<strong>10月准备</strong>: 2026年10月燃油附加费尚未公告，因此不生成确定档位或金额。'
+    ],
+    expandHint: '8月→9月比较',
+    compareTitle: '8月 vs 9月燃油附加费比较',
+    aprNotice: '8月官方公告',
+    mayNotice: '9月官方公告',
+    mayBasedLabel: '9月基准',
+    aprBasedLabel: '8月基准',
+    notPublished: '10月公告准备',
+    noNotice: '需确认官方公告',
+    nextOfficialBadge: '已反映9月官方公告',
+    pendingOfficialBadge: '10月公告准备',
+    missingNoticeBadge: '未公告',
+    statusText: function(){ return '更新: ' + asOf + ' · 已反映9月公告 · 准备10月公告'; }
+  });
+  Object.assign(AIRLINES_I18N.fr, {
+    pageTitle: 'Surcharges carburant par compagnie',
+    pageSub: asOf + ' · avis septembre 2026 reflétés · préparation octobre',
+    introTitle: 'Statut des avis de septembre 2026 par compagnie',
+    introBody: 'Les avis septembre 2026 au départ de Corée sont confirmés pour KE/OZ/LJ/BX/TW/7C/ZE/RS/YP. Le tableau compare août et septembre; octobre reste avant publication.',
+    seoSummaryH2: 'Avis septembre 2026 reflétés',
+    surchargeIntro: 'La liste compare les avis officiels août 2026 et septembre 2026. Octobre reste en préparation avant publication.',
+    compareTitle: 'Août vs septembre — surcharge carburant',
+    expandHint: 'Comparer août→septembre',
+    aprNotice: 'Avis officiel août',
+    mayNotice: 'Avis officiel septembre',
+    mayBasedLabel: 'Base septembre',
+    aprBasedLabel: 'Base août',
+    notPublished: 'Préparation avis octobre',
+    nextOfficialBadge: 'Avis septembre reflété',
+    pendingOfficialBadge: 'Préparation octobre',
+    statusText: function(){ return 'Mis à jour: ' + asOf + ' · avis septembre reflétés · préparation octobre'; }
+  });
+  Object.assign(AIRLINES_I18N.de, {
+    pageTitle: 'Kerosinzuschlag nach Airline',
+    pageSub: asOf + ' · September-2026 Hinweise berücksichtigt · Oktober-Vorbereitung',
+    introTitle: 'Status der September-2026 Hinweise nach Airline',
+    introBody: 'September-2026 Hinweise ab Korea sind für KE/OZ/LJ/BX/TW/7C/ZE/RS/YP bestätigt. Die Tabelle vergleicht August und September; Oktober bleibt vor Veröffentlichung.',
+    seoSummaryH2: 'September-2026 Hinweise berücksichtigt',
+    surchargeIntro: 'Die Liste vergleicht offizielle August-2026 und September-2026 Hinweise. Oktober bleibt in Vorbereitung.',
+    compareTitle: 'August vs September Kerosinzuschlag',
+    expandHint: 'August→September vergleichen',
+    aprNotice: 'August Hinweis',
+    mayNotice: 'September Hinweis',
+    mayBasedLabel: 'September-Basis',
+    aprBasedLabel: 'August-Basis',
+    notPublished: 'Oktober-Vorbereitung',
+    nextOfficialBadge: 'September-Hinweis berücksichtigt',
+    pendingOfficialBadge: 'Oktober-Vorbereitung',
+    statusText: function(){ return 'Aktualisiert: ' + asOf + ' · September berücksichtigt · Oktober-Vorbereitung'; }
   });
 })();
 
