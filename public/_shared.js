@@ -659,6 +659,89 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
   }
 })();
 
+/* 2026.08.25 08:30 KST final market reset after all older guards. */
+(function(){
+  var latest = {
+    asOf:'2026.08.25 08:30 KST',
+    lastUpdated:'2026-08-25T08:30:00+09:00',
+    currentMonthNotice:'2026-09',
+    confirmedNoticeMonth:'2026-09',
+    forecastTargetMonth:'2026-10',
+    septemberInternationalStage:21,
+    septemberInternationalStageChange:7,
+    septemberInternationalConfirmedAirlines:['KE','OZ','LJ','BX','TW','7C','ZE','RS','YP'],
+    septemberCalculationPeriod:'2026-07-16~2026-08-15',
+    septemberCalculationJetFuelUsdPerBbl:149.29,
+    septemberCalculationJetFuelCentsPerGallon:355.46,
+    septemberPreviousJetFuelUsdPerBbl:119.06,
+    septemberJetFuelChangeUsdPerBbl:30.23,
+    septemberJetFuelChangePct:25.4,
+    octoberCalculationFrom:'2026-08-16',
+    octoberCalculationTo:'2026-09-15',
+    octoberForecastDirection:'flat_to_slight_upward_pressure',
+    octoberForecastConfidence:'low',
+    octoberCalculationJetFuelAverageStatus:'collecting',
+    octoberCalculationUsdKrwAverageStatus:'collecting',
+    usdKrw:1382,
+    usdKrwLabel:'약 1,382원',
+    usdKrwStatus:'strong_krw_conversion_downside',
+    singaporeJetFuelRecentUsdPerBbl:154.98,
+    singaporeJetFuelRecentDate:'2026-08-20',
+    singaporeJetFuelRecentIsOctoberAverage:false,
+    globalJetFuelWeeklyUsdPerBbl:158.91,
+    globalJetFuelWeeklyChangePct:8.2,
+    globalJetFuelIsSingaporeMops:false,
+    brentUsdPerBbl:92.17,
+    brentUsdBbl:92.17,
+    brentChangePct:-2.35,
+    wtiUsdPerBbl:85.01,
+    wtiUsdBbl:85.01,
+    wtiChangePct:-2.35,
+    oilStatus:'high_level_short_term_fall',
+    refinedProductsSupplyStatus:'strong_supply_risk',
+    asiaRefinedProductsImportChangePct:-21,
+    hormuzTrafficRisk:'extremely_restricted_high_risk',
+    hormuzStatus:'very_limited_high_risk_transit_no_normal_commercial_recovery',
+    hormuzKplerFridayVessels:16,
+    hormuzKplerSaturdayVessels:13,
+    hormuzKplerSundayVessels:4,
+    hormuzPublicTrackingVsPreWar:'about_90_percent_lower',
+    hormuzFreeNavigationNormalized:false,
+    hormuzFullBlockadeConfirmed:false,
+    hormuzCrudeFlowEstimateUsGovMbpd:15,
+    hormuzCrudeFlowEstimateKplerMbpd:5,
+    usIranSanctionsStatus:'announced_partial_strongest_measures_deferred',
+    usIranSanctionsAnnouncedAt:'2026-08-24',
+    usIranSanctionsTargetsApprox:60,
+    marketSummary:'10월 전망: 보합~소폭 상승 압력 · 신뢰도 낮음'
+  };
+  window.AERO_MARKET_NUMBERS_20260825 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260825;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-25': window.AERO_MARKET_NUMBERS_20260825});
+  window.RATES = Object.assign({}, window.RATES || {}, {USD:1/1382});
+  if (window.I18N_SHARED) {
+    var ko = {
+      marketDataRef:'2026.08.25 08:30 KST 기준',
+      marketOil:'국제유가: 8월 24일 미국 시장 종가 기준 Brent 92.17달러/bbl, WTI 85.01달러/bbl로 각각 약 2.35% 하락했습니다. 단기 하락이지만 절대 가격은 여전히 높은 수준입니다.',
+      marketMops:'항공유: 9월 산정 평균은 149.29달러/bbl이고, 최근 Singapore Jet Fuel 154.98달러/bbl 및 글로벌 항공유 158.91달러/bbl은 별도 참고값입니다. 10월 누적 평균은 집계 중입니다.',
+      marketFx:'원달러 환율: 약 1,382원으로 원화 유류할증료 환산액에 강한 하방 압력이 이어집니다. 단계 자체를 직접 낮추는 변수로 단정하지 않습니다.',
+      marketGeo:'호르무즈: Kpler 공개 추적 기준 금요일 16척, 토요일 13척, 일요일 4척 수준으로 극도로 제한된 고위험 통항이 이어집니다. 완전 봉쇄나 정상화로 단정하지 않습니다.',
+      marketOutlook:'10월 국제선 유류할증료는 보합~소폭 상승 압력, 신뢰도 낮음입니다.'
+    };
+    var en = {
+      marketDataRef:'As of 2026.08.25 08:30 KST',
+      marketOil:'Crude: Brent closed near USD 92.17/bbl and WTI near USD 85.01/bbl, each down about 2.35%. This is a short-term fall, while absolute prices remain high.',
+      marketMops:'Jet fuel: the September calculation average is USD 149.29/bbl; recent Singapore Jet Fuel USD 154.98/bbl and global jet fuel USD 158.91/bbl are separate references. The October cumulative average is still collecting.',
+      marketFx:'USD/KRW: around 1,382, a strong downside factor for KRW conversion amounts, not a direct stage-setting variable.',
+      marketGeo:'Hormuz: Kpler public tracking showed about 16 vessels Friday, 13 Saturday and 4 Sunday, indicating extremely restricted high-risk transit. Do not call it full blockade or normalization.',
+      marketOutlook:'October international fuel surcharge view: flat to slight upward pressure, low confidence.'
+    };
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), ko);
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), en);
+    ['ja','zh','fr','de'].forEach(function(lang){ Object.assign(window.I18N_SHARED[lang] || (window.I18N_SHARED[lang] = {}), en); });
+  }
+})();
+
 /* 2026.08.24 08:30 KST true terminal guard. Keep this after all older market guards. */
 (function(){
   var latest = {
@@ -14838,4 +14921,86 @@ window.initNav = function(opts){
   window.MANUAL_OVERRIDES = window.MANUAL_OVERRIDES || {};
   window.MANUAL_OVERRIDES.YP = window.MANUAL_OVERRIDES.YP || {};
   window.MANUAL_OVERRIDES.YP['2026.09'] = ypSept;
+})();
+
+/* 2026.08.25 08:30 KST terminal shared market guard. Keep this last. */
+(function(){
+  var latest = {
+    asOf:'2026.08.25 08:30 KST',
+    lastUpdated:'2026-08-25T08:30:00+09:00',
+    currentMonthNotice:'2026-09',
+    confirmedNoticeMonth:'2026-09',
+    forecastTargetMonth:'2026-10',
+    septemberInternationalStage:21,
+    septemberInternationalStageChange:7,
+    septemberInternationalConfirmedAirlines:['KE','OZ','LJ','BX','TW','7C','ZE','RS','YP'],
+    septemberCalculationPeriod:'2026-07-16~2026-08-15',
+    septemberCalculationJetFuelUsdPerBbl:149.29,
+    septemberCalculationJetFuelCentsPerGallon:355.46,
+    septemberPreviousJetFuelUsdPerBbl:119.06,
+    septemberJetFuelChangeUsdPerBbl:30.23,
+    septemberJetFuelChangePct:25.4,
+    octoberCalculationFrom:'2026-08-16',
+    octoberCalculationTo:'2026-09-15',
+    octoberForecastDirection:'flat_to_slight_upward_pressure',
+    octoberForecastConfidence:'low',
+    octoberCalculationJetFuelAverageStatus:'collecting',
+    octoberCalculationUsdKrwAverageStatus:'collecting',
+    usdKrw:1382,
+    usdKrwLabel:'약 1,382원',
+    singaporeJetFuelRecentUsdPerBbl:154.98,
+    singaporeJetFuelRecentDate:'2026-08-20',
+    singaporeJetFuelRecentIsOctoberAverage:false,
+    globalJetFuelWeeklyUsdPerBbl:158.91,
+    globalJetFuelWeeklyChangePct:8.2,
+    globalJetFuelIsSingaporeMops:false,
+    brentUsdPerBbl:92.17,
+    brentUsdBbl:92.17,
+    brentChangePct:-2.35,
+    wtiUsdPerBbl:85.01,
+    wtiUsdBbl:85.01,
+    wtiChangePct:-2.35,
+    oilStatus:'high_level_short_term_fall',
+    refinedProductsSupplyStatus:'strong_supply_risk',
+    asiaRefinedProductsImportChangePct:-21,
+    hormuzTrafficRisk:'extremely_restricted_high_risk',
+    hormuzStatus:'very_limited_high_risk_transit_no_normal_commercial_recovery',
+    hormuzKplerFridayVessels:16,
+    hormuzKplerSaturdayVessels:13,
+    hormuzKplerSundayVessels:4,
+    hormuzPublicTrackingVsPreWar:'about_90_percent_lower',
+    hormuzFreeNavigationNormalized:false,
+    hormuzFullBlockadeConfirmed:false,
+    hormuzCrudeFlowEstimateUsGovMbpd:15,
+    hormuzCrudeFlowEstimateKplerMbpd:5,
+    usIranSanctionsStatus:'announced_partial_strongest_measures_deferred',
+    usIranSanctionsAnnouncedAt:'2026-08-24',
+    usIranSanctionsTargetsApprox:60,
+    marketSummary:'10월 전망: 보합~소폭 상승 압력 · 신뢰도 낮음'
+  };
+  window.AERO_MARKET_NUMBERS_20260825 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260825;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-25': window.AERO_MARKET_NUMBERS_20260825});
+  window.RATES = Object.assign({}, window.RATES || {}, {USD:1/1382});
+  if (window.I18N_SHARED) {
+    var ko = {
+      marketDataRef:'2026.08.25 08:30 KST 기준',
+      marketOil:'국제유가: 8월 24일 미국 시장 종가 기준 Brent 92.17달러/bbl, WTI 85.01달러/bbl로 각각 약 2.35% 하락했습니다. 단기 하락이지만 절대 가격은 여전히 높은 수준입니다.',
+      marketMops:'항공유: 9월 산정 평균은 149.29달러/bbl이고, 최근 Singapore Jet Fuel 154.98달러/bbl 및 글로벌 항공유 158.91달러/bbl은 별도 참고값입니다. 10월 누적 평균은 집계 중입니다.',
+      marketFx:'원달러 환율: 약 1,382원으로 원화 유류할증료 환산액에 강한 하방 압력이 이어집니다. 단계 자체를 직접 낮추는 변수로 단정하지 않습니다.',
+      marketGeo:'호르무즈: Kpler 공개 추적 기준 금요일 16척, 토요일 13척, 일요일 4척 수준으로 극도로 제한된 고위험 통항이 이어집니다. 완전 봉쇄나 정상화로 단정하지 않습니다.',
+      marketOutlook:'10월 국제선 유류할증료는 보합~소폭 상승 압력, 신뢰도 낮음입니다.'
+    };
+    var en = {
+      marketDataRef:'As of 2026.08.25 08:30 KST',
+      marketOil:'Crude: Brent closed near USD 92.17/bbl and WTI near USD 85.01/bbl, each down about 2.35%. This is a short-term fall, while absolute prices remain high.',
+      marketMops:'Jet fuel: the September calculation average is USD 149.29/bbl; recent Singapore Jet Fuel USD 154.98/bbl and global jet fuel USD 158.91/bbl are separate references. The October cumulative average is still collecting.',
+      marketFx:'USD/KRW: around 1,382, a strong downside factor for KRW conversion amounts, not a direct stage-setting variable.',
+      marketGeo:'Hormuz: Kpler public tracking showed about 16 vessels Friday, 13 Saturday and 4 Sunday, indicating extremely restricted high-risk transit. Do not call it full blockade or normalization.',
+      marketOutlook:'October international fuel surcharge view: flat to slight upward pressure, low confidence.'
+    };
+    Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), ko);
+    Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), en);
+    ['ja','zh','fr','de'].forEach(function(lang){ Object.assign(window.I18N_SHARED[lang] || (window.I18N_SHARED[lang] = {}), en); });
+  }
 })();
