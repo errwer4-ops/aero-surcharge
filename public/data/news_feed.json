@@ -1,126 +1,663 @@
 {
   "meta": {
-    "lastUpdated": "2026-08-25T08:30:00+09:00",
-    "note": "참고 뉴스 데이터입니다. 공식 공시와 시장 지표를 구분해 표시합니다.",
-    "asOf": "2026.08.25 08:30 KST",
+    "lastUpdated": "2026-08-26T08:40:00+09:00",
+    "note": "참고 뉴스 데이터입니다. 공식 공시와 시장 지표, 관측값, 주장, 전망을 구분해 표시합니다.",
+    "asOf": "2026.08.26 08:40 KST",
     "currentMonthNotice": "2026-09",
     "forecastTargetMonth": "2026-10",
-    "generatedAt": "2026-08-25T08:30:00+09:00"
+    "generatedAt": "2026-08-26T08:40:00+09:00"
   },
   "items": [
     {
-      "id": "us-iran-sanctions-announced-20260825",
+      "id": "iran-oman-hormuz-corridor-20260826",
       "category": "geo",
       "priority": 1,
-      "date": "2026-08-25",
-      "updatedAt": "2026-08-25T08:30:00+09:00",
-      "title": "미국, 대이란 추가 제재 확대…최강 조치는 일단 보류",
-      "aiBrief": "미국이 이란 관련 개인·기업·선박 약 60곳을 대상으로 추가 경제제재를 발표했습니다.",
-      "summary": "제재 범위는 디지털 자산, 금, 기술, 항공, 해운 관련 활동까지 확대됐습니다. 다만 시장이 우려했던 최대 강도 조치 일부는 즉시 전면 적용되지 않아 유가 충격은 제한됐습니다.",
-      "impact": "forecast의 제재 상태를 발표 예정에서 발표 완료·시장 충격 일부 완화로 갱신합니다.",
-      "sourceName": "Sanctions reference",
+      "date": "2026-08-26",
+      "updatedAt": "2026-08-26T08:40:00+09:00",
+      "title": "이란·오만, 호르무즈 임시 항행 통로 논의",
+      "aiBrief": "호르무즈 해협을 둘러싼 이란·오만 실무 논의가 선택적 선박 허가에서 임시 항행 통로 협의로 한 단계 진전됐습니다.",
+      "summary": "지역 이슈: 중동 걸프 해상운송, 특히 호르무즈 해협입니다. 이란과 오만은 제한된 선박 운항을 개선하기 위한 공동 임시 항행 통로와 일부 기뢰 제거를 논의하고 있습니다. 이는 10월 유류할증료 전망에서 외교적 완화 신호로 반영됩니다. 다만 공개 통항량은 여전히 극도로 낮고 자유항행 정상화가 확인된 것은 아니므로, 이 카드는 “호르무즈 정상화”가 아니라 “협상 진전과 현장 위험 병존”으로 해석해야 합니다.",
+      "impact": "SEO/geo 핵심: 호르무즈 해협, 이란·오만, 임시 항행로, 중동 해상운송. 유류할증료에는 하락 완화 신호지만 실제 운항 위험과 분리합니다.",
+      "sourceName": "Hormuz corridor reference",
       "sourceUrl": "forecast.html",
       "tags": [
-        "미국 제재",
-        "이란",
-        "발표 완료",
-        "10월 전망"
-      ]
+        "호르무즈",
+        "이란·오만",
+        "임시 항행로",
+        "완화 신호"
+      ],
+      "geoFocus": "Strait of Hormuz / Gulf maritime transport",
+      "seoKeywords": [
+        "호르무즈 해협",
+        "이란 오만 임시 항행로",
+        "중동 해상운송",
+        "10월 유류할증료 전망"
+      ],
+      "i18n": {
+        "en": {
+          "title": "Iran and Oman discuss temporary Hormuz navigational corridor",
+          "aiBrief": "Iran-Oman working talks have moved the Hormuz story from selective vessel permission toward a temporary navigational corridor discussion.",
+          "summary": "Geo focus: the Strait of Hormuz and Gulf maritime transport. Iran and Oman are discussing a joint temporary navigational corridor and partial mine-clearance work to improve restricted vessel movement. This is a diplomatic relief signal for the October fuel surcharge outlook, but public traffic remains extremely low and free-navigation normalization is not confirmed.",
+          "impact": "SEO/geo focus: Strait of Hormuz, Iran-Oman, temporary corridor, Gulf shipping. Relief signal, separated from actual operational risk.",
+          "tags": [
+            "Strait of Hormuz",
+            "Iran-Oman",
+            "temporary navigational corridor",
+            "Gulf shipping",
+            "October fuel surcharge"
+          ]
+        },
+        "ja": {
+          "title": "イラン・オマーン、ホルムズ暫定航行回廊を協議",
+          "aiBrief": "イラン・オマーン協議は、選択的な船舶許可から暫定航行回廊の議論へ進んでいます。",
+          "summary": "地域焦点はホルムズ海峡と湾岸海上輸送です。両国は共同の暫定航行回廊と一部機雷除去を協議しています。10月燃油サーチャージ見通しでは外交的な緩和信号ですが、公開通航量はまだ極めて低く、自由航行正常化は確認されていません。",
+          "impact": "SEO/geo: ホルムズ海峡、イラン・オマーン、暫定航行回廊、湾岸輸送。緩和信号と実運航リスクを分けて扱います。",
+          "tags": [
+            "ホルムズ海峡",
+            "イラン・オマーン",
+            "暫定航行回廊",
+            "湾岸輸送",
+            "10月燃油サーチャージ"
+          ]
+        },
+        "zh": {
+          "title": "伊朗与阿曼讨论霍尔木兹临时航行通道",
+          "aiBrief": "伊朗与阿曼的工作层讨论已从选择性放行推进到临时航行通道。",
+          "summary": "地域焦点是霍尔木兹海峡和海湾海上运输。双方正在讨论共同临时航行通道和部分扫雷，以改善受限船舶通行。这是10月燃油附加费展望中的外交缓和信号，但公开通行量仍极低，自由航行正常化尚未确认。",
+          "impact": "SEO/geo：霍尔木兹海峡、伊朗阿曼、临时通道、海湾航运。缓和信号与实际通行风险分开处理。",
+          "tags": [
+            "霍尔木兹海峡",
+            "伊朗阿曼",
+            "临时航行通道",
+            "海湾航运",
+            "10月燃油附加费"
+          ]
+        },
+        "fr": {
+          "title": "Iran et Oman discutent d’un corridor temporaire à Hormuz",
+          "aiBrief": "Les discussions Iran-Oman passent d’autorisations sélectives à un corridor temporaire de navigation.",
+          "summary": "Focus régional: détroit d’Hormuz et transport maritime du Golfe. L’Iran et Oman discutent d’un corridor temporaire conjoint et d’un déminage partiel. C’est un signal diplomatique d’apaisement pour octobre, mais le trafic public reste très faible et la libre navigation n’est pas normalisée.",
+          "impact": "SEO/geo: détroit d’Hormuz, Iran-Oman, corridor temporaire, transport du Golfe. Signal d’apaisement séparé du risque opérationnel.",
+          "tags": [
+            "détroit d’Hormuz",
+            "Iran-Oman",
+            "corridor temporaire",
+            "transport du Golfe",
+            "surtaxe octobre"
+          ]
+        },
+        "de": {
+          "title": "Iran und Oman beraten temporären Hormuz-Navigationskorridor",
+          "aiBrief": "Iran-Oman-Gespräche bewegen sich von selektiven Genehmigungen zu einem temporären Navigationskorridor.",
+          "summary": "Regionaler Fokus: Straße von Hormuz und Golf-Schifffahrt. Iran und Oman beraten einen gemeinsamen temporären Korridor und teilweise Minenräumung. Das ist ein diplomatisches Entspannungssignal für Oktober, aber der öffentlich sichtbare Verkehr bleibt extrem niedrig und freie Navigation ist nicht normalisiert.",
+          "impact": "SEO/geo: Straße von Hormuz, Iran-Oman, temporärer Korridor, Golf-Schifffahrt. Entspannungssignal getrennt vom Betriebsrisiko.",
+          "tags": [
+            "Straße von Hormuz",
+            "Iran-Oman",
+            "temporärer Korridor",
+            "Golf-Schifffahrt",
+            "Oktober-Zuschlag"
+          ]
+        }
+      }
     },
     {
-      "id": "brent-wti-fall-235-20260825",
+      "id": "brent-wti-sharp-fall-20260826",
       "category": "market",
       "priority": 2,
-      "date": "2026-08-25",
-      "updatedAt": "2026-08-25T08:30:00+09:00",
-      "title": "Brent 92.17달러·WTI 85.01달러, 제재 발표에도 2.35% 하락",
-      "aiBrief": "8월 24일 미국시장 종가 기준 Brent와 WTI가 각각 약 2.35% 하락했습니다.",
-      "summary": "미국의 제재 확대에도 시장이 더 강한 조치를 예상했고 최근 급등 이후 차익실현이 겹치며 국제유가는 단기 하락했습니다. 다만 절대가격은 여전히 높은 수준입니다.",
-      "impact": "국제유가 상태를 높은 수준 · 단기 하락으로 보정합니다.",
-      "sourceName": "Market reference",
+      "date": "2026-08-26",
+      "updatedAt": "2026-08-26T08:40:00+09:00",
+      "title": "Brent 88.58달러·WTI 82.36달러 급락",
+      "aiBrief": "Brent와 WTI가 동반 급락하면서 10월 유류할증료 전망에서 원유 쪽 하방 압력이 커졌습니다.",
+      "summary": "시장 이슈: 국제 원유 가격입니다. Brent는 88.58달러/bbl, WTI는 82.36달러/bbl로 내려왔고 아시아장 WTI는 약 80.99달러까지 추가 하락했습니다. 미국의 대이란 제재 발표 이후 시장이 즉각적인 공급차단보다 제한적 충격을 더 크게 반영하면서 지정학 프리미엄이 빠르게 축소된 흐름입니다. 이 변화는 10월 국제선 유류할증료의 인하 가능성을 넓히는 핵심 하방 요인입니다.",
+      "impact": "SEO 핵심: Brent 유가, WTI 유가, 국제유가 급락, 10월 유류할증료 전망. 단계 확정이 아니라 원유 측 하방 요인입니다.",
+      "sourceName": "Crude market reference",
       "sourceUrl": "forecast.html",
       "tags": [
-        "Brent",
-        "WTI",
-        "2.35% 하락",
-        "국제유가"
-      ]
+        "Brent 88.58",
+        "WTI 82.36",
+        "WTI 80.99",
+        "급락"
+      ],
+      "geoFocus": "Global crude oil market / Brent and WTI benchmarks",
+      "seoKeywords": [
+        "Brent 88.58",
+        "WTI 82.36",
+        "국제유가 급락",
+        "10월 유류할증료 전망"
+      ],
+      "i18n": {
+        "en": {
+          "title": "Brent USD 88.58 and WTI USD 82.36 drop sharply",
+          "aiBrief": "Brent and WTI fell sharply, making crude oil a stronger downside factor for the October surcharge outlook.",
+          "summary": "Market focus: global crude oil. Brent moved to USD 88.58/bbl, WTI to USD 82.36/bbl, and Asia-session WTI around USD 80.99. After U.S. Iran sanctions were announced, the market priced a smaller immediate supply shock than feared, reducing geopolitical risk premium.",
+          "impact": "SEO focus: Brent crude, WTI crude, oil price drop, October fuel surcharge outlook. This is crude-side downside, not a confirmed stage.",
+          "tags": [
+            "Brent 88.58",
+            "WTI 82.36",
+            "WTI 80.99",
+            "oil price drop",
+            "fuel surcharge outlook"
+          ]
+        },
+        "ja": {
+          "title": "Brent 88.58ドル・WTI 82.36ドルへ急落",
+          "aiBrief": "BrentとWTIが急落し、10月見通しで原油は強い下押し要因になりました。",
+          "summary": "市場焦点は国際原油です。Brentは88.58ドル/bbl、WTIは82.36ドル/bbl、アジア時間WTIは約80.99ドルです。米国の対イラン制裁発表後、即時供給遮断リスクが想定より小さく織り込まれ、地政学プレミアムが縮小しました。",
+          "impact": "SEO: Brent原油、WTI原油、原油急落、10月燃油サーチャージ見通し。段階確定ではなく原油側の下押し要因です。",
+          "tags": [
+            "Brent 88.58",
+            "WTI 82.36",
+            "WTI 80.99",
+            "原油急落",
+            "燃油サーチャージ見通し"
+          ]
+        },
+        "zh": {
+          "title": "Brent 88.58美元、WTI 82.36美元急跌",
+          "aiBrief": "Brent和WTI急跌，使原油成为10月燃油附加费展望的更强下行因素。",
+          "summary": "市场焦点是国际原油。Brent降至88.58美元/bbl，WTI降至82.36美元/bbl，亚洲时段WTI约80.99美元。美国对伊朗制裁公布后，市场认为即时供应冲击小于此前担忧，地缘风险溢价缩小。",
+          "impact": "SEO：Brent原油、WTI原油、油价急跌、10月燃油附加费展望。这是原油侧下行因素，不是档位确认。",
+          "tags": [
+            "Brent 88.58",
+            "WTI 82.36",
+            "WTI 80.99",
+            "油价急跌",
+            "燃油附加费展望"
+          ]
+        },
+        "fr": {
+          "title": "Brent 88.58 USD et WTI 82.36 USD chutent fortement",
+          "aiBrief": "La chute de Brent et WTI renforce le facteur baissier pétrole pour octobre.",
+          "summary": "Focus marché: pétrole brut mondial. Brent passe à 88.58 USD/bbl, WTI à 82.36 USD/bbl et le WTI asiatique autour de 80.99 USD. Après les sanctions américaines contre l’Iran, le marché a intégré un choc d’offre immédiat plus limité que redouté.",
+          "impact": "SEO: Brent, WTI, chute du pétrole, perspective surtaxe octobre. Facteur baissier pétrole, pas niveau confirmé.",
+          "tags": [
+            "Brent 88.58",
+            "WTI 82.36",
+            "WTI 80.99",
+            "chute pétrole",
+            "surtaxe carburant"
+          ]
+        },
+        "de": {
+          "title": "Brent 88.58 USD und WTI 82.36 USD fallen stark",
+          "aiBrief": "Brent und WTI fielen stark und machen Öl zum stärkeren Abwärtsfaktor für Oktober.",
+          "summary": "Marktfokus: globales Rohöl. Brent fiel auf 88.58 USD/bbl, WTI auf 82.36 USD/bbl und WTI in Asien auf etwa 80.99 USD. Nach den US-Iran-Sanktionen preiste der Markt einen kleineren unmittelbaren Angebotsschock ein.",
+          "impact": "SEO: Brent, WTI, Ölpreisrückgang, Oktober-Zuschlag. Abwärtsfaktor bei Öl, keine bestätigte Stufe.",
+          "tags": [
+            "Brent 88.58",
+            "WTI 82.36",
+            "WTI 80.99",
+            "Ölpreisrückgang",
+            "Treibstoffzuschlag"
+          ]
+        }
+      }
     },
     {
-      "id": "usdkrw-1382-strong-krw-20260825",
-      "category": "fx",
+      "id": "global-jetfuel-16387-20260826",
+      "category": "market",
       "priority": 3,
-      "date": "2026-08-25",
-      "updatedAt": "2026-08-25T08:30:00+09:00",
-      "title": "원/달러 약 1,382원…원화 강세 지속",
-      "aiBrief": "USD/KRW가 1,380원대 초반까지 내려오며 원화 환산액 하락 압력이 이어집니다.",
-      "summary": "최근 흐름은 약 1,394원에서 1,386원, 다시 1,382원 수준으로 내려왔습니다. 환율은 단계 자체보다 USD 기준 부과액의 원화 환산에 영향을 줍니다.",
-      "impact": "10월 전망에서 환율은 원화 부과액 강한 하락 요인으로 표시합니다.",
-      "sourceName": "FX reference",
+      "date": "2026-08-26",
+      "updatedAt": "2026-08-26T08:40:00+09:00",
+      "title": "글로벌 Jet Fuel 163.87달러…전주 대비 +3.1%",
+      "aiBrief": "원유는 급락했지만 글로벌 Jet Fuel은 163.87달러/bbl까지 올라 항공유 가격 압력은 여전히 강합니다.",
+      "summary": "시장 이슈: 항공유와 MOPS 구분입니다. IATA/Platts 글로벌 주간 Jet Fuel 평균은 163.87달러/bbl, 전주 대비 +3.1%로 상승했습니다. 이 값은 Singapore MOPS가 아니며 10월 산정기간 누적 평균도 아닙니다. 그러나 원유 하락에도 항공유와 정제품 공급이 같은 속도로 완화되지 않았다는 신호이므로, 10월 전망에서 Jet Fuel은 여전히 강한 상승 압력으로 유지합니다.",
+      "impact": "SEO 핵심: 글로벌 Jet Fuel, IATA Platts, Singapore MOPS 아님, 항공유 가격. 163.87달러를 10월 확정 MOPS로 쓰지 않습니다.",
+      "sourceName": "Global Jet Fuel reference",
       "sourceUrl": "forecast.html",
       "tags": [
-        "USD/KRW",
-        "1,382",
-        "환율",
-        "원화 강세"
-      ]
+        "Jet Fuel",
+        "163.87",
+        "+3.1%",
+        "MOPS 구분"
+      ],
+      "geoFocus": "Global jet fuel market / Singapore MOPS distinction",
+      "seoKeywords": [
+        "글로벌 Jet Fuel",
+        "IATA Platts",
+        "Singapore MOPS 아님",
+        "항공유 가격"
+      ],
+      "i18n": {
+        "en": {
+          "title": "Global Jet Fuel rises to USD 163.87, up 3.1% WoW",
+          "aiBrief": "Crude fell, but global Jet Fuel rose to USD 163.87/bbl, keeping aviation fuel pressure high.",
+          "summary": "Market focus: jet fuel and MOPS separation. The IATA/Platts global weekly Jet Fuel average rose to USD 163.87/bbl, up 3.1% week on week. This is not Singapore MOPS and not the October cumulative average.",
+          "impact": "SEO focus: global Jet Fuel, IATA Platts, not Singapore MOPS, aviation fuel price. Do not use USD 163.87 as confirmed October MOPS.",
+          "tags": [
+            "global Jet Fuel",
+            "USD 163.87",
+            "IATA Platts",
+            "not Singapore MOPS",
+            "aviation fuel price"
+          ]
+        },
+        "ja": {
+          "title": "世界Jet Fuel 163.87ドル、前週比+3.1%",
+          "aiBrief": "原油は下落しましたが、世界Jet Fuelは163.87ドル/bblへ上昇し航空燃料圧力は高いままです。",
+          "summary": "市場焦点は航空燃料とMOPSの区別です。IATA/Platts世界週次Jet Fuel平均は163.87ドル/bbl、前週比+3.1%です。これはSingapore MOPSでも10月累積平均でもありません。",
+          "impact": "SEO: 世界Jet Fuel、IATA Platts、Singapore MOPSではない、航空燃料価格。163.87ドルを10月確定MOPSに使いません。",
+          "tags": [
+            "世界Jet Fuel",
+            "163.87ドル",
+            "IATA Platts",
+            "MOPSではない",
+            "航空燃料価格"
+          ]
+        },
+        "zh": {
+          "title": "全球Jet Fuel 163.87美元，周环比+3.1%",
+          "aiBrief": "原油下跌，但全球Jet Fuel升至163.87美元/bbl，航空燃油压力仍高。",
+          "summary": "市场焦点是航空燃油与MOPS区分。IATA/Platts全球周度Jet Fuel均值升至163.87美元/bbl，周环比+3.1%。这不是Singapore MOPS，也不是10月累计均值。",
+          "impact": "SEO：全球Jet Fuel、IATA Platts、不是Singapore MOPS、航空燃油价格。不要把163.87美元作为10月确认MOPS。",
+          "tags": [
+            "全球Jet Fuel",
+            "163.87美元",
+            "IATA Platts",
+            "不是Singapore MOPS",
+            "航空燃油价格"
+          ]
+        },
+        "fr": {
+          "title": "Jet Fuel mondial à 163.87 USD, +3.1% sur une semaine",
+          "aiBrief": "Le pétrole baisse, mais le Jet Fuel mondial monte à 163.87 USD/bbl.",
+          "summary": "Focus marché: jet fuel et séparation MOPS. La moyenne hebdomadaire mondiale IATA/Platts monte à 163.87 USD/bbl, +3.1% sur une semaine. Ce n’est pas le Singapore MOPS ni la moyenne cumulée d’octobre.",
+          "impact": "SEO: Jet Fuel mondial, IATA Platts, pas Singapore MOPS, prix du carburant aviation.",
+          "tags": [
+            "Jet Fuel mondial",
+            "USD 163.87",
+            "IATA Platts",
+            "pas Singapore MOPS",
+            "carburant aviation"
+          ]
+        },
+        "de": {
+          "title": "Globales Jet Fuel 163.87 USD, +3.1% zur Vorwoche",
+          "aiBrief": "Öl fiel, aber globales Jet Fuel stieg auf 163.87 USD/bbl.",
+          "summary": "Marktfokus: Jet Fuel und MOPS-Trennung. Der globale IATA/Platts-Wochendurchschnitt stieg auf 163.87 USD/bbl, +3.1% zur Vorwoche. Das ist nicht Singapore MOPS und kein Oktober-Durchschnitt.",
+          "impact": "SEO: globales Jet Fuel, IATA Platts, nicht Singapore MOPS, Flugtreibstoffpreis.",
+          "tags": [
+            "globales Jet Fuel",
+            "USD 163.87",
+            "IATA Platts",
+            "nicht Singapore MOPS",
+            "Flugtreibstoff"
+          ]
+        }
+      }
     },
     {
-      "id": "hormuz-weekend-public-tracking-20260825",
+      "id": "hormuz-commodity-vessels-two-20260826",
       "category": "geo",
       "priority": 4,
-      "date": "2026-08-25",
-      "updatedAt": "2026-08-25T08:30:00+09:00",
-      "title": "호르무즈 주말 공개 통항 13척→4척…정상 상업운항 미복구",
-      "aiBrief": "Kpler 공개 추적 기준 금요일 16척, 토요일 13척, 일요일 4척 수준으로 극도로 낮습니다.",
-      "summary": "공개 선박추적 기준 통항 활동은 분쟁 전보다 약 90% 낮은 수준으로 해석됩니다. AIS 비활성 선박과 집계범위 한계가 있어 실제 전체 통항량 확정값으로 단정하지 않습니다.",
-      "impact": "호르무즈 위험은 극도로 높은 위험으로 유지합니다.",
+      "date": "2026-08-26",
+      "updatedAt": "2026-08-26T08:40:00+09:00",
+      "title": "호르무즈 공개 commodity vessel 통항 2척까지 감소",
+      "aiBrief": "호르무즈 공개 commodity vessel 통항이 2척 수준으로 줄어 실제 운항 위험은 오히려 악화됐습니다.",
+      "summary": "지역 이슈: 호르무즈 해협 실제 운항입니다. 공개 추적 기준 commodity vessel 통항량은 2척까지 낮아졌습니다. 이 수치는 전체 선박 통항량 확정값이 아니라 공개 추적 가능한 상품 운반선 기준 관측값입니다. 이란·오만의 임시 항행로 논의가 외교적 완화 신호라면, 2척 통항은 현장 운항이 아직 회복되지 않았다는 반대 신호입니다.",
+      "impact": "SEO/geo 핵심: 호르무즈 통항량, commodity vessel, 공개 추적, 중동 해상 리스크. 전체 선박 수로 오표기하지 않습니다.",
       "sourceName": "Kpler public tracking reference",
       "sourceUrl": "forecast.html",
       "tags": [
         "호르무즈",
-        "Kpler",
-        "주말 통항",
-        "90% 낮음"
-      ]
+        "commodity vessel",
+        "2척",
+        "운항 위험"
+      ],
+      "geoFocus": "Strait of Hormuz operational traffic",
+      "seoKeywords": [
+        "호르무즈 통항량",
+        "commodity vessel 2척",
+        "중동 해상 리스크",
+        "정상화 아님"
+      ],
+      "i18n": {
+        "en": {
+          "title": "Hormuz public commodity-vessel tracking falls to 2",
+          "aiBrief": "Public Hormuz commodity-vessel tracking fell to 2 vessels, so actual operations look worse despite diplomatic talks.",
+          "summary": "Geo focus: real vessel movement through the Strait of Hormuz. Publicly trackable commodity-vessel transit has fallen to 2 vessels. This is not a confirmed count of all ships, but it is a clear operating-risk signal.",
+          "impact": "SEO/geo focus: Hormuz traffic, commodity vessel, public tracking, Gulf maritime risk. Do not label it as total traffic or normalization.",
+          "tags": [
+            "Hormuz traffic",
+            "2 commodity vessels",
+            "public tracking",
+            "Gulf maritime risk",
+            "not normalization"
+          ]
+        },
+        "ja": {
+          "title": "ホルムズ公開commodity vessel通航、2隻まで減少",
+          "aiBrief": "公開追跡のcommodity vessel通航が2隻へ減り、外交協議とは別に実運航は悪化しています。",
+          "summary": "地域焦点はホルムズ海峡の実際の船舶移動です。公開追跡可能なcommodity vessel通航は2隻まで低下しました。これは全船舶の確定数ではありませんが、運航リスクの明確な信号です。",
+          "impact": "SEO/geo: ホルムズ通航量、commodity vessel、公開追跡、湾岸海上リスク。総通航量や正常化と表示しません。",
+          "tags": [
+            "ホルムズ通航量",
+            "commodity vessel 2隻",
+            "公開追跡",
+            "湾岸海上リスク",
+            "正常化ではない"
+          ]
+        },
+        "zh": {
+          "title": "霍尔木兹公开commodity vessel通行降至2艘",
+          "aiBrief": "公开跟踪的commodity vessel通行降至2艘，说明外交讨论之外实际通行更差。",
+          "summary": "地域焦点是霍尔木兹海峡实际船舶移动。公开可跟踪的commodity vessel通行降至2艘。这不是全部船舶确认数，但显示明确的运营风险。",
+          "impact": "SEO/geo：霍尔木兹通行量、commodity vessel、公开跟踪、海湾海上风险。不要标成总通行量或正常化。",
+          "tags": [
+            "霍尔木兹通行量",
+            "commodity vessel 2艘",
+            "公开跟踪",
+            "海湾海上风险",
+            "并非正常化"
+          ]
+        },
+        "fr": {
+          "title": "Hormuz: suivi public commodity vessel tombé à 2 navires",
+          "aiBrief": "Le suivi public tombe à 2 navires, signe que l’exploitation réelle ne s’améliore pas.",
+          "summary": "Focus régional: mouvement réel des navires dans le détroit d’Hormuz. Le transit public de commodity vessels est tombé à 2. Ce n’est pas un total confirmé de tous les navires, mais un signal net de risque opérationnel.",
+          "impact": "SEO/geo: trafic Hormuz, commodity vessel, suivi public, risque maritime du Golfe. Ne pas présenter comme trafic total ou normalisation.",
+          "tags": [
+            "trafic Hormuz",
+            "2 commodity vessels",
+            "suivi public",
+            "risque maritime",
+            "pas normalisé"
+          ]
+        },
+        "de": {
+          "title": "Hormuz: öffentliches commodity-vessel Tracking fällt auf 2 Schiffe",
+          "aiBrief": "Das öffentliche Tracking fiel auf 2 Schiffe; der tatsächliche Betrieb verbessert sich nicht.",
+          "summary": "Regionaler Fokus: tatsächliche Schiffsbewegung durch die Straße von Hormuz. Öffentlich verfolgbare commodity vessels fielen auf 2. Das ist kein bestätigter Gesamtverkehr, aber ein klares Betriebsrisikosignal.",
+          "impact": "SEO/geo: Hormuz-Verkehr, commodity vessel, öffentliches Tracking, Golf-Risiko. Nicht als Gesamtverkehr oder Normalisierung darstellen.",
+          "tags": [
+            "Hormuz-Verkehr",
+            "2 commodity vessels",
+            "öffentliches Tracking",
+            "Golf-Risiko",
+            "keine Normalisierung"
+          ]
+        }
+      }
     },
     {
-      "id": "asia-refined-products-imports-down-20260825",
-      "category": "market",
-      "priority": 5,
-      "date": "2026-08-25",
-      "updatedAt": "2026-08-25T08:30:00+09:00",
-      "title": "아시아 정제품 수입 전쟁 전 대비 약 21% 감소",
-      "aiBrief": "디젤·Jet Fuel·가솔린 등 아시아 정제품 공급 부족이 계속되고 있습니다.",
-      "summary": "원유 가격이 일부 조정되더라도 정제품 공급 부족은 Jet Fuel 가격의 빠른 정상화를 제한할 수 있습니다. 이 수치는 정제품 공급 위험 참고값이며 10월 MOPS 평균이 아닙니다.",
-      "impact": "MOPS/Jet Fuel 상승 압력을 유지하는 보조 근거입니다.",
-      "sourceName": "Refined products reference",
-      "sourceUrl": "forecast.html",
-      "tags": [
-        "정제품",
-        "Jet Fuel",
-        "공급 부족",
-        "21% 감소"
-      ]
-    },
-    {
-      "id": "hormuz-crude-flow-estimate-gap-20260825",
+      "id": "hormuz-tanker-hit-20260826",
       "category": "geo",
-      "priority": 6,
-      "date": "2026-08-25",
-      "updatedAt": "2026-08-25T08:30:00+09:00",
-      "title": "호르무즈 원유 수송량, 미국 정부와 Kpler 추정 차이 큼",
-      "aiBrief": "미국 정부 약 15 million bpd, Kpler 약 5 million bpd로 추정 차이가 큽니다.",
-      "summary": "기관별 산정 범위와 추적 방식 차이가 커서 하나의 확정 숫자로 표시하지 않습니다. forecast에서는 공개 통항량과 원유 수송량 추정치를 분리해 해석합니다.",
-      "impact": "호르무즈 데이터를 단일 확정 통항량으로 합치지 않습니다.",
-      "sourceName": "Flow estimate reference",
+      "priority": 5,
+      "date": "2026-08-26",
+      "updatedAt": "2026-08-26T08:40:00+09:00",
+      "title": "호르무즈 입구 유조선 피격…운항 불능",
+      "aiBrief": "호르무즈 입구 인근 유조선 피격은 항행로 협상과 별개로 현장 운항 위험이 남아 있음을 보여줍니다.",
+      "summary": "지역 이슈: 호르무즈 입구와 걸프 해상안보입니다. 유조선 한 척이 정체불명의 발사체에 맞아 운항 불능 상태로 보고됐습니다. 공격 주체는 확인되지 않았으므로 특정 국가나 세력의 공격으로 단정하지 않습니다. 이 사건은 10월 유류할증료 전망에서 호르무즈 실제 운항 위험과 선박 보험·물류 비용 리스크를 높이는 요인입니다.",
+      "impact": "SEO/geo 핵심: 호르무즈 유조선 피격, 공격 주체 미확인, 걸프 해상안보. 책임 소재를 단정하지 않습니다.",
+      "sourceName": "Tanker incident reference",
       "sourceUrl": "forecast.html",
       "tags": [
         "호르무즈",
-        "원유 수송량",
-        "미국 정부",
-        "Kpler"
-      ]
+        "유조선 피격",
+        "공격 주체 미확인",
+        "운항 불능"
+      ],
+      "geoFocus": "Hormuz entrance / Gulf maritime security",
+      "seoKeywords": [
+        "호르무즈 유조선 피격",
+        "공격 주체 미확인",
+        "걸프 해상안보",
+        "선박 리스크"
+      ],
+      "i18n": {
+        "en": {
+          "title": "Tanker hit near Hormuz entrance and disabled",
+          "aiBrief": "A tanker near the Hormuz entrance was disabled, showing that operational risk remains separate from corridor diplomacy.",
+          "summary": "Geo focus: the Hormuz entrance and Gulf maritime security. A tanker was reported disabled after being hit by an unidentified projectile. The attacker has not been confirmed, so the card avoids attributing responsibility to any state or group.",
+          "impact": "SEO/geo focus: Hormuz tanker hit, unidentified attacker, Gulf security, disabled tanker. Attribution is not confirmed.",
+          "tags": [
+            "Hormuz tanker hit",
+            "attacker unconfirmed",
+            "Gulf security",
+            "disabled tanker",
+            "shipping risk"
+          ]
+        },
+        "ja": {
+          "title": "ホルムズ入口でタンカー被弾、運航不能",
+          "aiBrief": "ホルムズ入口付近のタンカーが運航不能となり、回廊外交とは別に運航リスクが残ります。",
+          "summary": "地域焦点はホルムズ入口と湾岸海上安全保障です。タンカーが未確認の発射体を受け運航不能と報告されました。攻撃主体は確認されていないため、特定の国家や組織に責任を帰しません。",
+          "impact": "SEO/geo: ホルムズタンカー被弾、攻撃主体未確認、湾岸安全保障、運航不能。責任主体は未確認です。",
+          "tags": [
+            "ホルムズタンカー被弾",
+            "攻撃主体未確認",
+            "湾岸安全保障",
+            "運航不能",
+            "船舶リスク"
+          ]
+        },
+        "zh": {
+          "title": "霍尔木兹入口油轮遇袭，无法航行",
+          "aiBrief": "霍尔木兹入口附近油轮无法航行，显示通道外交之外运营风险仍在。",
+          "summary": "地域焦点是霍尔木兹入口和海湾海上安全。一艘油轮被报告遭不明发射物击中并无法航行。攻击方尚未确认，因此不归责于任何国家或组织。",
+          "impact": "SEO/geo：霍尔木兹油轮遇袭、攻击方未确认、海湾安全、无法航行。责任归属未确认。",
+          "tags": [
+            "霍尔木兹油轮遇袭",
+            "攻击方未确认",
+            "海湾安全",
+            "无法航行",
+            "船舶风险"
+          ]
+        },
+        "fr": {
+          "title": "Un tanker touché près de l’entrée d’Hormuz, immobilisé",
+          "aiBrief": "Un tanker immobilisé près d’Hormuz montre que le risque opérationnel reste séparé de la diplomatie.",
+          "summary": "Focus régional: entrée d’Hormuz et sécurité maritime du Golfe. Un tanker aurait été immobilisé après l’impact d’un projectile non identifié. L’assaillant n’est pas confirmé; aucune attribution n’est faite.",
+          "impact": "SEO/geo: tanker touché à Hormuz, assaillant non identifié, sécurité du Golfe, immobilisation. Attribution non confirmée.",
+          "tags": [
+            "tanker Hormuz touché",
+            "assaillant non confirmé",
+            "sécurité du Golfe",
+            "immobilisé",
+            "risque maritime"
+          ]
+        },
+        "de": {
+          "title": "Tanker nahe Hormuz-Eingang getroffen und manövrierunfähig",
+          "aiBrief": "Ein manövrierunfähiger Tanker zeigt, dass Betriebsrisiko von Korridor-Diplomatie getrennt bleibt.",
+          "summary": "Regionaler Fokus: Hormuz-Eingang und maritime Sicherheit im Golf. Ein Tanker wurde Berichten zufolge durch ein unbekanntes Projektil manövrierunfähig. Der Angreifer ist nicht bestätigt; keine Schuldzuweisung.",
+          "impact": "SEO/geo: Hormuz-Tanker getroffen, Angreifer unbestätigt, Golf-Sicherheit, manövrierunfähig.",
+          "tags": [
+            "Hormuz-Tanker getroffen",
+            "Angreifer unbestätigt",
+            "Golf-Sicherheit",
+            "manövrierunfähig",
+            "Schifffahrtsrisiko"
+          ]
+        }
+      }
+    },
+    {
+      "id": "hormuz-mine-removal-claims-20260826",
+      "category": "geo",
+      "priority": 6,
+      "date": "2026-08-26",
+      "updatedAt": "2026-08-26T08:40:00+09:00",
+      "title": "기뢰 제거, 미국 주장과 이란·오만 추가 협의 병존",
+      "aiBrief": "기뢰 제거와 관련해 미국 주장과 이란·오만 협의가 동시에 존재해 확정 사실과 주장을 분리해야 합니다.",
+      "summary": "지역 이슈: 호르무즈 국제수역과 임시 항행로 안전입니다. 미국은 국제수역의 기뢰 제거 완료를 주장하지만, 이란과 오만은 임시 항행 통로의 추가 기뢰 제거를 논의하고 있습니다. 두 설명이 완전히 일치하지 않기 때문에 사이트에서는 기뢰 완전 제거를 확정하지 않습니다. 이 카드는 호르무즈 리스크가 단일 뉴스로 단순화되지 않는다는 점을 설명합니다.",
+      "impact": "SEO/geo 핵심: 호르무즈 기뢰 제거, 미국 주장, 이란·오만 협의, 항행 안전. 완전 제거 확정으로 표현하지 않습니다.",
+      "sourceName": "Mine-removal reference",
+      "sourceUrl": "forecast.html",
+      "tags": [
+        "기뢰",
+        "미국 주장",
+        "이란·오만",
+        "확정 아님"
+      ],
+      "geoFocus": "Hormuz international waters / temporary corridor safety",
+      "seoKeywords": [
+        "호르무즈 기뢰",
+        "미국 주장",
+        "이란 오만 협의",
+        "항행 안전"
+      ],
+      "i18n": {
+        "en": {
+          "title": "Mine-removal claims differ between U.S. claims and Iran-Oman talks",
+          "aiBrief": "Mine-removal statements differ, so the site separates U.S. claims from Iran-Oman follow-up talks.",
+          "summary": "Geo focus: Hormuz international waters and temporary corridor safety. The United States claims mines were removed from international waters, while Iran and Oman are still discussing additional mine removal for a temporary navigational corridor.",
+          "impact": "SEO/geo focus: Hormuz mines, U.S. claim, Iran-Oman talks, navigation safety. Do not present full clearance as confirmed.",
+          "tags": [
+            "Hormuz mines",
+            "U.S. claim",
+            "Iran-Oman talks",
+            "navigation safety",
+            "not confirmed"
+          ]
+        },
+        "ja": {
+          "title": "機雷除去、米国主張とイラン・オマーン追加協議が併存",
+          "aiBrief": "機雷除去を巡る発表が異なるため、米国主張とイラン・オマーン協議を分けて表示します。",
+          "summary": "地域焦点はホルムズ国際水域と暫定回廊の安全です。米国は国際水域の機雷除去を主張する一方、イランとオマーンは暫定航行回廊の追加除去を協議しています。",
+          "impact": "SEO/geo: ホルムズ機雷、米国主張、イラン・オマーン協議、航行安全。完全除去確定とは表示しません。",
+          "tags": [
+            "ホルムズ機雷",
+            "米国主張",
+            "イラン・オマーン協議",
+            "航行安全",
+            "未確定"
+          ]
+        },
+        "zh": {
+          "title": "扫雷说法：美国主张与伊朗阿曼协商并存",
+          "aiBrief": "扫雷相关表述不一致，因此网站区分美国主张与伊朗阿曼后续协商。",
+          "summary": "地域焦点是霍尔木兹国际水域和临时通道安全。美国称国际水域水雷已清除，而伊朗和阿曼仍在讨论临时航行通道的进一步扫雷。",
+          "impact": "SEO/geo：霍尔木兹水雷、美国主张、伊朗阿曼协商、航行安全。不要显示为完全清除已确认。",
+          "tags": [
+            "霍尔木兹水雷",
+            "美国主张",
+            "伊朗阿曼协商",
+            "航行安全",
+            "尚未确认"
+          ]
+        },
+        "fr": {
+          "title": "Déminage: écart entre affirmation américaine et discussions Iran-Oman",
+          "aiBrief": "Les déclarations divergent; le site sépare les affirmations américaines des discussions Iran-Oman.",
+          "summary": "Focus régional: eaux internationales d’Hormuz et sécurité du corridor temporaire. Les États-Unis affirment que les mines ont été retirées, tandis que l’Iran et Oman discutent encore d’un déminage additionnel.",
+          "impact": "SEO/geo: mines à Hormuz, affirmation américaine, discussions Iran-Oman, sécurité de navigation. Déminage complet non confirmé.",
+          "tags": [
+            "mines Hormuz",
+            "affirmation américaine",
+            "Iran-Oman",
+            "sécurité navigation",
+            "non confirmé"
+          ]
+        },
+        "de": {
+          "title": "Minenräumung: US-Behauptung und Iran-Oman-Gespräche unterscheiden sich",
+          "aiBrief": "Aussagen zur Minenräumung unterscheiden sich; US-Angaben und Iran-Oman-Gespräche werden getrennt.",
+          "summary": "Regionaler Fokus: internationale Gewässer von Hormuz und Sicherheit des temporären Korridors. Die USA behaupten, Minen seien entfernt; Iran und Oman beraten weiterhin zusätzliche Räumung.",
+          "impact": "SEO/geo: Hormuz-Minen, US-Behauptung, Iran-Oman-Gespräche, Navigationssicherheit. Vollständige Räumung nicht bestätigt.",
+          "tags": [
+            "Hormuz-Minen",
+            "US-Behauptung",
+            "Iran-Oman",
+            "Navigationssicherheit",
+            "nicht bestätigt"
+          ]
+        }
+      }
+    },
+    {
+      "id": "usdkrw-1382-holds-20260826",
+      "category": "fx",
+      "priority": 7,
+      "date": "2026-08-26",
+      "updatedAt": "2026-08-26T08:40:00+09:00",
+      "title": "원/달러 약 1,382.3원…원화 강세 유지",
+      "aiBrief": "원/달러 환율이 1,382.3원 수준을 유지하면서 원화 환산 유류할증료에는 하방 압력이 이어집니다.",
+      "summary": "시장 이슈: 한국 원화와 달러 환율입니다. USD/KRW는 약 1,382.3원으로 1,380원대 초반에 머물고 있습니다. 환율은 유류할증료 단계 자체를 직접 정하는 핵심 변수라기보다, USD 기준으로 산정된 금액을 원화로 환산할 때 영향을 줍니다. 따라서 이 카드는 “단계 하락 확정”이 아니라 “원화 부과액 하락 요인”으로 해석해야 합니다.",
+      "impact": "SEO 핵심: 원달러 환율, USD/KRW 1,382.3, 원화 유류할증료, 환율 하락. 단계 확정 신호로 쓰지 않습니다.",
+      "sourceName": "FX reference",
+      "sourceUrl": "forecast.html",
+      "tags": [
+        "USD/KRW",
+        "1,382.3",
+        "환율",
+        "원화 강세"
+      ],
+      "geoFocus": "South Korea FX market / USD-KRW conversion",
+      "seoKeywords": [
+        "USD/KRW 1,382.3",
+        "원달러 환율",
+        "원화 유류할증료",
+        "환율 하락"
+      ],
+      "i18n": {
+        "en": {
+          "title": "USD/KRW holds near 1,382.3",
+          "aiBrief": "USD/KRW around 1,382.3 keeps downward pressure on KRW-converted surcharge amounts.",
+          "summary": "Market focus: Korean won and U.S. dollar exchange rate. USD/KRW is holding near the low 1,380s at about 1,382.3. FX does not directly set the official surcharge stage, but it affects how USD-based inputs translate into KRW amounts.",
+          "impact": "SEO focus: USD/KRW 1,382.3, Korean won, KRW fuel surcharge, FX downside. Not a confirmed stage signal.",
+          "tags": [
+            "USD/KRW 1,382.3",
+            "Korean won",
+            "KRW fuel surcharge",
+            "FX downside",
+            "exchange rate"
+          ]
+        },
+        "ja": {
+          "title": "USD/KRWは約1,382.3で推移",
+          "aiBrief": "USD/KRW約1,382.3がウォン換算燃油サーチャージ額の下押し圧力を維持しています。",
+          "summary": "市場焦点は韓国ウォンと米ドルの為替です。USD/KRWは1,380台前半、約1,382.3で推移しています。為替は公式段階を直接決めるものではなく、USD基準の入力値をウォン額へ換算する際に影響します。",
+          "impact": "SEO: USD/KRW 1,382.3、韓国ウォン、ウォン建て燃油サーチャージ、為替下押し。段階確定信号ではありません。",
+          "tags": [
+            "USD/KRW 1,382.3",
+            "韓国ウォン",
+            "ウォン建て燃油サーチャージ",
+            "為替下押し",
+            "為替"
+          ]
+        },
+        "zh": {
+          "title": "USD/KRW维持在约1,382.3",
+          "aiBrief": "USD/KRW约1,382.3持续压低韩元换算的燃油附加费金额。",
+          "summary": "市场焦点是韩元与美元汇率。USD/KRW保持在1,380低位附近，约1,382.3。汇率不会直接决定官方档位，但会影响美元基准输入换算成韩元金额。",
+          "impact": "SEO：USD/KRW 1,382.3、韩元、韩元燃油附加费、汇率下行。不是档位确认信号。",
+          "tags": [
+            "USD/KRW 1,382.3",
+            "韩元",
+            "韩元燃油附加费",
+            "汇率下行",
+            "汇率"
+          ]
+        },
+        "fr": {
+          "title": "USD/KRW reste proche de 1 382.3",
+          "aiBrief": "USD/KRW autour de 1 382.3 maintient une pression baissière sur les montants convertis en KRW.",
+          "summary": "Focus marché: won coréen et dollar américain. USD/KRW reste dans le bas des 1 380, autour de 1 382.3. Le FX ne fixe pas directement le niveau officiel, mais influence la conversion des intrants USD en montants KRW.",
+          "impact": "SEO: USD/KRW 1 382.3, won coréen, surtaxe carburant KRW, effet FX baissier.",
+          "tags": [
+            "USD/KRW 1 382.3",
+            "won coréen",
+            "surtaxe KRW",
+            "FX baissier",
+            "change"
+          ]
+        },
+        "de": {
+          "title": "USD/KRW hält nahe 1.382,3",
+          "aiBrief": "USD/KRW um 1.382,3 hält Abwärtsdruck auf KRW-umgerechnete Zuschläge.",
+          "summary": "Marktfokus: koreanischer Won und US-Dollar. USD/KRW liegt im niedrigen 1.380er-Bereich bei etwa 1.382,3. FX legt nicht direkt die offizielle Stufe fest, beeinflusst aber die Umrechnung von USD-Eingaben in KRW-Beträge.",
+          "impact": "SEO: USD/KRW 1.382,3, koreanischer Won, KRW-Treibstoffzuschlag, FX-Abwärtsdruck.",
+          "tags": [
+            "USD/KRW 1.382,3",
+            "koreanischer Won",
+            "KRW-Zuschlag",
+            "FX-Abwärtsdruck",
+            "Wechselkurs"
+          ]
+        }
+      }
     },
     {
       "id": "airpremia-september-surcharge-20260824",

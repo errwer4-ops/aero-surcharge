@@ -659,6 +659,138 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
   }
 })();
 
+/* 2026.08.26 08:40 KST absolute final shared market guard. */
+(function(){
+  var latest = {
+    asOf:'2026.08.26 08:40 KST',
+    lastUpdated:'2026-08-26T08:40:00+09:00',
+    currentAppliedMonth:'2026-08',
+    currentMonthNotice:'2026-09',
+    confirmedNoticeMonth:'2026-09',
+    forecastTargetMonth:'2026-10',
+    septemberInternationalStage:21,
+    septemberInternationalStageChange:7,
+    septemberCalculationPeriod:'2026-07-16~2026-08-15',
+    septemberCalculationJetFuelUsdPerBbl:149.29,
+    septemberCalculationJetFuelCentsPerGallon:355.46,
+    septemberPreviousJetFuelUsdPerBbl:119.06,
+    singaporeJetFuelRecentUsdPerBbl:154.98,
+    singaporeJetFuelRecentDate:'2026-08-20',
+    singaporeJetFuelRecentIsOctoberAverage:false,
+    globalJetFuelWeeklyUsdPerBbl:163.87,
+    globalJetFuelWeeklyChangePct:3.1,
+    globalJetFuelIsSingaporeMops:false,
+    usdKrw:1382.3,
+    usdKrwLabel:'약 1,382.3원',
+    brentUsdPerBbl:88.58,
+    brentUsdBbl:88.58,
+    brentChangePct:-3.9,
+    wtiUsdPerBbl:82.36,
+    wtiUsdBbl:82.36,
+    wtiChangePct:-3.1,
+    wtiAsiaSessionUsdPerBbl:80.99,
+    wtiAsiaSessionChangePct:-1.7,
+    oilStatus:'sharp_short_term_fall',
+    refinedProductsSupplyStatus:'strong_supply_risk',
+    hormuzCommodityVessels:2,
+    hormuzTrafficRisk:'extremely_restricted_high_risk',
+    hormuzDiplomacyStatus:'iran_oman_temporary_corridor_talks',
+    hormuzFreeNavigationNormalized:false,
+    hormuzFullBlockadeConfirmed:false,
+    tankerIncidentStatus:'disabled_attacker_unconfirmed',
+    mineStatus:'us_claims_removed_iran_oman_discussing_additional_clearance',
+    octoberForecastDirection:'centered_flat_cut_probability_expanded',
+    octoberForecastConfidence:'low',
+    marketSummary:'10월 전망: 보합 중심 · 인하 가능성 확대 · 신뢰도 낮음'
+  };
+  window.AERO_MARKET_NUMBERS_20260826 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260826;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-26': window.AERO_MARKET_NUMBERS_20260826});
+  window.RATES = Object.assign({}, window.RATES || {}, {USD:1/1382.3});
+  window.I18N_SHARED = window.I18N_SHARED || {};
+  Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), {
+    marketDataRef:'2026.08.26 08:40 KST 기준',
+    marketOil:'국제유가: Brent 88.58달러/bbl(-3.9%), WTI 82.36달러/bbl(-3.1%)이며 아시아장 WTI는 약 80.99달러입니다. 급격한 단기 하락으로 위험 프리미엄이 축소됐습니다.',
+    marketMops:'항공유: 9월 산정 평균 149.29달러/bbl, 최근 Singapore Jet Fuel 154.98달러/bbl, IATA/Platts 글로벌 주간 Jet Fuel 163.87달러/bbl(+3.1%)은 서로 다른 지표입니다. 10월 Singapore MOPS 평균은 집계 중입니다.',
+    marketFx:'원달러 환율: 약 1,382.3원으로 원화 유류할증료 환산액에 강한 하방 압력이 이어집니다. 단계 자체를 직접 낮추는 변수로 단정하지 않습니다.',
+    marketGeo:'호르무즈: 이란·오만 임시 항행 통로 논의는 완화 신호지만 공개 commodity vessel 통항은 2척이고 신규 유조선 피격으로 실제 운항 위험은 극도로 높습니다.',
+    marketOutlook:'10월 국제선 유류할증료는 보합 중심 · 인하 가능성 확대 · 신뢰도 낮음입니다.'
+  });
+  Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), {
+    marketDataRef:'As of 2026.08.26 08:40 KST',
+    marketOil:'Crude: Brent USD 88.58/bbl (-3.9%) and WTI USD 82.36/bbl (-3.1%), with Asia-session WTI around USD 80.99. The short-term fall reduced risk premium pressure.',
+    marketMops:'Jet Fuel: September calculation average USD 149.29/bbl, recent Singapore Jet Fuel USD 154.98/bbl, and IATA/Platts global weekly Jet Fuel USD 163.87/bbl (+3.1%) are separate metrics. October Singapore MOPS average is still collecting.',
+    marketFx:'USD/KRW: around 1,382.3, a strong downside factor for KRW conversion amounts, not a direct stage-setting variable.',
+    marketGeo:'Hormuz: Iran-Oman temporary corridor talks are a relief signal, but public commodity-vessel transit is 2 and a new tanker incident keeps actual operation risk extreme.',
+    marketOutlook:'October international fuel surcharge view: centered around flat, reduction chance expanded, low confidence.'
+  });
+  ['ja','zh','fr','de'].forEach(function(lang){
+    window.I18N_SHARED[lang] = Object.assign({}, window.I18N_SHARED.en, window.I18N_SHARED[lang] || {});
+  });
+})();
+
+/* 2026.08.26 08:40 KST terminal shared market guard. Keep this last. */
+(function(){
+  var latest = {
+    asOf:'2026.08.26 08:40 KST',
+    currentAppliedMonth:'2026-08',
+    currentMonthNotice:'2026-09',
+    forecastTargetMonth:'2026-10',
+    augustStage:14,
+    septemberStage:21,
+    stageChange:7,
+    septemberJetFuelAvgUsdPerBbl:149.29,
+    septemberJetFuelAvgCentsPerGal:355.46,
+    previousJetFuelAvgUsdPerBbl:119.06,
+    singaporeJetFuelRecentUsdPerBbl:154.98,
+    singaporeJetFuelRecentDate:'2026-08-20',
+    globalJetFuelWeeklyUsdPerBbl:163.87,
+    globalJetFuelWeeklyChangePct:3.1,
+    usdKrw:1382.3,
+    usdKrwLabel:'약 1,382.3원',
+    brentUsdPerBbl:88.58,
+    brentUsdBbl:88.58,
+    brentChangePct:-3.9,
+    wtiUsdPerBbl:82.36,
+    wtiUsdBbl:82.36,
+    wtiChangePct:-3.1,
+    wtiAsiaSessionUsdPerBbl:80.99,
+    wtiAsiaSessionChangePct:-1.7,
+    hormuzCommodityVessels:2,
+    hormuzDiplomacyStatus:'iran_oman_temporary_corridor_talks',
+    hormuzOperationsStatus:'extremely_restricted_not_normalized',
+    tankerIncidentStatus:'disabled_attacker_unconfirmed',
+    mineStatus:'us_claims_removed_iran_oman_discussing_additional_clearance',
+    forecastDirection:'centered_flat_cut_probability_expanded',
+    forecastConfidence:'low',
+    marketSummary:'10월 전망: 보합 중심 · 인하 가능성 확대 · 신뢰도 낮음'
+  };
+  window.AERO_MARKET_NUMBERS_20260826 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260826;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-26': window.AERO_MARKET_NUMBERS_20260826});
+  window.RATES = Object.assign({}, window.RATES || {}, {USD: 1 / 1382.3});
+  window.I18N_SHARED = window.I18N_SHARED || {};
+  Object.assign(window.I18N_SHARED.ko = window.I18N_SHARED.ko || {}, {
+    marketDataRef:'2026.08.26 08:40 KST 기준',
+    marketOil:'국제유가: Brent 88.58달러/bbl(-3.9%), WTI 82.36달러/bbl(-3.1%)이며 아시아장 WTI는 약 80.99달러입니다. 급격한 단기 하락으로 위험 프리미엄이 축소됐습니다.',
+    marketMops:'항공유: 9월 산정 평균 149.29달러/bbl, 최근 Singapore Jet Fuel 154.98달러/bbl, IATA/Platts 글로벌 주간 Jet Fuel 163.87달러/bbl(+3.1%)은 서로 다른 지표입니다. 10월 Singapore MOPS 평균은 집계 중입니다.',
+    marketFx:'원달러 환율: 약 1,382.3원으로 원화 유류할증료 환산액에 강한 하방 압력이 이어집니다. 단계 자체를 직접 낮추는 변수로 단정하지 않습니다.',
+    marketGeo:'호르무즈: 이란·오만 임시 항행 통로 논의는 완화 신호지만 공개 commodity vessel 통항은 2척이고 신규 유조선 피격으로 실제 운항 위험은 극도로 높습니다.',
+    marketOutlook:'10월 국제선 유류할증료는 보합 중심 · 인하 가능성 확대 · 신뢰도 낮음입니다.'
+  });
+  Object.assign(window.I18N_SHARED.en = window.I18N_SHARED.en || {}, {
+    marketDataRef:'As of 2026.08.26 08:40 KST',
+    marketOil:'Crude: Brent USD 88.58/bbl (-3.9%) and WTI USD 82.36/bbl (-3.1%), with Asia-session WTI around USD 80.99. The short-term fall reduced risk premium pressure.',
+    marketMops:'Jet Fuel: September calculation average USD 149.29/bbl, recent Singapore Jet Fuel USD 154.98/bbl, and IATA/Platts global weekly Jet Fuel USD 163.87/bbl (+3.1%) are separate metrics. October Singapore MOPS average is still collecting.',
+    marketFx:'USD/KRW: around 1,382.3, a strong downside factor for KRW conversion amounts, not a direct stage-setting variable.',
+    marketGeo:'Hormuz: Iran-Oman temporary corridor talks are a relief signal, but public commodity-vessel transit is 2 and a new tanker incident keeps actual operation risk extreme.',
+    marketOutlook:'October international fuel surcharge view: centered around flat, reduction chance expanded, low confidence.'
+  });
+  ['ja','zh','fr','de'].forEach(function(lang){
+    window.I18N_SHARED[lang] = Object.assign({}, window.I18N_SHARED.en, window.I18N_SHARED[lang] || {});
+  });
+})();
+
 /* 2026.08.25 08:30 KST final market reset after all older guards. */
 (function(){
   var latest = {
@@ -740,6 +872,56 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
     Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), en);
     ['ja','zh','fr','de'].forEach(function(lang){ Object.assign(window.I18N_SHARED[lang] || (window.I18N_SHARED[lang] = {}), en); });
   }
+})();
+
+/* 2026.08.26 08:40 KST absolute final shared market guard. */
+(function(){
+  var latest = {
+    asOf:'2026.08.26 08:40 KST',
+    lastUpdated:'2026-08-26T08:40:00+09:00',
+    currentAppliedMonth:'2026-08',
+    currentMonthNotice:'2026-09',
+    confirmedNoticeMonth:'2026-09',
+    forecastTargetMonth:'2026-10',
+    septemberInternationalStage:21,
+    septemberInternationalStageChange:7,
+    septemberCalculationPeriod:'2026-07-16~2026-08-15',
+    septemberCalculationJetFuelUsdPerBbl:149.29,
+    septemberCalculationJetFuelCentsPerGallon:355.46,
+    septemberPreviousJetFuelUsdPerBbl:119.06,
+    singaporeJetFuelRecentUsdPerBbl:154.98,
+    singaporeJetFuelRecentDate:'2026-08-20',
+    singaporeJetFuelRecentIsOctoberAverage:false,
+    globalJetFuelWeeklyUsdPerBbl:163.87,
+    globalJetFuelWeeklyChangePct:3.1,
+    globalJetFuelIsSingaporeMops:false,
+    usdKrw:1382.3,
+    usdKrwLabel:'약 1,382.3원',
+    brentUsdPerBbl:88.58,
+    brentUsdBbl:88.58,
+    brentChangePct:-3.9,
+    wtiUsdPerBbl:82.36,
+    wtiUsdBbl:82.36,
+    wtiChangePct:-3.1,
+    wtiAsiaSessionUsdPerBbl:80.99,
+    wtiAsiaSessionChangePct:-1.7,
+    oilStatus:'sharp_short_term_fall',
+    refinedProductsSupplyStatus:'strong_supply_risk',
+    hormuzCommodityVessels:2,
+    hormuzTrafficRisk:'extremely_restricted_high_risk',
+    hormuzDiplomacyStatus:'iran_oman_temporary_corridor_talks',
+    hormuzFreeNavigationNormalized:false,
+    hormuzFullBlockadeConfirmed:false,
+    tankerIncidentStatus:'disabled_attacker_unconfirmed',
+    mineStatus:'us_claims_removed_iran_oman_discussing_additional_clearance',
+    octoberForecastDirection:'centered_flat_cut_probability_expanded',
+    octoberForecastConfidence:'low',
+    marketSummary:'10월 전망: 보합 중심 · 인하 가능성 확대 · 신뢰도 낮음'
+  };
+  window.AERO_MARKET_NUMBERS_20260826 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260826;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-26': window.AERO_MARKET_NUMBERS_20260826});
+  window.RATES = Object.assign({}, window.RATES || {}, {USD:1/1382.3});
 })();
 
 /* 2026.08.24 08:30 KST true terminal guard. Keep this after all older market guards. */
@@ -15003,4 +15185,54 @@ window.initNav = function(opts){
     Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), en);
     ['ja','zh','fr','de'].forEach(function(lang){ Object.assign(window.I18N_SHARED[lang] || (window.I18N_SHARED[lang] = {}), en); });
   }
+})();
+
+/* 2026.08.26 08:40 KST absolute final shared market guard. */
+(function(){
+  var latest = {
+    asOf:'2026.08.26 08:40 KST',
+    lastUpdated:'2026-08-26T08:40:00+09:00',
+    currentAppliedMonth:'2026-08',
+    currentMonthNotice:'2026-09',
+    confirmedNoticeMonth:'2026-09',
+    forecastTargetMonth:'2026-10',
+    septemberInternationalStage:21,
+    septemberInternationalStageChange:7,
+    septemberCalculationPeriod:'2026-07-16~2026-08-15',
+    septemberCalculationJetFuelUsdPerBbl:149.29,
+    septemberCalculationJetFuelCentsPerGallon:355.46,
+    septemberPreviousJetFuelUsdPerBbl:119.06,
+    singaporeJetFuelRecentUsdPerBbl:154.98,
+    singaporeJetFuelRecentDate:'2026-08-20',
+    singaporeJetFuelRecentIsOctoberAverage:false,
+    globalJetFuelWeeklyUsdPerBbl:163.87,
+    globalJetFuelWeeklyChangePct:3.1,
+    globalJetFuelIsSingaporeMops:false,
+    usdKrw:1382.3,
+    usdKrwLabel:'약 1,382.3원',
+    brentUsdPerBbl:88.58,
+    brentUsdBbl:88.58,
+    brentChangePct:-3.9,
+    wtiUsdPerBbl:82.36,
+    wtiUsdBbl:82.36,
+    wtiChangePct:-3.1,
+    wtiAsiaSessionUsdPerBbl:80.99,
+    wtiAsiaSessionChangePct:-1.7,
+    oilStatus:'sharp_short_term_fall',
+    refinedProductsSupplyStatus:'strong_supply_risk',
+    hormuzCommodityVessels:2,
+    hormuzTrafficRisk:'extremely_restricted_high_risk',
+    hormuzDiplomacyStatus:'iran_oman_temporary_corridor_talks',
+    hormuzFreeNavigationNormalized:false,
+    hormuzFullBlockadeConfirmed:false,
+    tankerIncidentStatus:'disabled_attacker_unconfirmed',
+    mineStatus:'us_claims_removed_iran_oman_discussing_additional_clearance',
+    octoberForecastDirection:'centered_flat_cut_probability_expanded',
+    octoberForecastConfidence:'low',
+    marketSummary:'10월 전망: 보합 중심 · 인하 가능성 확대 · 신뢰도 낮음'
+  };
+  window.AERO_MARKET_NUMBERS_20260826 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260826;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-26': window.AERO_MARKET_NUMBERS_20260826});
+  window.RATES = Object.assign({}, window.RATES || {}, {USD:1/1382.3});
 })();

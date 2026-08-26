@@ -2,8 +2,8 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>2026년 9월 공시 및 10월 전망 뉴스 | 8월 25일</title>
-  <meta name="description" content="2026년 8월 25일 기준 9월 국제선 유류할증료 21단계 확정, 10월 전망, 환율 1,382원, Jet Fuel, Brent·WTI, 미국 대이란 제재와 호르무즈 상황을 정리합니다." data-i18n-page-desc="news.metaDesc"/>
+  <title>2026년 9월 공시 및 10월 전망 뉴스 | 8월 26일</title>
+  <meta name="description" content="2026년 8월 26일 기준 9월 21단계 확정과 10월 전망, 글로벌 Jet Fuel 163.87달러, Brent·WTI 급락, 호르무즈 임시 항행로 논의를 정리합니다." data-i18n-page-desc="news.metaDesc"/>
   <meta name="google-adsense-account" content="ca-pub-4285114770383510">
   <meta data-i18n-page-title="news.metaTitle"/>
 
@@ -23,7 +23,7 @@
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "@id": "https://aero-surcharge.com/news.html#faq-20260806",
-  "dateModified": "2026-08-06T07:00:00+09:00",
+  "dateModified": "2026-08-26T08:40:00+09:00",
   "mainEntity": [
     {
       "@type": "Question",
@@ -38,7 +38,7 @@
       "name": "2026년 9월 유류할증료는 확정됐나요?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "아닙니다. 항공유와 물류 위험으로 상승 압력이 남아 있지만 유가와 환율 하락으로 완화 요인도 커졌습니다. 단계와 금액은 아직 공시 전입니다."
+        "text": "네. 2026년 9월 한국발 국제선 유류할증료는 21단계로 확정됐습니다. 현재 뉴스와 전망의 중심은 2026년 10월 유류할증료 방향성입니다."
       }
     },
     {
@@ -68,11 +68,11 @@
   ]
 }
 </script>
-  <meta property="og:title" content="2026년 9월 공시 및 10월 전망 뉴스 | 8월 25일"/>
-  <meta property="og:description" content="2026년 8월 25일 기준 9월 국제선 유류할증료 21단계 확정, 10월 전망, 환율 1,382원, Jet Fuel, Brent·WTI, 미국 대이란 제재와 호르무즈 상황을 정리합니다."/>
+  <meta property="og:title" content="2026년 9월 공시 및 10월 전망 뉴스 | 8월 26일"/>
+  <meta property="og:description" content="2026년 8월 26일 기준 9월 21단계 확정과 10월 전망, 글로벌 Jet Fuel 163.87달러, Brent·WTI 급락, 호르무즈 임시 항행로 논의를 정리합니다."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.com/news.html"/>
-  <meta property="article:modified_time" content="2026-08-25T08:30:00+09:00"/>
+  <meta property="article:modified_time" content="2026-08-26T08:40:00+09:00"/>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="_shared.css"/>
   <link rel="icon" href="/favicon-v2.ico">
@@ -3603,7 +3603,13 @@ FIXED_NEWS = (window.AERO_NEWS_CARDS_20260721 || window.AERO_NEWS_CARDS_20260720
    tagKeys 배열도 동일 방식으로 다국어 렌더.
    NEWS_DATA.items에서 유입되는 KE/OZ2026-03-20 항목은 제거. */
 function renderNews(){
-  var lang = getCurrentLang();
+  function normalizeNewsLang(value){
+    var l = String(value || 'ko').toLowerCase().split('-')[0];
+    if(l === 'cn' || l === 'zh_cn' || l === 'zhcn') return 'zh';
+    if(l === 'jp') return 'ja';
+    return l;
+  }
+  var lang = normalizeNewsLang(getCurrentLang());
 
   /* 텍스트 헬퍼 — 우선순위:
      1) FIXED_NEWS_FALLBACK[현재언어][key]  ← 카드별 최신 문구
@@ -3703,8 +3709,8 @@ function renderNews(){
   var startIdx = (currentPage - 1) * PAGE_SIZE;
   var pageItems = filtered.slice(startIdx, startIdx + PAGE_SIZE);
 
-  var impactPrefix   = window.t('news.impact.prefix');
-  var aiSummaryBadge = window.t('common.aiSummaryBadge');
+  var impactPrefix   = getNewsText('news.impact.prefix') || window.t('news.impact.prefix');
+  var aiSummaryBadge = getNewsText('common.aiSummaryBadge') || window.t('common.aiSummaryBadge');
 
   function esc(v){
     return String(v == null ? '' : v)
@@ -3729,17 +3735,26 @@ function renderNews(){
     if (!text || /undefined|null|NaN|\?\?/.test(text)) return fallback || '';
     return text;
   }
+  function hasKoreanText(v){
+    return /[가-힣]/.test(String(v == null ? '' : v));
+  }
+  function languageSafeText(v){
+    if(lang !== 'ko' && hasKoreanText(v)) return '';
+    return v;
+  }
   function localizedCardValue(it, key){
-    var lang = getCurrentLang();
+    var lang = normalizeNewsLang(getCurrentLang());
     if(it.i18n){
-      if(it.i18n[lang] && it.i18n[lang][key] !== undefined) return it.i18n[lang][key];
-      if(lang !== 'ko' && it.i18n.en && it.i18n.en[key] !== undefined) return it.i18n.en[key];
+      if(it.i18n[lang] && it.i18n[lang][key] !== undefined) return languageSafeText(it.i18n[lang][key]);
+      if(lang !== 'ko' && it.i18n.en && it.i18n.en[key] !== undefined) return languageSafeText(it.i18n.en[key]);
     }
-    return it[key];
+    return languageSafeText(it[key]);
   }
   function localizedCardArray(it, key){
     var val = localizedCardValue(it, key);
-    return Array.isArray(val) ? val : [];
+    if(!Array.isArray(val)) return [];
+    if(lang === 'ko') return val;
+    return val.filter(function(item){ return !hasKoreanText(item); });
   }
   function isExternalSourceUrl(value){
     if(window.AERO_NEWS_POLICY && window.AERO_NEWS_POLICY.isExternalSourceUrl){
@@ -3770,7 +3785,7 @@ function renderNews(){
       .replace(/^燃油附加费影响[:：]\s*/,'')
       .replace(/^Impact sur la surtaxe carburant\s*:\s*/,'')
       .replace(/^Auswirkung auf den Treibstoffzuschlag:\s*/,'');
-    var srcName = cleanDisplayText(it.sourceNameKey ? getNewsText(it.sourceNameKey) : (localizedCardValue(it,'sourceName')||''));
+    var srcName = cleanDisplayText(it.sourceNameKey ? getNewsText(it.sourceNameKey) : (localizedCardValue(it,'sourceName')||''), lang === 'ko' ? '' : 'Source');
     var tagList = it.tagKeys
       ? it.tagKeys.map(function(k){ return getNewsText(k); }).filter(Boolean)
       : localizedCardArray(it,'tags');
@@ -3817,7 +3832,7 @@ function renderNews(){
       +'<div class="news-meta">'
       +'<span class="cat-badge '+catCls+'">'+catIcon+' '+catLabel+'</span>'
       +(it.aiSummary?'<span class="ai-summary-tag">🤖 '+aiSummaryBadge+'</span>':'')
-      +(showNew?'<span class="new-badge">'+(window.t('news.newBadge')||'NEW')+'</span>':'')
+      +(showNew?'<span class="new-badge">'+esc(getNewsText('news.newBadge')||window.t('news.newBadge')||'NEW')+'</span>':'')
       +'<span class="news-date">'+it.date+'</span>'
       +'<div class="relevance-bar">'+dots+'</div>'
       +'</div>'
@@ -3833,19 +3848,28 @@ function renderNews(){
   }
 
   function renderNewsSectionLabel(kind, date, continuation){
-    var isKo = getCurrentLang() === 'ko';
+    var labelLang = normalizeNewsLang(getCurrentLang());
+    var labels = {
+      ko:{latest:'최신 뉴스', previous:'이전 뉴스', updated:function(d){return d + ' 기준 업데이트';}, latestUpdate:'최신 업데이트', continuation:'다음 페이지부터 날짜순 보관', archive:'날짜순 보관'},
+      en:{latest:'Latest News', previous:'Previous News', updated:function(d){return 'Updated as of ' + d;}, latestUpdate:'Latest update', continuation:'Continues on the next page', archive:'Archived by date'},
+      ja:{latest:'最新ニュース', previous:'過去のニュース', updated:function(d){return d + '時点の更新';}, latestUpdate:'最新更新', continuation:'次のページから日付順に保管', archive:'日付順アーカイブ'},
+      zh:{latest:'最新新闻', previous:'过往新闻', updated:function(d){return '截至' + d + '更新';}, latestUpdate:'最新更新', continuation:'下一页起按日期归档', archive:'按日期归档'},
+      fr:{latest:'Dernieres nouvelles', previous:'Anciennes nouvelles', updated:function(d){return 'Mis a jour au ' + d;}, latestUpdate:'Derniere mise a jour', continuation:'Suite archivee par date a la page suivante', archive:'Archive par date'},
+      de:{latest:'Neueste Nachrichten', previous:'Aeltere Nachrichten', updated:function(d){return 'Aktualisiert am ' + d;}, latestUpdate:'Letzte Aktualisierung', continuation:'Fortsetzung nach Datum auf der naechsten Seite', archive:'Nach Datum archiviert'}
+    };
+    var pack = labels[labelLang] || labels.en;
     var title = kind === 'latest'
-      ? (isKo ? '최신 뉴스' : 'Latest News')
-      : (isKo ? '이전 뉴스' : 'Previous News');
+      ? pack.latest
+      : pack.previous;
     var sub = '';
     if(kind === 'latest'){
       sub = date
-        ? (isKo ? date + ' 기준 업데이트' : 'Updated as of ' + date)
-        : (isKo ? '최신 업데이트' : 'Latest update');
+        ? pack.updated(date)
+        : pack.latestUpdate;
     } else if(continuation){
-      sub = isKo ? '다음 페이지부터 날짜순 보관' : 'Continues on the next page';
+      sub = pack.continuation;
     } else {
-      sub = isKo ? '날짜순 보관' : 'Archived by date';
+      sub = pack.archive;
     }
     return '<div class="news-section-label '+kind+'">'
       + '<div class="news-section-title">'+esc(title)+'</div>'
@@ -15710,6 +15734,7 @@ function removeStaleNewsCards(){
   document.querySelectorAll('.news-card').forEach(function(card){
     var txt = card.innerText || '';
     var id = card.id || '';
+    if(/20260826$/.test(id)) return;
     if(/kpler|lseg|Kpler|LSEG|0척|zero Sunday|zero Hormuz|0艘|0隻|zéro passage/.test(id + ' ' + txt)){
       card.remove();
     }
@@ -15800,6 +15825,7 @@ function ensureSeptemberAirlineCards(){
 
 /* 2026.08.20 news terminal update: 7C/ZE/RS notices and October outlook. */
 (function(){
+  return;
   var previousEnsureSeptemberAirlineCards = ensureSeptemberAirlineCards;
   ensureSeptemberAirlineCards = function(){
     previousEnsureSeptemberAirlineCards();
@@ -15879,6 +15905,7 @@ function ensureSeptemberAirlineCards(){
 })();
 
 function applyAugust20NewsTerminalSurface(){
+  return;
   var lang = getCurrentLang();
   var ko = {
     'news.metaTitle':'2026년 9월 국제선 유류할증료 확정 및 10월 전망 뉴스 | 8월 20일 기준',
@@ -16329,6 +16356,7 @@ if (typeof renderNews === 'function' && !renderNews.__aug20I18nWrapped) {
 
 /* 2026.08.21 07:15 KST terminal news surface. */
 (function(){
+  return;
   var twayUrl = 'https://www.twayair.com/app/customerCenter/notice/retrieve/12685';
   var noticeUrls = {
     officialKe:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2609-infuel',
@@ -16528,6 +16556,7 @@ setTimeout(function(){ applySeptemberOfficialNewsUpdate(); applyAugust20NewsTerm
 
 /* 2026.08.24 08:30 KST final news surface: Air Premia September notice and October forecast update. */
 (function(){
+  return;
   var ypUrl = 'https://www.airpremia.com/a/ko/customer/notice/772';
   var twayUrl = 'https://www.twayair.com/app/customerCenter/notice/retrieve/12685';
   var noticeUrls = {
@@ -16695,7 +16724,7 @@ setTimeout(function(){ applySeptemberOfficialNewsUpdate(); applyAugust20NewsTerm
     var staleIds = ['hormuz-kpler-nine-20260821','saudi-bypass-supply-20260821','brent-wti-rise-20260821','usdkrw-rebound-1394-20260821','us-iran-sanctions-20260821','october-forecast-fx-jetfuel-hormuz-20260820','global-jetfuel-15891-20260821'];
     staleIds.forEach(function(id){ var el = document.getElementById(id); if(el) el.remove(); });
     var staleText = /(1,394\.4|93\.78|87\.83|Kpler 추적 commodity vessel|화·수 각각 9척|Saudi bypass|사우디 우회|2026\.08\.21 07:15)/;
-    document.querySelectorAll('.news-card').forEach(function(card){ if(staleText.test(card.innerText || '')) card.remove(); });
+    document.querySelectorAll('.news-card').forEach(function(card){ if(/20260826$/.test(card.id || '')) return; if(staleText.test(card.innerText || '')) card.remove(); });
   }
   function applyAug24KeyVariables(lang){
     var labels = {
@@ -16774,6 +16803,7 @@ setTimeout(function(){ applySeptemberOfficialNewsUpdate(); applyAugust20NewsTerm
 
 /* 2026.08.25 08:30 KST terminal news surface. */
 (function(){
+  return;
   function lang(){ return (window.getCurrentLang ? window.getCurrentLang() : (localStorage.getItem('aero_lang') || document.documentElement.lang || 'ko')).toLowerCase().split('-')[0]; }
   function i18n(en, ko, ja, zh, fr, de){
     return {en:en, ko:ko, ja:ja || en, zh:zh || en, fr:fr || en, de:de || en};
@@ -16894,6 +16924,7 @@ setTimeout(function(){ applySeptemberOfficialNewsUpdate(); applyAugust20NewsTerm
       if(el) el.remove();
     });
     document.querySelectorAll('.news-card').forEach(function(card){
+      if(/20260826$/.test(card.id || '')) return;
       if(/발표 예정|expected.*sanctions|sanctions.*expected|制裁.*予定|预计.*制裁|制裁.*预计|sanctions.*attendues|Sanktionen erwartet|93\.45|86\.14|1,386|2026\.08\.24 08:30|選択的許可|选择性许可|passage sélectif|selektive Passage/.test(card.innerText || '')) card.remove();
     });
   }
@@ -16909,6 +16940,129 @@ setTimeout(function(){ applySeptemberOfficialNewsUpdate(); applyAugust20NewsTerm
   setTimeout(apply25, 600);
   setTimeout(apply25, 1200);
   setTimeout(apply25, 2200);
+})();
+</script>
+<script src="aug26-update.js?v=20260826-news-i18n-fix-2"></script>
+<script>
+(function(){
+  var staleIds = {
+    'us-iran-sanctions-announced-20260825':1,
+    'brent-wti-fall-235-20260825':1,
+    'usdkrw-1382-strong-krw-20260825':1,
+    'hormuz-weekend-public-tracking-20260825':1,
+    'asia-refined-products-imports-down-20260825':1,
+    'hormuz-crude-flow-estimate-gap-20260825':1
+  };
+  var packs = {
+    ko: {
+      note:'※ 유류할증료는 발권일 기준으로 적용됩니다. KE/OZ/LJ/BX/TW/7C/ZE/RS/YP의 9월 공식 공시가 반영되었습니다.',
+      ref:'2026.08.26 08:40 KST 기준 · 9월 공시 확인 · 10월 산정기간 진행 중',
+      cur:'→ 9월 공식 공시는 현재 확정 기준선입니다. 10월은 항공사 공시 전까지 방향성 전망으로만 표시합니다.',
+      filters:['전체','항공사 공지','기관','시장'],
+      latest:'최신 뉴스', previous:'이전 뉴스', archive:'날짜순 아카이브',
+      ai:'AI 요약 콘텐츠입니다. 본 페이지는 공개 정보를 참고용으로 정리하며 공식 정보가 아닙니다. 중요한 결정은 항공사 및 기관 공식 채널에서 확인하세요.',
+      simTitle:'여행 SIM 준비', simDesc:'출국 전 필수 준비', simCta:'최저가 확인 →',
+      keys:['주요 확인 항목','9월 21단계 확정','10월: 보합 중심·인하 가능성 확대','USD/KRW 약 1,382.3','Brent 88.58 / WTI 82.36','호르무즈 commodity vessel 2척']
+    },
+    en: {
+      note:'Fuel surcharges apply by ticketing date. September official notices are confirmed for KE/OZ/LJ/BX/TW/7C/ZE/RS/YP.',
+      ref:'As of 2026.08.26 08:40 KST · September notices confirmed · October calculation period in progress',
+      cur:'→ September official notices are now the confirmed baseline. October remains directional until airline notices are published.',
+      filters:['All','Airline notices','Institutions','Market'],
+      latest:'Latest News', previous:'Previous News', archive:'Archived by date',
+      ai:'AI summary content. This page summarizes public information for reference only. It is not official information. Always confirm important decisions through official airline and institution channels.',
+      simTitle:'Travel SIM prep', simDesc:'Essential before departure', simCta:'Check price →',
+      keys:['Key Check Variables','September Level 21 confirmed','October: flat-centered, reduction chance expanded','USD/KRW around 1,382.3','Brent 88.58 / WTI 82.36','Hormuz commodity vessels: 2']
+    },
+    ja: {
+      note:'燃油サーチャージは発券日基準です。KE/OZ/LJ/BX/TW/7C/ZE/RS/YPの9月公示を反映しました。',
+      ref:'2026.08.26 08:40 KST時点 · 9月公示確認 · 10月算定期間進行中',
+      cur:'→ 9月公示は確定基準線です。10月は航空会社公示まで方向性予測のみです。',
+      filters:['すべて','航空会社公示','機関','市場'],
+      latest:'最新ニュース', previous:'過去のニュース', archive:'日付順アーカイブ',
+      ai:'AI要約コンテンツです。このページは公開情報を参考用に整理したもので、公式情報ではありません。重要な判断は航空会社と機関の公式チャンネルで確認してください。',
+      simTitle:'旅行SIM準備', simDesc:'出国前の必須準備', simCta:'最安値を確認 →',
+      keys:['主要確認項目','9月21段階確定','10月: 横ばい中心・引き下げ可能性拡大','USD/KRW約1,382.3','Brent 88.58 / WTI 82.36','ホルムズcommodity vessel 2隻']
+    },
+    zh: {
+      note:'燃油附加费按出票日适用。已反映KE/OZ/LJ/BX/TW/7C/ZE/RS/YP的9月官方公告。',
+      ref:'截至2026.08.26 08:40 KST · 9月公告确认 · 10月计算期进行中',
+      cur:'→ 9月公告是当前确认基准线。10月在航空公司公告前仅显示方向性预测。',
+      filters:['全部','航空公司公告','机构','市场'],
+      latest:'最新新闻', previous:'过往新闻', archive:'按日期归档',
+      ai:'AI摘要内容。本页仅整理公开信息供参考，并非官方信息。重要决策请通过航空公司和机构官方渠道确认。',
+      simTitle:'旅行SIM准备', simDesc:'出国前必备准备', simCta:'查看最低价 →',
+      keys:['核心确认项目','9月第21档确认','10月：持平为主、下调可能性扩大','USD/KRW约1,382.3','Brent 88.58 / WTI 82.36','霍尔木兹commodity vessel 2艘']
+    },
+    fr: {
+      note:'Les surtaxes carburant s’appliquent selon la date d’émission. Les avis de septembre sont confirmés pour KE/OZ/LJ/BX/TW/7C/ZE/RS/YP.',
+      ref:'Au 2026.08.26 08:40 KST · avis septembre confirmés · période de calcul octobre en cours',
+      cur:'→ Les avis officiels de septembre sont la base confirmée. Octobre reste directionnel avant publication des compagnies.',
+      filters:['Tout','Avis compagnies','Institutions','Marché'],
+      latest:'Dernières nouvelles', previous:'Nouvelles précédentes', archive:'Archive par date',
+      ai:'Contenu résumé par IA. Cette page synthétise des informations publiques à titre indicatif uniquement. Ce n’est pas une information officielle.',
+      simTitle:'Préparer la SIM voyage', simDesc:'Essentiel avant le départ', simCta:'Voir le prix →',
+      keys:['Points clés','Septembre niveau 21 confirmé','Octobre: stable centré, baisse plus probable','USD/KRW env. 1 382.3','Brent 88.58 / WTI 82.36','Hormuz commodity vessels: 2']
+    },
+    de: {
+      note:'Treibstoffzuschläge gelten nach Ausstellungsdatum. September-Hinweise sind für KE/OZ/LJ/BX/TW/7C/ZE/RS/YP bestätigt.',
+      ref:'Stand 2026.08.26 08:40 KST · September-Hinweise bestätigt · Oktober-Berechnungszeitraum läuft',
+      cur:'→ Offizielle September-Hinweise sind die bestätigte Basis. Oktober bleibt bis zu Airline-Hinweisen richtungsbezogen.',
+      filters:['Alle','Airline-Hinweise','Institutionen','Markt'],
+      latest:'Neueste Nachrichten', previous:'Frühere Nachrichten', archive:'Archiv nach Datum',
+      ai:'KI-Zusammenfassung. Diese Seite fasst öffentliche Informationen nur als Referenz zusammen und ist keine offizielle Information.',
+      simTitle:'Reise-SIM vorbereiten', simDesc:'Wichtig vor Abflug', simCta:'Preis prüfen →',
+      keys:['Wichtige Prüfpunkte','September Stufe 21 bestätigt','Oktober: stabil zentriert, Senkungschance größer','USD/KRW ca. 1.382,3','Brent 88.58 / WTI 82.36','Hormuz commodity vessels: 2']
+    }
+  };
+  packs.cn = packs.zh;
+  function lang(){
+    var raw = (window.getCurrentLang ? window.getCurrentLang() : (localStorage.getItem('aero_lang') || document.documentElement.lang || 'ko')).toLowerCase().replace('_','-');
+    if(raw === 'cn' || raw.indexOf('zh') === 0) return 'zh';
+    if(raw === 'jp') return 'ja';
+    return raw.split('-')[0] || 'ko';
+  }
+  function text(key, value){
+    document.querySelectorAll('[data-i18n="'+key+'"]').forEach(function(el){ el.textContent = value; });
+  }
+  function apply(){
+    var p = packs[lang()] || packs.en;
+    text('news.surchargeNote', p.note);
+    text('news.dataRef', p.ref);
+    text('news.curSummary', p.cur);
+    text('fore.aiNotice', p.ai);
+    text('aff.usim.title', p.simTitle);
+    text('aff.usim.desc', p.simDesc);
+    text('aff.cta', p.simCta);
+    var filterKeys = ['news.filterAll','news.filterAirline','news.filterInstitution','news.filterMarket'];
+    filterKeys.forEach(function(key, idx){ text(key, p.filters[idx]); });
+    var latest = document.querySelector('.news-section-title[data-section="latest"]');
+    var previous = document.querySelector('.news-section-title[data-section="previous"]');
+    if(latest) latest.textContent = p.latest;
+    if(previous) previous.textContent = p.previous;
+    document.querySelectorAll('.news-section-meta').forEach(function(el){
+      if(/Archive|아카이브|アーカイブ|归档|Archiv/i.test(el.textContent || '')) el.textContent = p.archive;
+    });
+    var box = document.getElementById('newsKeyVariables');
+    if(box){
+      box.innerHTML = '<div style="font-weight:700;margin-bottom:8px;">'+p.keys[0]+'</div><div>'+p.keys.slice(1).map(function(v){ return '<span style="display:inline-block;margin:3px 6px 3px 0;padding:5px 8px;border:1px solid #BFDBFE;border-radius:999px;background:#EFF6FF;color:#0F172A;">'+v+'</span>'; }).join('')+'</div>';
+    }
+    document.querySelectorAll('.news-card').forEach(function(card){
+      var body = card.innerText || '';
+      if(staleIds[card.id] || /92\.17|85\.01|158\.91|flat to slight upward|보합~소폭 상승|2026\.08\.25 08:30/.test(body)) card.remove();
+    });
+  }
+  if(typeof window.renderNews === 'function' && !window.renderNews.__aug26SafetyWrapped){
+    var prevRender = window.renderNews;
+    window.renderNews = function(){ var out = prevRender.apply(this, arguments); apply(); setTimeout(apply, 0); return out; };
+    window.renderNews.__aug26SafetyWrapped = true;
+  }
+  if(typeof window.applyLanguage === 'function' && !window.applyLanguage.__aug26SafetyWrapped){
+    var prevApply = window.applyLanguage;
+    window.applyLanguage = function(){ var out = prevApply.apply(this, arguments); apply(); setTimeout(apply, 0); return out; };
+    window.applyLanguage.__aug26SafetyWrapped = true;
+  }
+  [0,100,400,900,1600,2600,4200].forEach(function(ms){ setTimeout(apply, ms); });
 })();
 </script>
 </body></html>

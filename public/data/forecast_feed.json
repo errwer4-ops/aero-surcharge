@@ -1,7 +1,7 @@
 {
   "meta": {
-    "generatedAt": "2026-08-25T00:19:23.265Z",
-    "modelVersion": "manual-october-direction-forecast-20260825",
+    "generatedAt": "2026-08-26T01:19:14.484Z",
+    "modelVersion": "manual-october-direction-forecast-20260826",
     "basePeriod": "2026.09",
     "forecastTargetPeriod": "2026.10",
     "sourceAirlines": 9,
@@ -10,14 +10,14 @@
       "wtiUSD": 78.3,
       "jetFuelSpread": 14.2,
       "usdKrw": 1383,
-      "usdJpy": 159.12,
+      "usdJpy": 159.25,
       "geopoliticalRiskScore": 0.35,
       "baselineBrentUSD": 75,
       "marketDataSource": "live",
-      "marketFetchedAt": "2026-08-25T00:18:20.503Z"
+      "marketFetchedAt": "2026-08-26T01:18:11.106Z"
     },
-    "disclaimer": "2026년 10월 유류할증료 단계·금액은 아직 공시 전입니다. 10월 산정기간 초반이므로 환율, 9월 산정 평균, 최근 Singapore Jet Fuel, 글로벌 항공유, 국제유가, 미국 제재와 호르무즈 위험을 구분해 방향성만 추적합니다.",
-    "lastUpdated": "2026-08-25T08:30:00+09:00",
+    "disclaimer": "2026년 10월 유류할증료 단계·금액은 아직 공시 전입니다. 10월 산정기간 초반이므로 환율, 9월 산정 평균, 최근 Singapore Jet Fuel, 글로벌 Jet Fuel, 국제유가, 호르무즈 운항과 외교 신호를 구분해 방향성만 추적합니다.",
+    "lastUpdated": "2026-08-26T08:40:00+09:00",
     "currentMonthNotice": "2026-09",
     "forecastTargetMonth": "2026-10"
   },
@@ -34,65 +34,70 @@
       "predictedMax": null,
       "officialStage": null,
       "officialAmounts": null,
-      "direction": "flat_to_slight_upward_pressure_low_confidence",
+      "direction": "centered_flat_cut_probability_expanded_low_confidence",
       "confidence": "low",
       "volatility": "high",
       "drivers": [
         {
           "factor": "2026년 9월 한국 출발 국제선 유류할증료 21단계 확정",
           "impact": "confirmed_baseline_for_october",
-          "weight": 0.18
+          "weight": 0.16
         },
         {
-          "factor": "USD/KRW 약 1,382원, 원화 환산액 강한 하락 요인",
+          "factor": "USD/KRW 약 1,382.3원, 원화 환산액 강한 하락 요인",
           "impact": "krw_conversion_downside",
-          "weight": -0.28
+          "weight": -0.3
         },
         {
-          "factor": "9월 산정 평균 149.29달러/bbl, 10월 누적 Singapore 평균 집계 중",
+          "factor": "9월 산정 평균 149.29달러/bbl, 10월 누적 Singapore MOPS 평균 집계 중",
           "impact": "baseline_and_collection",
-          "weight": 0.18
-        },
-        {
-          "factor": "최근 Singapore Jet Fuel 약 154.98달러/bbl, 10월 평균 아님",
-          "impact": "jetfuel_upside_reference_not_average",
-          "weight": 0.2
-        },
-        {
-          "factor": "글로벌 Jet Fuel 주간 평균 158.91달러/bbl, Singapore MOPS 아님",
-          "impact": "global_jetfuel_upside_reference",
           "weight": 0.12
         },
         {
-          "factor": "국제유가 Brent 92.17달러/bbl, WTI 85.01달러/bbl, 각각 약 2.35% 하락",
-          "impact": "high_level_short_term_fall",
-          "weight": -0.08
-        },
-        {
-          "factor": "미국 대이란 추가 제재 발표 완료, 최강 조치 일부 즉시 전면 적용 보류",
-          "impact": "sanctions_announced_but_market_shock_partly_eased",
-          "weight": 0.04
-        },
-        {
-          "factor": "호르무즈 공개 추적 금 16척·토 13척·일 4척, 정상 대비 약 90% 낮은 활동",
-          "impact": "extreme_hormuz_risk",
+          "factor": "최근 Singapore Jet Fuel 약 154.98달러/bbl, 10월 평균 아님",
+          "impact": "singapore_jetfuel_reference_upside",
           "weight": 0.14
         },
         {
-          "factor": "아시아 정제품 수입 전쟁 전 대비 약 21% 감소 추정",
-          "impact": "refined_product_supply_risk",
+          "factor": "글로벌 Jet Fuel 주간 평균 163.87달러/bbl, 전주 대비 +3.1%, Singapore MOPS 아님",
+          "impact": "global_jetfuel_strong_upside_reference",
+          "weight": 0.18
+        },
+        {
+          "factor": "국제유가 Brent 88.58달러/bbl(-3.9%), WTI 82.36달러/bbl(-3.1%), 아시아장 WTI 약 80.99달러",
+          "impact": "sharp_crude_downside",
+          "weight": -0.22
+        },
+        {
+          "factor": "이란·오만 호르무즈 임시 항행 통로 논의 및 기뢰 제거 협의",
+          "impact": "diplomatic_relief_signal",
+          "weight": -0.1
+        },
+        {
+          "factor": "호르무즈 공개 commodity vessel 통항 2척, 정상화 아님",
+          "impact": "extreme_actual_operation_risk",
+          "weight": 0.16
+        },
+        {
+          "factor": "호르무즈 입구 유조선 피격·운항 불능, 공격 주체 미확인",
+          "impact": "shipping_attack_risk",
           "weight": 0.1
+        },
+        {
+          "factor": "미·이란 직접 협상 교착, 오만 등 중재 움직임 개선",
+          "impact": "mixed_diplomacy",
+          "weight": 0.02
         }
       ],
-      "disclaimer": "이 항목은 방향성 예측입니다. 10월 단계·금액·확률을 확정값으로 표시하지 않습니다. 149.29달러는 9월 산정 평균, 154.98달러는 최근 Singapore Jet Fuel 참고값, 158.91달러는 글로벌 주간 항공유 참고값입니다.",
-      "summary": "10월 유류할증료는 공시 전이지만 방향성 예측은 계속합니다. USD/KRW 약 1,382원과 Brent 92.17달러, WTI 85.01달러의 단기 하락은 완화 요인입니다. 그러나 Singapore Jet Fuel과 글로벌 항공유가 9월 기준선보다 높고, 아시아 정제품 공급 부족과 호르무즈의 극도로 제한적인 통항이 이어져 현재 판단은 보합~소폭 상승 압력, 신뢰도 낮음입니다."
+      "disclaimer": "이 항목은 방향성 예측입니다. 10월 단계·금액·확률을 확정값으로 표시하지 않습니다. 149.29달러는 9월 산정 평균, 154.98달러는 최근 Singapore Jet Fuel 참고값, 163.87달러는 글로벌 주간 Jet Fuel 참고값입니다.",
+      "summary": "10월 유류할증료는 공시 전 방향성 예측입니다. USD/KRW 약 1,382.3원과 Brent 88.58달러, WTI 82.36달러의 급락은 인하 가능성을 키우는 요인입니다. 그러나 글로벌 Jet Fuel 163.87달러, 정제품 공급 부족, 호르무즈 공개 commodity vessel 2척, 신규 유조선 피격이 남아 있어 현재 판단은 보합 중심 · 인하 가능성 확대 · 신뢰도 낮음입니다."
     }
   ],
   "latest": {
-    "asOf": "2026.08.25 08:30 KST",
+    "asOf": "2026.08.26 08:40 KST",
     "currentMonthNotice": "2026-09",
     "forecastTargetMonth": "2026-10",
-    "summary": "9월 국제선 공시는 KE·OZ·LJ·BX·TW·7C·ZE·RS·YP 기준 반영됐고, 10월 국제선은 공시 전 방향성 예측입니다. 핵심 변수는 USD/KRW 약 1,382원, Singapore Jet Fuel 154.98달러, 글로벌 항공유 158.91달러, Brent 92.17달러, WTI 85.01달러, 미국 대이란 제재 발표 완료, 호르무즈 극도로 제한된 통항입니다.",
-    "status": "october_flat_to_slight_upward_low_confidence"
+    "summary": "9월 국제선 공시는 21단계 확정 기준선이고, 10월 국제선은 공시 전 방향성 예측입니다. 핵심 변수는 USD/KRW 약 1,382.3원, 9월 기준선 149.29달러, Singapore Jet Fuel 154.98달러, 글로벌 Jet Fuel 163.87달러, Brent 88.58달러, WTI 82.36달러 및 아시아장 80.99달러, 호르무즈 임시 항행로 논의, 공개 commodity vessel 2척, 신규 유조선 피격입니다.",
+    "status": "october_centered_flat_cut_probability_expanded_low_confidence"
   }
 }
