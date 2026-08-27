@@ -13529,6 +13529,7 @@ function renderForecastPage() {
 
 /* 2026.08.21 07:15 KST terminal forecast surface. */
 (function(){
+  return; // Disabled: older forecast renderer conflicts with aug27-update.js.
   function pack(lang){
     var en = {
       'fore.metaTitle':'October 2026 International Fuel Surcharge Outlook',
@@ -13778,6 +13779,7 @@ function renderForecastPage() {
 
 /* 2026.08.21 forecast correction: core-only indicators and full language packs. */
 (function(){
+  return; // Disabled: older forecast renderer conflicts with aug27-update.js.
   function corePack(lang){
     var en = {
       'fore.metaTitle':'October 2026 International Fuel Surcharge Outlook',
@@ -14121,6 +14123,7 @@ function renderForecastPage() {
 
 /* 2026.08.21 forecast correction: start October direction forecast with FX, MOPS and oil. */
 (function(){
+  return; // Disabled: older forecast renderer conflicts with aug27-update.js.
   function outlookPack(lang){
     var en = {
       'fore.metaTitle':'October 2026 International Fuel Surcharge Outlook',
@@ -14470,6 +14473,7 @@ renderForecastPage();
 
 /* 2026.08.24 lean forecast surface: keep only the original forecast indicators. */
 (function(){
+  return; // Disabled: older forecast renderer conflicts with aug27-update.js.
   function leanPack(lang){
     var en = {
       title:'October 2026 International Fuel Surcharge Outlook',
@@ -14624,6 +14628,7 @@ renderForecastPage();
 
 /* 2026.08.24 08:30 KST final forecast surface: FX relief, jet-fuel pressure, oil pullback and selective Hormuz passage. */
 (function(){
+  return; // Disabled: older forecast renderer conflicts with aug27-update.js.
   function pack(lang){
     var en = {
       'fore.metaTitle':'October 2026 International Fuel Surcharge Outlook | FX, MOPS and Hormuz',
@@ -14995,6 +15000,7 @@ renderForecastPage();
 
 /* 2026.08.25 08:30 KST terminal forecast surface. */
 (function(){
+  return; // Disabled: older forecast renderer conflicts with aug27-update.js.
   function curLang(){ return (window.getCurrentLang ? window.getCurrentLang() : (localStorage.getItem('aero_lang') || document.documentElement.lang || 'ko')).toLowerCase().split('-')[0]; }
   function pack(l){
     var en = {
@@ -15121,7 +15127,8 @@ renderForecastPage();
   setTimeout(function(){ clearInterval(aug25ForecastTimer); }, 4200);
 })();
 </script>
-<script src="aug26-update.js"></script>
+<!-- aug26-update.js disabled on forecast: it competes with aug27-update.js and causes alternating forecast screens. -->
+<script src="aug27-update.js?v=20260827-october-forecast"></script>
 </body>
 </html>
 

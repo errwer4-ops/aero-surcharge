@@ -3979,10 +3979,19 @@ function renderPagination(totalPages, totalItems){
   var box = document.getElementById('pagination');
   if(!box) return;
   if(totalPages <= 1){ box.innerHTML=''; return; }
+  var lang = normalizeNewsLang(getCurrentLang());
+  var pagerLabels = {
+    ko:{prev:'‹ 이전', next:'다음 ›'},
+    en:{prev:'‹ Previous', next:'Next ›'},
+    ja:{prev:'‹ 前へ', next:'次へ ›'},
+    zh:{prev:'‹ 上一页', next:'下一页 ›'},
+    fr:{prev:'‹ Précédent', next:'Suivant ›'},
+    de:{prev:'‹ Zurück', next:'Weiter ›'}
+  }[lang] || {prev:'‹ Previous', next:'Next ›'};
 
   var html = '';
   /* 이전 버튼 */
-  html += '<button class="pg-btn" onclick="goPage('+(currentPage-1)+')" '+(currentPage<=1?'disabled':'')+'>‹ 이전</button>';
+  html += '<button class="pg-btn" onclick="goPage('+(currentPage-1)+')" '+(currentPage<=1?'disabled':'')+'>'+pagerLabels.prev+'</button>';
 
   /* 페이지 번호 (최대 7개 표시, 앞뒤 생략) */
   var SHOW = 5;
@@ -4002,7 +4011,7 @@ function renderPagination(totalPages, totalItems){
   if(end < totalPages)  { html += '<button class="pg-btn" onclick="goPage('+totalPages+')">'+totalPages+'</button>'; }
 
   /* 다음 버튼 */
-  html += '<button class="pg-btn" onclick="goPage('+(currentPage+1)+')" '+(currentPage>=totalPages?'disabled':'')+'>다음 ›</button>';
+  html += '<button class="pg-btn" onclick="goPage('+(currentPage+1)+')" '+(currentPage>=totalPages?'disabled':'')+'>'+pagerLabels.next+'</button>';
 
   box.innerHTML = html;
 }
@@ -15173,6 +15182,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
 
 /* 2026.08.18 final news override: latest cards and full locale packs. */
 (function(){
+  return; // Disabled: older news renderer conflicts with aug27-update.js.
   var updatedIso = '2026-08-18T07:00:00+09:00';
   function local(title, aiBrief, summary, impact, tags){
     return {title:title, aiBrief:aiBrief, summary:summary, impact:impact, tags:tags || []};
@@ -15361,6 +15371,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
 
 /* 2026.08.18 news non-English section completion guard. */
 (function(){
+  return; // Disabled: older news renderer conflicts with aug27-update.js.
   var packs = {
     ja: {
       'news.summary.li1':'8月の韓国発国際線燃油サーチャージは公式14段階で適用中です。',
@@ -15476,6 +15487,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
 
 /* 2026.08.19 07:00 KST terminal news override. */
 (function(){
+  return; // Disabled: older news renderer conflicts with aug27-update.js.
   var updatedIso = '2026-08-19T07:00:00+09:00';
   function local(title, aiBrief, summary, impact, tags){
     return { title:title, aiBrief:aiBrief, summary:summary, impact:impact, tags:tags };
@@ -15637,6 +15649,7 @@ Object.assign(window.PAGE_I18N_OVERRIDE.en, {
 
 /* 2026.08.19 news non-English completion guard. */
 (function(){
+  return; // Disabled: older news renderer conflicts with aug27-update.js.
   var packs = {
     ja: {
       'news.summary.li1':'大韓航空は9月国際線の最低区間が48,000ウォンで、8月より最低12,800ウォン高くなります。',
@@ -16942,9 +16955,10 @@ setTimeout(function(){ applySeptemberOfficialNewsUpdate(); applyAugust20NewsTerm
   setTimeout(apply25, 2200);
 })();
 </script>
-<script src="aug26-update.js?v=20260826-news-i18n-fix-2"></script>
+<!-- aug26-update.js disabled on news: it competes with aug27-update.js and can overwrite current news content. -->
 <script>
 (function(){
+  return; // Disabled: older news renderer conflicts with aug27-update.js.
   var staleIds = {
     'us-iran-sanctions-announced-20260825':1,
     'brent-wti-fall-235-20260825':1,
@@ -17065,5 +17079,6 @@ setTimeout(function(){ applySeptemberOfficialNewsUpdate(); applyAugust20NewsTerm
   [0,100,400,900,1600,2600,4200].forEach(function(ms){ setTimeout(apply, ms); });
 })();
 </script>
+<script src="aug27-update.js?v=20260827-october-forecast"></script>
 </body></html>
 

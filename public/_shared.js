@@ -1,4 +1,4 @@
-﻿/* ── 항공 유류할증료 — Shared JS v3 ── */
+/* ── 항공 유류할증료 — Shared JS v3 ── */
 
 /* ─────────────────────────────────────────────
    환율 / 통화 포매팅
@@ -922,6 +922,88 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
   window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260826;
   window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-26': window.AERO_MARKET_NUMBERS_20260826});
   window.RATES = Object.assign({}, window.RATES || {}, {USD:1/1382.3});
+})();
+
+/* 2026.08.27 09:45 KST final shared market guard. Keep this last. */
+(function(){
+  var latest = {
+    asOf:'2026.08.27 09:45 KST',
+    lastUpdated:'2026-08-27T09:45:00+09:00',
+    currentAppliedMonth:'2026-08',
+    currentMonthNotice:'2026-09',
+    confirmedNoticeMonth:'2026-09',
+    forecastTargetMonth:'2026-10',
+    septemberInternationalStage:21,
+    septemberInternationalStageChange:7,
+    septemberCalculationPeriod:'2026-07-16~2026-08-15',
+    septemberCalculationJetFuelUsdPerBbl:149.29,
+    septemberCalculationJetFuelCentsPerGallon:355.46,
+    septemberPreviousJetFuelUsdPerBbl:119.06,
+    septemberJetFuelChangePct:25.4,
+    octoberCalculationFrom:'2026-08-16',
+    octoberCalculationTo:'2026-09-15',
+    octoberCalculationJetFuelAverageStatus:'collecting',
+    octoberCalculationUsdKrwAverageStatus:'collecting',
+    singaporeJetFuelRecentUsdPerBbl:154.98,
+    singaporeJetFuelRecentDate:'2026-08-20',
+    singaporeJetFuelRecentIsOctoberAverage:false,
+    globalJetFuelWeeklyUsdPerBbl:163.87,
+    globalJetFuelWeeklyChangePct:3.1,
+    globalJetFuelIsSingaporeMops:false,
+    usdKrw:1380.15,
+    usdKrwLabel:'약 1,380원',
+    usdKrwIntradayLow:1378.63,
+    usdKrwIntradayHigh:1386.17,
+    jpyKrw:8.69,
+    jpy100Krw:869,
+    brentUsdPerBbl:87.84,
+    brentUsdBbl:87.84,
+    brentChangePct:-0.84,
+    wtiUsdPerBbl:82.23,
+    wtiUsdBbl:82.23,
+    wtiChangePct:-0.16,
+    oilStatus:'short_term_fall',
+    refinedProductsSupplyStatus:'strong_supply_risk',
+    hormuzCommodityVessels:5,
+    hormuzCommodityVesselsScope:'kpler_public_tracking_preliminary',
+    hormuzRecent10DayAverageVessels:15,
+    hormuzCrudeFlowEstimateKplerMbpd:5,
+    hormuzTrafficRisk:'extremely_restricted_high_risk',
+    hormuzDiplomacyStatus:'iran_oman_talks_progress_final_terms_unconfirmed',
+    hormuzFreeNavigationNormalized:false,
+    hormuzFullBlockadeConfirmed:false,
+    iranVesselBlacklistCount:45,
+    iranVesselBlacklistRisk:'freight_insurance_sts_upside_risk',
+    qatarMediationStatus:'expanded_mediation_not_direct_talks',
+    usIranDirectTalksStatus:'stalled_not_confirmed_restarted',
+    octoberForecastDirection:'centered_flat_cut_probability_expanded_near_cut_boundary',
+    octoberForecastConfidence:'low',
+    marketSummary:'10월 전망: 보합 중심 · 인하 가능성 확대 · 신뢰도 낮음'
+  };
+  window.AERO_MARKET_NUMBERS_20260827 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260827;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-27': window.AERO_MARKET_NUMBERS_20260827});
+  window.RATES = Object.assign({}, window.RATES || {}, {USD:1/1380.15, JPY:8.69/1380.15});
+  window.I18N_SHARED = window.I18N_SHARED || {};
+  Object.assign(window.I18N_SHARED.ko || (window.I18N_SHARED.ko = {}), {
+    marketDataRef:'2026.08.27 09:45 KST 기준',
+    marketOil:'국제유가: Brent 87.84달러/bbl(-0.84%), WTI 82.23달러/bbl(-0.16%)로 단기 하락이 이어졌습니다. 다만 원유 하락이 Jet Fuel 가격에 아직 충분히 전이됐다고 보지 않습니다.',
+    marketMops:'항공유: 9월 산정 평균 149.29달러/bbl, 최근 Singapore Jet Fuel 154.98달러/bbl, IATA/S&P Global Platts 글로벌 주간 Jet Fuel 163.87달러/bbl(+3.1%)은 서로 다른 지표입니다. 10월 Singapore MOPS 평균은 집계 중입니다.',
+    marketFx:'원달러 환율: 약 1,380원으로 원화 유류할증료 환산액에 강한 하방 압력이 이어집니다. 단계 자체를 직접 낮추는 변수로 단정하지 않습니다.',
+    marketGeo:'호르무즈: 이란·오만 협상과 카타르 중재는 완화 신호지만 Kpler 공개 추적 commodity vessel 통항은 5척 수준이고, 이란 선박 45척 블랙리스트로 운임·보험 위험이 커졌습니다.',
+    marketOutlook:'10월 국제선 유류할증료는 보합 중심 · 인하 가능성 확대 · 신뢰도 낮음입니다. 내부적으로는 보합과 인하 경계선에 조금 더 가까워졌지만 인하 주도는 아닙니다.'
+  });
+  Object.assign(window.I18N_SHARED.en || (window.I18N_SHARED.en = {}), {
+    marketDataRef:'As of 2026.08.27 09:45 KST',
+    marketOil:'Crude: Brent USD 87.84/bbl (-0.84%) and WTI USD 82.23/bbl (-0.16%) continue the short-term fall. The crude decline has not fully passed through to Jet Fuel.',
+    marketMops:'Jet Fuel: September calculation average USD 149.29/bbl, recent Singapore Jet Fuel USD 154.98/bbl, and IATA/S&P Global Platts global weekly Jet Fuel USD 163.87/bbl (+3.1%) are separate metrics. October Singapore MOPS average is still collecting.',
+    marketFx:'USD/KRW: around 1,380, a strong downside factor for KRW conversion amounts, not a direct stage-setting variable.',
+    marketGeo:'Hormuz: Iran-Oman talks and Qatar mediation are relief signals, but Kpler public commodity-vessel transit is near 5 and Iran’s 45-vessel blacklist raises freight and insurance risk.',
+    marketOutlook:'October international fuel surcharge view: centered around flat, reduction chance expanded, low confidence. Internally it is closer to the flat-cut boundary, but not a cut-dominant view.'
+  });
+  ['ja','zh','fr','de'].forEach(function(lang){
+    window.I18N_SHARED[lang] = Object.assign({}, window.I18N_SHARED.en, window.I18N_SHARED[lang] || {});
+  });
 })();
 
 /* 2026.08.24 08:30 KST true terminal guard. Keep this after all older market guards. */
@@ -10989,7 +11071,7 @@ window.AERO_NEWS_CARDS_20260629 = [
     badge:'NEW',
     aiSummary:true,
     relevanceScore:1,
-    title:'2026년 8월 유류할증료 전망: 보합 또는 소폭 인하 우세, 변수는 환율과 호르무즈',
+    title:'2026년 8월 유류할증료 전망: 보합 또는 소폭 인하 주도, 변수는 환율과 호르무즈',
     aiBrief:'2026년 8월 유류할증료는 보합 또는 소폭 인하 가능성이 우세하지만 큰 폭 인하는 단정하기 어렵습니다.',
     summary:'2026.06.29 기준 2026년 8월 국제선 유류할증료는 보합 또는 소폭 인하 가능성이 우세합니다. MOPS와 IATA 항공유 하락은 하방 요인이지만, 원달러 환율 약 1,535원대와 호르무즈 해협 리스크는 인하 폭을 제한하는 변수입니다.\n\n8월 공시는 아직 발표 전이므로 확정 표현 대신 전망, 가능성, 현재 기준 표현으로 구분해야 합니다.',
     impact:'8월 전망 페이지와 뉴스 요약이 같은 방향으로 정리됩니다.',
@@ -11867,7 +11949,7 @@ Object.assign(window.I18N_SHARED.de,{marketDataRef:'Stand 2026.06.16 09:30 KST',
       priority:1,
       category:'market',
       topic:'market',
-      title:'2026.07.06 기준: OPEC+ 증산·호르무즈 부분 회복, 8월 유류할증료는 보합·소폭 인하 우세',
+      title:'2026.07.06 기준: OPEC+ 증산·호르무즈 부분 회복, 8월 유류할증료는 보합·소폭 인하 주도',
       aiBrief:'Brent 약 72달러, WTI 약 68~69달러, USD/KRW 약 1,529~1,530원대, MOPS 338.3 cents/gal 기준으로 8월 유류할증료는 보합 또는 소폭 인하 가능성이 우세합니다.',
       summary:'OPEC+의 8월 18.8만 배럴/일 추가 증산과 호르무즈 해협 부분 회복은 유가 안정 요인입니다. 다만 8월 공식 공시는 아직 발표 전이며, 환율과 선박 안전·보험료 리스크 때문에 큰 폭 인하는 단정하기 어렵습니다.',
       impact:'7월 유류할증료 인하 적용은 사실 데이터입니다. 8월은 MOPS·IATA 항공유 하락이 하방 요인이지만 환율과 호르무즈 리스크를 함께 봐야 합니다.',
