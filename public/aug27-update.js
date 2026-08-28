@@ -122,6 +122,8 @@
   Object.assign(newsSurface.de, {marketTitle:'Oktober-Prognose Marktüberblick', brent:'Öl: Brent 87.84 USD/bbl (-0.84%) und WTI 82.23 USD/bbl (-0.16%) fallen kurzfristig.', mops:'Jet Fuel: September-Basis 149.29 USD/bbl, aktuelles Singapore Jet Fuel 154.98 USD/bbl und globales Jet Fuel 163.87 USD/bbl (+3.1%) getrennt halten. 163.87 ist nicht Singapore MOPS.', fx:'FX: USD/KRW nahe 1.380,15 ist ein starker Abwärtsfaktor für KRW-Beträge, setzt aber nicht direkt die Stufe.', geo:'Hormuz: Kpler public commodity-vessel-Verkehr liegt nahe 5. Iran-Oman und Katar sind Entspannungssignale, aber die 45-Schiffe-Liste erhöht Transport- und Versicherungsrisiken.', marketSummary:'→ Oktober-Ausblick: stabil zentriert · größere Senkungschance · geringe Sicherheit. Keine senkungsdominante Aussage und keine bestätigte Stufe.', fxDominance:'Kennzahlen: 2026.08.27 09:45 KST · USD/KRW 1.380 · September-Basis 149.29 · Singapore Jet Fuel 154.98 · globales Jet Fuel 163.87 · Brent 87.84 · WTI 82.23 · Hormuz 5 · Liste 45', decisionTitle:'Fazit: September ist die bestätigte Basis; Oktober ist das Prognoseziel', decisionLine1:'→ Offizielle September-Hinweise sind auf Stufe 21 bestätigt.', decisionLine2:'→ Oktober läuft im Berechnungszeitraum; durchschnittlichen Singapore MOPS und durchschnittlichen USD/KRW getrennt verfolgen.', forecastTitle:'Oktober-2026 Treibstoffzuschlag Ausblick', forecastDesc:'Oktober-Singapore-Jet-Fuel-Durchschnitt und Durchschnitts-FX verfolgen und aktuelle Referenzen von bestätigtem MOPS trennen.', forecastBtn:'Oktober-Ausblick ansehen →'});
 
   function applyForecast(){
+    if(window.AERO_MARKET_NUMBERS_20260828) return;
+    if(!/\/forecast(?:\.html)?(?:$|[?#])/.test(location.pathname + location.search)) return;
     var p = Object.assign({}, forecast[normLang()] || forecast.en);
     p.sub = p.sub
       .replace(/\s*·\s*(호르무즈 운항|외교|운송위험)\s*[↑↓↘]+/g, '')
@@ -231,7 +233,7 @@
     return String(value == null ? '' : value).replace(/\n/g, '<br>');
   }
   function localizeRenderedNewsCards(){
-    if(!/\/news\.html(?:$|[?#])/.test(location.pathname + location.search)) return;
+    if(!/\/news(?:\.html)?(?:$|[?#])/.test(location.pathname + location.search)) return;
     var lang = normLang();
     var list = Array.isArray(window.FIXED_NEWS) ? window.FIXED_NEWS : (typeof FIXED_NEWS !== 'undefined' && Array.isArray(FIXED_NEWS) ? FIXED_NEWS : null);
     if(!list) return;
@@ -280,7 +282,7 @@
     });
   }
   function localizeNewsPagination(){
-    if(!/\/news\.html(?:$|[?#])/.test(location.pathname + location.search)) return;
+    if(!/\/news(?:\.html)?(?:$|[?#])/.test(location.pathname + location.search)) return;
     var lang = normLang();
     var labels = {
       ko:{prev:'‹ 이전', next:'다음 ›'},
@@ -299,6 +301,8 @@
   }
 
   function applyNews(){
+    if(window.AERO_MARKET_NUMBERS_20260828) return;
+    if(!/\/news(?:\.html)?(?:$|[?#])/.test(location.pathname + location.search)) return;
     patchRecentNewsCardLocales();
     var p = news[normLang()] || news.en;
     var s = newsSurface[normLang()] || newsSurface.en;
@@ -371,7 +375,7 @@
     window.applyLanguage.__aug27Wrapped = true;
   }
   function rerenderNewsOnce(){
-    if(window.__aug27NewsRerendered || !/\/news\.html(?:$|[?#])/.test(location.pathname + location.search) || typeof window.renderNews !== 'function') return;
+    if(window.__aug27NewsRerendered || !/\/news(?:\.html)?(?:$|[?#])/.test(location.pathname + location.search) || typeof window.renderNews !== 'function') return;
     window.__aug27NewsRerendered = true;
     patchRecentNewsCardLocales();
     window.renderNews();
@@ -383,4 +387,167 @@
     aug27Runs += 1;
     if(aug27Runs >= 12) clearInterval(aug27Interval);
   }, 1000);
+})();
+
+/* 2026.08.28 final safety surface.
+   Keeps forecast/news on the 10월 예측 중심 view even if older inline update blocks run later. */
+(function(){
+  window.AERO_FINAL_SURFACE_20260828 = true;
+  function lang(){
+    var raw = (window.getCurrentLang ? window.getCurrentLang() : (localStorage.getItem('aero_lang') || document.documentElement.lang || 'ko')).toLowerCase().replace('_','-');
+    if(raw === 'cn' || raw.indexOf('zh') === 0) return 'zh';
+    if(raw === 'jp') return 'ja';
+    return raw.split('-')[0] || 'ko';
+  }
+  function esc(v){
+    return String(v == null ? '' : v).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});
+  }
+  function setText(key, value){
+    document.querySelectorAll('[data-i18n="'+key+'"]').forEach(function(el){ el.textContent = value || ''; });
+  }
+  function setHtml(key, value){
+    document.querySelectorAll('[data-i18n="'+key+'"]').forEach(function(el){ el.innerHTML = value || ''; });
+  }
+  function pack(l){
+    var packs = {
+      ko:{
+        page:'2026년 10월 국제선 유류할증료 전망',
+        sub:'2026.08.28 09:00 KST 기준 · 9월 21단계 확정 · 10월 산정기간 2026.08.16~09.15 · 환율 ↓↓ / Jet Fuel 완화 ↘ / 국제유가 반등 ↗',
+        notice:'<strong>확인:</strong> 9월 국제선 유류할증료는 21단계로 확정됐습니다. 10월은 산정기간 진행 중이므로 단계·금액은 확정하지 않습니다.',
+        intro:'10월 전망은 기존 지표 흐름에 맞춰 환율, MOPS/항공유, 국제유가만 사용합니다. USD/KRW 약 1,386원은 원화 환산액 하락 요인이고, Singapore Jet Fuel 최근값 약 154.98달러/bbl은 항공유 부담을 유지합니다. Brent 약 93.45달러와 WTI 약 86.14달러는 단기 조정에도 높은 구간입니다.',
+        th:['항목','현재 확인 상태','10월 전망에서의 의미'],
+        rows:[['10월 방향성','상승 압력 소폭 우세 · 일부 완화 · 신뢰도 낮음','방향성만 표시하며 단계·금액은 확정하지 않습니다.'],['USD/KRW','약 1,386원','원화 환산액 하락 요인입니다.'],['MOPS/항공유','Singapore Jet Fuel 최근 154.98달러/bbl','항공유 부담은 남아 있지만 10월 평균은 아직 확정하지 않습니다.'],['국제유가','Brent 약 93.45달러 · WTI 약 86.14달러','높은 수준이나 단기 조정입니다.']],
+        foot:'* 항공사 공식 공시 전까지 10월 단계·금액은 표시하지 않습니다.',
+        verdict:['2026년 10월 전망 결론','10월 단계·금액은 아직 확정되지 않았습니다.','환율은 완화 요인이지만 항공유와 국제유가 부담이 남아 있어 상승 압력이 소폭 우세한 상태입니다.','10월 전망: 상승 압력 소폭 우세 · 일부 완화 · 신뢰도 낮음','환율 ↓ / MOPS·항공유 ↑ / 국제유가 높은 수준'],
+        summaryTitle:'9월 확정 공시와 10월 전망 요약',
+        updated:'최종 업데이트: 2026.08.28 09:00 KST · 상승 압력 소폭 우세 · 일부 완화 · 신뢰도 낮음',
+        newsPage:'유류할증료·MOPS·환율 최신 뉴스',
+        newsSub:'2026.08.28 09:00 KST 기준 · 9월 21단계 확정 · 10월 전망: 상승 압력 소폭 우세 · 일부 완화 · USD/KRW 약 1,386 · Brent 93.45 · WTI 86.14',
+        note:'※ 유류할증료는 발권일 기준으로 적용됩니다. 9월 공식 공시는 확정 기준선이며, 현재 초점은 10월 예측입니다.',
+        ref:'2026.08.28 09:00 KST 기준 · 9월 공시 확정 · 10월 산정기간 진행 중',
+        cur:'→ 10월 전망은 상승 압력 소폭 우세이나 일부 완화된 상태입니다. 항공사 공식 공시 전까지 단계·금액은 확정하지 않습니다.',
+        filters:['전체','항공사 공지','기관','시장'],
+        latest:'최신 뉴스', previous:'이전 뉴스', archive:'날짜순 아카이브',
+        official:'주요 항공사 2026년 9월 국제선 유류할증료 공식 공시',
+        officialDesc:'* 9월 공식 공시는 확정 기준선입니다. 10월 단계와 노선별 금액은 아직 확정하지 않습니다.',
+        link:'공식 공지 ↗',
+        keys:['주요 확인 항목','10월: 상승 압력 소폭 우세·일부 완화','USD/KRW 약 1,386','MOPS/항공유 최근 154.98','Brent 93.45 / WTI 86.14','10월 단계·금액 미확정']
+      },
+      en:{
+        page:'October 2026 International Fuel Surcharge Outlook',
+        sub:'As of 2026.08.28 09:00 KST · September Level 21 confirmed · October window 2026.08.16-09.15 · FX ↓↓ / Jet Fuel easing ↘ / crude rebound ↗',
+        notice:'<strong>Confirmed:</strong> September international surcharges are fixed at Level 21. October is still in calculation, so stage and amounts are not confirmed.',
+        intro:'The October outlook uses the original core indicators only: FX, MOPS/jet fuel and international crude. USD/KRW around 1,386 lowers KRW conversion pressure. Recent Singapore Jet Fuel around USD 154.98/bbl keeps jet-fuel burden present. Brent around USD 93.45 and WTI around USD 86.14 remain high despite short-term adjustment.',
+        th:['Item','Current status','Meaning for October'],
+        rows:[['October direction','Slight upward pressure · partly eased · low confidence','Direction only; stage and amounts are not confirmed.'],['USD/KRW','around 1,386','Downside factor for KRW conversion amounts.'],['MOPS / jet fuel','recent Singapore Jet Fuel USD 154.98/bbl','Jet-fuel burden remains; October average is not confirmed yet.'],['International crude','Brent around USD 93.45 · WTI around USD 86.14','High level with short-term adjustment.']],
+        foot:'* No October stage or amount is shown before official airline notices.',
+        verdict:['October 2026 Outlook Conclusion','October stage and amounts are not confirmed yet.','FX is a relief factor, but jet fuel and crude burdens keep slight upward pressure.','October outlook: slight upward pressure · partly eased · low confidence','FX ↓ / MOPS·jet fuel ↑ / crude still high'],
+        summaryTitle:'September Confirmed Notices and October Outlook Summary',
+        updated:'Last updated: 2026.08.28 09:00 KST · slight upward pressure · partly eased · low confidence',
+        newsPage:'Fuel Surcharge, MOPS and FX Latest News',
+        newsSub:'As of 2026.08.28 09:00 KST · September Level 21 confirmed · October outlook: slight upward pressure, partly eased · USD/KRW around 1,386 · Brent 93.45 · WTI 86.14',
+        note:'Fuel surcharges apply by ticketing date. September notices are the confirmed baseline; the focus is now October forecasting.',
+        ref:'As of 2026.08.28 09:00 KST · September notices confirmed · October calculation period in progress',
+        cur:'→ October shows slight upward pressure, partly eased. Stage and route amounts are not confirmed before airline notices.',
+        filters:['All','Airline notices','Institutions','Market'],
+        latest:'Latest News', previous:'Previous News', archive:'Archived by date',
+        official:'Major Airline September 2026 International Fuel Surcharge Official Notices',
+        officialDesc:'* September notices are the confirmed baseline. October stage and route amounts are not confirmed.',
+        link:'Official notice ↗',
+        keys:['Key Check Variables','October: slight upward pressure, partly eased','USD/KRW around 1,386','MOPS/jet fuel recent 154.98','Brent 93.45 / WTI 86.14','October stage and amount not confirmed']
+      }
+    };
+    packs.ja = Object.assign({}, packs.en, {page:'2026年10月国際線燃油サーチャージ見通し', newsPage:'燃油サーチャージ・MOPS・為替 最新ニュース', official:'主要航空会社 2026年9月国際線燃油サーチャージ公式公示', latest:'最新ニュース', previous:'過去のニュース', archive:'日付順アーカイブ', link:'公式公示 ↗', filters:['すべて','航空会社公示','機関','市場']});
+    packs.zh = Object.assign({}, packs.en, {page:'2026年10月国际线燃油附加费展望', newsPage:'燃油附加费、MOPS与汇率最新新闻', official:'主要航空公司2026年9月国际线燃油附加费官方公告', latest:'最新新闻', previous:'过往新闻', archive:'按日期归档', link:'官方公告 ↗', filters:['全部','航空公司公告','机构','市场']});
+    packs.fr = Object.assign({}, packs.en, {page:'Perspective surtaxe carburant internationale octobre 2026', newsPage:'Actualités surtaxe carburant, MOPS et FX', official:'Avis officiels septembre 2026 des principales compagnies', latest:'Dernières nouvelles', previous:'Anciennes nouvelles', archive:'Archive par date', link:'Avis officiel ↗', filters:['Tout','Avis compagnies','Institutions','Marché']});
+    packs.de = Object.assign({}, packs.en, {page:'Oktober-2026 internationaler Treibstoffzuschlag Ausblick', newsPage:'Treibstoffzuschlag, MOPS und FX News', official:'Offizielle September-2026 Hinweise wichtiger Airlines', latest:'Neueste Nachrichten', previous:'Frühere Nachrichten', archive:'Nach Datum archiviert', link:'Offizieller Hinweis ↗', filters:['Alle','Airline-Hinweise','Institutionen','Markt']});
+    return packs[l] || packs.en;
+  }
+  function airlineRows(l){
+    var ko = [['officialKe','대한항공','9월 KRW 48,000~354,000 · 8월 대비 최소 +12,800원'],['officialOz','아시아나항공','9월 KRW 52,000~290,100 · 8월 대비 최소 +15,400원'],['officialLj','진에어','9월 USD 29~89 · 8월 대비 최소 +USD 9'],['officialBx','에어부산','9월 USD 71/82 · 8월 대비 최소 +USD 24'],['officialTw','티웨이항공','9월 KRW 36,200~247,500 · 8월 대비 최소 +11,800원'],['official7c','제주항공','9월 USD 33~79 · 8월 대비 최소 +USD 11'],['officialZe','이스타항공','9월 USD 33~79 · 8월 대비 최소 +USD 11'],['officialRs','에어서울','9월 KRW 57,700~99,600 · 8월 대비 최소 +18,000원'],['officialYp','에어프레미아','9월 USD 37~228 · 8월 대비 최소 +USD 12']];
+    if(l === 'ko') return ko;
+    return [['officialKe','Korean Air','September KRW 48,000-354,000 · minimum +KRW 12,800 vs August'],['officialOz','Asiana Airlines','September KRW 52,000-290,100 · minimum +KRW 15,400 vs August'],['officialLj','Jin Air','September USD 29-89 · minimum +USD 9 vs August'],['officialBx','Air Busan','September USD 71/82 · minimum +USD 24 vs August'],['officialTw',"T'way Air",'September KRW 36,200-247,500 · minimum +KRW 11,800 vs August'],['official7c','Jeju Air','September USD 33-79 · minimum +USD 11 vs August'],['officialZe','Eastar Jet','September USD 33-79 · minimum +USD 11 vs August'],['officialRs','Air Seoul','September KRW 57,700-99,600 · minimum +KRW 18,000 vs August'],['officialYp','Air Premia','September USD 37-228 · minimum +USD 12 vs August']];
+  }
+  var noticeUrls = {
+    officialKe:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2609-infuel',
+    officialOz:'https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202608180002530123',
+    officialLj:'https://www.jinair.com/company/announce/announceView?anceSeq=28662&searchWord=&searchKey=titlCtn&page=1',
+    officialBx:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4399',
+    officialTw:'https://www.twayair.com/app/customerCenter/notice/retrieve/12685',
+    official7c:'https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000751',
+    officialZe:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=653&lang=KR&searchWord=&searchIndex=1',
+    officialRs:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=11048&pageNo=1',
+    officialYp:'https://www.airpremia.com/a/ko/customer/notice/772'
+  };
+  function applyForecastFinal(){
+    if(!/\/forecast(?:\.html)?(?:$|[?#])/.test(location.pathname + location.search)) return;
+    var p = pack(lang());
+    document.title = p.page + ' | 환율·MOPS·국제유가';
+    setText('fore.pageTitle', p.page); setText('fore.h1', p.page); setText('fore.pageSub', p.sub);
+    setHtml('fore.notice', p.notice); setText('fore.intro', p.intro); setText('fore.section.indicators', p.page + ' 핵심 지표');
+    var thead = document.getElementById('indicatorThead');
+    if(thead) thead.innerHTML = '<tr>'+p.th.map(function(h){return '<th>'+esc(h)+'</th>';}).join('')+'</tr>';
+    var tbody = document.getElementById('indicatorTbody');
+    if(tbody) tbody.innerHTML = p.rows.map(function(r){return '<tr><td><strong>'+esc(r[0])+'</strong></td><td>'+esc(r[1])+'</td><td>'+esc(r[2])+'</td></tr>';}).join('');
+    setText('fore.indicator.footnote', p.foot);
+    document.querySelectorAll('.summary-card ul, .news-summary-card ul, .new-summary-card ul').forEach(function(ul){ ul.innerHTML = p.rows.map(function(r){ return '<li>'+esc(r[0]+': '+r[1]+' - '+r[2])+'</li>'; }).join(''); });
+    document.querySelectorAll('.nsc-title').forEach(function(el){ el.textContent = p.page + ' 요약'; });
+    document.querySelectorAll('.nsc-updated').forEach(function(el){ el.textContent = p.updated; });
+    var verdict = document.getElementById('verdictBox');
+    if(verdict) verdict.innerHTML = '<div class="verdict-title">'+esc(p.verdict[0])+'</div>'+esc(p.verdict[1])+'<br>'+esc(p.verdict[2])+'<br><br><strong>'+esc(p.verdict[3])+'</strong><br><strong>'+esc(p.verdict[4])+'</strong>';
+    ['scenarioBox','bookingDecisionBox','mopsAnalysisBox'].forEach(function(id){ var el=document.getElementById(id); if(el){el.innerHTML=''; el.style.display='none';} });
+    var market = document.getElementById('marketBriefBox');
+    if(market) market.innerHTML = p.rows.slice(1).map(function(r){ return '<div class="mb-item">'+esc(r[0]+': '+r[1]+' - '+r[2])+'</div>'; }).join('');
+    var pred = document.getElementById('predictFactors');
+    if(pred) pred.innerHTML = p.rows.map(function(r){ return '<div class="predict-factor"><div class="pf-label">'+esc(r[0])+'</div><div class="pf-val">'+esc(r[1])+'</div></div>'; }).join('');
+    var keys = document.getElementById('keyVarsGrid');
+    if(keys) keys.innerHTML = p.keys.slice(1).map(function(s){ return '<div class="kv-chip">'+esc(s)+'</div>'; }).join('');
+    document.querySelectorAll('body *').forEach(function(el){ if(el.children.length === 0 && /\bundefined\b/.test(el.textContent || '')) el.textContent = ''; });
+  }
+  function applyNewsFinal(){
+    if(!/\/news(?:\.html)?(?:$|[?#])/.test(location.pathname + location.search)) return;
+    var p = pack(lang());
+    document.title = p.newsPage + ' | 2026년 8월 28일';
+    setText('news.pageTitle', p.newsPage); setText('news.h1', p.newsPage); setText('news.pageSub', p.newsSub);
+    setText('news.surchargeNote', p.note); setText('news.dataRef', p.ref); setText('news.curSummary', p.cur);
+    setText('news.summary.title', p.summaryTitle); setText('news.summary.updated', p.updated);
+    document.querySelectorAll('.summary-card ul, .news-summary-card ul, .new-summary-card ul').forEach(function(ul){ ul.innerHTML = p.rows.map(function(r){ return '<li>'+esc(r[0]+': '+r[1]+' - '+r[2])+'</li>'; }).join(''); });
+    ['news.filterAll','news.filterAirline','news.filterInstitution','news.filterMarket'].forEach(function(key, i){ setText(key, p.filters[i]); });
+    var official = document.querySelector('.official-summary-box');
+    if(official){
+      official.innerHTML = '<div class="official-title" data-i18n="news.officialTitle">'+esc(p.official)+'</div><div data-i18n="news.officialNotice" style="font-size:12px;color:#9A6A00;margin-bottom:10px;padding:6px 10px;background:rgba(255,255,255,.78);border-radius:6px;border-left:3px solid #FFCC80;">'+esc(p.ref+' · KE/OZ/LJ/BX/TW/7C/ZE/RS/YP')+'</div>'+airlineRows(lang()).map(function(r){ return '<div class="official-item" id="'+esc(r[0])+'"><strong>'+esc(r[1])+'</strong> - '+esc(r[2])+' · <a href="'+esc(noticeUrls[r[0]])+'" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">'+esc(p.link)+'</a></div>'; }).join('')+'<div class="official-desc" id="officialDesc">'+esc(p.officialDesc)+'</div>';
+    }
+    var compare = document.getElementById('compareList');
+    if(compare) compare.innerHTML = p.rows.slice(1).map(function(r){ return '<li><strong>'+esc(r[0])+':</strong> '+esc(r[1])+' - '+esc(r[2])+'</li>'; }).join('');
+    var box = document.getElementById('newsKeyVariables');
+    if(box) box.innerHTML = '<div style="font-weight:700;margin-bottom:8px;">'+esc(p.keys[0])+'</div><div>'+p.keys.slice(1).map(function(v){return '<span style="display:inline-block;margin:3px 6px 3px 0;padding:5px 8px;border:1px solid #BFDBFE;border-radius:999px;background:#EFF6FF;color:#0F172A;">'+esc(v)+'</span>';}).join('')+'</div>';
+    var latestTitle = document.querySelector('.news-section-title[data-section="latest"], .news-section-label.latest .news-section-title');
+    var previousTitle = document.querySelector('.news-section-title[data-section="previous"], .news-section-label.previous .news-section-title');
+    if(latestTitle) latestTitle.textContent = p.latest;
+    if(previousTitle) previousTitle.textContent = p.previous;
+    document.querySelectorAll('.news-section-meta, .news-section-sub').forEach(function(el){ if(/Archive|아카이브|アーカイブ|归档|Archiv|보관|date/i.test(el.textContent || '')) el.textContent = p.archive; });
+    document.querySelectorAll('.news-card').forEach(function(card){
+      var text = card.innerText || '';
+      if(/2026년 8월 국제선 유류할증료 공식 공시|8월 공식 공시 반영|8월 산정 MOPS|호르무즈 ADNOC|Brent 89\.70|WTI 83\.53|USD\/KRW 약 1,381|92\.17|85\.01|158\.91|호르무즈 10척|Hormuz 10/.test(text)) card.remove();
+    });
+  }
+  function applyFinal(){ applyForecastFinal(); applyNewsFinal(); }
+  if(typeof window.renderForecastPage === 'function' && !window.renderForecastPage.__final0828Wrapped){
+    var prevForecast = window.renderForecastPage;
+    window.renderForecastPage = function(){ var out = prevForecast.apply(this, arguments); applyFinal(); return out; };
+    window.renderForecastPage.__final0828Wrapped = true;
+  }
+  if(typeof window.renderNews === 'function' && !window.renderNews.__final0828Wrapped){
+    var prevNews = window.renderNews;
+    window.renderNews = function(){ var out = prevNews.apply(this, arguments); applyFinal(); return out; };
+    window.renderNews.__final0828Wrapped = true;
+  }
+  if(typeof window.applyLanguage === 'function' && !window.applyLanguage.__final0828Wrapped){
+    var prevLang = window.applyLanguage;
+    window.applyLanguage = function(){ var out = prevLang.apply(this, arguments); applyFinal(); setTimeout(applyFinal, 0); return out; };
+    window.applyLanguage.__final0828Wrapped = true;
+  }
+  [0,100,400,900,1600,2600,4200,6200,9000,12000,18000,26000,36000].forEach(function(ms){ setTimeout(applyFinal, ms); });
+  var runs = 0;
+  var timer = setInterval(function(){ applyFinal(); if(++runs >= 75) clearInterval(timer); }, 1000);
 })();
