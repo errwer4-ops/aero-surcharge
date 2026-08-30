@@ -122,6 +122,7 @@
   Object.assign(newsSurface.de, {marketTitle:'Oktober-Prognose Marktüberblick', brent:'Öl: Brent 87.84 USD/bbl (-0.84%) und WTI 82.23 USD/bbl (-0.16%) fallen kurzfristig.', mops:'Jet Fuel: September-Basis 149.29 USD/bbl, aktuelles Singapore Jet Fuel 154.98 USD/bbl und globales Jet Fuel 163.87 USD/bbl (+3.1%) getrennt halten. 163.87 ist nicht Singapore MOPS.', fx:'FX: USD/KRW nahe 1.380,15 ist ein starker Abwärtsfaktor für KRW-Beträge, setzt aber nicht direkt die Stufe.', geo:'Hormuz: Kpler public commodity-vessel-Verkehr liegt nahe 5. Iran-Oman und Katar sind Entspannungssignale, aber die 45-Schiffe-Liste erhöht Transport- und Versicherungsrisiken.', marketSummary:'→ Oktober-Ausblick: stabil zentriert · größere Senkungschance · geringe Sicherheit. Keine senkungsdominante Aussage und keine bestätigte Stufe.', fxDominance:'Kennzahlen: 2026.08.27 09:45 KST · USD/KRW 1.380 · September-Basis 149.29 · Singapore Jet Fuel 154.98 · globales Jet Fuel 163.87 · Brent 87.84 · WTI 82.23 · Hormuz 5 · Liste 45', decisionTitle:'Fazit: September ist die bestätigte Basis; Oktober ist das Prognoseziel', decisionLine1:'→ Offizielle September-Hinweise sind auf Stufe 21 bestätigt.', decisionLine2:'→ Oktober läuft im Berechnungszeitraum; durchschnittlichen Singapore MOPS und durchschnittlichen USD/KRW getrennt verfolgen.', forecastTitle:'Oktober-2026 Treibstoffzuschlag Ausblick', forecastDesc:'Oktober-Singapore-Jet-Fuel-Durchschnitt und Durchschnitts-FX verfolgen und aktuelle Referenzen von bestätigtem MOPS trennen.', forecastBtn:'Oktober-Ausblick ansehen →'});
 
   function applyForecast(){
+    if(window.AERO_MARKET_NUMBERS_20260831) return;
     if(window.AERO_MARKET_NUMBERS_20260828) return;
     if(!/\/forecast(?:\.html)?(?:$|[?#])/.test(location.pathname + location.search)) return;
     var p = Object.assign({}, forecast[normLang()] || forecast.en);
@@ -301,6 +302,7 @@
   }
 
   function applyNews(){
+    if(window.AERO_MARKET_NUMBERS_20260831) return;
     if(window.AERO_MARKET_NUMBERS_20260828) return;
     if(!/\/news(?:\.html)?(?:$|[?#])/.test(location.pathname + location.search)) return;
     patchRecentNewsCardLocales();
@@ -480,6 +482,7 @@
     officialYp:'https://www.airpremia.com/a/ko/customer/notice/772'
   };
   function applyForecastFinal(){
+    if(window.AERO_MARKET_NUMBERS_20260831) return;
     if(!/\/forecast(?:\.html)?(?:$|[?#])/.test(location.pathname + location.search)) return;
     var p = pack(lang());
     document.title = p.page + ' | 환율·MOPS·국제유가';
@@ -505,6 +508,7 @@
     document.querySelectorAll('body *').forEach(function(el){ if(el.children.length === 0 && /\bundefined\b/.test(el.textContent || '')) el.textContent = ''; });
   }
   function applyNewsFinal(){
+    if(window.AERO_MARKET_NUMBERS_20260831) return;
     if(!/\/news(?:\.html)?(?:$|[?#])/.test(location.pathname + location.search)) return;
     var p = pack(lang());
     document.title = p.newsPage + ' | 2026년 8월 28일';

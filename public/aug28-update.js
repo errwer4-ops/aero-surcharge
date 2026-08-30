@@ -492,6 +492,7 @@
   }
 
   function applyForecast(){
+    if(window.AERO_MARKET_NUMBERS_20260831) return;
     if(!/\/forecast(?:\.html)?(?:$|[?#])/.test(location.pathname + location.search)) return;
     var p = forecast[lang()] || forecast.en;
     updateHead(p.title, p.desc, 'https://aero-surcharge.com/forecast.html');
@@ -580,6 +581,7 @@
   }
 
   function applyNews(){
+    if(window.AERO_MARKET_NUMBERS_20260831) return;
     if(!/\/news(?:\.html)?(?:$|[?#])/.test(location.pathname + location.search)) return;
     installNewsCards();
     var l = lang();
