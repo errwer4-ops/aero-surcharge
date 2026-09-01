@@ -3597,6 +3597,14 @@ FIXED_NEWS = (window.AERO_NEWS_CARDS_20260721 || window.AERO_NEWS_CARDS_20260720
   .concat(window.AERO_NEWS_CARDS_20260524 || [])
   .concat(FIXED_NEWS);
 
+function normalizeNewsLang(value){
+  var l = String(value || 'ko').toLowerCase().split('-')[0];
+  if(l === 'kr') return 'ko';
+  if(l === 'cn' || l === 'zh_cn' || l === 'zhcn') return 'zh';
+  if(l === 'jp') return 'ja';
+  return l;
+}
+
 /* ── renderNews ──
    window.t(key) 실패 시 FIXED_NEWS_FALLBACK에서
    현재언어 → en → ko 순서로 fallback 텍스트를 가져옴.
@@ -17093,5 +17101,6 @@ setTimeout(function(){ applySeptemberOfficialNewsUpdate(); applyAugust20NewsTerm
 <script src="aug27-update.js?v=20260827-october-forecast"></script>
 <script src="aug28-update.js?v=20260828-seo-geo-forecast-news"></script>
 <script src="aug31-update.js?v=20260831-forecast-news-geo"></script>
+<script src="sep02-update.js?v=20260902-forecast-news-geo"></script>
 </body></html>
 

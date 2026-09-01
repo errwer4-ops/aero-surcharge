@@ -320,6 +320,7 @@
   ];
 
   function applyForecast(){
+    if(window.AERO_MARKET_NUMBERS_20260902) return;
     if(!pathIs('forecast')) return;
     var p = pack(lang());
     updateHead(p.forecastMetaTitle, p.forecastDesc, 'https://aero-surcharge.com/forecast.html');
@@ -369,6 +370,7 @@
   }
 
   function applyNews(){
+    if(window.AERO_MARKET_NUMBERS_20260902) return;
     if(!pathIs('news')) return;
     installNewsCards();
     var l = lang();
