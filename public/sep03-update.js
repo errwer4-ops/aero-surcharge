@@ -252,6 +252,7 @@
     });
   }
   function renderForecast(){
+    if(window.AERO_MARKET_NUMBERS_20260904) return;
     if(!pathIs('forecast')) return;
     var p = pack(lang());
     updateHead(p.meta, p.desc, 'https://aero-surcharge.com/forecast.html');
@@ -337,6 +338,7 @@
     });
   }
   function renderNews(){
+    if(window.AERO_MARKET_NUMBERS_20260904) return;
     if(!pathIs('news')) return;
     var l = lang(), p = pack(l);
     updateHead(p.newsMeta, p.desc, 'https://aero-surcharge.com/news.html');
@@ -385,7 +387,7 @@
       }catch(e){}
     });
   }
-  function applyAll(){ renderForecast(); renderNews(); }
+  function applyAll(){ if(window.AERO_MARKET_NUMBERS_20260904) return; renderForecast(); renderNews(); }
   var prevRenderForecast = window.renderForecastPage;
   if(typeof prevRenderForecast === 'function') window.renderForecastPage = function(){ var out = prevRenderForecast.apply(this, arguments); setTimeout(renderForecast, 0); return out; };
   var prevRenderNews = window.renderNews;
