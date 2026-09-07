@@ -2,8 +2,8 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>유류할증료·MOPS·환율 최신 뉴스 | 2026년 8월 28일</title>
-  <meta name="description" content="원달러 환율, Singapore Jet Fuel·MOPS, 국제유가와 호르무즈 해협 최신 뉴스 및 국내 항공사 유류할증료 공시를 한눈에 확인하세요." data-i18n-page-desc="news.metaDesc"/>
+  <title>유류할증료·MOPS·환율 최신 뉴스 | 2026년 9월 7일</title>
+  <meta name="description" content="2026년 9월 7일 Singapore Jet Fuel $159.58, 글로벌 항공유 $171.01, USD/KRW 1,340.5와 호르무즈 소식을 확인하세요. 9월 공시와 10월 전망을 구분합니다." data-i18n-page-desc="news.metaDesc"/>
   <meta name="google-adsense-account" content="ca-pub-4285114770383510">
   <meta data-i18n-page-title="news.metaTitle"/>
 
@@ -15755,7 +15755,7 @@ function removeStaleNewsCards(){
   document.querySelectorAll('.news-card').forEach(function(card){
     var txt = card.innerText || '';
     var id = card.id || '';
-    if(/20260826$/.test(id)) return;
+    if(/20260826$/.test(id) || (window.AERO_MARKET_RELEASE && window.AERO_MARKET_RELEASE.newsCards.some(function(item){return item.id === id;}))) return;
     if(/kpler|lseg|Kpler|LSEG|0척|zero Sunday|zero Hormuz|0艘|0隻|zéro passage/.test(id + ' ' + txt)){
       card.remove();
     }
@@ -16751,7 +16751,7 @@ setTimeout(function(){ applySeptemberOfficialNewsUpdate(); applyAugust20NewsTerm
     var staleIds = ['hormuz-kpler-nine-20260821','saudi-bypass-supply-20260821','brent-wti-rise-20260821','usdkrw-rebound-1394-20260821','us-iran-sanctions-20260821','october-forecast-fx-jetfuel-hormuz-20260820','global-jetfuel-15891-20260821'];
     staleIds.forEach(function(id){ var el = document.getElementById(id); if(el) el.remove(); });
     var staleText = /(1,394\.4|93\.78|87\.83|Kpler 추적 commodity vessel|화·수 각각 9척|Saudi bypass|사우디 우회|2026\.08\.21 07:15)/;
-    document.querySelectorAll('.news-card').forEach(function(card){ if(/20260826$/.test(card.id || '')) return; if(staleText.test(card.innerText || '')) card.remove(); });
+    document.querySelectorAll('.news-card').forEach(function(card){ if(/20260826$/.test(card.id || '') || (window.AERO_MARKET_RELEASE && window.AERO_MARKET_RELEASE.newsCards.some(function(item){return item.id === card.id;}))) return; if(staleText.test(card.innerText || '')) card.remove(); });
   }
   function applyAug24KeyVariables(lang){
     if(window.AERO_MARKET_NUMBERS_20260828) return;
@@ -16955,7 +16955,7 @@ setTimeout(function(){ applySeptemberOfficialNewsUpdate(); applyAugust20NewsTerm
       if(el) el.remove();
     });
     document.querySelectorAll('.news-card').forEach(function(card){
-      if(/20260826$/.test(card.id || '')) return;
+      if(/20260826$/.test(card.id || '') || (window.AERO_MARKET_RELEASE && window.AERO_MARKET_RELEASE.newsCards.some(function(item){return item.id === card.id;}))) return;
       if(/발표 예정|expected.*sanctions|sanctions.*expected|制裁.*予定|预计.*制裁|制裁.*预计|sanctions.*attendues|Sanktionen erwartet|93\.45|86\.14|1,386|2026\.08\.24 08:30|選択的許可|选择性许可|passage sélectif|selektive Passage/.test(card.innerText || '')) card.remove();
     });
   }
@@ -17082,6 +17082,7 @@ setTimeout(function(){ applySeptemberOfficialNewsUpdate(); applyAugust20NewsTerm
     }
     document.querySelectorAll('.news-card').forEach(function(card){
       var body = card.innerText || '';
+      if(window.AERO_MARKET_RELEASE && window.AERO_MARKET_RELEASE.newsCards.some(function(item){return item.id === card.id;})) return;
       if(staleIds[card.id] || /92\.17|85\.01|158\.91|flat to slight upward|보합~소폭 상승|2026\.08\.25 08:30/.test(body)) card.remove();
     });
   }
@@ -17103,6 +17104,7 @@ setTimeout(function(){ applySeptemberOfficialNewsUpdate(); applyAugust20NewsTerm
 <script src="aug31-update.js?v=20260831-forecast-news-geo"></script>
 <script src="sep02-update.js?v=20260902-forecast-news-geo"></script>
 <script src="sep03-update.js?v=20260903-forecast-news-geo"></script>
-<script src="sep04-update.js?v=20260904-forecast-news-geo"></script>
+<script src="market-sep07.js?v=20260907-2030"></script>
+<script src="sep04-update.js?v=20260907-2030"></script>
 </body></html>
 

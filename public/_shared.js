@@ -924,6 +924,22 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
   window.RATES = Object.assign({}, window.RATES || {}, {USD:1/1382.3});
 })();
 
+// Current applied month remains September; October market references are not notices.
+window.AERO_MARKET_NUMBERS_20260907 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, {
+  asOf:'2026.09.07 20:30 KST', currentMonth:'2026-09', currentMonthNotice:'2026-09', forecastTargetMonth:'2026-10',
+  usdKrw:1340.5, usdKrwReference:1340.5, jpy100Krw:861,
+  singaporeJetFuelDate:'2026.09.03', singaporeJetFuelFlatUsdPerBbl:159.58,
+  globalJetFuelUsdPerBbl:171.01, globalJetFuelWeeklyPct:9,
+  brentUsdPerBbl:96.19, brentUsdBbl:96.19, wtiUsdPerBbl:91.03, wtiUsdBbl:91.03,
+  brentChangePct:null, wtiChangePct:null, oilStatus:'elevated',
+  hormuzCommodityVessels:null, hormuzTenDayAverageCommodityVessels:10,
+  octoberAverageMops:null, octoberAverageUsdKrw:null,
+  octoberForecastDirection:'flat_to_upward_pressure', octoberForecastConfidence:'low_to_medium_approaching_medium',
+  marketSummary:'10월 전망: 보합~상승 압력 우세 · 인하 가능성 크게 후퇴'
+});
+window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260907;
+window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-09-07':window.AERO_MARKET_NUMBERS_20260907});
+
 /* 2026.08.27 09:45 KST final shared market guard. Keep this last. */
 (function(){
   var latest = {

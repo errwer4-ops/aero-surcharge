@@ -32,9 +32,12 @@
     iranCrudeExportsBpd: 'about 260,000 bpd'
   };
 
-  window.AERO_MARKET_NUMBERS_20260904 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
-  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260904;
+  var release = window.AERO_MARKET_RELEASE;
+  window.AERO_MARKET_NUMBERS_20260904 = Object.assign({}, latest);
+  if(release) latest = Object.assign({}, latest, release.numbers);
+  window.AERO_MARKET_NUMBERS_LATEST = latest;
   window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-09-04': window.AERO_MARKET_NUMBERS_20260904});
+  if(release) window.AERO_MARKET_SNAPSHOTS['2026-09-07'] = latest;
 
   function normalizeLang(value){
     var v = String(value || localStorage.getItem('aero_lang') || document.documentElement.lang || 'ko').toLowerCase();
@@ -163,8 +166,8 @@
 
   function pack(l){
     var p = packs[l] || packs.en;
-    var out = Object.assign({}, p);
-    out.rows = rows[l] || rows.en;
+    var out = Object.assign({}, p, release && release.packs[l]);
+    out.rows = release ? release.rows[l] : (rows[l] || rows.en);
     out.summary = out.rows.map(function(x){ return x[0]+': '+x[1]+' - '+x[2]; });
     return out;
   }
@@ -185,7 +188,12 @@
       ko:[['officialKe','대한항공','9월 KRW 48,000~354,000 · 8월 대비 최소 +12,800원'],['officialOz','아시아나항공','9월 KRW 52,000~290,100 · 8월 대비 최소 +15,400원'],['officialLj','진에어','9월 USD 29~89 · 8월 대비 최소 +USD 9'],['officialBx','에어부산','9월 USD 71/82 구간 반영 · 8월 대비 최소 +USD 24'],['officialTw','티웨이항공','9월 KRW 36,200~247,500 · 8월 대비 최소 +11,800원'],['official7c','제주항공','9월 USD 29~89 · 8월 대비 최소 +USD 7'],['officialZe','이스타항공','9월 USD 29~89 · 8월 대비 최소 +USD 7'],['officialRs','에어서울','9월 KRW 52,000~93,900 · 8월 대비 최소 +12,300원'],['officialYp','에어프레미아','9월 USD 30~195 · 8월 대비 최소 +USD 5']],
       en:[['officialKe','Korean Air','September KRW 48,000~354,000 · at least +KRW 12,800 vs August'],['officialOz','Asiana Airlines','September KRW 52,000~290,100 · at least +KRW 15,400 vs August'],['officialLj','Jin Air','September USD 29~89 · at least +USD 9 vs August'],['officialBx','Air Busan','September USD 71/82 ranges reflected · at least +USD 24 vs August'],['officialTw','Tway Air','September KRW 36,200~247,500 · at least +KRW 11,800 vs August'],['official7c','Jeju Air','September USD 29~89 · at least +USD 7 vs August'],['officialZe','Eastar Jet','September USD 29~89 · at least +USD 7 vs August'],['officialRs','Air Seoul','September KRW 52,000~93,900 · at least +KRW 12,300 vs August'],['officialYp','Air Premia','September USD 30~195 · at least +USD 5 vs August']]
     };
-    data.ja = data.en; data.zh = data.en; data.cn = data.zh; data.fr = data.en; data.de = data.en;
+    var terms={ja:['9月','8月比、最低','区間を反映'],zh:['9月','较8月至少','已反映区间'],fr:['Septembre','au moins, par rapport à août','tranches prises en compte'],de:['September','mindestens gegenüber August','Bereiche berücksichtigt']};
+    Object.keys(terms).forEach(function(code){
+      var t=terms[code];
+      data[code]=data.en.map(function(r){return [r[0],r[1],r[2].replace('September',t[0]).replace('at least',t[1]).replace(' vs August','').replace('ranges reflected',t[2])];});
+    });
+    data.cn = data.zh;
     return data[l] || data.en;
   }
 
@@ -266,7 +274,7 @@
   function renderPredict(p){
     var box = document.getElementById('predictFactors');
     if(!box) return;
-    var classes = ['','down','down','up','up'];
+    var classes = ['','down','up','up','up'];
     box.innerHTML = p.rows.map(function(r, i){
       return '<div class="predict-factor"><div class="pf-label">'+esc(r[0])+'</div><div class="pf-val '+classes[i]+'">'+esc(r[1])+'</div></div>';
     }).join('');
@@ -303,11 +311,11 @@
       marketBrief.innerHTML = '<div class="mb-title">'+esc(p.indicator)+'</div>'
         + '<div class="mb-summary">'+esc(p.intro)+'</div>'
         + p.rows.slice(1).map(function(r){ return '<div class="mb-item"><strong>'+esc(r[0])+'</strong><br>'+esc(r[1])+'<br>'+esc(r[2])+'</div>'; }).join('')
-        + '<div class="mb-summary">'+esc(p.sub)+' · Brent 97.29 · WTI 93.04 · Global Jet Fuel 156.85 · Kpler commodity vessel 4</div>';
+        + '<div class="mb-summary">'+esc(p.sub)+'</div>';
     }
     var mb = document.querySelectorAll('.mb-summary');
     if(mb[0]) mb[0].textContent = p.intro;
-    if(mb[1]) mb[1].textContent = p.sub + ' · Brent 97.29 · WTI 93.04 · Global Jet Fuel 156.85 · Kpler commodity vessel 4';
+    if(mb[1]) mb[1].textContent = p.sub;
     var dataRef = document.querySelector('.data-ref-summary');
     if(dataRef) dataRef.textContent = '→ ' + p.rows[0][1] + ' · ' + p.rows[1][1] + ' · ' + p.rows[2][1] + ' · ' + p.rows[3][1];
     document.querySelectorAll('.cta-card, .compare-card, .fare-compare-card, .booking-compare-card').forEach(function(el){
@@ -329,7 +337,7 @@
     setText('fore.section.indicators', p.indicator);
     setHtml('fore.notice', p.notice);
     setText('fore.intro', p.intro);
-    setText('fore.summary.updated', '최종 업데이트: ' + latest.asOf + ' · ' + p.rows[0][1]);
+    setText('fore.summary.updated', (p.updatedLabel || 'Last updated') + ': ' + latest.asOf + ' · ' + p.rows[0][1]);
     setText('fore.indicator.title', p.indicator);
     setText('fore.indicator.footnote', p.foot);
     setText('fore.predict.title', p.indicator);
@@ -363,17 +371,29 @@
     if(keyGrid) keyGrid.innerHTML = p.keyVars.map(function(x){ return '<span style="display:inline-block;margin:3px 6px 3px 0;padding:5px 8px;border:1px solid #BFDBFE;border-radius:999px;background:#EFF6FF;color:#0F172A;">'+esc(x)+'</span>'; }).join('');
     renderPredict(p);
     scrubStale();
+    if(release){
+      setText('fore.basis.body', p.foot);
+      setText('fore.aiNotice', p.note);
+      var guide=document.getElementById('bookingGuideBox');
+      if(guide) guide.innerHTML='<div class="bg-title">'+esc(p.ui[0])+'</div><div class="bg-item">'+esc(p.note)+'</div><div class="bg-item">'+esc(p.verdict1)+'</div><div class="bg-item">'+esc(p.rows[1][2])+'</div>';
+      document.querySelectorAll('#relatedLinks a').forEach(function(a,i){a.textContent=p.ui[[2,3,4,5][i]] || a.textContent;});
+      var faq = document.getElementById('forecastFaqBox');
+      if(faq) faq.innerHTML = '<h2 class="bg-title">'+esc(p.faqTitle)+'</h2><ul>'+p.faq.map(function(x){return '<li><strong>'+esc(x.q)+'</strong><br>'+esc(x.a)+'</li>';}).join('')+'</ul>';
+      var foot = document.querySelector('[data-i18n="fore.indicator.footnote"]');
+      if(foot) foot.innerHTML = esc(p.foot)+' '+release.sources.slice(0,2).map(function(s){return '<a href="'+esc(s[1])+'" target="_blank" rel="noopener noreferrer">'+esc(s[0])+'</a>';}).join(' · ');
+    }
     updateJsonLd('forecast', p);
   }
 
   function installNewsCards(){
+    if(release) newsCards = release.newsCards;
     var list = Array.isArray(window.FIXED_NEWS) ? window.FIXED_NEWS : (typeof FIXED_NEWS !== 'undefined' && Array.isArray(FIXED_NEWS) ? FIXED_NEWS : null);
     if(!list) return;
     var stale = /20260904|20260903|20260902|20260831|20260828|20260827|136163|1374|five-week-high|sept2-close|global-jetfuel-15685-down|asia-jetfuel-supply-fujairah|hormuz-kpler|blacklist-56/i;
     list = list.filter(function(item){
       var id = item && item.id ? String(item.id) : '';
       if(/september-surcharge|airpremia|tway|jeju|eastar|airseoul/i.test(id)) return true;
-      return !stale.test(id);
+      return !stale.test(id) && !newsCards.some(function(card){ return card.id === id; });
     });
     newsCards.slice().reverse().forEach(function(item){
       var localized = item.i18n[lang()] || item.i18n.en || item.i18n.ko;
@@ -444,11 +464,11 @@
     setText('news.decisionTitle', p.verdictTitle);
     setText('news.decisionLine1', '→ ' + p.verdict1);
     setText('news.decisionLine2', '→ ' + p.verdict2);
-    setText('news.decisionLong', '10월 전망: ' + p.rows[0][1]);
+    setText('news.decisionLong', p.rows[0][1]);
     setText('news.forecastCta.title', p.title);
     setText('news.forecastCta.desc', p.intro);
     setText('news.forecastCta.btn', p.forecastBtn);
-    setText('news.summary.updated', '최종 업데이트: ' + latest.asOf + ' · ' + p.rows[0][1]);
+    setText('news.summary.updated', (p.updatedLabel || 'Last updated') + ': ' + latest.asOf + ' · ' + p.rows[0][1]);
     document.querySelectorAll('.filter-btn, .category-filter button').forEach(function(btn, i){ if(p.filters[i]) btn.textContent = p.filters[i]; });
     renderNewsBrief(p);
     renderNewsStaticSections(p);
@@ -467,6 +487,22 @@
       if(/Archive|아카이브|アーカイブ|归档|Archiv|date|날짜/i.test(el.textContent || '')) el.textContent = p.archive;
     });
     scrubStale();
+    if(release){
+      var compare=document.getElementById('compareList');
+      if(compare) compare.innerHTML=airlineRows(l).map(function(r){return '<li>'+esc(r[1])+': '+esc(r[2])+'</li>';}).join('');
+      setText('news.compareTitle',p.ui[2]);
+      setText('news.basisBody',p.foot);
+      var keyBox=document.getElementById('newsKeyVariables');
+      if(keyBox){
+        keyBox.firstElementChild.textContent=p.keyTitle;
+        Array.from(keyBox.lastElementChild.children).forEach(function(el,i){el.textContent=p.rows[[3,2,1,0][i]][0];});
+      }
+      var related=document.getElementById('newsRelatedLinksBox');
+      if(related){
+        related.firstElementChild.textContent=p.ui[1];
+        related.querySelectorAll('a').forEach(function(a,i){a.textContent=[p.title,p.ui[6],p.ui[2],p.ui[7],p.ui[4],p.ui[3]][i];if(i===2)a.href='fuel-surcharge-graph.html';});
+      }
+    }
     updateJsonLd('news', p);
   }
 
@@ -475,10 +511,26 @@
       try{
         var json = JSON.parse(node.textContent || '{}');
         if(json && typeof json === 'object'){
-          json.headline = kind === 'news' ? p.newsTitle : p.title;
-          json.description = p.desc;
-          json.dateModified = '2026-09-04T07:15:00+09:00';
-          json.datePublished = json.datePublished || '2026-09-04T07:15:00+09:00';
+          function update(entity){
+            if(!entity || typeof entity !== 'object') return;
+            if(Array.isArray(entity)){ entity.forEach(update); return; }
+            if(entity['@graph']) entity['@graph'].forEach(update);
+            var type = entity['@type'];
+            // NewsArticle fields belong to individual cards, not the page summary.
+            if(kind === 'news' && /Article/.test(String(type))) return;
+            if(type === 'FAQPage' && release){
+              entity.mainEntity = kind === 'forecast' ? p.faq.map(function(x){return {'@type':'Question',name:x.q,acceptedAnswer:{'@type':'Answer',text:x.a}};}) : [];
+              entity['@id'] = 'https://aero-surcharge.com/'+kind+'.html#faq';
+            }
+            if(/Article|WebPage|CollectionPage|FAQPage/.test(String(type))){
+              entity.headline = kind === 'news' ? p.newsTitle : p.title;
+              entity.description = p.desc;
+              entity.dateModified = release ? release.modified : '2026-09-04T07:15:00+09:00';
+              entity.inLanguage = lang();
+            }
+          }
+          update(json);
+          if(kind === 'news' && json['@type'] === 'FAQPage' && release){node.remove(); return;}
           node.textContent = JSON.stringify(json);
         }
       }catch(e){}
