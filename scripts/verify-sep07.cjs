@@ -5,7 +5,7 @@ const path = require('node:path');
 
 (async () => {
   const browser = await chromium.launch({headless:true});
-  const out = path.resolve('artifacts/sep07');
+  const out = path.resolve('artifacts/sep08');
   fs.mkdirSync(out, {recursive:true});
   const reports = [];
   try {
@@ -25,7 +25,7 @@ const path = require('node:path');
           factors:document.querySelectorAll('#predictFactors .predict-factor').length,
           faq:document.querySelector('#forecastFaqBox')?.innerText,
           official:document.querySelectorAll('.official-summary-box .official-item a').length,
-          cards:window.FIXED_NEWS?.filter(x=>String(x.id || '').endsWith('20260907')).map(x=>({id:x.id,title:x.title})),
+          cards:window.AERO_MARKET_RELEASE?.newsCards.map(x=>({id:x.id,title:x.i18n?.[document.documentElement.lang === 'zh' ? 'zh' : document.documentElement.lang]?.title || x.title})),
           h1:document.querySelectorAll('h1').length,
           schemas:Array.from(document.querySelectorAll('script[type="application/ld+json"]'),el=>JSON.parse(el.textContent)),
           overflow:document.documentElement.scrollWidth>innerWidth+1,
@@ -39,7 +39,7 @@ const path = require('node:path');
           assert(result.faq.includes('159.58'));
         } else {
           assert.equal(result.official,9);
-          assert.equal(result.cards.length,9);
+          assert.equal(result.cards.length,10);
           for(const card of result.cards) assert(result.text.includes(card.title),'Missing rendered card: '+card.id+' '+language);
         }
         const korean=language==='ko'?[]:result.text.split('\n').filter(t=>/[가-힣]/.test(t) && !/한국어/.test(t));

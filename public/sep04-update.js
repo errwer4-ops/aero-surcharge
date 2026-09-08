@@ -389,7 +389,7 @@
     if(release) newsCards = release.newsCards;
     var list = Array.isArray(window.FIXED_NEWS) ? window.FIXED_NEWS : (typeof FIXED_NEWS !== 'undefined' && Array.isArray(FIXED_NEWS) ? FIXED_NEWS : null);
     if(!list) return;
-    var stale = /20260904|20260903|20260902|20260831|20260828|20260827|136163|1374|five-week-high|sept2-close|global-jetfuel-15685-down|asia-jetfuel-supply-fujairah|hormuz-kpler|blacklist-56/i;
+    var stale = /20260907|20260904|20260903|20260902|20260831|20260828|20260827|136163|1374|five-week-high|sept2-close|global-jetfuel-15685-down|asia-jetfuel-supply-fujairah|hormuz-kpler|blacklist-56/i;
     list = list.filter(function(item){
       var id = item && item.id ? String(item.id) : '';
       if(/september-surcharge|airpremia|tway|jeju|eastar|airseoul/i.test(id)) return true;

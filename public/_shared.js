@@ -659,6 +659,48 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
   }
 })();
 
+/* 2026-09-08 19:35 KST common market snapshot. */
+(function(){
+  var latest = {
+    lastUpdated:'2026-09-08T19:35:00+09:00',
+    currentAppliedMonth:'2026-09',
+    confirmedNoticeMonth:'2026-09',
+    forecastTargetMonth:'2026-10',
+    septemberInternationalStage:21,
+    septemberInternationalStageChange:7,
+    octoberCalculationPeriod:'2026-08-16~2026-09-15',
+    septemberCalculationJetFuelUsdPerBbl:149.29,
+    singaporeJetFuelRecentUsdPerBbl:159.58,
+    singaporeJetFuelRecentDate:'2026-09-03',
+    singaporeJetFuelRecentIsOctoberAverage:false,
+    globalJetFuelWeeklyUsdPerBbl:171.01,
+    globalJetFuelWeeklyChangePct:9,
+    globalJetFuelIsSingaporeMops:false,
+    usdKrw:1345.6,
+    usdKrwLabel:'약 1,345.6원',
+    usdKrwIntradayLow:1336.3,
+    jpy100Krw:875.33,
+    brentUsdPerBbl:98.39,
+    brentUsdBbl:98.39,
+    brentIntradayHigh:99.46,
+    wtiUsdPerBbl:93.73,
+    wtiUsdBbl:93.73,
+    wtiIntradayHigh:94.73,
+    hormuzCommodityVessels:7,
+    hormuzCommodityVesselsPreviousDay:8,
+    hormuzCommodityVesselsWeekendLow:2,
+    hormuzTrafficRisk:'extremely_restricted_high_risk',
+    hormuzFreeNavigationNormalized:false,
+    octoberForecastDirection:'flat_to_upward_upside_probability_expanded',
+    octoberForecastConfidence:'approaching_medium',
+    marketSummary:'10월 전망: 보합~상승 압력 우세 · 상승 가능성 추가 확대'
+  };
+  window.AERO_MARKET_NUMBERS_20260908 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260908;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-09-08':window.AERO_MARKET_NUMBERS_20260908});
+  window.RATES = Object.assign({}, window.RATES || {}, {USD:1/1345.6});
+})();
+
 /* 2026.08.26 08:40 KST absolute final shared market guard. */
 (function(){
   var latest = {
@@ -922,6 +964,59 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
   window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260826;
   window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-26': window.AERO_MARKET_NUMBERS_20260826});
   window.RATES = Object.assign({}, window.RATES || {}, {USD:1/1382.3});
+})();
+
+/* Final shared snapshot: 2026-09-08 19:35 KST. */
+(function(){
+  var latest = {
+    lastUpdated:'2026-09-08T19:35:00+09:00', currentAppliedMonth:'2026-09',
+    confirmedNoticeMonth:'2026-09', forecastTargetMonth:'2026-10',
+    septemberInternationalStage:21, septemberInternationalStageChange:7,
+    octoberCalculationPeriod:'2026-08-16~2026-09-15',
+    septemberCalculationJetFuelUsdPerBbl:149.29,
+    singaporeJetFuelRecentUsdPerBbl:159.58, singaporeJetFuelRecentDate:'2026-09-03',
+    singaporeJetFuelRecentIsOctoberAverage:false,
+    globalJetFuelWeeklyUsdPerBbl:171.01, globalJetFuelWeeklyChangePct:9, globalJetFuelIsSingaporeMops:false,
+    usdKrw:1345.6, usdKrwLabel:'약 1,345.6원', usdKrwIntradayLow:1336.3, jpy100Krw:875.33,
+    brentUsdPerBbl:98.39, brentUsdBbl:98.39, brentIntradayHigh:99.46,
+    wtiUsdPerBbl:93.73, wtiUsdBbl:93.73, wtiIntradayHigh:94.73,
+    hormuzCommodityVessels:7, hormuzCommodityVesselsPreviousDay:8, hormuzCommodityVesselsWeekendLow:2,
+    hormuzTrafficRisk:'extremely_restricted_high_risk', hormuzFreeNavigationNormalized:false,
+    octoberForecastDirection:'flat_to_upward_upside_probability_expanded',
+    octoberForecastConfidence:'approaching_medium',
+    marketSummary:'10월 전망: 보합~상승 압력 우세 · 상승 가능성 추가 확대'
+  };
+  window.AERO_MARKET_NUMBERS_20260908 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260908;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-09-08':window.AERO_MARKET_NUMBERS_20260908});
+  window.RATES = Object.assign({}, window.RATES || {}, {USD:1/1345.6});
+})();
+
+/* Keep the final shared snapshot aligned with the September 8 release. */
+(function(){
+  var latest = {
+    lastUpdated:'2026-09-08T19:35:00+09:00', currentAppliedMonth:'2026-09',
+    confirmedNoticeMonth:'2026-09', forecastTargetMonth:'2026-10',
+    septemberInternationalStage:21, septemberInternationalStageChange:7,
+    octoberCalculationPeriod:'2026-08-16~2026-09-15',
+    septemberCalculationJetFuelUsdPerBbl:149.29,
+    singaporeJetFuelRecentUsdPerBbl:159.58, singaporeJetFuelRecentDate:'2026-09-03',
+    singaporeJetFuelRecentIsOctoberAverage:false,
+    globalJetFuelWeeklyUsdPerBbl:171.01, globalJetFuelWeeklyChangePct:9,
+    globalJetFuelIsSingaporeMops:false,
+    usdKrw:1345.6, usdKrwLabel:'약 1,345.6원', usdKrwIntradayLow:1336.3, jpy100Krw:875.33,
+    brentUsdPerBbl:98.39, brentUsdBbl:98.39, brentIntradayHigh:99.46,
+    wtiUsdPerBbl:93.73, wtiUsdBbl:93.73, wtiIntradayHigh:94.73,
+    hormuzCommodityVessels:7, hormuzCommodityVesselsPreviousDay:8, hormuzCommodityVesselsWeekendLow:2,
+    hormuzTrafficRisk:'extremely_restricted_high_risk', hormuzFreeNavigationNormalized:false,
+    octoberForecastDirection:'flat_to_upward_upside_probability_expanded',
+    octoberForecastConfidence:'approaching_medium',
+    marketSummary:'10월 전망: 보합~상승 압력 우세 · 상승 가능성 추가 확대'
+  };
+  window.AERO_MARKET_NUMBERS_20260908 = Object.assign({}, window.AERO_MARKET_NUMBERS_LATEST || {}, latest);
+  window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260908;
+  window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-09-08':window.AERO_MARKET_NUMBERS_20260908});
+  window.RATES = Object.assign({}, window.RATES || {}, {USD:1/1345.6});
 })();
 
 // Current applied month remains September; October market references are not notices.

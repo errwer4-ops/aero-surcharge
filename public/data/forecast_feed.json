@@ -1,6 +1,6 @@
 {
   "meta": {
-    "generatedAt": "2026-09-07T12:02:33.146Z",
+    "generatedAt": "2026-09-08T10:54:11.249Z",
     "modelVersion": "manual-october-direction-forecast-20260827",
     "basePeriod": "2026.09",
     "forecastTargetPeriod": "2026.10",
@@ -9,12 +9,12 @@
       "brentUSD": 82.5,
       "wtiUSD": 78.3,
       "jetFuelSpread": 14.2,
-      "usdKrw": 1347,
-      "usdJpy": 156.18,
+      "usdKrw": 1480,
+      "usdJpy": 149.2,
       "geopoliticalRiskScore": 0.35,
       "baselineBrentUSD": 75,
-      "marketDataSource": "live",
-      "marketFetchedAt": "2026-09-07T12:01:29.734Z"
+      "marketDataSource": "mock_fallback",
+      "marketFetchedAt": "2026-09-08T10:52:48.995Z"
     },
     "disclaimer": "2026년 10월 유류할증료 단계·금액은 아직 공시 전입니다. 9월 확정 공시는 기준선으로 유지하고, 10월은 환율, 9월 산정 평균, 최근 Singapore Jet Fuel, 글로벌 Jet Fuel, 국제유가, 호르무즈 운항·외교·운송위험을 구분해 방향성만 추적합니다.",
     "lastUpdated": "2026-08-27T09:45:00+09:00",
