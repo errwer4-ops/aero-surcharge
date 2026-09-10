@@ -389,7 +389,7 @@
     if(release) newsCards = release.newsCards;
     var list = Array.isArray(window.FIXED_NEWS) ? window.FIXED_NEWS : (typeof FIXED_NEWS !== 'undefined' && Array.isArray(FIXED_NEWS) ? FIXED_NEWS : null);
     if(!list) return;
-    var stale = /20260907|20260904|20260903|20260902|20260831|20260828|20260827|136163|1374|five-week-high|sept2-close|global-jetfuel-15685-down|asia-jetfuel-supply-fujairah|hormuz-kpler|blacklist-56/i;
+    var stale = /20260908|20260907|20260904|20260903|20260902|20260831|20260828|20260827|136163|1374|five-week-high|sept2-close|global-jetfuel-15685-down|asia-jetfuel-supply-fujairah|hormuz-kpler|blacklist-56/i;
     list = list.filter(function(item){
       var id = item && item.id ? String(item.id) : '';
       if(/september-surcharge|airpremia|tway|jeju|eastar|airseoul/i.test(id)) return true;
@@ -507,6 +507,7 @@
   }
 
   function updateJsonLd(kind, p){
+    var pageEntityUpdated = false;
     document.querySelectorAll('script[type="application/ld+json"]').forEach(function(node){
       try{
         var json = JSON.parse(node.textContent || '{}');
@@ -523,6 +524,7 @@
               entity['@id'] = 'https://aero-surcharge.com/'+kind+'.html#faq';
             }
             if(/Article|WebPage|CollectionPage|FAQPage/.test(String(type))){
+              pageEntityUpdated = true;
               entity.headline = kind === 'news' ? p.newsTitle : p.title;
               entity.description = p.desc;
               entity.dateModified = release ? release.modified : '2026-09-04T07:15:00+09:00';
@@ -535,6 +537,22 @@
         }
       }catch(e){}
     });
+    if(kind === 'news' && !pageEntityUpdated && release){
+      var pageSchema = document.getElementById('newsCollectionStructuredData');
+      if(!pageSchema){
+        pageSchema = document.createElement('script');
+        pageSchema.type = 'application/ld+json';
+        pageSchema.id = 'newsCollectionStructuredData';
+        document.head.appendChild(pageSchema);
+      }
+      pageSchema.textContent = JSON.stringify({
+        '@context':'https://schema.org','@type':'CollectionPage',
+        headline:p.newsTitle,description:p.desc,dateModified:release.modified,
+        mainEntityOfPage:'https://aero-surcharge.com/news.html',url:'https://aero-surcharge.com/news.html',
+        author:{'@type':'Organization',name:'aero-surcharge.com'},
+        publisher:{'@type':'Organization',name:'aero-surcharge.com'},inLanguage:lang()
+      });
+    }
   }
 
   function applyAll(){ renderForecast(); renderNews(); }

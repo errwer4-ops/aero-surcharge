@@ -5,7 +5,7 @@ const path = require('node:path');
 
 (async () => {
   const browser = await chromium.launch({headless:true});
-  const out = path.resolve('artifacts/sep08');
+  const out = path.resolve('artifacts/sep10');
   fs.mkdirSync(out, {recursive:true});
   const reports = [];
   try {
@@ -27,20 +27,25 @@ const path = require('node:path');
           official:document.querySelectorAll('.official-summary-box .official-item a').length,
           cards:window.AERO_MARKET_RELEASE?.newsCards.map(x=>({id:x.id,title:x.i18n?.[document.documentElement.lang === 'zh' ? 'zh' : document.documentElement.lang]?.title || x.title})),
           h1:document.querySelectorAll('h1').length,
+          canonical:document.querySelector('link[rel="canonical"]')?.href,
+          metaDescription:document.querySelector('meta[name="description"]')?.content,
           schemas:Array.from(document.querySelectorAll('script[type="application/ld+json"]'),el=>JSON.parse(el.textContent)),
           overflow:document.documentElement.scrollWidth>innerWidth+1,
           core:document.querySelector('#indicatorTbody')?.innerText || document.querySelector('.news-list')?.innerText
         }));
         assert(!/undefined/.test(result.text),pageName+' '+language+' undefined');
-        assert(result.text.includes('159.58') && result.text.includes('171.01'),pageName+' missing data');
+        assert(result.text.includes('159.58') && result.text.includes('171.01') && result.text.includes('101.61'),pageName+' missing data');
         assert.equal(result.h1,1,pageName+' h1');
+        assert(result.canonical === 'https://aero-surcharge.com/'+pageName+'.html',pageName+' canonical');
+        assert(result.metaDescription && result.metaDescription.includes('159.58'),pageName+' meta description');
+        assert(result.schemas.some(x=>x.dateModified === '2026-09-10T19:34:00+09:00'),pageName+' dateModified');
         if(pageName==='forecast') {
           assert.equal(result.factors,5);
           assert(result.faq.includes('159.58'));
         } else {
           assert.equal(result.official,9);
-          assert.equal(result.cards.length,10);
-          for(const card of result.cards) assert(result.text.includes(card.title),'Missing rendered card: '+card.id+' '+language);
+          assert.equal(result.cards.length,11);
+          for(const card of result.cards.slice(0,10)) assert(result.text.includes(card.title),'Missing first-page card: '+card.id+' '+language);
         }
         const korean=language==='ko'?[]:result.text.split('\n').filter(t=>/[가-힣]/.test(t) && !/한국어/.test(t));
         assert.equal(korean.length,0,pageName+' '+language+' Korean leak');

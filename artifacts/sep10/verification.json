@@ -1,0 +1,650 @@
+[
+  {
+    "page": "forecast",
+    "language": "ko",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "2026년 10월 국제선 유류할증료 전망 | MOPS·환율·호르무즈",
+    "cards": [
+      {
+        "id": "brent-over-100-20260910",
+        "title": "Brent $100 돌파…$101대에서 고유가 지속"
+      },
+      {
+        "id": "hormuz-half-average-20260910",
+        "title": "호르무즈 공개통항 7척…10일 평균의 절반 수준"
+      },
+      {
+        "id": "fujairah-stocks-20260910",
+        "title": "Fujairah 정제품 재고 급증…공급위험 일부 완충"
+      },
+      {
+        "id": "usdkrw-134217-20260910",
+        "title": "USD/KRW 1,342.17"
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel $159.58…8월 말 대비 급반등"
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "글로벌 Jet Fuel $171.01…주간 9% 상승"
+      },
+      {
+        "id": "commercial-tanker-attacks-20260910",
+        "title": "미·이란 선박 공격 확대…호르무즈 해상위험 최고조"
+      },
+      {
+        "id": "restricted-zone-20260907",
+        "title": "이란, 신규 제한구역 발표 예고"
+      },
+      {
+        "id": "oman-corridor-20260907",
+        "title": "이란·오만 통항로 협의 주장…정상화는 미확인"
+      },
+      {
+        "id": "opec-policy-20260907",
+        "title": "OPEC+ 10월 생산정책 유지…새 추가증산 없음"
+      },
+      {
+        "id": "marine-fuel-20260907",
+        "title": "선박연료 부족 우려…운임·운송비 상방 위험"
+      }
+    ]
+  },
+  {
+    "page": "forecast",
+    "language": "en",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "October 2026 International Fuel Surcharge Outlook | MOPS, FX and Hormuz",
+    "cards": [
+      {
+        "id": "brent-over-100-20260910",
+        "title": "Brent crosses $100 and holds in the $101 range"
+      },
+      {
+        "id": "hormuz-half-average-20260910",
+        "title": "Hormuz public count at 7, half the 10-day average"
+      },
+      {
+        "id": "fujairah-stocks-20260910",
+        "title": "Fujairah product stocks surge, partly cushioning supply risk"
+      },
+      {
+        "id": "usdkrw-134217-20260910",
+        "title": "USD/KRW 1,342.17"
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel rebounds to $159.58 from late August"
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "Global Jet Fuel $171.01: weekly increase of 9%"
+      },
+      {
+        "id": "commercial-tanker-attacks-20260910",
+        "title": "U.S.–Iran ship attacks expand as Hormuz risk peaks"
+      },
+      {
+        "id": "restricted-zone-20260907",
+        "title": "Iran plans to announce a new restricted zone"
+      },
+      {
+        "id": "oman-corridor-20260907",
+        "title": "Iran claims Oman corridor talks; normalisation unconfirmed"
+      },
+      {
+        "id": "opec-policy-20260907",
+        "title": "OPEC+ maintains October production policy"
+      },
+      {
+        "id": "marine-fuel-20260907",
+        "title": "Ship-fuel shortage concerns add freight-cost risk"
+      }
+    ]
+  },
+  {
+    "page": "forecast",
+    "language": "ja",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "2026年10月国際線燃油サーチャージ見通し | MOPS・為替・ホルムズ",
+    "cards": [
+      {
+        "id": "brent-over-100-20260910",
+        "title": "Brentが$100突破、$101台で高値継続"
+      },
+      {
+        "id": "hormuz-half-average-20260910",
+        "title": "ホルムズ公開通航7隻、10日平均の半分"
+      },
+      {
+        "id": "fujairah-stocks-20260910",
+        "title": "Fujairah石油製品在庫急増、供給リスクを一部緩和"
+      },
+      {
+        "id": "usdkrw-134217-20260910",
+        "title": "USD/KRW 1,342.17"
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel $159.58、8月末から反発"
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "世界Jet Fuel $171.01、週間9%上昇"
+      },
+      {
+        "id": "commercial-tanker-attacks-20260910",
+        "title": "米・イラン船舶攻撃拡大、ホルムズ海上リスク最高潮"
+      },
+      {
+        "id": "restricted-zone-20260907",
+        "title": "イラン、新たな制限区域の発表を予告"
+      },
+      {
+        "id": "oman-corridor-20260907",
+        "title": "イランがオマーン航路協議を主張、正常化は未確認"
+      },
+      {
+        "id": "opec-policy-20260907",
+        "title": "OPEC+、10月生産方針を維持"
+      },
+      {
+        "id": "marine-fuel-20260907",
+        "title": "船舶燃料不足への懸念、運賃上昇リスク"
+      }
+    ]
+  },
+  {
+    "page": "forecast",
+    "language": "zh",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "2026年10月国际线燃油附加费展望 | MOPS·汇率·霍尔木兹",
+    "cards": [
+      {
+        "id": "brent-over-100-20260910",
+        "title": "Brent突破$100并维持在$101区间"
+      },
+      {
+        "id": "hormuz-half-average-20260910",
+        "title": "霍尔木兹公开通行7艘，仅为10日均值一半"
+      },
+      {
+        "id": "fujairah-stocks-20260910",
+        "title": "Fujairah成品油库存激增，部分缓冲供应风险"
+      },
+      {
+        "id": "usdkrw-134217-20260910",
+        "title": "USD/KRW 1,342.17"
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel反弹至$159.58"
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "全球Jet Fuel $171.01，周涨9%"
+      },
+      {
+        "id": "commercial-tanker-attacks-20260910",
+        "title": "美伊船舶攻击扩大，霍尔木兹海上风险升至最高"
+      },
+      {
+        "id": "restricted-zone-20260907",
+        "title": "伊朗预告新限制区"
+      },
+      {
+        "id": "oman-corridor-20260907",
+        "title": "伊朗称与阿曼协商航道，正常化未确认"
+      },
+      {
+        "id": "opec-policy-20260907",
+        "title": "OPEC+维持10月生产政策"
+      },
+      {
+        "id": "marine-fuel-20260907",
+        "title": "船用燃料短缺担忧增加运费风险"
+      }
+    ]
+  },
+  {
+    "page": "forecast",
+    "language": "fr",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "Perspective octobre 2026 | MOPS, FX et Hormuz",
+    "cards": [
+      {
+        "id": "brent-over-100-20260910",
+        "title": "Brent franchit $100 et reste autour de $101"
+      },
+      {
+        "id": "hormuz-half-average-20260910",
+        "title": "Hormuz: 7 navires suivis, moitié de la moyenne sur 10 jours"
+      },
+      {
+        "id": "fujairah-stocks-20260910",
+        "title": "Forte hausse des stocks de Fujairah, amortisseur partiel"
+      },
+      {
+        "id": "usdkrw-134217-20260910",
+        "title": "USD/KRW 1,342.17"
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel rebondit à $159.58"
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "Jet Fuel mondial à $171.01, +9% sur la semaine"
+      },
+      {
+        "id": "commercial-tanker-attacks-20260910",
+        "title": "Escalade des attaques navales États-Unis–Iran, risque Hormuz extrême"
+      },
+      {
+        "id": "restricted-zone-20260907",
+        "title": "L’Iran prévoit une nouvelle zone restreinte"
+      },
+      {
+        "id": "oman-corridor-20260907",
+        "title": "L’Iran évoque un corridor avec Oman, sans normalisation confirmée"
+      },
+      {
+        "id": "opec-policy-20260907",
+        "title": "OPEC+ maintient la production d’octobre"
+      },
+      {
+        "id": "marine-fuel-20260907",
+        "title": "Risque de pénurie de combustible maritime et de hausse du fret"
+      }
+    ]
+  },
+  {
+    "page": "forecast",
+    "language": "de",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "Oktober-2026 Ausblick | MOPS, FX und Hormuz",
+    "cards": [
+      {
+        "id": "brent-over-100-20260910",
+        "title": "Brent überschreitet $100 und bleibt um $101"
+      },
+      {
+        "id": "hormuz-half-average-20260910",
+        "title": "Hormuz: 7 öffentlich erfasste Schiffe, Hälfte des 10-Tage-Mittels"
+      },
+      {
+        "id": "fujairah-stocks-20260910",
+        "title": "Fujairah-Bestände steigen stark und puffern Angebotsrisiko"
+      },
+      {
+        "id": "usdkrw-134217-20260910",
+        "title": "USD/KRW 1,342.17"
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel steigt auf $159.58"
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "Globales Jet Fuel bei $171.01, wöchentlich +9%"
+      },
+      {
+        "id": "commercial-tanker-attacks-20260910",
+        "title": "US-iranische Schiffsangriffe eskalieren, Hormuz-Risiko extrem"
+      },
+      {
+        "id": "restricted-zone-20260907",
+        "title": "Iran plant neue Sperrzone"
+      },
+      {
+        "id": "oman-corridor-20260907",
+        "title": "Iran meldet Oman-Korridorgespräche, Normalisierung unbestätigt"
+      },
+      {
+        "id": "opec-policy-20260907",
+        "title": "OPEC+ behält Oktober-Förderpolitik bei"
+      },
+      {
+        "id": "marine-fuel-20260907",
+        "title": "Schiffstreibstoffknappheit erhöht Frachtrisiko"
+      }
+    ]
+  },
+  {
+    "page": "news",
+    "language": "ko",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "9월 공시와 10월 전망 뉴스 | MOPS · USD/KRW",
+    "cards": [
+      {
+        "id": "brent-over-100-20260910",
+        "title": "Brent $100 돌파…$101대에서 고유가 지속"
+      },
+      {
+        "id": "hormuz-half-average-20260910",
+        "title": "호르무즈 공개통항 7척…10일 평균의 절반 수준"
+      },
+      {
+        "id": "fujairah-stocks-20260910",
+        "title": "Fujairah 정제품 재고 급증…공급위험 일부 완충"
+      },
+      {
+        "id": "usdkrw-134217-20260910",
+        "title": "USD/KRW 1,342.17"
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel $159.58…8월 말 대비 급반등"
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "글로벌 Jet Fuel $171.01…주간 9% 상승"
+      },
+      {
+        "id": "commercial-tanker-attacks-20260910",
+        "title": "미·이란 선박 공격 확대…호르무즈 해상위험 최고조"
+      },
+      {
+        "id": "restricted-zone-20260907",
+        "title": "이란, 신규 제한구역 발표 예고"
+      },
+      {
+        "id": "oman-corridor-20260907",
+        "title": "이란·오만 통항로 협의 주장…정상화는 미확인"
+      },
+      {
+        "id": "opec-policy-20260907",
+        "title": "OPEC+ 10월 생산정책 유지…새 추가증산 없음"
+      },
+      {
+        "id": "marine-fuel-20260907",
+        "title": "선박연료 부족 우려…운임·운송비 상방 위험"
+      }
+    ]
+  },
+  {
+    "page": "news",
+    "language": "en",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "September notices and October outlook news | MOPS · USD/KRW",
+    "cards": [
+      {
+        "id": "brent-over-100-20260910",
+        "title": "Brent crosses $100 and holds in the $101 range"
+      },
+      {
+        "id": "hormuz-half-average-20260910",
+        "title": "Hormuz public count at 7, half the 10-day average"
+      },
+      {
+        "id": "fujairah-stocks-20260910",
+        "title": "Fujairah product stocks surge, partly cushioning supply risk"
+      },
+      {
+        "id": "usdkrw-134217-20260910",
+        "title": "USD/KRW 1,342.17"
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel rebounds to $159.58 from late August"
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "Global Jet Fuel $171.01: weekly increase of 9%"
+      },
+      {
+        "id": "commercial-tanker-attacks-20260910",
+        "title": "U.S.–Iran ship attacks expand as Hormuz risk peaks"
+      },
+      {
+        "id": "restricted-zone-20260907",
+        "title": "Iran plans to announce a new restricted zone"
+      },
+      {
+        "id": "oman-corridor-20260907",
+        "title": "Iran claims Oman corridor talks; normalisation unconfirmed"
+      },
+      {
+        "id": "opec-policy-20260907",
+        "title": "OPEC+ maintains October production policy"
+      },
+      {
+        "id": "marine-fuel-20260907",
+        "title": "Ship-fuel shortage concerns add freight-cost risk"
+      }
+    ]
+  },
+  {
+    "page": "news",
+    "language": "ja",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "9月公示と10月見通しニュース | MOPS · USD/KRW",
+    "cards": [
+      {
+        "id": "brent-over-100-20260910",
+        "title": "Brentが$100突破、$101台で高値継続"
+      },
+      {
+        "id": "hormuz-half-average-20260910",
+        "title": "ホルムズ公開通航7隻、10日平均の半分"
+      },
+      {
+        "id": "fujairah-stocks-20260910",
+        "title": "Fujairah石油製品在庫急増、供給リスクを一部緩和"
+      },
+      {
+        "id": "usdkrw-134217-20260910",
+        "title": "USD/KRW 1,342.17"
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel $159.58、8月末から反発"
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "世界Jet Fuel $171.01、週間9%上昇"
+      },
+      {
+        "id": "commercial-tanker-attacks-20260910",
+        "title": "米・イラン船舶攻撃拡大、ホルムズ海上リスク最高潮"
+      },
+      {
+        "id": "restricted-zone-20260907",
+        "title": "イラン、新たな制限区域の発表を予告"
+      },
+      {
+        "id": "oman-corridor-20260907",
+        "title": "イランがオマーン航路協議を主張、正常化は未確認"
+      },
+      {
+        "id": "opec-policy-20260907",
+        "title": "OPEC+、10月生産方針を維持"
+      },
+      {
+        "id": "marine-fuel-20260907",
+        "title": "船舶燃料不足への懸念、運賃上昇リスク"
+      }
+    ]
+  },
+  {
+    "page": "news",
+    "language": "zh",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "9月公告与10月展望新闻 | MOPS · USD/KRW",
+    "cards": [
+      {
+        "id": "brent-over-100-20260910",
+        "title": "Brent突破$100并维持在$101区间"
+      },
+      {
+        "id": "hormuz-half-average-20260910",
+        "title": "霍尔木兹公开通行7艘，仅为10日均值一半"
+      },
+      {
+        "id": "fujairah-stocks-20260910",
+        "title": "Fujairah成品油库存激增，部分缓冲供应风险"
+      },
+      {
+        "id": "usdkrw-134217-20260910",
+        "title": "USD/KRW 1,342.17"
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel反弹至$159.58"
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "全球Jet Fuel $171.01，周涨9%"
+      },
+      {
+        "id": "commercial-tanker-attacks-20260910",
+        "title": "美伊船舶攻击扩大，霍尔木兹海上风险升至最高"
+      },
+      {
+        "id": "restricted-zone-20260907",
+        "title": "伊朗预告新限制区"
+      },
+      {
+        "id": "oman-corridor-20260907",
+        "title": "伊朗称与阿曼协商航道，正常化未确认"
+      },
+      {
+        "id": "opec-policy-20260907",
+        "title": "OPEC+维持10月生产政策"
+      },
+      {
+        "id": "marine-fuel-20260907",
+        "title": "船用燃料短缺担忧增加运费风险"
+      }
+    ]
+  },
+  {
+    "page": "news",
+    "language": "fr",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "Avis septembre et actualités octobre | MOPS · USD/KRW",
+    "cards": [
+      {
+        "id": "brent-over-100-20260910",
+        "title": "Brent franchit $100 et reste autour de $101"
+      },
+      {
+        "id": "hormuz-half-average-20260910",
+        "title": "Hormuz: 7 navires suivis, moitié de la moyenne sur 10 jours"
+      },
+      {
+        "id": "fujairah-stocks-20260910",
+        "title": "Forte hausse des stocks de Fujairah, amortisseur partiel"
+      },
+      {
+        "id": "usdkrw-134217-20260910",
+        "title": "USD/KRW 1,342.17"
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel rebondit à $159.58"
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "Jet Fuel mondial à $171.01, +9% sur la semaine"
+      },
+      {
+        "id": "commercial-tanker-attacks-20260910",
+        "title": "Escalade des attaques navales États-Unis–Iran, risque Hormuz extrême"
+      },
+      {
+        "id": "restricted-zone-20260907",
+        "title": "L’Iran prévoit une nouvelle zone restreinte"
+      },
+      {
+        "id": "oman-corridor-20260907",
+        "title": "L’Iran évoque un corridor avec Oman, sans normalisation confirmée"
+      },
+      {
+        "id": "opec-policy-20260907",
+        "title": "OPEC+ maintient la production d’octobre"
+      },
+      {
+        "id": "marine-fuel-20260907",
+        "title": "Risque de pénurie de combustible maritime et de hausse du fret"
+      }
+    ]
+  },
+  {
+    "page": "news",
+    "language": "de",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "September-Hinweise und Oktober-Ausblick | MOPS · USD/KRW",
+    "cards": [
+      {
+        "id": "brent-over-100-20260910",
+        "title": "Brent überschreitet $100 und bleibt um $101"
+      },
+      {
+        "id": "hormuz-half-average-20260910",
+        "title": "Hormuz: 7 öffentlich erfasste Schiffe, Hälfte des 10-Tage-Mittels"
+      },
+      {
+        "id": "fujairah-stocks-20260910",
+        "title": "Fujairah-Bestände steigen stark und puffern Angebotsrisiko"
+      },
+      {
+        "id": "usdkrw-134217-20260910",
+        "title": "USD/KRW 1,342.17"
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel steigt auf $159.58"
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "Globales Jet Fuel bei $171.01, wöchentlich +9%"
+      },
+      {
+        "id": "commercial-tanker-attacks-20260910",
+        "title": "US-iranische Schiffsangriffe eskalieren, Hormuz-Risiko extrem"
+      },
+      {
+        "id": "restricted-zone-20260907",
+        "title": "Iran plant neue Sperrzone"
+      },
+      {
+        "id": "oman-corridor-20260907",
+        "title": "Iran meldet Oman-Korridorgespräche, Normalisierung unbestätigt"
+      },
+      {
+        "id": "opec-policy-20260907",
+        "title": "OPEC+ behält Oktober-Förderpolitik bei"
+      },
+      {
+        "id": "marine-fuel-20260907",
+        "title": "Schiffstreibstoffknappheit erhöht Frachtrisiko"
+      }
+    ]
+  }
+]
