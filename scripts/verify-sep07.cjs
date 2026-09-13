@@ -5,7 +5,7 @@ const path = require('node:path');
 
 (async () => {
   const browser = await chromium.launch({headless:true});
-  const out = path.resolve('artifacts/sep10');
+  const out = path.resolve('artifacts/sep14');
   fs.mkdirSync(out, {recursive:true});
   const reports = [];
   try {
@@ -25,7 +25,7 @@ const path = require('node:path');
           factors:document.querySelectorAll('#predictFactors .predict-factor').length,
           faq:document.querySelector('#forecastFaqBox')?.innerText,
           official:document.querySelectorAll('.official-summary-box .official-item a').length,
-          cards:window.AERO_MARKET_RELEASE?.newsCards.map(x=>({id:x.id,title:x.i18n?.[document.documentElement.lang === 'zh' ? 'zh' : document.documentElement.lang]?.title || x.title})),
+          cards:window.AERO_MARKET_RELEASE?.newsCards.map(x=>{const d=x.i18n?.[document.documentElement.lang === 'zh' ? 'zh' : document.documentElement.lang]||{};return {id:x.id,title:d.title||x.title,brief:d.aiBrief,summary:d.summary};}),
           h1:document.querySelectorAll('h1').length,
           canonical:document.querySelector('link[rel="canonical"]')?.href,
           metaDescription:document.querySelector('meta[name="description"]')?.content,
@@ -34,18 +34,23 @@ const path = require('node:path');
           core:document.querySelector('#indicatorTbody')?.innerText || document.querySelector('.news-list')?.innerText
         }));
         assert(!/undefined/.test(result.text),pageName+' '+language+' undefined');
-        assert(result.text.includes('159.58') && result.text.includes('171.01') && result.text.includes('101.61'),pageName+' missing data');
+        assert(result.text.includes('159.58') && result.text.includes('171.01') && result.text.includes('108.23') && result.text.includes('103.20'),pageName+' missing data');
         assert.equal(result.h1,1,pageName+' h1');
         assert(result.canonical === 'https://aero-surcharge.com/'+pageName+'.html',pageName+' canonical');
         assert(result.metaDescription && result.metaDescription.includes('159.58'),pageName+' meta description');
-        assert(result.schemas.some(x=>x.dateModified === '2026-09-10T19:34:00+09:00'),pageName+' dateModified');
+        assert(result.schemas.some(x=>x.dateModified === '2026-09-14T07:40:00+09:00'),pageName+' dateModified');
         if(pageName==='forecast') {
           assert.equal(result.factors,5);
           assert(result.faq.includes('159.58'));
         } else {
           assert.equal(result.official,9);
-          assert.equal(result.cards.length,11);
+          assert.equal(result.cards.length,10);
           for(const card of result.cards.slice(0,10)) assert(result.text.includes(card.title),'Missing first-page card: '+card.id+' '+language);
+          for(const card of result.cards.slice(0,8)) {
+            assert(card.summary && card.summary !== card.brief,'Detailed summary duplicates brief: '+card.id+' '+language);
+            assert(card.summary.length >= card.brief.length + 25,'Detailed summary is too short: '+card.id+' '+language);
+            assert(result.text.includes(card.summary),'Detailed summary not rendered: '+card.id+' '+language);
+          }
         }
         const korean=language==='ko'?[]:result.text.split('\n').filter(t=>/[가-힣]/.test(t) && !/한국어/.test(t));
         assert.equal(korean.length,0,pageName+' '+language+' Korean leak');

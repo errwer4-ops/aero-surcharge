@@ -1,0 +1,842 @@
+[
+  {
+    "page": "forecast",
+    "language": "ko",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "2026년 10월 국제선 유류할증료 전망 | MOPS·환율·호르무즈",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260914",
+        "title": "사우디 East-West Pipeline 중단…호르무즈 우회수송 차질",
+        "brief": "공격 뒤 예방적으로 중단된 파이프라인은 최근 약 4~5m bpd를 Yanbu로 보낸 핵심 우회로입니다.",
+        "summary": "이 파이프라인은 사우디 동부 유전지대의 원유를 홍해 Yanbu로 보내 호르무즈를 우회하는 1,200km 전략 수송로입니다. 사우디 당국은 드론 공격 뒤 예방적 중단이라고 밝혔으며 복구기간은 확정되지 않았습니다. 최근 처리량 4~5m bpd는 파이프라인 이용 규모이지 전량이 즉시 시장에서 사라졌다는 뜻이 아닙니다."
+      },
+      {
+        "id": "brent-wti-surge-20260914",
+        "title": "Brent $108·WTI $103…중동 공급위험 재급등",
+        "brief": "9월 14일 오전 Brent $108.23, WTI $103.20으로 주말 사이 추가 상승했습니다.",
+        "summary": "9월 11일 종가 Brent $104.61·WTI $100.05에서 주말 이후 각각 $108.23·$103.20으로 추가 상승했습니다. 상승 배경에는 사우디 우회 파이프라인 중단과 호르무즈·홍해 운송 위험이 함께 있습니다. 다만 국제유가는 항공유 가격의 선행·비용 변수일 뿐 항공사 단계 산정에 쓰이는 Singapore Jet Fuel 누적평균과는 별도입니다."
+      },
+      {
+        "id": "hormuz-bab-el-mandeb-20260914",
+        "title": "호르무즈 넘어 Bab el-Mandeb까지…중동 수송로 위험 확대",
+        "brief": "후티의 Mocha·전략 도서 진출로 홍해 남단 위험이 커졌습니다.",
+        "summary": "Kpler 공개 AIS 예비집계에서 호르무즈 통항은 7척으로 전일 11척과 10일 평균 15척을 밑돌았습니다. 동시에 후티 세력의 Mocha와 전략 도서 진출로 Bab el-Mandeb 남단 위험이 커졌습니다. 호르무즈 통항은 완전히 멈추지 않았고 당시 Bab el-Mandeb 통항도 계속됐지만, 두 우회축이 동시에 불안해졌다는 점이 핵심입니다."
+      },
+      {
+        "id": "vlcc-record-freight-20260914",
+        "title": "VLCC 운임 사상 최고권…WS450·배럴당 약 $11.50",
+        "brief": "Gulf of Oman→China VLCC 운임이 Worldscale 약 450에 도달했습니다.",
+        "summary": "Baltic Exchange 기준 Gulf of Oman→China VLCC 운임은 Worldscale 약 450, 배럴당 약 $11.50으로 해당 지표 도입 이후 최고 수준입니다. 위험해역을 운항하려는 선박이 줄면서 가용 선복이 부족해진 결과입니다. 이 비용이 항공유 가격에 즉시 동일 폭으로 반영되는 것은 아니지만 원유·정제품의 조달 및 운송비 부담을 높입니다."
+      },
+      {
+        "id": "oman-talks-postponed-20260914",
+        "title": "걸프·이란 오만 회담 연기…외교완화 기대 약화",
+        "brief": "9월 14일 예정 회담은 합의를 위해 연기됐고 새 날짜는 정해지지 않았습니다.",
+        "summary": "이란은 지역 국가들에 호르무즈 통항 관리 구상을 설명하기 위해 9월 14일 오만 회담을 추진했지만 일부 국가의 요청과 합의 형성을 이유로 연기했습니다. 새 일정은 발표되지 않았습니다. 이는 오만 연안의 제한적 선박 통항 지원과는 별개의 외교 일정이며, 회담 연기만으로 협상 결렬이나 통항 중단을 의미하지는 않습니다."
+      },
+      {
+        "id": "iranian-commercial-vessel-20260914",
+        "title": "Qeshm 인근 이란 상업선박 피격…공격주체 미확인",
+        "brief": "9월 13일 이란 상업선박 피격으로 최소 1명이 숨졌습니다.",
+        "summary": "이란 국영매체는 9월 13일 Qeshm Island 인근 상업선박 피격으로 1명이 숨지고 여러 명이 다쳤다고 전했습니다. UKMTO도 같은 해협에서 발사체에 맞은 선박과 화재·대피를 보고했지만 동일 사건인지는 명확하지 않습니다. 미국을 포함한 특정 공격주체는 확인되지 않았으므로 카드에서도 책임 주체를 단정하지 않습니다."
+      },
+      {
+        "id": "china-jet-exports-20260914",
+        "title": "중국 Jet Fuel 수출 증가…항공유 공급 일부 완충",
+        "brief": "중국의 9월 정제품 수출은 400만톤을 조금 웃돌 전망이며 diesel·Jet Fuel 비중이 큽니다.",
+        "summary": "복수의 시장 소식통은 중국 정유사의 9월 휘발유·diesel·Jet Fuel 수출이 400만톤을 소폭 웃돌 것으로 예상했습니다. 높은 해외 마진과 수출통제 완화가 배경이며 diesel과 Jet Fuel이 큰 비중을 차지합니다. 이는 아시아 현물 공급을 늘리는 하방 완충이지만 실제 수출량과 10월 Singapore MOPS 평균은 별도로 확인해야 합니다."
+      },
+      {
+        "id": "usdkrw-134159-20260914",
+        "title": "원/달러 1,341원대…KRW 상승폭 일부 완충",
+        "brief": "현재 현물환율은 약 1,341.59원, 100엔은 약 875.70원입니다.",
+        "summary": "원/달러 현물은 최근 1,394원대에서 1,341원대로 낮아져 원화 부과액에는 강한 완충 신호입니다. 그러나 국제선 유류할증료 단계와 USD 기준액에는 Singapore Jet Fuel/MOPS가 더 직접적으로 작용합니다. 항공사의 최종 KRW 공지는 8월 16일~9월 15일 평균환율을 사용하므로 9월 14일 현물값 하나로 원화 금액을 계산하지 않습니다."
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel $159.58…8월 말 대비 급반등",
+        "brief": "Sparta의 9월 3일 Singapore Jet Fuel flat price는 $159.58/bbl입니다.",
+        "summary": "8/27 $142.93보다 $16.65, 9월 확정 산정평균 $149.29보다 $10.29 높습니다. Sparta의 주간 변화 +$9.61은 별도 비교 기준이며 두 날짜 차이와 혼동하지 않습니다. 10월 누적 MOPS 평균은 집계 중입니다."
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "글로벌 Jet Fuel $171.01…주간 9% 상승",
+        "brief": "IATA/S&P Global Platts 주간평균은 $171.01/bbl, 전주 대비 +9.0%입니다.",
+        "summary": "글로벌 지역별 가격을 반영한 주간평균으로 Singapore MOPS가 아닙니다. 직전 주간 $156.85에서 상승했으며 항공유 전반의 반등을 보여줍니다."
+      }
+    ]
+  },
+  {
+    "page": "forecast",
+    "language": "en",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "October 2026 International Fuel Surcharge Outlook | MOPS, FX and Hormuz",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260914",
+        "title": "Saudi East-West Pipeline shut, disrupting the Hormuz bypass",
+        "brief": "The pipeline, shut as a precaution after attack, recently moved about 4–5m bpd to Yanbu.",
+        "summary": "The 1,200-km strategic line carries crude from eastern Saudi fields to Yanbu on the Red Sea, bypassing Hormuz. Saudi authorities described the shutdown after drone attacks as precautionary, and no firm restart date was available. The recent 4–5m bpd figure is throughput exposed to disruption, not barrels immediately removed from the market."
+      },
+      {
+        "id": "brent-wti-surge-20260914",
+        "title": "Brent $108 and WTI $103 as Middle East supply risk surges",
+        "brief": "On Sept 14 morning Brent reached $108.23 and WTI $103.20, extending gains over the weekend.",
+        "summary": "From the Sept 11 close of Brent $104.61 and WTI $100.05, prices extended to $108.23 and $103.20 after the weekend. The move reflects the Saudi bypass-pipeline outage together with Hormuz and Red Sea transport risk. Crude is an upstream cost signal, however, and remains separate from the cumulative Singapore Jet Fuel average used for surcharge assessment."
+      },
+      {
+        "id": "hormuz-bab-el-mandeb-20260914",
+        "title": "Beyond Hormuz: Bab el-Mandeb risk widens Middle East route threat",
+        "brief": "Houthi advances at Mocha and strategic islands raised risk at the Red Sea entrance.",
+        "summary": "Kpler preliminary public AIS data put Hormuz traffic at seven vessels, below the prior day’s 11 and the 10-day average of 15. At the same time, Houthi advances around Mocha and strategic islands increased risk at Bab el-Mandeb. Neither route was fully closed, but the key change is simultaneous pressure on both the Gulf exit and its Red Sea alternative."
+      },
+      {
+        "id": "vlcc-record-freight-20260914",
+        "title": "VLCC freight at record territory: WS450, about $11.50/bbl",
+        "brief": "Gulf of Oman-to-China VLCC freight reached about Worldscale 450.",
+        "summary": "Baltic Exchange data placed Gulf of Oman-to-China VLCC freight near Worldscale 450, roughly $11.50 per barrel and the highest since this route assessment began. Fewer owners are willing to expose ships to the risk area, tightening available tonnage. The freight increase does not pass one-for-one into jet fuel immediately, but it raises crude and product procurement costs."
+      },
+      {
+        "id": "oman-talks-postponed-20260914",
+        "title": "Gulf–Iran Oman meeting postponed, weakening near-term relief hopes",
+        "brief": "The Sept 14 meeting was postponed for consensus with no new date.",
+        "summary": "Iran planned the Sept 14 Oman meeting to brief regional states on its proposed management of Hormuz traffic, but it was postponed for consensus at some countries’ request. No replacement date was announced. This diplomatic meeting is separate from limited transit assistance off Oman’s coast, and postponement alone does not prove talks collapsed or shipping stopped."
+      },
+      {
+        "id": "iranian-commercial-vessel-20260914",
+        "title": "Iranian commercial vessel struck near Qeshm; attacker unconfirmed",
+        "brief": "At least one person died after the Sept 13 strike on an Iranian commercial vessel.",
+        "summary": "Iranian state media reported one death and several injuries after a commercial vessel was struck near Qeshm Island on Sept 13. UKMTO separately reported a projectile strike, severe fire and evacuation in the strait, but it was unclear whether this was the same incident. No specific attacker, including the U.S., was confirmed, so the card assigns no responsibility."
+      },
+      {
+        "id": "china-jet-exports-20260914",
+        "title": "Higher Chinese jet-fuel exports partly cushion aviation supply",
+        "brief": "China’s September product exports are expected slightly above 4m tonnes, led by diesel and jet fuel.",
+        "summary": "Market sources expected Chinese refiners to export slightly more than 4m tonnes of gasoline, diesel and jet fuel in September, supported by high overseas margins and eased controls. Diesel and jet fuel make up much of the volume. This adds Asian spot supply, but actual exports and the October Singapore MOPS average still require separate confirmation."
+      },
+      {
+        "id": "usdkrw-134159-20260914",
+        "title": "USD/KRW near 1,341 cushions the KRW increase",
+        "brief": "Spot USD/KRW is about 1,341.59 and JPY 100 about KRW 875.70.",
+        "summary": "Spot USD/KRW has fallen from the recent 1,394 area to about 1,341, providing a strong cushion for won-denominated charges. Singapore Jet Fuel/MOPS is more direct for the international stage and USD amount. Airlines use the Aug 16–Sept 15 average FX for final KRW notices, so a single Sept 14 spot quote is not used to calculate the amount."
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel rebounds to $159.58 from late August",
+        "brief": "Sparta reports a Sept 3 Singapore Jet Fuel flat price of $159.58/bbl.",
+        "summary": "This is $16.65 above Aug 27’s $142.93 and $10.29 above September’s $149.29 calculation average. Sparta’s +$9.61 weekly comparison uses a separate reference. October cumulative MOPS is still being compiled."
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "Global Jet Fuel $171.01: weekly increase of 9%",
+        "brief": "The IATA/S&P Global Platts weekly average is $171.01/bbl, up 9.0%.",
+        "summary": "This global regional-price average is not Singapore MOPS. It follows $156.85 in the previous weekly reading and signals a broader jet-fuel rebound."
+      }
+    ]
+  },
+  {
+    "page": "forecast",
+    "language": "ja",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "2026年10月国際線燃油サーチャージ見通し | MOPS・為替・ホルムズ",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260914",
+        "title": "Saudi East-West Pipeline停止、ホルムズ迂回輸送に支障",
+        "brief": "攻撃後に予防停止した同線は最近約4～5m bpdをYanbuへ輸送していました。",
+        "summary": "この1,200kmの戦略線はサウジ東部油田の原油を紅海Yanbuへ送り、ホルムズを迂回します。当局はドローン攻撃後の予防的停止と説明し、復旧時期は未確定です。4～5m bpdは影響を受ける輸送規模であり、全量が市場から即時消失した意味ではありません。"
+      },
+      {
+        "id": "brent-wti-surge-20260914",
+        "title": "Brent $108・WTI $103、中東供給リスク再急騰",
+        "brief": "9月14日朝Brent $108.23、WTI $103.20へ週末に追加上昇。",
+        "summary": "9月11日終値Brent $104.61・WTI $100.05から週末後に$108.23・$103.20へ続伸しました。背景にはサウジ迂回パイプライン停止とホルムズ・紅海輸送リスクがあります。ただし原油は上流コスト指標で、段階算定のSingapore Jet Fuel累積平均とは別です。"
+      },
+      {
+        "id": "hormuz-bab-el-mandeb-20260914",
+        "title": "ホルムズからBab el-Mandebへ、中東航路リスク拡大",
+        "brief": "フーシ派のMocha・戦略島進出で紅海南端リスクが上昇。",
+        "summary": "Kpler公開AIS暫定値でホルムズは7隻と前日11隻、10日平均15隻を下回りました。同時にフーシ派のMocha・戦略島進出でBab el-Mandebの危険が上昇。両航路とも完全閉鎖ではありませんが、湾岸出口と紅海代替路が同時に圧迫される点が重要です。"
+      },
+      {
+        "id": "vlcc-record-freight-20260914",
+        "title": "VLCC運賃最高圏、WS450・約$11.50/bbl",
+        "brief": "Gulf of Oman→China運賃がWorldscale約450に到達。",
+        "summary": "Baltic ExchangeによるGulf of Oman→China VLCC運賃はWorldscale約450、約$11.50/bblで指標開始後最高です。危険海域へ投入する船主が減り船腹が逼迫しました。航空燃料へ同幅で即時転嫁されるわけではありませんが、原油・製品調達費を押し上げます。"
+      },
+      {
+        "id": "oman-talks-postponed-20260914",
+        "title": "湾岸・イランのオマーン会合延期、緩和期待後退",
+        "brief": "9月14日予定会合は合意形成のため延期され新日程未定。",
+        "summary": "イランは地域諸国へホルムズ通航管理案を説明するため9月14日のオマーン会合を予定しましたが、一部国の要請と合意形成を理由に延期。新日程は未定です。オマーン沿岸の限定通航支援とは別の外交日程で、延期だけで交渉決裂や通航停止を意味しません。"
+      },
+      {
+        "id": "iranian-commercial-vessel-20260914",
+        "title": "Qeshm付近でイラン商船被弾、攻撃主体未確認",
+        "brief": "9月13日の攻撃で少なくとも1人死亡。",
+        "summary": "イラン国営メディアは9月13日Qeshm Island付近の商船被弾で1人死亡、複数負傷と報道。UKMTOも海峡で発射体命中、火災、退避を別途報告しましたが同一事件か不明です。米国を含む攻撃主体は確認されず、カードでも責任を断定しません。"
+      },
+      {
+        "id": "china-jet-exports-20260914",
+        "title": "中国Jet Fuel輸出増、航空燃料供給を一部緩和",
+        "brief": "9月製品輸出は400万トン強、diesel・Jet Fuel中心の見込み。",
+        "summary": "市場筋は中国製油所の9月ガソリン・diesel・Jet Fuel輸出を400万トン強と予想。海外マージンと規制緩和が背景で、diesel・Jet Fuelが大半です。アジア現物供給の緩衝要因ですが、実績輸出量と10月Singapore MOPS平均は別途確認が必要です。"
+      },
+      {
+        "id": "usdkrw-134159-20260914",
+        "title": "USD/KRW 1,341台、KRW上昇幅を一部緩和",
+        "brief": "直物は約1,341.59、100円約875.70ウォン。",
+        "summary": "USD/KRW直物は最近の1,394台から約1,341へ低下し、ウォン建て負担を強く緩和します。ただし国際線段階・USD基準額にはSingapore Jet Fuel/MOPSがより直接的です。最終KRW公示は8/16～9/15平均を使うため、9/14直物だけで金額を計算しません。"
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel $159.58、8月末から反発",
+        "brief": "Spartaによる9/3 Singapore Jet Fuel市場価格は$159.58/bblです。",
+        "summary": "8/27の$142.93より$16.65、9月算定平均$149.29より$10.29高い水準です。Spartaの週間+$9.61は別の比較基準です。10月累積MOPSは集計中です。"
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "世界Jet Fuel $171.01、週間9%上昇",
+        "brief": "IATA/S&P Global Platts世界週平均は$171.01/bbl、前週比+9.0%です。",
+        "summary": "地域価格を集計した世界平均でSingapore MOPSではありません。前週$156.85から上昇し、航空燃料全体の反発を示します。"
+      }
+    ]
+  },
+  {
+    "page": "forecast",
+    "language": "zh",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "2026年10月国际线燃油附加费展望 | MOPS·汇率·霍尔木兹",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260914",
+        "title": "Saudi East-West Pipeline停运，霍尔木兹绕行受阻",
+        "brief": "该管道遇袭后预防性停运，近期向Yanbu输送约4至5m bpd。",
+        "summary": "这条1,200公里战略管道把沙特东部油田原油输往红海Yanbu，从而绕开霍尔木兹。沙特称无人机袭击后的停运属于预防措施，恢复时间尚未确定。4至5m bpd是受影响的近期输送规模，不表示这些供应立即全部退出市场。"
+      },
+      {
+        "id": "brent-wti-surge-20260914",
+        "title": "Brent $108、WTI $103，中东供应风险再升",
+        "brief": "9月14日上午Brent $108.23、WTI $103.20，周末后继续上涨。",
+        "summary": "价格从9月11日收盘Brent $104.61、WTI $100.05进一步升至周末后的$108.23和$103.20。上涨同时受到沙特绕行管道停运、霍尔木兹和红海运输风险推动。但原油只是上游成本信号，与附加费所参考的Singapore Jet Fuel累计均值不同。"
+      },
+      {
+        "id": "hormuz-bab-el-mandeb-20260914",
+        "title": "风险从霍尔木兹扩至Bab el-Mandeb",
+        "brief": "胡塞武装推进Mocha及战略岛屿，提高红海南口风险。",
+        "summary": "Kpler公开AIS初步数据中的霍尔木兹通行量为7艘，低于前日11艘和10日均值15艘。同时，胡塞武装向Mocha及战略岛屿推进，提高Bab el-Mandeb风险。两条航线都没有完全关闭，关键变化是海湾出口及红海替代路线同时承压。"
+      },
+      {
+        "id": "vlcc-record-freight-20260914",
+        "title": "VLCC运费创新高，WS450、约$11.50/桶",
+        "brief": "Gulf of Oman至中国VLCC运价达到Worldscale约450。",
+        "summary": "Baltic Exchange数据显示，Gulf of Oman至中国VLCC运价约为Worldscale 450，即每桶约$11.50，为该航线评估推出以来最高。船东减少进入高风险海域，导致可用运力收紧。运费不会立即按相同比例传导至航油，但会提高原油和成品油采购运输成本。"
+      },
+      {
+        "id": "oman-talks-postponed-20260914",
+        "title": "海湾国家与伊朗阿曼会议延期，缓和预期减弱",
+        "brief": "原定9月14日会议为寻求共识而延期，新日期未定。",
+        "summary": "伊朗原计划在9月14日阿曼会议上向地区国家说明霍尔木兹通行管理方案，但因部分国家要求及寻求共识而延期，尚无新日期。该外交会议不同于阿曼沿岸有限通行协助，延期本身不等于谈判破裂或航运停止。"
+      },
+      {
+        "id": "iranian-commercial-vessel-20260914",
+        "title": "Qeshm附近伊朗商船遇袭，攻击方未确认",
+        "brief": "9月13日袭击至少造成1人死亡。",
+        "summary": "伊朗国营媒体称，9月13日Qeshm Island附近商船遇袭造成1人死亡、多人受伤。UKMTO另行报告海峡内一艘船遭发射物击中、严重起火并疏散，但是否同一事件不清楚。包括美国在内的具体攻击方未获确认，因此卡片不作归责。"
+      },
+      {
+        "id": "china-jet-exports-20260914",
+        "title": "中国航油出口增加，部分缓冲供应",
+        "brief": "9月成品油出口预计略超400万吨，以柴油和航油为主。",
+        "summary": "市场消息人士预计，中国炼厂9月汽油、柴油和航油出口略高于400万吨，受海外利润较高及出口管制放宽支持，其中柴油和航油占较大比重。这增加亚洲现货供应，但实际出口量及10月Singapore MOPS均值仍须分别确认。"
+      },
+      {
+        "id": "usdkrw-134159-20260914",
+        "title": "USD/KRW约1,341，部分缓冲韩元涨幅",
+        "brief": "即期约1,341.59，100日元约875.70韩元。",
+        "summary": "USD/KRW即期从近期1,394附近降至约1,341，对韩元收费形成强缓冲。但国际线档位及美元基准额更直接受Singapore Jet Fuel/MOPS影响。航空公司最终KRW公告使用8月16日至9月15日平均汇率，因此不以9月14日单一即期值计算。"
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel反弹至$159.58",
+        "brief": "Sparta公布9/3 Singapore Jet Fuel市场价格为$159.58/bbl。",
+        "summary": "比8/27的$142.93高$16.65，比9月计算均值$149.29高$10.29。Sparta周度+$9.61使用另一比较基准。10月累计MOPS仍在汇总。"
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "全球Jet Fuel $171.01，周涨9%",
+        "brief": "IATA/S&P Global Platts全球周均为$171.01/bbl，周涨9.0%。",
+        "summary": "这是地区价格汇总的全球均值，不是Singapore MOPS。前周为$156.85，变化反映更广泛的航油反弹。"
+      }
+    ]
+  },
+  {
+    "page": "forecast",
+    "language": "fr",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "Perspective octobre 2026 | MOPS, FX et Hormuz",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260914",
+        "title": "Arrêt du Saudi East-West Pipeline, contournement d’Hormuz perturbé",
+        "brief": "Arrêté par précaution après attaque, il transportait récemment environ 4–5m b/j vers Yanbu.",
+        "summary": "Cette ligne stratégique de 1 200 km relie les champs de l’est saoudien à Yanbu sur la mer Rouge pour contourner Hormuz. Riyad parle d’un arrêt préventif après les drones, sans date ferme de reprise. Les 4–5m b/j représentent le débit exposé, pas une disparition immédiate du marché."
+      },
+      {
+        "id": "brent-wti-surge-20260914",
+        "title": "Brent $108 et WTI $103, regain du risque d’offre",
+        "brief": "Le matin du 14 septembre Brent atteignait $108.23 et WTI $103.20.",
+        "summary": "Après les clôtures du 11 septembre à $104.61 pour Brent et $100.05 pour WTI, les cours ont progressé à $108.23 et $103.20. L’arrêt du contournement saoudien et les risques Hormuz–mer Rouge y contribuent. Le brut reste toutefois un signal de coût amont, distinct de la moyenne cumulée Singapore Jet Fuel."
+      },
+      {
+        "id": "hormuz-bab-el-mandeb-20260914",
+        "title": "Le risque s’étend d’Hormuz à Bab el-Mandeb",
+        "brief": "L’avancée houthie à Mocha et sur des îles stratégiques accroît le risque à l’entrée de la mer Rouge.",
+        "summary": "Les données AIS préliminaires de Kpler donnent sept transits à Hormuz, contre 11 la veille et une moyenne de 15 sur dix jours. En parallèle, l’avancée houthie autour de Mocha et d’îles stratégiques accroît le risque à Bab el-Mandeb. Aucun axe n’est totalement fermé, mais la sortie du Golfe et son alternative mer Rouge sont sous pression simultanée."
+      },
+      {
+        "id": "vlcc-record-freight-20260914",
+        "title": "Fret VLCC record: WS450, environ $11.50/bbl",
+        "brief": "Le fret VLCC golfe d’Oman–Chine a atteint environ Worldscale 450.",
+        "summary": "Selon Baltic Exchange, le fret VLCC golfe d’Oman–Chine approche Worldscale 450, soit environ $11.50 par baril, un record depuis le lancement de cette évaluation. La réticence des armateurs réduit le tonnage disponible. Le coût ne se transmet pas immédiatement à l’identique au kérosène, mais renchérit l’approvisionnement en brut et produits."
+      },
+      {
+        "id": "oman-talks-postponed-20260914",
+        "title": "Réunion Golfe–Iran à Oman reportée, espoir d’apaisement réduit",
+        "brief": "La réunion du 14 septembre est reportée sans nouvelle date.",
+        "summary": "L’Iran voulait présenter aux pays régionaux son projet de gestion du trafic d’Hormuz lors de la réunion du 14 septembre à Oman. Elle a été reportée pour rechercher un consensus, sans nouvelle date. Cette réunion diplomatique est distincte de l’assistance limitée au transit au large d’Oman; son report ne prouve ni rupture des discussions ni arrêt du trafic."
+      },
+      {
+        "id": "iranian-commercial-vessel-20260914",
+        "title": "Navire commercial iranien frappé près de Qeshm; auteur inconnu",
+        "brief": "Au moins une personne est morte lors de l’attaque du 13 septembre.",
+        "summary": "Les médias d’État iraniens ont annoncé un mort et plusieurs blessés après l’attaque d’un navire commercial près de Qeshm Island le 13 septembre. UKMTO a signalé séparément un projectile, un incendie grave et une évacuation dans le détroit, sans certitude qu’il s’agisse du même incident. Aucun auteur précis, États-Unis compris, n’est confirmé."
+      },
+      {
+        "id": "china-jet-exports-20260914",
+        "title": "Hausse des exportations chinoises de jet fuel, amortisseur partiel",
+        "brief": "Les exportations de septembre devraient dépasser légèrement 4 Mt, surtout diesel et jet fuel.",
+        "summary": "Des sources de marché prévoyaient un peu plus de 4 Mt d’exportations chinoises de gasoline, diesel et jet fuel en septembre, grâce aux marges extérieures et à l’assouplissement des contrôles. Diesel et jet fuel dominent. Cela ajoute de l’offre spot asiatique, mais volumes réels et moyenne MOPS d’octobre doivent être vérifiés séparément."
+      },
+      {
+        "id": "usdkrw-134159-20260914",
+        "title": "USD/KRW autour de 1,341 amortit la hausse en KRW",
+        "brief": "Le comptant vaut environ 1,341.59; 100 JPY environ 875.70 KRW.",
+        "summary": "Le comptant USD/KRW est passé d’environ 1,394 récemment à 1,341, fort amortisseur pour les montants en won. Le niveau international et le montant USD dépendent plus directement du Singapore Jet Fuel/MOPS. Les compagnies utilisent la moyenne du 16 août au 15 septembre pour l’avis KRW final; un seul cours du 14 septembre ne suffit pas."
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel rebondit à $159.58",
+        "brief": "Sparta indique $159.58/bbl pour le prix Singapore Jet Fuel du 3 septembre.",
+        "summary": "Cela dépasse de $16.65 les $142.93 du 27 août et de $10.29 la moyenne septembre de $149.29. La variation hebdomadaire Sparta de +$9.61 utilise une autre référence. Le MOPS cumulé d’octobre reste en calcul."
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "Jet Fuel mondial à $171.01, +9% sur la semaine",
+        "brief": "La moyenne mondiale hebdomadaire IATA/S&P Global Platts atteint $171.01/bbl, +9.0%.",
+        "summary": "Cette moyenne de prix régionaux n’est pas Singapore MOPS. Elle suit $156.85 la semaine précédente et signale un rebond plus large du kérosène."
+      }
+    ]
+  },
+  {
+    "page": "forecast",
+    "language": "de",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "Oktober-2026 Ausblick | MOPS, FX und Hormuz",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260914",
+        "title": "Saudi East-West Pipeline gestoppt, Hormuz-Umgehung gestört",
+        "brief": "Nach Angriff vorsorglich gestoppt; zuletzt etwa 4–5 Mio. bpd nach Yanbu.",
+        "summary": "Die 1.200 km lange strategische Leitung bringt Rohöl aus Ostsaudi-Arabien nach Yanbu am Roten Meer und umgeht Hormuz. Saudi-Arabien bezeichnete den Stopp nach Drohnenangriffen als Vorsichtsmaßnahme; ein Neustarttermin fehlt. 4–5 Mio. bpd sind gefährdeter Durchsatz, nicht sofort entfallenes Marktangebot."
+      },
+      {
+        "id": "brent-wti-surge-20260914",
+        "title": "Brent $108 und WTI $103 bei neuem Angebotsrisiko",
+        "brief": "Am Morgen des 14. September lag Brent bei $108.23, WTI bei $103.20.",
+        "summary": "Vom Schluss am 11. September bei Brent $104.61 und WTI $100.05 stiegen die Preise nach dem Wochenende auf $108.23 und $103.20. Saudi-Pipelineausfall sowie Hormuz- und Rotmeer-Risiken treiben den Anstieg. Rohöl bleibt ein vorgelagertes Kostensignal und ist vom kumulierten Singapore-Jet-Fuel-Mittel getrennt."
+      },
+      {
+        "id": "hormuz-bab-el-mandeb-20260914",
+        "title": "Risiko weitet sich von Hormuz auf Bab el-Mandeb aus",
+        "brief": "Huthi-Vorstöße bei Mocha und strategischen Inseln erhöhen das Risiko am Rotmeer-Eingang.",
+        "summary": "Vorläufige öffentliche Kpler-AIS-Daten zeigen sieben Hormuz-Transits gegenüber 11 am Vortag und einem 10-Tage-Mittel von 15. Zugleich erhöhten Huthi-Vorstöße bei Mocha und strategischen Inseln das Bab-el-Mandeb-Risiko. Keine Route war völlig geschlossen; entscheidend ist der gleichzeitige Druck auf Golfausgang und Rotmeer-Alternative."
+      },
+      {
+        "id": "vlcc-record-freight-20260914",
+        "title": "VLCC-Fracht auf Rekordniveau: WS450, etwa $11.50/bbl",
+        "brief": "Gulf of Oman–China erreichte etwa Worldscale 450.",
+        "summary": "Baltic-Exchange-Daten zeigen für Gulf of Oman–China etwa Worldscale 450 bzw. $11.50 je Barrel, den höchsten Wert seit Einführung der Bewertung. Weniger Reeder setzen Schiffe im Risikogebiet ein, wodurch Tonnage knapp wird. Die Kosten gehen nicht sofort eins zu eins in Kerosin ein, erhöhen aber Rohöl- und Produktbeschaffung."
+      },
+      {
+        "id": "oman-talks-postponed-20260914",
+        "title": "Golf–Iran-Oman-Treffen verschoben, Entspannungshoffnung sinkt",
+        "brief": "Das Treffen am 14. September wurde ohne neuen Termin verschoben.",
+        "summary": "Iran wollte Regionalstaaten beim Oman-Treffen am 14. September über sein Hormuz-Verkehrskonzept informieren. Das Treffen wurde auf Wunsch einiger Staaten zur Konsensbildung ohne neuen Termin verschoben. Es ist von begrenzter Transithilfe vor Oman getrennt; die Verschiebung beweist weder Gesprächsabbruch noch Verkehrsstop."
+      },
+      {
+        "id": "iranian-commercial-vessel-20260914",
+        "title": "Iranisches Handelsschiff bei Qeshm getroffen; Angreifer unklar",
+        "brief": "Beim Angriff am 13. September starb mindestens eine Person.",
+        "summary": "Iranische Staatsmedien meldeten einen Toten und mehrere Verletzte nach einem Treffer auf ein Handelsschiff bei Qeshm Island am 13. September. UKMTO berichtete separat über Projektiltreffer, schweren Brand und Evakuierung in der Straße; ob es derselbe Vorfall war, blieb unklar. Kein konkreter Angreifer, einschließlich USA, ist bestätigt."
+      },
+      {
+        "id": "china-jet-exports-20260914",
+        "title": "Mehr chinesische Jet-Fuel-Exporte puffern Angebot teilweise",
+        "brief": "September-Produktexporte dürften etwas über 4 Mio. t liegen, vor allem Diesel und Jet Fuel.",
+        "summary": "Marktquellen erwarteten im September etwas über 4 Mio. t chinesische Exporte von Benzin, Diesel und Jet Fuel, gestützt durch hohe Auslandsmargen und lockerere Kontrollen. Diesel und Jet Fuel stellen den Großteil. Dies erhöht asiatisches Spotangebot; tatsächliche Exporte und Oktober-MOPS sind separat zu bestätigen."
+      },
+      {
+        "id": "usdkrw-134159-20260914",
+        "title": "USD/KRW um 1,341 dämpft KRW-Anstieg",
+        "brief": "Kassakurs etwa 1,341.59; 100 JPY etwa 875.70 KRW.",
+        "summary": "Spot-USD/KRW fiel zuletzt von etwa 1.394 auf 1.341 und dämpft Won-Beträge stark. Für internationale Stufe und USD-Basis ist Singapore Jet Fuel/MOPS direkter. Airlines nutzen für endgültige KRW-Hinweise das Mittel vom 16. August bis 15. September; ein einzelner Spotkurs vom 14. September reicht nicht."
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel steigt auf $159.58",
+        "brief": "Sparta nennt $159.58/bbl als Singapore-Jet-Fuel-Marktpreis vom 3. September.",
+        "summary": "Das liegt $16.65 über $142.93 vom 27. August und $10.29 über dem September-Mittel von $149.29. Spartas Wochenvergleich +$9.61 hat eine andere Basis. Das Oktober-MOPS-Mittel wird noch berechnet."
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "Globales Jet Fuel bei $171.01, wöchentlich +9%",
+        "brief": "Das globale IATA/S&P-Global-Platts-Wochenmittel beträgt $171.01/bbl, +9.0%.",
+        "summary": "Dieser Durchschnitt regionaler Preise ist kein Singapore MOPS. Nach $156.85 in der Vorwoche zeigt er eine breitere Kerosinerholung."
+      }
+    ]
+  },
+  {
+    "page": "news",
+    "language": "ko",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "9월 공시와 10월 전망 뉴스 | MOPS · USD/KRW",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260914",
+        "title": "사우디 East-West Pipeline 중단…호르무즈 우회수송 차질",
+        "brief": "공격 뒤 예방적으로 중단된 파이프라인은 최근 약 4~5m bpd를 Yanbu로 보낸 핵심 우회로입니다.",
+        "summary": "이 파이프라인은 사우디 동부 유전지대의 원유를 홍해 Yanbu로 보내 호르무즈를 우회하는 1,200km 전략 수송로입니다. 사우디 당국은 드론 공격 뒤 예방적 중단이라고 밝혔으며 복구기간은 확정되지 않았습니다. 최근 처리량 4~5m bpd는 파이프라인 이용 규모이지 전량이 즉시 시장에서 사라졌다는 뜻이 아닙니다."
+      },
+      {
+        "id": "brent-wti-surge-20260914",
+        "title": "Brent $108·WTI $103…중동 공급위험 재급등",
+        "brief": "9월 14일 오전 Brent $108.23, WTI $103.20으로 주말 사이 추가 상승했습니다.",
+        "summary": "9월 11일 종가 Brent $104.61·WTI $100.05에서 주말 이후 각각 $108.23·$103.20으로 추가 상승했습니다. 상승 배경에는 사우디 우회 파이프라인 중단과 호르무즈·홍해 운송 위험이 함께 있습니다. 다만 국제유가는 항공유 가격의 선행·비용 변수일 뿐 항공사 단계 산정에 쓰이는 Singapore Jet Fuel 누적평균과는 별도입니다."
+      },
+      {
+        "id": "hormuz-bab-el-mandeb-20260914",
+        "title": "호르무즈 넘어 Bab el-Mandeb까지…중동 수송로 위험 확대",
+        "brief": "후티의 Mocha·전략 도서 진출로 홍해 남단 위험이 커졌습니다.",
+        "summary": "Kpler 공개 AIS 예비집계에서 호르무즈 통항은 7척으로 전일 11척과 10일 평균 15척을 밑돌았습니다. 동시에 후티 세력의 Mocha와 전략 도서 진출로 Bab el-Mandeb 남단 위험이 커졌습니다. 호르무즈 통항은 완전히 멈추지 않았고 당시 Bab el-Mandeb 통항도 계속됐지만, 두 우회축이 동시에 불안해졌다는 점이 핵심입니다."
+      },
+      {
+        "id": "vlcc-record-freight-20260914",
+        "title": "VLCC 운임 사상 최고권…WS450·배럴당 약 $11.50",
+        "brief": "Gulf of Oman→China VLCC 운임이 Worldscale 약 450에 도달했습니다.",
+        "summary": "Baltic Exchange 기준 Gulf of Oman→China VLCC 운임은 Worldscale 약 450, 배럴당 약 $11.50으로 해당 지표 도입 이후 최고 수준입니다. 위험해역을 운항하려는 선박이 줄면서 가용 선복이 부족해진 결과입니다. 이 비용이 항공유 가격에 즉시 동일 폭으로 반영되는 것은 아니지만 원유·정제품의 조달 및 운송비 부담을 높입니다."
+      },
+      {
+        "id": "oman-talks-postponed-20260914",
+        "title": "걸프·이란 오만 회담 연기…외교완화 기대 약화",
+        "brief": "9월 14일 예정 회담은 합의를 위해 연기됐고 새 날짜는 정해지지 않았습니다.",
+        "summary": "이란은 지역 국가들에 호르무즈 통항 관리 구상을 설명하기 위해 9월 14일 오만 회담을 추진했지만 일부 국가의 요청과 합의 형성을 이유로 연기했습니다. 새 일정은 발표되지 않았습니다. 이는 오만 연안의 제한적 선박 통항 지원과는 별개의 외교 일정이며, 회담 연기만으로 협상 결렬이나 통항 중단을 의미하지는 않습니다."
+      },
+      {
+        "id": "iranian-commercial-vessel-20260914",
+        "title": "Qeshm 인근 이란 상업선박 피격…공격주체 미확인",
+        "brief": "9월 13일 이란 상업선박 피격으로 최소 1명이 숨졌습니다.",
+        "summary": "이란 국영매체는 9월 13일 Qeshm Island 인근 상업선박 피격으로 1명이 숨지고 여러 명이 다쳤다고 전했습니다. UKMTO도 같은 해협에서 발사체에 맞은 선박과 화재·대피를 보고했지만 동일 사건인지는 명확하지 않습니다. 미국을 포함한 특정 공격주체는 확인되지 않았으므로 카드에서도 책임 주체를 단정하지 않습니다."
+      },
+      {
+        "id": "china-jet-exports-20260914",
+        "title": "중국 Jet Fuel 수출 증가…항공유 공급 일부 완충",
+        "brief": "중국의 9월 정제품 수출은 400만톤을 조금 웃돌 전망이며 diesel·Jet Fuel 비중이 큽니다.",
+        "summary": "복수의 시장 소식통은 중국 정유사의 9월 휘발유·diesel·Jet Fuel 수출이 400만톤을 소폭 웃돌 것으로 예상했습니다. 높은 해외 마진과 수출통제 완화가 배경이며 diesel과 Jet Fuel이 큰 비중을 차지합니다. 이는 아시아 현물 공급을 늘리는 하방 완충이지만 실제 수출량과 10월 Singapore MOPS 평균은 별도로 확인해야 합니다."
+      },
+      {
+        "id": "usdkrw-134159-20260914",
+        "title": "원/달러 1,341원대…KRW 상승폭 일부 완충",
+        "brief": "현재 현물환율은 약 1,341.59원, 100엔은 약 875.70원입니다.",
+        "summary": "원/달러 현물은 최근 1,394원대에서 1,341원대로 낮아져 원화 부과액에는 강한 완충 신호입니다. 그러나 국제선 유류할증료 단계와 USD 기준액에는 Singapore Jet Fuel/MOPS가 더 직접적으로 작용합니다. 항공사의 최종 KRW 공지는 8월 16일~9월 15일 평균환율을 사용하므로 9월 14일 현물값 하나로 원화 금액을 계산하지 않습니다."
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel $159.58…8월 말 대비 급반등",
+        "brief": "Sparta의 9월 3일 Singapore Jet Fuel flat price는 $159.58/bbl입니다.",
+        "summary": "8/27 $142.93보다 $16.65, 9월 확정 산정평균 $149.29보다 $10.29 높습니다. Sparta의 주간 변화 +$9.61은 별도 비교 기준이며 두 날짜 차이와 혼동하지 않습니다. 10월 누적 MOPS 평균은 집계 중입니다."
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "글로벌 Jet Fuel $171.01…주간 9% 상승",
+        "brief": "IATA/S&P Global Platts 주간평균은 $171.01/bbl, 전주 대비 +9.0%입니다.",
+        "summary": "글로벌 지역별 가격을 반영한 주간평균으로 Singapore MOPS가 아닙니다. 직전 주간 $156.85에서 상승했으며 항공유 전반의 반등을 보여줍니다."
+      }
+    ]
+  },
+  {
+    "page": "news",
+    "language": "en",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "September notices and October outlook news | MOPS · USD/KRW",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260914",
+        "title": "Saudi East-West Pipeline shut, disrupting the Hormuz bypass",
+        "brief": "The pipeline, shut as a precaution after attack, recently moved about 4–5m bpd to Yanbu.",
+        "summary": "The 1,200-km strategic line carries crude from eastern Saudi fields to Yanbu on the Red Sea, bypassing Hormuz. Saudi authorities described the shutdown after drone attacks as precautionary, and no firm restart date was available. The recent 4–5m bpd figure is throughput exposed to disruption, not barrels immediately removed from the market."
+      },
+      {
+        "id": "brent-wti-surge-20260914",
+        "title": "Brent $108 and WTI $103 as Middle East supply risk surges",
+        "brief": "On Sept 14 morning Brent reached $108.23 and WTI $103.20, extending gains over the weekend.",
+        "summary": "From the Sept 11 close of Brent $104.61 and WTI $100.05, prices extended to $108.23 and $103.20 after the weekend. The move reflects the Saudi bypass-pipeline outage together with Hormuz and Red Sea transport risk. Crude is an upstream cost signal, however, and remains separate from the cumulative Singapore Jet Fuel average used for surcharge assessment."
+      },
+      {
+        "id": "hormuz-bab-el-mandeb-20260914",
+        "title": "Beyond Hormuz: Bab el-Mandeb risk widens Middle East route threat",
+        "brief": "Houthi advances at Mocha and strategic islands raised risk at the Red Sea entrance.",
+        "summary": "Kpler preliminary public AIS data put Hormuz traffic at seven vessels, below the prior day’s 11 and the 10-day average of 15. At the same time, Houthi advances around Mocha and strategic islands increased risk at Bab el-Mandeb. Neither route was fully closed, but the key change is simultaneous pressure on both the Gulf exit and its Red Sea alternative."
+      },
+      {
+        "id": "vlcc-record-freight-20260914",
+        "title": "VLCC freight at record territory: WS450, about $11.50/bbl",
+        "brief": "Gulf of Oman-to-China VLCC freight reached about Worldscale 450.",
+        "summary": "Baltic Exchange data placed Gulf of Oman-to-China VLCC freight near Worldscale 450, roughly $11.50 per barrel and the highest since this route assessment began. Fewer owners are willing to expose ships to the risk area, tightening available tonnage. The freight increase does not pass one-for-one into jet fuel immediately, but it raises crude and product procurement costs."
+      },
+      {
+        "id": "oman-talks-postponed-20260914",
+        "title": "Gulf–Iran Oman meeting postponed, weakening near-term relief hopes",
+        "brief": "The Sept 14 meeting was postponed for consensus with no new date.",
+        "summary": "Iran planned the Sept 14 Oman meeting to brief regional states on its proposed management of Hormuz traffic, but it was postponed for consensus at some countries’ request. No replacement date was announced. This diplomatic meeting is separate from limited transit assistance off Oman’s coast, and postponement alone does not prove talks collapsed or shipping stopped."
+      },
+      {
+        "id": "iranian-commercial-vessel-20260914",
+        "title": "Iranian commercial vessel struck near Qeshm; attacker unconfirmed",
+        "brief": "At least one person died after the Sept 13 strike on an Iranian commercial vessel.",
+        "summary": "Iranian state media reported one death and several injuries after a commercial vessel was struck near Qeshm Island on Sept 13. UKMTO separately reported a projectile strike, severe fire and evacuation in the strait, but it was unclear whether this was the same incident. No specific attacker, including the U.S., was confirmed, so the card assigns no responsibility."
+      },
+      {
+        "id": "china-jet-exports-20260914",
+        "title": "Higher Chinese jet-fuel exports partly cushion aviation supply",
+        "brief": "China’s September product exports are expected slightly above 4m tonnes, led by diesel and jet fuel.",
+        "summary": "Market sources expected Chinese refiners to export slightly more than 4m tonnes of gasoline, diesel and jet fuel in September, supported by high overseas margins and eased controls. Diesel and jet fuel make up much of the volume. This adds Asian spot supply, but actual exports and the October Singapore MOPS average still require separate confirmation."
+      },
+      {
+        "id": "usdkrw-134159-20260914",
+        "title": "USD/KRW near 1,341 cushions the KRW increase",
+        "brief": "Spot USD/KRW is about 1,341.59 and JPY 100 about KRW 875.70.",
+        "summary": "Spot USD/KRW has fallen from the recent 1,394 area to about 1,341, providing a strong cushion for won-denominated charges. Singapore Jet Fuel/MOPS is more direct for the international stage and USD amount. Airlines use the Aug 16–Sept 15 average FX for final KRW notices, so a single Sept 14 spot quote is not used to calculate the amount."
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel rebounds to $159.58 from late August",
+        "brief": "Sparta reports a Sept 3 Singapore Jet Fuel flat price of $159.58/bbl.",
+        "summary": "This is $16.65 above Aug 27’s $142.93 and $10.29 above September’s $149.29 calculation average. Sparta’s +$9.61 weekly comparison uses a separate reference. October cumulative MOPS is still being compiled."
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "Global Jet Fuel $171.01: weekly increase of 9%",
+        "brief": "The IATA/S&P Global Platts weekly average is $171.01/bbl, up 9.0%.",
+        "summary": "This global regional-price average is not Singapore MOPS. It follows $156.85 in the previous weekly reading and signals a broader jet-fuel rebound."
+      }
+    ]
+  },
+  {
+    "page": "news",
+    "language": "ja",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "9月公示と10月見通しニュース | MOPS · USD/KRW",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260914",
+        "title": "Saudi East-West Pipeline停止、ホルムズ迂回輸送に支障",
+        "brief": "攻撃後に予防停止した同線は最近約4～5m bpdをYanbuへ輸送していました。",
+        "summary": "この1,200kmの戦略線はサウジ東部油田の原油を紅海Yanbuへ送り、ホルムズを迂回します。当局はドローン攻撃後の予防的停止と説明し、復旧時期は未確定です。4～5m bpdは影響を受ける輸送規模であり、全量が市場から即時消失した意味ではありません。"
+      },
+      {
+        "id": "brent-wti-surge-20260914",
+        "title": "Brent $108・WTI $103、中東供給リスク再急騰",
+        "brief": "9月14日朝Brent $108.23、WTI $103.20へ週末に追加上昇。",
+        "summary": "9月11日終値Brent $104.61・WTI $100.05から週末後に$108.23・$103.20へ続伸しました。背景にはサウジ迂回パイプライン停止とホルムズ・紅海輸送リスクがあります。ただし原油は上流コスト指標で、段階算定のSingapore Jet Fuel累積平均とは別です。"
+      },
+      {
+        "id": "hormuz-bab-el-mandeb-20260914",
+        "title": "ホルムズからBab el-Mandebへ、中東航路リスク拡大",
+        "brief": "フーシ派のMocha・戦略島進出で紅海南端リスクが上昇。",
+        "summary": "Kpler公開AIS暫定値でホルムズは7隻と前日11隻、10日平均15隻を下回りました。同時にフーシ派のMocha・戦略島進出でBab el-Mandebの危険が上昇。両航路とも完全閉鎖ではありませんが、湾岸出口と紅海代替路が同時に圧迫される点が重要です。"
+      },
+      {
+        "id": "vlcc-record-freight-20260914",
+        "title": "VLCC運賃最高圏、WS450・約$11.50/bbl",
+        "brief": "Gulf of Oman→China運賃がWorldscale約450に到達。",
+        "summary": "Baltic ExchangeによるGulf of Oman→China VLCC運賃はWorldscale約450、約$11.50/bblで指標開始後最高です。危険海域へ投入する船主が減り船腹が逼迫しました。航空燃料へ同幅で即時転嫁されるわけではありませんが、原油・製品調達費を押し上げます。"
+      },
+      {
+        "id": "oman-talks-postponed-20260914",
+        "title": "湾岸・イランのオマーン会合延期、緩和期待後退",
+        "brief": "9月14日予定会合は合意形成のため延期され新日程未定。",
+        "summary": "イランは地域諸国へホルムズ通航管理案を説明するため9月14日のオマーン会合を予定しましたが、一部国の要請と合意形成を理由に延期。新日程は未定です。オマーン沿岸の限定通航支援とは別の外交日程で、延期だけで交渉決裂や通航停止を意味しません。"
+      },
+      {
+        "id": "iranian-commercial-vessel-20260914",
+        "title": "Qeshm付近でイラン商船被弾、攻撃主体未確認",
+        "brief": "9月13日の攻撃で少なくとも1人死亡。",
+        "summary": "イラン国営メディアは9月13日Qeshm Island付近の商船被弾で1人死亡、複数負傷と報道。UKMTOも海峡で発射体命中、火災、退避を別途報告しましたが同一事件か不明です。米国を含む攻撃主体は確認されず、カードでも責任を断定しません。"
+      },
+      {
+        "id": "china-jet-exports-20260914",
+        "title": "中国Jet Fuel輸出増、航空燃料供給を一部緩和",
+        "brief": "9月製品輸出は400万トン強、diesel・Jet Fuel中心の見込み。",
+        "summary": "市場筋は中国製油所の9月ガソリン・diesel・Jet Fuel輸出を400万トン強と予想。海外マージンと規制緩和が背景で、diesel・Jet Fuelが大半です。アジア現物供給の緩衝要因ですが、実績輸出量と10月Singapore MOPS平均は別途確認が必要です。"
+      },
+      {
+        "id": "usdkrw-134159-20260914",
+        "title": "USD/KRW 1,341台、KRW上昇幅を一部緩和",
+        "brief": "直物は約1,341.59、100円約875.70ウォン。",
+        "summary": "USD/KRW直物は最近の1,394台から約1,341へ低下し、ウォン建て負担を強く緩和します。ただし国際線段階・USD基準額にはSingapore Jet Fuel/MOPSがより直接的です。最終KRW公示は8/16～9/15平均を使うため、9/14直物だけで金額を計算しません。"
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel $159.58、8月末から反発",
+        "brief": "Spartaによる9/3 Singapore Jet Fuel市場価格は$159.58/bblです。",
+        "summary": "8/27の$142.93より$16.65、9月算定平均$149.29より$10.29高い水準です。Spartaの週間+$9.61は別の比較基準です。10月累積MOPSは集計中です。"
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "世界Jet Fuel $171.01、週間9%上昇",
+        "brief": "IATA/S&P Global Platts世界週平均は$171.01/bbl、前週比+9.0%です。",
+        "summary": "地域価格を集計した世界平均でSingapore MOPSではありません。前週$156.85から上昇し、航空燃料全体の反発を示します。"
+      }
+    ]
+  },
+  {
+    "page": "news",
+    "language": "zh",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "9月公告与10月展望新闻 | MOPS · USD/KRW",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260914",
+        "title": "Saudi East-West Pipeline停运，霍尔木兹绕行受阻",
+        "brief": "该管道遇袭后预防性停运，近期向Yanbu输送约4至5m bpd。",
+        "summary": "这条1,200公里战略管道把沙特东部油田原油输往红海Yanbu，从而绕开霍尔木兹。沙特称无人机袭击后的停运属于预防措施，恢复时间尚未确定。4至5m bpd是受影响的近期输送规模，不表示这些供应立即全部退出市场。"
+      },
+      {
+        "id": "brent-wti-surge-20260914",
+        "title": "Brent $108、WTI $103，中东供应风险再升",
+        "brief": "9月14日上午Brent $108.23、WTI $103.20，周末后继续上涨。",
+        "summary": "价格从9月11日收盘Brent $104.61、WTI $100.05进一步升至周末后的$108.23和$103.20。上涨同时受到沙特绕行管道停运、霍尔木兹和红海运输风险推动。但原油只是上游成本信号，与附加费所参考的Singapore Jet Fuel累计均值不同。"
+      },
+      {
+        "id": "hormuz-bab-el-mandeb-20260914",
+        "title": "风险从霍尔木兹扩至Bab el-Mandeb",
+        "brief": "胡塞武装推进Mocha及战略岛屿，提高红海南口风险。",
+        "summary": "Kpler公开AIS初步数据中的霍尔木兹通行量为7艘，低于前日11艘和10日均值15艘。同时，胡塞武装向Mocha及战略岛屿推进，提高Bab el-Mandeb风险。两条航线都没有完全关闭，关键变化是海湾出口及红海替代路线同时承压。"
+      },
+      {
+        "id": "vlcc-record-freight-20260914",
+        "title": "VLCC运费创新高，WS450、约$11.50/桶",
+        "brief": "Gulf of Oman至中国VLCC运价达到Worldscale约450。",
+        "summary": "Baltic Exchange数据显示，Gulf of Oman至中国VLCC运价约为Worldscale 450，即每桶约$11.50，为该航线评估推出以来最高。船东减少进入高风险海域，导致可用运力收紧。运费不会立即按相同比例传导至航油，但会提高原油和成品油采购运输成本。"
+      },
+      {
+        "id": "oman-talks-postponed-20260914",
+        "title": "海湾国家与伊朗阿曼会议延期，缓和预期减弱",
+        "brief": "原定9月14日会议为寻求共识而延期，新日期未定。",
+        "summary": "伊朗原计划在9月14日阿曼会议上向地区国家说明霍尔木兹通行管理方案，但因部分国家要求及寻求共识而延期，尚无新日期。该外交会议不同于阿曼沿岸有限通行协助，延期本身不等于谈判破裂或航运停止。"
+      },
+      {
+        "id": "iranian-commercial-vessel-20260914",
+        "title": "Qeshm附近伊朗商船遇袭，攻击方未确认",
+        "brief": "9月13日袭击至少造成1人死亡。",
+        "summary": "伊朗国营媒体称，9月13日Qeshm Island附近商船遇袭造成1人死亡、多人受伤。UKMTO另行报告海峡内一艘船遭发射物击中、严重起火并疏散，但是否同一事件不清楚。包括美国在内的具体攻击方未获确认，因此卡片不作归责。"
+      },
+      {
+        "id": "china-jet-exports-20260914",
+        "title": "中国航油出口增加，部分缓冲供应",
+        "brief": "9月成品油出口预计略超400万吨，以柴油和航油为主。",
+        "summary": "市场消息人士预计，中国炼厂9月汽油、柴油和航油出口略高于400万吨，受海外利润较高及出口管制放宽支持，其中柴油和航油占较大比重。这增加亚洲现货供应，但实际出口量及10月Singapore MOPS均值仍须分别确认。"
+      },
+      {
+        "id": "usdkrw-134159-20260914",
+        "title": "USD/KRW约1,341，部分缓冲韩元涨幅",
+        "brief": "即期约1,341.59，100日元约875.70韩元。",
+        "summary": "USD/KRW即期从近期1,394附近降至约1,341，对韩元收费形成强缓冲。但国际线档位及美元基准额更直接受Singapore Jet Fuel/MOPS影响。航空公司最终KRW公告使用8月16日至9月15日平均汇率，因此不以9月14日单一即期值计算。"
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel反弹至$159.58",
+        "brief": "Sparta公布9/3 Singapore Jet Fuel市场价格为$159.58/bbl。",
+        "summary": "比8/27的$142.93高$16.65，比9月计算均值$149.29高$10.29。Sparta周度+$9.61使用另一比较基准。10月累计MOPS仍在汇总。"
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "全球Jet Fuel $171.01，周涨9%",
+        "brief": "IATA/S&P Global Platts全球周均为$171.01/bbl，周涨9.0%。",
+        "summary": "这是地区价格汇总的全球均值，不是Singapore MOPS。前周为$156.85，变化反映更广泛的航油反弹。"
+      }
+    ]
+  },
+  {
+    "page": "news",
+    "language": "fr",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "Avis septembre et actualités octobre | MOPS · USD/KRW",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260914",
+        "title": "Arrêt du Saudi East-West Pipeline, contournement d’Hormuz perturbé",
+        "brief": "Arrêté par précaution après attaque, il transportait récemment environ 4–5m b/j vers Yanbu.",
+        "summary": "Cette ligne stratégique de 1 200 km relie les champs de l’est saoudien à Yanbu sur la mer Rouge pour contourner Hormuz. Riyad parle d’un arrêt préventif après les drones, sans date ferme de reprise. Les 4–5m b/j représentent le débit exposé, pas une disparition immédiate du marché."
+      },
+      {
+        "id": "brent-wti-surge-20260914",
+        "title": "Brent $108 et WTI $103, regain du risque d’offre",
+        "brief": "Le matin du 14 septembre Brent atteignait $108.23 et WTI $103.20.",
+        "summary": "Après les clôtures du 11 septembre à $104.61 pour Brent et $100.05 pour WTI, les cours ont progressé à $108.23 et $103.20. L’arrêt du contournement saoudien et les risques Hormuz–mer Rouge y contribuent. Le brut reste toutefois un signal de coût amont, distinct de la moyenne cumulée Singapore Jet Fuel."
+      },
+      {
+        "id": "hormuz-bab-el-mandeb-20260914",
+        "title": "Le risque s’étend d’Hormuz à Bab el-Mandeb",
+        "brief": "L’avancée houthie à Mocha et sur des îles stratégiques accroît le risque à l’entrée de la mer Rouge.",
+        "summary": "Les données AIS préliminaires de Kpler donnent sept transits à Hormuz, contre 11 la veille et une moyenne de 15 sur dix jours. En parallèle, l’avancée houthie autour de Mocha et d’îles stratégiques accroît le risque à Bab el-Mandeb. Aucun axe n’est totalement fermé, mais la sortie du Golfe et son alternative mer Rouge sont sous pression simultanée."
+      },
+      {
+        "id": "vlcc-record-freight-20260914",
+        "title": "Fret VLCC record: WS450, environ $11.50/bbl",
+        "brief": "Le fret VLCC golfe d’Oman–Chine a atteint environ Worldscale 450.",
+        "summary": "Selon Baltic Exchange, le fret VLCC golfe d’Oman–Chine approche Worldscale 450, soit environ $11.50 par baril, un record depuis le lancement de cette évaluation. La réticence des armateurs réduit le tonnage disponible. Le coût ne se transmet pas immédiatement à l’identique au kérosène, mais renchérit l’approvisionnement en brut et produits."
+      },
+      {
+        "id": "oman-talks-postponed-20260914",
+        "title": "Réunion Golfe–Iran à Oman reportée, espoir d’apaisement réduit",
+        "brief": "La réunion du 14 septembre est reportée sans nouvelle date.",
+        "summary": "L’Iran voulait présenter aux pays régionaux son projet de gestion du trafic d’Hormuz lors de la réunion du 14 septembre à Oman. Elle a été reportée pour rechercher un consensus, sans nouvelle date. Cette réunion diplomatique est distincte de l’assistance limitée au transit au large d’Oman; son report ne prouve ni rupture des discussions ni arrêt du trafic."
+      },
+      {
+        "id": "iranian-commercial-vessel-20260914",
+        "title": "Navire commercial iranien frappé près de Qeshm; auteur inconnu",
+        "brief": "Au moins une personne est morte lors de l’attaque du 13 septembre.",
+        "summary": "Les médias d’État iraniens ont annoncé un mort et plusieurs blessés après l’attaque d’un navire commercial près de Qeshm Island le 13 septembre. UKMTO a signalé séparément un projectile, un incendie grave et une évacuation dans le détroit, sans certitude qu’il s’agisse du même incident. Aucun auteur précis, États-Unis compris, n’est confirmé."
+      },
+      {
+        "id": "china-jet-exports-20260914",
+        "title": "Hausse des exportations chinoises de jet fuel, amortisseur partiel",
+        "brief": "Les exportations de septembre devraient dépasser légèrement 4 Mt, surtout diesel et jet fuel.",
+        "summary": "Des sources de marché prévoyaient un peu plus de 4 Mt d’exportations chinoises de gasoline, diesel et jet fuel en septembre, grâce aux marges extérieures et à l’assouplissement des contrôles. Diesel et jet fuel dominent. Cela ajoute de l’offre spot asiatique, mais volumes réels et moyenne MOPS d’octobre doivent être vérifiés séparément."
+      },
+      {
+        "id": "usdkrw-134159-20260914",
+        "title": "USD/KRW autour de 1,341 amortit la hausse en KRW",
+        "brief": "Le comptant vaut environ 1,341.59; 100 JPY environ 875.70 KRW.",
+        "summary": "Le comptant USD/KRW est passé d’environ 1,394 récemment à 1,341, fort amortisseur pour les montants en won. Le niveau international et le montant USD dépendent plus directement du Singapore Jet Fuel/MOPS. Les compagnies utilisent la moyenne du 16 août au 15 septembre pour l’avis KRW final; un seul cours du 14 septembre ne suffit pas."
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel rebondit à $159.58",
+        "brief": "Sparta indique $159.58/bbl pour le prix Singapore Jet Fuel du 3 septembre.",
+        "summary": "Cela dépasse de $16.65 les $142.93 du 27 août et de $10.29 la moyenne septembre de $149.29. La variation hebdomadaire Sparta de +$9.61 utilise une autre référence. Le MOPS cumulé d’octobre reste en calcul."
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "Jet Fuel mondial à $171.01, +9% sur la semaine",
+        "brief": "La moyenne mondiale hebdomadaire IATA/S&P Global Platts atteint $171.01/bbl, +9.0%.",
+        "summary": "Cette moyenne de prix régionaux n’est pas Singapore MOPS. Elle suit $156.85 la semaine précédente et signale un rebond plus large du kérosène."
+      }
+    ]
+  },
+  {
+    "page": "news",
+    "language": "de",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "September-Hinweise und Oktober-Ausblick | MOPS · USD/KRW",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260914",
+        "title": "Saudi East-West Pipeline gestoppt, Hormuz-Umgehung gestört",
+        "brief": "Nach Angriff vorsorglich gestoppt; zuletzt etwa 4–5 Mio. bpd nach Yanbu.",
+        "summary": "Die 1.200 km lange strategische Leitung bringt Rohöl aus Ostsaudi-Arabien nach Yanbu am Roten Meer und umgeht Hormuz. Saudi-Arabien bezeichnete den Stopp nach Drohnenangriffen als Vorsichtsmaßnahme; ein Neustarttermin fehlt. 4–5 Mio. bpd sind gefährdeter Durchsatz, nicht sofort entfallenes Marktangebot."
+      },
+      {
+        "id": "brent-wti-surge-20260914",
+        "title": "Brent $108 und WTI $103 bei neuem Angebotsrisiko",
+        "brief": "Am Morgen des 14. September lag Brent bei $108.23, WTI bei $103.20.",
+        "summary": "Vom Schluss am 11. September bei Brent $104.61 und WTI $100.05 stiegen die Preise nach dem Wochenende auf $108.23 und $103.20. Saudi-Pipelineausfall sowie Hormuz- und Rotmeer-Risiken treiben den Anstieg. Rohöl bleibt ein vorgelagertes Kostensignal und ist vom kumulierten Singapore-Jet-Fuel-Mittel getrennt."
+      },
+      {
+        "id": "hormuz-bab-el-mandeb-20260914",
+        "title": "Risiko weitet sich von Hormuz auf Bab el-Mandeb aus",
+        "brief": "Huthi-Vorstöße bei Mocha und strategischen Inseln erhöhen das Risiko am Rotmeer-Eingang.",
+        "summary": "Vorläufige öffentliche Kpler-AIS-Daten zeigen sieben Hormuz-Transits gegenüber 11 am Vortag und einem 10-Tage-Mittel von 15. Zugleich erhöhten Huthi-Vorstöße bei Mocha und strategischen Inseln das Bab-el-Mandeb-Risiko. Keine Route war völlig geschlossen; entscheidend ist der gleichzeitige Druck auf Golfausgang und Rotmeer-Alternative."
+      },
+      {
+        "id": "vlcc-record-freight-20260914",
+        "title": "VLCC-Fracht auf Rekordniveau: WS450, etwa $11.50/bbl",
+        "brief": "Gulf of Oman–China erreichte etwa Worldscale 450.",
+        "summary": "Baltic-Exchange-Daten zeigen für Gulf of Oman–China etwa Worldscale 450 bzw. $11.50 je Barrel, den höchsten Wert seit Einführung der Bewertung. Weniger Reeder setzen Schiffe im Risikogebiet ein, wodurch Tonnage knapp wird. Die Kosten gehen nicht sofort eins zu eins in Kerosin ein, erhöhen aber Rohöl- und Produktbeschaffung."
+      },
+      {
+        "id": "oman-talks-postponed-20260914",
+        "title": "Golf–Iran-Oman-Treffen verschoben, Entspannungshoffnung sinkt",
+        "brief": "Das Treffen am 14. September wurde ohne neuen Termin verschoben.",
+        "summary": "Iran wollte Regionalstaaten beim Oman-Treffen am 14. September über sein Hormuz-Verkehrskonzept informieren. Das Treffen wurde auf Wunsch einiger Staaten zur Konsensbildung ohne neuen Termin verschoben. Es ist von begrenzter Transithilfe vor Oman getrennt; die Verschiebung beweist weder Gesprächsabbruch noch Verkehrsstop."
+      },
+      {
+        "id": "iranian-commercial-vessel-20260914",
+        "title": "Iranisches Handelsschiff bei Qeshm getroffen; Angreifer unklar",
+        "brief": "Beim Angriff am 13. September starb mindestens eine Person.",
+        "summary": "Iranische Staatsmedien meldeten einen Toten und mehrere Verletzte nach einem Treffer auf ein Handelsschiff bei Qeshm Island am 13. September. UKMTO berichtete separat über Projektiltreffer, schweren Brand und Evakuierung in der Straße; ob es derselbe Vorfall war, blieb unklar. Kein konkreter Angreifer, einschließlich USA, ist bestätigt."
+      },
+      {
+        "id": "china-jet-exports-20260914",
+        "title": "Mehr chinesische Jet-Fuel-Exporte puffern Angebot teilweise",
+        "brief": "September-Produktexporte dürften etwas über 4 Mio. t liegen, vor allem Diesel und Jet Fuel.",
+        "summary": "Marktquellen erwarteten im September etwas über 4 Mio. t chinesische Exporte von Benzin, Diesel und Jet Fuel, gestützt durch hohe Auslandsmargen und lockerere Kontrollen. Diesel und Jet Fuel stellen den Großteil. Dies erhöht asiatisches Spotangebot; tatsächliche Exporte und Oktober-MOPS sind separat zu bestätigen."
+      },
+      {
+        "id": "usdkrw-134159-20260914",
+        "title": "USD/KRW um 1,341 dämpft KRW-Anstieg",
+        "brief": "Kassakurs etwa 1,341.59; 100 JPY etwa 875.70 KRW.",
+        "summary": "Spot-USD/KRW fiel zuletzt von etwa 1.394 auf 1.341 und dämpft Won-Beträge stark. Für internationale Stufe und USD-Basis ist Singapore Jet Fuel/MOPS direkter. Airlines nutzen für endgültige KRW-Hinweise das Mittel vom 16. August bis 15. September; ein einzelner Spotkurs vom 14. September reicht nicht."
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel steigt auf $159.58",
+        "brief": "Sparta nennt $159.58/bbl als Singapore-Jet-Fuel-Marktpreis vom 3. September.",
+        "summary": "Das liegt $16.65 über $142.93 vom 27. August und $10.29 über dem September-Mittel von $149.29. Spartas Wochenvergleich +$9.61 hat eine andere Basis. Das Oktober-MOPS-Mittel wird noch berechnet."
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "Globales Jet Fuel bei $171.01, wöchentlich +9%",
+        "brief": "Das globale IATA/S&P-Global-Platts-Wochenmittel beträgt $171.01/bbl, +9.0%.",
+        "summary": "Dieser Durchschnitt regionaler Preise ist kein Singapore MOPS. Nach $156.85 in der Vorwoche zeigt er eine breitere Kerosinerholung."
+      }
+    ]
+  }
+]
