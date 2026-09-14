@@ -2,63 +2,79 @@
   'use strict';
   var base=window.AERO_MARKET_RELEASE;
   if(!base) return;
-  var date='2026.09.14 07:40 KST';
+  var date='2026.09.15 07:20 KST';
   var rows={
     ko:[
       ['10월 종합','상승 압력 매우 우세 · 인상 가능성 높음','보합 가능성 일부 잔존, 인하 가능성 매우 낮음. 방향성 신뢰도 보통~높음, 정확한 단계 예측 신뢰도 낮음.'],
-      ['USD/KRW','현재 약 1,341.59원 · 100엔 약 875.70원 · 산정기간 평균환율 집계 중','강한 원화가 실제 KRW 부과액 상승폭을 완충 ↓↓↓. 현물환율은 단계나 산정기간 평균환율이 아닙니다.'],
+      ['USD/KRW','현재 약 1,347.04원 · 100엔 약 872.72원 · 산정기간 평균환율 집계 중','강한 원화가 실제 KRW 부과액 상승폭을 완충 ↓↓↓. 현물환율은 단계나 산정기간 평균환율이 아닙니다.'],
       ['Singapore Jet Fuel / MOPS','9/3 시장 참고가격 $159.58/bbl · 9월 확정평균 $149.29 · 글로벌 주간평균 $171.01(+9%)','단일 가격·확정평균·글로벌 지수를 구분합니다. 최근 항공유 ↑↑, 중국 Jet Fuel 수출 증가는 일부 완충 ↓. 10월 누적 MOPS는 집계 중입니다.'],
-      ['국제유가','9/14 오전 Brent $108.23(+3.46%) · WTI $103.20(+3.15%) · 9/11 종가 $104.61/$100.05','Saudi East-West Pipeline 중단과 다중 수송로 위험으로 극도로 강한 상승 ↑↑↑. 원유가격을 MOPS로 사용하지 않습니다.'],
-      ['중동 에너지 수송','Saudi East-West Pipeline 중단 · Hormuz 7척/전일 11척/10일 평균 15척 · Bab el-Mandeb·홍해 위험 확대 · VLCC WS450','호르무즈 우회능력과 홍해 항로가 동시에 약화 ↑↑↑. 일부 통항과 Yanbu 재고는 단기 완충이나 정상화가 아닙니다.']
+      ['국제유가','9/14 종가 Brent $105.68(+1.0%) · WTI $101.39(+1.3%) · Brent 장중 $108대','매우 높은 수준 ↑↑↑이나 협상 기대에 장중 고점 일부 반납. 원유가격을 MOPS로 사용하지 않습니다.'],
+      ['중동 에너지 수송','Saudi Pipeline 중단 · Hormuz 주말 한 자릿수 · Bab el-Mandeb 24/27척·10일 평균 27척 · 이란 측 지정 77척','Hormuz·Pipeline 위험 ↑↑↑. Bab el-Mandeb는 군사위험 ↑↑와 실제 통항 평균권 →을 분리합니다.']
     ],
     en:[
       ['October outlook','Upward pressure strongly dominates · increase is likely','Some flat possibility remains; a cut is very unlikely. Direction confidence is medium-high; exact-stage confidence is low.'],
-      ['USD/KRW','About 1,341.59 now · JPY 100 about KRW 875.70 · period average being compiled','A strong won cushions actual KRW increases ↓↓↓. Spot FX is neither the stage nor the calculation-period average.'],
+      ['USD/KRW','About 1,347.04 now · JPY 100 about KRW 872.72 · period average being compiled','A strong won cushions actual KRW increases ↓↓↓. Spot FX is neither the stage nor the calculation-period average.'],
       ['Singapore Jet Fuel / MOPS','Sept 3 market reference $159.58/bbl · confirmed September average $149.29 · global weekly $171.01 (+9%)','Single quote, confirmed average and global index remain distinct. Jet fuel ↑↑; higher Chinese exports partly cushion ↓. October cumulative MOPS is being compiled.'],
-      ['Crude oil','Sept 14 morning Brent $108.23 (+3.46%) · WTI $103.20 (+3.15%) · Sept 11 close $104.61/$100.05','Saudi East-West Pipeline closure and multi-route risk create extreme upside ↑↑↑. Crude is not used as MOPS.'],
-      ['Middle East energy transport','Saudi East-West Pipeline shut · Hormuz 7/prior 11/10-day average 15 · Bab el-Mandeb and Red Sea risk up · VLCC WS450','Both the Hormuz bypass and Red Sea route weakened ↑↑↑. Some transits and Yanbu stocks offer short cushioning, not normalization.']
+      ['Crude oil','Sept 14 close Brent $105.68 (+1.0%) · WTI $101.39 (+1.3%) · Brent intraday above $108','Still extremely high ↑↑↑, but diplomacy hopes trimmed the intraday peak. Crude is not MOPS.'],
+      ['Middle East energy transport','Saudi Pipeline shut · Hormuz weekend single digits · Bab el-Mandeb 24/27 vs 10-day average 27 · Iran-designated list 77','Hormuz and pipeline risk ↑↑↑. Bab el-Mandeb military risk ↑↑ is separated from average-range traffic →.']
     ],
     ja:[
       ['10月総合','上昇圧力が非常に優勢 · 引き上げ可能性が高い','横ばい余地は一部残るが引き下げ可能性は非常に低い。方向性信頼度は中～高、正確な段階予測は低い。'],
-      ['USD/KRW','現在約1,341.59 · 100円約875.70ウォン · 算定期間平均は集計中','ウォン高が実際のKRW上昇幅を緩和↓↓↓。直物は段階でも算定平均でもありません。'],
+      ['USD/KRW','現在約1,347.04 · 100円約872.72ウォン · 算定期間平均は集計中','ウォン高が実際のKRW上昇幅を緩和↓↓↓。直物は段階でも算定平均でもありません。'],
       ['Singapore Jet Fuel / MOPS','9/3市場参考値$159.58/bbl · 9月確定平均$149.29 · 世界週平均$171.01（+9%）','単日値・確定平均・世界指数を区別。航空燃料↑↑、中国輸出増は一部緩衝↓。10月累積MOPSは集計中です。'],
-      ['国際原油','9/14朝 Brent $108.23（+3.46%）· WTI $103.20（+3.15%）· 9/11終値$104.61/$100.05','Saudi East-West Pipeline停止と複数航路リスクで極めて強い上昇↑↑↑。原油をMOPSとして扱いません。'],
-      ['中東エネルギー輸送','Saudi East-West Pipeline停止 · Hormuz 7隻/前日11隻/10日平均15隻 · Bab el-Mandeb・紅海リスク拡大 · VLCC WS450','ホルムズ迂回能力と紅海航路が同時に弱体化↑↑↑。一部通航とYanbu在庫は短期緩衝で、正常化ではありません。']
+      ['国際原油','9/14終値 Brent $105.68（+1.0%）· WTI $101.39（+1.3%）· Brent日中$108台','非常に高い水準↑↑↑だが外交期待で高値から一部後退。原油はMOPSではありません。'],
+      ['中東エネルギー輸送','Saudi Pipeline停止 · Hormuz週末一桁 · Bab el-Mandeb 24/27隻・10日平均27隻 · イラン指定77隻','Hormuz・Pipeline↑↑↑。Bab el-Mandebは軍事リスク↑↑と実通航平均圏→を分離。']
     ],
     zh:[
       ['10月综合','上涨压力极强占优 · 上调可能性高','仍有部分持平可能，下调可能性极低。方向可信度中高，准确档位可信度低。'],
-      ['USD/KRW','当前约1,341.59 · 100日元约875.70韩元 · 计算期均值汇总中','韩元走强缓冲实际KRW涨幅↓↓↓。即期汇率既非档位也非计算期均值。'],
+      ['USD/KRW','当前约1,347.04 · 100日元约872.72韩元 · 计算期均值汇总中','韩元走强缓冲实际KRW涨幅↓↓↓。即期汇率既非档位也非计算期均值。'],
       ['Singapore Jet Fuel / MOPS','9/3市场参考价$159.58/bbl · 9月确定均值$149.29 · 全球周均$171.01（+9%）','区分单日价、确定均值和全球指数。航油↑↑，中国出口增加部分缓冲↓。10月累计MOPS汇总中。'],
-      ['国际油价','9/14上午 Brent $108.23（+3.46%）· WTI $103.20（+3.15%）· 9/11收盘$104.61/$100.05','Saudi East-West Pipeline停运及多条运输路线风险带来极强上行↑↑↑。原油不作为MOPS。'],
-      ['中东能源运输','Saudi East-West Pipeline停运 · Hormuz 7艘/前日11艘/10日均15艘 · Bab el-Mandeb及红海风险扩大 · VLCC WS450','霍尔木兹绕行能力与红海航线同时弱化↑↑↑。部分通行及Yanbu库存仅短期缓冲，并非正常化。']
+      ['国际油价','9/14收盘 Brent $105.68（+1.0%）· WTI $101.39（+1.3%）· Brent盘中$108上方','仍处极高水平↑↑↑，但外交预期使盘中高点回落。原油不是MOPS。'],
+      ['中东能源运输','Saudi Pipeline停运 · Hormuz周末个位数 · Bab el-Mandeb 24/27艘、10日均27艘 · 伊朗指定77艘','Hormuz与管道风险↑↑↑。Bab el-Mandeb军事风险↑↑与实际通行平均区间→分开。']
     ],
     fr:[
       ['Bilan octobre','Pression haussière très dominante · hausse probable','Une stabilité reste possible; baisse très improbable. Confiance directionnelle moyenne-haute, niveau exact faible.'],
-      ['USD/KRW','Environ 1,341.59 · 100 JPY ≈ 875.70 KRW · moyenne de période en calcul','Le won fort amortit la hausse en KRW ↓↓↓. Le comptant n’est ni le niveau ni la moyenne de calcul.'],
+      ['USD/KRW','Environ 1,347.04 · 100 JPY ≈ 872.72 KRW · moyenne de période en calcul','Le won fort amortit la hausse en KRW ↓↓↓. Le comptant n’est ni le niveau ni la moyenne de calcul.'],
       ['Singapore Jet Fuel / MOPS','Référence 3/9 $159.58/bbl · moyenne septembre confirmée $149.29 · monde $171.01 (+9%)','Prix ponctuel, moyenne confirmée et indice mondial sont distincts. Kérosène ↑↑; exportations chinoises amortissent ↓. MOPS octobre en calcul.'],
-      ['Pétrole','Matin 14/9 Brent $108.23 (+3.46%) · WTI $103.20 (+3.15%) · clôture 11/9 $104.61/$100.05','Arrêt du Saudi East-West Pipeline et risques multi-routes: hausse extrême ↑↑↑. Le brut n’est pas le MOPS.'],
-      ['Transport énergétique régional','Saudi East-West Pipeline arrêté · Hormuz 7/veille 11/moyenne 10 jours 15 · risque Bab el-Mandeb-mer Rouge · VLCC WS450','Le contournement d’Hormuz et la route mer Rouge sont affaiblis ↑↑↑. Transits et stocks Yanbu amortissent à court terme, sans normalisation.']
+      ['Pétrole','Clôture 14/9 Brent $105.68 (+1.0%) · WTI $101.39 (+1.3%) · Brent >$108 en séance','Niveau très élevé ↑↑↑, mais espoir diplomatique retire une partie du pic. Le brut n’est pas le MOPS.'],
+      ['Transport énergétique régional','Saudi Pipeline arrêté · Hormuz à un chiffre le week-end · Bab el-Mandeb 24/27 contre moyenne 27 · liste iranienne 77','Hormuz et pipeline ↑↑↑. Risque militaire Bab el-Mandeb ↑↑ séparé du trafic moyen →.']
     ],
     de:[
       ['Oktober gesamt','Aufwärtsdruck sehr dominant · Erhöhung wahrscheinlich','Etwas Stabilitätschance bleibt; Senkung sehr unwahrscheinlich. Richtungsvertrauen mittel-hoch, exakte Stufe niedrig.'],
-      ['USD/KRW','Aktuell etwa 1,341.59 · 100 JPY etwa 875.70 KRW · Periodenmittel in Berechnung','Starker Won dämpft tatsächlichen KRW-Anstieg ↓↓↓. Kassakurs ist weder Stufe noch Periodenmittel.'],
+      ['USD/KRW','Aktuell etwa 1,347.04 · 100 JPY etwa 872.72 KRW · Periodenmittel in Berechnung','Starker Won dämpft tatsächlichen KRW-Anstieg ↓↓↓. Kassakurs ist weder Stufe noch Periodenmittel.'],
       ['Singapore Jet Fuel / MOPS','Marktreferenz 3.9. $159.58/bbl · bestätigtes September-Mittel $149.29 · global $171.01 (+9%)','Einzelpreis, bestätigtes Mittel und globaler Index bleiben getrennt. Kerosin ↑↑; China-Exporte puffern ↓. Oktober-MOPS wird ermittelt.'],
-      ['Rohöl','14.9. morgens Brent $108.23 (+3.46%) · WTI $103.20 (+3.15%) · Schluss 11.9. $104.61/$100.05','Saudi East-West Pipeline-Stopp und Mehrfachroutenrisiko erzeugen extremen Aufwärtsdruck ↑↑↑. Rohöl ist kein MOPS.'],
-      ['Nahost-Energietransport','Saudi East-West Pipeline gestoppt · Hormuz 7/Vortag 11/10-Tage-Mittel 15 · Bab el-Mandeb/Rotmeer-Risiko · VLCC WS450','Hormuz-Umgehung und Rotmeerroute sind zugleich geschwächt ↑↑↑. Transits und Yanbu-Bestände puffern kurzfristig, keine Normalisierung.']
+      ['Rohöl','Schluss 14.9. Brent $105.68 (+1.0%) · WTI $101.39 (+1.3%) · Brent intraday über $108','Sehr hohes Niveau ↑↑↑, aber Diplomatiehoffnung dämpfte das Hoch. Rohöl ist kein MOPS.'],
+      ['Nahost-Energietransport','Saudi Pipeline gestoppt · Hormuz Wochenende einstellig · Bab el-Mandeb 24/27 vs. 10-Tage-Mittel 27 · Iran-Liste 77','Hormuz und Pipeline ↑↑↑. Bab-el-Mandeb-Militärrisiko ↑↑ getrennt von Verkehr im Mittel →.']
     ]
   };
   var intro={
-    ko:'2026년 9월 14일 기준 10월 국제선 유류할증료는 상승 압력이 매우 우세하며 인상 가능성이 높아졌습니다. 9월 3일 Singapore Jet Fuel 시장 참고가격 $159.58/bbl는 9월 확정 산정평균 $149.29를 웃돌고, 글로벌 Jet Fuel도 $171.01/bbl로 주간 9% 상승했습니다. Saudi East-West Pipeline 중단과 Hormuz·Bab el-Mandeb 위험 확대로 Brent는 $108.23, WTI는 $103.20 수준입니다. 다만 원/달러 약 1,341.59원과 중국 Jet Fuel 수출 증가는 실제 원화 부과액을 일부 완충합니다. 10월 단계와 금액은 아직 확정되지 않았습니다.',
-    en:'As of September 14, 2026, upward pressure strongly dominates the October international fuel-surcharge outlook and an increase is likely. The Sept 3 Singapore Jet Fuel market reference of $159.58/bbl exceeds the confirmed September average of $149.29, while global Jet Fuel is $171.01 after a 9% weekly rise. The Saudi East-West Pipeline shutdown and Hormuz–Bab el-Mandeb risks coincide with Brent at $108.23 and WTI at $103.20. USD/KRW near 1,341.59 and higher Chinese jet-fuel exports partly cushion actual KRW charges. October stages and amounts remain unconfirmed.',
-    ja:'2026年9月14日時点で、10月国際線燃油サーチャージは上昇圧力が非常に優勢で、引き上げ可能性が高まっています。9月3日のSingapore Jet Fuel市場参考値$159.58/bblは9月確定平均$149.29を上回り、世界Jet Fuelは週9%上昇の$171.01です。Saudi East-West Pipeline停止とHormuz・Bab el-Mandebリスクの中、Brentは$108.23、WTIは$103.20です。USD/KRW約1,341.59と中国輸出増はKRW負担を一部緩和します。10月段階・金額は未確定です。',
-    zh:'截至2026年9月14日，10月国际线燃油附加费上涨压力极强，上调可能性较高。9月3日Singapore Jet Fuel市场参考价$159.58/bbl高于9月确定均值$149.29，全球Jet Fuel周涨9%至$171.01。Saudi East-West Pipeline停运及Hormuz、Bab el-Mandeb风险下，Brent为$108.23、WTI为$103.20。USD/KRW约1,341.59及中国航油出口增加部分缓冲实际韩元收费。10月档位和金额尚未确认。',
-    fr:'Au 14 septembre 2026, la pression haussière domine très nettement les surtaxes internationales d’octobre et une hausse est probable. Le Singapore Jet Fuel du 3 septembre à $159.58/bbl dépasse la moyenne confirmée de septembre à $149.29; le Jet Fuel mondial vaut $171.01 (+9%). L’arrêt du Saudi East-West Pipeline et les risques Hormuz–Bab el-Mandeb coïncident avec Brent à $108.23 et WTI à $103.20. USD/KRW proche de 1,341.59 et les exportations chinoises amortissent le montant KRW. Niveaux et montants restent non confirmés.',
-    de:'Stand 14. September 2026 dominiert Aufwärtsdruck sehr deutlich und eine Erhöhung internationaler Oktober-Zuschläge ist wahrscheinlich. Singapore Jet Fuel vom 3. September bei $159.58/bbl liegt über dem bestätigten September-Mittel von $149.29; globales Jet Fuel liegt bei $171.01 (+9%). Saudi East-West Pipeline-Stopp und Hormuz–Bab el-Mandeb-Risiken treffen auf Brent $108.23 und WTI $103.20. USD/KRW um 1,341.59 und höhere chinesische Exporte dämpfen KRW-Beträge. Oktober-Stufen und Beträge bleiben unbestätigt.'
+    ko:'2026년 9월 15일 기준 10월 국제선 유류할증료는 상승 압력이 매우 우세하고 인상 가능성이 높습니다. 오늘은 기존 방식 기준 산정기간 마지막 날입니다. 9월 3일 Singapore Jet Fuel $159.58/bbl는 9월 확정평균 $149.29를 웃돌며, Brent와 WTI는 장중 고점에서 일부 내려왔지만 $105.68과 $101.39로 여전히 높습니다. Saudi East-West Pipeline 중단과 Hormuz 통항 저조가 상방 위험이고, 원/달러 약 1,347원과 Bab el-Mandeb 실제 통항 평균권은 완충요인입니다. 정확한 단계는 최종 MOPS 평균과 공식공지를 확인해야 합니다.',
+    en:'As of September 15, 2026, upward pressure strongly dominates the October international fuel-surcharge outlook and an increase is likely. Today is the final calculation day under the existing method. The Sept 3 Singapore Jet Fuel reference of $159.58/bbl exceeds the confirmed September average of $149.29. Brent and WTI eased from intraday highs but remain elevated at $105.68 and $101.39. The Saudi pipeline shutdown and weak Hormuz traffic add upside, while USD/KRW near 1,347 and average-range Bab el-Mandeb traffic cushion it. The exact stage awaits final MOPS and official notices.',
+    ja:'2026年9月15日時点で10月国際線燃油サーチャージは上昇圧力が非常に優勢で、引き上げ可能性が高い状態です。今日は従来方式で算定期間の最終日です。9月3日Singapore Jet Fuel $159.58/bblは9月確定平均$149.29を上回ります。BrentとWTIは日中高値から下げたものの$105.68、$101.39と高水準です。Saudi Pipeline停止とHormuz低通航が上方要因、USD/KRW約1,347とBab el-Mandeb通航平均圏が緩衝要因です。正確な段階は最終MOPSと公式公示の確認が必要です。',
+    zh:'截至2026年9月15日，10月国际线燃油附加费上涨压力极强，上调可能性高。今天是现行方式下的计算期最后一天。9月3日Singapore Jet Fuel $159.58/bbl高于9月确定均值$149.29。Brent和WTI虽从盘中高点回落，仍处于$105.68和$101.39高位。Saudi Pipeline停运与Hormuz低通行形成上行风险，USD/KRW约1,347及Bab el-Mandeb实际通行在平均区间提供缓冲。准确档位须等待最终MOPS与官方公告。',
+    fr:'Au 15 septembre 2026, la pression haussière domine fortement la surtaxe internationale d’octobre et une hausse est probable. Aujourd’hui est le dernier jour de calcul selon la méthode actuelle. Le Singapore Jet Fuel du 3 septembre à $159.58 dépasse la moyenne septembre de $149.29. Brent et WTI reculent de leurs pics mais restent à $105.68 et $101.39. L’arrêt du pipeline saoudien et le faible trafic d’Hormuz poussent à la hausse; USD/KRW proche de 1 347 et le trafic moyen à Bab el-Mandeb amortissent. Le niveau exact attend le MOPS final et les avis officiels.',
+    de:'Stand 15. September 2026 dominiert Aufwärtsdruck sehr deutlich und eine Erhöhung internationaler Oktober-Zuschläge ist wahrscheinlich. Heute ist nach bisheriger Methode der letzte Berechnungstag. Singapore Jet Fuel vom 3. September bei $159.58 liegt über dem September-Mittel von $149.29. Brent und WTI fielen vom Tageshoch, bleiben mit $105.68 und $101.39 hoch. Saudi-Pipeline-Stopp und schwacher Hormuz-Verkehr wirken aufwärts; USD/KRW um 1.347 und durchschnittlicher Bab-el-Mandeb-Verkehr puffern. Die genaue Stufe wartet auf finales MOPS und offizielle Hinweise.'
   };
-  var status={ko:'9월 21단계 현재 적용 · 10월 국제선 공식공시 전 · 산정기간 마지막 이틀',en:'September Level 21 applies · October international notice not published · final two calculation days',ja:'9月21段階適用中 · 10月国際線公式公示前 · 算定期間残り2日',zh:'9月第21档适用中 · 10月国际线官方公告前 · 计算期最后两天',fr:'Septembre niveau 21 en vigueur · avis international octobre non publié · deux derniers jours de calcul',de:'September Stufe 21 gilt · internationaler Oktober-Hinweis ausstehend · letzte zwei Berechnungstage'};
+  var status={ko:'9월 21단계 현재 적용 · 10월 국제선 공식공시 전 · 오늘 산정기간 마지막 날',en:'September Level 21 applies · October international notice pending · final calculation day today',ja:'9月21段階適用中 · 10月国際線公式公示前 · 本日算定期間最終日',zh:'9月第21档适用中 · 10月国际线官方公告前 · 今天为计算期最后一天',fr:'Septembre niveau 21 en vigueur · avis octobre en attente · dernier jour de calcul',de:'September Stufe 21 gilt · Oktober-Hinweis ausstehend · heute letzter Berechnungstag'};
   var confidence={ko:'방향성 신뢰도: 보통~높음 · 정확한 단계 예측 신뢰도: 낮음',en:'Direction confidence: medium-high · exact-stage confidence: low',ja:'方向性信頼度: 中～高 · 正確な段階予測: 低',zh:'方向可信度: 中高 · 准确档位可信度: 低',fr:'Confiance directionnelle: moyenne-haute · niveau exact: faible',de:'Richtungsvertrauen: mittel-hoch · exakte Stufe: niedrig'};
   var packs={};
   Object.keys(rows).forEach(function(l){packs[l]=Object.assign({},base.packs[l],{intro:intro[l],desc:intro[l],sub:date+' · '+status[l],newsSub:date+' · '+rows[l][0][1],verdict1:status[l],verdict2:rows[l][0][1]+' · '+rows[l][0][2],verdictLong:confidence[l],keyVars:rows[l].map(function(x){return x[0]+': '+x[1];}),officialNotice:date+' · KE/OZ/LJ/BX/TW/7C/ZE/RS/YP · '+status[l]});});
+  var faq={
+    ko:[['10월 국제선 유류할증료는 오를까?','9월 15일 현재 상승 압력이 매우 우세하고 인상 가능성이 높지만 공식공시 전 확정은 아닙니다.'],['인상이 확정됐나?','아닙니다. 산정기간은 오늘 종료 예정이나 최종 Singapore MOPS 평균과 항공사 공식공지가 필요합니다.'],['오늘이 왜 중요한가?','기존 방식 기준 9월 15일이 10월 국제선 유류할증료 산정기간의 마지막 날이기 때문입니다.'],['원/달러가 낮아도 오를 수 있나?','가능합니다. 환율은 KRW 환산금액을 낮추지만 단계에는 Singapore Jet Fuel/MOPS가 더 직접적입니다.'],['현재 MOPS는 $159.58인가?','아닙니다. $159.58는 9월 3일 Singapore Jet Fuel 시장 참고가격이며 10월 최종 평균은 미확인입니다.'],['Bab el-Mandeb 통항도 줄었나?','군사위험은 높지만 공개 commodity vessel 통항은 최근 평균권입니다.']],
+    en:[['Will October international surcharges rise?','As of Sept 15 upward pressure strongly dominates and an increase is likely, but it is not confirmed before official notices.'],['Is an increase confirmed?','No. The period ends today, but the final Singapore MOPS average and airline notices are still required.'],['Why is today important?','Under the existing method, Sept 15 is the last day of the October calculation period.'],['Can charges rise with a low USD/KRW?','Yes. FX lowers KRW conversion, while Singapore Jet Fuel/MOPS affects the stage more directly.'],['Is current MOPS $159.58?','No. $159.58 is a Sept 3 Singapore Jet Fuel market reference, not the final October average.'],['Did Bab el-Mandeb traffic fall?','Military risk is high, but public commodity-vessel traffic remains near its recent average.']],
+    ja:[['10月国際線燃油サーチャージは上がる?','9月15日時点で上昇圧力が非常に優勢ですが、公式公示前で確定ではありません。'],['引き上げは確定?','いいえ。算定期間は本日終了予定ですが最終Singapore MOPS平均と航空会社公示が必要です。'],['今日はなぜ重要?','従来方式で9月15日が10月算定期間の最終日だからです。'],['USD/KRWが低くても上がる?','可能です。為替はKRW換算を下げますが段階にはSingapore Jet Fuel/MOPSがより直接的です。'],['現在MOPSは$159.58?','いいえ。9月3日の市場参考値で10月最終平均ではありません。'],['Bab el-Mandeb通航も減った?','軍事リスクは高い一方、公開commodity vessel通航は最近平均圏です。']],
+    zh:[['10月国际线燃油附加费会涨吗？','截至9月15日上涨压力极强，但官方公告前尚未确定。'],['上涨已经确定吗？','没有。计算期今天结束，但仍需最终Singapore MOPS均值及航空公司公告。'],['今天为什么重要？','按现行方式，9月15日是10月计算期最后一天。'],['USD/KRW较低仍可能上涨吗？','可能。汇率降低韩元换算额，而Singapore Jet Fuel/MOPS更直接影响档位。'],['当前MOPS是$159.58吗？','不是。这是9月3日市场参考价，不是10月最终均值。'],['Bab el-Mandeb通行也下降了吗？','军事风险高，但公开商品船通行仍在近期平均区间。']],
+    fr:[['La surtaxe internationale d’octobre va-t-elle augmenter?','Au 15 septembre la pression haussière domine, mais rien n’est confirmé avant les avis officiels.'],['La hausse est-elle confirmée?','Non. La période finit aujourd’hui, mais il faut la moyenne Singapore MOPS finale et les avis des compagnies.'],['Pourquoi ce jour est-il important?','Selon la méthode actuelle, le 15 septembre clôt la période de calcul d’octobre.'],['Une hausse reste-t-elle possible avec USD/KRW bas?','Oui. Le change réduit la conversion KRW, tandis que Singapore Jet Fuel/MOPS agit plus directement sur le niveau.'],['Le MOPS actuel est-il $159.58?','Non. C’est une référence marché du 3 septembre, pas la moyenne finale d’octobre.'],['Le trafic Bab el-Mandeb a-t-il baissé?','Le risque militaire est élevé mais le trafic public de commodity vessels reste proche de la moyenne.']],
+    de:[['Steigt der internationale Oktober-Zuschlag?','Am 15. September dominiert Aufwärtsdruck, bestätigt ist dies vor offiziellen Hinweisen nicht.'],['Ist die Erhöhung bestätigt?','Nein. Die Periode endet heute, doch finales Singapore MOPS und Airline-Hinweise fehlen.'],['Warum ist heute wichtig?','Nach bisheriger Methode ist der 15. September der letzte Berechnungstag für Oktober.'],['Kann der Zuschlag trotz niedrigem USD/KRW steigen?','Ja. FX senkt die KRW-Umrechnung, Singapore Jet Fuel/MOPS wirkt direkter auf die Stufe.'],['Ist aktuelles MOPS $159.58?','Nein. Das ist eine Marktreferenz vom 3. September, nicht das finale Oktober-Mittel.'],['Sank auch der Bab-el-Mandeb-Verkehr?','Das Militärrisiko ist hoch, öffentlicher Rohstoffschiffsverkehr bleibt aber nahe dem Mittel.']]
+  };
+  Object.keys(packs).forEach(function(l){packs[l].faq=faq[l].map(function(x){return {q:x[0],a:x[1]};});});
+  packs.ko.meta='2026년 10월 국제선 유류할증료 전망 | MOPS·환율·호르무즈';
+  packs.ko.desc='2026년 9월 15일 기준 10월 국제선 유류할증료 산정 마지막 날의 Singapore Jet Fuel·MOPS, 원달러 환율, 국제유가와 호르무즈 상황을 분석합니다.';
+  packs.en.desc='October 2026 international fuel-surcharge outlook on the final calculation day, covering Singapore Jet Fuel/MOPS, USD/KRW, crude and Hormuz.';
+  packs.ja.desc='2026年9月15日、10月国際線燃油サーチャージ算定最終日のSingapore Jet Fuel・MOPS、為替、原油、ホルムズ分析。';
+  packs.zh.desc='截至2026年9月15日，分析10月国际线燃油附加费计算期最后一天的Singapore Jet Fuel/MOPS、汇率、油价及霍尔木兹。';
+  packs.fr.desc='Au 15 septembre 2026, analyse du dernier jour de calcul des surtaxes d’octobre: Singapore Jet Fuel/MOPS, change, pétrole et Hormuz.';
+  packs.de.desc='Stand 15. September 2026: letzter Berechnungstag für Oktober-Zuschläge mit Singapore Jet Fuel/MOPS, FX, Öl und Hormuz.';
   var text={
     pipeline:{ko:['사우디 East-West Pipeline 중단…호르무즈 우회수송 차질','공격 뒤 예방적으로 중단된 파이프라인은 최근 약 4~5m bpd를 Yanbu로 보낸 핵심 우회로입니다.','장기 중단 시 최대 세계공급 약 4% 상당의 영향 위험이 있지만 즉시 4%가 사라졌다는 뜻은 아닙니다. Yanbu 재고는 단기 완충입니다.'],en:['Saudi East-West Pipeline shut, disrupting the Hormuz bypass','The pipeline, shut as a precaution after attack, recently moved about 4–5m bpd to Yanbu.','A prolonged outage risks an impact equivalent to about 4% of world supply; it does not mean 4% vanished immediately. Yanbu stocks offer a short buffer.'],ja:['Saudi East-West Pipeline停止、ホルムズ迂回輸送に支障','攻撃後に予防停止した同線は最近約4～5m bpdをYanbuへ輸送していました。','長期停止なら世界供給約4%相当の影響リスクがありますが即時消失ではありません。Yanbu在庫は短期緩衝です。'],zh:['Saudi East-West Pipeline停运，霍尔木兹绕行受阻','该管道遇袭后预防性停运，近期向Yanbu输送约4至5m bpd。','长期停运可能影响相当于全球供应约4%的规模，但不表示立即消失4%。Yanbu库存提供短期缓冲。'],fr:['Arrêt du Saudi East-West Pipeline, contournement d’Hormuz perturbé','Arrêté par précaution après attaque, il transportait récemment environ 4–5m b/j vers Yanbu.','Un arrêt prolongé risque un effet équivalent à 4% de l’offre mondiale, pas une disparition immédiate. Les stocks Yanbu amortissent à court terme.'],de:['Saudi East-West Pipeline gestoppt, Hormuz-Umgehung gestört','Nach Angriff vorsorglich gestoppt; zuletzt etwa 4–5 Mio. bpd nach Yanbu.','Längerer Ausfall riskiert Wirkung von rund 4% des Weltangebots, nicht sofortigen Wegfall. Yanbu-Bestände puffern kurzfristig.']},
     oil:{ko:['Brent $108·WTI $103…중동 공급위험 재급등','9월 14일 오전 Brent $108.23, WTI $103.20으로 주말 사이 추가 상승했습니다.','원유 급등은 항공유 상방 위험을 높이지만 Singapore MOPS 자체나 10월 평균은 아닙니다.'],en:['Brent $108 and WTI $103 as Middle East supply risk surges','On Sept 14 morning Brent reached $108.23 and WTI $103.20, extending gains over the weekend.','The crude surge raises jet-fuel risk but is neither Singapore MOPS nor the October average.'],ja:['Brent $108・WTI $103、中東供給リスク再急騰','9月14日朝Brent $108.23、WTI $103.20へ週末に追加上昇。','原油高は航空燃料リスクを高めますがSingapore MOPSや10月平均ではありません。'],zh:['Brent $108、WTI $103，中东供应风险再升','9月14日上午Brent $108.23、WTI $103.20，周末后继续上涨。','原油上涨提高航油风险，但不是Singapore MOPS或10月均值。'],fr:['Brent $108 et WTI $103, regain du risque d’offre','Le matin du 14 septembre Brent atteignait $108.23 et WTI $103.20.','La hausse du brut accroît le risque kérosène mais n’est ni le MOPS Singapore ni la moyenne d’octobre.'],de:['Brent $108 und WTI $103 bei neuem Angebotsrisiko','Am Morgen des 14. September lag Brent bei $108.23, WTI bei $103.20.','Der Rohölanstieg erhöht Kerosinrisiko, ist aber weder Singapore MOPS noch Oktober-Mittel.']},
@@ -135,19 +151,88 @@
       de:'Spot-USD/KRW fiel zuletzt von etwa 1.394 auf 1.341 und dämpft Won-Beträge stark. Für internationale Stufe und USD-Basis ist Singapore Jet Fuel/MOPS direkter. Airlines nutzen für endgültige KRW-Hinweise das Mittel vom 16. August bis 15. September; ein einzelner Spotkurs vom 14. September reicht nicht.'
     }
   };
-  function make(id,key,priority,url){var c={id:id+'-20260914',category:'market',priority:priority,date:'2026-09-14',updatedAt:'2026-09-14T07:40:00+09:00',aiSummary:true,relevanceScore:1-priority/100,sourceUrl:url,i18n:{}};Object.keys(text[key]).forEach(function(l){var d=text[key][l];c.i18n[l]={title:d[0],aiBrief:d[1],summary:details[key][l],impact:d[2],sourceName:'Reuters / AP',tags:[],links:[{href:'forecast.html',label:packs[l].forecastBtn}],faq:[]};});c.i18n.cn=c.i18n.zh;return c;}
+  var latestText={
+    pipeline:{
+      ko:['Saudi East-West Pipeline 중단 지속…호르무즈 우회능력 약화','공격 이후 예방적 가동중단이 이어지며 최근 약 4m bpd를 Yanbu로 보낸 핵심 우회로가 제한됐습니다.','장기 중단 시 세계 공급 약 4% 상당이 영향을 받을 위험이 있으나 즉시 4% 감소를 뜻하지 않습니다. Yanbu 재고 5~7일은 추정 완충입니다.'],
+      en:['Saudi East-West Pipeline remains shut, weakening the Hormuz bypass','The precautionary shutdown continues on a route recently carrying about 4m bpd to Yanbu.','A prolonged outage could expose supply equivalent to about 4% of the world total; it is not an immediate 4% loss. Estimated Yanbu stocks offer a 5–7 day buffer.'],
+      ja:['Saudi East-West Pipeline停止継続、ホルムズ迂回力低下','攻撃後の予防停止が続き、最近約4m bpdをYanbuへ送った主要迂回路が制限されています。','長期化なら世界供給約4%相当への影響リスクがありますが即時4%減ではありません。Yanbu在庫5～7日は推定緩衝です。'],
+      zh:['Saudi East-West Pipeline继续停运，削弱霍尔木兹绕行能力','袭击后的预防性停运持续，近期向Yanbu输送约4m bpd的关键绕行路线受限。','长期停运可能影响相当于全球供应约4%的规模，但不等于立即减少4%。Yanbu库存可缓冲5至7天属于估算。'],
+      fr:['Arrêt prolongé du Saudi East-West Pipeline, contournement d’Hormuz affaibli','L’arrêt préventif se poursuit sur la route qui transportait récemment environ 4m b/j vers Yanbu.','Un arrêt prolongé expose l’équivalent d’environ 4% de l’offre mondiale, sans perte immédiate de 4%. Le stock Yanbu de 5–7 jours est une estimation.'],
+      de:['Saudi East-West Pipeline bleibt gestoppt, Hormuz-Umgehung geschwächt','Der Vorsorgestopp dauert an; die Route transportierte zuletzt rund 4 Mio. bpd nach Yanbu.','Ein längerer Ausfall gefährdet Volumen von etwa 4% des Weltangebots, bedeutet aber keinen sofortigen Verlust. 5–7 Tage Yanbu-Bestand sind geschätzt.']
+    },
+    oil:{
+      ko:['Brent 장중 $108대 후 $105.68 마감…고유가 지속','Brent는 장중 $108 이상까지 올랐지만 $105.68에, WTI는 $101.39에 마감했습니다.','공급위험이 해소된 것이 아니라 미·이란 협상 기대가 위험 프리미엄 일부를 낮췄습니다. 원유는 MOPS나 10월 산정평균이 아닙니다.'],
+      en:['Brent closes at $105.68 after trading above $108; oil remains high','Brent retreated from above $108 intraday to close at $105.68, while WTI closed at $101.39.','Supply risk was not resolved; renewed U.S.–Iran negotiation hopes trimmed part of the risk premium. Crude is neither MOPS nor the October average.'],
+      ja:['Brentは日中$108台後$105.68で終了、高値継続','Brentは日中$108超から$105.68、WTIは$101.39で終了しました。','供給問題解決ではなく米イラン協議期待がリスクプレミアムを一部縮小。原油はMOPSや10月平均ではありません。'],
+      zh:['Brent盘中突破$108后收于$105.68，高油价持续','Brent从盘中$108上方回落至$105.68，WTI收于$101.39。','供应风险并未解决，而是美伊谈判预期降低部分风险溢价。原油既不是MOPS也不是10月计算均值。'],
+      fr:['Brent clôture à $105.68 après plus de $108 en séance','Brent a reflué de plus de $108 à $105.68; WTI a clôturé à $101.39.','Le risque d’offre n’est pas résolu: l’espoir de négociations USA–Iran a réduit une partie de la prime. Le brut n’est ni MOPS ni moyenne octobre.'],
+      de:['Brent schließt nach über $108 intraday bei $105.68','Brent fiel vom Tageshoch über $108 auf $105.68; WTI schloss bei $101.39.','Das Angebotsrisiko ist nicht gelöst; neue US-Iran-Gesprächshoffnung senkte einen Teil der Prämie. Rohöl ist weder MOPS noch Oktober-Mittel.']
+    },
+    routes:{
+      ko:['호르무즈 주말 통항 한 자릿수…최근 평균 크게 하회','Kpler 공개 AIS 기반 commodity vessel 집계에서 주말 통항은 하루 한 자릿수였습니다.','주말 합계는 출항 4척·입항 10척, 최근 10일 평균은 하루 약 14척입니다. AIS 비활성 선박이 빠질 수 있어 전체 선박 수로 해석하지 않습니다.'],
+      en:['Hormuz weekend traffic stays in single digits, well below average','Kpler public AIS-based commodity-vessel data showed single-digit daily weekend traffic.','The weekend counted four outbound and ten inbound vessels versus a recent ten-day average near 14 per day. AIS-dark vessels may be absent, so this is not all shipping.'],
+      ja:['ホルムズ週末通航は一桁、最近平均を大幅下回る','Kpler公開AISのcommodity vessel集計で週末は1日一桁でした。','週末合計は出航4・入航10隻、10日平均は1日約14隻。AIS非稼働船が除外され得るため全船舶数ではありません。'],
+      zh:['霍尔木兹周末通行维持个位数，远低于近期均值','Kpler公开AIS商品船数据表明周末每日通行处于个位数。','周末出航4艘、入航10艘，近10日均值约每日14艘。未开启AIS的船舶可能遗漏，不能视为全部船舶。'],
+      fr:['Trafic d’Hormuz à un chiffre le week-end, sous la moyenne','Les données publiques AIS de Kpler sur les commodity vessels indiquent un trafic quotidien à un chiffre.','Le week-end compte 4 sorties et 10 entrées contre environ 14 par jour sur dix jours. Les navires sans AIS peuvent manquer; ce n’est pas tout le trafic.'],
+      de:['Hormuz-Verkehr am Wochenende einstellig, klar unter Mittel','Öffentliche Kpler-AIS-Daten zu Rohstoffschiffen zeigten täglich einstellige Werte.','Am Wochenende gab es 4 Aus- und 10 Einfahrten gegenüber rund 14 täglich im 10-Tage-Mittel. Schiffe ohne AIS fehlen möglicherweise; es ist nicht der Gesamtverkehr.']
+    },
+    freight:{
+      ko:['호르무즈 통항선박 또 피격…공격주체 미확인','주말 호르무즈 통항 선박 한 척이 정체불명의 발사체에 피격됐습니다.','피해 사실과 통항 안전위험은 반영하되 독립 확인 전 이란·미국·후티 등 특정 국가나 세력의 공격으로 단정하지 않습니다.'],
+      en:['Another vessel struck in Hormuz; attacker remains unconfirmed','A vessel transiting Hormuz over the weekend was hit by an unidentified projectile.','The incident raises transit and insurance risk, but no state or group including Iran, the U.S. or Houthis is assigned responsibility without confirmation.'],
+      ja:['ホルムズ通航船が再び被弾、攻撃主体未確認','週末にホルムズを通航した船舶が正体不明の発射体に当たりました。','通航・保険リスクは反映しますが、確認前にイラン・米国・フーシ派などの責任を断定しません。'],
+      zh:['霍尔木兹通行船舶再次遇袭，攻击方未确认','周末一艘通过霍尔木兹的船舶遭不明发射物击中。','事件提高通行与保险风险，但在确认前不归责于伊朗、美国、胡塞或任何特定势力。'],
+      fr:['Nouveau navire touché à Hormuz; auteur non confirmé','Un navire traversant Hormuz le week-end a été frappé par un projectile non identifié.','Le risque de transit et d’assurance augmente, mais aucune responsabilité iranienne, américaine, houthie ou autre n’est attribuée sans confirmation.'],
+      de:['Weiteres Schiff in Hormuz getroffen; Angreifer unbestätigt','Ein am Wochenende durch Hormuz fahrendes Schiff wurde von einem unbekannten Projektil getroffen.','Transit- und Versicherungsrisiko steigen, aber ohne Bestätigung wird weder Iran, USA, Huthi noch einer anderen Gruppe Verantwortung zugeschrieben.']
+    },
+    diplomacy:{
+      ko:['미·이란 협상 기대 일부 재등장…외교상황은 혼재','미국 대통령의 합의 가능성 언급으로 유가 위험 프리미엄 일부가 줄었습니다.','오만의 걸프·이란 공식 회담은 연기된 상태라 외교가 해결된 것은 아닙니다. 완충 신호와 협상 지연을 함께 표시합니다.'],
+      en:['U.S.–Iran negotiation hopes return partly; diplomacy remains mixed','Comments that Iran seeks a deal trimmed part of the oil risk premium.','The formal Gulf–Iran meeting in Oman remains postponed, so diplomacy is not resolved. The easing signal and stalled official track are shown together.'],
+      ja:['米イラン協議期待が一部再浮上、外交は混在','イランが合意を望むとの発言で原油リスクプレミアムが一部低下。','一方オマーンの湾岸・イラン公式会合は延期中で解決ではありません。緩和信号と遅延を併記します。'],
+      zh:['美伊谈判预期部分重现，外交局势仍混合','有关伊朗寻求协议的表态降低了部分油价风险溢价。','阿曼海湾国家与伊朗正式会议仍延期，因此外交并未解决。页面同时显示缓和信号与正式进程停滞。'],
+      fr:['L’espoir USA–Iran revient partiellement; diplomatie contrastée','L’idée que l’Iran recherche un accord a réduit une partie de la prime pétrolière.','La réunion officielle Golfe–Iran à Oman reste reportée: rien n’est réglé. Le signal d’apaisement et le blocage officiel sont présentés ensemble.'],
+      de:['US-Iran-Verhandlungshoffnung kehrt teilweise zurück; Diplomatie gemischt','Aussagen über iranisches Interesse an einem Abkommen senkten einen Teil der Ölrisikoprämie.','Das offizielle Golf-Iran-Treffen in Oman bleibt verschoben. Entspannungssignal und stockender offizieller Weg werden gemeinsam gezeigt.']
+    },
+    vessel:{
+      ko:['이란 측 제한통항 지정선박 77척…선박 리스크 확대','이란 측 통항규칙 위반 지정목록이 77척까지 늘어난 것으로 보도됐습니다.','이란 측 지정 blacklist이며 국제공인 제재목록과 다릅니다. 지정 확대는 선박·보험·통항 불확실성을 높입니다.'],
+      en:['Iran-designated restricted-transit list reaches 77 vessels','Iran’s list of vessels designated for violating its transit rules reportedly rose to 77.','This is an Iran-designated blacklist, not an internationally recognized sanctions list. Its expansion raises vessel, insurance and passage uncertainty.'],
+      ja:['イラン指定の制限通航船リスト77隻へ','イラン側の通航規則違反指定リストが77隻に増えたと報じられました。','イラン側指定で国際公認制裁リストとは異なります。船舶・保険・通航の不確実性を高めます。'],
+      zh:['伊朗指定限制通行船舶增至77艘','据报道，伊朗认定违反其通行规则的船舶名单增至77艘。','这是伊朗方面指定的名单，并非国际认可的制裁清单。名单扩大提高船舶、保险及通行不确定性。'],
+      fr:['Liste iranienne de transit restreint portée à 77 navires','La liste iranienne des navires accusés d’enfreindre ses règles de transit serait passée à 77.','C’est une liste désignée par l’Iran, non une sanction internationale reconnue. Elle accroît l’incertitude navire, assurance et passage.'],
+      de:['Iranische Liste eingeschränkter Schiffe steigt auf 77','Irans Liste von Schiffen, die seine Transitregeln verletzt haben sollen, stieg Berichten zufolge auf 77.','Es ist eine iranische, keine international anerkannte Sanktionsliste. Die Ausweitung erhöht Schiffs-, Versicherungs- und Transitunsicherheit.']
+    },
+    china:{
+      ko:['Bab el-Mandeb 군사위험 확대에도 실제 통항은 평균권','Kpler 공개추적 기준 토요일 24척, 일요일 27척으로 10일 평균 약 27척과 큰 차이가 없었습니다.','군사·지정학적 위험 ↑↑과 commodity vessel 실제 통항 →를 분리합니다. 현재 데이터로 통항 급감이나 폐쇄를 주장하지 않습니다.'],
+      en:['Bab el-Mandeb military risk rises while actual traffic stays near average','Kpler public tracking showed 24 vessels Saturday and 27 Sunday versus a ten-day average near 27.','Military and geopolitical risk ↑↑ is separated from actual commodity-vessel traffic →. Current data does not support a traffic-collapse or closure claim.'],
+      ja:['Bab el-Mandeb軍事リスク上昇も実通航は平均圏','Kpler公開追跡で土曜24隻、日曜27隻、10日平均約27隻でした。','軍事・地政学リスク↑↑とcommodity vessel実通航→を分離。通航急減・閉鎖とは表現しません。'],
+      zh:['Bab el-Mandeb军事风险上升，但实际通行仍在平均区间','Kpler公开追踪显示周六24艘、周日27艘，近10日均值约27艘。','军事地缘风险↑↑与商品船实际通行→分开。现有数据不支持通行暴跌或关闭的说法。'],
+      fr:['Risque militaire accru à Bab el-Mandeb, trafic encore moyen','Le suivi public Kpler donne 24 navires samedi et 27 dimanche, contre environ 27 sur dix jours.','Le risque militaire ↑↑ est séparé du trafic réel des commodity vessels →. Les données ne montrent ni effondrement ni fermeture.'],
+      de:['Bab-el-Mandeb-Militärrisiko steigt, Verkehr bleibt im Mittel','Kpler zeigte öffentlich 24 Schiffe Samstag und 27 Sonntag gegenüber rund 27 im 10-Tage-Mittel.','Militärisches Risiko ↑↑ wird vom tatsächlichen Rohstoffschiffsverkehr → getrennt. Die Daten belegen keinen Einbruch oder Verschluss.']
+    },
+    fx:{
+      ko:['원/달러 약 1,347원…KRW 부과액 강한 완충 유지','현물 USD/KRW는 약 1,347.04원, 100엔은 약 872.72원입니다.','환율은 단계 자체보다 KRW 환산금액에 직접 영향을 줍니다. 최종 공지는 8/16~9/15 평균환율을 사용하므로 단일 현물값으로 계산하지 않습니다.'],
+      en:['USD/KRW near 1,347 keeps a strong cushion for KRW charges','Spot USD/KRW is about 1,347.04 and JPY 100 about KRW 872.72.','FX directly affects KRW conversion more than the stage itself. Final notices use the Aug 16–Sept 15 average, not one spot quote.'],
+      ja:['USD/KRW約1,347、KRW負担の強い緩衝維持','直物USD/KRWは約1,347.04、100円は約872.72ウォンです。','為替は段階よりKRW換算額に直接影響。最終公示は8/16～9/15平均を使い単一直物で計算しません。'],
+      zh:['USD/KRW约1,347，继续强力缓冲韩元收费','即期USD/KRW约1,347.04，100日元约872.72韩元。','汇率对韩元换算金额的直接影响大于档位本身。最终公告使用8月16日至9月15日均值，而非单一即期值。'],
+      fr:['USD/KRW proche de 1 347 maintient un fort amortisseur KRW','Le comptant USD/KRW vaut environ 1 347,04 et 100 JPY environ 872,72 KRW.','Le change agit directement sur la conversion KRW plutôt que sur le niveau. L’avis final utilise la moyenne 16 août–15 septembre, pas un seul comptant.'],
+      de:['USD/KRW um 1.347 dämpft KRW-Beträge weiter stark','Spot-USD/KRW liegt bei etwa 1.347,04 und 100 JPY bei 872,72 KRW.','FX beeinflusst direkt die KRW-Umrechnung, weniger die Stufe. Der endgültige Hinweis nutzt das Mittel 16. August–15. September, nicht einen Spotwert.']
+    }
+  };
+  text=latestText;
+  details={};
+  Object.keys(latestText).forEach(function(key){details[key]={};Object.keys(latestText[key]).forEach(function(l){details[key][l]=latestText[key][l][1]+' '+latestText[key][l][2];});});
+  function make(id,key,priority,url){var c={id:id+'-20260915',category:'market',priority:priority,date:'2026-09-15',updatedAt:'2026-09-15T07:20:00+09:00',aiSummary:true,relevanceScore:1-priority/100,sourceUrl:url,i18n:{}};Object.keys(text[key]).forEach(function(l){var d=text[key][l];c.i18n[l]={title:d[0],aiBrief:d[1],summary:details[key][l],impact:d[2],sourceName:'Reuters / AP',tags:[],links:[{href:'forecast.html',label:packs[l].forecastBtn}],faq:[]};});c.i18n.cn=c.i18n.zh;return c;}
   var cards=[
     make('saudi-east-west-pipeline','pipeline',1,'https://apnews.com/article/025d052a14d9481258d51009a76d0bd6'),
-    make('brent-wti-surge','oil',2,'https://www.reuters.com/'),
-    make('hormuz-bab-el-mandeb','routes',3,'https://www.internazionale.it/ultime-notizie-reuters/2026/09/11/hormuz-shipping-traffic-falls-to-single-digits-data-shows'),
-    make('vlcc-record-freight','freight',4,'https://www.investing.com/news/commodities-news/oil-tanker-rates-hit-record-highs-following-iran-us-shipping-attacks-4898157'),
-    make('oman-talks-postponed','diplomacy',5,'https://apnews.com/article/aa034da0d8226f5a3b4794b10afb8b3b'),
-    make('iranian-commercial-vessel','vessel',6,'https://apnews.com/article/aa034da0d8226f5a3b4794b10afb8b3b'),
-    make('china-jet-exports','china',9,'https://www.marketscreener.com/news/china-maintains-stable-refined-fuel-exports-under-relaxed-controls-sources-say-ce7858d2dd8af227'),
-    make('usdkrw-134159','fx',8,'https://www.google.com/finance/quote/USD-KRW')
+    make('brent-wti-close','oil',2,'https://www.reuters.com/'),
+    make('hormuz-weekend-traffic','routes',3,'https://www.reuters.com/'),
+    make('hormuz-vessel-strike','freight',4,'https://www.reuters.com/'),
+    make('us-iran-negotiation-hope','diplomacy',8,'https://www.reuters.com/'),
+    make('iran-designated-blacklist-77','vessel',6,'https://www.reuters.com/'),
+    make('bab-el-mandeb-traffic','china',7,'https://www.reuters.com/'),
+    make('usdkrw-134704','fx',10,'https://www.google.com/finance/quote/USD-KRW')
   ];
   ['singapore-jet-rebound-20260907','global-jet-weekly-20260907'].forEach(function(id){var c=base.newsCards.filter(function(x){return x.id===id;})[0];if(c)cards.push(c);});
-  var numbers=Object.assign({},base.numbers,{asOf:date,usdKrw:1341.59,jpy100Krw:875.70,brentUsdPerBbl:108.23,brentChangePct:3.46,wtiUsdPerBbl:103.20,wtiChangePct:3.15,hormuzKplerCommodityVessels:7,hormuzPreviousCommodityVessels:11,hormuzTenDayAverage:15,saudiEastWestPipelineStatus:'shut',babElMandebRisk:'very_high',vlccWorldscale:450,vlccFreightUsdPerBbl:11.50,octoberForecastDirection:'strong_upward_pressure_increase_likely',octoberForecastConfidence:'medium_high_direction_low_exact_stage'});
-  window.AERO_MARKET_RELEASE={numbers:numbers,rows:rows,packs:packs,newsCards:cards,sources:base.sources,modified:'2026-09-14T07:40:00+09:00'};
-  window.AERO_MARKET_NUMBERS_20260914=numbers;
+  var numbers=Object.assign({},base.numbers,{asOf:date,usdKrw:1347.04,jpy100Krw:872.72,brentUsdPerBbl:105.68,brentChangePct:1.0,brentIntradayHigh:108,wtiUsdPerBbl:101.39,wtiChangePct:1.3,hormuzWeekendOutbound:4,hormuzWeekendInbound:10,hormuzTenDayAverage:14,saudiEastWestPipelineStatus:'shut',babElMandebSaturday:24,babElMandebSunday:27,babElMandebTenDayAverage:27,iranDesignatedBlacklist:77,octoberCalculationStatus:'final_day',octoberForecastDirection:'strong_upward_pressure_increase_likely',octoberForecastConfidence:'medium_high_direction_low_exact_stage'});
+  window.AERO_MARKET_RELEASE={numbers:numbers,rows:rows,packs:packs,newsCards:cards,sources:base.sources,modified:'2026-09-15T07:20:00+09:00'};
+  window.AERO_MARKET_NUMBERS_20260915=numbers;
 })();

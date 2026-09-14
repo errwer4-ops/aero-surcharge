@@ -1,0 +1,842 @@
+[
+  {
+    "page": "forecast",
+    "language": "ko",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "2026년 10월 국제선 유류할증료 전망 | MOPS·환율·호르무즈",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260915",
+        "title": "Saudi East-West Pipeline 중단 지속…호르무즈 우회능력 약화",
+        "brief": "공격 이후 예방적 가동중단이 이어지며 최근 약 4m bpd를 Yanbu로 보낸 핵심 우회로가 제한됐습니다.",
+        "summary": "공격 이후 예방적 가동중단이 이어지며 최근 약 4m bpd를 Yanbu로 보낸 핵심 우회로가 제한됐습니다. 장기 중단 시 세계 공급 약 4% 상당이 영향을 받을 위험이 있으나 즉시 4% 감소를 뜻하지 않습니다. Yanbu 재고 5~7일은 추정 완충입니다."
+      },
+      {
+        "id": "brent-wti-close-20260915",
+        "title": "Brent 장중 $108대 후 $105.68 마감…고유가 지속",
+        "brief": "Brent는 장중 $108 이상까지 올랐지만 $105.68에, WTI는 $101.39에 마감했습니다.",
+        "summary": "Brent는 장중 $108 이상까지 올랐지만 $105.68에, WTI는 $101.39에 마감했습니다. 공급위험이 해소된 것이 아니라 미·이란 협상 기대가 위험 프리미엄 일부를 낮췄습니다. 원유는 MOPS나 10월 산정평균이 아닙니다."
+      },
+      {
+        "id": "hormuz-weekend-traffic-20260915",
+        "title": "호르무즈 주말 통항 한 자릿수…최근 평균 크게 하회",
+        "brief": "Kpler 공개 AIS 기반 commodity vessel 집계에서 주말 통항은 하루 한 자릿수였습니다.",
+        "summary": "Kpler 공개 AIS 기반 commodity vessel 집계에서 주말 통항은 하루 한 자릿수였습니다. 주말 합계는 출항 4척·입항 10척, 최근 10일 평균은 하루 약 14척입니다. AIS 비활성 선박이 빠질 수 있어 전체 선박 수로 해석하지 않습니다."
+      },
+      {
+        "id": "hormuz-vessel-strike-20260915",
+        "title": "호르무즈 통항선박 또 피격…공격주체 미확인",
+        "brief": "주말 호르무즈 통항 선박 한 척이 정체불명의 발사체에 피격됐습니다.",
+        "summary": "주말 호르무즈 통항 선박 한 척이 정체불명의 발사체에 피격됐습니다. 피해 사실과 통항 안전위험은 반영하되 독립 확인 전 이란·미국·후티 등 특정 국가나 세력의 공격으로 단정하지 않습니다."
+      },
+      {
+        "id": "us-iran-negotiation-hope-20260915",
+        "title": "미·이란 협상 기대 일부 재등장…외교상황은 혼재",
+        "brief": "미국 대통령의 합의 가능성 언급으로 유가 위험 프리미엄 일부가 줄었습니다.",
+        "summary": "미국 대통령의 합의 가능성 언급으로 유가 위험 프리미엄 일부가 줄었습니다. 오만의 걸프·이란 공식 회담은 연기된 상태라 외교가 해결된 것은 아닙니다. 완충 신호와 협상 지연을 함께 표시합니다."
+      },
+      {
+        "id": "iran-designated-blacklist-77-20260915",
+        "title": "이란 측 제한통항 지정선박 77척…선박 리스크 확대",
+        "brief": "이란 측 통항규칙 위반 지정목록이 77척까지 늘어난 것으로 보도됐습니다.",
+        "summary": "이란 측 통항규칙 위반 지정목록이 77척까지 늘어난 것으로 보도됐습니다. 이란 측 지정 blacklist이며 국제공인 제재목록과 다릅니다. 지정 확대는 선박·보험·통항 불확실성을 높입니다."
+      },
+      {
+        "id": "bab-el-mandeb-traffic-20260915",
+        "title": "Bab el-Mandeb 군사위험 확대에도 실제 통항은 평균권",
+        "brief": "Kpler 공개추적 기준 토요일 24척, 일요일 27척으로 10일 평균 약 27척과 큰 차이가 없었습니다.",
+        "summary": "Kpler 공개추적 기준 토요일 24척, 일요일 27척으로 10일 평균 약 27척과 큰 차이가 없었습니다. 군사·지정학적 위험 ↑↑과 commodity vessel 실제 통항 →를 분리합니다. 현재 데이터로 통항 급감이나 폐쇄를 주장하지 않습니다."
+      },
+      {
+        "id": "usdkrw-134704-20260915",
+        "title": "원/달러 약 1,347원…KRW 부과액 강한 완충 유지",
+        "brief": "현물 USD/KRW는 약 1,347.04원, 100엔은 약 872.72원입니다.",
+        "summary": "현물 USD/KRW는 약 1,347.04원, 100엔은 약 872.72원입니다. 환율은 단계 자체보다 KRW 환산금액에 직접 영향을 줍니다. 최종 공지는 8/16~9/15 평균환율을 사용하므로 단일 현물값으로 계산하지 않습니다."
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel $159.58…8월 말 대비 급반등",
+        "brief": "Sparta의 9월 3일 Singapore Jet Fuel flat price는 $159.58/bbl입니다.",
+        "summary": "8/27 $142.93보다 $16.65, 9월 확정 산정평균 $149.29보다 $10.29 높습니다. Sparta의 주간 변화 +$9.61은 별도 비교 기준이며 두 날짜 차이와 혼동하지 않습니다. 10월 누적 MOPS 평균은 집계 중입니다."
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "글로벌 Jet Fuel $171.01…주간 9% 상승",
+        "brief": "IATA/S&P Global Platts 주간평균은 $171.01/bbl, 전주 대비 +9.0%입니다.",
+        "summary": "글로벌 지역별 가격을 반영한 주간평균으로 Singapore MOPS가 아닙니다. 직전 주간 $156.85에서 상승했으며 항공유 전반의 반등을 보여줍니다."
+      }
+    ]
+  },
+  {
+    "page": "forecast",
+    "language": "en",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "October 2026 International Fuel Surcharge Outlook | MOPS, FX and Hormuz",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260915",
+        "title": "Saudi East-West Pipeline remains shut, weakening the Hormuz bypass",
+        "brief": "The precautionary shutdown continues on a route recently carrying about 4m bpd to Yanbu.",
+        "summary": "The precautionary shutdown continues on a route recently carrying about 4m bpd to Yanbu. A prolonged outage could expose supply equivalent to about 4% of the world total; it is not an immediate 4% loss. Estimated Yanbu stocks offer a 5–7 day buffer."
+      },
+      {
+        "id": "brent-wti-close-20260915",
+        "title": "Brent closes at $105.68 after trading above $108; oil remains high",
+        "brief": "Brent retreated from above $108 intraday to close at $105.68, while WTI closed at $101.39.",
+        "summary": "Brent retreated from above $108 intraday to close at $105.68, while WTI closed at $101.39. Supply risk was not resolved; renewed U.S.–Iran negotiation hopes trimmed part of the risk premium. Crude is neither MOPS nor the October average."
+      },
+      {
+        "id": "hormuz-weekend-traffic-20260915",
+        "title": "Hormuz weekend traffic stays in single digits, well below average",
+        "brief": "Kpler public AIS-based commodity-vessel data showed single-digit daily weekend traffic.",
+        "summary": "Kpler public AIS-based commodity-vessel data showed single-digit daily weekend traffic. The weekend counted four outbound and ten inbound vessels versus a recent ten-day average near 14 per day. AIS-dark vessels may be absent, so this is not all shipping."
+      },
+      {
+        "id": "hormuz-vessel-strike-20260915",
+        "title": "Another vessel struck in Hormuz; attacker remains unconfirmed",
+        "brief": "A vessel transiting Hormuz over the weekend was hit by an unidentified projectile.",
+        "summary": "A vessel transiting Hormuz over the weekend was hit by an unidentified projectile. The incident raises transit and insurance risk, but no state or group including Iran, the U.S. or Houthis is assigned responsibility without confirmation."
+      },
+      {
+        "id": "us-iran-negotiation-hope-20260915",
+        "title": "U.S.–Iran negotiation hopes return partly; diplomacy remains mixed",
+        "brief": "Comments that Iran seeks a deal trimmed part of the oil risk premium.",
+        "summary": "Comments that Iran seeks a deal trimmed part of the oil risk premium. The formal Gulf–Iran meeting in Oman remains postponed, so diplomacy is not resolved. The easing signal and stalled official track are shown together."
+      },
+      {
+        "id": "iran-designated-blacklist-77-20260915",
+        "title": "Iran-designated restricted-transit list reaches 77 vessels",
+        "brief": "Iran’s list of vessels designated for violating its transit rules reportedly rose to 77.",
+        "summary": "Iran’s list of vessels designated for violating its transit rules reportedly rose to 77. This is an Iran-designated blacklist, not an internationally recognized sanctions list. Its expansion raises vessel, insurance and passage uncertainty."
+      },
+      {
+        "id": "bab-el-mandeb-traffic-20260915",
+        "title": "Bab el-Mandeb military risk rises while actual traffic stays near average",
+        "brief": "Kpler public tracking showed 24 vessels Saturday and 27 Sunday versus a ten-day average near 27.",
+        "summary": "Kpler public tracking showed 24 vessels Saturday and 27 Sunday versus a ten-day average near 27. Military and geopolitical risk ↑↑ is separated from actual commodity-vessel traffic →. Current data does not support a traffic-collapse or closure claim."
+      },
+      {
+        "id": "usdkrw-134704-20260915",
+        "title": "USD/KRW near 1,347 keeps a strong cushion for KRW charges",
+        "brief": "Spot USD/KRW is about 1,347.04 and JPY 100 about KRW 872.72.",
+        "summary": "Spot USD/KRW is about 1,347.04 and JPY 100 about KRW 872.72. FX directly affects KRW conversion more than the stage itself. Final notices use the Aug 16–Sept 15 average, not one spot quote."
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel rebounds to $159.58 from late August",
+        "brief": "Sparta reports a Sept 3 Singapore Jet Fuel flat price of $159.58/bbl.",
+        "summary": "This is $16.65 above Aug 27’s $142.93 and $10.29 above September’s $149.29 calculation average. Sparta’s +$9.61 weekly comparison uses a separate reference. October cumulative MOPS is still being compiled."
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "Global Jet Fuel $171.01: weekly increase of 9%",
+        "brief": "The IATA/S&P Global Platts weekly average is $171.01/bbl, up 9.0%.",
+        "summary": "This global regional-price average is not Singapore MOPS. It follows $156.85 in the previous weekly reading and signals a broader jet-fuel rebound."
+      }
+    ]
+  },
+  {
+    "page": "forecast",
+    "language": "ja",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "2026年10月国際線燃油サーチャージ見通し | MOPS・為替・ホルムズ",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260915",
+        "title": "Saudi East-West Pipeline停止継続、ホルムズ迂回力低下",
+        "brief": "攻撃後の予防停止が続き、最近約4m bpdをYanbuへ送った主要迂回路が制限されています。",
+        "summary": "攻撃後の予防停止が続き、最近約4m bpdをYanbuへ送った主要迂回路が制限されています。 長期化なら世界供給約4%相当への影響リスクがありますが即時4%減ではありません。Yanbu在庫5～7日は推定緩衝です。"
+      },
+      {
+        "id": "brent-wti-close-20260915",
+        "title": "Brentは日中$108台後$105.68で終了、高値継続",
+        "brief": "Brentは日中$108超から$105.68、WTIは$101.39で終了しました。",
+        "summary": "Brentは日中$108超から$105.68、WTIは$101.39で終了しました。 供給問題解決ではなく米イラン協議期待がリスクプレミアムを一部縮小。原油はMOPSや10月平均ではありません。"
+      },
+      {
+        "id": "hormuz-weekend-traffic-20260915",
+        "title": "ホルムズ週末通航は一桁、最近平均を大幅下回る",
+        "brief": "Kpler公開AISのcommodity vessel集計で週末は1日一桁でした。",
+        "summary": "Kpler公開AISのcommodity vessel集計で週末は1日一桁でした。 週末合計は出航4・入航10隻、10日平均は1日約14隻。AIS非稼働船が除外され得るため全船舶数ではありません。"
+      },
+      {
+        "id": "hormuz-vessel-strike-20260915",
+        "title": "ホルムズ通航船が再び被弾、攻撃主体未確認",
+        "brief": "週末にホルムズを通航した船舶が正体不明の発射体に当たりました。",
+        "summary": "週末にホルムズを通航した船舶が正体不明の発射体に当たりました。 通航・保険リスクは反映しますが、確認前にイラン・米国・フーシ派などの責任を断定しません。"
+      },
+      {
+        "id": "us-iran-negotiation-hope-20260915",
+        "title": "米イラン協議期待が一部再浮上、外交は混在",
+        "brief": "イランが合意を望むとの発言で原油リスクプレミアムが一部低下。",
+        "summary": "イランが合意を望むとの発言で原油リスクプレミアムが一部低下。 一方オマーンの湾岸・イラン公式会合は延期中で解決ではありません。緩和信号と遅延を併記します。"
+      },
+      {
+        "id": "iran-designated-blacklist-77-20260915",
+        "title": "イラン指定の制限通航船リスト77隻へ",
+        "brief": "イラン側の通航規則違反指定リストが77隻に増えたと報じられました。",
+        "summary": "イラン側の通航規則違反指定リストが77隻に増えたと報じられました。 イラン側指定で国際公認制裁リストとは異なります。船舶・保険・通航の不確実性を高めます。"
+      },
+      {
+        "id": "bab-el-mandeb-traffic-20260915",
+        "title": "Bab el-Mandeb軍事リスク上昇も実通航は平均圏",
+        "brief": "Kpler公開追跡で土曜24隻、日曜27隻、10日平均約27隻でした。",
+        "summary": "Kpler公開追跡で土曜24隻、日曜27隻、10日平均約27隻でした。 軍事・地政学リスク↑↑とcommodity vessel実通航→を分離。通航急減・閉鎖とは表現しません。"
+      },
+      {
+        "id": "usdkrw-134704-20260915",
+        "title": "USD/KRW約1,347、KRW負担の強い緩衝維持",
+        "brief": "直物USD/KRWは約1,347.04、100円は約872.72ウォンです。",
+        "summary": "直物USD/KRWは約1,347.04、100円は約872.72ウォンです。 為替は段階よりKRW換算額に直接影響。最終公示は8/16～9/15平均を使い単一直物で計算しません。"
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel $159.58、8月末から反発",
+        "brief": "Spartaによる9/3 Singapore Jet Fuel市場価格は$159.58/bblです。",
+        "summary": "8/27の$142.93より$16.65、9月算定平均$149.29より$10.29高い水準です。Spartaの週間+$9.61は別の比較基準です。10月累積MOPSは集計中です。"
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "世界Jet Fuel $171.01、週間9%上昇",
+        "brief": "IATA/S&P Global Platts世界週平均は$171.01/bbl、前週比+9.0%です。",
+        "summary": "地域価格を集計した世界平均でSingapore MOPSではありません。前週$156.85から上昇し、航空燃料全体の反発を示します。"
+      }
+    ]
+  },
+  {
+    "page": "forecast",
+    "language": "zh",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "2026年10月国际线燃油附加费展望 | MOPS·汇率·霍尔木兹",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260915",
+        "title": "Saudi East-West Pipeline继续停运，削弱霍尔木兹绕行能力",
+        "brief": "袭击后的预防性停运持续，近期向Yanbu输送约4m bpd的关键绕行路线受限。",
+        "summary": "袭击后的预防性停运持续，近期向Yanbu输送约4m bpd的关键绕行路线受限。 长期停运可能影响相当于全球供应约4%的规模，但不等于立即减少4%。Yanbu库存可缓冲5至7天属于估算。"
+      },
+      {
+        "id": "brent-wti-close-20260915",
+        "title": "Brent盘中突破$108后收于$105.68，高油价持续",
+        "brief": "Brent从盘中$108上方回落至$105.68，WTI收于$101.39。",
+        "summary": "Brent从盘中$108上方回落至$105.68，WTI收于$101.39。 供应风险并未解决，而是美伊谈判预期降低部分风险溢价。原油既不是MOPS也不是10月计算均值。"
+      },
+      {
+        "id": "hormuz-weekend-traffic-20260915",
+        "title": "霍尔木兹周末通行维持个位数，远低于近期均值",
+        "brief": "Kpler公开AIS商品船数据表明周末每日通行处于个位数。",
+        "summary": "Kpler公开AIS商品船数据表明周末每日通行处于个位数。 周末出航4艘、入航10艘，近10日均值约每日14艘。未开启AIS的船舶可能遗漏，不能视为全部船舶。"
+      },
+      {
+        "id": "hormuz-vessel-strike-20260915",
+        "title": "霍尔木兹通行船舶再次遇袭，攻击方未确认",
+        "brief": "周末一艘通过霍尔木兹的船舶遭不明发射物击中。",
+        "summary": "周末一艘通过霍尔木兹的船舶遭不明发射物击中。 事件提高通行与保险风险，但在确认前不归责于伊朗、美国、胡塞或任何特定势力。"
+      },
+      {
+        "id": "us-iran-negotiation-hope-20260915",
+        "title": "美伊谈判预期部分重现，外交局势仍混合",
+        "brief": "有关伊朗寻求协议的表态降低了部分油价风险溢价。",
+        "summary": "有关伊朗寻求协议的表态降低了部分油价风险溢价。 阿曼海湾国家与伊朗正式会议仍延期，因此外交并未解决。页面同时显示缓和信号与正式进程停滞。"
+      },
+      {
+        "id": "iran-designated-blacklist-77-20260915",
+        "title": "伊朗指定限制通行船舶增至77艘",
+        "brief": "据报道，伊朗认定违反其通行规则的船舶名单增至77艘。",
+        "summary": "据报道，伊朗认定违反其通行规则的船舶名单增至77艘。 这是伊朗方面指定的名单，并非国际认可的制裁清单。名单扩大提高船舶、保险及通行不确定性。"
+      },
+      {
+        "id": "bab-el-mandeb-traffic-20260915",
+        "title": "Bab el-Mandeb军事风险上升，但实际通行仍在平均区间",
+        "brief": "Kpler公开追踪显示周六24艘、周日27艘，近10日均值约27艘。",
+        "summary": "Kpler公开追踪显示周六24艘、周日27艘，近10日均值约27艘。 军事地缘风险↑↑与商品船实际通行→分开。现有数据不支持通行暴跌或关闭的说法。"
+      },
+      {
+        "id": "usdkrw-134704-20260915",
+        "title": "USD/KRW约1,347，继续强力缓冲韩元收费",
+        "brief": "即期USD/KRW约1,347.04，100日元约872.72韩元。",
+        "summary": "即期USD/KRW约1,347.04，100日元约872.72韩元。 汇率对韩元换算金额的直接影响大于档位本身。最终公告使用8月16日至9月15日均值，而非单一即期值。"
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel反弹至$159.58",
+        "brief": "Sparta公布9/3 Singapore Jet Fuel市场价格为$159.58/bbl。",
+        "summary": "比8/27的$142.93高$16.65，比9月计算均值$149.29高$10.29。Sparta周度+$9.61使用另一比较基准。10月累计MOPS仍在汇总。"
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "全球Jet Fuel $171.01，周涨9%",
+        "brief": "IATA/S&P Global Platts全球周均为$171.01/bbl，周涨9.0%。",
+        "summary": "这是地区价格汇总的全球均值，不是Singapore MOPS。前周为$156.85，变化反映更广泛的航油反弹。"
+      }
+    ]
+  },
+  {
+    "page": "forecast",
+    "language": "fr",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "Perspective octobre 2026 | MOPS, FX et Hormuz",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260915",
+        "title": "Arrêt prolongé du Saudi East-West Pipeline, contournement d’Hormuz affaibli",
+        "brief": "L’arrêt préventif se poursuit sur la route qui transportait récemment environ 4m b/j vers Yanbu.",
+        "summary": "L’arrêt préventif se poursuit sur la route qui transportait récemment environ 4m b/j vers Yanbu. Un arrêt prolongé expose l’équivalent d’environ 4% de l’offre mondiale, sans perte immédiate de 4%. Le stock Yanbu de 5–7 jours est une estimation."
+      },
+      {
+        "id": "brent-wti-close-20260915",
+        "title": "Brent clôture à $105.68 après plus de $108 en séance",
+        "brief": "Brent a reflué de plus de $108 à $105.68; WTI a clôturé à $101.39.",
+        "summary": "Brent a reflué de plus de $108 à $105.68; WTI a clôturé à $101.39. Le risque d’offre n’est pas résolu: l’espoir de négociations USA–Iran a réduit une partie de la prime. Le brut n’est ni MOPS ni moyenne octobre."
+      },
+      {
+        "id": "hormuz-weekend-traffic-20260915",
+        "title": "Trafic d’Hormuz à un chiffre le week-end, sous la moyenne",
+        "brief": "Les données publiques AIS de Kpler sur les commodity vessels indiquent un trafic quotidien à un chiffre.",
+        "summary": "Les données publiques AIS de Kpler sur les commodity vessels indiquent un trafic quotidien à un chiffre. Le week-end compte 4 sorties et 10 entrées contre environ 14 par jour sur dix jours. Les navires sans AIS peuvent manquer; ce n’est pas tout le trafic."
+      },
+      {
+        "id": "hormuz-vessel-strike-20260915",
+        "title": "Nouveau navire touché à Hormuz; auteur non confirmé",
+        "brief": "Un navire traversant Hormuz le week-end a été frappé par un projectile non identifié.",
+        "summary": "Un navire traversant Hormuz le week-end a été frappé par un projectile non identifié. Le risque de transit et d’assurance augmente, mais aucune responsabilité iranienne, américaine, houthie ou autre n’est attribuée sans confirmation."
+      },
+      {
+        "id": "us-iran-negotiation-hope-20260915",
+        "title": "L’espoir USA–Iran revient partiellement; diplomatie contrastée",
+        "brief": "L’idée que l’Iran recherche un accord a réduit une partie de la prime pétrolière.",
+        "summary": "L’idée que l’Iran recherche un accord a réduit une partie de la prime pétrolière. La réunion officielle Golfe–Iran à Oman reste reportée: rien n’est réglé. Le signal d’apaisement et le blocage officiel sont présentés ensemble."
+      },
+      {
+        "id": "iran-designated-blacklist-77-20260915",
+        "title": "Liste iranienne de transit restreint portée à 77 navires",
+        "brief": "La liste iranienne des navires accusés d’enfreindre ses règles de transit serait passée à 77.",
+        "summary": "La liste iranienne des navires accusés d’enfreindre ses règles de transit serait passée à 77. C’est une liste désignée par l’Iran, non une sanction internationale reconnue. Elle accroît l’incertitude navire, assurance et passage."
+      },
+      {
+        "id": "bab-el-mandeb-traffic-20260915",
+        "title": "Risque militaire accru à Bab el-Mandeb, trafic encore moyen",
+        "brief": "Le suivi public Kpler donne 24 navires samedi et 27 dimanche, contre environ 27 sur dix jours.",
+        "summary": "Le suivi public Kpler donne 24 navires samedi et 27 dimanche, contre environ 27 sur dix jours. Le risque militaire ↑↑ est séparé du trafic réel des commodity vessels →. Les données ne montrent ni effondrement ni fermeture."
+      },
+      {
+        "id": "usdkrw-134704-20260915",
+        "title": "USD/KRW proche de 1 347 maintient un fort amortisseur KRW",
+        "brief": "Le comptant USD/KRW vaut environ 1 347,04 et 100 JPY environ 872,72 KRW.",
+        "summary": "Le comptant USD/KRW vaut environ 1 347,04 et 100 JPY environ 872,72 KRW. Le change agit directement sur la conversion KRW plutôt que sur le niveau. L’avis final utilise la moyenne 16 août–15 septembre, pas un seul comptant."
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel rebondit à $159.58",
+        "brief": "Sparta indique $159.58/bbl pour le prix Singapore Jet Fuel du 3 septembre.",
+        "summary": "Cela dépasse de $16.65 les $142.93 du 27 août et de $10.29 la moyenne septembre de $149.29. La variation hebdomadaire Sparta de +$9.61 utilise une autre référence. Le MOPS cumulé d’octobre reste en calcul."
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "Jet Fuel mondial à $171.01, +9% sur la semaine",
+        "brief": "La moyenne mondiale hebdomadaire IATA/S&P Global Platts atteint $171.01/bbl, +9.0%.",
+        "summary": "Cette moyenne de prix régionaux n’est pas Singapore MOPS. Elle suit $156.85 la semaine précédente et signale un rebond plus large du kérosène."
+      }
+    ]
+  },
+  {
+    "page": "forecast",
+    "language": "de",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "Oktober-2026 Ausblick | MOPS, FX und Hormuz",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260915",
+        "title": "Saudi East-West Pipeline bleibt gestoppt, Hormuz-Umgehung geschwächt",
+        "brief": "Der Vorsorgestopp dauert an; die Route transportierte zuletzt rund 4 Mio. bpd nach Yanbu.",
+        "summary": "Der Vorsorgestopp dauert an; die Route transportierte zuletzt rund 4 Mio. bpd nach Yanbu. Ein längerer Ausfall gefährdet Volumen von etwa 4% des Weltangebots, bedeutet aber keinen sofortigen Verlust. 5–7 Tage Yanbu-Bestand sind geschätzt."
+      },
+      {
+        "id": "brent-wti-close-20260915",
+        "title": "Brent schließt nach über $108 intraday bei $105.68",
+        "brief": "Brent fiel vom Tageshoch über $108 auf $105.68; WTI schloss bei $101.39.",
+        "summary": "Brent fiel vom Tageshoch über $108 auf $105.68; WTI schloss bei $101.39. Das Angebotsrisiko ist nicht gelöst; neue US-Iran-Gesprächshoffnung senkte einen Teil der Prämie. Rohöl ist weder MOPS noch Oktober-Mittel."
+      },
+      {
+        "id": "hormuz-weekend-traffic-20260915",
+        "title": "Hormuz-Verkehr am Wochenende einstellig, klar unter Mittel",
+        "brief": "Öffentliche Kpler-AIS-Daten zu Rohstoffschiffen zeigten täglich einstellige Werte.",
+        "summary": "Öffentliche Kpler-AIS-Daten zu Rohstoffschiffen zeigten täglich einstellige Werte. Am Wochenende gab es 4 Aus- und 10 Einfahrten gegenüber rund 14 täglich im 10-Tage-Mittel. Schiffe ohne AIS fehlen möglicherweise; es ist nicht der Gesamtverkehr."
+      },
+      {
+        "id": "hormuz-vessel-strike-20260915",
+        "title": "Weiteres Schiff in Hormuz getroffen; Angreifer unbestätigt",
+        "brief": "Ein am Wochenende durch Hormuz fahrendes Schiff wurde von einem unbekannten Projektil getroffen.",
+        "summary": "Ein am Wochenende durch Hormuz fahrendes Schiff wurde von einem unbekannten Projektil getroffen. Transit- und Versicherungsrisiko steigen, aber ohne Bestätigung wird weder Iran, USA, Huthi noch einer anderen Gruppe Verantwortung zugeschrieben."
+      },
+      {
+        "id": "us-iran-negotiation-hope-20260915",
+        "title": "US-Iran-Verhandlungshoffnung kehrt teilweise zurück; Diplomatie gemischt",
+        "brief": "Aussagen über iranisches Interesse an einem Abkommen senkten einen Teil der Ölrisikoprämie.",
+        "summary": "Aussagen über iranisches Interesse an einem Abkommen senkten einen Teil der Ölrisikoprämie. Das offizielle Golf-Iran-Treffen in Oman bleibt verschoben. Entspannungssignal und stockender offizieller Weg werden gemeinsam gezeigt."
+      },
+      {
+        "id": "iran-designated-blacklist-77-20260915",
+        "title": "Iranische Liste eingeschränkter Schiffe steigt auf 77",
+        "brief": "Irans Liste von Schiffen, die seine Transitregeln verletzt haben sollen, stieg Berichten zufolge auf 77.",
+        "summary": "Irans Liste von Schiffen, die seine Transitregeln verletzt haben sollen, stieg Berichten zufolge auf 77. Es ist eine iranische, keine international anerkannte Sanktionsliste. Die Ausweitung erhöht Schiffs-, Versicherungs- und Transitunsicherheit."
+      },
+      {
+        "id": "bab-el-mandeb-traffic-20260915",
+        "title": "Bab-el-Mandeb-Militärrisiko steigt, Verkehr bleibt im Mittel",
+        "brief": "Kpler zeigte öffentlich 24 Schiffe Samstag und 27 Sonntag gegenüber rund 27 im 10-Tage-Mittel.",
+        "summary": "Kpler zeigte öffentlich 24 Schiffe Samstag und 27 Sonntag gegenüber rund 27 im 10-Tage-Mittel. Militärisches Risiko ↑↑ wird vom tatsächlichen Rohstoffschiffsverkehr → getrennt. Die Daten belegen keinen Einbruch oder Verschluss."
+      },
+      {
+        "id": "usdkrw-134704-20260915",
+        "title": "USD/KRW um 1.347 dämpft KRW-Beträge weiter stark",
+        "brief": "Spot-USD/KRW liegt bei etwa 1.347,04 und 100 JPY bei 872,72 KRW.",
+        "summary": "Spot-USD/KRW liegt bei etwa 1.347,04 und 100 JPY bei 872,72 KRW. FX beeinflusst direkt die KRW-Umrechnung, weniger die Stufe. Der endgültige Hinweis nutzt das Mittel 16. August–15. September, nicht einen Spotwert."
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel steigt auf $159.58",
+        "brief": "Sparta nennt $159.58/bbl als Singapore-Jet-Fuel-Marktpreis vom 3. September.",
+        "summary": "Das liegt $16.65 über $142.93 vom 27. August und $10.29 über dem September-Mittel von $149.29. Spartas Wochenvergleich +$9.61 hat eine andere Basis. Das Oktober-MOPS-Mittel wird noch berechnet."
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "Globales Jet Fuel bei $171.01, wöchentlich +9%",
+        "brief": "Das globale IATA/S&P-Global-Platts-Wochenmittel beträgt $171.01/bbl, +9.0%.",
+        "summary": "Dieser Durchschnitt regionaler Preise ist kein Singapore MOPS. Nach $156.85 in der Vorwoche zeigt er eine breitere Kerosinerholung."
+      }
+    ]
+  },
+  {
+    "page": "news",
+    "language": "ko",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "9월 공시와 10월 전망 뉴스 | MOPS · USD/KRW",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260915",
+        "title": "Saudi East-West Pipeline 중단 지속…호르무즈 우회능력 약화",
+        "brief": "공격 이후 예방적 가동중단이 이어지며 최근 약 4m bpd를 Yanbu로 보낸 핵심 우회로가 제한됐습니다.",
+        "summary": "공격 이후 예방적 가동중단이 이어지며 최근 약 4m bpd를 Yanbu로 보낸 핵심 우회로가 제한됐습니다. 장기 중단 시 세계 공급 약 4% 상당이 영향을 받을 위험이 있으나 즉시 4% 감소를 뜻하지 않습니다. Yanbu 재고 5~7일은 추정 완충입니다."
+      },
+      {
+        "id": "brent-wti-close-20260915",
+        "title": "Brent 장중 $108대 후 $105.68 마감…고유가 지속",
+        "brief": "Brent는 장중 $108 이상까지 올랐지만 $105.68에, WTI는 $101.39에 마감했습니다.",
+        "summary": "Brent는 장중 $108 이상까지 올랐지만 $105.68에, WTI는 $101.39에 마감했습니다. 공급위험이 해소된 것이 아니라 미·이란 협상 기대가 위험 프리미엄 일부를 낮췄습니다. 원유는 MOPS나 10월 산정평균이 아닙니다."
+      },
+      {
+        "id": "hormuz-weekend-traffic-20260915",
+        "title": "호르무즈 주말 통항 한 자릿수…최근 평균 크게 하회",
+        "brief": "Kpler 공개 AIS 기반 commodity vessel 집계에서 주말 통항은 하루 한 자릿수였습니다.",
+        "summary": "Kpler 공개 AIS 기반 commodity vessel 집계에서 주말 통항은 하루 한 자릿수였습니다. 주말 합계는 출항 4척·입항 10척, 최근 10일 평균은 하루 약 14척입니다. AIS 비활성 선박이 빠질 수 있어 전체 선박 수로 해석하지 않습니다."
+      },
+      {
+        "id": "hormuz-vessel-strike-20260915",
+        "title": "호르무즈 통항선박 또 피격…공격주체 미확인",
+        "brief": "주말 호르무즈 통항 선박 한 척이 정체불명의 발사체에 피격됐습니다.",
+        "summary": "주말 호르무즈 통항 선박 한 척이 정체불명의 발사체에 피격됐습니다. 피해 사실과 통항 안전위험은 반영하되 독립 확인 전 이란·미국·후티 등 특정 국가나 세력의 공격으로 단정하지 않습니다."
+      },
+      {
+        "id": "us-iran-negotiation-hope-20260915",
+        "title": "미·이란 협상 기대 일부 재등장…외교상황은 혼재",
+        "brief": "미국 대통령의 합의 가능성 언급으로 유가 위험 프리미엄 일부가 줄었습니다.",
+        "summary": "미국 대통령의 합의 가능성 언급으로 유가 위험 프리미엄 일부가 줄었습니다. 오만의 걸프·이란 공식 회담은 연기된 상태라 외교가 해결된 것은 아닙니다. 완충 신호와 협상 지연을 함께 표시합니다."
+      },
+      {
+        "id": "iran-designated-blacklist-77-20260915",
+        "title": "이란 측 제한통항 지정선박 77척…선박 리스크 확대",
+        "brief": "이란 측 통항규칙 위반 지정목록이 77척까지 늘어난 것으로 보도됐습니다.",
+        "summary": "이란 측 통항규칙 위반 지정목록이 77척까지 늘어난 것으로 보도됐습니다. 이란 측 지정 blacklist이며 국제공인 제재목록과 다릅니다. 지정 확대는 선박·보험·통항 불확실성을 높입니다."
+      },
+      {
+        "id": "bab-el-mandeb-traffic-20260915",
+        "title": "Bab el-Mandeb 군사위험 확대에도 실제 통항은 평균권",
+        "brief": "Kpler 공개추적 기준 토요일 24척, 일요일 27척으로 10일 평균 약 27척과 큰 차이가 없었습니다.",
+        "summary": "Kpler 공개추적 기준 토요일 24척, 일요일 27척으로 10일 평균 약 27척과 큰 차이가 없었습니다. 군사·지정학적 위험 ↑↑과 commodity vessel 실제 통항 →를 분리합니다. 현재 데이터로 통항 급감이나 폐쇄를 주장하지 않습니다."
+      },
+      {
+        "id": "usdkrw-134704-20260915",
+        "title": "원/달러 약 1,347원…KRW 부과액 강한 완충 유지",
+        "brief": "현물 USD/KRW는 약 1,347.04원, 100엔은 약 872.72원입니다.",
+        "summary": "현물 USD/KRW는 약 1,347.04원, 100엔은 약 872.72원입니다. 환율은 단계 자체보다 KRW 환산금액에 직접 영향을 줍니다. 최종 공지는 8/16~9/15 평균환율을 사용하므로 단일 현물값으로 계산하지 않습니다."
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel $159.58…8월 말 대비 급반등",
+        "brief": "Sparta의 9월 3일 Singapore Jet Fuel flat price는 $159.58/bbl입니다.",
+        "summary": "8/27 $142.93보다 $16.65, 9월 확정 산정평균 $149.29보다 $10.29 높습니다. Sparta의 주간 변화 +$9.61은 별도 비교 기준이며 두 날짜 차이와 혼동하지 않습니다. 10월 누적 MOPS 평균은 집계 중입니다."
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "글로벌 Jet Fuel $171.01…주간 9% 상승",
+        "brief": "IATA/S&P Global Platts 주간평균은 $171.01/bbl, 전주 대비 +9.0%입니다.",
+        "summary": "글로벌 지역별 가격을 반영한 주간평균으로 Singapore MOPS가 아닙니다. 직전 주간 $156.85에서 상승했으며 항공유 전반의 반등을 보여줍니다."
+      }
+    ]
+  },
+  {
+    "page": "news",
+    "language": "en",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "September notices and October outlook news | MOPS · USD/KRW",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260915",
+        "title": "Saudi East-West Pipeline remains shut, weakening the Hormuz bypass",
+        "brief": "The precautionary shutdown continues on a route recently carrying about 4m bpd to Yanbu.",
+        "summary": "The precautionary shutdown continues on a route recently carrying about 4m bpd to Yanbu. A prolonged outage could expose supply equivalent to about 4% of the world total; it is not an immediate 4% loss. Estimated Yanbu stocks offer a 5–7 day buffer."
+      },
+      {
+        "id": "brent-wti-close-20260915",
+        "title": "Brent closes at $105.68 after trading above $108; oil remains high",
+        "brief": "Brent retreated from above $108 intraday to close at $105.68, while WTI closed at $101.39.",
+        "summary": "Brent retreated from above $108 intraday to close at $105.68, while WTI closed at $101.39. Supply risk was not resolved; renewed U.S.–Iran negotiation hopes trimmed part of the risk premium. Crude is neither MOPS nor the October average."
+      },
+      {
+        "id": "hormuz-weekend-traffic-20260915",
+        "title": "Hormuz weekend traffic stays in single digits, well below average",
+        "brief": "Kpler public AIS-based commodity-vessel data showed single-digit daily weekend traffic.",
+        "summary": "Kpler public AIS-based commodity-vessel data showed single-digit daily weekend traffic. The weekend counted four outbound and ten inbound vessels versus a recent ten-day average near 14 per day. AIS-dark vessels may be absent, so this is not all shipping."
+      },
+      {
+        "id": "hormuz-vessel-strike-20260915",
+        "title": "Another vessel struck in Hormuz; attacker remains unconfirmed",
+        "brief": "A vessel transiting Hormuz over the weekend was hit by an unidentified projectile.",
+        "summary": "A vessel transiting Hormuz over the weekend was hit by an unidentified projectile. The incident raises transit and insurance risk, but no state or group including Iran, the U.S. or Houthis is assigned responsibility without confirmation."
+      },
+      {
+        "id": "us-iran-negotiation-hope-20260915",
+        "title": "U.S.–Iran negotiation hopes return partly; diplomacy remains mixed",
+        "brief": "Comments that Iran seeks a deal trimmed part of the oil risk premium.",
+        "summary": "Comments that Iran seeks a deal trimmed part of the oil risk premium. The formal Gulf–Iran meeting in Oman remains postponed, so diplomacy is not resolved. The easing signal and stalled official track are shown together."
+      },
+      {
+        "id": "iran-designated-blacklist-77-20260915",
+        "title": "Iran-designated restricted-transit list reaches 77 vessels",
+        "brief": "Iran’s list of vessels designated for violating its transit rules reportedly rose to 77.",
+        "summary": "Iran’s list of vessels designated for violating its transit rules reportedly rose to 77. This is an Iran-designated blacklist, not an internationally recognized sanctions list. Its expansion raises vessel, insurance and passage uncertainty."
+      },
+      {
+        "id": "bab-el-mandeb-traffic-20260915",
+        "title": "Bab el-Mandeb military risk rises while actual traffic stays near average",
+        "brief": "Kpler public tracking showed 24 vessels Saturday and 27 Sunday versus a ten-day average near 27.",
+        "summary": "Kpler public tracking showed 24 vessels Saturday and 27 Sunday versus a ten-day average near 27. Military and geopolitical risk ↑↑ is separated from actual commodity-vessel traffic →. Current data does not support a traffic-collapse or closure claim."
+      },
+      {
+        "id": "usdkrw-134704-20260915",
+        "title": "USD/KRW near 1,347 keeps a strong cushion for KRW charges",
+        "brief": "Spot USD/KRW is about 1,347.04 and JPY 100 about KRW 872.72.",
+        "summary": "Spot USD/KRW is about 1,347.04 and JPY 100 about KRW 872.72. FX directly affects KRW conversion more than the stage itself. Final notices use the Aug 16–Sept 15 average, not one spot quote."
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel rebounds to $159.58 from late August",
+        "brief": "Sparta reports a Sept 3 Singapore Jet Fuel flat price of $159.58/bbl.",
+        "summary": "This is $16.65 above Aug 27’s $142.93 and $10.29 above September’s $149.29 calculation average. Sparta’s +$9.61 weekly comparison uses a separate reference. October cumulative MOPS is still being compiled."
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "Global Jet Fuel $171.01: weekly increase of 9%",
+        "brief": "The IATA/S&P Global Platts weekly average is $171.01/bbl, up 9.0%.",
+        "summary": "This global regional-price average is not Singapore MOPS. It follows $156.85 in the previous weekly reading and signals a broader jet-fuel rebound."
+      }
+    ]
+  },
+  {
+    "page": "news",
+    "language": "ja",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "9月公示と10月見通しニュース | MOPS · USD/KRW",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260915",
+        "title": "Saudi East-West Pipeline停止継続、ホルムズ迂回力低下",
+        "brief": "攻撃後の予防停止が続き、最近約4m bpdをYanbuへ送った主要迂回路が制限されています。",
+        "summary": "攻撃後の予防停止が続き、最近約4m bpdをYanbuへ送った主要迂回路が制限されています。 長期化なら世界供給約4%相当への影響リスクがありますが即時4%減ではありません。Yanbu在庫5～7日は推定緩衝です。"
+      },
+      {
+        "id": "brent-wti-close-20260915",
+        "title": "Brentは日中$108台後$105.68で終了、高値継続",
+        "brief": "Brentは日中$108超から$105.68、WTIは$101.39で終了しました。",
+        "summary": "Brentは日中$108超から$105.68、WTIは$101.39で終了しました。 供給問題解決ではなく米イラン協議期待がリスクプレミアムを一部縮小。原油はMOPSや10月平均ではありません。"
+      },
+      {
+        "id": "hormuz-weekend-traffic-20260915",
+        "title": "ホルムズ週末通航は一桁、最近平均を大幅下回る",
+        "brief": "Kpler公開AISのcommodity vessel集計で週末は1日一桁でした。",
+        "summary": "Kpler公開AISのcommodity vessel集計で週末は1日一桁でした。 週末合計は出航4・入航10隻、10日平均は1日約14隻。AIS非稼働船が除外され得るため全船舶数ではありません。"
+      },
+      {
+        "id": "hormuz-vessel-strike-20260915",
+        "title": "ホルムズ通航船が再び被弾、攻撃主体未確認",
+        "brief": "週末にホルムズを通航した船舶が正体不明の発射体に当たりました。",
+        "summary": "週末にホルムズを通航した船舶が正体不明の発射体に当たりました。 通航・保険リスクは反映しますが、確認前にイラン・米国・フーシ派などの責任を断定しません。"
+      },
+      {
+        "id": "us-iran-negotiation-hope-20260915",
+        "title": "米イラン協議期待が一部再浮上、外交は混在",
+        "brief": "イランが合意を望むとの発言で原油リスクプレミアムが一部低下。",
+        "summary": "イランが合意を望むとの発言で原油リスクプレミアムが一部低下。 一方オマーンの湾岸・イラン公式会合は延期中で解決ではありません。緩和信号と遅延を併記します。"
+      },
+      {
+        "id": "iran-designated-blacklist-77-20260915",
+        "title": "イラン指定の制限通航船リスト77隻へ",
+        "brief": "イラン側の通航規則違反指定リストが77隻に増えたと報じられました。",
+        "summary": "イラン側の通航規則違反指定リストが77隻に増えたと報じられました。 イラン側指定で国際公認制裁リストとは異なります。船舶・保険・通航の不確実性を高めます。"
+      },
+      {
+        "id": "bab-el-mandeb-traffic-20260915",
+        "title": "Bab el-Mandeb軍事リスク上昇も実通航は平均圏",
+        "brief": "Kpler公開追跡で土曜24隻、日曜27隻、10日平均約27隻でした。",
+        "summary": "Kpler公開追跡で土曜24隻、日曜27隻、10日平均約27隻でした。 軍事・地政学リスク↑↑とcommodity vessel実通航→を分離。通航急減・閉鎖とは表現しません。"
+      },
+      {
+        "id": "usdkrw-134704-20260915",
+        "title": "USD/KRW約1,347、KRW負担の強い緩衝維持",
+        "brief": "直物USD/KRWは約1,347.04、100円は約872.72ウォンです。",
+        "summary": "直物USD/KRWは約1,347.04、100円は約872.72ウォンです。 為替は段階よりKRW換算額に直接影響。最終公示は8/16～9/15平均を使い単一直物で計算しません。"
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel $159.58、8月末から反発",
+        "brief": "Spartaによる9/3 Singapore Jet Fuel市場価格は$159.58/bblです。",
+        "summary": "8/27の$142.93より$16.65、9月算定平均$149.29より$10.29高い水準です。Spartaの週間+$9.61は別の比較基準です。10月累積MOPSは集計中です。"
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "世界Jet Fuel $171.01、週間9%上昇",
+        "brief": "IATA/S&P Global Platts世界週平均は$171.01/bbl、前週比+9.0%です。",
+        "summary": "地域価格を集計した世界平均でSingapore MOPSではありません。前週$156.85から上昇し、航空燃料全体の反発を示します。"
+      }
+    ]
+  },
+  {
+    "page": "news",
+    "language": "zh",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "9月公告与10月展望新闻 | MOPS · USD/KRW",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260915",
+        "title": "Saudi East-West Pipeline继续停运，削弱霍尔木兹绕行能力",
+        "brief": "袭击后的预防性停运持续，近期向Yanbu输送约4m bpd的关键绕行路线受限。",
+        "summary": "袭击后的预防性停运持续，近期向Yanbu输送约4m bpd的关键绕行路线受限。 长期停运可能影响相当于全球供应约4%的规模，但不等于立即减少4%。Yanbu库存可缓冲5至7天属于估算。"
+      },
+      {
+        "id": "brent-wti-close-20260915",
+        "title": "Brent盘中突破$108后收于$105.68，高油价持续",
+        "brief": "Brent从盘中$108上方回落至$105.68，WTI收于$101.39。",
+        "summary": "Brent从盘中$108上方回落至$105.68，WTI收于$101.39。 供应风险并未解决，而是美伊谈判预期降低部分风险溢价。原油既不是MOPS也不是10月计算均值。"
+      },
+      {
+        "id": "hormuz-weekend-traffic-20260915",
+        "title": "霍尔木兹周末通行维持个位数，远低于近期均值",
+        "brief": "Kpler公开AIS商品船数据表明周末每日通行处于个位数。",
+        "summary": "Kpler公开AIS商品船数据表明周末每日通行处于个位数。 周末出航4艘、入航10艘，近10日均值约每日14艘。未开启AIS的船舶可能遗漏，不能视为全部船舶。"
+      },
+      {
+        "id": "hormuz-vessel-strike-20260915",
+        "title": "霍尔木兹通行船舶再次遇袭，攻击方未确认",
+        "brief": "周末一艘通过霍尔木兹的船舶遭不明发射物击中。",
+        "summary": "周末一艘通过霍尔木兹的船舶遭不明发射物击中。 事件提高通行与保险风险，但在确认前不归责于伊朗、美国、胡塞或任何特定势力。"
+      },
+      {
+        "id": "us-iran-negotiation-hope-20260915",
+        "title": "美伊谈判预期部分重现，外交局势仍混合",
+        "brief": "有关伊朗寻求协议的表态降低了部分油价风险溢价。",
+        "summary": "有关伊朗寻求协议的表态降低了部分油价风险溢价。 阿曼海湾国家与伊朗正式会议仍延期，因此外交并未解决。页面同时显示缓和信号与正式进程停滞。"
+      },
+      {
+        "id": "iran-designated-blacklist-77-20260915",
+        "title": "伊朗指定限制通行船舶增至77艘",
+        "brief": "据报道，伊朗认定违反其通行规则的船舶名单增至77艘。",
+        "summary": "据报道，伊朗认定违反其通行规则的船舶名单增至77艘。 这是伊朗方面指定的名单，并非国际认可的制裁清单。名单扩大提高船舶、保险及通行不确定性。"
+      },
+      {
+        "id": "bab-el-mandeb-traffic-20260915",
+        "title": "Bab el-Mandeb军事风险上升，但实际通行仍在平均区间",
+        "brief": "Kpler公开追踪显示周六24艘、周日27艘，近10日均值约27艘。",
+        "summary": "Kpler公开追踪显示周六24艘、周日27艘，近10日均值约27艘。 军事地缘风险↑↑与商品船实际通行→分开。现有数据不支持通行暴跌或关闭的说法。"
+      },
+      {
+        "id": "usdkrw-134704-20260915",
+        "title": "USD/KRW约1,347，继续强力缓冲韩元收费",
+        "brief": "即期USD/KRW约1,347.04，100日元约872.72韩元。",
+        "summary": "即期USD/KRW约1,347.04，100日元约872.72韩元。 汇率对韩元换算金额的直接影响大于档位本身。最终公告使用8月16日至9月15日均值，而非单一即期值。"
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel反弹至$159.58",
+        "brief": "Sparta公布9/3 Singapore Jet Fuel市场价格为$159.58/bbl。",
+        "summary": "比8/27的$142.93高$16.65，比9月计算均值$149.29高$10.29。Sparta周度+$9.61使用另一比较基准。10月累计MOPS仍在汇总。"
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "全球Jet Fuel $171.01，周涨9%",
+        "brief": "IATA/S&P Global Platts全球周均为$171.01/bbl，周涨9.0%。",
+        "summary": "这是地区价格汇总的全球均值，不是Singapore MOPS。前周为$156.85，变化反映更广泛的航油反弹。"
+      }
+    ]
+  },
+  {
+    "page": "news",
+    "language": "fr",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "Avis septembre et actualités octobre | MOPS · USD/KRW",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260915",
+        "title": "Arrêt prolongé du Saudi East-West Pipeline, contournement d’Hormuz affaibli",
+        "brief": "L’arrêt préventif se poursuit sur la route qui transportait récemment environ 4m b/j vers Yanbu.",
+        "summary": "L’arrêt préventif se poursuit sur la route qui transportait récemment environ 4m b/j vers Yanbu. Un arrêt prolongé expose l’équivalent d’environ 4% de l’offre mondiale, sans perte immédiate de 4%. Le stock Yanbu de 5–7 jours est une estimation."
+      },
+      {
+        "id": "brent-wti-close-20260915",
+        "title": "Brent clôture à $105.68 après plus de $108 en séance",
+        "brief": "Brent a reflué de plus de $108 à $105.68; WTI a clôturé à $101.39.",
+        "summary": "Brent a reflué de plus de $108 à $105.68; WTI a clôturé à $101.39. Le risque d’offre n’est pas résolu: l’espoir de négociations USA–Iran a réduit une partie de la prime. Le brut n’est ni MOPS ni moyenne octobre."
+      },
+      {
+        "id": "hormuz-weekend-traffic-20260915",
+        "title": "Trafic d’Hormuz à un chiffre le week-end, sous la moyenne",
+        "brief": "Les données publiques AIS de Kpler sur les commodity vessels indiquent un trafic quotidien à un chiffre.",
+        "summary": "Les données publiques AIS de Kpler sur les commodity vessels indiquent un trafic quotidien à un chiffre. Le week-end compte 4 sorties et 10 entrées contre environ 14 par jour sur dix jours. Les navires sans AIS peuvent manquer; ce n’est pas tout le trafic."
+      },
+      {
+        "id": "hormuz-vessel-strike-20260915",
+        "title": "Nouveau navire touché à Hormuz; auteur non confirmé",
+        "brief": "Un navire traversant Hormuz le week-end a été frappé par un projectile non identifié.",
+        "summary": "Un navire traversant Hormuz le week-end a été frappé par un projectile non identifié. Le risque de transit et d’assurance augmente, mais aucune responsabilité iranienne, américaine, houthie ou autre n’est attribuée sans confirmation."
+      },
+      {
+        "id": "us-iran-negotiation-hope-20260915",
+        "title": "L’espoir USA–Iran revient partiellement; diplomatie contrastée",
+        "brief": "L’idée que l’Iran recherche un accord a réduit une partie de la prime pétrolière.",
+        "summary": "L’idée que l’Iran recherche un accord a réduit une partie de la prime pétrolière. La réunion officielle Golfe–Iran à Oman reste reportée: rien n’est réglé. Le signal d’apaisement et le blocage officiel sont présentés ensemble."
+      },
+      {
+        "id": "iran-designated-blacklist-77-20260915",
+        "title": "Liste iranienne de transit restreint portée à 77 navires",
+        "brief": "La liste iranienne des navires accusés d’enfreindre ses règles de transit serait passée à 77.",
+        "summary": "La liste iranienne des navires accusés d’enfreindre ses règles de transit serait passée à 77. C’est une liste désignée par l’Iran, non une sanction internationale reconnue. Elle accroît l’incertitude navire, assurance et passage."
+      },
+      {
+        "id": "bab-el-mandeb-traffic-20260915",
+        "title": "Risque militaire accru à Bab el-Mandeb, trafic encore moyen",
+        "brief": "Le suivi public Kpler donne 24 navires samedi et 27 dimanche, contre environ 27 sur dix jours.",
+        "summary": "Le suivi public Kpler donne 24 navires samedi et 27 dimanche, contre environ 27 sur dix jours. Le risque militaire ↑↑ est séparé du trafic réel des commodity vessels →. Les données ne montrent ni effondrement ni fermeture."
+      },
+      {
+        "id": "usdkrw-134704-20260915",
+        "title": "USD/KRW proche de 1 347 maintient un fort amortisseur KRW",
+        "brief": "Le comptant USD/KRW vaut environ 1 347,04 et 100 JPY environ 872,72 KRW.",
+        "summary": "Le comptant USD/KRW vaut environ 1 347,04 et 100 JPY environ 872,72 KRW. Le change agit directement sur la conversion KRW plutôt que sur le niveau. L’avis final utilise la moyenne 16 août–15 septembre, pas un seul comptant."
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel rebondit à $159.58",
+        "brief": "Sparta indique $159.58/bbl pour le prix Singapore Jet Fuel du 3 septembre.",
+        "summary": "Cela dépasse de $16.65 les $142.93 du 27 août et de $10.29 la moyenne septembre de $149.29. La variation hebdomadaire Sparta de +$9.61 utilise une autre référence. Le MOPS cumulé d’octobre reste en calcul."
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "Jet Fuel mondial à $171.01, +9% sur la semaine",
+        "brief": "La moyenne mondiale hebdomadaire IATA/S&P Global Platts atteint $171.01/bbl, +9.0%.",
+        "summary": "Cette moyenne de prix régionaux n’est pas Singapore MOPS. Elle suit $156.85 la semaine précédente et signale un rebond plus large du kérosène."
+      }
+    ]
+  },
+  {
+    "page": "news",
+    "language": "de",
+    "korean": [],
+    "overflow": false,
+    "errors": [],
+    "title": "September-Hinweise und Oktober-Ausblick | MOPS · USD/KRW",
+    "cards": [
+      {
+        "id": "saudi-east-west-pipeline-20260915",
+        "title": "Saudi East-West Pipeline bleibt gestoppt, Hormuz-Umgehung geschwächt",
+        "brief": "Der Vorsorgestopp dauert an; die Route transportierte zuletzt rund 4 Mio. bpd nach Yanbu.",
+        "summary": "Der Vorsorgestopp dauert an; die Route transportierte zuletzt rund 4 Mio. bpd nach Yanbu. Ein längerer Ausfall gefährdet Volumen von etwa 4% des Weltangebots, bedeutet aber keinen sofortigen Verlust. 5–7 Tage Yanbu-Bestand sind geschätzt."
+      },
+      {
+        "id": "brent-wti-close-20260915",
+        "title": "Brent schließt nach über $108 intraday bei $105.68",
+        "brief": "Brent fiel vom Tageshoch über $108 auf $105.68; WTI schloss bei $101.39.",
+        "summary": "Brent fiel vom Tageshoch über $108 auf $105.68; WTI schloss bei $101.39. Das Angebotsrisiko ist nicht gelöst; neue US-Iran-Gesprächshoffnung senkte einen Teil der Prämie. Rohöl ist weder MOPS noch Oktober-Mittel."
+      },
+      {
+        "id": "hormuz-weekend-traffic-20260915",
+        "title": "Hormuz-Verkehr am Wochenende einstellig, klar unter Mittel",
+        "brief": "Öffentliche Kpler-AIS-Daten zu Rohstoffschiffen zeigten täglich einstellige Werte.",
+        "summary": "Öffentliche Kpler-AIS-Daten zu Rohstoffschiffen zeigten täglich einstellige Werte. Am Wochenende gab es 4 Aus- und 10 Einfahrten gegenüber rund 14 täglich im 10-Tage-Mittel. Schiffe ohne AIS fehlen möglicherweise; es ist nicht der Gesamtverkehr."
+      },
+      {
+        "id": "hormuz-vessel-strike-20260915",
+        "title": "Weiteres Schiff in Hormuz getroffen; Angreifer unbestätigt",
+        "brief": "Ein am Wochenende durch Hormuz fahrendes Schiff wurde von einem unbekannten Projektil getroffen.",
+        "summary": "Ein am Wochenende durch Hormuz fahrendes Schiff wurde von einem unbekannten Projektil getroffen. Transit- und Versicherungsrisiko steigen, aber ohne Bestätigung wird weder Iran, USA, Huthi noch einer anderen Gruppe Verantwortung zugeschrieben."
+      },
+      {
+        "id": "us-iran-negotiation-hope-20260915",
+        "title": "US-Iran-Verhandlungshoffnung kehrt teilweise zurück; Diplomatie gemischt",
+        "brief": "Aussagen über iranisches Interesse an einem Abkommen senkten einen Teil der Ölrisikoprämie.",
+        "summary": "Aussagen über iranisches Interesse an einem Abkommen senkten einen Teil der Ölrisikoprämie. Das offizielle Golf-Iran-Treffen in Oman bleibt verschoben. Entspannungssignal und stockender offizieller Weg werden gemeinsam gezeigt."
+      },
+      {
+        "id": "iran-designated-blacklist-77-20260915",
+        "title": "Iranische Liste eingeschränkter Schiffe steigt auf 77",
+        "brief": "Irans Liste von Schiffen, die seine Transitregeln verletzt haben sollen, stieg Berichten zufolge auf 77.",
+        "summary": "Irans Liste von Schiffen, die seine Transitregeln verletzt haben sollen, stieg Berichten zufolge auf 77. Es ist eine iranische, keine international anerkannte Sanktionsliste. Die Ausweitung erhöht Schiffs-, Versicherungs- und Transitunsicherheit."
+      },
+      {
+        "id": "bab-el-mandeb-traffic-20260915",
+        "title": "Bab-el-Mandeb-Militärrisiko steigt, Verkehr bleibt im Mittel",
+        "brief": "Kpler zeigte öffentlich 24 Schiffe Samstag und 27 Sonntag gegenüber rund 27 im 10-Tage-Mittel.",
+        "summary": "Kpler zeigte öffentlich 24 Schiffe Samstag und 27 Sonntag gegenüber rund 27 im 10-Tage-Mittel. Militärisches Risiko ↑↑ wird vom tatsächlichen Rohstoffschiffsverkehr → getrennt. Die Daten belegen keinen Einbruch oder Verschluss."
+      },
+      {
+        "id": "usdkrw-134704-20260915",
+        "title": "USD/KRW um 1.347 dämpft KRW-Beträge weiter stark",
+        "brief": "Spot-USD/KRW liegt bei etwa 1.347,04 und 100 JPY bei 872,72 KRW.",
+        "summary": "Spot-USD/KRW liegt bei etwa 1.347,04 und 100 JPY bei 872,72 KRW. FX beeinflusst direkt die KRW-Umrechnung, weniger die Stufe. Der endgültige Hinweis nutzt das Mittel 16. August–15. September, nicht einen Spotwert."
+      },
+      {
+        "id": "singapore-jet-rebound-20260907",
+        "title": "Singapore Jet Fuel steigt auf $159.58",
+        "brief": "Sparta nennt $159.58/bbl als Singapore-Jet-Fuel-Marktpreis vom 3. September.",
+        "summary": "Das liegt $16.65 über $142.93 vom 27. August und $10.29 über dem September-Mittel von $149.29. Spartas Wochenvergleich +$9.61 hat eine andere Basis. Das Oktober-MOPS-Mittel wird noch berechnet."
+      },
+      {
+        "id": "global-jet-weekly-20260907",
+        "title": "Globales Jet Fuel bei $171.01, wöchentlich +9%",
+        "brief": "Das globale IATA/S&P-Global-Platts-Wochenmittel beträgt $171.01/bbl, +9.0%.",
+        "summary": "Dieser Durchschnitt regionaler Preise ist kein Singapore MOPS. Nach $156.85 in der Vorwoche zeigt er eine breitere Kerosinerholung."
+      }
+    ]
+  }
+]

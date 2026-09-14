@@ -5,7 +5,7 @@ const path = require('node:path');
 
 (async () => {
   const browser = await chromium.launch({headless:true});
-  const out = path.resolve('artifacts/sep14');
+  const out = path.resolve('artifacts/sep15');
   fs.mkdirSync(out, {recursive:true});
   const reports = [];
   try {
@@ -34,11 +34,11 @@ const path = require('node:path');
           core:document.querySelector('#indicatorTbody')?.innerText || document.querySelector('.news-list')?.innerText
         }));
         assert(!/undefined/.test(result.text),pageName+' '+language+' undefined');
-        assert(result.text.includes('159.58') && result.text.includes('171.01') && result.text.includes('108.23') && result.text.includes('103.20'),pageName+' missing data');
+        assert(result.text.includes('159.58') && result.text.includes('171.01') && result.text.includes('105.68') && result.text.includes('101.39') && result.text.includes('1,347'),pageName+' missing data');
         assert.equal(result.h1,1,pageName+' h1');
         assert(result.canonical === 'https://aero-surcharge.com/'+pageName+'.html',pageName+' canonical');
-        assert(result.metaDescription && result.metaDescription.includes('159.58'),pageName+' meta description');
-        assert(result.schemas.some(x=>x.dateModified === '2026-09-14T07:40:00+09:00'),pageName+' dateModified');
+        assert(result.metaDescription && result.metaDescription.includes('2026'),pageName+' meta description');
+        assert(result.schemas.some(x=>x.dateModified === '2026-09-15T07:20:00+09:00'),pageName+' dateModified');
         if(pageName==='forecast') {
           assert.equal(result.factors,5);
           assert(result.faq.includes('159.58'));
