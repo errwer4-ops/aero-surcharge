@@ -184,6 +184,7 @@
     officialYp:'https://www.airpremia.com/a/ko/customer/notice/772'
   };
   function airlineRows(l){
+    if(release && release.officialRows && release.officialRows[l]) return release.officialRows[l];
     var data = {
       ko:[['officialKe','대한항공','9월 KRW 48,000~354,000 · 8월 대비 최소 +12,800원'],['officialOz','아시아나항공','9월 KRW 52,000~290,100 · 8월 대비 최소 +15,400원'],['officialLj','진에어','9월 USD 29~89 · 8월 대비 최소 +USD 9'],['officialBx','에어부산','9월 USD 71/82 구간 반영 · 8월 대비 최소 +USD 24'],['officialTw','티웨이항공','9월 KRW 36,200~247,500 · 8월 대비 최소 +11,800원'],['official7c','제주항공','9월 USD 29~89 · 8월 대비 최소 +USD 7'],['officialZe','이스타항공','9월 USD 29~89 · 8월 대비 최소 +USD 7'],['officialRs','에어서울','9월 KRW 52,000~93,900 · 8월 대비 최소 +12,300원'],['officialYp','에어프레미아','9월 USD 30~195 · 8월 대비 최소 +USD 5']],
       en:[['officialKe','Korean Air','September KRW 48,000~354,000 · at least +KRW 12,800 vs August'],['officialOz','Asiana Airlines','September KRW 52,000~290,100 · at least +KRW 15,400 vs August'],['officialLj','Jin Air','September USD 29~89 · at least +USD 9 vs August'],['officialBx','Air Busan','September USD 71/82 ranges reflected · at least +USD 24 vs August'],['officialTw','Tway Air','September KRW 36,200~247,500 · at least +KRW 11,800 vs August'],['official7c','Jeju Air','September USD 29~89 · at least +USD 7 vs August'],['officialZe','Eastar Jet','September USD 29~89 · at least +USD 7 vs August'],['officialRs','Air Seoul','September KRW 52,000~93,900 · at least +KRW 12,300 vs August'],['officialYp','Air Premia','September USD 30~195 · at least +USD 5 vs August']]
@@ -336,6 +337,7 @@
     setText('fore.h1', p.title);
     setText('fore.section.indicators', p.indicator);
     setHtml('fore.notice', p.notice);
+    document.querySelectorAll('[data-i18n-html="fore.notice"]').forEach(function(el){el.innerHTML=p.notice;});
     setText('fore.intro', p.intro);
     setText('fore.summary.updated', (p.updatedLabel || 'Last updated') + ': ' + latest.asOf + ' · ' + p.rows[0][1]);
     setText('fore.indicator.title', p.indicator);
@@ -407,7 +409,7 @@
     var official = document.querySelector('.official-summary-box');
     if(!official) return;
     official.innerHTML = '<div class="official-title" data-i18n="news.officialTitle">'+esc(p.officialTitle)+'</div><div data-i18n="news.officialNotice" style="font-size:12px;color:#9A6A00;margin-bottom:10px;padding:6px 10px;background:rgba(255,255,255,.78);border-radius:6px;border-left:3px solid #FFCC80;">'+esc(p.officialNotice)+'</div>'
-      + airlineRows(l).map(function(r){ return '<div class="official-item" id="'+esc(r[0])+'"><strong>'+esc(r[1])+'</strong> - '+esc(r[2])+' · <a href="'+esc(noticeUrls[r[0]])+'" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">'+esc(p.link)+'</a></div>'; }).join('')
+      + airlineRows(l).map(function(r){ var url=release && release.officialUrls ? release.officialUrls[r[0]] : noticeUrls[r[0]]; return '<div class="official-item" id="'+esc(r[0])+'"><strong>'+esc(r[1])+'</strong> - '+esc(r[2])+(url?' · <a href="'+esc(url)+'" target="_blank" rel="noopener noreferrer" style="color:#075985;font-weight:700;">'+esc(p.link)+'</a>':'')+'</div>'; }).join('')
       + '<div class="official-desc" id="officialDesc">'+esc(p.officialDesc)+'</div>';
   }
 
