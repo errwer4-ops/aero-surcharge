@@ -1229,6 +1229,13 @@
     onCurrChange: function () { renderKoreaTable(); },
   });
 
+  /* 후속 월별 업데이트 모듈에서 동일한 표 구조를 재사용합니다. */
+  window.KOREA_AIRLINES = KOREA_AIRLINES;
+  window.USD_TO_KRW = USD_TO_KRW;
+  window.renderKoreaTable = renderKoreaTable;
+  window.renderAffiliateBoxes = renderAffiliateBoxes;
+  window.renderCurrentBasis = renderCurrentBasis;
+
   /* 최초 렌더 */
   renderKoreaTable();
   renderAffiliateBoxes();
@@ -1237,5 +1244,6 @@
 
 })();
 </script>
+<script src="korea-oct20.js?v=20260920-1000"></script>
 </body>
 </html>

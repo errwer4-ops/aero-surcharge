@@ -619,14 +619,15 @@ function airlineName(code) { return tg('airline.' + code); }
 /* ═══════════════════════════════════════
    필터 상태
 ═══════════════════════════════════════ */
-var MONTH_SEQUENCE = ['apr', 'may', 'june', 'july', 'aug', 'sep'];
+var MONTH_SEQUENCE = ['apr', 'may', 'june', 'july', 'aug', 'sep', 'oct'];
 var MONTH_LABEL_KEYS = {
   apr: 'graph.filter.apr',
   may: 'graph.filter.may',
   june: 'graph.filter.june',
   july: 'graph.filter.july',
   aug: 'graph.filter.aug',
-  sep: 'graph.filter.sep'
+  sep: 'graph.filter.sep',
+  oct: 'graph.filter.oct'
 };
 var MONTH_COL_KEYS = {
   apr: 'graph.th.apr',
@@ -634,15 +635,16 @@ var MONTH_COL_KEYS = {
   june: 'graph.th.june',
   july: 'graph.th.july',
   aug: 'graph.th.aug',
-  sep: 'graph.th.sep'
+  sep: 'graph.th.sep',
+  oct: 'graph.th.oct'
 };
 var filterState = { airline:'all', month:'recent4', view:'amount' };
 var dimmedAirlines = {};
 
 function getSelectedMonthKeys() {
-  if (filterState.month === 'recent4') return ['june', 'july', 'aug', 'sep'];
+  if (filterState.month === 'recent4') return ['july', 'aug', 'sep', 'oct'];
   if (filterState.month === 'all') return MONTH_SEQUENCE.slice();
-  return MONTH_SEQUENCE.indexOf(filterState.month) >= 0 ? [filterState.month] : ['june', 'july', 'aug', 'sep'];
+  return MONTH_SEQUENCE.indexOf(filterState.month) >= 0 ? [filterState.month] : ['july', 'aug', 'sep', 'oct'];
 }
 
 function getMonthValue(airline, monthKey, idx) {
@@ -677,7 +679,7 @@ function buildFilters() {
     fA.appendChild(o);
   });
 
-  fM.innerHTML = [['recent4','graph.filter.recent4'],['all','graph.filter.all'],['apr','graph.filter.apr'],['may','graph.filter.may'],['june','graph.filter.june'],['july','graph.filter.july'],['aug','graph.filter.aug'],['sep','graph.filter.sep']]
+  fM.innerHTML = [['recent4','graph.filter.recent4'],['all','graph.filter.all'],['apr','graph.filter.apr'],['may','graph.filter.may'],['june','graph.filter.june'],['july','graph.filter.july'],['aug','graph.filter.aug'],['sep','graph.filter.sep'],['oct','graph.filter.oct']]
     .map(function(p){return '<option value="'+p[0]+'"'+(filterState.month===p[0]?' selected':'')+'>'+tg(p[1])+'</option>';}).join('');
 
   fV.innerHTML = [['amount','graph.filter.amount'],['change','graph.filter.change']]
@@ -719,7 +721,7 @@ function drawChart() {
   var PAD = {top:24, right:24, bottom:64, left:82};
   var gW = W - PAD.left - PAD.right;
   var gH = H - PAD.top - PAD.bottom;
-  var monthColors = { apr:'#94a3b8', may:'#0284C7', june:'#10b981', july:'#f97316', aug:'#7c3aed', sep:'#ef4444', change:'#0f766e' };
+  var monthColors = { apr:'#94a3b8', may:'#0284C7', june:'#10b981', july:'#f97316', aug:'#7c3aed', sep:'#ef4444', oct:'#0891b2', change:'#0f766e' };
   var monthOrder = getSelectedMonthKeys();
 
   function avgConverted(vals, currency) {
@@ -757,7 +759,8 @@ function drawChart() {
             july: avgConverted(a.july, a.currency),
             aug: avgConverted(a.aug, a.currency),
             sep: avgConverted(a.sep, a.currency),
-            change: calcChange(avgRaw(a.aug), avgRaw(a.sep))
+            oct: avgConverted(a.oct, a.currency),
+            change: calcChange(avgRaw(a.sep), avgRaw(a.oct))
           },
           origVals: {
             apr: avgRaw(a.apr),
@@ -765,7 +768,8 @@ function drawChart() {
             june: avgRaw(a.june),
             july: avgRaw(a.july),
             aug: avgRaw(a.aug),
-            sep: avgRaw(a.sep)
+            sep: avgRaw(a.sep),
+            oct: avgRaw(a.oct)
           }
         };
       });
@@ -785,7 +789,8 @@ function drawChart() {
           july: a.july && a.july[i] != null ? convertAmt(a.july[i], a.currency) : null,
           aug: a.aug && a.aug[i] != null ? convertAmt(a.aug[i], a.currency) : null,
           sep: a.sep && a.sep[i] != null ? convertAmt(a.sep[i], a.currency) : null,
-          change: calcChange(a.aug && a.aug[i], a.sep && a.sep[i])
+          oct: a.oct && a.oct[i] != null ? convertAmt(a.oct[i], a.currency) : null,
+          change: calcChange(a.sep && a.sep[i], a.oct && a.oct[i])
         },
         origVals: {
           apr: a.apr[i],
@@ -793,7 +798,8 @@ function drawChart() {
           june: a.june && a.june[i],
           july: a.july && a.july[i],
           aug: a.aug && a.aug[i],
-          sep: a.sep && a.sep[i]
+          sep: a.sep && a.sep[i],
+          oct: a.oct && a.oct[i]
         }
       };
     });
@@ -913,7 +919,7 @@ function handleMouseMove(e) {
   var c = (window.SHARED_STATE && window.SHARED_STATE.curr)||'KRW';
   var sym = (window.CURR_SYM && window.CURR_SYM[c])||'';
   var dec = (window.CURR_DEC && window.CURR_DEC[c]!=null)?window.CURR_DEC[c]:0;
-  var mLabel = hit.month==='sep'?tg('graph.filter.sep'):hit.month==='aug'?tg('graph.filter.aug'):hit.month==='july'?tg('graph.filter.july'):hit.month==='june'?tg('graph.filter.june'):hit.month==='may'?tg('graph.filter.may'):hit.month==='apr'?tg('graph.filter.apr'):tg('graph.th.change');
+  var mLabel = hit.month==='oct'?tg('graph.filter.oct'):hit.month==='sep'?tg('graph.filter.sep'):hit.month==='aug'?tg('graph.filter.aug'):hit.month==='july'?tg('graph.filter.july'):hit.month==='june'?tg('graph.filter.june'):hit.month==='may'?tg('graph.filter.may'):hit.month==='apr'?tg('graph.filter.apr'):tg('graph.th.change');
   var valStr = isChange ? hit.displayVal.toFixed(1)+'%' : sym+hit.displayVal.toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec});
   var origStr = (!isChange && a.currency==='USD' && c!=='USD') ? '<div class="tt-usd">($'+hit.origVal+' USD)</div>' : '';
   var bandLabel = hit.bandIdx == null ? (hit.groupLabel || airlineName(a.code)) : tg('graph.th.band')+' '+(hit.bandIdx+1);
@@ -954,7 +960,8 @@ function buildLegend() {
     { key:'june', label:tg('graph.filter.june'), color:'#10b981' },
     { key:'july', label:tg('graph.filter.july'), color:'#f97316' },
     { key:'aug', label:tg('graph.filter.aug'), color:'#7c3aed' },
-    { key:'sep', label:tg('graph.filter.sep'), color:'#ef4444' }
+    { key:'sep', label:tg('graph.filter.sep'), color:'#ef4444' },
+    { key:'oct', label:tg('graph.filter.oct'), color:'#0891b2' }
   ].forEach(function(itemData) {
     if (visibleMonths.indexOf(itemData.key) < 0) return;
     var item = document.createElement('div');
@@ -1000,8 +1007,8 @@ function buildTable() {
     var isUSD = a.currency==='USD';
     var rowspan = a.bands.length;
     a.bands.forEach(function(band, i) {
-      var yv = getMonthValue(a, 'aug', i);
-      var uv = getMonthValue(a, 'sep', i);
+      var yv = getMonthValue(a, 'sep', i);
+      var uv = getMonthValue(a, 'oct', i);
       var monthCells = monthKeys.map(function(key) {
         var value = getMonthValue(a, key, i);
         var formatted = value != null ? fmtMoney(value, a.currency) : '<span class="null-cell">'+tg('graph.noData')+'</span>';
@@ -1268,6 +1275,6 @@ window.initNav({
 
 renderPage();
 </script>
-<script src="october-graph-summary.js?v=20260917-0640"></script>
+<script src="graph-oct20.js?v=20260920-1000"></script>
 </body>
 </html>

@@ -1761,7 +1761,7 @@ buildOfficialSection = function(cd, al, miles, isRT, dep, arr){
   var hasJune = offData.rows.some(function(r){ return r.june != null; });
 
   function toKRW(v){ return (offCurr !== 'KRW') ? Math.round(v * (rates[offCurr] || 1)) : v; }
-  function fmt(v){ return window.fmtAmtDisplay(v * mult, offCurr); }
+  function fmt(v){ return offCurr === 'KRW' ? window.fmtAmtDisplay(v * mult, offCurr) : window.fmtAmtNative(v, offCurr, mult); }
   function matchRange(rangeStr, mi){
     if(!rangeStr || mi == null) return false;
     if(rangeStr.endsWith('+')) return mi >= parseInt(rangeStr, 10);
@@ -1837,13 +1837,16 @@ buildOfficialSection = function(cd, al, miles, isRT, dep, arr){
 
 function buildCard(al, dep, arr, miles, isRT, idx){
   var tag=AL_TAG[al.alliance]||AL_TAG.other;
+  var hasOctoberNoticeMap=typeof OCTOBER_2026_NOTICE_LINKS !== 'undefined';
   var isAugustOfficialForCard=typeof AUGUST_2026_NOTICE_LINKS !== 'undefined' && !!AUGUST_2026_NOTICE_LINKS[al.code];
   var isJulyOfficialForCard=!!JULY_2026_NOTICE_LINKS[al.code];
-  var noticeUrl=isAugustOfficialForCard
+  var noticeUrl=hasOctoberNoticeMap
+    ? (OCTOBER_2026_NOTICE_LINKS[al.code] || null)
+    : (isAugustOfficialForCard
     ? AUGUST_2026_NOTICE_LINKS[al.code]
     : (isJulyOfficialForCard
       ? JULY_2026_NOTICE_LINKS[al.code]
-      : (JULY_PENDING_NOTICE_LINKS[al.code] || al.officialNoticeUrl || null));
+      : (JULY_PENDING_NOTICE_LINKS[al.code] || al.officialNoticeUrl || null)));
   var noticeLabel=isAugustOfficialForCard ? window.t('index.card.septemberNotice') : window.t('index.card.miniNotice');
 
   var routeCheck=dep&&arr
@@ -1890,7 +1893,7 @@ function buildCard(al, dep, arr, miles, isRT, idx){
    *   → footer-left가 display:flex + flex-wrap:wrap 이라 반드시 보임
    * ─────────────────────────────────────────────────────────────────── */
 
-  function trendBadgeHtml(code){ return _trendBadgeHtml(code); }
+  function trendBadgeHtml(code){ return _trendBadgeHtml(code,miles,dep,arr); }
 
   function cardHeader(withFlag){
     var displayName = getAirlineName({ name: al._metaName }) || al.name || al.code;
@@ -2458,7 +2461,7 @@ buildOfficialSection = function(cd, al, miles, isRT, dep, arr){
   var hasAugust = hasAugustOfficial(al.code);
 
   function toKRW(v){ return (offCurr !== 'KRW') ? Math.round(v * (rates[offCurr] || 1)) : v; }
-  function fmt(v){ return window.fmtAmtDisplay(v * mult, offCurr); }
+  function fmt(v){ return offCurr === 'KRW' ? window.fmtAmtDisplay(v * mult, offCurr) : window.fmtAmtNative(v, offCurr, mult); }
   function matchRange(rangeStr, mi){
     if(!rangeStr || mi == null) return false;
     if(rangeStr.endsWith('+')) return mi >= parseInt(rangeStr, 10);
@@ -2493,18 +2496,18 @@ buildOfficialSection = function(cd, al, miles, isRT, dep, arr){
     var julyAmt = r.july != null ? r.july : null;
     var augustAmt = hasAugust && r.august != null ? r.august : null;
     var julyCell = julyAmt != null
-      ? '<td class="route-amt-current">' + fmt(toKRW(julyAmt)) + '</td>'
+      ? '<td class="route-amt-current">' + fmt(julyAmt) + '</td>'
       : '<td class="route-amt-current" style="color:var(--muted)">-</td>';
     var augustCell = augustAmt != null
-      ? '<td class="route-amt-next" style="color:#059669;font-weight:700">' + fmt(toKRW(augustAmt)) + '</td>'
+      ? '<td class="route-amt-next" style="color:#059669;font-weight:700">' + fmt(augustAmt) + '</td>'
       : '<td class="route-amt-next"><span class="prepub">' + window.t('index.card.septemberPending') + '</span></td>';
     var diffCell = '<td style="font-size:11px;color:var(--muted);text-align:center">' + window.t('index.card.pendingSepShort') + '</td>';
     if(julyAmt != null && augustAmt != null){
-      var diff = toKRW(augustAmt) - toKRW(julyAmt);
+      var diff = augustAmt - julyAmt;
       var pct = ((augustAmt - julyAmt) / julyAmt) * 100;
       var color = diff < 0 ? '#059669' : (diff > 0 ? '#dc2626' : '#64748b');
       var prefix = diff < 0 ? '▼ ' : (diff > 0 ? '▲ ' : '');
-      var amt = diff !== 0 ? window.fmtAmtDisplay(Math.abs(diff) * mult, offCurr) : '-';
+      var amt = diff !== 0 ? fmt(Math.abs(diff)) : '-';
       diffCell = '<td style="font-size:11px;font-weight:700;color:' + color + ';text-align:center">' + prefix + pct.toFixed(1) + '%<br><span style="font-size:10px">' + amt + '</span></td>';
     }
     return '<tr class="' + cls + '">'
@@ -3012,6 +3015,7 @@ loadAll();
 setupAirportAutocomplete('originAirportInput','originSelect');
 setupAirportAutocomplete('destAirportInput','destSelect');
 </script>
+<script src="home-sep20.js?v=20260920-0900"></script>
 
 <footer style="background:var(--white);border-top:1px solid var(--line);padding:20px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;">
   <p style="font-size:12px;color:var(--muted);max-width:600px;line-height:1.6;margin:0;" data-i18n="footer.notice">
