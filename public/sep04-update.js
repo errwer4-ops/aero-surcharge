@@ -294,6 +294,9 @@
       if(el.tagName === 'SCRIPT' || el.tagName === 'STYLE' || el.children.length) return;
       var text = el.textContent || '';
       if(text.indexOf('7월 공식 공시 금액') >= 0) el.textContent = text.replace('7월 공식 공시 금액', '9월 공식 공시 금액');
+      if(text.indexOf('단거리 국제선: 8월 확정 공시 금액 확인, 9월 금액 예측 금지') >= 0) el.textContent = '10월은 공식 공시 금액을 확인하고, 11월은 공식 발표 전 단계·금액을 예측하지 않습니다.';
+      if(text.indexOf('항공사별 9월 공시') >= 0) el.textContent = text.replace('항공사별 9월 공시', '항공사별 10월 공시');
+      if(text.indexOf('9월 유류할증료 산정 기준 안내') >= 0) el.textContent = text.replace('9월 유류할증료 산정 기준 안내', '10월 확정 및 11월 산정 기준 안내');
     });
   }
 

@@ -659,6 +659,23 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
   }
 })();
 
+/* 2026.09.22 08:45 KST shared market snapshot. */
+(function(){
+  var latest={
+    asOf:'2026.09.22 08:45 KST',currentMonth:'2026-09',confirmedMonth:'2026-10',forecastTargetMonth:'2026-11',
+    septemberLevel:21,septemberMopsUsdPerBbl:149.29,octoberLevel:23,octoberMopsUsdPerBbl:158.57,
+    octoberMopsCentsPerGal:377.54,octoberAverageUsdKrw:1370.95,novemberCalculationStatus:'in_progress',
+    globalJetFuelUsdPerBbl:194.90,globalJetFuelWeeklyPct:7.4,usdKrw:1373.91,jpy100Krw:873.35,
+    brentUsdPerBbl:100.3,wtiUsdPerBbl:95.8,hormuzWeekendVessels:17,hormuzPreviousWeekendVessels:37,
+    hormuzCrudeExportMbd:6.5,saudiHormuzExportMbd:2.9,omanStsMbd:2.5,vlccFreightUsdPerBbl:30,
+    babElMandebWeekendVessels:51,babElMandebPreviousWeekendVessels:57,
+    novemberDirection:'upside_dominant_buffers_expanding',novemberConfidence:'low_to_moderate'
+  };
+  window.AERO_MARKET_NUMBERS_20260922=Object.assign({},window.AERO_MARKET_NUMBERS_LATEST||{},latest);
+  window.AERO_MARKET_NUMBERS_LATEST=window.AERO_MARKET_NUMBERS_20260922;
+  window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS||{}, {'2026-09-22':latest});
+})();
+
 /* 2026-09-08 19:35 KST common market snapshot. */
 (function(){
   var latest = {
