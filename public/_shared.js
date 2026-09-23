@@ -673,7 +673,22 @@ window.AERO_MARKET_NUMBERS_LATEST = window.AERO_MARKET_NUMBERS_20260701;
   };
   window.AERO_MARKET_NUMBERS_20260922=Object.assign({},window.AERO_MARKET_NUMBERS_LATEST||{},latest);
   window.AERO_MARKET_NUMBERS_LATEST=window.AERO_MARKET_NUMBERS_20260922;
-  window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS||{}, {'2026-09-22':latest});
+window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS||{}, {'2026-09-22':latest});
+})();
+
+/* 2026.09.23 08:45 KST shared market snapshot. */
+(function(){
+  var latest={asOf:'2026.09.23 08:45 KST',currentMonth:'2026-09',confirmedMonth:'2026-10',forecastTargetMonth:'2026-11',
+    septemberLevel:21,septemberMopsUsdPerBbl:149.29,octoberLevel:23,octoberMopsUsdPerBbl:158.57,
+    octoberMopsCentsPerGal:377.54,octoberAverageUsdKrw:1370.95,globalJetFuelUsdPerBbl:194.90,
+    globalJetFuelWeeklyPct:7.4,usdKrw:1355.09,jpy100Krw:860.47,brentUsdPerBbl:99.25,wtiUsdPerBbl:94.99,
+    eastWestPipelineStatus:'low_rate_restart_not_fully_restored',yanbuStatus:'export_restart_preparation',
+    hormuzPublicAisVessels:2,hormuzPreviousPublicAisVessels:10,hormuzSecurityRisk:'very_high',
+    hormuzReopeningStatus:'iran_conditional_proposal_not_agreement',babElMandebVessels:26,
+    novemberDirection:'flat_to_upward_upside_bias',novemberConfidence:'low_to_moderate'};
+  window.AERO_MARKET_NUMBERS_20260923=Object.assign({},window.AERO_MARKET_NUMBERS_LATEST||{},latest);
+  window.AERO_MARKET_NUMBERS_LATEST=window.AERO_MARKET_NUMBERS_20260923;
+  window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS||{}, {'2026-09-23':latest});
 })();
 
 /* 2026-09-08 19:35 KST common market snapshot. */

@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  var stamp='2026-09-20T09:00:00+09:00';
+  var stamp='2026-09-23T08:45:00+09:00';
   var octoberLinks={
     KE:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2610-infuel?pageNum=1',
     OZ:'https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202609160002530627',
@@ -8,7 +8,9 @@
     BX:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4407',
     TW:'https://www.trinityairways.com/app/customerCenter/notice/retrieve/12703',
     '7C':'https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000762',
-    RS:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=11103&pageNo=1'
+    RS:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=11103&pageNo=1',
+    ZE:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=664&lang=KR&searchWord=&searchIndex=1',
+    YP:'https://www.airpremia.com/a/ko/customer/notice/791'
   };
   window.OCTOBER_2026_NOTICE_LINKS=octoberLinks;
   var september={
@@ -24,7 +26,8 @@
     OZ:[53400,79400,104000,128700,153300,178000,202600,251900,301200],
     LJ:[32,46,74,81,97],BX:[37,66,78,90],
     TW:[37000,65900,82300,105700,113900,null,256600],
-    '7C':[37,47,57,68,76,87],RS:[60300,69900,87800,98700,108300]
+    '7C':[37,47,57,68,76,87],ZE:[37,47,57,68,76,87],
+    RS:[60300,69900,87800,98700,108300],YP:[41,54,null,91,159,200,251]
   };
   var text={
     ko:{title:'유류할증료 조회 · 2026년 10월 공식 공시 반영',desc:'한국 출발 국제선 항공사별 유류할증료를 노선·거리구간별로 비교합니다. 2026년 10월 대한항공·아시아나·진에어·에어부산·트리니티(티웨이)·제주항공·에어서울 공식 공시를 반영하고, 이스타항공·에어프레미아는 10월 공시 발표 전으로 표시합니다. 11월 산정 현황은 전망 페이지에서 추적합니다.',hero:'2026년 10월 공식 공시 7개 항공사와 11월 산정 준비 상태를 노선별로 확인하세요',s1:'✈️ 10월 공시 확인: KE·OZ·LJ·BX·TW·7C·RS',s2:'💸 노선별 9월 기준과 10월 공식 공시 금액 비교',s3:'📌 11월 유류할증료 산정 중 · 구체적 단계는 아직 미정',intro1:'이 서비스는 한국 출발 국제선의 항공사별 유류할증료를 노선·거리구간별로 비교합니다. 2026년 10월 대한항공·아시아나·진에어·에어부산·트리니티(티웨이)·제주항공·에어서울 공식 공시를 반영했습니다.',intro2:'항공사 공식 공지를 최종 기준으로 사용합니다. 이스타항공과 에어프레미아는 10월 공시 발표 전으로 표시하며 이전 달 링크를 10월 공시처럼 연결하지 않습니다.',intro3:'조회 결과에서 9월 기준과 10월 공식 금액, 증감률, 공식 원문을 함께 확인할 수 있습니다. 11월은 산정 중이므로 forecast 페이지에서 방향성만 별도로 추적합니다.',decision:'2026년 10월 공식 공시 반영',line1:'대한항공·아시아나·진에어·에어부산·트리니티(티웨이)·제주항공·에어서울의 10월 국제선 유류할증료 공시를 반영했습니다.',line2:'조회 결과 카드는 9월 금액과 10월 공식 공시 금액을 노선·거리구간별로 비교합니다.',line3:'이스타항공·에어프레미아는 10월 공시 발표 전이며, 11월은 산정 초기 단계라 특정 단계나 금액을 표시하지 않습니다.',conclusion:'현재 메인 조회 결과는 확인된 2026년 10월 공식 공시를 우선합니다.',notice:'10월 공식 공지 ↗',pending:'10월 공시 발표 전',compare:'9월 VS 10월 공식 공시',base:'9월 공식 공시 기준',reflected:'✓ 10월 공식 공시 반영',trend:'2026년 9월 대비 2026년 10월 공식 공시 변동률',trendPrefix:'9월 대비',thPrev:'2026.09',thNow:'2026.10 공식 공시',thPending:'2026.10 공시 발표 전',quick1:'2026년 9월 → 10월 유류할증료 비교',quick1d:'10월 공식 공시 반영 · 노선별 금액 변화 확인',quick2:'2026년 11월 유류할증료 전망',quick2d:'11월 산정기간 진행 중 · 특정 단계는 미정',suffix:' · 2026년 10월 공시 반영 · 11월 산정 대비'},
@@ -34,6 +37,15 @@
     fr:{title:'Recherche de surtaxe · avis octobre 2026 intégrés',desc:'Comparez les surtaxes internationales au départ de Corée. Les avis octobre de KE, OZ, LJ, BX, TW, 7C et RS sont intégrés; Eastar Jet et Air Premia ne sont pas encore publiés.',hero:'Consultez sept avis octobre confirmés et le suivi de novembre par ligne',s1:'Avis octobre confirmés: KE, OZ, LJ, BX, TW, 7C, RS',s2:'Comparer septembre et octobre par ligne',s3:'Calcul novembre en cours · niveau exact inconnu',intro1:'Ce service compare les surtaxes internationales au départ de Corée et intègre sept avis officiels d’octobre.',intro2:'Les avis officiels des compagnies font foi. Eastar Jet et Air Premia restent non publiés pour octobre, sans lien septembre trompeur.',intro3:'Les résultats comparent septembre et octobre avec les sources. Novembre reste une perspective directionnelle.',decision:'Avis octobre 2026 intégrés',line1:'Les avis octobre de Korean Air, Asiana, Jin Air, Air Busan, Trinity (Tway), Jeju Air et Air Seoul sont intégrés.',line2:'Les cartes comparent les montants de septembre et octobre par ligne.',line3:'Eastar Jet et Air Premia n’ont pas encore publié octobre. Aucun niveau précis pour novembre.',conclusion:'Les résultats privilégient les avis octobre confirmés.',notice:'Avis officiel octobre ↗',pending:'Avis octobre non encore publié',compare:'Septembre vs octobre',base:'Base officielle septembre',reflected:'✓ Avis octobre intégré',trend:'Variation octobre contre septembre',trendPrefix:'vs septembre',thPrev:'2026.09',thNow:'2026.10 officiel',thPending:'2026.10 non publié',quick1:'Comparaison septembre→octobre',quick1d:'Avis octobre intégrés',quick2:'Perspective novembre 2026',quick2d:'Calcul en cours · niveau inconnu',suffix:' · avis octobre intégrés · suivi novembre'},
     de:{title:'Kerosinzuschlag-Suche · Oktober-2026-Hinweise berücksichtigt',desc:'Vergleichen Sie Zuschläge für internationale Flüge ab Korea. Oktober-Hinweise für KE, OZ, LJ, BX, TW, 7C und RS sind berücksichtigt; Eastar Jet und Air Premia sind noch nicht veröffentlicht.',hero:'Sieben bestätigte Oktober-Hinweise und November-Berechnung nach Strecke',s1:'Oktober-Hinweise bestätigt: KE, OZ, LJ, BX, TW, 7C, RS',s2:'September und Oktober nach Strecke vergleichen',s3:'November-Berechnung läuft · genaue Stufe offen',intro1:'Dieser Service vergleicht Zuschläge ab Korea und berücksichtigt sieben offizielle Oktober-Hinweise.',intro2:'Offizielle Airline-Hinweise sind maßgeblich. Eastar Jet und Air Premia sind für Oktober noch nicht veröffentlicht; September-Links werden nicht als Oktober ausgegeben.',intro3:'Ergebnisse vergleichen September und Oktober mit Quellen. November bleibt eine Richtungsprognose.',decision:'Oktober-2026-Hinweise berücksichtigt',line1:'Oktober-Hinweise von Korean Air, Asiana, Jin Air, Air Busan, Trinity (Tway), Jeju Air und Air Seoul sind berücksichtigt.',line2:'Ergebniskarten vergleichen September- und Oktober-Beträge nach Strecke.',line3:'Eastar Jet und Air Premia haben Oktober noch nicht veröffentlicht. Keine genaue November-Stufe.',conclusion:'Die Suche priorisiert bestätigte Oktober-Hinweise.',notice:'Oktober-Hinweis ↗',pending:'Oktober-Mitteilung noch nicht veröffentlicht',compare:'September vs Oktober',base:'Offizielle September-Basis',reflected:'✓ Oktober berücksichtigt',trend:'Oktober-Änderung gegenüber September',trendPrefix:'ggü. September',thPrev:'2026.09',thNow:'2026.10 offiziell',thPending:'2026.10 unveröffentlicht',quick1:'September→Oktober 2026',quick1d:'Oktober-Hinweise berücksichtigt',quick2:'November-2026-Ausblick',quick2d:'Berechnung läuft · Stufe offen',suffix:' · Oktober berücksichtigt · November-Tracking'}
   };
+  var complete={
+    ko:{desc:'한국 출발 국제선 항공사별 유류할증료를 노선·거리구간별로 비교합니다. 2026년 10월 대한항공·아시아나·진에어·에어부산·트리니티(티웨이)·제주항공·이스타항공·에어서울·에어프레미아 공식 공시를 모두 반영했습니다. 11월 산정 현황은 전망 페이지에서 추적합니다.',hero:'2026년 10월 공식 공시 9개 항공사와 11월 산정 준비 상태를 노선별로 확인하세요',s1:'✈️ 10월 공시 확인: KE·OZ·LJ·BX·TW·7C·ZE·RS·YP',intro1:'이 서비스는 한국 출발 국제선의 항공사별 유류할증료를 노선·거리구간별로 비교합니다. 2026년 10월 주요 9개 항공사의 공식 공시를 모두 반영했습니다.',intro2:'항공사 공식 공지를 최종 기준으로 사용합니다. 이스타항공과 에어프레미아도 10월 공식 금액과 원문 링크를 제공합니다.',line1:'대한항공·아시아나·진에어·에어부산·트리니티(티웨이)·제주항공·이스타항공·에어서울·에어프레미아의 10월 국제선 유류할증료 공시를 반영했습니다.',line3:'10월 주요 9개 항공사 공시가 모두 반영됐으며, 11월은 산정 중이라 특정 단계나 금액을 표시하지 않습니다.'},
+    en:{desc:'Compare Korea-departure international fuel surcharges by airline, route and distance band. October notices are reflected for KE, OZ, LJ, BX, TW, 7C, ZE, RS and YP. November calculation is tracked separately.',hero:'Check nine confirmed October notices and November calculation status by route',s1:'October notices confirmed: KE, OZ, LJ, BX, TW, 7C, ZE, RS, YP',intro1:'This service compares Korea-departure international fuel surcharges by airline, route and distance band. All nine confirmed October notices are reflected.',intro2:'Official airline notices are the final reference. October amounts and source links are now available for Eastar Jet and Air Premia.',line1:'October international fuel surcharge notices are reflected for Korean Air, Asiana, Jin Air, Air Busan, Trinity (Tway), Jeju Air, Eastar Jet, Air Seoul and Air Premia.',line3:'All nine major October notices are reflected. No exact November level or amount is shown while calculation is underway.'},
+    ja:{desc:'韓国発国際線の燃油サーチャージを比較。KE・OZ・LJ・BX・TW・7C・ZE・RS・YPの10月公式公示をすべて反映しました。',hero:'10月公式公示9社と11月算定状況を路線別に確認できます',s1:'10月公示確認: KE・OZ・LJ・BX・TW・7C・ZE・RS・YP',intro1:'韓国発国際線の燃油サーチャージを航空会社・路線・距離区分別に比較し、10月公式公示9社を反映しました。',intro2:'航空会社公式公示を最終基準とし、イースター航空とエアプレミアの10月金額と原文リンクも表示します。',line1:'大韓航空・アシアナ・ジンエアー・エアプサン・Trinity（ティーウェイ）・チェジュ航空・イースター航空・エアソウル・エアプレミアの10月公示を反映しました。',line3:'主要9社の10月公示をすべて反映しました。11月は算定中のため具体的な段階や金額は表示しません。'},
+    zh:{desc:'按航空公司、航线和距离档比较韩国出发国际线燃油附加费。已反映KE、OZ、LJ、BX、TW、7C、ZE、RS和YP的10月官方公告。',hero:'按航线查看9家航空公司的10月公告和11月计算状态',s1:'10月公告确认: KE、OZ、LJ、BX、TW、7C、ZE、RS、YP',intro1:'本服务按航空公司、航线和距离档比较韩国出发国际线燃油附加费，已反映9家航空公司的10月公告。',intro2:'以航空公司官方公告为最终依据，并提供易斯达和Air Premia的10月金额及原文链接。',line1:'已反映大韩、韩亚、真航空、釜山航空、Trinity（德威）、济州航空、易斯达、首尔航空和Air Premia的10月公告。',line3:'9家主要航空公司的10月公告均已反映。11月仍在计算中，不显示具体档位或金额。'},
+    fr:{desc:'Comparez les surtaxes internationales au départ de Corée. Les avis octobre de KE, OZ, LJ, BX, TW, 7C, ZE, RS et YP sont intégrés.',hero:'Consultez neuf avis octobre confirmés et le suivi de novembre par ligne',s1:'Avis octobre confirmés: KE, OZ, LJ, BX, TW, 7C, ZE, RS, YP',intro1:'Ce service compare les surtaxes internationales au départ de Corée et intègre les neuf avis officiels d’octobre.',intro2:'Les avis officiels font foi. Les montants et liens octobre d’Eastar Jet et Air Premia sont également disponibles.',line1:'Les avis octobre de Korean Air, Asiana, Jin Air, Air Busan, Trinity (Tway), Jeju Air, Eastar Jet, Air Seoul et Air Premia sont intégrés.',line3:'Les neuf principaux avis d’octobre sont intégrés. Aucun niveau ou montant précis n’est affiché pour novembre pendant le calcul.'},
+    de:{desc:'Vergleichen Sie Zuschläge für internationale Flüge ab Korea. Oktober-Hinweise für KE, OZ, LJ, BX, TW, 7C, ZE, RS und YP sind berücksichtigt.',hero:'Neun bestätigte Oktober-Hinweise und November-Berechnung nach Strecke',s1:'Oktober-Hinweise bestätigt: KE, OZ, LJ, BX, TW, 7C, ZE, RS, YP',intro1:'Dieser Service vergleicht Zuschläge ab Korea und berücksichtigt alle neun offiziellen Oktober-Hinweise.',intro2:'Offizielle Airline-Hinweise sind maßgeblich. Oktober-Beträge und Quellenlinks für Eastar Jet und Air Premia sind verfügbar.',line1:'Oktober-Hinweise von Korean Air, Asiana, Jin Air, Air Busan, Trinity (Tway), Jeju Air, Eastar Jet, Air Seoul und Air Premia sind berücksichtigt.',line3:'Alle neun wichtigen Oktober-Hinweise sind berücksichtigt. Für November werden während der Berechnung keine genaue Stufe oder Beträge angezeigt.'}
+  };
+  Object.keys(complete).forEach(function(lang){Object.assign(text[lang],complete[lang]);});
   function installCopy(){
     Object.keys(text).forEach(function(lang){var c=text[lang];window.I18N[lang]=window.I18N[lang]||{};Object.assign(window.I18N[lang],{
       'index.title':c.title,'index.metaDesc':c.desc,'index.heroSub':c.hero,'index.signal1':c.s1,'index.signal2':c.s2,'index.signal3':c.s3,
@@ -85,11 +97,28 @@
   function patchLandingState(){
     var lang=window.getCurrentLang?window.getCurrentLang():'ko';if(lang==='cn')lang='zh';var c=text[lang]||text.en;
     document.querySelectorAll('.mini-notice-btn:not([href])').forEach(function(pending){var card=pending.closest('.mini-card');var status=card&&card.querySelector('.mini-status');if(status)status.innerHTML='<span style="font-size:10px;color:#92400e;font-weight:700">'+c.pending+'</span>';});
-    var statusText=document.getElementById('statusText');if(statusText)statusText.textContent=(lang==='ko'?'데이터 갱신: 09. 20. 오전 09:00':'Updated: 2026-09-20 09:00 KST')+c.suffix;
+    var statusText=document.getElementById('statusText');if(statusText)statusText.textContent=(lang==='ko'?'데이터 갱신: 09. 23. 오전 08:45':'Updated: 2026-09-23 08:45 KST')+c.suffix;
   }
   if(typeof window.renderLanding==='function'){
     var baseRenderLanding=window.renderLanding;
     window.renderLanding=function(){baseRenderLanding();patchLandingState();};
+  }
+  function patchNotApplicableRows(){
+    var lang=window.getCurrentLang?window.getCurrentLang():'ko';if(lang==='cn')lang='zh';
+    var label={ko:'해당 노선 없음',en:'No applicable route',ja:'該当路線なし',zh:'无适用航线',fr:'Aucune ligne applicable',de:'Keine passende Strecke'}[lang]||'No applicable route';
+    document.querySelectorAll('.al-card').forEach(function(card){
+      var code=card.querySelector('.card-code');if(!code||code.textContent.trim()!=='YP')return;
+      card.querySelectorAll('tbody tr').forEach(function(row){
+        var current=row.querySelector('.route-amt-current');var next=row.querySelector('.route-amt-next');
+        if(!current||!next||current.textContent.trim()!=='-'||!next.querySelector('.prepub'))return;
+        next.textContent=label;next.style.color='var(--muted)';next.style.fontWeight='400';
+        if(row.lastElementChild)row.lastElementChild.textContent='-';
+      });
+    });
+  }
+  if(typeof window.renderCards==='function'){
+    var baseRenderCards=window.renderCards;
+    window.renderCards=function(){var result=baseRenderCards.apply(this,arguments);patchNotApplicableRows();return result;};
   }
   function refresh(){
     installCopy();installData();updateHead();
@@ -97,6 +126,7 @@
     if(typeof window.renderLanding==='function')window.renderLanding();
     if(typeof window.renderBookingDecision==='function')window.renderBookingDecision();
     if(window._searchCtx&&typeof window.renderCards==='function')window.renderCards('all');
+    patchNotApplicableRows();
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',refresh);else refresh();
 })();
