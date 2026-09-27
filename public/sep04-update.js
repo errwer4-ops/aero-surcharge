@@ -522,8 +522,14 @@
             if(Array.isArray(entity)){ entity.forEach(update); return; }
             if(entity['@graph']) entity['@graph'].forEach(update);
             var type = entity['@type'];
-            // NewsArticle fields belong to individual cards, not the page summary.
-            if(kind === 'news' && /Article/.test(String(type))) return;
+            // Preserve per-card copy while keeping shared article metadata current.
+            if(kind === 'news' && /Article/.test(String(type))){
+              entity.dateModified = release ? release.modified : entity.dateModified;
+              entity.author = entity.author || {'@type':'Organization',name:'aero-surcharge.com'};
+              entity.publisher = entity.publisher || {'@type':'Organization',name:'aero-surcharge.com'};
+              if(release && /20260928/.test(String(entity.url || entity['@id'] || ''))) entity.datePublished = release.modified;
+              return;
+            }
             if(type === 'FAQPage' && release){
               entity.mainEntity = kind === 'forecast' ? p.faq.map(function(x){return {'@type':'Question',name:x.q,acceptedAnswer:{'@type':'Answer',text:x.a}};}) : [];
               entity['@id'] = 'https://aero-surcharge.com/'+kind+'.html#faq';

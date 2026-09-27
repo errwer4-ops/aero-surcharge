@@ -691,6 +691,29 @@ window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS||{}, 
   window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS||{}, {'2026-09-23':latest});
 })();
 
+/* 2026.09.28 07:15 KST shared market snapshot. */
+(function(){
+  var latest={asOf:'2026.09.28 07:15 KST',lastUpdated:'2026-09-28T07:15:00+09:00',currentMonth:'2026-09',confirmedMonth:'2026-10',forecastTargetMonth:'2026-11',
+    septemberLevel:21,septemberMopsUsdPerBbl:149.29,octoberLevel:23,octoberMopsUsdPerBbl:158.57,
+    octoberMopsCentsPerGal:377.54,octoberAverageUsdKrw:1370.95,novemberCalculationPeriod:'2026-09-16~2026-10-15',
+    novemberCalculationStatus:'in_progress_public_average_unavailable',singaporeJetFuelMarketUsdPerBbl:173.60,
+    singaporeJetFuelMarketDate:'2026-09-24',singaporeJetFuelVsOctoberBaselineUsd:15.03,
+    singaporeJetFuelVsOctoberBaselinePct:9.5,singaporeJetFuelIsNovemberMops:false,
+    globalJetFuelUsdPerBbl:194.90,globalJetFuelWeeklyPct:7.4,globalJetFuelIsSingaporeMops:false,
+    usdKrw:1354.24,jpy100Krw:863.47,brentUsdPerBbl:106.14,wtiUsdPerBbl:93.55,
+    eastWestPipelineStatus:'pumping_resumed_not_fully_restored',yanbuStatus:'volume_building_tanker_loading_not_resumed_as_of_2026_09_24',
+    hormuzCommodityVessels:9,hormuzCommodityTenDayAverage:18,hormuzCrudeExportMillionBbl:33.7,
+    hormuzCrudeTankers:19,hormuzCrudeVlcc:17,hormuzSecurityRisk:'high',hormuzFreightInsuranceRisk:'very_high',
+    yanbuWarRiskPremiumPct:3,hormuzWarRiskPremiumPctRange:'6-9',babElMandebVessels:27,babElMandebTenDayAverage:26,
+    jetRegradeStatus:'weak',iranProposalStatus:'us_rejected_iran_conditional_reopening_proposal',
+    novemberDirection:'upward_pressure_dominant_fx_supply_adaptation_cushion',novemberDirectionConfidence:'moderate',
+    novemberStageConfidence:'low',novemberStageEstimate:null};
+  window.AERO_MARKET_NUMBERS_20260928=Object.assign({},window.AERO_MARKET_NUMBERS_LATEST||{},latest);
+  window.AERO_MARKET_NUMBERS_LATEST=window.AERO_MARKET_NUMBERS_20260928;
+  window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS||{}, {'2026-09-28':latest});
+  window.RATES=Object.assign({},window.RATES||{}, {USD:1/1354.24,JPY:1/8.6347});
+})();
+
 /* 2026-09-08 19:35 KST common market snapshot. */
 (function(){
   var latest = {
