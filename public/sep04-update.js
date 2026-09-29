@@ -527,7 +527,7 @@
               entity.dateModified = release ? release.modified : entity.dateModified;
               entity.author = entity.author || {'@type':'Organization',name:'aero-surcharge.com'};
               entity.publisher = entity.publisher || {'@type':'Organization',name:'aero-surcharge.com'};
-              if(release && /20260928/.test(String(entity.url || entity['@id'] || ''))) entity.datePublished = release.modified;
+              if(release && /202609(28|30)/.test(String(entity.url || entity['@id'] || ''))) entity.datePublished = release.modified;
               return;
             }
             if(type === 'FAQPage' && release){

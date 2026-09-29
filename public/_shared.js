@@ -714,6 +714,34 @@ window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS||{}, 
   window.RATES=Object.assign({},window.RATES||{}, {USD:1/1354.24,JPY:1/8.6347});
 })();
 
+/* 2026.09.30 07:25 KST shared market snapshot. */
+(function(){
+  var latest={asOf:'2026.09.30 07:25 KST',lastUpdated:'2026-09-30T07:25:00+09:00',currentMonth:'2026-09',confirmedMonth:'2026-10',forecastTargetMonth:'2026-11',
+    septemberLevel:21,septemberLastAppliedDate:'2026-09-30',septemberMopsUsdPerBbl:149.29,octoberLevel:23,octoberAppliesFrom:'2026-10-01',octoberMopsUsdPerBbl:158.57,
+    octoberMopsCentsPerGal:377.54,octoberAverageUsdKrw:1370.95,novemberCalculationPeriod:'2026-09-16~2026-10-15',
+    novemberCalculationStatus:'in_progress_public_average_unavailable',singaporeJetFuelMarketUsdPerBbl:173.60,
+    singaporeJetFuelMarketDate:'2026-09-24',singaporeJetFuelVsOctoberBaselineUsd:15.03,
+    singaporeJetFuelVsOctoberBaselinePct:9.5,singaporeJetFuelIsNovemberMops:false,
+    globalJetFuelUsdPerBbl:194.90,globalJetFuelWeeklyPct:7.4,globalJetFuelIsSingaporeMops:false,
+    usdKrw:1352.85,jpy100Krw:859.97,brentUsdPerBbl:102.59,wtiUsdPerBbl:89.38,
+    middleEastCrudeExportsMillionBpd:16.328,middleEastCrudeExportsStatus:'highest_since_conflict_started',
+    eastWestPipelineThroughputMillionBpdRange:'2.0-2.65',eastWestPipelinePossibleMillionBpdRange:'3-4',eastWestPipelinePreAttackMillionBpd:5.5,
+    eastWestPipelineStatus:'actual_flow_recovering_not_fully_restored',yanbuStatus:'actual_loading_resumed_not_full_capacity',
+    yanbuAlMuajjizLoadingMillionBbl:10,qatarLngVisibleTransitStatus:'recovering_not_normalized',
+    hormuzCommodityVessels:9,hormuzCommodityTenDayAverage:18,hormuzCommodityFigureStatus:'latest_publicly_verified',
+    hormuzCrudeExportMillionBbl:33.7,hormuzCrudeTankers:19,hormuzCrudeVlcc:17,
+    hormuzSecurityRisk:'high',hormuzFreightInsuranceRisk:'high',yanbuWarRiskPremiumPct:3,hormuzWarRiskPremiumPctRange:'6-9',
+    babElMandebVessels:27,babElMandebTenDayAverage:26,jetRegradeStatus:'weak_to_stabilizing',
+    usIranStatus:'indirect_talks_resumed_no_substantive_agreement_confirmed',usSprLoanOfferMillionBbl:40,
+    usDieselExportRestrictionStatus:'potential_indirect_upside_risk_for_asia_middle_distillates',
+    novemberDirection:'flat_to_upward_jet_high_fx_physical_supply_cushion',novemberDirectionConfidence:'moderate',
+    novemberStageConfidence:'low',novemberStageEstimate:null};
+  window.AERO_MARKET_NUMBERS_20260930=Object.assign({},window.AERO_MARKET_NUMBERS_LATEST||{},latest);
+  window.AERO_MARKET_NUMBERS_LATEST=window.AERO_MARKET_NUMBERS_20260930;
+  window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS||{}, {'2026-09-30':latest});
+  window.RATES=Object.assign({},window.RATES||{}, {USD:1/1352.85,JPY:1/8.5997});
+})();
+
 /* 2026-09-08 19:35 KST common market snapshot. */
 (function(){
   var latest = {
