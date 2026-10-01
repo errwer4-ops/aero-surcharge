@@ -31,14 +31,14 @@
   var cards=stories.map(function(s,i){var card={id:s[0]+'-20260923',category:'market',priority:i+1,date:'2026-09-23',updatedAt:stamp,badge:'NEW',aiSummary:true,relevanceScore:1-i/100,sourceUrl:'forecast.html',i18n:{}};langs.forEach(function(l){var isKo=l==='ko';card.i18n[l]={title:isKo?s[1]:enTitles[i],aiBrief:isKo?s[2]:copy[l].status,summary:isKo?s[2]:copy[l].intro,impact:isKo?'11월은 보합~상승 압력이며 상방 우세를 유지하지만 특정 단계 예측은 보류합니다.':copy[l].verdict,sourceName:isKo?'시장 참고자료':'Market reference',tags:[],links:[{href:'forecast.html',label:isKo?'11월 전망 보기':'View November outlook'}],faq:[]};});card.i18n.cn=card.i18n.zh;return card;});
   var ypCard={id:'officialYp-20260923',category:'airline',priority:1,date:'2026-09-23',updatedAt:stamp,badge:'NEW',aiSummary:true,relevanceScore:1,sourceUrl:ypUrl,i18n:{}};
   langs.forEach(function(l){var title={ko:'에어프레미아 10월 국제선 유류할증료 공식 공시',en:'Air Premia publishes October international fuel surcharge',ja:'エアプレミア、10月国際線燃油サーチャージを公示',zh:'Air Premia公布10月国际线燃油附加费',fr:'Air Premia publie la surtaxe internationale d’octobre',de:'Air Premia veröffentlicht den internationalen Oktober-Zuschlag'}[l];ypCard.i18n[l]={title:title,aiBrief:ypText[l],summary:ypText[l]+(l==='ko'?' 10월부터 발권일 기준 원/달러 환율이 적용되며 출발지에 따라 부과액이 달라질 수 있습니다.':''),impact:l==='ko'?'10월 9개 주요 항공사 공식 공시가 모두 반영됐습니다.':'All nine major October airline notices are reflected.',sourceName:l==='ko'?'에어프레미아 공식 공지':'Air Premia official notice',tags:[],links:[],faq:[]};});ypCard.i18n.cn=ypCard.i18n.zh;
-  r.newsCards=[ypCard].concat(cards,r.newsCards.filter(function(c){return !/2026092[23]|officialYp/.test(c.id||'');}));r.newsCards.forEach(function(c){c.updatedAt=stamp;});
+  r.newsCards=[ypCard].concat(cards,r.newsCards.filter(function(c){return !/2026092[23]|officialYp/.test(c.id||'');}));
   var modifiedMeta=document.querySelector('meta[property="article:modified_time"]');
   if(modifiedMeta)modifiedMeta.setAttribute('content',stamp);
   document.querySelectorAll('script[type="application/ld+json"]').forEach(function(script){
     try{
       var data=JSON.parse(script.textContent);
       var nodes=data&&data['@graph']?data['@graph']:[data];
-      nodes.forEach(function(node){if(node&&node.dateModified!==undefined)node.dateModified=stamp;});
+      nodes.forEach(function(node){if(node&&node.dateModified!==undefined)node.dateModified=r.schemaModifiedFor?r.schemaModifiedFor(node):(r.modified||stamp);});
       script.textContent=JSON.stringify(data);
     }catch(ignore){}
   });
@@ -155,9 +155,9 @@
   var cardLabels={en:['Market reference','View November outlook'],ja:['市場参考資料','11月見通しを見る'],zh:['市场参考资料','查看11月展望'],fr:['Référence de marché','Voir la perspective de novembre'],de:['Marktreferenz','November-Ausblick ansehen']};
   var cards=stories.map(function(s,i){var card={id:s[0]+'-20260928',category:'market',priority:i+1,date:'2026-09-28',updatedAt:stamp,badge:'NEW',aiSummary:true,relevanceScore:1-i/100,sourceUrl:'forecast.html',i18n:{}};langs.forEach(function(lang){var c=copy[lang],isKo=lang==='ko',tr=!isKo&&lang!=='en'?(storyTranslations[lang]||[])[i]:null,title=isKo?s[1]:(tr?tr[0]:s[3]),summary=isKo?s[2]:(tr?tr[1]:c.intro),labels=cardLabels[lang]||cardLabels.en;card.i18n[lang]={title:title,aiBrief:summary,summary:summary,impact:isKo?'11월 상승 압력이 우세하지만 강한 원화와 공급망 적응이 완충합니다. 특정 단계 예측은 보류합니다.':c.verdict,sourceName:isKo?'시장 참고자료':labels[0],tags:[],links:[{href:'forecast.html',label:isKo?'11월 전망 보기':labels[1]}],faq:[]};});card.i18n.cn=card.i18n.zh;return card;});
   r.newsCards=cards.concat(r.newsCards.filter(function(card){return !/2026092[238]/.test(card.id||'');}));
-  r.newsCards.forEach(function(card){card.updatedAt=stamp;});
-  var mod=document.querySelector('meta[property="article:modified_time"]');if(mod)mod.content=stamp;
-  document.querySelectorAll('script[type="application/ld+json"]').forEach(function(script){try{var data=JSON.parse(script.textContent),nodes=data&&data['@graph']?data['@graph']:[data];nodes.forEach(function(node){if(node&&node.dateModified!==undefined)node.dateModified=stamp;});script.textContent=JSON.stringify(data);}catch(ignore){}});
+
+  var mod=document.querySelector('meta[property="article:modified_time"]');if(mod)mod.content=(r.modified||stamp);
+  document.querySelectorAll('script[type="application/ld+json"]').forEach(function(script){try{var data=JSON.parse(script.textContent),nodes=data&&data['@graph']?data['@graph']:[data];nodes.forEach(function(node){if(node&&node.dateModified!==undefined)node.dateModified=r.schemaModifiedFor?r.schemaModifiedFor(node):(r.modified||stamp);});script.textContent=JSON.stringify(data);}catch(ignore){}});
   var finalUi={
     ko:['10월 확정 FACT · 11월 전망 FORECAST','10월 공시 확인 후 실제 항공권 총액 비교하기','👉 9월 vs 10월 비교 데이터 확인'],
     en:['October FACT · November FORECAST','Compare total airfare after checking October notices','September vs October comparison'],
@@ -171,13 +171,13 @@
     if(lang==='cn')lang='zh';var v=finalUi[lang]||finalUi.en;
     [['fore.basis.title',v[0]],['fore.myrealtrip.title',v[1]],['fore.cta.may',v[2]]].forEach(function(item){document.querySelectorAll('[data-i18n="'+item[0]+'"]').forEach(function(el){el.textContent=item[1];});});
     var canonical=(document.querySelector('link[rel="canonical"]')||{}).href||location.href;
-    var isNews=/news\.html$/.test(location.pathname),headline=(document.querySelector('h1')||{}).textContent||document.title;
+    var isNews=/\/news(?:\.html)?$/.test(location.pathname),headline=(document.querySelector('h1')||{}).textContent||document.title;
     var description=(document.querySelector('meta[name="description"]')||{}).content||ko.intro;
     var published=isNews?'2026-08-18T07:00:00+09:00':'2026-09-03T09:45:00+09:00';
-    document.querySelectorAll('meta[property="article:modified_time"]').forEach(function(el){el.content=stamp;});
-    document.querySelectorAll('script[type="application/ld+json"]').forEach(function(script){try{var data=JSON.parse(script.textContent),nodes=data&&data['@graph']?data['@graph']:[data];nodes.forEach(function(node){if(node){node.dateModified=stamp;if(node.description)node.description=description;if(node['@type']==='NewsArticle'){node.author=node.author||{'@type':'Organization',name:'aero-surcharge.com'};node.publisher=node.publisher||{'@type':'Organization',name:'aero-surcharge.com'};if(String(node.url||node['@id']||'').indexOf('20260928')>-1)node.datePublished=stamp;}}});script.textContent=JSON.stringify(data);}catch(ignore){}});
+    document.querySelectorAll('meta[property="article:modified_time"]').forEach(function(el){el.content=(r.modified||stamp);});
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function(script){try{var data=JSON.parse(script.textContent),nodes=data&&data['@graph']?data['@graph']:[data];nodes.forEach(function(node){if(node){node.dateModified=r.schemaModifiedFor?r.schemaModifiedFor(node):(r.modified||stamp);if(node.description&&!r.newsCards.some(function(c){return String(node.url||'').endsWith('#'+c.id);}))node.description=description;if(node['@type']==='NewsArticle'){node.author=node.author||{'@type':'Organization',name:'aero-surcharge.com'};node.publisher=node.publisher||{'@type':'Organization',name:'aero-surcharge.com'};if(String(node.url||node['@id']||'').indexOf('20260928')>-1)node.datePublished=stamp;}}});script.textContent=JSON.stringify(data);}catch(ignore){}});
     var schema=document.getElementById('market-sep28-article-schema');if(!schema){schema=document.createElement('script');schema.id='market-sep28-article-schema';schema.type='application/ld+json';document.head.appendChild(schema);}
-    schema.textContent=JSON.stringify({'@context':'https://schema.org','@type':isNews?'NewsArticle':'Article','@id':canonical+'#article',headline:headline,description:description,datePublished:published,dateModified:stamp,mainEntityOfPage:{'@type':'WebPage','@id':canonical},url:canonical,inLanguage:lang,author:{'@type':'Organization',name:'aero-surcharge.com'},publisher:{'@type':'Organization',name:'aero-surcharge.com'}});
+    schema.textContent=JSON.stringify({'@context':'https://schema.org','@type':isNews?'NewsArticle':'Article','@id':canonical+'#article',headline:headline,description:description,datePublished:published,dateModified:(r.modified||stamp),mainEntityOfPage:{'@type':'WebPage','@id':canonical},url:canonical,inLanguage:lang,author:{'@type':'Organization',name:'aero-surcharge.com'},publisher:{'@type':'Organization',name:'aero-surcharge.com'}});
   }
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',function(){setTimeout(syncFinalUi,0);setTimeout(syncFinalUi,150);});else{setTimeout(syncFinalUi,0);setTimeout(syncFinalUi,150);}
   var langSelect=document.getElementById('navLang');if(langSelect)langSelect.addEventListener('change',function(){setTimeout(syncFinalUi,0);});
@@ -262,11 +262,11 @@
   function firstCompleteSentence(text){var value=String(text||'').trim(),match=value.match(/^.*?[.!?](?=\s|$)/);return match?match[0]:value;}
   var cards=stories.map(function(s,i){var card={id:s[0]+'-20260930',category:'market',priority:i+1,date:'2026-09-30',updatedAt:stamp,badge:'NEW',aiSummary:true,relevanceScore:1-i/100,sourceUrl:'forecast.html',i18n:{}};langs.forEach(function(lang){var ko=lang==='ko',tr=ko?null:storyLocal[lang][i],title=ko?s[1]:tr[0],summary=ko?s[2]:tr[1],labels=cardLabels[lang];card.i18n[lang]={title:title,aiBrief:firstCompleteSentence(summary),summary:summary,impact:storyImpact[lang][i],sourceName:labels[0],tags:[],links:[{href:'forecast.html',label:labels[1]}],faq:[]};});card.i18n.cn=card.i18n.zh;return card;});
   r.newsCards=cards.concat(r.newsCards.filter(function(card){return !/202609(28|30)/.test(card.id||'');}));
-  r.newsCards.forEach(function(card){card.updatedAt=stamp;});window.AERO_MARKET_RELEASE=r;
+  window.AERO_MARKET_RELEASE=r;
   function syncSep30(){
-    document.querySelectorAll('meta[property="article:modified_time"]').forEach(function(el){el.content=stamp;});
-    document.querySelectorAll('script[type="application/ld+json"]').forEach(function(script){try{var data=JSON.parse(script.textContent),nodes=data&&data['@graph']?data['@graph']:[data];nodes.forEach(function(node){if(node){node.dateModified=stamp;if(node['@type']==='NewsArticle'){node.author=node.author||{'@type':'Organization',name:'aero-surcharge.com'};node.publisher=node.publisher||{'@type':'Organization',name:'aero-surcharge.com'};if(/20260930/.test(String(node.url||node['@id']||'')))node.datePublished=stamp;}}});script.textContent=JSON.stringify(data);}catch(ignore){}});
-    var schema=document.getElementById('market-sep28-article-schema');if(schema){try{var obj=JSON.parse(schema.textContent);obj.dateModified=stamp;obj.headline=(document.querySelector('h1')||{}).textContent||document.title;obj.description=(document.querySelector('meta[name="description"]')||{}).content||packs.ko.intro;schema.textContent=JSON.stringify(obj);}catch(ignore){}}
+    document.querySelectorAll('meta[property="article:modified_time"]').forEach(function(el){el.content=(r.modified||stamp);});
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function(script){try{var data=JSON.parse(script.textContent),nodes=data&&data['@graph']?data['@graph']:[data];nodes.forEach(function(node){if(node){node.dateModified=r.schemaModifiedFor?r.schemaModifiedFor(node):(r.modified||stamp);if(node['@type']==='NewsArticle'){node.author=node.author||{'@type':'Organization',name:'aero-surcharge.com'};node.publisher=node.publisher||{'@type':'Organization',name:'aero-surcharge.com'};if(/20260930/.test(String(node.url||node['@id']||'')))node.datePublished=stamp;}}});script.textContent=JSON.stringify(data);}catch(ignore){}});
+    var schema=document.getElementById('market-sep28-article-schema');if(schema){try{var obj=JSON.parse(schema.textContent);obj.dateModified=(r.modified||stamp);obj.headline=(document.querySelector('h1')||{}).textContent||document.title;obj.description=(document.querySelector('meta[name="description"]')||{}).content||packs.ko.intro;schema.textContent=JSON.stringify(obj);}catch(ignore){}}
   }
   [250,1000].forEach(function(ms){setTimeout(syncSep30,ms);});
   var sep30Lang=document.getElementById('navLang');if(sep30Lang)sep30Lang.addEventListener('change',function(){setTimeout(syncSep30,40);setTimeout(syncSep30,220);});

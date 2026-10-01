@@ -275,7 +275,7 @@
   function renderPredict(p){
     var box = document.getElementById('predictFactors');
     if(!box) return;
-    var classes = ['','down','up','up','up'];
+    var classes = p.factorClasses || ['','down','up','up','up'];
     box.innerHTML = p.rows.map(function(r, i){
       return '<div class="predict-factor"><div class="pf-label">'+esc(r[0])+'</div><div class="pf-val '+classes[i]+'">'+esc(r[1])+'</div></div>';
     }).join('');
@@ -342,6 +342,8 @@
     setHtml('fore.notice', p.notice);
     document.querySelectorAll('[data-i18n-html="fore.notice"]').forEach(function(el){el.innerHTML=p.notice;});
     setText('fore.intro', p.intro);
+    if(p.bookingDescription) setText('fore.myrealtrip.desc', p.bookingDescription);
+    if(p.routeDescription) setText('fore.cta.desc', p.routeDescription);
     setText('fore.summary.updated', (p.updatedLabel || 'Last updated') + ': ' + latest.asOf + ' · ' + p.rows[0][1]);
     setText('fore.indicator.title', p.indicator);
     setText('fore.indicator.footnote', p.foot);
@@ -524,10 +526,10 @@
             var type = entity['@type'];
             // Preserve per-card copy while keeping shared article metadata current.
             if(kind === 'news' && /Article/.test(String(type))){
-              entity.dateModified = release ? release.modified : entity.dateModified;
+              entity.dateModified = release && release.schemaModifiedFor ? release.schemaModifiedFor(entity) : (release ? release.modified : entity.dateModified);
               entity.author = entity.author || {'@type':'Organization',name:'aero-surcharge.com'};
               entity.publisher = entity.publisher || {'@type':'Organization',name:'aero-surcharge.com'};
-              if(release && /202609(28|30)/.test(String(entity.url || entity['@id'] || ''))) entity.datePublished = release.modified;
+              entity.inLanguage = lang();
               return;
             }
             if(type === 'FAQPage' && release){

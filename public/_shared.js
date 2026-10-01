@@ -15512,3 +15512,34 @@ window.initNav = function(opts){
   window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-08-26': window.AERO_MARKET_NUMBERS_20260826});
   window.RATES = Object.assign({}, window.RATES || {}, {USD:1/1382.3});
 })();
+/* 2026.10.02 07:30 KST market snapshot. */
+(function(){
+  var latest=Object.assign({},window.AERO_MARKET_NUMBERS_20260930||{},{
+    asOf:'2026.10.02 07:30 KST',lastUpdated:'2026-10-02T07:30:00+09:00',
+    currentMonth:'2026-10',currentAppliedMonth:'2026-10',confirmedMonth:'2026-10',confirmedNoticeMonth:'2026-10',forecastTargetMonth:'2026-11',
+    septemberStatus:'archive',octoberStatus:'currently_applied',octoberLevel:23,octoberMopsUsdPerBbl:158.57,octoberMopsCentsPerGal:377.54,
+    octoberCalculationPeriod:'2026-08-16~2026-09-15',novemberCalculationPeriod:'2026-09-16~2026-10-15',
+    novemberCalculationStatus:'in_progress_public_average_unavailable',novemberMopsUsdPerBbl:null,
+    singaporeJetFuelMarketDate:'2026-09-24',singaporeJetFuelMarketUsdPerBbl:173.60,
+    singaporeJetFuelVsOctoberBaselineUsd:15.03,singaporeJetFuelVsOctoberBaselinePct:9.5,
+    globalJetFuelUsdPerBbl:185.43,globalJetFuelWeeklyPct:-4.9,globalJetFuelIsSingaporeMops:false,
+    usdKrw:1362.61,jpy100Krw:860.73,brentUsdPerBbl:102.31,wtiUsdPerBbl:92.87,
+    crudePriceDate:'2026-10-01',brentDailyChangeUsd:4.28,wtiDailyChangeUsd:2.45,brentPct:4.37,wtiPct:2.71,
+    singaporeJetFuelDate:'2026.09.24',singaporeJetFuelFlatUsdPerBbl:173.60,
+    singaporeJetFuelVsBaselineUsd:15.03,singaporeJetFuelVsBaselinePct:9.5,singaporeJetFuelComparisonMonth:'2026-10',
+    chinaFuelExportStatus:'reported_october_suspension_except_hong_kong_macau',chinaJetSupplyRisk:'increased_not_confirmed_mops_effect',
+    hormuzTankerAttackCount:3,hormuzAttackAttribution:'unconfirmed',hormuzSecurityRisk:'very_high',
+    hormuzCommodityFigureReportDate:'2026-09-25',hormuzCommodityFigureStatus:'historical_public_reference_not_october_daily_count',
+    hormuzCommodityVessels:9,hormuzCommodityTenDayAverage:18,hormuzCrudeExportMillionBbl:33.7,hormuzCrudeTankers:19,hormuzCrudeVlcc:17,
+    middleEastCrudeExportsMillionBpd:16.328,eastWestPipelineThroughputMillionBpdRange:'2.0-2.65',
+    yanbuStatus:'actual_loading_resumed_not_full_capacity',qatarLngVisibleTransitStatus:'recovering_not_normalized',
+    fujairahLogisticsStatus:'partly_recovering',fujairahQ3ImportsMillionTonnes:2.6,fujairahQ2ImportsThousandTonnes:845,
+    fujairahImportMeasure:'uae_fuel_oil_imports_not_jet_inventory',
+    indiaAtfExportTaxStatus:'reduced',usIranStatus:'diplomatic_channels_exist_escalation_risk_increased',
+    novemberDirection:'flat_to_upward_upside_risk_slightly_wider_vs_sep30',novemberDirectionConfidence:'moderate',novemberStageConfidence:'low',novemberStageEstimate:null
+  });
+  window.AERO_MARKET_NUMBERS_20261002=latest;
+  window.AERO_MARKET_NUMBERS_LATEST=latest;
+  window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS||{}, {'2026-10-02':latest});
+  window.RATES=Object.assign({},window.RATES||{}, {USD:1/1362.61,JPY:1/8.6073});
+})();
