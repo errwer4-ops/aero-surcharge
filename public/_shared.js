@@ -15543,3 +15543,43 @@ window.initNav = function(opts){
   window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS||{}, {'2026-10-02':latest});
   window.RATES=Object.assign({},window.RATES||{}, {USD:1/1362.61,JPY:1/8.6073});
 })();
+
+/* 2026.10.06 08:20 KST snapshot. Spot references never replace calculation averages. */
+(function(){
+  var latest=Object.assign({},window.AERO_MARKET_NUMBERS_20261002,{
+    asOf:'2026.10.06 08:20 KST',lastUpdated:'2026-10-06T08:20:00+09:00',
+    singaporeJetFuelMarketDate:'2026-10-02',singaporeJetFuelDate:'2026.10.02',
+    singaporeJetFuelMarketUsdPerBbl:176.78,singaporeJetFuelFlatUsdPerBbl:176.78,
+    singaporeJetFuelVsOctoberBaselineUsd:18.21,singaporeJetFuelVsOctoberBaselinePct:11.5,
+    singaporeJetFuelVsBaselineUsd:18.21,singaporeJetFuelVsBaselinePct:11.5,
+    singaporeJetFuelWeeklyChangeUsd:11.75,singaporeJetFuelCashDifferentialUsd:4.55,
+    singaporeJetDieselRegradeUsdPerBbl:4.95,singaporeJetDieselRegradeDate:'2026-10-02',
+    globalJetFuelUsdPerBbl:187.34,globalJetFuelWeeklyPct:1.0,globalJetFuelCheckedAt:'2026-10-06T08:20:00+09:00',
+    usdKrw:1342.11,jpy100Krw:850.35,fxReferenceAt:'2026-10-06T08:20:00+09:00',
+    brentUsdPerBbl:100.32,wtiUsdPerBbl:89.43,crudePriceDate:'2026-10-05',
+    brentDailyChangeUsd:-1.93,wtiDailyChangeUsd:-1.68,brentPct:-1.89,wtiPct:-1.84,
+    chinaFuelExportStatus:'cargo_disruption_reported_licensing_delay_and_post_holiday_restart_possible',
+    chinaJetSupplyRisk:'physical_tightness_not_confirmed_month_long_official_ban',
+    indiaRefiningCapacityMillionBpd:5.6,indiaFuelExports2025MillionTonnes:47,
+    indiaSupplyResponse:'potential_partial_buffer_not_confirmed_full_replacement',
+    middleEastCrudeExportsMillionBpd:18.3,middleEastCrudeExportsMeasure:'provisional_7_day_average_to_2026-09-30',
+    middleEastCrudeExportsReportDate:'2026-10-05',
+    hormuzCrudeFlowMillionBpd:14.2,hormuzCrudeFlowMeasure:'briefing_7_day_average_to_2026-09-26',
+    hormuzCrudeFlowVsPrewarPct:80,
+    hormuzTankerAttackCount:7,hormuzTankerAttackCountIsMinimum:true,
+    hormuzTankerAttackPeriod:'past_week_reported_2026-10-05',hormuzAttackAttribution:'unconfirmed',
+    qatarLngVisibleTransitStatus:'september_cargoes_highest_since_february_not_safety_normalization',
+    vlccFreightUsdPerDay:1200000,vlccFreightMeasure:'recent_middle_east_to_asia_route_reference_not_all_vessels',
+    g7ReserveReleaseMillionBarrels:100,g7ReserveReleaseMonths:4,g7ReserveReleaseStatus:'coordinated_commitment_not_total_already_delivered',
+    g7ReserveStatementDate:'2026-10-02',g7ReserveReleaseIsAdditionalToMarch:null,
+    babElMandebStatus:'government_reports_ground_gains_missile_drone_risk_persists',
+    houthiSaudiAttackStatus:'houthi_claim_not_independently_confirmed_damage',
+    novemberDirection:'upward_pressure_dominant_strong_fx_and_crude_supply_buffer',
+    novemberDirectionConfidence:'moderate_to_somewhat_high',novemberStageConfidence:'low',
+    novemberStageEstimate:null,novemberMopsUsdPerBbl:null
+  });
+  window.AERO_MARKET_NUMBERS_20261006=latest;
+  window.AERO_MARKET_NUMBERS_LATEST=latest;
+  window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{'2026-10-06':latest});
+  window.RATES=Object.assign({},window.RATES,{USD:1/1342.11,JPY:1/8.5035});
+})();
