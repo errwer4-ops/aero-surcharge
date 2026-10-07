@@ -15583,3 +15583,36 @@ window.initNav = function(opts){
   window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{'2026-10-06':latest});
   window.RATES=Object.assign({},window.RATES,{USD:1/1342.11,JPY:1/8.5035});
 })();
+
+/* October 7 references retain their own observation dates and measurement scope. */
+(function(){
+  var latest=Object.assign({},window.AERO_MARKET_NUMBERS_20261006,{
+    asOf:'2026.10.07 08:45 KST',lastUpdated:'2026-10-07T08:45:00+09:00',
+    globalJetFuelCheckedAt:'2026-10-07T08:45:00+09:00',
+    usdKrw:1337.16,jpy100Krw:845.56,fxReferenceAt:'2026-10-07T08:45:00+09:00',
+    brentUsdPerBbl:100.58,wtiUsdPerBbl:89.44,crudePriceDate:'2026-10-06',
+    brentDailyChangeUsd:0.26,wtiDailyChangeUsd:0.01,brentPct:0.26,wtiPct:0.01,
+    middleEastCrudeExportsMillionBpd:12,middleEastRefinedExportsMillionBpd:2,
+    middleEastCrudeExportsMeasure:'vitol_2026-10-06_statement_recent_7_to_10_days',
+    middleEastCrudeExportsReportDate:'2026-10-06',
+    gulfSeptemberExportsMillionBpd:19.2,gulfPrewarExportsMillionBpd:23.6,
+    gulfExportsMeasure:'vortexa_september_crude_condensate_products_excluding_iran',
+    gulfCrudeRecoveryPct:91,gulfRefinedRecoveryPct:60,
+    saudiPipelineBypassMillionBpd:4,saudiPipelineBypassMeasure:'briefing_approximate_reference',
+    saudiPipelinePumpedMillionBarrels:5.8,saudiPipelinePumpedMeasure:'minister_2026-10-06_statement_rate_unit_not_assumed',
+    saudiPipelineStatus:'flow_continues_security_risk_remains',
+    g7ReserveReleaseStatus:'agreement_allocation_and_product_split_pending',
+    ieaReserveAllocationMeeting:'2026-10-14/2026-10-15',
+    ieaReserveAllocationMeetingStatus:'expected_per_reuters_sources_not_final_decision',
+    eiaQ4BrentForecastUsdPerBbl:105,eiaForecastReleaseDate:'2026-10-06',
+    saudiAirportAttackDate:'2026-10-05',saudiAirportDamageReportDate:'2026-10-06',
+    saudiAirportInjuries:3,saudiAirportDamageStatus:'gaca_confirmed_limited_damage',
+    saudiAirportAttackAttribution:'gaca_statement_unspecified_houthi_claims_separate',
+    novemberKrwDirection:'flat_to_limited_upward_possible_not_confirmed',
+    novemberStageEstimate:null,novemberMopsUsdPerBbl:null
+  });
+  window.AERO_MARKET_NUMBERS_20261007=latest;
+  window.AERO_MARKET_NUMBERS_LATEST=latest;
+  window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{'2026-10-07':latest});
+  window.RATES=Object.assign({},window.RATES,{USD:1/1337.16,JPY:1/8.4556});
+})();
