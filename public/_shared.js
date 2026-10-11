@@ -15616,3 +15616,47 @@ window.initNav = function(opts){
   window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{'2026-10-07':latest});
   window.RATES=Object.assign({},window.RATES,{USD:1/1337.16,JPY:1/8.4556});
 })();
+
+/* October 12: observation dates and quantities remain distinct from MOPS averages. */
+(function(){
+  var latest=Object.assign({},window.AERO_MARKET_NUMBERS_20261007,{
+    asOf:'2026.10.12 07:25 KST',lastUpdated:'2026-10-12T07:25:00+09:00',
+    usdKrw:1340.88,jpy100Krw:847.05,fxReferenceAt:'2026-10-12T07:25:00+09:00',
+    brentUsdPerBbl:104.72,wtiUsdPerBbl:91.85,crudePriceDate:'2026-10-09',
+    brentDailyChangeUsd:0.44,wtiDailyChangeUsd:0.36,brentPct:0.42,wtiPct:0.39,
+    globalJetFuelCheckedAt:'2026-10-12T07:25:00+09:00',
+    chinaFuelExportStatus:'resuming_after_golden_week_per_2026-10-09_reports',
+    chinaJetSupplyRisk:'resumption_buffers_supply_not_full_normalization',
+    chinaOctoberRefinedExportApprovedMillionTonnes:3.7,chinaExportApprovalMeasure:'gasoline_diesel_jet_combined_not_jet_only',
+    chinaExportPolicyReportDate:'2026-10-09',
+    singaporeRegradeOutlook:'high_dated_reference_prompt_easing_possible_after_china_resumption',
+    hormuzCrudeFlowMillionBpd:10.1,hormuzCrudeFlowIsMinimum:true,
+    hormuzCrudeFlowMeasure:'kpler_2026-10-06_note_weekly_flow_reported_2026-10-08',
+    hormuzCrudeFlowVsPrewarPct:74,hormuzCrudeFlowWeeklyPct:-27,
+    hormuzCommodityVesselCount:7,hormuzCommodityVesselDate:'2026-10-06',
+    hormuzNextCommodityVesselCount:10,hormuzNextCommodityVesselDate:'2026-10-07',
+    hormuzVesselCountScope:'kpler_commodity_vessels_excludes_ais_off_not_all_vessels',
+    alternativeCrudeExportsMillionBpd:6.7,alternativeCrudeExportsMeasure:'gulf_of_oman_coast_red_sea_kpler_note_2026-10-06',
+    hormuzTankerSecurityStatus:'prior_week_highest_since_war_per_2026-10-08_report',
+    hurricaneName:'Isaias',hurricaneShutInMillionBpd:1.3,hurricaneShutInReferenceDate:'2026-10-08',
+    hurricaneShutInPct:62.9,hurricaneLaterShutInPctMinimum:70,
+    hurricaneStatus:'temporary_us_gulf_shutdown_separate_reporting_times',
+    iranHormuzProposalStatus:'iran_calls_us_response_insufficient_no_agreement_confirmed',
+    gulfOfOmanIncidentDate:'2026-10-10',gulfOfOmanIncidentAttribution:'centcom_statement_propulsion_disabled_crew_unharmed_not_sunk',
+    saudiRiyadhAttackDate:'2026-10-10',saudiRiyadhAttackFollowupDate:'2026-10-11',
+    saudiRiyadhDeaths:13,saudiRiyadhInjuriesMinimum:300,
+    saudiRiyadhAttackAttribution:'houthi_claims_saturday_sunday_projectile_attribution_not_assumed',
+    saudiIranDialogueDate:'2026-10-11',saudiIranDialogueStatus:'contact_not_ceasefire',
+    g7ReserveReleaseStatus:'acceleration_of_unreleased_march_commitments_not_new_additional_release',
+    ieaReserveClarificationDate:'2026-10-07',g7ReserveReleaseIsAdditionalToMarch:false,
+    germanyReserveReleaseMillionBarrelsMaximum:15,germanyReserveReleaseReportDate:'2026-10-09',
+    novemberCalculationDaysRemaining:3,novemberDirection:'upward_pressure_partly_eased_by_china_resumption',
+    novemberDirectionConfidence:'somewhat_high',novemberStageConfidence:'low',
+    novemberKrwDirection:'flat_to_upward_possible_fx_and_china_buffer',
+    novemberStageEstimate:null,novemberMopsUsdPerBbl:null
+  });
+  window.AERO_MARKET_NUMBERS_20261012=latest;
+  window.AERO_MARKET_NUMBERS_LATEST=latest;
+  window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{'2026-10-12':latest});
+  window.RATES=Object.assign({},window.RATES,{USD:1/1340.88,JPY:1/8.4705});
+})();
