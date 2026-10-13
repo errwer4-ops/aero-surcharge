@@ -15660,3 +15660,39 @@ window.initNav = function(opts){
   window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{'2026-10-12':latest});
   window.RATES=Object.assign({},window.RATES,{USD:1/1340.88,JPY:1/8.4705});
 })();
+
+/* October 14: alternate-provider references do not replace the primary Jet series. */
+(function(){
+  var latest=Object.assign({},window.AERO_MARKET_NUMBERS_20261012,{
+    asOf:'2026.10.14 07:25 KST',lastUpdated:'2026-10-14T07:25:00+09:00',
+    usdKrw:1345.10,fxReferenceAt:'2026-10-13T15:30:00+09:00',
+    fxReferenceKind:'seoul_money_brokerage_daily_reference_not_monthly_average',
+    fxReferenceSourceUrl:'https://www.fnnews.com/news/202610131539493182',
+    singaporeKeroReferenceUsdPerBbl:175.71,singaporeKeroReferenceCentsPerGal:418.36,
+    singaporeKeroReferenceDate:'2026-10-13',singaporeKeroReferenceProvider:'Cho Gia',
+    singaporeKeroReferenceSourceUrl:'https://chogia.vn/gia-xang-dau-singapore-hom-nay-38348/',
+    singaporeKeroReferenceKind:'alternate_provider_daily_kero_not_calculation_average',
+    brentUsdPerBbl:105.69,wtiUsdPerBbl:94.14,crudePriceDate:'2026-10-13',
+    brentDailyChangeUsd:-0.96,wtiDailyChangeUsd:0.40,brentPct:-0.9,wtiPct:0.4,
+    globalJetFuelUsdPerBbl:190.18,globalJetFuelWeeklyPct:1.5,
+    globalJetFuelCheckedAt:'2026-10-14T07:25:00+09:00',
+    hormuzUkmtoReportedVesselsMinimum:3,hormuzUkmtoReportDate:'2026-10-13',
+    hormuzUkmtoIncidentDate:'2026-10-11',hormuzUkmtoNoticeDate:'2026-10-12',
+    hormuzUkmtoAttribution:'unknown_projectiles_responsibility_unconfirmed',
+    hormuzIranSmugglingClaim:'iran_official_claim_not_independent_attack_attribution',
+    hormuzFtReportedAttackedVessels:24,hormuzFtReportPeriodEnd:'2026-10-11',
+    hormuzFtReportPeriodDays:14,hormuzFtDailyOilTransitMillionBarrels:2.9,
+    hormuzFtDailyOilTransitDate:'2026-10-11',
+    hormuzFtDailyOilTransitStatus:'reported_single_day_reference_revision_possible_not_weekly_average',
+    hormuzFtSevenDayPrewarDeclinePctMinimum:40,
+    hormuzFtVerificationStatus:'original_access_restricted_corroborated_requotation',
+    novemberCalculationDaysRemaining:1,
+    novemberStatus:'before_official_notice_calculation_in_progress',
+    novemberDirection:'not_confirmed_from_daily_references_or_shipping_risk',
+    novemberDirectionConfidence:null,novemberStageEstimate:null,novemberMopsUsdPerBbl:null
+  });
+  window.AERO_MARKET_NUMBERS_20261014=latest;
+  window.AERO_MARKET_NUMBERS_LATEST=latest;
+  window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{'2026-10-14':latest});
+  // Daily reference FX must not silently change existing fare-conversion settings.
+})();
