@@ -3,20 +3,20 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>유류할증료 계산기 — 2026년 8월·9월 공식 공시 노선별 비교</title>
-  <meta name="description" content="한국 출발 국제선 항공권의 2026년 8월 공식 유류할증료와 2026년 9월 공식 공시 금액을 노선·항공사·왕복·인원별로 비교하고, 10월 공시 준비 상태를 함께 확인합니다." data-i18n-page-desc="calc.metaDesc"/>
+  <title>유류할증료 계산기 | 2026년 10월·11월 공식 공시 비교</title>
+  <meta name="description" content="10월 현재 적용 금액과 11월 공식 공시를 비교합니다. 11월은 KE·OZ·7C·LJ·RS 5개사만 반영하며, BX·TW·ZE·YP는 10월 금액만 표시하고 11월은 공시 전으로 둡니다." data-i18n-page-desc="calc.metaDesc"/>
   <meta name="google-adsense-account" content="ca-pub-4285114770383510">
   <meta data-i18n-page-title="calc.metaTitle"/>
   <link rel="canonical" href="https://aero-surcharge.com/fuel-surcharge-calculator.html"/>
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large,max-video-preview:-1"/>
   <meta name="keywords" content="유류할증료 계산기, 항공권 유류할증료, 해외여행 항공권 비용, 유학 항공권 비용, 출장 항공권 비용, 국제선 유류할증료, 항공사별 유류할증료, 발권일 기준 유류할증료, 한국 출발 유류할증료, 왕복 유류할증료 계산"/>
-  <meta property="og:title" content="유류할증료 계산기 — 2026년 8월·9월 공식 공시 노선별 비교"/>
-  <meta property="og:description" content="2026년 8월 기준과 2026년 9월 공식 공시 금액을 비교하고, 10월 공시 준비 상태를 확인하세요."/>
+  <meta property="og:title" content="유류할증료 계산기 | 2026년 10월·11월 공식 공시 비교"/>
+  <meta property="og:description" content="10월 현재 적용 금액과 11월 공식 공시를 비교합니다. 11월은 KE·OZ·7C·LJ·RS 5개사만 반영하며, BX·TW·ZE·YP는 10월 금액만 표시하고 11월은 공시 전으로 둡니다."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.com/fuel-surcharge-calculator.html"/>
   <meta name="twitter:card" content="summary"/>
-  <meta name="twitter:title" content="유류할증료 계산기 — 2026년 8월·9월 공식 공시 기준 비교"/>
-  <meta name="twitter:description" content="출발지와 도착지를 선택해 2026년 8월 기준과 2026년 9월 공식 유류할증료를 비교하세요. 10월 금액은 공식 공지 확인 후 반영합니다."/>
+  <meta name="twitter:title" content="유류할증료 계산기 | 2026년 10월·11월 공식 공시 비교"/>
+  <meta name="twitter:description" content="10월 현재 적용 금액과 11월 공식 공시를 비교합니다. 11월은 KE·OZ·7C·LJ·RS 5개사만 반영하며, BX·TW·ZE·YP는 10월 금액만 표시하고 11월은 공시 전으로 둡니다."/>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="_shared.css"/>
   <link rel="stylesheet" href="_seo_pages.css"/>
@@ -507,7 +507,7 @@
   </nav>
 </footer>
 
-<script src="_shared.js"></script>
+<script src="_shared.js?v=20261017-notices"></script>
 <script>
 var SAVING_COMPARE_DATA = {
   KE: { name:'대한항공', currency:'KRW', rows:[
@@ -822,6 +822,7 @@ var SAVING_INDEX_ROUTE_MAP = null;
   };
   SAVING_UI_TEXT.fr = Object.assign({}, SAVING_UI_TEXT.en, { thAirline:'Compagnie', thMay:'Avis officiel août', thJune:'Avis officiel septembre', thSaving:'vs minimum septembre', julyPending:'Vérification avis septembre requise' });
   SAVING_UI_TEXT.de = Object.assign({}, SAVING_UI_TEXT.en, { thAirline:'Airline', thMay:'August-Hinweis', thJune:'September-Hinweis', thSaving:'ggü. September-Minimum', julyPending:'September-Hinweis prüfen' });
+  window.SAVING_UI_TEXT=SAVING_UI_TEXT;
   function langCode() {
     return (window.SHARED_STATE && window.SHARED_STATE.lang) || (window.getCurrentLang && window.getCurrentLang()) || 'ko';
   }
@@ -1730,6 +1731,7 @@ var SAVING_INDEX_ROUTE_MAP = null;
         };
       });
       applyOfficialSurchargePatches();
+      if(window.applyCurrentCalculatorNotices)window.applyCurrentCalculatorNotices();
     }
     if (indexData && indexData.routeMap) {
       SAVING_INDEX_ROUTE_MAP = indexData.routeMap;
@@ -1748,7 +1750,7 @@ var SAVING_INDEX_ROUTE_MAP = null;
         var data = SAVING_COMPARE_DATA[airlineCode];
         var band = routes[routeKey];
         var row = data.rows && data.rows.find(function(item) { return item.range === band; });
-        if (!row || row.may == null || row.june == null) return;
+        if (!row || row.may == null) return;
         if (!byRoute[routeKey]) {
           byRoute[routeKey] = {
             code: routeKey,
@@ -1841,29 +1843,30 @@ var SAVING_INDEX_ROUTE_MAP = null;
   }
   function updateResult() {
     applySavingStaticText();
+    if(window.applyCurrentCalculatorNotices)window.applyCurrentCalculatorNotices();
     var dest = getSelectedRoute() || SAVING_DESTINATIONS[0];
     var pax = Math.max(1, Math.min(20, parseInt(paxEl.value, 10) || 1));
     paxEl.value = pax;
     var multiplier = pax * selectedTrip;
-    var results = dest.airlines.map(function(code){ return findRow(code, dest.miles, dest.code); }).filter(Boolean).map(function(item) {
+    var results = dest.airlines.map(function(code){ return findRow(code, dest.miles, dest.code); }).filter(function(item){return item && item.row.may != null;}).map(function(item) {
       var baseNative = item.row.julyOfficial != null ? item.row.julyOfficial : (item.row.july != null ? item.row.july : item.row.june);
-      var currentNative = item.row.augustOfficial != null ? item.row.augustOfficial : baseNative;
+      var currentNative = item.row.augustOfficial != null ? item.row.augustOfficial : null;
       var hasAugust = item.row.augustOfficial != null;
       var mayTotal = toKRW(baseNative, item.currency) * multiplier;
-      var juneTotal = toKRW(currentNative, item.currency) * multiplier;
+      var juneTotal = hasAugust ? toKRW(currentNative, item.currency) * multiplier : null;
       return {
         code:item.code,
         name:item.name,
         band:item.row.label,
         currency:item.currency,
         mayNative:baseNative * multiplier,
-        juneNative:currentNative * multiplier,
+        juneNative:hasAugust ? currentNative * multiplier : null,
         hasAugust:hasAugust,
         mayTotal:mayTotal,
         juneTotal:juneTotal,
-        saving:mayTotal - juneTotal
+        saving:hasAugust ? mayTotal - juneTotal : null
       };
-    }).sort(function(a, b){ return a.juneTotal - b.juneTotal; });
+    }).sort(function(a, b){ return a.hasAugust !== b.hasAugust ? (a.hasAugust ? -1 : 1) : (a.hasAugust ? a.juneTotal - b.juneTotal : a.mayTotal - b.mayTotal); });
 
     if (!results.length) {
       countEl.textContent = st('count', { n:0 });
@@ -1873,20 +1876,22 @@ var SAVING_INDEX_ROUTE_MAP = null;
       tableWrapEl.innerHTML = '<div class="saving-empty">' + esc(st('noDataCell')) + '</div>';
       updateAffiliate(dest, 0);
       resetLiveFareForRoute(dest, []);
+      if(window._fixOctoberCalculatorSurface)window._fixOctoberCalculatorSurface();
       return;
     }
 
-    var cheapest = results[0];
+    var published = results.filter(function(item){return item.hasAugust;});
+    var cheapest = published[0] || {code:null,juneTotal:null,name:''};
     results.forEach(function(item) {
-      item.lowestDiff = item.juneTotal - cheapest.juneTotal;
+      item.lowestDiff = item.hasAugust ? item.juneTotal - cheapest.juneTotal : null;
     });
-    var maxDiff = results.slice().sort(function(a, b){ return b.lowestDiff - a.lowestDiff; })[0];
+    var maxDiff = published.slice().sort(function(a, b){ return b.lowestDiff - a.lowestDiff; })[0] || {lowestDiff:0,name:''};
     countEl.textContent = st('count', { n:results.length });
-    bestJuneEl.textContent = st('bestJune', { name:airlineDisplayName(cheapest.code, cheapest.name), amount:fmtKRW(cheapest.juneTotal) });
-    headlineEl.textContent = maxDiff.lowestDiff > 0
+    bestJuneEl.textContent = published.length ? st('bestJune', { name:airlineDisplayName(cheapest.code, cheapest.name), amount:fmtKRW(cheapest.juneTotal) }) : st('julyPending');
+    headlineEl.textContent = !published.length ? st('julyPending') : maxDiff.lowestDiff > 0
       ? st('saveHeadline', { name:airlineDisplayName(cheapest.code, cheapest.name), amount:fmtKRW(maxDiff.lowestDiff) })
       : st('sameHeadline');
-    impactEl.textContent = getImpactText(maxDiff.lowestDiff, maxDiff.name, cheapest.name);
+    impactEl.textContent = published.length ? st(maxDiff.lowestDiff > 0 ? 'affiliateSave' : 'affiliateNeutral', {amount:fmtKRW(maxDiff.lowestDiff)}) : st('julyPending');
     updateAffiliate(dest, maxDiff.lowestDiff);
     var mobileCards = '<div class="saving-mobile-cards" aria-label="' + esc(st('thAirline')) + '">'
       + results.map(function(item) {
@@ -1899,7 +1904,7 @@ var SAVING_INDEX_ROUTE_MAP = null;
           + '<div class="saving-mobile-grid">'
           + '<div class="saving-mobile-cell"><div class="saving-mobile-label">' + esc(st('thMay')) + '</div><div class="saving-mobile-value">' + fmtKRW(item.mayTotal) + nativeText(item.mayNative, item.currency) + '</div></div>'
           + '<div class="saving-mobile-cell"><div class="saving-mobile-label">' + esc(st('thJune')) + '</div><div class="saving-mobile-value">' + (item.hasAugust ? fmtKRW(item.juneTotal) + nativeText(item.juneNative, item.currency) : esc(st('julyPending'))) + '</div></div>'
-          + '<div class="saving-mobile-cell"><div class="saving-mobile-label">' + esc(st('thSaving')) + '</div><div class="saving-mobile-value good">' + fmtKRW(item.lowestDiff) + '</div></div>'
+          + '<div class="saving-mobile-cell"><div class="saving-mobile-label">' + esc(st('thSaving')) + '</div><div class="saving-mobile-value good">' + (item.hasAugust ? fmtKRW(item.lowestDiff) : '-') + '</div></div>'
           + '<div class="saving-mobile-cell"><div class="saving-mobile-label">' + esc(st('thAirline')) + '</div><div class="saving-mobile-value">' + esc(item.code) + '</div></div>'
           + '</div>'
           + '</article>';
@@ -1914,11 +1919,12 @@ var SAVING_INDEX_ROUTE_MAP = null;
           + '<span class="saving-route-note">' + esc(routeDisplayName(dest)) + esc(st('routeSep')) + esc(item.band) + '</span></td>'
           + '<td>' + fmtKRW(item.mayTotal) + nativeText(item.mayNative, item.currency) + '</td>'
           + '<td>' + (item.hasAugust ? fmtKRW(item.juneTotal) + nativeText(item.juneNative, item.currency) : esc(st('julyPending'))) + '</td>'
-          + '<td class="saving-positive">' + fmtKRW(item.lowestDiff) + '</td>'
+          + '<td class="saving-positive">' + (item.hasAugust ? fmtKRW(item.lowestDiff) : '-') + '</td>'
           + '</tr>';
       }).join('')
       + '</tbody></table>' + mobileCards;
-    resetLiveFareForRoute(dest, results);
+    resetLiveFareForRoute(dest, published);
+    if(window._fixOctoberCalculatorSurface)window._fixOctoberCalculatorSurface();
   }
 
   Promise.all([loadIndexRouteData(), loadDestinationMeta()]).then(function(results) {
@@ -2885,6 +2891,6 @@ window._fixSeptemberCalculatorTerminalSurfaceCopy = function(){
 setTimeout(function(){ if (window._fixSeptemberCalculatorSurfaceCopy) window._fixSeptemberCalculatorSurfaceCopy(); }, 600);
 setTimeout(function(){ if (window._fixSeptemberCalculatorTerminalSurfaceCopy) window._fixSeptemberCalculatorTerminalSurfaceCopy(); }, 700);
 </script>
-<script src="calculator-oct20.js?v=20261001-01"></script>
+<script src="calculator-oct20.js?v=20261017-november"></script>
 </body>
 </html>

@@ -15696,3 +15696,241 @@ window.initNav = function(opts){
   window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{'2026-10-14':latest});
   // Daily reference FX must not silently change existing fare-conversion settings.
 })();
+
+/* October 16: daily references are not airline calculation averages. */
+(function(){
+  var latest=Object.assign({},window.AERO_MARKET_NUMBERS_20261014,{
+    asOf:'2026.10.16 08:00 KST',lastUpdated:'2026-10-16T08:00:00+09:00',
+    usdKrw:1344.60,fxReferenceAt:'2026-10-15T15:30:00+09:00',
+    fxReferenceSourceUrl:'https://www.yna.co.kr/view/AKR20261015132900002',
+    singaporeJetFobReferenceUsdPerBbl:179.42,singaporeJetFobReferenceDate:'2026-10-14',
+    singaporeJetFobReferenceProvider:'CommodityScope',
+    singaporeJetFobReferenceKind:'indicative_daily_fob_reference_not_platts_or_calculation_average',
+    singaporeJetFobReferenceSourceUrl:'https://commodityscope.com/prices',
+    singaporeJetOctober15ValidReference:null,
+    brentUsdPerBbl:105.92,wtiUsdPerBbl:97.97,crudePriceDate:'2026-10-15',
+    brentDailyChangeUsd:-0.14,wtiDailyChangeUsd:2.88,brentPct:-0.13,wtiPct:3.03,
+    globalJetFuelCheckedAt:'2026-10-16T08:00:00+09:00',
+    globalJetFuelReferenceDate:'2026-10-14',
+    hormuzMpaSourceUrl:'https://www.mpa.gov.sg/media-centre/details/two-singapore-registered-vessels-struck-in-strait-of-hormuz',
+    hormuzMpaReportDate:'2026-10-14',hormuzAttackAttribution:'unknown_projectiles',
+    hormuzMpaVessels:[
+      {name:'GFS Pride',incidentDate:'2026-10-13',status:'sunk',crewSafe:21,injuriesReported:0},
+      {name:'GFS Giselle',incidentDate:'2026-10-14',status:'safe_anchorage_after_hull_damage',crewSafe:22,injuriesReported:0}
+    ],
+    capeDaoAttackDate:'2026-09-23',capeDaoSinkingReportDate:'2026-10-14',
+    capeDaoReportedCrewDeaths:1,
+    currentHormuzTraffic:null,currentFreightRate:null,currentInsurancePremium:null,
+    novemberCalculationStart:'2026-09-16',novemberCalculationEnd:'2026-10-15',
+    novemberCalculationDaysRemaining:0,novemberCalculationPeriodEnded:true,
+    novemberStatus:'period_ended_official_average_and_international_notices_unconfirmed',
+    novemberDirection:'possible_upward_pressure_daily_references_not_official_average',
+    novemberKrwDirection:'unconfirmed_pending_period_average_fx_and_airline_notice',
+    novemberDirectionConfidence:null,novemberStageEstimate:null,novemberMopsUsdPerBbl:null,
+    novemberPeriodAverageUsdKrw:null
+  });
+  window.AERO_MARKET_NUMBERS_20261016=latest;
+  window.AERO_MARKET_NUMBERS_LATEST=latest;
+  window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{'2026-10-16':latest});
+})();
+
+/* November notices verified against saved official PDFs; October remains current. */
+window.NOVEMBER_2026_OFFICIAL_NOTICES=[
+  {
+    "code": "KE",
+    "key": "officialKe",
+    "currency": "KRW",
+    "url": "https://www.koreanair.com/contents/footer/customer-support/notice/2026/2611-infuel",
+    "bands": [
+      "~499 mi",
+      "500~999 mi",
+      "1,000~1,499 mi",
+      "1,500~1,999 mi",
+      "2,000~2,999 mi",
+      "3,000~3,999 mi",
+      "4,000~4,999 mi",
+      "5,000~6,499 mi",
+      "6,500~9,999 mi"
+    ],
+    "october": [
+      49000,
+      65800,
+      98000,
+      116200,
+      162400,
+      168000,
+      226800,
+      322000,
+      362600
+    ],
+    "november": [
+      55600,
+      76000,
+      105800,
+      132900,
+      185800,
+      189800,
+      254900,
+      370100,
+      408100
+    ],
+    "noticeDate": "2026-10-16",
+    "ticketingStart": "2026-11-01",
+    "ticketingEnd": "2026-11-30",
+    "direction": "one_way",
+    "departureCountry": "KR",
+    "status": "official_notice_verified_from_saved_pdf",
+    "infantExemption": "under_2_without_seat"
+  },
+  {
+    "code": "OZ",
+    "key": "officialOz",
+    "currency": "KRW",
+    "url": "https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202610160002530868&dispCt=all&page=1&searchOption=0&searchText=",
+    "bands": [
+      "~499 mi",
+      "500~999 mi",
+      "1,000~1,499 mi",
+      "1,500~1,999 mi",
+      "2,000~2,499 mi",
+      "2,500~2,999 mi",
+      "3,000~3,999 mi",
+      "4,000~4,999 mi",
+      "5,000~ mi"
+    ],
+    "october": [
+      53400,
+      79400,
+      104000,
+      128700,
+      153300,
+      178000,
+      202600,
+      251900,
+      301200
+    ],
+    "november": [
+      62400,
+      92200,
+      120600,
+      149100,
+      178900,
+      207400,
+      235900,
+      294200,
+      351100
+    ],
+    "noticeDate": "2026-10-16",
+    "ticketingStart": "2026-11-01",
+    "ticketingEnd": "2026-11-30",
+    "direction": "one_way",
+    "departureCountry": "KR",
+    "status": "official_notice_verified_from_saved_pdf",
+    "infantExemption": "under_2_without_seat"
+  },
+  {
+    "code": "7C",
+    "key": "official7c",
+    "currency": "USD",
+    "url": "https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000814",
+    "bands": [
+      "1~500 mi",
+      "500~1,000 mi",
+      "1,000~1,500 mi",
+      "1,500~2,000 mi",
+      "2,000~2,500 mi",
+      "2,500 mi~"
+    ],
+    "october": [
+      37,
+      47,
+      57,
+      68,
+      76,
+      87
+    ],
+    "november": [
+      43,
+      54,
+      66,
+      79,
+      89,
+      103
+    ],
+    "noticeDate": "2026-10-16",
+    "ticketingStart": "2026-11-01",
+    "ticketingEnd": "2026-11-30",
+    "direction": "one_way",
+    "departureCountry": "KR",
+    "status": "official_notice_verified_from_saved_pdf",
+    "infantExemption": "under_2_without_seat"
+  },
+  {
+    "code": "LJ",
+    "key": "officialLj",
+    "currency": "USD",
+    "url": "https://www.jinair.com/company/announce/announceView?anceSeq=28906&searchWord=&searchKey=titlCtn&page=1",
+    "bands": [
+      "1~599 mi",
+      "600~1,199 mi",
+      "1,200~1,799 mi",
+      "1,800~2,399 mi",
+      "2,400~3,599 mi"
+    ],
+    "october": [
+      32,
+      46,
+      74,
+      81,
+      97
+    ],
+    "november": [
+      36,
+      54,
+      87,
+      96,
+      115
+    ],
+    "noticeDate": "2026-10-16",
+    "ticketingStart": "2026-11-01",
+    "ticketingEnd": "2026-11-30",
+    "direction": "one_way",
+    "departureCountry": "KR",
+    "status": "official_notice_verified_from_saved_pdf",
+    "infantExemption": "under_2_without_seat"
+  },
+  {
+    "code": "RS",
+    "key": "officialRs",
+    "currency": "KRW",
+    "url": "https://flyairseoul.com/CW/ko/noticeContent.do?seq=11208&pageNo=1",
+    "bands": [
+      "300~700 mi (exclusive upper)",
+      "700~1,100 mi (exclusive upper)",
+      "1,100~1,500 mi (exclusive upper)",
+      "1,500~1,900 mi (exclusive upper)",
+      "1,900~2,300 mi (exclusive upper)"
+    ],
+    "october": [
+      60300,
+      69900,
+      87800,
+      98700,
+      108300
+    ],
+    "november": [
+      69100,
+      80000,
+      100300,
+      115200,
+      122000
+    ],
+    "noticeDate": "2026-10-16",
+    "ticketingStart": "2026-11-01",
+    "ticketingEnd": "2026-11-30",
+    "direction": "one_way",
+    "departureCountry": "KR",
+    "status": "official_notice_verified_from_saved_pdf",
+    "infantExemption": "under_2_without_seat"
+  }
+];

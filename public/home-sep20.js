@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  var stamp='2026-09-23T08:45:00+09:00';
+  var stamp='2026-10-17T17:25:00+09:00';
   var octoberLinks={
     KE:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2610-infuel?pageNum=1',
     OZ:'https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202609160002530627',
@@ -46,6 +46,139 @@
     de:{desc:'Vergleichen Sie Zuschläge für internationale Flüge ab Korea. Oktober-Hinweise für KE, OZ, LJ, BX, TW, 7C, ZE, RS und YP sind berücksichtigt.',hero:'Neun bestätigte Oktober-Hinweise und November-Berechnung nach Strecke',s1:'Oktober-Hinweise bestätigt: KE, OZ, LJ, BX, TW, 7C, ZE, RS, YP',intro1:'Dieser Service vergleicht Zuschläge ab Korea und berücksichtigt alle neun offiziellen Oktober-Hinweise.',intro2:'Offizielle Airline-Hinweise sind maßgeblich. Oktober-Beträge und Quellenlinks für Eastar Jet und Air Premia sind verfügbar.',line1:'Oktober-Hinweise von Korean Air, Asiana, Jin Air, Air Busan, Trinity (Tway), Jeju Air, Eastar Jet, Air Seoul und Air Premia sind berücksichtigt.',line3:'Alle neun wichtigen Oktober-Hinweise sind berücksichtigt. Für November werden während der Berechnung keine genaue Stufe oder Beträge angezeigt.'}
   };
   Object.keys(complete).forEach(function(lang){Object.assign(text[lang],complete[lang]);});
+  var novemberNoticeCopy={
+  "ko": "11월 공시 확인: 대한항공·아시아나·제주항공·진에어·에어서울. 11월 1~30일 발권분이며 현재 조회의 10월 적용 금액과 구분합니다. 상세 금액과 10월 대비 변화는 뉴스에서 확인하세요.",
+  "en": "November notices confirmed for Korean Air, Asiana, Jeju Air, Jin Air and Air Seoul. They apply to ticketing November 1–30, separate from October charges in current results. See news for amounts and month-on-month changes.",
+  "ja": "大韓航空・アシアナ・チェジュ航空・ジンエアー・エアソウルの11月公示確認。11月1～30日発券分で、現在の検索の10月金額とは区別します。金額と前月差はニュースで確認できます。",
+  "zh": "已确认大韩、韩亚、济州、真航空及首尔航空11月公告。适用11月1日至30日出票，与当前查询的10月金额区分。详细金额及前月变化见新闻。",
+  "fr": "Avis novembre confirmés pour Korean Air, Asiana, Jeju Air, Jin Air et Air Seoul. Émission du 1er au 30 novembre, distincte des résultats octobre actuels. Montants et écarts dans les actualités.",
+  "de": "November-Mitteilungen für Korean Air, Asiana, Jeju Air, Jin Air und Air Seoul bestätigt. Ausstellung 1.–30. November, getrennt von aktuellen Oktober-Ergebnissen. Beträge und Monatsänderungen in den Nachrichten."
+};
+  var novemberNoticeShort={
+  "ko": "11월 공식 공시 5개사 확인 · 발권일 기준",
+  "en": "Five November official notices confirmed · ticketing date",
+  "ja": "11月公式公示5社確認・発券日基準",
+  "zh": "11月5家官方公告确认・按出票日",
+  "fr": "Cinq avis novembre confirmés · date d’émission",
+  "de": "Fünf November-Mitteilungen bestätigt · Ausstellungsdatum"
+};
+  Object.keys(novemberNoticeCopy).forEach(function(l){Object.assign(text[l],{s3:novemberNoticeShort[l],intro3:novemberNoticeCopy[l],line3:novemberNoticeCopy[l],quick2d:novemberNoticeShort[l]});});
+  var novemberHomeCopy={
+  "ko": [
+    "유류할증료 조회 | 2026년 10월·11월 공식 공시 비교",
+    "10월은 현재 적용 금액입니다. 11월은 대한항공·아시아나·제주항공·진에어·에어서울 공시를 반영하고, 에어부산·티웨이·이스타·에어프레미아는 공시 전으로 표시합니다.",
+    "11월 공식 공지 ↗",
+    "11월 공시 전",
+    "10월 VS 11월 공식 공시",
+    "10월 공식 공시 기준",
+    "✓ 11월 공식 공시 반영",
+    "10월 대비",
+    "2026.11 공식 공시",
+    "2026.11 공시 전",
+    "10월 공식 공지 ↗",
+    "선택 구간 ",
+    "선택한 노선 구간의 10월 대비 11월 공식 금액 변동률",
+    "2026년 10월 → 11월 유류할증료 비교",
+    "2026년 11월 공식 공시 현황"
+  ],
+  "en": [
+    "Fuel Surcharge Lookup | October and November 2026 Notices",
+    "October charges currently apply. November notices are reflected for Korean Air, Asiana, Jeju Air, Jin Air and Air Seoul. Air Busan, Tway, Eastar and Air Premia remain before November notice.",
+    "November official notice ↗",
+    "November notice pending",
+    "October vs November official notices",
+    "October official basis",
+    "✓ November notice reflected",
+    "vs October",
+    "2026.11 official",
+    "2026.11 pending",
+    "October official notice ↗",
+    "Selected band ",
+    "November official change versus October for the selected route band",
+    "October to November 2026 comparison",
+    "November 2026 official notice status"
+  ],
+  "ja": [
+    "燃油サーチャージ検索 | 2026年10月・11月公式公示比較",
+    "10月は現在適用額です。11月は大韓航空・アシアナ・チェジュ航空・ジンエアー・エアソウルを反映。他4社は11月公示前として10月額のみ表示します。",
+    "11月公式公示 ↗",
+    "11月公示前",
+    "10月 vs 11月公式公示",
+    "10月公式公示基準",
+    "✓ 11月公式公示反映",
+    "10月比",
+    "2026.11公式公示",
+    "2026.11公示前",
+    "10月公式公示 ↗",
+    "選択区間 ",
+    "選択路線区間の10月比11月公式金額変動率",
+    "2026年10月→11月比較",
+    "2026年11月公式公示状況"
+  ],
+  "zh": [
+    "燃油附加费查询 | 2026年10月与11月官方公告比较",
+    "10月为当前收费。11月已反映大韩、韩亚、济州、真航空及首尔航空公告；其余4家标注11月公告前，仅提供10月金额。",
+    "11月官方公告 ↗",
+    "11月公告前",
+    "10月 vs 11月官方公告",
+    "10月官方基准",
+    "✓ 11月公告已反映",
+    "较10月",
+    "2026.11官方",
+    "2026.11公告前",
+    "10月官方公告 ↗",
+    "所选区间 ",
+    "所选航线区间11月官方金额较10月变化率",
+    "2026年10月→11月比较",
+    "2026年11月官方公告情况"
+  ],
+  "fr": [
+    "Recherche de surtaxes | Avis octobre et novembre 2026",
+    "Octobre est en vigueur. Avis novembre intégrés pour Korean Air, Asiana, Jeju Air, Jin Air et Air Seoul ; quatre autres compagnies restent avant publication, avec les seuls montants octobre.",
+    "Avis officiel novembre ↗",
+    "Avis novembre en attente",
+    "Avis octobre vs novembre",
+    "Base officielle octobre",
+    "✓ Avis novembre intégré",
+    "vs octobre",
+    "2026.11 officiel",
+    "2026.11 en attente",
+    "Avis officiel octobre ↗",
+    "Tranche choisie ",
+    "Variation novembre par rapport à octobre pour la tranche choisie",
+    "Comparaison octobre–novembre 2026",
+    "État des avis officiels novembre 2026"
+  ],
+  "de": [
+    "Zuschlagsuche | Offizielle Oktober- und November-2026-Mitteilungen",
+    "Oktober gilt aktuell. November für Korean Air, Asiana, Jeju Air, Jin Air und Air Seoul berücksichtigt; vier andere Airlines vor November-Veröffentlichung, nur Oktober-Beträge vorhanden.",
+    "Offizielle November-Mitteilung ↗",
+    "November-Mitteilung ausstehend",
+    "Oktober vs November offiziell",
+    "Offizielle Oktober-Basis",
+    "✓ November berücksichtigt",
+    "gegenüber Oktober",
+    "2026.11 offiziell",
+    "2026.11 ausstehend",
+    "Offizielle Oktober-Mitteilung ↗",
+    "Gewähltes Band ",
+    "Offizielle November-Änderung gegenüber Oktober für die gewählte Strecke",
+    "Oktober–November 2026 Vergleich",
+    "Status offizieller November-2026-Mitteilungen"
+  ]
+};
+  Object.keys(novemberHomeCopy).forEach(function(l){
+    var n=novemberHomeCopy[l];Object.assign(text[l],{
+      title:n[0],desc:n[1],hero:n[1],s1:n[14],s2:n[13],s3:n[1],
+      intro1:n[1],intro2:n[1],intro3:n[1],decision:n[14],line1:n[1],line2:n[13],line3:n[1],conclusion:n[1],
+      notice:n[2],pending:n[3],compare:n[4],base:n[5],reflected:n[6],trend:n[12],trendPrefix:n[7],
+      thPrev:'2026.10',thNow:n[8],thPending:n[9],quick1:n[13],quick1d:n[1],quick2:n[14],quick2d:n[1],suffix:' · '+n[4],
+      octoberNotice:n[10],selectedLabel:n[11],selectedTip:n[12]
+    });
+  });
+  var november={},novemberLinks={};
+  (window.NOVEMBER_2026_OFFICIAL_NOTICES||[]).forEach(function(n){november[n.code]=n.november.slice();novemberLinks[n.code]=n.url;});
+  window.NOVEMBER_2026_NOTICE_LINKS=novemberLinks;
   function installCopy(){
     Object.keys(text).forEach(function(lang){var c=text[lang];window.I18N[lang]=window.I18N[lang]||{};Object.assign(window.I18N[lang],{
       'index.title':c.title,'index.metaDesc':c.desc,'index.heroSub':c.hero,'index.signal1':c.s1,'index.signal2':c.s2,'index.signal3':c.s3,
@@ -55,15 +188,17 @@
       'index.card.compareSep':c.compare,'index.card.augustBase':c.base,'index.card.officialReflectedSep':c.reflected,'index.card.trendSepTooltip':c.trend,
       'index.card.trendSepPrefix':c.trendPrefix,'index.card.thAug':c.thPrev,'index.card.thSepOfficial':c.thNow,'index.card.thSepPending':c.thPending,
       'index.quick.compare.name':c.quick1,'index.quick.compare.desc':c.quick1d,'index.quick.jul.name':c.quick2,'index.quick.jul.desc':c.quick2d,
+      'index.card.miniNotice':c.octoberNotice,
       'aff.myrealtrip.desc':c.intro3
     });});
   }
   function installData(){
-    Object.keys(september).forEach(function(code){var d=window._OFFICIAL_AMT&&_OFFICIAL_AMT[code];if(!d||!d.rows)return;d.rows.forEach(function(row,i){row.july=september[code][i];row.august=october[code]?october[code][i]:null;});});
+    // The legacy july/august slots render the baseline and next-month columns.
+    Object.keys(october).forEach(function(code){var d=window._OFFICIAL_AMT&&_OFFICIAL_AMT[code];if(!d||!d.rows)return;d.rows.forEach(function(row,i){row.july=october[code][i];row.august=november[code]?november[code][i]:null;});});
     Object.keys(AUGUST_2026_NOTICE_LINKS).forEach(function(code){delete AUGUST_2026_NOTICE_LINKS[code];});
-    Object.keys(octoberLinks).forEach(function(code){AUGUST_2026_NOTICE_LINKS[code]=octoberLinks[code];});
+    Object.keys(novemberLinks).forEach(function(code){AUGUST_2026_NOTICE_LINKS[code]=novemberLinks[code];});
     Object.keys(AUGUST_2026_OFFICIAL_AMOUNTS).forEach(function(code){delete AUGUST_2026_OFFICIAL_AMOUNTS[code];});
-    Object.keys(october).forEach(function(code){AUGUST_2026_OFFICIAL_AMOUNTS[code]=october[code];});
+    Object.keys(november).forEach(function(code){AUGUST_2026_OFFICIAL_AMOUNTS[code]=november[code];});
     if(Array.isArray(window.KR_AIRLINES)) KR_AIRLINES.forEach(function(al){al.officialNoticeUrl=octoberLinks[al.code]||null;al.hasOfficialNotice=!!octoberLinks[al.code];});
     if(window.FEED&&FEED.meta) FEED.meta.lastUpdated=stamp;
     window._trendBadgeHtml=function(code,miles,dep,arr){
@@ -80,24 +215,27 @@
       var rate=selected?rates[0]:(rates.every(function(v){return v>=0;})?Math.min.apply(null,rates):rates.every(function(v){return v<=0;})?Math.max.apply(null,rates):rates.reduce(function(a,b){return a+b;},0)/rates.length);
       if(Math.abs(rate)<0.05)return '';
       var down=rate<0,lang=window.getCurrentLang?window.getCurrentLang():'ko';if(lang==='cn')lang='zh';var c=text[lang]||text.en;
-      var label=(down?'▼ ':'▲ ')+(selected?(lang==='ko'?'선택 구간 ':'Selected band '):c.trendPrefix+' ')+(rate>0?'+':'')+rate.toFixed(1)+'%';
-      var tip=selected?(lang==='ko'?'선택한 노선 구간의 9월 대비 10월 공식 금액 변동률':'October official change versus September for the selected route band'):c.trend;
+      var label=(down?'▼ ':'▲ ')+(selected?c.selectedLabel:c.trendPrefix+' ')+(rate>0?'+':'')+rate.toFixed(1)+'%';
+      var tip=selected?c.selectedTip:c.trend;
       return '<span title="'+tip+'" style="display:inline-flex;align-items:center;font-size:11px;font-weight:700;color:'+(down?'#075985':'#C62828')+';background:'+(down?'#E0F2FE':'#FFF0F0')+';border:1px solid '+(down?'#BAE6FD':'#FFCDD2')+';border-radius:10px;padding:2px 8px;white-space:nowrap;flex-shrink:0;cursor:default">'+label+'</span>';
     };
     var style=document.getElementById('homeSep20TableFix');if(!style){style=document.createElement('style');style.id='homeSep20TableFix';style.textContent='.al-card .route-table{table-layout:fixed}.al-card .route-table th,.al-card .route-table td{padding-left:5px;padding-right:5px;overflow-wrap:anywhere}.al-card .route-table th:nth-child(1),.al-card .route-table td:nth-child(1){width:34%}.al-card .route-table th:nth-child(2),.al-card .route-table td:nth-child(2){width:22%}.al-card .route-table th:nth-child(3),.al-card .route-table td:nth-child(3){width:25%}.al-card .route-table th:nth-child(4),.al-card .route-table td:nth-child(4){width:19%}.al-card .route-amt-current,.al-card .route-amt-next{white-space:nowrap;font-size:11px}.al-card .route-table-wrap{overflow-x:hidden}';document.head.appendChild(style);}
   }
   function updateHead(){
-    var c=text.ko;document.title=c.title;
+    var lang=window.getCurrentLang?window.getCurrentLang():'ko';if(lang==='cn')lang='zh';var c=text[lang]||text.en;document.title=c.title;
     var desc=document.querySelector('meta[name="description"]');if(desc)desc.content=c.desc;
     var ogTitle=document.querySelector('meta[property="og:title"]');if(ogTitle)ogTitle.content=c.title;
     var ogDesc=document.querySelector('meta[property="og:description"]');if(ogDesc)ogDesc.content=c.desc;
     var old=document.getElementById('homeSep20Schema');if(old)old.remove();
-    var schema=document.createElement('script');schema.id='homeSep20Schema';schema.type='application/ld+json';schema.textContent=JSON.stringify({'@context':'https://schema.org','@type':'WebPage',name:c.title,description:c.desc,url:'https://aero-surcharge.com/',dateModified:stamp,inLanguage:'ko-KR',mainEntity:{'@type':'Dataset',name:'2026년 10월 한국 출발 국제선 유류할증료',dateModified:stamp,description:'항공사 공식 공지를 기준으로 한 9월 대비 10월 국제선 유류할증료 비교'}});document.head.appendChild(schema);
+    var schema=document.createElement('script');schema.id='homeSep20Schema';schema.type='application/ld+json';schema.textContent=JSON.stringify({'@context':'https://schema.org','@type':'WebPage',name:c.title,description:c.desc,url:'https://aero-surcharge.com/',dateModified:stamp,inLanguage:lang,mainEntity:{'@type':'Dataset',name:c.compare,dateModified:stamp,description:c.desc}});document.head.appendChild(schema);
   }
   function patchLandingState(){
     var lang=window.getCurrentLang?window.getCurrentLang():'ko';if(lang==='cn')lang='zh';var c=text[lang]||text.en;
     document.querySelectorAll('.mini-notice-btn:not([href])').forEach(function(pending){var card=pending.closest('.mini-card');var status=card&&card.querySelector('.mini-status');if(status)status.innerHTML='<span style="font-size:10px;color:#92400e;font-weight:700">'+c.pending+'</span>';});
-    var statusText=document.getElementById('statusText');if(statusText)statusText.textContent=(lang==='ko'?'데이터 갱신: 09. 23. 오전 08:45':'Updated: 2026-09-23 08:45 KST')+c.suffix;
+    var statusText=document.getElementById('statusText');if(statusText)statusText.textContent='2026-10-17 17:25 KST'+c.suffix;
+    var compareLink=document.querySelector('[data-i18n="index.quick.compare.name"]');
+    if(compareLink&&compareLink.closest('a'))compareLink.closest('a').href='news.html#compareList';
+    updateHead();
   }
   if(typeof window.renderLanding==='function'){
     var baseRenderLanding=window.renderLanding;

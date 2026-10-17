@@ -3,19 +3,19 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>유류할증료 데이터 아카이브 | 2026년 4월·5월·6월·7월·8월·9월 항공사별 비교</title>
-  <meta name="description" content="2026년 4월·5월·6월·7월·8월·9월 한국 출발 국제선 유류할증료를 항공사별로 비교하는 데이터 아카이브입니다. 8월 대비 9월 공식 공시 변화를 확인할 수 있습니다." data-i18n-page-desc="graph.metaDesc"/>
+  <title>유류할증료 데이터 아카이브 | 2026년 4월~11월 항공사별 비교</title>
+  <meta name="description" content="2026년 4월부터 11월까지 공식 공시를 보존합니다. 11월은 대한항공·아시아나·제주항공·진에어·에어서울 5개사만 반영하며, 나머지 4개사는 공시 전입니다. 10월은 현재 적용 금액, 11월은 11월 1~30일 발권분입니다." data-i18n-page-desc="graph.metaDesc"/>
   <meta name="google-adsense-account" content="ca-pub-4285114770383510">
   <meta data-i18n-page-title="graph.metaTitle"/>
   <link rel="canonical" href="https://aero-surcharge.com/fuel-surcharge-graph.html"/>
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"/>
-  <meta property="og:title" content="유류할증료 데이터 아카이브 | 2026년 4월·5월·6월·7월·8월·9월 항공사별 비교"/>
-  <meta property="og:description" content="2026년 4월·5월·6월·7월·8월·9월 한국 출발 국제선 유류할증료를 항공사별로 비교하고 8월 대비 9월 변화를 확인하세요."/>
+  <meta property="og:title" content="유류할증료 데이터 아카이브 | 2026년 4월~11월 항공사별 비교"/>
+  <meta property="og:description" content="2026년 4월부터 11월까지 공식 공시를 보존합니다. 11월은 대한항공·아시아나·제주항공·진에어·에어서울 5개사만 반영하며, 나머지 4개사는 공시 전입니다. 10월은 현재 적용 금액, 11월은 11월 1~30일 발권분입니다."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.com/fuel-surcharge-graph.html"/>
   <meta name="twitter:card" content="summary"/>
-  <meta name="twitter:title" content="유류할증료 데이터 아카이브 | 2026년 4월·5월·6월·7월·8월·9월 비교"/>
-  <meta name="twitter:description" content="항공사별 2026년 4월·5월·6월·7월·8월·9월 유류할증료를 막대 그래프로 비교하세요."/>
+  <meta name="twitter:title" content="유류할증료 데이터 아카이브 | 2026년 4월~11월 항공사별 비교"/>
+  <meta name="twitter:description" content="2026년 4월부터 11월까지 공식 공시를 보존합니다. 11월은 대한항공·아시아나·제주항공·진에어·에어서울 5개사만 반영하며, 나머지 4개사는 공시 전입니다. 10월은 현재 적용 금액, 11월은 11월 1~30일 발권분입니다."/>
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="_shared.css"/>
   <link rel="stylesheet" href="_seo_pages.css"/>
@@ -146,6 +146,8 @@
       <option value="en">🇺🇸 English</option>
       <option value="ja">🇯🇵 日本語</option>
       <option value="zh">🇨🇳 中文</option>
+      <option value="fr">Français</option>
+      <option value="de">Deutsch</option>
     </select>
     <div class="nav-divider"></div>
     <select class="nav-select" id="navCurr">
@@ -268,7 +270,7 @@
 
 <div id="graphTooltip"></div>
 
-<script src="_shared.js"></script>
+<script src="_shared.js?v=20261017-notices"></script>
 <script>
 /* ═══════════════════════════════════════
    PAGE i18n
@@ -619,7 +621,7 @@ function airlineName(code) { return tg('airline.' + code); }
 /* ═══════════════════════════════════════
    필터 상태
 ═══════════════════════════════════════ */
-var MONTH_SEQUENCE = ['apr', 'may', 'june', 'july', 'aug', 'sep', 'oct'];
+var MONTH_SEQUENCE = ['apr', 'may', 'june', 'july', 'aug', 'sep', 'oct', 'nov'];
 var MONTH_LABEL_KEYS = {
   apr: 'graph.filter.apr',
   may: 'graph.filter.may',
@@ -627,7 +629,8 @@ var MONTH_LABEL_KEYS = {
   july: 'graph.filter.july',
   aug: 'graph.filter.aug',
   sep: 'graph.filter.sep',
-  oct: 'graph.filter.oct'
+  oct: 'graph.filter.oct',
+  nov: 'graph.filter.nov'
 };
 var MONTH_COL_KEYS = {
   apr: 'graph.th.apr',
@@ -636,15 +639,16 @@ var MONTH_COL_KEYS = {
   july: 'graph.th.july',
   aug: 'graph.th.aug',
   sep: 'graph.th.sep',
-  oct: 'graph.th.oct'
+  oct: 'graph.th.oct',
+  nov: 'graph.th.nov'
 };
 var filterState = { airline:'all', month:'recent4', view:'amount' };
 var dimmedAirlines = {};
 
 function getSelectedMonthKeys() {
-  if (filterState.month === 'recent4') return ['july', 'aug', 'sep', 'oct'];
+  if (filterState.month === 'recent4') return ['aug', 'sep', 'oct', 'nov'];
   if (filterState.month === 'all') return MONTH_SEQUENCE.slice();
-  return MONTH_SEQUENCE.indexOf(filterState.month) >= 0 ? [filterState.month] : ['july', 'aug', 'sep', 'oct'];
+  return MONTH_SEQUENCE.indexOf(filterState.month) >= 0 ? [filterState.month] : ['aug', 'sep', 'oct', 'nov'];
 }
 
 function getMonthValue(airline, monthKey, idx) {
@@ -679,7 +683,7 @@ function buildFilters() {
     fA.appendChild(o);
   });
 
-  fM.innerHTML = [['recent4','graph.filter.recent4'],['all','graph.filter.all'],['apr','graph.filter.apr'],['may','graph.filter.may'],['june','graph.filter.june'],['july','graph.filter.july'],['aug','graph.filter.aug'],['sep','graph.filter.sep'],['oct','graph.filter.oct']]
+  fM.innerHTML = [['recent4','graph.filter.recent4'],['all','graph.filter.all'],['apr','graph.filter.apr'],['may','graph.filter.may'],['june','graph.filter.june'],['july','graph.filter.july'],['aug','graph.filter.aug'],['sep','graph.filter.sep'],['oct','graph.filter.oct'],['nov','graph.filter.nov']]
     .map(function(p){return '<option value="'+p[0]+'"'+(filterState.month===p[0]?' selected':'')+'>'+tg(p[1])+'</option>';}).join('');
 
   fV.innerHTML = [['amount','graph.filter.amount'],['change','graph.filter.change']]
@@ -694,7 +698,8 @@ function buildOfficialLinks() {
   if (!el) return;
   var suf = tg('graph.official.suffix');
   el.innerHTML = AIRLINES.map(function(a) {
-    return '<div class="official-link-item">✈️ '+airlineName(a.code)+': <a href="'+a.url+'" target="_blank" rel="noopener">'+a.domain+' '+suf+'</a></div>';
+    var next=!!a.novemberNoticeUrl;
+    return '<div class="official-link-item">✈️ '+airlineName(a.code)+': <a href="'+(next?a.novemberNoticeUrl:a.url)+'" target="_blank" rel="noopener">'+tg(next?'graph.notice.nov':'graph.notice.oct')+'</a>'+(next?'':' · '+tg('graph.pending.nov'))+'</div>';
   }).join('');
 }
 
@@ -721,7 +726,7 @@ function drawChart() {
   var PAD = {top:24, right:24, bottom:64, left:82};
   var gW = W - PAD.left - PAD.right;
   var gH = H - PAD.top - PAD.bottom;
-  var monthColors = { apr:'#94a3b8', may:'#0284C7', june:'#10b981', july:'#f97316', aug:'#7c3aed', sep:'#ef4444', oct:'#0891b2', change:'#0f766e' };
+  var monthColors = { apr:'#94a3b8', may:'#0284C7', june:'#10b981', july:'#f97316', aug:'#7c3aed', sep:'#ef4444', oct:'#0891b2', nov:'#be185d', change:'#0f766e' };
   var monthOrder = getSelectedMonthKeys();
 
   function avgConverted(vals, currency) {
@@ -760,7 +765,8 @@ function drawChart() {
             aug: avgConverted(a.aug, a.currency),
             sep: avgConverted(a.sep, a.currency),
             oct: avgConverted(a.oct, a.currency),
-            change: calcChange(avgRaw(a.sep), avgRaw(a.oct))
+            nov: avgConverted(a.nov, a.currency),
+            change: calcChange(avgRaw(a.oct), avgRaw(a.nov))
           },
           origVals: {
             apr: avgRaw(a.apr),
@@ -769,7 +775,8 @@ function drawChart() {
             july: avgRaw(a.july),
             aug: avgRaw(a.aug),
             sep: avgRaw(a.sep),
-            oct: avgRaw(a.oct)
+            oct: avgRaw(a.oct),
+            nov: avgRaw(a.nov)
           }
         };
       });
@@ -790,7 +797,8 @@ function drawChart() {
           aug: a.aug && a.aug[i] != null ? convertAmt(a.aug[i], a.currency) : null,
           sep: a.sep && a.sep[i] != null ? convertAmt(a.sep[i], a.currency) : null,
           oct: a.oct && a.oct[i] != null ? convertAmt(a.oct[i], a.currency) : null,
-          change: calcChange(a.sep && a.sep[i], a.oct && a.oct[i])
+          nov: a.nov && a.nov[i] != null ? convertAmt(a.nov[i], a.currency) : null,
+          change: calcChange(a.oct && a.oct[i], a.nov && a.nov[i])
         },
         origVals: {
           apr: a.apr[i],
@@ -799,7 +807,8 @@ function drawChart() {
           july: a.july && a.july[i],
           aug: a.aug && a.aug[i],
           sep: a.sep && a.sep[i],
-          oct: a.oct && a.oct[i]
+          oct: a.oct && a.oct[i],
+          nov: a.nov && a.nov[i]
         }
       };
     });
@@ -961,7 +970,8 @@ function buildLegend() {
     { key:'july', label:tg('graph.filter.july'), color:'#f97316' },
     { key:'aug', label:tg('graph.filter.aug'), color:'#7c3aed' },
     { key:'sep', label:tg('graph.filter.sep'), color:'#ef4444' },
-    { key:'oct', label:tg('graph.filter.oct'), color:'#0891b2' }
+    { key:'oct', label:tg('graph.filter.oct'), color:'#0891b2' },
+    { key:'nov', label:tg('graph.filter.nov'), color:'#be185d' }
   ].forEach(function(itemData) {
     if (visibleMonths.indexOf(itemData.key) < 0) return;
     var item = document.createElement('div');
@@ -1007,11 +1017,11 @@ function buildTable() {
     var isUSD = a.currency==='USD';
     var rowspan = a.bands.length;
     a.bands.forEach(function(band, i) {
-      var yv = getMonthValue(a, 'sep', i);
-      var uv = getMonthValue(a, 'oct', i);
+      var yv = getMonthValue(a, 'oct', i);
+      var uv = getMonthValue(a, 'nov', i);
       var monthCells = monthKeys.map(function(key) {
         var value = getMonthValue(a, key, i);
-        var formatted = value != null ? fmtMoney(value, a.currency) : '<span class="null-cell">'+tg('graph.noData')+'</span>';
+        var formatted = value != null ? fmtMoney(value, a.currency) : '<span class="null-cell">'+tg(key==='nov'&&!a.novemberNoticeUrl?'graph.pending.nov':'graph.noData')+'</span>';
         if (isUSD && c === 'KRW' && value != null) formatted += '<span class="change-note"> ($'+value+')</span>';
         return '<td>'+formatted+'</td>';
       }).join('');
@@ -1275,6 +1285,6 @@ window.initNav({
 
 renderPage();
 </script>
-<script src="graph-oct20.js?v=20260920-1000"></script>
+<script src="graph-oct20.js?v=20261017-november"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  var stamp='2026-09-20T10:00:00+09:00';
+  var stamp='2026-10-17T17:25:00+09:00';
   var october={
     KE:[49000,65800,98000,116200,162400,168000,226800,322000,362600],
     OZ:[53400,79400,104000,128700,153300,178000,202600,251900,301200],
@@ -25,12 +25,108 @@
   };
   packs.fr=Object.assign({},packs.en,{title:'Archives des surtaxes | avril-octobre 2026',h1:'Archives des surtaxes internationales d’avril à octobre 2026',oct:'Octobre 2026',thOct:'Octobre',change:'vs septembre',related:'Septembre vs octobre'});
   packs.de=Object.assign({},packs.en,{title:'Kerosinzuschlag-Datenarchiv | April-Oktober 2026',h1:'Datenarchiv internationaler Kerosinzuschläge April-Oktober 2026',oct:'Oktober 2026',thOct:'Oktober',change:'ggü. September',related:'September vs Oktober'});
+  var novemberCopy={
+  "ko": [
+    "유류할증료 데이터 아카이브 | 2026년 4월~11월 항공사별 비교",
+    "2026년 4월부터 11월까지 공식 공시를 보존합니다. 11월은 대한항공·아시아나·제주항공·진에어·에어서울 5개사만 반영하며, 나머지 4개사는 공시 전입니다. 10월은 현재 적용 금액, 11월은 11월 1~30일 발권분입니다.",
+    "2026년 4~11월 국제선 유류할증료 데이터 아카이브",
+    "10월 → 11월 공식 공시 비교",
+    "11월 증감률은 같은 항공사·같은 거리 구간의 10월 공식 금액과 비교합니다. 미공시 값은 0원이나 이전 달 금액으로 채우지 않습니다.",
+    "최근 4개월은 8월·9월·10월·11월입니다. 전체를 선택하면 4월부터 표시합니다. 원화 환산 표시는 사이트의 비교용 환율이며 항공사 월간 산정환율·실제 결제액이 아닙니다.",
+    "11월 공시 전",
+    "2026년 11월",
+    "11월",
+    "10월 대비",
+    "10월 공식 공지",
+    "11월 공식 공지"
+  ],
+  "en": [
+    "Fuel Surcharge Data Archive | April-November 2026 by Airline",
+    "Official monthly notices from April through November are preserved. November includes KE/OZ/7C/LJ/RS only; four other carriers are pending. October currently applies; November is for ticketing November 1–30.",
+    "April-November 2026 International Fuel Surcharge Archive",
+    "October to November official comparison",
+    "November changes compare the same airline and distance band with October. Missing notices are not zero or replaced with a previous month.",
+    "Latest four months: August, September, October and November. All includes April onward. Converted amounts use site comparison rates, not airline monthly calculation FX or actual payment prices.",
+    "November notice pending",
+    "November 2026",
+    "November",
+    "vs October",
+    "October official notice",
+    "November official notice"
+  ],
+  "ja": [
+    "燃油サーチャージアーカイブ | 2026年4月～11月",
+    "4月から11月までの公式公示を保存。11月はKE・OZ・7C・LJ・RSの5社のみ反映し、他4社は公示前です。10月は現在適用額、11月は11月1～30日発券分です。",
+    "2026年4月～11月国際線燃油サーチャージアーカイブ",
+    "10月→11月公式公示比較",
+    "11月変化率は同じ航空会社・距離区間の10月額との比較です。未公示値をゼロや前月額で補いません。",
+    "直近4か月は8・9・10・11月。全てで4月から表示。換算額はサイト比較用レートで、航空会社の月間平均為替や決済額ではありません。",
+    "11月公示前",
+    "2026年11月",
+    "11月",
+    "10月比",
+    "10月公式公示",
+    "11月公式公示"
+  ],
+  "zh": [
+    "燃油附加费档案 | 2026年4月至11月",
+    "保留4月至11月官方公告。11月仅反映KE/OZ/7C/LJ/RS共5家，其余4家为公告前。10月为当前收费，11月适用11月1日至30日出票。",
+    "2026年4月至11月国际线燃油附加费档案",
+    "10月→11月官方公告比较",
+    "11月变化率比较同一航司、距离档的10月金额。未公告值不填零或用前月金额代替。",
+    "最近4个月为8、9、10、11月；全部包含4月起资料。换算额使用网站比较汇率，不是航司月平均汇率或实际支付金额。",
+    "11月公告前",
+    "2026年11月",
+    "11月",
+    "较10月",
+    "10月官方公告",
+    "11月官方公告"
+  ],
+  "fr": [
+    "Archives des surtaxes | avril-novembre 2026",
+    "Avis officiels conservés d’avril à novembre. Novembre inclut seulement KE/OZ/7C/LJ/RS ; quatre autres compagnies en attente. Octobre en vigueur, novembre pour émission du 1er au 30 novembre.",
+    "Archives des surtaxes internationales avril-novembre 2026",
+    "Comparaison officielle octobre → novembre",
+    "Variation novembre par rapport à octobre pour la même compagnie et tranche. Aucun avis manquant remplacé par zéro ou un mois précédent.",
+    "Quatre derniers mois : août, septembre, octobre, novembre. Tout affiche depuis avril. Conversions au taux comparatif du site, pas au taux mensuel de compagnie ou au prix de paiement.",
+    "Avis novembre en attente",
+    "Novembre 2026",
+    "Novembre",
+    "vs octobre",
+    "Avis officiel octobre",
+    "Avis officiel novembre"
+  ],
+  "de": [
+    "Kerosinzuschlag-Archiv | April-November 2026",
+    "Offizielle Mitteilungen von April bis November bleiben erhalten. November nur KE/OZ/7C/LJ/RS; vier andere Airlines ausstehend. Oktober gilt aktuell, November für Ausstellung 1.–30. November.",
+    "Internationales Kerosinzuschlag-Archiv April-November 2026",
+    "Offizieller Vergleich Oktober → November",
+    "November-Änderung gegenüber Oktober bei gleicher Airline und Entfernungsband. Fehlende Mitteilungen nicht durch null oder Vormonat ersetzen.",
+    "Letzte vier Monate: August, September, Oktober, November. Alle zeigt ab April. Umrechnungen zum Vergleichskurs der Website, nicht Airline-Monatskurs oder Zahlungsbetrag.",
+    "November-Mitteilung ausstehend",
+    "November 2026",
+    "November",
+    "ggü. Oktober",
+    "Offizielle Oktober-Mitteilung",
+    "Offizielle November-Mitteilung"
+  ]
+};
+  Object.keys(novemberCopy).forEach(function(l){var t=novemberCopy[l];Object.assign(packs[l],{
+    title:t[0],desc:t[1],sub:t[1],h1:t[2],notice:t[1],intro:t[1],answerTitle:t[3],answerBody:t[4],
+    card1:t[2],card1Body:t[1],card2:t[3],card2Body:t[4],note:t[5],table:t[1]+' '+t[4],faq1:t[1],
+    faqQ:t[3]+'?',faqA:t[4],change:t[9],related:t[3],nov:t[7],thNov:t[8],pending:t[6],octNotice:t[10],novNotice:t[11]
+  });});
+  october.ZE=[37,47,57,68,76,87];october.YP=[41,54,null,91,159,200,251];
+  links.ZE='https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=664&lang=KR';
+  links.YP='https://www.airpremia.com/a/ko/customer/notice/791';
+  AIRLINES.forEach(function(a){var n=(window.NOVEMBER_2026_OFFICIAL_NOTICES||[]).find(function(n){return n.code===a.code;});a.nov=n?n.november.slice():a.bands.map(function(){return null;});a.novemberNoticeUrl=n?n.url:null;});
   AIRLINES.forEach(function(a){a.oct=october[a.code]?october[a.code].slice():a.bands.map(function(){return null;});if(links[a.code])a.url=links[a.code];});
   Object.keys(packs).forEach(function(lang){var p=packs[lang];GRAPH_I18N[lang]=GRAPH_I18N[lang]||{};window.I18N[lang]=window.I18N[lang]||{};var values={
     'graph.metaTitle':p.title,'graph.metaDesc':p.desc,'graph.pageSub':p.sub,'graph.h1':p.h1,'graph.notice':p.notice,'graph.intro':p.intro,
     'graph.answer.title':p.answerTitle,'graph.answer.body':p.answerBody,'graph.card1.title':p.card1,'graph.card1.body':p.card1Body,
     'graph.card2.title':p.card2,'graph.card2.body':p.card2Body,'graph.filter.oct':p.oct,'graph.th.oct':p.thOct,'graph.th.change':p.change,
-    'graph.chartNote':p.note,'graph.tableNote':p.table,'graph.faq.a1':p.faq1,'graph.faq.q2':p.faqQ,'graph.faq.a2':p.faqA,'graph.related.may':p.related
+    'graph.chartNote':p.note,'graph.tableNote':p.table,'graph.faq.a1':p.faq1,'graph.faq.q2':p.faqQ,'graph.faq.a2':p.faqA,'graph.related.may':p.related,
+    'graph.filter.nov':p.nov,'graph.th.nov':p.thNov,'graph.pending.nov':p.pending,'graph.notice.oct':p.octNotice,'graph.notice.nov':p.novNotice
   };Object.assign(GRAPH_I18N[lang],values);Object.assign(window.I18N[lang],values);});
   var stray=document.getElementById('octoberGraphSummary');if(stray)stray.remove();
   document.title=packs.ko.title;
@@ -38,6 +134,15 @@
   var ogTitle=document.querySelector('meta[property="og:title"]');if(ogTitle)ogTitle.content=packs.ko.title;
   var ogDesc=document.querySelector('meta[property="og:description"]');if(ogDesc)ogDesc.content=packs.ko.desc;
   document.querySelectorAll('script[type="application/ld+json"]').forEach(function(node){try{var data=JSON.parse(node.textContent);data.dateModified=stamp;if(data['@type']==='WebPage'){data.name=packs.ko.title;data.description=packs.ko.desc;}node.textContent=JSON.stringify(data);}catch(e){}});
+  var renderBase=renderPage;
+  renderPage=function(){
+    renderBase();
+    var l=(window.SHARED_STATE&&SHARED_STATE.lang)||'ko',p=packs[l]||packs.en;
+    document.title=p.title;
+    document.querySelectorAll('meta[name="description"],meta[property="og:description"],meta[name="twitter:description"]').forEach(function(el){el.content=p.desc;});
+    document.querySelectorAll('meta[property="og:title"],meta[name="twitter:title"]').forEach(function(el){el.content=p.title;});
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function(el){try{var d=JSON.parse(el.textContent);function update(x){if(!x||typeof x!=='object')return;if(x['@type']==='WebPage'){x.name=p.title;x.description=p.desc;x.dateModified=stamp;x.inLanguage=l;}if(x['@type']==='FAQPage'){x.mainEntity=[{'@type':'Question',name:p.h1+'?',acceptedAnswer:{'@type':'Answer',text:p.faq1}},{'@type':'Question',name:p.faqQ,acceptedAnswer:{'@type':'Answer',text:p.faqA}}];x.dateModified=stamp;x.inLanguage=l;}if(Array.isArray(x['@graph']))x['@graph'].forEach(update);}update(d);el.textContent=JSON.stringify(d);}catch(e){}});
+  };
   filterState.month='recent4';
   renderPage();
 })();

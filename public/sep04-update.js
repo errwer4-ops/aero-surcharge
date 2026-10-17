@@ -463,6 +463,7 @@
     setText('news.pageTitle', p.newsTitle);
     setText('news.h1', p.newsTitle);
     setText('news.pageSub', p.newsSub);
+    if(p.bookingDescription) setText('aff.myrealtrip.desc', p.bookingDescription);
     setText('news.note', p.note);
     setText('news.surchargeNote', p.note);
     setText('news.dataRef', p.sub);
