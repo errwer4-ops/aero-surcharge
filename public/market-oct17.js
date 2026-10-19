@@ -20,7 +20,7 @@ period:'10월 16일 공식 공지 및 저장 PDF에서 확인한 한국 출발 �
 detail:'거리 구간별 10월 → 11월 금액',
 impact:'같은 항공사·같은 통화·같은 구간의 전월 대비 변화입니다. 다른 항공사의 통화와 직접 비교하지 않으며 실제 부과액은 공식 노선표를 확인하세요.',
 change:'구간별 최소 추가 부담',maxChange:'최대 추가 부담',source:'항공사 공식 공지',q:'11월 국제선 공시는 어떤 항공사가 발표했나요?',
-names:['대한항공','아시아나항공','제주항공','진에어','에어서울'],
+names:['대한항공','아시아나항공','제주항공','진에어','에어서울','에어부산','트리니티(티웨이)'],
 applies:'11월 공식',current:'10월 현재 적용',noAverage:'확인된 5개사의 금액은 공식 공시입니다. 11월 MOPS 평균·단계는 이 공시만으로 추정하지 않습니다.'
 },
 en:{
@@ -38,7 +38,7 @@ period:'Korea-departure international one-way figures verified against the Octob
 detail:'Distance band: October to November',
 impact:'Changes compare the same carrier, currency and band. Do not directly compare different notice currencies; check the official route table for the actual charge.',
 change:'Minimum additional charge across bands',maxChange:'maximum additional charge',source:'Official airline notice',q:'Which airlines have published November international notices?',
-names:['Korean Air','Asiana Airlines','Jeju Air','Jin Air','Air Seoul'],
+names:['Korean Air','Asiana Airlines','Jeju Air','Jin Air','Air Seoul','Air Busan','Trinity (Tway)'],
 applies:'November official',current:'October currently applies',noAverage:'The five airlines’ amounts are officially published. Their notices alone do not establish November MOPS average or level.'
 },
 ja:{
@@ -54,7 +54,7 @@ period:'10月16日の公式公示と保存PDFで確認した韓国発国際線�
 detail:'距離区間別10月→11月',
 impact:'同一航空会社・同一通貨・同一区間の前月比較です。異なる公示通貨を直接比較せず、実際の金額は公式路線表をご確認ください。',
 change:'区間別の最小追加負担',maxChange:'最大追加負担',source:'航空会社公式公示',q:'11月国際線公示を発表した航空会社は？',
-names:['大韓航空','アシアナ航空','チェジュ航空','ジンエアー','エアソウル'],applies:'11月公式',current:'10月現在適用',noAverage:'5社の金額は公式公示です。この公示だけから11月MOPS平均・段階は推定しません。'
+names:['大韓航空','アシアナ航空','チェジュ航空','ジンエアー','エアソウル','エアプサン','トリニティ（ティーウェイ）'],applies:'11月公式',current:'10月現在適用',noAverage:'5社の金額は公式公示です。この公示だけから11月MOPS平均・段階は推定しません。'
 },
 zh:{
 title:'2026年10月燃油附加费执行中 | 11月5家航司公告确认',
@@ -69,7 +69,7 @@ period:'金额经10月16日官方公告及保存PDF核实，为韩国出发国�
 detail:'距离区间10月→11月',
 impact:'比较同一航司、币种及区间的前月变化。不可直接比较不同公告币种，实际费用请核对官方航线表。',
 change:'各区间最低额外负担',maxChange:'最高额外负担',source:'航司官方公告',q:'哪些航司公布了11月国际线公告？',
-names:['大韩航空','韩亚航空','济州航空','真航空','首尔航空'],applies:'11月官方',current:'10月当前执行',noAverage:'5家航司金额已正式公布，不能仅凭此公告推算11月MOPS均价或档位。'
+names:['大韩航空','韩亚航空','济州航空','真航空','首尔航空','釜山航空','Trinity（德威）'],applies:'11月官方',current:'10月当前执行',noAverage:'5家航司金额已正式公布，不能仅凭此公告推算11月MOPS均价或档位。'
 },
 fr:{
 title:'Surtaxes octobre 2026 en vigueur | Cinq avis officiels novembre confirmés',
@@ -84,7 +84,7 @@ period:'Montants aller simple au départ de Corée vérifiés sur l’avis offic
 detail:'Tranches de distance : octobre vers novembre',
 impact:'Écart pour même compagnie, devise et tranche. Ne pas comparer directement des devises différentes ; consulter le tableau officiel des lignes.',
 change:'Supplément minimum parmi les tranches',maxChange:'supplément maximum',source:'Avis officiel de la compagnie',q:'Quelles compagnies ont publié leurs avis internationaux novembre ?',
-names:['Korean Air','Asiana Airlines','Jeju Air','Jin Air','Air Seoul'],applies:'Novembre officiel',current:'Octobre en vigueur',noAverage:'Les montants des cinq compagnies sont officiels ; ces avis seuls ne déterminent ni moyenne MOPS ni niveau novembre.'
+names:['Korean Air','Asiana Airlines','Jeju Air','Jin Air','Air Seoul','Air Busan','Trinity (Tway)'],applies:'Novembre officiel',current:'Octobre en vigueur',noAverage:'Les montants des cinq compagnies sont officiels ; ces avis seuls ne déterminent ni moyenne MOPS ni niveau novembre.'
 },
 de:{
 title:'Oktober-Zuschläge 2026 gelten | Fünf offizielle November-Mitteilungen bestätigt',
@@ -99,13 +99,18 @@ period:'Internationaler Einfachbetrag ab Korea laut offizieller Mitteilung vom 1
 detail:'Entfernungsband: Oktober zu November',
 impact:'Vergleich derselben Airline, Währung und Entfernung. Unterschiedliche Mitteilungswährungen nicht direkt vergleichen; tatsächlichen Betrag in der offiziellen Streckentabelle prüfen.',
 change:'Kleinster Mehrbetrag über alle Bänder',maxChange:'größter Mehrbetrag',source:'Offizielle Airline-Mitteilung',q:'Welche Airlines haben internationale November-Mitteilungen veröffentlicht?',
-names:['Korean Air','Asiana Airlines','Jeju Air','Jin Air','Air Seoul'],applies:'November offiziell',current:'Oktober aktuell',noAverage:'Die fünf Airline-Beträge sind offiziell. Aus den Mitteilungen allein werden weder November-MOPS-Mittel noch Stufe abgeleitet.'
+names:['Korean Air','Asiana Airlines','Jeju Air','Jin Air','Air Seoul','Air Busan','Trinity (Tway)'],applies:'November offiziell',current:'Oktober aktuell',noAverage:'Die fünf Airline-Beträge sind offiziell. Aus den Mitteilungen allein werden weder November-MOPS-Mittel noch Stufe abgeleitet.'
 }
 };
-function fmt(n){return n.toLocaleString('en-US');}
+var additionalPeriod={};
+Object.keys(copy).forEach(function(l){
+  var update=window.NOVEMBER_2026_NOTICE_COPY[l];
+  additionalPeriod[l]=update.period;copy[l].noticeDesc=update.summary;
+});
+function fmt(n){return n==null?'—':n.toLocaleString('en-US');}
 var bookingCopy={"ko":"유류할증료는 발권일 기준입니다. 10월 현재 적용 금액과 확인된 11월 공식 금액을 구분해 항공권 총액을 비교하세요.","en":"Fuel surcharges follow ticketing date. Distinguish current October charges from confirmed November notices when comparing total fares.","ja":"燃油サーチャージは発券日基準です。現在の10月金額と確認済み11月公示を区別して航空券総額を比較してください。","zh":"燃油附加费按出票日适用。比较机票总价时，请区分当前10月收费与已确认11月官方金额。","fr":"La surtaxe dépend de la date d’émission. Distinguez octobre en vigueur des avis novembre confirmés pour comparer le prix total.","de":"Zuschläge gelten nach Ausstellungsdatum. Aktuelle Oktober-Beträge und bestätigte November-Mitteilungen beim Gesamtpreisvergleich trennen."};
-function range(n){return n.currency+' '+fmt(Math.min.apply(null,n.november))+'–'+fmt(Math.max.apply(null,n.november));}
-function changes(n){var d=n.november.map(function(v,i){return v-n.october[i];});return [Math.min.apply(null,d),Math.max.apply(null,d)];}
+function range(n){var v=n.november.filter(function(x){return x!=null;});return n.currency+' '+fmt(Math.min.apply(null,v))+'–'+fmt(Math.max.apply(null,v));}
+function changes(n){var d=n.november.map(function(v,i){return v==null||n.october[i]==null?null:v-n.october[i];}).filter(function(v){return v!=null;});return [Math.min.apply(null,d),Math.max.apply(null,d)];}
 r.octoberOfficialRows={};Object.keys(r.officialRows).forEach(function(l){r.octoberOfficialRows[l]=r.officialRows[l].map(function(x){return x.slice();});});
 r.octoberOfficialUrls=Object.assign({},r.officialUrls);
 r.officialUrls={};notices.forEach(function(n){r.officialUrls[n.key]=n.url;});
@@ -135,14 +140,14 @@ p.ui=p.ui.slice();p.ui[2]=c.compareTitle;
 p.faq=p.faq.map(function(x,i){return i===1?{q:c.q,a:c.pending}:i===2?{q:x.q,a:c.pending}:x;});
 });
 var cards=notices.map(function(n,i){
-var d=changes(n),card={id:'notice-202611-'+n.code.toLowerCase(),category:'airline',priority:i+1,
-date:'2026-10-17',publishedAt:stamp,updatedAt:stamp,reportedDate:'2026-10-16',eventDate:'2026-10-16',
+var d=changes(n),added=n.verifiedAt||stamp,card={id:'notice-202611-'+n.code.toLowerCase(),category:'airline',priority:i+1,
+date:added.slice(0,10),publishedAt:added,updatedAt:added,reportedDate:n.verifiedAt?n.noticeDate:'2026-10-16',eventDate:n.verifiedAt?n.noticeDate:'2026-10-16',
 badge:'NEW',aiSummary:false,relevanceScore:1-i/100,sourceUrl:n.url,i18n:{}};
 Object.keys(copy).forEach(function(l){var c=copy[l];
 var brief=c.applies+': '+range(n)+' · '+c.change+' +'+n.currency+' '+fmt(d[0])+', '+c.maxChange+' +'+n.currency+' '+fmt(d[1])+'.';
-var detail=n.bands.map(function(b,j){return b+': '+n.currency+' '+fmt(n.october[j])+' → '+fmt(n.november[j])+' (+'+fmt(n.november[j]-n.october[j])+')';}).join('; ');
+var detail=n.bands.map(function(b,j){return n.november[j]==null?b+': —':b+': '+n.currency+' '+fmt(n.october[j])+' → '+fmt(n.november[j])+' (+'+fmt(n.november[j]-n.october[j])+')';}).join('; ');
 card.i18n[l]={title:c.names[i]+' · '+c.cardTitle,aiBrief:brief,
-summary:c.period+' '+c.detail+': '+detail+'.',impact:c.impact,
+summary:(n.verifiedAt?additionalPeriod[l]:c.period)+' '+c.detail+': '+detail+'.',impact:c.impact,
 sourceName:c.source,tags:[n.code,n.currency,'2026-11-01~2026-11-30'],links:[],faq:[]};
 });card.i18n.cn=card.i18n.zh;return card;
 });

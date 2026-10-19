@@ -15935,12 +15935,47 @@ window.NOVEMBER_2026_OFFICIAL_NOTICES=[
   }
 ];
 
+/* Additional November notices verified October 19; dash bands are not zero. */
+window.NOVEMBER_2026_OFFICIAL_NOTICES.push({
+  code:'BX',key:'officialBx',currency:'USD',
+  url:'https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4420',
+  bands:[
+    'FUK / MYJ / KIX / NRT (PUS) / NGS / TAO / TAK / FSZ',
+    'NRT (ICN) / CTS / XIY / YNJ / DYG / HKG / MFM / TPE / KHH',
+    'SYX / UBN / CEB / KLO / DAD / CXR / VTE / BKI (PUS) / HAN / TAG / GUM / CNX (ICN)',
+    'BKK / DPS'
+  ],
+  october:[37,66,78,90],november:[43,77,90,106],
+  noticeDate:null,verifiedAt:'2026-10-19T23:41:23+09:00',
+  ticketingStart:'2026-11-01',ticketingEnd:'2026-11-30',direction:'one_way',departureCountry:'KR',
+  status:'official_notice_verified_against_web_and_saved_pdf',infantExemption:'under_2_without_seat'
+},{
+  code:'TW',key:'officialTw',currency:'KRW',
+  url:'https://www.trinityairways.com/app/customerCenter/notice/retrieve/12722',
+  bands:['0~599 mi','600~1,199 mi','1,200~1,799 mi','1,800~2,399 mi','2,400~3,999 mi','4,000~4,999 mi','5,000+ mi'],
+  october:[37000,65900,82300,105700,113900,null,256600],
+  november:[43400,76000,95000,123500,133000,null,299800],
+  noticeDate:'2026-10-19',noticePublishedAt:'2026-10-19T09:33:00+09:00',verifiedAt:'2026-10-19T23:41:23+09:00',
+  ticketingStart:'2026-11-01',ticketingEnd:'2026-11-30',direction:'one_way',departureCountry:'KR',
+  status:'official_notice_verified_from_web_saved_pdf_blank',infantExemption:'under_2_without_seat'
+});
+
+window.NOVEMBER_2026_NOTICE_COPY={
+  ko:{summary:'10월은 현재 적용 금액입니다. 11월 공시 확인: KE·OZ·7C·LJ·RS·BX·TW 7개사. 이스타(ZE)·에어프레미아(YP)는 10월 금액만 유지하고 11월은 공시 확인 대기입니다. 11월 1~30일 발권·편도 기준이며 공시 통화와 구간을 유지합니다.',short:'10월 기준 · 11월 공시 7개사 반영',period:'항공사 공식 웹 공지에서 확인한 한국 출발 국제선 편도 금액입니다. 2026년 11월 1~30일 발권분에 적용합니다. 트리니티 6군의 대시는 공시 금액 없음이며 0원이 아닙니다.'},
+  en:{summary:'October currently applies. November notices confirmed: KE/OZ/7C/LJ/RS/BX/TW, seven airlines. ZE and YP retain October amounts; November awaits verification. November figures are one-way for ticketing November 1–30, with original currencies and bands preserved.',short:'October baseline · seven November notices reflected',period:'Korea-departure international one-way amounts verified on official airline web notices. Applies to ticketing November 1–30, 2026. Trinity group 6 has a dash: no published amount, not zero.'},
+  ja:{summary:'10月は現在適用額。11月はKE・OZ・7C・LJ・RS・BX・TWの7社を確認。ZEとYPは10月額を維持し、11月公示確認待ちです。11月1～30日発券の片道基準で、元の通貨と区間を維持します。',short:'10月基準・11月7社公示反映',period:'航空会社公式ウェブ公示で確認した韓国発国際線片道額です。2026年11月1～30日発券分。トリニティ6群のダッシュは公示額なしで、ゼロではありません。'},
+  zh:{summary:'10月为当前收费。11月已确认KE/OZ/7C/LJ/RS/BX/TW共7家。ZE及YP保留10月金额，11月等待公告核实。11月金额适用11月1日至30日出票、单程，保留原币种及区间。',short:'10月基准・11月7家公告已反映',period:'金额经航司官方网页公告核实，为韩国出发国际线单程费用，适用2026年11月1日至30日出票。Trinity第6组为横线，表示无公布金额，并非零。'},
+  fr:{summary:'Octobre reste en vigueur. Novembre confirmé pour KE/OZ/7C/LJ/RS/BX/TW, sept compagnies. ZE et YP conservent octobre ; novembre reste à vérifier. Montants aller simple pour émission du 1er au 30 novembre, devises et tranches originales conservées.',short:'Base octobre · sept avis novembre intégrés',period:'Montants aller simple au départ de Corée vérifiés sur les avis web officiels. Émission du 1er au 30 novembre 2026. Le tiret du groupe 6 Trinity signifie absence de montant publié, pas zéro.'},
+  de:{summary:'Oktober gilt aktuell. November für KE/OZ/7C/LJ/RS/BX/TW bestätigt, sieben Airlines. ZE und YP behalten Oktober; November noch zu prüfen. Einfachbeträge für Ausstellung 1.–30. November, ursprüngliche Währungen und Bänder bleiben erhalten.',short:'Oktober-Basis · sieben November-Mitteilungen enthalten',period:'Internationale Einfachbeträge ab Korea laut geprüften offiziellen Web-Mitteilungen. Ausstellung 1.–30. November 2026. Trinity-Gruppe 6 hat einen Strich: kein veröffentlichter Betrag, nicht 0.'}
+};
+
 /* October 19 market references do not reprice published airline fares. */
 (function(){
   var n=Object.assign({},window.AERO_MARKET_NUMBERS_20261016,{
     asOf:'2026.10.19 09:30 KST',lastUpdated:'2026-10-19T09:30:00+09:00',
     currentMonth:'2026-10',octoberLevel:23,novemberLevel:27,
-    novemberStatus:'level_confirmed_five_airline_notices_verified',
+    novemberStatus:'level_confirmed_seven_airline_notices_verified',
+    novemberNoticesVerifiedAt:'2026-10-19T23:41:23+09:00',
     novemberMopsUsdPerBbl:173.89,novemberMopsCentsPerGal:414.03,
     novemberMopsSourceUrl:'https://www.yna.co.kr/amp/view/AKR20261016068000003',
     novemberDirection:'confirmed_level_not_forecast',novemberKrwDirection:'official_fares_by_carrier',

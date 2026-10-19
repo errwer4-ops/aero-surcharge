@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  var stamp='2026-10-17T17:25:00+09:00';
+  var stamp='2026-10-19T23:41:23+09:00';
   var october={
     KE:[49000,65800,98000,116200,162400,168000,226800,322000,362600],
     OZ:[53400,79400,104000,128700,153300,178000,202600,251900,301200],
@@ -111,7 +111,7 @@
     "Offizielle November-Mitteilung"
   ]
 };
-  Object.keys(novemberCopy).forEach(function(l){var t=novemberCopy[l];Object.assign(packs[l],{
+  Object.keys(novemberCopy).forEach(function(l){var t=novemberCopy[l];t[1]=window.NOVEMBER_2026_NOTICE_COPY[l].summary;Object.assign(packs[l],{
     title:t[0],desc:t[1],sub:t[1],h1:t[2],notice:t[1],intro:t[1],answerTitle:t[3],answerBody:t[4],
     card1:t[2],card1Body:t[1],card2:t[3],card2Body:t[4],note:t[5],table:t[1]+' '+t[4],faq1:t[1],
     faqQ:t[3]+'?',faqA:t[4],change:t[9],related:t[3],nov:t[7],thNov:t[8],pending:t[6],octNotice:t[10],novNotice:t[11]
