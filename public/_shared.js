@@ -15934,3 +15934,33 @@ window.NOVEMBER_2026_OFFICIAL_NOTICES=[
     "infantExemption": "under_2_without_seat"
   }
 ];
+
+/* October 19 market references do not reprice published airline fares. */
+(function(){
+  var n=Object.assign({},window.AERO_MARKET_NUMBERS_20261016,{
+    asOf:'2026.10.19 09:30 KST',lastUpdated:'2026-10-19T09:30:00+09:00',
+    currentMonth:'2026-10',octoberLevel:23,novemberLevel:27,
+    novemberStatus:'level_confirmed_five_airline_notices_verified',
+    novemberMopsUsdPerBbl:173.89,novemberMopsCentsPerGal:414.03,
+    novemberMopsSourceUrl:'https://www.yna.co.kr/amp/view/AKR20261016068000003',
+    novemberDirection:'confirmed_level_not_forecast',novemberKrwDirection:'official_fares_by_carrier',
+    novemberCalculationStart:'2026-09-16',novemberCalculationEnd:'2026-10-15',novemberStageEstimate:null,
+    forecastTargetMonth:'2026-12',decemberCalculationStart:'2026-10-16',decemberCalculationEnd:'2026-11-15',
+    decemberMopsUsdPerBbl:null,decemberStageEstimate:null,decemberDirection:'mixed_judgment_reserved',
+    decemberDirectionConfidence:'low',decemberStageConfidence:'judgment_reserved',
+    usdKrw:1334.7,usdKrwReferenceAt:'2026-10-19T07:36:02+09:00',
+    usdKrwReferenceSource:'https://www.bosoop.com/premarket/2026-10-19/',usdKrwKind:'morning_reference_not_official_fixing',
+    fxReferenceAt:'2026-10-19T07:36:02+09:00',fxReferenceSourceUrl:'https://www.bosoop.com/premarket/2026-10-19/',
+    usdKrwSeoulClose:1331.4,usdKrwSeoulCloseDate:'2026-10-16',
+    singaporeJetFobReferenceUsdPerBbl:170.20,singaporeJetFobReferenceDate:'2026-10-16',
+    singaporeJetReferenceProvider:'CommodityScope',singaporeJetReferenceConfidence:'low',
+    singaporeJetFobReferenceSourceUrl:'https://commodityscope.com/prices/singapore-jet-kerosene',
+    brentUsdPerBbl:109.86,wtiUsdPerBbl:101.41,crudePriceDate:'2026-10-16',crudePriceKind:'settlement',
+    brentPct:null,wtiPct:null,brentDailyChangeUsd:null,wtiDailyChangeUsd:null,
+    october19BrentIntraday:null,october19WtiIntraday:null,
+    currentHormuzTraffic:null,hormuzLatestGulfCrudeFlowMillionBpd:null,hormuzLatestWeeklyIncidentCount:null
+  });
+  window.AERO_MARKET_NUMBERS_20261019=n;
+  window.AERO_MARKET_NUMBERS_LATEST=n;
+  window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{'2026-10-19':n});
+})();

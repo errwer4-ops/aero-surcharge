@@ -49,6 +49,14 @@
   function lang(){ return normalizeLang(); }
   function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
   function setText(key, val){ document.querySelectorAll('[data-i18n="'+key+'"]').forEach(function(el){ el.textContent = val; }); }
+  function syncSurface(){
+    var p=pack(lang());
+    Object.keys(p.surface || {}).forEach(function(key){
+      document.querySelectorAll('[data-i18n="'+key+'"]').forEach(function(el){
+        if(el.textContent!==p.surface[key]) el.textContent=p.surface[key];
+      });
+    });
+  }
   function setHtml(key, val){ document.querySelectorAll('[data-i18n="'+key+'"]').forEach(function(el){ el.innerHTML = val; }); }
   function pathIs(name){ return new RegExp('/'+name+'(?:\\.html)?(?:$|[?#])').test(location.pathname + location.search); }
   function updateHead(title, desc, url){
@@ -389,6 +397,7 @@
       var foot = document.querySelector('[data-i18n="fore.indicator.footnote"]');
       if(foot) foot.innerHTML = esc(p.foot)+' '+release.sources.slice(0,2).map(function(s){return '<a href="'+esc(s[1])+'" target="_blank" rel="noopener noreferrer">'+esc(s[0])+'</a>';}).join(' · ');
     }
+    syncSurface();
     updateJsonLd('forecast', p);
   }
 
@@ -511,6 +520,7 @@
         related.querySelectorAll('a').forEach(function(a,i){a.textContent=[p.title,p.ui[6],p.ui[2],p.ui[7],p.ui[4],p.ui[3]][i];if(i===2)a.href='fuel-surcharge-graph.html';});
       }
     }
+    syncSurface();
     updateJsonLd('news', p);
   }
 
@@ -570,6 +580,16 @@
   }
 
   function applyAll(){ renderForecast(); renderNews(); }
+  // Older locale callbacks can finish after the current renderer. Repair only
+  // the release-owned labels, and skip equal text to avoid observer loops.
+  if(release){
+    var observeSurface=function(){
+      syncSurface();
+      new MutationObserver(syncSurface).observe(document.body,{subtree:true,childList:true,characterData:true});
+    };
+    if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',observeSurface);
+    else observeSurface();
+  }
   var prevRenderForecast = window.renderForecastPage;
   if(typeof prevRenderForecast === 'function') window.renderForecastPage = function(){ var out = prevRenderForecast.apply(this, arguments); setTimeout(renderForecast, 0); return out; };
   var prevRenderNews = window.renderNews;
