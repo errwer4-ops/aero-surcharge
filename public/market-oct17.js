@@ -20,7 +20,7 @@ period:'10월 16일 공식 공지 및 저장 PDF에서 확인한 한국 출발 �
 detail:'거리 구간별 10월 → 11월 금액',
 impact:'같은 항공사·같은 통화·같은 구간의 전월 대비 변화입니다. 다른 항공사의 통화와 직접 비교하지 않으며 실제 부과액은 공식 노선표를 확인하세요.',
 change:'구간별 최소 추가 부담',maxChange:'최대 추가 부담',source:'항공사 공식 공지',q:'11월 국제선 공시는 어떤 항공사가 발표했나요?',
-names:['대한항공','아시아나항공','제주항공','진에어','에어서울','에어부산','트리니티(티웨이)'],
+names:['대한항공','아시아나항공','제주항공','진에어','에어서울','에어부산','트리니티(티웨이)','이스타항공'],
 applies:'11월 공식',current:'10월 현재 적용',noAverage:'확인된 5개사의 금액은 공식 공시입니다. 11월 MOPS 평균·단계는 이 공시만으로 추정하지 않습니다.'
 },
 en:{
@@ -38,7 +38,7 @@ period:'Korea-departure international one-way figures verified against the Octob
 detail:'Distance band: October to November',
 impact:'Changes compare the same carrier, currency and band. Do not directly compare different notice currencies; check the official route table for the actual charge.',
 change:'Minimum additional charge across bands',maxChange:'maximum additional charge',source:'Official airline notice',q:'Which airlines have published November international notices?',
-names:['Korean Air','Asiana Airlines','Jeju Air','Jin Air','Air Seoul','Air Busan','Trinity (Tway)'],
+names:['Korean Air','Asiana Airlines','Jeju Air','Jin Air','Air Seoul','Air Busan','Trinity (Tway)','Eastar Jet'],
 applies:'November official',current:'October currently applies',noAverage:'The five airlines’ amounts are officially published. Their notices alone do not establish November MOPS average or level.'
 },
 ja:{
@@ -54,7 +54,7 @@ period:'10月16日の公式公示と保存PDFで確認した韓国発国際線�
 detail:'距離区間別10月→11月',
 impact:'同一航空会社・同一通貨・同一区間の前月比較です。異なる公示通貨を直接比較せず、実際の金額は公式路線表をご確認ください。',
 change:'区間別の最小追加負担',maxChange:'最大追加負担',source:'航空会社公式公示',q:'11月国際線公示を発表した航空会社は？',
-names:['大韓航空','アシアナ航空','チェジュ航空','ジンエアー','エアソウル','エアプサン','トリニティ（ティーウェイ）'],applies:'11月公式',current:'10月現在適用',noAverage:'5社の金額は公式公示です。この公示だけから11月MOPS平均・段階は推定しません。'
+names:['大韓航空','アシアナ航空','チェジュ航空','ジンエアー','エアソウル','エアプサン','トリニティ（ティーウェイ）','イースター航空'],applies:'11月公式',current:'10月現在適用',noAverage:'5社の金額は公式公示です。この公示だけから11月MOPS平均・段階は推定しません。'
 },
 zh:{
 title:'2026年10月燃油附加费执行中 | 11月5家航司公告确认',
@@ -69,7 +69,7 @@ period:'金额经10月16日官方公告及保存PDF核实，为韩国出发国�
 detail:'距离区间10月→11月',
 impact:'比较同一航司、币种及区间的前月变化。不可直接比较不同公告币种，实际费用请核对官方航线表。',
 change:'各区间最低额外负担',maxChange:'最高额外负担',source:'航司官方公告',q:'哪些航司公布了11月国际线公告？',
-names:['大韩航空','韩亚航空','济州航空','真航空','首尔航空','釜山航空','Trinity（德威）'],applies:'11月官方',current:'10月当前执行',noAverage:'5家航司金额已正式公布，不能仅凭此公告推算11月MOPS均价或档位。'
+names:['大韩航空','韩亚航空','济州航空','真航空','首尔航空','釜山航空','Trinity（德威）','易斯达航空'],applies:'11月官方',current:'10月当前执行',noAverage:'5家航司金额已正式公布，不能仅凭此公告推算11月MOPS均价或档位。'
 },
 fr:{
 title:'Surtaxes octobre 2026 en vigueur | Cinq avis officiels novembre confirmés',
@@ -84,7 +84,7 @@ period:'Montants aller simple au départ de Corée vérifiés sur l’avis offic
 detail:'Tranches de distance : octobre vers novembre',
 impact:'Écart pour même compagnie, devise et tranche. Ne pas comparer directement des devises différentes ; consulter le tableau officiel des lignes.',
 change:'Supplément minimum parmi les tranches',maxChange:'supplément maximum',source:'Avis officiel de la compagnie',q:'Quelles compagnies ont publié leurs avis internationaux novembre ?',
-names:['Korean Air','Asiana Airlines','Jeju Air','Jin Air','Air Seoul','Air Busan','Trinity (Tway)'],applies:'Novembre officiel',current:'Octobre en vigueur',noAverage:'Les montants des cinq compagnies sont officiels ; ces avis seuls ne déterminent ni moyenne MOPS ni niveau novembre.'
+names:['Korean Air','Asiana Airlines','Jeju Air','Jin Air','Air Seoul','Air Busan','Trinity (Tway)','Eastar Jet'],applies:'Novembre officiel',current:'Octobre en vigueur',noAverage:'Les montants des cinq compagnies sont officiels ; ces avis seuls ne déterminent ni moyenne MOPS ni niveau novembre.'
 },
 de:{
 title:'Oktober-Zuschläge 2026 gelten | Fünf offizielle November-Mitteilungen bestätigt',
@@ -99,7 +99,7 @@ period:'Internationaler Einfachbetrag ab Korea laut offizieller Mitteilung vom 1
 detail:'Entfernungsband: Oktober zu November',
 impact:'Vergleich derselben Airline, Währung und Entfernung. Unterschiedliche Mitteilungswährungen nicht direkt vergleichen; tatsächlichen Betrag in der offiziellen Streckentabelle prüfen.',
 change:'Kleinster Mehrbetrag über alle Bänder',maxChange:'größter Mehrbetrag',source:'Offizielle Airline-Mitteilung',q:'Welche Airlines haben internationale November-Mitteilungen veröffentlicht?',
-names:['Korean Air','Asiana Airlines','Jeju Air','Jin Air','Air Seoul','Air Busan','Trinity (Tway)'],applies:'November offiziell',current:'Oktober aktuell',noAverage:'Die fünf Airline-Beträge sind offiziell. Aus den Mitteilungen allein werden weder November-MOPS-Mittel noch Stufe abgeleitet.'
+names:['Korean Air','Asiana Airlines','Jeju Air','Jin Air','Air Seoul','Air Busan','Trinity (Tway)','Eastar Jet'],applies:'November offiziell',current:'Oktober aktuell',noAverage:'Die fünf Airline-Beträge sind offiziell. Aus den Mitteilungen allein werden weder November-MOPS-Mittel noch Stufe abgeleitet.'
 }
 };
 var additionalPeriod={};
@@ -147,7 +147,7 @@ Object.keys(copy).forEach(function(l){var c=copy[l];
 var brief=c.applies+': '+range(n)+' · '+c.change+' +'+n.currency+' '+fmt(d[0])+', '+c.maxChange+' +'+n.currency+' '+fmt(d[1])+'.';
 var detail=n.bands.map(function(b,j){return n.november[j]==null?b+': —':b+': '+n.currency+' '+fmt(n.october[j])+' → '+fmt(n.november[j])+' (+'+fmt(n.november[j]-n.october[j])+')';}).join('; ');
 card.i18n[l]={title:c.names[i]+' · '+c.cardTitle,aiBrief:brief,
-summary:(n.verifiedAt?additionalPeriod[l]:c.period)+' '+c.detail+': '+detail+'.',impact:c.impact,
+summary:(n.period?n.period[l]:n.verifiedAt?additionalPeriod[l]:c.period)+' '+(n.groupType==='route_group'?{ko:'노선군별 10월 → 11월',en:'Route group: October to November',ja:'路線群別10月→11月',zh:'航线组10月→11月',fr:'Groupe de lignes : octobre vers novembre',de:'Streckengruppe: Oktober zu November'}[l]:c.detail)+': '+detail+'.',impact:c.impact,
 sourceName:c.source,tags:[n.code,n.currency,'2026-11-01~2026-11-30'],links:[],faq:[]};
 });card.i18n.cn=card.i18n.zh;return card;
 });

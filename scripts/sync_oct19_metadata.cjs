@@ -6,6 +6,7 @@ const root = path.join(__dirname, '..', 'public');
 const window = {AERO_MARKET_RELEASE:{packs:{},rows:{},newsCards:[]}};
 for (const l of ['ko','en','ja','zh','fr','de']) window.AERO_MARKET_RELEASE.packs[l]={th:[],ui:[]};
 vm.runInNewContext(fs.readFileSync(path.join(root,'market-oct19.js'),'utf8'),{window});
+if (process.argv.includes('--oct21')) vm.runInNewContext(fs.readFileSync(path.join(root,'market-oct21.js'),'utf8'),{window});
 const r=window.AERO_MARKET_RELEASE,p=r.packs.ko;
 for (const file of ['forecast.html','news.html']) {
   const target=path.join(root,file);

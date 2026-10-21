@@ -22,6 +22,7 @@
     var data=window.SAVING_COMPARE_DATA&&SAVING_COMPARE_DATA[code];
     if(!data||!Array.isArray(data.rows))return;
     data.rows.forEach(function(row,index){
+      if(code==='ZE')row.label=String(index+1);
       row.may=october[code][index]==null?null:october[code][index];
       row.june=november[code]&&november[code][index]!=null?november[code][index]:null;
       row.julyOfficial=row.may;
@@ -173,7 +174,7 @@
     var faqAnswers=document.querySelectorAll('#calculatorFaq .faq-a');
     if(faqAnswers[0])faqAnswers[0].textContent=periodNotes[lang()]||periodNotes.en;
     var faqItems=Array.from(document.querySelectorAll('#calculatorFaq .faq-item')).map(function(el){var q=el.querySelector('.faq-q'),a=el.querySelector('.faq-a');return q&&a?{'@type':'Question',name:q.textContent,acceptedAnswer:{'@type':'Answer',text:a.textContent}}:null;}).filter(Boolean);
-    document.querySelectorAll('script[type="application/ld+json"]').forEach(function(el){try{var d=JSON.parse(el.textContent);function update(x){if(!x||typeof x!=='object')return;if(x['@type']==='WebPage'){x.name=p.title;x.description=p.desc;x.dateModified='2026-10-19T23:41:23+09:00';x.inLanguage=lang();}if(x['@type']==='FAQPage'&&faqItems.length){x.mainEntity=faqItems;x.inLanguage=lang();x.dateModified='2026-10-19T23:41:23+09:00';}if(Array.isArray(x['@graph']))x['@graph'].forEach(update);}update(d);el.textContent=JSON.stringify(d);}catch(e){}});
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function(el){try{var d=JSON.parse(el.textContent);function update(x){if(!x||typeof x!=='object')return;if(x['@type']==='WebPage'){x.name=p.title;x.description=p.desc;x.dateModified='2026-10-21T10:05:51+09:00';x.inLanguage=lang();}if(x['@type']==='FAQPage'&&faqItems.length){x.mainEntity=faqItems;x.inLanguage=lang();x.dateModified='2026-10-21T10:05:51+09:00';}if(Array.isArray(x['@graph']))x['@graph'].forEach(update);}update(d);el.textContent=JSON.stringify(d);}catch(e){}});
   }
   window._fixNovemberCalculatorSurface=fix;
   window._fixOctoberCalculatorSurface=fix;

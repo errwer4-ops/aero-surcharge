@@ -15960,13 +15960,40 @@ window.NOVEMBER_2026_OFFICIAL_NOTICES.push({
   status:'official_notice_verified_from_web_saved_pdf_blank',infantExemption:'under_2_without_seat'
 });
 
+/* Eastar October 20 notice: original route groups, USD, ticketing date. */
+window.NOVEMBER_2026_OFFICIAL_NOTICES.push({
+  code:'ZE',key:'officialZe',currency:'USD',
+  url:'https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=680&lang=KR',
+  bands:['1','2','3','4','5','6'],groupType:'route_group',
+  routesByGroup:[
+    ['ICN-FUK','PUS-FUK','PUS-KIX','PUS-KMJ','CJU-PVG','CJJ-YNJ','ICN-YNT','ICN-KOJ'],
+    ['ICN-NRT','ICN-KIX','ICN-CTS','PUS-CTS','ICN-OKA','PUS-OKA','ICN-TKS','GMP-TSA','ICN-TPE','CJJ-TPE','CJU-TPE','PUS-TPE','ICN-PVG','CJJ-PVG','PUS-YNJ','ICN-CGO','ICN-HET','PUS-XMN','PUS-HGH'],
+    ['ICN-HKG','CJJ-DYG','ICN-XMN','CJJ-XMN','TAE-DYG','PUS-HKG'],
+    ['ICN-DAD'],
+    ['ICN-BKK','ICN-CNX','PUS-CNX','ICN-CXR','ICN-PQC','PUS-PQC','ICN-MDC'],
+    ['ICN-ALA','PUS-ALA']
+  ],
+  october:[37,47,57,68,76,87],november:[43,54,66,79,89,103],
+  noticeDate:'2026-10-20',verifiedAt:'2026-10-21T10:05:51+09:00',
+  ticketingStart:'2026-11-01',ticketingEnd:'2026-11-30',direction:'one_way',departureCountry:'KR',
+  status:'official_notice_verified_against_web_and_saved_pdf',infantExemption:'under_2_without_seat',
+  period:{
+    ko:'10월 20일 등록된 공식 웹 공지와 저장 PDF를 대조했습니다. 한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 1~6군은 공지의 노선군이며 임의의 거리 구간으로 바꾸지 않습니다. 탑승일이나 현재 환율로 공시 금액을 재산정하지 않습니다.',
+    en:'Verified against the official October 20 web notice and saved PDF. Korea-departure international one-way amounts apply to ticketing November 1–30, 2026. Groups 1–6 are the notice’s route groups, not invented distance bands. Travel date and current FX do not reprice these USD notices.',
+    ja:'10月20日掲載の公式ウェブ公示と保存PDFを照合。韓国発国際線片道、2026年11月1～30日発券分に適用します。1～6群は公示の路線群で、独自の距離区分には置き換えません。搭乗日や現在の為替で公示額を再計算しません。',
+    zh:'已核对10月20日官方网页公告与保存PDF。金额为韩国出发国际线单程，适用2026年11月1日至30日出票。第1至6组为公告航线组，不替换为自行设定的距离档。乘机日期及当前汇率不改变USD公告金额。',
+    fr:'Vérifié sur l’avis officiel du 20 octobre et le PDF sauvegardé. Montants aller simple au départ de Corée pour émission du 1er au 30 novembre 2026. Les groupes 1 à 6 sont les groupes de lignes publiés, pas des tranches de distance inventées. Ni la date du vol ni le change actuel ne recalculent ces montants USD.',
+    de:'Mit offizieller Web-Mitteilung vom 20. Oktober und gespeichertem PDF abgeglichen. Internationale Einfachbeträge ab Korea für Ausstellung 1.–30. November 2026. Gruppen 1–6 sind veröffentlichte Streckengruppen, keine frei gewählten Entfernungsbänder. Reisedatum und aktueller Wechselkurs ändern diese USD-Beträge nicht.'
+  }
+});
+
 window.NOVEMBER_2026_NOTICE_COPY={
-  ko:{summary:'10월은 현재 적용 금액입니다. 11월 공시 확인: KE·OZ·7C·LJ·RS·BX·TW 7개사. 이스타(ZE)·에어프레미아(YP)는 10월 금액만 유지하고 11월은 공시 확인 대기입니다. 11월 1~30일 발권·편도 기준이며 공시 통화와 구간을 유지합니다.',short:'10월 기준 · 11월 공시 7개사 반영',period:'항공사 공식 웹 공지에서 확인한 한국 출발 국제선 편도 금액입니다. 2026년 11월 1~30일 발권분에 적용합니다. 트리니티 6군의 대시는 공시 금액 없음이며 0원이 아닙니다.'},
-  en:{summary:'October currently applies. November notices confirmed: KE/OZ/7C/LJ/RS/BX/TW, seven airlines. ZE and YP retain October amounts; November awaits verification. November figures are one-way for ticketing November 1–30, with original currencies and bands preserved.',short:'October baseline · seven November notices reflected',period:'Korea-departure international one-way amounts verified on official airline web notices. Applies to ticketing November 1–30, 2026. Trinity group 6 has a dash: no published amount, not zero.'},
-  ja:{summary:'10月は現在適用額。11月はKE・OZ・7C・LJ・RS・BX・TWの7社を確認。ZEとYPは10月額を維持し、11月公示確認待ちです。11月1～30日発券の片道基準で、元の通貨と区間を維持します。',short:'10月基準・11月7社公示反映',period:'航空会社公式ウェブ公示で確認した韓国発国際線片道額です。2026年11月1～30日発券分。トリニティ6群のダッシュは公示額なしで、ゼロではありません。'},
-  zh:{summary:'10月为当前收费。11月已确认KE/OZ/7C/LJ/RS/BX/TW共7家。ZE及YP保留10月金额，11月等待公告核实。11月金额适用11月1日至30日出票、单程，保留原币种及区间。',short:'10月基准・11月7家公告已反映',period:'金额经航司官方网页公告核实，为韩国出发国际线单程费用，适用2026年11月1日至30日出票。Trinity第6组为横线，表示无公布金额，并非零。'},
-  fr:{summary:'Octobre reste en vigueur. Novembre confirmé pour KE/OZ/7C/LJ/RS/BX/TW, sept compagnies. ZE et YP conservent octobre ; novembre reste à vérifier. Montants aller simple pour émission du 1er au 30 novembre, devises et tranches originales conservées.',short:'Base octobre · sept avis novembre intégrés',period:'Montants aller simple au départ de Corée vérifiés sur les avis web officiels. Émission du 1er au 30 novembre 2026. Le tiret du groupe 6 Trinity signifie absence de montant publié, pas zéro.'},
-  de:{summary:'Oktober gilt aktuell. November für KE/OZ/7C/LJ/RS/BX/TW bestätigt, sieben Airlines. ZE und YP behalten Oktober; November noch zu prüfen. Einfachbeträge für Ausstellung 1.–30. November, ursprüngliche Währungen und Bänder bleiben erhalten.',short:'Oktober-Basis · sieben November-Mitteilungen enthalten',period:'Internationale Einfachbeträge ab Korea laut geprüften offiziellen Web-Mitteilungen. Ausstellung 1.–30. November 2026. Trinity-Gruppe 6 hat einen Strich: kein veröffentlichter Betrag, nicht 0.'}
+  ko:{summary:'10월은 현재 적용 금액입니다. 11월 공시 확인: KE·OZ·7C·LJ·RS·BX·TW·ZE 8개사. 에어프레미아(YP)는 10월 금액만 유지하고 11월은 공시 확인 대기입니다. 11월 1~30일 발권·편도 기준이며 공시 통화와 구간을 유지합니다.',short:'10월 기준 · 11월 공시 8개사 반영',period:'항공사 공식 웹 공지에서 확인한 한국 출발 국제선 편도 금액입니다. 2026년 11월 1~30일 발권분에 적용합니다. 트리니티 6군의 대시는 공시 금액 없음이며 0원이 아닙니다.'},
+  en:{summary:'October currently applies. November notices confirmed: KE/OZ/7C/LJ/RS/BX/TW/ZE, eight airlines. YP retains October amounts; November awaits verification. November figures are one-way for ticketing November 1–30, with original currencies and bands preserved.',short:'October baseline · eight November notices reflected',period:'Korea-departure international one-way amounts verified on official airline web notices. Applies to ticketing November 1–30, 2026. Trinity group 6 has a dash: no published amount, not zero.'},
+  ja:{summary:'10月は現在適用額。11月はKE・OZ・7C・LJ・RS・BX・TW・ZEの8社を確認。YPは10月額を維持し、11月公示確認待ちです。11月1～30日発券の片道基準で、元の通貨と区間を維持します。',short:'10月基準・11月8社公示反映',period:'航空会社公式ウェブ公示で確認した韓国発国際線片道額です。2026年11月1～30日発券分。トリニティ6群のダッシュは公示額なしで、ゼロではありません。'},
+  zh:{summary:'10月为当前收费。11月已确认KE/OZ/7C/LJ/RS/BX/TW/ZE共8家。YP保留10月金额，11月等待公告核实。11月金额适用11月1日至30日出票、单程，保留原币种及区间。',short:'10月基准・11月8家公告已反映',period:'金额经航司官方网页公告核实，为韩国出发国际线单程费用，适用2026年11月1日至30日出票。Trinity第6组为横线，表示无公布金额，并非零。'},
+  fr:{summary:'Octobre reste en vigueur. Novembre confirmé pour KE/OZ/7C/LJ/RS/BX/TW/ZE, huit compagnies. YP conserve octobre ; novembre reste à vérifier. Montants aller simple pour émission du 1er au 30 novembre, devises et tranches originales conservées.',short:'Base octobre · huit avis novembre intégrés',period:'Montants aller simple au départ de Corée vérifiés sur les avis web officiels. Émission du 1er au 30 novembre 2026. Le tiret du groupe 6 Trinity signifie absence de montant publié, pas zéro.'},
+  de:{summary:'Oktober gilt aktuell. November für KE/OZ/7C/LJ/RS/BX/TW/ZE bestätigt, acht Airlines. YP behält Oktober; November noch zu prüfen. Einfachbeträge für Ausstellung 1.–30. November, ursprüngliche Währungen und Bänder bleiben erhalten.',short:'Oktober-Basis · acht November-Mitteilungen enthalten',period:'Internationale Einfachbeträge ab Korea laut geprüften offiziellen Web-Mitteilungen. Ausstellung 1.–30. November 2026. Trinity-Gruppe 6 hat einen Strich: kein veröffentlichter Betrag, nicht 0.'}
 };
 
 /* October 19 market references do not reprice published airline fares. */
@@ -15974,8 +16001,8 @@ window.NOVEMBER_2026_NOTICE_COPY={
   var n=Object.assign({},window.AERO_MARKET_NUMBERS_20261016,{
     asOf:'2026.10.19 09:30 KST',lastUpdated:'2026-10-19T09:30:00+09:00',
     currentMonth:'2026-10',octoberLevel:23,novemberLevel:27,
-    novemberStatus:'level_confirmed_seven_airline_notices_verified',
-    novemberNoticesVerifiedAt:'2026-10-19T23:41:23+09:00',
+    novemberStatus:'level_confirmed_eight_airline_notices_verified',
+    novemberNoticesVerifiedAt:'2026-10-21T10:05:51+09:00',
     novemberMopsUsdPerBbl:173.89,novemberMopsCentsPerGal:414.03,
     novemberMopsSourceUrl:'https://www.yna.co.kr/amp/view/AKR20261016068000003',
     novemberDirection:'confirmed_level_not_forecast',novemberKrwDirection:'official_fares_by_carrier',
@@ -15998,4 +16025,33 @@ window.NOVEMBER_2026_NOTICE_COPY={
   window.AERO_MARKET_NUMBERS_20261019=n;
   window.AERO_MARKET_NUMBERS_LATEST=n;
   window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{'2026-10-19':n});
+})();
+
+/* Separate daily/indicative observations from completed monthly assessments. */
+(function(){
+  var n=Object.assign({},window.AERO_MARKET_NUMBERS_20261019,{
+    asOf:'2026.10.21 10:00 KST',lastUpdated:'2026-10-21T10:00:00+09:00',
+    usdKrw:1323.65,usdKrwReferenceAt:'2026-10-21T09:42:00+09:00',
+    usdKrwReferenceSource:'https://exchangerate.dev/exchange-rates/usd-krw',
+    usdKrwKind:'intraday_indicative_not_fixing_or_monthly_average',
+    fxReferenceAt:'2026-10-21T09:42:00+09:00',fxReferenceSourceUrl:'https://exchangerate.dev/exchange-rates/usd-krw',
+    fxHistoricalSourceUrl:'https://exchangerate.dev/api/chart-history?base=USD&symbol=KRW&interval=1m',
+    fxObservationEffectiveAt:'2026-10-21T00:42:59.999Z',
+    singaporeJetFobReferenceUsdPerBbl:170.16,singaporeJetFobReferenceDate:'2026-10-19',
+    brentUsdPerBbl:109.64,wtiUsdPerBbl:98.58,crudePriceDate:'2026-10-21',
+    crudePriceKind:'intraday',crudeReferenceAt:'2026-10-21T00:22:00Z',
+    brentContractMonth:'2026-12',wtiContractMonth:'2026-12',
+    brentPct:0.78,wtiPct:0.78,brentDailyChangeUsd:0.85,wtiDailyChangeUsd:0.76,
+    crudeSourceUrl:'https://www.investing.com/news/commodities-news/oil-rises-on-middle-east-supply-worries-4961438',
+    brentPreviousSettlement:108.79,wtiNovemberExpiredSettlement:101.79,wtiDecemberPreviousSettlement:97.82,
+    crudePreviousSettlementDate:'2026-10-20',
+    hormuzRecentAttackCountAtLeast:18,hormuzAttackReportingDate:'2026-10-19',hormuzAttackWindow:'preceding_two_weeks',
+    hormuzMineClaimDate:'2026-10-20',hormuzMineClaimIndependentVerification:false,
+    hormuzLatestGulfCrudeFlowMillionBpd:null,hormuzLatestWeeklyIncidentCount:null,currentHormuzTraffic:null,
+    vitolVlccShuttleCountApprox:80,usAsiaCrudeFreightUsdPerBblApprox:40,freightReportedDate:'2026-10-20',
+    decemberMopsUsdPerBbl:null,decemberStageEstimate:null,decemberDirection:'upside_risks_mixed_judgment_reserved',
+    decemberDirectionConfidence:'low',decemberStageConfidence:'judgment_reserved'
+  });
+  window.AERO_MARKET_NUMBERS_20261021=n;window.AERO_MARKET_NUMBERS_LATEST=n;
+  window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{'2026-10-21':n});
 })();

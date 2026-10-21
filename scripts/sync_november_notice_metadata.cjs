@@ -1,6 +1,6 @@
 const {chromium}=require('playwright');
 const fs=require('node:fs'),path=require('node:path');
-const stamp='2026-10-19T23:41:23+09:00';
+const stamp='2026-10-21T10:05:51+09:00';
 (async()=>{
  const b=await chromium.launch(),p=await b.newPage();
  await p.route('**/*',r=>r.request().url().startsWith('http://localhost:4173')?r.continue():r.abort());

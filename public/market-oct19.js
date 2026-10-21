@@ -81,7 +81,7 @@ flow:'Neuester Kpler-Golfrohölfluss und wöchentliche Vorfallzahl sind keinem a
 iran:'Reuters berichtete am 18. Oktober, Irans Außenminister halte den Vorschlag aufrecht: Hormus könne innerhalb von sechs Tagen öffnen, falls die USA unter anderem Hafenblockade und Ölsanktionen aufheben und regionale Kampfhandlungen enden. Dies ist Irans bedingter Vorschlag, keine bestätigte US-Zustimmung oder vereinbarte Öffnung.',
 labels:['Monatlicher Anwendungsstatus','Singapore Jet Fuel / MOPS','Global Jet / Wechselkurs / Rohöl','Saudi-Angebot / Nahostexporte','Hormus-Sicherheit / LNG'],indicator:'Indikatoren zum Dezember-Ausblick 2026',verdict:'Fazit Dezember 2026',basis:'November bestätigt, Dezember in Berechnung',key:'Prüfpunkte',button:'Dezember-Ausblick →',heads:['November Stufe 27 bestätigt: MOPS-Mittel 173.89 USD','Wechselkurs: Schluss 16. Oktober und Morgenreferenz 19. Oktober','Singapore Jet 170.20 USD ist eine tägliche indikative Bewertung','Rohöl: geprüfte Schlusskurse vom 16. Oktober beibehalten','Hormus: Berichtszeiträume für Flüsse und Vorfälle prüfen','Irans bedingter Vorschlag zur Öffnung von Hormus'],questions:['Welche Stufe gilt im Oktober?','Welche Stufe ist für November bestätigt?','November-MOPS-Mittel und Zeitraum?','Sind 170.20 USD ein Monatsmittel?','Ist Dezember bestätigt?','Sind 1,334.7 der monatliche Umrechnungskurs?','Ist Hormus vollständig gesperrt?','Ist Irans Vorschlag eine vereinbarte Öffnung?'],impact:'Bestätigte Monatsmitteilungen von Marktreferenzen trennen. Folgemonatstarife erst nach offizieller Veröffentlichung bestätigen.'}
 };
-r.modified='2026-10-19T23:41:23+09:00';r.asOf=asOf;
+r.modified='2026-10-21T10:05:51+09:00';r.asOf=asOf;
 r.numbers=Object.assign({},r.numbers,window.AERO_MARKET_NUMBERS_20261019);
 r.sources=[['Yonhap · November MOPS',urls[0]],['CommodityScope · daily indicative',urls[2]],['BOSOOP · morning reference',urls[1]]];
 var qualifications={
@@ -104,7 +104,7 @@ Object.keys(copy).forEach(function(l){
 var c=copy[l],p=r.packs[l];
 // The earlier market card keeps its 09:30 verification count; page copy uses
 // the later official notices without moving market prices past their cutoff.
-var countPhrases={ko:['확인된 5개사','확인된 7개사'],en:['five verified','seven verified'],ja:['確認済み5社','確認済み7社'],zh:['5家已核实','7家已核实'],fr:['cinq tableaux vérifiés','sept tableaux vérifiés'],de:['fünf geprüften','sieben geprüften']};
+var countPhrases={ko:['확인된 5개사','확인된 8개사'],en:['five verified','eight verified'],ja:['確認済み5社','確認済み8社'],zh:['5家已核实','8家已核实'],fr:['cinq tableaux vérifiés','huit tableaux vérifiés'],de:['fünf geprüften','acht geprüften']};
 var currentNov=c.nov.replace(countPhrases[l][0],countPhrases[l][1]);
 c.dec+=' '+qualifications[l][0];
 var s=surface[l];p.th=p.th.slice();p.th[2]=s[0];
@@ -124,7 +124,7 @@ sub:asOf+' · '+c.status,newsSub:asOf+' · '+c.status,notice:c.status,intro:c.cu
 indicator:c.indicator,rows:rows,foot:c.jet+' '+c.fx,basisTitle:c.basis,basisBody:currentNov+' '+c.dec,
 verdictTitle:c.verdict,verdict1:c.dec,verdict2:c.jet,verdictLong:c.iran,
 keyTitle:c.key,keyVars:[c.status,c.dec,'Singapore Jet 170.20 USD/bbl (2026-10-16)','USD/KRW 1,334.7 (2026-10-19 07:36 KST)'],
-note:c.dec,officialNotice:'2026.10.19 23:41 KST · '+c.status,forecastBtn:c.button,factorClasses:['','','','',''],
+note:c.dec,officialNotice:'2026.10.21 10:05 KST · '+c.status,forecastBtn:c.button,factorClasses:['','','','',''],
 faq:c.questions.map(function(q,i){return {q:q,a:answers[i]};})});
 });
 var mpa={

@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  var stamp='2026-10-19T23:41:23+09:00';
+  var stamp='2026-10-21T10:05:51+09:00';
   var octoberLinks={
     KE:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2610-infuel?pageNum=1',
     OZ:'https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202609160002530627',
@@ -194,6 +194,8 @@
     });});
   }
   function installData(){
+    // Eastar publishes route groups, not mileage brackets.
+    if(window._OFFICIAL_AMT&&_OFFICIAL_AMT.ZE)_OFFICIAL_AMT.ZE.rows.forEach(function(row,i){row.label=String(i+1);});
     // The legacy july/august slots render the baseline and next-month columns.
     Object.keys(october).forEach(function(code){var d=window._OFFICIAL_AMT&&_OFFICIAL_AMT[code];if(!d||!d.rows)return;d.rows.forEach(function(row,i){row.july=october[code][i];row.august=november[code]?november[code][i]:null;});});
     Object.keys(AUGUST_2026_NOTICE_LINKS).forEach(function(code){delete AUGUST_2026_NOTICE_LINKS[code];});
@@ -233,7 +235,7 @@
   function patchLandingState(){
     var lang=window.getCurrentLang?window.getCurrentLang():'ko';if(lang==='cn')lang='zh';var c=text[lang]||text.en;
     document.querySelectorAll('.mini-notice-btn:not([href])').forEach(function(pending){var card=pending.closest('.mini-card');var status=card&&card.querySelector('.mini-status');if(status)status.innerHTML='<span style="font-size:10px;color:#92400e;font-weight:700">'+c.pending+'</span>';});
-    var statusText=document.getElementById('statusText');if(statusText)statusText.textContent='2026-10-17 17:25 KST'+c.suffix;
+    var statusText=document.getElementById('statusText');if(statusText)statusText.textContent=stamp.slice(0,16).replace('T',' ')+' KST'+c.suffix;
     var compareLink=document.querySelector('[data-i18n="index.quick.compare.name"]');
     if(compareLink&&compareLink.closest('a'))compareLink.closest('a').href='news.html#compareList';
     updateHead();
@@ -246,7 +248,13 @@
     var lang=window.getCurrentLang?window.getCurrentLang():'ko';if(lang==='cn')lang='zh';
     var label={ko:'해당 노선 없음',en:'No applicable route',ja:'該当路線なし',zh:'无适用航线',fr:'Aucune ligne applicable',de:'Keine passende Strecke'}[lang]||'No applicable route';
     document.querySelectorAll('.al-card').forEach(function(card){
-      var code=card.querySelector('.card-code');if(!code||code.textContent.trim()!=='YP')return;
+      var code=card.querySelector('.card-code');if(!code)return;
+      if(code.textContent.trim()==='ZE'){
+        var heading=card.querySelector('.route-table th');
+        if(heading)heading.textContent={ko:'노선군',en:'Route group',ja:'路線群',zh:'航线组',fr:'Groupe de lignes',de:'Streckengruppe'}[lang]||'Route group';
+        return;
+      }
+      if(code.textContent.trim()!=='YP')return;
       card.querySelectorAll('tbody tr').forEach(function(row){
         var current=row.querySelector('.route-amt-current');var next=row.querySelector('.route-amt-next');
         if(!current||!next||current.textContent.trim()!=='-'||!next.querySelector('.prepub'))return;
