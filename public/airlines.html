@@ -1,29 +1,24 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  <script src="_analytics-config.js"></script>
+  <script src="_analytics.js"></script>
   <meta charset="UTF-8"/><meta name="viewport" content="width=device-width,initial-scale=1.0"/>
-  <title>항공사별 유류할증료 | 2026년 9월 공시 반영 및 10월 준비</title>
-  <meta name="description" content="2026년 8월 24일 기준 한국 출발 국제선 9월 유류할증료 공시 반영 현황과 항공사별 8월 대비 최소 인상액, 10월 공시 준비 변수를 정리합니다."/>
+  <title>항공사별 유류할증료 | 2026년 9월·10월 공식 공시 비교</title>
+  <meta name="description" content="2026년 9월과 10월 한국 출발 국제선 유류할증료 공식 공시를 항공사별로 비교합니다. 확인된 11월 공시는 노선별 조회와 계산기에서 확인할 수 있습니다."/>
   <meta name="google-adsense-account" content="ca-pub-4285114770383510">
 
   <link rel="canonical" href="https://aero-surcharge.com/airlines.html"/>
-  <meta property="og:title" content="항공사별 유류할증료 | 2026년 9월 공시 반영 및 10월 준비"/>
-  <meta property="og:description" content="2026년 8월 24일 기준 KE·OZ·LJ·BX·TW·7C·ZE·RS·YP 9월 공시와 8월 대비 최소 인상액, 10월 전망 준비 상태를 확인합니다."/>
+  <meta property="og:title" content="항공사별 유류할증료 | 2026년 9월·10월 공식 공시 비교"/>
+  <meta property="og:description" content="2026년 9월과 10월 한국 출발 국제선 유류할증료 공식 공시를 항공사별로 비교합니다. 확인된 11월 공시는 노선별 조회와 계산기에서 확인할 수 있습니다."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.com/airlines.html"/>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
+  <script src="_ads.js" defer></script>
   <link rel="stylesheet" href="_shared.css"/>
-  <link rel="icon" href="/favicon-v2.ico">
+  <link rel="icon" href="/favicon-v2.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-v2.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-v2.png">
   <link rel="apple-touch-icon" href="/favicon-v2.png">
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-76T4QJPY4L"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-76T4QJPY4L');
-  </script>
   <style>
     .page-header{background:linear-gradient(160deg,#075985 0%,#0369A1 55%,#0284C7 100%);padding:16px 36px 20px;}
     .page-header::before{content:'';position:absolute;inset:0;}
@@ -95,6 +90,9 @@
     .surcharge-analysis li{font-size:12.5px;color:var(--text2);line-height:1.6;}
     .surcharge-analysis li strong{color:var(--text);}
   </style>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="항공사별 유류할증료 | 2026년 9월·10월 공식 공시 비교"/>
+  <meta name="twitter:description" content="2026년 9월과 10월 한국 출발 국제선 유류할증료 공식 공시를 항공사별로 비교합니다. 확인된 11월 공시는 노선별 조회와 계산기에서 확인할 수 있습니다."/>
 </head>
 <body>
 <nav>
@@ -130,15 +128,15 @@
 
 <!-- 헤더: id로 applyStaticTexts()가 채움 -->
 <div class="page-header">
-  <div class="page-title" id="pageTitle"></div>
-  <div class="page-sub"   id="pageSub"></div>
+  <h1 class="page-title" id="pageTitle" style="margin:0">항공사별 유류할증료</h1>
+  <div class="page-sub"   id="pageSub">2026년 9월·10월 공식 공시 비교</div>
 </div>
 
 <!-- 소개 섹션 -->
 <div style="max-width:1060px;margin:0 auto;padding:20px 24px 0;">
   <div style="background:#fff;border-radius:14px;border:1.5px solid var(--line);padding:20px 24px;margin-bottom:4px;box-shadow:0 2px 8px rgba(0,0,0,.04);">
-    <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:8px;" id="introTitle"></div>
-    <p style="font-size:13px;color:var(--text2);line-height:1.75;margin:0;" id="introBody"></p>
+    <div style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:8px;" id="introTitle">항공사별 2026년 10월 유류할증료 공시 현황</div>
+    <p style="font-size:13px;color:var(--text2);line-height:1.75;margin:0;" id="introBody">9개 항공사의 2026년 10월 한국 출발 국제선 공식 금액과 공지 링크를 반영했습니다. 9월과 10월 발권분을 공시 통화 및 거리구간별로 비교합니다.</p>
   </div>
 </div>
 
@@ -148,54 +146,54 @@
     <div class="beta-banner-icon">⚠️</div>
     <div class="beta-banner-body">
       <div class="beta-banner-title">
-        <span class="beta-badge">BETA</span><span id="betaTitle"></span>
+        <span class="beta-badge">BETA</span><span id="betaTitle">베타 서비스 안내</span>
       </div>
-      <div class="beta-banner-desc" id="betaDesc"></div>
-      <div class="beta-banner-note" id="betaNote"></div>
+      <div class="beta-banner-desc" id="betaDesc">현재 한국 출발 국제선 유류할증료를 중심으로 10월 공식 금액과 항공사 공지 링크를 제공합니다. 실제 발권 금액은 항공사 공지와 결제 통화를 함께 확인하세요.</div>
+      <div class="beta-banner-note" id="betaNote">이 표의 비교 범위는 2026년 9월·10월입니다. 11월 공식 공시 확인분은 노선별 조회와 계산기에서 확인하세요.</div>
     </div>
   </div>
 </div>
 
 <div class="main">
   <div class="status-strip" id="statusStrip" style="display:none">
-    <div class="status-dot" id="statusDot"></div><span id="statusText"></span>
+    <div class="status-dot" id="statusDot"></div><span id="statusText">2026년 9월·10월 공식 공시 비교</span>
   </div>
-  <div class="kr-only-note" id="krOnlyNote"></div>
+  <div class="kr-only-note" id="krOnlyNote">현재 한국 출발 국제선 주요 항공사 기준입니다. USD 공시 항공사의 원화 체감액은 결제 시점 환율에 따라 달라질 수 있습니다.</div>
 
   <!-- SEO 요약 블록 -->
   <section class="surcharge-summary" id="seoSummarySection">
-    <h2 id="seoSummaryH2"></h2>
-    <p id="seoSummaryP"></p>
+    <h2 id="seoSummaryH2">2026년 10월 한국 출발 국제선 유류할증료 공시 반영 현황</h2>
+    <p id="seoSummaryP">10월은 23단계로 확정돼 10월 1일부터 적용됩니다. KE·OZ·LJ·BX·TW·7C·ZE·RS·YP 모두 공시를 반영했습니다. 대한항공 500~999mi는 66,000원→65,800원, 5,000~6,499mi는 325,500원→322,000원으로 인하됐습니다.</p>
   </section>
 
   <div class="toolbar">
-    <input class="search-input" id="searchInput" type="text"/>
+    <input data-clarity-mask="true" class="search-input" id="searchInput" type="text"/>
     <div class="filter-tabs">
       <button class="ftab active" data-f="all"      id="ftabAll"></button>
       <button class="ftab"        data-f="official" id="ftabOfficial"></button>
       <button class="ftab"        data-f="missing"  id="ftabMissing"></button>
       <button class="ftab"        data-f="blocked"  id="ftabBlocked"></button>
     </div>
-    <span class="count-label" id="countLabel"></span>
+    <span class="count-label" id="countLabel">9/9</span>
   </div>
 
   <div class="table-wrap">
     <div class="table-head">
       <div class="th" id="thIata">IATA</div>
-      <div class="th" id="thAirline"></div>
-      <div class="th" id="thCurrent"></div>
-      <div class="th" id="thPeriod"></div>
-      <div class="th" id="thStatus"></div>
-      <div class="th" id="thSource"></div>
+      <div class="th" id="thAirline">항공사</div>
+      <div class="th" id="thCurrent">현재값</div>
+      <div class="th" id="thPeriod">기준 월</div>
+      <div class="th" id="thStatus">데이터 상태</div>
+      <div class="th" id="thSource">공식 출처</div>
     </div>
-    <p class="surcharge-intro" id="surchargeIntro" style="padding:8px 20px 0;margin:0;"></p>
+    <p class="surcharge-intro" id="surchargeIntro" style="padding:8px 20px 0;margin:0;">아래 목록은 9개 항공사의 9월·10월 공식 공시 금액과 구간별 변화를 비교합니다.</p>
     <div id="tableBody"><div style="padding:32px;text-align:center;color:var(--muted)" id="loadingText"></div></div>
   </div>
 
   <!-- SEO 분석 블록 -->
   <section class="surcharge-analysis" id="seoAnalysis">
-    <h3 id="analysisH3"></h3>
-    <ul id="analysisUl"></ul>
+    <h3 id="analysisH3">2026년 9월 → 10월 유류할증료 반영 현황</h3>
+    <ul id="analysisUl"><li>10월 공시: 9개 항공사의 금액과 공식 원문을 반영했습니다.</li><li>대한항공 일부 구간은 인하됐고 다수 다른 구간은 인상됐습니다.</li><li>USD 공시는 공시 통화로 비교하며 원화 결제액은 항공사 적용 환율에 따라 달라집니다.</li><li>이 표의 비교 범위는 2026년 9월·10월입니다. 11월 공식 공시 확인분은 노선별 조회와 계산기에서 확인하세요.</li></ul>
   </section>
 
   <!-- 항공사별 SEO 페이지 링크 -->
@@ -1668,10 +1666,7 @@ loadData();
 <script src="airlines-oct20.js?v=20261001-01"></script>
 
 <footer style="background:var(--white);border-top:1px solid var(--line);padding:20px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;">
-  <p style="font-size:12px;color:var(--muted);max-width:580px;line-height:1.6;margin:0;" id="footerNote">
-    표시된 유류할증료는 항공사 공식 공지 기반 참고용 정보입니다. 실제 발권 금액은 항공사에서 직접 확인하세요.<br>
-    문의: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>
-  </p>
+  <p style="font-size:12px;color:var(--muted);max-width:580px;line-height:1.6;margin:0;" id="footerNote">표시된 유류할증료는 항공사 공식 공지 기반 참고용 정보입니다. 실제 발권 금액은 항공사에서 직접 확인하세요.<br>文의: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a></p>
   <nav style="display:flex;gap:16px;flex-wrap:wrap;">
     <a href="about.html"   style="font-size:12px;color:var(--muted);text-decoration:none;">About</a>
     <a href="privacy.html" style="font-size:12px;color:var(--muted);text-decoration:none;">Privacy Policy</a>

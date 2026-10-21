@@ -1,6 +1,8 @@
 <!doctype html>
 <html lang="ko">
 <head>
+  <script src="_analytics-config.js"></script>
+  <script src="_analytics.js"></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="robots" content="noindex,nofollow,noarchive">
@@ -43,29 +45,29 @@
       </select>
     </label>
     <label id="originalUrlWrap">원본 URL
-      <input id="originalUrl" value="https://www.myrealtrip.com/" inputmode="url">
+      <input data-clarity-mask="true" id="originalUrl" value="https://www.myrealtrip.com/" inputmode="url">
     </label>
     <label id="subIdWrap">subId
-      <input id="subId" value="api_test">
+      <input data-clarity-mask="true" id="subId" value="api_test">
     </label>
     <button id="run" type="button">설정 확인</button>
   </div>
 
   <div class="toolbar admin" id="adminFields">
     <label>관리자 토큰
-      <input id="adminToken" type="password" autocomplete="off">
+      <input data-clarity-mask="true" id="adminToken" type="password" autocomplete="off">
     </label>
     <label>조회 시작일
-      <input id="startDate" type="date">
+      <input data-clarity-mask="true" id="startDate" type="date">
     </label>
     <label>조회 종료일
-      <input id="endDate" type="date">
+      <input data-clarity-mask="true" id="endDate" type="date">
     </label>
     <span></span>
   </div>
 
   <div class="panel">
-    <label><input id="actualCall" type="checkbox"> 실제 API 호출 실행</label>
+    <label><input data-clarity-mask="true" id="actualCall" type="checkbox"> 실제 API 호출 실행</label>
     <p class="status" id="status">대기 중</p>
   </div>
   <section class="panel">

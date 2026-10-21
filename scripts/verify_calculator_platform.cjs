@@ -1,0 +1,63 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const {spawn}=require('node:child_process');
+const {chromium}=require('playwright');
+const root=path.resolve(__dirname,'..'),port=Number(process.env.CALCULATOR_TEST_PORT||4194),base=`http://127.0.0.1:${port}`;
+async function main(){
+  const server=spawn(process.execPath,[path.join(__dirname,'serve_local.js')],{cwd:root,env:{...process.env,PORT:String(port)},stdio:['ignore','pipe','pipe']});let browser;
+  try{
+    await new Promise((resolve,reject)=>{const timer=setTimeout(()=>reject(Error('Server start timeout')),10000);server.stdout.on('data',data=>{if(String(data).includes('Local review server')){clearTimeout(timer);resolve();}});server.on('error',reject);server.on('exit',code=>reject(Error('Server exit '+code)));});
+    browser=await chromium.launch();const context=await browser.newContext({viewport:{width:1280,height:900}});
+    await context.route('**/*',r=>r.request().url().startsWith(base)&&!r.request().url().includes('/api/')?r.continue():r.abort());
+    await context.addInitScript(()=>{window.AERO_ANALYTICS_CONFIG={allowLocal:true,debug:true};});
+    const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+    await page.goto(base+'/fuel-surcharge-calculator.html');await page.waitForFunction(()=>window.AeroCalculatorPlatform && window.SAVING_INDEX_ROUTE_MAP && document.querySelector('#savingTableWrap tbody'));
+    await page.waitForTimeout(4300);
+    await page.evaluate(()=>AeroAnalytics.setConsent(true,false));
+    async function route(origin,destination){await page.locator('#savingOriginInput').fill(origin);await page.locator('#savingOriginInput').press('Enter');await page.locator('#savingDestinationInput').fill(destination);await page.locator('#savingDestinationInput').press('Enter');}
+    await route('ICN','NRT');await page.selectOption('#savingAirlineFilter','KE');await page.locator('#savingCalcBtn').click();
+    const row=page.locator('#savingTableWrap tr[data-airline="KE"]');assert((await row.innerText()).includes('KRW 65,800'));assert((await row.innerText()).includes('KRW 76,000'));assert((await row.innerText()).includes('+KRW 10,200'));assert((await row.innerText()).includes('+15.50%'));assert.equal(await row.locator('a').count(),2);
+    const first=await page.evaluate(()=>dataLayer.filter(x=>x[0]==='event').map(x=>({name:x[1],params:x[2]})));assert.equal(first.filter(x=>x.name==='route_search').length,1);assert.equal(first.filter(x=>x.name==='route_result_view').length,1);assert.equal(first.filter(x=>x.name==='month_compare').length,1);assert.equal(first.find(x=>x.name==='month_compare').params.airline,'KE');
+    await page.evaluate(()=>{AeroCalculatorBridge.update();AeroCalculatorBridge.update();});assert.equal(await page.evaluate(()=>dataLayer.filter(x=>x[0]==='event'&&x[1]==='route_result_view').length),1);
+    await page.locator('#savingTargetMonth').fill('2026-12');assert.equal(await page.evaluate(()=>dataLayer.filter(x=>x[0]==='event'&&x[1]==='month_compare').length),1,'unavailable month is not a comparison');
+    await page.locator('#savingTargetMonth').fill('2026-11');assert.equal(await page.evaluate(()=>dataLayer.filter(x=>x[0]==='event'&&x[1]==='month_compare').length),2,'changed valid month emits once after render');
+    await page.evaluate(()=>{document.getElementById('savingTargetMonth').dispatchEvent(new Event('change'));AeroCalculatorBridge.update();});assert.equal(await page.evaluate(()=>dataLayer.filter(x=>x[0]==='event'&&x[1]==='month_compare').length),2,'same selection and rerender do not repeat comparison');
+    assert.equal(await page.evaluate(()=>dataLayer.filter(x=>x[0]==='event'&&x[1]==='route_search').length),1);assert.equal(await page.evaluate(()=>dataLayer.filter(x=>x[0]==='event'&&x[1]==='route_result_view').length),1);
+    await page.locator('#savingRoundTrip').click();assert((await row.innerText()).includes('KRW 152,000'));assert((await page.locator('#calculatorAssumption').innerText()).includes('× 2'));
+    await page.locator('#calculatorSave').click();assert.equal(await page.locator('[data-route-load]').count(),1);await page.locator('#savingCalcBtn').click();
+    await page.reload();await page.waitForFunction(()=>document.querySelector('[data-route-load]') && document.getElementById('savingDestination').value==='NRT');assert.equal(await page.locator('#savingAirlineFilter').inputValue(),'KE');assert.equal(await page.locator('#savingRoundTrip').getAttribute('aria-pressed'),'true');
+    await page.evaluate(()=>{NOVEMBER_2026_OFFICIAL_NOTICES.find(x=>x.code==='KE').url+='?source=corrected';AeroCalculatorBridge.update();});assert.equal(await page.locator('.calculator-update').count(),0,'URL-only change has no official revision badge');
+    await page.evaluate(()=>{NOVEMBER_2026_OFFICIAL_NOTICES.find(x=>x.code==='KE').november[1]+=100;AeroCalculatorBridge.update();});assert.equal(await page.locator('.calculator-update').count(),1);await page.locator('[data-route-load]').click();assert.equal(await page.locator('.calculator-update').count(),0);
+    await page.locator('[data-route-delete]').click();assert.equal(await page.locator('[data-route-load]').count(),0);
+    await page.locator('#savingOneWay').click();await page.selectOption('#savingAirlineFilter','YP');assert((await page.locator('#savingTableWrap').innerText()).includes('공식 데이터 없음'));
+    await page.selectOption('#savingAirlineFilter','ZE');await page.locator('#savingTargetMonth').fill('2026-10');assert.equal(await page.locator('#savingBestJune').innerText(),'—','unconfirmed ZE October is excluded from official lowest');
+    await page.selectOption('#savingAirlineFilter','KE');await page.locator('#savingTargetMonth').fill('2026-12');assert(!(await row.innerText()).includes('KRW 76,000'));assert((await row.innerText()).includes('공식 데이터 없음'));assert(!(await row.innerText()).includes('KRW 0'));
+    await page.locator('#savingTargetMonth').fill('2026-11');await route('PUS','NRT');await page.selectOption('#savingAirlineFilter','BX');const bx=await page.locator('tr[data-airline="BX"]').innerText();assert(bx.includes('USD 37'));assert(bx.includes('USD 43'));assert(bx.includes('+USD 6'));assert(bx.includes('+16.22%'));
+    await route('PUS','UBN');const ubn=await page.locator('tr[data-airline="BX"]').innerText();assert(ubn.includes('USD 78'));assert(ubn.includes('USD 90'));assert(ubn.includes('+USD 12'));assert((await page.locator('#calculatorAssumption').innerText()).includes('현재 운항일'));
+    assert.equal(await page.evaluate(()=>SAVING_DESTINATIONS.some(r=>r.code==='CJU-UBN'||r.code==='ICN-UBN')),false,'no unsubstantiated UBN departure is added');
+    await page.setViewportSize({width:390,height:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);assert(await page.locator('tr[data-airline="BX"]').isVisible());
+    const out=path.join(root,'tmp','platform-verification');fs.mkdirSync(out,{recursive:true});await page.screenshot({path:path.join(out,'calculator-comparison-mobile.png'),fullPage:true});
+    await page.evaluate(()=>{document.getElementById('savingOrigin').value='';document.getElementById('savingDestination').value='';});await page.locator('#savingCalcBtn').click();assert.equal(await page.locator('#savingTableWrap').getAttribute('data-result-status'),'no_result');assert.equal(await page.evaluate(()=>dataLayer.filter(x=>x[0]==='event'&&x[1]==='route_no_result').length),1);
+    assert.deepEqual(errors,[],'calculator JS errors');
+    const blocked=await context.newPage();await blocked.addInitScript(()=>Object.defineProperty(window,'localStorage',{get(){throw new DOMException('blocked','SecurityError');}}));const blockedErrors=[];blocked.on('pageerror',e=>blockedErrors.push(e.message));await blocked.goto(base+'/fuel-surcharge-calculator.html');await blocked.waitForFunction(()=>document.querySelector('#savingTableWrap tbody'));await blocked.locator('#calculatorSave').click();assert((await blocked.locator('#calculatorStorageNote').innerText()).includes('저장소'));assert.deepEqual(blockedErrors,[]);await blocked.close();
+    const future=await context.newPage();await future.route('**/data/official_surcharge_feed.json',r=>r.fulfill({contentType:'application/json',body:JSON.stringify({meta:{},airlines:[{iataCode:'KE',currentPeriod:'2026.12',items:[{current:82500,label:'500~999mi',metadata:{airline:'KE',origin:'ICN',destination:'NRT',effectiveMonth:'2026.12',chargingBasis:'500-999',currency:'KRW',oneWayAmount:82500,direction:'one_way',dataStatus:'confirmed',validationStatus:'passed',validatedAt:'2026-11-16T10:00:00+09:00',collectedAt:'2026-11-16T09:00:00+09:00',sourceUrl:'https://www.koreanair.com/notice/2612'}}]}]})}));await future.goto(base+'/fuel-surcharge-calculator.html');await future.waitForFunction(()=>window.SAVING_INDEX_ROUTE_MAP && window.AeroCalculatorPlatform);await future.evaluate(()=>{AeroCalculatorBridge.restore({origin:'ICN',destination:'NRT',trip:1,passengers:1});document.getElementById('savingAirlineFilter').value='KE';document.getElementById('savingTargetMonth').value='2026-12';AeroCalculatorBridge.update();});await future.waitForFunction(()=>document.getElementById('savingTableWrap').innerText.includes('KRW 82,500'));await future.close();
+    async function checkChangedFeed(ambiguous){
+      const candidate=await context.newPage();
+      const item={current:99,label:'new official band',metadata:{airline:'KE',origin:'ICN',destination:'NRT',effectiveMonth:'2026.11',chargingBasis:'new-official-band',currency:'USD',oneWayAmount:99,direction:'one_way',dataStatus:'confirmed',validationStatus:'passed',validatedAt:'2026-10-21T10:00:00+09:00',collectedAt:'2026-10-21T09:00:00+09:00',sourceVerificationStatus:'official_verified',sourceVerifiedAt:'2026-10-21T09:30:00+09:00',sourceUrl:'https://www.koreanair.com/notice/2611'}};
+      await candidate.route('**/data/official_surcharge_feed.json',r=>r.fulfill({contentType:'application/json',body:JSON.stringify({meta:{},airlines:[{iataCode:'KE',currentPeriod:'2026.11',items:ambiguous?[item,JSON.parse(JSON.stringify(item))]:[item]}]})}));
+      await candidate.goto(base+'/fuel-surcharge-calculator.html');await candidate.waitForFunction(()=>window.SAVING_INDEX_ROUTE_MAP && window.AeroCalculatorPlatform);
+      await candidate.waitForFunction(ambiguous=>{const r=AeroCalculatorPlatform.recordFor({origin:'ICN',destination:'NRT'},'KE','2026-11');return ambiguous?r===null:r&&r.currency==='USD'&&r.basis==='new-official-band';},ambiguous);
+      await candidate.evaluate(()=>{AeroCalculatorBridge.restore({origin:'ICN',destination:'NRT',trip:1,passengers:1});document.getElementById('savingAirlineFilter').value='KE';document.getElementById('savingBaseMonth').value='2026-10';document.getElementById('savingTargetMonth').value='2026-11';AeroCalculatorBridge.update();});
+      const text=await candidate.locator('tr[data-airline="KE"]').innerText();assert(!text.includes('KRW 76,000'),'new conflicting feed never silently falls back to embedded November amount');
+      if(ambiguous)assert(text.includes('공식 데이터 없음'));else{assert(text.includes('USD 99'));assert(text.includes('비교 조건이 다름'));}
+      await candidate.close();
+    }
+    await checkChangedFeed(false);await checkChangedFeed(true);
+    const home=await context.newPage();await home.goto(base+'/index.html');await home.waitForFunction(()=>window.OFFICIAL_ROUTE_MAP && OFFICIAL_ROUTE_MAP.BX['PUS-UBN'] && document.getElementById('destSelect').querySelector('option[value="UBN"]'));
+    await home.locator('#originAirportInput').fill('PUS');await home.locator('#destAirportInput').fill('UBN');await home.locator('#searchBtn').click();
+    const homeBx=home.locator('#cardsGrid .al-card').filter({has:home.locator('a[href*="noticeDetail?id=4407"]')});const homeUbN=await homeBx.locator('tr.highlighted').innerText();assert(homeUbN.includes('USD 78'));assert(homeUbN.includes('USD 90'));assert((await homeBx.locator('.notice-route-scope').innerText()).includes('현재 운항일'));assert.equal(await home.evaluate(()=>!!OFFICIAL_ROUTE_MAP.BX['CJU-UBN']||!!OFFICIAL_ROUTE_MAP.BX['ICN-UBN']),false);await home.close();
+    console.log('PASS calculator: official values, month arithmetic, group change, future/absent data, storage lifecycle, URL/amount updates, month-action events, mobile, blocked storage, unique validated feed and ambiguous-data fallback blocking');
+  }finally{if(browser)await browser.close();server.kill();}
+}
+main().catch(error=>{console.error(error);process.exitCode=1;});

@@ -175,6 +175,18 @@
   function pack(l){
     var p = packs[l] || packs.en;
     var out = Object.assign({}, p, release && release.packs[l]);
+    // Keep the two existing URLs distinct even when a release shares its copy.
+    var intentTitles = {
+      ko:['유류할증료 전망','유류할증료 공시·시장 뉴스'],
+      en:['Fuel surcharge outlook','Fuel surcharge notices and market news'],
+      ja:['燃油サーチャージ見通し','燃油サーチャージ公示・市場ニュース'],
+      zh:['燃油附加费展望','燃油附加费公告与市场新闻'],
+      fr:['Perspectives des surtaxes carburant','Avis et actualités des surtaxes carburant'],
+      de:['Treibstoffzuschlag-Ausblick','Treibstoffzuschläge: Hinweise und Marktnachrichten']
+    };
+    var titles = intentTitles[l] || intentTitles.en;
+    out.title = titles[0]; out.meta = titles[0] + ' | Aero Surcharge';
+    out.newsTitle = titles[1]; out.newsMeta = titles[1] + ' | Aero Surcharge';
     out.rows = release ? release.rows[l] : (rows[l] || rows.en);
     out.summary = out.rows.map(function(x){ return x[0]+': '+x[1]+' - '+x[2]; });
     return out;

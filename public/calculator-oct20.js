@@ -84,6 +84,7 @@
     rs:'https://flyairseoul.com/CW/ko/noticeContent.do?seq=11103&pageNo=1',
     yp:'https://www.airpremia.com/a/ko/customer/notice/791'
   };
+  window.AERO_CALCULATOR_OCTOBER={amounts:october,sources:Object.assign({},noticeLinks)};
   (window.NOVEMBER_2026_OFFICIAL_NOTICES||[]).forEach(function(n){noticeLinks[n.code.toLowerCase()]=n.url;});
   Object.keys(base).forEach(function(lang){
     var p=base[lang];
@@ -173,6 +174,7 @@
     }
     var faqAnswers=document.querySelectorAll('#calculatorFaq .faq-a');
     if(faqAnswers[0])faqAnswers[0].textContent=periodNotes[lang()]||periodNotes.en;
+    if(window.AeroCalculatorPlatform)window.AeroCalculatorPlatform.refreshSurface();
     var faqItems=Array.from(document.querySelectorAll('#calculatorFaq .faq-item')).map(function(el){var q=el.querySelector('.faq-q'),a=el.querySelector('.faq-a');return q&&a?{'@type':'Question',name:q.textContent,acceptedAnswer:{'@type':'Answer',text:a.textContent}}:null;}).filter(Boolean);
     document.querySelectorAll('script[type="application/ld+json"]').forEach(function(el){try{var d=JSON.parse(el.textContent);function update(x){if(!x||typeof x!=='object')return;if(x['@type']==='WebPage'){x.name=p.title;x.description=p.desc;x.dateModified='2026-10-21T10:05:51+09:00';x.inLanguage=lang();}if(x['@type']==='FAQPage'&&faqItems.length){x.mainEntity=faqItems;x.inLanguage=lang();x.dateModified='2026-10-21T10:05:51+09:00';}if(Array.isArray(x['@graph']))x['@graph'].forEach(update);}update(d);el.textContent=JSON.stringify(d);}catch(e){}});
   }
@@ -189,6 +191,7 @@
   fix();
   var passes=0;
   var settle=setInterval(function(){
+    if(window.AeroCalculatorPlatform){clearInterval(settle);fix();return;}
     passes++;
     applyOfficialAmounts();
     if(passes===1&&typeof window.applyLanguage==='function')window.applyLanguage();

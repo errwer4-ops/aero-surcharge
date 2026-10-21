@@ -8,13 +8,21 @@
     "check:env": "node scripts/check_env.js",
     "test:myrealtrip": "node scripts/verify_myrealtrip_integration.js",
     "test:myrealtrip:browser": "node scripts/verify_myrealtrip_browser.js",
+    "test": "node --test tests/data-validation.test.cjs tests/pipeline-safety.test.cjs tests/calculator.test.cjs",
+    "test:platform": "node scripts/verify_platform.cjs",
+    "test:calculator": "node scripts/verify_calculator_platform.cjs",
+    "validate:data": "node scripts/validate_data.js",
+    "validate:data:changes": "node scripts/validate_data.js --base-ref HEAD",
+    "validate:service-data": "node scripts/validate_service_data.cjs --base-ref HEAD",
+    "test:seo": "node scripts/sync_static_snapshots.cjs --check",
+    "test:static": "node scripts/verify_static_sources.cjs",
     "pipeline": "node scripts/run_pipeline.js",
-    "pipeline:mock": "node scripts/run_pipeline.js --mock",
+    "pipeline:mock": "node scripts/run_pipeline.js --mock --dry-run",
     "pipeline:dry": "node scripts/run_pipeline.js --mock --dry-run",
-    "pipeline:ke": "node scripts/run_pipeline.js --mock --only KE"
+    "pipeline:ke": "node scripts/run_pipeline.js --mock --dry-run --only KE"
   },
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=20.0.0"
   },
   "dependencies": {
     "playwright": "^1.59.1"

@@ -4684,7 +4684,7 @@ var AIRPORT_GROUPS = [
   { key:'index.region.japan',    codes:['NRT','HND','KIX','FUK','CTS','OKA','NGO','KMJ','NGS','OIT','HIJ','KOJ','MYJ','HKD','FSZ','TAK','AKJ','KKJ','KMI','SDJ'] },
   { key:'index.region.china',    codes:['PVG','PEK','CAN','CTU','XIY','CGO','CKG','YNJ','DYG','SHA','TAO','WEH','YNT','NTG','HRB','KWL','SYX','SHE','DLC','TSN','HGH','NKG','SZX','XMN','CSX','CGQ','HAK'] },
   { key:'index.region.taiwan',   codes:['TPE','KHH','RMQ','TXG'] },
-  { key:'index.region.seasia',   codes:['HKG','SIN','BKK','MNL','KUL','SGN','HAN','DAD','DPS','CGK','RGN','CNX','HKT','NHA','MFM','PNH','REP','VTE','ULN','GUM','SPN','PQC','DLI','BTH','HPH'] },
+  { key:'index.region.seasia',   codes:['HKG','SIN','BKK','MNL','KUL','SGN','HAN','DAD','DPS','CGK','RGN','CNX','HKT','NHA','MFM','PNH','REP','VTE','ULN','UBN','GUM','SPN','PQC','DLI','BTH','HPH'] },
   { key:'index.region.seasia2',  codes:['CEB','TAG','CRK','DVO','ILO','MNL','BKI','KCH','PEN','KLO','CXR','PPS'] },
   { key:'index.region.swasia',   codes:['DEL','BOM','CMB','KTM','DAC','MLE','TBS','ALA','FRU','TSE','TAS','SVO','VVO'] },
   { key:'index.region.usa',     codes:['LAX','JFK','EWR','SFO','SEA','HNL','IAD','BOS','ORD','ATL','DFW','LAS','BIS'] },
@@ -4714,7 +4714,7 @@ ko:{
   'index.heroSub':'공식 공시와 시장 지표를 확인하고 노선별로 비교하세요',
   /* form */
   'index.labelOrigin':'출발 공항','index.labelDest':'도착 공항','index.labelTrip':'여정',
-  'index.trip.oneWay':'편도','index.trip.roundTrip':'왕복',
+  'index.trip.oneWay':'편도','index.trip.roundTrip':'단순 왕복 추정',
   'index.search':'🔍 예약 판단하기',
   'index.signal1':'📢 주요 항공사 6월 공식 공시 반영 완료',
   'index.signal2':'✈️ 노선별 현재 적용 금액 확인',
@@ -4756,6 +4756,7 @@ ko:{
   'airport.RGN':'양곤','airport.CNX':'치앙마이','airport.HKT':'푸껫','airport.NHA':'나트랑',
   'airport.MFM':'마카오','airport.PNH':'프놈펜','airport.REP':'씨엠립','airport.VTE':'비엔티안',
   'airport.ULN':'울란바타르',
+  'airport.UBN':'울란바토르 칭기즈칸 공항',
   'airport.GUM':'괌','airport.SPN':'사이판',
   'airport.PQC':'푸쿠옥','airport.DLI':'달랏','airport.BTH':'바탐',
   'airport.CEB':'세부','airport.TAG':'보홀','airport.CRK':'클락','airport.DVO':'다바오',
@@ -4823,7 +4824,7 @@ ko:{
   'index.alert.selectAirports':'출발지와 도착지를 선택하세요',
   'index.alert.differentAirports':'출발지와 도착지를 다르게 선택하세요',
   /* meta suffix */
-  'index.meta.oneWay':'편도','index.meta.roundTrip':'왕복',
+  'index.meta.oneWay':'편도','index.meta.roundTrip':'단순 왕복 추정 (한국 출발 편도 × 2)',
   'index.meta.suffix':'한국 출발 국제선 · 2026년 6월 KE·OZ·LJ·BX·ZE·RS·TW·7C·YP 공식 공시 반영',
   /* card strings */
   'index.card.currentRoute':'현재 노선',
@@ -5048,7 +5049,7 @@ en:{
   'index.heroTitle':'Fuel Surcharge by Route',
   'index.heroSub':'Check official filings and market indicators — compare by route.',
   'index.labelOrigin':'Departure Airport','index.labelDest':'Arrival Airport','index.labelTrip':'Trip Type',
-  'index.trip.oneWay':'One-way','index.trip.roundTrip':'Round-trip',
+  'index.trip.oneWay':'One-way','index.trip.roundTrip':'Round-trip estimate',
   'index.search':'🔍 Check Booking Timing',
   'index.signal1':'📢 Korean Air Jun official filing reflected',
   'index.signal2':'✈️ Current surcharge by route',
@@ -5085,6 +5086,7 @@ en:{
   'airport.RGN':'Yangon','airport.CNX':'Chiang Mai','airport.HKT':'Phuket','airport.NHA':'Nha Trang',
   'airport.MFM':'Macau','airport.PNH':'Phnom Penh','airport.REP':'Siem Reap','airport.VTE':'Vientiane',
   'airport.ULN':'Ulaanbaatar',
+  'airport.UBN':'Ulaanbaatar Chinggis Khaan Airport',
   'airport.GUM':'Guam','airport.SPN':'Saipan',
   'airport.PQC':'Phu Quoc','airport.DLI':'Da Lat','airport.BTH':'Batam',
   'airport.CEB':'Cebu','airport.TAG':'Bohol','airport.CRK':'Clark','airport.BKI':'Kota Kinabalu',
@@ -5138,7 +5140,7 @@ en:{
   'index.result.overseasMeta':'Overseas departure route',
   'index.alert.selectAirports':'Please select origin and destination',
   'index.alert.differentAirports':'Origin and destination must be different',
-  'index.meta.oneWay':'One-way','index.meta.roundTrip':'Round-trip',
+  'index.meta.oneWay':'One-way','index.meta.roundTrip':'Simple round-trip estimate (Korea-departure one-way × 2)',
   'index.meta.suffix':'Korea Departure · Korean Air Jun2026 Official Filing Reflected',
   'index.card.currentRoute':'This Route',
   'index.card.notPublished':'August filing preparation','index.card.preAnnouncement':'Pending August filing',
@@ -5344,7 +5346,7 @@ ja:{
   'index.heroTitle':'路線別燃油サーチャージ検索',
   'index.heroSub':'公式公示と市場指標を確認し、路線別に比較しましょう',
   'index.labelOrigin':'出発空港','index.labelDest':'到着空港','index.labelTrip':'旅程',
-  'index.trip.oneWay':'片道','index.trip.roundTrip':'往復',
+  'index.trip.oneWay':'片道','index.trip.roundTrip':'往復概算',
   'index.search':'🔍 予約タイミングを確認',
   'index.signal1':'📢 大韓航空6月公式公示反映',
   'index.signal2':'✈️ 路線別現在適用金額',
@@ -5371,6 +5373,7 @@ ja:{
   'airport.SHE':'瀋陽','airport.DLC':'大連','airport.CSX':'長沙',
   'airport.HKT':'プーケット','airport.SGN':'ホーチミン','airport.SIN':'シンガポール',
   'airport.ULN':'ウランバートル','airport.MFM':'マカオ','airport.CXR':'ニャチャン(カムラン)',
+  'airport.UBN':'ウランバートル チンギスハーン空港',
   'airport.PQC':'フーコック','airport.RGN':'ヤンゴン','airport.KTM':'カトマンズ','airport.TAS':'タシュケント','airport.TXG':'台中',
   'airport.GUM':'グアム','airport.DEL':'デリー','airport.CNX':'チェンマイ',
   'airport.BKK':'バンコク',
@@ -5421,7 +5424,7 @@ ja:{
   'index.result.overseasMeta':'海外出発路線',
   'index.alert.selectAirports':'出発地と目的地を選択してください',
   'index.alert.differentAirports':'出発地と目的地を別々に選択してください',
-  'index.meta.oneWay':'片道','index.meta.roundTrip':'往復',
+  'index.meta.oneWay':'片道','index.meta.roundTrip':'往復概算 (韓国発片道 × 2)',
   'index.meta.suffix':'韓国出発 · 大韓航空2026年6月公式公示反映',
   'index.card.currentRoute':'現在の路線',
   'index.card.notPublished':'August filing preparation','index.card.preAnnouncement':'Pending August filing',
@@ -5628,7 +5631,7 @@ zh:{
   'index.heroTitle':'按航线查询燃油附加费',
   'index.heroSub':'请确认官方公告和市场指标，按航线进行比较',
   'index.labelOrigin':'出发机场','index.labelDest':'到达机场','index.labelTrip':'行程类型',
-  'index.trip.oneWay':'单程','index.trip.roundTrip':'往返',
+  'index.trip.oneWay':'单程','index.trip.roundTrip':'往返估算',
   'index.search':'🔍 判断预订时机',
   'index.signal1':'📢 大韩航空6月官方公告已反映',
   'index.signal2':'✈️ 按航线确认当前金额',
@@ -5655,6 +5658,7 @@ zh:{
   'airport.SHE':'沈阳','airport.DLC':'大连','airport.CSX':'长沙',
   'airport.HKT':'普吉岛','airport.SGN':'胡志明市','airport.SIN':'新加坡',
   'airport.ULN':'乌兰巴托','airport.MFM':'澳门','airport.CXR':'芽庄(金兰)',
+  'airport.UBN':'乌兰巴托成吉思汗机场',
   'airport.PQC':'富国岛','airport.RGN':'仰光','airport.KTM':'加德满都','airport.TAS':'塔什干','airport.TXG':'台中',
   'airport.GUM':'关岛','airport.DEL':'德里','airport.CNX':'清迈',
   'airport.BKK':'曼谷',
@@ -5705,7 +5709,7 @@ zh:{
   'index.result.overseasMeta':'海外出发航线',
   'index.alert.selectAirports':'请选择出发地和目的地',
   'index.alert.differentAirports':'出发地和目的地请选择不同机场',
-  'index.meta.oneWay':'单程','index.meta.roundTrip':'往返',
+  'index.meta.oneWay':'单程','index.meta.roundTrip':'往返估算 (韩国出发单程 × 2)',
   'index.meta.suffix':'韩国出发 · 大韩航空2026年6月官方公告已反映',
   'index.card.currentRoute':'当前航线',
   'index.card.notPublished':'August filing preparation','index.card.preAnnouncement':'Pending August filing',
@@ -5904,6 +5908,7 @@ zh:{
   'index.quick.tw.desc':'TW 月度公告详情',
 },
 fr:{
+  'airport.UBN':'Oulan-Bator, aéroport Chinggis Khaan',
   'nav.routes':'Recherche route','nav.calc':'Calculateur','nav.airlines':'Index compagnies','nav.news':'Actualités',
   'footer.notice':'Les données de surcharge carburant sont fournies à titre indicatif. Confirmez toujours le montant final auprès de la compagnie aérienne.',
   'footer.about':'À propos','footer.privacy':'Confidentialité','footer.terms':'Conditions',
@@ -5912,7 +5917,7 @@ fr:{
   'index.heroTitle':'Surcharge carburant par route',
   'index.heroSub':'Vérifiez les annonces officielles et les indicateurs de marché — comparez par route.',
   'index.labelOrigin':'Aéroport départ','index.labelDest':'Aéroport arrivée','index.labelTrip':'Type voyage',
-  'index.trip.oneWay':'Aller simple','index.trip.roundTrip':'Aller-retour',
+  'index.trip.oneWay':'Aller simple','index.trip.roundTrip':'Aller-retour estimé',
   'index.search':'🔍 Évaluer le timing',
   'index.signal1':'📢 Publication officielle Korean Air juin',
   'index.signal2':'✈️ Tarif actuel par route',
@@ -5972,7 +5977,7 @@ fr:{
   'index.result.overseasMeta':'Route hors Corée',
   'index.alert.selectAirports':'Veuillez sélectionner départ et destination',
   'index.alert.differentAirports':'Le départ et la destination doivent être différents',
-  'index.meta.oneWay':'Aller simple','index.meta.roundTrip':'Aller-retour',
+  'index.meta.oneWay':'Aller simple','index.meta.roundTrip':'Estimation aller-retour (aller simple de Corée × 2)',
   'index.meta.suffix':'Départ Corée · Publications officielles KE/OZ/LJ/BX/ZE juin2026',
   'index.card.currentRoute':'Cette route',
   'index.card.notPublished':'August filing preparation','index.card.preAnnouncement':'Pending August filing',
@@ -6170,6 +6175,7 @@ fr:{
   'index.quick.tw.desc':'TW — Détails des avis mensuels',
 },
 de:{
+  'airport.UBN':'Ulaanbaatar, Flughafen Chinggis Khaan',
   'nav.routes':'Streckensuche','nav.calc':'Rechner','nav.airlines':'Airline-Index','nav.news':'Nachrichten',
   'footer.notice':'Treibstoffzuschlag-Daten dienen nur als Referenz. Bitte bestätigen Sie den endgültigen Betrag bei der Fluggesellschaft.',
   'footer.about':'Über uns','footer.privacy':'Datenschutz','footer.terms':'Nutzungsbedingungen',
@@ -6178,7 +6184,7 @@ de:{
   'index.heroTitle':'Treibstoffzuschlag nach Strecke',
   'index.heroSub':'Offizielle Bekanntgaben und Marktindikatoren prüfen — streckenweise vergleichen.',
   'index.labelOrigin':'Abflughafen','index.labelDest':'Ankunftsflughafen','index.labelTrip':'Reiseart',
-  'index.trip.oneWay':'Einfach','index.trip.roundTrip':'Hin und zurück',
+  'index.trip.oneWay':'Einfach','index.trip.roundTrip':'Hin/Rück-Schätzung',
   'index.search':'🔍 Buchungszeitpunkt prüfen',
   'index.signal1':'📢 Offizielle Bekanntgabe Korean Air Juni',
   'index.signal2':'✈️ Aktueller Zuschlag je Strecke',
@@ -6240,7 +6246,7 @@ de:{
   'index.result.overseasMeta':'Route mit Auslandsabflug',
   'index.alert.selectAirports':'Bitte Abflug und Ziel auswählen',
   'index.alert.differentAirports':'Abflug und Ziel müssen unterschiedlich sein',
-  'index.meta.oneWay':'Einfach','index.meta.roundTrip':'Hin und zurück',
+  'index.meta.oneWay':'Einfach','index.meta.roundTrip':'Hin/Rück-Schätzung (Einfach ab Korea × 2)',
   'index.meta.suffix':'Korea-Abflug · Offizielle Bekanntgaben KE/OZ/LJ/BX/ZE Juni2026',
   'index.card.currentRoute':'Diese Strecke',
   'index.card.notPublished':'August filing preparation','index.card.preAnnouncement':'Pending August filing',
@@ -7821,18 +7827,20 @@ window.AERO_NEWS_CARDS_20260524 = [
 
 /* ─── 언어 관리 ─── */
 window.getCurrentLang = function(){
-  return localStorage.getItem('aero_lang') || 'ko';
+  try { return localStorage.getItem('aero_lang') || window.SHARED_STATE.lang || 'ko'; }
+  catch (_) { return window.SHARED_STATE.lang || 'ko'; }
 };
 window.setCurrentLang = function(lang){
-  localStorage.setItem('aero_lang', lang);
+  try { localStorage.setItem('aero_lang', lang); } catch (_) {}
   window.SHARED_STATE.lang = lang;
   document.documentElement.lang = lang;
 };
 window.getCurrentCurr = function(){
-  return localStorage.getItem('aero_curr') || 'KRW';
+  try { return localStorage.getItem('aero_curr') || window.SHARED_STATE.curr || 'KRW'; }
+  catch (_) { return window.SHARED_STATE.curr || 'KRW'; }
 };
 window.setCurrentCurr = function(curr){
-  localStorage.setItem('aero_curr', curr);
+  try { localStorage.setItem('aero_curr', curr); } catch (_) {}
   window.SHARED_STATE.curr = curr;
 };
 

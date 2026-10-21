@@ -1,0 +1,41 @@
+name: Data validation
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm test
+      - run: npm run test:static
+      - run: npm run test:myrealtrip
+      - name: Validate existing feed and changed records
+        env:
+          BEFORE: ${{ github.event.before }}
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          if [ -n "$BASE_SHA" ]; then
+            node scripts/validate_data.js --base-ref "$BASE_SHA"
+            node scripts/validate_service_data.cjs --base-ref "$BASE_SHA"
+          elif [ -n "$BEFORE" ] && [ "$BEFORE" != '0000000000000000000000000000000000000000' ]; then
+            node scripts/validate_data.js --base-ref "$BEFORE"
+            node scripts/validate_service_data.cjs --base-ref "$BEFORE"
+          else
+            node scripts/validate_data.js
+            node scripts/validate_service_data.cjs
+          fi
+      - name: Install existing Playwright browser
+        run: npx playwright install --with-deps chromium
+      - run: npm run test:platform
+      - run: npm run test:calculator
+      - run: npm run test:seo

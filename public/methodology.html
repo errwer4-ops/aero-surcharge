@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  <script src="_analytics-config.js"></script>
+  <script src="_analytics.js"></script>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <meta name="google-adsense-account" content="ca-pub-4285114770383510">
@@ -12,14 +14,14 @@
   <meta property="og:description" content="공식 공시 수집, 노선 매핑, 통화 처리, 계산 공식, 전망과 확정 데이터 구분, 오류 수정 원칙을 공개합니다."/>
   <meta property="og:type" content="article"/>
   <meta property="og:url" content="https://aero-surcharge.com/methodology.html"/>
-  <meta property="article:modified_time" content="2026-06-06T11:00:00+09:00"/>
+  <meta property="article:modified_time" content="2026-10-21"/>
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Article",
     "headline": "유류할증료 데이터 수집·검수·계산 방법",
     "description": "Aero Surcharge의 공식 공시 수집, 노선 매핑, 통화 처리, 계산 및 전망 검수 방법론",
-    "dateModified": "2026-06-06T11:00:00+09:00",
+    "dateModified": "2026-10-21",
     "inLanguage": "ko-KR",
     "mainEntityOfPage": "https://aero-surcharge.com/methodology.html",
     "author": {"@type": "Organization", "name": "Aero Surcharge"},
@@ -27,10 +29,10 @@
   }
   </script>
   <link rel="stylesheet" href="_shared.css"/>
-  <link rel="icon" href="/favicon-v2.ico"/>
+  <link rel="icon" href="/favicon-v2.png"/>
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-v2.png"/>
   <link rel="apple-touch-icon" href="/favicon-v2.png"/>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
+  <script src="_ads.js" defer></script>
   <style>
     .page-header{background:linear-gradient(160deg,#075985 0%,#0369A1 55%,#0284C7 100%);padding:24px 40px 28px;}
     .page-title{font-size:clamp(20px,3vw,28px);font-weight:800;color:#fff;margin:0 0 6px;}
@@ -93,7 +95,7 @@
 
 <main class="method-wrap">
   <div class="status-strip" aria-label="문서 상태">
-    <span class="status-item">마지막 검수: 2026.06.06</span>
+    <span class="status-item">방법론 검수일: 2026.10.21 (KST)</span>
     <span class="status-item">적용 범위: 한국 출발 국제선</span>
     <span class="status-item">확정 데이터 우선</span>
   </div>
@@ -153,9 +155,12 @@
     <p>계산기는 항공사가 공시한 편도 유류할증료를 기준으로 여정과 인원 수를 적용합니다.</p>
     <div class="formula">
       편도 총액 = 항공사별 편도 유류할증료 × 인원 수<br/>
-      왕복 총액 = 항공사별 편도 유류할증료 × 2 × 인원 수<br/>
-      항공사 간 차액 = 비교 대상 총액 - 최저 총액
+      단순 왕복 추정액 = 항공사별 한국 출발 편도 유류할증료 × 2 × 인원 수<br/>
+      월별 차액 = 비교 월 금액 - 기준 월 금액<br/>
+      변동률 = (월별 차액 ÷ 기준 월 금액) × 100
     </div>
+    <p>왕복은 양방향에 같은 편도 금액이 적용된다고 가정한 단순 추정입니다. 귀국편 항공사·출발 국가·발권 조건·통화에 따라 실제 부과액은 달라질 수 있습니다. <a href="https://www.koreanair.com/contents/footer/customer-support/notice/2026/2611-infuel" target="_blank" rel="noopener noreferrer">대한항공 공식 공지</a>도 해외 출발 금액이 한국 출발 금액과 다를 수 있음을 안내합니다.</p>
+    <p>월별 비교는 동일 항공사·공식 부과 구간·통화끼리만 계산합니다. 기준 월 금액이 0원이면 변동률은 계산 불가로 표시합니다. 누락된 공시 금액은 0원으로 간주하지 않습니다.</p>
     <p>계산 결과에는 항공권 기본 운임, 공항세, 발권 수수료, 좌석 옵션, 수하물 요금과 예약 채널별 할인은 포함되지 않습니다. 실제 결제 금액은 반드시 항공사 또는 발권처에서 확인해야 합니다.</p>
   </section>
 
@@ -166,7 +171,7 @@
         <thead><tr><th>구분</th><th>사용 자료</th><th>표현 방식</th></tr></thead>
         <tbody>
           <tr><td>확정 데이터</td><td>항공사 공식 공지에서 적용 월과 금액을 확인한 자료</td><td>공식 공시, 공식 확인, 적용 금액</td></tr>
-          <tr><td>공시 전 상태</td><td>다음 달 공식 공지가 아직 확인되지 않은 상태</td><td>공시 전, 준비 중, 금액 미확정</td></tr>
+          <tr><td>미확인 상태</td><td>사이트에서 해당 월의 공식 공지를 아직 확인하지 못한 상태</td><td>공시 확인 대기, 금액 미확인 (공시가 존재하지 않는다는 뜻은 아님)</td></tr>
           <tr><td>시장 전망</td><td>MOPS, 국제유가, USD/KRW, 공급·지정학 변수와 최근 공시 흐름</td><td>가능성, 방향성, 자체 전망</td></tr>
         </tbody>
       </table>
@@ -177,17 +182,19 @@
   <section class="method-section">
     <h2>7. 전망에 사용하는 주요 변수</h2>
     <ul>
-      <li><strong>MOPS 항공유 가격:</strong> 항공유 비용 방향을 판단하는 핵심 참고 지표입니다.</li>
-      <li><strong>국제유가:</strong> 브렌트유, WTI 등 원유 시장의 방향과 공급 위험을 확인합니다.</li>
+      <li><strong>Singapore Jet Fuel / MOPS:</strong> 싱가포르 항공유 가격 지표입니다. <a href="https://www.molit.go.kr/USR/policyTarget/m_24066/dtl.jsp?idx=1001" target="_blank" rel="noopener noreferrer">국토교통부 국제선 여객 유류할증료 안내</a>는 MOPS를 국제선 여객 유류할증료의 기준 유가로 설명합니다. 최근 단일 관측값, 산정 기간 평균, 다른 지역 또는 글로벌 항공유 지표를 구분합니다.</li>
+      <li><strong>Brent·WTI·Dubai:</strong> 원유 시장의 방향과 공급 위험을 보는 참고 지표입니다. 항공유인 MOPS와 동일한 지표가 아니며, 이 가격만으로 항공사별 공식 단계나 금액을 확정하지 않습니다.</li>
       <li><strong>USD/KRW:</strong> 달러로 결제되는 연료비의 원화 부담을 해석하는 데 사용합니다.</li>
       <li><strong>공급·지정학 변수:</strong> 주요 수송로, 정제·재고, 운송과 보험 비용의 불확실성을 확인합니다.</li>
       <li><strong>최근 항공사 공시:</strong> 직전 월 단계와 실제 인상·인하 폭을 다음 달 방향 판단의 기준으로 사용합니다.</li>
     </ul>
     <p>국제유가가 하락하더라도 MOPS, 환율, 산정 기간과 항공사 정책 때문에 유류할증료가 즉시 같은 폭으로 내려간다고 단정하지 않습니다.</p>
+    <p>항공사마다 거리 구간, 노선군, 부과 통화와 환율 적용 방식이 다를 수 있습니다. 예를 들어 <a href="https://flyairseoul.com/CW/ko/noticeContent.do?pageNo=1&amp;seq=11208" target="_blank" rel="noopener noreferrer">에어서울 2026년 11월 공지</a>는 300~700마일 미만부터 구간을 나누고, 기준 유가 산정 기간과 같은 기간의 평균 환율을 적용한다고 안내합니다. 특정 항공사의 규칙을 모든 항공사에 일반화하지 않습니다.</p>
   </section>
 
   <section class="method-section">
     <h2>8. 검수와 오류 수정 정책</h2>
+    <p>공시 발표일은 항공사가 게시한 날짜, 적용 기간은 발권에 금액이 적용되는 기간입니다. 수집 시각은 사이트가 자료를 가져온 시각, 검증 시각은 원문과 대조한 시각으로 서로 구분합니다. 과거 기록에 없는 날짜나 시각은 임의로 채우지 않고 미기록으로 남깁니다. 페이지 편집일은 공시 발표일이나 시장 관측일을 대신하지 않습니다.</p>
     <ol>
       <li>금액, 통화, 적용 월, 구간 수와 공식 원문 링크를 항공사별로 확인합니다.</li>
       <li>전월 대비 변화가 큰 경우 원문 재확인 후 공개합니다.</li>
@@ -222,6 +229,7 @@
   <section class="method-section">
     <h2>문서 변경 이력</h2>
     <div class="revision-list">
+      <p><strong>2026.10.21</strong> — MOPS와 원유 지표, 단순 왕복 추정, 동일 조건 월별 비교, 공시 확인 대기 및 날짜 구분을 명확히 했습니다.</p>
       <strong>2026.06.06</strong> — 공식 공시 수집, 노선 매핑, 통화 처리, 계산 공식, 전망과 확정 데이터 구분, 검수·수정 정책을 최초 공개했습니다.
     </div>
   </section>

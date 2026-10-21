@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  <script src="_analytics-config.js"></script>
+  <script src="_analytics.js"></script>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>유류할증료 조회 | 2026년 10월·11월 공식 공시 비교</title>
@@ -14,21 +16,14 @@
   <meta property="og:description" content="10월은 현재 적용 금액입니다. 11월 공시 확인: KE·OZ·7C·LJ·RS·BX·TW·ZE 8개사. 에어프레미아(YP)는 10월 금액만 유지하고 11월은 공시 확인 대기입니다. 11월 1~30일 발권·편도 기준이며 공시 통화와 구간을 유지합니다."/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://aero-surcharge.com/"/>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
+  <script src="_ads.js" defer></script>
   <link rel="stylesheet" href="_shared.css"/>
-  <link rel="icon" href="/favicon-v2.ico">
+  <link rel="icon" href="/favicon-v2.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-v2.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-v2.png">
   <link rel="apple-touch-icon" href="/favicon-v2.png">
 
   <!-- Google Analytics (GA4) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-76T4QJPY4L"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-76T4QJPY4L');
-  </script>
 
   <style>
     .hero { background:linear-gradient(160deg,#075985 0%,#0369A1 55%,#0284C7 100%); padding:22px 40px 30px; text-align:center; position:relative; overflow:visible; }
@@ -497,6 +492,9 @@
       .cta-benefits span { font-size:10px; }
     }
     </style>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="유류할증료 조회 | 2026년 10월·11월 공식 공시 비교"/>
+  <meta name="twitter:description" content="10월은 현재 적용 금액입니다. 11월 공시 확인: KE·OZ·7C·LJ·RS·BX·TW·ZE 8개사. 에어프레미아(YP)는 10월 금액만 유지하고 11월은 공시 확인 대기입니다. 11월 1~30일 발권·편도 기준이며 공시 통화와 구간을 유지합니다."/>
 </head>
 <body>
 
@@ -533,17 +531,17 @@
 
 <div class="hero">
   <h1 class="hero-title" id="heroTitle" data-i18n="index.heroTitle">노선별 유류할증료 조회</h1>
-  <div class="hero-sub"   id="heroSub"   data-i18n="index.heroSub">공식 공시와 시장 지표를 확인하고 노선별로 비교하세요</div>
+  <div class="hero-sub"   id="heroSub"   data-i18n="index.heroSub">10월은 현재 적용 금액입니다. 11월 공시 확인: KE·OZ·7C·LJ·RS·BX·TW·ZE 8개사. 에어프레미아(YP)는 10월 금액만 유지하고 11월은 공시 확인 대기입니다. 11월 1~30일 발권·편도 기준이며 공시 통화와 구간을 유지합니다.</div>
   <div class="hero-signal-row" id="heroSignalRow">
-    <span data-i18n="index.signal1">📢 대한항공 6월 공식 공시 반영</span>
-    <span data-i18n="index.signal2">✈️ 노선별 현재 적용 금액 확인</span>
-    <span data-i18n="index.signal3">📊 7월 방향성 참고</span>
+    <span data-i18n="index.signal1">2026년 11월 공식 공시 현황</span>
+    <span data-i18n="index.signal2">2026년 10월 → 11월 유류할증료 비교</span>
+    <span data-i18n="index.signal3">10월은 현재 적용 금액입니다. 11월 공시 확인: KE·OZ·7C·LJ·RS·BX·TW·ZE 8개사. 에어프레미아(YP)는 10월 금액만 유지하고 11월은 공시 확인 대기입니다. 11월 1~30일 발권·편도 기준이며 공시 통화와 구간을 유지합니다.</span>
   </div>
   <div class="search-panel">
     <div class="form-group">
       <label class="form-label" id="labelOrigin" data-i18n="index.labelOrigin">출발 공항</label>
       <div class="airport-combo-wrap" id="originComboWrap">
-        <input class="airport-input" id="originAirportInput"
+        <input data-clarity-mask="true" class="airport-input" id="originAirportInput"
                placeholder="공항명 또는 코드 입력 (예: 인천, ICN)"
                data-i18n-placeholder="index.airport.searchOriginPlaceholder"
                data-i18n-aria-label="index.airport.searchOriginAria"
@@ -561,7 +559,7 @@
     <div class="form-group">
       <label class="form-label" id="labelDest" data-i18n="index.labelDest">도착 공항</label>
       <div class="airport-combo-wrap" id="destComboWrap">
-        <input class="airport-input" id="destAirportInput"
+        <input data-clarity-mask="true" class="airport-input" id="destAirportInput"
                placeholder="공항명 또는 코드 입력 (예: 도쿄, HND)"
                data-i18n-placeholder="index.airport.searchDestPlaceholder"
                data-i18n-aria-label="index.airport.searchDestAria"
@@ -594,12 +592,8 @@
       <div class="beta-banner-title">
         <span class="beta-badge">BETA</span><span data-i18n="beta.title">베타 서비스 안내</span>
       </div>
-      <div class="beta-banner-desc" data-i18n="beta.desc">
-        현재 한국 출발 국제선 유류할증료를 기준으로 제공되고 있으며, 일부 항공사는 공식 공지 기반 수동 반영입니다. 최종 금액은 항공사 공식 공지를 반드시 확인해주세요.
-      </div>
-      <div class="beta-banner-note" data-i18n="beta.note">
-        ※ 현재는 한국 출발 국제선만 지원합니다. 해외 출발 노선은 서비스 준비중입니다.
-      </div>
+      <div class="beta-banner-desc" data-i18n="beta.desc">현재 한국 출발 국제선 유류할증료를 기준으로 제공되고 있으며, 일부 항공사는 공식 공지 기반 수동 반영입니다. 최종 금액은 항공사 공식 공지를 반드시 확인해주세요.</div>
+      <div class="beta-banner-note" data-i18n="beta.note">※ 현재는 한국 출발 국제선만 지원합니다. 해외 출발 노선은 서비스 준비중입니다.</div>
     </div>
   </div>
 </div>
@@ -610,17 +604,17 @@
     <div class="intro-card">
       <span class="intro-card-icon">✈️</span>
       <div class="intro-card-title" data-i18n="index.intro1.title">한국 출발 국제선 유류할증료 비교</div>
-      <div class="intro-card-body"  data-i18n="index.intro1.body">이 서비스는 인천(ICN), 김포(GMP), 부산(PUS) 등 한국 출발 국제선의 항공사별 유류할증료를 노선·거리구간별로 비교합니다.</div>
+      <div class="intro-card-body" data-i18n="index.intro1.body">10월은 현재 적용 금액입니다. 11월 공시 확인: KE·OZ·7C·LJ·RS·BX·TW·ZE 8개사. 에어프레미아(YP)는 10월 금액만 유지하고 11월은 공시 확인 대기입니다. 11월 1~30일 발권·편도 기준이며 공시 통화와 구간을 유지합니다.</div>
     </div>
     <div class="intro-card">
       <span class="intro-card-icon">📋</span>
       <div class="intro-card-title" data-i18n="index.intro2.title">항공사 공식 공지 기반 정보 제공</div>
-      <div class="intro-card-body"  data-i18n="index.intro2.body">각 항공사가 매월 발표하는 공식 유류할증료 공지를 우선으로 반영합니다.</div>
+      <div class="intro-card-body" data-i18n="index.intro2.body">10월은 현재 적용 금액입니다. 11월 공시 확인: KE·OZ·7C·LJ·RS·BX·TW·ZE 8개사. 에어프레미아(YP)는 10월 금액만 유지하고 11월은 공시 확인 대기입니다. 11월 1~30일 발권·편도 기준이며 공시 통화와 구간을 유지합니다.</div>
     </div>
     <div class="intro-card">
       <span class="intro-card-icon">🔍</span>
       <div class="intro-card-title" data-i18n="index.intro3.title">왜 이 서비스가 필요한가요?</div>
-      <div class="intro-card-body"  data-i18n="index.intro3.body">유류할증료는 항공권 총 비용의 상당 부분을 차지하지만, 각 항공사 공지를 개별 확인해야 해 비교가 번거롭습니다.</div>
+      <div class="intro-card-body" data-i18n="index.intro3.body">10월은 현재 적용 금액입니다. 11월 공시 확인: KE·OZ·7C·LJ·RS·BX·TW·ZE 8개사. 에어프레미아(YP)는 10월 금액만 유지하고 11월은 공시 확인 대기입니다. 11월 1~30일 발권·편도 기준이며 공시 통화와 구간을 유지합니다.</div>
     </div>
   </div>
 </section>
@@ -646,8 +640,8 @@
     <div class="guide-block" id="guideBlockResult" style="margin-top:18px">
       <div class="guide-block-title" data-i18n="index.guide.title">💡 유류할증료란 무엇인가요?</div>
       <div class="guide-block-body">
-        <p data-i18n="index.guide.p1">유류할증료(Fuel Surcharge)는 항공유 가격 변동에 따라 항공사가 기본 운임 외에 별도로 부과하는 요금입니다.</p>
-        <p data-i18n="index.guide.p2">금액은 항공사마다 다르며, 같은 항공사라도 비행 거리구간(단거리·중거리·장거리)에 따라 구간별로 다르게 적용됩니다.</p>
+        <p data-i18n="index.guide.p1">유류할증료(Fuel Surcharge)는 항공유 가격 변동에 따라 항공사가 기본 운임 외에 별도로 부과하는 요금입니다. 국제유가가 오르면 할증료도 높아지고, 유가가 내리면 감소하거나 면제되기도 합니다.</p>
+        <p data-i18n="index.guide.p2">금액은 항공사마다 다르며, 같은 항공사라도 비행 거리구간(단거리·중거리·장거리)에 따라 구간별로 다르게 적용됩니다. 매월 초 항공사가 다음 달 적용 금액을 공식 공지합니다.</p>
         <p data-i18n="index.guide.p3">아래 결과는 공식 공지 기준이며, 최종 결제 금액은 항공사 예약 화면 또는 공식 공지에서 반드시 재확인하시기 바랍니다.</p>
       </div>
     </div>
@@ -657,7 +651,7 @@
         <div class="cta-copy">
           <div class="cta-kicker">항공권 총액 확인 후 바로 비교</div>
           <div class="cta-title" data-i18n="aff.myrealtrip.title">유류할증료 확인 후, 실제 항공권 총액도 비교하세요</div>
-          <div class="cta-desc" data-i18n="aff.myrealtrip.desc">유류할증료는 발권 시점 기준으로 적용됩니다. 6월과 7월 공식 공시 금액을 함께 보고 예약 타이밍을 판단하세요.</div>
+          <div class="cta-desc" data-i18n="aff.myrealtrip.desc">10월은 현재 적용 금액입니다. 11월 공시 확인: KE·OZ·7C·LJ·RS·BX·TW·ZE 8개사. 에어프레미아(YP)는 10월 금액만 유지하고 11월은 공시 확인 대기입니다. 11월 1~30일 발권·편도 기준이며 공시 통화와 구간을 유지합니다.</div>
           <div class="cta-benefits">
             <span>항공권 가격 비교</span>
             <span>여행 상품 확인</span>
@@ -667,13 +661,13 @@
         <a href="https://lase.kr/click.php?m=myrealtrip&a=A100704170&l=0000"
            target="_blank" rel="noopener sponsored"
            class="cta-main-btn"
-           data-i18n="aff.myrealtrip.cta">지금 항공권 총액 확인하기 →</a>
+           data-i18n="aff.myrealtrip.cta">지금 항공권 총액 확인하기</a>
       </div>
       <!-- 호텔스컴바인: 숙소 비교 -->
       <div class="affiliate-single">
         <div class="affiliate-single-body">
-          <div class="aff-title" data-i18n="aff.hotelscombined.title">항공권 + 호텔 최저가 한 번에 비교</div>
-          <div class="aff-desc"  data-i18n="aff.hotelscombined.desc">지금 가격 차이 바로 확인</div>
+          <div class="aff-title" data-i18n="aff.hotelscombined.title">항공권 예매 및 숙소 예약 한 번에 비교</div>
+          <div class="aff-desc"  data-i18n="aff.hotelscombined.desc">항공권과 호텔 가격을 함께 비교하고 최적의 예약 타이밍 확인</div>
         </div>
         <a href="https://newtip.net/click.php?m=hcombine2&a=A100704170&l=0000"
            target="_blank" rel="noopener sponsored"
@@ -683,8 +677,8 @@
       <!-- 유심 -->
       <div class="affiliate-single">
         <div class="affiliate-single-body">
-          <div class="aff-title" data-i18n="aff.usim.title">출국 전에 꼭 준비해야 하는 유심</div>
-          <div class="aff-desc"  data-i18n="aff.usim.desc">현지 데이터 바로 사용</div>
+          <div class="aff-title" data-i18n="aff.usim.title">여행 유심 준비</div>
+          <div class="aff-desc"  data-i18n="aff.usim.desc">출국 전 필수 준비</div>
         </div>
         <a href="http://app.ac/ejCPW0a93"
            target="_blank" rel="noopener sponsored"
@@ -696,24 +690,24 @@
 
   <!-- 랜딩 -->
   <div id="landingSection">
-    <div class="status-strip" id="statusStrip" style="display:none">
+    <div class="status-strip" id="statusStrip" style="display: flex;">
       <div class="status-dot" id="statusDot"></div>
-      <span id="statusText"></span>
+      <span id="statusText">2026-10-21 10:05 KST · 10월 VS 11월 공식 공시</span>
     </div>
 
     <!-- 예약 판단 블록 -->
     <div class="booking-decision-card" id="bookingDecisionCard">
-      <div class="decision-title" id="decisionTitle"></div>
-      <ul class="decision-list" id="decisionList"></ul>
-      <div class="decision-conclusion" id="decisionConclusion"></div>
+      <div class="decision-title" id="decisionTitle">2026년 11월 공식 공시 현황</div>
+      <ul class="decision-list" id="decisionList"><li>10월은 현재 적용 금액입니다. 11월 공시 확인: KE·OZ·7C·LJ·RS·BX·TW·ZE 8개사. 에어프레미아(YP)는 10월 금액만 유지하고 11월은 공시 확인 대기입니다. 11월 1~30일 발권·편도 기준이며 공시 통화와 구간을 유지합니다.</li><li>2026년 10월 → 11월 유류할증료 비교</li><li>10월은 현재 적용 금액입니다. 11월 공시 확인: KE·OZ·7C·LJ·RS·BX·TW·ZE 8개사. 에어프레미아(YP)는 10월 금액만 유지하고 11월은 공시 확인 대기입니다. 11월 1~30일 발권·편도 기준이며 공시 통화와 구간을 유지합니다.</li></ul>
+      <div class="decision-conclusion" id="decisionConclusion">10월은 현재 적용 금액입니다. 11월 공시 확인: KE·OZ·7C·LJ·RS·BX·TW·ZE 8개사. 에어프레미아(YP)는 10월 금액만 유지하고 11월은 공시 확인 대기입니다. 11월 1~30일 발권·편도 기준이며 공시 통화와 구간을 유지합니다.</div>
     </div>
 
     <!-- 유류할증료 안내 블록 (랜딩) -->
     <div class="guide-block">
       <div class="guide-block-title" data-i18n="index.guide.title">💡 유류할증료란 무엇인가요?</div>
       <div class="guide-block-body">
-        <p data-i18n="index.guide.p1Landing">유류할증료(Fuel Surcharge)는 국제유가 변동에 연동해 항공사가 기본 운임과 별도로 부과하는 요금입니다.</p>
-        <p data-i18n="index.guide.p2Landing">국내 항공사들은 국토교통부 기준에 따라 매월 다음 달 적용 금액을 공식 공지합니다.</p>
+        <p data-i18n="index.guide.p1Landing">유류할증료(Fuel Surcharge)는 국제유가 변동에 연동해 항공사가 기본 운임과 별도로 부과하는 요금입니다. 비행 거리가 멀수록, 유가가 높을수록 금액이 높아지는 구조입니다.</p>
+        <p data-i18n="index.guide.p2Landing">국내 항공사들은 국토교통부 기준에 따라 매월 다음 달 적용 금액을 공식 공지합니다. 출발지·도착지를 선택해 검색하면 항공사별 공식 공지 기준 금액을 노선별로 비교할 수 있습니다.</p>
       </div>
     </div>
 
@@ -722,17 +716,14 @@
       <div class="cta-copy">
         <div class="cta-kicker">항공권 총액 확인 후 바로 비교</div>
         <div class="cta-title" data-i18n="aff.myrealtrip.title">유류할증료 확인 후, 실제 항공권 총액도 비교하세요</div>
-        <div class="cta-desc" data-i18n="aff.myrealtrip.desc">유류할증료는 발권 시점 기준으로 적용됩니다. 6월과 7월 공식 공시 금액을 함께 보고 예약 타이밍을 판단하세요.</div>
+        <div class="cta-desc" data-i18n="aff.myrealtrip.desc">10월은 현재 적용 금액입니다. 11월 공시 확인: KE·OZ·7C·LJ·RS·BX·TW·ZE 8개사. 에어프레미아(YP)는 10월 금액만 유지하고 11월은 공시 확인 대기입니다. 11월 1~30일 발권·편도 기준이며 공시 통화와 구간을 유지합니다.</div>
         <div class="cta-benefits">
           <span>항공권 가격 비교</span>
           <span>여행 상품 확인</span>
           <span>예약 타이밍 판단</span>
         </div>
       </div>
-      <a href="https://lase.kr/click.php?m=myrealtrip&a=A100704170&l=0000"
-         target="_blank" rel="noopener sponsored"
-         class="cta-main-btn"
-         data-i18n="aff.myrealtrip.cta">지금 항공권 총액 확인하기 →</a>
+      <a href="https://lase.kr/click.php?m=myrealtrip&amp;a=A100704170&amp;l=0000" target="_blank" rel="noopener sponsored" class="cta-main-btn" data-i18n="aff.myrealtrip.cta">지금 항공권 총액 확인하기</a>
     </div>
 
     <div class="landing-title" id="landingTitle" data-i18n="index.landingTitle">한국 출발 국제선 유류할증료</div>
@@ -740,13 +731,11 @@
       <span class="kr-only-icon">🇰🇷</span>
       <div>
         <div class="kr-only-title" data-i18n="index.krOnly.title">한국 출발 국제선만 지원합니다</div>
-        <div class="kr-only-desc"  data-i18n="index.krOnly.desc">노선별 조회에서 출발지·도착지를 선택하면 항공사별 공식 공지 기준 금액을 확인할 수 있습니다.</div>
+        <div class="kr-only-desc" data-i18n="index.krOnly.desc">노선별 조회에서 출발지·도착지를 선택하면 항공사별 공식 공지 기준 금액을 확인할 수 있습니다. 단일 금액은 구간마다 달라 오해 소지가 있어 표시하지 않습니다.</div>
       </div>
     </div>
 
-    <div class="mini-grid" id="miniGrid">
-      <div class="empty-state"><div class="empty-icon">✈</div><p id="miniLoadingMsg" data-i18n="index.status.loading">데이터 로딩 중...</p></div>
-    </div>
+    <div class="mini-grid" id="miniGrid"><div class="mini-card"><div class="mini-badge">🦅</div><div style="flex:1"><div class="mini-name">대한항공</div><div class="mini-status"><span class="status-badge sb-official"><span class="sb-dot"></span>공식 공지</span></div><a href="https://www.koreanair.com/contents/footer/customer-support/notice/2026/2611-infuel" target="_blank" rel="noopener" class="mini-notice-btn">11월 공식 공지 ↗</a><span title="선택한 노선 구간의 10월 대비 11월 공식 금액 변동률" style="display:inline-flex;align-items:center;font-size:11px;font-weight:700;color:#C62828;background:#FFF0F0;border:1px solid #FFCDD2;border-radius:10px;padding:2px 8px;white-space:nowrap;flex-shrink:0;cursor:default">▲ 10월 대비 +8.0%</span></div></div><div class="mini-card"><div class="mini-badge">🌸</div><div style="flex:1"><div class="mini-name">아시아나항공</div><div class="mini-status"><span class="status-badge sb-official"><span class="sb-dot"></span>공식 공지</span></div><a href="https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202610160002530868&amp;dispCt=all&amp;page=1&amp;searchOption=0&amp;searchText=" target="_blank" rel="noopener" class="mini-notice-btn">11월 공식 공지 ↗</a><span title="선택한 노선 구간의 10월 대비 11월 공식 금액 변동률" style="display:inline-flex;align-items:center;font-size:11px;font-weight:700;color:#C62828;background:#FFF0F0;border:1px solid #FFCDD2;border-radius:10px;padding:2px 8px;white-space:nowrap;flex-shrink:0;cursor:default">▲ 10월 대비 +15.9%</span></div></div><div class="mini-card"><div class="mini-badge">YP</div><div style="flex:1"><div class="mini-name">에어프레미아</div><div class="mini-status"><span style="font-size:10px;color:#92400e;font-weight:700">11월 공시 전</span></div><span class="mini-notice-btn" style="color:#92400e;border-color:#fbbf24;background:#fef3c7;cursor:default;">11월 공시 전</span></div></div><div class="mini-card"><div class="mini-badge">💙</div><div style="flex:1"><div class="mini-name">진에어</div><div class="mini-status"><span class="status-badge sb-official"><span class="sb-dot"></span>공식 공지</span></div><a href="https://www.jinair.com/company/announce/announceView?anceSeq=28906&amp;searchWord=&amp;searchKey=titlCtn&amp;page=1" target="_blank" rel="noopener" class="mini-notice-btn">11월 공식 공지 ↗</a><span title="선택한 노선 구간의 10월 대비 11월 공식 금액 변동률" style="display:inline-flex;align-items:center;font-size:11px;font-weight:700;color:#C62828;background:#FFF0F0;border:1px solid #FFCDD2;border-radius:10px;padding:2px 8px;white-space:nowrap;flex-shrink:0;cursor:default">▲ 10월 대비 +12.5%</span></div></div><div class="mini-card"><div class="mini-badge">🍊</div><div style="flex:1"><div class="mini-name">제주항공</div><div class="mini-status"><span class="status-badge sb-official"><span class="sb-dot"></span>공식 공지</span></div><a href="https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000814" target="_blank" rel="noopener" class="mini-notice-btn">11월 공식 공지 ↗</a><span title="선택한 노선 구간의 10월 대비 11월 공식 금액 변동률" style="display:inline-flex;align-items:center;font-size:11px;font-weight:700;color:#C62828;background:#FFF0F0;border:1px solid #FFCDD2;border-radius:10px;padding:2px 8px;white-space:nowrap;flex-shrink:0;cursor:default">▲ 10월 대비 +14.9%</span></div></div><div class="mini-card"><div class="mini-badge">🔴</div><div style="flex:1"><div class="mini-name">티웨이항공</div><div class="mini-status"><span class="status-badge sb-official"><span class="sb-dot"></span>공식 공지</span></div><a href="https://www.trinityairways.com/app/customerCenter/notice/retrieve/12722" target="_blank" rel="noopener" class="mini-notice-btn">11월 공식 공지 ↗</a><span title="선택한 노선 구간의 10월 대비 11월 공식 금액 변동률" style="display:inline-flex;align-items:center;font-size:11px;font-weight:700;color:#C62828;background:#FFF0F0;border:1px solid #FFCDD2;border-radius:10px;padding:2px 8px;white-space:nowrap;flex-shrink:0;cursor:default">▲ 10월 대비 +15.3%</span></div></div><div class="mini-card"><div class="mini-badge">🌊</div><div style="flex:1"><div class="mini-name">에어부산</div><div class="mini-status"><span class="status-badge sb-official"><span class="sb-dot"></span>공식 공지</span></div><a href="https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4420" target="_blank" rel="noopener" class="mini-notice-btn">11월 공식 공지 ↗</a><span title="선택한 노선 구간의 10월 대비 11월 공식 금액 변동률" style="display:inline-flex;align-items:center;font-size:11px;font-weight:700;color:#C62828;background:#FFF0F0;border:1px solid #FFCDD2;border-radius:10px;padding:2px 8px;white-space:nowrap;flex-shrink:0;cursor:default">▲ 10월 대비 +15.4%</span></div></div><div class="mini-card"><div class="mini-badge">⭐</div><div style="flex:1"><div class="mini-name">이스타항공<span style="font-size:9px;color:#6a1b9a;margin-left:4px">(군별)</span></div><div class="mini-status"><span class="status-badge sb-official"><span class="sb-dot"></span>공식 공지</span></div><a href="https://www.eastarjet.com/newstar/PGWCA00002?cId=11&amp;iId=0&amp;bId=680&amp;lang=KR" target="_blank" rel="noopener" class="mini-notice-btn">11월 공식 공지 ↗</a></div></div><div class="mini-card"><div class="mini-badge">🏙</div><div style="flex:1"><div class="mini-name">에어서울</div><div class="mini-status"><span class="status-badge sb-official"><span class="sb-dot"></span>공식 공지</span></div><a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=11208&amp;pageNo=1" target="_blank" rel="noopener" class="mini-notice-btn">11월 공식 공지 ↗</a><span title="선택한 노선 구간의 10월 대비 11월 공식 금액 변동률" style="display:inline-flex;align-items:center;font-size:11px;font-weight:700;color:#C62828;background:#FFF0F0;border:1px solid #FFCDD2;border-radius:10px;padding:2px 8px;white-space:nowrap;flex-shrink:0;cursor:default">▲ 10월 대비 +12.7%</span></div></div></div>
 
     <div class="index-link-row">
       <a href="airlines.html" class="index-link" id="indexLink" data-i18n="index.indexLink">→ 항공사 전체 인덱스 보기</a>
@@ -760,13 +749,13 @@
           <div class="mini-badge">🇰🇷</div>
           <div style="flex:1"><div class="mini-name" data-i18n="index.quick.korea.name">한국 출발 유류할증료</div><div class="mini-status" style="color:var(--muted);font-size:11px;" data-i18n="index.quick.korea.desc">국적기 전체 비교</div></div>
         </a>
-        <a href="fuel-surcharge-2026-05.html" class="mini-card" style="text-decoration:none;color:inherit;">
+        <a href="news.html#compareList" class="mini-card" style="text-decoration:none;color:inherit;">
           <div class="mini-badge">📊</div>
-          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.compare.name">2026년 6월 → 7월 유류할증료 비교</div><div class="mini-status" style="color:var(--muted);font-size:11px;" data-i18n="index.quick.compare.desc">항공사별 6월 공시 금액과 7월 공식 공시 금액 비교</div></div>
+          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.compare.name">2026년 10월 → 11월 유류할증료 비교</div><div class="mini-status" style="color:var(--muted);font-size:11px;" data-i18n="index.quick.compare.desc">10월은 현재 적용 금액입니다. 11월 공시 확인: KE·OZ·7C·LJ·RS·BX·TW·ZE 8개사. 에어프레미아(YP)는 10월 금액만 유지하고 11월은 공시 확인 대기입니다. 11월 1~30일 발권·편도 기준이며 공시 통화와 구간을 유지합니다.</div></div>
         </a>
         <a href="forecast.html" class="mini-card" style="text-decoration:none;color:inherit;">
           <div class="mini-badge">🔮</div>
-          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.jul.name">2026년 8월 유류할증료 전망</div><div class="mini-status" style="color:var(--muted);font-size:11px;" data-i18n="index.quick.jul.desc">7월 공시 반영 이후 · MOPS·환율·호르무즈 변수 점검</div></div>
+          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.jul.name">2026년 11월 공식 공시 현황</div><div class="mini-status" style="color:var(--muted);font-size:11px;" data-i18n="index.quick.jul.desc">10월은 현재 적용 금액입니다. 11월 공시 확인: KE·OZ·7C·LJ·RS·BX·TW·ZE 8개사. 에어프레미아(YP)는 10월 금액만 유지하고 11월은 공시 확인 대기입니다. 11월 1~30일 발권·편도 기준이며 공시 통화와 구간을 유지합니다.</div></div>
         </a>
         <a href="fuel-surcharge-graph.html" class="mini-card" style="text-decoration:none;color:inherit;">
           <div class="mini-badge">📈</div>
@@ -2076,6 +2065,8 @@ function setupAirportAutocomplete(inputId, selectId){
   }
 
   input.addEventListener('input', function(){
+    // Any edit invalidates the previous selection; resolve the visible text on search.
+    select.value = '';
     updateClearBtn(inputId);
     var q = input.value.trim();
     if(!q){ closeList(); select.value=''; return; }
@@ -2154,8 +2145,7 @@ function setupAirportAutocomplete(inputId, selectId){
     var wrap = input.closest('.airport-combo-wrap');
     if(wrap && !wrap.contains(e.target)){
       closeList();
-      /* 닫힐 때 select.value가 비어있으면 input도 비움 */
-      if(!select.value) input.value = '';
+      resolveInputToSelect(inputId, selectId);
     }
   });
 }
@@ -2165,8 +2155,8 @@ function resolveInputToSelect(inputId, selectId){
   var input  = document.getElementById(inputId);
   var select = document.getElementById(selectId);
   if(!input || !select) return;
-  if(select.value) return; /* 이미 선택됨 */
   var q = input.value.trim();
+  select.value = '';
   if(!q) return;
   var all = window.getAirportSearchItems ? window.getAirportSearchItems() : [];
   var ql = q.toLowerCase();
@@ -2178,7 +2168,7 @@ function resolveInputToSelect(inputId, selectId){
   /* 이름 완전 일치 */
   if(!found){
     for(var j=0;j<all.length;j++){
-      if(all[j].label.toLowerCase() === ql){ found = all[j]; break; }
+      if(all[j].label.toLowerCase() === ql || all[j].display.toLowerCase() === ql){ found = all[j]; break; }
     }
   }
   /* 부분 일치 단 하나만 */
@@ -2201,6 +2191,9 @@ document.getElementById('searchBtn').addEventListener('click',function(){
       arr=document.getElementById('destSelect').value;
   if(!dep||!arr){alert(window.t('index.alert.selectAirports'));return;}
   if(dep===arr){alert(window.t('index.alert.differentAirports'));return;}
+  var analyticsAction = window.AeroAnalytics && window.AeroAnalytics.nextAction();
+  var analyticsParams = {origin:dep,destination:arr,trip_type:tripMode==='RT'?'round_trip_estimate':'one_way'};
+  if(window.AeroAnalytics) window.AeroAnalytics.track('route_search',analyticsParams,'home-'+analyticsAction);
 
   var depIsKR  = window.isKoreanAirport(dep);
   var arrIsKR  = window.isKoreanAirport(arr);
@@ -2228,6 +2221,7 @@ document.getElementById('searchBtn').addEventListener('click',function(){
       +'<div style="font-size:13px;color:#795548;line-height:1.6">'
       +window.t('index.result.overseasComingSoon')+'</div>'
       +'</div>';
+    if(window.AeroAnalytics) window.AeroAnalytics.track('route_no_result',Object.assign({},analyticsParams,{result_status:'unsupported_departure'}),'home-'+analyticsAction);
     return;
   }
 
@@ -2238,6 +2232,13 @@ document.getElementById('searchBtn').addEventListener('click',function(){
     (isRT?window.t('index.meta.roundTrip'):window.t('index.meta.oneWay'))+' · '+window.t('index.meta.suffix');
   window._searchCtx={dep:dep,arr:arr,miles:miles,isRT:isRT};
   renderCards('all');
+  requestAnimationFrame(function(){
+    if(!window.AeroAnalytics)return;
+    var count=document.querySelectorAll('#cardsGrid .al-card .route-highlight').length;
+    // A carrier card alone is not evidence that this route has a matching charge.
+    if(!count) count=document.querySelectorAll('#cardsGrid .al-card tr.matched-row, #cardsGrid .al-card tr.route-matched, #cardsGrid .al-card .route-highlight-badge').length;
+    window.AeroAnalytics.track(count?'route_result_view':'route_no_result',Object.assign({},analyticsParams,{result_count:count,result_status:count?'official_result':'no_matching_amount'}),'home-'+analyticsAction);
+  });
 });
 
 function renderCards(f){
@@ -2506,11 +2507,11 @@ buildOfficialSection = function(cd, al, miles, isRT, dep, arr){
     var diffCell = '<td style="font-size:11px;color:var(--muted);text-align:center">' + window.t('index.card.pendingSepShort') + '</td>';
     if(julyAmt != null && augustAmt != null){
       var diff = augustAmt - julyAmt;
-      var pct = ((augustAmt - julyAmt) / julyAmt) * 100;
+      var pct = julyAmt === 0 ? null : ((augustAmt - julyAmt) / julyAmt) * 100;
       var color = diff < 0 ? '#059669' : (diff > 0 ? '#dc2626' : '#64748b');
       var prefix = diff < 0 ? '▼ ' : (diff > 0 ? '▲ ' : '');
       var amt = diff !== 0 ? fmt(Math.abs(diff)) : '-';
-      diffCell = '<td style="font-size:11px;font-weight:700;color:' + color + ';text-align:center">' + prefix + pct.toFixed(1) + '%<br><span style="font-size:10px">' + amt + '</span></td>';
+      diffCell = '<td style="font-size:11px;font-weight:700;color:' + color + ';text-align:center">' + (pct === null ? '— (base 0)' : prefix + pct.toFixed(1) + '%') + '<br><span style="font-size:10px">' + amt + '</span></td>';
     }
     return '<tr class="' + cls + '">'
       + '<td><span class="route-range">' + r.label + '</span>' + badge + '</td>'
@@ -3018,6 +3019,9 @@ setupAirportAutocomplete('originAirportInput','originSelect');
 setupAirportAutocomplete('destAirportInput','destSelect');
 </script>
 <script src="home-sep20.js?v=20261021-ze"></script>
+<script src="calculator-platform-core.js"></script>
+<script src="notice-group-source.js"></script>
+<script src="home-platform.js"></script>
 
 <footer style="background:var(--white);border-top:1px solid var(--line);padding:20px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;">
   <p style="font-size:12px;color:var(--muted);max-width:600px;line-height:1.6;margin:0;" data-i18n="footer.notice">

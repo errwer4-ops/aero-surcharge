@@ -56,13 +56,23 @@
   };
   Object.keys(finalCopy).forEach(function(lang){Object.assign(packs[lang],finalCopy[lang]);});
 
+  var coverageCopy={
+    ko:['2026년 9월·10월 공식 공시 비교','이 표의 비교 범위는 2026년 9월·10월입니다. 11월 공식 공시 확인분은 노선별 조회와 계산기에서 확인하세요.'],
+    en:['September–October 2026 official comparison','This table covers September–October 2026. See route search and the calculator for confirmed November notices.'],
+    ja:['2026年9月・10月公式公示比較','この表は2026年9月・10月の比較です。確認済みの11月公示は路線検索と計算機で確認できます。'],
+    zh:['2026年9月、10月官方公告比较','本表比较2026年9月和10月。已确认的11月公告请查看航线查询及计算器。'],
+    fr:['Comparaison officielle septembre–octobre 2026','Ce tableau couvre septembre–octobre 2026. Les avis de novembre confirmés sont dans la recherche et le calculateur.'],
+    de:['Offizieller Vergleich September–Oktober 2026','Diese Tabelle vergleicht September–Oktober 2026. Bestätigte November-Hinweise stehen in der Routensuche und im Rechner.']
+  };
+  Object.keys(packs).forEach(function(l){var c=coverageCopy[l]||coverageCopy.en; packs[l].pageSub=c[0];packs[l].betaNote=c[1];packs[l].status=c[0];packs[l].bullets[packs[l].bullets.length-1]=c[1];});
+
   Object.keys(packs).forEach(function(lang){
     var p=packs[lang],d=AIRLINES_I18N[lang]||(AIRLINES_I18N[lang]={});
     Object.assign(d,{pageSub:p.pageSub,introTitle:p.introTitle,introBody:p.introBody,betaDesc:p.betaDesc,betaNote:p.betaNote,seoSummaryH2:p.summaryH,seoSummaryP:p.summaryP,surchargeIntro:p.intro,analysisH3:p.analysisH,analysisBullets:p.bullets,expandHint:p.expand,compareTitle:p.compare,aprNotice:p.prev,mayNotice:p.current,mayBasedLabel:p.currentBasis,aprBasedLabel:p.prevBasis,notPublished:p.pending,noNotice:p.pending,nextOfficialBadge:p.officialBadge,pendingOfficialBadge:p.pendingBadge,missingNoticeBadge:p.pendingBadge,statusText:function(){return p.status;}});
   });
 
-  document.title='항공사별 유류할증료 | 2026년 10월 공시 반영 및 11월 준비';
-  var desc=document.querySelector('meta[name="description"]');if(desc)desc.content='2026년 10월 한국 출발 국제선 유류할증료 공식 공시와 9월 대비 변동, 11월 공시 준비 상태를 항공사별로 비교합니다.';
+  document.title='항공사별 유류할증료 | 2026년 9월·10월 공식 공시 비교';
+  var desc=document.querySelector('meta[name="description"]');if(desc)desc.content='2026년 9월과 10월 한국 출발 국제선 유류할증료 공식 공시를 항공사별로 비교합니다. 확인된 11월 공시는 노선별 조회와 계산기에서 확인할 수 있습니다.';
   var patched={};
   function settle(){
     if(!window.KR_AIRLINES||!KR_AIRLINES.length)return;

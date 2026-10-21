@@ -45,6 +45,20 @@
   packs.fr=Object.assign({},packs.en,{title:'Surcharge carburant au départ de Corée',sub:'Base septembre 2026 · avis octobre reflétés · préparation novembre',h1:'Comparaison des avis septembre et octobre 2026',basisTitle:'Base actuelle : surtaxes officielles octobre 2026',section:'Comparaison septembre → octobre 2026 par compagnie',prev:'Avis officiel septembre 2026',current:'Avis officiel octobre 2026',pending:'Avis octobre non publié',source:'Avis officiel ↗',sourcePending:'Avis octobre non publié',related:'📌 Avis officiels octobre 2026',forecast:'🔮 Perspectives novembre 2026'});
   packs.de=Object.assign({},packs.en,{title:'Kerosinzuschlag ab Korea',sub:'September-2026 Basis · Oktober-Hinweise berücksichtigt · November-Vorbereitung',h1:'Vergleich September und Oktober 2026',basisTitle:'Aktuelle Basis: offizielle Oktober-2026 Zuschläge',section:'September → Oktober 2026 nach Airline',prev:'September-2026 Hinweis',current:'Oktober-2026 Hinweis',pending:'Oktober-Hinweis nicht veröffentlicht',source:'Offizieller Hinweis ↗',sourcePending:'Oktober-Hinweis nicht veröffentlicht',related:'📌 Oktober-2026 Hinweise',forecast:'🔮 November-2026 Ausblick'});
 
+  // This landing table has narrower coverage than the live calculator.
+  // Missing here means not reflected on this page, not that an airline has
+  // never published a notice.
+  var coverage={
+    ko:['2026년 9월·10월 공식 공시 비교','비교 범위: 2026년 9월·10월','이 페이지는 9월·10월 과거 공시를 비교합니다. ZE·YP의 10월 자료는 이 표에 미반영되어 있습니다. 최신 발권월과 확인된 11월 공시는 계산기에서 확인하세요.','이 표에 미반영','최신 발권월 비교는 계산기에서 확인하세요.'],
+    en:['September–October 2026 official comparison','Coverage: September–October 2026','This page compares historical September–October notices. October ZE/YP data is not reflected in this table. See the calculator for current months and confirmed November notices.','Not reflected in this table','See the calculator for the latest ticketing months.'],
+    ja:['2026年9月・10月公式公示比較','比較範囲：2026年9月・10月','9月・10月の過去の公示比較です。ZE・YPの10月資料はこの表に未反映です。最新の発券月と確認済み11月公示は計算機で確認してください。','この表に未反映','最新の発券月は計算機で確認できます。'],
+    zh:['2026年9月、10月官方公告比较','比较范围：2026年9月、10月','本页比较9月、10月历史公告。ZE、YP的10月资料未反映在本表中。当前出票月及已确认的11月公告请查看计算器。','本表未反映','最新出票月份请查看计算器。'],
+    fr:['Comparaison officielle septembre–octobre 2026','Périmètre : septembre–octobre 2026','Comparaison historique septembre–octobre. Les données octobre ZE/YP ne figurent pas dans ce tableau. Consultez le calculateur pour les mois actuels et les avis novembre confirmés.','Non intégré à ce tableau','Consultez le calculateur pour les mois récents.'],
+    de:['Offizieller Vergleich September–Oktober 2026','Zeitraum: September–Oktober 2026','Historischer Vergleich September–Oktober. Oktober-Daten von ZE/YP fehlen in dieser Tabelle. Aktuelle Monate und bestätigte November-Hinweise stehen im Rechner.','Nicht in dieser Tabelle','Aktuelle Ausstellungsmonate stehen im Rechner.']
+  };
+  var forecastLabels={ko:'전망·공식 공시 확인',en:'Outlook and official notices',ja:'見通しと公式公示',zh:'展望与官方公告',fr:'Perspectives et avis officiels',de:'Ausblick und offizielle Hinweise'};
+  Object.keys(packs).forEach(function(l){var c=coverage[l]||coverage.en;Object.assign(packs[l],{sub:c[0],basisTitle:c[1],basisDesc:c[2],note:c[2],pending:c[3],sourcePending:c[3],foot:c[2],linksTitle:c[1],forecast:forecastLabels[l]||forecastLabels.en});});
+
   Object.keys(packs).forEach(function(lang){
     var p=packs[lang],d=window.I18N[lang]||(window.I18N[lang]={});
     Object.assign(d,{

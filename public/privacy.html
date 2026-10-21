@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
+  <script src="_analytics-config.js"></script>
+  <script src="_analytics.js"></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>개인정보처리방침 | Aero Surcharge</title>
@@ -8,20 +10,13 @@
   <meta name="google-adsense-account" content="ca-pub-4285114770383510">
   <link rel="canonical" href="https://aero-surcharge.com/privacy.html" />
   <meta property="og:url" content="https://aero-surcharge.com/privacy.html" />
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-4285114770383510" crossorigin="anonymous"></script>
+  <script src="_ads.js" defer></script>
   <link rel="stylesheet" href="_shared.css" />
-  <link rel="icon" href="/favicon-v2.ico">
+  <link rel="icon" href="/favicon-v2.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-v2.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-v2.png">
   <link rel="apple-touch-icon" href="/favicon-v2.png">
   <!-- Google Analytics (GA4) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-76T4QJPY4L"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-76T4QJPY4L');
-  </script>
   <style>
     .policy-wrap { max-width: 820px; margin: 0 auto; padding: 48px 24px 80px; }
     .policy-wrap h1 { font-size: 28px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
@@ -52,15 +47,15 @@
 
 <main class="policy-wrap">
   <h1>개인정보처리방침</h1>
-  <p class="policy-date">최종 수정일: 2026년 5월 26일</p>
+  <p class="policy-date">최종 수정일: 2026년 10월 21일</p>
 
   <div class="highlight-box">
     Aero Surcharge는 한국 출발 국제선 유류할증료 정보를 참고용으로 제공하는 정적 정보 사이트입니다.
-    회원가입이나 결제 기능을 운영하지 않으며, 서비스 운영과 통계 확인에 필요한 최소한의 비식별 정보를 사용할 수 있습니다.
+    회원가입이나 결제 기능을 운영하지 않으며, 선택적 이용 통계는 동의한 경우에만 활성화합니다.
   </div>
 
   <h2>1. 수집하는 정보</h2>
-  <p>본 사이트는 이름, 주민등록번호, 결제 정보 등 민감한 개인정보를 직접 수집하지 않습니다. 다만 사이트 접속과 이용 과정에서 아래와 같은 비식별 정보가 자동으로 처리될 수 있습니다.</p>
+  <p>본 사이트의 조회·관심 노선 기능은 이름, 이메일, 주민등록번호 또는 결제 정보를 요구하지 않습니다. 호스팅 접속 로그와 동의 후 활성화되는 외부 분석 서비스에서는 아래 정보가 처리될 수 있습니다. IP 주소나 기기 식별자를 모두 익명 정보로 간주하지 않습니다.</p>
   <ul>
     <li>IP 주소, 접속 시각, 브라우저 종류, 운영체제 등 기본 접속 로그</li>
     <li>방문 페이지, 체류 시간, 유입 경로 등 이용 통계</li>
@@ -68,10 +63,15 @@
   </ul>
 
   <h2>2. 쿠키 사용</h2>
-  <p>본 사이트는 언어·통화 설정 유지, 방문 통계 분석, 광고 표시를 위해 쿠키를 사용할 수 있습니다. 사용자는 브라우저 설정을 통해 쿠키 저장을 거부하거나 기존 쿠키를 삭제할 수 있습니다. 다만 쿠키를 제한하면 일부 기능이나 맞춤형 광고 표시가 달라질 수 있습니다.</p>
+  <p>언어·통화, 최근 검색 조건 및 저장한 관심 노선은 해당 브라우저의 localStorage에 보관합니다. 회원 데이터베이스나 이메일 발송 시스템으로 전송하지 않습니다. 브라우저 저장소를 삭제하거나 관심 노선의 삭제 기능을 사용할 수 있습니다. 저장소를 사용할 수 없어도 계산과 조회는 계속 동작합니다.</p>
+  <p>이용 통계와 광고 동의는 별도로 선택할 수 있으며, 페이지 하단의 <strong>분석·광고 설정</strong>에서 변경할 수 있습니다. 선택은 해당 브라우저에 최대 180일 저장됩니다. 거부해도 핵심 조회 기능을 사용할 수 있습니다. 동의 철회 후 이미 로드된 외부 서비스의 처리를 완전히 종료하려면 페이지를 새로고침하고 브라우저의 쿠키 설정도 확인하세요.</p>
+
+  <h2>이용 통계와 화면 분석</h2>
+  <p>GA4에는 공항·항공사 코드, 비교 월, 결과 유무 및 제휴 링크 위치 등 제한된 이벤트 항목만 전송합니다. 검색창에 입력한 원문, 이메일, 저장한 노선 목록, URL의 쿼리 문자열을 사용자 이벤트에 포함하지 않습니다. 자동 수집 설정과 통계 보유 기간은 운영 계정에서 별도로 관리됩니다.</p>
+  <p>Microsoft Clarity는 실제 프로젝트 ID가 설정되고 이용 통계에 동의한 경우에만 로드할 수 있도록 구성되어 있습니다. 현재 기본 설정은 비활성화이며, 활성화 시 페이지 내용과 입력창을 마스킹합니다. 화면 분석을 운영하기 전 관리 화면에서도 엄격한 마스킹 및 보유 설정을 확인해야 합니다.</p>
 
   <h2>3. Google AdSense 광고</h2>
-  <p>본 사이트는 Google AdSense를 통해 광고를 게재할 수 있습니다. Google과 제3자 광고 제공업체는 쿠키를 사용하여 사용자의 이전 방문 기록이나 관심사에 기반한 광고를 표시할 수 있습니다.</p>
+  <p>Google AdSense 광고는 광고 기능이 활성화되고 사용자가 별도로 광고 쿠키 사용에 동의한 경우에 로드됩니다. 이번 코드의 기본 설정에서는 운영 지역별 동의 관리 설정을 확인할 때까지 광고 스크립트 로딩을 비활성화합니다. Google과 제3자 광고 제공업체의 정보 처리는 해당 정책을 따릅니다.</p>
   <ul>
     <li>Google의 광고 쿠키 사용 방식은 <a href="https://policies.google.com/technologies/ads" target="_blank" rel="noopener">Google 광고 정책</a>에서 확인할 수 있습니다.</li>
     <li>맞춤형 광고 설정은 <a href="https://www.google.com/settings/ads" target="_blank" rel="noopener">Google 광고 설정</a>에서 변경할 수 있습니다.</li>
@@ -79,7 +79,7 @@
   </ul>
 
   <h2>4. 외부 서비스</h2>
-  <p>사이트 운영을 위해 Google Analytics, Google AdSense, Google Fonts 등 외부 서비스를 사용할 수 있습니다. 각 서비스의 정보 처리 방식은 해당 제공자의 개인정보처리방침을 따릅니다.</p>
+  <p>사이트 운영을 위해 Google Analytics, Google AdSense, Google Fonts 및 설정된 경우 Microsoft Clarity를 사용할 수 있습니다. 각 서비스의 정보 처리 방식은 해당 제공자의 개인정보처리방침을 따릅니다. 외부 글꼴 요청과 호스팅 접속 로그는 분석 이벤트와 별개입니다.</p>
 
   <h2>5. 외부 링크</h2>
   <p>본 사이트에는 항공사 공식 공지, 예약 채널, 정책 안내 등 외부 사이트로 연결되는 링크가 포함될 수 있습니다. 외부 사이트에서 발생하는 개인정보 처리, 결제, 예약, 광고 표시에는 해당 사이트의 약관과 개인정보처리방침이 적용됩니다.</p>
