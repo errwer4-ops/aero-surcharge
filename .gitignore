@@ -3,3 +3,7 @@ node_modules/
 .env.local
 debug/
 .vercel
+debug.log
+tmp/platform-verification/
+tmp/calculator-platform/
+artifacts/data-validation/
