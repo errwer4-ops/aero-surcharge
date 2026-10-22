@@ -23,7 +23,7 @@ for (const file of ['forecast.html','news.html']) {
     data.dateModified=r.modified;data.inLanguage='ko';
     if(file==='news.html'){
       // News has no visible FAQ section; describe the collection, not hidden questions.
-      data['@type']='CollectionPage';data['@id']='https://aero-surcharge.com/news.html';
+      data['@type']='CollectionPage';data['@id']='https://aero-surcharge.com/news';
       data.headline=p.newsTitle;data.description=p.desc;delete data.mainEntity;
     }else data.mainEntity=p.faq.map(x=>({'@type':'Question',name:x.q,acceptedAnswer:{'@type':'Answer',text:x.a}}));
     return open+'\n'+JSON.stringify(data,null,2)+'\n'+close;

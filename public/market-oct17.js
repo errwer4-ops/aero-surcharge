@@ -102,10 +102,70 @@ change:'Kleinster Mehrbetrag über alle Bänder',maxChange:'größter Mehrbetrag
 names:['Korean Air','Asiana Airlines','Jeju Air','Jin Air','Air Seoul','Air Busan','Trinity (Tway)','Eastar Jet'],applies:'November offiziell',current:'Oktober aktuell',noAverage:'Die fünf Airline-Beträge sind offiziell. Aus den Mitteilungen allein werden weder November-MOPS-Mittel noch Stufe abgeleitet.'
 }
 };
-var additionalPeriod={};
+var trust=window.AeroSourceTrust;
+var sourceReview=trust?trust.summarize(notices,'2026.11'):{verified:[],pending:notices.map(function(n){return n.code;}),verifiedCount:0,pendingCount:notices.length};
+function reviewedNotice(n){return sourceReview.verified.indexOf(n.code)>=0?trust.getNotice(n.code,'2026.11'):null;}
+var sourceLabels={
+  "ko": {
+    "title": "2026년 10월 유류할증료 적용 | 11월 공시 완료 ",
+    "count": "개사",
+    "pending": "공시 확인 중",
+    "date": "공시 발표일: ",
+    "unknown": "미확인",
+    "waiting": "11월 공시 미완료",
+    "verdict": "11월 공시 현황"
+  },
+  "en": {
+    "title": "October 2026 surcharges apply | November notices complete: ",
+    "count": " airlines",
+    "pending": "Notice checks pending",
+    "date": "Notice publication date: ",
+    "unknown": "unknown",
+    "waiting": "November notice pending",
+    "verdict": "November notice status"
+  },
+  "ja": {
+    "title": "2026年10月燃油サーチャージ適用 | 11月公示反映 ",
+    "count": "社",
+    "pending": "公示確認中",
+    "date": "公示発表日：",
+    "unknown": "未確認",
+    "waiting": "11月公示未反映",
+    "verdict": "11月公示状況"
+  },
+  "zh": {
+    "title": "2026年10月燃油附加费执行中 | 11月公告已收录 ",
+    "count": "家",
+    "pending": "公告确认中",
+    "date": "公告发布日期：",
+    "unknown": "未确认",
+    "waiting": "11月公告待收录",
+    "verdict": "11月公告状态"
+  },
+  "fr": {
+    "title": "Surtaxes octobre 2026 en vigueur | Avis novembre intégrés : ",
+    "count": " compagnies",
+    "pending": "Avis en cours de confirmation",
+    "date": "Date de publication de l’avis : ",
+    "unknown": "inconnue",
+    "waiting": "Avis novembre en attente",
+    "verdict": "Statut des avis novembre"
+  },
+  "de": {
+    "title": "Oktober-Zuschläge 2026 gelten | November-Mitteilungen übernommen: ",
+    "count": " Airlines",
+    "pending": "Mitteilung noch offen",
+    "date": "Veröffentlichungsdatum der Mitteilung: ",
+    "unknown": "unbekannt",
+    "waiting": "November-Mitteilung ausstehend",
+    "verdict": "November-Mitteilungsstatus"
+  }
+};
 Object.keys(copy).forEach(function(l){
-  var update=window.NOVEMBER_2026_NOTICE_COPY[l];
-  additionalPeriod[l]=update.period;copy[l].noticeDesc=update.summary;
+  var update=window.NOVEMBER_2026_NOTICE_COPY[l],c=copy[l],labels=sourceLabels[l];
+  c.title=labels.title+sourceReview.verifiedCount+labels.count;
+  c.status=c.title;c.pending=c.title+' ('+(sourceReview.verified.join(' · ')||'—')+'). '+labels.pending+': '+sourceReview.pending.concat(['YP']).join(' · ')+'.';
+  c.noticeDesc=c.pending;c.noAverage=update.period;c.period=update.period;c.waiting=labels.waiting;c.verdictTitle=labels.verdict;
 });
 function fmt(n){return n==null?'—':n.toLocaleString('en-US');}
 var bookingCopy={"ko":"유류할증료는 발권일 기준입니다. 10월 현재 적용 금액과 확인된 11월 공식 금액을 구분해 항공권 총액을 비교하세요.","en":"Fuel surcharges follow ticketing date. Distinguish current October charges from confirmed November notices when comparing total fares.","ja":"燃油サーチャージは発券日基準です。現在の10月金額と確認済み11月公示を区別して航空券総額を比較してください。","zh":"燃油附加费按出票日适用。比较机票总价时，请区分当前10月收费与已确认11月官方金额。","fr":"La surtaxe dépend de la date d’émission. Distinguez octobre en vigueur des avis novembre confirmés pour comparer le prix total.","de":"Zuschläge gelten nach Ausstellungsdatum. Aktuelle Oktober-Beträge und bestätigte November-Mitteilungen beim Gesamtpreisvergleich trennen."};
@@ -116,9 +176,10 @@ r.octoberOfficialUrls=Object.assign({},r.officialUrls);
 r.officialUrls={};notices.forEach(function(n){r.officialUrls[n.key]=n.url;});
 r.modified=stamp;r.asOf=asOf;
 r.numbers=Object.assign({},r.numbers,{
-asOf:asOf,lastUpdated:stamp,novemberStatus:'five_official_notices_confirmed_other_carriers_unverified',
-novemberConfirmedAirlines:notices.map(function(n){return n.code;}),
-novemberNoticeDate:'2026-10-16',novemberStageEstimate:null,novemberMopsUsdPerBbl:null
+asOf:asOf,lastUpdated:stamp,novemberStatus:'primary_sources_reconciled_with_pending_separated',
+novemberConfirmedAirlines:sourceReview.verified.slice(),novemberPendingAirlines:sourceReview.pending.concat(['YP']),
+novemberNoticeDate:null,novemberNoticeDates:notices.reduce(function(dates,n){var source=reviewedNotice(n);dates[n.code]=source&&source.publishedAt?source.publishedAt.slice(0,10):null;return dates;},{}),
+novemberStageEstimate:null,novemberMopsUsdPerBbl:null
 });
 Object.keys(copy).forEach(function(l){
 var c=copy[l],p=r.packs[l],rows=r.rows[l].map(function(x){return x.slice();});
@@ -127,6 +188,7 @@ rows[0][1]=c.status;rows[0][2]=c.pending;r.rows[l]=rows;
 r.officialRows[l]=r.octoberOfficialRows[l].map(function(row){
 var n=notices.find(function(x){return x.key===row[0];});
 if(!n)return [row[0],row[1],c.waiting];
+if(!reviewedNotice(n))return [row[0],row[1],c.waiting+': '+range(n)];
 var i=notices.indexOf(n),d=changes(n);
 return [row[0],c.names[i],c.applies+': '+range(n)+' · '+c.change+' +'+n.currency+' '+fmt(d[0])];
 });
@@ -140,15 +202,18 @@ p.ui=p.ui.slice();p.ui[2]=c.compareTitle;
 p.faq=p.faq.map(function(x,i){return i===1?{q:c.q,a:c.pending}:i===2?{q:x.q,a:c.pending}:x;});
 });
 var cards=notices.map(function(n,i){
-var d=changes(n),added=n.verifiedAt||stamp,card={id:'notice-202611-'+n.code.toLowerCase(),category:'airline',priority:i+1,
-date:added.slice(0,10),publishedAt:added,updatedAt:added,reportedDate:n.verifiedAt?n.noticeDate:'2026-10-16',eventDate:n.verifiedAt?n.noticeDate:'2026-10-16',
-badge:'NEW',aiSummary:false,relevanceScore:1-i/100,sourceUrl:n.url,i18n:{}};
+var d=changes(n),added=n.verifiedAt||stamp,source=reviewedNotice(n),sourceDate=source&&source.publishedAt?source.publishedAt.slice(0,10):null;
+var card={id:'notice-202611-'+n.code.toLowerCase(),category:'airline',priority:i+1,
+date:added.slice(0,10),publishedAt:added,updatedAt:added,reportedDate:sourceDate,eventDate:sourceDate,
+sourcePublishedAt:source?source.publishedAt:null,sourceVerifiedAt:source?source.sourceVerifiedAt:null,
+sourceVerificationStatus:source?'source_reconciled':'unresolved',dataStatus:source?'confirmed':'unconfirmed',dateKind:'site_update',
+badge:source?'NEW':'',aiSummary:false,relevanceScore:1-i/100,sourceUrl:n.url,i18n:{}};
 Object.keys(copy).forEach(function(l){var c=copy[l];
-var brief=c.applies+': '+range(n)+' · '+c.change+' +'+n.currency+' '+fmt(d[0])+', '+c.maxChange+' +'+n.currency+' '+fmt(d[1])+'.';
+var labels=sourceLabels[l],brief=(source?c.applies:labels.pending)+': '+range(n)+(source?' · '+c.change+' +'+n.currency+' '+fmt(d[0])+', '+c.maxChange+' +'+n.currency+' '+fmt(d[1]):'')+'.';
 var detail=n.bands.map(function(b,j){return n.november[j]==null?b+': —':b+': '+n.currency+' '+fmt(n.october[j])+' → '+fmt(n.november[j])+' (+'+fmt(n.november[j]-n.october[j])+')';}).join('; ');
 card.i18n[l]={title:c.names[i]+' · '+c.cardTitle,aiBrief:brief,
-summary:(n.period?n.period[l]:n.verifiedAt?additionalPeriod[l]:c.period)+' '+(n.groupType==='route_group'?{ko:'노선군별 10월 → 11월',en:'Route group: October to November',ja:'路線群別10月→11月',zh:'航线组10月→11月',fr:'Groupe de lignes : octobre vers novembre',de:'Streckengruppe: Oktober zu November'}[l]:c.detail)+': '+detail+'.',impact:c.impact,
-sourceName:c.source,tags:[n.code,n.currency,'2026-11-01~2026-11-30'],links:[],faq:[]};
+summary:(source?c.period:labels.pending)+ ' '+labels.date+(sourceDate||labels.unknown)+'. '+(n.groupType==='route_group'?{ko:'노선군별 10월 → 11월',en:'Route group: October to November',ja:'路線群別10月→11月',zh:'航线组10月→11月',fr:'Groupe de lignes : octobre vers novembre',de:'Streckengruppe: Oktober zu November'}[l]:c.detail)+': '+detail+'.',impact:c.impact,
+sourceName:c.source,tags:[n.code,n.currency,source&&source.effectiveFrom&&source.effectiveTo?source.effectiveFrom+'~'+source.effectiveTo:'2026-11'],links:[],faq:[]};
 });card.i18n.cn=card.i18n.zh;return card;
 });
 r.newsCards=cards.concat(r.newsCards.filter(function(x){return !/^notice-202611-/.test(x.id);}));

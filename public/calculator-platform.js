@@ -3,7 +3,7 @@
   var core=window.AeroCalculatorCore, bridge=window.AeroCalculatorBridge;
   if (!core || !bridge) return;
   var storage=null; try { storage=window.localStorage; } catch (_) {}
-  var store=core.createStore(storage), lastContext=null, searchSequence=0, restored=false, feedRecords=[], renderedMonths=null;
+  var store=core.createStore(storage), lastContext=null, searchSequence=0, restored=false, feedRecords=[], feedLoaded=false, renderedMonths=null;
   var el=function(id){return document.getElementById(id);};
   var english=function(){return (window.SHARED_STATE && window.SHARED_STATE.lang || 'ko') !== 'ko';};
   var t=function(ko,en){return english()?en:ko;};
@@ -31,44 +31,54 @@
   }
   function recordFor(context,code,month){
     var selected=core.selectFeedRecord(feedRecords,{airline:code,origin:context.origin,destination:context.destination,month:month,direction:'one_way'});
-    if(selected.present)return selected.record;
+    if(selected.present)return core.reconcile(selected.record);
     var route=context.origin+'-'+context.destination, matched=bridge.findRow(code,route), data=window.SAVING_COMPARE_DATA[code];
     if (!matched || !data) return null;
     var row=matched.row,index=data.rows.indexOf(row),notice=(window.NOVEMBER_2026_OFFICIAL_NOTICES||[]).find(function(n){return n.code===code;});
     var record={airline:code,origin:context.origin,destination:context.destination,month:month,currency:data.currency,direction:'one_way',basis:row.range || row.label,band:row.label,
-      amount:null,status:'unconfirmed',verificationStatus:'unverified',sourceUrl:null,publishedAt:null,verifiedAt:null,collectedAt:null,effectiveFrom:null,effectiveTo:null};
+      amount:null,status:'unconfirmed',validationStatus:'passed',verificationStatus:'unverified',sourceUrl:null,publishedAt:null,verifiedAt:null,collectedAt:null,effectiveFrom:null,effectiveTo:null,sourceBand:null,bandIndex:null,departureCountry:null};
     if(month==='2026-11' && notice){
       var ni=noticeIndex(notice,route,matched,data);
       if(ni<0 || !core.money(notice.november[ni]))return null;
-      Object.assign(record,{amount:notice.november[ni],currency:notice.currency,sourceUrl:core.safeUrl(notice.url),status:'confirmed',verificationStatus:/^official_notice_verified/.test(notice.status)?'verified':'unverified',
-        publishedAt:notice.noticePublishedAt||notice.noticeDate||null,verifiedAt:notice.verifiedAt||null,collectedAt:notice.collectedAt||null,effectiveFrom:notice.ticketingStart,effectiveTo:notice.ticketingEnd,band:notice.bands[ni]});
+      Object.assign(record,{amount:notice.november[ni],currency:notice.currency,sourceUrl:core.safeUrl(notice.url),direction:notice.direction,departureCountry:notice.departureCountry,bandIndex:ni,sourceBand:notice.bands[ni],
+        publishedAt:notice.noticePublishedAt||notice.noticeDate||null,collectedAt:notice.collectedAt||null,effectiveFrom:notice.ticketingStart,effectiveTo:notice.ticketingEnd,band:notice.bands[ni]});
       // The published route groups take precedence over the older distance aliases.
       if(code==='BX' || code==='ZE')record.basis='route-group-'+(ni+1);
-      return record;
+      return core.reconcile(record);
     }
     if(month==='2026-10'){
       var verifiedOld=window.OCTOBER_2026_ROUTE_GROUP_NOTICES && window.OCTOBER_2026_ROUTE_GROUP_NOTICES[code];
       if(verifiedOld){
         var oldIndex=core.officialRouteGroupIndex(verifiedOld,context.origin,context.destination),oldAmounts=verifiedOld.amounts||verifiedOld.october;
         if(oldIndex<0 || !oldAmounts || !core.money(oldAmounts[oldIndex]))return null;
-        Object.assign(record,{amount:oldAmounts[oldIndex],currency:verifiedOld.currency,sourceUrl:core.safeUrl(verifiedOld.url),status:'confirmed',verificationStatus:'verified',publishedAt:verifiedOld.noticePublishedAt||verifiedOld.noticeDate||null,verifiedAt:verifiedOld.verifiedAt||null,collectedAt:verifiedOld.collectedAt||null,effectiveFrom:verifiedOld.ticketingStart||null,effectiveTo:verifiedOld.ticketingEnd||null,band:verifiedOld.bands[oldIndex],basis:'route-group-'+(oldIndex+1)});
-        return record;
+        Object.assign(record,{amount:oldAmounts[oldIndex],currency:verifiedOld.currency,sourceUrl:core.safeUrl(verifiedOld.url),direction:verifiedOld.direction,departureCountry:verifiedOld.departureCountry,bandIndex:oldIndex,sourceBand:verifiedOld.bands[oldIndex],publishedAt:verifiedOld.noticePublishedAt||verifiedOld.noticeDate||null,collectedAt:verifiedOld.collectedAt||null,effectiveFrom:verifiedOld.ticketingStart||null,effectiveTo:verifiedOld.ticketingEnd||null,band:verifiedOld.bands[oldIndex],basis:'route-group-'+(oldIndex+1)});
+        return core.reconcile(record);
       }
       var old=window.AERO_CALCULATOR_OCTOBER;
+      var reviewedOld=window.AeroSourceTrust&&window.AeroSourceTrust.getNotice(code,month);
+      if(reviewedOld&&reviewedOld.routesByGroup&&old&&old.amounts[code]){
+        var reviewedIndex=core.officialRouteGroupIndex({code:code,bands:reviewedOld.bands,routesByGroup:reviewedOld.routesByGroup},context.origin,context.destination);
+        if(reviewedIndex<0||!core.money(old.amounts[code][reviewedIndex]))return null;
+        Object.assign(record,{amount:old.amounts[code][reviewedIndex],sourceUrl:core.safeUrl(old.sources[code.toLowerCase()]),sourceBand:reviewedOld.bands[reviewedIndex],band:reviewedOld.bands[reviewedIndex],bandIndex:reviewedIndex,basis:'route-group-'+(reviewedIndex+1),direction:reviewedOld.direction,departureCountry:reviewedOld.departureCountry,publishedAt:reviewedOld.publishedAt,effectiveFrom:reviewedOld.effectiveFrom,effectiveTo:reviewedOld.effectiveTo});
+        return core.reconcile(record);
+      }
       if(!old || !old.amounts[code] || !core.money(old.amounts[code][index]))return null;
-      Object.assign(record,{amount:old.amounts[code][index],sourceUrl:core.safeUrl(old.sources[code.toLowerCase()]),status:'confirmed',verificationStatus:'legacy_record'});
+      Object.assign(record,{amount:old.amounts[code][index],sourceUrl:core.safeUrl(old.sources[code.toLowerCase()]),verificationStatus:'legacy_record'});
+      if(reviewedOld&&String(row.label).replace(/\s+/g,'')===String(reviewedOld.bands[index]).replace(/\s+/g,'')){
+        Object.assign(record,{sourceBand:reviewedOld.bands[index],bandIndex:index,direction:reviewedOld.direction,departureCountry:reviewedOld.departureCountry,publishedAt:reviewedOld.publishedAt,effectiveFrom:reviewedOld.effectiveFrom,effectiveTo:reviewedOld.effectiveTo});
+      }
       if(code==='BX' || code==='ZE')record.basis='route-group-'+(index+1);
       if(code==='ZE')record.status='unconfirmed';
-      return record;
+      return core.reconcile(record);
     }
     // Historical records are only used when the exact original charging basis is present.
     var historical=window.MANUAL_OVERRIDES && window.MANUAL_OVERRIDES[code] && window.MANUAL_OVERRIDES[code][month.replace('-','.')];
     if(!historical || historical.sourceType!=='official_notice' || historical.status!=='official_verified' || !Array.isArray(historical.items))return null;
     var item=historical.items.find(function(v){return v.distanceRange===row.range;});
     if(!item || !core.money(item.amount) || !core.safeUrl(historical.officialNoticeUrl))return null;
-    Object.assign(record,{amount:item.amount,currency:item.currency||historical.currency,status:'confirmed',verificationStatus:'verified',sourceUrl:core.safeUrl(historical.officialNoticeUrl),publishedAt:historical.publishedAt||null,verifiedAt:historical.verifiedAt||null,collectedAt:historical.collectedAt||null,effectiveFrom:historical.applicableFrom||null,effectiveTo:historical.applicableTo||null});
+    Object.assign(record,{amount:item.amount,currency:item.currency||historical.currency,sourceUrl:core.safeUrl(historical.officialNoticeUrl),direction:item.direction||historical.direction||null,departureCountry:item.departureCountry||historical.departureCountry||null,sourceBand:item.sourceBand||null,bandIndex:Number.isInteger(item.bandIndex)?item.bandIndex:null,publishedAt:historical.publishedAt||null,collectedAt:historical.collectedAt||null,effectiveFrom:historical.applicableFrom||null,effectiveTo:historical.applicableTo||null});
     if(code==='BX' || code==='ZE')record.basis='historical-'+item.distanceRange;
-    return record;
+    return core.reconcile(record);
   }
   function getRows(context,value){
     if(!context.route)return [];
@@ -86,17 +96,17 @@
     return context.route.airlines.filter(function(code){return value.airline==='all'||code===value.airline;}).flatMap(function(code){return months.map(function(month){return recordFor(context,code,month);}).filter(Boolean);});
   }
   function info(record){
-    if(!record)return '<span class="calculator-pending">'+t('공식 데이터 없음 · 미확인','No official data · unconfirmed')+'</span>';
-    var verified=record.verificationStatus==='verified';
-    var status=verified?t('공식 공시 확인','Official notice verified'):record.status==='unconfirmed'?t('기존 금액 기록 · 공시 노선군 재검증 필요','Legacy amount · route group requires verification'):record.validatedAt?t('데이터 형식 검사 통과 · 원문 검증 대기','Data checks passed · original-source verification pending'):t('기존 공식 공시 기록 · 재검증 시각 미기록','Existing official record · verification time unavailable');
-    return '<span class="calculator-status">'+status+'</span><div class="calculator-source">'+(record.sourceUrl?'<a href="'+esc(record.sourceUrl)+'" target="_blank" rel="noopener noreferrer">'+t('공식 원문','Official source')+'</a>':t('출처 미확인','Source unavailable'))+
-      '<span>'+t('발표일: ','Published: ')+esc(record.publishedAt||t('미기록','not recorded'))+'</span><span>'+t('원문 검증 시각: ','Source verified: ')+esc(record.verifiedAt||t('미기록','not recorded'))+'</span><span>'+t('수집 시각: ','Collected: ')+esc(record.collectedAt||t('미기록','not recorded'))+'</span>'+(record.validatedAt?'<span>'+t('형식 검사 시각: ','Data checked: ')+esc(record.validatedAt)+'</span>':'')+
+    if(!record)return '<span class="calculator-pending">'+t('확인 중','Checking')+'</span>';
+    var verified=core.isConfirmed(record);
+    var status=verified?t('공시 확인 완료','Notice confirmed'):t('확인 중','Checking');
+    return '<span class="calculator-status">'+status+'</span><div class="calculator-source">'+(record.sourceUrl?'<a href="'+esc(record.sourceUrl)+'" target="_blank" rel="noopener noreferrer">'+t('공시 원문','Original notice')+'</a>':t('출처 확인 중','Checking source'))+
+      '<span>'+t('발표일: ','Published: ')+esc(record.publishedAt||t('미기록','not recorded'))+'</span><span>'+t('확인일: ','Checked: ')+esc(verified&&record.verifiedAt||t('미기록','not recorded'))+'</span><span>'+t('수집일: ','Collected: ')+esc(record.collectedAt||t('미기록','not recorded'))+'</span>'+
       (record.effectiveFrom?'<span>'+t('발권 적용: ','Ticketing: ')+esc(record.effectiveFrom)+' – '+esc(record.effectiveTo)+'</span>':'')+'</div>';
   }
   function nativeCell(record,multiplier){return record?'<strong>'+esc(amount(record.amount*multiplier,record.currency))+'</strong><span class="calculator-unit">'+t('1인 편도 ','Per person, one way ')+esc(amount(record.amount,record.currency))+'</span>'+info(record):info(null);}
   function delta(row,multiplier){
     var comparison=row.comparison;
-    if(!comparison.valid)return '<span class="calculator-pending">'+(comparison.reason==='conditions'?t('구간·통화 등 비교 조건이 다름','Charging basis / currency differs'):comparison.reason==='same_month'?t('서로 다른 발권월을 선택하세요','Choose two different months'):t('확인된 두 달의 공시 필요','Official data needed for both months'))+'</span>';
+    if(!comparison.valid)return '<span class="calculator-pending">'+(comparison.reason==='conditions'?t('비교 불가 · 조건 다름','Cannot compare · different conditions'):comparison.reason==='same_month'?t('다른 발권월을 선택하세요','Choose different months'):t('비교 불가 · 확인 중','Cannot compare · checking'))+'</span>';
     return '<strong>'+esc((comparison.difference>0?'+':'')+amount(comparison.difference*multiplier,comparison.currency))+'</strong><span class="calculator-unit">'+(comparison.percent===null?t('기준액 0: 변동률 계산 불가','Zero baseline: percentage unavailable'):(comparison.percent>0?'+':'')+comparison.percent.toFixed(2)+'%')+'</span>';
   }
   function refreshSurface(){
@@ -104,7 +114,7 @@
     var value=conditions(lastContext),trip=lastContext.trip===2;
     el('savingRoundTrip').textContent=t('단순 왕복 추정','Simple round-trip estimate');
     el('savingOneWay').setAttribute('aria-pressed',String(!trip));el('savingRoundTrip').setAttribute('aria-pressed',String(trip));
-    el('calculatorAssumption').textContent=trip?t('단순 왕복 추정액 = 한국 출발 편도 공시액 × 2 × 인원. 귀국편 출발 국가·항공사·통화·발권 조건에 따라 실제 부과액은 달라집니다. 항공권 가격이나 최종 결제액이 아닙니다.','Simple round-trip estimate = Korea-origin one-way notice × 2 × passengers. Return-origin country, airline, currency and ticket conditions may change the actual surcharge. This is not the ticket price or final payment.'):t('한국 출발 1인 편도 공식 공시액 × 인원. 서로 다른 통화는 환산하거나 합산하지 않습니다. 실제 항공권 총액은 별도로 확인하세요.','Korea-origin one-way notice × passengers. Different currencies are neither converted nor combined. Check the actual total airfare separately.');
+    el('calculatorAssumption').textContent=trip?t('단순 왕복 추정액 = 한국 출발 편도 금액 × 2 × 인원. 귀국편 국가·항공사·통화·발권 조건에 따라 실제 부과액은 달라집니다. 항공권 가격이나 최종 결제액이 아닙니다.','Simple round-trip estimate = Korea-origin one-way amount × 2 × passengers. Return country, airline, currency and ticket conditions may change the charge. This is not the ticket price or final payment.'):t('한국 출발 편도 금액 × 인원입니다. 확인 중인 금액은 비교·최저액에서 제외하며, 통화별로 표시합니다.','Korea-origin one-way amount × passengers. Amounts still being checked are excluded from comparisons and minimums. Currencies are shown separately.');
     var applicability=core.noticeRouteApplicability.find(function(route){return route.origin===value.origin&&route.destination===value.destination&&(value.airline==='all'||value.airline===route.airline);});
     if(applicability){
       el('calculatorAssumption').appendChild(document.createTextNode(t(' 부산 출발 UBN 공시 금액 조회이며 현재 운항일·좌석 제공을 뜻하지 않습니다. ',' This is a PUS–UBN surcharge lookup, not confirmation of operating dates or seat availability. ')));
@@ -112,10 +122,10 @@
     }
     var title=document.querySelector('.saving-tool-title'),sub=document.querySelector('.saving-tool-sub'),badge=document.querySelector('.saving-tool-badge');
     title.textContent=t('노선·항공사·발권월별 유류할증료 비교','Compare fuel surcharges by route, airline and ticketing month');
-    sub.textContent=t('같은 항공사·공식 부과 구간·통화의 금액만 월별 차액과 변동률로 비교합니다.','Monthly differences require the same airline, official charging basis and currency.');
+    sub.textContent=t('같은 항공사·구간·통화의 공시를 월별로 비교합니다.','Compare monthly notices for the same airline, band and currency.');
     badge.textContent=value.baseMonth+' → '+value.targetMonth;
-    var note=document.querySelector('.saving-note');if(note)note.textContent=t('발권월 기준 원 공시 통화로 표시합니다. 환율 환산값은 공식 부과액으로 사용하지 않습니다. 발표일·적용일·수집 시각·원문 검증 시각을 구분하고, 기록이 없는 값은 미기록으로 표시합니다. 최종 발권 전 공식 원문과 예약 화면을 확인하세요.','Amounts retain the original notice currency and ticketing month. Currency conversions are not official charges. Publication, application, collection and source-verification dates are distinct; missing dates remain unrecorded. Check the original notice and booking screen before ticketing.');
-    document.querySelectorAll('.saving-metric-label')[1].textContent=t('원문 확인 공시 · 통화별 최저','Source-verified notices · lowest by currency');
+    var note=document.querySelector('.saving-note');if(note)note.textContent=t('‘확인 중’은 사이트의 확인 상태이며 항공사의 미공시를 뜻하지 않습니다. 최종 금액은 예약 화면에서 확인하세요.','“Checking” refers to this site’s review, not whether the airline has published a notice. Confirm the final amount when booking.');
+    document.querySelectorAll('.saving-metric-label')[1].textContent=t('통화별 최저액','Lowest by currency');
     var headers=el('savingTableWrap').querySelectorAll('thead th');
     [t('항공사 · 노선 · 부과 기준','Airline · route · charging basis'),value.baseMonth,value.targetMonth,t('월별 차액 · 변동률','Monthly difference · change')].forEach(function(label,i){if(headers[i])headers[i].textContent=label;});
     el('savingTableWrap').querySelectorAll('tbody tr').forEach(function(row){row.children[1].setAttribute('data-month',value.baseMonth);row.children[2].setAttribute('data-month',value.targetMonth);row.children[3].setAttribute('data-label',t('월별 차액 · 변동률','Monthly difference · change'));});
@@ -144,7 +154,11 @@
   function renderSaved(){
     var current=currentMonth();
     el('calculatorSavedList').innerHTML=store.state.saved.map(function(entry){
-      var c=entry.conditions,id=core.identity(c),changes=core.changes(entry.snapshot,core.snapshot(allRecords(c)),current);
+      var c=entry.conditions,id=core.identity(c),records=allRecords(c);
+      // Old snapshots were based on status strings, not source reconciliation.
+      // Establish a new baseline silently; do not manufacture revision badges.
+      if(entry.snapshotVersion!==core.SNAPSHOT_VERSION&&restored&&feedLoaded)store.acknowledge(id,records);
+      var changes=entry.snapshotVersion===core.SNAPSHOT_VERSION?core.changes(entry.snapshot,core.snapshot(records),current,entry.observed):[];
       var badges={new_notice:t('새 공식 공시','New official notice'),notice_revision:t('공식 공시 수정','Official revision'),historical_added:t('과거 공시 추가','Historical notice added'),historical_revision:t('과거 공시 수정','Historical revision')};
       return '<li><button type="button" data-route-load="'+esc(id)+'">'+esc(c.origin+' → '+c.destination+' · '+(c.airline==='all'?t('전체 항공사','All airlines'):c.airline))+'<small>'+esc(c.baseMonth+' → '+c.targetMonth)+'</small></button>'+changes.map(function(kind){return '<span class="calculator-update">'+badges[kind]+'</span>';}).join('')+'<button type="button" data-route-delete="'+esc(id)+'" aria-label="'+esc(c.origin+' '+c.destination+' '+t('삭제','Delete'))+'">'+t('삭제','Delete')+'</button></li>';
     }).join('')||'<li>'+t('저장한 관심 노선이 없습니다.','No saved routes yet.')+'</li>';
@@ -193,7 +207,8 @@
     search('month');
   });});
   document.addEventListener('aero:calculator-ready',function(){installNoticeRouteSupport();if(!restored){restored=true;if(store.state.recent)restore(store.state.recent);}bridge.update();});
+  document.addEventListener('aero:source-provenance-ready',function(){bridge.update();});
   installNoticeRouteSupport();
-  fetch('data/official_surcharge_feed.json',{credentials:'same-origin'}).then(function(response){return response.ok?response.json():null;}).then(function(feed){feedRecords=core.validatedFeedRecords(feed);bridge.update();}).catch(function(){/* Keep embedded verified notices if the feed is unavailable. */});
+  fetch('data/official_surcharge_feed.json',{credentials:'same-origin'}).then(function(response){return response.ok?response.json():null;}).then(function(feed){feedRecords=core.validatedFeedRecords(feed);feedLoaded=true;bridge.update();}).catch(function(){feedLoaded=true;bridge.update();/* Keep source-reconciled embedded notices if the feed is unavailable. */});
   bridge.update();
 })();

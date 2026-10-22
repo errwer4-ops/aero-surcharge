@@ -1,0 +1,342 @@
+{
+  "checkedAt": "2026-10-21T09:46:11.879Z",
+  "policy": {
+    "cleanUrls": true,
+    "trailingSlash": false
+  },
+  "static": [
+    {
+      "file": "about.html",
+      "expected": "https://aero-surcharge.com/about",
+      "canonical": [
+        "https://aero-surcharge.com/about.html"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/about.html"
+      ],
+      "schemaUrls": []
+    },
+    {
+      "file": "airlines.html",
+      "expected": "https://aero-surcharge.com/airlines",
+      "canonical": [
+        "https://aero-surcharge.com/airlines.html"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/airlines.html"
+      ],
+      "schemaUrls": []
+    },
+    {
+      "file": "forecast.html",
+      "expected": "https://aero-surcharge.com/forecast",
+      "canonical": [
+        "https://aero-surcharge.com/forecast.html"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/forecast.html"
+      ],
+      "schemaUrls": [
+        "https://aero-surcharge.com/forecast.html#faq",
+        "https://aero-surcharge.com/",
+        "https://aero-surcharge.com/forecast.html"
+      ]
+    },
+    {
+      "file": "fuel-surcharge-2026-05.html",
+      "expected": "https://aero-surcharge.com/fuel-surcharge-2026-05",
+      "canonical": [
+        "https://aero-surcharge.com/fuel-surcharge-2026-05.html"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/fuel-surcharge-2026-05.html"
+      ],
+      "schemaUrls": []
+    },
+    {
+      "file": "fuel-surcharge-asiana.html",
+      "expected": "https://aero-surcharge.com/fuel-surcharge-asiana",
+      "canonical": [
+        "https://aero-surcharge.com/fuel-surcharge-asiana.html"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/fuel-surcharge-asiana.html"
+      ],
+      "schemaUrls": []
+    },
+    {
+      "file": "fuel-surcharge-calculator.html",
+      "expected": "https://aero-surcharge.com/fuel-surcharge-calculator",
+      "canonical": [
+        "https://aero-surcharge.com/fuel-surcharge-calculator.html"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/fuel-surcharge-calculator.html"
+      ],
+      "schemaUrls": [
+        "https://aero-surcharge.com/fuel-surcharge-calculator.html#app",
+        "https://aero-surcharge.com/fuel-surcharge-calculator.html",
+        "https://aero-surcharge.com/",
+        "https://aero-surcharge.com/fuel-surcharge-calculator.html#faq",
+        "https://aero-surcharge.com/fuel-surcharge-calculator.html#breadcrumb",
+        "https://aero-surcharge.com/",
+        "https://aero-surcharge.com/fuel-surcharge-calculator.html"
+      ]
+    },
+    {
+      "file": "fuel-surcharge-graph.html",
+      "expected": "https://aero-surcharge.com/fuel-surcharge-graph",
+      "canonical": [
+        "https://aero-surcharge.com/fuel-surcharge-graph.html"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/fuel-surcharge-graph.html"
+      ],
+      "schemaUrls": [
+        "https://aero-surcharge.com/fuel-surcharge-graph.html#webpage",
+        "https://aero-surcharge.com/fuel-surcharge-graph.html",
+        "https://aero-surcharge.com/",
+        "https://aero-surcharge.com/fuel-surcharge-graph.html#dataset",
+        "https://aero-surcharge.com/terms.html",
+        "https://aero-surcharge.com/fuel-surcharge-graph.html#faq"
+      ]
+    },
+    {
+      "file": "fuel-surcharge-jejuair.html",
+      "expected": "https://aero-surcharge.com/fuel-surcharge-jejuair",
+      "canonical": [
+        "https://aero-surcharge.com/fuel-surcharge-jejuair.html"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/fuel-surcharge-jejuair.html"
+      ],
+      "schemaUrls": []
+    },
+    {
+      "file": "fuel-surcharge-jinair.html",
+      "expected": "https://aero-surcharge.com/fuel-surcharge-jinair",
+      "canonical": [
+        "https://aero-surcharge.com/fuel-surcharge-jinair.html"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/fuel-surcharge-jinair.html"
+      ],
+      "schemaUrls": []
+    },
+    {
+      "file": "fuel-surcharge-korea.html",
+      "expected": "https://aero-surcharge.com/fuel-surcharge-korea",
+      "canonical": [
+        "https://aero-surcharge.com/fuel-surcharge-korea.html"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/fuel-surcharge-korea.html"
+      ],
+      "schemaUrls": []
+    },
+    {
+      "file": "fuel-surcharge-korean-air.html",
+      "expected": "https://aero-surcharge.com/fuel-surcharge-korean-air",
+      "canonical": [
+        "https://aero-surcharge.com/fuel-surcharge-korean-air.html"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/fuel-surcharge-korean-air.html"
+      ],
+      "schemaUrls": []
+    },
+    {
+      "file": "fuel-surcharge-tway.html",
+      "expected": "https://aero-surcharge.com/fuel-surcharge-tway",
+      "canonical": [
+        "https://aero-surcharge.com/fuel-surcharge-tway.html"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/fuel-surcharge-tway.html"
+      ],
+      "schemaUrls": []
+    },
+    {
+      "file": "index.html",
+      "expected": "https://aero-surcharge.com/",
+      "canonical": [
+        "https://aero-surcharge.com/"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/"
+      ],
+      "schemaUrls": []
+    },
+    {
+      "file": "methodology.html",
+      "expected": "https://aero-surcharge.com/methodology",
+      "canonical": [
+        "https://aero-surcharge.com/methodology.html"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/methodology.html"
+      ],
+      "schemaUrls": [
+        "https://aero-surcharge.com/methodology.html"
+      ]
+    },
+    {
+      "file": "news.html",
+      "expected": "https://aero-surcharge.com/news",
+      "canonical": [
+        "https://aero-surcharge.com/news.html"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/news.html"
+      ],
+      "schemaUrls": [
+        "https://aero-surcharge.com/index.html",
+        "https://aero-surcharge.com/news.html",
+        "https://aero-surcharge.com/news.html"
+      ]
+    },
+    {
+      "file": "planner.html",
+      "expected": "https://aero-surcharge.com/planner",
+      "canonical": [],
+      "ogUrl": [],
+      "schemaUrls": []
+    },
+    {
+      "file": "privacy.html",
+      "expected": "https://aero-surcharge.com/privacy",
+      "canonical": [
+        "https://aero-surcharge.com/privacy.html"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/privacy.html"
+      ],
+      "schemaUrls": []
+    },
+    {
+      "file": "terms.html",
+      "expected": "https://aero-surcharge.com/terms",
+      "canonical": [
+        "https://aero-surcharge.com/terms.html"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/terms.html"
+      ],
+      "schemaUrls": []
+    }
+  ],
+  "runtime": [],
+  "live": [],
+  "errors": [
+    "Redirect target is not terminal canonical path: /fuel-surcharge-2026-06-forecast -> /forecast.html",
+    "Redirect target is not terminal canonical path: /fuel-surcharge-2026-06-forecast.html -> /forecast.html",
+    "Redirect target is not terminal canonical path: /fuel-surcharge-forecast -> /forecast.html",
+    "Redirect target is not terminal canonical path: /fuel-surcharge-forecast.html -> /forecast.html",
+    "Sitemap URL is not canonical: https://aero-surcharge.com/airlines.html",
+    "Sitemap URL is not canonical: https://aero-surcharge.com/news.html",
+    "Sitemap URL is not canonical: https://aero-surcharge.com/forecast.html",
+    "Sitemap URL is not canonical: https://aero-surcharge.com/fuel-surcharge-korea.html",
+    "Sitemap URL is not canonical: https://aero-surcharge.com/fuel-surcharge-2026-05.html",
+    "Sitemap URL is not canonical: https://aero-surcharge.com/fuel-surcharge-korean-air.html",
+    "Sitemap URL is not canonical: https://aero-surcharge.com/fuel-surcharge-asiana.html",
+    "Sitemap URL is not canonical: https://aero-surcharge.com/fuel-surcharge-jejuair.html",
+    "Sitemap URL is not canonical: https://aero-surcharge.com/fuel-surcharge-jinair.html",
+    "Sitemap URL is not canonical: https://aero-surcharge.com/fuel-surcharge-tway.html",
+    "Sitemap URL is not canonical: https://aero-surcharge.com/fuel-surcharge-graph.html",
+    "Sitemap URL is not canonical: https://aero-surcharge.com/fuel-surcharge-calculator.html",
+    "Sitemap URL is not canonical: https://aero-surcharge.com/about.html",
+    "Sitemap URL is not canonical: https://aero-surcharge.com/methodology.html",
+    "Sitemap URL is not canonical: https://aero-surcharge.com/privacy.html",
+    "Sitemap URL is not canonical: https://aero-surcharge.com/terms.html",
+    "about.html: canonical must be https://aero-surcharge.com/about",
+    "about.html: og:url must match canonical",
+    "about.html: runtime/static absolute .html self URL remains",
+    "airlines.html: canonical must be https://aero-surcharge.com/airlines",
+    "airlines.html: og:url must match canonical",
+    "airlines.html: runtime/static absolute .html self URL remains",
+    "forecast.html: canonical must be https://aero-surcharge.com/forecast",
+    "forecast.html: og:url must match canonical",
+    "forecast.html: noncanonical JSON-LD URL https://aero-surcharge.com/forecast.html#faq",
+    "forecast.html: noncanonical JSON-LD URL https://aero-surcharge.com/forecast.html",
+    "forecast.html: runtime/static absolute .html self URL remains",
+    "fuel-surcharge-2026-05.html: canonical must be https://aero-surcharge.com/fuel-surcharge-2026-05",
+    "fuel-surcharge-2026-05.html: og:url must match canonical",
+    "fuel-surcharge-2026-05.html: runtime/static absolute .html self URL remains",
+    "fuel-surcharge-asiana.html: canonical must be https://aero-surcharge.com/fuel-surcharge-asiana",
+    "fuel-surcharge-asiana.html: og:url must match canonical",
+    "fuel-surcharge-asiana.html: runtime/static absolute .html self URL remains",
+    "fuel-surcharge-calculator.html: canonical must be https://aero-surcharge.com/fuel-surcharge-calculator",
+    "fuel-surcharge-calculator.html: og:url must match canonical",
+    "fuel-surcharge-calculator.html: noncanonical JSON-LD URL https://aero-surcharge.com/fuel-surcharge-calculator.html#app",
+    "fuel-surcharge-calculator.html: noncanonical JSON-LD URL https://aero-surcharge.com/fuel-surcharge-calculator.html",
+    "fuel-surcharge-calculator.html: noncanonical JSON-LD URL https://aero-surcharge.com/fuel-surcharge-calculator.html#faq",
+    "fuel-surcharge-calculator.html: noncanonical JSON-LD URL https://aero-surcharge.com/fuel-surcharge-calculator.html#breadcrumb",
+    "fuel-surcharge-calculator.html: noncanonical JSON-LD URL https://aero-surcharge.com/fuel-surcharge-calculator.html",
+    "fuel-surcharge-calculator.html: runtime/static absolute .html self URL remains",
+    "fuel-surcharge-graph.html: canonical must be https://aero-surcharge.com/fuel-surcharge-graph",
+    "fuel-surcharge-graph.html: og:url must match canonical",
+    "fuel-surcharge-graph.html: noncanonical JSON-LD URL https://aero-surcharge.com/fuel-surcharge-graph.html#webpage",
+    "fuel-surcharge-graph.html: noncanonical JSON-LD URL https://aero-surcharge.com/fuel-surcharge-graph.html",
+    "fuel-surcharge-graph.html: noncanonical JSON-LD URL https://aero-surcharge.com/fuel-surcharge-graph.html#dataset",
+    "fuel-surcharge-graph.html: noncanonical JSON-LD URL https://aero-surcharge.com/terms.html",
+    "fuel-surcharge-graph.html: noncanonical JSON-LD URL https://aero-surcharge.com/fuel-surcharge-graph.html#faq",
+    "fuel-surcharge-graph.html: runtime/static absolute .html self URL remains",
+    "fuel-surcharge-jejuair.html: canonical must be https://aero-surcharge.com/fuel-surcharge-jejuair",
+    "fuel-surcharge-jejuair.html: og:url must match canonical",
+    "fuel-surcharge-jejuair.html: runtime/static absolute .html self URL remains",
+    "fuel-surcharge-jinair.html: canonical must be https://aero-surcharge.com/fuel-surcharge-jinair",
+    "fuel-surcharge-jinair.html: og:url must match canonical",
+    "fuel-surcharge-jinair.html: runtime/static absolute .html self URL remains",
+    "fuel-surcharge-korea.html: canonical must be https://aero-surcharge.com/fuel-surcharge-korea",
+    "fuel-surcharge-korea.html: og:url must match canonical",
+    "fuel-surcharge-korea.html: runtime/static absolute .html self URL remains",
+    "fuel-surcharge-korean-air.html: canonical must be https://aero-surcharge.com/fuel-surcharge-korean-air",
+    "fuel-surcharge-korean-air.html: og:url must match canonical",
+    "fuel-surcharge-korean-air.html: runtime/static absolute .html self URL remains",
+    "fuel-surcharge-tway.html: canonical must be https://aero-surcharge.com/fuel-surcharge-tway",
+    "fuel-surcharge-tway.html: og:url must match canonical",
+    "fuel-surcharge-tway.html: runtime/static absolute .html self URL remains",
+    "methodology.html: canonical must be https://aero-surcharge.com/methodology",
+    "methodology.html: og:url must match canonical",
+    "methodology.html: noncanonical JSON-LD URL https://aero-surcharge.com/methodology.html",
+    "methodology.html: runtime/static absolute .html self URL remains",
+    "news.html: canonical must be https://aero-surcharge.com/news",
+    "news.html: og:url must match canonical",
+    "news.html: noncanonical JSON-LD URL https://aero-surcharge.com/index.html",
+    "news.html: noncanonical JSON-LD URL https://aero-surcharge.com/news.html",
+    "news.html: noncanonical JSON-LD URL https://aero-surcharge.com/news.html",
+    "news.html: runtime/static absolute .html self URL remains",
+    "planner.html: canonical must be https://aero-surcharge.com/planner",
+    "planner.html: og:url must match canonical",
+    "privacy.html: canonical must be https://aero-surcharge.com/privacy",
+    "privacy.html: og:url must match canonical",
+    "privacy.html: runtime/static absolute .html self URL remains",
+    "terms.html: canonical must be https://aero-surcharge.com/terms",
+    "terms.html: og:url must match canonical",
+    "terms.html: runtime/static absolute .html self URL remains",
+    "aug28-update.js: runtime absolute .html self URL remains",
+    "aug31-update.js: runtime absolute .html self URL remains",
+    "sep02-update.js: runtime absolute .html self URL remains",
+    "sep03-update.js: runtime absolute .html self URL remains",
+    "sep04-update.js: runtime absolute .html self URL remains",
+    "Sitemap URL lacks matching indexable page canonical: https://aero-surcharge.com/airlines.html",
+    "Sitemap URL lacks matching indexable page canonical: https://aero-surcharge.com/news.html",
+    "Sitemap URL lacks matching indexable page canonical: https://aero-surcharge.com/forecast.html",
+    "Sitemap URL lacks matching indexable page canonical: https://aero-surcharge.com/fuel-surcharge-korea.html",
+    "Sitemap URL lacks matching indexable page canonical: https://aero-surcharge.com/fuel-surcharge-2026-05.html",
+    "Sitemap URL lacks matching indexable page canonical: https://aero-surcharge.com/fuel-surcharge-korean-air.html",
+    "Sitemap URL lacks matching indexable page canonical: https://aero-surcharge.com/fuel-surcharge-asiana.html",
+    "Sitemap URL lacks matching indexable page canonical: https://aero-surcharge.com/fuel-surcharge-jejuair.html",
+    "Sitemap URL lacks matching indexable page canonical: https://aero-surcharge.com/fuel-surcharge-jinair.html",
+    "Sitemap URL lacks matching indexable page canonical: https://aero-surcharge.com/fuel-surcharge-tway.html",
+    "Sitemap URL lacks matching indexable page canonical: https://aero-surcharge.com/fuel-surcharge-graph.html",
+    "Sitemap URL lacks matching indexable page canonical: https://aero-surcharge.com/fuel-surcharge-calculator.html",
+    "Sitemap URL lacks matching indexable page canonical: https://aero-surcharge.com/about.html",
+    "Sitemap URL lacks matching indexable page canonical: https://aero-surcharge.com/methodology.html",
+    "Sitemap URL lacks matching indexable page canonical: https://aero-surcharge.com/privacy.html",
+    "Sitemap URL lacks matching indexable page canonical: https://aero-surcharge.com/terms.html"
+  ],
+  "limitations": [],
+  "sitemapCount": 17,
+  "passed": false
+}

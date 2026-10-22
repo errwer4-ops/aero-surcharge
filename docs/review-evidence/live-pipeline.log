@@ -1,0 +1,150 @@
+[Pipeline] 기준월 2026.10 / 다음달 2026.11
+[Collector] 수집 시작 (v30): KE, LJ, 7C
+[Collector] 기준월: 2026.10 / 다음월: 2026.11
+[Collector][KE] ⚠ override 권장 항공사 — 자동 수집 시도
+  [LJ] [api] JSON 엔드포인트 탐색 (2개)
+  [7C] [api] JSON 엔드포인트 탐색 (2개)
+  [LJ] [api] /company/announce/announceList.json 실패: HTTP 403
+  [LJ] [api] /api/notice/list 실패: HTTP 403
+  [LJ] [direct] 목록 fetch: https://www.jinair.com/company/announce/announceList
+  [LJ] [direct] 목록 fetch 실패: HTTP 403
+  [LJ] [browser] Playwright 시작
+  [7C] [api] /ko/customerServiceCenter/notice.json 실패: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+  [KE] [browser] 홈 진입: https://www.koreanair.com
+  [7C] [api] /api/notice 실패: Unexpected token '<', "<!DOCTYPE "... is not valid JSON
+  [7C] [direct] 목록 fetch: https://www.jejuair.net/ko/customerServiceCenter/notice.do
+  [7C] [direct] 목록 수집: 286094자
+  [7C] [direct] 링크 후보: 1개
+  [7C] [browser] Playwright 시작
+  [LJ] list | status: 403 | URL: https://www.jinair.com/company/announce/announceList
+  [LJ] [browser] 목록 수집 실패: HTTP 403
+  [7C] list | status: 403 | URL: https://www.jejuair.net/ko/customerServiceCenter/notice.do
+  [7C] 💾 HTML 스냅샷: debug/7C/list_http_403_1792576853226.html
+  [7C] 📷 스크린샷: debug/7C/list_http_403_1792576853226.png
+[Collector][7C] ❌ 수집 실패 → fallback: HTTP 403
+[Collector][LJ] ❌ 수집 실패 → fallback: LJ: override/API/direct/Playwright 모두 실패
+  [KE] home goto 예외: page.goto: Timeout 20000ms exceeded.
+Call log:
+[2m  - navigating to "https://www.koreanair.com/", waiting until "domcontentloaded"[22m
+ | URL: about:blank
+  [KE] [browser] 홈 진입 예외 (무시): page.goto: Timeout 20000ms exceeded.
+Call log:
+[2m  - navigating to "https://www.koreanair.com/", waiting until "domcontentloaded"[22m
+
+  [KE] [browser] 공지 목록: https://www.koreanair.com/contents/footer/customer-support/notice
+  [KE] [fail] net::ERR_ABORTED — https://www.koreanair.com/
+  [KE] list goto 예외: page.goto: Timeout 30000ms exceeded.
+Call log:
+[2m  - navigating to "https://www.koreanair.com/contents/footer/customer-support/notice", waiting until "domcontentloaded"[22m
+ | URL: about:blank
+[Collector][KE] ❌ 수집 실패 → fallback: KE: hard timeout 60s
+
+════════════════════════════════════════════════════════════════
+📊 [Collector] 수집 결과 요약 (v30)
+════════════════════════════════════════════════════════════════
+
+✅ 수집 성공 (0개):
+
+❌ 수집 실패 / fallback (3개):
+   KE  대한항공     → KE: hard timeout 60s ⚠ override 권장
+   LJ  진에어      → LJ: override/API/direct/Playwright 모두 실패
+   7C  제주항공     → HTTP 403
+
+📝 override 등록 방법 (manual_overrides.json > collector_overrides):
+   [텍스트 직접 입력] { "type": "text", "value": "500마일 미만: 42,000원\n..." }
+   [URL 등록]         { "type": "url",  "value": "https://..." }
+   [HTML 직접 입력]   { "type": "html", "value": "<table>...</table>" }
+
+📋 source별 분류:
+   ⚠️  fallback          : KE, LJ, 7C
+════════════════════════════════════════════════════════════════
+
+
+[AI-SEARCH] === Level 3 AI 자동 검색 시작 ===
+[AI-SEARCH] 복구 대상: KE, LJ, 7C (3개)
+[AI-SEARCH][KE] --- 복구 시작 ---
+[AI-SEARCH][KE] 검색 쿼리 KO: "대한항공 국제선 유류할증료 2026년 10월 site:koreanair.com"
+[AI-SEARCH][KE] 검색 쿼리 EN: "Korean Air fuel surcharge October 2026 site:koreanair.com"
+[AI-SEARCH][KE] AI 검색 API 오류 HTTP 400: Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.
+[AI-SEARCH][KE] 검색 결과 없음 → fallback 유지
+[AI-SEARCH][KE] 등록 안 함 (후보 없음)
+[AI-SEARCH][LJ] --- 복구 시작 ---
+[AI-SEARCH][LJ] 검색 쿼리 KO: "진에어 유류할증료 2026년 10월 site:jinair.com"
+[AI-SEARCH][LJ] 검색 쿼리 EN: "Jin Air fuel surcharge October 2026 site:jinair.com"
+[AI-SEARCH][LJ] AI 검색 API 오류 HTTP 400: Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.
+[AI-SEARCH][LJ] 검색 결과 없음 → fallback 유지
+[AI-SEARCH][LJ] 등록 안 함 (후보 없음)
+[AI-SEARCH][7C] --- 복구 시작 ---
+[AI-SEARCH][7C] 검색 쿼리 KO: "제주항공 국제선 유류할증료 2026년 10월 site:jejuair.net"
+[AI-SEARCH][7C] 검색 쿼리 EN: "Jeju Air fuel surcharge October 2026 site:jejuair.net"
+[AI-SEARCH][7C] AI 검색 API 오류 HTTP 400: Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.
+[AI-SEARCH][7C] 검색 결과 없음 → fallback 유지
+[AI-SEARCH][7C] 등록 안 함 (후보 없음)
+[AI-SEARCH] === 완료: ai-search-auto 0개 등록 ===
+
+[Parser] API 연동 (per-airline timeout: 25s, 병렬 처리)
+[Parser] KE: 입력 HTML 563자 → 전처리 후 563자 | 텍스트 224자
+[Parser] KE: API 요청 시작 (timeout: 25s, prompt: 280자)
+[Parser] LJ: 입력 HTML 292자 → 전처리 후 292자 | 텍스트 109자
+[Parser] LJ: API 요청 시작 (timeout: 25s, prompt: 165자)
+[Parser] 7C: 입력 HTML 294자 → 전처리 후 294자 | 텍스트 112자
+[Parser] 7C: API 요청 시작 (timeout: 25s, prompt: 168자)
+[Parser] KE: 오류 → mock fallback: [HTTP 400] Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.
+[Parser] LJ: 오류 → mock fallback: [HTTP 400] Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.
+[Parser] 7C: 오류 → mock fallback: [HTTP 400] Your credit balance is too low to access the Anthropic API. Please go to Plans & Billing to upgrade or purchase credits.
+[Validation] KE: HOLD (9구간)
+  공시 발표일 미제공 (null 유지)
+  적용 시작/종료일 미제공 (월에서 날짜 추정하지 않음)
+  공시 발표일 미제공 (null 유지)
+  적용 시작/종료일 미제공 (월에서 날짜 추정하지 않음)
+  공시 발표일 미제공 (null 유지)
+  적용 시작/종료일 미제공 (월에서 날짜 추정하지 않음)
+  공시 발표일 미제공 (null 유지)
+  적용 시작/종료일 미제공 (월에서 날짜 추정하지 않음)
+  공시 발표일 미제공 (null 유지)
+  적용 시작/종료일 미제공 (월에서 날짜 추정하지 않음)
+  공시 발표일 미제공 (null 유지)
+  적용 시작/종료일 미제공 (월에서 날짜 추정하지 않음)
+  공시 발표일 미제공 (null 유지)
+  적용 시작/종료일 미제공 (월에서 날짜 추정하지 않음)
+  공시 발표일 미제공 (null 유지)
+  적용 시작/종료일 미제공 (월에서 날짜 추정하지 않음)
+  공시 발표일 미제공 (null 유지)
+  적용 시작/종료일 미제공 (월에서 날짜 추정하지 않음)
+  수집 실패/미확인 출처 (fallback) — 기존 데이터 보존
+  mock 또는 파서 검증 상태 미확인 — 게시 금지
+  수집 오류: KE: hard timeout 60s
+[Validation] LJ: HOLD (4구간)
+  공시 발표일 미제공 (null 유지)
+  적용 시작/종료일 미제공 (월에서 날짜 추정하지 않음)
+  공시 발표일 미제공 (null 유지)
+  적용 시작/종료일 미제공 (월에서 날짜 추정하지 않음)
+  공시 발표일 미제공 (null 유지)
+  적용 시작/종료일 미제공 (월에서 날짜 추정하지 않음)
+  공시 발표일 미제공 (null 유지)
+  적용 시작/종료일 미제공 (월에서 날짜 추정하지 않음)
+  수집 실패/미확인 출처 (fallback) — 기존 데이터 보존
+  mock 또는 파서 검증 상태 미확인 — 게시 금지
+  수집 오류: LJ: override/API/direct/Playwright 모두 실패
+  기존 공시 대비 구간 수 감소 — 누락 여부 검토 필요
+[Validation] 7C: HOLD (4구간)
+  공시 발표일 미제공 (null 유지)
+  적용 시작/종료일 미제공 (월에서 날짜 추정하지 않음)
+  공시 발표일 미제공 (null 유지)
+  적용 시작/종료일 미제공 (월에서 날짜 추정하지 않음)
+  공시 발표일 미제공 (null 유지)
+  적용 시작/종료일 미제공 (월에서 날짜 추정하지 않음)
+  공시 발표일 미제공 (null 유지)
+  적용 시작/종료일 미제공 (월에서 날짜 추정하지 않음)
+  수집 실패/미확인 출처 (fallback) — 기존 데이터 보존
+  mock 또는 파서 검증 상태 미확인 — 게시 금지
+  수집 오류: HTTP 403
+  기존 공시 대비 구간 수 감소 — 누락 여부 검토 필요
+[Pipeline] 신규 후보 검증 실패 — 공식/전망 피드 전체 보존
+[Pipeline] 파일 변경 없음; 결과 HOLD
+  [KE] [fail] net::ERR_CONNECTION_RESET — https://www.koreanair.com/contents/footer/customer-support/notice
+  [KE] 📷 스크린샷: debug/KE/list_aborted_1792577366448.png
+  [KE] [browser] 목록 수집 실패: page.goto: Timeout 30000ms exceeded.
+Call log:
+[2m  - navigating to "https://www.koreanair.com/contents/footer/customer-support/notice", waiting until "domcontentloaded"[22m
+

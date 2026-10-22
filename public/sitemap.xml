@@ -10,96 +10,96 @@
 
   <!-- 항공사 인덱스 -->
   <url>
-    <loc>https://aero-surcharge.com/airlines.html</loc>
+    <loc>https://aero-surcharge.com/airlines</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- 참고 소식 -->
   <url>
-    <loc>https://aero-surcharge.com/news.html</loc>
+    <loc>https://aero-surcharge.com/news</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- 전망 대표 허브 -->
   <url>
-    <loc>https://aero-surcharge.com/forecast.html</loc>
+    <loc>https://aero-surcharge.com/forecast</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- 한국 출발 랜딩 -->
   <url>
-    <loc>https://aero-surcharge.com/fuel-surcharge-korea.html</loc>
+    <loc>https://aero-surcharge.com/fuel-surcharge-korea</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- 2026년 5월 상세 -->
   <url>
-    <loc>https://aero-surcharge.com/fuel-surcharge-2026-05.html</loc>
+    <loc>https://aero-surcharge.com/fuel-surcharge-2026-05</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
 
   <!-- 항공사 개별 페이지 -->
   <url>
-    <loc>https://aero-surcharge.com/fuel-surcharge-korean-air.html</loc>
+    <loc>https://aero-surcharge.com/fuel-surcharge-korean-air</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://aero-surcharge.com/fuel-surcharge-asiana.html</loc>
+    <loc>https://aero-surcharge.com/fuel-surcharge-asiana</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://aero-surcharge.com/fuel-surcharge-jejuair.html</loc>
+    <loc>https://aero-surcharge.com/fuel-surcharge-jejuair</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://aero-surcharge.com/fuel-surcharge-jinair.html</loc>
+    <loc>https://aero-surcharge.com/fuel-surcharge-jinair</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://aero-surcharge.com/fuel-surcharge-tway.html</loc>
+    <loc>https://aero-surcharge.com/fuel-surcharge-tway</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <!-- 그래프 / 계산 가이드 -->
   <url>
-    <loc>https://aero-surcharge.com/fuel-surcharge-graph.html</loc>
+    <loc>https://aero-surcharge.com/fuel-surcharge-graph</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://aero-surcharge.com/fuel-surcharge-calculator.html</loc>
+    <loc>https://aero-surcharge.com/fuel-surcharge-calculator</loc>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
 
   <!-- 정책 / 신뢰 페이지 -->
   <url>
-    <loc>https://aero-surcharge.com/about.html</loc>
+    <loc>https://aero-surcharge.com/about</loc>
     <changefreq>yearly</changefreq>
     <priority>0.4</priority>
   </url>
   <url>
-    <loc>https://aero-surcharge.com/methodology.html</loc>
+    <loc>https://aero-surcharge.com/methodology</loc>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://aero-surcharge.com/privacy.html</loc>
+    <loc>https://aero-surcharge.com/privacy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://aero-surcharge.com/terms.html</loc>
+    <loc>https://aero-surcharge.com/terms</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>

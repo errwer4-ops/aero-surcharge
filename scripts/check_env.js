@@ -14,10 +14,6 @@ const bytes = exists ? fs.readFileSync(envPath) : Buffer.alloc(0);
 const text = bytes.toString("utf8");
 const parsed = exists ? dotenv.config({ path: envPath, override: true, quiet: true }) : null;
 
-function preview(value) {
-  return value ? value.slice(0, 6) + "..." : null;
-}
-
 function hasBom(buffer) {
   return buffer.length >= 3 && buffer[0] === 0xef && buffer[1] === 0xbb && buffer[2] === 0xbf;
 }
@@ -43,13 +39,7 @@ if (parsed && parsed.error) {
 }
 
 console.log(`MYREALTRIP_API_KEY loaded: ${Boolean(process.env.MYREALTRIP_API_KEY)}`);
-console.log(`MYREALTRIP_API_KEY preview: ${preview(process.env.MYREALTRIP_API_KEY)}`);
 console.log(`MYREALTRIP_API_BASE_URL loaded: ${Boolean(process.env.MYREALTRIP_API_BASE_URL)}`);
-console.log(
-  `MYREALTRIP_API_BASE_URL preview: ${
-    process.env.MYREALTRIP_API_BASE_URL ? process.env.MYREALTRIP_API_BASE_URL.slice(0, 30) : null
-  }`
-);
 console.log(
   `MYREALTRIP env keys: ${Object.keys(process.env)
     .filter((key) => key.includes("MYREALTRIP"))

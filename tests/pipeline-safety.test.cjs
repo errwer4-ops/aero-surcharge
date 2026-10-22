@@ -9,6 +9,18 @@ const { spawnSync } = require('node:child_process');
 const { fixtures } = require('./helpers/data-fixtures.cjs');
 const { assertWritableMode, mergeFeed, buildProposal, publishFeed } = require('../scripts/run_pipeline');
 const { validateAll } = require('../lib/validation');
+const sourceTrust = require('../public/source-provenance');
+
+function reviewedFixtures() {
+  const f = fixtures(), notice = sourceTrust.getNotice('LJ', '2026.11');
+  f.parsed.source_url = notice.sourceUrl; f.parsed.effective_month = notice.month;
+  f.parsed.direction = 'one_way'; f.parsed.departureCountry = 'KR';
+  Object.assign(f.parsed.routes[0], { distance_range: notice.bands[0], sourceBand: notice.bands[0], bandIndex: 0, amount: notice.amounts[0] });
+  Object.assign(f.collector, { sourceUrl: notice.sourceUrl, detectedMonth: notice.month, monthType: 'NEXT' });
+  f.previous.airlines[0].currentPeriod = '2026.10';
+  Object.assign(f.previous.airlines[0].items[0], { period: '2026.10', distanceRange: notice.bands[0], current: 32 });
+  return f;
+}
 
 test('mock/skip modes cannot write, including an installed API key', () => {
   assert.throws(() => assertWritableMode({ mock: true, dryRun: false }));
@@ -29,21 +41,22 @@ test('partial batches and unvalidated raw overrides cannot publish', () => {
   assert.deepEqual(merged, f.previous);
 });
 test('valid publication uses metadata, keeps backup and forecast input untouched', () => {
-  const f = fixtures(), proposal = buildProposal(f.previous, [f.parsed], [f.collector]);
+  const f = reviewedFixtures(), proposal = buildProposal(f.previous, [f.parsed], [f.collector]);
   assert.equal(proposal.passed, true);
   const item = proposal.proposed.airlines[0].items[0];
-  assert.equal(item.current, 22); assert.equal(item.metadata.validationStatus, 'passed'); assert.equal(item.metadata.publishedAt, null);
+  assert.equal(item.current, 36); assert.equal(item.metadata.validationStatus, 'passed'); assert.equal(item.metadata.publishedAt, null);
+  assert.equal(item.metadata.sourceVerificationStatus, 'source_reconciled');
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'aero-publish-')), feedPath = path.join(dir, 'feed.json');
   const original = JSON.stringify(f.previous); fs.writeFileSync(feedPath, original);
   const forecastPath = path.join(dir, 'forecast.json'); fs.writeFileSync(forecastPath, '{"verified":"unchanged"}');
   assert.equal(publishFeed(feedPath, proposal.proposed, original, { reportDir: path.join(dir, 'reports') }), true);
-  assert.equal(JSON.parse(fs.readFileSync(feedPath)).airlines[0].items[0].current, 22);
+  assert.equal(JSON.parse(fs.readFileSync(feedPath)).airlines[0].items[0].current, 36);
   const backups = fs.readdirSync(path.join(dir, 'reports')); assert.equal(backups.length, 1);
   assert.equal(fs.readFileSync(path.join(dir, 'reports', backups[0]), 'utf8'), original);
   assert.equal(fs.readFileSync(forecastPath, 'utf8'), '{"verified":"unchanged"}');
 });
 test('publishing revalidates and preserves original file on failure or concurrent edits', () => {
-  const f = fixtures(), proposal = buildProposal(f.previous, [f.parsed], [f.collector]);
+  const f = reviewedFixtures(), proposal = buildProposal(f.previous, [f.parsed], [f.collector]);
   const dir = fs.mkdtempSync(path.join(os.tmpdir(), 'aero-hold-')), feedPath = path.join(dir, 'feed.json');
   const original = JSON.stringify(f.previous); fs.writeFileSync(feedPath, original);
   const invalid = structuredClone(proposal.proposed); invalid.airlines[0].items[0].current = -1;
@@ -52,6 +65,21 @@ test('publishing revalidates and preserves original file on failure or concurren
   fs.writeFileSync(feedPath, original + '\n');
   assert.throws(() => publishFeed(feedPath, proposal.proposed, original, { reportDir: dir }), /변경됨/);
   assert.equal(fs.readFileSync(feedPath, 'utf8'), original + '\n');
+});
+test('technical PASS and parser verification strings cannot publish unreconciled amounts', () => {
+  const f = fixtures(); f.parsed.sourceVerificationStatus = 'source_reconciled';
+  const technical = validateAll([f.parsed], f.previous, [f.collector]);
+  assert.equal(technical[0].hasValidData, true);
+  assert.equal(technical[0].validRoutes[0].metadata.dataStatus, 'unconfirmed');
+  const proposal = buildProposal(f.previous, [f.parsed], [f.collector]);
+  assert.equal(proposal.passed, false); assert.equal(proposal.proposed, null);
+  assert.equal(proposal.validated[0].sourceVerificationStatus, 'unresolved');
+  assert.throws(() => mergeFeed(f.previous, technical), /원문/);
+});
+test('even a small edit to source-reconciled published metadata requires new source review', () => {
+  const f = reviewedFixtures(), proposal = buildProposal(f.previous, [f.parsed], [f.collector]);
+  proposal.proposed.airlines[0].items[0].current++;
+  assert.throws(() => publishFeed('unused.json', proposal.proposed, JSON.stringify(f.previous)), /원문/);
 });
 test('actual mock dry-run exits nonzero for rejected data and changes no public JSON', () => {
   const root = path.resolve(__dirname, '..'), data = path.join(root, 'public', 'data');

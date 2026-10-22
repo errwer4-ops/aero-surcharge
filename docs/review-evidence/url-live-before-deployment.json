@@ -1,0 +1,519 @@
+{
+  "checkedAt": "2026-10-21T10:16:15.419Z",
+  "policy": {
+    "cleanUrls": true,
+    "trailingSlash": false
+  },
+  "static": [
+    {
+      "file": "about.html",
+      "expected": "https://aero-surcharge.com/about",
+      "canonical": [
+        "https://aero-surcharge.com/about"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/about"
+      ],
+      "schemaUrls": []
+    },
+    {
+      "file": "airlines.html",
+      "expected": "https://aero-surcharge.com/airlines",
+      "canonical": [
+        "https://aero-surcharge.com/airlines"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/airlines"
+      ],
+      "schemaUrls": []
+    },
+    {
+      "file": "forecast.html",
+      "expected": "https://aero-surcharge.com/forecast",
+      "canonical": [
+        "https://aero-surcharge.com/forecast"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/forecast"
+      ],
+      "schemaUrls": [
+        "https://aero-surcharge.com/forecast#faq",
+        "https://aero-surcharge.com/",
+        "https://aero-surcharge.com/forecast"
+      ]
+    },
+    {
+      "file": "fuel-surcharge-2026-05.html",
+      "expected": "https://aero-surcharge.com/fuel-surcharge-2026-05",
+      "canonical": [
+        "https://aero-surcharge.com/fuel-surcharge-2026-05"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/fuel-surcharge-2026-05"
+      ],
+      "schemaUrls": []
+    },
+    {
+      "file": "fuel-surcharge-asiana.html",
+      "expected": "https://aero-surcharge.com/fuel-surcharge-asiana",
+      "canonical": [
+        "https://aero-surcharge.com/fuel-surcharge-asiana"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/fuel-surcharge-asiana"
+      ],
+      "schemaUrls": []
+    },
+    {
+      "file": "fuel-surcharge-calculator.html",
+      "expected": "https://aero-surcharge.com/fuel-surcharge-calculator",
+      "canonical": [
+        "https://aero-surcharge.com/fuel-surcharge-calculator"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/fuel-surcharge-calculator"
+      ],
+      "schemaUrls": [
+        "https://aero-surcharge.com/fuel-surcharge-calculator#app",
+        "https://aero-surcharge.com/fuel-surcharge-calculator",
+        "https://aero-surcharge.com/",
+        "https://aero-surcharge.com/fuel-surcharge-calculator#faq",
+        "https://aero-surcharge.com/fuel-surcharge-calculator#breadcrumb",
+        "https://aero-surcharge.com/",
+        "https://aero-surcharge.com/fuel-surcharge-calculator"
+      ]
+    },
+    {
+      "file": "fuel-surcharge-graph.html",
+      "expected": "https://aero-surcharge.com/fuel-surcharge-graph",
+      "canonical": [
+        "https://aero-surcharge.com/fuel-surcharge-graph"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/fuel-surcharge-graph"
+      ],
+      "schemaUrls": [
+        "https://aero-surcharge.com/fuel-surcharge-graph#webpage",
+        "https://aero-surcharge.com/fuel-surcharge-graph",
+        "https://aero-surcharge.com/",
+        "https://aero-surcharge.com/fuel-surcharge-graph#dataset",
+        "https://aero-surcharge.com/terms",
+        "https://aero-surcharge.com/fuel-surcharge-graph#faq"
+      ]
+    },
+    {
+      "file": "fuel-surcharge-jejuair.html",
+      "expected": "https://aero-surcharge.com/fuel-surcharge-jejuair",
+      "canonical": [
+        "https://aero-surcharge.com/fuel-surcharge-jejuair"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/fuel-surcharge-jejuair"
+      ],
+      "schemaUrls": []
+    },
+    {
+      "file": "fuel-surcharge-jinair.html",
+      "expected": "https://aero-surcharge.com/fuel-surcharge-jinair",
+      "canonical": [
+        "https://aero-surcharge.com/fuel-surcharge-jinair"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/fuel-surcharge-jinair"
+      ],
+      "schemaUrls": []
+    },
+    {
+      "file": "fuel-surcharge-korea.html",
+      "expected": "https://aero-surcharge.com/fuel-surcharge-korea",
+      "canonical": [
+        "https://aero-surcharge.com/fuel-surcharge-korea"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/fuel-surcharge-korea"
+      ],
+      "schemaUrls": []
+    },
+    {
+      "file": "fuel-surcharge-korean-air.html",
+      "expected": "https://aero-surcharge.com/fuel-surcharge-korean-air",
+      "canonical": [
+        "https://aero-surcharge.com/fuel-surcharge-korean-air"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/fuel-surcharge-korean-air"
+      ],
+      "schemaUrls": []
+    },
+    {
+      "file": "fuel-surcharge-tway.html",
+      "expected": "https://aero-surcharge.com/fuel-surcharge-tway",
+      "canonical": [
+        "https://aero-surcharge.com/fuel-surcharge-tway"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/fuel-surcharge-tway"
+      ],
+      "schemaUrls": []
+    },
+    {
+      "file": "index.html",
+      "expected": "https://aero-surcharge.com/",
+      "canonical": [
+        "https://aero-surcharge.com/"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/"
+      ],
+      "schemaUrls": []
+    },
+    {
+      "file": "methodology.html",
+      "expected": "https://aero-surcharge.com/methodology",
+      "canonical": [
+        "https://aero-surcharge.com/methodology"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/methodology"
+      ],
+      "schemaUrls": [
+        "https://aero-surcharge.com/methodology"
+      ]
+    },
+    {
+      "file": "news.html",
+      "expected": "https://aero-surcharge.com/news",
+      "canonical": [
+        "https://aero-surcharge.com/news"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/news"
+      ],
+      "schemaUrls": [
+        "https://aero-surcharge.com/",
+        "https://aero-surcharge.com/news",
+        "https://aero-surcharge.com/news"
+      ]
+    },
+    {
+      "file": "planner.html",
+      "expected": "https://aero-surcharge.com/planner",
+      "canonical": [
+        "https://aero-surcharge.com/planner"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/planner"
+      ],
+      "schemaUrls": []
+    },
+    {
+      "file": "privacy.html",
+      "expected": "https://aero-surcharge.com/privacy",
+      "canonical": [
+        "https://aero-surcharge.com/privacy"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/privacy"
+      ],
+      "schemaUrls": []
+    },
+    {
+      "file": "terms.html",
+      "expected": "https://aero-surcharge.com/terms",
+      "canonical": [
+        "https://aero-surcharge.com/terms"
+      ],
+      "ogUrl": [
+        "https://aero-surcharge.com/terms"
+      ],
+      "schemaUrls": []
+    }
+  ],
+  "runtime": [],
+  "live": [
+    {
+      "requested": "https://aero-surcharge.com/index.html",
+      "hops": [
+        {
+          "url": "https://aero-surcharge.com/index.html",
+          "status": 308,
+          "location": "/"
+        },
+        {
+          "url": "https://aero-surcharge.com/",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://aero-surcharge.com/",
+      "metadata": {
+        "canonical": [
+          "https://aero-surcharge.com/"
+        ],
+        "ogUrl": [
+          "https://aero-surcharge.com/"
+        ],
+        "schemaUrls": []
+      },
+      "publicScriptSignals": {
+        "directAdSenseTag": true,
+        "ga4Tag": true,
+        "clarityTag": false,
+        "cmpMarker": false,
+        "localPlatformConfigTag": false
+      },
+      "canonicalMatchesFinal": true
+    },
+    {
+      "requested": "https://aero-surcharge.com/airlines.html",
+      "hops": [
+        {
+          "url": "https://aero-surcharge.com/airlines.html",
+          "status": 308,
+          "location": "/airlines"
+        },
+        {
+          "url": "https://aero-surcharge.com/airlines",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://aero-surcharge.com/airlines",
+      "metadata": {
+        "canonical": [
+          "https://aero-surcharge.com/airlines.html"
+        ],
+        "ogUrl": [
+          "https://aero-surcharge.com/airlines.html"
+        ],
+        "schemaUrls": []
+      },
+      "publicScriptSignals": {
+        "directAdSenseTag": true,
+        "ga4Tag": true,
+        "clarityTag": false,
+        "cmpMarker": false,
+        "localPlatformConfigTag": false
+      },
+      "canonicalMatchesFinal": false
+    },
+    {
+      "requested": "https://aero-surcharge.com/fuel-surcharge-calculator.html",
+      "hops": [
+        {
+          "url": "https://aero-surcharge.com/fuel-surcharge-calculator.html",
+          "status": 308,
+          "location": "/fuel-surcharge-calculator"
+        },
+        {
+          "url": "https://aero-surcharge.com/fuel-surcharge-calculator",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://aero-surcharge.com/fuel-surcharge-calculator",
+      "metadata": {
+        "canonical": [
+          "https://aero-surcharge.com/fuel-surcharge-calculator.html"
+        ],
+        "ogUrl": [
+          "https://aero-surcharge.com/fuel-surcharge-calculator.html"
+        ],
+        "schemaUrls": [
+          "https://aero-surcharge.com/fuel-surcharge-calculator.html#app",
+          "https://aero-surcharge.com/fuel-surcharge-calculator.html",
+          "https://aero-surcharge.com/",
+          "https://aero-surcharge.com/fuel-surcharge-calculator.html#faq",
+          "https://aero-surcharge.com/fuel-surcharge-calculator.html#breadcrumb",
+          "https://aero-surcharge.com/",
+          "https://aero-surcharge.com/fuel-surcharge-calculator.html"
+        ]
+      },
+      "publicScriptSignals": {
+        "directAdSenseTag": true,
+        "ga4Tag": true,
+        "clarityTag": false,
+        "cmpMarker": false,
+        "localPlatformConfigTag": false
+      },
+      "canonicalMatchesFinal": false
+    },
+    {
+      "requested": "https://aero-surcharge.com/news.html",
+      "hops": [
+        {
+          "url": "https://aero-surcharge.com/news.html",
+          "status": 308,
+          "location": "/news"
+        },
+        {
+          "url": "https://aero-surcharge.com/news",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://aero-surcharge.com/news",
+      "metadata": {
+        "canonical": [
+          "https://aero-surcharge.com/news.html"
+        ],
+        "ogUrl": [
+          "https://aero-surcharge.com/news.html"
+        ],
+        "schemaUrls": [
+          "https://aero-surcharge.com/index.html",
+          "https://aero-surcharge.com/news.html",
+          "https://aero-surcharge.com/news.html"
+        ]
+      },
+      "publicScriptSignals": {
+        "directAdSenseTag": true,
+        "ga4Tag": true,
+        "clarityTag": false,
+        "cmpMarker": false,
+        "localPlatformConfigTag": false
+      },
+      "canonicalMatchesFinal": false
+    },
+    {
+      "requested": "https://aero-surcharge.com/forecast.html",
+      "hops": [
+        {
+          "url": "https://aero-surcharge.com/forecast.html",
+          "status": 308,
+          "location": "/forecast"
+        },
+        {
+          "url": "https://aero-surcharge.com/forecast",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://aero-surcharge.com/forecast",
+      "metadata": {
+        "canonical": [
+          "https://aero-surcharge.com/forecast.html"
+        ],
+        "ogUrl": [
+          "https://aero-surcharge.com/forecast.html"
+        ],
+        "schemaUrls": [
+          "https://aero-surcharge.com/forecast.html#faq",
+          "https://aero-surcharge.com/",
+          "https://aero-surcharge.com/forecast.html"
+        ]
+      },
+      "publicScriptSignals": {
+        "directAdSenseTag": true,
+        "ga4Tag": true,
+        "clarityTag": false,
+        "cmpMarker": false,
+        "localPlatformConfigTag": false
+      },
+      "canonicalMatchesFinal": false
+    },
+    {
+      "requested": "https://aero-surcharge.com/fuel-surcharge-forecast.html",
+      "hops": [
+        {
+          "url": "https://aero-surcharge.com/fuel-surcharge-forecast.html",
+          "status": 308,
+          "location": "/fuel-surcharge-forecast"
+        },
+        {
+          "url": "https://aero-surcharge.com/fuel-surcharge-forecast",
+          "status": 308,
+          "location": "/forecast.html"
+        },
+        {
+          "url": "https://aero-surcharge.com/forecast.html",
+          "status": 308,
+          "location": "/forecast"
+        },
+        {
+          "url": "https://aero-surcharge.com/forecast",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://aero-surcharge.com/forecast",
+      "metadata": {
+        "canonical": [
+          "https://aero-surcharge.com/forecast.html"
+        ],
+        "ogUrl": [
+          "https://aero-surcharge.com/forecast.html"
+        ],
+        "schemaUrls": [
+          "https://aero-surcharge.com/forecast.html#faq",
+          "https://aero-surcharge.com/",
+          "https://aero-surcharge.com/forecast.html"
+        ]
+      },
+      "publicScriptSignals": {
+        "directAdSenseTag": true,
+        "ga4Tag": true,
+        "clarityTag": false,
+        "cmpMarker": false,
+        "localPlatformConfigTag": false
+      },
+      "canonicalMatchesFinal": false
+    },
+    {
+      "requested": "https://aero-surcharge.com/fuel-surcharge-2026-06-forecast.html",
+      "hops": [
+        {
+          "url": "https://aero-surcharge.com/fuel-surcharge-2026-06-forecast.html",
+          "status": 308,
+          "location": "/fuel-surcharge-2026-06-forecast"
+        },
+        {
+          "url": "https://aero-surcharge.com/fuel-surcharge-2026-06-forecast",
+          "status": 308,
+          "location": "/forecast.html"
+        },
+        {
+          "url": "https://aero-surcharge.com/forecast.html",
+          "status": 308,
+          "location": "/forecast"
+        },
+        {
+          "url": "https://aero-surcharge.com/forecast",
+          "status": 200,
+          "location": null
+        }
+      ],
+      "finalUrl": "https://aero-surcharge.com/forecast",
+      "metadata": {
+        "canonical": [
+          "https://aero-surcharge.com/forecast.html"
+        ],
+        "ogUrl": [
+          "https://aero-surcharge.com/forecast.html"
+        ],
+        "schemaUrls": [
+          "https://aero-surcharge.com/forecast.html#faq",
+          "https://aero-surcharge.com/",
+          "https://aero-surcharge.com/forecast.html"
+        ]
+      },
+      "publicScriptSignals": {
+        "directAdSenseTag": true,
+        "ga4Tag": true,
+        "clarityTag": false,
+        "cmpMarker": false,
+        "localPlatformConfigTag": false
+      },
+      "canonicalMatchesFinal": false
+    }
+  ],
+  "errors": [],
+  "limitations": [
+    "Live results describe the currently deployed site, which this task does not modify. A stale deployed canonical is reported without implying the local fix is deployed."
+  ],
+  "sitemapCount": 17,
+  "localPassed": true,
+  "liveStatus": "complete",
+  "liveCanonicalMatchesFinal": false,
+  "passed": false
+}

@@ -57,11 +57,11 @@
         if(page === 'forecast'){
           data.headline = data.headline || '2026년 10월 국제선 유류할증료 전망';
           data.description = '2026년 8월 26일 기준 환율, Jet Fuel, 국제유가와 호르무즈 임시 항행로 협상을 바탕으로 10월 국제선 유류할증료 방향을 분석합니다.';
-          data.url = data.url || 'https://aero-surcharge.com/forecast.html';
+          data.url = data.url || 'https://aero-surcharge.com/forecast';
         } else if(page === 'news'){
           data.headline = data.headline || '2026년 9월 공시 및 10월 전망 뉴스';
           data.description = '2026년 8월 26일 기준 9월 확정 공시와 10월 전망, 글로벌 Jet Fuel, 국제유가 급락, 호르무즈 상황을 정리합니다.';
-          data.url = data.url || 'https://aero-surcharge.com/news.html';
+          data.url = data.url || 'https://aero-surcharge.com/news';
         }
         node.textContent = JSON.stringify(data);
       } catch(e) {}

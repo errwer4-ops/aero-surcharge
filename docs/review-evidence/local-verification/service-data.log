@@ -1,0 +1,52 @@
+{
+  "passed": true,
+  "notices": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "KE: 기존 발표일 2026-10-16는 이번 원문에서 재확인되지 않음 — 검토 메타데이터 발표일 null 유지",
+      "7C: 적용월 원문 확인; 명시적 시작/종료일 줄은 미확인 — 날짜를 생성하지 않음",
+      "LJ: 기존 발표일 2026-10-16는 이번 원문에서 재확인되지 않음 — 검토 메타데이터 발표일 null 유지",
+      "BX: 공시 발표일 미제공 (확인일로 대체하지 않음)",
+      "TW/october/4,000~4,999 mi: 공시 금액 없음 — null 유지",
+      "TW/november/4,000~4,999 mi: 공시 금액 없음 — null 유지",
+      "10월 비교 수치의 원문 URL은 11월 공시 URL로 검증했다고 간주하지 않음; 별도 10월 원문 대조 필요"
+    ],
+    "airlineCount": 8,
+    "amountCount": 100,
+    "sourceReconciliation": {
+      "verified": [
+        "KE",
+        "OZ",
+        "7C",
+        "LJ",
+        "RS",
+        "BX",
+        "TW",
+        "ZE"
+      ],
+      "pending": [],
+      "verifiedCount": 8,
+      "pendingCount": 0
+    }
+  },
+  "octoberGroups": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "BX/2026.10: 공시 발표일 미제공 (확인일로 대체하지 않음)",
+      "BX/2026.10: 수집 시각 미제공 (원문 검증 시각과 구분)"
+    ],
+    "airlineCount": 1,
+    "amountCount": 4,
+    "comparedGroups": 4
+  },
+  "manual": {
+    "passed": true,
+    "errors": [],
+    "monthCount": 18,
+    "amountCount": 107,
+    "warningCount": 319
+  },
+  "limitation": "11월 공유 공시/명시적 10월 노선군은 검토된 원문 스냅샷과 대조. 과거 수동 JSON은 미변경 시 보존하며 구조 경고를 제공; 모든 역사 데이터의 원문 확인 완료를 의미하지 않음."
+}

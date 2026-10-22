@@ -21,21 +21,47 @@ async function main(){
       return route.abort();
     });
     await context.addInitScript(()=>{window.AERO_ANALYTICS_CONFIG={allowLocal:true,debug:true};});
+    await context.addInitScript(()=>{
+      window.__aeroLabMetrics={lcpMs:null,cls:0};
+      try{new PerformanceObserver(list=>{for(const e of list.getEntries())window.__aeroLabMetrics.lcpMs=e.startTime;}).observe({type:'largest-contentful-paint',buffered:true});}catch(_){}
+      try{new PerformanceObserver(list=>{for(const e of list.getEntries())if(!e.hadRecentInput)window.__aeroLabMetrics.cls+=e.value;}).observe({type:'layout-shift',buffered:true});}catch(_){}
+    });
     const reports=[];
     for(const name of (process.argv.includes('--analytics-only')?[]:['index','fuel-surcharge-calculator','airlines','news','forecast','fuel-surcharge-graph','fuel-surcharge-2026-05','methodology','privacy'])){
       const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
       await page.goto(`${base}/${name}.html`,{waitUntil:'domcontentloaded'});await page.waitForTimeout(1800);
       const report=await page.evaluate(()=>({title:document.title,h1:[...document.querySelectorAll('h1')].map(x=>x.innerText),description:document.querySelector('meta[name=description]')?.content,canonical:document.querySelector('link[rel=canonical]')?.href,body:document.body.innerText.slice(0,2200),overflow:document.documentElement.scrollWidth>innerWidth,schemas:[...document.querySelectorAll('script[type="application/ld+json"]')].map(x=>JSON.parse(x.textContent)['@type']),gaScripts:document.querySelectorAll('script[src*=googletagmanager]').length}));
       report.page=name;report.errors=errors;
+      report.desktopLab=await page.evaluate(()=>({...window.__aeroLabMetrics,domContentLoadedMs:performance.getEntriesByType('navigation')[0]?.domContentLoadedEventEnd,scope:'local desktop synthetic sample, external requests blocked; not field Core Web Vitals'}));
       if(!audit){assert.equal(report.h1.length,1,name+' one H1');assert.equal(report.gaScripts,0,name+' no tracking before consent');assert.equal(report.overflow,false,name+' desktop overflow');assert.deepEqual(errors,[],name+' page errors');}
+      if(name==='index'&&!audit){
+        const cards=page.locator('#miniGrid .mini-card');
+        const states=await cards.locator('.mini-status').allTextContents();
+        assert.equal(cards?await cards.count():0,9);
+        assert.equal(states.filter(s=>s==='11월 공시 완료').length,8);
+        assert.equal(states.filter(s=>s==='11월 공시 미완료').length,1);
+        assert.equal(await cards.locator('.mini-trend-label').count(),8);
+        assert.equal(await page.locator('#miniGrid [data-airline="KE"] .mini-trend-label').innerText(),'전월 대비 최소 8.0% 상승');
+        assert.equal(await page.locator('#miniGrid [data-airline="YP"] a').count(),0,'October link must not masquerade as November');
+        const detail=page.locator('#miniGrid [data-airline="OZ"] details'),toggle=detail.locator('summary');
+        await toggle.focus();await toggle.press('Enter');assert.notEqual(await detail.getAttribute('open'),null);
+        assert((await detail.innerText()).includes('10월 보관 기록을 포함한 참고 비율'));
+        await page.locator('#aeroConsentDeny').click();
+        await toggle.press('Enter');assert.equal(await detail.getAttribute('open'),null);
+      }
+      if(!audit)assert.doesNotMatch(await page.locator('body').innerText(), /원문 금액·구간 대조 완료|일부 구간 대조 완료|원문 (?:대조 완료|검증 대기|재검증 대기)|금액·통화·구간을 공식/, name+' concise public status copy');
+      if(name==='index'){await page.locator('#miniGrid summary').first().blur();await page.locator('#miniGrid').screenshot({path:path.join(out,'index-cards-desktop.png')});}
       await page.setViewportSize({width:390,height:844});await page.waitForTimeout(200);
       report.mobileOverflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth);
       if(!audit)assert.equal(report.mobileOverflow,false,name+' mobile overflow');
       await page.screenshot({path:path.join(out,name+'-mobile.png'),fullPage:true});
+      if(name==='index'){await page.locator('#miniGrid').evaluate(el=>window.scrollTo(0,el.getBoundingClientRect().top+window.scrollY-190));await page.screenshot({path:path.join(out,'index-cards-mobile.png')});}
       reports.push(report);await page.close();
     }
     if(!audit){
       const p=await context.newPage();await p.goto(base);await p.waitForTimeout(1800);
+      // The screenshot pass rejected consent; reopen the real settings UI before opting in.
+      await p.locator('.aero-privacy-open').click();
       await p.locator('#aeroConsentAnalytics').check();await p.locator('#aeroConsentSave').click();
       await p.evaluate(()=>{
         AeroAnalytics.track('month_compare',{airline:'KE',base_month:'2026-10',compare_month:'2026-11',email:'test@example.com',query:'private text'},'dedup-test');

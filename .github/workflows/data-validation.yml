@@ -16,9 +16,6 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci --ignore-scripts
-      - run: npm test
-      - run: npm run test:static
-      - run: npm run test:myrealtrip
       - name: Validate existing feed and changed records
         env:
           BEFORE: ${{ github.event.before }}
@@ -36,6 +33,13 @@ jobs:
           fi
       - name: Install existing Playwright browser
         run: npx playwright install --with-deps chromium
-      - run: npm run test:platform
-      - run: npm run test:calculator
-      - run: npm run test:seo
+      - run: npm run verify:release
+      - name: Preserve actual verification evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: platform-verification
+          path: |
+            artifacts/review-verification/
+            tmp/platform-verification/
+          if-no-files-found: warn

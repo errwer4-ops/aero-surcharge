@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const { execFileSync } = require('child_process');
 const { validateFeed, normalizeRecord, detectSpike, checkSourceLinks } = require('../lib/validation');
+const { reconcileRecord } = require('../lib/validation/provenance');
 const root = path.resolve(__dirname, '..');
 const relativeFeed = 'public/data/official_surcharge_feed.json';
 
@@ -24,6 +25,8 @@ function validateChanges(previous, next) {
     if (before?.currentPeriod && airline.currentPeriod < before.currentPeriod) result.errors.push(`${airline.iataCode}: 적용월 과거로 변경`);
     for (const item of airline.items || []) {
       const record = normalizeRecord(item, airline), spike = detectSpike(airline.iataCode, record, previous);
+      const source = reconcileRecord(record);
+      if (source.status !== 'verified') result.errors.push(`${airline.iataCode}: 공식 원문 대조 미완료 (${source.reason})`);
       if (spike) result.errors.push(`${airline.iataCode}: ${spike}`);
       if (record.oneWayAmount === 0) result.errors.push(`${airline.iataCode}: 신규 0원 공시 검토 필요`);
     }

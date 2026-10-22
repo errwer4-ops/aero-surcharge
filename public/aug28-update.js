@@ -495,7 +495,7 @@
     if(window.AERO_MARKET_NUMBERS_20260831) return;
     if(!/\/forecast(?:\.html)?(?:$|[?#])/.test(location.pathname + location.search)) return;
     var p = forecast[lang()] || forecast.en;
-    updateHead(p.title, p.desc, 'https://aero-surcharge.com/forecast.html');
+    updateHead(p.title, p.desc, 'https://aero-surcharge.com/forecast');
     setText('fore.pageTitle', p.page); setText('fore.h1', p.page); setText('fore.pageSub', p.sub);
     setHtml('fore.notice', p.notice); setText('fore.intro', p.intro); setText('fore.section.indicators', p.section);
     var thead = document.getElementById('indicatorThead');
@@ -571,7 +571,7 @@
       try {
         var json = JSON.parse(node.textContent || '{}');
         if(json['@type'] === 'FAQPage'){
-          json['@id'] = 'https://aero-surcharge.com/forecast.html#faq-20260828';
+          json['@id'] = 'https://aero-surcharge.com/forecast#faq-20260828';
           json.dateModified = ISO;
           json.mainEntity = items.map(function(item){ return {'@type':'Question', name:item[0], acceptedAnswer:{'@type':'Answer', text:item[1]}}; });
           node.textContent = JSON.stringify(json);
@@ -587,7 +587,7 @@
     var l = lang();
     var p = news[l] || news.en;
     var s = newsSurfacePack(l);
-    updateHead(p.title, p.desc, 'https://aero-surcharge.com/news.html');
+    updateHead(p.title, p.desc, 'https://aero-surcharge.com/news');
     setText('news.pageTitle', p.page); setText('news.h1', p.page); setText('news.pageSub', p.sub);
     setText('news.surchargeNote', p.note); setText('news.dataRef', p.ref); setText('news.curSummary', p.cur);
     setText('news.summary.title', s.summaryTitle); setText('news.summary.updated', s.summaryUpdated);

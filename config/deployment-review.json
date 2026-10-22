@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "ads": {
+    "decision": "pending",
+    "consentReview": "pending",
+    "reviewedAt": null,
+    "evidence": null
+  },
+  "operations": {
+    "status": "pending",
+    "reviewedAt": null,
+    "sourceDigest": null,
+    "evidence": null
+  }
+}

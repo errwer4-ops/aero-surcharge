@@ -1,0 +1,538 @@
+{
+  "reviewedAt": "2026-10-21T09:50:01Z",
+  "scope": "Exact factual values and charging identities independently checked against primary notice bodies; original files are retained in the workspace and not republished.",
+  "notices": [
+    {
+      "airline": "KE",
+      "month": "2026.11",
+      "status": "source_reconciled",
+      "sourceUrl": "https://www.koreanair.com/contents/footer/customer-support/notice/2026/2611-infuel",
+      "currency": "KRW",
+      "direction": "one_way",
+      "departureCountry": "KR",
+      "publishedAt": null,
+      "effectiveFrom": "2026-11-01",
+      "effectiveTo": "2026-11-30",
+      "sourceVerifiedAt": "2026-10-21T09:50:01Z",
+      "bands": [
+        "~499 mi",
+        "500~999 mi",
+        "1,000~1,499 mi",
+        "1,500~1,999 mi",
+        "2,000~2,999 mi",
+        "3,000~3,999 mi",
+        "4,000~4,999 mi",
+        "5,000~6,499 mi",
+        "6,500~9,999 mi"
+      ],
+      "amounts": [
+        55600,
+        76000,
+        105800,
+        132900,
+        185800,
+        189800,
+        254900,
+        370100,
+        408100
+      ],
+      "evidence": {
+        "id": "KE-2026-11-20261021",
+        "method": "official_domain_indexed_notice_body",
+        "sha256": "eaaadb20d0af5dc7be4ad2e69db7a5967222ac98cea2e41f4b80f83ab3fa981c",
+        "file": "docs/review-evidence/official-web-recheck.json",
+        "pages": null
+      }
+    },
+    {
+      "airline": "OZ",
+      "month": "2026.11",
+      "status": "source_reconciled",
+      "sourceUrl": "https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202610160002530868&dispCt=all&page=1&searchOption=0&searchText=",
+      "currency": "KRW",
+      "direction": "one_way",
+      "departureCountry": "KR",
+      "publishedAt": "2026-10-16",
+      "effectiveFrom": "2026-11-01",
+      "effectiveTo": "2026-11-30",
+      "sourceVerifiedAt": "2026-10-21T09:50:01Z",
+      "bands": [
+        "~499 mi",
+        "500~999 mi",
+        "1,000~1,499 mi",
+        "1,500~1,999 mi",
+        "2,000~2,499 mi",
+        "2,500~2,999 mi",
+        "3,000~3,999 mi",
+        "4,000~4,999 mi",
+        "5,000~ mi"
+      ],
+      "amounts": [
+        62400,
+        92200,
+        120600,
+        149100,
+        178900,
+        207400,
+        235900,
+        294200,
+        351100
+      ],
+      "evidence": {
+        "id": "OZ-2026-11-20261021",
+        "method": "official_notice_web_body",
+        "sha256": null,
+        "file": null,
+        "pages": null
+      }
+    },
+    {
+      "airline": "7C",
+      "month": "2026.11",
+      "status": "source_reconciled",
+      "sourceUrl": "https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000814",
+      "currency": "USD",
+      "direction": "one_way",
+      "departureCountry": "KR",
+      "publishedAt": "2026-10-16",
+      "effectiveFrom": null,
+      "effectiveTo": null,
+      "sourceVerifiedAt": "2026-10-21T09:50:01Z",
+      "bands": [
+        "1~500 mi",
+        "500~1,000 mi",
+        "1,000~1,500 mi",
+        "1,500~2,000 mi",
+        "2,000~2,500 mi",
+        "2,500 mi~"
+      ],
+      "amounts": [
+        43,
+        54,
+        66,
+        79,
+        89,
+        103
+      ],
+      "evidence": {
+        "id": "7C-2026-11-20261021",
+        "method": "saved_official_notice_pdf_visual_review",
+        "sha256": "2d9e8c321c8edaff094ac4f67675df165c269364c25ac5404ab7e078d611478f",
+        "file": "2026.11 유류할증료/제주항공 11월 유류할증료.pdf",
+        "pages": [
+          1
+        ],
+        "dateLimitation": "November title and ticketing basis visible; exact start/end date line not present in saved PDF."
+      }
+    },
+    {
+      "airline": "LJ",
+      "month": "2026.11",
+      "status": "source_reconciled",
+      "sourceUrl": "https://www.jinair.com/company/announce/announceView?anceSeq=28906&searchWord=&searchKey=titlCtn&page=1",
+      "currency": "USD",
+      "direction": "one_way",
+      "departureCountry": "KR",
+      "publishedAt": null,
+      "effectiveFrom": "2026-11-01",
+      "effectiveTo": "2026-11-30",
+      "sourceVerifiedAt": "2026-10-21T09:50:01Z",
+      "bands": [
+        "1~599 mi",
+        "600~1,199 mi",
+        "1,200~1,799 mi",
+        "1,800~2,399 mi",
+        "2,400~3,599 mi"
+      ],
+      "amounts": [
+        36,
+        54,
+        87,
+        96,
+        115
+      ],
+      "evidence": {
+        "id": "LJ-2026-11-20261021",
+        "method": "saved_official_notice_pdf_visual_review",
+        "sha256": "0fe7f48570192265b32c8b3c9d7f1a646ce82febecbdb4f6181e3a5434627aa2",
+        "file": "2026.11 유류할증료/진에어 11월 유류할증료.pdf",
+        "pages": [
+          1,
+          2
+        ]
+      }
+    },
+    {
+      "airline": "RS",
+      "month": "2026.11",
+      "status": "source_reconciled",
+      "sourceUrl": "https://flyairseoul.com/CW/ko/noticeContent.do?seq=11208&pageNo=1",
+      "currency": "KRW",
+      "direction": "one_way",
+      "departureCountry": "KR",
+      "publishedAt": "2026-10-16",
+      "effectiveFrom": "2026-11-01",
+      "effectiveTo": "2026-11-30",
+      "sourceVerifiedAt": "2026-10-21T09:50:01Z",
+      "bands": [
+        "300~700 mi (exclusive upper)",
+        "700~1,100 mi (exclusive upper)",
+        "1,100~1,500 mi (exclusive upper)",
+        "1,500~1,900 mi (exclusive upper)",
+        "1,900~2,300 mi (exclusive upper)"
+      ],
+      "amounts": [
+        69100,
+        80000,
+        100300,
+        115200,
+        122000
+      ],
+      "evidence": {
+        "id": "RS-2026-11-20261021",
+        "method": "official_notice_web_body",
+        "sha256": null,
+        "file": null,
+        "pages": null
+      }
+    },
+    {
+      "airline": "BX",
+      "month": "2026.11",
+      "status": "source_reconciled",
+      "sourceUrl": "https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4420",
+      "currency": "USD",
+      "direction": "one_way",
+      "departureCountry": "KR",
+      "publishedAt": null,
+      "effectiveFrom": "2026-11-01",
+      "effectiveTo": "2026-11-30",
+      "sourceVerifiedAt": "2026-10-21T09:50:01Z",
+      "bands": [
+        "FUK / MYJ / KIX / NRT (PUS) / NGS / TAO / TAK / FSZ",
+        "NRT (ICN) / CTS / XIY / YNJ / DYG / HKG / MFM / TPE / KHH",
+        "SYX / UBN / CEB / KLO / DAD / CXR / VTE / BKI (PUS) / HAN / TAG / GUM / CNX (ICN)",
+        "BKK / DPS"
+      ],
+      "amounts": [
+        43,
+        77,
+        90,
+        106
+      ],
+      "evidence": {
+        "id": "BX-2026-11-20261021",
+        "method": "official_notice_web_body",
+        "sha256": null,
+        "file": null,
+        "pages": null
+      }
+    },
+    {
+      "airline": "TW",
+      "month": "2026.11",
+      "status": "source_reconciled",
+      "sourceUrl": "https://www.trinityairways.com/app/customerCenter/notice/retrieve/12722",
+      "currency": "KRW",
+      "direction": "one_way",
+      "departureCountry": "KR",
+      "publishedAt": "2026-10-19T09:33:00+09:00",
+      "effectiveFrom": "2026-11-01",
+      "effectiveTo": "2026-11-30",
+      "sourceVerifiedAt": "2026-10-21T09:50:01Z",
+      "bands": [
+        "0~599 mi",
+        "600~1,199 mi",
+        "1,200~1,799 mi",
+        "1,800~2,399 mi",
+        "2,400~3,999 mi",
+        "4,000~4,999 mi",
+        "5,000+ mi"
+      ],
+      "amounts": [
+        43400,
+        76000,
+        95000,
+        123500,
+        133000,
+        null,
+        299800
+      ],
+      "evidence": {
+        "id": "TW-2026-11-20261021",
+        "method": "official_domain_indexed_notice_body",
+        "sha256": "eaaadb20d0af5dc7be4ad2e69db7a5967222ac98cea2e41f4b80f83ab3fa981c",
+        "file": "docs/review-evidence/official-web-recheck.json",
+        "pages": null
+      }
+    },
+    {
+      "airline": "ZE",
+      "month": "2026.11",
+      "status": "source_reconciled",
+      "sourceUrl": "https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=680&lang=KR",
+      "currency": "USD",
+      "direction": "one_way",
+      "departureCountry": "KR",
+      "publishedAt": "2026-10-20",
+      "effectiveFrom": "2026-11-01",
+      "effectiveTo": "2026-11-30",
+      "sourceVerifiedAt": "2026-10-21T09:50:01Z",
+      "bands": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "amounts": [
+        43,
+        54,
+        66,
+        79,
+        89,
+        103
+      ],
+      "evidence": {
+        "id": "ZE-2026-11-20261021",
+        "method": "saved_official_notice_pdf_visual_review",
+        "sha256": "a1b9dcc4f5aa6fad0dafbdd2391010ef6baf244c9736b17bcbed1653de454ec8",
+        "file": "2026.11 유류할증료/이스타 항공 11월 유류할증료.pdf",
+        "pages": [
+          1,
+          2,
+          3
+        ]
+      },
+      "routesByGroup": [
+        [
+          "ICN-FUK",
+          "PUS-FUK",
+          "PUS-KIX",
+          "PUS-KMJ",
+          "CJU-PVG",
+          "CJJ-YNJ",
+          "ICN-YNT",
+          "ICN-KOJ"
+        ],
+        [
+          "ICN-NRT",
+          "ICN-KIX",
+          "ICN-CTS",
+          "PUS-CTS",
+          "ICN-OKA",
+          "PUS-OKA",
+          "ICN-TKS",
+          "GMP-TSA",
+          "ICN-TPE",
+          "CJJ-TPE",
+          "CJU-TPE",
+          "PUS-TPE",
+          "ICN-PVG",
+          "CJJ-PVG",
+          "PUS-YNJ",
+          "ICN-CGO",
+          "ICN-HET",
+          "PUS-XMN",
+          "PUS-HGH"
+        ],
+        [
+          "ICN-HKG",
+          "CJJ-DYG",
+          "ICN-XMN",
+          "CJJ-XMN",
+          "TAE-DYG",
+          "PUS-HKG"
+        ],
+        [
+          "ICN-DAD"
+        ],
+        [
+          "ICN-BKK",
+          "ICN-CNX",
+          "PUS-CNX",
+          "ICN-CXR",
+          "ICN-PQC",
+          "PUS-PQC",
+          "ICN-MDC"
+        ],
+        [
+          "ICN-ALA",
+          "PUS-ALA"
+        ]
+      ]
+    },
+    {
+      "airline": "KE",
+      "month": "2026.10",
+      "status": "source_reconciled",
+      "sourceUrl": "https://www.koreanair.com/contents/footer/customer-support/notice/2026/2610-infuel",
+      "currency": "KRW",
+      "direction": "one_way",
+      "departureCountry": "KR",
+      "publishedAt": null,
+      "effectiveFrom": "2026-10-01",
+      "effectiveTo": "2026-10-31",
+      "sourceVerifiedAt": "2026-10-21T09:50:01Z",
+      "bands": [
+        "~499 mi",
+        "500~999 mi",
+        "1,000~1,499 mi",
+        "1,500~1,999 mi",
+        "2,000~2,999 mi",
+        "3,000~3,999 mi",
+        "4,000~4,999 mi",
+        "5,000~6,499 mi",
+        "6,500~9,999 mi"
+      ],
+      "amounts": [
+        49000,
+        65800,
+        98000,
+        116200,
+        162400,
+        168000,
+        226800,
+        322000,
+        362600
+      ],
+      "evidence": {
+        "id": "KE-2026-10-20261021",
+        "method": "official_notice_web_body",
+        "sha256": "eaaadb20d0af5dc7be4ad2e69db7a5967222ac98cea2e41f4b80f83ab3fa981c",
+        "file": "docs/review-evidence/official-web-recheck.json",
+        "pages": null
+      }
+    },
+    {
+      "airline": "BX",
+      "month": "2026.10",
+      "status": "source_reconciled",
+      "sourceUrl": "https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4407",
+      "currency": "USD",
+      "direction": "one_way",
+      "departureCountry": "KR",
+      "publishedAt": null,
+      "effectiveFrom": "2026-10-01",
+      "effectiveTo": "2026-10-31",
+      "sourceVerifiedAt": "2026-10-21T09:50:01Z",
+      "bands": [
+        "FUK / MYJ / KIX / NRT (PUS) / NGS / TAO / TAK / FSZ",
+        "NRT (ICN) / CTS / XIY / YNJ / DYG / HKG / MFM / TPE / KHH",
+        "SYX / UBN / CEB / KLO / DAD / CXR / VTE / BKI (PUS) / HAN / TAG / GUM / CNX (ICN)",
+        "BKK / DPS"
+      ],
+      "amounts": [
+        37,
+        66,
+        78,
+        90
+      ],
+      "evidence": {
+        "id": "BX-2026-10-20261021",
+        "method": "official_notice_web_body",
+        "sha256": null,
+        "file": null,
+        "pages": null
+      }
+    },
+    {
+      "airline": "ZE",
+      "month": "2026.10",
+      "status": "source_reconciled",
+      "sourceUrl": "https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=664&lang=KR",
+      "currency": "USD",
+      "direction": "one_way",
+      "departureCountry": "KR",
+      "publishedAt": "2026-09-21",
+      "effectiveFrom": "2026-10-01",
+      "effectiveTo": "2026-10-31",
+      "sourceVerifiedAt": "2026-10-21T09:50:01Z",
+      "bands": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6"
+      ],
+      "amounts": [
+        37,
+        47,
+        57,
+        68,
+        76,
+        87
+      ],
+      "evidence": {
+        "id": "ZE-2026-10-20261021",
+        "method": "saved_official_notice_pdf_visual_review",
+        "sha256": "eaf1d390e4b85e297cdb68d8dc1b02b1ed5ddd4a731f824d253a405ebb204e07",
+        "file": "2026.10 유류할증료/2026.10 이스타 유류할증료.pdf",
+        "pages": [
+          1,
+          2,
+          3
+        ]
+      },
+      "routesByGroup": [
+        [
+          "ICN-FUK",
+          "PUS-FUK",
+          "PUS-KIX",
+          "PUS-KMJ",
+          "CJU-PVG",
+          "CJJ-YNJ",
+          "ICN-YNT",
+          "ICN-KOJ"
+        ],
+        [
+          "ICN-NRT",
+          "ICN-KIX",
+          "ICN-CTS",
+          "PUS-CTS",
+          "ICN-OKA",
+          "PUS-OKA",
+          "ICN-TKS",
+          "GMP-TSA",
+          "ICN-TPE",
+          "CJJ-TPE",
+          "CJU-TPE",
+          "PUS-TPE",
+          "ICN-PVG",
+          "CJJ-PVG",
+          "PUS-YNJ",
+          "ICN-CGO",
+          "ICN-HET",
+          "PUS-XMN",
+          "PUS-HGH"
+        ],
+        [
+          "ICN-HKG",
+          "CJJ-DYG",
+          "ICN-XMN",
+          "CJJ-XMN",
+          "TAE-DYG",
+          "PUS-HKG"
+        ],
+        [
+          "ICN-DAD"
+        ],
+        [
+          "ICN-BKK",
+          "ICN-CNX",
+          "PUS-CNX",
+          "ICN-CXR",
+          "ICN-PQC",
+          "PUS-PQC",
+          "ICN-MDC"
+        ],
+        [
+          "ICN-ALA",
+          "PUS-ALA"
+        ]
+      ]
+    }
+  ]
+}

@@ -354,7 +354,7 @@
   function renderForecast(){
     if(!pathIs('forecast')) return;
     var p = pack(lang());
-    updateHead(p.meta, p.desc, 'https://aero-surcharge.com/forecast.html');
+    updateHead(p.meta, p.desc, 'https://aero-surcharge.com/forecast');
     setText('fore.pageTitle', p.title);
     setText('fore.pageSub', p.sub);
     setText('fore.h1', p.title);
@@ -479,7 +479,7 @@
   function renderNews(){
     if(!pathIs('news')) return;
     var l = lang(), p = pack(l);
-    updateHead(p.newsMeta, p.desc, 'https://aero-surcharge.com/news.html');
+    updateHead(p.newsMeta, p.desc, 'https://aero-surcharge.com/news');
     installNewsCards();
     setText('news.pageTitle', p.newsTitle);
     setText('news.h1', p.newsTitle);
@@ -557,7 +557,7 @@
             }
             if(type === 'FAQPage' && release){
               entity.mainEntity = kind === 'forecast' ? p.faq.map(function(x){return {'@type':'Question',name:x.q,acceptedAnswer:{'@type':'Answer',text:x.a}};}) : [];
-              entity['@id'] = 'https://aero-surcharge.com/'+kind+'.html#faq';
+              entity['@id'] = 'https://aero-surcharge.com/'+kind+'#faq';
             }
             if(/Article|WebPage|CollectionPage|FAQPage/.test(String(type))){
               pageEntityUpdated = true;
@@ -584,7 +584,7 @@
       pageSchema.textContent = JSON.stringify({
         '@context':'https://schema.org','@type':'CollectionPage',
         headline:p.newsTitle,description:p.desc,dateModified:release.modified,
-        mainEntityOfPage:'https://aero-surcharge.com/news.html',url:'https://aero-surcharge.com/news.html',
+        mainEntityOfPage:'https://aero-surcharge.com/news',url:'https://aero-surcharge.com/news',
         author:{'@type':'Organization',name:'aero-surcharge.com'},
         publisher:{'@type':'Organization',name:'aero-surcharge.com'},inLanguage:lang()
       });

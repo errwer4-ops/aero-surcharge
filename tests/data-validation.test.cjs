@@ -109,7 +109,7 @@ test('October source module validates its metadata and matches November baseline
   assert.equal(result.passed, true, result.errors.join('; ')); assert.equal(result.comparedGroups, 4);
   const reordered = structuredClone(groups);
   reordered.BX.bands.reverse(); reordered.BX.october.reverse();
-  assert.equal(service.validateRouteGroupNotices(reordered, notices).passed, true);
+  assert.equal(service.validateRouteGroupNotices(reordered, notices).passed, false, 'reviewed band positions require a new source review');
   for (const mutate of [
     data => { data.BX.october[0] = 38; },
     data => { data.BX.october[0] = -1; },

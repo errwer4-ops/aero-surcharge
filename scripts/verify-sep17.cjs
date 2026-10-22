@@ -38,7 +38,7 @@ const path=require('node:path');
         assert.equal(data.h1,1);
         assert.equal(data.modified,'2026-09-18T09:00:00+09:00');
         assert(data.schemas.some(x=>x.dateModified===data.modified),`${name}/${lang} schema modified date`);
-        assert.equal(data.canonical,'https://aero-surcharge.com/'+name+'.html');
+        assert.equal(data.canonical,'https://aero-surcharge.com/'+name);
         assert.equal(data.overflow,false);
         assert.equal(data.cards,15);
         assert.equal(data.factors,name==='forecast'?5:0);

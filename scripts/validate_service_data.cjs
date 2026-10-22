@@ -9,6 +9,8 @@ const vm = require('node:vm');
 const { execFileSync } = require('node:child_process');
 const { normalizeRecord, normalizeMonth, validateRecord, validateSourceUrl } = require('../lib/validation');
 const { validDate } = require('../lib/validation/records');
+const sourceTrust = require('../public/source-provenance');
+const { reconcileRecord } = require('../lib/validation/provenance');
 const root = path.resolve(__dirname, '..');
 
 function loadNotices(source) {
@@ -36,6 +38,7 @@ function validateRouteGroupNotices(groups, novemberNotices) {
   if (!groups || typeof groups !== 'object' || Array.isArray(groups) || !Object.keys(groups).length) return { passed: false, errors: ['10월 노선군 공시 객체 필요'], warnings, airlineCount: 0, amountCount, comparedGroups };
   for (const [code, notice] of Object.entries(groups)) {
     if (!/^[A-Z0-9]{2}$/.test(code) || !notice || typeof notice !== 'object' || notice.code !== code) { errors.push(`${code}: 10월 노선군 항공사 코드/객체 오류`); continue; }
+    if (sourceTrust.summarize([notice], '2026.10').verifiedCount !== 1) errors.push(`${code}/2026.10: 검토된 원문 금액/부과 기준과 불일치 — 확정 상태 게시 불가`);
     errors.push(...validateSourceUrl(notice.url, code).map(message => `${code}/2026.10: ${message}`));
     if (notice.direction !== 'one_way' || notice.departureCountry !== 'KR') errors.push(`${code}/2026.10: 편도/출발국 기준 불일치`);
     if (!/^official_notice_verified(?:_against_web(?:_and_saved_pdf)?|_from_saved_pdf|_from_web_saved_pdf_blank)$/.test(notice.status || '')
@@ -78,6 +81,11 @@ function validateNotices(notices, previous = []) {
     if (!/^[A-Z0-9]{2}$/.test(code || '')) { errors.push('공시 항공사 코드 오류'); continue; }
     if (seen.has(code)) errors.push(`${code}: 공시 중복`);
     seen.add(code);
+    if (sourceTrust.summarize([notice], '2026.11').verifiedCount !== 1) errors.push(`${code}/2026.11: 검토된 원문 금액/부과 기준과 불일치 — 확정 상태 게시 불가`);
+    const reviewed = sourceTrust.getNotice(code, '2026.11');
+    if (reviewed && !reviewed.publishedAt && notice.noticeDate) warnings.push(`${code}: 기존 발표일 ${notice.noticeDate}는 이번 원문에서 재확인되지 않음 — 검토 메타데이터 발표일 null 유지`);
+    if (reviewed?.publishedAt && notice.noticeDate && reviewed.publishedAt.slice(0, 10) !== notice.noticeDate) errors.push(`${code}: 검토 원문과 공시 발표일 불일치`);
+    if (reviewed && (!reviewed.effectiveFrom || !reviewed.effectiveTo)) warnings.push(`${code}: 적용월 원문 확인; 명시적 시작/종료일 줄은 미확인 — 날짜를 생성하지 않음`);
     errors.push(...validateSourceUrl(notice.url, code).map(message => `${code}: ${message}`));
     if (notice.direction !== 'one_way' || notice.departureCountry !== 'KR') errors.push(`${code}: 편도/출발국 기준 불일치`);
     if (!/^official_notice_verified/.test(notice.status || '')) errors.push(`${code}: 공식 확인 상태 없는 공시`);
@@ -119,7 +127,7 @@ function validateNotices(notices, previous = []) {
   }
   for (const old of previous) if (!seen.has(old.code)) errors.push(`${old.code}: 공시 삭제 검토 필요`);
   warnings.push('10월 비교 수치의 원문 URL은 11월 공시 URL로 검증했다고 간주하지 않음; 별도 10월 원문 대조 필요');
-  return { passed: !errors.length, errors, warnings, airlineCount: seen.size, amountCount };
+  return { passed: !errors.length, errors, warnings, airlineCount: seen.size, amountCount, sourceReconciliation: sourceTrust.summarize(notices, '2026.11') };
 }
 
 function validateManualOverrides(data, previous = null) {
@@ -143,6 +151,7 @@ function validateManualOverrides(data, previous = null) {
         const record = normalizeRecord({ ...item, distanceRange: basis }, { ...block, airline: code,
           effective_month: month, sourceUrl: source });
         const check = validateRecord(record);
+        if (previous && JSON.stringify(before) !== JSON.stringify(block) && reconcileRecord(record).status !== 'verified') check.errors.push('변경된 수동 데이터의 공식 원문 금액/부과 기준 대조 필요');
         if (record.dataStatus === 'forecast') check.errors.push('공식 데이터에 전망값 혼합');
         else if (record.dataStatus !== 'confirmed') {
           (previous && JSON.stringify(before) !== JSON.stringify(block) ? check.errors : check.warnings).push('기존 수동 데이터의 공식 확인 상태 미제공');
@@ -182,7 +191,7 @@ function main(args = process.argv.slice(2)) {
     notices: { ...notices, warnings: notices.warnings },
     octoberGroups,
     manual: { ...manual, warnings: undefined, warningCount: manual.warnings.length },
-    limitation: '공유 공시 선언과 수동 JSON의 구조/변경 검사. 브라우저가 비동기 조합한 최종 MANUAL_OVERRIDES 및 모든 홈 요약 배열과 원문의 완전한 일치 증명은 아님.' }, null, 2));
+    limitation: '11월 공유 공시/명시적 10월 노선군은 검토된 원문 스냅샷과 대조. 과거 수동 JSON은 미변경 시 보존하며 구조 경고를 제공; 모든 역사 데이터의 원문 확인 완료를 의미하지 않음.' }, null, 2));
   return result;
 }
 if (require.main === module) { try { process.exitCode = main().passed ? 0 : 1; } catch (error) { console.error(error.message); process.exitCode = 1; } }

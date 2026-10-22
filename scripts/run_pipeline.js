@@ -7,11 +7,12 @@ const fs = require('fs');
 const path = require('path');
 const { collectAll } = require('../lib/collector');
 const { parseAll } = require('../lib/parser');
-const { validateAll, printValidationSummary, validateFeed, checkSourceLinks } = require('../lib/validation');
+const { validateAll, printValidationSummary, validateFeed, validateSourceUrl, checkSourceLinks } = require('../lib/validation');
 const { resolveFinal } = require('../lib/candidate');
 const { getPipelineMonths } = require('../lib/month');
 const { runAiSearch } = require('../lib/ai-search');
 const { validateChanges } = require('./validate_data');
+const { reconcileRecord } = require('../lib/validation/provenance');
 const ROOT = path.resolve(__dirname, '..');
 const FEED_PATH = path.join(ROOT, 'public', 'data', 'official_surcharge_feed.json');
 const REPORT_DIR = path.join(ROOT, 'artifacts', 'data-validation');
@@ -40,11 +41,39 @@ function assertWritableMode(options) {
   }
 }
 
+function partitionParserInputs(collected) {
+  const eligible = [], skipped = [];
+  const successfulSources = new Set(['live', 'override-url', 'override-text', 'override-html', 'ai-search-auto']);
+  for (const result of collected) {
+    const text = typeof result.text === 'string' ? result.text.trim() : '';
+    const htmlText = typeof result.rawHtml === 'string' ? result.rawHtml
+      .replace(/<script[\s\S]*?<\/script>/gi, '').replace(/<style[\s\S]*?<\/style>/gi, '')
+      .replace(/<[^>]*>/g, ' ').replace(/&nbsp;|&#160;/g, ' ').trim() : '';
+    const reason = !successfulSources.has(result.source) ? 'collection_not_successful'
+      : result.error ? 'collector_error'
+      : !text && !htmlText ? 'empty_source_content'
+      : validateSourceUrl(result.sourceUrl, result.code).length ? 'source_url_invalid' : null;
+    if (reason) skipped.push({ airline: result.code, source: result.source || 'unknown', status: 'SOURCE_HOLD', reason });
+    else eligible.push(result);
+  }
+  return { eligible, skipped };
+}
+
+async function parseCollectedCandidates(collected, options, parser = parseAll) {
+  // Run after the existing AI-search recovery. Failed recovery still leaves a
+  // fallback record containing mock HTML; never spend parser calls on that HTML.
+  const { eligible, skipped } = partitionParserInputs(collected);
+  const parsed = eligible.length ? await parser(eligible, options) : [];
+  return { parsed, skipped };
+}
+
 function mergeFeed(existingFeed, validated, forecastFeed, manualOverrides, collected = []) {
   const feed = JSON.parse(JSON.stringify(existingFeed));
   const now = new Date().toISOString();
   for (const result of validated) {
     if (!result.hasValidData || result.blockUpdate || result.usedMock !== false) continue;
+    const reconciled = result.validRoutes.map(route => reconcileRecord(route.metadata));
+    if (reconciled.some(check => check.status !== 'verified')) throw new Error(`${result.airline}: 공식 원문 금액/부과 기준 대조 미완료 — 게시 보류`);
     const existing = feed.airlines.find(a => a.iataCode === result.airline);
     if (!existing) throw new Error(`${result.airline}: 기존 항공사 없음 — 검토 필요`);
     // Text/HTML/URL overrides were already collected and validated above.
@@ -53,7 +82,9 @@ function mergeFeed(existingFeed, validated, forecastFeed, manualOverrides, colle
     if (!final.updated || !['official_notice', 'override'].includes(final.finalSource)) continue;
     const items = final.finalRoutes.map((item, i) => ({ ...item,
       period: result.effective_month, dataStatus: 'confirmed',
-      metadata: { ...result.validRoutes[i].metadata, validationStatus: 'passed', validatedAt: result.validatedAt },
+      metadata: { ...result.validRoutes[i].metadata, dataStatus: 'confirmed', validationStatus: 'passed', validatedAt: result.validatedAt,
+        sourceVerificationStatus: reconciled[i].sourceVerificationStatus, sourceVerifiedAt: reconciled[i].sourceVerifiedAt,
+        sourceEvidenceId: reconciled[i].evidenceId },
     }));
     const proposed = { ...existing, items, currentPeriod: result.effective_month,
       currency: result.currency, sourceType: 'official_notice', dataStatus: 'confirmed',
@@ -61,6 +92,7 @@ function mergeFeed(existingFeed, validated, forecastFeed, manualOverrides, colle
       noticeUrl: result.source_url, officialSourceUrl: result.source_url,
       sources: { ...existing.sources, noticeUrl: result.source_url },
       validationStatus: 'passed', validatedAt: result.validatedAt,
+      sourceVerificationStatus: 'source_reconciled', sourceVerifiedAt: reconciled[0].sourceVerifiedAt,
       dataQuality: { source: final.finalSource, confidence: final.finalConfidence,
         updatedAt: now, validationStatus: 'passed', reason: final.reason },
     };
@@ -85,6 +117,11 @@ function buildProposal(existingFeed, parsed, collected) {
   }
   for (const result of validated) {
     if (result.blockUpdate || !result.hasValidData) errors.push(`${result.airline}: ${result.validationErrors.join('; ')}`);
+    else {
+      result.sourceReviews = result.validRoutes.map(route => reconcileRecord(route.metadata));
+      result.sourceVerificationStatus = result.sourceReviews.every(check => check.status === 'verified') ? 'source_reconciled' : 'unresolved';
+      if (result.sourceVerificationStatus !== 'source_reconciled') errors.push(`${result.airline}: 공식 원문 대조 미완료 (${[...new Set(result.sourceReviews.filter(check => check.status !== 'verified').map(check => check.reason))].join(', ')}) — 후보 보관, 게시 보류`);
+    }
   }
   // Batch publication is all-or-nothing. A failed candidate preserves all files.
   let proposed = null;
@@ -140,11 +177,16 @@ async function main(options) {
     console.log(`[Pipeline] 기준월 ${getPipelineMonths().currentMonth} / 다음달 ${getPipelineMonths().nextMonth}`);
     let collected = await collectAll({ useMock: opts.mock, only: opts.only });
     if (!opts.mock && !opts.skipLlm && process.env.ANTHROPIC_API_KEY) collected = await runAiSearch(collected);
-    const parsed = await parseAll(collected, { skipLlm: opts.skipLlm || opts.mock });
+    const parsing = await parseCollectedCandidates(collected, { skipLlm: opts.skipLlm || opts.mock });
+    const parsed = parsing.parsed;
+    report.parserSkipped = parsing.skipped;
+    for (const skipped of parsing.skipped) console.log(`[Parser] ${skipped.airline}: SOURCE_HOLD (${skipped.reason}) — 유료 파싱 생략`);
     const proposal = buildProposal(existing, parsed, collected);
     printValidationSummary(proposal.validated);
     report.validation = proposal.validated.map(result => ({ airline: result.airline,
-      passed: result.hasValidData, errors: result.validationErrors, warnings: result.allWarnings,
+      passed: result.hasValidData && result.sourceVerificationStatus === 'source_reconciled', technicalPassed: result.hasValidData,
+      sourceVerificationStatus: result.sourceVerificationStatus || 'unresolved', sourceReviews: result.sourceReviews,
+      errors: result.validationErrors, warnings: result.allWarnings,
       rejectedRoutes: result.rejectedRoutes.map(route => ({ basis: route.route_type, errors: route._validation.errors })),
     }));
     report.errors = proposal.errors;
@@ -171,4 +213,4 @@ async function main(options) {
 }
 
 if (require.main === module) main().then(report => { process.exitCode = report.success ? 0 : 1; }).catch(error => { console.error(error.message); process.exitCode = 1; });
-module.exports = { parseOptions, assertWritableMode, mergeFeed, buildProposal, publishFeed, saveReport, main };
+module.exports = { parseOptions, assertWritableMode, partitionParserInputs, parseCollectedCandidates, mergeFeed, buildProposal, publishFeed, saveReport, main };

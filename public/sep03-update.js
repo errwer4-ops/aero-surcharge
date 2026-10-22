@@ -255,7 +255,7 @@
     if(window.AERO_MARKET_NUMBERS_20260904) return;
     if(!pathIs('forecast')) return;
     var p = pack(lang());
-    updateHead(p.meta, p.desc, 'https://aero-surcharge.com/forecast.html');
+    updateHead(p.meta, p.desc, 'https://aero-surcharge.com/forecast');
     setText('fore.pageTitle', p.title);
     setText('fore.pageSub', p.sub);
     setText('fore.h1', p.title);
@@ -341,7 +341,7 @@
     if(window.AERO_MARKET_NUMBERS_20260904) return;
     if(!pathIs('news')) return;
     var l = lang(), p = pack(l);
-    updateHead(p.newsMeta, p.desc, 'https://aero-surcharge.com/news.html');
+    updateHead(p.newsMeta, p.desc, 'https://aero-surcharge.com/news');
     installNewsCards();
     setText('news.pageTitle', p.newsTitle);
     setText('news.pageSub', p.newsSub);

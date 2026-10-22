@@ -36,7 +36,7 @@ const path = require('node:path');
         assert(!/undefined/.test(result.text),pageName+' '+language+' undefined');
         assert(result.text.includes('159.58') && result.text.includes('171.01') && result.text.includes('105.68') && result.text.includes('101.39') && result.text.includes('1,347'),pageName+' missing data');
         assert.equal(result.h1,1,pageName+' h1');
-        assert(result.canonical === 'https://aero-surcharge.com/'+pageName+'.html',pageName+' canonical');
+        assert(result.canonical === 'https://aero-surcharge.com/'+pageName,pageName+' canonical');
         assert(result.metaDescription && result.metaDescription.includes('2026'),pageName+' meta description');
         assert(result.schemas.some(x=>x.dateModified === '2026-09-15T07:20:00+09:00'),pageName+' dateModified');
         if(pageName==='forecast') {

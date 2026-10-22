@@ -1,25 +1,26 @@
 {
+  "buildCommand": "npm run build",
   "cleanUrls": true,
   "trailingSlash": false,
   "redirects": [
     {
       "source": "/fuel-surcharge-2026-06-forecast",
-      "destination": "/forecast.html",
+      "destination": "/forecast",
       "permanent": true
     },
     {
       "source": "/fuel-surcharge-2026-06-forecast.html",
-      "destination": "/forecast.html",
+      "destination": "/forecast",
       "permanent": true
     },
     {
       "source": "/fuel-surcharge-forecast",
-      "destination": "/forecast.html",
+      "destination": "/forecast",
       "permanent": true
     },
     {
       "source": "/fuel-surcharge-forecast.html",
-      "destination": "/forecast.html",
+      "destination": "/forecast",
       "permanent": true
     },
     {

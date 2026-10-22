@@ -323,7 +323,7 @@
     if(window.AERO_MARKET_NUMBERS_20260902) return;
     if(!pathIs('forecast')) return;
     var p = pack(lang());
-    updateHead(p.forecastMetaTitle, p.forecastDesc, 'https://aero-surcharge.com/forecast.html');
+    updateHead(p.forecastMetaTitle, p.forecastDesc, 'https://aero-surcharge.com/forecast');
     setText('fore.pageTitle', p.forecastTitle);
     setText('fore.h1', p.forecastTitle);
     setText('fore.pageSub', p.forecastSub);
@@ -375,7 +375,7 @@
     installNewsCards();
     var l = lang();
     var p = pack(l);
-    updateHead(p.newsMetaTitle, p.newsDesc, 'https://aero-surcharge.com/news.html');
+    updateHead(p.newsMetaTitle, p.newsDesc, 'https://aero-surcharge.com/news');
     setText('news.pageTitle', p.newsTitle);
     setText('news.h1', p.newsTitle);
     setText('news.pageSub', p.newsSub);
@@ -450,7 +450,7 @@
       try{
         var json = JSON.parse(node.textContent || '{}');
         if(json['@type'] === 'FAQPage'){
-          json['@id'] = 'https://aero-surcharge.com/forecast.html#faq-20260831';
+          json['@id'] = 'https://aero-surcharge.com/forecast#faq-20260831';
           json.dateModified = ISO;
           json.mainEntity = [
             ['2026년 10월 국제선 유류할증료는 내려갈까?','2026년 8월 31일 현재는 보합~인하 압력이 우세합니다. 원화 강세와 Singapore Jet Fuel 가격 하락은 인하 요인이지만 미국의 이란 라락섬 공격으로 국제유가와 호르무즈 위험이 다시 상승해 인하를 확정하기는 어렵습니다.'],
@@ -463,7 +463,7 @@
           json.headline = kind === 'news' ? p.newsTitle : p.forecastTitle;
           json.description = kind === 'news' ? p.newsDesc : p.forecastDesc;
           json.dateModified = ISO;
-          json.url = kind === 'news' ? 'https://aero-surcharge.com/news.html' : 'https://aero-surcharge.com/forecast.html';
+          json.url = kind === 'news' ? 'https://aero-surcharge.com/news' : 'https://aero-surcharge.com/forecast';
           node.textContent = JSON.stringify(json);
         }
       } catch(e) {}

@@ -30,6 +30,7 @@
       return {band:row.band,routes:row.routes,v4:row.v5,cur:row.cur,v5:october[code]&&october[code][index]!=null?october[code][index]:null};
     });
   });
+  // These legacy names select archived columns; they do not certify source review.
   JULY_OFFICIAL_CODES=confirmed.slice();
   JUNE_OFFICIAL_CODES=all.slice();
   hasJulyOfficial=function(code){return confirmed.indexOf(code)>=0;};
@@ -57,29 +58,47 @@
   Object.keys(finalCopy).forEach(function(lang){Object.assign(packs[lang],finalCopy[lang]);});
 
   var coverageCopy={
-    ko:['2026년 9월·10월 공식 공시 비교','이 표의 비교 범위는 2026년 9월·10월입니다. 11월 공식 공시 확인분은 노선별 조회와 계산기에서 확인하세요.'],
-    en:['September–October 2026 official comparison','This table covers September–October 2026. See route search and the calculator for confirmed November notices.'],
-    ja:['2026年9月・10月公式公示比較','この表は2026年9月・10月の比較です。確認済みの11月公示は路線検索と計算機で確認できます。'],
-    zh:['2026年9月、10月官方公告比较','本表比较2026年9月和10月。已确认的11月公告请查看航线查询及计算器。'],
-    fr:['Comparaison officielle septembre–octobre 2026','Ce tableau couvre septembre–octobre 2026. Les avis de novembre confirmés sont dans la recherche et le calculateur.'],
-    de:['Offizieller Vergleich September–Oktober 2026','Diese Tabelle vergleicht September–Oktober 2026. Bestätigte November-Hinweise stehen in der Routensuche und im Rechner.']
+    ko:["항공사별 유류할증료 · 2026년 9월·10월 보관 기록","2026년 9월·10월 보관 기록입니다. 현재 공시와 다를 수 있으니 최신 금액은 계산기에서 확인하세요.","보관 공시 기록","기록 당시 분석:","원문 링크","원문 링크 있음","원문 링크 없음","9월 보관 기록","10월 보관 기록"],
+    en:["Airline Surcharges · September–October 2026 Archive","September–October 2026 archived records. They may differ from current notices; check the calculator for the latest amounts.","Archived notice record","Analysis recorded at the time:","Source link","Source link available","No source link","September archive","October archive"],
+    ja:["航空会社別燃油サーチャージ · 2026年9月・10月保存記録","2026年9月・10月の保存記録です。現在の公示と異なる場合があります。最新金額は計算機で確認してください。","保存公示記録","記録当時の分析：","原文リンク","原文リンクあり","原文リンクなし","9月保存記録","10月保存記録"],
+    zh:["各航司燃油附加费 · 2026年9月与10月存档","2026年9月与10月存档记录，可能与当前公告不同。最新金额请查看计算器。","公告存档记录","记录当时的分析：","原文链接","有原文链接","无原文链接","9月存档记录","10月存档记录"],
+    fr:["Surtaxes par compagnie · archives septembre–octobre 2026","Archives de septembre–octobre 2026, pouvant différer des avis actuels. Consultez le calculateur pour les derniers montants.","Avis archivé","Analyse consignée à l’époque :","Lien source","Lien source disponible","Aucun lien source","Archive septembre","Archive octobre"],
+    de:["Airline-Zuschläge · Archiv September–Oktober 2026","Archivdaten für September–Oktober 2026 können von aktuellen Mitteilungen abweichen. Aktuelle Beträge finden Sie im Rechner.","Archivierter Datensatz","Damals erfasste Analyse:","Quellenlink","Quellenlink vorhanden","Kein Quellenlink","September-Archiv","Oktober-Archiv"]
   };
-  Object.keys(packs).forEach(function(l){var c=coverageCopy[l]||coverageCopy.en; packs[l].pageSub=c[0];packs[l].betaNote=c[1];packs[l].status=c[0];packs[l].bullets[packs[l].bullets.length-1]=c[1];});
+  Object.keys(packs).forEach(function(l){
+    var c=coverageCopy[l]||coverageCopy.en,p=packs[l];
+    p.pageSub=c[0];p.introTitle=c[0];p.introBody=c[1];p.betaDesc=c[1];p.betaNote=c[1];p.status=c[0];
+    p.summaryH=c[0];p.summaryP=c[3]+' '+p.summaryP;p.intro=c[1];p.analysisH=c[3];
+    p.bullets=p.bullets.slice(0,-1).map(function(b){return c[3]+' '+b;}).concat([c[1]]);
+    p.compare=c[0];p.prev=c[7];p.current=c[8];p.prevBasis=c[7];p.currentBasis=c[8];
+    p.officialBadge=c[2];p.pendingBadge=c[2];p.pending=c[6];
+  });
 
   Object.keys(packs).forEach(function(lang){
     var p=packs[lang],d=AIRLINES_I18N[lang]||(AIRLINES_I18N[lang]={});
     Object.assign(d,{pageSub:p.pageSub,introTitle:p.introTitle,introBody:p.introBody,betaDesc:p.betaDesc,betaNote:p.betaNote,seoSummaryH2:p.summaryH,seoSummaryP:p.summaryP,surchargeIntro:p.intro,analysisH3:p.analysisH,analysisBullets:p.bullets,expandHint:p.expand,compareTitle:p.compare,aprNotice:p.prev,mayNotice:p.current,mayBasedLabel:p.currentBasis,aprBasedLabel:p.prevBasis,notPublished:p.pending,noNotice:p.pending,nextOfficialBadge:p.officialBadge,pendingOfficialBadge:p.pendingBadge,missingNoticeBadge:p.pendingBadge,statusText:function(){return p.status;}});
+    var c=coverageCopy[lang];Object.assign(d,{ftabOfficial:c[5],ftabMissing:c[6],thCurrent:c[8],thStatus:c[2],thSource:c[4],officialNotice:c[4],srcManual:c[2],footerNote:c[1]});
   });
 
-  document.title='항공사별 유류할증료 | 2026년 9월·10월 공식 공시 비교';
-  var desc=document.querySelector('meta[name="description"]');if(desc)desc.content='2026년 9월과 10월 한국 출발 국제선 유류할증료 공식 공시를 항공사별로 비교합니다. 확인된 11월 공시는 노선별 조회와 계산기에서 확인할 수 있습니다.';
+  function currentCopy(){var l=(window.SHARED_STATE&&SHARED_STATE.lang)||'ko';return coverageCopy[l]||coverageCopy.en;}
+  function archiveSurface(){
+    var c=currentCopy();document.title=c[0];
+    ['meta[name="description"]','meta[property="og:description"]','meta[name="twitter:description"]'].forEach(function(s){var el=document.querySelector(s);if(el)el.content=c[1];});
+    ['meta[property="og:title"]','meta[name="twitter:title"]'].forEach(function(s){var el=document.querySelector(s);if(el)el.content=c[0];});
+    // The feed status belongs to another data record, not this archived comparison.
+    document.querySelectorAll('#tableBody .row-main > div:nth-child(5)').forEach(function(el){el.textContent=c[2];el.style.fontSize='11px';el.style.color='var(--muted)';});
+  }
+  var previousRenderTable=window.renderTable;
+  if(typeof previousRenderTable==='function')window.renderTable=function(){var result=previousRenderTable.apply(this,arguments);archiveSurface();return result;};
+  archiveSurface();
   var patched={};
   function settle(){
     if(!window.KR_AIRLINES||!KR_AIRLINES.length)return;
     KR_AIRLINES.forEach(function(al){
       if(!patched[al.code]){al.officialNoticeUrlMay=al.officialNoticeUrl;patched[al.code]=true;}
       al.officialNoticeUrl=octoberLinks[al.code]||null;
-      al.hasOfficialNotice=!!al.officialNoticeUrl;
+      al.hasSourceLink=!!al.officialNoticeUrl;
+      al.hasOfficialNotice=false; // Link availability is not archive-wide verification.
     });
     if(typeof applyStaticTexts==='function')applyStaticTexts();
     if(typeof renderTable==='function')renderTable();

@@ -12,6 +12,7 @@ for (const file of fs.readdirSync(root).filter(x=>x.endsWith('.html')&&(!selecte
   html=html.replace(/<script\b[^>]*src=["']https:\/\/pagead2\.googlesyndication\.com\/pagead\/js\/adsbygoogle\.js[^"']*["'][^>]*><\/script>/g,'<script src="_ads.js" defer></script>');
   html=html.replace(/\s+onclick="if\(window\.gtag\)\{gtag\('event','affiliate_click',\{affiliate:'([^']+)',placement:'([^']+)'\}\);\}"/g,' data-analytics-placement="$2"');
   if(!html.includes('src="_analytics.js"'))html=html.replace(/<head>/,'<head>\n  <script src="_analytics-config.js"></script>\n  <script src="_analytics.js"></script>');
+  if(!html.includes('src="source-provenance.js"'))html=html.replace(/<script\b[^>]*src="_shared\.js(?:\?[^"]*)?"[^>]*><\/script>/,tag=>'<script src="source-provenance.js"></script>\n'+tag);
   html=html.replace(/href="\/favicon-v2\.ico"/g,'href="/favicon-v2.png"');
   html=html.replace(/<input\b(?![^>]*data-clarity-mask)/g,'<input data-clarity-mask="true"');
   fs.writeFileSync(full,html);

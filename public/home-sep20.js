@@ -167,8 +167,21 @@
     "Status offizieller November-2026-Mitteilungen"
   ]
 };
+  // A stored October amount or a source link does not establish source verification.
+  var reviewCopy={
+    ko:['유류할증료 조회 · 2026년 10월·11월 공시 기록','사이트에 반영된 공시 기준입니다.','11월 공시 미완료','10월 · 11월 공시 기록 비교','10월 보관 데이터','10월 공시 원문 ↗'],
+    en:['Fuel Surcharge Lookup · October–November 2026 Notice Records','Coverage reflects notices available on this site.','November notice pending','October · November notice records','October archived data','October source link ↗'],
+    ja:['燃油サーチャージ検索 · 2026年10月・11月公示記録','当サイトへの公示掲載状況です。','11月公示掲載待ち','10月・11月公示記録比較','10月保存データ','10月原文リンク ↗'],
+    zh:['燃油附加费查询 · 2026年10月与11月公告记录','以本站公告收录情况为准。','11月公告待收录','10月与11月公告记录比较','10月存档数据','10月原文链接 ↗'],
+    fr:['Recherche de surtaxes · avis octobre–novembre 2026','Disponibilité des avis sur ce site.','Avis de novembre en attente','Avis octobre · novembre','Données archivées octobre','Source octobre ↗'],
+    de:['Kerosinzuschläge · Mitteilungsdaten Oktober–November 2026','Verfügbarkeit der Mitteilungen auf dieser Website.','November-Mitteilung ausstehend','Mitteilungsdaten Oktober · November','Archivdaten Oktober','Oktober-Quellenlink ↗']
+  };
   Object.keys(novemberHomeCopy).forEach(function(l){
-    novemberHomeCopy[l][1]=window.NOVEMBER_2026_NOTICE_COPY[l].summary;
+    var r=reviewCopy[l];
+    novemberHomeCopy[l][0]=r[0];
+    novemberHomeCopy[l][1]=window.NOVEMBER_2026_NOTICE_COPY[l].summary+' '+r[1];
+    novemberHomeCopy[l][3]=r[2];novemberHomeCopy[l][4]=r[3];novemberHomeCopy[l][5]=r[4];
+    novemberHomeCopy[l][9]=r[2];novemberHomeCopy[l][10]=r[5];
     var n=novemberHomeCopy[l];Object.assign(text[l],{
       title:n[0],desc:n[1],hero:n[1],s1:n[14],s2:n[13],s3:n[1],
       intro1:n[1],intro2:n[1],intro3:n[1],decision:n[14],line1:n[1],line2:n[13],line3:n[1],conclusion:n[1],
@@ -202,8 +215,8 @@
     Object.keys(novemberLinks).forEach(function(code){AUGUST_2026_NOTICE_LINKS[code]=novemberLinks[code];});
     Object.keys(AUGUST_2026_OFFICIAL_AMOUNTS).forEach(function(code){delete AUGUST_2026_OFFICIAL_AMOUNTS[code];});
     Object.keys(november).forEach(function(code){AUGUST_2026_OFFICIAL_AMOUNTS[code]=november[code];});
-    if(Array.isArray(window.KR_AIRLINES)) KR_AIRLINES.forEach(function(al){al.officialNoticeUrl=octoberLinks[al.code]||null;al.hasOfficialNotice=!!octoberLinks[al.code];});
-    if(window.FEED&&FEED.meta) FEED.meta.lastUpdated=stamp;
+    if(Array.isArray(window.KR_AIRLINES)) KR_AIRLINES.forEach(function(al){al.officialNoticeUrl=octoberLinks[al.code]||null;al.hasOfficialNotice=!!(window.AeroHomePlatform&&window.AeroHomePlatform.landingState(al.code).current.status==='verified');});
+    // The site copy edit time is not a data collection or feed update time.
     window._trendBadgeHtml=function(code,miles,dep,arr){
       var d=window._OFFICIAL_AMT&&_OFFICIAL_AMT[code];if(!d||!d.rows)return '';
       var selected=null;
@@ -229,13 +242,16 @@
     var desc=document.querySelector('meta[name="description"]');if(desc)desc.content=c.desc;
     var ogTitle=document.querySelector('meta[property="og:title"]');if(ogTitle)ogTitle.content=c.title;
     var ogDesc=document.querySelector('meta[property="og:description"]');if(ogDesc)ogDesc.content=c.desc;
+    var twTitle=document.querySelector('meta[name="twitter:title"]');if(twTitle)twTitle.content=c.title;
+    var twDesc=document.querySelector('meta[name="twitter:description"]');if(twDesc)twDesc.content=c.desc;
     var old=document.getElementById('homeSep20Schema');if(old)old.remove();
-    var schema=document.createElement('script');schema.id='homeSep20Schema';schema.type='application/ld+json';schema.textContent=JSON.stringify({'@context':'https://schema.org','@type':'WebPage',name:c.title,description:c.desc,url:'https://aero-surcharge.com/',dateModified:stamp,inLanguage:lang,mainEntity:{'@type':'Dataset',name:c.compare,dateModified:stamp,description:c.desc}});document.head.appendChild(schema);
+    var schema=document.createElement('script');schema.id='homeSep20Schema';schema.type='application/ld+json';schema.textContent=JSON.stringify({'@context':'https://schema.org','@type':'WebPage',name:c.title,description:c.desc,url:'https://aero-surcharge.com/',dateModified:stamp,inLanguage:lang,mainEntity:{'@type':'Dataset',name:c.compare,description:c.desc}});document.head.appendChild(schema);
   }
   function patchLandingState(){
     var lang=window.getCurrentLang?window.getCurrentLang():'ko';if(lang==='cn')lang='zh';var c=text[lang]||text.en;
-    document.querySelectorAll('.mini-notice-btn:not([href])').forEach(function(pending){var card=pending.closest('.mini-card');var status=card&&card.querySelector('.mini-status');if(status)status.innerHTML='<span style="font-size:10px;color:#92400e;font-weight:700">'+c.pending+'</span>';});
-    var statusText=document.getElementById('statusText');if(statusText)statusText.textContent=stamp.slice(0,16).replace('T',' ')+' KST'+c.suffix;
+    var statusText=document.getElementById('statusText');
+    if(window.AeroHomePlatform)window.AeroHomePlatform.updateStatusText(stamp);
+    else if(statusText)statusText.textContent=(lang==='ko'?'사이트 문구 수정: ':'Site text edited: ')+stamp.slice(0,16).replace('T',' ')+' KST';
     var compareLink=document.querySelector('[data-i18n="index.quick.compare.name"]');
     if(compareLink&&compareLink.closest('a'))compareLink.closest('a').href='news.html#compareList';
     updateHead();

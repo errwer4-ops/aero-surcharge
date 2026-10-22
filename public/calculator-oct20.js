@@ -63,9 +63,20 @@
   };
   Object.keys(localized).forEach(function(l){Object.assign(base[l],localized[l]);});
   var novemberState={"ko":["유류할증료 계산기 | 2026년 10월·11월 공식 공시 비교","10월 현재 적용 금액과 11월 공식 공시를 비교합니다. 11월은 KE·OZ·7C·LJ·RS 5개사만 반영하며, BX·TW·ZE·YP는 10월 금액만 표시하고 11월은 공시 전으로 둡니다.","10월 기준 · 11월 공시 5개사 반영","11월 공시 전","11월 공시가 확인된 항공사만 최저가와 차액 계산에 포함합니다. 미공시 금액을 0원 또는 10월 금액으로 대신 계산하지 않습니다.","11월 공식 공시 확인 →","2026년 11월 유류할증료도 계산하나요?"],"en":["Fuel Surcharge Calculator | October and November 2026 Official Notices","Compare current October charges and November official notices. November is confirmed only for KE/OZ/7C/LJ/RS; BX/TW/ZE/YP retain October amounts and November remains pending.","October baseline · five November notices reflected","November notice pending","Only confirmed November amounts enter the lowest-price and difference calculation. Unpublished amounts are neither zero nor replaced with October values.","View November official notices →","Does the calculator include November 2026 notices?"],"ja":["燃油サーチャージ計算機 | 2026年10月・11月公式公示比較","現在の10月額と11月公示を比較。11月はKE・OZ・7C・LJ・RSのみ反映。他4社は10月額を表示し11月は公示前です。","10月基準・11月5社公示反映","11月公示前","11月確認済み金額だけを最安額・差額計算に使用します。未公示額をゼロや10月額で代替しません。","11月公式公示を確認 →","2026年11月公示も計算できますか？"],"zh":["燃油附加费计算器 | 2026年10月与11月官方公告比较","比较当前10月收费与11月公告。11月仅反映KE/OZ/7C/LJ/RS；其余4家保留10月金额，11月为公告前。","10月基准・11月5家公告已反映","11月公告前","仅已确认11月金额参与最低价与差额计算。未公告金额不当作零或以10月金额代替。","查看11月官方公告 →","计算器包含2026年11月公告吗？"],"fr":["Calculateur de surtaxe | avis octobre et novembre 2026","Comparez octobre en vigueur et novembre officiel. Seuls KE/OZ/7C/LJ/RS sont confirmés en novembre ; BX/TW/ZE/YP gardent octobre et novembre en attente.","Base octobre · cinq avis novembre intégrés","Avis novembre en attente","Seuls les montants novembre confirmés entrent dans le minimum et les écarts. Aucun montant inconnu remplacé par zéro ou octobre.","Voir les avis officiels novembre →","Le calculateur inclut-il les avis novembre 2026 ?"],"de":["Kerosinzuschlag-Rechner | Oktober und November 2026","Vergleich aktueller Oktober-Beträge und November-Mitteilungen. November nur für KE/OZ/7C/LJ/RS bestätigt; BX/TW/ZE/YP behalten Oktober und November bleibt ausstehend.","Oktober-Basis · fünf November-Mitteilungen enthalten","November-Mitteilung ausstehend","Nur bestätigte November-Beträge zählen für Minimum und Differenzen. Unbekannte Beträge werden nicht durch null oder Oktober ersetzt.","November-Mitteilungen ansehen →","Sind November-2026-Mitteilungen enthalten?"]};
+  var reviewCopy={
+    ko:['유류할증료 계산기 | 2026년 10월·11월 비교','노선과 발권월을 선택해 금액을 비교하세요.','11월 확인 중','10월 공시','11월 공시','확인된 두 달의 금액을 같은 조건으로 비교합니다.'],
+    en:['Fuel Surcharge Calculator | October–November 2026','Choose a route and ticketing months to compare amounts.','November checking','October notice','November notice','Compare confirmed amounts for both months under the same conditions.'],
+    ja:['燃油サーチャージ計算機 | 2026年10月・11月比較','路線と発券月を選んで金額を比較できます。','11月確認中','10月公示','11月公示','確認済みの両月の金額を同じ条件で比較します。'],
+    zh:['燃油附加费计算器 | 2026年10月与11月比较','选择航线和出票月份，比较金额。','11月确认中','10月公告','11月公告','在相同条件下比较两个月已确认的金额。'],
+    fr:['Calculateur de surtaxe | octobre–novembre 2026','Choisissez une ligne et les mois d’émission à comparer.','Novembre en cours de confirmation','Avis octobre','Avis novembre','Comparez les montants confirmés des deux mois à conditions identiques.'],
+    de:['Kerosinzuschlag-Rechner | Oktober–November 2026','Wählen Sie Strecke und Ausstellungsmonate zum Vergleich.','November wird geprüft','Oktober-Mitteilung','November-Mitteilung','Vergleichen Sie bestätigte Beträge beider Monate unter gleichen Bedingungen.']
+  };
   Object.keys(novemberState).forEach(function(l){
-    novemberState[l][1]=window.NOVEMBER_2026_NOTICE_COPY[l].summary;
+    novemberState[l][0]=reviewCopy[l][0];
+    novemberState[l][1]=window.NOVEMBER_2026_NOTICE_COPY[l].summary+' '+reviewCopy[l][1];
     novemberState[l][2]=window.NOVEMBER_2026_NOTICE_COPY[l].short;
+    novemberState[l][3]=reviewCopy[l][2];novemberState[l][4]=reviewCopy[l][5];
+    ui[l].thMay=reviewCopy[l][3];ui[l].thJune=reviewCopy[l][4];
     var n=novemberState[l],p=base[l];
     Object.assign(p,{title:n[0],desc:n[1],sub:n[2],h1:n[0],notice:n[1],intro:n[1],answerTitle:n[2],answerBody:n[4],readyTitle:n[2],readyBadge:n[2],readyBody:n[1]+' '+n[4],readyLink:n[5],faqTitle:n[6],faqBody:n[1]+' '+n[4]});
     ui[l].julyPending=n[3];
@@ -91,7 +102,8 @@
     var values={'calc.metaTitle':p.title,'calc.metaDesc':p.desc,'calc.pageSub':p.sub,'calc.h1':p.h1,'calc.notice':p.notice,'calc.alert':p.alert,'calc.intro':p.intro,'calc.answer.title':p.answerTitle,'calc.answer.body':p.answerBody,'calc.card3.body':p.answerBody,'calc.readiness.title':p.readyTitle,'calc.readiness.badge':p.readyBadge,'calc.readiness.body':p.readyBody,'calc.readiness.link':p.readyLink,'calc.related.june':p.readyLink,'calc.related.may':p.readyLink,'calc.faq.july.title':p.faqTitle,'calc.faq.july.body':p.faqBody};
     Object.keys(noticeLinks).forEach(function(code){
       var key='calc.official.item.'+code,oldValue=(window.I18N[lang]||{})[key]||'';
-      var confirmed=!!november[code.toUpperCase()],label=confirmed?ui[lang].thJune:ui[lang].thMay;
+      var confirmed=(window.NOVEMBER_2026_SOURCE_REVIEW||{verified:[]}).verified.indexOf(code.toUpperCase())>=0;
+      var label=november[code.toUpperCase()]?ui[lang].thJune:ui[lang].thMay;
       values[key]='<a href="'+noticeLinks[code]+'" target="_blank" rel="noopener noreferrer">'+code.toUpperCase()+' · '+label+'</a>'+(confirmed?'':' · '+novemberState[lang][3]);
     });
     window.I18N[lang]=window.I18N[lang]||{};Object.assign(window.I18N[lang],values);
@@ -115,7 +127,7 @@
   };
   staticText.fr=['Comparaison des surtaxes octobre-novembre 2026','Comparez les montants officiels des compagnies sur la même route.','Base octobre · novembre reflété','10','Novembre 2026 reflété','Neuf compagnies incluses','Surtaxe minimale novembre'];
   staticText.de=['Zuschlagsvergleich October-November 2026','Vergleichen Sie offizielle Airline-Beträge auf derselben Route.','October-Basis · November berücksichtigt','10','November 2026 berücksichtigt','Neun Airlines enthalten','Niedrigster November-Zuschlag'];
-  Object.keys(novemberState).forEach(function(l){periodNotes[l]=novemberState[l][1]+' '+novemberState[l][4];staticText[l][2]=novemberState[l][2];staticText[l][3]='11';staticText[l][4]=ui[l].thJune;staticText[l][5]=novemberState[l][2];});
+  Object.keys(novemberState).forEach(function(l){periodNotes[l]=novemberState[l][1]+' '+novemberState[l][4];staticText[l][1]=reviewCopy[l][5];staticText[l][2]=novemberState[l][2];staticText[l][3]='11';staticText[l][4]=ui[l].thJune;staticText[l][5]=novemberState[l][2];});
   function fix(){
     var p=base[lang()]||base.en,t=staticText[lang()]||staticText.en;
     document.title=p.title;
@@ -176,7 +188,7 @@
     if(faqAnswers[0])faqAnswers[0].textContent=periodNotes[lang()]||periodNotes.en;
     if(window.AeroCalculatorPlatform)window.AeroCalculatorPlatform.refreshSurface();
     var faqItems=Array.from(document.querySelectorAll('#calculatorFaq .faq-item')).map(function(el){var q=el.querySelector('.faq-q'),a=el.querySelector('.faq-a');return q&&a?{'@type':'Question',name:q.textContent,acceptedAnswer:{'@type':'Answer',text:a.textContent}}:null;}).filter(Boolean);
-    document.querySelectorAll('script[type="application/ld+json"]').forEach(function(el){try{var d=JSON.parse(el.textContent);function update(x){if(!x||typeof x!=='object')return;if(x['@type']==='WebPage'){x.name=p.title;x.description=p.desc;x.dateModified='2026-10-21T10:05:51+09:00';x.inLanguage=lang();}if(x['@type']==='FAQPage'&&faqItems.length){x.mainEntity=faqItems;x.inLanguage=lang();x.dateModified='2026-10-21T10:05:51+09:00';}if(Array.isArray(x['@graph']))x['@graph'].forEach(update);}update(d);el.textContent=JSON.stringify(d);}catch(e){}});
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function(el){try{var d=JSON.parse(el.textContent);function update(x){if(!x||typeof x!=='object')return;if(x['@type']==='WebPage'||x['@type']==='WebApplication'){x.name=p.title;x.description=p.desc;x.dateModified='2026-10-21T10:05:51+09:00';x.inLanguage=lang();}if(x['@type']==='FAQPage'&&faqItems.length){x.mainEntity=faqItems;x.inLanguage=lang();x.dateModified='2026-10-21T10:05:51+09:00';}if(Array.isArray(x['@graph']))x['@graph'].forEach(update);}update(d);el.textContent=JSON.stringify(d);}catch(e){}});
   }
   window._fixNovemberCalculatorSurface=fix;
   window._fixOctoberCalculatorSurface=fix;

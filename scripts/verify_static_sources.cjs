@@ -8,6 +8,13 @@ for(const name of fs.readdirSync(root)){
   const source=fs.readFileSync(path.join(root,name),{encoding:'utf8',flag:'r'});
   if(name.endsWith('.js')){new vm.Script(source,{filename:name});scripts++;}
   if(!name.endsWith('.html'))continue;
+  const externalScripts=[...source.matchAll(/<script\b[^>]*\bsrc\s*=\s*["']([^"']+)["'][^>]*>/gi)]
+    .map(match=>match[1].split(/[?#]/)[0].replace(/^\.\//,'').replace(/^\//,''));
+  const shared=externalScripts.indexOf('_shared.js');
+  if(shared>=0){
+    const provenance=externalScripts.indexOf('source-provenance.js');
+    if(provenance<0 || provenance>shared)throw new Error(name+': source provenance must load before shared renderer');
+  }
   let i=0;
   for(const match of source.matchAll(/<script\b([^>]*)>([\s\S]*?)<\/script\s*>/gi)){
     i++;const attrs=match[1],body=match[2];

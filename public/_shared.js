@@ -16004,6 +16004,30 @@ window.NOVEMBER_2026_NOTICE_COPY={
   de:{summary:'Oktober gilt aktuell. November für KE/OZ/7C/LJ/RS/BX/TW/ZE bestätigt, acht Airlines. YP behält Oktober; November noch zu prüfen. Einfachbeträge für Ausstellung 1.–30. November, ursprüngliche Währungen und Bänder bleiben erhalten.',short:'Oktober-Basis · acht November-Mitteilungen enthalten',period:'Internationale Einfachbeträge ab Korea laut geprüften offiziellen Web-Mitteilungen. Ausstellung 1.–30. November 2026. Trinity-Gruppe 6 hat einen Strich: kein veröffentlichter Betrag, nicht 0.'}
 };
 
+/* Source confirmation comes from exact reviewed primary-source snapshots.
+ * Historical status strings and current web reachability are not proof. */
+(function(){
+  var notices=window.NOVEMBER_2026_OFFICIAL_NOTICES||[],trust=window.AeroSourceTrust;
+  var review=trust?trust.summarize(notices,'2026.11'):{verified:[],pending:notices.map(function(n){return n.code;}),verifiedCount:0,pendingCount:notices.length};
+  window.NOVEMBER_2026_SOURCE_REVIEW=review;
+  notices.forEach(function(n){
+    var verified=review.verified.indexOf(n.code)>=0,source=verified&&trust.getNotice(n.code,'2026.11');
+    n.dataStatus=verified?'confirmed':'unconfirmed';n.sourceVerificationStatus=verified?'source_reconciled':'unresolved';
+    n.sourceVerifiedAt=source?source.sourceVerifiedAt:null;
+    n.sourcePublishedAt=source?source.publishedAt:null;n.sourceEffectiveFrom=source?source.effectiveFrom:null;n.sourceEffectiveTo=source?source.effectiveTo:null;
+  });
+  var count=review.verifiedCount,pending=review.pending.concat(['YP']).join(' · '),codes=review.verified.join(' · ')||'—';
+  var copy={
+    ko:{summary:'10월 적용 중 · 11월 공시 완료 '+count+'개사: '+codes+'. 공시 미완료: '+pending+'.',short:'11월 공시 완료 '+count+'개사',period:'한국 출발 국제선 편도, 2026년 11월 발권 기준입니다. 대시는 공시 금액 없음이며 0원이 아닙니다.'},
+    en:{summary:'October currently applies. November notices available for '+count+' airlines: '+codes+'. Pending: '+pending+'.',short:count+' November notices available',period:'Korea-departure international one-way surcharges for November 2026 ticketing. A dash means no published amount, not zero.'},
+    ja:{summary:'10月適用中。11月公示掲載済み'+count+'社：'+codes+'。掲載待ち：'+pending+'。',short:'11月公示掲載済み'+count+'社',period:'韓国発国際線の片道・2026年11月発券基準。ダッシュは金額未掲載で、ゼロではありません。'},
+    zh:{summary:'10月适用中。11月公告已收录'+count+'家：'+codes+'。待收录：'+pending+'。',short:'11月公告已收录'+count+'家',period:'韩国出发国际线单程、2026年11月出票标准。横线表示未公布金额，并非零。'},
+    fr:{summary:'Octobre en vigueur. Avis de novembre disponibles pour '+count+' compagnies : '+codes+'. En attente : '+pending+'.',short:count+' avis de novembre disponibles',period:'Suppléments aller simple au départ de Corée pour émission en novembre 2026. Un tiret signifie absence de montant, pas zéro.'},
+    de:{summary:'Oktober gilt aktuell. November-Mitteilungen für '+count+' Airlines verfügbar: '+codes+'. Ausstehend: '+pending+'.',short:count+' November-Mitteilungen verfügbar',period:'Internationale Einfachbeträge ab Korea für Ausstellung im November 2026. Ein Strich bedeutet kein veröffentlichter Betrag, nicht null.'}
+  };
+  Object.keys(copy).forEach(function(lang){window.NOVEMBER_2026_NOTICE_COPY[lang]=copy[lang];});
+})();
+
 /* October 19 market references do not reprice published airline fares. */
 (function(){
   var n=Object.assign({},window.AERO_MARKET_NUMBERS_20261016,{

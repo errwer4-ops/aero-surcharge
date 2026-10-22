@@ -1,0 +1,209 @@
+{
+  "startedAt": "2026-10-22T01:41:33.937Z",
+  "scope": "local automated verification; external services are not asserted",
+  "runtime": {
+    "node": "v24.14.0",
+    "platform": "win32",
+    "playwright": "1.59.1"
+  },
+  "sourceDigest": "c76fb6c51848d604cc05d8d300adec960ad1d7b459fde978d45dce10ba6189e8",
+  "passed": true,
+  "checks": [
+    {
+      "name": "native",
+      "command": [
+        "node",
+        "--test",
+        "tests/calculator.test.cjs",
+        "tests/data-validation.test.cjs",
+        "tests/market-source-provenance.test.cjs",
+        "tests/parser-input-gate.test.cjs",
+        "tests/pipeline-safety.test.cjs",
+        "tests/release-readiness.test.cjs",
+        "tests/renderer-source-copy.test.cjs",
+        "tests/source-provenance.test.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 971,
+      "log": "native.log"
+    },
+    {
+      "name": "static",
+      "command": [
+        "node",
+        "scripts/verify_static_sources.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 210,
+      "log": "static.log"
+    },
+    {
+      "name": "data",
+      "command": [
+        "node",
+        "scripts/validate_data.js"
+      ],
+      "exitCode": 0,
+      "durationMs": 85,
+      "log": "data.log"
+    },
+    {
+      "name": "service-data",
+      "command": [
+        "node",
+        "scripts/validate_service_data.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 106,
+      "log": "service-data.log"
+    },
+    {
+      "name": "urls",
+      "command": [
+        "node",
+        "scripts/audit_seo_urls.cjs",
+        "--browser",
+        "--pages=news,forecast,fuel-surcharge-calculator",
+        "--report=C:\\Users\\jiwoo\\OneDrive\\Desktop\\사이드\\aero-v37-fixed\\aero-v36\\artifacts\\review-verification\\2026-10-22T01-41-33-935Z\\url-runtime.json"
+      ],
+      "exitCode": 0,
+      "durationMs": 19716,
+      "log": "urls.log"
+    },
+    {
+      "name": "myrealtrip",
+      "command": [
+        "node",
+        "scripts/verify_myrealtrip_integration.js"
+      ],
+      "exitCode": 0,
+      "durationMs": 128,
+      "log": "myrealtrip.log"
+    },
+    {
+      "name": "platform",
+      "command": [
+        "node",
+        "scripts/verify_platform.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 36490,
+      "log": "platform.log"
+    },
+    {
+      "name": "calculator",
+      "command": [
+        "node",
+        "scripts/verify_calculator_platform.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 11431,
+      "log": "calculator.log"
+    },
+    {
+      "name": "seo-snapshot",
+      "command": [
+        "node",
+        "scripts/sync_static_snapshots.cjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "durationMs": 66768,
+      "log": "seo-snapshot.log"
+    }
+  ],
+  "gitHead": "cb0a60595d387e7db921710e442c5734f6d2204c",
+  "workingTree": [
+    "M .github/workflows/data-validation.yml",
+    " M .gitignore",
+    " M docs/platform-analytics.md",
+    " M docs/platform-calculator.md",
+    " M docs/platform-data-validation.md",
+    " M docs/platform-sources-seo-business.md",
+    " M docs/platform-upgrade-report.md",
+    " M lib/validation/index.js",
+    " M lib/validation/records.js",
+    " M package.json",
+    " M public/_shared.js",
+    " M public/about.html",
+    " M public/airlines-oct20.js",
+    " M public/airlines.html",
+    " M public/aug26-update.js",
+    " M public/aug28-update.js",
+    " M public/aug31-update.js",
+    " M public/calculator-oct20.js",
+    " M public/calculator-platform-core.js",
+    " M public/calculator-platform.js",
+    " M public/forecast.html",
+    " M public/fuel-surcharge-2026-05.html",
+    " M public/fuel-surcharge-asiana.html",
+    " M public/fuel-surcharge-calculator.html",
+    " M public/fuel-surcharge-graph.html",
+    " M public/fuel-surcharge-jejuair.html",
+    " M public/fuel-surcharge-jinair.html",
+    " M public/fuel-surcharge-korea.html",
+    " M public/fuel-surcharge-korean-air.html",
+    " M public/fuel-surcharge-tway.html",
+    " M public/home-platform.js",
+    " M public/home-sep20.js",
+    " M public/index.html",
+    " M public/market-oct17.js",
+    " M public/market-oct19.js",
+    " M public/market-oct21.js",
+    " M public/methodology.html",
+    " M public/news.html",
+    " M public/planner.html",
+    " M public/privacy.html",
+    " M public/sep02-update.js",
+    " M public/sep03-update.js",
+    " M public/sep04-update.js",
+    " M public/sitemap.xml",
+    " M public/terms.html",
+    " M scripts/check_env.js",
+    " M scripts/install_platform_tags.cjs",
+    " M scripts/run_pipeline.js",
+    " M scripts/sync_oct19_metadata.cjs",
+    " M scripts/validate_data.js",
+    " M scripts/validate_service_data.cjs",
+    " M scripts/verify-sep07.cjs",
+    " M scripts/verify-sep17.cjs",
+    " M scripts/verify_calculator_platform.cjs",
+    " M scripts/verify_platform.cjs",
+    " M scripts/verify_static_sources.cjs",
+    " M tests/calculator.test.cjs",
+    " M tests/data-validation.test.cjs",
+    " M tests/pipeline-safety.test.cjs",
+    " M vercel.json",
+    "?? .gitattributes",
+    "?? config/",
+    "?? docs/platform-review-remediation.md",
+    "?? docs/platform-source-provenance.md",
+    "?? docs/review-evidence/",
+    "?? lib/release-readiness.cjs",
+    "?? lib/validation/provenance.js",
+    "?? public/source-provenance.js",
+    "?? scripts/audit_live_pipeline.cjs",
+    "?? scripts/audit_seo_urls.cjs",
+    "?? scripts/check_deployment_readiness.cjs",
+    "?? scripts/verify_release.cjs",
+    "?? tests/market-source-provenance.test.cjs",
+    "?? tests/parser-input-gate.test.cjs",
+    "?? tests/release-readiness.test.cjs",
+    "?? tests/renderer-source-copy.test.cjs",
+    "?? tests/source-provenance.test.cjs"
+  ],
+  "deploymentReview": {
+    "passed": false,
+    "errors": [
+      "광고 유지/의도적 중단 결정과 검토 근거가 없습니다. false 기본값으로 배포할 수 없습니다.",
+      "실수집·GA4 수신·Vercel 환경 등에 대한 운영 검토 근거가 없습니다.",
+      "운영 검토 대상과 현재 배포 소스가 다릅니다."
+    ],
+    "sourceDigest": "c76fb6c51848d604cc05d8d300adec960ad1d7b459fde978d45dce10ba6189e8",
+    "adsEnabled": false,
+    "clarityConfigured": false
+  },
+  "finishedSourceDigest": "c76fb6c51848d604cc05d8d300adec960ad1d7b459fde978d45dce10ba6189e8",
+  "browserEvidence": "browser-verification.json",
+  "finishedAt": "2026-10-22T01:43:50.358Z"
+}

@@ -1,0 +1,33 @@
+{
+  "startedAt": "2026-10-21T10:00:47.016Z",
+  "mode": "real collectors and configured parser, dry-run only",
+  "carriers": [
+    "KE",
+    "LJ",
+    "7C"
+  ],
+  "credentialConfigured": true,
+  "before": {
+    "airline_meta.json": "247679e8795ccb1bd4ad23960a9421cd0c8627267e3a8d905ab7c53edb9e87b1",
+    "forecast_feed.json": "90631be783f41ab82f3b368bcd4c14346ef78d45bb9f82912711225e9909826b",
+    "manual_overrides.json": "943d4519d76b12c7035420fd963253f7ac39d1b95b265982be34a901dac0b050",
+    "news_feed.json": "caa88020464f0c2e7afb705d76e45296989144e8629dc118f772b6fa6e12d163",
+    "official_surcharge_feed.json": "286ebe74afa0bb78733ab73a294b233a1755df2692fd826a170ec86a049ddc63",
+    "pipeline_log.json": "fba0ade8164cf1a886ed7c1416632995e44d73a9f941541a71db767f11b82a48",
+    "routes_feed.json": "b8bf47393da4e492e14af3036a906a8b97e4d162c362dbc987193f6f4d872cd4"
+  },
+  "exitCode": 1,
+  "finishedAt": "2026-10-21T10:09:27.365Z",
+  "after": {
+    "airline_meta.json": "247679e8795ccb1bd4ad23960a9421cd0c8627267e3a8d905ab7c53edb9e87b1",
+    "forecast_feed.json": "90631be783f41ab82f3b368bcd4c14346ef78d45bb9f82912711225e9909826b",
+    "manual_overrides.json": "943d4519d76b12c7035420fd963253f7ac39d1b95b265982be34a901dac0b050",
+    "news_feed.json": "caa88020464f0c2e7afb705d76e45296989144e8629dc118f772b6fa6e12d163",
+    "official_surcharge_feed.json": "286ebe74afa0bb78733ab73a294b233a1755df2692fd826a170ec86a049ddc63",
+    "pipeline_log.json": "fba0ade8164cf1a886ed7c1416632995e44d73a9f941541a71db767f11b82a48",
+    "routes_feed.json": "b8bf47393da4e492e14af3036a906a8b97e4d162c362dbc987193f6f4d872cd4"
+  },
+  "publicDataPreserved": true,
+  "pipelinePassed": false,
+  "interpretation": "Selected real dry-run did not pass; log describes the blocking collection/parser/validation result. This is not a full-carrier success."
+}

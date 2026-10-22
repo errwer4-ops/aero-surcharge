@@ -1,0 +1,29 @@
+{
+  "reviewDateKst": "2026-10-21",
+  "method": "Official-domain indexed full notice body returned by web search, with direct-open limitations recorded separately; factual extraction only",
+  "notices": [
+    {
+      "airline": "TW", "month": "2026-11", "sourceUrl": "https://www.trinityairways.com/app/customerCenter/notice/retrieve/12722",
+      "title": "2026년 11월 한국발 국제선 유류할증료 안내", "publicationText": "2026-10-19 09:33",
+      "currency": "KRW", "direction": "one_way", "departureCountry": "KR", "effectiveFrom": "2026-11-01", "effectiveTo": "2026-11-30",
+      "bands": ["~600미만", "600~1200미만", "1200~1800미만", "1800~2400미만", "2400~4000미만", "4000~5000미만", "5000이상"],
+      "amounts": [43400,76000,95000,123500,133000,null,299800],
+      "unavailableMeaning": "The original sixth group is a dash, not zero.",
+      "accessLimitation": "Direct desktop/mobile opens failed; a domain-restricted exact notice search returned the complete primary body."
+    },
+    {
+      "airline": "KE", "month": "2026-11", "sourceUrl": "https://www.koreanair.com/contents/footer/customer-support/notice/2026/2611-infuel",
+      "currency": "KRW", "direction": "one_way", "departureCountry": "KR", "effectiveFrom": "2026-11-01", "effectiveTo": "2026-11-30", "publishedAt": null,
+      "bands": ["0-499", "500-999", "1000-1499", "1500-1999", "2000-2999", "3000-3999", "4000-4999", "5000-6499", "6500-9999"],
+      "amounts": [55600,76000,105800,132900,185800,189800,254900,370100,408100],
+      "octoberComparisonAmounts": [49000,65800,98000,116200,162400,168000,226800,322000,362600],
+      "accessLimitation": "Direct open was empty; an exact official-domain search returned the complete table and ticketing period. Old table accessibility caption conflicts with the actual title, column labels and applicable period."
+    },
+    {
+      "airline": "KE", "month": "2026-10", "sourceUrl": "https://www.koreanair.com/contents/footer/customer-support/notice/2026/2610-infuel",
+      "method": "direct official-page body", "currency": "KRW", "direction": "one_way", "departureCountry": "KR",
+      "effectiveFrom": "2026-10-01", "effectiveTo": "2026-10-31", "publishedAt": null,
+      "amounts": [49000,65800,98000,116200,162400,168000,226800,322000,362600]
+    }
+  ]
+}

@@ -31,7 +31,7 @@ MOPS/항공유와 Brent·WTI·Dubai 원유를 같은 직접 산정 지표로 취
 - 뉴스와 전망의 마지막 공통 렌더러가 같은 제목을 사용했다. `sep04-update.js`의 기존 `pack()`에서 뉴스는 공시·시장 소식, 전망은 전망 설명으로 제목·H1을 구분한다. 시장 관측값이나 뉴스 날짜는 바꾸지 않는다.
 - `methodology.html`에 MOPS와 원유의 차이, 왕복 추정 가정, 0원 기준 변동률, 같은 통화·구간 비교, 발표일·적용일·수집·검증·편집 시각의 차이를 설명한다.
 - `robots.txt`는 공개 HTML 허용 정책을 유지하며 `/api/`를 제외한다. `myrealtrip-api-test.html`은 이미 `noindex,nofollow,noarchive`였다. robots는 접근 제어 수단이 아니므로 API 인증을 대체하지 않는다.
-- 기존 `.html` canonical, sitemap 항목과 URL을 유지했다. Vercel `cleanUrls:true`로 리디렉션되는 실제 URL과 canonical을 통일하는 운영 검토는 남아 있다. 검색 노출 이력이 있으므로 이 작업에서 URL을 일괄 변경하지 않았다. 날짜만 최신으로 보이게 하는 sitemap `lastmod`는 추가하지 않았다.
+- 초기 작업에서는 `.html` canonical을 보존했으나, 후속 실제 리디렉션 재검토에서 `cleanUrls:true`의 최종 URL과 불일치를 확인했다. canonical·OG·JSON-LD·sitemap·지연 렌더러 자체 URL을 확장자 없는 최종 경로로 맞췄다. 기존 HTML 파일 및 `.html` 주소의 리디렉션은 유지한다. 근거와 검사는 [SEO URL 재검토](review-evidence/seo-url-review.md)에 기록한다. 날짜만 최신으로 보이게 하는 sitemap `lastmod`는 추가하지 않았다.
 - AI 크롤러를 별도로 차단하는 규칙은 없다. 검색·AI 답변 노출은 보장하지 않는다. [Google 구조화 데이터 원칙](https://developers.google.com/search/docs/appearance/structured-data/sd-policies)에 맞게 사용자에게 보이는 내용과 JSON-LD가 일치하는지 검증한다.
 - 계산기 초기 HTML의 Twitter 설명은 11월 5개사, 다른 메타는 8개사였고 본문은 8·9월 비교와 10월 공시 전 문구를 포함했다. 메타·본문을 기존 10·11월 공시 범위에 맞추고, 실행 FAQ는 기존 `NOVEMBER_2026_NOTICE_COPY`를 재사용한다. 계산기 안의 6개 언어 산정 설명에서도 MOPS·원유·원 통화·항공사별 조건·단순 왕복 추정을 구분한다. 공시 금액은 이 작업에서 새로 생성하지 않았다.
 - 제주항공 관련 링크의 `rel.notice`·`rel.forecast` 키는 다른 상세 페이지의 `rel.may`·`rel.jun`과 달랐다. 공통 과거 비교 안내가 두 키 형태를 모두 처리하며 최신 공시 링크의 실제 대상도 계산기로 맞췄다.
