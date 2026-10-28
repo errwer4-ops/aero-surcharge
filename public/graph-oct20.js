@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  var stamp='2026-10-21T10:05:51+09:00';
+  var stamp='2026-10-29T07:58:49+09:00';
   var october={
     KE:[49000,65800,98000,116200,162400,168000,226800,322000,362600],
     OZ:[53400,79400,104000,128700,153300,178000,202600,251900,301200],
@@ -119,7 +119,7 @@
   october.ZE=[37,47,57,68,76,87];october.YP=[41,54,null,91,159,200,251];
   links.ZE='https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=664&lang=KR';
   links.YP='https://www.airpremia.com/a/ko/customer/notice/791';
-  AIRLINES.forEach(function(a){var n=(window.NOVEMBER_2026_OFFICIAL_NOTICES||[]).find(function(n){return n.code===a.code;});a.nov=n?n.november.slice():a.bands.map(function(){return null;});a.novemberNoticeUrl=n?n.url:null;});
+  AIRLINES.forEach(function(a){var n=(window.NOVEMBER_2026_OFFICIAL_NOTICES||[]).find(function(n){return n.code===a.code;});a.nov=n?(n.displayBandIndices?n.displayBandIndices.map(function(i){return i===null?null:n.november[i];}):n.november.slice()):a.bands.map(function(){return null;});a.novemberNoticeUrl=n?n.url:null;});
   AIRLINES.forEach(function(a){a.oct=october[a.code]?october[a.code].slice():a.bands.map(function(){return null;});if(links[a.code])a.url=links[a.code];});
   Object.keys(packs).forEach(function(lang){var p=packs[lang];GRAPH_I18N[lang]=GRAPH_I18N[lang]||{};window.I18N[lang]=window.I18N[lang]||{};var values={
     'graph.metaTitle':p.title,'graph.metaDesc':p.desc,'graph.pageSub':p.sub,'graph.h1':p.h1,'graph.notice':p.notice,'graph.intro':p.intro,

@@ -42,17 +42,17 @@ test('notice card source dates use reviewed publication metadata, never the old 
 });
 test('all six language packs use actual source counts and original publication assumptions are absent', () => {
   const release = render();
-  assert.equal(release.numbers.novemberConfirmedAirlines.length, 8);
+  assert.equal(release.numbers.novemberConfirmedAirlines.length, 9);
   for (const lang of langs) {
-    assert.match(release.packs[lang].title, /8/);
-    assert.match(release.packs[lang].faq[1].a, /8/);
+    assert.match(release.packs[lang].title, /9/);
+    assert.match(release.packs[lang].faq[1].a, /9/);
   }
   const text = JSON.stringify(release.newsCards.map(c => c.i18n));
   assert.doesNotMatch(text, /10월 16일 공식|October 16 official|16日の公式公示|10月16日官方|officiel du 16 octobre|Mitteilung vom 16\. Oktober/);
 });
 test('unreconciled card retains amounts but loses confirmed counts and source publication claims', () => {
   const release = render(notices => { notices.find(n => n.code === 'LJ').november[0] = 37; });
-  assert.equal(release.numbers.novemberConfirmedAirlines.length, 7);
+  assert.equal(release.numbers.novemberConfirmedAirlines.length, 8);
   assert.ok(release.numbers.novemberPendingAirlines.includes('LJ'));
   const card = release.newsCards.find(n => n.id === 'notice-202611-lj');
   assert.equal(card.dataStatus, 'unconfirmed'); assert.equal(card.reportedDate, null);
@@ -99,9 +99,9 @@ test('reported level/MOPS numbers remain intact and cannot inherit official amou
   }
   const noSources = render(null, false, true);
   const changedAmount = render(notices => { notices.find(n => n.code === 'LJ').november[0]++; }, true, true);
-  assert.equal(release.numbers.novemberConfirmedAirlines.length, 8);
+  assert.equal(release.numbers.novemberConfirmedAirlines.length, 9);
   assert.equal(noSources.numbers.novemberConfirmedAirlines.length, 0);
-  assert.equal(changedAmount.numbers.novemberConfirmedAirlines.length, 7);
+  assert.equal(changedAmount.numbers.novemberConfirmedAirlines.length, 8);
   for (const other of [noSources,changedAmount]) {
     assert.deepEqual(JSON.parse(JSON.stringify(other.numbers.marketReferenceVerification)), JSON.parse(JSON.stringify(n.marketReferenceVerification)));
     for (const lang of langs) assert.equal(other.packs[lang].faq[1].a, release.packs[lang].faq[1].a);

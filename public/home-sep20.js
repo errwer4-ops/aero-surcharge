@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  var stamp='2026-10-21T10:05:51+09:00';
+  var stamp='2026-10-29T07:58:49+09:00';
   var octoberLinks={
     KE:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2610-infuel?pageNum=1',
     OZ:'https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202609160002530627',
@@ -191,7 +191,7 @@
     });
   });
   var november={},novemberLinks={};
-  (window.NOVEMBER_2026_OFFICIAL_NOTICES||[]).forEach(function(n){november[n.code]=n.november.slice();novemberLinks[n.code]=n.url;});
+  (window.NOVEMBER_2026_OFFICIAL_NOTICES||[]).forEach(function(n){november[n.code]=n.displayBandIndices?n.displayBandIndices.map(function(i){return i===null?null:n.november[i];}):n.november.slice();novemberLinks[n.code]=n.url;});
   window.NOVEMBER_2026_NOTICE_LINKS=novemberLinks;
   function installCopy(){
     Object.keys(text).forEach(function(lang){var c=text[lang];window.I18N[lang]=window.I18N[lang]||{};Object.assign(window.I18N[lang],{

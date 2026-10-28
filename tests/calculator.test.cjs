@@ -113,21 +113,21 @@ test('home landing keeps concise November status, qualified minimum changes and 
   vm.runInContext(declaration(calc,'var october={'),context);vm.runInContext(declaration(patch,'var octoberLinks={'),context);
   context.NOVEMBER_2026_OFFICIAL_NOTICES=loadNotices(fs.readFileSync('public/_shared.js','utf8'));context.OCTOBER_2026_ROUTE_GROUP_NOTICES=loadRouteGroupNotices(fs.readFileSync('public/notice-group-source.js','utf8'));context.OCTOBER_2026_NOTICE_LINKS=context.octoberLinks;
   context.KR_AIRLINES=Object.keys(context._OFFICIAL_AMT).map(code=>({code,logo:code,name:code}));context.november={};context.novemberLinks={};context.AUGUST_2026_NOTICE_LINKS={};context.AUGUST_2026_OFFICIAL_AMOUNTS={};
-  context.NOVEMBER_2026_OFFICIAL_NOTICES.forEach(n=>{context.november[n.code]=n.november;context.novemberLinks[n.code]=n.url;});
+  context.NOVEMBER_2026_OFFICIAL_NOTICES.forEach(n=>{context.november[n.code]=n.displayBandIndices?n.displayBandIndices.map(i=>i===null?null:n.november[i]):n.november;context.novemberLinks[n.code]=n.url;});
   Object.entries(context._OFFICIAL_AMT).forEach(([code,data])=>data.rows.forEach((row,i)=>{row.july=context.october[code][i];row.august=context.november[code]?.[i]??null;if(code==='ZE')row.label=String(i+1);}));
   const renderer=index.lastIndexOf('renderLanding = function(){');vm.runInContext(index.slice(renderer,index.indexOf('\n};',renderer)+3),context);
   vm.runInContext(fs.readFileSync('public/home-platform.js','utf8'),context);
-  assert.equal(context.AeroHomePlatform.landingState('BX').latest.status,'verified');assert.equal(context.AeroHomePlatform.landingState('BX').current.status,'verified');assert.equal(context.AeroHomePlatform.landingState('KE').current.status,'partial');assert.equal(context.AeroHomePlatform.landingState('YP').latest.status,'pending');
-  assert.match(node('miniGrid').innerHTML,/data-airline="YP" data-source-verified="false"/);
-  assert.equal((node('miniGrid').innerHTML.match(/class="mini-status"[^>]*>11월 공시 완료<\/div>/g)||[]).length,8);assert.equal((node('miniGrid').innerHTML.match(/class="mini-status"[^>]*>11월 공시 미완료<\/div>/g)||[]).length,1);
-  assert(!node('miniGrid').innerHTML.includes('2026-10 원문 링크'),'the November-incomplete card does not masquerade an October URL as November');assert(!node('miniGrid').innerHTML.includes('/notice/791'));assert.match(node('miniGrid').innerHTML,/사이트의 11월 공시 반영이 진행 중입니다/);
+  assert.equal(context.AeroHomePlatform.landingState('BX').latest.status,'verified');assert.equal(context.AeroHomePlatform.landingState('BX').current.status,'verified');assert.equal(context.AeroHomePlatform.landingState('KE').current.status,'partial');assert.equal(context.AeroHomePlatform.landingState('YP').latest.status,'verified');
+  assert.match(node('miniGrid').innerHTML,/data-airline="YP" data-source-verified="true"/);
+  assert.equal((node('miniGrid').innerHTML.match(/class="mini-status"[^>]*>11월 공시 완료<\/div>/g)||[]).length,9);assert.equal((node('miniGrid').innerHTML.match(/class="mini-status"[^>]*>11월 공시 미완료<\/div>/g)||[]).length,0);
+  assert(node('miniGrid').innerHTML.includes('/notice/803'));
   const platform=context.AeroHomePlatform;
   for(const n of context.NOVEMBER_2026_OFFICIAL_NOTICES){
     const comparison=platform.landingComparison(n.code),rates=n.october.map((b,i)=>typeof b==='number'&&b>0&&typeof n.november[i]==='number'?(n.november[i]-b)/b*100:null).filter(v=>v!==null);
     assert.equal(comparison.kind,'increase');assert.equal(comparison.minimum,Math.min(...rates));assert.equal(comparison.pairs.length,rates.length);assert.match(platform.comparisonLabel(comparison),new RegExp('전월 대비 최소 '+comparison.minimum.toFixed(1).replace('.','\\.')+'% 상승'));
     assert.equal(comparison.archived,comparison.pairs.some(p=>!p.sourceVerified));
   }
-  assert.equal(platform.landingComparison('YP'),null);assert.equal(platform.landingComparison('TW').pairs.length,6,'unpublished null slot excluded, never zero');assert.equal(platform.landingComparison('BX').archived,false);
+  assert.equal(platform.landingComparison('YP').pairs.length,6);assert.equal(platform.recordFor('YP',2,'2026-11','ICN','NRT',false),null);assert.equal(platform.recordFor('YP',6,'2026-11','ICN','NRT',false).amount,296);assert.equal(platform.landingComparison('TW').pairs.length,6,'unpublished null slot excluded, never zero');assert.equal(platform.landingComparison('BX').archived,false);
   assert.equal(platform.landingComparison('OZ').archived,true);assert.match(platform.landingComparisonHtml('OZ'),/보관 기록 기준/);assert.match(platform.landingComparisonHtml('OZ'),/10월 보관 기록/);assert.match(platform.landingComparisonHtml('OZ'),/500~999 mi/);assert.match(platform.landingComparisonHtml('OZ'),/<details/);assert(!platform.landingComparisonHtml('OZ').includes(' open'));
   assert.equal(platform.recordFor('OZ',1,'2026-10','ICN','NRT',false).status,'unconfirmed','retained-record trend does not upgrade official calculator comparison');
   const pair=p=>({percent:p,sourceVerified:true}),summary=values=>platform.summarizeComparison(values.map(pair));

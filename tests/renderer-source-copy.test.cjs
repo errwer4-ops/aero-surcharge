@@ -45,11 +45,11 @@ test('final home and calculator copy follows source count in all six languages',
   for (const file of ['home-sep20.js', 'calculator-oct20.js']) for (const lang of langs) {
     const {context, nodes} = render(file, lang);
     const description = nodes.get('meta[name="description"]').content;
-    assert.match(description, /8/);
+    assert.match(description, /9/);
     assert.ok(description.includes(context.NOVEMBER_2026_NOTICE_COPY[lang].summary));
     assert.equal(nodes.get('meta[property="og:description"]').content, description);
     assert.equal(nodes.get('meta[name="twitter:description"]').content, description);
-    assert.doesNotMatch(description, /9개|全9|共9|nine|neuf|neun|인하됐|decreased/);
+    assert.doesNotMatch(description, /인하됐|decreased/);
   }
 });
 
@@ -57,8 +57,8 @@ test('changed primary-source amount reduces displayed count and leaves source li
   const mutate = notices => { notices.find(n => n.code === 'LJ').november[0]++; };
   for (const file of ['home-sep20.js', 'calculator-oct20.js']) {
     const {context, nodes} = render(file, 'ko', mutate);
-    assert.match(nodes.get('meta[name="description"]').content, /공시 완료 7개사/);
-    assert.match(nodes.get('meta[name="description"]').content, /공시 미완료: LJ · YP/);
+    assert.match(nodes.get('meta[name="description"]').content, /공시 완료 8개사/);
+    assert.match(nodes.get('meta[name="description"]').content, /공시 미완료: LJ\./);
     if (file.startsWith('calculator')) assert.match(context.I18N.ko['calc.official.item.lj'], /11월 확인 중/);
   }
 });

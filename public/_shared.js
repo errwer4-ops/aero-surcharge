@@ -15995,6 +15995,22 @@ window.NOVEMBER_2026_OFFICIAL_NOTICES.push({
   }
 });
 
+window.NOVEMBER_2026_OFFICIAL_NOTICES.push({
+  code:'YP',key:'officialYp',currency:'USD',url:'https://www.airpremia.com/a/ko/customer/notice/803',
+  bands:['~999 mi','1,000~1,499 mi','2,000~2,499 mi','4,000~4,999 mi','5,000~6,499 mi','6,500+ mi'],
+  october:[41,54,91,159,200,251],november:[48,64,107,187,236,296],
+  displayBandIndices:[0,1,null,2,3,4,5],
+  noticeDate:'2026-10-27',noticePublishedAt:'2026-10-27T09:18:18+09:00',verifiedAt:'2026-10-29T07:54:00+09:00',
+  ticketingStart:'2026-11-01',ticketingEnd:'2026-11-30',direction:'one_way',departureCountry:'KR',status:'official_notice_verified_pdf',
+  period:{
+    ko:'한국 출발 국제선 편도 USD 공시액, 2026년 11월 1~30일 결제·발권 기준입니다. 11월부터 원화 환산에는 발권일 기준 환율을 적용합니다. 사이트 참고 환산액은 실제 결제액이 아닙니다.',
+    en:'Published USD one-way amounts departing Korea, for payment/ticketing November 1–30, 2026. From November, KRW conversion uses the ticketing-day exchange rate. Site reference conversions are not actual payment amounts.',
+    ja:'韓国発国際線片道USD公示額。2026年11月1～30日決済・発券が対象。11月からウォン換算は発券日為替を適用。サイト参考換算は実際の決済額ではありません。',
+    zh:'韩国出发国际线单程USD公告金额，适用2026年11月1日至30日付款出票。11月起韩元换算采用出票日汇率，网站参考换算并非实际付款金额。',
+    fr:'Montants publiés en USD, aller simple au départ de Corée, paiement/émission du 1er au 30 novembre 2026. Dès novembre, conversion KRW au change du jour d’émission. La conversion indicative du site n’est pas le montant débité.',
+    de:'Veröffentlichte USD-Einfachbeträge ab Korea für Zahlung/Ausstellung vom 1.–30. November 2026. Ab November gilt zur KRW-Umrechnung der Ausstellungstagskurs. Website-Umrechnungen sind keine tatsächlichen Zahlungsbeträge.'
+  }
+});
 window.NOVEMBER_2026_NOTICE_COPY={
   ko:{summary:'10월은 현재 적용 금액입니다. 11월 공시 확인: KE·OZ·7C·LJ·RS·BX·TW·ZE 8개사. 에어프레미아(YP)는 10월 금액만 유지하고 11월은 공시 확인 대기입니다. 11월 1~30일 발권·편도 기준이며 공시 통화와 구간을 유지합니다.',short:'10월 기준 · 11월 공시 8개사 반영',period:'항공사 공식 웹 공지에서 확인한 한국 출발 국제선 편도 금액입니다. 2026년 11월 1~30일 발권분에 적용합니다. 트리니티 6군의 대시는 공시 금액 없음이며 0원이 아닙니다.'},
   en:{summary:'October currently applies. November notices confirmed: KE/OZ/7C/LJ/RS/BX/TW/ZE, eight airlines. YP retains October amounts; November awaits verification. November figures are one-way for ticketing November 1–30, with original currencies and bands preserved.',short:'October baseline · eight November notices reflected',period:'Korea-departure international one-way amounts verified on official airline web notices. Applies to ticketing November 1–30, 2026. Trinity group 6 has a dash: no published amount, not zero.'},
@@ -16016,7 +16032,7 @@ window.NOVEMBER_2026_NOTICE_COPY={
     n.sourceVerifiedAt=source?source.sourceVerifiedAt:null;
     n.sourcePublishedAt=source?source.publishedAt:null;n.sourceEffectiveFrom=source?source.effectiveFrom:null;n.sourceEffectiveTo=source?source.effectiveTo:null;
   });
-  var count=review.verifiedCount,pending=review.pending.concat(['YP']).join(' · '),codes=review.verified.join(' · ')||'—';
+  var count=review.verifiedCount,pending=review.pending.concat(notices.some(function(n){return n.code==='YP';})?[]:['YP']).join(' · ')||'—',codes=review.verified.join(' · ')||'—';
   var copy={
     ko:{summary:'10월 적용 중 · 11월 공시 완료 '+count+'개사: '+codes+'. 공시 미완료: '+pending+'.',short:'11월 공시 완료 '+count+'개사',period:'한국 출발 국제선 편도, 2026년 11월 발권 기준입니다. 대시는 공시 금액 없음이며 0원이 아닙니다.'},
     en:{summary:'October currently applies. November notices available for '+count+' airlines: '+codes+'. Pending: '+pending+'.',short:count+' November notices available',period:'Korea-departure international one-way surcharges for November 2026 ticketing. A dash means no published amount, not zero.'},
@@ -16086,4 +16102,55 @@ window.NOVEMBER_2026_NOTICE_COPY={
   });
   window.AERO_MARKET_NUMBERS_20261021=n;window.AERO_MARKET_NUMBERS_LATEST=n;
   window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{'2026-10-21':n});
+})();
+
+/* October 27 observations: provider series and monthly assessments stay separate. */
+(function(){
+  var n=Object.assign({},window.AERO_MARKET_NUMBERS_20261021,{
+    asOf:'2026.10.27 07:30 KST',lastUpdated:'2026-10-27T07:30:00+09:00',
+    octoberLevel:23,novemberLevel:27,novemberStatus:'level_confirmed_eight_airline_notices_verified',
+    novemberDirection:'confirmed_level_not_forecast',novemberMopsUsdPerBbl:173.89,novemberMopsCentsPerGal:414.03,
+    marketReferenceVerification:{sourceType:'verified_published_report',sourceUrl:'https://www.yna.co.kr/amp/view/AKR20261016068000003',octoberLevel:'verified_report',novemberLevel:'verified_report',octoberMopsAverage:'verified_report',novemberMopsAverage:'verified_report'},
+    usdKrw:1326.09,usdKrwReferenceAt:'2026-10-26',usdKrwKind:'provider_daily_close_not_official_fixing',
+    fxReferenceAt:'2026-10-26',fxReferenceSourceUrl:'https://kr.investing.com/currencies/usd-krw-historical-data',
+    usdKrwReferenceSource:'https://kr.investing.com/currencies/usd-krw-historical-data',fxObservationEffectiveAt:null,fxHistoricalSourceUrl:null,
+    singaporeJetFobReferenceUsdPerBbl:179.94,singaporeJetFobReferenceDate:'2026-10-23',
+    prismSingaporeJetUsdPerBbl:176.59,prismSingaporeJetReferenceAt:'2026-10-27T07:06:23.639+09:00',
+    prismSingaporeJetSourceUrl:'https://www.prismprice.com/grade/JET-SING',prismSingaporeJetKind:'private_modelled_cash_reference_fob_15_30_days',
+    brentUsdPerBbl:115.81,wtiUsdPerBbl:101.76,crudePriceDate:'2026-10-26',crudePriceKind:'settlement',crudeReferenceAt:null,
+    brentContractMonth:'2026-12',wtiContractMonth:'2026-12',brentPct:-0.8,wtiPct:-1.5,
+    brentDailyChangeUsd:-0.91,wtiDailyChangeUsd:-1.51,
+    crudeSourceUrl:'https://www.rigzone.com/news/wire/oil_dips_from_6_month_high_as_officials_meet_in_tehran-26-oct-2026-184936-article/',
+    hormuzLatestGulfCrudeFlowMillionBpd:11.7,hormuzFlowPeriod:'2026-10-01/2026-10-22_report_cutoff',
+    middleEastCrudeExportsMillionBpd:17.3,middleEastPrewarCrudeExportsMillionBpd:16.9,hormuzFlowPrewarPercent:82,
+    hormuzRecentAttackCountAtLeast:28,hormuzAttackReportingDate:'2026-10-23',hormuzAttackWindow:'october_month_to_report_date_confirmed_and_reported',
+    hormuzUsFacilitatedTransits:101,hormuzTransitPeriodStart:'2026-10-22',hormuzTransitPeriodEnd:'2026-10-24',
+    hormuzJmicWaitingVesselsApprox:492,hormuzJmicEstimateDate:'2026-10-25',hormuzJmicThreat:'Severe',
+    middleEastChinaVlccUsdPerDayApprox:1400000,tankerInsuranceCargoValuePercentApprox:10,tankerInsurancePrewarPercentApprox:3,
+    freightReportedDate:'2026-10-22',decemberMopsUsdPerBbl:null,decemberStageEstimate:null,
+    decemberDirection:'upside_risks_limited_data_judgment_reserved',decemberDirectionConfidence:'low',decemberStageConfidence:'judgment_reserved'
+  });
+  window.AERO_MARKET_NUMBERS_20261027=n;window.AERO_MARKET_NUMBERS_LATEST=n;
+  window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{'2026-10-27':n});
+})();
+
+/* October 29 cutoff: daily assessments never replace monthly MOPS. */
+(function(){
+  var n=Object.assign({},window.AERO_MARKET_NUMBERS_20261027,{
+    asOf:'2026.10.29 07:30 KST',informationCutoff:'2026-10-29T07:30:00+09:00',lastUpdated:'2026-10-29T07:58:49+09:00',
+    novemberStatus:'level_confirmed_nine_airline_notices_verified',
+    novemberConfirmedAirlines:window.NOVEMBER_2026_SOURCE_REVIEW.verified.slice(),novemberPendingAirlines:window.NOVEMBER_2026_SOURCE_REVIEW.pending.slice(),
+    usdKrw:1337.7,usdKrwDailyChange:14,usdKrwReferenceAt:'2026-10-28T15:30:00+09:00',usdKrwKind:'Seoul_daytime_close_not_fixing_or_period_average',
+    fxReferenceAt:'2026-10-28T15:30:00+09:00',fxReferenceSourceUrl:'https://www.seoulfn.com/news/articleView.html?idxno=641238',
+    usdKrwReferenceSource:'https://www.seoulfn.com/news/articleView.html?idxno=641238',decemberAverageUsdKrw:null,
+    singaporeJetFobReferenceUsdPerBbl:178.64,singaporeJetFobReferenceDate:'2026-10-27',
+    singaporeJetFobReferenceSourceUrl:'https://commodityscope.com/prices/singapore-jet-kerosene',singaporeJetFobReferenceKind:'private_daily_assessment_low_confidence_not_Platts_MOPS',
+    brentUsdPerBbl:115.32,wtiUsdPerBbl:102.78,crudePriceDate:'2026-10-28',brentDailyChangeUsd:1.44,wtiDailyChangeUsd:2.88,brentPct:null,wtiPct:null,
+    crudeSourceUrl:'https://in.marketscreener.com/news/oil-rises-over-1-after-saudi-arabian-refinery-attack-reignites-supply-risk-ce785cd2d98ffe22',
+    decemberMopsUsdPerBbl:null,decemberStageEstimate:null,decemberCalculationStart:'2026-10-16',decemberCalculationEnd:'2026-11-15',
+    decemberDirection:'upside_pressure_fx_rebound_china_quota_potential_buffer',decemberDirectionConfidence:'moderate_or_below',decemberStageConfidence:'low',
+    imoCumulativeConfirmedIncidents:121,imoCumulativeFatalities:24,imoListUpdated:'2026-10-27',eiaCrudeDrawMillionBarrels:1.9,eiaWeekEnded:'2026-10-23'
+  });
+  window.AERO_MARKET_NUMBERS_20261029=n;window.AERO_MARKET_NUMBERS_LATEST=n;
+  window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{'2026-10-29':n});
 })();

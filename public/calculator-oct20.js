@@ -17,7 +17,7 @@
     '7C':[37,47,57,68,76,87],ZE:[37,47,57,68,76,87],RS:[60300,69900,87800,98700,108300],YP:[41,54,null,91,159,200,251]
   };
 
-  var november={};(window.NOVEMBER_2026_OFFICIAL_NOTICES||[]).forEach(function(n){november[n.code]=n.november.slice();});
+  var november={};(window.NOVEMBER_2026_OFFICIAL_NOTICES||[]).forEach(function(n){november[n.code]=n.displayBandIndices?n.displayBandIndices.map(function(i){return i===null?null:n.november[i];}):n.november.slice();});
   function applyOfficialAmounts(){Object.keys(october).forEach(function(code){
     var data=window.SAVING_COMPARE_DATA&&SAVING_COMPARE_DATA[code];
     if(!data||!Array.isArray(data.rows))return;
@@ -188,7 +188,7 @@
     if(faqAnswers[0])faqAnswers[0].textContent=periodNotes[lang()]||periodNotes.en;
     if(window.AeroCalculatorPlatform)window.AeroCalculatorPlatform.refreshSurface();
     var faqItems=Array.from(document.querySelectorAll('#calculatorFaq .faq-item')).map(function(el){var q=el.querySelector('.faq-q'),a=el.querySelector('.faq-a');return q&&a?{'@type':'Question',name:q.textContent,acceptedAnswer:{'@type':'Answer',text:a.textContent}}:null;}).filter(Boolean);
-    document.querySelectorAll('script[type="application/ld+json"]').forEach(function(el){try{var d=JSON.parse(el.textContent);function update(x){if(!x||typeof x!=='object')return;if(x['@type']==='WebPage'||x['@type']==='WebApplication'){x.name=p.title;x.description=p.desc;x.dateModified='2026-10-21T10:05:51+09:00';x.inLanguage=lang();}if(x['@type']==='FAQPage'&&faqItems.length){x.mainEntity=faqItems;x.inLanguage=lang();x.dateModified='2026-10-21T10:05:51+09:00';}if(Array.isArray(x['@graph']))x['@graph'].forEach(update);}update(d);el.textContent=JSON.stringify(d);}catch(e){}});
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function(el){try{var d=JSON.parse(el.textContent);function update(x){if(!x||typeof x!=='object')return;if(x['@type']==='WebPage'||x['@type']==='WebApplication'){x.name=p.title;x.description=p.desc;x.dateModified='2026-10-29T07:58:49+09:00';x.inLanguage=lang();}if(x['@type']==='FAQPage'&&faqItems.length){x.mainEntity=faqItems;x.inLanguage=lang();x.dateModified='2026-10-29T07:58:49+09:00';}if(Array.isArray(x['@graph']))x['@graph'].forEach(update);}update(d);el.textContent=JSON.stringify(d);}catch(e){}});
   }
   window._fixNovemberCalculatorSurface=fix;
   window._fixOctoberCalculatorSurface=fix;

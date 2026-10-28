@@ -30,6 +30,17 @@ test('known October Eastar notice is independently bound to bId664', () => {
   assert.equal(trust.evaluate({ ...r, route: null }).status, 'unresolved');
   assert.equal(trust.getNotice('ZE', '2026.10').publishedAt, '2026-09-21');
 });
+
+test('Air Premia November has six PDF bands, a non-price display gap and ticketing-day FX conditions', () => {
+  const entry=trust.getNotice('YP','2026.11'),notice=notices.find(n=>n.code==='YP');
+  assert.deepEqual(entry.amounts,[48,64,107,187,236,296]);
+  assert.equal(entry.bands.length,6);assert.deepEqual(Array.from(notice.displayBandIndices),[0,1,null,2,3,4,5]);
+  assert.equal(entry.publishedAt,'2026-10-27T09:18:18+09:00');
+  assert.equal(entry.effectiveFrom,'2026-11-01');assert.equal(entry.effectiveTo,'2026-11-30');
+  entry.amounts.forEach((_,i)=>assert.equal(trust.evaluateNotice(row('YP','2026.11',i)).status,'verified'));
+  assert.equal(trust.evaluateNotice({...row('YP','2026.11',5),amount:251}).status,'unresolved');
+  for(const lang of ['ko','en','ja','zh','fr','de'])assert(notice.period[lang].length>50);
+});
 test('stale confidence strings cannot bless altered amounts, identity or missing metadata', () => {
   const base = row();
   for (const change of [{ amount: 44 }, { amount: null }, { amount: '43' }, { bandIndex: 1 }, { band: 'arbitrary' },
@@ -55,13 +66,13 @@ test('Air Busan departure-qualified groups cannot cross ICN/PUS mappings', () =>
 test('a null official dash is never a confirmed zero amount', () => {
   assert.equal(trust.evaluateNotice(row('TW', '2026.11', 5)).status, 'unresolved');
   assert.equal(trust.evaluateNotice({ ...row('TW', '2026.11', 5), amount: 0 }).status, 'unresolved');
-  assert.equal(trust.summarize(notices, '2026.11').verifiedCount, 8);
+  assert.equal(trust.summarize(notices, '2026.11').verifiedCount, 9);
 });
 test('whole notice counts and CI fail closed for any changed route map, band or amount', () => {
   for (const mutate of [all => { all[0].november[0]++; }, all => { all[0].bands[0] = 'new'; }, all => { delete all[0].bands[0]; delete all[0].november[0]; },
     all => { all.find(n => n.code === 'ZE').routesByGroup[0][0] = 'ICN-NRT'; }]) {
     const copy = structuredClone(notices); mutate(copy);
-    assert.equal(trust.summarize(copy, '2026.11').verifiedCount, 7);
+    assert.equal(trust.summarize(copy, '2026.11').verifiedCount, 8);
     assert.equal(validateNotices(copy).passed, false);
   }
   const groups = loadRouteGroupNotices(fs.readFileSync('public/notice-group-source.js', 'utf8'));
@@ -82,10 +93,10 @@ test('common six-language overview counts only source-reconciled notices and kee
   const copy = structuredClone(notices); copy.find(n => n.code === '7C').november[0] = 44;
   const context = { window: { AeroSourceTrust: trust, NOVEMBER_2026_OFFICIAL_NOTICES: copy } };
   vm.runInNewContext(shared.slice(start, end), context);
-  assert.equal(context.window.NOVEMBER_2026_SOURCE_REVIEW.verifiedCount, 7);
+  assert.equal(context.window.NOVEMBER_2026_SOURCE_REVIEW.verifiedCount, 8);
   assert.equal(copy.find(n => n.code === '7C').dataStatus, 'unconfirmed');
   assert.equal(copy.find(n => n.code === '7C').november[0], 44);
-  for (const lang of ['ko','en','ja','zh','fr','de']) assert.match(context.window.NOVEMBER_2026_NOTICE_COPY[lang].short, /7/);
+  for (const lang of ['ko','en','ja','zh','fr','de']) assert.match(context.window.NOVEMBER_2026_NOTICE_COPY[lang].short, /8/);
   delete context.window.AeroSourceTrust;
   vm.runInNewContext(shared.slice(start, end), context);
   assert.equal(context.window.NOVEMBER_2026_SOURCE_REVIEW.verifiedCount, 0);

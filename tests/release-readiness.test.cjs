@@ -51,7 +51,7 @@ test('static validation rejects missing provenance even with versioned shared sc
   const file=path.join(root,'scripts/verify_static_sources.cjs');
   const source=fs.readFileSync(path.join(root,'public/index.html'),'utf8');
   assert(/_shared\.js\?/.test(source),'exercise actual versioned include');
-  const fakeFs={readdirSync:()=>['index.html'],readFileSync:()=>source.replace(/<script\b[^>]*src="source-provenance\.js"[^>]*><\/script>/i,'')};
+  const fakeFs={readdirSync:()=>['index.html'],readFileSync:()=>source.replace(/<script\b[^>]*src="source-provenance\.js(?:\?[^"]*)?"[^>]*><\/script>/i,'')};
   assert.throws(()=>vm.runInNewContext(fs.readFileSync(file,'utf8'),{__dirname:path.dirname(file),require:name=>name==='node:fs'?fakeFs:require(name),console}),/source provenance must load before shared renderer/);
 });
 

@@ -11,6 +11,8 @@
     if(!row)return null;
     var record={airline:code,origin:dep,destination:arr,month:month,basis:row.range||row.label,currency:data.currency,direction:'one_way',departureCountry:null,band:row.label,sourceBand:null,bandIndex:null,amount:null,status:'unconfirmed',validationStatus:'passed',sourceUrl:null,publishedAt:null,collectedAt:null,effectiveFrom:null,effectiveTo:null};
     if(month==='2026-11'&&n){
+        index=n.displayBandIndices?n.displayBandIndices[index]:index;
+        if(index===null||index===undefined)return null;
       Object.assign(record,{amount:n.november[index],currency:n.currency,sourceUrl:core.safeUrl(n.url),band:n.bands[index],sourceBand:n.bands[index],bandIndex:index,direction:n.direction,departureCountry:n.departureCountry,publishedAt:n.noticePublishedAt||n.noticeDate||null,collectedAt:n.collectedAt||null,effectiveFrom:n.ticketingStart,effectiveTo:n.ticketingEnd});
     }else if(month==='2026-10'){
       var old=(window.OCTOBER_2026_ROUTE_GROUP_NOTICES||{})[code];
@@ -66,13 +68,14 @@
     if(!n||!data||landingMonthState(code,'2026-11').status!=='verified'||data.currency!==n.currency||!Array.isArray(n.october)||n.october.length!==n.bands.length||new Set(data.rows.map(function(row){return row.range;})).size!==data.rows.length)return null;
     var reviewedOld=window.AeroSourceTrust&&window.AeroSourceTrust.getNotice(code,'2026-10');
     n.bands.forEach(function(band,index){
-      var row=data.rows[index],baseline=n.october[index],target=n.november[index];
+      var displayIndex=n.displayBandIndices?n.displayBandIndices.indexOf(index):index;
+      var row=data.rows[displayIndex],baseline=n.october[index],target=n.november[index];
       // Both saved monthly slots must identify the same row and native currency.
       // Nulls, missing amounts, zero denominators and mismatched slots are omitted.
       if(!row||!row.range||!band||!core.money(baseline)||baseline===0||!core.money(target)||row.july!==baseline||row.august!==target)return;
       // Known original-source disagreement cannot be reclassified as an archive.
       if(reviewedOld&&(reviewedOld.currency!==n.currency||reviewedOld.direction!==n.direction||reviewedOld.departureCountry!==n.departureCountry||reviewedOld.bands[index]!==band||reviewedOld.amounts[index]!==baseline))return;
-      var baseRecord=recordFor(code,index,'2026-10','ICN','NRT',false),targetRecord=recordFor(code,index,'2026-11','ICN','NRT',false);
+      var baseRecord=recordFor(code,displayIndex,'2026-10','ICN','NRT',false),targetRecord=recordFor(code,displayIndex,'2026-11','ICN','NRT',false);
       pairs.push({band:band,basis:row.range,currency:n.currency,base:baseline,target:target,percent:(target-baseline)/baseline*100,sourceVerified:core.compare(baseRecord,targetRecord,noticeOnlyEvaluator()).valid});
     });
     return summarizeComparison(pairs);

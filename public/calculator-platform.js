@@ -27,7 +27,8 @@
   function noticeIndex(notice,route,matched,data){
     if (!route || !matched || !data) return -1;
     if (notice.code === 'ZE' || notice.code === 'BX') return core.officialRouteGroupIndex(notice,route.split('-')[0],route.split('-')[1]);
-    return data.rows.indexOf(matched.row);
+    var index=data.rows.indexOf(matched.row);
+    return notice.displayBandIndices?(notice.displayBandIndices[index]===null?-1:notice.displayBandIndices[index]):index;
   }
   function recordFor(context,code,month){
     var selected=core.selectFeedRecord(feedRecords,{airline:code,origin:context.origin,destination:context.destination,month:month,direction:'one_way'});
