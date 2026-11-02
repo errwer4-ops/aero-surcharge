@@ -16154,3 +16154,29 @@ window.NOVEMBER_2026_NOTICE_COPY={
   window.AERO_MARKET_NUMBERS_20261029=n;window.AERO_MARKET_NUMBERS_LATEST=n;
   window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{'2026-10-29':n});
 })();
+
+/* Current ticketing month and dated observations for the November 2 release. */
+(function(){
+  var n=Object.assign({},window.AERO_MARKET_NUMBERS_20261029,{
+    asOf:'2026.11.02 09:15 KST',informationCutoff:'2026-11-02T09:15:00+09:00',lastUpdated:'2026-11-02T09:25:39+09:00',
+    currentMonth:'2026-11',currentStage:27,octoberStatus:'archive',novemberStatus:'current_ticketing_confirmed',
+    novemberEffectiveFrom:'2026-11-01',novemberEffectiveTo:'2026-11-30',novemberCalculationStart:'2026-09-16',novemberCalculationEnd:'2026-10-15',
+    octoberMopsUsdPerBbl:158.57,novemberMopsUsdPerBbl:173.89,
+    decemberMopsUsdPerBbl:null,decemberAverageUsdKrw:null,decemberStageEstimate:null,decemberOfficialAmounts:null,
+    decemberCalculationStart:'2026-10-16',decemberCalculationEnd:'2026-11-15',decemberDirection:'high_volatility_judgment_reserved',decemberDirectionConfidence:'low',decemberStageConfidence:'judgment_reserved',
+    usdKrw:1334.3,usdKrwDailyChange:-2.5,usdKrwDate:'2026-10-30',usdKrwReferenceAt:'2026-10-30T15:30:00+09:00',
+    fxReferenceAt:'2026-10-30T15:30:00+09:00',usdKrwSeoulClose:1334.3,usdKrwSeoulCloseDate:'2026-10-30',usdKrwKind:'Seoul_15:30_close_not_live_or_period_average',
+    fxReferenceSourceUrl:'https://en.yna.co.kr/view/AEN20261030011400320',usdKrwReferenceSource:'https://en.yna.co.kr/view/AEN20261030011400320',
+    singaporeJetFobReferenceUsdPerBbl:168.42,singaporeJetFobReferenceDate:'2026-10-30',commodityScopeJetUsdPerBbl:168.42,commodityScopeJetDate:'2026-10-30',commodityScopeConfidence:'low',
+    prismSingaporeJetUsdPerBbl:null,prismSingaporeJetReferenceAt:null,
+    brentUsdPerBbl:113.43,brentContractMonth:'2027-01',brentExpiredDecemberSettlement:117.64,wtiUsdPerBbl:104.12,wtiContractMonth:'2026-12',
+    crudePriceDate:'2026-10-30',crudePriceKind:'settlement',brentPct:null,wtiPct:null,brentDailyChangeUsd:2.63,wtiDailyChangeUsd:2.12,
+    crudeSourceUrl:'https://www.investing.com/news/commodities-news/oil-rises-on-supply-concerns-as-houthis-attack-saudi-arabia-4985735',
+    crudeIntradayAt:'2026-11-02T08:03:00+09:00',brentIntradayUsdPerBbl:111.92,wtiIntradayUsdPerBbl:102.34,brentIntradayPct:-1.33,wtiIntradayPct:-1.71,
+    hormuzCrudeFlowMillionBpd:11.7,hormuzLatestGulfCrudeFlowMillionBpd:11.7,hormuzFlowReportDate:'2026-10-22',hormuzFlowPeriod:'October_to_October22_report_estimate_not_final',currentHormuzTraffic:null,hormuzShipSafetyRisk:'high_to_very_high',
+    middleEastChinaVlccUsdPerDayApprox:null,tankerInsuranceCargoValuePercentApprox:null,tankerInsurancePrewarPercentApprox:null,usAsiaCrudeFreightUsdPerBblApprox:null,freightReportedDate:null,
+    opecDecemberTargetDecision:'unchanged',opecDecisionDate:'2026-11-01',irgcTwoTankerClaimIndependentVerification:false
+  });
+  window.AERO_MARKET_NUMBERS_20261102=n;window.AERO_MARKET_NUMBERS_LATEST=n;
+  window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{'2026-11-02':n});
+})();

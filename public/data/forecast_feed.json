@@ -1,108 +1,49 @@
 {
   "meta": {
-    "generatedAt": "2026-10-21T01:33:09.395Z",
-    "modelVersion": "manual-october-direction-forecast-20260827",
-    "basePeriod": "2026.09",
-    "forecastTargetPeriod": "2026.10",
-    "sourceAirlines": 9,
+    "generatedAt": "2026-11-02T09:25:39+09:00",
+    "lastUpdated": "2026-11-02T09:25:39+09:00",
+    "informationCutoff": "2026-11-02T09:15:00+09:00",
+    "modelVersion": "manual-dated-observations-20261102",
+    "basePeriod": "2026.11",
+    "forecastTargetPeriod": "2026.12",
+    "currentMonthNotice": "2026-11",
+    "forecastTargetMonth": "2026-12",
     "inputs": {
-      "brentUSD": 82.5,
-      "wtiUSD": 78.3,
-      "jetFuelSpread": 14.2,
-      "usdKrw": 1327,
-      "usdJpy": 158.22,
-      "geopoliticalRiskScore": 0.35,
-      "baselineBrentUSD": 75,
-      "marketDataSource": "live",
-      "marketFetchedAt": "2026-10-21T01:32:06.143Z"
+      "officialNovemberMopsUsdPerBbl": 173.89,
+      "officialNovemberMopsPeriod": "2026-09-16/2026-10-15",
+      "decemberCalculationPeriod": "2026-10-16/2026-11-15",
+      "decemberOfficialMopsUsdPerBbl": null,
+      "decemberPeriodAverageUsdKrw": null,
+      "singaporeJetPrivateAssessmentUsdPerBbl": 168.42,
+      "singaporeJetProvider": "CommodityScope",
+      "singaporeJetAssessmentDate": "2026-10-30",
+      "singaporeJetConfidence": "low",
+      "singaporeJetBasis": "FOB Singapore; private assessment, not Platts MOPS",
+      "usdKrw": 1334.3,
+      "fxKind": "Seoul 2026-10-30 15:30 close",
+      "brentUSD": 113.43,
+      "brentContract": "2027-01",
+      "brentExpiredDecemberUSD": 117.64,
+      "wtiUSD": 104.12,
+      "crudeKind": "2026-10-30 settlement",
+      "brentIntradayUSD": 111.92,
+      "wtiIntradayUSD": 102.34,
+      "crudeIntradayAt": "2026-11-02T08:03:00+09:00"
     },
-    "disclaimer": "2026년 10월 유류할증료 단계·금액은 아직 공시 전입니다. 9월 확정 공시는 기준선으로 유지하고, 10월은 환율, 9월 산정 평균, 최근 Singapore Jet Fuel, 글로벌 Jet Fuel, 국제유가, 호르무즈 운항·외교·운송위험을 구분해 방향성만 추적합니다.",
-    "lastUpdated": "2026-08-27T09:45:00+09:00",
-    "currentMonthNotice": "2026-09",
-    "forecastTargetMonth": "2026-10"
+    "disclaimer": "12월 공식 누적 MOPS 평균·단계·원화 부과액은 미확인입니다. 다른 평가 시리즈나 원유·환율로 추정하지 않습니다."
   },
-  "forecasts": [
-    {
-      "airlineCode": "ALL",
-      "airlineName": "한국발 국제선",
-      "basePeriod": "2026.09",
-      "targetPeriod": "2026.10",
-      "distanceBand": "all",
-      "distanceLabel": "전 구간",
-      "currentStage": 21,
-      "predictedMin": null,
-      "predictedMax": null,
-      "officialStage": null,
-      "officialAmounts": null,
-      "direction": "centered_flat_cut_probability_expanded_near_cut_boundary_low_confidence",
-      "confidence": "low",
-      "volatility": "high",
-      "drivers": [
-        {
-          "factor": "2026년 9월 한국 출발 국제선 유류할증료 21단계 확정",
-          "impact": "confirmed_baseline_for_october",
-          "weight": 0.16
-        },
-        {
-          "factor": "USD/KRW 약 1,380.15원, 원화 환산액 강한 하락 요인",
-          "impact": "krw_conversion_downside",
-          "weight": -0.32
-        },
-        {
-          "factor": "9월 산정 평균 149.29달러/bbl, 10월 누적 Singapore MOPS 평균 집계 중",
-          "impact": "baseline_and_collection",
-          "weight": 0.12
-        },
-        {
-          "factor": "최근 Singapore Jet Fuel 약 154.98달러/bbl, 10월 평균 아님",
-          "impact": "singapore_jetfuel_reference_upside",
-          "weight": 0.14
-        },
-        {
-          "factor": "글로벌 Jet Fuel 주간 평균 163.87달러/bbl, 전주 대비 +3.1%, Singapore MOPS 아님",
-          "impact": "global_jetfuel_strong_upside_reference",
-          "weight": 0.18
-        },
-        {
-          "factor": "국제유가 Brent 87.84달러/bbl(-0.84%), WTI 82.23달러/bbl(-0.16%)",
-          "impact": "crude_short_term_downside",
-          "weight": -0.24
-        },
-        {
-          "factor": "이란·오만 호르무즈 관리·수익배분 협상 진전, 최종 합의 미확정",
-          "impact": "diplomatic_relief_signal",
-          "weight": -0.1
-        },
-        {
-          "factor": "카타르 중재 참여 확대, 미·이란 직접 협상 재개는 미확인",
-          "impact": "mediation_relief_not_direct_talks",
-          "weight": -0.05
-        },
-        {
-          "factor": "Kpler 공개 추적 commodity vessel 기준 호르무즈 통항 5척, 10일 평균 약 15척/일 하회",
-          "impact": "extreme_actual_operation_risk",
-          "weight": 0.16
-        },
-        {
-          "factor": "이란의 호르무즈 규정 위반 주장 선박 45척 블랙리스트와 벌금·억류·화물 압류 경고",
-          "impact": "shipping_insurance_freight_upside_risk",
-          "weight": 0.16
-        },
-        {
-          "factor": "정제품 공급 부족과 해상운송·보험비 부담 지속",
-          "impact": "refined_product_logistics_upside",
-          "weight": 0.12
-        }
-      ],
-      "disclaimer": "이 항목은 방향성 예측입니다. 10월 단계·금액·확률을 확정값으로 표시하지 않습니다. 149.29달러는 9월 산정 평균, 154.98달러는 최근 Singapore Jet Fuel 참고값, 163.87달러는 글로벌 주간 Jet Fuel 참고값입니다.",
-      "summary": "10월 유류할증료는 공시 전 방향성 예측입니다. USD/KRW 약 1,380원과 Brent 87.84달러, WTI 82.23달러는 인하 가능성을 키우는 요인입니다. 그러나 글로벌 Jet Fuel 163.87달러, 정제품 공급 부족, Kpler 공개 commodity vessel 통항 5척, 이란 선박 45척 블랙리스트에 따른 운임·보험 리스크가 남아 있어 현재 판단은 보합 중심 · 인하 가능성 확대 · 신뢰도 낮음입니다. 내부적으로는 보합과 인하 경계선에 조금 더 가까워졌지만 아직 인하 주도는 아닙니다."
-    }
-  ],
+  "forecasts": [{
+    "airlineCode": "ALL", "airlineName": "한국발 국제선",
+    "basePeriod": "2026.11", "targetPeriod": "2026.12",
+    "distanceBand": "all", "distanceLabel": "전 구간", "currentStage": 27,
+    "predictedMin": null, "predictedMax": null, "officialStage": null, "officialAmounts": null,
+    "direction": "judgment_reserved", "confidence": "low", "volatility": "high", "drivers": [],
+    "disclaimer": "12월 산정기간은 10월 16일~11월 15일입니다. 특정 단계·KRW 금액은 제시하지 않습니다.",
+    "summary": "11월 1~30일 발권분은 27단계 확정·현재 적용입니다. 10월 23단계는 아카이브입니다. 12월 공식 누적 MOPS 평균은 미확인입니다. 선박안전 위험과 협상에 따른 유가 변동성을 고려하며 방향성 판단은 보수적으로 유지합니다."
+  }],
   "latest": {
-    "asOf": "2026.08.27 09:45 KST",
-    "currentMonthNotice": "2026-09",
-    "forecastTargetMonth": "2026-10",
-    "summary": "9월 국제선 공시는 21단계 확정 기준선이고, 10월 국제선은 공시 전 방향성 예측입니다. 핵심 변수는 USD/KRW 약 1,380원, 9월 기준선 149.29달러, Singapore Jet Fuel 154.98달러, 글로벌 Jet Fuel 163.87달러, Brent 87.84달러, WTI 82.23달러, 이란·오만 협상 진전, 카타르 중재, Kpler 공개 commodity vessel 5척, 이란 선박 45척 블랙리스트입니다.",
-    "status": "october_centered_flat_cut_probability_expanded_near_cut_boundary_low_confidence"
+    "asOf": "2026.11.02 09:15 KST", "currentMonthNotice": "2026-11", "forecastTargetMonth": "2026-12",
+    "status": "december_calculating_official_average_unverified",
+    "summary": "11월 27단계 현재 발권 적용. 12월 산정 중·11월 15일 마감·공식 누적 MOPS 미확인."
   }
 }

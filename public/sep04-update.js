@@ -51,6 +51,15 @@
   function setText(key, val){ document.querySelectorAll('[data-i18n="'+key+'"]').forEach(function(el){ el.textContent = val; }); }
   function syncSurface(){
     var p=pack(lang());
+    if(release && release.numbers.currentMonth==='2026-11'){
+      var title=pathIs('news')?p.newsMeta:p.meta;
+      if(document.title!==title) document.title=title;
+      ['meta[name="description"]','meta[property="og:description"]','meta[name="twitter:description"]'].forEach(function(s){var e=document.querySelector(s);if(e&&e.content!==p.desc)e.content=p.desc;});
+      ['meta[property="og:title"]','meta[name="twitter:title"]'].forEach(function(s){var e=document.querySelector(s);if(e&&e.content!==title)e.content=title;});
+      var modified=document.querySelector('meta[property="article:modified_time"]');if(modified&&modified.content!==release.modified)modified.content=release.modified;
+      var label=lang()==='ko'?'최종 업데이트':'Last updated';
+      document.querySelectorAll('[data-i18n="fore.summary.updated"],[data-i18n="news.summary.updated"]').forEach(function(e){var value=label+': '+release.modified+' · '+release.asOf;if(e.textContent!==value)e.textContent=value;});
+    }
     Object.keys(p.surface || {}).forEach(function(key){
       document.querySelectorAll('[data-i18n="'+key+'"]').forEach(function(el){
         if(el.textContent!==p.surface[key]) el.textContent=p.surface[key];
@@ -185,8 +194,10 @@
       de:['Treibstoffzuschlag-Ausblick','Treibstoffzuschläge: Hinweise und Marktnachrichten']
     };
     var titles = intentTitles[l] || intentTitles.en;
-    out.title = titles[0]; out.meta = titles[0] + ' | Aero Surcharge';
-    out.newsTitle = titles[1]; out.newsMeta = titles[1] + ' | Aero Surcharge';
+    if(!release || release.numbers.currentMonth!=='2026-11'){
+      out.title = titles[0]; out.meta = titles[0] + ' | Aero Surcharge';
+      out.newsTitle = titles[1]; out.newsMeta = titles[1] + ' | Aero Surcharge';
+    }
     out.rows = release ? release.rows[l] : (rows[l] || rows.en);
     out.summary = out.rows.map(function(x){ return x[0]+': '+x[1]+' - '+x[2]; });
     return out;
