@@ -1,9 +1,9 @@
 {
   "meta": {
-    "generatedAt": "2026-11-02T09:25:39+09:00",
-    "lastUpdated": "2026-11-02T09:25:39+09:00",
-    "informationCutoff": "2026-11-02T09:15:00+09:00",
-    "modelVersion": "manual-dated-observations-20261102",
+    "generatedAt": "2026-11-03T09:16:18+09:00",
+    "lastUpdated": "2026-11-03T09:16:18+09:00",
+    "informationCutoff": "2026-11-03T09:00:00+09:00",
+    "modelVersion": "manual-dated-observations-20261103",
     "basePeriod": "2026.11",
     "forecastTargetPeriod": "2026.12",
     "currentMonthNotice": "2026-11",
@@ -19,16 +19,19 @@
       "singaporeJetAssessmentDate": "2026-10-30",
       "singaporeJetConfidence": "low",
       "singaporeJetBasis": "FOB Singapore; private assessment, not Platts MOPS",
-      "usdKrw": 1334.3,
-      "fxKind": "Seoul 2026-10-30 15:30 close",
-      "brentUSD": 113.43,
+      "usdKrw": 1343.8,
+      "fxKind": "Seoul 2026-11-02 15:30 close",
+      "brentUSD": 104.77,
       "brentContract": "2027-01",
-      "brentExpiredDecemberUSD": 117.64,
-      "wtiUSD": 104.12,
-      "crudeKind": "2026-10-30 settlement",
-      "brentIntradayUSD": 111.92,
-      "wtiIntradayUSD": 102.34,
-      "crudeIntradayAt": "2026-11-02T08:03:00+09:00"
+      "wtiUSD": 96.46,
+      "crudeKind": "2026-11-02 settlement",
+      "crudeVerificationStatus": "user_supplied_original_access_restricted",
+      "brentIntradayUSD": null,
+      "wtiIntradayUSD": null,
+      "crudeIntradayAt": null,
+      "imoConfirmedIncidents": null,
+      "imoProvidedRecord": 123,
+      "imoVerificationStatus": "provided_123_live_125_update_time_unknown"
     },
     "disclaimer": "12월 공식 누적 MOPS 평균·단계·원화 부과액은 미확인입니다. 다른 평가 시리즈나 원유·환율로 추정하지 않습니다."
   },
@@ -42,7 +45,7 @@
     "summary": "11월 1~30일 발권분은 27단계 확정·현재 적용입니다. 10월 23단계는 아카이브입니다. 12월 공식 누적 MOPS 평균은 미확인입니다. 선박안전 위험과 협상에 따른 유가 변동성을 고려하며 방향성 판단은 보수적으로 유지합니다."
   }],
   "latest": {
-    "asOf": "2026.11.02 09:15 KST", "currentMonthNotice": "2026-11", "forecastTargetMonth": "2026-12",
+    "asOf": "2026.11.03 09:00 KST", "currentMonthNotice": "2026-11", "forecastTargetMonth": "2026-12",
     "status": "december_calculating_official_average_unverified",
     "summary": "11월 27단계 현재 발권 적용. 12월 산정 중·11월 15일 마감·공식 누적 MOPS 미확인."
   }

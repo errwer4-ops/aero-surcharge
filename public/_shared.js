@@ -16180,3 +16180,25 @@ window.NOVEMBER_2026_NOTICE_COPY={
   window.AERO_MARKET_NUMBERS_20261102=n;window.AERO_MARKET_NUMBERS_LATEST=n;
   window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{'2026-11-02':n});
 })();
+
+/* November 3: daily settlement and close do not replace period averages. */
+(function(){
+ var n=Object.assign({},window.AERO_MARKET_NUMBERS_20261102,{
+  asOf:'2026.11.03 09:00 KST',informationCutoff:'2026-11-03T09:00:00+09:00',lastUpdated:'2026-11-03T09:16:18+09:00',
+  usdKrw:1343.8,usdKrwDailyChange:9.5,usdKrwDate:'2026-11-02',usdKrwReferenceAt:'2026-11-02T15:30:00+09:00',
+  fxReferenceAt:'2026-11-02T15:30:00+09:00',usdKrwSeoulClose:1343.8,usdKrwSeoulCloseDate:'2026-11-02',
+  fxReferenceSourceUrl:'https://en.yna.co.kr/view/AEN20261102008200320',usdKrwReferenceSource:'https://en.yna.co.kr/view/AEN20261102008200320',
+  brentUsdPerBbl:104.77,wtiUsdPerBbl:96.46,brentPct:-7.63,wtiPct:-7.36,brentDailyChangeUsd:-8.66,wtiDailyChangeUsd:-7.66,
+  crudePriceDate:'2026-11-02',crudePriceKind:'settlement',brentContractMonth:'2027-01',wtiContractMonth:'2026-12',
+  crudeSourceUrl:'https://www.reuters.com/business/energy/oil-slips-more-than-1-talks-continue-ending-iran-war-2026-11-01/',
+  crudeVerificationStatus:'user_supplied_settlement_original_access_restricted',
+  crudeIntradayAt:null,brentIntradayUsdPerBbl:null,wtiIntradayUsdPerBbl:null,brentIntradayPct:null,wtiIntradayPct:null,
+  imoCumulativeConfirmedIncidents:null,imoUserProvidedIncidentCount:123,imoListUpdated:'2026-11-02',
+  imoVerificationStatus:'provided_snapshot_123_live_page_125_update_time_unknown',
+  decemberDirection:'crude_down_fx_up_shipping_risk_high',decemberDirectionConfidence:'low_to_moderate',
+  decemberMopsUsdPerBbl:null,decemberAverageUsdKrw:null,decemberStageEstimate:null,
+  mopsMonthlyConfirmed:[{month:'2026-09',usdPerBbl:149.29},{month:'2026-10',usdPerBbl:158.57},{month:'2026-11',usdPerBbl:173.89},{month:'2026-12',usdPerBbl:null}]
+ });
+ window.AERO_MARKET_NUMBERS_20261103=n;window.AERO_MARKET_NUMBERS_LATEST=n;
+ window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{'2026-11-03':n});
+})();
