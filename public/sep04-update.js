@@ -49,14 +49,64 @@
   function lang(){ return normalizeLang(); }
   function esc(s){ return String(s == null ? '' : s).replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
   function setText(key, val){ document.querySelectorAll('[data-i18n="'+key+'"]').forEach(function(el){ el.textContent = val; }); }
+  function currentForecastOverview(p){
+    var o=p.forecastOverview;
+    return o && o.informationCutoff===latest.informationCutoff ? o : null;
+  }
+  function forecastView(p){
+    var o=currentForecastOverview(p); if(!o)return p;
+    var sub=latest.asOf+' · '+o.confidence;
+    var intro=o.basis+' '+o.risk;
+    var answer=o.expectation+'. '+o.confidence+'. '+intro+' '+o.note;
+    return Object.assign({},p,{
+      rows:o.rows,th:o.columns,rowTones:o.rowTones,sub:sub,intro:intro,
+      verdict1:o.expectation+' · '+o.confidence,verdict2:o.basis,verdictLong:o.risk+' '+o.note,
+      faq:p.faq.map(function(item,i){return i===1?{q:o.question || item.q,a:answer}:item;}),
+      surface:Object.assign({},p.surface,{
+        'fore.pageSub':sub,'fore.intro':intro,
+        'fore.verdict.line1':o.expectation+' · '+o.confidence,
+        'fore.verdict.line2':o.basis,'fore.verdict.long':o.risk+' '+o.note
+      })
+    });
+  }
+  function pageModified(kind){
+    var modified=release && release.modified;
+    if(kind==='forecast' && release){
+      var o=currentForecastOverview(pack(lang()));
+      if(o && Date.parse(o.modifiedAt)>Date.parse(modified))modified=o.modifiedAt;
+    }
+    return modified;
+  }
+  function syncForecastSchema(p){
+    if(!currentForecastOverview(p))return;
+    var modified=pageModified('forecast');
+    var questions=p.faq.map(function(item){return {'@type':'Question',name:item.q,acceptedAnswer:{'@type':'Answer',text:item.a}};});
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function(node){
+      try{
+        var json=JSON.parse(node.textContent),changed=false;
+        function update(entity){
+          if(!entity || typeof entity!=='object')return;
+          if(Array.isArray(entity)){entity.forEach(update);return;}
+          if(entity['@graph'])entity['@graph'].forEach(update);
+          if(!/^(FAQPage|WebPage|CollectionPage|Article)$/.test(entity['@type']))return;
+          if(entity.dateModified!==modified){entity.dateModified=modified;changed=true;}
+          if(entity['@type']==='FAQPage' && JSON.stringify(entity.mainEntity)!==JSON.stringify(questions)){
+            entity.mainEntity=questions;changed=true;
+          }
+        }
+        update(json);
+        if(changed)node.textContent=JSON.stringify(json);
+      }catch(e){}
+    });
+  }
   function syncSurface(){
-    var p=pack(lang());
+    var p=pathIs('forecast')?forecastView(pack(lang())):pack(lang());
     if(release && release.numbers.currentMonth==='2026-11'){
       var title=pathIs('news')?p.newsMeta:p.meta;
       if(document.title!==title) document.title=title;
       ['meta[name="description"]','meta[property="og:description"]','meta[name="twitter:description"]'].forEach(function(s){var e=document.querySelector(s);if(e&&e.content!==p.desc)e.content=p.desc;});
       ['meta[property="og:title"]','meta[name="twitter:title"]'].forEach(function(s){var e=document.querySelector(s);if(e&&e.content!==title)e.content=title;});
-      var modified=document.querySelector('meta[property="article:modified_time"]');if(modified&&modified.content!==release.modified)modified.content=release.modified;
+      var modified=document.querySelector('meta[property="article:modified_time"]'),modifiedAt=pageModified(pathIs('forecast')?'forecast':'news');if(modified&&modified.content!==modifiedAt)modified.content=modifiedAt;
       var label=lang()==='ko'?'최종 업데이트':'Last updated';
       document.querySelectorAll('[data-i18n="fore.summary.updated"],[data-i18n="news.summary.updated"]').forEach(function(e){var value=label+': '+release.modified+' · '+release.asOf;if(e.textContent!==value)e.textContent=value;});
     }
@@ -65,6 +115,7 @@
         if(el.textContent!==p.surface[key]) el.textContent=p.surface[key];
       });
     });
+    if(pathIs('forecast'))syncForecastSchema(p);
   }
   function setHtml(key, val){ document.querySelectorAll('[data-i18n="'+key+'"]').forEach(function(el){ el.innerHTML = val; }); }
   function pathIs(name){ return new RegExp('/'+name+'(?:\\.html)?(?:$|[?#])').test(location.pathname + location.search); }
@@ -298,7 +349,7 @@
 
   function renderTable(p){
     var tbody = document.querySelector('#indicatorTbody') || document.querySelector('.indicator-table tbody') || document.querySelector('.fore-tbl tbody');
-    if(tbody) tbody.innerHTML = p.rows.map(function(r){ return '<tr><td><strong>'+esc(r[0])+'</strong></td><td>'+esc(r[1])+'</td><td class="impact-up">'+esc(r[2])+'</td></tr>'; }).join('');
+    if(tbody) tbody.innerHTML = p.rows.map(function(r,i){ var tone=p.rowTones && p.rowTones[i];if(['up','down','hold'].indexOf(tone)<0)tone='up';return '<tr><td><strong>'+esc(r[0])+'</strong></td><td>'+esc(r[1])+'</td><td class="impact-'+tone+'">'+esc(r[2])+'</td></tr>'; }).join('');
     var table = tbody && tbody.closest('table');
     var thead = table && table.querySelector('thead');
     if(thead) thead.innerHTML = '<tr>'+p.th.map(function(h){ return '<th>'+esc(h)+'</th>'; }).join('')+'</tr>';
@@ -364,7 +415,12 @@
 
   function renderForecast(){
     if(!pathIs('forecast')) return;
-    var p = pack(lang());
+    var p = forecastView(pack(lang()));
+    var overview=currentForecastOverview(p),overviewBox=document.getElementById('forecastOutlookSummary');
+    if(overviewBox){
+      overviewBox.hidden=!overview;
+      if(overview)overviewBox.innerHTML='<div class="forecast-outlook-heading"><strong>'+esc(overview.expectation)+'</strong><span>'+esc(overview.confidence)+'</span></div><p>'+esc(overview.basis)+'</p><p>'+esc(overview.risk)+'</p><small>'+esc(overview.note)+'</small>';
+    }
     updateHead(p.meta, p.desc, 'https://aero-surcharge.com/forecast');
     setText('fore.pageTitle', p.title);
     setText('fore.pageSub', p.sub);
@@ -574,7 +630,7 @@
               pageEntityUpdated = true;
               entity.headline = kind === 'news' ? p.newsTitle : p.title;
               entity.description = p.desc;
-              entity.dateModified = release ? release.modified : '2026-09-04T07:15:00+09:00';
+              entity.dateModified = release ? pageModified(kind) : '2026-09-04T07:15:00+09:00';
               entity.inLanguage = lang();
             }
           }
@@ -608,7 +664,9 @@
   if(release){
     var observeSurface=function(){
       syncSurface();
-      new MutationObserver(syncSurface).observe(document.body,{subtree:true,childList:true,characterData:true});
+      var observer=new MutationObserver(syncSurface);
+      observer.observe(document.body,{subtree:true,childList:true,characterData:true});
+      if(pathIs('forecast'))observer.observe(document.head,{subtree:true,childList:true,characterData:true});
     };
     if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',observeSurface);
     else observeSurface();

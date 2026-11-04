@@ -153,6 +153,125 @@
     }
   };
 
+  // A concise forecast-only interpretation. News copy and its original rows
+  // retain the dated evidence; this view does not add a numeric stage forecast.
+  var forecastCopy = {
+    ko: {
+      title: '시장·해상안전 지표와 12월 예상',
+      expectation: '12월 예상: 보합~인하 가능성',
+      question: '12월 유류할증료는 어떻게 예상하나요?',
+      confidence: '신뢰도 낮음 · 단계 미확정',
+      basis: '항공유 참고가격·원유·환율의 최근 하락은 인하 압력입니다.',
+      risk: '해상안전 위험이 커 가격 반등·인상 가능성도 남아 있습니다.',
+      note: '공식 누적 MOPS·산정 평균환율은 미확정입니다. 단기 지표를 바탕으로 한 방향성 예상이며 특정 단계·금액 예측이 아닙니다.',
+      firstLabel: '12월 방향성 예상',
+      columns: ['항목', '현재 확인값', '12월 예상에 미치는 영향'],
+      jetValue: '11월 산정 MOPS 173.89 | Singapore Jet 165.55 USD/bbl (11월 2일)',
+      impacts: [
+        '단기 지표상 보합~인하 가능성. 공식 단계·금액은 미확정입니다.',
+        '최근 항공유 참고가격 하락은 인하 요인. 민간 일일 평가는 공식 산정 평균을 대체하지 않습니다.',
+        '원화 환산 부담 완화 요인. 하루 종가로 산정기간 평균환율이나 최종 공시액을 정하지 않습니다.',
+        '원유 하락은 인하 압력. 11월 3일 계약별 정산가이며 MOPS 평균이 아닙니다.',
+        '가격 반등·인상 위험. IMO는 중동 사건, Windward는 추적 통과 건수로 범위가 다릅니다.'
+      ]
+    },
+    en: {
+      title: 'Market and maritime indicators: December outlook',
+      expectation: 'December outlook: unchanged or lower surcharges possible',
+      question: 'What is the outlook for December fuel surcharges?',
+      confidence: 'Low confidence · level unconfirmed',
+      basis: 'Recent declines in jet-fuel reference prices, crude and USD/KRW put downward pressure on costs.',
+      risk: 'High maritime risks leave room for a price rebound and higher surcharges.',
+      note: 'Official cumulative MOPS and period-average FX remain unconfirmed. This is a directional inference from short-term indicators, not a forecast of a specific level or amount.',
+      firstLabel: 'December directional outlook',
+      columns: ['Indicator', 'Verified observation', 'Effect on the December outlook'],
+      jetValue: 'November MOPS basis 173.89 | Singapore Jet 165.55 USD/bbl (Nov 2)',
+      impacts: [
+        'Short-term indicators suggest unchanged or lower surcharges are possible. The official level and amounts remain unconfirmed.',
+        'Lower jet-fuel reference prices support easing. A private daily assessment cannot replace the official calculation average.',
+        'Supports a lower KRW conversion burden. One daily close cannot determine period-average FX or the final published amount.',
+        'Lower crude supports easing. These are November 3 settlements for distinct contracts, not the MOPS average.',
+        'Rebound and surcharge-rise risk. IMO covers Middle East incidents; Windward counts tracked crossings. Their scopes differ.'
+      ]
+    },
+    ja: {
+      title: '市場・海上安全指標と12月予想',
+      expectation: '12月予想：横ばい～引き下げの可能性',
+      question: '12月の燃油サーチャージはどう予想されますか？',
+      confidence: '信頼度は低い · 段階未確定',
+      basis: '航空燃料参考価格・原油・ドル／ウォンの最近の下落は引き下げ圧力です。',
+      risk: '海上安全リスクが高く、価格反発や引き上げの可能性も残ります。',
+      note: '公式累積MOPSと算定期間平均為替は未確定です。短期指標に基づく方向性の予想であり、具体的な段階・金額の予測ではありません。',
+      firstLabel: '12月の方向性予想',
+      columns: ['項目', '確認済みの値', '12月予想への影響'],
+      jetValue: '11月算定MOPS 173.89 | Singapore Jet 165.55 USD/bbl（11月2日）',
+      impacts: [
+        '短期指標では横ばい～引き下げの可能性。公式の段階・金額は未確定です。',
+        '航空燃料参考価格の下落は引き下げ要因。民間の日次評価で公式算定平均を代用できません。',
+        'ウォン換算負担の軽減要因。1日の終値では期間平均為替や最終公示額は決まりません。',
+        '原油下落は引き下げ圧力。11月3日の限月別清算値で、MOPS平均ではありません。',
+        '価格反発・引き上げリスク。IMOは中東の事案、Windwardは追跡通過件数で対象範囲が異なります。'
+      ]
+    },
+    zh: {
+      title: '市场及海上安全指标与12月预期',
+      expectation: '12月预期：持平至下调的可能性',
+      question: '如何判断12月燃油附加费的走势？',
+      confidence: '置信度低 · 档位未确定',
+      basis: '航空煤油参考价、原油及美元兑韩元近期下跌，构成下调压力。',
+      risk: '海上安全风险较高，价格反弹及附加费上调的可能性仍存。',
+      note: '官方累计MOPS与计算期平均汇率尚未确定。这是基于短期指标的方向性判断，并非对具体档位或金额的预测。',
+      firstLabel: '12月方向性预期',
+      columns: ['指标', '已核实数据', '对12月预期的影响'],
+      jetValue: '11月计算依据MOPS 173.89 | Singapore Jet 165.55 USD/bbl（11月2日）',
+      impacts: [
+        '短期指标显示持平至下调的可能性。官方档位与金额尚未确定。',
+        '航空煤油参考价下降支持下调。私人机构日度评估不能替代官方计算均价。',
+        '有助减轻韩元换算成本。单日收盘价不能决定计算期平均汇率或最终公告金额。',
+        '原油下跌带来下调压力。这是11月3日不同合约的结算价，不是MOPS均价。',
+        '存在反弹及上调风险。IMO统计中东事件，Windward记录追踪通行次数，范围不同。'
+      ]
+    },
+    fr: {
+      title: 'Indicateurs de marché et maritimes : perspectives de décembre',
+      expectation: 'Décembre : stabilité ou baisse possible des surtaxes',
+      question: 'Quelles sont les perspectives pour les surtaxes carburant de décembre ?',
+      confidence: 'Confiance faible · niveau non confirmé',
+      basis: 'Le recul récent du kérosène de référence, du brut et du dollar face au won exerce une pression à la baisse.',
+      risk: 'Les risques maritimes élevés laissent subsister une possibilité de rebond des prix et de hausse des surtaxes.',
+      note: 'Le MOPS cumulé officiel et le change moyen de la période restent non confirmés. Il s’agit d’une appréciation directionnelle fondée sur des indicateurs à court terme, sans prévision de niveau ou de montant précis.',
+      firstLabel: 'Orientation possible en décembre',
+      columns: ['Indicateur', 'Observation vérifiée', 'Effet sur les perspectives de décembre'],
+      jetValue: 'Base MOPS de novembre 173.89 | Kérosène Singapour 165.55 USD/bbl (2 nov.)',
+      impacts: [
+        'Les indicateurs à court terme suggèrent une stabilité ou une baisse possible. Niveau et montants officiels restent non confirmés.',
+        'Le recul du kérosène de référence favorise une baisse. Une évaluation privée quotidienne ne remplace pas la moyenne officielle.',
+        'Facteur d’allègement du coût converti en wons. Une clôture quotidienne ne détermine ni change moyen ni montant publié final.',
+        'Le recul du brut exerce une pression à la baisse. Règlements du 3 novembre par contrat, et non moyenne MOPS.',
+        'Risque de rebond et de hausse. L’OMI recense des incidents au Moyen-Orient ; Windward suit des passages, sur un autre périmètre.'
+      ]
+    },
+    de: {
+      title: 'Markt- und Schifffahrtsindikatoren: Dezember-Ausblick',
+      expectation: 'Dezember: unveränderte oder niedrigere Zuschläge möglich',
+      question: 'Wie ist der Ausblick für die Treibstoffzuschläge im Dezember?',
+      confidence: 'Geringes Vertrauen · Stufe unbestätigt',
+      basis: 'Zuletzt gesunkene Kerosinreferenzpreise, Rohölpreise und USD/KRW erzeugen Abwärtsdruck.',
+      risk: 'Hohe Schifffahrtsrisiken lassen einen Preisanstieg und höhere Zuschläge weiterhin zu.',
+      note: 'Offizielles kumuliertes MOPS und der durchschnittliche Wechselkurs des Zeitraums sind unbestätigt. Dies ist eine Richtungseinschätzung aus kurzfristigen Indikatoren, keine Vorhersage einer bestimmten Stufe oder eines Betrags.',
+      firstLabel: 'Mögliche Dezember-Richtung',
+      columns: ['Indikator', 'Geprüfte Beobachtung', 'Einfluss auf den Dezember-Ausblick'],
+      jetValue: 'November-MOPS-Basis 173.89 | Singapore Jet 165.55 USD/bbl (2. Nov.)',
+      impacts: [
+        'Kurzfristige Indikatoren sprechen für mögliche unveränderte oder niedrigere Zuschläge. Offizielle Stufe und Beträge stehen nicht fest.',
+        'Sinkende Kerosinreferenzpreise begünstigen Entlastung. Private Tagesbewertungen ersetzen nicht den offiziellen Berechnungsdurchschnitt.',
+        'Entlastet bei der Umrechnung in Won. Ein Tagesschlusskurs bestimmt weder den Durchschnittskurs noch den endgültigen veröffentlichten Betrag.',
+        'Fallendes Rohöl erzeugt Abwärtsdruck. Kontraktspezifische Abrechnungspreise vom 3. November, kein MOPS-Mittel.',
+        'Risiko steigender Preise und Zuschläge. Die IMO erfasst Nahost-Vorfälle, Windward beobachtete Passagen; der Umfang ist unterschiedlich.'
+      ]
+    }
+  };
+
   r.modified = stamp;
   r.asOf = asOf;
   r.numbers = n;
@@ -198,6 +317,27 @@
       bookingDescription: c.booking, routeDescription: c.labels[11],
       faq: c.qs.map(function (q, i) { return {q: q, a: answers[i]}; })
     });
+    var overview = forecastCopy[l];
+    p.forecastOverview = {
+      modifiedAt: '2026-11-04T09:40:54+09:00',
+      informationCutoff: n.informationCutoff,
+      title: overview.title,
+      expectation: overview.expectation,
+      question: overview.question,
+      confidence: overview.confidence,
+      basis: overview.basis,
+      risk: overview.risk,
+      note: overview.note,
+      columns: overview.columns,
+      rows: [
+        [overview.firstLabel, overview.expectation, overview.impacts[0]],
+        [c.rowNames[1], overview.jetValue, overview.impacts[1]],
+        [c.rowNames[2], rows[2][1], overview.impacts[2]],
+        [c.rowNames[3], rows[3][1], overview.impacts[3]],
+        [c.rowNames[4], c.marineValue, overview.impacts[4]]
+      ],
+      rowTones: ['hold', 'down', 'down', 'down', 'up']
+    };
     // Keep the existing surfaces and renderer, replacing only current copy.
     p.surface = Object.assign({}, p.surface, {
       'fore.pageTitle': c.title, 'fore.h1': c.title, 'fore.pageSub': p.sub,

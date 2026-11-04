@@ -190,13 +190,16 @@ async function state(page) {
         assert.equal(x.overflow, false, name + ' ' + lang + ' desktop overflow');
         assert.doesNotMatch(x.body, /undefined|\?\?\?\?|AERO_MARKET_NUMBERS|\ufffd/);
         for (const number of [/1[, .]?341(?:[.,]0)?/, /103[.,]6(?:0)?/, /96[.,]09/, /165[.,]55/, /128/]) assert.match(x.body, number, name + ' ' + lang + ' latest values visible');
-        for (const schema of x.schemas.filter(s => /^(WebPage|CollectionPage|FAQPage)$/.test(s['@type']))) assert.equal(schema.dateModified, x.r.modified);
+        const overview = name === 'forecast' && pack.forecastOverview?.informationCutoff === cutoff ? pack.forecastOverview : null;
+        const pageModified = overview && Date.parse(overview.modifiedAt) > Date.parse(x.r.modified) ? overview.modifiedAt : x.r.modified;
+        for (const schema of x.schemas.filter(s => /^(WebPage|CollectionPage|FAQPage)$/.test(s['@type']))) assert.equal(schema.dateModified, pageModified);
         if (name === 'forecast') {
-          assert.deepEqual(x.rows.map(row => row.map(normalize)), pack.rows.map(row => row.map(normalize)), lang + ' visible five-row table matches release');
+          assert.deepEqual(x.rows.map(row => row.map(normalize)), (overview?.rows || pack.rows).map(row => row.map(normalize)), lang + ' visible five-row table matches release');
           const faq = x.schemas.find(s => s['@type'] === 'FAQPage');
           assert(faq, lang + ' FAQ schema');
-          assert.deepEqual(faq.mainEntity.map(q => ({q:q.name,a:q.acceptedAnswer.text})), pack.faq);
-          for (const entry of pack.faq) {
+          const expectedFaq = pack.faq.map((entry, i) => overview && i === 1 ? {q:overview.question,a:overview.expectation+'. '+overview.confidence+'. '+overview.basis+' '+overview.risk+' '+overview.note} : entry);
+          assert.deepEqual(faq.mainEntity.map(q => ({q:q.name,a:q.acceptedAnswer.text})), expectedFaq);
+          for (const entry of expectedFaq) {
             assert(normalize(x.faq).includes(normalize(entry.q)), lang + ' visible FAQ question');
             assert(normalize(x.faq).includes(normalize(entry.a)), lang + ' visible FAQ answer');
           }
