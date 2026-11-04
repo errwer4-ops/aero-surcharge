@@ -16202,3 +16202,39 @@ window.NOVEMBER_2026_NOTICE_COPY={
  window.AERO_MARKET_NUMBERS_20261103=n;window.AERO_MARKET_NUMBERS_LATEST=n;
  window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{'2026-11-03':n});
 })();
+
+/* November 4 morning review: observation dates remain separate from review time. */
+(function(){
+ var n=Object.assign({},window.AERO_MARKET_NUMBERS_20261103,{
+  asOf:'2026.11.04 09:00 KST',informationCutoff:'2026-11-04T09:00:00+09:00',lastUpdated:'2026-11-04T09:00:47+09:00',
+  novemberMopsSourceUrl:'https://mobile.newsis.com/view_amp.html?ar_id=NISX20261016_0003828757',
+  novemberMopsVerificationStatus:'newsis_report_of_korean_air_statement_not_raw_platts_data',
+  usdKrw:1341.0,usdKrwDailyChange:-2.8,usdKrwDate:'2026-11-03',usdKrwReferenceAt:'2026-11-03T15:30:00+09:00',
+  fxReferenceAt:'2026-11-03T15:30:00+09:00',usdKrwSeoulClose:1341.0,usdKrwSeoulCloseDate:'2026-11-03',
+  usdKrwKind:'Seoul_15:30_close_not_live_or_period_average',
+  fxReferenceSourceUrl:'https://www.newsis.com/view/NISX20261103_0003853005',usdKrwReferenceSource:'https://www.newsis.com/view/NISX20261103_0003853005',
+  fxSourcePublishedAt:'2026-11-03T15:33:18+09:00',fxVerificationStatus:'published_news_report_direct_body_verified',
+  brentUsdPerBbl:103.60,wtiUsdPerBbl:96.09,brentPct:-1.12,wtiPct:-0.38,brentDailyChangeUsd:null,wtiDailyChangeUsd:null,
+  crudePriceDate:'2026-11-03',crudePriceKind:'settlement',brentContractMonth:'2027-01',wtiContractMonth:'2026-12',
+  crudeSourceUrl:'https://www.eleconomista.com.mx/mercados/precios-petroleo-caen-atencion-dialogo-eu-e-iran-20261103-841962.html',
+  crudeSourcePublishedAt:'2026-11-03T15:02:50-06:00',crudeVerificationStatus:'afp_reuters_published_settlement_report_verified_not_exchange_table',
+  crudeIntradayAt:null,brentIntradayUsdPerBbl:null,wtiIntradayUsdPerBbl:null,brentIntradayPct:null,wtiIntradayPct:null,
+  singaporeJetFobReferenceUsdPerBbl:165.55,singaporeJetFobReferenceDate:'2026-11-02',commodityScopeJetUsdPerBbl:165.55,commodityScopeJetDate:'2026-11-02',
+  singaporeJetReferenceProvider:'CommodityScope',singaporeJetReferenceConfidence:'low',commodityScopeConfidence:'low',
+  singaporeJetFobReferenceSourceUrl:'https://commodityscope.com/prices/singapore-jet-kerosene',singaporeJetFobReferenceKind:'private_daily_assessment_low_confidence_not_Platts_MOPS',
+  imoCumulativeConfirmedIncidents:128,imoCumulativeFatalities:24,imoUserProvidedIncidentCount:null,imoListUpdated:'2026-11-03',
+  imoVerificationStatus:'official_dated_list_directly_verified_before_cutoff',imoScope:'Middle_East_incidents_not_Hormuz_only_attacks',
+  imoSourceUrl:'https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx',imoSourceCheckedAt:'2026-11-04T08:58:43+09:00',
+  windwardTrackedCrossings:7,windwardInboundCrossings:5,windwardOutboundCrossings:2,windwardObservationDate:'2026-11-02',windwardReportDate:'2026-11-03',
+  windwardSourceUrl:'https://insights.windward.ai/',windwardScope:'provider_observed_crossings_not_exhaustive_traffic_or_crude_bpd',
+  currentHormuzTraffic:null,hormuzLatestGulfCrudeFlowMillionBpd:null,hormuzCrudeFlowMillionBpd:11.7,hormuzFlowReportDate:'2026-10-22',
+  hormuzFlowPeriod:'historical_October_to_October22_report_estimate_not_current',
+  opecDecemberTargetDecision:'unchanged_at_September_2026_required_production',opecDecisionDate:'2026-11-01',opecNextMeetingDate:'2026-11-29',opecSourceUrl:'https://www.opec.org/pr-detail/620-1-november-2026.html',
+  eiaRefineryInputsQ2ChangeMillionBpd:-4.8,eiaRefineryInputsQ3ChangeMillionBpd:1.8,eiaRefineryInputsQ3YoYPercentApprox:-5,eiaRefineryReportDate:'2026-11-03',
+  eiaRefinerySourceUrl:'https://www.eia.gov/TodayinEnergy/detail.php?id=68404',
+  decemberDirection:'crude_and_fx_ease_maritime_risk_persists',decemberDirectionConfidence:'low',
+  decemberMopsUsdPerBbl:null,decemberAverageUsdKrw:null,decemberStageEstimate:null,decemberOfficialAmounts:null
+ });
+ window.AERO_MARKET_NUMBERS_20261104=n;window.AERO_MARKET_NUMBERS_LATEST=n;
+ window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{'2026-11-04':n});
+})();
