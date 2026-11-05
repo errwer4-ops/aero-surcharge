@@ -2,7 +2,7 @@
 <html lang="ko">
 <head>
   <script src="_analytics-config.js"></script>
-  <script src="_analytics.js"></script>
+  <script src="_analytics.js?v=20261105-site-audit"></script>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>유류할증료 데이터 아카이브 | 2026년 4월~11월 항공사별 비교</title>
@@ -18,7 +18,7 @@
   <meta name="twitter:card" content="summary"/>
   <meta name="twitter:title" content="유류할증료 데이터 아카이브 | 2026년 4월~11월 항공사별 비교"/>
   <meta name="twitter:description" content="2026년 11월 발권분 현재 적용. 2026년 11월 공시 완료 9개사: KE · OZ · 7C · LJ · RS · BX · TW · ZE · YP."/>
-  <script src="_ads.js" defer></script>
+  <script src="_ads.js?v=20261105-site-audit" defer></script>
   <link rel="stylesheet" href="_shared.css"/>
   <link rel="stylesheet" href="_seo_pages.css"/>
   <link rel="icon" href="/favicon-v2.png">
@@ -282,7 +282,7 @@
       <a class="related-item" href="news.html"                            data-i18n="graph.related.news">유류할증료 뉴스</a>
       <a class="related-item" href="fuel-surcharge-graph.html"            data-i18n="graph.related.graph">변동 그래프</a>
       <a class="related-item" href="fuel-surcharge-calculator.html"       data-i18n="graph.related.calc">계산기</a>
-      <a class="related-item" href="fuel-surcharge-2026-05.html"          data-i18n="graph.related.may">10월 → 11월 공식 공시 비교</a>
+      <a class="related-item" href="fuel-surcharge-calculator.html"          data-i18n="graph.related.may">10월 → 11월 공식 공시 비교</a>
       <a class="related-item" href="forecast.html" data-i18n="graph.related.june">유류할증료 전망</a>
       <a class="related-item" href="fuel-surcharge-korea.html"            data-i18n="graph.related.korea">한국 출발 유류할증료</a>
     </div>
@@ -724,6 +724,11 @@ function buildFilters() {
 /* ═══════════════════════════════════════
    공식 링크
 ═══════════════════════════════════════ */
+function displayGraphBand(airline, index) {
+  var language=(window.SHARED_STATE&&window.SHARED_STATE.lang)||'ko';
+  var bx={ko:['단거리','중거리1','중거리2','장거리'],en:['Short-haul','Mid-haul 1','Mid-haul 2','Long-haul'],ja:['短距離','中距離1','中距離2','長距離'],zh:['短程','中程1','中程2','长程'],fr:['Court-courrier','Moyen-courrier 1','Moyen-courrier 2','Long-courrier'],de:['Kurzstrecke','Mittelstrecke 1','Mittelstrecke 2','Langstrecke']};
+  return airline.code==='BX'?(bx[language]||bx.en)[index]:airline.bands[index];
+}
 function buildOfficialLinks() {
   var el = document.getElementById('officialLinks');
   if (!el) return;
@@ -819,7 +824,7 @@ function drawChart() {
     if (!a) return [];
     return a.bands.map(function(band, i) {
       return {
-        label: band,
+        label: displayGraphBand(a, i),
         shortLabel: String(i + 1),
         airline: a,
         bandIdx: i,
@@ -965,7 +970,7 @@ function handleMouseMove(e) {
   var mLabel = tg(MONTH_LABEL_KEYS[hit.month] || 'graph.th.change');
   var valStr = isChange ? hit.displayVal.toFixed(1)+'%' : sym+hit.displayVal.toLocaleString('en-US',{minimumFractionDigits:dec,maximumFractionDigits:dec});
   var origStr = (!isChange && a.currency==='USD' && c!=='USD') ? '<div class="tt-usd">($'+hit.origVal+' USD)</div>' : '';
-  var bandLabel = hit.bandIdx == null ? (hit.groupLabel || airlineName(a.code)) : tg('graph.th.band')+' '+a.bands[hit.bandIdx];
+  var bandLabel = hit.bandIdx == null ? (hit.groupLabel || airlineName(a.code)) : tg('graph.th.band')+' '+displayGraphBand(a,hit.bandIdx);
   tooltip.innerHTML = '<div class="tt-head">'+airlineName(a.code)+'</div>'
     +'<div>'+mLabel+' · '+bandLabel+'</div>'
     +'<div>'+valStr+'</div>'+origStr;
@@ -1067,7 +1072,7 @@ function buildTable() {
       rows += '<tr>'
         +(i===0 ? '<td rowspan="'+rowspan+'"><strong>'+airlineName(a.code)+'</strong></td>'
                  +'<td rowspan="'+rowspan+'">'+a.currency+(isUSD?uBadge:'')+'</td>' : '')
-        +'<td>'+band+'</td>'
+        +'<td>'+displayGraphBand(a,i)+'</td>'
         +monthCells
         +'<td>'+chStr+'</td>'
         +'</tr>';

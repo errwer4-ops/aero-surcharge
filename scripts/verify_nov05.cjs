@@ -229,6 +229,9 @@ async function state(page) {
         const pageModified = overview && Date.parse(overview.modifiedAt) > Date.parse(x.r.modified) ? overview.modifiedAt : x.r.modified;
         for (const schema of x.schemas.filter(s => /^(WebPage|CollectionPage|FAQPage)$/.test(s['@type']))) assert.equal(schema.dateModified, pageModified);
         if (name === 'forecast') {
+          const cta=page.locator('[data-i18n="fore.myrealtrip.btn"]');
+          assert.equal(normalize(await cta.innerText()),normalize(pack.surface['fore.myrealtrip.btn']),lang+' translated airfare CTA');
+          assert.equal(await page.locator('[data-i18n="fore.cta.may"]').getAttribute('href'),'fuel-surcharge-calculator.html','current month comparison opens the calculator');
           assert(overview, lang + ' the visible forecast must use the current overview');
           for (const key of ['expectation', 'confidence', 'basis', 'risk', 'note']) assert(normalize(x.overview).includes(normalize(overview[key])), lang + ' visible overview ' + key);
           assert.deepEqual(x.rows.map(row => row.map(normalize)), (overview?.rows || pack.rows).map(row => row.map(normalize)), lang + ' visible five-row table matches release');
@@ -241,6 +244,7 @@ async function state(page) {
             assert(normalize(x.faq).includes(normalize(entry.a)), lang + ' visible FAQ answer');
           }
         } else {
+          for(const key of ['news.decisionMid','news.filterAirline'])assert.equal(normalize(await page.locator('[data-i18n="'+key+'"]').innerText()),normalize(pack.surface[key]),lang+' translated '+key);
           assert.equal(normalize(x.officialDescription), normalize(pack.officialDesc), lang + ' current notice period is consistent');
           assert.doesNotMatch(x.officialDescription, /10월 유류할증료 적용|October in force|Octobre en vigueur|Oktober gilt aktuell/);
           assert.equal(x.newsBriefRows.length, 5, lang + ' news brief retains five indicators');

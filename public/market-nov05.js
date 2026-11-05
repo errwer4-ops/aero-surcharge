@@ -164,6 +164,14 @@
     ['Reuters / MarketScreener · 2026-11-03 / October export estimates', urls.flows],
     ['Qatar Ministry of Foreign Affairs · 2026-11-03', urls.talks]
   ];
+  var interfaceCopy = {
+    ko:['항공권 총액 확인하기 →','중거리 국제선: 항공사 원문의 거리 구간과 공시 통화를 확인하세요.','전체','항공사 공시','기관','시장'],
+    en:['Check total airfare →','Mid-haul international: check the airline’s original distance bands and notice currency.','All','Airline notices','Institutions','Market'],
+    ja:['航空券総額を確認 →','中距離国際線：航空会社の原文で距離区分と公示通貨を確認してください。','すべて','航空会社の公示','機関','市場'],
+    zh:['查看机票总价 →','中程国际线：请核实航司原文的距离区间和公告币种。','全部','航司公告','机构','市场'],
+    fr:['Vérifier le prix total du billet →','Moyen-courrier international : vérifiez les tranches de distance et la devise dans l’avis de la compagnie.','Tout','Avis des compagnies','Institutions','Marché'],
+    de:['Gesamten Flugpreis prüfen →','Internationale Mittelstrecke: Entfernungsgruppen und Währung in der Originalmitteilung der Airline prüfen.','Alle','Airline-Mitteilungen','Institutionen','Markt']
+  };
   Object.keys(copy).forEach(function (lang) {
     var c = copy[lang], p = r.packs[lang], labels = captions[lang];
     if (!p) return;
@@ -213,7 +221,10 @@
       'news.dataRef': p.sub, 'news.decisionShort': p.status + ' · ' + c.dec,
       'news.decisionLine1': c.dec, 'news.decisionLine2': c.fx,
       'news.forecastCta.desc': p.intro, 'news.summary.updated': update,
-      'news.officialNotice': p.officialNotice, 'news.basisBody': p.foot
+      'news.officialNotice': p.officialNotice, 'news.basisBody': p.foot,
+      'fore.myrealtrip.btn': interfaceCopy[lang][0], 'news.decisionMid': interfaceCopy[lang][1],
+      'news.filterAll': interfaceCopy[lang][2], 'news.filterAirline': interfaceCopy[lang][3],
+      'news.filterInstitution': interfaceCopy[lang][4], 'news.filterMarket': interfaceCopy[lang][5]
     });
   });
   var definitions = [

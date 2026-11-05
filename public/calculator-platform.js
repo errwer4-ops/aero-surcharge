@@ -5,8 +5,59 @@
   var storage=null; try { storage=window.localStorage; } catch (_) {}
   var store=core.createStore(storage), lastContext=null, searchSequence=0, restored=false, feedRecords=[], feedLoaded=false, renderedMonths=null;
   var el=function(id){return document.getElementById(id);};
-  var english=function(){return (window.SHARED_STATE && window.SHARED_STATE.lang || 'ko') !== 'ko';};
-  var t=function(ko,en){return english()?en:ko;};
+  // The operational controls have their own copy, separate from the page intro.
+  var localizedCopy = [
+    ['Checking','確認中','核实中','Vérification en cours','Prüfung läuft'],
+    ['Notice confirmed','公示確認済み','公告已核实','Avis confirmé','Mitteilung bestätigt'],
+    ['Original notice','公示原文','公告原文','Avis original','Originalmitteilung'],
+    ['Checking source','出典確認中','来源核实中','Source en vérification','Quelle wird geprüft'],
+    ['Published: ','発表日：','发布日期：','Publication : ','Veröffentlicht: '],
+    ['not recorded','記録なし','未记录','non consigné','nicht erfasst'],
+    ['Checked: ','確認日：','核实日期：','Vérifié : ','Geprüft: '],
+    ['Collected: ','取得日：','采集日期：','Collecté : ','Erfasst: '],
+    ['Ticketing: ','発券適用：','出票适用：','Émission : ','Ausstellung: '],
+    ['Per person, one way ','1人片道 ','每人单程 ','Par personne, aller simple ','Pro Person, einfacher Flug '],
+    ['Cannot compare · different conditions','比較不可・条件が異なります','无法比较·条件不同','Comparaison impossible · conditions différentes','Nicht vergleichbar · andere Bedingungen'],
+    ['Choose different months','異なる発券月を選択してください','请选择不同出票月份','Choisissez des mois différents','Verschiedene Monate wählen'],
+    ['Cannot compare · checking','比較不可・確認中','无法比较·核实中','Comparaison impossible · vérification en cours','Nicht vergleichbar · Prüfung läuft'],
+    ['Zero baseline: percentage unavailable','基準額0：変化率は計算できません','基准金额为0：无法计算变化率','Base nulle : pourcentage indisponible','Basisbetrag null: Prozentsatz nicht verfügbar'],
+    ['Simple round-trip estimate','単純往復試算','简单往返估算','Estimation simple aller-retour','Einfache Hin-und-Rückflug-Schätzung'],
+    ['Simple round-trip estimate = Korea-origin one-way amount × 2 × passengers. Return country, airline, currency and ticket conditions may change the charge. This is not the ticket price or final payment.','単純往復試算＝韓国発片道金額×2×人数。復路出発国・航空会社・通貨・発券条件で実際の料金は異なります。航空券価格や最終決済額ではありません。','简单往返估算＝韩国出发单程金额×2×人数。返程出发国、航司、币种及出票条件可能影响实际收费。此金额不是机票价格或最终付款金额。','Estimation aller-retour = montant aller simple au départ de Corée × 2 × voyageurs. Le pays de retour, la compagnie, la devise et les conditions peuvent modifier la surtaxe. Ce n’est ni le prix du billet ni le paiement final.','Hin-und-Rückflug-Schätzung = einfacher Flug ab Korea × 2 × Personen. Rückflugland, Airline, Währung und Ticketbedingungen können den Zuschlag ändern. Kein Ticketpreis oder endgültiger Zahlbetrag.'],
+    ['Korea-origin one-way amount × passengers. Amounts still being checked are excluded from comparisons and minimums. Currencies are shown separately.','韓国発片道金額×人数です。確認中の金額は比較・最安値から除外し、通貨別に表示します。','韩国出发单程金额×人数。核实中的金额不计入比较及最低金额，各币种分别显示。','Montant aller simple au départ de Corée × voyageurs. Les montants en vérification sont exclus des comparaisons et minima. Les devises sont séparées.','Einfacher Flug ab Korea × Personen. Noch ungeprüfte Beträge sind von Vergleichen und Mindestwerten ausgeschlossen. Währungen werden getrennt angezeigt.'],
+    [' This is a PUS–UBN surcharge lookup, not confirmation of operating dates or seat availability. ',' 釜山発UBNの公示料金検索であり、現在の運航日や空席を確認するものではありません。 ',' 这是釜山至UBN附加费查询，不代表已确认当前航班日期或余位。 ',' Recherche de surtaxe PUS–UBN, sans confirmation des dates de vol ni des places disponibles. ',' Zuschlagsabfrage PUS–UBN; keine Bestätigung aktueller Flugtage oder freier Plätze. '],
+    ['Airline route source','航空会社の路線資料','航司航线来源','Source de la ligne aérienne','Streckenquelle der Airline'],
+    ['Compare fuel surcharges by route, airline and ticketing month','路線・航空会社・発券月別の燃油サーチャージ比較','按航线、航司及出票月份比较燃油附加费','Comparer les surtaxes par ligne, compagnie et mois d’émission','Zuschläge nach Strecke, Airline und Ausstellungsmonat vergleichen'],
+    ['Compare monthly notices for the same airline, band and currency.','同じ航空会社・区分・通貨の公示を月別に比較します。','按月比较同一航司、区间及币种的公告。','Comparez les avis mensuels d’une même compagnie, tranche et devise.','Monatliche Mitteilungen derselben Airline, Tarifgruppe und Währung vergleichen.'],
+    ['“Checking” refers to this site’s review, not whether the airline has published a notice. Confirm the final amount when booking.','「確認中」は当サイトの確認状況であり、航空会社が未発表という意味ではありません。最終金額は予約時に確認してください。','“核实中”指本站核实状态，不代表航司尚未发布公告。最终金额请在预订时确认。','« Vérification en cours » décrit notre examen, pas l’absence d’un avis de la compagnie. Confirmez le montant final à la réservation.','„Prüfung läuft“ beschreibt unsere Prüfung, nicht eine fehlende Airline-Mitteilung. Endbetrag bei der Buchung bestätigen.'],
+    ['Lowest by currency','通貨別最安額','各币种最低金额','Minimum par devise','Niedrigster Betrag je Währung'],
+    ['Airline · route · charging basis','航空会社・路線・課金基準','航司·航线·收费依据','Compagnie · ligne · base tarifaire','Airline · Strecke · Berechnungsbasis'],
+    ['Monthly difference · change','月別差額・変化率','月度差额·变化率','Écart mensuel · variation','Monatsdifferenz · Veränderung'],
+    ['Baseline ticketing month','基準発券月','基准出票月份','Mois d’émission de référence','Basis-Ausstellungsmonat'],
+    ['Comparison ticketing month','比較発券月','比较出票月份','Mois d’émission comparé','Vergleichs-Ausstellungsmonat'],
+    ['Airline','航空会社','航空公司','Compagnie','Airline'],
+    ['Save route','路線を保存','保存航线','Enregistrer la ligne','Strecke speichern'],
+    ['Restore recent search','最近の検索を復元','恢复最近搜索','Restaurer la recherche récente','Letzte Suche wiederherstellen'],
+    ['Saved routes','保存した路線','已保存航线','Lignes enregistrées','Gespeicherte Strecken'],
+    ['Up to 20 routes are stored in this browser, without email or server submission.','このブラウザに最大20路線を保存します。メールやサーバーには送信しません。','最多在此浏览器保存20条航线，不通过邮件或服务器发送。','Jusqu’à 20 lignes sont conservées dans ce navigateur, sans envoi par e-mail ni au serveur.','Bis zu 20 Strecken werden in diesem Browser gespeichert, ohne E-Mail- oder Serverübertragung.'],
+    ['Browser storage is unavailable; saved routes last only for this page. The calculator still works.','ブラウザ保存を利用できないため、この画面内だけで保持します。計算機は利用できます。','浏览器存储不可用，航线仅在当前页面保留。计算器仍可使用。','Stockage du navigateur indisponible : les lignes restent sur cette page uniquement. Le calculateur fonctionne.','Browserspeicher nicht verfügbar: Strecken bleiben nur auf dieser Seite erhalten. Der Rechner funktioniert weiterhin.'],
+    ['A simple round-trip estimate is the Korea-origin one-way notice × 2 × passengers. The return-origin country, airline, currency and ticket conditions can change the actual surcharge. This is not the ticket price or final payment.','単純往復試算は韓国発片道公示額×2×人数です。復路出発国・航空会社・通貨・発券条件により実際の料金は異なります。航空券価格や最終決済額ではありません。','简单往返估算为韩国出发单程公告金额×2×人数。返程出发国、航司、币种及出票条件可能影响实际收费。此金额不是机票价格或最终付款金额。','L’estimation aller-retour est le montant publié pour un aller simple de Corée × 2 × voyageurs. Le pays de retour, la compagnie, la devise et les conditions peuvent modifier la surtaxe. Ce n’est ni le prix du billet ni le paiement final.','Die Hin-und-Rückflug-Schätzung beträgt den veröffentlichten einfachen Flug ab Korea × 2 × Personen. Rückflugland, Airline, Währung und Ticketbedingungen können den Zuschlag ändern. Kein Ticketpreis oder endgültiger Zahlbetrag.'],
+    ['Choose a route','路線を選択してください','请选择航线','Choisissez une ligne','Strecke wählen'],
+    ['Compare airlines within each currency. Monthly difference = comparison month − baseline month.','航空会社間の比較は同じ通貨内で行ってください。月別差額＝比較月−基準月。','请在同一币种内比较航司。月度差额＝比较月份−基准月份。','Comparez les compagnies dans chaque devise. Écart mensuel = mois comparé − mois de référence.','Airlines innerhalb derselben Währung vergleichen. Monatsdifferenz = Vergleichsmonat − Basismonat.'],
+    ['No official data for this route. Please select an origin and destination.','この路線の公式資料が見つかりません。出発地と目的地を選び直してください。','未找到此航线的官方资料，请重新选择出发地和目的地。','Aucune donnée officielle pour cette ligne. Sélectionnez un départ et une destination.','Keine offiziellen Daten für diese Strecke. Abflug und Ziel auswählen.'],
+    ['Fuel surcharges and ticket sale prices differ. Check the total fare, taxes and seat conditions with the affiliate.','燃油サーチャージと航空券販売価格は異なります。運賃・税金・座席条件を含む総額を提携先で確認してください。','燃油附加费与机票售价不同。请在合作方查看包含票价、税费和座位条件的总额。','La surtaxe diffère du prix de vente du billet. Vérifiez le total, les taxes et les conditions de place chez le partenaire.','Zuschlag und Ticketverkaufspreis unterscheiden sich. Gesamtpreis, Steuern und Sitzbedingungen beim Partner prüfen.'],
+    ['New official notice','新しい公式公示','新增官方公告','Nouvel avis officiel','Neue offizielle Mitteilung'],
+    ['Official revision','公式公示の修正','官方公告修订','Avis officiel révisé','Offizielle Mitteilung geändert'],
+    ['Historical notice added','過去公示の追加','新增历史公告','Avis historique ajouté','Historische Mitteilung ergänzt'],
+    ['Historical revision','過去公示の修正','历史公告修订','Avis historique révisé','Historische Mitteilung geändert'],
+    ['All airlines','すべての航空会社','所有航空公司','Toutes les compagnies','Alle Airlines'],
+    ['Delete','削除','删除','Supprimer','Löschen'],
+    ['No saved routes yet.','保存した路線はありません。','尚无已保存航线。','Aucune ligne enregistrée.','Noch keine gespeicherten Strecken.'],
+    ['Choose a valid route. Up to 20 routes can be saved.','有効な路線を選択してください。最大20路線まで保存できます。','请选择有效航线，最多可保存20条。','Choisissez une ligne valide. Vous pouvez en enregistrer 20 au maximum.','Gültige Strecke wählen. Höchstens 20 Strecken können gespeichert werden.'],
+    ['Route saved.','路線を保存しました。','航线已保存。','Ligne enregistrée.','Strecke gespeichert.'],
+    ['Saved for this page only; browser storage is unavailable.','ブラウザ保存を利用できないため、この画面内だけに保存しました。','浏览器存储不可用，仅在当前页面保存。','Enregistré sur cette page uniquement ; stockage du navigateur indisponible.','Nur für diese Seite gespeichert; Browserspeicher nicht verfügbar.']
+  ];
+  var translationByEnglish={};localizedCopy.forEach(function(row){translationByEnglish[row[0]]=row;});
+  var t=function(ko,en){var lang=(window.SHARED_STATE&&window.SHARED_STATE.lang)||'ko';if(lang==='ko')return ko;var row=translationByEnglish[en],index={en:0,ja:1,zh:2,cn:2,fr:3,de:4}[lang];return row&&index!==undefined?row[index]:en;};
   function esc(value){return String(value == null ? '' : value).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
   function amount(value,currency){return currency+' '+value.toLocaleString('en-US',{maximumFractionDigits:2});}
   function currentMonth(){var parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit'}).formatToParts(new Date());return parts.find(function(p){return p.type==='year';}).value+'-'+parts.find(function(p){return p.type==='month';}).value;}
@@ -132,6 +183,7 @@
     el('savingTableWrap').querySelectorAll('tbody tr').forEach(function(row){row.children[1].setAttribute('data-month',value.baseMonth);row.children[2].setAttribute('data-month',value.targetMonth);row.children[3].setAttribute('data-label',t('월별 차액 · 변동률','Monthly difference · change'));});
     var labels={calculatorBaseLabel:t('기준 발권월','Baseline ticketing month'),calculatorTargetLabel:t('비교 발권월','Comparison ticketing month'),calculatorAirlineLabel:t('관심 항공사','Airline'),calculatorSave:t('관심 노선 저장','Save route'),calculatorRecent:t('최근 검색 복원','Restore recent search'),calculatorSavedTitle:t('저장한 관심 노선','Saved routes')};
     Object.keys(labels).forEach(function(id){el(id).textContent=labels[id];});
+    var allAirlines=el('savingAirlineFilter').querySelector('option[value="all"]');if(allAirlines)allAirlines.textContent=t('전체 항공사','All airlines');
     el('calculatorStorageNote').textContent=store.available()?t('이 브라우저에 최대 20개 노선을 저장합니다. 이메일·서버 전송 없이 이 기기에서만 유지됩니다.','Up to 20 routes are stored in this browser, without email or server submission.'):t('브라우저 저장소를 사용할 수 없어 현재 화면에서만 유지됩니다. 계산은 정상 이용할 수 있습니다.','Browser storage is unavailable; saved routes last only for this page. The calculator still works.');
     el('calculatorRecent').disabled=!store.state.recent;
     var answer=document.querySelectorAll('#calculatorFaq .faq-a')[3];if(answer)answer.textContent=t('단순 왕복 추정액은 한국 출발 편도 공시액 × 2 × 인원으로 계산합니다. 귀국편 출발 국가·항공사·통화·발권 조건에 따라 실제 부과액은 달라집니다. 항공권 가격이나 최종 결제액이 아닙니다.','A simple round-trip estimate is the Korea-origin one-way notice × 2 × passengers. The return-origin country, airline, currency and ticket conditions can change the actual surcharge. This is not the ticket price or final payment.');

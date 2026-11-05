@@ -5,6 +5,7 @@
 // is a separate fail-closed step; neither fallback nor mock inputs can reach it.
 const fs = require('fs');
 const path = require('path');
+const { redactForLog } = require('../lib/log-redaction.cjs');
 const { collectAll } = require('../lib/collector');
 const { parseAll } = require('../lib/parser');
 const { validateAll, printValidationSummary, validateFeed, validateSourceUrl, checkSourceLinks } = require('../lib/validation');
@@ -163,7 +164,7 @@ function publishFeed(feedPath, proposed, originalText, { mock = false, skipLlm =
 function saveReport(report, dir = REPORT_DIR) {
   fs.mkdirSync(dir, { recursive: true });
   const name = `${report.runAt.replace(/[:.]/g, '-')}-${process.pid}.json`;
-  fs.writeFileSync(path.join(dir, name), JSON.stringify(report, null, 2) + '\n', { flag: 'wx' });
+  fs.writeFileSync(path.join(dir, name), JSON.stringify(redactForLog(report), null, 2) + '\n', { flag: 'wx' });
   return path.join(dir, name);
 }
 
@@ -201,8 +202,8 @@ async function main(options) {
     report.forecast = 'preserved: market model contains mock inputs';
     report.success = true;
   } catch (error) {
-    report.errors.push(error.message);
-    console.error(`[Pipeline] ${error.message}`);
+    report.errors.push(redactForLog(error.message));
+    console.error(redactForLog(`[Pipeline] ${error.message}`));
   }
   if (opts.dryRun || opts.mock || opts.skipLlm) {
     console.log(`[Pipeline] 파일 변경 없음; 결과 ${report.success ? 'PASS' : 'HOLD'}`);
@@ -212,5 +213,5 @@ async function main(options) {
   return report;
 }
 
-if (require.main === module) main().then(report => { process.exitCode = report.success ? 0 : 1; }).catch(error => { console.error(error.message); process.exitCode = 1; });
+if (require.main === module) main().then(report => { process.exitCode = report.success ? 0 : 1; }).catch(error => { console.error(redactForLog(error.message)); process.exitCode = 1; });
 module.exports = { parseOptions, assertWritableMode, partitionParserInputs, parseCollectedCandidates, mergeFeed, buildProposal, publishFeed, saveReport, main };

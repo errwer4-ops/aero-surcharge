@@ -3,6 +3,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const {spawn} = require('node:child_process');
 const {chromium} = require('playwright');
+const {verifyAnalyticsPrivacy}=require('./verify_analytics_privacy.cjs');
 const root=path.resolve(__dirname,'..'), port=Number(process.env.PLATFORM_TEST_PORT||4192), base=`http://127.0.0.1:${port}`;
 const audit=process.argv.includes('--audit');
 const out=path.join(root,'tmp','platform-verification');fs.mkdirSync(out,{recursive:true});
@@ -66,6 +67,7 @@ async function main(){
       reports.push(report);await page.close();
     }
     if(!audit){
+      await verifyAnalyticsPrivacy(browser);
       const p=await reviewPage();await p.goto(base);await p.waitForTimeout(1800);
       // The screenshot pass rejected consent; reopen the real settings UI before opting in.
       await p.locator('.aero-privacy-open').click();

@@ -44,6 +44,13 @@
   packs.zh=Object.assign({},packs.en,{title:'韩国出发国际线燃油附加费',sub:'2026年9月基准 · 已反映10月官方公告 · 11月准备',h1:'韩国出发国际线2026年9月·10月官方公告比较',basisTitle:'当前适用基准：2026年10月官方燃油附加费',basisDesc:'10月官方公告已反映KE、OZ、LJ、BX、TW、7C和RS。ZE与YP显示为10月公告发布前。',section:'各航空公司2026年9月 → 10月国际线燃油附加费比较',note:'10月公告已反映KE、OZ、LJ、BX、TW、7C和RS。ZE与YP在发布前不显示金额和链接。',prev:'2026年9月官方公告',current:'2026年10月官方公告',pending:'10月公告发布前',source:'官方公告 ↗',sourcePending:'10月公告发布前',linksTitle:'2026年10月官方公告及发布前航空公司',related:'📌 2026年10月官方公告',forecast:'🔮 2026年11月展望'});
   packs.fr=Object.assign({},packs.en,{title:'Surcharge carburant au départ de Corée',sub:'Base septembre 2026 · avis octobre reflétés · préparation novembre',h1:'Comparaison des avis septembre et octobre 2026',basisTitle:'Base actuelle : surtaxes officielles octobre 2026',section:'Comparaison septembre → octobre 2026 par compagnie',prev:'Avis officiel septembre 2026',current:'Avis officiel octobre 2026',pending:'Avis octobre non publié',source:'Avis officiel ↗',sourcePending:'Avis octobre non publié',related:'📌 Avis officiels octobre 2026',forecast:'🔮 Perspectives novembre 2026'});
   packs.de=Object.assign({},packs.en,{title:'Kerosinzuschlag ab Korea',sub:'September-2026 Basis · Oktober-Hinweise berücksichtigt · November-Vorbereitung',h1:'Vergleich September und Oktober 2026',basisTitle:'Aktuelle Basis: offizielle Oktober-2026 Zuschläge',section:'September → Oktober 2026 nach Airline',prev:'September-2026 Hinweis',current:'Oktober-2026 Hinweis',pending:'Oktober-Hinweis nicht veröffentlicht',source:'Offizieller Hinweis ↗',sourcePending:'Oktober-Hinweis nicht veröffentlicht',related:'📌 Oktober-2026 Hinweise',forecast:'🔮 November-2026 Ausblick'});
+  var travelCopy={
+    ja:['✈️ 航空券の総額も確認','9月・10月の過去公示を比較した後、現在の航空券総額と発券条件を確認してください。','過去の公示比較と現在の運賃・税金・宿泊費を区別して、旅行全体の費用を確認してください。'],
+    zh:['✈️ 同时查看机票总价','比较9月、10月历史公告后，请核实当前机票总价及出票条件。','请区分历史公告比较与当前票价、税费、住宿费，核实旅行总预算。'],
+    fr:['✈️ Consultez aussi le prix total du billet','Après la comparaison historique septembre–octobre, vérifiez le prix actuel du billet et les conditions d’émission.','Distinguez la comparaison historique des tarifs, taxes et hébergements actuels pour établir le budget total.'],
+    de:['✈️ Auch den gesamten Ticketpreis prüfen','Nach dem historischen September–Oktober-Vergleich den aktuellen Ticketpreis und die Ausstellungsbedingungen prüfen.','Historischen Zuschlagsvergleich von aktuellen Flugpreisen, Steuern und Unterkunftskosten unterscheiden, um das Gesamtbudget zu prüfen.']
+  };
+  Object.keys(travelCopy).forEach(function(l){var c=travelCopy[l];Object.assign(packs[l],{topTitle:c[0],topDesc:c[1],bottomDesc:c[2]});});
 
   // This landing table has narrower coverage than the live calculator.
   // Missing here means not reflected on this page, not that an airline has
@@ -78,9 +85,12 @@
     var desc=document.querySelector('meta[name="description"]');if(desc)desc.content=p.basisDesc;
     var ogt=document.querySelector('meta[property="og:title"]');if(ogt)ogt.content=document.title;
     var ogd=document.querySelector('meta[property="og:description"]');if(ogd)ogd.content=p.basisDesc;
+    var twt=document.querySelector('meta[name="twitter:title"]');if(twt)twt.content=document.title;
+    var twd=document.querySelector('meta[name="twitter:description"]');if(twd)twd.content=p.basisDesc;
   }
   var previousRender=window.renderKoreaTable;
   window.renderKoreaTable=function(){var result=previousRender.apply(this,arguments);updateMeta();return result;};
+  ['navLang','navCurr'].forEach(function(id){var select=document.getElementById(id);if(select)select.addEventListener('change',updateMeta);});
   if(typeof window.applyLanguage==='function')window.applyLanguage();
   renderKoreaTable();renderAffiliateBoxes();renderCurrentBasis();updateMeta();
 })();

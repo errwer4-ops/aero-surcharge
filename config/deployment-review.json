@@ -1,9 +1,9 @@
 {
   "version": 2,
   "runtimeBaseline": {
-    "operationalDigest": "067765d7be248e5c864cbd9673edc33c8c964c37a413084035df0ef7dce413b7",
-    "recordedAt": "2026-11-05T01:21:28.383Z",
-    "reason": "11월 5일 배포 장애 수정: CI와 동일한 Node 22·npm ci 설치 및 원격 실패 진단 보완을 비교 기준으로 명시. 외부 운영 검증 완료나 광고 활성화 승인이 아님."
+    "operationalDigest": "f8fa4ebc7403056ea6b99f0e66462c1702a81db8b8906a2f62c7be4e210a49bb",
+    "recordedAt": "2026-11-05T01:47:27.700Z",
+    "reason": "사용자 승인한 배포 복구와 전체 검수 수정의 비교 기준: Vercel JSON 의미 정규화, 로그 비밀값 제거·환율 공급자 사용 중단, 동의·API 오류·플래너 검증. 외부 서비스 검토 완료나 광고 활성화 승인이 아님."
   },
   "ads": {
     "decision": "pending",

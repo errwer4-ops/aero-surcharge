@@ -1,4 +1,6 @@
 .calculator-month-controls{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}
+.calc-readiness-head{flex-wrap:wrap}
+.calc-readiness-head .calc-readiness-badge{max-width:100%;white-space:normal;overflow-wrap:anywhere}
 .calculator-month-controls label{display:flex;flex-direction:column;gap:6px;font-size:12px;font-weight:750;color:var(--text2)}
 .calculator-month-controls input,.calculator-month-controls select{width:100%;min-height:42px;border:1px solid var(--line);border-radius:8px;background:#fff;padding:8px;color:var(--text)}
 .calculator-month-controls input:focus-visible,.calculator-month-controls select:focus-visible,.calculator-retention button:focus-visible{outline:3px solid #0284c7;outline-offset:2px}

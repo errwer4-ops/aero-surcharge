@@ -183,7 +183,9 @@ async function main() {
     assert.equal(upstreamFailure.statusCode, 502);
     assert.equal(upstreamFailure.body.success, false);
     assert.equal(upstreamFailure.body.status, 401);
-    assert.equal(Object.prototype.hasOwnProperty.call(upstreamFailure.body, "responseTextPreview"), true);
+    assert.equal(Object.prototype.hasOwnProperty.call(upstreamFailure.body, "responseTextPreview"), false);
+    assert.equal(Object.prototype.hasOwnProperty.call(upstreamFailure.body, "upstreamUrl"), false);
+    assert.equal(upstreamFailure.body.code, "upstream_request_failed");
     assert.equal(JSON.stringify(upstreamFailure.body).includes("test-secret-key"), false);
 
     const calculator = fs.readFileSync(

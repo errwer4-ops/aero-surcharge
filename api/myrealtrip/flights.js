@@ -230,7 +230,7 @@ module.exports = async function handler(req, res) {
     return sendJson(res, 500, {
       success: false,
       message: "Flight context route failed.",
-      error: error.message,
+      code: "flight_context_failed",
       items: [],
     });
   }

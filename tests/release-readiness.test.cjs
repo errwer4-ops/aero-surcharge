@@ -126,7 +126,11 @@ test('failed checks alone include operational path hashes without file contents'
   const legacy=crypto.createHash('sha256');
   for(const name of Object.keys(files).sort()){
     const raw=fs.readFileSync(path.join(root,name));
-    const normalized=/\.(?:js|cjs|json|html|css|xml|txt|ya?ml)$/.test(name)?raw.toString('utf8').replace(/\r\n/g,'\n'):raw;
+    let normalized=/\.(?:js|cjs|json|html|css|xml|txt|ya?ml)$/.test(name)?raw.toString('utf8').replace(/\r\n/g,'\n'):raw;
+    if(name==='vercel.json'){
+      const keys=[...new Set(raw.toString('utf8').match(/"([^"\\]*)"\s*:/g).map(key=>JSON.parse(key.slice(0,key.lastIndexOf(':')).trim())))].sort();
+      normalized=JSON.stringify(JSON.parse(raw.toString('utf8')),keys)+'\n';
+    }
     assert.equal(files[name],crypto.createHash('sha256').update(normalized).digest('hex'));
     legacy.update(name+'\0');legacy.update(normalized);legacy.update('\0');
   }
@@ -166,7 +170,9 @@ test('operational digest ignores daily market changes but detects API, loaders a
   function withChangedFile(target){
     const fakeFs={...fs,readFileSync:(file,...args)=>{
       const value=fs.readFileSync(file,...args);
-      return path.relative(root,file).replace(/\\/g,'/')===target?Buffer.concat([Buffer.from(value),Buffer.from('\n/* changed */')]):value;
+      if(path.relative(root,file).replace(/\\/g,'/')!==target)return value;
+      if(target==='vercel.json')return Buffer.from(JSON.stringify({...JSON.parse(value),buildCommand:'node changed-build.js'}));
+      return Buffer.concat([Buffer.from(value),Buffer.from('\n/* changed */')]);
     }};
     const context={module:{exports:{}},require:name=>name==='node:fs'?fakeFs:require(name)};
     vm.runInNewContext(fs.readFileSync(path.join(root,'lib/release-readiness.cjs'),'utf8'),context);
@@ -211,4 +217,24 @@ test('review digest is portable across Windows and CI text line endings',()=>{
   assert.equal(context.module.exports.sourceDigest(root),original);
   assert.equal(context.module.exports.operationalDigest(root),operationalDigest(root));
   assert.deepEqual(JSON.parse(JSON.stringify(context.module.exports.operationalFiles(root))),operationalFiles(root));
+});
+
+test('Vercel JSON serialization preserves review identity while configuration changes do not',()=>{
+  const raw=fs.readFileSync(path.join(root,'vercel.json'),'utf8'),config=JSON.parse(raw);
+  function withConfig(text){
+    const fakeFs={...fs,readFileSync:(file,...args)=>path.relative(root,file)==='vercel.json'?(args[0]==='utf8'?text:Buffer.from(text)):fs.readFileSync(file,...args)};
+    const context={module:{exports:{}},require:name=>name==='node:fs'?fakeFs:require(name)};
+    vm.runInNewContext(fs.readFileSync(path.join(root,'lib/release-readiness.cjs'),'utf8'),context);
+    return context.module.exports;
+  }
+  const expected=operationalDigest(root),full=sourceDigest(root);
+  const reordered=Object.fromEntries(Object.entries(config).reverse());
+  for(const text of [JSON.stringify(config)+'\n',JSON.stringify(reordered,null,4)]){
+    assert.equal(withConfig(text).operationalDigest(root),expected);
+    assert.equal(withConfig(text).sourceDigest(root),full);
+    assert.equal(withConfig(text).operationalFiles(root)['vercel.json'],operationalFiles(root)['vercel.json']);
+  }
+  for(const changed of [{...config,buildCommand:'node changed-build.js'}, {...config,redirects:[...config.redirects].reverse()}])
+    assert.notEqual(withConfig(JSON.stringify(changed)).operationalDigest(root),expected);
+  assert.throws(()=>withConfig('{invalid').operationalDigest(root),{name:'SyntaxError'});
 });

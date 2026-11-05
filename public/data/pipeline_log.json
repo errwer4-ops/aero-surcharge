@@ -498,7 +498,7 @@
         "market": {
           "source": "mock_fallback",
           "usdKrw": 1480,
-          "fxError": "요청 타임아웃: https://v6.exchangerate-api.com/v6/40eecb66a8efeb38d741f649/latest/USD"
+          "fxError": "요청 타임아웃: https://v6.exchangerate-api.com/v6/[redacted]/latest/USD"
         },
         "collect": [
           {
@@ -2442,7 +2442,7 @@
         "market": {
           "source": "mock_fallback",
           "usdKrw": 1480,
-          "fxError": "요청 타임아웃: https://v6.exchangerate-api.com/v6/40eecb66a8efeb38d741f649/latest/USD"
+          "fxError": "요청 타임아웃: https://v6.exchangerate-api.com/v6/[redacted]/latest/USD"
         },
         "collect": [
           {
@@ -2766,7 +2766,7 @@
         "market": {
           "source": "mock_fallback",
           "usdKrw": 1480,
-          "fxError": "요청 타임아웃: https://v6.exchangerate-api.com/v6/40eecb66a8efeb38d741f649/latest/USD"
+          "fxError": "요청 타임아웃: https://v6.exchangerate-api.com/v6/[redacted]/latest/USD"
         },
         "collect": [
           {

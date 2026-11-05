@@ -143,6 +143,10 @@ async function chooseCurrency(page,currency){
         for(const code of Object.keys(expected)){
           await page.selectOption('#filterAirline',code);
           const x=await capture(page);verifyNovember(x,`${lang}/${currency}/${code}`);
+          if(code==='BX'){
+            const names={ko:['단거리','중거리1','중거리2','장거리'],en:['Short-haul','Mid-haul 1','Mid-haul 2','Long-haul'],ja:['短距離','中距離1','中距離2','長距離'],zh:['短程','中程1','中程2','长程'],fr:['Court-courrier','Moyen-courrier 1','Moyen-courrier 2','Long-courrier'],de:['Kurzstrecke','Mittelstrecke 1','Mittelstrecke 2','Langstrecke']};
+            assert.deepEqual(x.table.find(a=>a.code==='BX').rows.map(row=>row.band),names[lang],lang+' BX band labels are localized without changing source amounts');
+          }
           if(code==='YP'&&currency==='USD')await verifyTooltip(page,x,lang+' YP/USD');
         }
       }

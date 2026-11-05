@@ -36,7 +36,9 @@ async function main(){
     // or environment values, so a remote-only mismatch can be diagnosed.
     console.error('REVIEW DIAGNOSTICS: '+JSON.stringify({runtime:report.runtime,
       baselineChecks:readiness.baselineChecks,expectedOperationalDigest:readiness.expectedOperationalDigest,
-      actualOperationalDigest:readiness.actualOperationalDigest,operationalFiles:readiness.operationalFiles}));
+      actualOperationalDigest:readiness.actualOperationalDigest}));
+    // Keep each line below the remote log length limit.
+    for(const [file,hash] of Object.entries(readiness.operationalFiles||{}))console.error('REVIEW FILE: '+file+' '+hash);
     process.exitCode=1;return;
   }
   if(build){
@@ -56,6 +58,8 @@ async function main(){
     ['platform',['scripts/verify_platform.cjs']],
     ['home-period',['scripts/verify_home_period.cjs']],
     ['graph-notices',['scripts/verify_graph_notices.cjs']],
+    ['locale-period',['scripts/verify_locale_period.cjs']],
+    ['planner',['scripts/verify_planner.cjs']],
     ['calculator',['scripts/verify_calculator_platform.cjs']],
     ['seo-snapshot',['scripts/sync_static_snapshots.cjs','--check']]
   ];

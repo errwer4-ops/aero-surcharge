@@ -1,5 +1,14 @@
 # 유류할증료 데이터 파이프라인
 
+## 현재 운영 조건 (2026-11-05)
+
+- 수집·파싱·출처 검증이 실패하면 게시를 보류한다. mock/fallback 값은 공식 피드로 발행하지 않는다. `pipeline:mock`도 저장 없는 dry-run이다.
+- `forecast_feed.json`은 이 파이프라인이 덮어쓰지 않는다. 실행 진단은 `artifacts/data-validation`에 저장하며 `public/data/pipeline_log.json`은 과거 보관 로그다.
+- 사용자의 결정에 따라 ExchangeRate-API 키 사용을 중단했다. 환경에 키나 이전 live 플래그가 남아 있어도 해당 서비스에 요청하지 않는다. 새 자동 환율 공급자는 연결하지 않았고 시장 반환값은 명시적인 테스트용 mock/fallback이다. 사이트의 별도 원문 검토 시장 자료와 혼용하지 않는다.
+- 공개 보관 로그에 남았던 키 3곳을 제거했고 진단 저장 단계에서도 URL·헤더·설정 비밀값을 마스킹한다. 이미 공개된 키의 서비스 계정 폐기는 별도 사용자 작업이며, 저장소에서 제거한 것만으로 키가 무효화되지는 않는다.
+
+아래 v28/MVP 설명은 도입 당시 구조 기록이며, 현재 게시·보안 조건은 위 내용과 검증 코드가 우선한다.
+
 > **v28 업데이트**: Level 3 AI 자동 검색(ai-search-auto) 레이어 추가  
 > Collector 실패 시 AI가 공식 공지를 자동 검색→수집→파싱→검증→등록 (검증 통과 시만)
 
@@ -16,8 +25,8 @@ aero-v12/
 ├── public/              ← 기존 정적 사이트 (변경 없음)
 │   └── data/
 │       ├── official_surcharge_feed.json  ← 파이프라인이 갱신
-│       ├── forecast_feed.json            ← inputs 섹션 갱신
-│       └── pipeline_log.json             ← 실행 로그 (자동 생성)
+│       ├── forecast_feed.json            ← 검토된 별도 전망 피드, 파이프라인에서 보존
+│       └── pipeline_log.json             ← 과거 보관 로그, 현재 실행은 artifacts에 기록
 │
 ├── lib/                 ← 파이프라인 레이어 (신규)
 │   ├── collector/
@@ -59,7 +68,7 @@ public/data/ ← 검증 통과 항목만 저장 (실패 시 기존 유지)
 # 기본 실행 (mock 데이터, 저장 안 함)
 npm run pipeline:dry
 
-# mock 모드로 실제 저장
+# mock dry-run (공식 피드 저장 없음)
 npm run pipeline:mock
 
 # 실제 수집 + Claude API 파싱 (API_KEY 필요)

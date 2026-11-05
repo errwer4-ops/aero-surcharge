@@ -107,7 +107,7 @@ test('home landing keeps concise November status, qualified minimum changes and 
   const {loadNotices,loadRouteGroupNotices}=require('../scripts/validate_service_data.cjs');
   const index=fs.readFileSync('public/index.html','utf8'),patch=fs.readFileSync('public/home-sep20.js','utf8'),calc=fs.readFileSync('public/calculator-oct20.js','utf8');
   const elements=new Map(),node=id=>{if(!elements.has(id))elements.set(id,{style:{},innerHTML:'',textContent:''});return elements.get(id);};
-  const context={AeroCalculatorCore:core,AeroSourceTrust:trust,URL,Intl,Date:class extends Date{constructor(...args){super(...(args.length?args:['2026-10-21T12:00:00+09:00']));}},document:{readyState:'complete',getElementById:node},getCurrentLang:()=> 'ko',getAirlineName:()=>'',t:key=>key,FEED:{meta:{lastUpdated:'2026-04-23T01:00:00Z'}}};context.window=context;vm.createContext(context);
+  const context={AeroCalculatorCore:core,AeroSourceTrust:trust,URL,Intl,Date:class extends Date{constructor(...args){super(...(args.length?args:['2026-10-21T12:00:00+09:00']));}},document:{readyState:'complete',getElementById:node,querySelectorAll:()=>[]},getCurrentLang:()=> 'ko',getAirlineName:()=>'',t:key=>key,FEED:{meta:{lastUpdated:'2026-04-23T01:00:00Z'}}};context.window=context;vm.createContext(context);
   vm.runInContext(index.slice(index.indexOf('var _OFFICIAL_AMT = {'),index.indexOf('var OFFICIAL_ROUTE_MAP = {')),context);
   function declaration(source,startMarker){const start=source.indexOf(startMarker);assert(start>=0);return source.slice(start,source.indexOf('\n  };',start)+5);}
   vm.runInContext(declaration(calc,'var october={'),context);vm.runInContext(declaration(patch,'var octoberLinks={'),context);

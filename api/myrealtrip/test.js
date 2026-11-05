@@ -24,7 +24,7 @@ module.exports = function handler(req, res) {
   } catch (error) {
     return res.status(500).json({
       success: false,
-      error: error.message,
+      error: "Environment check failed",
     });
   }
 };
