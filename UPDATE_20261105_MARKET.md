@@ -147,3 +147,9 @@ UKMTO 194·195 개별 보도는 검색 색인에서 일부 본문이 나타났�
 - 초기 HTML/메타/구조화 데이터 13페이지를 동기화하고 변경 모듈의 캐시 버전을 갱신했다. 날짜·공식 금액·현재 시장 관측값은 이번 사이트 검수에서 갱신하지 않았다. 시장 자료 기준은 앞 절의 **11월 5일 09:00 KST** 그대로다.
 
 - 최종 `VERCEL=1 VERCEL_ENV=production NODE_ENV=production npm run build`: **14개 검사 모두 통과**, 종료 코드 0. Windows/Node v24.14.0 결과이며 실제 Vercel Linux 배포와 구분한다. 시작/종료 소스 해시 `256286ab95bd733178819971cbfcb15e7988d165dc9ad479491613959bb70c49`가 일치했다. 증거: `artifacts/review-verification/2026-11-05T01-47-28-354Z/summary.json`.
+
+### 원격 시스템 의존성 추가 복구
+
+`ea529d4ceb39af8c53a7eca3e9aff7fc77b14802`를 main에 푸시했다. [Vercel 실행](https://vercel.com/errwer4-8344s-projects/aero-surcharge/FLfcBkAYCbdHkRXqtgt8uoFYJGNh)은 기준 검사를 통과해 첫 원인을 해결했지만, Chromium 실행에 필요한 `libnspr4.so`가 없어 약 29초 뒤 실패했다. 원격과 Windows 검증 환경의 차이로 드러난 두 번째 장애다.
+
+[Vercel 공식 빌드 이미지 문서](https://vercel.com/docs/builds/build-image)에 따라 Amazon Linux 2023 컨테이너의 설치 명령에 `dnf install -y nspr nss mesa-libgbm`을 추가했다. 기존 npm ci·Playwright·전체 검사는 유지한다. 이 보완은 빌드용 OS 의존성에 한정하며 새 npm 라이브러리를 도입하거나 화면 검사를 생략하지 않는다.

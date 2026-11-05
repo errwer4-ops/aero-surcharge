@@ -60,6 +60,8 @@
 - 이번 배포 수정에 포함된 설치 계약·진단 코드의 기준 해시는 로컬 검증 후 명시적으로 기록한다. 자동 갱신 기능은 없으며 광고와 외부 운영 검토는 계속 `pending`이다.
 - 새 커밋의 Vercel 실행이 통과해야 원격 배포 복구가 확인된다. 로컬 성공이나 이전 GitHub Actions 성공만으로 운영 사이트 반영을 주장하지 않는다.
 
+`ea529d4`의 실제 원격 실행은 해시 검사를 통과한 뒤 Chromium의 `libnspr4.so` 부재로 실패했다. Vercel의 Amazon Linux 2023 빌드 컨테이너에서만 `dnf install -y nspr nss mesa-libgbm`으로 기존 Playwright 브라우저의 시스템 의존성을 설치한 다음 동일한 npm ci를 수행한다. 새 npm 라이브러리나 브라우저 검사 생략은 추가하지 않는다. Ubuntu CI는 기존 `playwright install --with-deps chromium`을 유지한다. [Vercel 빌드 이미지·패키지 설치 공식 안내](https://vercel.com/docs/builds/build-image).
+
 ### 광고·동의 추가 회귀 (2026-11-05)
 
 다른 탭의 동의 철회·저장값 삭제와 만료가 열린 탭에도 반영되도록 수정했다. 상위 도메인에 저장된 GA 쿠키도 자신의 도메인 범위에서만 삭제한다. 설정 UI는 6개 언어로 전환되며 작성 중인 체크 상태를 유지한다. 광고 로더는 명시적인 불리언 `true`만 허용하고 IPv6 로컬에서도 기본 차단한다. 현재 광고는 계속 비활성이다.

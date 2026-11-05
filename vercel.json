@@ -1,5 +1,5 @@
 {
-  "installCommand": "npm ci --ignore-scripts --include=dev",
+  "installCommand": "dnf install -y nspr nss mesa-libgbm && npm ci --ignore-scripts --include=dev",
   "buildCommand": "npm run build",
   "cleanUrls": true,
   "trailingSlash": false,

@@ -1,9 +1,9 @@
 {
   "version": 2,
   "runtimeBaseline": {
-    "operationalDigest": "f8fa4ebc7403056ea6b99f0e66462c1702a81db8b8906a2f62c7be4e210a49bb",
-    "recordedAt": "2026-11-05T01:47:27.700Z",
-    "reason": "사용자 승인한 배포 복구와 전체 검수 수정의 비교 기준: Vercel JSON 의미 정규화, 로그 비밀값 제거·환율 공급자 사용 중단, 동의·API 오류·플래너 검증. 외부 서비스 검토 완료나 광고 활성화 승인이 아님."
+    "operationalDigest": "ba0606be8078bab44071f3afe73960ff8ea7d983f36967feadd9295676598c88",
+    "recordedAt": "2026-11-05T01:55:20.977Z",
+    "reason": "승인된 배포 복구: ea529d4의 Vercel 실로그 libnspr4.so 누락에 대응해 공식 Amazon Linux 빌드용 nspr/nss/mesa-libgbm 설치 추가. npm 잠금 버전·전체 검사·광고 비활성 유지. 외부 계정 검토 완료 아님."
   },
   "ads": {
     "decision": "pending",
