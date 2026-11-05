@@ -20,6 +20,7 @@ async function run(name,args){
   await new Promise(resolve=>log.end(resolve));
   report.checks.push({name,command:['node',...args],exitCode:code,durationMs:Date.now()-started,log:name+'.log'});
   console.log((code===0?'PASS':'FAIL')+': '+name+' ('+code+')');
+  if(code!==0)console.error(fs.readFileSync(logPath,'utf8').split(/\r?\n/).slice(-60).join('\n'));
   return code===0;
 }
 async function main(){
@@ -29,7 +30,14 @@ async function main(){
   // CI and production enforce the same scoped review. A baseline match is not
   // external-service verification, and never skips the technical checks below.
   if(!readiness.passed){
-    report.blocked='Operational settings review required';console.error(readiness.errors.join('\n'));process.exitCode=1;return;
+    report.blocked='Operational settings review required';console.error(readiness.errors.join('\n'));
+    // The artifact directory is not accessible from a failed Vercel build.
+    // Log only public source paths/hashes and validation flags, never contents
+    // or environment values, so a remote-only mismatch can be diagnosed.
+    console.error('REVIEW DIAGNOSTICS: '+JSON.stringify({runtime:report.runtime,
+      baselineChecks:readiness.baselineChecks,expectedOperationalDigest:readiness.expectedOperationalDigest,
+      actualOperationalDigest:readiness.actualOperationalDigest,operationalFiles:readiness.operationalFiles}));
+    process.exitCode=1;return;
   }
   if(build){
     if(process.env.VERCEL){
@@ -65,7 +73,7 @@ async function main(){
     }
   }
 }
-main().catch(error=>{report.error=error.message;process.exitCode=1;}).finally(()=>{
+main().catch(error=>{report.error=error.message;console.error(error.message);process.exitCode=1;}).finally(()=>{
   report.finishedAt=new Date().toISOString();fs.writeFileSync(path.join(output,'summary.json'),JSON.stringify(report,null,2)+'\n');
   console.log('Evidence: '+output);
 });

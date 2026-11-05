@@ -49,3 +49,12 @@
 `npm run build`와 `npm run verify:release`는 로컬·CI·Vercel preview·production에서 동일한 범위 검사를 적용한 뒤 기존 기능·데이터·원문·화면·SEO 검사를 모두 실행한다. 테스트 실패는 계속 exit 1이다. Preview에서도 미검토 광고 활성화나 운영 설정 변경을 우회하지 않는다. `npm run check:deployment`는 현재 통과 여부·기준 일치 여부·미완료 운영 검토를 구분해 출력한다.
 
 새로운 운영 설정을 검토할 때는 실제 검증 근거를 `operations`와 필요한 경우 `ads`에 남긴다. `runtimeBaseline`을 다시 생성하거나 검토 상태를 임의로 `reviewed`로 바꾸는 것은 검증을 대신하지 않는다. DebugView 수신·광고 노출 등 외부 결과는 로컬 빌드 성공으로 확인됐다고 표시하지 않는다.
+
+### Vercel 환경 차이 추가 점검 (2026-11-05)
+
+사용자가 푸시한 `d2daed0`은 GitHub Actions의 Ubuntu/Node 22 환경에서 같은 범위 검사와 11개 기술 검사를 모두 통과했으나, Vercel에서는 기술 검사 전에 기준 불일치로 실패했다. 원격 로그에 실제 파일별 해시가 없으므로 어떤 입력이 달라졌는지는 아직 확인하지 못했다. Windows 줄바꿈·경로 구분자·Git에 반영되지 않은 변경은 원본 바이트 및 POSIX 경로 대조로 배제했다.
+
+- Vercel과 CI 설치 명령을 `npm ci --ignore-scripts --include=dev`로 통일하고 Node 엔진을 `22.x`로 맞춘다. `--include=dev`는 `NODE_ENV=production`에서도 검사에 필요한 dotenv가 설치되도록 명시한다. `npm ci`는 package/lock 파일을 수정하지 않으며 불일치 시 실패한다. 이것은 환경 차이를 줄이는 조치이며, 기존 실패가 lock 재작성 때문이었다는 확정 근거는 아니다. [npm ci 문서](https://docs.npmjs.com/cli/v11/commands/npm-ci/), [Vercel 설정](https://vercel.com/docs/project-configuration/vercel-json#installcommand).
+- 기준 검사 실패 로그에는 기준/실제 해시, 해시·기록시각·설명 조건의 개별 결과, 운영 파일 경로별 SHA256만 남긴다. 파일 내용이나 환경 변수 값은 출력하지 않는다. 실패한 기술 검사도 마지막 60줄을 빌드 로그에 남긴다.
+- 이번 배포 수정에 포함된 설치 계약·진단 코드의 기준 해시는 로컬 검증 후 명시적으로 기록한다. 자동 갱신 기능은 없으며 광고와 외부 운영 검토는 계속 `pending`이다.
+- 새 커밋의 Vercel 실행이 통과해야 원격 배포 복구가 확인된다. 로컬 성공이나 이전 GitHub Actions 성공만으로 운영 사이트 반영을 주장하지 않는다.

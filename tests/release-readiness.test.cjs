@@ -3,7 +3,8 @@ const assert=require('node:assert/strict');
 const fs=require('node:fs');
 const path=require('node:path');
 const vm=require('node:vm');
-const {evaluateReview,sourceDigest,operationalDigest}=require('../lib/release-readiness.cjs');
+const crypto=require('node:crypto');
+const {evaluateReview,sourceDigest,operationalDigest,operationalFiles}=require('../lib/release-readiness.cjs');
 const {execFileSync}=require('node:child_process');
 const root=path.resolve(__dirname,'..');
 const scopeA='a'.repeat(64),scopeB='b'.repeat(64);
@@ -79,6 +80,57 @@ test('malformed or missing settings baselines fail closed',()=>{
   }
   assert.equal(evaluateReview({},fixture(),'source-A',scopeA).passed,false);
   assert.equal(evaluateReview({adsEnabled:false},fixture(),'source-A',null).passed,false);
+});
+test('baseline diagnostics distinguish changed files, future timestamps and invalid evidence',()=>{
+  const changed=evaluateReview({adsEnabled:false},fixture(),'source-A',scopeB);
+  assert.equal(changed.passed,false);
+  assert.deepEqual(changed.baselineChecks,{digestMatches:false,recordedAtValid:true,recordedAtNotFuture:true,reasonValid:true});
+  assert.equal(changed.expectedOperationalDigest,scopeA);
+  assert.equal(changed.actualOperationalDigest,scopeB);
+  const review=fixture();review.runtimeBaseline.recordedAt='2099-01-01T00:00:00Z';
+  const future=evaluateReview({adsEnabled:false},review,'source-A',scopeA);
+  assert.equal(future.passed,false);
+  assert.deepEqual(future.baselineChecks,{digestMatches:true,recordedAtValid:true,recordedAtNotFuture:false,reasonValid:true});
+  review.runtimeBaseline.recordedAt='invalid-date';review.runtimeBaseline.reason='short';
+  const malformed=evaluateReview({adsEnabled:false},review,'source-A',scopeA);
+  assert.equal(malformed.passed,false);
+  assert.deepEqual(malformed.baselineChecks,{digestMatches:true,recordedAtValid:false,recordedAtNotFuture:false,reasonValid:false});
+  review.runtimeBaseline.operationalDigest='not-a-digest-never-echo';
+  const invalid=evaluateReview({adsEnabled:false},review,'source-A',null);
+  assert.equal(invalid.expectedOperationalDigest,null);assert.equal(invalid.actualOperationalDigest,null);
+  assert.equal(evaluateReview({adsEnabled:false},null,'source-A',scopeA).baselineChecks.digestMatches,false);
+});
+test('failed checks alone include operational path hashes without file contents',()=>{
+  const review=fixture();
+  const fakeFs={...fs,readFileSync:(file,...args)=>{
+    if(path.relative(root,file).replace(/\\/g,'/')!=='config/deployment-review.json')return fs.readFileSync(file,...args);
+    const text=JSON.stringify(review);return args[0]==='utf8'?text:Buffer.from(text);
+  }};
+  const context={module:{exports:{}},require:name=>name==='node:fs'?fakeFs:require(name)};
+  vm.runInNewContext(fs.readFileSync(path.join(root,'lib/release-readiness.cjs'),'utf8'),context);
+  const readiness=context.module.exports;
+  review.runtimeBaseline.operationalDigest=readiness.operationalDigest(root);
+  const passed=readiness.check(root);
+  assert.equal(passed.passed,true);assert.equal(Object.hasOwn(passed,'operationalFiles'),false);
+  review.runtimeBaseline.recordedAt='2099-01-01T00:00:00Z';
+  const failed=readiness.check(root);
+  assert.equal(failed.passed,false);
+  assert.equal(failed.baselineChecks.digestMatches,true);
+  assert.equal(failed.baselineChecks.recordedAtNotFuture,false);
+  const files=JSON.parse(JSON.stringify(failed.operationalFiles));
+  assert.deepEqual(files,operationalFiles(root));
+  assert(Object.hasOwn(files,'api/myrealtrip/flights.js'));
+  assert(Object.hasOwn(files,'package-lock.json'));
+  assert(!Object.keys(files).some(name=>path.isAbsolute(name)||name.includes('\\')||name.includes('.env')));
+  assert(Object.values(files).every(hash=>/^[a-f0-9]{64}$/.test(hash)));
+  const legacy=crypto.createHash('sha256');
+  for(const name of Object.keys(files).sort()){
+    const raw=fs.readFileSync(path.join(root,name));
+    const normalized=/\.(?:js|cjs|json|html|css|xml|txt|ya?ml)$/.test(name)?raw.toString('utf8').replace(/\r\n/g,'\n'):raw;
+    assert.equal(files[name],crypto.createHash('sha256').update(normalized).digest('hex'));
+    legacy.update(name+'\0');legacy.update(normalized);legacy.update('\0');
+  }
+  assert.equal(legacy.digest('hex'),readiness.operationalDigest(root),'aggregate digest retains original path/content framing');
 });
 test('ad loader requires explicit enablement and advertising consent and loads once',()=>{
   const code=fs.readFileSync(path.join(root,'public/_ads.js'),'utf8');
@@ -158,4 +210,5 @@ test('review digest is portable across Windows and CI text line endings',()=>{
   vm.runInNewContext(fs.readFileSync(path.join(root,'lib/release-readiness.cjs'),'utf8'),context);
   assert.equal(context.module.exports.sourceDigest(root),original);
   assert.equal(context.module.exports.operationalDigest(root),operationalDigest(root));
+  assert.deepEqual(JSON.parse(JSON.stringify(context.module.exports.operationalFiles(root))),operationalFiles(root));
 });

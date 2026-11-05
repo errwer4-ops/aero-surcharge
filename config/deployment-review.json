@@ -1,9 +1,9 @@
 {
   "version": 2,
   "runtimeBaseline": {
-    "operationalDigest": "74a305f940b41faaa9fc2fd65a473459c968efe822a32d74f507bf93f682b1f4",
-    "recordedAt": "2026-11-05T01:01:59.630Z",
-    "reason": "사용자의 배포 차단 수정 요청에 따라 기존 설정을 변경 비교 기준으로 기록. 외부 운영 검증 완료나 광고 활성화 승인을 뜻하지 않음."
+    "operationalDigest": "067765d7be248e5c864cbd9673edc33c8c964c37a413084035df0ef7dce413b7",
+    "recordedAt": "2026-11-05T01:21:28.383Z",
+    "reason": "11월 5일 배포 장애 수정: CI와 동일한 Node 22·npm ci 설치 및 원격 실패 진단 보완을 비교 기준으로 명시. 외부 운영 검증 완료나 광고 활성화 승인이 아님."
   },
   "ads": {
     "decision": "pending",

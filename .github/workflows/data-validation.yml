@@ -15,7 +15,7 @@ jobs:
         with:
           node-version: '22'
           cache: npm
-      - run: npm ci --ignore-scripts
+      - run: npm ci --ignore-scripts --include=dev
       - name: Validate existing feed and changed records
         env:
           BEFORE: ${{ github.event.before }}

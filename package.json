@@ -27,7 +27,7 @@
     "pipeline:ke": "node scripts/run_pipeline.js --mock --dry-run --only KE"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": "22.x"
   },
   "dependencies": {
     "playwright": "^1.59.1"

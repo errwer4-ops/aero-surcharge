@@ -92,3 +92,26 @@ UKMTO 194·195 개별 보도는 검색 색인에서 일부 본문이 나타났�
 브라우저 기능 검증은 외부 요청을 차단한 로컬 검증이며 출처 확인은 별도 웹·HTTP 조사로 수행했다. 증거 파일은 `%TEMP%/aero-nov05-qa/verification.json`과 같은 폴더의 스크린샷, `%TEMP%/aero-home-period-qa`, `%TEMP%/aero-graph-notices-qa`에 있다. 연결 페이지 검증 증거는 기존 `tmp/platform-verification` 경로를 사용했다.
 
 **로컬 수정·검증 완료. commit·push·운영 배포는 수행하지 않았다.** 기존 운영 사이트가 이 실행의 변경을 반영한 것으로 보고하지 않는다.
+
+## 6. 사용자 푸시 후 배포 실패 추가 점검 (오전 10시 이후, 시장 갱신과 별도)
+
+사용자 화면의 LF→CRLF 메시지는 줄바꿈 경고다. 사용자 커밋 `d2daed09ac6c0198a023d72ed0b8651faf3ed714` 및 원격 main 반영을 확인했으며 점검 시작 시 작업 트리는 깨끗했다.
+
+- [GitHub Actions 41946368779](https://github.com/errwer4-ops/aero-surcharge/actions/runs/41946368779): Ubuntu/Node 22, `npm ci --ignore-scripts`, 운영 기준 일치 및 **11개 검사 모두 통과**, 10:12 KST 완료.
+- [Vercel aero-surcharge](https://vercel.com/errwer4-8344s-projects/aero-surcharge/8nYDBQDUCLSuhpUun6JGeuyNNTV2): 같은 커밋, 10:08 KST, 약 7초 후 실패. `npm run build`의 운영 범위 기준 검사에서 차단되어 기술 검사에는 도달하지 못했다. aero-v36 프로젝트도 실패 상태를 확인했다.
+- Vercel Source 화면의 기준 해시 `74a305f940b41faaa9fc2fd65a473459c968efe822a32d74f507bf93f682b1f4`와 기록시각 `01:01:59.630Z`는 커밋과 같았다. 빌드 검사 시각 `01:08:07.650Z`보다 과거다. 로컬 운영 파일 42개와 config는 Git HEAD의 원시 바이트와 일치했고, POSIX 경로 시뮬레이션도 같은 해시였다.
+- 기존 원격 로그에는 계산된 해시·파일별 차이가 없어 **어느 파일이 달라졌는지는 미확인**이다. 임시 폴더에서 npm 11.9 기본 설치를 재현했지만 package/lock 변경은 없었다. 따라서 npm 재작성이나 줄바꿈을 실제 원인으로 단정하지 않는다.
+
+이번 보완은 Vercel과 CI의 설치 명령을 `npm ci --ignore-scripts --include=dev`로 통일하고 Node 엔진을 `22.x`로 맞춰 환경 차이를 줄이는 것이다. `NODE_ENV=production`에서도 검사에 필요한 dotenv를 포함하도록 명시했다. 의존성 종류·잠금 버전은 변경하지 않았다. 기준 검사 실패 시 파일 내용·환경 변수 없이 기준/실제 해시, 조건별 검증 결과, 운영 파일별 SHA256을 로그에 남기며 기술 검사 실패도 로그 끝 60줄을 보여준다. 검토 조건과 광고 활성화 차단은 유지한다.
+
+`runtimeBaseline`은 이 배포 수정의 최종 파일을 명시적으로 기록하며 빌드가 자동 갱신하지 않는다. 광고·외부 운영 검토는 `pending`, 근거는 null 그대로다. 이번 수정이 외부 계정 검증 완료를 뜻하지 않는다. 새 커밋의 Vercel 성공을 확인하기 전까지 배포 복구 완료로 보고하지 않는다.
+
+추가 검증 결과:
+
+- `node --test tests/release-readiness.test.cjs`: **14/14 통과**. 해시/미래 시각 구분, 실패 시 파일별 SHA 출력, 승인/광고 차단, 줄바꿈 정규화와 기존 해시 형식 보존을 검증했다.
+- 임시 설치 폴더에서 `NODE_ENV=production npm ci --ignore-scripts --include=dev`: **통과**, dotenv·Playwright 존재 및 package/lock 해시 변경 없음. 기존 의존성만 설치했다. 로컬 Node 24.14이므로 Node 22 엔진 경고가 있었으며 이를 원격 Node 22 실행 검증으로 취급하지 않는다.
+- 최종 `VERCEL=1 VERCEL_ENV=production NODE_ENV=production npm run build`: **종료 코드 0**. 브라우저 설치 포함 **12개 검사 통과**, native **103/103**, 화면 9개, 홈·그래프·계산기, SEO 전체 검사 통과. 시작/종료 소스 해시가 일치했다. 이 실행은 Windows/Node 24.14이며 Vercel Linux/Node 22의 실제 성공과 구분한다.
+- 증거: `artifacts/review-verification/2026-11-05T01-21-34-286Z/summary.json` 및 같은 폴더의 `operational-files.json`. 설치 옵션 보완 전 중단한 실행은 완료 증거로 사용하지 않았다.
+- 변경 파일 10개: `.github/workflows/data-validation.yml`, `vercel.json`, `package.json`, `package-lock.json`, `lib/release-readiness.cjs`, `scripts/verify_release.cjs`, `tests/release-readiness.test.cjs`, `config/deployment-review.json`, `docs/platform-analytics.md`, 이 보고서. 시장 데이터·화면 소스는 이번 배포 점검에서 바꾸지 않았다.
+
+현재 추가 수정은 로컬에 있으며 commit·push·운영 재배포는 수행하지 않았다. 이전 사용자 지침의 명시적 요청 제한에 따라 원격 확인에는 추가 수정본의 푸시가 필요하다.
