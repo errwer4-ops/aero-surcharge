@@ -1,15 +1,21 @@
 {
-  "version": 1,
+  "version": 2,
+  "runtimeBaseline": {
+    "operationalDigest": "74a305f940b41faaa9fc2fd65a473459c968efe822a32d74f507bf93f682b1f4",
+    "recordedAt": "2026-11-05T01:01:59.630Z",
+    "reason": "사용자의 배포 차단 수정 요청에 따라 기존 설정을 변경 비교 기준으로 기록. 외부 운영 검증 완료나 광고 활성화 승인을 뜻하지 않음."
+  },
   "ads": {
     "decision": "pending",
     "consentReview": "pending",
     "reviewedAt": null,
-    "evidence": null
+    "evidence": null,
+    "scopeDigest": null
   },
   "operations": {
     "status": "pending",
     "reviewedAt": null,
-    "sourceDigest": null,
+    "scopeDigest": null,
     "evidence": null
   }
 }

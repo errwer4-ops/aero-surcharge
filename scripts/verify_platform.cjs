@@ -27,8 +27,11 @@ async function main(){
       try{new PerformanceObserver(list=>{for(const e of list.getEntries())if(!e.hadRecentInput)window.__aeroLabMetrics.cls+=e.value;}).observe({type:'layout-shift',buffered:true});}catch(_){}
     });
     const reports=[];
+    // These expectations describe the reviewed November dataset. Keep this
+    // integration fixture independent of the calendar on the machine running it.
+    async function reviewPage(){const page=await context.newPage();await page.clock.setFixedTime(new Date('2026-11-04T00:00:00Z'));return page;}
     for(const name of (process.argv.includes('--analytics-only')?[]:['index','fuel-surcharge-calculator','airlines','news','forecast','fuel-surcharge-graph','fuel-surcharge-2026-05','methodology','privacy'])){
-      const page=await context.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
+      const page=await reviewPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
       await page.goto(`${base}/${name}.html`,{waitUntil:'domcontentloaded'});await page.waitForTimeout(1800);
       const report=await page.evaluate(()=>({title:document.title,h1:[...document.querySelectorAll('h1')].map(x=>x.innerText),description:document.querySelector('meta[name=description]')?.content,canonical:document.querySelector('link[rel=canonical]')?.href,body:document.body.innerText.slice(0,2200),overflow:document.documentElement.scrollWidth>innerWidth,schemas:[...document.querySelectorAll('script[type="application/ld+json"]')].map(x=>JSON.parse(x.textContent)['@type']),gaScripts:document.querySelectorAll('script[src*=googletagmanager]').length}));
       report.page=name;report.errors=errors;
@@ -38,11 +41,15 @@ async function main(){
         const cards=page.locator('#miniGrid .mini-card');
         const states=await cards.locator('.mini-status').allTextContents();
         assert.equal(cards?await cards.count():0,9);
-        assert.equal(states.filter(s=>s==='11월 공시 완료').length,8);
-        assert.equal(states.filter(s=>s==='11월 공시 미완료').length,1);
-        assert.equal(await cards.locator('.mini-trend-label').count(),8);
+        assert.equal(states.filter(s=>s==='11월 공시 완료').length,9);
+        assert.equal(states.filter(s=>s==='11월 공시 미완료').length,0);
+        assert.equal(await cards.locator('.mini-trend-label').count(),9);
         assert.equal(await page.locator('#miniGrid [data-airline="KE"] .mini-trend-label').innerText(),'전월 대비 최소 8.0% 상승');
-        assert.equal(await page.locator('#miniGrid [data-airline="YP"] a').count(),0,'October link must not masquerade as November');
+        assert.equal(await page.locator('#miniGrid [data-airline="YP"] a').getAttribute('href'),'https://www.airpremia.com/a/ko/customer/notice/803','YP links to its verified November notice');
+        assert.equal(new Set(await page.locator('#introSection .intro-card-body').allTextContents()).size,3,'three distinct service explanations');
+        const summary=await page.locator('#decisionList li').first().innerText();
+        assert.match(summary,/11월 발권분 현재 적용/);
+        assert.equal((await page.locator('body').innerText()).split(summary).length-1,1,'one full notice-status summary');
         const detail=page.locator('#miniGrid [data-airline="OZ"] details'),toggle=detail.locator('summary');
         await toggle.focus();await toggle.press('Enter');assert.notEqual(await detail.getAttribute('open'),null);
         assert((await detail.innerText()).includes('10월 보관 기록을 포함한 참고 비율'));
@@ -59,7 +66,7 @@ async function main(){
       reports.push(report);await page.close();
     }
     if(!audit){
-      const p=await context.newPage();await p.goto(base);await p.waitForTimeout(1800);
+      const p=await reviewPage();await p.goto(base);await p.waitForTimeout(1800);
       // The screenshot pass rejected consent; reopen the real settings UI before opting in.
       await p.locator('.aero-privacy-open').click();
       await p.locator('#aeroConsentAnalytics').check();await p.locator('#aeroConsentSave').click();
@@ -101,7 +108,7 @@ async function main(){
       assert.equal(await p.evaluate(()=>dataLayer.length),size,'withdrawal stops custom tracking');
       await p.close();
       for(const [name,event] of [['forecast','forecast_view'],['fuel-surcharge-2026-05','archive_view']]){
-        const view=await context.newPage();await view.goto(base+'/'+name+'.html');await view.waitForTimeout(1600);
+        const view=await reviewPage();await view.goto(base+'/'+name+'.html');await view.waitForTimeout(1600);
         await view.evaluate(()=>AeroAnalytics.setConsent(true,false));
         await view.waitForFunction(event=>dataLayer.some(x=>x[0]==='event'&&x[1]===event),event);
         await view.evaluate(()=>{AeroAnalytics.setConsent(true,false);window.scrollTo(0,300);});

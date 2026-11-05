@@ -1,5 +1,6 @@
 (function(){
   'use strict';
+  var surfaceModifiedAt='2026-11-04T22:24:08+09:00';
 
   var september={
     KE:[48000,66000,91500,109500,153000,156000,216000,325500,354000],
@@ -128,7 +129,20 @@
   staticText.fr=['Comparaison des surtaxes octobre-novembre 2026','Comparez les montants officiels des compagnies sur la même route.','Base octobre · novembre reflété','10','Novembre 2026 reflété','Neuf compagnies incluses','Surtaxe minimale novembre'];
   staticText.de=['Zuschlagsvergleich October-November 2026','Vergleichen Sie offizielle Airline-Beträge auf derselben Route.','October-Basis · November berücksichtigt','10','November 2026 berücksichtigt','Neun Airlines enthalten','Niedrigster November-Zuschlag'];
   Object.keys(novemberState).forEach(function(l){periodNotes[l]=novemberState[l][1]+' '+novemberState[l][4];staticText[l][1]=reviewCopy[l][5];staticText[l][2]=novemberState[l][2];staticText[l][3]='11';staticText[l][4]=ui[l].thJune;staticText[l][5]=novemberState[l][2];});
+  function syncPeriodCopy(){
+    Object.keys(base).forEach(function(l){
+      var copy=window.AeroNoticePeriod?window.AeroNoticePeriod.copy(l):window.NOVEMBER_2026_NOTICE_COPY[l],p=base[l];
+      if(!copy)return;
+      Object.assign(p,{desc:copy.summary+' '+reviewCopy[l][1],sub:copy.short,notice:copy.summary,intro:reviewCopy[l][1],answerTitle:copy.short,answerBody:reviewCopy[l][5],readyTitle:copy.short,readyBadge:copy.short,readyBody:copy.period,faqBody:copy.summary+' '+reviewCopy[l][5]});
+      periodNotes[l]=copy.period+' '+reviewCopy[l][5];
+      staticText[l][2]=copy.short;staticText[l][5]=copy.period;
+      var values={'calc.metaDesc':p.desc,'calc.pageSub':p.sub,'calc.notice':p.notice,'calc.intro':p.intro,'calc.answer.title':p.answerTitle,'calc.answer.body':p.answerBody,'calc.card3.body':p.answerBody,'calc.readiness.title':p.readyTitle,'calc.readiness.badge':p.readyBadge,'calc.readiness.body':p.readyBody,'calc.faq.july.body':p.faqBody};
+      Object.assign(window.I18N[l],values);if(window.PAGE_I18N&&PAGE_I18N[l])Object.assign(PAGE_I18N[l],values);
+      if(l===lang())document.querySelectorAll('[data-i18n]').forEach(function(node){var key=node.getAttribute('data-i18n');if(Object.prototype.hasOwnProperty.call(values,key))node.textContent=values[key];});
+    });
+  }
   function fix(){
+    syncPeriodCopy();
     var p=base[lang()]||base.en,t=staticText[lang()]||staticText.en;
     document.title=p.title;
     var meta=document.querySelector('meta[name="description"]');if(meta)meta.content=p.desc;
@@ -188,7 +202,7 @@
     if(faqAnswers[0])faqAnswers[0].textContent=periodNotes[lang()]||periodNotes.en;
     if(window.AeroCalculatorPlatform)window.AeroCalculatorPlatform.refreshSurface();
     var faqItems=Array.from(document.querySelectorAll('#calculatorFaq .faq-item')).map(function(el){var q=el.querySelector('.faq-q'),a=el.querySelector('.faq-a');return q&&a?{'@type':'Question',name:q.textContent,acceptedAnswer:{'@type':'Answer',text:a.textContent}}:null;}).filter(Boolean);
-    document.querySelectorAll('script[type="application/ld+json"]').forEach(function(el){try{var d=JSON.parse(el.textContent);function update(x){if(!x||typeof x!=='object')return;if(x['@type']==='WebPage'||x['@type']==='WebApplication'){x.name=p.title;x.description=p.desc;x.dateModified='2026-10-29T07:58:49+09:00';x.inLanguage=lang();}if(x['@type']==='FAQPage'&&faqItems.length){x.mainEntity=faqItems;x.inLanguage=lang();x.dateModified='2026-10-29T07:58:49+09:00';}if(Array.isArray(x['@graph']))x['@graph'].forEach(update);}update(d);el.textContent=JSON.stringify(d);}catch(e){}});
+    document.querySelectorAll('script[type="application/ld+json"]').forEach(function(el){try{var d=JSON.parse(el.textContent);function update(x){if(!x||typeof x!=='object')return;if(x['@type']==='WebPage'||x['@type']==='WebApplication'){x.name=p.title;x.description=p.desc;x.dateModified=surfaceModifiedAt;x.inLanguage=lang();}if(x['@type']==='FAQPage'&&faqItems.length){x.mainEntity=faqItems;x.inLanguage=lang();x.dateModified=surfaceModifiedAt;}if(Array.isArray(x['@graph']))x['@graph'].forEach(update);}update(d);el.textContent=JSON.stringify(d);}catch(e){}});
   }
   window._fixNovemberCalculatorSurface=fix;
   window._fixOctoberCalculatorSurface=fix;
@@ -198,6 +212,7 @@
   window._fixOctoberCalculatorTerminalSurfaceCopy=fix;
   var render=window.renderSavingCalculator;
   if(typeof render==='function')window.renderSavingCalculator=function(){applyOfficialAmounts();var result=render.apply(this,arguments);fix();return result;};
+  window.addEventListener('aero:notice-period-change',function(){if(window.renderSavingCalculator)window.renderSavingCalculator();else fix();});
   if(typeof window.applyLanguage==='function')window.applyLanguage();
   if(window.renderSavingCalculator)window.renderSavingCalculator();
   fix();

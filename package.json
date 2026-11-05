@@ -13,6 +13,8 @@
     "verify:release": "node scripts/verify_release.cjs",
     "check:deployment": "node scripts/check_deployment_readiness.cjs",
     "test:platform": "node scripts/verify_platform.cjs",
+    "test:home": "node scripts/verify_home_period.cjs",
+    "test:graph": "node scripts/verify_graph_notices.cjs",
     "test:calculator": "node scripts/verify_calculator_platform.cjs",
     "validate:data": "node scripts/validate_data.js",
     "validate:data:changes": "node scripts/validate_data.js --base-ref HEAD",

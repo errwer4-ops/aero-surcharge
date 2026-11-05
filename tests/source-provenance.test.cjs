@@ -96,7 +96,11 @@ test('common six-language overview counts only source-reconciled notices and kee
   assert.equal(context.window.NOVEMBER_2026_SOURCE_REVIEW.verifiedCount, 8);
   assert.equal(copy.find(n => n.code === '7C').dataStatus, 'unconfirmed');
   assert.equal(copy.find(n => n.code === '7C').november[0], 44);
-  for (const lang of ['ko','en','ja','zh','fr','de']) assert.match(context.window.NOVEMBER_2026_NOTICE_COPY[lang].short, /8/);
+  for (const lang of ['ko','en','ja','zh','fr','de']) {
+    const overview=context.window.NOVEMBER_2026_NOTICE_COPY[lang];
+    assert.match(overview.summary, /8/);
+    assert.ok(overview.summary.includes(overview.short),'summary includes applicability separately from coverage');
+  }
   delete context.window.AeroSourceTrust;
   vm.runInNewContext(shared.slice(start, end), context);
   assert.equal(context.window.NOVEMBER_2026_SOURCE_REVIEW.verifiedCount, 0);

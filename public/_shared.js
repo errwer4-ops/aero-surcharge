@@ -16011,37 +16011,90 @@ window.NOVEMBER_2026_OFFICIAL_NOTICES.push({
     de:'Veröffentlichte USD-Einfachbeträge ab Korea für Zahlung/Ausstellung vom 1.–30. November 2026. Ab November gilt zur KRW-Umrechnung der Ausstellungstagskurs. Website-Umrechnungen sind keine tatsächlichen Zahlungsbeträge.'
   }
 });
-window.NOVEMBER_2026_NOTICE_COPY={
-  ko:{summary:'10월은 현재 적용 금액입니다. 11월 공시 확인: KE·OZ·7C·LJ·RS·BX·TW·ZE 8개사. 에어프레미아(YP)는 10월 금액만 유지하고 11월은 공시 확인 대기입니다. 11월 1~30일 발권·편도 기준이며 공시 통화와 구간을 유지합니다.',short:'10월 기준 · 11월 공시 8개사 반영',period:'항공사 공식 웹 공지에서 확인한 한국 출발 국제선 편도 금액입니다. 2026년 11월 1~30일 발권분에 적용합니다. 트리니티 6군의 대시는 공시 금액 없음이며 0원이 아닙니다.'},
-  en:{summary:'October currently applies. November notices confirmed: KE/OZ/7C/LJ/RS/BX/TW/ZE, eight airlines. YP retains October amounts; November awaits verification. November figures are one-way for ticketing November 1–30, with original currencies and bands preserved.',short:'October baseline · eight November notices reflected',period:'Korea-departure international one-way amounts verified on official airline web notices. Applies to ticketing November 1–30, 2026. Trinity group 6 has a dash: no published amount, not zero.'},
-  ja:{summary:'10月は現在適用額。11月はKE・OZ・7C・LJ・RS・BX・TW・ZEの8社を確認。YPは10月額を維持し、11月公示確認待ちです。11月1～30日発券の片道基準で、元の通貨と区間を維持します。',short:'10月基準・11月8社公示反映',period:'航空会社公式ウェブ公示で確認した韓国発国際線片道額です。2026年11月1～30日発券分。トリニティ6群のダッシュは公示額なしで、ゼロではありません。'},
-  zh:{summary:'10月为当前收费。11月已确认KE/OZ/7C/LJ/RS/BX/TW/ZE共8家。YP保留10月金额，11月等待公告核实。11月金额适用11月1日至30日出票、单程，保留原币种及区间。',short:'10月基准・11月8家公告已反映',period:'金额经航司官方网页公告核实，为韩国出发国际线单程费用，适用2026年11月1日至30日出票。Trinity第6组为横线，表示无公布金额，并非零。'},
-  fr:{summary:'Octobre reste en vigueur. Novembre confirmé pour KE/OZ/7C/LJ/RS/BX/TW/ZE, huit compagnies. YP conserve octobre ; novembre reste à vérifier. Montants aller simple pour émission du 1er au 30 novembre, devises et tranches originales conservées.',short:'Base octobre · huit avis novembre intégrés',period:'Montants aller simple au départ de Corée vérifiés sur les avis web officiels. Émission du 1er au 30 novembre 2026. Le tiret du groupe 6 Trinity signifie absence de montant publié, pas zéro.'},
-  de:{summary:'Oktober gilt aktuell. November für KE/OZ/7C/LJ/RS/BX/TW/ZE bestätigt, acht Airlines. YP behält Oktober; November noch zu prüfen. Einfachbeträge für Ausstellung 1.–30. November, ursprüngliche Währungen und Bänder bleiben erhalten.',short:'Oktober-Basis · acht November-Mitteilungen enthalten',period:'Internationale Einfachbeträge ab Korea laut geprüften offiziellen Web-Mitteilungen. Ausstellung 1.–30. November 2026. Trinity-Gruppe 6 hat einen Strich: kein veröffentlichter Betrag, nicht 0.'}
-};
+window.NOVEMBER_2026_NOTICE_COPY={};
 
-/* Source confirmation comes from exact reviewed primary-source snapshots.
- * Historical status strings and current web reachability are not proof. */
+/* The calendar determines applicability, never amounts or verification dates.
+ * Only reviewed notice data can establish a published month's coverage. */
 (function(){
-  var notices=window.NOVEMBER_2026_OFFICIAL_NOTICES||[],trust=window.AeroSourceTrust;
-  var review=trust?trust.summarize(notices,'2026.11'):{verified:[],pending:notices.map(function(n){return n.code;}),verifiedCount:0,pendingCount:notices.length};
-  window.NOVEMBER_2026_SOURCE_REVIEW=review;
-  notices.forEach(function(n){
-    var verified=review.verified.indexOf(n.code)>=0,source=verified&&trust.getNotice(n.code,'2026.11');
-    n.dataStatus=verified?'confirmed':'unconfirmed';n.sourceVerificationStatus=verified?'source_reconciled':'unresolved';
-    n.sourceVerifiedAt=source?source.sourceVerifiedAt:null;
-    n.sourcePublishedAt=source?source.publishedAt:null;n.sourceEffectiveFrom=source?source.effectiveFrom:null;n.sourceEffectiveTo=source?source.effectiveTo:null;
-  });
-  var count=review.verifiedCount,pending=review.pending.concat(notices.some(function(n){return n.code==='YP';})?[]:['YP']).join(' · ')||'—',codes=review.verified.join(' · ')||'—';
-  var copy={
-    ko:{summary:'10월 적용 중 · 11월 공시 완료 '+count+'개사: '+codes+'. 공시 미완료: '+pending+'.',short:'11월 공시 완료 '+count+'개사',period:'한국 출발 국제선 편도, 2026년 11월 발권 기준입니다. 대시는 공시 금액 없음이며 0원이 아닙니다.'},
-    en:{summary:'October currently applies. November notices available for '+count+' airlines: '+codes+'. Pending: '+pending+'.',short:count+' November notices available',period:'Korea-departure international one-way surcharges for November 2026 ticketing. A dash means no published amount, not zero.'},
-    ja:{summary:'10月適用中。11月公示掲載済み'+count+'社：'+codes+'。掲載待ち：'+pending+'。',short:'11月公示掲載済み'+count+'社',period:'韓国発国際線の片道・2026年11月発券基準。ダッシュは金額未掲載で、ゼロではありません。'},
-    zh:{summary:'10月适用中。11月公告已收录'+count+'家：'+codes+'。待收录：'+pending+'。',short:'11月公告已收录'+count+'家',period:'韩国出发国际线单程、2026年11月出票标准。横线表示未公布金额，并非零。'},
-    fr:{summary:'Octobre en vigueur. Avis de novembre disponibles pour '+count+' compagnies : '+codes+'. En attente : '+pending+'.',short:count+' avis de novembre disponibles',period:'Suppléments aller simple au départ de Corée pour émission en novembre 2026. Un tiret signifie absence de montant, pas zéro.'},
-    de:{summary:'Oktober gilt aktuell. November-Mitteilungen für '+count+' Airlines verfügbar: '+codes+'. Ausstehend: '+pending+'.',short:count+' November-Mitteilungen verfügbar',period:'Internationale Einfachbeträge ab Korea für Ausstellung im November 2026. Ein Strich bedeutet kein veröffentlichter Betrag, nicht null.'}
-  };
-  Object.keys(copy).forEach(function(lang){window.NOVEMBER_2026_NOTICE_COPY[lang]=copy[lang];});
+  var noticeMonth='2026-11',langs=['ko','en','ja','zh','fr','de'];
+  function koreaMonth(now){
+    return new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit'}).format(now===undefined?new Date():new Date(now));
+  }
+  function nextMonth(month){
+    var parts=month.split('-').map(Number),d=new Date(Date.UTC(parts[0],parts[1],1));
+    return d.toISOString().slice(0,7);
+  }
+  function state(now){
+    var current=koreaMonth(now),notices=window.NOVEMBER_2026_OFFICIAL_NOTICES||[],trust=window.AeroSourceTrust;
+    var review=trust?trust.summarize(notices,noticeMonth):{verified:[],pending:notices.map(function(n){return n.code;}),verifiedCount:0,pendingCount:notices.length};
+    var checked=review.verified.map(function(code){return trust.getNotice(code,noticeMonth).sourceVerifiedAt;}).filter(function(v){return v&&Number.isFinite(Date.parse(v));}).sort(function(a,b){return Date.parse(b)-Date.parse(a);});
+    return Object.assign({},review,{currentMonth:current,nextMonth:nextMonth(current),noticeMonth:noticeMonth,
+      relation:noticeMonth===current?'current':noticeMonth>current?'upcoming':'archive',sourceVerifiedAt:checked[0]||null});
+  }
+  function label(month,lang){
+    return new Intl.DateTimeFormat({ko:'ko-KR',en:'en-US',ja:'ja-JP',zh:'zh-CN',fr:'fr-FR',de:'de-DE'}[lang]||'en-US',
+      {timeZone:'UTC',year:'numeric',month:'long'}).format(new Date(month+'-01T00:00:00Z'));
+  }
+  function copy(lang,now){
+    if(lang==='cn')lang='zh';if(langs.indexOf(lang)<0)lang='en';
+    var s=state(now),current=label(s.currentMonth,lang),next=label(s.nextMonth,lang),published=label(s.noticeMonth,lang);
+    var count=s.verifiedCount,codes=s.verified.join(' · ')||'—',pending=s.pending.join(' · '),relation=s.relation;
+    var status={
+      ko:relation==='current'?published+' 발권분 현재 적용':relation==='upcoming'?published+' 발권분 적용 예정':current+' 자료 확인 대기 · '+published+' 공시는 과거 기록',
+      en:relation==='current'?published+' ticketing currently applies':relation==='upcoming'?published+' ticketing will apply next':current+' data pending · '+published+' notices are archived',
+      ja:relation==='current'?published+'発券分を現在適用':relation==='upcoming'?published+'発券分は適用予定':current+'の資料は確認待ち・'+published+'公示は過去記録',
+      zh:relation==='current'?published+'出票费用当前适用':relation==='upcoming'?published+'出票费用即将适用':current+'资料待确认・'+published+'公告为历史记录',
+      fr:relation==='current'?'Émissions de '+published+' : tarifs en vigueur':relation==='upcoming'?'Émissions de '+published+' : tarifs à venir':'Données de '+current+' en attente · avis de '+published+' archivés',
+      de:relation==='current'?'Ausstellung im '+published+': aktuell gültig':relation==='upcoming'?'Ausstellung im '+published+': künftig gültig':'Daten für '+current+' ausstehend · Mitteilungen für '+published+' archiviert'
+    }[lang];
+    var coverage={
+      ko:published+' 공시 완료 '+count+'개사: '+codes+'.'+(pending?' 공시 미완료: '+pending+'.':''),
+      en:published+' notices available for '+count+' airlines: '+codes+'.'+(pending?' Pending: '+pending+'.':''),
+      ja:published+'公示掲載済み'+count+'社：'+codes+'。'+(pending?'掲載待ち：'+pending+'。':''),
+      zh:published+'公告已收录'+count+'家：'+codes+'。'+(pending?'待收录：'+pending+'。':''),
+      fr:'Avis de '+published+' disponibles pour '+count+' compagnies : '+codes+'.'+(pending?' En attente : '+pending+'.':''),
+      de:'Mitteilungen für '+published+' von '+count+' Airlines verfügbar: '+codes+'.'+(pending?' Ausstehend: '+pending+'.':'')
+    }[lang];
+    var period={
+      ko:'한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다.',
+      en:'Korea-departure international one-way amounts for ticketing November 1–30, 2026. Original currencies and bands are preserved. A dash means no amount, not zero.',
+      ja:'韓国発国際線片道、2026年11月1～30日発券基準。元の通貨と区間を維持し、ダッシュは金額なしでゼロではありません。',
+      zh:'韩国出发国际线单程，适用2026年11月1日至30日出票。保留原币种和区间，横线表示无金额，并非零。',
+      fr:'Montants aller simple au départ de Corée, pour émission du 1er au 30 novembre 2026. Devises et tranches d’origine conservées ; un tiret signifie absence de montant, pas zéro.',
+      de:'Internationale Einfachbeträge ab Korea für Ausstellung vom 1.–30. November 2026. Ursprüngliche Währungen und Bänder bleiben erhalten; ein Strich bedeutet keinen Betrag, nicht null.'
+    }[lang];
+    return {summary:status+'. '+coverage,short:status,period:period,currentLabel:current,nextLabel:next,noticeLabel:published};
+  }
+  function refresh(){
+    var review=state(),notices=window.NOVEMBER_2026_OFFICIAL_NOTICES||[],trust=window.AeroSourceTrust;
+    window.NOVEMBER_2026_SOURCE_REVIEW=review;
+    notices.forEach(function(n){
+      var verified=review.verified.indexOf(n.code)>=0,source=verified&&trust.getNotice(n.code,noticeMonth);
+      n.dataStatus=verified?'confirmed':'unconfirmed';n.sourceVerificationStatus=verified?'source_reconciled':'unresolved';
+      n.sourceVerifiedAt=source?source.sourceVerifiedAt:null;n.sourcePublishedAt=source?source.publishedAt:null;
+      n.sourceEffectiveFrom=source?source.effectiveFrom:null;n.sourceEffectiveTo=source?source.effectiveTo:null;
+    });
+    langs.forEach(function(lang){window.NOVEMBER_2026_NOTICE_COPY[lang]=copy(lang);});
+    return review;
+  }
+  window.AeroNoticePeriod={state:state,copy:copy,refresh:refresh};
+  var lastMonth=refresh().currentMonth;
+  // An open/background tab also rolls over in Korea time. No data is fetched or
+  // promoted here; unsupported months remain pending and old notices archived.
+  function checkMonth(){
+    var current=koreaMonth();if(current===lastMonth)return;
+    lastMonth=current;refresh();
+    if(typeof window.dispatchEvent==='function'&&typeof window.CustomEvent==='function')window.dispatchEvent(new CustomEvent('aero:notice-period-change'));
+  }
+  if(typeof window.addEventListener==='function'){
+    window.addEventListener('focus',checkMonth);
+    document.addEventListener('visibilitychange',checkMonth);
+    function schedule(){
+      var now=new Date(),next=nextMonth(koreaMonth(now)),boundary=Date.parse(next+'-01T00:00:00+09:00');
+      window.setTimeout(function(){checkMonth();schedule();},Math.min(86400000,Math.max(1,boundary-now.getTime())));
+    }
+    schedule();
+  }
 })();
 
 /* October 19 market references do not reprice published airline fares. */
@@ -16237,4 +16290,53 @@ window.NOVEMBER_2026_NOTICE_COPY={
  });
  window.AERO_MARKET_NUMBERS_20261104=n;window.AERO_MARKET_NUMBERS_LATEST=n;
  window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{'2026-11-04':n});
+})();
+
+/* November 5 review: dated source observations are not live or period averages. */
+(function(){
+ var n=Object.assign({},window.AERO_MARKET_NUMBERS_20261104,{
+  asOf:'2026.11.05 09:00 KST',informationCutoff:'2026-11-05T09:00:00+09:00',lastUpdated:'2026-11-05T09:01:50+09:00',
+  usdKrw:1341.5,usdKrwDailyChange:0.5,usdKrwDate:'2026-11-04',usdKrwReferenceAt:'2026-11-04T15:30:00+09:00',
+  fxReferenceAt:'2026-11-04T15:30:00+09:00',usdKrwSeoulClose:1341.5,usdKrwSeoulCloseDate:'2026-11-04',
+  usdKrwKind:'Seoul_15:30_close_not_live_fixing_or_period_average',
+  fxReferenceSourceUrl:'https://www.newsis.com/view/NISX20261104_0003854868',usdKrwReferenceSource:'https://www.newsis.com/view/NISX20261104_0003854868',
+  fxSourcePublishedAt:'2026-11-04T15:48:20+09:00',fxVerificationStatus:'published_news_report_direct_body_and_metadata_verified',
+  brentUsdPerBbl:94.62,wtiUsdPerBbl:88.12,brentPct:-8.7,wtiPct:-8.3,brentDailyChangeUsd:-8.98,wtiDailyChangeUsd:-7.97,
+  crudePriceDate:'2026-11-04',crudePriceKind:'settlement',brentContractMonth:'2027-01',wtiContractMonth:'2026-12',
+  crudeSourceUrl:'https://www.channelnewsasia.com/business/oil-slumps-after-midterm-election-rebuke-trump-raises-bets-iran-war-exit-6519506',
+  crudeSourcePublishedAt:'2026-11-04T10:10:18+08:00',crudeSourceUpdatedAt:'2026-11-05T04:21:40+08:00',
+  crudeCorroboratingSourceUrl:'https://www.cyprus-mail.com/2026/11/04/oil-slumps-after-midterm-election-raises-bets-on-iran-war-exit',
+  crudeCorroboratingPublishedAt:'2026-11-04T20:34:08Z',
+  crudeVerificationStatus:'Reuters_CNA_direct_body_and_metadata_verified_not_exchange_table',
+  brentPreviousSettlement:null,wtiDecemberPreviousSettlement:null,crudePreviousSettlementDate:null,
+  brentContractSourceUrl:'https://www.prensalibre.com/ahora/economia/el-brent-cae-un-8-67-hasta-los-us94-62-dolares-tras-las-elecciones-legislativas-de-ee-uu/',
+  brentContractSourcePublishedAt:'2026-11-04T14:15:00-06:00',
+  wtiContractSourceUrl:'https://ca.finance.yahoo.com/news/tsx-closer-index-jumps-more-211427951.html',wtiContractSourcePublishedAt:'2026-11-04T21:14:27Z',
+  crudeIntradayAt:null,brentIntradayUsdPerBbl:null,wtiIntradayUsdPerBbl:null,brentIntradayPct:null,wtiIntradayPct:null,
+  singaporeJetFobReferenceUsdPerBbl:164.52,singaporeJetFobReferenceDate:'2026-11-03',commodityScopeJetUsdPerBbl:164.52,commodityScopeJetDate:'2026-11-03',
+  singaporeJetReferenceProvider:'CommodityScope',singaporeJetReferenceConfidence:'low',commodityScopeConfidence:'low',
+  singaporeJetFobReferenceSourceUrl:'https://commodityscope.com/prices/singapore-jet-kerosene',singaporeJetFobReferenceKind:'private_daily_indicative_assessment_low_confidence_not_Platts_MOPS',
+  singaporeJetDailyChangeUsd:-1.03,singaporeJetSourcePublishedAt:null,singaporeJetSourceAvailability:'direct_page_verified_before_2026-11-05T09:00:00+09:00_publication_clock_not_shown',
+  imoCumulativeConfirmedIncidents:128,imoCumulativeFatalities:24,imoListUpdated:'2026-11-03',
+  imoVerificationStatus:'official_dated_list_rechecked_before_cutoff_observation_date_unchanged',imoSourceCheckedAt:'2026-11-05T08:58:58+09:00',
+  windwardTrackedCrossings:3,windwardInboundCrossings:1,windwardOutboundCrossings:2,windwardObservationDate:'2026-11-03',windwardReportDate:'2026-11-04',
+  windwardSourceUrl:'https://insights.windward.ai/',windwardScope:'provider_observed_crossings_not_exhaustive_traffic_or_crude_bpd',
+  currentHormuzTraffic:null,hormuzLatestGulfCrudeFlowMillionBpd:null,
+  opecDecemberTargetDecision:'unchanged_at_September_2026_required_production',opecDecisionDate:'2026-11-01',opecNextMeetingDate:'2026-11-29',
+  opecSourceUrl:'https://www.opec.org/pr-detail/620-1-november-2026.html',
+  opecMaritimeWorkshopDate:'2026-11-04',opecMaritimeWorkshopSourceUrl:'https://www.opec.org/pr-detail/621-4-november-2026.html',
+  opecMaritimeWorkshopSourcePublishedAt:null,opecMaritimeWorkshopSourceLastModifiedAt:'2026-11-04T14:28:43Z',
+  opecMaritimeWorkshopSourceAvailability:'official_release_dated_November4_verified_before_cutoff_HTTP_last_modified_not_publication_time',
+  eiaJetInventoryMillionBarrels:41.782,eiaJetInventoryPreviousMillionBarrels:42.217,eiaJetInventoryWeeklyChangeMillionBarrels:-0.435,
+  eiaJetInventoryWeekEnded:'2026-10-30',eiaJetInventoryReportDate:'2026-11-04',
+  eiaJetInventoryKind:'US_kerosene_type_jet_fuel_stocks_week_ending_not_Singapore_price_or_MOPS',
+  eiaJetInventorySourceUrl:'https://www.eia.gov/petroleum/supply/weekly/archive/2026/2026_11_04/download/table6.csv',
+  decemberDirection:'flat_to_lower_possible',decemberDirectionConfidence:'low',decemberStageConfidence:'judgment_reserved',
+  decemberDirectionDrivers:['crude_settlements_lower','private_jet_assessment_lower','Seoul_daytime_USD_KRW_slightly_higher','maritime_supply_and_safety_risk_persists'],
+  decemberMopsUsdPerBbl:null,decemberAverageUsdKrw:null,decemberStageEstimate:null,decemberOfficialAmounts:null,
+  decemberMopsVerificationStatus:'official_October16_to_November15_period_average_unavailable_at_cutoff',
+  decemberNoticeVerificationStatus:'no_verified_December_Korea_departure_passenger_notice_at_cutoff'
+ });
+ window.AERO_MARKET_NUMBERS_20261105=n;window.AERO_MARKET_NUMBERS_LATEST=n;
+ window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{'2026-11-05':n});
 })();

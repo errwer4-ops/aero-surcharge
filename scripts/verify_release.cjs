@@ -24,12 +24,14 @@ async function run(name,args){
 }
 async function main(){
   report.deploymentReview=check(root);
+  const readiness=report.deploymentReview;
+  readiness.warnings.forEach(message=>console.warn('REVIEW NOTE: '+message));
+  // CI and production enforce the same scoped review. A baseline match is not
+  // external-service verification, and never skips the technical checks below.
+  if(!readiness.passed){
+    report.blocked='Operational settings review required';console.error(readiness.errors.join('\n'));process.exitCode=1;return;
+  }
   if(build){
-    const readiness=report.deploymentReview;
-    // Production cannot silently adopt disabled ads or an unreviewed release.
-    if(process.env.VERCEL_ENV!=='preview'&&!readiness.passed){
-      report.blocked='Production review is pending';console.error(readiness.errors.join('\n'));process.exitCode=1;return;
-    }
     if(process.env.VERCEL){
       const cli=path.join(path.dirname(require.resolve('playwright/package.json')),'cli.js');
       if(!await run('install-browser',[cli,'install','chromium'])){process.exitCode=1;return;}
@@ -44,6 +46,8 @@ async function main(){
     ['urls',['scripts/audit_seo_urls.cjs','--browser','--pages=news,forecast,fuel-surcharge-calculator','--report='+path.join(output,'url-runtime.json')]],
     ['myrealtrip',['scripts/verify_myrealtrip_integration.js']],
     ['platform',['scripts/verify_platform.cjs']],
+    ['home-period',['scripts/verify_home_period.cjs']],
+    ['graph-notices',['scripts/verify_graph_notices.cjs']],
     ['calculator',['scripts/verify_calculator_platform.cjs']],
     ['seo-snapshot',['scripts/sync_static_snapshots.cjs','--check']]
   ];

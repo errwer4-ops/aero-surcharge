@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  var stamp='2026-10-29T07:58:49+09:00';
+  var stamp='2026-11-04T23:04:37+09:00';
   var october={
     KE:[49000,65800,98000,116200,162400,168000,226800,322000,362600],
     OZ:[53400,79400,104000,128700,153300,178000,202600,251900,301200],
@@ -121,13 +121,35 @@
   links.YP='https://www.airpremia.com/a/ko/customer/notice/791';
   AIRLINES.forEach(function(a){var n=(window.NOVEMBER_2026_OFFICIAL_NOTICES||[]).find(function(n){return n.code===a.code;});a.nov=n?(n.displayBandIndices?n.displayBandIndices.map(function(i){return i===null?null:n.november[i];}):n.november.slice()):a.bands.map(function(){return null;});a.novemberNoticeUrl=n?n.url:null;});
   AIRLINES.forEach(function(a){a.oct=october[a.code]?october[a.code].slice():a.bands.map(function(){return null;});if(links[a.code])a.url=links[a.code];});
-  Object.keys(packs).forEach(function(lang){var p=packs[lang];GRAPH_I18N[lang]=GRAPH_I18N[lang]||{};window.I18N[lang]=window.I18N[lang]||{};var values={
+  var graphLabels={
+    ko:['공시 구간 없음','환산 기준 없음','금액 없음','유류할증료 전망','사이트 비교용 참고환율','실시간 시장환율·항공사 산정평균·실제 결제환율이 아닙니다.'],
+    en:['No published band','Conversion rate unavailable','No amount','Fuel surcharge outlook','Site comparison reference rate','Not live market FX, an airline calculation average or a payment rate.'],
+    ja:['公示区間なし','換算レートなし','金額なし','燃油サーチャージ見通し','サイト比較用参考レート','リアルタイム市場レート・航空会社の算定平均・決済レートではありません。'],
+    zh:['无公告区间','无换算汇率','无金额','燃油附加费展望','网站比较参考汇率','并非实时市场汇率、航司计算期均值或实际支付汇率。'],
+    fr:['Aucune tranche publiée','Taux de conversion indisponible','Aucun montant','Perspectives des surtaxes','Taux indicatif de comparaison du site','Ni taux de marché en temps réel, ni moyenne de calcul de compagnie, ni taux de paiement.'],
+    de:['Kein veröffentlichtes Band','Umrechnungskurs nicht verfügbar','Kein Betrag','Ausblick auf Kerosinzuschläge','Vergleichsreferenzkurs der Website','Kein Echtzeit-Marktkurs, Airline-Berechnungsdurchschnitt oder Zahlungskurs.']
+  };
+  function installCopy(){Object.keys(packs).forEach(function(lang){var p=packs[lang];GRAPH_I18N[lang]=GRAPH_I18N[lang]||{};window.I18N[lang]=window.I18N[lang]||{};var values={
     'graph.metaTitle':p.title,'graph.metaDesc':p.desc,'graph.pageSub':p.sub,'graph.h1':p.h1,'graph.notice':p.notice,'graph.intro':p.intro,
     'graph.answer.title':p.answerTitle,'graph.answer.body':p.answerBody,'graph.card1.title':p.card1,'graph.card1.body':p.card1Body,
     'graph.card2.title':p.card2,'graph.card2.body':p.card2Body,'graph.filter.oct':p.oct,'graph.th.oct':p.thOct,'graph.th.change':p.change,
     'graph.chartNote':p.note,'graph.tableNote':p.table,'graph.faq.a1':p.faq1,'graph.faq.q2':p.faqQ,'graph.faq.a2':p.faqA,'graph.related.may':p.related,
-    'graph.filter.nov':p.nov,'graph.th.nov':p.thNov,'graph.pending.nov':p.pending,'graph.notice.oct':p.octNotice,'graph.notice.nov':p.novNotice
-  };Object.assign(GRAPH_I18N[lang],values);Object.assign(window.I18N[lang],values);});
+    'graph.filter.nov':p.nov,'graph.th.nov':p.thNov,'graph.pending.nov':p.pending,'graph.notice.oct':p.octNotice,'graph.notice.nov':p.novNotice,
+    'graph.noBand':graphLabels[lang][0],'graph.rateUnavailable':graphLabels[lang][1],'graph.noData':graphLabels[lang][2],
+    'graph.related.june':graphLabels[lang][3]
+  };if(lang==='zh')values['airline.YP']='Air Premia (YP)';
+  Object.assign(GRAPH_I18N[lang],values);Object.assign(window.I18N[lang],values);});}
+  function syncPeriodCopy(){
+    var missing={ko:'11월 금액 없음',en:'No November amount',ja:'11月金額なし',zh:'无11月金额',fr:'Aucun montant pour novembre',de:'Kein November-Betrag'};
+    Object.keys(packs).forEach(function(lang){
+      var copy=window.AeroNoticePeriod?window.AeroNoticePeriod.copy(lang):window.NOVEMBER_2026_NOTICE_COPY[lang],p=packs[lang],t=novemberCopy[lang];
+      var rate=window.RATES&&window.RATES.USD;
+      var rateNote=typeof rate==='number'&&Number.isFinite(rate)&&rate>0?' '+graphLabels[lang][4]+': 1 USD = '+(1/rate).toLocaleString('en-US',{maximumFractionDigits:2})+' KRW. '+graphLabels[lang][5]:'';
+      if(copy)Object.assign(p,{desc:copy.summary,sub:copy.short,notice:copy.summary,intro:copy.period,card1Body:t[5],note:t[5]+rateNote,table:copy.period+' '+t[4],faq1:copy.summary,pending:missing[lang]});
+    });
+    installCopy();
+  }
+  syncPeriodCopy();
   var stray=document.getElementById('octoberGraphSummary');if(stray)stray.remove();
   document.title=packs.ko.title;
   var desc=document.querySelector('meta[name="description"]');if(desc)desc.content=packs.ko.desc;
@@ -136,6 +158,7 @@
   document.querySelectorAll('script[type="application/ld+json"]').forEach(function(node){try{var data=JSON.parse(node.textContent);data.dateModified=stamp;if(data['@type']==='WebPage'){data.name=packs.ko.title;data.description=packs.ko.desc;}node.textContent=JSON.stringify(data);}catch(e){}});
   var renderBase=renderPage;
   renderPage=function(){
+    syncPeriodCopy();
     renderBase();
     var l=(window.SHARED_STATE&&SHARED_STATE.lang)||'ko',p=packs[l]||packs.en;
     document.title=p.title;
@@ -143,6 +166,7 @@
     document.querySelectorAll('meta[property="og:title"],meta[name="twitter:title"]').forEach(function(el){el.content=p.title;});
     document.querySelectorAll('script[type="application/ld+json"]').forEach(function(el){try{var d=JSON.parse(el.textContent);function update(x){if(!x||typeof x!=='object')return;if(x['@type']==='WebPage'){x.name=p.title;x.description=p.desc;x.dateModified=stamp;x.inLanguage=l;}if(x['@type']==='FAQPage'){x.mainEntity=[{'@type':'Question',name:p.h1+'?',acceptedAnswer:{'@type':'Answer',text:p.faq1}},{'@type':'Question',name:p.faqQ,acceptedAnswer:{'@type':'Answer',text:p.faqA}}];x.dateModified=stamp;x.inLanguage=l;}if(Array.isArray(x['@graph']))x['@graph'].forEach(update);}update(d);el.textContent=JSON.stringify(d);}catch(e){}});
   };
+  window.addEventListener('aero:notice-period-change',function(){renderPage();});
   filterState.month='recent4';
   renderPage();
 })();

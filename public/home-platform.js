@@ -4,6 +4,7 @@
   if(!core)return;
   function notice(code){return (window.NOVEMBER_2026_OFFICIAL_NOTICES||[]).find(function(n){return n.code===code;});}
   function language(){return (window.getCurrentLang?window.getCurrentLang():'ko')==='ko';}
+  function locale(){var lang=window.getCurrentLang?window.getCurrentLang():window.SHARED_STATE&&window.SHARED_STATE.lang||'ko';return lang==='cn'?'zh':lang;}
   function esc(value){return String(value==null?'':value).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
   function noticeOnlyEvaluator(){return window.AeroSourceTrust?{evaluate:window.AeroSourceTrust.evaluateNotice}:null;}
   function recordFor(code,index,month,dep,arr,routeSpecific){
@@ -55,8 +56,9 @@
     return {month:month,url:core.safeUrl(url),total:total,verified:verified,status:total&&verified===total?'verified':verified?'partial':total?'pending':'missing',sourceVerifiedAt:latestTime(records.map(function(r){return r.verifiedAt;})),collectedAt:latestTime(records.map(function(r){return r.collectedAt;}))};
   }
   function landingState(code){
-    var current=landingMonthState(code,koreaMonth()),latest=landingMonthState(code,notice(code)?'2026-11':'2026-10');
-    return {current:current,latest:latest,publication:landingMonthState(code,'2026-11')};
+    var period=window.AeroNoticePeriod&&window.AeroNoticePeriod.state(),noticeMonth=period?period.noticeMonth:'2026-11';
+    var current=landingMonthState(code,period?period.currentMonth:koreaMonth()),latest=landingMonthState(code,notice(code)?noticeMonth:'2026-10');
+    return {current:current,latest:latest,publication:landingMonthState(code,noticeMonth)};
   }
   function summarizeComparison(pairs){
     if(!pairs.length)return null;
@@ -102,11 +104,24 @@
   }
   function updateStatusText(siteEditedAt){
     var text=document.getElementById('statusText');if(!text)return;
-    var states=(window.KR_AIRLINES||[]).flatMap(function(al){var state=landingState(al.code);return [state.current,state.latest];}),ko=language();
-    function stamp(value){return value&&Number.isFinite(Date.parse(value))?new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(new Date(value))+' KST':ko?'미기록':'not recorded';}
-    text.textContent=(ko?'사이트 문구 수정: ':'Site text edited: ')+stamp(siteEditedAt)+' · '+(ko?'공시 확인: ':'Notices checked: ')+stamp(latestTime(states.map(function(s){return s.sourceVerifiedAt;})))+' · '+(ko?'공시 수집: ':'Notice collected: ')+stamp(latestTime(states.map(function(s){return s.collectedAt;})));
+    var labels={
+      ko:{notice:'공시 확인',market:'시장 자료 기준',edited:'사이트 문구 수정',collected:'공시 수집',feed:'별도 피드 파일 갱신',missing:'미기록'},
+      en:{notice:'Notices checked',market:'Market information cutoff',edited:'Site text edited',collected:'Notice collected',feed:'Separate feed file updated',missing:'not recorded'},
+      ja:{notice:'公示確認',market:'市場資料基準',edited:'サイト文言更新',collected:'公示取得',feed:'別途フィードファイル更新',missing:'記録なし'},
+      zh:{notice:'公告核实',market:'市场资料截至',edited:'网站文字更新',collected:'公告收集',feed:'独立数据文件更新',missing:'未记录'},
+      fr:{notice:'Avis vérifiés',market:'Date limite des données de marché',edited:'Texte du site modifié',collected:'Avis collectés',feed:'Fichier de données distinct mis à jour',missing:'non consigné'},
+      de:{notice:'Mitteilungen geprüft',market:'Stichtag der Marktdaten',edited:'Website-Text geändert',collected:'Mitteilungen erfasst',feed:'Separate Datendatei aktualisiert',missing:'nicht erfasst'}
+    },copy=labels[locale()]||labels.en;
+    var states=(window.KR_AIRLINES||[]).flatMap(function(al){var state=landingState(al.code);return [state.current,state.latest];});
+    var period=window.AeroNoticePeriod&&window.AeroNoticePeriod.state(),market=window.AERO_MARKET_NUMBERS_LATEST||{};
+    function stamp(value){return value&&Number.isFinite(Date.parse(value))?new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(new Date(value))+' KST':copy.missing;}
+    var verifiedAt=period&&period.sourceVerifiedAt||latestTime(states.map(function(s){return s.sourceVerifiedAt;}));
+    text.textContent=copy.notice+': '+stamp(verifiedAt)+' · '+copy.market+': '+stamp(market.informationCutoff)+' · '+copy.edited+': '+stamp(siteEditedAt);
+    var details=[],collectedAt=latestTime(states.map(function(s){return s.collectedAt;}));
+    if(collectedAt)details.push(copy.collected+': '+stamp(collectedAt));
     var feedDate=window.FEED&&window.FEED.meta&&window.FEED.meta.lastUpdated;
-    if(feedDate)text.textContent+=' · '+(ko?'별도 피드 파일 갱신: ':'Separate feed file updated: ')+stamp(feedDate);
+    if(feedDate)details.push(copy.feed+': '+stamp(feedDate));
+    text.title=details.join(' · ');
     var strip=document.getElementById('statusStrip');if(strip)strip.style.display='flex';
   }
   function install(){
@@ -151,5 +166,9 @@
     if(window.renderLanding)window.renderLanding();
     if(window._searchCtx)window.renderCards('all');
   }
+  if(window.addEventListener)window.addEventListener('aero:notice-period-change',function(){
+    (window.KR_AIRLINES||[]).forEach(function(al){al.hasOfficialNotice=landingState(al.code).current.status==='verified';});
+    if(window.renderLanding)window.renderLanding();
+  });
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',install,{once:true});else install();
 })();

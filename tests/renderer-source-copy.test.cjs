@@ -6,15 +6,19 @@ const shared = fs.readFileSync('public/_shared.js', 'utf8');
 const langs = ['ko', 'en', 'ja', 'zh', 'fr', 'de'];
 
 // Exercise the actual final copy installers without network, browser or data mutation.
-function render(file, lang = 'ko', mutate) {
+function render(file, lang = 'ko', mutate, now = '2026-11-04T00:00:00Z') {
   const notices = loadNotices(shared); if (mutate) mutate(notices);
+  class ReviewDate extends Date {
+    constructor(...args) { super(...(args.length ? args : [now])); }
+    static now() { return new Date(now).getTime(); }
+  }
   const nodes = new Map(), schemas = [{ textContent:JSON.stringify({'@type':'WebApplication', description:'All nine airlines confirmed'}) }];
   const faqAnswer = { textContent:'' }, faqQuestion = { textContent:'Current notice coverage?' };
-  const context = { console, setInterval:() => 1, clearInterval:() => {},
+  const context = { console, Date:ReviewDate, setInterval:() => 1, clearInterval:() => {}, setTimeout:() => 1, addEventListener:() => {},
     I18N:Object.fromEntries(langs.map(l => [l, {}])), SAVING_UI_TEXT:Object.fromEntries(langs.map(l => [l, {}])),
     AUGUST_2026_NOTICE_LINKS:{}, AUGUST_2026_OFFICIAL_AMOUNTS:{}, NOVEMBER_2026_OFFICIAL_NOTICES:notices,
     AeroSourceTrust:trust, SHARED_STATE:{lang}, getCurrentLang:() => lang,
-    renderLanding:() => {}, document:{readyState:'complete', title:'',
+    renderLanding:() => {}, document:{readyState:'complete', title:'', addEventListener:() => {},
       querySelector(selector) {
         if (selector.startsWith('meta[')) {
           if (!nodes.has(selector)) nodes.set(selector, {content:''});
@@ -41,12 +45,28 @@ function render(file, lang = 'ko', mutate) {
   return {context, nodes, schemas, faqAnswer};
 }
 
-test('final home and calculator copy follows source count in all six languages', () => {
+test('home has three distinct explanations and one notice summary in all six languages', () => {
+  for (const lang of langs) {
+    const {context, nodes} = render('home-sep20.js', lang), copy=context.I18N[lang];
+    const intro=[1,2,3].map(n=>copy['index.intro'+n+'.body']);
+    assert.ok(intro.every(value=>typeof value==='string'&&value.length>20),lang+' complete introduction');
+    assert.equal(new Set(intro).size,3,lang+' introduction has three separate purposes');
+    const summary=context.NOVEMBER_2026_NOTICE_COPY[lang].summary;
+    assert.equal(copy['index.decision.line1'],summary,lang+' notice summary');
+    const visibleKeys=['index.heroSub','index.signal1','index.signal2','index.signal3','index.intro1.body','index.intro2.body','index.intro3.body','index.decision.line1','index.decision.line2','index.decision.line3','index.decision.conclusion','index.quick.compare.desc','index.quick.jul.desc','aff.myrealtrip.desc'];
+    assert.equal(visibleKeys.filter(key=>String(copy[key]||'').includes(summary)).length,1,lang+' one full status summary');
+    assert.ok(!nodes.get('meta[name="description"]').content.includes(summary),lang+' metadata explains service');
+  }
+});
+
+test('final metadata stays consistent and calculator follows source count in all six languages', () => {
   for (const file of ['home-sep20.js', 'calculator-oct20.js']) for (const lang of langs) {
     const {context, nodes} = render(file, lang);
     const description = nodes.get('meta[name="description"]').content;
-    assert.match(description, /9/);
-    assert.ok(description.includes(context.NOVEMBER_2026_NOTICE_COPY[lang].summary));
+    if(file.startsWith('calculator')) {
+      assert.match(description, /9/);
+      assert.ok(description.includes(context.NOVEMBER_2026_NOTICE_COPY[lang].summary));
+    }
     assert.equal(nodes.get('meta[property="og:description"]').content, description);
     assert.equal(nodes.get('meta[name="twitter:description"]').content, description);
     assert.doesNotMatch(description, /인하됐|decreased/);
@@ -57,18 +77,45 @@ test('changed primary-source amount reduces displayed count and leaves source li
   const mutate = notices => { notices.find(n => n.code === 'LJ').november[0]++; };
   for (const file of ['home-sep20.js', 'calculator-oct20.js']) {
     const {context, nodes} = render(file, 'ko', mutate);
-    assert.match(nodes.get('meta[name="description"]').content, /공시 완료 8개사/);
-    assert.match(nodes.get('meta[name="description"]').content, /공시 미완료: LJ\./);
+    const status=file.startsWith('home')?context.I18N.ko['index.decision.line1']:nodes.get('meta[name="description"]').content;
+    assert.match(status, /공시 완료 8개사/);
+    assert.match(status, /공시 미완료: LJ\./);
     if (file.startsWith('calculator')) assert.match(context.I18N.ko['calc.official.item.lj'], /11월 확인 중/);
   }
 });
 
+test('Korea-time month boundaries change applicability without inventing notices or renewing verification', () => {
+  const {context}=render('home-sep20.js'), calendar=context.AeroNoticePeriod;
+  const original=JSON.stringify(context.NOVEMBER_2026_OFFICIAL_NOTICES);
+  for(const [now,current,next,relation] of [
+    ['2026-10-31T14:59:59Z','2026-10','2026-11','upcoming'],
+    ['2026-10-31T15:00:00Z','2026-11','2026-12','current'],
+    ['2026-11-30T14:59:59Z','2026-11','2026-12','current'],
+    ['2026-11-30T15:00:00Z','2026-12','2027-01','archive'],
+    ['2026-12-31T14:59:59Z','2026-12','2027-01','archive'],
+    ['2026-12-31T15:00:00Z','2027-01','2027-02','archive']
+  ]) {
+    const state=calendar.state(now);
+    assert.equal(state.currentMonth,current);assert.equal(state.nextMonth,next);assert.equal(state.relation,relation);
+    assert.equal(state.noticeMonth,'2026-11');assert.equal(state.verifiedCount,9);
+    assert.equal(state.sourceVerifiedAt,'2026-10-29T07:54:00+09:00');
+    for(const lang of langs) {
+      const copy=calendar.copy(lang,now);
+      assert.ok(copy.summary.includes(copy.short));assert.ok(copy.short.includes(copy.noticeLabel));
+      if(relation==='archive')assert.ok(copy.short.includes(copy.currentLabel));
+    }
+  }
+  assert.equal(JSON.stringify(context.NOVEMBER_2026_OFFICIAL_NOTICES),original,'calendar cannot create amounts, notices or verification timestamps');
+});
+
 test('October archived scope and pending-not-unpublished distinction reach FAQ and WebApplication schema', () => {
   const {context, nodes, schemas, faqAnswer} = render('calculator-oct20.js');
-  assert.match(context.I18N.ko['calc.notice'], /노선과 발권월/);
+  assert.match(context.I18N.ko['calc.notice'], /11월 발권분 현재 적용/);
+  assert.match(context.I18N.ko['calc.intro'], /노선과 발권월/);
   assert.match(context.SAVING_UI_TEXT.ko.thMay, /10월 공시/);
   assert.match(context.SAVING_UI_TEXT.ko.julyPending, /확인 중/);
-  assert.match(faqAnswer.textContent, /노선과 발권월/);
+  assert.match(faqAnswer.textContent, /2026년 11월 1~30일 발권 기준/);
+  assert.match(faqAnswer.textContent, /확인된 두 달의 금액을 같은 조건/);
   assert.equal(JSON.parse(schemas[0].textContent).description, nodes.get('meta[name="description"]').content);
   const home = render('home-sep20.js');
   assert.equal(home.context.I18N.ko['index.card.augustBase'], '10월 보관 데이터');

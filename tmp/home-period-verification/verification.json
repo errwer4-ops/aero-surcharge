@@ -1,0 +1,168 @@
+{
+  "reviewTime": "2026-11-04T00:00:00Z",
+  "results": [
+    {
+      "case": "initial-no-javascript",
+      "intro": [
+        "인천·김포·부산·청주·대구 등 한국 출발 국제선의 유류할증료를 항공사와 노선별로 조회합니다. 항공사별 거리 구간과 노선군에 맞는 금액을 확인할 수 있습니다.",
+        "항공사 공식 공지의 금액·통화·적용 기간을 확인하고 원문 링크를 제공합니다. 원문 검증이 끝난 데이터와 확인 중인 데이터를 구분해 표시합니다.",
+        "여러 항공사의 공지를 한 화면에서 살펴보고, 같은 항공사·통화·구간의 월별 변화를 비교할 수 있습니다. 유류할증료가 항공권 총액에 미치는 차이를 파악하는 데 도움이 됩니다."
+      ],
+      "summary": "2026년 11월 발권분 현재 적용. 2026년 11월 공시 완료 9개사: KE · OZ · 7C · LJ · RS · BX · TW · ZE · YP.",
+      "ypLink": "https://www.airpremia.com/a/ko/customer/notice/803"
+    },
+    {
+      "case": "ko",
+      "intro": [
+        "인천·김포·부산·청주·대구 등 한국 출발 국제선의 유류할증료를 항공사와 노선별로 조회합니다. 항공사별 거리 구간과 노선군에 맞는 금액을 확인할 수 있습니다.",
+        "항공사 공식 공지의 금액·통화·적용 기간을 확인하고 원문 링크를 제공합니다. 원문 검증이 끝난 데이터와 확인 중인 데이터를 구분해 표시합니다.",
+        "여러 항공사의 공지를 한 화면에서 살펴보고, 같은 항공사·통화·구간의 월별 변화를 비교할 수 있습니다. 유류할증료가 항공권 총액에 미치는 차이를 파악하는 데 도움이 됩니다."
+      ],
+      "summary": "2026년 11월 발권분 현재 적용. 2026년 11월 공시 완료 9개사: KE · OZ · 7C · LJ · RS · BX · TW · ZE · YP.",
+      "ypLink": "https://www.airpremia.com/a/ko/customer/notice/803",
+      "delayedSeconds": 14,
+      "errors": []
+    },
+    {
+      "case": "ja",
+      "intro": [
+        "仁川・金浦・釜山・清州・大邱など韓国発国際線の燃油サーチャージを検索します。各社の距離区間や路線群に対応する金額を確認できます。",
+        "航空会社公式公示の金額・通貨・適用期間を確認し、原文リンクを提供します。原文確認済みのデータと確認中のデータを区別して表示します。",
+        "複数社の公示を一画面で確認し、同じ航空会社・通貨・区間の月別変化を比較できます。燃油サーチャージが航空券総額に与える差を把握できます。"
+      ],
+      "summary": "2026年11月発券分を現在適用. 2026年11月公示掲載済み9社：KE · OZ · 7C · LJ · RS · BX · TW · ZE · YP。",
+      "ypLink": "https://www.airpremia.com/a/ko/customer/notice/803",
+      "delayedSeconds": 14,
+      "errors": []
+    },
+    {
+      "case": "en",
+      "intro": [
+        "Look up international surcharges departing Korean airports such as Incheon, Gimpo, Busan, Cheongju and Daegu. Amounts follow each airline’s distance bands or route groups.",
+        "We check amounts, currencies and effective periods against official airline notices and link to the originals. Source-verified data is distinguished from data still awaiting review.",
+        "Review multiple airline notices on one screen and compare monthly changes for the same airline, currency and band. This helps you understand the surcharge’s contribution to total airfare."
+      ],
+      "summary": "November 2026 ticketing currently applies. November 2026 notices available for 9 airlines: KE · OZ · 7C · LJ · RS · BX · TW · ZE · YP.",
+      "ypLink": "https://www.airpremia.com/a/ko/customer/notice/803",
+      "delayedSeconds": 14,
+      "errors": []
+    },
+    {
+      "case": "de",
+      "intro": [
+        "Internationale Zuschläge ab Incheon, Gimpo, Busan, Cheongju, Daegu und anderen koreanischen Flughäfen nachschlagen. Die Beträge richten sich nach den Entfernungsbändern oder Streckengruppen der jeweiligen Airline.",
+        "Beträge, Währungen und Gültigkeitszeiträume werden anhand offizieller Airline-Mitteilungen geprüft und mit den Originalquellen verlinkt. Geprüfte Angaben bleiben von noch offenen Prüfungen getrennt.",
+        "Mehrere Airline-Mitteilungen auf einer Seite ansehen und Monatsänderungen derselben Airline, Währung und Gruppe vergleichen. So wird der Anteil des Zuschlags am gesamten Flugpreis verständlich."
+      ],
+      "summary": "Ausstellung im November 2026: aktuell gültig. Mitteilungen für November 2026 von 9 Airlines verfügbar: KE · OZ · 7C · LJ · RS · BX · TW · ZE · YP.",
+      "ypLink": "https://www.airpremia.com/a/ko/customer/notice/803",
+      "delayedSeconds": 14,
+      "errors": []
+    },
+    {
+      "case": "zh",
+      "intro": [
+        "查询仁川、金浦、釜山、清州、大邱等韩国机场出发的国际线燃油附加费。金额对应各航司的距离区间或航线组。",
+        "核对航司官方公告中的金额、币种和适用期间，并提供原文链接。已完成原文核验的数据与仍待核实的数据分别显示。",
+        "在一个页面查看多家航司公告，比较同一航司、币种及区间的月度变化，了解燃油附加费对机票总价的影响。"
+      ],
+      "summary": "2026年11月出票费用当前适用. 2026年11月公告已收录9家：KE · OZ · 7C · LJ · RS · BX · TW · ZE · YP。",
+      "ypLink": "https://www.airpremia.com/a/ko/customer/notice/803",
+      "delayedSeconds": 14,
+      "errors": []
+    },
+    {
+      "case": "fr",
+      "intro": [
+        "Recherchez les surtaxes des vols internationaux au départ d’Incheon, Gimpo, Busan, Cheongju, Daegu et d’autres aéroports coréens. Les montants suivent les tranches de distance ou groupes de lignes de chaque compagnie.",
+        "Les montants, devises et périodes d’application sont contrôlés à partir des avis officiels, avec un lien vers l’original. Les données vérifiées sont distinguées de celles encore à examiner.",
+        "Consultez plusieurs avis sur un seul écran et comparez les variations mensuelles pour une même compagnie, devise et tranche. Vous pouvez ainsi mieux comprendre la part de la surtaxe dans le prix du billet."
+      ],
+      "summary": "Émissions de novembre 2026 : tarifs en vigueur. Avis de novembre 2026 disponibles pour 9 compagnies : KE · OZ · 7C · LJ · RS · BX · TW · ZE · YP.",
+      "ypLink": "https://www.airpremia.com/a/ko/customer/notice/803",
+      "delayedSeconds": 14,
+      "errors": []
+    },
+    {
+      "case": "KST boundary",
+      "before": "2026-10-31T14:59:59Z",
+      "after": "2026-10-31T15:00:00Z",
+      "state": {
+        "verified": [
+          "KE",
+          "OZ",
+          "7C",
+          "LJ",
+          "RS",
+          "BX",
+          "TW",
+          "ZE",
+          "YP"
+        ],
+        "pending": [],
+        "verifiedCount": 9,
+        "pendingCount": 0,
+        "currentMonth": "2026-11",
+        "nextMonth": "2026-12",
+        "noticeMonth": "2026-11",
+        "relation": "current",
+        "sourceVerifiedAt": "2026-10-29T07:54:00+09:00"
+      },
+      "summary": "2026년 11월 발권분 현재 적용. 2026년 11월 공시 완료 9개사: KE · OZ · 7C · LJ · RS · BX · TW · ZE · YP."
+    },
+    {
+      "case": "KST boundary",
+      "before": "2026-11-30T14:59:59Z",
+      "after": "2026-11-30T15:00:00Z",
+      "state": {
+        "verified": [
+          "KE",
+          "OZ",
+          "7C",
+          "LJ",
+          "RS",
+          "BX",
+          "TW",
+          "ZE",
+          "YP"
+        ],
+        "pending": [],
+        "verifiedCount": 9,
+        "pendingCount": 0,
+        "currentMonth": "2026-12",
+        "nextMonth": "2027-01",
+        "noticeMonth": "2026-11",
+        "relation": "archive",
+        "sourceVerifiedAt": "2026-10-29T07:54:00+09:00"
+      },
+      "summary": "2026년 12월 자료 확인 대기 · 2026년 11월 공시는 과거 기록. 2026년 11월 공시 완료 9개사: KE · OZ · 7C · LJ · RS · BX · TW · ZE · YP."
+    },
+    {
+      "case": "KST boundary",
+      "before": "2026-12-31T14:59:59Z",
+      "after": "2026-12-31T15:00:00Z",
+      "state": {
+        "verified": [
+          "KE",
+          "OZ",
+          "7C",
+          "LJ",
+          "RS",
+          "BX",
+          "TW",
+          "ZE",
+          "YP"
+        ],
+        "pending": [],
+        "verifiedCount": 9,
+        "pendingCount": 0,
+        "currentMonth": "2027-01",
+        "nextMonth": "2027-02",
+        "noticeMonth": "2026-11",
+        "relation": "archive",
+        "sourceVerifiedAt": "2026-10-29T07:54:00+09:00"
+      },
+      "summary": "2027년 1월 자료 확인 대기 · 2026년 11월 공시는 과거 기록. 2026년 11월 공시 완료 9개사: KE · OZ · 7C · LJ · RS · BX · TW · ZE · YP."
+    }
+  ]
+}

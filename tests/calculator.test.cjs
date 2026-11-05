@@ -102,7 +102,7 @@ test('calculator shows concise statuses without upgrading pending or changing so
   assert.match(context.delta({comparison:{valid:false,reason:'same_month'}},1),/다른 발권월을 선택하세요/);
   assert.match(context.delta({comparison:core.compare(base,target)},1),/10200 KRW/);
 });
-test('home landing keeps concise November status, qualified minimum changes and distinct feed dates',()=>{
+test('home landing keeps concise November status, qualified minimum changes and separates market cutoff from feed dates',()=>{
   const fs=require('node:fs'),vm=require('node:vm');
   const {loadNotices,loadRouteGroupNotices}=require('../scripts/validate_service_data.cjs');
   const index=fs.readFileSync('public/index.html','utf8'),patch=fs.readFileSync('public/home-sep20.js','utf8'),calc=fs.readFileSync('public/calculator-oct20.js','utf8');
@@ -139,5 +139,13 @@ test('home landing keeps concise November status, qualified minimum changes and 
   context._OFFICIAL_AMT.BX.rows[0].august++;context.renderLanding();assert.match(node('miniGrid').innerHTML,/data-airline="BX" data-source-verified="false"/,'changed displayed amount cannot retain reconciled landing badge');
   assert.equal(platform.landingComparison('BX'),null,'changed displayed November amount cannot retain trend');
   const feedBefore=JSON.stringify(context.FEED);const installStart=patch.indexOf('function installData(){');vm.runInContext(patch.slice(installStart,patch.indexOf('function updateHead()',installStart)),context);context.installData();assert.equal(JSON.stringify(context.FEED),feedBefore,'site patch must not write into feed metadata');
-  context.AeroHomePlatform.updateStatusText('2026-10-21T10:05:51+09:00');const status=node('statusText').textContent;assert.match(status,/사이트 문구 수정:/);assert.match(status,/공시 확인:/);assert.match(status,/공시 수집: 미기록/);assert.match(status,/별도 피드 파일 갱신: 2026-04-23 10:00 KST/);
+  context.AERO_MARKET_NUMBERS_LATEST={informationCutoff:'2026-11-04T09:00:00+09:00'};
+  context.AeroHomePlatform.updateStatusText('2026-10-21T10:05:51+09:00');
+  const status=node('statusText').textContent,details=node('statusText').title;
+  assert.match(status,/사이트 문구 수정: 2026-10-21 10:05 KST/);
+  assert.match(status,/공시 확인: 2026-10-29 07:54 KST/);
+  assert.match(status,/시장 자료 기준: 2026-11-04 09:00 KST/);
+  assert.doesNotMatch(status,/별도 피드 파일|공시 수집|2026-04-23/);
+  assert.match(details,/별도 피드 파일 갱신: 2026-04-23 10:00 KST/);
+  assert.equal(JSON.stringify(context.FEED),feedBefore,'displaying market cutoff must not renew old feed metadata');
 });
