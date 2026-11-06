@@ -153,3 +153,14 @@ UKMTO 194·195 개별 보도는 검색 색인에서 일부 본문이 나타났�
 `ea529d4ceb39af8c53a7eca3e9aff7fc77b14802`를 main에 푸시했다. [Vercel 실행](https://vercel.com/errwer4-8344s-projects/aero-surcharge/FLfcBkAYCbdHkRXqtgt8uoFYJGNh)은 기준 검사를 통과해 첫 원인을 해결했지만, Chromium 실행에 필요한 `libnspr4.so`가 없어 약 29초 뒤 실패했다. 원격과 Windows 검증 환경의 차이로 드러난 두 번째 장애다.
 
 [Vercel 공식 빌드 이미지 문서](https://vercel.com/docs/builds/build-image)에 따라 Amazon Linux 2023 컨테이너의 설치 명령에 `dnf install -y nspr nss mesa-libgbm`을 추가했다. 기존 npm ci·Playwright·전체 검사는 유지한다. 이 보완은 빌드용 OS 의존성에 한정하며 새 npm 라이브러리를 도입하거나 화면 검사를 생략하지 않는다.
+
+### 운영 배포 확인 완료 — 11:01~11:04 KST
+
+- 최종 main 커밋: `672868c41f674a33a4c7b4928c21e1ca35073c79`. [GitHub Actions 41951794553](https://github.com/errwer4-ops/aero-surcharge/actions/runs/41951794553) **success**. Ubuntu/Node 22에서 전체 검증을 완료했다.
+- [Vercel aero-surcharge](https://vercel.com/errwer4-8344s-projects/aero-surcharge/CxYUjXwBuYBuiShfKwHPM5mdidTf), [aero-v36](https://vercel.com/errwer4-8344s-projects/aero-v36/9mQo42WpovJKSRBcaQGrFFQkhMQG) **둘 다 success**. aero-surcharge 로그의 배포 완료시각은 **11:01:41 KST**다. Node 22 선택 안내만 남았으며 14개 빌드 검사를 생략하지 않았다.
+- `https://aero-surcharge.com`의 홈·전망·그래프·플래너·변경 공유 모듈·공개 로그 등 **9개 응답**은 모두 HTTP 200이며 검증된 로컬 수정본과 일치했다. 텍스트 비교에서 CRLF와 UTF-8 BOM만 정규화했다. `forecast.html`의 최초 비교 차이는 fetch의 BOM 제거였으며 본문 불일치가 아니었다.
+- 운영 공개 로그의 이전 환율 키 경로는 모두 마스킹되었다. 플래너 API에 `null` JSON을 보내 **안전한 HTTP 400**을 확인했고 외부 파트너 요청이 필요한 정상 여행 요청은 운영에서 실행하지 않았다.
+- 운영 브라우저에서 YP·11월·USD 필터로 6개 공시 금액과 미공시 구간의 구분을 확인했다. 전망 최상단의 시장·해상안전 표와 12월 방향성·낮은 신뢰도·단계 미확정 표시도 확인했다. 조회 중 수집된 브라우저 오류 로그는 0건이었다. 증거: `artifacts/review-verification/site-audit-nov05/live-http-verification.json`.
+- 광고 활성화·실제 제휴 구매/수익·GA4 외부 수신 검증은 수행하지 않았다. 환율 API는 코드에서 사용 중단됐지만 이미 공개된 키의 계정 폐기는 별도이며 완료 여부는 미확인이다. Git 과거 기록과 이전 배포 복사본은 강제 삭제하지 않았다.
+
+이 최종 결과 단락은 성공한 배포 이후 로컬 보고서에 추가했다. 운영 코드와 설정은 위 커밋까지 푸시·배포 완료 상태다.
