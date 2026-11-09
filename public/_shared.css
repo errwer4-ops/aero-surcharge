@@ -1,5 +1,12 @@
 ﻿/* ── 항공 유류할증료 — Shared CSS ── */
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
+/* Pretendard v1.3.9 · SIL OFL 1.1 · license in fonts/OFL-Pretendard.txt */
+@font-face {
+  font-family: 'Pretendard Variable';
+  src: url('fonts/PretendardVariable.woff2') format('woff2');
+  font-style: normal;
+  font-weight: 45 920;
+  font-display: swap;
+}
 
 :root {
   --blue:    #0284C7;
@@ -17,21 +24,37 @@
   --orange:  #D97706;
   --green:   #059669;
   --green-lt:#ECFDF5;
-  --mono:    'DM Mono', monospace;
-  --sans:    'DM Sans', sans-serif;
+  --sans: 'Pretendard Variable', Pretendard, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Apple SD Gothic Neo', 'Noto Sans KR', 'Malgun Gothic', sans-serif;
+  --mono: var(--sans);
+  --font-caption: .8125rem;
+  --font-small: .875rem;
+  --font-ui: .9375rem;
+  --font-body: 1rem;
+  --font-lead: 1.125rem;
+  --font-section: 1.25rem;
+  --font-title: clamp(1.75rem, 2.6vw, 2.25rem);
+  --font-amount: 1.125rem;
   --shadow:  0 1px 3px rgba(7,89,133,.06), 0 10px 28px rgba(7,89,133,.08);
   --shadow-lg: 0 16px 44px rgba(7,89,133,.16);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: var(--sans); background: var(--bg); color: var(--text); min-height: 100vh; }
+html { font-size: 100%; }
+body {
+  font-family: var(--sans); font-size: var(--font-body); line-height: 1.65;
+  font-variant-numeric: lining-nums tabular-nums;
+  background: var(--bg); color: var(--text); min-height: 100vh;
+}
+button, input, select, textarea { font-family: inherit; font-size: var(--font-body); line-height: 1.4; }
+h1, h2, h3 { line-height: 1.35; letter-spacing: -.025em; }
+:lang(ko) { word-break: keep-all; overflow-wrap: break-word; }
 
 
 
 /* ── AI 예측 배지 / 블록 공통 스타일 ── */
 .ai-predict-badge {
   display:inline-flex; align-items:center; gap:4px;
-  font-size:10px; font-weight:700; padding:3px 8px; border-radius:20px;
+  font-size:var(--font-caption); font-weight:700; padding:3px 8px; border-radius:20px;
   background:#EDE7F6; color:#4527A0; border:1px solid #B39DDB;
   letter-spacing:.2px; white-space:nowrap;
 }
@@ -40,40 +63,40 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 .ai-predict-block {
   margin-top:10px; padding:10px 14px;
   background:linear-gradient(135deg,#F3E5F5,#EDE7F6);
-  border:1px solid #CE93D8; border-radius:10px; font-size:12px;
+  border:1px solid #CE93D8; border-radius:10px; font-size:var(--font-small);
 }
 .ai-predict-block.unavail {
   background:var(--bg); border:1px dashed var(--line); color:var(--muted);
   display:flex; align-items:center; gap:8px;
 }
-.ai-unavail-text { font-size:11px; color:var(--muted); font-style:italic; }
+.ai-unavail-text { font-size:var(--font-caption); color:var(--muted); font-style:italic; }
 .ai-predict-header { display:flex; align-items:center; gap:8px; margin-bottom:6px; flex-wrap:wrap; }
-.ai-predict-period { font-size:11px; font-weight:700; font-family:var(--mono); color:#4527A0; }
-.ai-conf-badge { font-size:10px; font-weight:700; padding:2px 7px; border-radius:4px; }
+.ai-predict-period { font-size:var(--font-small); font-weight:700; font-family:var(--mono); color:#4527A0; }
+.ai-conf-badge { font-size:var(--font-caption); font-weight:700; padding:2px 7px; border-radius:4px; }
 .ai-conf-badge.high   { background:#C8E6C9; color:#1B5E20; }
 .ai-conf-badge.medium { background:#FFF9C4; color:#827717; }
 .ai-conf-badge.low    { background:#FFCDD2; color:#B71C1C; }
 .ai-predict-range {
-  font-family:var(--mono); font-size:15px; font-weight:700;
+  font-family:var(--mono); font-size:var(--font-amount); font-weight:700;
   color:#4527A0; display:flex; align-items:center; gap:4px; margin-bottom:6px;
 }
-.ai-range-sep { color:#9C27B0; margin:0 2px; font-size:12px; }
-.ai-dir { font-size:12px; font-weight:700; padding:1px 5px; border-radius:4px; margin-left:4px; }
+.ai-range-sep { color:#9C27B0; margin:0 2px; font-size:var(--font-small); }
+.ai-dir { font-size:var(--font-small); font-weight:700; padding:1px 5px; border-radius:4px; margin-left:4px; }
 .ai-dir.dir-up   { color:#C62828; background:#FFEBEE; }
 .ai-dir.dir-down { color:#075985; background:#E0F2FE; }
 .ai-dir.dir-flat { color:#616161; background:#F5F5F5; }
 .ai-drivers { display:flex; flex-wrap:wrap; gap:4px; margin-bottom:6px; }
 .ai-driver-chip {
-  font-size:10px; padding:2px 7px; border-radius:4px;
+  font-size:var(--font-caption); padding:2px 7px; border-radius:4px;
   border:1px solid var(--line); background:rgba(255,255,255,.7); color:var(--text2);
 }
 .ai-driver-chip.positive { border-color:#FFCDD2; background:#FFF5F5; color:#B33; }
 .ai-driver-chip.negative { border-color:#BAE6FD; background:#F0F9FF; color:#075985; }
-.ai-basis-label { font-size:10px; font-weight:700; color:#7C4DFF; letter-spacing:.5px; text-transform:uppercase; margin-bottom:4px; opacity:.8; }
-.ai-predict-note { font-size:9.5px; color:#6A1B9A; font-style:italic; margin-top:4px; opacity:.8; }
+.ai-basis-label { font-size:var(--font-caption); font-weight:700; color:#7C4DFF; letter-spacing:.5px; text-transform:uppercase; margin-bottom:4px; opacity:.8; }
+.ai-predict-note { font-size:var(--font-caption); color:#6A1B9A; font-style:italic; margin-top:4px; opacity:.8; }
 
 /* ── 공식값 / AI 색상 체계 ── */
-.status-badge { display:inline-flex; align-items:center; gap:4px; font-size:10px; font-weight:700; padding:3px 8px; border-radius:20px; letter-spacing:.2px; white-space:nowrap; flex-shrink:0; }
+.status-badge { display:inline-flex; align-items:center; gap:4px; font-size:var(--font-caption); font-weight:700; padding:3px 8px; border-radius:20px; letter-spacing:.2px; white-space:nowrap; flex-shrink:0; }
 .sb-official   { background:#E0F2FE; color:#075985; border:1px solid #7DD3FC; }
 .sb-blocked    { background:#FFF8E1; color:#E65100; border:1px solid #FFCC80; }
 .sb-missing    { background:#F3E5F5; color:#6A1B9A; border:1px solid #CE93D8; }
@@ -84,24 +107,24 @@ body { font-family: var(--sans); background: var(--bg); color: var(--text); min-
 .sb-dot { width:6px; height:6px; border-radius:50%; background:currentColor; opacity:.7; }
 
 /* YQ/YR */
-.yqyr-block { margin-top:8px; padding:7px 10px; border-radius:8px; font-size:11px; border:1px solid var(--line); background:var(--bg); display:flex; flex-wrap:wrap; gap:4px; align-items:center; }
+.yqyr-block { margin-top:8px; padding:7px 10px; border-radius:8px; font-size:var(--font-small); border:1px solid var(--line); background:var(--bg); display:flex; flex-wrap:wrap; gap:4px; align-items:center; }
 .yqyr-block.match  { border-color:#A5D6A7; background:#F1F8E9; }
 .yqyr-block.minor  { border-color:#FFE082; background:#FFF8E1; }
 .yqyr-block.major  { border-color:#EF9A9A; background:#FFF0F0; }
 .yqyr-block.unavail{ display:none; }
-.yq-lbl { color:var(--muted); font-size:10px; }
+.yq-lbl { color:var(--muted); font-size:var(--font-caption); }
 .yq-val { font-family:var(--mono); font-weight:600; }
-.yq-status { font-weight:700; padding:1px 6px; border-radius:4px; font-size:10px; }
+.yq-status { font-weight:700; padding:1px 6px; border-radius:4px; font-size:var(--font-caption); }
 .yq-status.match  { color:#1B5E20; background:#C8E6C9; }
 .yq-status.minor  { color:#827717; background:#FFF9C4; }
 .yq-status.major  { color:#B71C1C; background:#FFCDD2; }
-.yq-note { width:100%; font-size:10px; color:var(--muted); font-style:italic; }
+.yq-note { width:100%; font-size:var(--font-caption); color:var(--muted); font-style:italic; }
 
 /* ── NAV v3 ── */
 nav {
   background: rgba(255,255,255,.94);
   display: flex; align-items: center; justify-content: space-between;
-  padding: 0 32px; height: 52px;
+  padding: 10px 32px; min-height: 64px; height: auto;
   position: sticky; top: 0; z-index: 200;
   border-bottom: 1px solid var(--line);
   box-shadow: 0 1px 12px rgba(7,89,133,.08);
@@ -110,7 +133,7 @@ nav {
 .nav-links { display:flex; gap:4px; align-items:center; }
 .nav-link {
   color: var(--text2); text-decoration: none;
-  font-size: 13px; font-weight: 600; padding: 6px 14px;
+  font-size:var(--font-ui); font-weight: 600; padding: 6px 14px;
   border-radius: 7px; transition: background .15s, color .15s; white-space:nowrap;
 }
 .nav-link:hover  { background: var(--blue-lt); color: var(--blue-dk); }
@@ -118,7 +141,7 @@ nav {
 .nav-controls { display: flex; align-items: center; gap: 8px; }
 .nav-select {
   background: #fff; border: 1px solid var(--line);
-  border-radius: 8px; padding: 5px 24px 5px 10px; font-size: 12px;
+  border-radius: 8px; padding: 5px 24px 5px 10px; font-size:var(--font-body);
   font-weight: 600; color: var(--text); font-family: var(--sans);
   cursor: pointer; outline: none; appearance: none;
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%2364748B' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
@@ -143,7 +166,7 @@ nav {
   }
   .nav-link {
     padding: 6px 12px;
-    font-size: 12px;
+    font-size:var(--font-small);
   }
   .nav-controls {
     display: flex;
@@ -153,7 +176,7 @@ nav {
     padding-top: 8px;
   }
   .nav-select {
-    font-size: 12px;
+    font-size:var(--font-body);
     padding: 5px 22px 5px 9px;
   }
   .nav-divider { display: none; }
@@ -191,7 +214,7 @@ nav {
   min-width: 0;
 }
 .beta-banner-title {
-  font-size: 13px;
+  font-size:var(--font-body);
   font-weight: 700;
   color: #7A4F00;
   margin-bottom: 4px;
@@ -202,7 +225,7 @@ nav {
 }
 .beta-badge {
   display: inline-block;
-  font-size: 10px;
+  font-size:var(--font-caption);
   font-weight: 800;
   letter-spacing: 1.2px;
   text-transform: uppercase;
@@ -213,12 +236,12 @@ nav {
   vertical-align: middle;
 }
 .beta-banner-desc {
-  font-size: 12px;
+  font-size:var(--font-small);
   color: #5C3C00;
   margin-bottom: 4px;
 }
 .beta-banner-note {
-  font-size: 11px;
+  font-size:var(--font-caption);
   color: #7A5800;
   margin-top: 5px;
   padding-top: 5px;
@@ -227,7 +250,7 @@ nav {
 @media (max-width: 700px) {
   .beta-banner { padding: 0 14px; }
   .beta-banner-inner { padding: 12px 14px; gap: 9px; }
-  .beta-banner-title { font-size: 12px; }
-  .beta-banner-desc { font-size: 11px; }
-  .beta-banner-note { font-size: 10px; }
+  .beta-banner-title { font-size:var(--font-body); }
+  .beta-banner-desc { font-size:var(--font-small); }
+  .beta-banner-note { font-size:var(--font-caption); }
 }

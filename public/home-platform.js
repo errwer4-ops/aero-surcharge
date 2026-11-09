@@ -31,7 +31,13 @@
     ['One-way per person','1人片道','每人单程','Aller simple par personne','Einfacher Flug pro Person'],
     ['Published charging band','公示課金区分','公告收费区间','Tranche tarifaire publiée','Veröffentlichte Tarifgruppe'],
     ['Difference / change','差額・変化率','差额／变化率','Écart / variation','Differenz / Veränderung'],
-    ['Only confirmed amounts are compared. Pending amounts are excluded.','確認済み金額だけを比較します。確認中の金額は除外します。','仅比较已核实金额，核实中的金额不计入比较。','Seuls les montants confirmés sont comparés. Les montants en vérification sont exclus.','Nur bestätigte Beträge werden verglichen. Ungeprüfte Beträge bleiben ausgeschlossen.']
+    ['Only confirmed amounts are compared. Pending amounts are excluded.','確認済み金額だけを比較します。確認中の金額は除外します。','仅比较已核实金额，核实中的金额不计入比较。','Seuls les montants confirmés sont comparés. Les montants en vérification sont exclus.','Nur bestätigte Beträge werden verglichen. Ungeprüfte Beträge bleiben ausgeschlossen.'],
+    ['November notice amount','11月の公示金額','11月公告金额','Montant publié en novembre','Veröffentlichter Novemberbetrag'],
+    ['October notice amount','10月の公示金額','10月公告金额','Montant publié en octobre','Veröffentlichter Oktoberbetrag'],
+    ['November source notice','11月の公示原文','11月公告原文','Avis source de novembre','Originalmitteilung November'],
+    ['Amounts by band and verification details','区分別金額と確認根拠','各收费区间金额及核实依据','Montants par tranche et éléments de vérification','Beträge je Tarifgruppe und Prüfnachweise'],
+    ['Cannot compare · different conditions','比較不可・条件が異なります','无法比较·条件不同','Comparaison impossible · conditions différentes','Nicht vergleichbar · andere Bedingungen'],
+    ['Cannot compare · checking','比較不可・確認中','无法比较·核实中','Comparaison impossible · vérification en cours','Nicht vergleichbar · Prüfung läuft']
   ],homeByEnglish={};
   homeCopy.forEach(function(row){homeByEnglish[row[0]]=row;});
   function text(ko,en){var lang=locale();if(lang==='ko')return ko;var row=homeByEnglish[en],index={en:0,ja:1,zh:2,fr:3,de:4}[lang];return row&&index!==undefined?row[index]:en;}
@@ -130,7 +136,7 @@
     var ko=language(),label=comparisonLabel(comparison),pending=comparison.pairs.filter(function(pair){return !pair.sourceVerified;});
     var explanation=comparisonText(6,comparison);
     if(pending.length)explanation+=' '+comparisonText(7,comparison);
-    return '<details class="mini-trend-details" style="margin-top:7px;font-size:11px;line-height:1.6"><summary title="'+esc(explanation)+'" aria-label="'+esc(code+' · '+label+(comparison.archived?' · '+(text('보관 기록 기준','Retained records')):'')+' · '+(text('계산 근거 보기','Calculation details')))+'" style="cursor:pointer;color:#075985"><span class="mini-trend-label">'+esc(label)+'</span>'+(comparison.archived?' <small class="mini-archive-mark" style="color:var(--muted)">'+(text('보관 기록 기준','Retained records'))+'</small>':'')+'</summary><div style="margin-top:5px;color:var(--muted);overflow-wrap:anywhere">'+esc(explanation)+'<ul style="padding-left:16px;margin:5px 0">'+comparison.pairs.map(function(pair){return '<li>'+esc(pair.band+' · '+pair.currency+' '+pair.base.toLocaleString('en-US')+' → '+pair.target.toLocaleString('en-US')+' · '+(pair.percent>0?'+':'')+pair.percent.toFixed(1)+'%')+(!pair.sourceVerified?' · '+(text('10월 보관 기록','October retained record')):'')+'</li>';}).join('')+'</ul></div></details>';
+    return '<details class="mini-trend-details" style="font-size:var(--font-caption);line-height:1.6"><summary title="'+esc(explanation)+'" aria-label="'+esc(code+' · '+label+(comparison.archived?' · '+(text('보관 기록 기준','Retained records')):'')+' · '+(text('계산 근거 보기','Calculation details')))+'" style="cursor:pointer;color:#075985"><span class="mini-trend-label">'+esc(label)+'</span>'+(comparison.archived?' <small class="mini-archive-mark" style="color:var(--muted)">'+(text('보관 기록 기준','Retained records'))+'</small>':'')+'</summary><div style="margin-top:5px;color:var(--muted);overflow-wrap:anywhere">'+esc(explanation)+'<ul style="padding-left:16px;margin:5px 0">'+comparison.pairs.map(function(pair){return '<li>'+esc(pair.band+' · '+pair.currency+' '+pair.base.toLocaleString('en-US')+' → '+pair.target.toLocaleString('en-US')+' · '+(pair.percent>0?'+':'')+pair.percent.toFixed(1)+'%')+(!pair.sourceVerified?' · '+(text('10월 보관 기록','October retained record')):'')+'</li>';}).join('')+'</ul></div></details>';
   }
   function landingLabel(state){
     var ko=language();
@@ -195,20 +201,44 @@
         return '<tr class="'+(index===selected?'highlighted':'')+'" data-source-verified="'+String(index===selected&&core.isConfirmed(target))+'"><td><span class="route-range">'+esc(band)+'</span>'+(index===selected?'<span class="route-highlight-badge">'+(text('선택 노선','Selected route'))+'</span>':'')+'</td><td class="route-amt-current">'+cell(baseline,index)+'</td><td class="route-amt-next">'+cell(target,index)+'</td><td>'+delta+'</td></tr>';
       }).join('');
       var applicability=core.noticeRouteApplicability.find(function(route){return route.airline===al.code&&route.origin===dep&&route.destination===arr;});
-      var scopeNote=applicability?'<p class="notice-route-scope" style="font-size:12px;line-height:1.7">'+(text('부산 출발 UBN 공시 금액 조회입니다. 현재 운항일·좌석 제공을 뜻하지 않습니다. ','Published surcharge lookup for PUS–UBN. This does not establish current operating dates or seat availability. '))+'<a href="'+esc(applicability.routeSourceUrl)+'" target="_blank" rel="noopener noreferrer">'+(text('항공사 노선 근거','Airline route source'))+'</a> · <a href="https://www.airbusan.com/web/individual/booking/schedule" target="_blank" rel="noopener noreferrer">'+(text('운항 일정 확인','Check schedules'))+'</a></p>':'';
+      var scopeNote=applicability?'<p class="notice-route-scope" style="font-size:var(--font-small);line-height:1.7">'+(text('부산 출발 UBN 공시 금액 조회입니다. 현재 운항일·좌석 제공을 뜻하지 않습니다. ','Published surcharge lookup for PUS–UBN. This does not establish current operating dates or seat availability. '))+'<a href="'+esc(applicability.routeSourceUrl)+'" target="_blank" rel="noopener noreferrer">'+(text('항공사 노선 근거','Airline route source'))+'</a> · <a href="https://www.airbusan.com/web/individual/booking/schedule" target="_blank" rel="noopener noreferrer">'+(text('운항 일정 확인','Check schedules'))+'</a></p>':'';
       var sources=['2026-10','2026-11'].map(function(month){var record=recordFor(al.code,selected,month,dep,arr,true);if(!record)return '';return (record.sourceUrl?'<a href="'+esc(record.sourceUrl)+'" target="_blank" rel="noopener noreferrer">'+month+' '+(text('원문 링크','Source link'))+'</a>':'')+' · '+(text('발표일: ','Published: '))+esc(record.publishedAt||(text('미기록','not recorded')))+' · '+(text('확인일: ','Checked: '))+esc(record.verifiedAt||(text('미기록','not recorded')))+(record.effectiveFrom?' · '+(text('발권 적용: ','Ticketing: '))+esc(record.effectiveFrom)+' – '+esc(record.effectiveTo):'');}).filter(Boolean).join('<br>');
-      return '<div class="official-section"><div class="official-label">'+(text('공시 금액 · 원통화','Notice amounts · original currency'))+'</div><p style="font-size:11px;line-height:1.6">'+esc(dep+' → '+arr)+' · '+(isRT?(text('단순 왕복 추정: 한국 출발 편도 × 2','Simple round-trip estimate: Korea-origin one-way × 2')):(text('1인 편도','One-way per person')))+'</p>'+scopeNote+'<div class="route-table-wrap"><table class="route-table"><thead><tr><th>'+(text('공시 부과 구간','Published charging band'))+'</th><th>2026.10</th><th>2026.11</th><th>'+(text('차액 / 변동률','Difference / change'))+'</th></tr></thead><tbody>'+rows+'</tbody></table></div><p style="font-size:11px;line-height:1.7">'+(text('확인된 금액만 비교합니다. 확인 중인 금액은 비교에서 제외합니다.','Only confirmed amounts are compared. Pending amounts are excluded.'))+'<br>'+sources+'</p></div>';
+      var selectedBaseline=recordFor(al.code,selected,'2026-10',dep,arr,true);
+      var selectedTarget=recordFor(al.code,selected,'2026-11',dep,arr,true);
+      var selectedComparison=core.compare(selectedBaseline,selectedTarget);
+      var selectedBand=selectedTarget&&selectedTarget.band||selectedBaseline&&selectedBaseline.band||data.rows[selected].label;
+      var journey=isRT?text('단순 왕복 추정: 한국 출발 편도 × 2','Simple round-trip estimate: Korea-origin one-way × 2'):text('1인 편도','One-way per person');
+      var summaryChange='—',summaryChangeNote=selectedComparison.reason==='conditions'?text('비교 불가 · 조건 다름','Cannot compare · different conditions'):text('비교 불가 · 확인 중','Cannot compare · checking');
+      if(selectedComparison.valid){
+        summaryChange=(selectedComparison.difference<0?'-':selectedComparison.difference>0?'+':'')+esc(selectedComparison.currency)+' '+(Math.abs(selectedComparison.difference)*mult).toLocaleString('en-US',{maximumFractionDigits:2});
+        summaryChangeNote=selectedComparison.percent===null?text('기준액 0: 비율 계산 불가','Zero baseline: no percentage'):(selectedComparison.percent>0?'+':'')+selectedComparison.percent.toFixed(2)+'%';
+      }
+      var targetStatus=!selectedTarget?text('공식 데이터 없음','No official data'):core.isConfirmed(selectedTarget)?text('공시 확인 완료','Notice confirmed'):text('확인 중','Pending');
+      var selectedSummary='<section class="selected-route-summary" data-source-verified="'+String(core.isConfirmed(selectedTarget))+'">'+
+        '<p class="route-summary-basis"><span>'+text('공시 부과 구간','Published charging band')+' · '+esc(selectedBand)+'</span><span>'+esc(dep+' → '+arr)+' · '+journey+'</span></p>'+
+        '<dl class="route-summary-metrics">'+
+          '<div class="route-summary-metric route-summary-metric-primary"><dt class="route-summary-label">'+text('11월 공시 금액','November notice amount')+'</dt><dd class="route-summary-value">'+amount(selectedTarget)+'</dd></div>'+
+          '<div class="route-summary-metric"><dt class="route-summary-label">'+text('10월 공시 금액','October notice amount')+'</dt><dd class="route-summary-value">'+cell(selectedBaseline,selected)+'</dd></div>'+
+          '<div class="route-summary-metric"><dt class="route-summary-label">'+text('차액 / 변동률','Difference / change')+'</dt><dd class="route-summary-value route-summary-change" data-comparable="'+String(selectedComparison.valid)+'">'+summaryChange+'<small>'+esc(summaryChangeNote)+'</small></dd></div>'+
+        '</dl><p class="route-summary-source"><span class="source-verification-status">2026.11 · '+targetStatus+'</span>'+
+          (selectedTarget&&selectedTarget.sourceUrl?'<a href="'+esc(selectedTarget.sourceUrl)+'" target="_blank" rel="noopener noreferrer">'+text('11월 공시 원문','November source notice')+'</a>':'')+'</p></section>';
+      return '<div class="official-section">'+selectedSummary+scopeNote+
+        '<details class="route-details"><summary>'+text('구간별 금액과 확인 근거','Amounts by band and verification details')+'</summary>'+
+          '<div class="official-label">'+text('공시 금액 · 원통화','Notice amounts · original currency')+'</div>'+
+          '<div class="route-table-wrap"><table class="route-table"><thead><tr><th>'+text('공시 부과 구간','Published charging band')+'</th><th>2026.10</th><th>2026.11</th><th>'+text('차액 / 변동률','Difference / change')+'</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+
+          '<p style="font-size:var(--font-caption);line-height:1.7">'+text('확인된 금액만 비교합니다. 확인 중인 금액은 비교에서 제외합니다.','Only confirmed amounts are compared. Pending amounts are excluded.')+'<br>'+sources+'</p>'+
+        '</details></div>';
     };
     window._trendBadgeHtml=function(code,miles,dep,arr){
       var index=selectedIndex(code,dep,arr);if(index<0)return '';
       var comparison=core.compare(recordFor(code,index,'2026-10',dep,arr,true),recordFor(code,index,'2026-11',dep,arr,true));
       if(!comparison.valid||comparison.percent===null)return '';
-      return '<span style="font-size:11px;color:#075985">'+(comparison.percent>0?'+':'')+comparison.percent.toFixed(2)+'%</span>';
+      return '<span style="font-size:var(--font-caption);color:#075985">'+(comparison.percent>0?'+':'')+comparison.percent.toFixed(2)+'%</span>';
     };
     window.AeroHomePlatform={recordFor:recordFor,selectedIndex:selectedIndex,landingState:landingState,landingLabel:landingLabel,landingComparison:landingComparison,landingComparisonHtml:landingComparisonHtml,summarizeComparison:summarizeComparison,comparisonLabel:comparisonLabel,updateStatusText:updateStatusText};
     (window.KR_AIRLINES||[]).forEach(function(al){al.hasOfficialNotice=landingState(al.code).current.status==='verified';});
     if(window.renderLanding)window.renderLanding();
-    if(window._searchCtx)window.renderCards('all');
+    if(window.refreshHomeResults)window.refreshHomeResults();
   }
   if(window.addEventListener)window.addEventListener('aero:notice-period-change',function(){
     (window.KR_AIRLINES||[]).forEach(function(al){al.hasOfficialNotice=landingState(al.code).current.status==='verified';});

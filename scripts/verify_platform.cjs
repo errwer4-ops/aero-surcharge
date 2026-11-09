@@ -51,6 +51,11 @@ async function main(){
         const summary=await page.locator('#decisionList li').first().innerText();
         assert.match(summary,/11월 발권분 현재 적용/);
         assert.equal((await page.locator('body').innerText()).split(summary).length-1,1,'one full notice-status summary');
+        const guide=page.locator('#homeGuide'),guideToggle=guide.locator(':scope > summary');
+        assert.equal(await guide.getAttribute('open'),null,'long explanations start collapsed');
+        await guideToggle.focus();await guideToggle.press('Enter');
+        assert(await page.locator('#introSection .intro-card-body').first().isVisible(),'guide is keyboard accessible');
+        await guideToggle.press('Enter');
         const detail=page.locator('#miniGrid [data-airline="OZ"] details'),toggle=detail.locator('summary');
         await toggle.focus();await toggle.press('Enter');assert.notEqual(await detail.getAttribute('open'),null);
         assert((await detail.innerText()).includes('10월 보관 기록을 포함한 참고 비율'));
@@ -86,7 +91,12 @@ async function main(){
       events=await p.evaluate(()=>dataLayer.filter(x=>x[0]==='event').map(x=>[x[1],x[2]]));
       assert.equal(events.filter(x=>x[0]==='route_search').length,1);
       assert.equal(events.filter(x=>x[0]==='route_result_view').length,1);
-      const link=p.locator('#cardsGrid a[href*="lase.kr"]').first();
+      const ke=p.locator('#cardsGrid .al-card').filter({has:p.locator('.card-code',{hasText:/^KE$/})});
+      assert.match(await ke.locator('.route-summary-metric-primary').innerText(),/KRW 76,000/,'selected route amount is visible first');
+      assert.match(await ke.locator('.route-summary-change').innerText(),/10,200/,'selected route difference is preserved');
+      assert.equal(await ke.locator('.route-details').getAttribute('open'),null,'full charging-band table starts collapsed');
+      // One comparison link follows the results, rather than repeating per airline.
+      const link=p.locator('#affiliateSection a[href*="lase.kr"]').first();
       await p.evaluate(()=>document.addEventListener('click',e=>{if(e.target.closest('a[href*="lase.kr"]'))e.preventDefault();}));
       await link.click();
       assert.equal(await p.evaluate(()=>dataLayer.filter(x=>x[0]==='event'&&x[1]==='affiliate_click').length),1);
@@ -97,6 +107,7 @@ async function main(){
       await p.locator('#originAirportInput').fill('PUS');await p.locator('#destAirportInput').fill('NRT');
       await p.locator('#searchBtn').click();await p.waitForTimeout(100);
       const bxCard=p.locator('#cardsGrid .al-card').filter({has:p.locator('a[href*="noticeDetail?id=4407"]')});
+      await bxCard.locator('.route-details > summary').click();
       const bxRow=bxCard.locator('tr.highlighted');
       assert((await bxRow.innerText()).includes('USD 37'));
       assert((await bxRow.innerText()).includes('USD 43'));
@@ -105,6 +116,9 @@ async function main(){
       p.once('dialog',dialog=>dialog.dismiss());await p.locator('#destAirportInput').fill('not-an-airport');await p.locator('#searchBtn').click();
       assert.equal(await p.locator('#destSelect').inputValue(),'');
       assert.equal(await p.evaluate(()=>dataLayer.filter(x=>x[0]==='event'&&x[1]==='route_search').length),countBeforeInvalid);
+      await p.locator('#backToOverview').click();
+      assert(await p.locator('#landingSection').isVisible(),'back action restores airline overview');
+      assert.equal(await p.evaluate(()=>window._searchCtx),null,'back action clears search context');
       await p.evaluate(()=>AeroAnalytics.setConsent(false,false));
       const size=await p.evaluate(()=>dataLayer.length);await p.evaluate(()=>AeroAnalytics.track('route_search',{origin:'ICN',destination:'NRT'}));
       assert.equal(await p.evaluate(()=>dataLayer.length),size,'withdrawal stops custom tracking');

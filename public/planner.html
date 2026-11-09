@@ -24,8 +24,8 @@
       background: radial-gradient(ellipse 70% 60% at 50% 120%, rgba(255,255,255,.06) 0%, transparent 70%);
       pointer-events:none;
     }
-    .hero-title { font-size: clamp(18px,3vw,28px); font-weight:700; color:#fff; letter-spacing:-1px; margin-bottom:4px; }
-    .hero-sub { font-size:12px; color:rgba(255,255,255,.55); margin-bottom:24px; font-weight:500; }
+    .hero-title { font-size:var(--font-title); font-weight:700; color:#fff; letter-spacing:-.02em; margin-bottom:4px;line-height:1.4;}
+    .hero-sub { font-size:var(--font-body); color:rgba(255,255,255,.85); margin-bottom:24px; font-weight:500;line-height:1.65;}
 
     /* ── FORM PANEL ── */
     .form-panel {
@@ -38,13 +38,12 @@
     .form-row-2 { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; margin-bottom:14px; }
     .form-row-3 { display:grid; grid-template-columns:1fr auto; gap:12px; align-items:end; margin-bottom:0; }
     .form-group { display:flex; flex-direction:column; gap:5px; min-width:0; }
-    .form-label { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); }
+    .form-label { font-size:var(--font-small); font-weight:700; letter-spacing:.02em; text-transform:uppercase; color:var(--muted);line-height:1.55;}
     .form-input, .form-select {
       background:var(--bg); border:1.5px solid var(--line); border-radius:9px;
-      padding:9px 12px; font-size:14px; font-weight:500;
+      padding:9px 12px; font-size:var(--font-body); font-weight:500;
       font-family:var(--sans); color:var(--text); outline:none;
-      transition:border-color .15s; width:100%; min-width:0; box-sizing:border-box;
-    }
+      transition:border-color .15s; width:100%; min-width:0; box-sizing:border-box;line-height:1.65;}
     .form-select { appearance:none; cursor:pointer;
       background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238890A8' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
       background-repeat:no-repeat; background-position:right 10px center; padding-right:30px;
@@ -54,14 +53,13 @@
     .tags-wrap { display:flex; flex-wrap:wrap; gap:6px; margin-top:6px; }
     .tag {
       background:var(--blue-lt); color:var(--blue); border-radius:20px;
-      padding:3px 10px; font-size:12px; font-weight:600;
-      display:flex; align-items:center; gap:4px; cursor:default;
-    }
-    .tag-x { cursor:pointer; opacity:.6; font-size:10px; line-height:1; }
+      padding:3px 10px; font-size:var(--font-small); font-weight:600;
+      display:flex; align-items:center; gap:4px; cursor:default;line-height:1.55;}
+    .tag-x { cursor:pointer; opacity:.6; font-size:var(--font-caption); line-height:1.55; }
     .tag-x:hover { opacity:1; }
-    .tag { max-width:100%; overflow-wrap:anywhere; }
-    .confidence-label { line-height:1.6; white-space:normal; }
-    .fuel-note { white-space:normal; overflow-wrap:anywhere; }
+    .tag { max-width:100%; overflow-wrap:anywhere;font-size:var(--font-small);line-height:1.55;}
+    .confidence-label { line-height:1.55; white-space:normal;font-size:var(--font-small);}
+    .fuel-note { white-space:normal; overflow-wrap:anywhere;font-size:var(--font-small);line-height:1.55;}
     @media(max-width:600px) {
       .hero { padding:24px 16px; }
       .form-panel { padding:20px 16px; }
@@ -72,10 +70,9 @@
     }
     .search-btn {
       background:var(--blue); color:#fff; border:none; border-radius:10px;
-      padding:11px 32px; font-size:13px; font-weight:700; letter-spacing:.5px;
+      padding:11px 32px; font-size:var(--font-body); font-weight:700; letter-spacing:.5px;
       cursor:pointer; font-family:var(--sans); transition:background .15s, transform .1s;
-      white-space:nowrap; align-self:end;
-    }
+      white-space:nowrap; align-self:end;line-height:1.65;}
     .search-btn:hover { background:var(--blue-dk); transform:translateY(-1px); }
     .search-btn:disabled { background:var(--muted); cursor:not-allowed; transform:none; }
 
@@ -99,8 +96,7 @@
     .error-box {
       display:none; background:#FEF0F0; border:1.5px solid #F5BEBE;
       border-radius:12px; padding:16px 20px; color:var(--red);
-      font-size:14px; font-weight:500; margin-bottom:16px;
-    }
+      font-size:var(--font-body); font-weight:500; margin-bottom:16px;line-height:1.65;}
     .error-box.show { display:block; }
 
     /* ── RESULT HEADER ── */
@@ -111,9 +107,9 @@
     .result-summary.show { display:block; }
     .result-summary-row { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; }
     .result-badge { display:flex; align-items:center; gap:8px; }
-    .city-badge { background:var(--blue-lt); color:var(--blue); border-radius:8px; padding:4px 12px; font-size:13px; font-weight:700; }
-    .result-meta { font-size:12px; color:var(--muted); }
-    .fuel-note { font-size:11px; color:var(--muted); margin-top:6px; display:flex; align-items:center; gap:6px; }
+    .city-badge { background:var(--blue-lt); color:var(--blue); border-radius:8px; padding:4px 12px; font-size:var(--font-body); font-weight:700;line-height:1.65;}
+    .result-meta { font-size:var(--font-small); color:var(--muted);line-height:1.55;}
+    .fuel-note { font-size:var(--font-small); color:var(--muted); margin-top:6px; display:flex; align-items:center; gap:6px;line-height:1.55;}
     .fuel-dot { width:7px; height:7px; border-radius:50%; background:var(--green); display:inline-block; }
 
     /* ── PLAN CARDS ── */
@@ -135,22 +131,21 @@
       border-bottom:1px solid var(--line);
     }
     .plan-type-row { display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
-    .plan-type-label { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); }
-    .plan-badge-best { background:var(--blue); color:#fff; border-radius:6px; padding:2px 8px; font-size:10px; font-weight:700; }
-    .plan-name { font-size:15px; font-weight:700; color:var(--text); margin-bottom:4px; }
-    .plan-total { font-size:24px; font-weight:700; color:var(--text); letter-spacing:-1px; }
-    .plan-total-label { font-size:11px; color:var(--muted); margin-left:4px; font-weight:500; }
+    .plan-type-label { font-size:var(--font-caption); font-weight:700; letter-spacing:.02em; text-transform:uppercase; color:var(--muted);line-height:1.55;}
+    .plan-badge-best { background:var(--blue); color:#fff; border-radius:6px; padding:2px 8px; font-size:var(--font-caption); font-weight:700;line-height:1.55;}
+    .plan-name { font-size:var(--font-section); font-weight:700; color:var(--text); margin-bottom:4px;line-height:1.4;letter-spacing:-.02em;}
+    .plan-total { font-size:1.75rem; line-height:1.3; font-weight:700; color:var(--text); letter-spacing:-1px; }
+    .plan-total-label { font-size:var(--font-caption); color:var(--muted); margin-left:4px; font-weight:500;line-height:1.55;}
     .plan-budget-row { display:flex; align-items:center; gap:6px; margin-top:6px; }
     .budget-chip {
-      border-radius:6px; padding:3px 8px; font-size:11px; font-weight:700;
-    }
+      border-radius:6px; padding:3px 8px; font-size:var(--font-caption); font-weight:700;line-height:1.55;}
     .budget-chip.ok { background:var(--green-lt); color:var(--green); }
     .budget-chip.near { background:#FFF7E0; color:#B07000; }
     .budget-chip.over { background:var(--red-lt); color:var(--red); }
     .confidence-bar-wrap { margin-top:10px; }
     .confidence-label-row { display:flex; justify-content:space-between; align-items:center; margin-bottom:4px; }
-    .confidence-label { font-size:11px; color:var(--muted); font-weight:500; }
-    .confidence-score { font-size:12px; font-weight:700; color:var(--blue); }
+    .confidence-label { font-size:var(--font-small); color:var(--muted); font-weight:500;line-height:1.55;}
+    .confidence-score { font-size:var(--font-small); font-weight:700; color:var(--blue);line-height:1.55;}
     .confidence-bar { height:5px; background:var(--line); border-radius:3px; overflow:hidden; }
     .confidence-fill { height:100%; border-radius:3px; background:var(--blue); transition:width .6s ease; }
 
@@ -160,26 +155,26 @@
     .cost-table { width:100%; border-collapse:collapse; margin-bottom:14px; }
     .cost-table tr { border-bottom:1px solid var(--line); }
     .cost-table tr:last-child { border-bottom:none; }
-    .cost-table td { padding:5px 0; font-size:12px; }
+    .cost-table td { padding:5px 0; font-size:var(--font-ui); }
     .cost-table td:first-child { color:var(--text2); }
     .cost-table td:last-child { text-align:right; font-weight:600; color:var(--text); font-family:var(--mono); }
-    .cost-table tr.total-row td { font-size:13px; font-weight:700; color:var(--text); border-top:2px solid var(--line); padding-top:8px; }
+    .cost-table tr.total-row td { font-size:var(--font-ui); font-weight:700; color:var(--text); border-top:2px solid var(--line); padding-top:8px; }
     .cost-table tr.total-row td:last-child { color:var(--blue); }
 
     /* 숙소 */
     .hotel-section { margin-bottom:14px; }
-    .section-label { font-size:10px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--muted); margin-bottom:6px; }
+    .section-label { font-size:var(--font-caption); font-weight:700; letter-spacing:.02em; text-transform:uppercase; color:var(--muted); margin-bottom:6px;line-height:1.55;}
     .hotel-card-inner {
       background:var(--bg); border-radius:10px; padding:10px 12px;
       display:flex; align-items:center; justify-content:space-between; gap:8px;
     }
     .hotel-info { min-width:0; }
-    .hotel-name { font-size:12px; font-weight:600; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .hotel-meta { font-size:11px; color:var(--muted); margin-top:2px; }
-    .hotel-price { font-size:13px; font-weight:700; color:var(--text); white-space:nowrap; font-family:var(--mono); }
-    .hotel-price-label { font-size:10px; color:var(--muted); font-weight:400; font-family:var(--sans); }
-    .live-badge { font-size:9px; background:var(--green-lt); color:var(--green); border-radius:4px; padding:1px 5px; font-weight:700; margin-left:4px; }
-    .fallback-badge { font-size:9px; background:#FFF3E0; color:#B07000; border-radius:4px; padding:1px 5px; font-weight:700; margin-left:4px; }
+    .hotel-name { font-size:var(--font-body); font-weight:600; color:var(--text); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;line-height:1.65;}
+    .hotel-meta { font-size:var(--font-small); color:var(--muted); margin-top:2px;line-height:1.55;}
+    .hotel-price { font-size:var(--font-amount); font-weight:700; color:var(--text); white-space:nowrap; font-family:var(--mono); }
+    .hotel-price-label { font-size:var(--font-caption); color:var(--muted); font-weight:400; font-family:var(--sans);line-height:1.55;}
+    .live-badge { font-size:var(--font-caption); background:var(--green-lt); color:var(--green); border-radius:4px; padding:1px 5px; font-weight:700; margin-left:4px;line-height:1.55;}
+    .fallback-badge { font-size:var(--font-caption); background:#FFF3E0; color:#B07000; border-radius:4px; padding:1px 5px; font-weight:700; margin-left:4px;line-height:1.55;}
 
     /* 액티비티 */
     .activity-section { margin-bottom:14px; }
@@ -188,18 +183,22 @@
       padding:5px 0; border-bottom:1px solid var(--line); gap:8px;
     }
     .activity-item:last-child { border-bottom:none; }
-    .activity-name { font-size:12px; color:var(--text2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .activity-link { font-size:11px; color:var(--blue); text-decoration:none; white-space:nowrap; font-weight:600; }
+    .activity-name { font-size:var(--font-body); color:var(--text2); white-space:nowrap; overflow:hidden; text-overflow:ellipsis;line-height:1.65;}
+    .activity-link { font-size:var(--font-small); color:var(--blue); text-decoration:none; white-space:nowrap; font-weight:600;line-height:1.55;}
     .activity-link:hover { text-decoration:underline; }
 
     /* 예약 버튼 */
     .booking-btn {
       display:block; width:100%; padding:10px; border-radius:9px;
       background:var(--blue); color:#fff; text-align:center;
-      font-size:13px; font-weight:700; text-decoration:none;
-      transition:background .15s; margin-top:4px;
-    }
+      font-size:var(--font-body); font-weight:700; text-decoration:none;
+      transition:background .15s; margin-top:4px;line-height:1.65;}
     .booking-btn:hover { background:var(--blue-dk); }
+    .plan-type-row,.plan-budget-row,.confidence-label-row{flex-wrap:wrap;gap:6px;}
+    .cost-table td{vertical-align:top;}
+    .hotel-card-inner{flex-wrap:wrap;}
+    .hotel-name,.activity-name{white-space:normal;overflow-wrap:anywhere;}
+    @media(max-width:600px){.form-row-3{grid-template-columns:minmax(0,1fr);}.search-btn{width:100%;white-space:normal;}.result-badge{flex-wrap:wrap;}.main{padding-left:14px;padding-right:14px;}}
   </style>
 </head>
 <body>
@@ -293,7 +292,7 @@
     <div class="result-summary-row">
       <div class="result-badge">
         <span class="city-badge" id="s-city">오사카</span>
-        <span style="font-size:14px; font-weight:600;" id="s-trip"></span>
+        <span style="font-size:var(--font-body); font-weight:600;" id="s-trip"></span>
       </div>
       <span class="result-meta" id="s-budget"></span>
     </div>

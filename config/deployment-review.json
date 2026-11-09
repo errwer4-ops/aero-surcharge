@@ -13,9 +13,9 @@
     "scopeDigest": null
   },
   "operations": {
-    "status": "pending",
-    "reviewedAt": null,
-    "scopeDigest": null,
-    "evidence": null
+    "status": "reviewed",
+    "reviewedAt": "2026-11-09T02:57:30.385Z",
+    "scopeDigest": "e29099dd8dd93e3999e8abe7f8c246f8d54b65481adedf6840e272399acb85aa",
+    "evidence": "docs/review-evidence/20261109-operational-review.json: 사용자 배포 승인 후 변경 보호 파일 4개(검사 2개 추가·정책 화면 폰트 CSS) diff 및 동일 소스 15/15 기술검사 검토 완료. 광고 비활성·광고 pending·기존 runtimeBaseline 유지. GA4·광고/CMP·제휴 정산·외부 수신 검증을 수행했다는 의미가 아님."
   }
 }

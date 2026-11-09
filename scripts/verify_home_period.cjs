@@ -10,9 +10,10 @@ fs.mkdirSync(out,{recursive:true});
 
 async function content(page){
   return page.evaluate(()=>({
-    intro:[...document.querySelectorAll('#introSection .intro-card-body')].map(e=>e.innerText.trim()),
+    // Explanations remain available inside the initially collapsed guide.
+    intro:[...document.querySelectorAll('#introSection .intro-card-body')].map(e=>e.textContent.trim()),
     summary:document.querySelector('#decisionList li')?.innerText.trim(),
-    nextSignal:document.querySelector('[data-i18n="index.signal3"]')?.innerText.trim(),
+    nextSignal:document.querySelector('[data-i18n="index.signal3"]')?.textContent.trim(),
     forecastLabel:document.querySelector('[data-i18n="index.quick.jul.name"]')?.innerText.trim(),
     body:document.body.innerText,
     states:[...document.querySelectorAll('#miniGrid .mini-status')].map(e=>e.innerText),

@@ -57,6 +57,8 @@ async function main(){
     ['myrealtrip',['scripts/verify_myrealtrip_integration.js']],
     ['platform',['scripts/verify_platform.cjs']],
     ['home-period',['scripts/verify_home_period.cjs']],
+    ['home-interactions',['scripts/verify_home_interactions.cjs']],
+    ['news-loading',['scripts/verify_news_loading.cjs']],
     ['graph-notices',['scripts/verify_graph_notices.cjs']],
     ['locale-period',['scripts/verify_locale_period.cjs']],
     ['planner',['scripts/verify_planner.cjs']],

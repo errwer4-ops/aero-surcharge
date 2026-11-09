@@ -62,8 +62,15 @@ async function main(){
     await checkChangedFeed(false);await checkChangedFeed(true);
     const home=await context.newPage();await home.goto(base+'/index.html');await home.waitForFunction(()=>window.OFFICIAL_ROUTE_MAP && OFFICIAL_ROUTE_MAP.BX['PUS-UBN'] && document.getElementById('destSelect').querySelector('option[value="UBN"]'));
     await home.locator('#originAirportInput').fill('PUS');await home.locator('#destAirportInput').fill('UBN');await home.locator('#searchBtn').click();
-    const homeBx=home.locator('#cardsGrid .al-card').filter({has:home.locator('a[href*="noticeDetail?id=4407"]')});const homeUbN=await homeBx.locator('tr.highlighted').innerText();assert(homeUbN.includes('USD 78'));assert(homeUbN.includes('USD 90'));assert(homeUbN.includes('공시 확인 완료'));assert((await homeBx.locator('.notice-route-scope').innerText()).includes('현재 운항일'));assert.equal(await home.evaluate(()=>!!OFFICIAL_ROUTE_MAP.BX['CJU-UBN']||!!OFFICIAL_ROUTE_MAP.BX['ICN-UBN']),false);
-    await home.evaluate(()=>{NOVEMBER_2026_OFFICIAL_NOTICES.find(n=>n.code==='BX').november[2]=1;renderCards('all');});const homeMutated=homeBx.locator('tr.highlighted');assert((await homeMutated.innerText()).includes('확인 중'));assert.equal((await homeMutated.locator('td').nth(3).innerText()).trim(),'—');assert.equal(await home.evaluate(()=>_trendBadgeHtml('BX',null,'PUS','UBN')),'');await home.close();
+    const homeBx=home.locator('#cardsGrid .al-card').filter({has:home.locator('a[href*="noticeDetail?id=4407"]')});
+    assert.equal(await homeBx.locator('.route-details').getAttribute('open'),null,'full charging bands start collapsed');
+    assert((await homeBx.locator('.route-summary-metric-primary').innerText()).includes('USD 90'),'selected route amount remains visible');
+    await homeBx.locator('.route-details > summary').click();
+    const homeUbN=await homeBx.locator('tr.highlighted').innerText();assert(homeUbN.includes('USD 78'));assert(homeUbN.includes('USD 90'));assert(homeUbN.includes('공시 확인 완료'));assert((await homeBx.locator('.notice-route-scope').innerText()).includes('현재 운항일'));assert.equal(await home.evaluate(()=>!!OFFICIAL_ROUTE_MAP.BX['CJU-UBN']||!!OFFICIAL_ROUTE_MAP.BX['ICN-UBN']),false);
+    await home.evaluate(()=>{NOVEMBER_2026_OFFICIAL_NOTICES.find(n=>n.code==='BX').november[2]=1;renderCards('all');});
+    // A new card render starts with its detailed evidence closed again.
+    await homeBx.locator('.route-details > summary').click();
+    const homeMutated=homeBx.locator('tr.highlighted');assert((await homeMutated.innerText()).includes('확인 중'));assert.equal((await homeMutated.locator('td').nth(3).innerText()).trim(),'—');assert.equal(await home.evaluate(()=>_trendBadgeHtml('BX',null,'PUS','UBN')),'');await home.close();
     console.log('PASS calculator: reconciled official values, month arithmetic, source mutation rejection, group change, pending/absent data, storage lifecycle, non-spurious update badges, month-action events, mobile, blocked storage, unique validated feed and ambiguous-data fallback blocking');
   }finally{if(browser)await browser.close();server.kill();}
 }

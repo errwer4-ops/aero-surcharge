@@ -1,0 +1,196 @@
+{
+  "reviewedAt": "2026-11-09T02:57:30.385Z",
+  "authorization": "User explicitly requested deployment and commit message: add 20261109 news and forecast",
+  "baseCommit": "59ad28202b44bdda9313a4c3259192a08fb0a624",
+  "scope": "Review of changes to the repository operational file scope; not external account verification",
+  "operationalDigest": "e29099dd8dd93e3999e8abe7f8c246f8d54b65481adedf6840e272399acb85aa",
+  "changedProtectedFiles": [
+    {
+      "file": "package.json",
+      "sha256": "fd06848c118dd3764a9e04cb2c15d9527645b7e003ec324ce92a2dca7821d585"
+    },
+    {
+      "file": "scripts/verify_release.cjs",
+      "sha256": "f28e7ebd60545b595fe4c2c006f7247c515ba6f1090c0ecdbc4e6cc3f0847432"
+    },
+    {
+      "file": "public/privacy.html",
+      "sha256": "930757fc1e9c5fa3a9c210378042a9e96b0320ce1902c52664c1e19a86f31902"
+    },
+    {
+      "file": "public/terms.html",
+      "sha256": "193b2a5a4b49a2d1f9e5402f5412dfb6a450f6fcd9221c8a5bb2b7d90be25686"
+    }
+  ],
+  "findings": [
+    "package.json and scripts/verify_release.cjs add home-interactions and news-loading checks; existing checks are retained.",
+    "privacy.html and terms.html change font CSS only; policy text and consent behavior are unchanged.",
+    "Ads/analytics/API/collectors/lockfile/Vercel settings are unchanged; adsEnabled remains false."
+  ],
+  "technicalEvidence": {
+    "sourceDigest": "3eb66b0aba507cebe6e40299ce90ab221d11b2dc0fa7403d6d9cc83ccd9ae9c8",
+    "startedAt": "2026-11-09T00:14:41.022Z",
+    "finishedAt": "2026-11-09T00:17:45.325Z",
+    "sourceUnchanged": true,
+    "checks": [
+      {
+        "name": "static",
+        "args": [
+          "scripts/verify_static_sources.cjs"
+        ],
+        "exitCode": 0,
+        "durationMs": 305
+      },
+      {
+        "name": "data",
+        "args": [
+          "scripts/validate_data.js"
+        ],
+        "exitCode": 0,
+        "durationMs": 218
+      },
+      {
+        "name": "service-data",
+        "args": [
+          "scripts/validate_service_data.cjs",
+          "--base-ref",
+          "HEAD"
+        ],
+        "exitCode": 0,
+        "durationMs": 885
+      },
+      {
+        "name": "native",
+        "args": [
+          "--test",
+          "tests/ads-loader.test.cjs",
+          "tests/calculator.test.cjs",
+          "tests/data-validation.test.cjs",
+          "tests/log-redaction.test.cjs",
+          "tests/market-source-provenance.test.cjs",
+          "tests/myrealtrip-security.test.cjs",
+          "tests/parser-input-gate.test.cjs",
+          "tests/pipeline-safety.test.cjs",
+          "tests/release-readiness.test.cjs",
+          "tests/renderer-source-copy.test.cjs",
+          "tests/source-provenance.test.cjs",
+          "tests/travel-planner.test.cjs"
+        ],
+        "exitCode": 0,
+        "durationMs": 5005
+      },
+      {
+        "name": "myrealtrip",
+        "args": [
+          "scripts/verify_myrealtrip_integration.js"
+        ],
+        "exitCode": 0,
+        "durationMs": 154
+      },
+      {
+        "name": "urls",
+        "args": [
+          "scripts/audit_seo_urls.cjs",
+          "--browser",
+          "--pages=news,forecast,fuel-surcharge-calculator",
+          "--report=C:\\Users\\jiwoo\\OneDrive\\Desktop\\사이드\\aero-v37-fixed\\aero-v36\\artifacts\\review-verification\\market-nov09\\url-runtime.json"
+        ],
+        "exitCode": 0,
+        "durationMs": 21561
+      },
+      {
+        "name": "platform",
+        "args": [
+          "scripts/verify_platform.cjs"
+        ],
+        "exitCode": 0,
+        "durationMs": 44392
+      },
+      {
+        "name": "home-interactions",
+        "args": [
+          "scripts/verify_home_interactions.cjs"
+        ],
+        "exitCode": 0,
+        "durationMs": 11333
+      },
+      {
+        "name": "news-loading",
+        "args": [
+          "scripts/verify_news_loading.cjs"
+        ],
+        "exitCode": 0,
+        "durationMs": 5958
+      },
+      {
+        "name": "home-period",
+        "args": [
+          "scripts/verify_home_period.cjs"
+        ],
+        "exitCode": 0,
+        "durationMs": 60424
+      },
+      {
+        "name": "graph-notices",
+        "args": [
+          "scripts/verify_graph_notices.cjs"
+        ],
+        "exitCode": 0,
+        "durationMs": 26732
+      },
+      {
+        "name": "planner",
+        "args": [
+          "scripts/verify_planner.cjs"
+        ],
+        "exitCode": 0,
+        "durationMs": 4416
+      },
+      {
+        "name": "calculator",
+        "args": [
+          "scripts/verify_calculator_platform.cjs"
+        ],
+        "exitCode": 0,
+        "durationMs": 15480
+      },
+      {
+        "name": "locale-period",
+        "args": [
+          "scripts/verify_locale_period.cjs"
+        ],
+        "exitCode": 0,
+        "durationMs": 79344
+      },
+      {
+        "name": "seo-snapshot",
+        "args": [
+          "scripts/sync_static_snapshots.cjs",
+          "--check"
+        ],
+        "exitCode": 0,
+        "durationMs": 70485
+      }
+    ]
+  },
+  "dailyEvidence": {
+    "command": "node scripts/verify_nov09.cjs",
+    "result": "passed",
+    "languages": 6,
+    "previousArticlesPreserved": 137,
+    "newArticles": 5,
+    "delayedStabilitySeconds": 12
+  },
+  "externalVerification": {
+    "ga4Reception": "not_verified",
+    "advertisingAndCMP": "not_verified_ads_disabled",
+    "affiliateConversionAndSettlement": "not_verified",
+    "productionDeployment": "pending_after_push"
+  },
+  "formatOnlyChanges": [
+    {
+      "file": "public/fonts/OFL-Pretendard.txt",
+      "reason": "Removed one trailing space detected by the staged diff check. License wording and font binary unchanged."
+    }
+  ]
+}

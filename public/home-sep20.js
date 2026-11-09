@@ -187,7 +187,7 @@
     updatePeriodCopy(now);
     Object.keys(text).forEach(function(lang){var c=text[lang];window.I18N[lang]=window.I18N[lang]||{};Object.assign(window.I18N[lang],{
       'index.title':c.title,'index.metaDesc':c.desc,'index.heroSub':c.hero,'index.signal1':c.s1,'index.signal2':c.s2,'index.signal3':c.s3,
-      'index.meta.suffix':c.suffix,'index.intro1.body':c.intro1,'index.intro2.body':c.intro2,'index.intro3.body':c.intro3,
+      'index.meta.suffix':c.suffix.replace(/^\s*·\s*/,''),'index.intro1.body':c.intro1,'index.intro2.body':c.intro2,'index.intro3.body':c.intro3,
       'index.decision.title':c.decision,'index.decision.line1':c.line1,'index.decision.line2':c.line2,'index.decision.line3':c.line3,'index.decision.conclusion':c.conclusion,
       'index.status.updatedSuffix':c.suffix,'index.card.septemberNotice':c.notice,'index.card.septemberPending':c.pending,'index.card.pendingSepShort':c.pending,
       'index.card.compareSep':c.compare,'index.card.augustBase':c.base,'index.card.officialReflectedSep':c.reflected,'index.card.trendSepTooltip':c.trend,
@@ -224,9 +224,9 @@
       var down=rate<0,lang=window.getCurrentLang?window.getCurrentLang():'ko';if(lang==='cn')lang='zh';var c=text[lang]||text.en;
       var label=(down?'▼ ':'▲ ')+(selected?c.selectedLabel:c.trendPrefix+' ')+(rate>0?'+':'')+rate.toFixed(1)+'%';
       var tip=selected?c.selectedTip:c.trend;
-      return '<span title="'+tip+'" style="display:inline-flex;align-items:center;font-size:11px;font-weight:700;color:'+(down?'#075985':'#C62828')+';background:'+(down?'#E0F2FE':'#FFF0F0')+';border:1px solid '+(down?'#BAE6FD':'#FFCDD2')+';border-radius:10px;padding:2px 8px;white-space:nowrap;flex-shrink:0;cursor:default">'+label+'</span>';
+      return '<span title="'+tip+'" style="display:inline-flex;align-items:center;font-size:var(--font-caption);font-weight:700;color:'+(down?'#075985':'#C62828')+';background:'+(down?'#E0F2FE':'#FFF0F0')+';border:1px solid '+(down?'#BAE6FD':'#FFCDD2')+';border-radius:10px;padding:2px 8px;white-space:nowrap;flex-shrink:0;cursor:default">'+label+'</span>';
     };
-    var style=document.getElementById('homeSep20TableFix');if(!style){style=document.createElement('style');style.id='homeSep20TableFix';style.textContent='.al-card .route-table{table-layout:fixed}.al-card .route-table th,.al-card .route-table td{padding-left:5px;padding-right:5px;overflow-wrap:anywhere}.al-card .route-table th:nth-child(1),.al-card .route-table td:nth-child(1){width:34%}.al-card .route-table th:nth-child(2),.al-card .route-table td:nth-child(2){width:22%}.al-card .route-table th:nth-child(3),.al-card .route-table td:nth-child(3){width:25%}.al-card .route-table th:nth-child(4),.al-card .route-table td:nth-child(4){width:19%}.al-card .route-amt-current,.al-card .route-amt-next{white-space:nowrap;font-size:11px}.al-card .route-table-wrap{overflow-x:hidden}';document.head.appendChild(style);}
+    var style=document.getElementById('homeSep20TableFix');if(!style){style=document.createElement('style');style.id='homeSep20TableFix';style.textContent='.al-card .route-table{table-layout:auto}.al-card .route-table th,.al-card .route-table td{padding:8px 6px}.al-card .route-table th:first-child,.al-card .route-table td:first-child{min-width:110px}.al-card .route-amt-current,.al-card .route-amt-next{white-space:nowrap;font-size:var(--font-amount)}.al-card .route-table td:last-child{white-space:nowrap;min-width:100px}.al-card .route-table small{font-size:var(--font-caption);font-weight:500;line-height:1.5}.al-card .route-table-wrap{overflow-x:auto}';document.head.appendChild(style);}
   }
   function updateHead(){
     var lang=window.getCurrentLang?window.getCurrentLang():'ko';if(lang==='cn')lang='zh';var c=text[lang]||text.en;document.title=c.title;
@@ -281,7 +281,7 @@
     if(window.applyLanguage) window.applyLanguage(window.getCurrentLang?window.getCurrentLang():'ko');
     if(typeof window.renderLanding==='function')window.renderLanding();
     if(typeof window.renderBookingDecision==='function')window.renderBookingDecision();
-    if(window._searchCtx&&typeof window.renderCards==='function')window.renderCards('all');
+    if(typeof window.refreshHomeResults==='function')window.refreshHomeResults();
     patchNotApplicableRows();
   }
   window.refreshAeroHomeCopy=refresh;

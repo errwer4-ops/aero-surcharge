@@ -591,7 +591,12 @@
       var keyBox=document.getElementById('newsKeyVariables');
       if(keyBox){
         keyBox.firstElementChild.textContent=p.keyTitle;
-        Array.from(keyBox.lastElementChild.children).forEach(function(el,i){el.textContent=p.rows[[3,2,1,0][i]][0];});
+        Array.from(keyBox.lastElementChild.children).forEach(function(el,i){
+          var row=p.rows[[3,2,1,0][i]];
+          // A slow earlier script can leave a fifth, obsolete indicator chip.
+          if(!row){el.remove();return;}
+          el.textContent=row[0];
+        });
       }
       var related=document.getElementById('newsRelatedLinksBox');
       if(related){

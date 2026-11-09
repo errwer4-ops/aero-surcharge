@@ -14,6 +14,8 @@
     "check:deployment": "node scripts/check_deployment_readiness.cjs",
     "test:platform": "node scripts/verify_platform.cjs",
     "test:home": "node scripts/verify_home_period.cjs",
+    "test:home:interactions": "node scripts/verify_home_interactions.cjs",
+    "test:news": "node scripts/verify_news_loading.cjs",
     "test:graph": "node scripts/verify_graph_notices.cjs",
     "test:calculator": "node scripts/verify_calculator_platform.cjs",
     "validate:data": "node scripts/validate_data.js",

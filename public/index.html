@@ -25,488 +25,24 @@
 
   <!-- Google Analytics (GA4) -->
 
-  <style>
-    .hero { background:linear-gradient(160deg,#075985 0%,#0369A1 55%,#0284C7 100%); padding:22px 40px 30px; text-align:center; position:relative; overflow:visible; }
-    .hero::before { content:''; position:absolute; inset:0; background:radial-gradient(ellipse 70% 60% at 50% 120%,rgba(255,255,255,.06) 0%,transparent 70%); pointer-events:none; }
-    .hero-title { font-size:clamp(18px,3vw,26px); font-weight:700; color:#fff; letter-spacing:-1px; margin:0 0 3px; }
-    .hero-sub { font-size:12px; color:rgba(255,255,255,.78); margin-bottom:10px; }
-    .hero-signal-row { display:flex; justify-content:center; gap:8px; flex-wrap:wrap; margin:0 0 16px; }
-    .hero-signal-row span { display:inline-flex; align-items:center; padding:5px 10px; border-radius:999px; background:rgba(255,255,255,.13); border:1px solid rgba(255,255,255,.22); color:#fff; font-size:11px; font-weight:700; }
-    .search-panel { background:#fff; border-radius:13px; padding:16px 20px; max-width:860px; margin:0 auto; display:grid; grid-template-columns:1fr auto 1fr auto auto; gap:11px; align-items:end; box-shadow:0 14px 44px rgba(0,0,0,.2); position:relative; z-index:50; overflow:visible; }
-    .form-group { display:flex; flex-direction:column; gap:5px; overflow:visible; }
-    .form-label { font-size:10px; font-weight:700; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); }
-    .airport-select { background:var(--bg); border:1.5px solid var(--line); border-radius:9px; padding:9px 32px 9px 12px; font-size:14px; font-weight:500; font-family:var(--sans); color:var(--text); outline:none; appearance:none; cursor:pointer; transition:border-color .15s; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238890A8' stroke-width='1.5' fill='none'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:right 10px center; }
-    .airport-select:focus { border-color:var(--blue); }
-    .swap-btn { width:40px; height:40px; border-radius:50%; border:1.5px solid var(--line); background:#fff; cursor:pointer; display:flex; align-items:center; justify-content:center; font-size:16px; transition:all .2s; align-self:end; }
-    .swap-btn:hover { border-color:var(--blue); background:var(--blue-lt); transform:scale(1.08); }
-    .trip-toggle { display:flex; border:1.5px solid var(--line); border-radius:9px; overflow:hidden; align-self:end; }
-    .trip-btn { flex:1; padding:9px 14px; font-size:12px; font-weight:600; border:none; background:transparent; cursor:pointer; font-family:var(--sans); color:var(--muted); transition:all .15s; white-space:nowrap; }
-    .trip-btn.active { background:var(--blue); color:#fff; }
-    .search-btn { background:var(--blue); color:#fff; border:none; border-radius:9px; padding:10px 22px; font-size:13px; font-weight:700; cursor:pointer; font-family:var(--sans); white-space:nowrap; transition:all .15s; align-self:end; }
-    .search-btn:hover { background:var(--blue-dk); transform:translateY(-1px); }
-
-    .main { max-width:1140px; margin:0 auto; padding:18px 24px 56px; }
-
-    .result-header { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; flex-wrap:wrap; gap:10px; }
-    .result-title { font-size:15px; font-weight:700; display:flex; align-items:center; gap:10px; }
-    .route-badge { background:var(--blue-lt); color:var(--blue); border-radius:8px; padding:4px 12px; font-size:13px; font-weight:700; font-family:var(--mono); }
-    .result-meta { font-size:12px; color:var(--muted); }
-    .filter-row { display:flex; gap:8px; margin-bottom:14px; flex-wrap:wrap; }
-    .ftab { padding:5px 14px; border-radius:20px; font-size:12px; font-weight:600; cursor:pointer; border:1.5px solid var(--line); background:var(--white); color:var(--text2); transition:all .15s; font-family:var(--sans); }
-    .ftab:hover { border-color:var(--blue); color:var(--blue); }
-    .ftab.active { background:var(--blue); color:#fff; border-color:var(--blue); }
-
-    /* ── CARDS ── */
-    .cards-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:14px; }
-    .al-card { background:var(--white); border-radius:14px; border:1.5px solid var(--line); padding:17px 19px; box-shadow:var(--shadow); transition:transform .15s, box-shadow .15s; }
-    .al-card:hover { transform:translateY(-2px); box-shadow:var(--shadow-lg); }
-    .al-card.has-data { border-left:4px solid var(--blue); }
-    .al-card.has-error { border-left:4px solid #FDB572; }
-    .al-card.no-data   { border-left:4px solid var(--line); opacity:.85; }
-
-    .card-header { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:12px; }
-    .card-airline { display:flex; align-items:center; gap:10px; }
-    .card-logo { width:38px; height:38px; border-radius:9px; display:flex; align-items:center; justify-content:center; font-size:18px; border:1px solid var(--line); background:var(--bg); flex-shrink:0; }
-    .card-name { font-weight:700; font-size:14px; line-height:1.3; }
-    .card-code { font-size:11px; color:var(--muted); font-family:var(--mono); margin-top:1px; }
-    .alliance-tag { font-size:10px; font-weight:700; padding:2px 7px; border-radius:4px; font-family:var(--mono); flex-shrink:0; }
-    .tag-skyteam  { background:#E0F2FE; color:#075985; }
-    .tag-star     { background:#f3e5f5; color:#6a1b9a; }
-    .tag-oneworld { background:#fff8e1; color:#e65100; }
-    .tag-lcc      { background:#e8f5e9; color:#2e7d32; }
-    .tag-other    { background:#f5f5f5; color:#555; }
-
-    /* 공식값 */
-    .official-section { margin-bottom:10px; }
-    .official-label { font-size:10px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--muted); margin-bottom:5px; display:flex; align-items:center; gap:6px; }
-    .amt-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:7px; }
-    .amt-box { background:var(--bg); border-radius:8px; padding:9px 11px; text-align:center; border:1px solid var(--line); }
-    .amt-period { font-size:10px; color:var(--muted); margin-bottom:3px; font-family:var(--mono); }
-    .amt-val { font-family:var(--mono); font-weight:700; font-size:13px; }
-    .amt-val.hi    { color:var(--blue); }
-    .amt-val.red   { color:var(--red); }
-    .amt-val.green { color:var(--green); }
-    .amt-val.dim   { color:var(--muted); font-size:11px; }
-    .amt-val.prepub { color:var(--muted); font-size:10px; font-style:italic; }
-    .no-data-msg { font-size:12px; color:var(--muted); padding:10px 0 4px; }
-
-    .card-footer { display:flex; align-items:center; justify-content:space-between; border-top:1px solid var(--line); padding-top:9px; margin-top:10px; gap:8px; flex-wrap:wrap; }
-    .footer-left { display:flex; align-items:center; gap:6px; flex-wrap:wrap; }
-    .source-link { font-size:11px; color:var(--blue); text-decoration:none; font-weight:600; }
-    .source-link:hover { text-decoration:underline; }
-
-    /* landing mini cards */
-    .landing-title { font-size:14px; font-weight:700; color:var(--text2); margin-bottom:12px; }
-    .mini-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:10px; }
-    .mini-card { background:var(--white); border-radius:11px; border:1.5px solid var(--line); padding:12px 15px; display:flex; align-items:center; gap:10px; }
-    .mini-badge { width:34px; height:34px; border:1.5px solid var(--line); border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:16px; background:var(--bg); flex-shrink:0; }
-    .mini-name { font-size:13px; font-weight:600; }
-    .mini-status { font-size:11px; color:var(--muted); margin-top:1px; }
-    .mini-amt { display:none; }
-    /* kr-only-notice */
-    .kr-only-notice { display:flex; align-items:flex-start; gap:12px; background:linear-gradient(135deg,#E0F2FE,#F0F9FF); border:1.5px solid #7DD3FC; border-radius:13px; padding:14px 18px; margin-bottom:16px; }
-    .kr-only-icon { font-size:24px; flex-shrink:0; margin-top:2px; }
-    .kr-only-title { font-size:14px; font-weight:700; color:#075985; margin-bottom:4px; }
-    .kr-only-desc { font-size:12px; color:#0284C7; line-height:1.6; }
-    .mini-notice-btn { display:inline-block; font-size:10px; color:var(--blue); text-decoration:none; font-weight:600; margin-top:4px; padding:2px 7px; border-radius:8px; border:1px solid #7DD3FC; background:#E0F2FE; }
-    .mini-notice-btn:hover { background:#BAE6FD; }
-    .index-link-row { margin-top:20px; text-align:center; }
-    .index-link { color:var(--blue); font-size:13px; font-weight:600; text-decoration:none; }
-
-    /* ── ROUTE TABLE ── */
-    .route-table { width:100%; border-collapse:collapse; margin:8px 0 4px; }
-    .route-table th { font-size:9px; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:var(--muted); padding:4px 8px; text-align:left; border-bottom:1px solid var(--line); }
-    .route-table td { font-size:12px; padding:5px 8px; border-bottom:1px solid var(--line); }
-    .route-table tr:last-child td { border-bottom:none; }
-    .route-table tr.highlighted { background:var(--blue-lt); }
-    .route-table tr.spiked td { color:var(--red); }
-    .route-amt { font-family:var(--mono); font-weight:700; color:var(--blue); text-align:right; }
-    .route-range { font-family:var(--mono); font-size:10px; color:var(--muted); }
-    .route-highlight-badge { font-size:9px; background:var(--blue); color:#fff; border-radius:4px; padding:1px 5px; margin-left:5px; vertical-align:middle; }
-    .route-spike-badge { font-size:9px; background:#FFF3E0; color:#E65100; border:1px solid #FFCC80; border-radius:4px; padding:1px 5px; }
-
-    /* ── 5월(현재적용)/6월(전망) 표 전용 ── */
-    .route-table-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; }
-    .route-table th.th-apr { color:var(--muted); text-align:right; white-space:nowrap; }
-    .route-table th.th-may { color:var(--blue); text-align:right; white-space:nowrap; }
-    .route-amt-apr { font-family:var(--mono); font-size:11px; font-weight:500;
-                     color:var(--muted); text-align:right; }
-    /* 현재 적용값 (5월) — 파란색 강조 */
-    .route-amt-current { font-family:var(--mono); font-size:13px; font-weight:700;
-                         color:var(--blue); text-align:right; }
-    /* 6월 공식 공시값 — 초록색 강조 */
-    .route-amt-next { font-family:var(--mono); font-size:13px; font-weight:700;
-                      color:#059669; text-align:right; }
-    .route-amt-may-up  { font-family:var(--mono); font-size:13px; font-weight:700;
-                         color:#C62828; text-align:right; }
-    .route-amt-may-eq  { font-family:var(--mono); font-size:13px; font-weight:700;
-                         color:var(--blue); text-align:right; }
-    .route-amt-may-dn  { font-family:var(--mono); font-size:13px; font-weight:700;
-                         color:#075985; text-align:right; }
-    .prepub { color:var(--muted); font-size:10px; font-style:italic; font-weight:400; }
-    @media(max-width:700px){
-      .route-table td, .route-table th { padding:4px 5px; font-size:10px; }
-      .route-amt-apr { font-size:10px; }
-      .route-amt-current { font-size:11px; }
-      .route-amt-next { font-size:11px; }
-      .route-amt-may-up,.route-amt-may-eq,.route-amt-may-dn { font-size:11px; }
-    }
-
-    /* ── CHECKBOX ROW ── */
-    .checkbox-row { display:flex; align-items:flex-start; gap:8px; }
-    input[type="checkbox"] { flex-shrink:0; }
-
-    /* ══════════════════════════════════
-       서비스 소개 섹션 (intro-section)
-       ══════════════════════════════════ */
-    .intro-section {
-      max-width:1140px;
-      margin:0 auto;
-      padding:28px 24px 0;
-    }
-    .intro-grid {
-      display:grid;
-      grid-template-columns:repeat(auto-fill, minmax(280px, 1fr));
-      gap:14px;
-      margin-bottom:10px;
-    }
-    .intro-card {
-      background:var(--white);
-      border-radius:14px;
-      border:1.5px solid var(--line);
-      padding:20px 22px;
-      box-shadow:var(--shadow);
-    }
-    .intro-card-icon {
-      font-size:26px;
-      margin-bottom:10px;
-      display:block;
-    }
-    .intro-card-title {
-      font-size:14px;
-      font-weight:700;
-      color:var(--text);
-      margin-bottom:7px;
-      line-height:1.4;
-    }
-    .intro-card-body {
-      font-size:13px;
-      color:var(--text2);
-      line-height:1.7;
-    }
-
-    /* ── 유류할증료 안내 블록 (guide-block) ── */
-    .guide-block {
-      background:linear-gradient(135deg,#F8FCFF,#E0F2FE);
-      border:1.5px solid #BAE6FD;
-      border-radius:14px;
-      padding:20px 24px;
-      margin-bottom:18px;
-    }
-    .guide-block-title {
-      font-size:14px;
-      font-weight:700;
-      color:#075985;
-      margin-bottom:10px;
-      display:flex;
-      align-items:center;
-      gap:8px;
-    }
-    .guide-block-body {
-      font-size:13px;
-      color:#37474F;
-      line-height:1.75;
-    }
-    .guide-block-body p { margin:0 0 8px; }
-    .guide-block-body p:last-child { margin:0; }
-    /* ── 예약 판단 블록 ── */
-    .booking-decision-card { background:#F0F9FF; border:1px solid #BAE6FD; border-radius:12px; padding:16px; margin-bottom:12px; }
-    .decision-title { font-weight:700; color:#075985; margin-bottom:8px; font-size:14px; }
-    .decision-list { padding-left:18px; margin:0 0 10px; }
-    .decision-list li { margin-bottom:4px; font-size:13px; color:var(--text2,#555); }
-    .decision-conclusion { font-weight:600; color:#0284C7; font-size:13px; }
-    .notice-readiness-card { background:#FFF7ED; border:1px solid #FDBA74; border-radius:12px; padding:16px; margin-bottom:14px; }
-    .notice-readiness-head { display:flex; align-items:flex-start; justify-content:space-between; gap:12px; margin-bottom:10px; }
-    .notice-readiness-title { font-size:14px; font-weight:800; color:#9A3412; }
-    .notice-readiness-badge { display:inline-flex; align-items:center; border-radius:999px; padding:4px 9px; font-size:11px; font-weight:800; color:#9A3412; background:#FFEDD5; border:1px solid #FED7AA; white-space:nowrap; }
-    .notice-readiness-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin-bottom:10px; }
-    .notice-readiness-item { background:#fff; border:1px solid #FED7AA; border-radius:9px; padding:10px; }
-    .notice-readiness-label { font-size:10px; font-weight:800; color:#9A3412; margin-bottom:4px; text-transform:uppercase; letter-spacing:.5px; }
-    .notice-readiness-text { font-size:12px; color:#432818; line-height:1.5; }
-    .notice-readiness-note { font-size:12px; color:#7C2D12; line-height:1.65; }
-    .notice-readiness-link { display:inline-flex; align-items:center; margin-top:8px; color:#075985; font-weight:700; text-decoration:none; font-size:12px; }
-    .notice-readiness-link:hover { text-decoration:underline; }
-
-    /* ════════════════════════════════════════
-       모바일 UX (700px 이하)
-       ════════════════════════════════════════ */
-    @media(max-width:700px){
-      .hero { padding: 20px 16px 28px; }
-      .hero-title { font-size: 20px; letter-spacing: -.5px; margin-bottom: 5px; }
-      .hero-sub { font-size: 12px; margin-bottom: 20px; }
-      .search-panel { grid-template-columns: 1fr; gap: 12px; padding: 18px 16px 20px; border-radius: 14px; }
-      .form-group { gap: 6px; width: 100%; }
-      .form-label { font-size: 11px; letter-spacing: 1px; }
-      .airport-select { width: 100%; padding: 11px 36px 11px 13px; font-size: 15px; border-radius: 10px; }
-      .swap-btn { display: none; }
-      .trip-toggle { width: 100%; border-radius: 10px; }
-      .trip-btn { flex: 1; padding: 11px 14px; font-size: 13px; }
-      .search-btn { width: 100%; padding: 13px 22px; font-size: 14px; border-radius: 10px; text-align: center; letter-spacing: .2px; }
-      .main { padding: 16px 14px 48px; }
-      .result-header { flex-direction: column; align-items: flex-start; gap: 8px; }
-      .filter-row { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; padding-bottom: 4px; gap: 6px; }
-      .filter-row::-webkit-scrollbar { display: none; }
-      .ftab { white-space: nowrap; flex-shrink: 0; padding: 6px 14px; }
-      .cards-grid, .mini-grid { grid-template-columns: 1fr; }
-      .al-card { padding: 15px 15px; }
-      .amt-grid { gap: 5px; }
-      .amt-box { padding: 8px 8px; }
-      .amt-val { font-size: 12px; }
-      .kr-only-notice { padding: 12px 14px; gap: 10px; }
-      .kr-only-desc { font-size: 11px; }
-      /* intro / guide 모바일 */
-      .intro-section { padding: 20px 14px 0; }
-      .intro-grid { grid-template-columns: 1fr; gap: 10px; }
-      .intro-card { padding: 16px 16px; }
-      .intro-card-body { font-size: 12px; }
-      .guide-block { padding: 16px 16px; }
-      .booking-decision-card { padding: 14px; }
-      .decision-list li { font-size: 12px; }
-      .notice-readiness-head { flex-direction:column; align-items:flex-start; gap:6px; }
-      .notice-readiness-grid { grid-template-columns:1fr; }
-      .guide-block-body { font-size: 12px; }
-    }
-
-    /* ── 공항 자동완성 ── */
-    .airport-combo-wrap { position:relative; width:100%; overflow:visible; }
-    .airport-input {
-      width:100%; box-sizing:border-box;
-      background:var(--bg); border:1.5px solid var(--line); border-radius:9px;
-      padding:9px 36px 9px 12px; font-size:14px; font-weight:500;
-      font-family:var(--sans); color:var(--text); outline:none;
-      transition:border-color .15s; cursor:text;
-    }
-    .airport-input:focus { border-color:var(--blue); }
-    .airport-input::placeholder { color:var(--muted); font-weight:400; }
-    .airport-input-clear {
-      position:absolute; right:10px; top:50%; transform:translateY(-50%);
-      width:18px; height:18px; border-radius:50%; background:var(--line);
-      border:none; cursor:pointer; display:none; align-items:center;
-      justify-content:center; font-size:10px; color:var(--text2); padding:0;
-      line-height:1;
-    }
-    .airport-input-clear.visible { display:flex; }
-    .airport-suggest-list {
-      position:absolute; top:calc(100% + 4px); left:0; right:0; z-index:99999;
-      background:#fff; border:1.5px solid var(--line); border-radius:10px;
-      max-height:320px; overflow-y:auto; box-shadow:var(--shadow-lg);
-      display:none;
-    }
-    .airport-suggest-list.open { display:block; }
-    .airport-suggest-item {
-      padding:9px 12px; cursor:pointer; font-size:13px; color:var(--text);
-      transition:background .1s;
-    }
-    .airport-suggest-item:hover,
-    .airport-suggest-item.active { background:var(--blue-lt); color:var(--blue); }
-    .airport-suggest-empty {
-      padding:10px 12px; font-size:12px; color:var(--muted); text-align:center;
-    }
-    @media(max-width:700px){
-      .airport-input { padding:11px 36px 11px 13px; font-size:15px; border-radius:10px; }
-      .airport-suggest-list { max-height:280px; overflow-y:auto; }
-      .airport-suggest-item { padding:10px 13px; font-size:14px; }
-    }
-
-    /* ── 제휴 링크 버튼 ── */
-    .affiliate-links {
-      display:flex;
-      gap:6px;
-      flex-wrap:wrap;
-      margin-left:6px;
-    }
-    .aff-btn {
-      display:inline-block;
-      font-size:13px;
-      font-weight:700;
-      padding:10px 16px;
-      border-radius:8px;
-      text-decoration:none;
-      transition:all .2s;
-      white-space:nowrap;
-      background:#ffffff;
-      color:var(--blue);
-      border:1.5px solid var(--blue);
-    }
-    .aff-btn:hover {
-      background:var(--blue);
-      color:#fff;
-      transform:translateY(-1px);
-    }
-    .aff-btn.primary {
-      background:#ffffff;
-      color:#FF385C;
-      border:1.5px solid #FF385C;
-    }
-    .aff-btn.primary:hover {
-      background:#FF385C;
-      color:#fff;
-    }
-
-    /* ── 결과 하단 제휴 섹션 ── */
-    .affiliate-section {
-      margin-top:20px;
-      padding:0;
-      border:none;
-      background:transparent;
-    }
-    .affiliate-title {
-      font-size:13px;
-      font-weight:700;
-      margin-bottom:10px;
-      color:var(--text2);
-    }
-    .affiliate-box {
-      display:flex;
-      gap:8px;
-      flex-wrap:wrap;
-    }
-    /* news.html과 동일한 카드 구조 */
-    .affiliate-single {
-      padding:12px 16px;
-      border-radius:10px;
-      background:var(--white);
-      border:1px solid var(--line);
-      margin:12px 0;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-    .affiliate-single-body { flex:1; min-width:0; }
-    .aff-title { font-weight:700; margin-bottom:3px; font-size:13px; color:var(--text); }
-    .aff-desc  { font-size:12px; color:#666; line-height:1.5; margin:0; }
-    @media(max-width:480px){
-      .affiliate-single { flex-direction:column; align-items:flex-start; }
-    }
-
-    /* ── 마이리얼트립 히어로 카드 ── */
-    /* ── 마이리얼트립 CTA 카드 ── */
-    .affiliate-cta.myrealtrip-cta {
-      position:relative;
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:22px;
-      min-height:120px;
-      padding:22px 26px;
-      margin:18px 0;
-      border-radius:16px;
-      border:1.5px solid #C7D7F5;
-      background:linear-gradient(135deg,#F8FCFF 0%,#EEF3FF 100%);
-      box-shadow:0 8px 22px rgba(7,89,133,.08);
-      overflow:hidden;
-    }
-    .cta-copy {
-      position:relative;
-      z-index:2;
-      max-width:560px;
-    }
-    .cta-kicker {
-      display:inline-block;
-      margin-bottom:7px;
-      padding:4px 9px;
-      border-radius:999px;
-      background:#E0F2FE;
-      color:#0369A1;
-      font-size:11px;
-      font-weight:800;
-    }
-    .cta-title {
-      font-size:16px;
-      font-weight:800;
-      color:var(--text);
-      letter-spacing:-.5px;
-      margin-bottom:7px;
-    }
-    .cta-desc {
-      font-size:13px;
-      color:#5f6675;
-      line-height:1.6;
-      margin-bottom:10px;
-    }
-    .cta-benefits {
-      display:flex;
-      flex-wrap:wrap;
-      gap:6px;
-    }
-    .cta-benefits span {
-      font-size:11px;
-      font-weight:700;
-      color:#0369A1;
-      background:#fff;
-      border:1px solid #C7D7F5;
-      border-radius:999px;
-      padding:4px 8px;
-    }
-    .cta-main-btn {
-      position:relative;
-      z-index:2;
-      flex-shrink:0;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      min-width:170px;
-      padding:13px 18px;
-      border-radius:11px;
-      background:var(--blue);
-      color:#fff;
-      font-size:14px;
-      font-weight:700;
-      text-decoration:none;
-      box-shadow:0 8px 18px rgba(7,89,133,.18);
-      transition:all .18s;
-      white-space:nowrap;
-    }
-    .cta-main-btn:hover {
-      transform:translateY(-2px);
-      background:var(--blue-dk, #0369A1);
-      box-shadow:0 12px 24px rgba(7,89,133,.24);
-    }
-    @media(max-width:700px){
-      .affiliate-cta.myrealtrip-cta {
-        display:block;
-        min-height:auto;
-        padding:18px 16px;
-        background:linear-gradient(135deg,#F8FCFF 0%,#EEF3FF 100%);
-      }
-      .cta-copy { max-width:100%; }
-      .cta-title { font-size:15px; }
-      .cta-desc  { font-size:12px; }
-      .cta-main-btn {
-        margin-top:12px;
-        width:100%;
-        min-width:0;
-      }
-      .cta-benefits span { font-size:10px; }
-    }
-    </style>
+  <link rel="stylesheet" href="home.css?v=20261106-design"/>
   <meta name="twitter:card" content="summary"/>
   <meta name="twitter:title" content="노선별 유류할증료 조회 · 항공사 공식 공시 비교"/>
   <meta name="twitter:description" content="한국 출발 국제선 유류할증료를 항공사·노선별로 조회하고, 월별 금액 차이와 공시 원문을 확인하세요."/>
 </head>
-<body>
-
-<nav>
+<body class="home-page">
+<a class="skip-link" href="#homeMain" data-i18n="home.skip">본문으로 이동</a>
+<nav class="site-nav" aria-label="Main">
+  <a href="index.html" class="site-brand" aria-label="AERO Home">AERO<span class="brand-mark" aria-hidden="true"></span></a>
   <div class="nav-links">
     <a href="index.html"    class="nav-link active"  id="navLinkRoutes"   data-i18n="nav.routes">노선별 조회</a>
     <a href="fuel-surcharge-calculator.html" class="nav-link" id="navLinkCalculator" data-i18n="nav.calc">계산기</a>
     <a href="airlines.html" class="nav-link"          id="navLinkAirlines" data-i18n="nav.airlines">항공사 인덱스</a>
     <a href="news.html"     class="nav-link"          id="navLinkNews"     data-i18n="nav.news">참고 소식</a>
+    <a href="fuel-surcharge-graph.html" class="nav-link" data-i18n="home.nav.graph">월별 추이</a>
   </div>
   <div class="nav-controls">
-    <select class="nav-select" id="navLang">
+    <select class="nav-select" id="navLang" aria-label="Language">
       <option value="ko">🇰🇷 한국어</option>
       <option value="en">🇺🇸 English</option>
       <option value="ja">🇯🇵 日本語</option>
@@ -515,7 +51,7 @@
       <option value="de">🇩🇪 Deutsch</option>
     </select>
     <div class="nav-divider"></div>
-    <select class="nav-select" id="navCurr">
+    <select class="nav-select" id="navCurr" aria-label="Currency">
       <option value="KRW">₩ KRW</option>
       <option value="USD">$ USD</option>
       <option value="JPY">¥ JPY</option>
@@ -528,21 +64,17 @@
     </select>
   </div>
 </nav>
-
-<div class="hero">
-  <h1 class="hero-title" id="heroTitle" data-i18n="index.heroTitle">노선별 유류할증료 조회</h1>
-  <div class="hero-sub"   id="heroSub"   data-i18n="index.heroSub">출발·도착 공항을 선택해 항공사별 유류할증료와 월별 변화를 확인하세요.</div>
-  <div class="hero-signal-row" id="heroSignalRow">
-    <span data-i18n="index.signal1">항공사 공식 공지와 원문 링크</span>
-    <span data-i18n="index.signal2">같은 통화·노선 구간 비교</span>
-    <span data-i18n="index.signal3">2026년 12월 · 공시 확인 대기</span>
-  </div>
-  <div class="search-panel">
+<header class="hero">
+  <div class="hero-inner">
+    <p class="hero-eyebrow" data-i18n="home.scope">한국 출발 국제선 · 항공사 공식 공시</p>
+    <h1 class="hero-title" id="heroTitle" data-i18n="index.heroTitle">노선별 유류할증료 조회</h1>
+    <p class="hero-sub" id="heroSub" data-i18n="index.heroSub">출발·도착 공항을 선택해 항공사별 유류할증료와 월별 변화를 확인하세요.</p>
+<div class="search-panel">
     <div class="form-group">
-      <label class="form-label" id="labelOrigin" data-i18n="index.labelOrigin">출발 공항</label>
+      <label class="form-label" id="labelOrigin" for="originAirportInput" data-i18n="index.labelOrigin">출발 공항</label>
       <div class="airport-combo-wrap" id="originComboWrap">
         <input data-clarity-mask="true" class="airport-input" id="originAirportInput"
-               placeholder="공항명 또는 코드 입력 (예: 인천, ICN)"
+               placeholder="도시 또는 공항 코드"
                data-i18n-placeholder="index.airport.searchOriginPlaceholder"
                data-i18n-aria-label="index.airport.searchOriginAria"
                autocomplete="off" autocorrect="off" spellcheck="false" aria-label="출발 공항 검색"/>
@@ -555,12 +87,12 @@
         <!-- JS buildAirportOptions()로 채워짐 -->
       </select>
     </div>
-    <button class="swap-btn" id="swapBtn" data-i18n-title="index.labelTrip" title="교체">&#8644;</button>
+    <button class="swap-btn" id="swapBtn" aria-label="출발·도착 공항 교체" data-i18n-aria-label="home.swap" data-i18n-title="home.swap" title="출발·도착 공항 교체">&#8644;</button>
     <div class="form-group">
-      <label class="form-label" id="labelDest" data-i18n="index.labelDest">도착 공항</label>
+      <label class="form-label" id="labelDest" for="destAirportInput" data-i18n="index.labelDest">도착 공항</label>
       <div class="airport-combo-wrap" id="destComboWrap">
         <input data-clarity-mask="true" class="airport-input" id="destAirportInput"
-               placeholder="공항명 또는 코드 입력 (예: 도쿄, HND)"
+               placeholder="도시 또는 공항 코드"
                data-i18n-placeholder="index.airport.searchDestPlaceholder"
                data-i18n-aria-label="index.airport.searchDestAria"
                autocomplete="off" autocorrect="off" spellcheck="false" aria-label="도착 공항 검색"/>
@@ -577,56 +109,26 @@
       <label class="form-label" id="labelTrip" data-i18n="index.labelTrip">여정</label>
       <div class="trip-toggle">
         <button class="trip-btn active" id="btnOW" data-i18n="index.trip.oneWay">편도</button>
-        <button class="trip-btn"        id="btnRT" data-i18n="index.trip.roundTrip">왕복</button>
+        <button class="trip-btn"        id="btnRT" data-i18n="index.trip.roundTrip">왕복 추정</button>
       </div>
     </div>
-    <button class="search-btn" id="searchBtn" data-i18n="index.search">🔍 검색</button>
+    <button class="search-btn" id="searchBtn" data-i18n="index.search">조회하기</button>
   </div>
-</div>
-
-<!-- 베타 서비스 안내 배너 -->
-<div class="beta-banner" id="betaNoticeBanner" role="note">
-  <div class="beta-banner-inner">
-    <div class="beta-banner-icon">⚠️</div>
-    <div class="beta-banner-body">
-      <div class="beta-banner-title">
-        <span class="beta-badge">BETA</span><span data-i18n="beta.title">베타 서비스 안내</span>
-      </div>
-      <div class="beta-banner-desc" data-i18n="beta.desc">현재 한국 출발 국제선 유류할증료를 기준으로 제공되고 있으며, 일부 항공사는 공식 공지 기반 수동 반영입니다. 최종 금액은 항공사 공식 공지를 반드시 확인해주세요.</div>
-      <div class="beta-banner-note" data-i18n="beta.note">※ 현재는 한국 출발 국제선만 지원합니다. 해외 출발 노선은 서비스 준비중입니다.</div>
-    </div>
+    <p class="search-basis" data-i18n="home.basis">유류할증료만 비교합니다. 항공권 총액과 운항 여부는 발권처에서 확인하세요.</p>
   </div>
-</div>
-
-<!-- 서비스 소개 섹션 -->
-<section class="intro-section" id="introSection" aria-label="intro">
-  <div class="intro-grid">
-    <div class="intro-card">
-      <span class="intro-card-icon">✈️</span>
-      <div class="intro-card-title" data-i18n="index.intro1.title">한국 출발 국제선 유류할증료 비교</div>
-      <div class="intro-card-body" data-i18n="index.intro1.body">인천·김포·부산·청주·대구 등 한국 출발 국제선의 유류할증료를 항공사와 노선별로 조회합니다. 항공사별 거리 구간과 노선군에 맞는 금액을 확인할 수 있습니다.</div>
-    </div>
-    <div class="intro-card">
-      <span class="intro-card-icon">📋</span>
-      <div class="intro-card-title" data-i18n="index.intro2.title">항공사 공식 공지 기반 정보 제공</div>
-      <div class="intro-card-body" data-i18n="index.intro2.body">항공사 공식 공지의 금액·통화·적용 기간을 확인하고 원문 링크를 제공합니다. 원문 검증이 끝난 데이터와 확인 중인 데이터를 구분해 표시합니다.</div>
-    </div>
-    <div class="intro-card">
-      <span class="intro-card-icon">🔍</span>
-      <div class="intro-card-title" data-i18n="index.intro3.title">왜 이 서비스가 필요한가요?</div>
-      <div class="intro-card-body" data-i18n="index.intro3.body">여러 항공사의 공지를 한 화면에서 살펴보고, 같은 항공사·통화·구간의 월별 변화를 비교할 수 있습니다. 유류할증료가 항공권 총액에 미치는 차이를 파악하는 데 도움이 됩니다.</div>
-    </div>
+</header>
+<main class="main" id="homeMain">
+  <div class="notice-overview" id="bookingDecisionCard">
+<ul class="decision-list" id="decisionList"><li>2026년 11월 발권분 현재 적용. 2026년 11월 공시 완료 9개사: KE · OZ · 7C · LJ · RS · BX · TW · ZE · YP.</li></ul>
+    <a href="#homeGuide" id="openHomeGuide" data-i18n="home.criteriaLink">조회 기준</a>
   </div>
-</section>
-
-<div class="main">
-  <!-- 검색 결과 -->
-  <div id="resultsSection" style="display:none">
+<div id="resultsSection" style="display:none">
     <div class="result-header">
-      <div class="result-title">
+      <button class="back-to-overview" id="backToOverview" data-i18n="home.back">← 항공사 공시 현황</button>
+      <h2 class="result-title">
         <span id="resultLabel" data-i18n="index.result.label">항공사별 유류할증료</span>
         <span class="route-badge" id="resultBadge"></span>
-      </div>
+      </h2>
       <div class="result-meta" id="resultMeta"></div>
     </div>
     <div class="filter-row" id="filterRow">
@@ -637,14 +139,7 @@
     <div class="cards-grid" id="cardsGrid"></div>
 
     <!-- 유류할증료 안내 블록 (결과) -->
-    <div class="guide-block" id="guideBlockResult" style="margin-top:18px">
-      <div class="guide-block-title" data-i18n="index.guide.title">💡 유류할증료란 무엇인가요?</div>
-      <div class="guide-block-body">
-        <p data-i18n="index.guide.p1">유류할증료(Fuel Surcharge)는 항공유 가격 변동에 따라 항공사가 기본 운임 외에 별도로 부과하는 요금입니다. 국제유가가 오르면 할증료도 높아지고, 유가가 내리면 감소하거나 면제되기도 합니다.</p>
-        <p data-i18n="index.guide.p2">금액은 항공사마다 다르며, 같은 항공사라도 비행 거리 구간이나 노선군에 따라 다르게 적용됩니다. 항공사가 공지한 발권 적용 기간을 기준으로 확인하세요.</p>
-        <p data-i18n="index.guide.p3">아래 결과는 공식 공지 기준이며, 최종 결제 금액은 항공사 예약 화면 또는 공식 공지에서 반드시 재확인하시기 바랍니다.</p>
-      </div>
-    </div>
+
     <div class="affiliate-section" id="affiliateSection">
       <!-- 마이리얼트립: CTA 카드 -->
       <div class="affiliate-cta myrealtrip-cta">
@@ -687,111 +182,117 @@
       </div>
     </div>
   </div>
-
-  <!-- 랜딩 -->
-  <div id="landingSection">
-    <div class="status-strip" id="statusStrip" style="display: flex;">
-      <div class="status-dot" id="statusDot"></div>
-      <span id="statusText" title="별도 피드 파일 갱신: 2026-10-21 10:33 KST">공시 확인: 2026-10-29 07:54 KST · 시장 자료 기준: 2026-11-06 09:00 KST · 사이트 문구 수정: 2026-11-04 22:27 KST</span>
+  <section id="landingSection" aria-labelledby="landingTitle">
+    <div class="section-heading">
+      <h2 class="landing-title" id="landingTitle" data-i18n="home.overview">항공사 공시 현황</h2>
+      <a href="airlines.html" class="index-link" id="indexLink" data-i18n="home.airlinesLink">항공사 전체 보기 →</a>
     </div>
-
-    <!-- 예약 판단 블록 -->
-    <div class="booking-decision-card" id="bookingDecisionCard">
-      <div class="decision-title" id="decisionTitle">공시 확인 현황과 금액 읽는 방법</div>
-      <ul class="decision-list" id="decisionList"><li>2026년 11월 발권분 현재 적용. 2026년 11월 공시 완료 9개사: KE · OZ · 7C · LJ · RS · BX · TW · ZE · YP.</li><li>조회 금액의 적용 월과 편도 기준을 확인하고, 항공사마다 다른 발권·결제일 조건을 살펴보세요.</li><li>미확인 금액은 비교에서 제외합니다. 원 통화가 다르면 환산 기준을 확인한 뒤 비교하세요.</li></ul>
-      <div class="decision-conclusion" id="decisionConclusion">최종 결제금액은 항공사 또는 발권처의 요금 내역에서 확인하세요.</div>
+    <div class="overview-head" aria-hidden="true">
+      <span data-i18n="home.airline">항공사</span><span data-i18n="home.notice">공시 상태</span><span data-i18n="home.change">전월 대비 변화</span><span data-i18n="home.source">출처</span>
     </div>
-
-    <!-- 유류할증료 안내 블록 (랜딩) -->
-    <div class="guide-block">
-      <div class="guide-block-title" data-i18n="index.guide.title">💡 유류할증료란 무엇인가요?</div>
-      <div class="guide-block-body">
-        <p data-i18n="index.guide.p1Landing">유류할증료(Fuel Surcharge)는 국제유가 변동에 연동해 항공사가 기본 운임과 별도로 부과하는 요금입니다. 비행 거리가 멀수록, 유가가 높을수록 금액이 높아지는 구조입니다.</p>
-        <p data-i18n="index.guide.p2Landing">국내 항공사들은 국토교통부 기준에 따라 매월 다음 달 적용 금액을 공식 공지합니다. 출발지·도착지를 선택해 검색하면 항공사별 공식 공지 기준 금액을 노선별로 비교할 수 있습니다.</p>
-      </div>
+<div class="mini-grid" id="miniGrid"><div class="mini-card" data-airline="KE" data-source-verified="true"><div class="mini-badge">KE</div><div style="flex:1"><div class="mini-name">대한항공</div><div class="mini-status" title="한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다." aria-label="11월 공시 완료. 한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다.">11월 공시 완료</div><a href="https://www.koreanair.com/contents/footer/customer-support/notice/2026/2611-infuel" target="_blank" rel="noopener noreferrer" class="mini-notice-btn">11월 공시 원문 ↗</a><details class="mini-trend-details" style="font-size:var(--font-caption);line-height:1.6"><summary title="2026년 10월 → 11월, 동일 통화·동일 저장 구간의 9개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다." aria-label="KE · 전월 대비 최소 8.0% 상승 · 보관 기록 기준 · 계산 근거 보기" style="cursor:pointer;color:#075985"><span class="mini-trend-label">전월 대비 최소 8.0% 상승</span> <small class="mini-archive-mark" style="color:var(--muted)">보관 기록 기준</small></summary><div style="margin-top:5px;color:var(--muted);overflow-wrap:anywhere">2026년 10월 → 11월, 동일 통화·동일 저장 구간의 9개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다.<ul style="padding-left:16px;margin:5px 0"><li>~499 mi · KRW 49,000 → 55,600 · +13.5%</li><li>500~999 mi · KRW 65,800 → 76,000 · +15.5%</li><li>1,000~1,499 mi · KRW 98,000 → 105,800 · +8.0%</li><li>1,500~1,999 mi · KRW 116,200 → 132,900 · +14.4%</li><li>2,000~2,999 mi · KRW 162,400 → 185,800 · +14.4%</li><li>3,000~3,999 mi · KRW 168,000 → 189,800 · +13.0%</li><li>4,000~4,999 mi · KRW 226,800 → 254,900 · +12.4%</li><li>5,000~6,499 mi · KRW 322,000 → 370,100 · +14.9%</li><li>6,500~9,999 mi · KRW 362,600 → 408,100 · +12.5% · 10월 보관 기록</li></ul></div></details></div></div><div class="mini-card" data-airline="OZ" data-source-verified="true"><div class="mini-badge">OZ</div><div style="flex:1"><div class="mini-name">아시아나항공</div><div class="mini-status" title="한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다." aria-label="11월 공시 완료. 한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다.">11월 공시 완료</div><a href="https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202610160002530868&amp;dispCt=all&amp;page=1&amp;searchOption=0&amp;searchText=" target="_blank" rel="noopener noreferrer" class="mini-notice-btn">11월 공시 원문 ↗</a><details class="mini-trend-details" style="font-size:var(--font-caption);line-height:1.6"><summary title="2026년 10월 → 11월, 동일 통화·동일 저장 구간의 9개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다." aria-label="OZ · 전월 대비 최소 15.9% 상승 · 보관 기록 기준 · 계산 근거 보기" style="cursor:pointer;color:#075985"><span class="mini-trend-label">전월 대비 최소 15.9% 상승</span> <small class="mini-archive-mark" style="color:var(--muted)">보관 기록 기준</small></summary><div style="margin-top:5px;color:var(--muted);overflow-wrap:anywhere">2026년 10월 → 11월, 동일 통화·동일 저장 구간의 9개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다.<ul style="padding-left:16px;margin:5px 0"><li>~499 mi · KRW 53,400 → 62,400 · +16.9% · 10월 보관 기록</li><li>500~999 mi · KRW 79,400 → 92,200 · +16.1% · 10월 보관 기록</li><li>1,000~1,499 mi · KRW 104,000 → 120,600 · +16.0% · 10월 보관 기록</li><li>1,500~1,999 mi · KRW 128,700 → 149,100 · +15.9% · 10월 보관 기록</li><li>2,000~2,499 mi · KRW 153,300 → 178,900 · +16.7% · 10월 보관 기록</li><li>2,500~2,999 mi · KRW 178,000 → 207,400 · +16.5% · 10월 보관 기록</li><li>3,000~3,999 mi · KRW 202,600 → 235,900 · +16.4% · 10월 보관 기록</li><li>4,000~4,999 mi · KRW 251,900 → 294,200 · +16.8% · 10월 보관 기록</li><li>5,000~ mi · KRW 301,200 → 351,100 · +16.6% · 10월 보관 기록</li></ul></div></details></div></div><div class="mini-card" data-airline="YP" data-source-verified="true"><div class="mini-badge">YP</div><div style="flex:1"><div class="mini-name">에어프레미아</div><div class="mini-status" title="한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다." aria-label="11월 공시 완료. 한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다.">11월 공시 완료</div><a href="https://www.airpremia.com/a/ko/customer/notice/803" target="_blank" rel="noopener noreferrer" class="mini-notice-btn">11월 공시 원문 ↗</a><details class="mini-trend-details" style="font-size:var(--font-caption);line-height:1.6"><summary title="2026년 10월 → 11월, 동일 통화·동일 저장 구간의 6개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다." aria-label="YP · 전월 대비 최소 17.1% 상승 · 보관 기록 기준 · 계산 근거 보기" style="cursor:pointer;color:#075985"><span class="mini-trend-label">전월 대비 최소 17.1% 상승</span> <small class="mini-archive-mark" style="color:var(--muted)">보관 기록 기준</small></summary><div style="margin-top:5px;color:var(--muted);overflow-wrap:anywhere">2026년 10월 → 11월, 동일 통화·동일 저장 구간의 6개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다.<ul style="padding-left:16px;margin:5px 0"><li>~999 mi · USD 41 → 48 · +17.1% · 10월 보관 기록</li><li>1,000~1,499 mi · USD 54 → 64 · +18.5% · 10월 보관 기록</li><li>2,000~2,499 mi · USD 91 → 107 · +17.6% · 10월 보관 기록</li><li>4,000~4,999 mi · USD 159 → 187 · +17.6% · 10월 보관 기록</li><li>5,000~6,499 mi · USD 200 → 236 · +18.0% · 10월 보관 기록</li><li>6,500+ mi · USD 251 → 296 · +17.9% · 10월 보관 기록</li></ul></div></details></div></div><div class="mini-card" data-airline="LJ" data-source-verified="true"><div class="mini-badge">LJ</div><div style="flex:1"><div class="mini-name">진에어</div><div class="mini-status" title="한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다." aria-label="11월 공시 완료. 한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다.">11월 공시 완료</div><a href="https://www.jinair.com/company/announce/announceView?anceSeq=28906&amp;searchWord=&amp;searchKey=titlCtn&amp;page=1" target="_blank" rel="noopener noreferrer" class="mini-notice-btn">11월 공시 원문 ↗</a><details class="mini-trend-details" style="font-size:var(--font-caption);line-height:1.6"><summary title="2026년 10월 → 11월, 동일 통화·동일 저장 구간의 5개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다." aria-label="LJ · 전월 대비 최소 12.5% 상승 · 보관 기록 기준 · 계산 근거 보기" style="cursor:pointer;color:#075985"><span class="mini-trend-label">전월 대비 최소 12.5% 상승</span> <small class="mini-archive-mark" style="color:var(--muted)">보관 기록 기준</small></summary><div style="margin-top:5px;color:var(--muted);overflow-wrap:anywhere">2026년 10월 → 11월, 동일 통화·동일 저장 구간의 5개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다.<ul style="padding-left:16px;margin:5px 0"><li>1~599 mi · USD 32 → 36 · +12.5% · 10월 보관 기록</li><li>600~1,199 mi · USD 46 → 54 · +17.4% · 10월 보관 기록</li><li>1,200~1,799 mi · USD 74 → 87 · +17.6% · 10월 보관 기록</li><li>1,800~2,399 mi · USD 81 → 96 · +18.5% · 10월 보관 기록</li><li>2,400~3,599 mi · USD 97 → 115 · +18.6% · 10월 보관 기록</li></ul></div></details></div></div><div class="mini-card" data-airline="7C" data-source-verified="true"><div class="mini-badge">7C</div><div style="flex:1"><div class="mini-name">제주항공</div><div class="mini-status" title="한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다." aria-label="11월 공시 완료. 한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다.">11월 공시 완료</div><a href="https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000814" target="_blank" rel="noopener noreferrer" class="mini-notice-btn">11월 공시 원문 ↗</a><details class="mini-trend-details" style="font-size:var(--font-caption);line-height:1.6"><summary title="2026년 10월 → 11월, 동일 통화·동일 저장 구간의 6개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다." aria-label="7C · 전월 대비 최소 14.9% 상승 · 보관 기록 기준 · 계산 근거 보기" style="cursor:pointer;color:#075985"><span class="mini-trend-label">전월 대비 최소 14.9% 상승</span> <small class="mini-archive-mark" style="color:var(--muted)">보관 기록 기준</small></summary><div style="margin-top:5px;color:var(--muted);overflow-wrap:anywhere">2026년 10월 → 11월, 동일 통화·동일 저장 구간의 6개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다.<ul style="padding-left:16px;margin:5px 0"><li>1~500 mi · USD 37 → 43 · +16.2% · 10월 보관 기록</li><li>500~1,000 mi · USD 47 → 54 · +14.9% · 10월 보관 기록</li><li>1,000~1,500 mi · USD 57 → 66 · +15.8% · 10월 보관 기록</li><li>1,500~2,000 mi · USD 68 → 79 · +16.2% · 10월 보관 기록</li><li>2,000~2,500 mi · USD 76 → 89 · +17.1% · 10월 보관 기록</li><li>2,500 mi~ · USD 87 → 103 · +18.4% · 10월 보관 기록</li></ul></div></details></div></div><div class="mini-card" data-airline="TW" data-source-verified="true"><div class="mini-badge">TW</div><div style="flex:1"><div class="mini-name">티웨이항공</div><div class="mini-status" title="한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다." aria-label="11월 공시 완료. 한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다.">11월 공시 완료</div><a href="https://www.trinityairways.com/app/customerCenter/notice/retrieve/12722" target="_blank" rel="noopener noreferrer" class="mini-notice-btn">11월 공시 원문 ↗</a><details class="mini-trend-details" style="font-size:var(--font-caption);line-height:1.6"><summary title="2026년 10월 → 11월, 동일 통화·동일 저장 구간의 6개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다." aria-label="TW · 전월 대비 최소 15.3% 상승 · 보관 기록 기준 · 계산 근거 보기" style="cursor:pointer;color:#075985"><span class="mini-trend-label">전월 대비 최소 15.3% 상승</span> <small class="mini-archive-mark" style="color:var(--muted)">보관 기록 기준</small></summary><div style="margin-top:5px;color:var(--muted);overflow-wrap:anywhere">2026년 10월 → 11월, 동일 통화·동일 저장 구간의 6개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다.<ul style="padding-left:16px;margin:5px 0"><li>0~599 mi · KRW 37,000 → 43,400 · +17.3% · 10월 보관 기록</li><li>600~1,199 mi · KRW 65,900 → 76,000 · +15.3% · 10월 보관 기록</li><li>1,200~1,799 mi · KRW 82,300 → 95,000 · +15.4% · 10월 보관 기록</li><li>1,800~2,399 mi · KRW 105,700 → 123,500 · +16.8% · 10월 보관 기록</li><li>2,400~3,999 mi · KRW 113,900 → 133,000 · +16.8% · 10월 보관 기록</li><li>5,000+ mi · KRW 256,600 → 299,800 · +16.8% · 10월 보관 기록</li></ul></div></details></div></div><div class="mini-card" data-airline="BX" data-source-verified="true"><div class="mini-badge">BX</div><div style="flex:1"><div class="mini-name">에어부산</div><div class="mini-status" title="한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다." aria-label="11월 공시 완료. 한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다.">11월 공시 완료</div><a href="https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4420" target="_blank" rel="noopener noreferrer" class="mini-notice-btn">11월 공시 원문 ↗</a><details class="mini-trend-details" style="font-size:var(--font-caption);line-height:1.6"><summary title="2026년 10월 → 11월, 동일 통화·동일 저장 구간의 4개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다." aria-label="BX · 전월 대비 최소 15.4% 상승 · 계산 근거 보기" style="cursor:pointer;color:#075985"><span class="mini-trend-label">전월 대비 최소 15.4% 상승</span></summary><div style="margin-top:5px;color:var(--muted);overflow-wrap:anywhere">2026년 10월 → 11월, 동일 통화·동일 저장 구간의 4개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다.<ul style="padding-left:16px;margin:5px 0"><li>FUK / MYJ / KIX / NRT (PUS) / NGS / TAO / TAK / FSZ · USD 37 → 43 · +16.2%</li><li>NRT (ICN) / CTS / XIY / YNJ / DYG / HKG / MFM / TPE / KHH · USD 66 → 77 · +16.7%</li><li>SYX / UBN / CEB / KLO / DAD / CXR / VTE / BKI (PUS) / HAN / TAG / GUM / CNX (ICN) · USD 78 → 90 · +15.4%</li><li>BKK / DPS · USD 90 → 106 · +17.8%</li></ul></div></details></div></div><div class="mini-card" data-airline="ZE" data-source-verified="true"><div class="mini-badge">ZE</div><div style="flex:1"><div class="mini-name">이스타항공<span style="font-size:var(--font-caption);color:#6a1b9a;margin-left:4px">(군별)</span></div><div class="mini-status" title="한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다." aria-label="11월 공시 완료. 한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다.">11월 공시 완료</div><a href="https://www.eastarjet.com/newstar/PGWCA00002?cId=11&amp;iId=0&amp;bId=680&amp;lang=KR" target="_blank" rel="noopener noreferrer" class="mini-notice-btn">11월 공시 원문 ↗</a><details class="mini-trend-details" style="font-size:var(--font-caption);line-height:1.6"><summary title="2026년 10월 → 11월, 동일 통화·동일 저장 구간의 6개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다." aria-label="ZE · 전월 대비 최소 14.9% 상승 · 계산 근거 보기" style="cursor:pointer;color:#075985"><span class="mini-trend-label">전월 대비 최소 14.9% 상승</span></summary><div style="margin-top:5px;color:var(--muted);overflow-wrap:anywhere">2026년 10월 → 11월, 동일 통화·동일 저장 구간의 6개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다.<ul style="padding-left:16px;margin:5px 0"><li>1 · USD 37 → 43 · +16.2%</li><li>2 · USD 47 → 54 · +14.9%</li><li>3 · USD 57 → 66 · +15.8%</li><li>4 · USD 68 → 79 · +16.2%</li><li>5 · USD 76 → 89 · +17.1%</li><li>6 · USD 87 → 103 · +18.4%</li></ul></div></details></div></div><div class="mini-card" data-airline="RS" data-source-verified="true"><div class="mini-badge">RS</div><div style="flex:1"><div class="mini-name">에어서울</div><div class="mini-status" title="한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다." aria-label="11월 공시 완료. 한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다.">11월 공시 완료</div><a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=11208&amp;pageNo=1" target="_blank" rel="noopener noreferrer" class="mini-notice-btn">11월 공시 원문 ↗</a><details class="mini-trend-details" style="font-size:var(--font-caption);line-height:1.6"><summary title="2026년 10월 → 11월, 동일 통화·동일 저장 구간의 5개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다." aria-label="RS · 전월 대비 최소 12.7% 상승 · 보관 기록 기준 · 계산 근거 보기" style="cursor:pointer;color:#075985"><span class="mini-trend-label">전월 대비 최소 12.7% 상승</span> <small class="mini-archive-mark" style="color:var(--muted)">보관 기록 기준</small></summary><div style="margin-top:5px;color:var(--muted);overflow-wrap:anywhere">2026년 10월 → 11월, 동일 통화·동일 저장 구간의 5개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다.<ul style="padding-left:16px;margin:5px 0"><li>300~700 mi (exclusive upper) · KRW 60,300 → 69,100 · +14.6% · 10월 보관 기록</li><li>700~1,100 mi (exclusive upper) · KRW 69,900 → 80,000 · +14.4% · 10월 보관 기록</li><li>1,100~1,500 mi (exclusive upper) · KRW 87,800 → 100,300 · +14.2% · 10월 보관 기록</li><li>1,500~1,900 mi (exclusive upper) · KRW 98,700 → 115,200 · +16.7% · 10월 보관 기록</li><li>1,900~2,300 mi (exclusive upper) · KRW 108,300 → 122,000 · +12.7% · 10월 보관 기록</li></ul></div></details></div></div></div>
+  </section>
+  <details class="home-guide" id="homeGuide">
+    <summary><span data-i18n="home.guide">이용 기준과 데이터 안내</span><span class="disclosure-mark" aria-hidden="true">+</span></summary>
+    <div class="home-guide-content">
+      <section class="guide-criteria">
+        <h3 class="decision-title" id="decisionTitle">공시 확인 현황과 금액 읽는 방법</h3>
+<ul class="decision-criteria" id="decisionCriteria"><li>조회 금액의 적용 월과 편도 기준을 확인하고, 항공사마다 다른 발권·결제일 조건을 살펴보세요.</li><li>미확인 금액은 비교에서 제외합니다. 원 통화가 다르면 환산 기준을 확인한 뒤 비교하세요.</li></ul><div class="decision-conclusion" id="decisionConclusion">최종 결제금액은 항공사 또는 발권처의 요금 내역에서 확인하세요.</div>
+      </section>
+<section class="intro-section" id="introSection" aria-label="intro">
+  <div class="intro-grid">
+    <div class="intro-card">
+      <div class="intro-card-title" data-i18n="index.intro1.title">한국 출발 국제선 유류할증료 비교</div>
+      <div class="intro-card-body" data-i18n="index.intro1.body">인천·김포·부산·청주·대구 등 한국 출발 국제선의 유류할증료를 항공사와 노선별로 조회합니다. 항공사별 거리 구간과 노선군에 맞는 금액을 확인할 수 있습니다.</div>
     </div>
-
-    <!-- 제휴: 마이리얼트립 (랜딩 — 유류할증료 안내 하단) -->
-    <div class="affiliate-cta myrealtrip-cta">
-      <div class="cta-copy">
-        <div class="cta-kicker">항공권 총액 확인 후 바로 비교</div>
-        <div class="cta-title" data-i18n="aff.myrealtrip.title">유류할증료 확인 후, 실제 항공권 총액도 비교하세요</div>
-        <div class="cta-desc" data-i18n="aff.myrealtrip.desc">유류할증료에 기본 운임·세금·선택한 부가서비스를 더한 실제 항공권 총액을 확인하세요. 최종 결제 조건은 발권처에서 확인할 수 있습니다.</div>
-        <div class="cta-benefits">
-          <span>항공권 가격 비교</span>
-          <span>여행 상품 확인</span>
-          <span>예약 타이밍 판단</span>
-        </div>
-      </div>
-      <a href="https://lase.kr/click.php?m=myrealtrip&amp;a=A100704170&amp;l=0000" target="_blank" rel="noopener sponsored" class="cta-main-btn" data-i18n="aff.myrealtrip.cta">지금 항공권 총액 확인하기</a>
+    <div class="intro-card">
+      <div class="intro-card-title" data-i18n="index.intro2.title">항공사 공식 공지 기반 정보 제공</div>
+      <div class="intro-card-body" data-i18n="index.intro2.body">항공사 공식 공지의 금액·통화·적용 기간을 확인하고 원문 링크를 제공합니다. 원문 검증이 끝난 데이터와 확인 중인 데이터를 구분해 표시합니다.</div>
     </div>
-
-    <div class="landing-title" id="landingTitle" data-i18n="index.landingTitle">한국 출발 국제선 유류할증료</div>
-    <div class="kr-only-notice" id="krOnlyNotice">
-      <span class="kr-only-icon">🇰🇷</span>
-      <div>
-        <div class="kr-only-title" data-i18n="index.krOnly.title">한국 출발 국제선만 지원합니다</div>
-        <div class="kr-only-desc" data-i18n="index.krOnly.desc">노선별 조회에서 출발지·도착지를 선택하면 항공사별 공식 공지 기준 금액을 확인할 수 있습니다. 단일 금액은 구간마다 달라 오해 소지가 있어 표시하지 않습니다.</div>
-      </div>
-    </div>
-
-    <div class="mini-grid" id="miniGrid"><div class="mini-card" data-airline="KE" data-source-verified="true"><div class="mini-badge">🦅</div><div style="flex:1"><div class="mini-name">대한항공</div><div class="mini-status" title="한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다." aria-label="11월 공시 완료. 한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다.">11월 공시 완료</div><a href="https://www.koreanair.com/contents/footer/customer-support/notice/2026/2611-infuel" target="_blank" rel="noopener noreferrer" class="mini-notice-btn">11월 공시 원문 ↗</a><details class="mini-trend-details" style="margin-top:7px;font-size:11px;line-height:1.6"><summary title="2026년 10월 → 11월, 동일 통화·동일 저장 구간의 9개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다." aria-label="KE · 전월 대비 최소 8.0% 상승 · 보관 기록 기준 · 계산 근거 보기" style="cursor:pointer;color:#075985"><span class="mini-trend-label">전월 대비 최소 8.0% 상승</span> <small class="mini-archive-mark" style="color:var(--muted)">보관 기록 기준</small></summary><div style="margin-top:5px;color:var(--muted);overflow-wrap:anywhere">2026년 10월 → 11월, 동일 통화·동일 저장 구간의 9개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다.<ul style="padding-left:16px;margin:5px 0"><li>~499 mi · KRW 49,000 → 55,600 · +13.5%</li><li>500~999 mi · KRW 65,800 → 76,000 · +15.5%</li><li>1,000~1,499 mi · KRW 98,000 → 105,800 · +8.0%</li><li>1,500~1,999 mi · KRW 116,200 → 132,900 · +14.4%</li><li>2,000~2,999 mi · KRW 162,400 → 185,800 · +14.4%</li><li>3,000~3,999 mi · KRW 168,000 → 189,800 · +13.0%</li><li>4,000~4,999 mi · KRW 226,800 → 254,900 · +12.4%</li><li>5,000~6,499 mi · KRW 322,000 → 370,100 · +14.9%</li><li>6,500~9,999 mi · KRW 362,600 → 408,100 · +12.5% · 10월 보관 기록</li></ul></div></details></div></div><div class="mini-card" data-airline="OZ" data-source-verified="true"><div class="mini-badge">🌸</div><div style="flex:1"><div class="mini-name">아시아나항공</div><div class="mini-status" title="한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다." aria-label="11월 공시 완료. 한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다.">11월 공시 완료</div><a href="https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202610160002530868&amp;dispCt=all&amp;page=1&amp;searchOption=0&amp;searchText=" target="_blank" rel="noopener noreferrer" class="mini-notice-btn">11월 공시 원문 ↗</a><details class="mini-trend-details" style="margin-top:7px;font-size:11px;line-height:1.6"><summary title="2026년 10월 → 11월, 동일 통화·동일 저장 구간의 9개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다." aria-label="OZ · 전월 대비 최소 15.9% 상승 · 보관 기록 기준 · 계산 근거 보기" style="cursor:pointer;color:#075985"><span class="mini-trend-label">전월 대비 최소 15.9% 상승</span> <small class="mini-archive-mark" style="color:var(--muted)">보관 기록 기준</small></summary><div style="margin-top:5px;color:var(--muted);overflow-wrap:anywhere">2026년 10월 → 11월, 동일 통화·동일 저장 구간의 9개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다.<ul style="padding-left:16px;margin:5px 0"><li>~499 mi · KRW 53,400 → 62,400 · +16.9% · 10월 보관 기록</li><li>500~999 mi · KRW 79,400 → 92,200 · +16.1% · 10월 보관 기록</li><li>1,000~1,499 mi · KRW 104,000 → 120,600 · +16.0% · 10월 보관 기록</li><li>1,500~1,999 mi · KRW 128,700 → 149,100 · +15.9% · 10월 보관 기록</li><li>2,000~2,499 mi · KRW 153,300 → 178,900 · +16.7% · 10월 보관 기록</li><li>2,500~2,999 mi · KRW 178,000 → 207,400 · +16.5% · 10월 보관 기록</li><li>3,000~3,999 mi · KRW 202,600 → 235,900 · +16.4% · 10월 보관 기록</li><li>4,000~4,999 mi · KRW 251,900 → 294,200 · +16.8% · 10월 보관 기록</li><li>5,000~ mi · KRW 301,200 → 351,100 · +16.6% · 10월 보관 기록</li></ul></div></details></div></div><div class="mini-card" data-airline="YP" data-source-verified="true"><div class="mini-badge">YP</div><div style="flex:1"><div class="mini-name">에어프레미아</div><div class="mini-status" title="한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다." aria-label="11월 공시 완료. 한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다.">11월 공시 완료</div><a href="https://www.airpremia.com/a/ko/customer/notice/803" target="_blank" rel="noopener noreferrer" class="mini-notice-btn">11월 공시 원문 ↗</a><details class="mini-trend-details" style="margin-top:7px;font-size:11px;line-height:1.6"><summary title="2026년 10월 → 11월, 동일 통화·동일 저장 구간의 6개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다." aria-label="YP · 전월 대비 최소 17.1% 상승 · 보관 기록 기준 · 계산 근거 보기" style="cursor:pointer;color:#075985"><span class="mini-trend-label">전월 대비 최소 17.1% 상승</span> <small class="mini-archive-mark" style="color:var(--muted)">보관 기록 기준</small></summary><div style="margin-top:5px;color:var(--muted);overflow-wrap:anywhere">2026년 10월 → 11월, 동일 통화·동일 저장 구간의 6개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다.<ul style="padding-left:16px;margin:5px 0"><li>~999 mi · USD 41 → 48 · +17.1% · 10월 보관 기록</li><li>1,000~1,499 mi · USD 54 → 64 · +18.5% · 10월 보관 기록</li><li>2,000~2,499 mi · USD 91 → 107 · +17.6% · 10월 보관 기록</li><li>4,000~4,999 mi · USD 159 → 187 · +17.6% · 10월 보관 기록</li><li>5,000~6,499 mi · USD 200 → 236 · +18.0% · 10월 보관 기록</li><li>6,500+ mi · USD 251 → 296 · +17.9% · 10월 보관 기록</li></ul></div></details></div></div><div class="mini-card" data-airline="LJ" data-source-verified="true"><div class="mini-badge">💙</div><div style="flex:1"><div class="mini-name">진에어</div><div class="mini-status" title="한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다." aria-label="11월 공시 완료. 한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다.">11월 공시 완료</div><a href="https://www.jinair.com/company/announce/announceView?anceSeq=28906&amp;searchWord=&amp;searchKey=titlCtn&amp;page=1" target="_blank" rel="noopener noreferrer" class="mini-notice-btn">11월 공시 원문 ↗</a><details class="mini-trend-details" style="margin-top:7px;font-size:11px;line-height:1.6"><summary title="2026년 10월 → 11월, 동일 통화·동일 저장 구간의 5개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다." aria-label="LJ · 전월 대비 최소 12.5% 상승 · 보관 기록 기준 · 계산 근거 보기" style="cursor:pointer;color:#075985"><span class="mini-trend-label">전월 대비 최소 12.5% 상승</span> <small class="mini-archive-mark" style="color:var(--muted)">보관 기록 기준</small></summary><div style="margin-top:5px;color:var(--muted);overflow-wrap:anywhere">2026년 10월 → 11월, 동일 통화·동일 저장 구간의 5개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다.<ul style="padding-left:16px;margin:5px 0"><li>1~599 mi · USD 32 → 36 · +12.5% · 10월 보관 기록</li><li>600~1,199 mi · USD 46 → 54 · +17.4% · 10월 보관 기록</li><li>1,200~1,799 mi · USD 74 → 87 · +17.6% · 10월 보관 기록</li><li>1,800~2,399 mi · USD 81 → 96 · +18.5% · 10월 보관 기록</li><li>2,400~3,599 mi · USD 97 → 115 · +18.6% · 10월 보관 기록</li></ul></div></details></div></div><div class="mini-card" data-airline="7C" data-source-verified="true"><div class="mini-badge">🍊</div><div style="flex:1"><div class="mini-name">제주항공</div><div class="mini-status" title="한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다." aria-label="11월 공시 완료. 한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다.">11월 공시 완료</div><a href="https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000814" target="_blank" rel="noopener noreferrer" class="mini-notice-btn">11월 공시 원문 ↗</a><details class="mini-trend-details" style="margin-top:7px;font-size:11px;line-height:1.6"><summary title="2026년 10월 → 11월, 동일 통화·동일 저장 구간의 6개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다." aria-label="7C · 전월 대비 최소 14.9% 상승 · 보관 기록 기준 · 계산 근거 보기" style="cursor:pointer;color:#075985"><span class="mini-trend-label">전월 대비 최소 14.9% 상승</span> <small class="mini-archive-mark" style="color:var(--muted)">보관 기록 기준</small></summary><div style="margin-top:5px;color:var(--muted);overflow-wrap:anywhere">2026년 10월 → 11월, 동일 통화·동일 저장 구간의 6개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다.<ul style="padding-left:16px;margin:5px 0"><li>1~500 mi · USD 37 → 43 · +16.2% · 10월 보관 기록</li><li>500~1,000 mi · USD 47 → 54 · +14.9% · 10월 보관 기록</li><li>1,000~1,500 mi · USD 57 → 66 · +15.8% · 10월 보관 기록</li><li>1,500~2,000 mi · USD 68 → 79 · +16.2% · 10월 보관 기록</li><li>2,000~2,500 mi · USD 76 → 89 · +17.1% · 10월 보관 기록</li><li>2,500 mi~ · USD 87 → 103 · +18.4% · 10월 보관 기록</li></ul></div></details></div></div><div class="mini-card" data-airline="TW" data-source-verified="true"><div class="mini-badge">🔴</div><div style="flex:1"><div class="mini-name">티웨이항공</div><div class="mini-status" title="한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다." aria-label="11월 공시 완료. 한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다.">11월 공시 완료</div><a href="https://www.trinityairways.com/app/customerCenter/notice/retrieve/12722" target="_blank" rel="noopener noreferrer" class="mini-notice-btn">11월 공시 원문 ↗</a><details class="mini-trend-details" style="margin-top:7px;font-size:11px;line-height:1.6"><summary title="2026년 10월 → 11월, 동일 통화·동일 저장 구간의 6개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다." aria-label="TW · 전월 대비 최소 15.3% 상승 · 보관 기록 기준 · 계산 근거 보기" style="cursor:pointer;color:#075985"><span class="mini-trend-label">전월 대비 최소 15.3% 상승</span> <small class="mini-archive-mark" style="color:var(--muted)">보관 기록 기준</small></summary><div style="margin-top:5px;color:var(--muted);overflow-wrap:anywhere">2026년 10월 → 11월, 동일 통화·동일 저장 구간의 6개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다.<ul style="padding-left:16px;margin:5px 0"><li>0~599 mi · KRW 37,000 → 43,400 · +17.3% · 10월 보관 기록</li><li>600~1,199 mi · KRW 65,900 → 76,000 · +15.3% · 10월 보관 기록</li><li>1,200~1,799 mi · KRW 82,300 → 95,000 · +15.4% · 10월 보관 기록</li><li>1,800~2,399 mi · KRW 105,700 → 123,500 · +16.8% · 10월 보관 기록</li><li>2,400~3,999 mi · KRW 113,900 → 133,000 · +16.8% · 10월 보관 기록</li><li>5,000+ mi · KRW 256,600 → 299,800 · +16.8% · 10월 보관 기록</li></ul></div></details></div></div><div class="mini-card" data-airline="BX" data-source-verified="true"><div class="mini-badge">🌊</div><div style="flex:1"><div class="mini-name">에어부산</div><div class="mini-status" title="한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다." aria-label="11월 공시 완료. 한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다.">11월 공시 완료</div><a href="https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4420" target="_blank" rel="noopener noreferrer" class="mini-notice-btn">11월 공시 원문 ↗</a><details class="mini-trend-details" style="margin-top:7px;font-size:11px;line-height:1.6"><summary title="2026년 10월 → 11월, 동일 통화·동일 저장 구간의 4개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다." aria-label="BX · 전월 대비 최소 15.4% 상승 · 계산 근거 보기" style="cursor:pointer;color:#075985"><span class="mini-trend-label">전월 대비 최소 15.4% 상승</span></summary><div style="margin-top:5px;color:var(--muted);overflow-wrap:anywhere">2026년 10월 → 11월, 동일 통화·동일 저장 구간의 4개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다.<ul style="padding-left:16px;margin:5px 0"><li>FUK / MYJ / KIX / NRT (PUS) / NGS / TAO / TAK / FSZ · USD 37 → 43 · +16.2%</li><li>NRT (ICN) / CTS / XIY / YNJ / DYG / HKG / MFM / TPE / KHH · USD 66 → 77 · +16.7%</li><li>SYX / UBN / CEB / KLO / DAD / CXR / VTE / BKI (PUS) / HAN / TAG / GUM / CNX (ICN) · USD 78 → 90 · +15.4%</li><li>BKK / DPS · USD 90 → 106 · +17.8%</li></ul></div></details></div></div><div class="mini-card" data-airline="ZE" data-source-verified="true"><div class="mini-badge">⭐</div><div style="flex:1"><div class="mini-name">이스타항공<span style="font-size:9px;color:#6a1b9a;margin-left:4px">(군별)</span></div><div class="mini-status" title="한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다." aria-label="11월 공시 완료. 한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다.">11월 공시 완료</div><a href="https://www.eastarjet.com/newstar/PGWCA00002?cId=11&amp;iId=0&amp;bId=680&amp;lang=KR" target="_blank" rel="noopener noreferrer" class="mini-notice-btn">11월 공시 원문 ↗</a><details class="mini-trend-details" style="margin-top:7px;font-size:11px;line-height:1.6"><summary title="2026년 10월 → 11월, 동일 통화·동일 저장 구간의 6개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다." aria-label="ZE · 전월 대비 최소 14.9% 상승 · 계산 근거 보기" style="cursor:pointer;color:#075985"><span class="mini-trend-label">전월 대비 최소 14.9% 상승</span></summary><div style="margin-top:5px;color:var(--muted);overflow-wrap:anywhere">2026년 10월 → 11월, 동일 통화·동일 저장 구간의 6개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다.<ul style="padding-left:16px;margin:5px 0"><li>1 · USD 37 → 43 · +16.2%</li><li>2 · USD 47 → 54 · +14.9%</li><li>3 · USD 57 → 66 · +15.8%</li><li>4 · USD 68 → 79 · +16.2%</li><li>5 · USD 76 → 89 · +17.1%</li><li>6 · USD 87 → 103 · +18.4%</li></ul></div></details></div></div><div class="mini-card" data-airline="RS" data-source-verified="true"><div class="mini-badge">🏙</div><div style="flex:1"><div class="mini-name">에어서울</div><div class="mini-status" title="한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다." aria-label="11월 공시 완료. 한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다.">11월 공시 완료</div><a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=11208&amp;pageNo=1" target="_blank" rel="noopener noreferrer" class="mini-notice-btn">11월 공시 원문 ↗</a><details class="mini-trend-details" style="margin-top:7px;font-size:11px;line-height:1.6"><summary title="2026년 10월 → 11월, 동일 통화·동일 저장 구간의 5개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다." aria-label="RS · 전월 대비 최소 12.7% 상승 · 보관 기록 기준 · 계산 근거 보기" style="cursor:pointer;color:#075985"><span class="mini-trend-label">전월 대비 최소 12.7% 상승</span> <small class="mini-archive-mark" style="color:var(--muted)">보관 기록 기준</small></summary><div style="margin-top:5px;color:var(--muted);overflow-wrap:anywhere">2026년 10월 → 11월, 동일 통화·동일 저장 구간의 5개 금액쌍 기준입니다. 누락·미공시·기준액 0인 구간은 제외합니다. 비율은 소수 첫째 자리로 반올림합니다. 10월 보관 기록을 포함한 참고 비율입니다.<ul style="padding-left:16px;margin:5px 0"><li>300~700 mi (exclusive upper) · KRW 60,300 → 69,100 · +14.6% · 10월 보관 기록</li><li>700~1,100 mi (exclusive upper) · KRW 69,900 → 80,000 · +14.4% · 10월 보관 기록</li><li>1,100~1,500 mi (exclusive upper) · KRW 87,800 → 100,300 · +14.2% · 10월 보관 기록</li><li>1,500~1,900 mi (exclusive upper) · KRW 98,700 → 115,200 · +16.7% · 10월 보관 기록</li><li>1,900~2,300 mi (exclusive upper) · KRW 108,300 → 122,000 · +12.7% · 10월 보관 기록</li></ul></div></details></div></div></div>
-
-    <div class="index-link-row">
-      <a href="airlines.html" class="index-link" id="indexLink" data-i18n="index.indexLink">→ 항공사 전체 인덱스 보기</a>
-    </div>
-
-    <!-- 유류할증료 빠른 조회 SEO 섹션 -->
-    <div style="margin-top:28px;">
-      <div class="landing-title" style="margin-bottom:12px;" data-i18n="index.quick.title">🔗 유류할증료 빠른 조회</div>
-      <div class="mini-grid" style="grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px;">
-        <a href="fuel-surcharge-korea.html" class="mini-card" style="text-decoration:none;color:inherit;">
-          <div class="mini-badge">🇰🇷</div>
-          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.korea.name">한국 출발 유류할증료</div><div class="mini-status" style="color:var(--muted);font-size:11px;" data-i18n="index.quick.korea.desc">국적기 전체 비교</div></div>
-        </a>
-        <a href="news.html#compareList" class="mini-card" style="text-decoration:none;color:inherit;">
-          <div class="mini-badge">📊</div>
-          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.compare.name">월별 유류할증료 비교</div><div class="mini-status" style="color:var(--muted);font-size:11px;" data-i18n="index.quick.compare.desc">같은 항공사·노선의 공시 금액 변화 확인</div></div>
-        </a>
-        <a href="forecast.html" class="mini-card" style="text-decoration:none;color:inherit;">
-          <div class="mini-badge">🔮</div>
-          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.jul.name">2026년 12월 유류할증료 전망</div><div class="mini-status" style="color:var(--muted);font-size:11px;" data-i18n="index.quick.jul.desc">공식 공시 확인 대기 · 시장 변수와 방향성 살펴보기</div></div>
-        </a>
-        <a href="fuel-surcharge-graph.html" class="mini-card" style="text-decoration:none;color:inherit;">
-          <div class="mini-badge">📈</div>
-          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.graph.name">유류할증료 변동 그래프</div><div class="mini-status" style="color:var(--muted);font-size:11px;" data-i18n="index.quick.graph.desc">월별 인상·인하 추이</div></div>
-        </a>
-        <a href="fuel-surcharge-calculator.html" class="mini-card" style="text-decoration:none;color:inherit;">
-          <div class="mini-badge">🧮</div>
-          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.calc.name">유류할증료 계산 방법</div><div class="mini-status" style="color:var(--muted);font-size:11px;" data-i18n="index.quick.calc.desc">산정 기준 및 확인 방법</div></div>
-        </a>
-        <a href="fuel-surcharge-korean-air.html" class="mini-card" style="text-decoration:none;color:inherit;">
-          <div class="mini-badge">✈️</div>
-          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.ke.name">대한항공 유류할증료</div><div class="mini-status" style="color:var(--muted);font-size:11px;" data-i18n="index.quick.ke.desc">KE 월별 공시 상세</div></div>
-        </a>
-        <a href="fuel-surcharge-asiana.html" class="mini-card" style="text-decoration:none;color:inherit;">
-          <div class="mini-badge">✈️</div>
-          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.oz.name">아시아나항공 유류할증료</div><div class="mini-status" style="color:var(--muted);font-size:11px;" data-i18n="index.quick.oz.desc">OZ 월별 공시 상세</div></div>
-        </a>
-        <a href="fuel-surcharge-jejuair.html" class="mini-card" style="text-decoration:none;color:inherit;">
-          <div class="mini-badge">🟢</div>
-          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.7c.name">제주항공 유류할증료</div><div class="mini-status" style="color:var(--muted);font-size:11px;" data-i18n="index.quick.7c.desc">7C 월별 공시 상세</div></div>
-        </a>
-        <a href="fuel-surcharge-jinair.html" class="mini-card" style="text-decoration:none;color:inherit;">
-          <div class="mini-badge">🟢</div>
-          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.lj.name">진에어 유류할증료</div><div class="mini-status" style="color:var(--muted);font-size:11px;" data-i18n="index.quick.lj.desc">LJ 월별 공시 상세</div></div>
-        </a>
-        <a href="fuel-surcharge-tway.html" class="mini-card" style="text-decoration:none;color:inherit;">
-          <div class="mini-badge">🟢</div>
-          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.tw.name">티웨이항공 유류할증료</div><div class="mini-status" style="color:var(--muted);font-size:11px;" data-i18n="index.quick.tw.desc">TW 월별 공시 상세</div></div>
-        </a>
-      </div>
+    <div class="intro-card">
+      <div class="intro-card-title" data-i18n="index.intro3.title">왜 이 서비스가 필요한가요?</div>
+      <div class="intro-card-body" data-i18n="index.intro3.body">여러 항공사의 공지를 한 화면에서 살펴보고, 같은 항공사·통화·구간의 월별 변화를 비교할 수 있습니다. 유류할증료가 항공권 총액에 미치는 차이를 파악하는 데 도움이 됩니다.</div>
     </div>
   </div>
-</div>
+</section><div class="guide-block">
+      <div class="guide-block-title" data-i18n="index.guide.title">유류할증료란 무엇인가요?</div>
+      <div class="guide-block-body">
+        <p data-i18n="index.guide.p1">유류할증료(Fuel Surcharge)는 항공유 가격 변동에 따라 항공사가 기본 운임 외에 별도로 부과하는 요금입니다. 국제유가가 오르면 할증료도 높아지고, 유가가 내리면 감소하거나 면제되기도 합니다.</p>
+        <p data-i18n="index.guide.p2">금액은 항공사마다 다르며, 같은 항공사라도 비행 거리 구간이나 노선군에 따라 다르게 적용됩니다. 항공사가 공지한 발권 적용 기간을 기준으로 확인하세요.</p>
+        <p data-i18n="index.guide.p3">아래 결과는 공식 공지 기준이며, 최종 결제 금액은 항공사 예약 화면 또는 공식 공지에서 반드시 재확인하시기 바랍니다.</p>
+      </div>
+    </div><div class="beta-banner" id="betaNoticeBanner" role="note">
+  <div class="beta-banner-inner">
+    <div class="beta-banner-body">
+      <div class="beta-banner-title">
+        <span class="beta-badge">BETA</span><span data-i18n="beta.title">베타 서비스 안내</span>
+      </div>
+      <div class="beta-banner-desc" data-i18n="beta.desc">현재 한국 출발 국제선 유류할증료를 기준으로 제공되고 있으며, 일부 항공사는 공식 공지 기반 수동 반영입니다. 최종 금액은 항공사 공식 공지를 반드시 확인해주세요.</div>
+      <div class="beta-banner-note" data-i18n="beta.note">※ 현재는 한국 출발 국제선만 지원합니다. 해외 출발 노선은 서비스 준비중입니다.</div>
+    </div>
+  </div>
+</div><div class="hero-signal-row" id="heroSignalRow">
+    <span data-i18n="index.signal1">항공사 공식 공지와 원문 링크</span>
+    <span data-i18n="index.signal2">같은 통화·노선 구간 비교</span>
+    <span data-i18n="index.signal3">2026년 12월 · 공시 확인 대기</span>
+  </div><div class="status-strip" id="statusStrip" style="display: flex;">
+      <div class="status-dot" id="statusDot"></div>
+      <span id="statusText" title="별도 피드 파일 갱신: 2026-10-21 10:33 KST">공시 확인: 2026-10-29 07:54 KST · 시장 자료 기준: 2026-11-09 09:00 KST · 사이트 문구 수정: 2026-11-04 22:27 KST</span>
+    </div>
+    </div>
+  </details>
+    <!-- 유류할증료 빠른 조회 SEO 섹션 -->
+    <section class="quick-links">
+      <div class="landing-title" style="margin-bottom:12px;" data-i18n="index.quick.title">더 살펴보기</div>
+      <div class="quick-grid">
+        <a href="fuel-surcharge-korea.html" class="quick-link" style="text-decoration:none;color:inherit;">
+
+          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.korea.name">한국 출발 유류할증료</div><div class="mini-status" style="color:var(--muted);font-size:var(--font-caption);" data-i18n="index.quick.korea.desc">국적기 전체 비교</div></div>
+        </a>
+        <a href="news.html#compareList" class="quick-link" style="text-decoration:none;color:inherit;">
+
+          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.compare.name">월별 유류할증료 비교</div><div class="mini-status" style="color:var(--muted);font-size:var(--font-caption);" data-i18n="index.quick.compare.desc">같은 항공사·노선의 공시 금액 변화 확인</div></div>
+        </a>
+        <a href="forecast.html" class="quick-link" style="text-decoration:none;color:inherit;">
+
+          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.jul.name">2026년 12월 유류할증료 전망</div><div class="mini-status" style="color:var(--muted);font-size:var(--font-caption);" data-i18n="index.quick.jul.desc">공식 공시 확인 대기 · 시장 변수와 방향성 살펴보기</div></div>
+        </a>
+        <a href="fuel-surcharge-graph.html" class="quick-link" style="text-decoration:none;color:inherit;">
+
+          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.graph.name">유류할증료 변동 그래프</div><div class="mini-status" style="color:var(--muted);font-size:var(--font-caption);" data-i18n="index.quick.graph.desc">월별 인상·인하 추이</div></div>
+        </a>
+        <a href="fuel-surcharge-calculator.html" class="quick-link" style="text-decoration:none;color:inherit;">
+
+          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.calc.name">유류할증료 계산 방법</div><div class="mini-status" style="color:var(--muted);font-size:var(--font-caption);" data-i18n="index.quick.calc.desc">산정 기준 및 확인 방법</div></div>
+        </a>
+        <a href="fuel-surcharge-korean-air.html" class="quick-link" style="text-decoration:none;color:inherit;">
+
+          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.ke.name">대한항공 유류할증료</div><div class="mini-status" style="color:var(--muted);font-size:var(--font-caption);" data-i18n="index.quick.ke.desc">KE 월별 공시 상세</div></div>
+        </a>
+        <a href="fuel-surcharge-asiana.html" class="quick-link" style="text-decoration:none;color:inherit;">
+
+          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.oz.name">아시아나항공 유류할증료</div><div class="mini-status" style="color:var(--muted);font-size:var(--font-caption);" data-i18n="index.quick.oz.desc">OZ 월별 공시 상세</div></div>
+        </a>
+        <a href="fuel-surcharge-jejuair.html" class="quick-link" style="text-decoration:none;color:inherit;">
+
+          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.7c.name">제주항공 유류할증료</div><div class="mini-status" style="color:var(--muted);font-size:var(--font-caption);" data-i18n="index.quick.7c.desc">7C 월별 공시 상세</div></div>
+        </a>
+        <a href="fuel-surcharge-jinair.html" class="quick-link" style="text-decoration:none;color:inherit;">
+
+          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.lj.name">진에어 유류할증료</div><div class="mini-status" style="color:var(--muted);font-size:var(--font-caption);" data-i18n="index.quick.lj.desc">LJ 월별 공시 상세</div></div>
+        </a>
+        <a href="fuel-surcharge-tway.html" class="quick-link" style="text-decoration:none;color:inherit;">
+
+          <div style="flex:1"><div class="mini-name" data-i18n="index.quick.tw.name">티웨이항공 유류할증료</div><div class="mini-status" style="color:var(--muted);font-size:var(--font-caption);" data-i18n="index.quick.tw.desc">TW 월별 공시 상세</div></div>
+        </a>
+      </div>
+    </section>
+
+</main>
 
 <script src="source-provenance.js?v=20261029-market"></script>
-<script src="_shared.js?v=20261106-morning"></script>
+<script src="_shared.js?v=20261109-morning"></script>
+<script src="home-interface.js?v=20261106-design"></script>
 <script>
 /* ── 전역 런타임 에러 → 무한 로딩 방지 ── */
 window.addEventListener('error', function(e){
@@ -1341,7 +842,7 @@ function _trendBadgeHtml(code){
   } else { return ''; }
   var tooltip = '2026년 6월 대비 2026년 7월 공식 공시 최소 변동률';
   var label = arrow + ' 6월 대비 최소 ' + sign;
-  return '<span title="'+tooltip+'" style="display:inline-flex;align-items:center;font-size:11px;font-weight:700;'
+  return '<span title="'+tooltip+'" style="display:inline-flex;align-items:center;font-size:var(--font-caption);font-weight:700;'
     +'color:'+color+';background:'+bg+';border:1px solid '+border+';'
     +'border-radius:10px;padding:2px 8px;white-space:nowrap;flex-shrink:0;cursor:default;">'
     +label+'</span>';
@@ -1366,7 +867,7 @@ _trendBadgeHtml = function(code){
   }
   var tooltip = '2026년 6월 대비 2026년 7월 공식 공시 최소 변동률';
   var label = arrow + ' 6월 대비 최소 ' + sign;
-  return '<span title="' + tooltip + '" style="display:inline-flex;align-items:center;font-size:11px;font-weight:700;'
+  return '<span title="' + tooltip + '" style="display:inline-flex;align-items:center;font-size:var(--font-caption);font-weight:700;'
     + 'color:' + color + ';background:' + bg + ';border:1px solid ' + border + ';'
     + 'border-radius:10px;padding:2px 8px;white-space:nowrap;flex-shrink:0;cursor:default;">'
     + label + '</span>';
@@ -1472,7 +973,7 @@ async function loadAll(){
   }
 
   renderLanding();
-  if (window._searchCtx) renderCards('all');
+  refreshHomeResults();
 }
 
 function findFeedAl(code){
@@ -1544,12 +1045,12 @@ function buildOfficialSection(cd, al, miles, isRT, dep, arr){
   /* ── 라벨 헤더 ── */
   function sectionHeader(showNext, extraBadge){
     var officialBadge = showNext
-      ? '<span style="font-size:10px;background:#d1fae5;color:#065f46;border-radius:4px;padding:1px 7px;margin-left:6px;font-weight:700">✓ 공식 공시 반영</span>'
+      ? '<span style="font-size:var(--font-caption);background:#d1fae5;color:#065f46;border-radius:4px;padding:1px 7px;margin-left:6px;font-weight:700">✓ 공식 공시 반영</span>'
       : '';
     return '<div class="official-label">'
       + window.statusBadgeHtml('official_verified')
-      + '<span style="font-size:10px;color:var(--muted);margin-left:6px">'+window.t('index.card.compare')+'</span>'
-      + '<span style="font-size:10px;color:var(--muted);margin-left:4px">' + (isRT?window.t('index.meta.roundTrip'):window.t('index.meta.oneWay')) + '</span>'
+      + '<span style="font-size:var(--font-caption);color:var(--muted);margin-left:6px">'+window.t('index.card.compare')+'</span>'
+      + '<span style="font-size:var(--font-caption);color:var(--muted);margin-left:4px">' + (isRT?window.t('index.meta.roundTrip'):window.t('index.meta.oneWay')) + '</span>'
       + officialBadge
       + (extraBadge||'')
       + '</div>';
@@ -1638,7 +1139,7 @@ function buildOfficialSection(cd, al, miles, isRT, dep, arr){
           var diffStr = diff !== 0
             ? window.fmtAmtDisplay(Math.abs(diff) * mult, offCurr)
             : '-';
-          diffCell = '<td style="font-size:11px;font-weight:700;color:'+diffColor+';text-align:center">'
+          diffCell = '<td style="font-size:var(--font-caption);font-weight:700;color:'+diffColor+';text-align:center">'
             + diffSign + ' ' + diffStr + '</td>';
         } else {
           diffCell = '<td>-</td>';
@@ -1660,7 +1161,7 @@ function buildOfficialSection(cd, al, miles, isRT, dep, arr){
       + '<th>'+window.t('index.card.distanceBand')+'</th>'
       + '<th class="th-may">'+(hasJuly?'2026.06':window.t('index.card.period'))+'</th>'
       + '<th class="th-apr">'+(hasJuly?'2026.07 공식 공시':window.t('index.card.periodMay'))+'</th>'
-      + (hasJune ? '<th style="font-size:10px;color:var(--muted);text-align:center">'+window.t('index.card.diff')+'</th>' : '')
+      + (hasJune ? '<th style="font-size:var(--font-caption);color:var(--muted);text-align:center">'+window.t('index.card.diff')+'</th>' : '')
       + '</tr></thead>';
 
     return '<div class="official-section">'
@@ -1678,7 +1179,7 @@ function buildOfficialSection(cd, al, miles, isRT, dep, arr){
    * ══════════════════════════════════════════════ */
   if(cd.isGroupTier && cd.groupTiersResult){
     var gtr   = cd.groupTiersResult;
-    var gBadge = '<span style="font-size:10px;background:#E0F2FE;color:#075985;border-radius:4px;padding:1px 6px;margin-left:6px;font-weight:700">'+window.t('index.card.groupTier')+'</span>';
+    var gBadge = '<span style="font-size:var(--font-caption);background:#E0F2FE;color:#075985;border-radius:4px;padding:1px 6px;margin-left:6px;font-weight:700">'+window.t('index.card.groupTier')+'</span>';
 
     var rows = gtr.tiers.map(function(t){
       var isMatch = cd.matchedGroup && cd.matchedGroup.group===t.group;
@@ -1688,7 +1189,7 @@ function buildOfficialSection(cd, al, miles, isRT, dep, arr){
       var currentCell = '<td class="route-amt-current">'+fmt(t.amountKRW,'USD')+'</td>';
       var nextCell    = '<td class="route-amt-next"><span class="prepub">'+window.t('index.card.notPublished')+'</span></td>';
       return '<tr class="'+cls+'">'
-        + '<td>'+t.label+'<span style="font-size:10px;color:var(--muted);margin-left:5px">'+(rm.desc||'')+'</span>'+badge+'</td>'
+        + '<td>'+t.label+'<span style="font-size:var(--font-caption);color:var(--muted);margin-left:5px">'+(rm.desc||'')+'</span>'+badge+'</td>'
         + currentCell + nextCell
         + '</tr>';
     }).join('');
@@ -1714,7 +1215,7 @@ function buildOfficialSection(cd, al, miles, isRT, dep, arr){
       var cls       = isMatch ? ' highlighted' : '';
       var badge     = isMatch ? '<span class="route-highlight-badge">'+window.t('index.card.currentRoute')+'</span>' : '';
       var spBadge   = route.spiked ? '<span class="route-spike-badge">⚠ 변동</span>' : '';
-      var noteHtml  = route.dataNote ? '<span style="font-size:10px;color:var(--warn);margin-left:4px">'+route.dataNote+'</span>' : '';
+      var noteHtml  = route.dataNote ? '<span style="font-size:var(--font-caption);color:var(--warn);margin-left:4px">'+route.dataNote+'</span>' : '';
       var rangeHtml = route.distanceRange ? '<span class="route-range">'+route.distanceRange+'mi</span> ' : '';
       var currentAmt = route.amountKRW!=null ? fmt(route.amountKRW,route.currency) : '<span style="color:var(--muted)">'+window.t('index.card.notListed')+'</span>';
 
@@ -1774,12 +1275,12 @@ buildOfficialSection = function(cd, al, miles, isRT, dep, arr){
 
   var compareLabel = hasJuly ? '6월 VS 7월 공식 공시' : '6월 공시 기준';
   var stateBadge = hasJuly
-    ? '<span style="font-size:10px;background:#d1fae5;color:#065f46;border-radius:4px;padding:1px 7px;margin-left:6px;font-weight:700">✓ 7월 공식 공시 반영</span>'
+    ? '<span style="font-size:var(--font-caption);background:#d1fae5;color:#065f46;border-radius:4px;padding:1px 7px;margin-left:6px;font-weight:700">✓ 7월 공식 공시 반영</span>'
     : '';
   var header = '<div class="official-label">'
     + window.statusBadgeHtml('official_verified')
-    + '<span style="font-size:10px;color:var(--muted);margin-left:6px">' + compareLabel + '</span>'
-    + '<span style="font-size:10px;color:var(--muted);margin-left:4px">' + (isRT ? window.t('index.meta.roundTrip') : window.t('index.meta.oneWay')) + '</span>'
+    + '<span style="font-size:var(--font-caption);color:var(--muted);margin-left:6px">' + compareLabel + '</span>'
+    + '<span style="font-size:var(--font-caption);color:var(--muted);margin-left:4px">' + (isRT ? window.t('index.meta.roundTrip') : window.t('index.meta.oneWay')) + '</span>'
     + stateBadge
     + '</div>';
 
@@ -1797,14 +1298,14 @@ buildOfficialSection = function(cd, al, miles, isRT, dep, arr){
     var julyCell = julyAmt != null
       ? '<td class="route-amt-next" style="color:#059669;font-weight:700">' + fmt(toKRW(julyAmt)) + '</td>'
       : '<td class="route-amt-next"><span class="prepub">8월 공시 준비</span></td>';
-    var diffCell = '<td style="font-size:11px;color:var(--muted);text-align:center">8월 공시 준비</td>';
+    var diffCell = '<td style="font-size:var(--font-caption);color:var(--muted);text-align:center">8월 공시 준비</td>';
     if(juneAmt != null && julyAmt != null){
       var diff = toKRW(julyAmt) - toKRW(juneAmt);
       var pct = ((julyAmt - juneAmt) / juneAmt) * 100;
       var color = diff < 0 ? '#059669' : (diff > 0 ? '#dc2626' : '#64748b');
       var prefix = diff < 0 ? '▼ ' : (diff > 0 ? '▲ ' : '');
       var amt = diff !== 0 ? window.fmtAmtDisplay(Math.abs(diff) * mult, offCurr) : '-';
-      diffCell = '<td style="font-size:11px;font-weight:700;color:' + color + ';text-align:center">' + prefix + pct.toFixed(1) + '%<br><span style="font-size:10px">' + amt + '</span></td>';
+      diffCell = '<td style="font-size:var(--font-caption);font-weight:700;color:' + color + ';text-align:center">' + prefix + pct.toFixed(1) + '%<br><span style="font-size:var(--font-caption)">' + amt + '</span></td>';
     }
     return '<tr class="' + cls + '">'
       + '<td><span class="route-range">' + r.label + '</span>' + badge + '</td>'
@@ -1816,7 +1317,7 @@ buildOfficialSection = function(cd, al, miles, isRT, dep, arr){
     + '<th>' + window.t('index.card.distanceBand') + '</th>'
     + '<th class="th-may">2026.06</th>'
     + '<th class="th-apr">' + (hasJuly ? '2026.07 공식 공시' : '2026.08 공시 준비') + '</th>'
-    + (hasJune ? '<th style="font-size:10px;color:var(--muted);text-align:center">' + window.t('index.card.diff') + '</th>' : '')
+    + (hasJune ? '<th style="font-size:var(--font-caption);color:var(--muted);text-align:center">' + window.t('index.card.diff') + '</th>' : '')
     + '</tr></thead>';
 
   return '<div class="official-section">'
@@ -1890,10 +1391,10 @@ function buildCard(al, dep, arr, miles, isRT, idx){
   function cardHeader(withFlag){
     var displayName = getAirlineName({ name: al._metaName }) || al.name || al.code;
     return '<div class="card-header">'
-      +'<div class="card-airline"><div class="card-logo">'+al.logo+'</div>'
-      +'<div><div class="card-name">'+(withFlag?'🇰🇷 ':'')+displayName+'</div>'
-      +'<div class="card-code">'+al.code+'</div></div></div>'
-      +'<span class="alliance-tag '+tag.cls+'">'+tag.label+'</span>'
+      +'<div class="card-airline"><div class="card-logo">'+al.code+'</div>'
+      +'<div><div class="card-name">'+displayName+'</div>'
+      +'<div class="card-code sr-only">'+al.code+'</div></div></div>'
+      +'<span class="card-alliance">'+tag.label+'</span>'
       +'</div>';
   }
 
@@ -1905,8 +1406,8 @@ function buildCard(al, dep, arr, miles, isRT, idx){
       +cardHeader(false)
       +'<div class="no-data-msg" style="padding:10px 4px">'
       +'<span style="background:#f5f5f5;border:1px solid #ddd;border-radius:6px;'
-      +'padding:3px 10px;font-size:12px;color:#888">'+window.t('index.card.notOperated')+'</span>'
-      +'<span style="font-size:11px;color:var(--muted);margin-left:8px">'+window.t('index.card.routeNotServed')+'</span>'
+      +'padding:3px 10px;font-size:var(--font-small);color:#888">'+window.t('index.card.notOperated')+'</span>'
+      +'<span style="font-size:var(--font-caption);color:var(--muted);margin-left:8px">'+window.t('index.card.routeNotServed')+'</span>'
       +'</div>'
       +(srcHtmlNo?'<div class="card-footer" style="border-top:1px solid var(--line);'
         +'padding-top:8px;margin-top:8px">'+srcHtmlNo+'</div>':'')
@@ -1916,26 +1417,9 @@ function buildCard(al, dep, arr, miles, isRT, idx){
   var cd=getCardData(al.code,dep,arr,miles);
   var officialHtml=buildOfficialSection(cd,al,miles,isRT,dep,arr);
 
-  var srcHtml=noticeUrl
-    ?'<a class="source-link" href="'+noticeUrl+'" target="_blank" rel="noopener">'+noticeLabel+'</a>'
-    :'';
-  var usdBadge=al.usdNotice
-    ?'<span style="font-size:10px;background:#E0F2FE;color:#075985;border:1px solid #7DD3FC;'
-    +'border-radius:10px;padding:2px 7px;margin-left:4px">'+window.t('index.card.usdNotice')+'</span>':'';
-  var schemaBadge=al.surchargeSchema==='group_tier'
-    ?'<span style="font-size:10px;background:#f3e5f5;color:#6a1b9a;border:1px solid #ce93d8;'
-    +'border-radius:10px;padding:2px 7px;margin-left:4px">'+window.t('index.card.groupTier')+'</span>':'';
-
-  var trendHtml = trendBadgeHtml(al.code);
-
-  var affiliateHtml = '<div class="affiliate-links">'
-    +'<a href="https://lase.kr/click.php?m=myrealtrip&a=A100704170&l=0000" target="_blank" rel="noopener sponsored" class="aff-btn secondary" data-i18n="aff.myrealtrip.cta">'+(window.t('aff.myrealtrip.cta')||'항공권 가격 확인하기')+'</a>'
-    +'</div>';
-
   return '<div class="al-card has-data">'
     +cardHeader(true)
     +officialHtml
-    +'<div class="card-footer"><div class="footer-left">'+srcHtml+trendHtml+usdBadge+schemaBadge+affiliateHtml+'</div></div>'
     +'</div>';
 }
 
@@ -1960,6 +1444,8 @@ function updateTripMode(nextMode){
 document.getElementById('btnOW').addEventListener('click', function(){ updateTripMode('OW'); });
 document.getElementById('btnRT').addEventListener('click', function(){ updateTripMode('RT'); });
 document.getElementById('swapBtn').addEventListener('click',function(){
+  resolveInputToSelect('originAirportInput','originSelect');
+  resolveInputToSelect('destAirportInput','destSelect');
   var o=document.getElementById('originSelect'),d=document.getElementById('destSelect'),t=o.value;
   o.value=d.value;d.value=t;
   syncAirportInputLabels();
@@ -2018,6 +1504,7 @@ function setupAirportAutocomplete(inputId, selectId){
   function closeList(){
     listEl.classList.remove('open');
     activeIdx = -1;
+    filtered = [];
   }
 
   function selectItem(item){
@@ -2043,7 +1530,7 @@ function setupAirportAutocomplete(inputId, selectId){
     }
     /* 레이블 완전 일치 */
     for(var j=0;j<all.length;j++){
-      if(all[j].label.toLowerCase() === ql) return all[j];
+      if(all[j].label.toLowerCase() === ql || all[j].display.toLowerCase() === ql) return all[j];
     }
     return null;
   }
@@ -2056,7 +1543,7 @@ function setupAirportAutocomplete(inputId, selectId){
       listEl.innerHTML = '<div class="airport-suggest-empty">' + window.t('index.airport.noSearchResults') + '</div>';
     } else {
       var header = headerText
-        ? '<div style="padding:6px 12px 4px;font-size:11px;font-weight:700;color:var(--muted);border-bottom:1px solid var(--line);letter-spacing:.3px;">' + headerText + '</div>'
+        ? '<div style="padding:6px 12px 4px;font-size:var(--font-caption);font-weight:700;color:var(--muted);border-bottom:1px solid var(--line);letter-spacing:.3px;">' + headerText + '</div>'
         : '';
       listEl.innerHTML = header + items.map(function(it, i){
         return '<div class="airport-suggest-item" data-i="'+i+'" role="option">'+it.display+'</div>';
@@ -2072,6 +1559,10 @@ function setupAirportAutocomplete(inputId, selectId){
     var q = input.value.trim();
     if(!q){ closeList(); select.value=''; return; }
     var ql = q.toLowerCase();
+
+    // An airport code must take precedence over overlapping country aliases.
+    var exact = tryMatchExact(q);
+    if(exact){ openList([exact]); return; }
 
     /* ① 지역(국가) 검색 — getAirportItemsByRegionQuery 우선 시도 */
     if(window.getAirportItemsByRegionQuery){
@@ -2092,24 +1583,27 @@ function setupAirportAutocomplete(inputId, selectId){
 
   input.addEventListener('keydown', function(e){
     var items = listEl.querySelectorAll('.airport-suggest-item');
+    var isOpen = listEl.classList.contains('open');
     if(e.key === 'ArrowDown'){
+      if(!isOpen) return;
       e.preventDefault();
       activeIdx = Math.min(activeIdx+1, items.length-1);
       highlightItem(activeIdx);
     } else if(e.key === 'ArrowUp'){
+      if(!isOpen) return;
       e.preventDefault();
       activeIdx = Math.max(activeIdx-1, 0);
       highlightItem(activeIdx);
     } else if(e.key === 'Enter'){
       e.preventDefault();
-      if(activeIdx >= 0 && filtered[activeIdx]){
+      if(!input.value.trim()){ closeList(); select.value=''; return; }
+      var exact = tryMatchExact(input.value);
+      if(isOpen && activeIdx >= 0 && filtered[activeIdx]){
         selectItem(filtered[activeIdx]);
-      } else if(filtered.length){
+      } else if(exact){
+        selectItem(exact);
+      } else if(isOpen && filtered.length){
         selectItem(filtered[0]);
-      } else {
-        /* 입력값 코드/이름 완전 일치 시도 */
-        var exact = tryMatchExact(input.value);
-        if(exact) selectItem(exact);
       }
     } else if(e.key === 'Escape'){
       closeList();
@@ -2184,6 +1678,31 @@ function resolveInputToSelect(inputId, selectId){
   }
 }
 
+function renderUnsupportedDeparture(){
+  document.getElementById('resultMeta').textContent=window.t('index.result.overseasMeta');
+  document.getElementById('filterRow').style.display='none';
+  document.getElementById('cardsGrid').innerHTML=
+    '<div style="grid-column:1/-1;background:#FFF8E1;border:1.5px solid #FFD54F;'
+    +'border-radius:13px;padding:32px 28px;text-align:center;max-width:600px;margin:0 auto">'
+    +'<div style="font-size:28px;margin-bottom:10px">🌐</div>'
+    +'<div style="font-size:15px;font-weight:700;color:#E65100;margin-bottom:8px">'
+    +window.t('index.result.onlyKoreaDeparture')+'</div>'
+    +'<div style="font-size:13px;color:#795548;line-height:1.6">'
+    +window.t('index.result.overseasComingSoon')+'</div>'
+    +'</div>';
+}
+
+function refreshHomeResults(){
+  if(window._searchCtx){
+    var activeTab=document.querySelector('#filterRow .ftab.active');
+    document.getElementById('resultMeta').textContent=
+      (window._searchCtx.isRT?window.t('index.meta.roundTrip'):window.t('index.meta.oneWay'))+' · '+window.t('index.meta.suffix');
+    renderCards(activeTab?activeTab.dataset.f:'all');
+  }else if(window._unsupportedSearchCtx){
+    renderUnsupportedDeparture();
+  }
+}
+
 document.getElementById('searchBtn').addEventListener('click',function(){
   /* input에서 직접 타이핑한 경우 select value 보정 시도 */
   resolveInputToSelect('originAirportInput','originSelect');
@@ -2203,25 +1722,18 @@ document.getElementById('searchBtn').addEventListener('click',function(){
 
   document.getElementById('landingSection').style.display='none';
   document.getElementById('resultsSection').style.display='block';
-  document.getElementById('introSection').style.display='none';
+  requestAnimationFrame(function(){document.getElementById('resultsSection').scrollIntoView({block:'start'});});
+  document.querySelectorAll('#filterRow .ftab').forEach(function(button){button.classList.toggle('active',button.dataset.f==='all');});
   document.getElementById('resultBadge').textContent=dep+' → '+arr;
 
   window._searchCtx=null;
+  window._unsupportedSearchCtx=null;
   document.getElementById('cardsGrid').innerHTML='';
 
   if(!depIsKR){
     console.log('[aero][search] 해외 출발 차단 — 계산 중단');
-    document.getElementById('resultMeta').textContent=window.t('index.result.overseasMeta');
-    document.getElementById('filterRow').style.display='none';
-    document.getElementById('cardsGrid').innerHTML=
-      '<div style="grid-column:1/-1;background:#FFF8E1;border:1.5px solid #FFD54F;'
-      +'border-radius:13px;padding:32px 28px;text-align:center;max-width:600px;margin:0 auto">'
-      +'<div style="font-size:28px;margin-bottom:10px">🌐</div>'
-      +'<div style="font-size:15px;font-weight:700;color:#E65100;margin-bottom:8px">'
-      +window.t('index.result.onlyKoreaDeparture')+'</div>'
-      +'<div style="font-size:13px;color:#795548;line-height:1.6">'
-      +window.t('index.result.overseasComingSoon')+'</div>'
-      +'</div>';
+    window._unsupportedSearchCtx={dep:dep,arr:arr};
+    renderUnsupportedDeparture();
     if(window.AeroAnalytics) window.AeroAnalytics.track('route_no_result',Object.assign({},analyticsParams,{result_status:'unsupported_departure'}),'home-'+analyticsAction);
     return;
   }
@@ -2294,11 +1806,11 @@ function renderLanding(){
         +_trendBadgeHtml(al.code)
       :_trendBadgeHtml(al.code);
     var schemaBadge=al.surchargeSchema==='group_tier'
-      ?'<span style="font-size:9px;color:#6a1b9a;margin-left:4px">('+window.t('index.card.groupTierShort')+')</span>':'';
+      ?'<span style="font-size:var(--font-caption);color:#6a1b9a;margin-left:4px">('+window.t('index.card.groupTierShort')+')</span>':'';
     /* 렌더 시점에 현재 언어로 이름 재계산 (_metaName이 다국어 객체이면 번역, 아니면 al.name 그대로) */
     var displayName = getAirlineName({ name: al._metaName }) || al.name || al.code;
     return '<div class="mini-card">'
-      +'<div class="mini-badge">'+al.logo+'</div>'
+      +'<div class="mini-badge">'+al.code+'</div>'
       +'<div style="flex:1">'
       +'<div class="mini-name">'+displayName+schemaBadge+'</div>'
       +'<div class="mini-status">'+window.statusBadgeHtml(status)+'</div>'
@@ -2336,11 +1848,11 @@ renderLanding = function(){
       ? '<a href="' + noticeUrl + '" target="_blank" rel="noopener" class="mini-notice-btn">' + btnText + '</a>' + _trendBadgeHtml(al.code)
       : _trendBadgeHtml(al.code);
     var schemaBadge = al.surchargeSchema === 'group_tier'
-      ? '<span style="font-size:9px;color:#6a1b9a;margin-left:4px">(' + window.t('index.card.groupTierShort') + ')</span>'
+      ? '<span style="font-size:var(--font-caption);color:#6a1b9a;margin-left:4px">(' + window.t('index.card.groupTierShort') + ')</span>'
       : '';
     var displayName = getAirlineName({ name: al._metaName }) || al.name || al.code;
     return '<div class="mini-card">'
-      + '<div class="mini-badge">' + al.logo + '</div>'
+      + '<div class="mini-badge">' + al.code + '</div>'
       + '<div style="flex:1">'
       + '<div class="mini-name">' + displayName + schemaBadge + '</div>'
       + '<div class="mini-status">' + window.statusBadgeHtml(status) + '</div>'
@@ -2446,7 +1958,7 @@ _trendBadgeHtml = function(code){
   }
   var tooltip = window.t('index.card.trendSepTooltip');
   var label = arrow + ' ' + window.t('index.card.trendSepPrefix') + ' ' + sign;
-  return '<span title="' + tooltip + '" style="display:inline-flex;align-items:center;font-size:11px;font-weight:700;'
+  return '<span title="' + tooltip + '" style="display:inline-flex;align-items:center;font-size:var(--font-caption);font-weight:700;'
     + 'color:' + color + ';background:' + bg + ';border:1px solid ' + border + ';'
     + 'border-radius:10px;padding:2px 8px;white-space:nowrap;flex-shrink:0;cursor:default;">'
     + label + '</span>';
@@ -2481,12 +1993,12 @@ buildOfficialSection = function(cd, al, miles, isRT, dep, arr){
 
   var compareLabel = hasAugust ? window.t('index.card.compareSep') : window.t('index.card.augustBase');
   var stateBadge = hasAugust
-    ? '<span style="font-size:10px;background:#d1fae5;color:#065f46;border-radius:4px;padding:1px 7px;margin-left:6px;font-weight:700">' + window.t('index.card.officialReflectedSep') + '</span>'
-    : '<span style="font-size:10px;background:#fef3c7;color:#92400e;border-radius:4px;padding:1px 7px;margin-left:6px;font-weight:700">' + window.t('index.card.septemberPending') + '</span>';
+    ? '<span style="font-size:var(--font-caption);background:#d1fae5;color:#065f46;border-radius:4px;padding:1px 7px;margin-left:6px;font-weight:700">' + window.t('index.card.officialReflectedSep') + '</span>'
+    : '<span style="font-size:var(--font-caption);background:#fef3c7;color:#92400e;border-radius:4px;padding:1px 7px;margin-left:6px;font-weight:700">' + window.t('index.card.septemberPending') + '</span>';
   var header = '<div class="official-label">'
     + window.statusBadgeHtml('official_verified')
-    + '<span style="font-size:10px;color:var(--muted);margin-left:6px">' + compareLabel + '</span>'
-    + '<span style="font-size:10px;color:var(--muted);margin-left:4px">' + (isRT ? window.t('index.meta.roundTrip') : window.t('index.meta.oneWay')) + '</span>'
+    + '<span style="font-size:var(--font-caption);color:var(--muted);margin-left:6px">' + compareLabel + '</span>'
+    + '<span style="font-size:var(--font-caption);color:var(--muted);margin-left:4px">' + (isRT ? window.t('index.meta.roundTrip') : window.t('index.meta.oneWay')) + '</span>'
     + stateBadge
     + '</div>';
 
@@ -2504,14 +2016,14 @@ buildOfficialSection = function(cd, al, miles, isRT, dep, arr){
     var augustCell = augustAmt != null
       ? '<td class="route-amt-next" style="color:#059669;font-weight:700">' + fmt(augustAmt) + '</td>'
       : '<td class="route-amt-next"><span class="prepub">' + window.t('index.card.septemberPending') + '</span></td>';
-    var diffCell = '<td style="font-size:11px;color:var(--muted);text-align:center">' + window.t('index.card.pendingSepShort') + '</td>';
+    var diffCell = '<td style="font-size:var(--font-caption);color:var(--muted);text-align:center">' + window.t('index.card.pendingSepShort') + '</td>';
     if(julyAmt != null && augustAmt != null){
       var diff = augustAmt - julyAmt;
       var pct = julyAmt === 0 ? null : ((augustAmt - julyAmt) / julyAmt) * 100;
       var color = diff < 0 ? '#059669' : (diff > 0 ? '#dc2626' : '#64748b');
       var prefix = diff < 0 ? '▼ ' : (diff > 0 ? '▲ ' : '');
       var amt = diff !== 0 ? fmt(Math.abs(diff)) : '-';
-      diffCell = '<td style="font-size:11px;font-weight:700;color:' + color + ';text-align:center">' + (pct === null ? '— (base 0)' : prefix + pct.toFixed(1) + '%') + '<br><span style="font-size:10px">' + amt + '</span></td>';
+      diffCell = '<td style="font-size:var(--font-caption);font-weight:700;color:' + color + ';text-align:center">' + (pct === null ? '— (base 0)' : prefix + pct.toFixed(1) + '%') + '<br><span style="font-size:var(--font-caption)">' + amt + '</span></td>';
     }
     return '<tr class="' + cls + '">'
       + '<td><span class="route-range">' + r.label + '</span>' + badge + '</td>'
@@ -2523,7 +2035,7 @@ buildOfficialSection = function(cd, al, miles, isRT, dep, arr){
     + '<th>' + window.t('index.card.distanceBand') + '</th>'
     + '<th class="th-may">' + window.t('index.card.thAug') + '</th>'
     + '<th class="th-apr">' + (hasAugust ? window.t('index.card.thSepOfficial') : window.t('index.card.thSepPending')) + '</th>'
-    + '<th style="font-size:10px;color:var(--muted);text-align:center">' + window.t('index.card.diff') + '</th>'
+    + '<th style="font-size:var(--font-caption);color:var(--muted);text-align:center">' + window.t('index.card.diff') + '</th>'
     + '</tr></thead>';
 
   return '<div class="official-section">'
@@ -2559,11 +2071,11 @@ renderLanding = function(){
     var btnHtml=publication&&publication.url?'<a href="'+publication.url.replace(/&/g,'&amp;').replace(/"/g,'&quot;')+'" target="_blank" rel="noopener noreferrer" class="mini-notice-btn">'+c[3]+'</a>':'';
     var trendHtml=complete&&platform?platform.landingComparisonHtml(al.code):'';
     var schemaBadge = al.surchargeSchema === 'group_tier'
-      ? '<span style="font-size:9px;color:#6a1b9a;margin-left:4px">(' + window.t('index.card.groupTierShort') + ')</span>'
+      ? '<span style="font-size:var(--font-caption);color:#6a1b9a;margin-left:4px">(' + window.t('index.card.groupTierShort') + ')</span>'
       : '';
     var displayName = getAirlineName({ name: al._metaName }) || al.name || al.code;
     return '<div class="mini-card" data-airline="'+al.code+'" data-source-verified="'+String(complete)+'">'
-      + '<div class="mini-badge">' + al.logo + '</div>'
+      + '<div class="mini-badge">' + al.code + '</div>'
       + '<div style="flex:1">'
       + '<div class="mini-name">' + displayName + schemaBadge + '</div>'
       + '<div class="mini-status" title="'+statusDetail+'" aria-label="'+statusHtml+'. '+statusDetail+'">' + statusHtml + '</div>'
@@ -2983,7 +2495,7 @@ window.initNav({
   onLangChange:function(){
     renderLanding();
     renderBookingDecision();
-    if(window._searchCtx)renderCards('all');
+    refreshHomeResults();
     /* 제휴 카드 텍스트 갱신 (aff.* + index.aff.*) */
     document.querySelectorAll('[data-i18n^="aff."], [data-i18n^="index.aff."]').forEach(function(el){
       var key = el.getAttribute('data-i18n');
@@ -2993,7 +2505,7 @@ window.initNav({
     /* 공항 input 표시 언어 갱신 */
     syncAirportInputLabels();
   },
-  onCurrChange:function(){renderLanding();if(window._searchCtx)renderCards('all');}
+  onCurrChange:function(){renderLanding();refreshHomeResults();}
 });
 /* ── 예약 판단 블록 렌더 ──
    window.t()를 통해 현재 언어 기준 i18n 값을 채우며,
@@ -3005,8 +2517,8 @@ function renderBookingDecision(){
   if(!title || !list || !conclusion) return;
   /* innerText로 명시적 렌더 — applyLanguage() 덮어쓰기 방지 */
   title.innerText      = window.t('index.decision.title');
-  list.innerHTML =
-    '<li>' + window.t('index.decision.line1') + '</li>' +
+  list.innerHTML = '<li>' + window.t('index.decision.line1') + '</li>';
+  document.getElementById('decisionCriteria').innerHTML =
     '<li>' + window.t('index.decision.line2') + '</li>' +
     '<li>' + window.t('index.decision.line3') + '</li>';
   conclusion.innerText = window.t('index.decision.conclusion');
@@ -3024,16 +2536,14 @@ setupAirportAutocomplete('destAirportInput','destSelect');
 <script src="notice-group-source.js"></script>
 <script src="home-platform.js?v=20261105-site-audit"></script>
 
-<footer style="background:var(--white);border-top:1px solid var(--line);padding:20px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;">
-  <p style="font-size:12px;color:var(--muted);max-width:600px;line-height:1.6;margin:0;" data-i18n="footer.notice">
-    표시된 유류할증료는 항공사 공식 공지 기반 참고용 정보입니다. 최종 금액은 항공사 공식 사이트 또는 발권처에서 반드시 확인하세요.<br>
-    문의: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a>
-  </p>
-  <nav style="display:flex;gap:16px;flex-wrap:wrap;">
-    <a href="about.html"   style="font-size:12px;color:var(--muted);text-decoration:none;" data-i18n="footer.about">About</a>
-    <a href="methodology.html" style="font-size:12px;color:var(--muted);text-decoration:none;">Data Methodology</a>
-    <a href="privacy.html" style="font-size:12px;color:var(--muted);text-decoration:none;" data-i18n="footer.privacy">Privacy Policy</a>
-    <a href="terms.html"   style="font-size:12px;color:var(--muted);text-decoration:none;" data-i18n="footer.terms">Terms of Service</a>
-  </nav>
+<footer class="home-footer">
+  <a class="site-brand footer-brand" href="index.html">AERO</a>
+  <p class="footer-notice" data-i18n="footer.notice">표시된 유류할증료는 항공사 공식 공지 기반 참고 정보입니다. 최종 금액은 발권처에서 확인하세요.</p>
+  <div class="footer-links">
+    <a href="about.html" data-i18n="footer.about">About</a>
+    <a href="methodology.html">Data Methodology</a>
+    <a href="privacy.html" data-i18n="footer.privacy">Privacy Policy</a>
+    <a href="terms.html" data-i18n="footer.terms">Terms of Service</a>
+  </div>
 </footer>
 </body></html>
