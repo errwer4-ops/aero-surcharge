@@ -552,6 +552,34 @@
     "effectiveFrom": "2026-11-01",
     "effectiveTo": "2026-11-30",
     "sourceVerifiedAt": "2026-10-29T07:54:00+09:00",
+    "routeConditions": [
+      {
+        "route": "ICN-NGB",
+        "destinationName": "닝보",
+        "effectiveFrom": "2026-11-06",
+        "effectiveTo": "2026-11-30",
+        "dateBasis": "payment",
+        "bandIndex": 0,
+        "amount": 48,
+        "currency": "USD",
+        "direction": "one_way",
+        "sourceClause": 7,
+        "sourceUpdatedAt": null
+      }
+    ],
+    "conditionReview": {
+      "id": "YP-2026-11-NGB-20261110",
+      "method": "official_notice_browser_text_review",
+      "informationCutoff": "2026-11-10T09:00:00+09:00",
+      "reviewWindow": {
+        "startedAt": "2026-11-10T08:58:11+09:00",
+        "completedBy": "2026-11-10T08:59:45+09:00"
+      },
+      "sourceUpdatedAt": null,
+      "evidenceFile": "docs/review-evidence/20261110-yp-route-condition.json",
+      "evidenceSha256": "5a2bdf8d3ee2977b949276643bd8b253b4ea59a097e1e8e17521e0543c614410",
+      "evidenceHashEncoding": "utf8_lf"
+    },
     "bands": [
       "~999 mi",
       "1,000~1,499 mi",

@@ -1,0 +1,62 @@
+{
+  "id": "YP-2026-11-NGB-20261110",
+  "scope": "One November notice route condition; not a replacement for the existing PDF amount reconciliation",
+  "sourceUrl": "https://www.airpremia.com/a/ko/customer/notice/803",
+  "sourceTitle": "2026년 11월 국제선 한국발 유류할증료 안내",
+  "sourcePublishedAt": "2026-10-27T09:18:18+09:00",
+  "sourceUpdatedAt": null,
+  "informationCutoff": "2026-11-10T09:00:00+09:00",
+  "reviewWindow": {
+    "startedAt": "2026-11-10T08:58:11+09:00",
+    "completedBy": "2026-11-10T08:59:45+09:00",
+    "precision": "Clock-bounded review window; individual browser-response timestamps were not provided"
+  },
+  "method": "official_notice_browser_text_review",
+  "access": {
+    "browserBodyReturned": true,
+    "browserCrawlLabel": "today",
+    "directHttpStatus": 403,
+    "directHttpBatchWindow": {
+      "startedAt": "2026-11-10T08:58:44+09:00",
+      "completedBy": "2026-11-10T08:58:46+09:00"
+    },
+    "limitation": "The browser tool returned the official URL body before cutoff. A direct HTTP request was blocked; this is not a claim of successful live origin-server retrieval."
+  },
+  "firstBandObservation": {
+    "bandIndex": 0,
+    "distanceMiles": "0-999",
+    "origin": "ICN",
+    "destinationsInSource": ["나리타", "삿포로", "닝보"],
+    "amount": 48,
+    "currency": "USD",
+    "direction": "one_way"
+  },
+  "routeConditions": [
+    {
+      "route": "ICN-NGB",
+      "destinationName": "닝보",
+      "effectiveFrom": "2026-11-06",
+      "effectiveTo": "2026-11-30",
+      "dateBasis": "payment",
+      "bandIndex": 0,
+      "amount": 48,
+      "currency": "USD",
+      "direction": "one_way",
+      "sourceClause": 7,
+      "sourceUpdatedAt": null
+    }
+  ],
+  "conditionExcerpt": "닝보노선의 경우 2026년 11월 6일 부 적용 됩니다.",
+  "otherObservedConditions": {
+    "noticePaymentFrom": "2026-11-01",
+    "noticePaymentTo": "2026-11-30",
+    "krwConversionBasis": "ticketing_day_usd_krw_exchange_rate",
+    "departureCountry": "KR"
+  },
+  "interpretationLimits": [
+    "The route-specific start date was newly observed during this review; the source does not state when clause 7 was added or modified.",
+    "The November amounts 48/64/107/187/236/296 USD are unchanged; this review adds no new amount or calculation route.",
+    "The existing sourceVerifiedAt and saved-PDF evidence remain the independent basis of the monthly amount reconciliation.",
+    "The current site has no NGB route definition or payment-day selector. This metadata is explanatory and does not implement route-date eligibility."
+  ]
+}

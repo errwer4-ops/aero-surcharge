@@ -41,6 +41,42 @@ test('Air Premia November has six PDF bands, a non-price display gap and ticketi
   assert.equal(trust.evaluateNotice({...row('YP','2026.11',5),amount:251}).status,'unresolved');
   for(const lang of ['ko','en','ja','zh','fr','de'])assert(notice.period[lang].length>50);
 });
+test('Air Premia Ningbo condition has independent pre-cutoff evidence without replacing the monthly PDF review', () => {
+  const entry = trust.getNotice('YP', '2026.11'), review = entry.conditionReview;
+  const text = fs.readFileSync(review.evidenceFile, 'utf8');
+  const receipt = JSON.parse(text);
+  assert.equal(review.evidenceHashEncoding, 'utf8_lf');
+  for (const copy of [text, text.replace(/\r?\n/g, '\r\n')]) {
+    assert.equal(crypto.createHash('sha256').update(copy.replace(/\r\n/g, '\n'), 'utf8').digest('hex'), review.evidenceSha256);
+  }
+  assert.equal(receipt.id, review.id);
+  assert.equal(receipt.sourceUrl, entry.sourceUrl);
+  assert.equal(receipt.sourcePublishedAt, entry.publishedAt);
+  assert.equal(receipt.sourceUpdatedAt, null);
+  assert.equal(review.sourceUpdatedAt, null);
+  assert.equal(receipt.informationCutoff, review.informationCutoff);
+  assert.equal(receipt.reviewWindow.startedAt, review.reviewWindow.startedAt);
+  assert.equal(receipt.reviewWindow.completedBy, review.reviewWindow.completedBy);
+  assert(Date.parse(review.reviewWindow.startedAt) <= Date.parse(review.reviewWindow.completedBy));
+  assert(Date.parse(review.reviewWindow.completedBy) < Date.parse(review.informationCutoff));
+  assert.equal(receipt.access.browserBodyReturned, true);
+  assert.equal(receipt.access.directHttpStatus, 403);
+  assert.deepEqual(entry.routeConditions, receipt.routeConditions);
+  const condition = entry.routeConditions[0];
+  assert.equal(condition.route, 'ICN-NGB');
+  assert.equal(condition.effectiveFrom, '2026-11-06');
+  assert.equal(condition.dateBasis, 'payment');
+  assert.equal(condition.sourceUpdatedAt, null);
+  assert.equal(receipt.firstBandObservation.bandIndex, condition.bandIndex);
+  assert(receipt.firstBandObservation.destinationsInSource.includes('닝보'));
+  assert.equal(receipt.firstBandObservation.amount, 48);
+  assert.equal(condition.amount, entry.amounts[condition.bandIndex]);
+  const original = JSON.parse(fs.readFileSync('docs/review-evidence/source-reconciliation.json', 'utf8')).notices.find(n => n.airline === 'YP' && n.month === '2026.11');
+  const { routeConditions, conditionReview, ...monthlyReview } = entry;
+  assert.deepEqual(monthlyReview, original, 'all original amounts, dates and PDF evidence stay unchanged');
+  assert.equal(trust.evaluateNotice(row('YP', '2026.11', 0)).effectiveFrom, '2026-11-01');
+  assert(Object.isFrozen(condition) && Object.isFrozen(review), 'condition evidence remains immutable');
+});
 test('stale confidence strings cannot bless altered amounts, identity or missing metadata', () => {
   const base = row();
   for (const change of [{ amount: 44 }, { amount: null }, { amount: '43' }, { bandIndex: 1 }, { band: 'arbitrary' },
@@ -81,7 +117,14 @@ test('whole notice counts and CI fail closed for any changed route map, band or 
 test('reviewed manifest is immutable and independent receipts agree', () => {
   assert.throws(() => { trust.getNotice('7C', '2026.11').amounts[0] = 0; });
   const receipt = JSON.parse(fs.readFileSync('docs/review-evidence/source-reconciliation.json', 'utf8'));
-  assert.deepEqual(trust.manifest, receipt.notices);
+  const monthlyManifest = trust.manifest.map(entry => {
+    if (entry.airline !== 'YP' || entry.month !== '2026.11') return entry;
+    // The separate Nov10 condition receipt is checked above; the original
+    // monthly reconciliation must still match its complete historical receipt.
+    const { routeConditions, conditionReview, ...monthlyReview } = entry;
+    return monthlyReview;
+  });
+  assert.deepEqual(monthlyManifest, receipt.notices);
   for (const entry of trust.manifest.filter(n => n.evidence.file?.startsWith('docs/'))) {
     const hash = crypto.createHash('sha256').update(fs.readFileSync(entry.evidence.file)).digest('hex');
     assert.equal(entry.evidence.sha256, hash);
