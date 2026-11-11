@@ -167,6 +167,9 @@
     de:['Oktober FACT · November FORECAST','Gesamtpreis nach den Oktober-Hinweisen vergleichen','Vergleich September-Oktober']
   };
   function syncFinalUi(){
+    // A later release owns the live page; keep September's delayed callbacks
+    // from replacing its metadata after a language change.
+    if(r && Date.parse(r.modified)>Date.parse(stamp))return;
     var lang=(document.documentElement.lang||((document.getElementById('navLang')||{}).value)||'ko').toLowerCase();
     if(lang==='cn')lang='zh';var v=finalUi[lang]||finalUi.en;
     [['fore.basis.title',v[0]],['fore.myrealtrip.title',v[1]],['fore.cta.may',v[2]]].forEach(function(item){document.querySelectorAll('[data-i18n="'+item[0]+'"]').forEach(function(el){el.textContent=item[1];});});
