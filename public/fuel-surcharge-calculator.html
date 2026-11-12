@@ -148,6 +148,7 @@
     @media(max-width:900px){.saving-workspace{grid-template-columns:1fr;}.saving-result{border-left:0;border-top:1px solid var(--line);grid-template-columns:1fr 1fr;}.saving-impact{grid-column:1/-1;}}
     @media(max-width:700px){.guide-block{padding:16px;}.saving-tool{padding:16px;}.saving-tool-head{display:block;}.saving-tool-badge{font-size:var(--font-caption);display:inline-flex;margin-top:10px;}.saving-trust-item{flex:1 1 100%;}.saving-form,.saving-result{grid-template-columns:1fr;}.saving-form,.saving-result{padding:14px;}.saving-metric-value{font-size:var(--font-section);}.saving-table-wrap{border:0;background:transparent;overflow:visible;}.saving-table{display:none;}.saving-mobile-cards{display:grid;}.saving-affiliate{align-items:flex-start;flex-direction:column;}.saving-affiliate-btn{font-size:var(--font-body);width:100%;}.live-fare-head{display:block;}.live-fare-controls{margin-top:12px;display:grid;grid-template-columns:1fr;}.live-fare-field{min-width:0;}.live-fare-card{grid-template-columns:1fr;}.live-fare-price,.live-fare-ratio{text-align:left;}.live-fare-link{font-size:var(--font-ui);width:100%;}}
   </style>
+  <link rel="stylesheet" href="calculator-interface.css?v=20261111-design"/>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -196,10 +197,10 @@
         },
         {
           "@type": "Question",
-          "name": "항공권 최저가와 유류할증료 비중은 항상 계산되나요?",
+          "name": "계산 결과가 실제 결제 금액과 완전히 같나요?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "아닙니다. 항공권 최저가의 항공사 코드와 우리 사이트의 공식 공시 데이터가 정확히 일치할 때만 유류할증료와 비중을 표시합니다. 공시 데이터가 없는 항공사는 비중 계산에서 제외합니다."
+            "text": "아닙니다. 이 계산기는 공식 공시 유류할증료를 기준으로 한 비교용 도구입니다. 실제 항공권 결제 금액은 운임, 세금, 환율, 예약 채널, 항공사 정책에 따라 달라질 수 있으므로 최종 발권 전 공식 공지를 확인해야 합니다."
           }
         },
         {
@@ -215,7 +216,7 @@
           "name": "해외여행이나 유학 항공권은 언제 유류할증료를 확인해야 하나요?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "해외여행, 유학, 출장처럼 국제선 항공권을 미리 발권해야 하는 일정은 결제 직전뿐 아니라 발권월이 바뀌기 전에 유류할증료를 확인하는 것이 좋습니다. 유류할증료는 탑승일이 아니라 발권일 기준으로 적용되기 때문입니다."
+            "text": "국제선 항공권을 미리 준비할 때는 발권월이 바뀌기 전과 최종 결제 전에 공식 공시를 확인하세요. 유류할증료는 탑승일이 아니라 발권일 기준입니다."
           }
         },
         {
@@ -223,7 +224,7 @@
           "name": "항공권 총액과 유류할증료는 어떻게 다른가요?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "유류할증료는 항공권 총액을 구성하는 항목 중 하나입니다. 실제 결제 금액에는 기본 운임, 유류할증료, 공항세와 각종 세금, 환율, 예약 채널 조건이 함께 반영됩니다."
+            "text": "유류할증료는 항공권 총액의 일부입니다. 실제 결제 금액에는 기본 운임, 공항세와 각종 세금, 환율, 예약 채널 조건이 함께 반영됩니다."
           }
         },
         {
@@ -260,12 +261,14 @@
 }
 </script>
 </head>
-<body>
-<nav>
+<body class="calculator-page">
+<nav class="site-nav" aria-label="AERO">
+  <a class="site-brand" href="index.html" aria-label="AERO">AERO<span class="brand-mark" aria-hidden="true"></span></a>
   <div class="nav-links">
     <a href="index.html"    class="nav-link" id="navLinkRoutes"   data-i18n="nav.routes">노선별 조회</a>
     <a href="fuel-surcharge-calculator.html" class="nav-link active" id="navLinkCalculator" data-i18n="nav.calc">계산기</a>
     <a href="airlines.html" class="nav-link" id="navLinkAirlines" data-i18n="nav.airlines">항공사 인덱스</a>
+    <a href="fuel-surcharge-graph.html" class="nav-link" data-i18n="calc.interface.graph">월별 추이</a>
     <a href="news.html"     class="nav-link" id="navLinkNews"     data-i18n="nav.news">참고 소식</a>
   </div>
   <div class="nav-controls">
@@ -286,56 +289,14 @@
     </select>
   </div>
 </nav>
-
-<div class="page-header">
-  <div class="page-title" data-i18n="calc.pageTitle">🧮 유류할증료 계산기</div>
-  <div class="page-sub"   data-i18n="calc.pageSub">2026년 11월 발권분 현재 적용</div>
-</div>
-
-<main class="seo-main">
-  <h1 style="font-size:var(--font-title);font-weight:700;line-height:1.3;color:var(--text);margin-bottom:16px;" data-i18n="calc.h1">유류할증료 계산기 | 2026년 10월·11월 비교</h1>
-
-  <div class="seo-lang-notice">
-    ⚠️&nbsp;<span data-i18n-html="calc.notice">2026년 11월 발권분 현재 적용. 2026년 11월 공시 완료 9개사: KE · OZ · 7C · LJ · RS · BX · TW · ZE · YP. 노선과 발권월을 선택해 금액을 비교하세요.</span>
-  </div>
-
-  <div style="display:flex;align-items:flex-start;gap:10px;background:#FFFBEB;border:1.5px solid #FCD34D;border-radius:10px;padding:10px 15px;margin-bottom:20px;font-size:var(--font-small);color:#92400E;line-height:1.6;">
-    📌&nbsp;<span data-i18n-html="calc.alert">유류할증료는 <strong>탑승일이 아닌 발권일 기준</strong>으로 적용됩니다. 최종 결제 전 항공사 공식 공지와 예약 화면을 확인하세요.</span>
-  </div>
-
-  <div class="seo-intro" data-i18n="calc.intro">노선과 발권월을 선택해 금액을 비교하세요.</div>
-
-  <section class="answer-block" aria-label="유류할증료 계산기 핵심 답변">
-    <div class="answer-block-title" data-i18n="calc.answer.title">2026년 11월 발권분 현재 적용</div>
-    <div class="answer-block-body" data-i18n="calc.answer.body">확인된 두 달의 금액을 같은 조건으로 비교합니다.</div>
-  </section>
-
-  <section class="calc-readiness-card" aria-label="2026년 11월 유류할증료 공식 공시 확인 상태">
-    <div class="calc-readiness-head">
-      <div class="calc-readiness-title" data-i18n="calc.readiness.title">2026년 11월 발권분 현재 적용</div>
-      <div class="calc-readiness-badge" data-i18n="calc.readiness.badge">2026년 11월 발권분 현재 적용</div>
-    </div>
-    <div class="calc-readiness-body" data-i18n="calc.readiness.body">한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다.</div>
-    <a class="calc-readiness-link" href="index.html" data-i18n="calc.readiness.link">11월 공식 공시 확인 →</a>
-  </section>
-
-  <section class="saving-tool" id="savingTool" aria-label="유류할증료 절약 비교 계산기">
-    <div class="saving-tool-head">
-      <div>
-        <div class="saving-tool-title">노선·항공사·발권월별 유류할증료 비교</div>
-        <div class="saving-tool-sub">같은 항공사·공식 부과 구간·통화의 금액만 월별 차액과 변동률로 비교합니다.</div>
-      </div>
-      <div class="saving-tool-badge">2026-10 → 2026-11</div>
-    </div>
-
-    <div class="saving-trust" aria-label="유류할증료 계산 기준">
-      <div class="saving-trust-item"><span class="saving-trust-icon">✓</span><div><div class="saving-trust-title">공식 공시 기반</div><div class="saving-trust-desc">항공사 공식 공시 데이터</div></div></div>
-      <div class="saving-trust-item"><span class="saving-trust-icon">↗</span><div><div class="saving-trust-title">발권일 기준</div><div class="saving-trust-desc">실제 발권일 금액 적용</div></div></div>
-      <div class="saving-trust-item"><span class="saving-trust-icon">11</span><div><div class="saving-trust-title">11월 공식 공시</div><div class="saving-trust-desc">10월 기준 · 11월 공시 확인 8개사</div></div></div>
-    </div>
-
-    <div class="saving-workspace">
-      <div class="saving-form">
+<main class="seo-main" id="calculatorMain">
+  <header class="calculator-header">
+    <h1 data-i18n="calc.interface.title">유류할증료 계산기</h1>
+    <div class="calculator-intro" data-i18n="calc.intro">노선과 발권월을 선택해 금액을 비교하세요.</div>
+    <p class="calculator-ticketing-note"><span data-i18n-html="calc.alert">유류할증료는 <strong>탑승일이 아닌 발권일 기준</strong>으로 적용됩니다. 최종 결제 전 항공사 공식 공지와 예약 화면을 확인하세요.</span></p>
+  </header>
+  <section class="saving-tool" id="savingTool" aria-label="유류할증료 비교 계산기">
+    <div class="saving-workspace"><div class="saving-form">
         <label class="saving-field">
           <span class="saving-label">출발지</span>
           <div class="saving-combo" id="savingOriginCombo">
@@ -365,10 +326,21 @@
             <button type="button" id="savingRoundTrip">단순 왕복 추정</button>
           </div>
         </div>
+        <div class="calculator-month-controls">
+      <label><span id="calculatorBaseLabel">기준 발권월</span><input data-clarity-mask="true" id="savingBaseMonth" type="month" value="2026-10" min="2020-01" max="2099-12"></label>
+      <label><span id="calculatorTargetLabel">비교 발권월</span><input data-clarity-mask="true" id="savingTargetMonth" type="month" value="2026-11" min="2020-01" max="2099-12"></label>
+      <label><span id="calculatorAirlineLabel">관심 항공사</span><select id="savingAirlineFilter"><option value="all">전체 · All</option><option value="KE">KE</option><option value="OZ">OZ</option><option value="7C">7C</option><option value="LJ">LJ</option><option value="BX">BX</option><option value="TW">TW</option><option value="ZE">ZE</option><option value="RS">RS</option><option value="YP">YP</option></select></label>
+    </div>
         <button class="saving-action" id="savingCalcBtn" type="button">유류할증료 계산하기</button>
+      </div></div>
+    <div class="saving-tool-head">
+      <div>
+        <div class="saving-tool-title">노선·항공사·발권월별 유류할증료 비교</div>
+        <div class="saving-tool-sub">같은 항공사·공식 부과 구간·통화의 금액만 월별 차액과 변동률로 비교합니다.</div>
       </div>
-
-      <div class="saving-result">
+      <div class="saving-tool-badge">2026-10 → 2026-11</div>
+    </div>
+    <div class="saving-result">
         <div class="saving-metric">
           <div class="saving-metric-label">비교 항공사</div>
           <div class="saving-metric-value" id="savingCarrierCount">-</div>
@@ -382,14 +354,15 @@
           <div class="saving-impact-body" id="savingImpact">목적지를 선택하면 항공사별 비교 결과가 표시됩니다.</div>
         </div>
       </div>
-    </div>
-    <div class="calculator-month-controls">
-      <label><span id="calculatorBaseLabel">기준 발권월</span><input data-clarity-mask="true" id="savingBaseMonth" type="month" value="2026-10" min="2020-01" max="2099-12"></label>
-      <label><span id="calculatorTargetLabel">비교 발권월</span><input data-clarity-mask="true" id="savingTargetMonth" type="month" value="2026-11" min="2020-01" max="2099-12"></label>
-      <label><span id="calculatorAirlineLabel">관심 항공사</span><select id="savingAirlineFilter"><option value="all">전체 · All</option><option value="KE">KE</option><option value="OZ">OZ</option><option value="7C">7C</option><option value="LJ">LJ</option><option value="BX">BX</option><option value="TW">TW</option><option value="ZE">ZE</option><option value="RS">RS</option><option value="YP">YP</option></select></label>
-    </div>
     <p class="calculator-assumption" id="calculatorAssumption">한국 출발 편도 공시액 기준입니다. 단순 왕복 추정액은 편도 × 2이며, 귀국편 조건에 따라 실제 부과액이 다릅니다.</p>
     <div class="saving-table-wrap" id="savingTableWrap" aria-live="polite" aria-atomic="true"></div>
+    <section class="calculator-retention" aria-labelledby="calculatorSavedTitle">
+      <h2 id="calculatorSavedTitle">저장한 관심 노선</h2>
+      <div class="calculator-retention-actions"><button type="button" id="calculatorSave">관심 노선 저장</button><button type="button" id="calculatorRecent">최근 검색 복원</button></div>
+      <p id="calculatorStorageNote">이 브라우저에 관심 노선과 최근 검색을 저장합니다.</p>
+      <p id="calculatorSaveStatus" role="status"></p>
+      <ul id="calculatorSavedList"></ul>
+    </section>
     <div class="saving-affiliate" id="savingAffiliate">
       <div class="saving-affiliate-body">
         <div class="saving-affiliate-kicker">항공권 총액 확인</div>
@@ -403,17 +376,33 @@
          id="savingAffiliateBtn" data-affiliate="myrealtrip" data-placement="calculator_result">항공권 총액 보기</a>
     </div>
     <div class="saving-note">※ 유류할증료는 발권일 기준으로 적용됩니다. 실제 결제 금액은 항공사, 환율, 세금, 예약 채널에 따라 달라질 수 있으므로 최종 발권 전 공식 공지를 확인하세요.</div>
-    <section class="calculator-retention" aria-labelledby="calculatorSavedTitle">
-      <h2 id="calculatorSavedTitle">저장한 관심 노선</h2>
-      <div class="calculator-retention-actions"><button type="button" id="calculatorSave">관심 노선 저장</button><button type="button" id="calculatorRecent">최근 검색 복원</button></div>
-      <p id="calculatorStorageNote">이 브라우저에 관심 노선과 최근 검색을 저장합니다.</p>
-      <p id="calculatorSaveStatus" role="status"></p>
-      <ul id="calculatorSavedList"></ul>
-    </section>
+    <details class="calculator-guide" id="calculatorGuide">
+      <summary data-i18n="calc.interface.criteria">계산 기준과 공시 안내</summary>
+      <div class="calculator-guide-content"><div class="seo-lang-notice">
+    ⚠️&nbsp;<span data-i18n-html="calc.notice">2026년 11월 발권분 현재 적용. 2026년 11월 공시 완료 9개사: KE · OZ · 7C · LJ · RS · BX · TW · ZE · YP. 노선과 발권월을 선택해 금액을 비교하세요.</span>
+  </div>
+<section class="answer-block" aria-label="유류할증료 계산기 핵심 답변">
+    <div class="answer-block-title" data-i18n="calc.answer.title">2026년 11월 발권분 현재 적용</div>
+    <div class="answer-block-body" data-i18n="calc.answer.body">확인된 두 달의 금액을 같은 조건으로 비교합니다.</div>
   </section>
-
-  <section id="calculatorFaq" aria-label="유류할증료 계산기 자주 묻는 질문">
-    <div class="seo-section-title">유류할증료 계산기 FAQ</div>
+<section class="calc-readiness-card" aria-label="2026년 11월 유류할증료 공식 공시 확인 상태">
+    <div class="calc-readiness-head">
+      <div class="calc-readiness-title" data-i18n="calc.readiness.title">2026년 11월 발권분 현재 적용</div>
+      <div class="calc-readiness-badge" data-i18n="calc.readiness.badge">2026년 11월 발권분 현재 적용</div>
+    </div>
+    <div class="calc-readiness-body" data-i18n="calc.readiness.body">한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다.</div>
+    <a class="calc-readiness-link" href="index.html" data-i18n="calc.readiness.link">11월 공식 공시 확인 →</a>
+  </section>
+<div class="saving-trust" aria-label="유류할증료 계산 기준">
+      <div class="saving-trust-item"><span class="saving-trust-icon">✓</span><div><div class="saving-trust-title">공식 공시 기반</div><div class="saving-trust-desc">항공사 공식 공시 데이터</div></div></div>
+      <div class="saving-trust-item"><span class="saving-trust-icon">↗</span><div><div class="saving-trust-title">발권일 기준</div><div class="saving-trust-desc">실제 발권일 금액 적용</div></div></div>
+      <div class="saving-trust-item"><span class="saving-trust-icon">11</span><div><div class="saving-trust-title">11월 공식 공시</div><div class="saving-trust-desc">10월 기준 · 11월 공시 확인 8개사</div></div></div>
+    </div></div>
+    </details>
+  </section>
+  <details class="calculator-guide" id="calculatorFaqDetails">
+    <summary data-i18n="calc.interface.faq">자주 묻는 질문</summary>
+    <section id="calculatorFaq" aria-label="유류할증료 계산기 자주 묻는 질문">
     <div class="faq-list">
       <div class="faq-item">
         <div class="faq-q">유류할증료는 탑승일 기준인가요, 발권일 기준인가요?</div>
@@ -424,8 +413,8 @@
         <div class="faq-a">사이트가 보유한 한국 출발 국제선 공식 공시 데이터를 기준으로 출발지와 도착지를 나누어 비교합니다. 선택한 노선에 취항하는 항공사가 2개 이상이면 항공사별 금액을 함께 보여줍니다.</div>
       </div>
       <div class="faq-item">
-        <div class="faq-q">항공권 최저가와 유류할증료 비중은 항상 계산되나요?</div>
-        <div class="faq-a">아닙니다. 항공권 최저가의 항공사 코드와 우리 사이트의 공식 공시 데이터가 정확히 일치할 때만 유류할증료와 비중을 표시합니다. 공시 데이터가 없는 항공사는 비중 계산에서 제외합니다.</div>
+        <div class="faq-q">계산 결과가 실제 결제 금액과 완전히 같나요?</div>
+        <div class="faq-a">아닙니다. 이 계산기는 공식 공시 유류할증료를 기준으로 한 비교용 도구입니다. 실제 항공권 결제 금액은 운임, 세금, 환율, 예약 채널, 항공사 정책에 따라 달라질 수 있으므로 최종 발권 전 공식 공지를 확인해야 합니다.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">왕복 항공권은 어떻게 계산하나요?</div>
@@ -433,20 +422,22 @@
       </div>
       <div class="faq-item">
         <div class="faq-q">해외여행이나 유학 항공권은 언제 유류할증료를 확인해야 하나요?</div>
-        <div class="faq-a">해외여행, 유학, 출장처럼 국제선 항공권을 미리 발권해야 하는 일정은 결제 직전뿐 아니라 발권월이 바뀌기 전에 유류할증료를 확인하는 것이 좋습니다. 유류할증료는 탑승일이 아니라 발권일 기준으로 적용되기 때문입니다.</div>
+        <div class="faq-a">국제선 항공권을 미리 준비할 때는 발권월이 바뀌기 전과 최종 결제 전에 공식 공시를 확인하세요. 유류할증료는 탑승일이 아니라 발권일 기준입니다.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">항공권 총액과 유류할증료는 어떻게 다른가요?</div>
-        <div class="faq-a">유류할증료는 항공권 총액을 구성하는 항목 중 하나입니다. 실제 결제 금액에는 기본 운임, 유류할증료, 공항세와 각종 세금, 환율, 예약 채널 조건이 함께 반영됩니다.</div>
+        <div class="faq-a">유류할증료는 항공권 총액의 일부입니다. 실제 결제 금액에는 기본 운임, 공항세와 각종 세금, 환율, 예약 채널 조건이 함께 반영됩니다.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">2026년 11월 유류할증료도 계산하나요?</div>
         <div class="faq-a">2026년 11월 발권분 현재 적용. 2026년 11월 공시 완료 9개사: KE · OZ · 7C · LJ · RS · BX · TW · ZE · YP.</div>
       </div>
     </div>
-  </section>
-
-  <div class="summary-cards">
+    </section>
+  </details>
+  <details class="calculator-guide" id="calculatorReference">
+    <summary data-i18n="calc.interface.reference">유류할증료 산정 방식</summary>
+    <div class="calculator-guide-content"><div class="summary-cards">
     <div class="summary-card">
       <div class="summary-card-icon">🛢️</div>
       <div class="summary-card-title" data-i18n="calc.card1.title">유가 연동 구조</div>
@@ -498,8 +489,8 @@
         <a href="fuel-surcharge-korea.html" style="color:var(--blue);font-weight:750;text-decoration:none;" data-i18n="calc.reference.korea">한국 출발 국제선 유류할증료 전체 조회</a>
       </p>
     </div>
-  </section>
-
+  </section></div>
+  </details>
   <div class="related-links">
     <div class="related-title" data-i18n="calc.related.title">🔗 관련 페이지</div>
     <div class="related-grid">
@@ -514,19 +505,20 @@
     </div>
   </div>
 </main>
-
-<footer style="background:var(--white);border-top:1px solid var(--line);padding:20px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;">
+<footer class="calculator-footer">
   <p style="font-size:var(--font-small);color:var(--muted);max-width:600px;line-height:1.6;margin:0;" data-i18n-html="calc.footnote">표시된 유류할증료는 항공사 공식 공지 기반 참고용 정보입니다. 최종 금액은 항공사 공식 사이트 또는 발권처에서 반드시 확인하세요.<br>문의: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a></p>
-  <nav style="display:flex;gap:16px;flex-wrap:wrap;">
+  <div class="footer-links">
     <a href="about.html"   style="font-size:var(--font-small);color:var(--muted);text-decoration:none;">About</a>
     <a href="methodology.html" style="font-size:var(--font-small);color:var(--muted);text-decoration:none;">Data Methodology</a>
     <a href="privacy.html" style="font-size:var(--font-small);color:var(--muted);text-decoration:none;">Privacy Policy</a>
     <a href="terms.html"   style="font-size:var(--font-small);color:var(--muted);text-decoration:none;">Terms of Service</a>
-  </nav>
+  </div>
 </footer>
 
+
 <script src="source-provenance.js?v=20261029-market"></script>
-<script src="_shared.js?v=20261111-0900"></script>
+<script src="_shared.js?v=20261112-0900"></script>
+<script src="calculator-interface.js?v=20261111-design"></script>
 <script>
 var SAVING_COMPARE_DATA = {
   KE: { name:'대한항공', currency:'KRW', rows:[
