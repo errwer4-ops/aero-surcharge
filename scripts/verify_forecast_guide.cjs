@@ -4,12 +4,12 @@ const {spawn}=require('node:child_process'),{chromium}=require('playwright');
 const root=path.resolve(__dirname,'..'),port=Number(process.env.FORECAST_GUIDE_PORT||4240),origin='http://127.0.0.1:'+port;
 const out=path.join(root,'artifacts/review-verification/forecast-guide');
 const copy={
- ko:['일정이 정해졌다면 총액 비교부터, 여유가 있다면 공시 확인부터.','현재 항공권 총액 비교','12월'],
- en:['Dates fixed? Compare total fares. Time to wait? Check airline notices first.','Compare current total fares','December'],
- ja:['日程が決まっていれば総額を比較。待つ余裕があれば航空会社の告知を確認。','現在の航空券総額を比較','12月'],
- zh:['行程已定，先比总价；有时间等，先看航空公司公告。','比较当前机票总价','十二月'],
- fr:['Dates fixées : comparez le prix total. Du temps devant vous : consultez les annonces.','Comparer les prix totaux actuels','décembre'],
- de:['Reisedaten stehen fest? Gesamtpreise vergleichen. Noch Zeit? Erst Mitteilungen prüfen.','Aktuelle Gesamtflugpreise vergleichen','Dezember']
+ ko:['대한항공·아시아나는 12월 유류할증료 인하를 공시했습니다.','현재 항공권 총액 비교','12월'],
+ en:['Korean Air and Asiana have announced lower December fuel surcharges.','Compare current total fares','December'],
+ ja:['大韓航空とアシアナ航空が12月の燃油サーチャージ引き下げを公示しました。','現在の航空券総額を比較','12月'],
+ zh:['大韩航空和韩亚航空已公告下调12月燃油附加费。','比较当前机票总价','十二月'],
+ fr:['Korean Air et Asiana ont annoncé une baisse des surcharges de décembre.','Comparer les prix totaux actuels','décembre'],
+ de:['Korean Air und Asiana haben niedrigere Kerosinzuschläge für Dezember angekündigt.','Aktuelle Gesamtflugpreise vergleichen','Dezember']
 };
 const norm=s=>s.replace(/\s+/g,' ').trim();
 async function market(page){return page.evaluate(()=>JSON.stringify({n:AERO_MARKET_NUMBERS_LATEST,r:AERO_MARKET_RELEASE,s:AERO_MARKET_SNAPSHOTS,notices:NOVEMBER_2026_OFFICIAL_NOTICES}));}
@@ -22,7 +22,7 @@ async function main(){
   await ctx.route('**/*',r=>r.request().url().startsWith(origin+'/')&&!r.request().url().includes('/api/')?r.continue():r.abort());
   const page=await ctx.newPage(),errors=[],consoleErrors=[];page.on('pageerror',e=>errors.push(e.message));page.on('console',m=>{if(m.type()==='error'&&!/net::ERR_FAILED|net::ERR_BLOCKED_BY_CLIENT/.test(m.text()))consoleErrors.push(m.text());});
   await page.goto(origin+'/forecast');await page.waitForTimeout(4500);
-  const original=await market(page),results=[];
+  const original=await market(page),results=[];let koreanDecision;
   assert.equal(await page.locator('h1').count(),1,'one page heading');
   assert.equal(await page.locator('#forecastEvidence').evaluate(el=>el.open),false,'evidence collapsed initially');
   assert.equal(await page.locator('#forecastSources').evaluate(el=>el.open),false,'source FAQ collapsed initially');
@@ -38,6 +38,14 @@ async function main(){
     assert.equal(await cta.innerText(),expected[1],lang+' CTA');
     assert((await page.locator('h1').innerText()).includes(expected[2]),lang+' forecast month');
     assert.match(await page.locator('.page-sub').innerText(),/2026\.11\.16 09:00 KST/,'cutoff retained');
+    const noticeState=await page.evaluate(()=>({checked:AeroDecemberNotices.checkedAt,cutoff:AERO_MARKET_NUMBERS_LATEST.informationCutoff,notices:AeroDecemberNotices.notices.map(n=>({code:n.code,end:n.ticketingEnd})),text:document.querySelector('#decemberNoticePanel').innerText,status:document.querySelector('[data-forecast-copy="status"]').textContent}));
+    assert(Date.parse(noticeState.checked)>Date.parse(noticeState.cutoff),'evening notice verification separate from morning cutoff');
+    assert.deepEqual(noticeState.notices,[{code:'KE',end:'2026-12-31'},{code:'OZ',end:'2026-12-16'}]);
+    for(const amount of ['50,800','377,800','57,500','322,400'])assert(noticeState.text.includes(amount),lang+' verified notice amount '+amount);
+    assert(/17/.test(noticeState.text),lang+' Asiana integration boundary retained');
+    assert(/31/.test(noticeState.status)&&/16/.test(noticeState.status),lang+' decision status shows distinct ticketing periods');
+    assert.notEqual(noticeState.status,expected[0],lang+' decision does not repeat the announcement');
+    if(lang==='ko')koreanDecision={status:noticeState.status,flexible:await page.locator('[data-forecast-copy="flexibleBody"]').innerText()};
     for(const width of [1440,390,320]){
       await page.setViewportSize({width,height:width<500?844:1000});await page.evaluate(()=>scrollTo(0,0));
       const box=await page.locator('#forecastDecisionTitle').boundingBox();assert(box.y+box.height<(width<500?844:1000),lang+' '+width+' decision in first viewport');
@@ -79,6 +87,8 @@ async function main(){
   assert.deepEqual(errors,[]);assert.deepEqual(consoleErrors,[]);
   const nojs=await browser.newContext({javaScriptEnabled:false,viewport:{width:390,height:844}});await nojs.route('**/*',r=>r.request().url().startsWith(origin+'/')?r.continue():r.abort());
   const staticPage=await nojs.newPage();await staticPage.goto(origin+'/forecast');assert.equal(await staticPage.locator('#forecastDecisionTitle').innerText(),copy.ko[0]);await staticPage.locator('#forecastEvidence>summary').click();assert.equal(await staticPage.locator('#indicatorTbody').isVisible(),true,'evidence works without JavaScript');
+  assert.equal(await staticPage.locator('[data-forecast-copy="status"]').innerText(),koreanDecision.status,'no-JS snapshot keeps the verified notice ticketing periods');
+  assert.equal(await staticPage.locator('[data-forecast-copy="flexibleBody"]').innerText(),koreanDecision.flexible,'no-JS snapshot keeps the current waiting guidance');
   await nojs.close();
   fs.writeFileSync(path.join(out,'verification.json'),JSON.stringify({checkedAt:new Date().toISOString(),results,errors,consoleErrors,delayedStabilitySeconds:15,noJavaScript:true,nextReleaseFallback:true},null,2));
   console.log('PASS forecast guide: six languages, 18 viewport combinations, collapsed/expanded evidence, keyboard, no-JS, metadata/FAQ, immutable data, delayed stability and next-release fallback.');

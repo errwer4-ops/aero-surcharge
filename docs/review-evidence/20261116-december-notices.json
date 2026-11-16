@@ -1,0 +1,110 @@
+{
+  "reviewedAt": "2026-11-16T13:02:58.634Z",
+  "scope": "Evening additional official notice check; distinct from the 2026-11-16 09:00 KST market snapshot",
+  "method": "Independent source table and conditions review: official KE AEM model and OZ detail HTML plus official list API. Original pages rendered without content changes and visually reviewed.",
+  "publicationPrecision": "Calendar date only; CMS modification time is not first publication.",
+  "sources": [
+    {
+      "airline": "KE",
+      "url": "https://www.koreanair.com/contents/footer/customer-support/notice/2026/2612-infuel",
+      "dataUrl": "https://www.koreanair.com/content/koreanair/global/ko/footer/customer-support/notice/2026/2612-infuel.model.json",
+      "rawFiles": [
+        {
+          "file": "ke-official-model.json",
+          "sha256": "6a806ad10d91d0ff81a4ee9a524ed1e50f03e22db1b5eb06bc24dd4daeffb425"
+        }
+      ],
+      "bands": [
+        "~499 mi",
+        "500~999 mi",
+        "1,000~1,499 mi",
+        "1,500~1,999 mi",
+        "2,000~2,999 mi",
+        "3,000~3,999 mi",
+        "4,000~4,999 mi",
+        "5,000~6,499 mi",
+        "6,500~9,999 mi"
+      ],
+      "amounts": [
+        50800,
+        69500,
+        97500,
+        120200,
+        169600,
+        172200,
+        231000,
+        336400,
+        377800
+      ],
+      "currency": "KRW",
+      "direction": "one_way",
+      "departureCountry": "KR",
+      "publishedDate": "2026-11-16",
+      "ticketingStart": "2026-12-01",
+      "ticketingEnd": "2026-12-31",
+      "conditions": "면제 대상 : 좌석을 점유하지 않는 유아 승객 (만 2세 미만) 할인 대상 : 없음 구매 후 탑승시점에 유류할증료가 인상되어도 차액을 징수하지 않으며 인하되어도 환급하지 않습니다. 유류할증료는 1개월 단위로 사전 고지되며, 탑승일과 관계 없이 발권일 기준으로 적용됩니다. 한국 출발 여정의 유류할증료는 미국 달러화(USD)로 정해진 금액을 기준 유가 산정 기간과 동일 기간의 평균 환율을 적용하여 원화(KRW)로 환산합니다. 해외 출발 유류할증료 및 항공사 부과금액은 한국 출발 금액과 상이하니, 구매 및 결제 단계에서 최종 확인하시기 바랍니다.",
+      "sourceQualityNote": "Visible title, December column and effective dates agree. Official metadata metaTitle still says November and table caption says September2025; those stale internal labels must not be copied as applicability.",
+      "officialStage": null
+    },
+    {
+      "airline": "OZ",
+      "url": "https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202611160002531020",
+      "dataUrl": "https://flyasiana.com/C/KR/KO/customer/notice/getList",
+      "rawFiles": [
+        {
+          "file": "oz-official-notice-api.json",
+          "sha256": "b3d069ec8d6b774fff838d41df830f94be4d613b71653f1d6400d58009266562"
+        },
+        {
+          "file": "oz-detail.html",
+          "sha256": "4421598945cb6734cb32ecf869c276803451602bbcdc4f070b18291108becfe2"
+        }
+      ],
+      "bands": [
+        "~499 mi",
+        "500~999 mi",
+        "1,000~1,499 mi",
+        "1,500~1,999 mi",
+        "2,000~2,499 mi",
+        "2,500~2,999 mi",
+        "3,000~3,999 mi",
+        "4,000~4,999 mi",
+        "5,000~ mi"
+      ],
+      "amounts": [
+        57500,
+        84300,
+        111000,
+        137800,
+        164600,
+        190000,
+        216700,
+        270300,
+        322400
+      ],
+      "currency": "KRW",
+      "direction": "one_way",
+      "departureCountry": "KR",
+      "publishedDate": "2026-11-16",
+      "ticketingStart": "2026-12-01",
+      "ticketingEnd": "2026-12-16",
+      "conditions": "2. 부과대상 : 마일리지 항공권을 포함한 모든 유/무상 항공권 3. 면제대상 : 좌석을 점유하지 않는 만 2세 미만의 유아 (Infant) 4. 발권 적용일 : 2026년 12월 1일 ~ 12월 16일 (발권일 기준) ※ 2026년 12월 17일 이후 통합항공사의 유류할증료가 적용됩니다. ※ 편도 운임 적용 기준이며, 유가에 따라 유류할증료는 변동될 수 있습니다. ※ 유류할증료는 1개월 단위로 사전 고지되며, 탑승일과 관계없이 발권일 기준으로 적용됩니다. ※ 구매 후 탑승 시점에 유류할증료가 인상되어도 차액을 징수하지 않으며 인하되어도 환급하지 않습니다. [ 국제항공 노선별 운항거리 기준 ] 감사합니다.",
+      "sourceQualityNote": null,
+      "officialStage": null
+    }
+  ],
+  "unverifiedAirlines": [
+    "7C",
+    "LJ",
+    "BX",
+    "RS",
+    "TW",
+    "ZE",
+    "YP"
+  ],
+  "limitations": [
+    "Unverified December international passenger amounts are absent, never copied from November or domestic/cargo notices.",
+    "OZ published table ends December16; later integrated-airline amounts are not established by this table.",
+    "Official MOPS and period-average exchange rates are not inferred from published charges."
+  ]
+}

@@ -117,7 +117,7 @@ test('whole notice counts and CI fail closed for any changed route map, band or 
 test('reviewed manifest is immutable and independent receipts agree', () => {
   assert.throws(() => { trust.getNotice('7C', '2026.11').amounts[0] = 0; });
   const receipt = JSON.parse(fs.readFileSync('docs/review-evidence/source-reconciliation.json', 'utf8'));
-  const monthlyManifest = trust.manifest.map(entry => {
+  const monthlyManifest = trust.manifest.filter(entry => entry.month !== '2026.12').map(entry => {
     if (entry.airline !== 'YP' || entry.month !== '2026.11') return entry;
     // The separate Nov10 condition receipt is checked above; the original
     // monthly reconciliation must still match its complete historical receipt.
@@ -125,6 +125,24 @@ test('reviewed manifest is immutable and independent receipts agree', () => {
     return monthlyReview;
   });
   assert.deepEqual(monthlyManifest, receipt.notices);
+  const december = JSON.parse(fs.readFileSync('docs/review-evidence/20261116-december-notices.json', 'utf8'));
+  const decemberEntries = trust.manifest.filter(entry => entry.month === '2026.12');
+  assert.equal(decemberEntries.length, 2);
+  assert.equal(december.sources.length, 2);
+  for (const entry of decemberEntries) {
+    const original = december.sources.find(source => source.airline === entry.airline);
+    assert(original, `${entry.airline}: separate original-source receipt required`);
+    assert.deepEqual(entry.bands, original.bands);
+    assert.deepEqual(entry.amounts, original.amounts);
+    assert.equal(entry.sourceUrl, original.url);
+    for (const key of ['currency', 'direction', 'departureCountry']) assert.equal(entry[key], original[key]);
+    assert.equal(entry.publishedAt, original.publishedDate);
+    assert.equal(entry.effectiveFrom, original.ticketingStart);
+    assert.equal(entry.effectiveTo, original.ticketingEnd);
+    assert.equal(entry.sourceVerifiedAt, december.reviewedAt);
+    assert(original.rawFiles.length > 0);
+    for (const file of original.rawFiles) assert.match(file.sha256, /^[a-f0-9]{64}$/);
+  }
   for (const entry of trust.manifest.filter(n => n.evidence.file?.startsWith('docs/'))) {
     const hash = crypto.createHash('sha256').update(fs.readFileSync(entry.evidence.file)).digest('hex');
     assert.equal(entry.evidence.sha256, hash);

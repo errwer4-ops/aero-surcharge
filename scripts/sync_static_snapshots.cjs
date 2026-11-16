@@ -28,8 +28,8 @@ function candidates(html){
       if(/<(?:script|style|input|select|button|form|canvas)\b|\bonclick\s*=/i.test(checkedContent))continue;
       found.push({...node,end:m.index,content});
     }else if(!/^(?:area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)$/.test(tag)&&!m[0].endsWith('/>')){
-      const id=attr(m[0],'id'),key=attr(m[0],'data-i18n')||attr(m[0],'data-i18n-html');
-      let selector=id?'[id='+JSON.stringify(id)+']':key?'['+(attr(m[0],'data-i18n')?'data-i18n':'data-i18n-html')+'='+JSON.stringify(key)+']':null;
+      const id=attr(m[0],'id'),key=attr(m[0],'data-i18n')||attr(m[0],'data-i18n-html')||attr(m[0],'data-forecast-copy');
+      let selector=id?'[id='+JSON.stringify(id)+']':key?'['+(attr(m[0],'data-i18n')?'data-i18n':attr(m[0],'data-i18n-html')?'data-i18n-html':'data-forecast-copy')+'='+JSON.stringify(key)+']':null;
       // The FAQ is editorial copy. All calculator results, conditions and saved state stay excluded.
       if(!/^(?:div|p|span|h1|h2|h3|h4|a|section|thead|tbody|tr|td|th|ul|ol|li|strong)$/.test(tag)||(id!=='calculatorFaq'&&/nav|search|result|saved|privacy|consent|modal|toast|filter|calc|affiliate|saving/i.test(id||''))||/^(?:nav|affiliate|footer)\./.test(key||''))selector=null;
       stack.push({tag,selector,start:tokens.lastIndex});

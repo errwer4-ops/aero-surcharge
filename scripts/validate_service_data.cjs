@@ -177,6 +177,52 @@ function validateManualOverrides(data, previous = null) {
   return { passed: !errors.length, errors, warnings, monthCount, amountCount };
 }
 
+function validateDecemberNotices(api, novemberNotices = []) {
+  const errors = [], warnings = [], seen = new Set();
+  const expected = ['KE', 'OZ'], unknown = ['7C', 'LJ', 'BX', 'RS', 'TW', 'ZE', 'YP'];
+  let amountCount = 0;
+  if (!api || api.month !== '2026-12' || !Array.isArray(api.notices)) return { passed: false, errors: ['12월 공시 모듈/적용월 오류'], warnings, airlineCount: 0, amountCount };
+  if (!validDate(api.checkedAt) || Date.parse(api.checkedAt) <= Date.parse('2026-11-16T09:00:00+09:00')) errors.push('12월 추가 공시 확인시각을 오전 09시 시장 스냅샷으로 소급할 수 없음');
+  if (!Array.isArray(api.unverifiedAirlines) || JSON.stringify([...api.unverifiedAirlines].sort()) !== JSON.stringify([...unknown].sort())) errors.push('12월 나머지 7개 항공사 미확인 상태 불일치');
+  for (const code of unknown) {
+    if (sourceTrust.getNotice(code, '2026.12')) errors.push(`${code}/2026.12: 새 원문 검토 없이 확정 상태를 추가할 수 없음`);
+  }
+  for (const notice of api.notices) {
+    const code = notice?.code;
+    if (!expected.includes(code)) { errors.push(`${code || '?'}: 검토되지 않은 12월 공시`); continue; }
+    if (seen.has(code)) errors.push(`${code}: 12월 공시 중복`);
+    seen.add(code);
+    if (normalizeMonth(notice.month) !== '2026.12') errors.push(`${code}: 12월 공시 적용월 불일치`);
+    if (sourceTrust.summarize([notice], '2026.12').verifiedCount !== 1) errors.push(`${code}/2026.12: 독립 검토된 원문 금액/구간/기간과 불일치`);
+    errors.push(...validateSourceUrl(notice.url, code).map(message => `${code}/2026.12: ${message}`));
+    if (notice.currency !== 'KRW' || notice.direction !== 'one_way' || notice.departureCountry !== 'KR') errors.push(`${code}/2026.12: 원화/편도/한국 출발 기준 불일치`);
+    if (!/^official_notice_verified/.test(notice.status || '') || notice.dataStatus !== 'confirmed') errors.push(`${code}/2026.12: 공식 확인 상태 없음`);
+    if (notice.ticketingStart !== '2026-12-01' || notice.ticketingEnd !== (code === 'OZ' ? '2026-12-16' : '2026-12-31')) errors.push(`${code}/2026.12: 공식 발권 적용 기간 불일치`);
+    if (notice.noticeDate !== '2026-11-16' || notice.noticePublishedAt !== '2026-11-16' || notice.publicationTimePrecision !== 'date') errors.push(`${code}/2026.12: 공시일/최초 공개 시각 정밀도 불일치`);
+    for (const field of ['collectedAt', 'verifiedAt']) if (!validDate(notice[field]) || Date.parse(notice[field]) <= Date.parse('2026-11-16T09:00:00+09:00')) errors.push(`${code}/2026.12: ${field} 누락 또는 오전 기준으로 소급됨`);
+    if (notice.officialStage !== null) errors.push(`${code}/2026.12: 요율 공시에서 확인되지 않은 단계를 확정할 수 없음`);
+    if (code === 'OZ' && (notice.postPeriodRateConfirmed !== false || !/2026년 12월 17일.*통합항공사/.test(notice.postPeriodRule || ''))) errors.push('OZ/2026.12: 17일 이후 통합항공사 적용 조건 누락/미확인 금액 확정');
+    if (!Array.isArray(notice.bands) || notice.bands.length !== 9 || notice.bands.some(band => typeof band !== 'string' || !band.trim()) || new Set(notice.bands).size !== 9) { errors.push(`${code}/2026.12: 공식 9개 부과 구간 필요`); continue; }
+    if (!Array.isArray(notice.amounts) || !Array.isArray(notice.december) || notice.amounts.length !== 9 || notice.december.length !== 9 || JSON.stringify(notice.amounts) !== JSON.stringify(notice.december)) { errors.push(`${code}/2026.12: 금액 배열/12월 표시 금액 불일치`); continue; }
+    const previous = novemberNotices.filter(item => item.code === code);
+    if (previous.length !== 1 || !Array.isArray(notice.november) || notice.november.length !== 9) errors.push(`${code}/2026.12: 11월 비교 공시 없음/중복 또는 금액 수 불일치`);
+    notice.bands.forEach((band, index) => {
+      const amount = notice.amounts[index];
+      if (typeof amount !== 'number' || !Number.isFinite(amount) || amount <= 0) errors.push(`${code}/2026.12/${band}: 양수인 공식 금액 필요`);
+      else amountCount++;
+      const record = normalizeRecord({ amount, label: band }, { ...notice, airline: code, sourceUrl: notice.url, effective_month: '2026.12' });
+      errors.push(...validateRecord(record, { strict: true }).errors.map(message => `${code}/2026.12/${band}: ${message}`));
+      const old = previous[0], oldIndex = old?.bands?.indexOf(band) ?? -1;
+      if (oldIndex < 0 || notice.november?.[index] !== old?.november?.[oldIndex]) errors.push(`${code}/${band}: 12월 원문의 11월 비교액과 보존된 11월 공시 불일치`);
+    });
+  }
+  if (seen.size !== 2 || expected.some(code => !seen.has(code)) || api.notices.length !== 2) errors.push('12월 공식 확인 KE/OZ 2개 공시 필요');
+  const sourceReconciliation = sourceTrust.summarize(api.notices, '2026.12');
+  if (sourceReconciliation.verifiedCount !== 2 || amountCount !== 18) errors.push('12월 원문 대조 2개 공시/18개 금액 불일치');
+  warnings.push('OZ 12월 17일 이후 통합항공사 적용 금액과 나머지 7개 항공사의 12월 요율은 미확인 상태로 유지');
+  return { passed: !errors.length, errors, warnings, airlineCount: seen.size, amountCount, unverifiedAirlines: unknown, sourceReconciliation };
+}
+
 function main(args = process.argv.slice(2)) {
   const baseAt = args.indexOf('--base-ref'), baseRef = baseAt >= 0 ? args[baseAt + 1] : null;
   if (baseAt >= 0 && (!baseRef || !/^[a-zA-Z0-9_./~-]+$/.test(baseRef))) throw new Error('잘못된 git 기준 ref');
@@ -184,15 +230,17 @@ function main(args = process.argv.slice(2)) {
   const old = file => baseRef ? execFileSync('git', ['show', `${baseRef}:${file}`], { cwd: root, encoding: 'utf8', maxBuffer: 16 * 1024 * 1024 }) : null;
   const novemberNotices = loadNotices(read('public/_shared.js'));
   const notices = validateNotices(novemberNotices, baseRef ? loadNotices(old('public/_shared.js')) : []);
+  const decemberNotices = validateDecemberNotices(require('../public/december-notices.js'), novemberNotices);
   const octoberGroups = validateRouteGroupNotices(loadRouteGroupNotices(read('public/notice-group-source.js')), novemberNotices);
   const manual = validateManualOverrides(JSON.parse(read('public/data/manual_overrides.json')), baseRef ? JSON.parse(old('public/data/manual_overrides.json')) : null);
-  const result = { passed: notices.passed && octoberGroups.passed && manual.passed, notices, octoberGroups, manual };
+  const result = { passed: notices.passed && decemberNotices.passed && octoberGroups.passed && manual.passed, notices, decemberNotices, octoberGroups, manual };
   console.log(JSON.stringify({ passed: result.passed,
     notices: { ...notices, warnings: notices.warnings },
+    decemberNotices,
     octoberGroups,
     manual: { ...manual, warnings: undefined, warningCount: manual.warnings.length },
-    limitation: '11월 공유 공시/명시적 10월 노선군은 검토된 원문 스냅샷과 대조. 과거 수동 JSON은 미변경 시 보존하며 구조 경고를 제공; 모든 역사 데이터의 원문 확인 완료를 의미하지 않음.' }, null, 2));
+    limitation: '11월 공유 공시/명시적 10월 노선군 및 KE/OZ 12월 공시는 검토된 원문 스냅샷과 대조. 12월 미확인 7개사와 OZ 17일 이후 금액은 확정하지 않음. 과거 수동 JSON은 미변경 시 보존하며 구조 경고를 제공; 모든 역사 데이터의 원문 확인 완료를 의미하지 않음.' }, null, 2));
   return result;
 }
 if (require.main === module) { try { process.exitCode = main().passed ? 0 : 1; } catch (error) { console.error(error.message); process.exitCode = 1; } }
-module.exports = { loadNotices, loadRouteGroupNotices, validateNotices, validateRouteGroupNotices, validateManualOverrides, main };
+module.exports = { loadNotices, loadRouteGroupNotices, validateNotices, validateRouteGroupNotices, validateManualOverrides, validateDecemberNotices, main };

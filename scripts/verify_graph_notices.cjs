@@ -14,6 +14,13 @@ const langs = ['ko', 'en', 'ja', 'zh', 'fr', 'de'];
 const currencies = ['KRW', 'USD', 'JPY', 'EUR', 'GBP', 'CNY', 'AUD', 'SGD', 'HKD'];
 const reviewed = trust.manifest.filter(n => n.month === '2026.11' && n.status === 'source_reconciled');
 assert.equal(reviewed.length, 9, 'nine independently reviewed November notices');
+const decemberReviewed = trust.manifest.filter(n => n.month === '2026.12' && n.status === 'source_reconciled');
+assert.deepEqual(decemberReviewed.map(n=>n.airline).sort(),['KE','OZ'],'only KE/OZ December notices independently reviewed');
+const decemberExpected = Object.fromEntries(decemberReviewed.map(n=>[n.airline,n]));
+assert.equal(decemberExpected.KE.effectiveFrom,'2026-12-01');
+assert.equal(decemberExpected.KE.effectiveTo,'2026-12-31');
+assert.equal(decemberExpected.OZ.effectiveFrom,'2026-12-01');
+assert.equal(decemberExpected.OZ.effectiveTo,'2026-12-16','Asiana notice must not extend through December 31');
 const expected = Object.fromEntries(reviewed.map(n => [n.airline, {
   currency:n.currency, source:n.sourceUrl,
   // The third historical display band has no November YP amount. The six
@@ -42,15 +49,16 @@ async function capture(page) {
       return {band:cells[offset]?.textContent, months:monthKeys.map((month,i) => {
         const cell=cells[offset+1+i], direct=cell?[...cell.childNodes].filter(n=>n.nodeType===Node.TEXT_NODE).map(n=>n.textContent).join(''):'';
         const number=direct.replace(/[^\d.-]/g,'');
-        return {month,text:cell?.textContent||'',nullCell:!!cell?.querySelector('.null-cell'),number:number?Number(number):null};
+        return {month,text:cell?.textContent||'',title:cell?.title||'',nullCell:!!cell?.querySelector('.null-cell'),number:number?Number(number):null};
       }),change:cells.at(-1)?.textContent};
     })}));
     const canvas=document.getElementById('graphCanvas'), ctx=canvas.getContext('2d'),dpr=window.devicePixelRatio||1,rect=canvas.getBoundingClientRect();
-    return {airlines:AIRLINES.map(a=>({code:a.code,currency:a.currency,bands:a.bands,nov:a.nov,oct:a.oct,url:a.novemberNoticeUrl,archive:Object.fromEntries(['apr','may','june','july','aug','sep','oct'].map(m=>[m,a[m]]))})),
+    return {airlines:AIRLINES.map(a=>({code:a.code,currency:a.currency,bands:a.bands,nov:a.nov,oct:a.oct,dec:a.dec,url:a.novemberNoticeUrl,decemberUrl:a.decemberNoticeUrl,ticketingStart:a.decemberTicketingStart,ticketingEnd:a.decemberTicketingEnd,archive:Object.fromEntries(['apr','may','june','july','aug','sep','oct'].map(m=>[m,a[m]]))})),
       points:_hitAreas.map(p=>({code:p.airline.code,month:p.month,band:p.bandIdx,original:p.origVal,value:p.displayVal,x:p.x,y:p.y,w:p.w,h:p.h,pixel:[...ctx.getImageData(Math.floor((p.x+p.w/2)*dpr),Math.floor((p.y+p.h/2)*dpr),1,1).data]})),
       table,monthKeys,filters:{...filterState},currency:SHARED_STATE.curr,rates:{...window.RATES},decimals:{...window.CURR_DEC},
       canvas:{internalWidth:canvas.width/dpr,internalHeight:canvas.height/dpr,displayWidth:rect.width,displayHeight:rect.height},
       novemberLabel:tg('graph.filter.nov'),noBand:tg('graph.noBand'),links:[...document.querySelectorAll('#officialLinks a')].map(a=>a.href),
+      decemberLabel:tg('graph.filter.dec'),pendingDecember:tg('graph.pending.dec'),periods:{KE:tg('graph.period.dec.KE'),OZ:tg('graph.period.dec.OZ')},periodText:document.querySelector('#graphTablePeriod').textContent,
       overflow:document.documentElement.scrollWidth>innerWidth,canonical:document.querySelector('link[rel="canonical"]')?.href};
   });
 }
@@ -120,6 +128,53 @@ async function chooseCurrency(page,currency){
   await page.selectOption('#navCurr',currency);
 }
 
+function verifyDecember(x,label){
+  verifySourceArrays(x,label);
+  assert(x.monthKeys.includes('dec'),label+' December selected');
+  for(const a of x.airlines){
+    const n=decemberExpected[a.code];
+    assert.deepEqual(a.dec,n?n.amounts:a.bands.map(()=>null),label+' '+a.code+' December bands match independent source or stay null');
+    assert.equal(a.decemberUrl,n?n.sourceUrl:null,label+' December source URL');
+    assert.equal(a.ticketingStart,n?n.effectiveFrom:null,label+' ticketing start');
+    assert.equal(a.ticketingEnd,n?n.effectiveTo:null,label+' ticketing end');
+    if(n)assert(x.links.includes(n.sourceUrl),label+' linked December source');
+  }
+  for(const group of x.table){
+    const n=decemberExpected[group.code];
+    group.rows.forEach((row,index)=>{
+      const cell=row.months.find(m=>m.month==='dec');assert(cell,label+' December cell');
+      if(!n){assert.equal(cell.number,null,label+' unverified December never inherits November/zero');assert.equal(norm(cell.text),norm(x.pendingDecember),label+' unverified notice is explicit');return;}
+      assert.equal(cell.nullCell,false,label+' reviewed amount shown');
+      near(cell.number,n.amounts[index]/x.rates[n.currency]*x.rates[x.currency],label+' December table amount',0.500001*10**(-(x.decimals[x.currency]??0)));
+      assert.equal(cell.title,x.periods[group.code],label+' amount cell keeps ticketing period');
+    });
+  }
+  const points=x.points.filter(p=>p.month==='dec'),codes=x.filters.airline==='all'?['KE','OZ']:[x.filters.airline].filter(code=>decemberExpected[code]);
+  assert.deepEqual([...new Set(points.map(p=>p.code))].sort(),codes.slice().sort(),label+' only confirmed December airlines drawn');
+  points.forEach(p=>{
+    const n=decemberExpected[p.code],raw=p.band===null?average(n.amounts):n.amounts[p.band];
+    near(p.original,raw,label+' source December bar');near(p.value,raw/x.rates[n.currency]*x.rates[x.currency],label+' converted December bar');
+    assert(p.w>0&&p.h>0&&p.pixel[3]>0,label+' December bar has pixels');
+  });
+  if(x.filters.airline==='all'||x.filters.airline==='OZ'){
+    assert(x.periodText.includes(x.periods.OZ),label+' Asiana limited period is visible beside table');
+    assert(/16/.test(x.periods.OZ)&&/17/.test(x.periods.OZ),label+' Asiana December 16 limit and December 17 integration retained');
+  }
+  assert.equal(x.overflow,false,label+' page overflow');
+}
+
+async function verifyDecemberTooltip(page,x,label){
+  const hit=x.points.find(p=>p.month==='dec'&&p.code==='OZ');assert(hit,label+' Asiana December tooltip target');
+  await page.locator('#graphCanvas').scrollIntoViewIfNeeded();const box=await page.locator('#graphCanvas').boundingBox();
+  await page.mouse.move(box.x+(hit.x+hit.w/2)*box.width/x.canvas.internalWidth,box.y+(hit.y+hit.h/2)*box.height/x.canvas.internalHeight);
+  const text=norm(await page.locator('#graphTooltip').innerText());
+  assert(text.includes(norm(x.decemberLabel)),label+' tooltip identifies December');
+  assert(text.includes(norm(x.periods.OZ)),label+' tooltip shows December 16 limit and integration condition');
+  assert(text.includes(hit.value.toLocaleString('en-US',{minimumFractionDigits:x.decimals[x.currency]??0,maximumFractionDigits:x.decimals[x.currency]??0})),label+' tooltip amount');
+  const bounds=await page.locator('#graphTooltip').boundingBox(),size=page.viewportSize();
+  assert(bounds.x>=0&&bounds.x+bounds.width<=size.width,label+' tooltip fits viewport');
+}
+
 (async()=>{
   let browser,server;
   const report={reviewedMonth:'2026-11',airlines:Object.keys(expected),sourceAmounts:reviewed.reduce((n,a)=>n+a.amounts.filter(v=>v!==null).length,0),runs:[]};
@@ -141,7 +196,7 @@ async function chooseCurrency(page,currency){
     assert.equal(await page.locator('#graphDataDetails').getAttribute('open'),null,'detailed data starts collapsed');
     report.currencySelectorOptions=await page.locator('#navCurr option').evaluateAll(options=>options.map(option=>option.value));
     assert.deepEqual([...report.currencySelectorOptions].sort(),[...currencies].sort(),'nine real currency options');
-    assert.deepEqual(initial.monthKeys,['aug','sep','oct','nov']);verifyNovember(initial,'initial recent four');
+    assert.deepEqual(initial.monthKeys,['sep','oct','nov','dec']);verifyNovember(initial,'initial recent four');verifyDecember(initial,'initial December');
     for(const lang of langs){
       await page.selectOption('#navLang',lang);
       await page.selectOption('#filterMonth','nov');
@@ -168,7 +223,7 @@ async function chooseCurrency(page,currency){
       assert.equal(await page.locator('#graphTooltip').isVisible(),false,'old tooltip hidden after '+selector+' change');
     }
     await page.selectOption('#navLang','ko');await page.selectOption('#navCurr','USD');await page.selectOption('#filterAirline','YP');
-    for(const [filter,months] of [['recent4',['aug','sep','oct','nov']],['all',['apr','may','june','july','aug','sep','oct','nov']],['nov',['nov']]]){
+    for(const [filter,months] of [['recent4',['sep','oct','nov','dec']],['all',['apr','may','june','july','aug','sep','oct','nov','dec']],['nov',['nov']]]){
       await page.selectOption('#filterMonth',filter);const x=await capture(page);assert.deepEqual(x.monthKeys,months);verifyNovember(x,'YP filter '+filter);
     }
     await page.selectOption('#filterView','change');
@@ -205,7 +260,7 @@ async function chooseCurrency(page,currency){
     await page.setViewportSize({width:320,height:844});
     await page.selectOption('#navCurr','KRW');await page.selectOption('#filterAirline','all');await page.selectOption('#filterMonth','all');
     const narrow=await capture(page);verifyNovember(narrow,'320px all airlines/all months');
-    assert.deepEqual(narrow.monthKeys,['apr','may','june','july','aug','sep','oct','nov'],'narrow chart keeps all eight months');
+    assert.deepEqual(narrow.monthKeys,['apr','may','june','july','aug','sep','oct','nov','dec'],'narrow chart keeps all nine months');
     const ordered=narrow.points.slice().sort((a,b)=>a.x-b.x);
     ordered.forEach((point,i)=>{
       assert(point.x>=0&&point.x+point.w<=narrow.canvas.internalWidth,'narrow bar stays within the canvas');
@@ -225,8 +280,28 @@ async function chooseCurrency(page,currency){
       if(Math.abs(label.y-other.y)<13)assert(Math.abs(label.x-other.x)>=(label.width+other.width)/2,'320px airline labels do not overlap');
     }));
     report.narrowChart={width:320,months:narrow.monthKeys.length,airlines:narrow.airlines.length,bars:ordered.length,canvas:narrow.canvas};
+    await page.setViewportSize({width:1440,height:1000});await page.selectOption('#filterMonth','dec');
+    for(const lang of langs){
+      await page.selectOption('#navLang',lang);
+      for(const currency of currencies){await chooseCurrency(page,currency);await page.selectOption('#filterAirline','all');verifyDecember(await capture(page),`${lang}/${currency}/December`);}
+      await chooseCurrency(page,'KRW');
+      for(const code of Object.keys(expected)){await page.selectOption('#filterAirline',code);verifyDecember(await capture(page),lang+'/December/'+code);}
+      await page.selectOption('#filterAirline','OZ');await verifyDecemberTooltip(page,await capture(page),lang+'/December/desktop');
+      await page.setViewportSize({width:390,height:844});verifyDecember(await capture(page),lang+'/December/mobile');await verifyDecemberTooltip(page,await capture(page),lang+'/December/mobile');
+      await page.setViewportSize({width:1440,height:1000});
+      console.log('PASS December notices, missing values and Asiana ticketing period: '+lang);
+    }
+    await page.selectOption('#navLang','ko');await page.selectOption('#filterAirline','all');await page.selectOption('#filterMonth','recent4');
+    const decemberBefore=await capture(page);verifyDecember(decemberBefore,'December before delay');
+    await page.waitForTimeout(12000);const decemberAfter=await capture(page);verifyDecember(decemberAfter,'December after 12 seconds');assert.deepEqual(decemberAfter.airlines,decemberBefore.airlines,'December arrays remain stable');assert.deepEqual(decemberAfter.table,decemberBefore.table,'December table remains stable');
+    await page.selectOption('#filterView','change');
+    const decemberChanges=await capture(page);assert.deepEqual(decemberChanges.points.map(p=>p.code).sort(),['KE','OZ'],'only confirmed December changes drawn');
+    decemberChanges.points.forEach(p=>near(p.value,(average(decemberExpected[p.code].amounts)-average(expected[p.code].values))/average(expected[p.code].values)*100,'December versus November source comparison'));
+    await page.selectOption('#filterView','amount');await page.mouse.move(0,0);await page.locator('#graphCanvas').screenshot({path:path.join(out,'december-desktop.png')});
+    await page.setViewportSize({width:390,height:844});await page.selectOption('#filterAirline','OZ');verifyDecember(await capture(page),'Asiana December mobile final');await page.locator('#graphCanvas').screenshot({path:path.join(out,'asiana-december-mobile.png')});
+    report.december={reviewed:['KE','OZ'],sourceAmounts:18,unverifiedAirlines:7,asianaTicketingEnd:'2026-12-16',languages:langs,currencies,delayedSeconds:12};
     assert.deepEqual(errors,[],'page JavaScript errors');report.pageErrors=errors;report.delayedSeconds=12;
     fs.writeFileSync(path.join(out,'verification.json'),JSON.stringify(report,null,2));
-    console.log('PASS graph November: nine source notices, every band and null gap, six languages/nine currencies, table and drawn values, scaled tooltip, keyboard details, filters, mobile and 320px bar separation, 12-second stability. '+out);
+    console.log('PASS graph November archive and December: nine November notices preserved; two December notices, seven null airlines, Asiana December 16/17 distinction; six languages/nine currencies, table/chart/tooltip, mobile, 320px and 12-second stability. '+out);
   }finally{if(browser)await browser.close();if(server)server.kill();}
 })().catch(error=>{console.error(error);process.exitCode=1;});

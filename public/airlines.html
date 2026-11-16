@@ -97,6 +97,7 @@
   <meta name="twitter:title" content="항공사별 2026년 11월 유류할증료"/>
   <meta name="twitter:description" content="2026년 11월 발권분 현재 적용 · 2026-11-01~11-30. 한국 출발 국제선 편도 공시입니다. 항공사 원문의 발권·결제일 조건과 공시 통화를 따르며 표시 환산액은 실제 결제액이 아닙니다."/>
   <link rel="stylesheet" href="airlines-interface.css"/>
+<link rel="stylesheet" href="december-notices.css?v=20261116-notices">
 </head>
 <body class="airlines-page">
 <nav class="site-nav" aria-label="Main navigation">
@@ -132,6 +133,7 @@
   </div>
 </nav>
 <main class="main" id="airlinesMain">
+<section class="december-notice-panel" id="decemberNoticePanel"><h2>12월 공시 확인</h2><p>대한항공·아시아나는 12월 유류할증료 인하를 공시했습니다.</p><div class="december-notice-cards"><article><h3>대한항공: 12월 1~31일 발권</h3><p class="december-notice-range">KRW 50,800–377,800</p><p>한국 출발 · 1인 편도 · KRW</p><a href="https://www.koreanair.com/contents/footer/customer-support/notice/2026/2612-infuel" target="_blank" rel="noopener noreferrer">공식 공시 원문 ↗</a><details><summary>구간별 11월 → 12월 금액</summary><div class="december-notice-table"><table><thead><tr><th>거리 구간</th><th>11월</th><th>12월</th><th>차액</th></tr></thead><tbody><tr><th scope="row">~499 mi</th><td>55,600</td><td>50,800</td><td>−4,800</td></tr><tr><th scope="row">500~999 mi</th><td>76,000</td><td>69,500</td><td>−6,500</td></tr><tr><th scope="row">1,000~1,499 mi</th><td>105,800</td><td>97,500</td><td>−8,300</td></tr><tr><th scope="row">1,500~1,999 mi</th><td>132,900</td><td>120,200</td><td>−12,700</td></tr><tr><th scope="row">2,000~2,999 mi</th><td>185,800</td><td>169,600</td><td>−16,200</td></tr><tr><th scope="row">3,000~3,999 mi</th><td>189,800</td><td>172,200</td><td>−17,600</td></tr><tr><th scope="row">4,000~4,999 mi</th><td>254,900</td><td>231,000</td><td>−23,900</td></tr><tr><th scope="row">5,000~6,499 mi</th><td>370,100</td><td>336,400</td><td>−33,700</td></tr><tr><th scope="row">6,500~9,999 mi</th><td>408,100</td><td>377,800</td><td>−30,300</td></tr></tbody></table></div></details></article><article><h3>아시아나: 12월 1~16일 발권</h3><p class="december-notice-range">KRW 57,500–322,400</p><p>한국 출발 · 1인 편도 · KRW</p><p>아시아나는 12월 17일부터 통합 항공사 기준이 적용됩니다. 이후 금액은 별도 확인이 필요합니다.</p><a href="https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202611160002531020" target="_blank" rel="noopener noreferrer">공식 공시 원문 ↗</a><details><summary>구간별 11월 → 12월 금액</summary><div class="december-notice-table"><table><thead><tr><th>거리 구간</th><th>11월</th><th>12월</th><th>차액</th></tr></thead><tbody><tr><th scope="row">~499 mi</th><td>62,400</td><td>57,500</td><td>−4,900</td></tr><tr><th scope="row">500~999 mi</th><td>92,200</td><td>84,300</td><td>−7,900</td></tr><tr><th scope="row">1,000~1,499 mi</th><td>120,600</td><td>111,000</td><td>−9,600</td></tr><tr><th scope="row">1,500~1,999 mi</th><td>149,100</td><td>137,800</td><td>−11,300</td></tr><tr><th scope="row">2,000~2,499 mi</th><td>178,900</td><td>164,600</td><td>−14,300</td></tr><tr><th scope="row">2,500~2,999 mi</th><td>207,400</td><td>190,000</td><td>−17,400</td></tr><tr><th scope="row">3,000~3,999 mi</th><td>235,900</td><td>216,700</td><td>−19,200</td></tr><tr><th scope="row">4,000~4,999 mi</th><td>294,200</td><td>270,300</td><td>−23,900</td></tr><tr><th scope="row">5,000~ mi</th><td>351,100</td><td>322,400</td><td>−28,700</td></tr></tbody></table></div></details></article></div><p>탑승일이 아닌 발권일 기준입니다. 해외 출발 금액은 다를 수 있어 왕복 총액을 단순 확정할 수 없습니다.</p><p>나머지 7개사(7C·LJ·BX·RS·TW·ZE·YP)의 12월 국제선 여객 금액은 이번 확인에서 검증하지 못했습니다.</p><small>공시 확인: 2026-11-16 22:02 KST · 11월 16일 발표된 공식 공시를 저녁에 추가 확인했습니다. 오전 9시 시장 자료와 구분합니다.</small></section>
   <header class="airlines-header">
     <h1 class="page-title" id="pageTitle" data-i18n="airlines.interface.title">항공사 공시</h1>
     <p class="airlines-intro" data-i18n="airlines.interface.intro">항공사별 공시 금액과 월별 비교를 확인하세요.</p>
@@ -199,8 +201,9 @@
   </section>
 </main>
 
-<script src="source-provenance.js"></script>
-<script src="_shared.js"></script>
+<script src="source-provenance.js?v=20261116-notices"></script>
+<script src="_shared.js?v=20261116-notices"></script>
+<script src="december-notices.js?v=20261116-notices"></script>
 <script src="airlines-interface.js"></script>
 <script>
 /* ════════════════════════════════════════════════════════
@@ -1656,4 +1659,5 @@ loadData();
     <a href="terms.html"  >Terms of Service</a>
   </div>
 </footer>
+<script src="december-update.js?v=20261116-notices"></script>
 </body></html>

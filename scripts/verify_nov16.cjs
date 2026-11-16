@@ -11,6 +11,9 @@ const origin = process.env.AERO_QA_ORIGIN || 'http://127.0.0.1:' + port;
 const out = path.join(os.tmpdir(), 'aero-nov16-qa');
 const langs = ['ko', 'en', 'ja', 'zh', 'fr', 'de'];
 const prefix = 'market-20261116-';
+const noticeIds=['notice-202612-ke-20261116','notice-202612-oz-20261116'];
+const isEveningNotice=card=>noticeIds.includes(card.id);
+const morningReleaseStamp='2026-11-16T09:16:26.424+09:00';
 const cutoff = '2026-11-16T09:00:00+09:00';
 const normalize = text => String(text).replace(/\s+/g, ' ').trim();
 const scriptSha256=createHash('sha256').update(fs.readFileSync(__filename)).digest('hex');
@@ -206,7 +209,6 @@ function checkFeed(feed,n) {
 function checkTranslations(release,cards) {
   const historicalWords={ko:/과거/,en:/historical/i,ja:/過去/,zh:/历史/,fr:/historique/i,de:/historisch/i};
   const unknownWords={ko:/미확인|확인 불가/,en:/unconfirmed|unverified|unavailable/i,ja:/未確認|不明|未確定/,zh:/未确认|未核验|未核实|未知/,fr:/non confirm|non vérifi|inconnu|indisponible/i,de:/unbestätigt|nicht bestätigt|ungeklärt|unbekannt|nicht verifiziert|ungeprüft/i};
-  const endedWords={ko:/종료|끝났/,en:/ended|closed|complete/i,ja:/終了/,zh:/结束|已满/,fr:/termin[ée]|clos/i,de:/beendet|abgeschlossen/i};
   for(const lang of langs) {
     const p=release.packs[lang], o=p.forecastOverview;
     assert.equal(release.rows[lang].length,5,lang+' established five indicators');
@@ -221,12 +223,17 @@ function checkTranslations(release,cards) {
     assert(o,lang+' forecast overview');
     assert.equal(o.informationCutoff,cutoff);
     assert.equal(o.rows.length,5); assert.equal(o.columns.length,3);
-    assert.deepEqual(o.rowTones,['hold','hold','up','hold','up'],lang+' mixed oil, rising FX, dated jet and maritime risk directions');
+    assert.deepEqual(o.rowTones,['down','hold','up','hold','up'],lang+' confirmed surcharge decline; unchanged oil, FX, dated jet and maritime directions');
     for(const key of ['title','expectation','question','confidence','basis','risk','note']) {
       assert(typeof o[key]==='string' && o[key].trim(),lang+' overview '+key);
       if(lang!=='en') assert.notEqual(o[key],release.packs.en.forecastOverview[key],lang+' translated overview '+key);
     }
-    assert.match([o.basis,o.risk,o.note,...p.faq.map(entry=>entry.a)].join(' '),endedWords[lang],lang+' December calculation interval has ended');
+    // The evening notice replaces the pending forecast prose. The ended
+    // calculation interval remains independently checked in checkNumbers().
+    assert(Date.parse(o.noticeCheckedAt)>Date.parse(cutoff),lang+' newly verified notices are separate from morning market data');
+    assert.match(o.confidence,/2/,lang+' confirmation covers two airlines');
+    assert.match(o.confidence,/9/,lang+' confirmation is not all nine airlines');
+    assert.match(o.basis,/31/);assert.match(o.basis,/16/);assert.match(o.risk,/17/);
     assert(p.faq.length>0);
     p.faq.forEach((entry,i)=>{for(const key of ['q','a']) {
       assert(entry[key],lang+' FAQ '+i+' '+key);
@@ -302,7 +309,7 @@ function checkCards(cards,release) {
   }
   for(const c of cards) {
     assert.equal(c.date,'2026-11-16'); assert.equal(c.dateKind,'site_update');
-    assert.equal(c.updatedAt,release.modified); assert.equal(c.informationCutoff,cutoff);
+    assert.equal(c.updatedAt,morningReleaseStamp,'morning article update time is not replaced by evening notice check'); assert.equal(c.informationCutoff,cutoff);
     assert(Object.hasOwn(c,'sourcePublishedAt')); assert(Object.hasOwn(c,'eventDate'));
     if(c.sourcePublishedAt) {
       assert.match(c.sourcePublishedAt,/T\d\d:\d\d/,'release day must not become a publication clock');
@@ -332,6 +339,7 @@ async function newPage(browser,baseline=false) {
     const url=new URL(route.request().url());
     if(url.origin!==origin||url.pathname==='/api'||url.pathname.startsWith('/api/')) {page._blockedUrls.add(url.origin+url.pathname);return route.abort();}
     if(baseline && url.pathname==='/market-nov16.js') return route.fulfill({contentType:'application/javascript',body:'/* Pre-Nov16 baseline. */'});
+    if(baseline && url.pathname==='/december-update.js') return route.fulfill({contentType:'application/javascript',body:'/* Pre-Nov16 baseline excludes the later evening notice update. */'});
     if(url.pathname==='/_shared.js') return route.fulfill({contentType:'application/javascript',body:(baseline ? previousShared : shared)+captureShared});
     return route.continue();
   });
@@ -435,7 +443,18 @@ async function state(page) {
       page.on('console',m=>{if(m.type()==='error')consoleErrors.push({text:m.text(),url:m.location().url});});
       await page.goto(origin+'/'+name); await page.waitForTimeout(1800);
       const initial=await state(page), cards=initial.r.newsCards.filter(c=>c.id.startsWith(prefix));
-      assert.deepEqual(initial.r.newsCards.filter(c=>!c.id.startsWith(prefix)),historicalCards,'all archived card fields and timestamps preserved');
+      assert.deepEqual(initial.r.newsCards.filter(c=>!c.id.startsWith(prefix)&&!isEveningNotice(c)),historicalCards,'all archived card fields and timestamps preserved');
+      const eveningCards=initial.r.newsCards.filter(isEveningNotice);
+      assert.deepEqual(eveningCards.map(c=>c.id).sort(),noticeIds.slice().sort(),'two separately identified evening notice articles');
+      assert.equal(initial.r.newsCards.length,historicalCards.length+7+2,'161 archived, seven morning market and two evening notice articles');
+      for(const card of eveningCards){
+        assert(Date.parse(card.sourceVerifiedAt)>Date.parse(cutoff),'notice observation is after morning cutoff');
+        assert.equal(card.sourcePublishedAt,'2026-11-16','source gives publication date, not an invented time');
+        assert.equal(card.sourcePublicationPrecision,'date');
+        assert.equal(card.eventDate,'2026-12-01','notice ticketing event is separate from publication');
+        assert.equal(card.informationCutoff,initial.r.noticeCheckedAt);
+        assert(card.sourceUrl.includes(card.id.includes('-ke-')?'2612-infuel':'CM202611160002531020'));
+      }
       checkCards(cards,initial.r); checkTranslations(initial.r,cards); await checkPreservedSnapshots(page,name);
       const feed=await (await page.request.get(origin+'/data/forecast_feed.json')).json();
       checkFeed(feed,initial.n);
@@ -541,7 +560,8 @@ async function state(page) {
       for(const key of ['title','h1','overview','metaDescription']) assert.equal(after[key],before[key],name+' delayed '+key);
       assert.deepEqual(after.rows,before.rows,name+' delayed indicators');
       assert.deepEqual(after.visibleCards,before.visibleCards,name+' delayed news cards');
-      assert.deepEqual(after.r.newsCards.filter(c=>!c.id.startsWith(prefix)),historicalCards,name+' delayed archive equality');
+      assert.deepEqual(after.r.newsCards.filter(c=>!c.id.startsWith(prefix)&&!isEveningNotice(c)),historicalCards,name+' delayed archive equality');
+      assert.deepEqual(after.r.newsCards.filter(isEveningNotice),eveningCards,name+' delayed evening notice preservation');
       for(const schema of after.schemas.filter(s=>/^(WebPage|CollectionPage|FAQPage)$/.test(s['@type']))) assert.equal(schema.dateModified,after.r.modified,name+' delayed schema modification');
       if(name==='news') for(const card of after.r.newsCards) {
         const schema=after.schemas.find(s=>s['@type']==='NewsArticle' && s.url?.endsWith('#'+card.id));

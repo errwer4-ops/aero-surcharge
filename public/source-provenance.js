@@ -607,6 +607,91 @@
       ]
     }
   }
+,
+{
+  "airline": "KE",
+  "month": "2026.12",
+  "status": "source_reconciled",
+  "sourceUrl": "https://www.koreanair.com/contents/footer/customer-support/notice/2026/2612-infuel",
+  "currency": "KRW",
+  "direction": "one_way",
+  "departureCountry": "KR",
+  "publishedAt": "2026-11-16",
+  "effectiveFrom": "2026-12-01",
+  "effectiveTo": "2026-12-31",
+  "sourceVerifiedAt": "2026-11-16T13:02:58.634Z",
+  "bands": [
+    "~499 mi",
+    "500~999 mi",
+    "1,000~1,499 mi",
+    "1,500~1,999 mi",
+    "2,000~2,999 mi",
+    "3,000~3,999 mi",
+    "4,000~4,999 mi",
+    "5,000~6,499 mi",
+    "6,500~9,999 mi"
+  ],
+  "amounts": [
+    50800,
+    69500,
+    97500,
+    120200,
+    169600,
+    172200,
+    231000,
+    336400,
+    377800
+  ],
+  "evidence": {
+    "id": "KE-2026-12-20261116",
+    "method": "official_notice_table_and_conditions_independent_review",
+    "sha256": "b1809e2e5d1ede592ece32979cd4352f22c650931ba9022a6b6d07fceb7cf57e",
+    "file": "docs/review-evidence/20261116-december-notices.json",
+    "pages": null
+  }
+},
+{
+  "airline": "OZ",
+  "month": "2026.12",
+  "status": "source_reconciled",
+  "sourceUrl": "https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202611160002531020",
+  "currency": "KRW",
+  "direction": "one_way",
+  "departureCountry": "KR",
+  "publishedAt": "2026-11-16",
+  "effectiveFrom": "2026-12-01",
+  "effectiveTo": "2026-12-16",
+  "sourceVerifiedAt": "2026-11-16T13:02:58.634Z",
+  "bands": [
+    "~499 mi",
+    "500~999 mi",
+    "1,000~1,499 mi",
+    "1,500~1,999 mi",
+    "2,000~2,499 mi",
+    "2,500~2,999 mi",
+    "3,000~3,999 mi",
+    "4,000~4,999 mi",
+    "5,000~ mi"
+  ],
+  "amounts": [
+    57500,
+    84300,
+    111000,
+    137800,
+    164600,
+    190000,
+    216700,
+    270300,
+    322400
+  ],
+  "evidence": {
+    "id": "OZ-2026-12-20261116",
+    "method": "official_notice_table_and_conditions_independent_review",
+    "sha256": "b1809e2e5d1ede592ece32979cd4352f22c650931ba9022a6b6d07fceb7cf57e",
+    "file": "docs/review-evidence/20261116-december-notices.json",
+    "pages": null
+  }
+}
 ]; // REVIEWED_MANIFEST
   function freeze(value) { if (value && typeof value === 'object') { Object.keys(value).forEach(function (key) { freeze(value[key]); }); Object.freeze(value); } return value; }
   freeze(manifest);
@@ -656,7 +741,7 @@
   function summarize(notices, targetMonth) {
     var verified = [], pending = [];
     (Array.isArray(notices) ? notices : []).forEach(function (notice) {
-      var entry = getNotice(notice.code, targetMonth), key = month(targetMonth) === '2026.11' ? 'november' : 'october';
+      var entry = getNotice(notice.code, targetMonth), key = month(targetMonth) === '2026.12' ? 'december' : month(targetMonth) === '2026.11' ? 'november' : 'october';
       var valid = entry && entry.status === 'source_reconciled' && notice.dataStatus !== 'forecast' && !/forecast|prediction/.test(notice.status || '') && (!entry.effectiveFrom || notice.ticketingStart === entry.effectiveFrom) && (!entry.effectiveTo || notice.ticketingEnd === entry.effectiveTo)
         && Array.isArray(notice.bands) && notice.bands.length === entry.bands.length
         && Array.isArray(notice[key]) && notice[key].length === entry.amounts.length

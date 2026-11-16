@@ -8,6 +8,7 @@
   // The operational controls have their own copy, separate from the page intro.
   var localizedCopy = [
     ['Checking','確認中','核实中','Vérification en cours','Prüfung läuft'],
+    ['Asiana: tickets issued December 1–16 only. The integrated airline’s rates from December 17 require separate confirmation. This amount does not cover the whole of December.','アシアナは12月1～16日発券分のみです。12月17日以降の統合航空会社の料金は別途確認が必要です。この金額は12月全期間には適用されません。','韩亚仅适用于12月1日至16日出票。12月17日起合并航司的费率须另行确认，此金额不适用于整个12月。','Asiana : billets émis du 1er au 16 décembre uniquement. Les tarifs de la compagnie intégrée à partir du 17 décembre restent à confirmer séparément. Ce montant ne couvre pas tout décembre.','Asiana: nur für Ticketausstellungen vom 1.–16. Dezember. Die Tarife der integrierten Airline ab 17. Dezember müssen separat bestätigt werden. Dieser Betrag gilt nicht für den gesamten Dezember.'],
     ['Notice confirmed','公示確認済み','公告已核实','Avis confirmé','Mitteilung bestätigt'],
     ['Original notice','公示原文','公告原文','Avis original','Originalmitteilung'],
     ['Checking source','出典確認中','来源核实中','Source en vérification','Quelle wird geprüft'],
@@ -62,6 +63,12 @@
   function amount(value,currency){return currency+' '+value.toLocaleString('en-US',{maximumFractionDigits:2});}
   function currentMonth(){var parts=new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit'}).formatToParts(new Date());return parts.find(function(p){return p.type==='year';}).value+'-'+parts.find(function(p){return p.type==='month';}).value;}
   function conditions(context){return {origin:context.origin,destination:context.destination,airline:el('savingAirlineFilter').value,baseMonth:el('savingBaseMonth').value,targetMonth:el('savingTargetMonth').value,passengers:context.passengers,trip:context.trip};}
+  function decemberPeriodNote(){return t('아시아나는 12월 1~16일 발권분만 해당합니다. 12월 17일 이후 통합항공사 요율은 별도 확인이 필요합니다. 이 금액은 12월 전체에 적용되지 않습니다.','Asiana: tickets issued December 1–16 only. The integrated airline’s rates from December 17 require separate confirmation. This amount does not cover the whole of December.');}
+  // Initialize the new comparison once; saved searches and later user selections win.
+  if(window.AeroDecemberNotices && !store.state.recent){
+    var initialBase=el('savingBaseMonth'),initialTarget=el('savingTargetMonth');
+    if(initialBase.value===initialBase.defaultValue && initialTarget.value===initialTarget.defaultValue){initialBase.value='2026-11';initialTarget.value='2026-12';}
+  }
   function installNoticeRouteSupport(){
     if(!window.SAVING_INDEX_ROUTE_MAP || !Array.isArray(window.SAVING_DESTINATIONS))return;
     core.noticeRouteApplicability.forEach(function(route){
@@ -82,13 +89,21 @@
     return notice.displayBandIndices?(notice.displayBandIndices[index]===null?-1:notice.displayBandIndices[index]):index;
   }
   function recordFor(context,code,month){
-    var selected=core.selectFeedRecord(feedRecords,{airline:code,origin:context.origin,destination:context.destination,month:month,direction:'one_way'});
+    var selected=month==='2026-12'?{present:false}:core.selectFeedRecord(feedRecords,{airline:code,origin:context.origin,destination:context.destination,month:month,direction:'one_way'});
     if(selected.present)return core.reconcile(selected.record);
     var route=context.origin+'-'+context.destination, matched=bridge.findRow(code,route), data=window.SAVING_COMPARE_DATA[code];
     if (!matched || !data) return null;
     var row=matched.row,index=data.rows.indexOf(row),notice=(window.NOVEMBER_2026_OFFICIAL_NOTICES||[]).find(function(n){return n.code===code;});
     var record={airline:code,origin:context.origin,destination:context.destination,month:month,currency:data.currency,direction:'one_way',basis:row.range || row.label,band:row.label,
       amount:null,status:'unconfirmed',validationStatus:'passed',verificationStatus:'unverified',sourceUrl:null,publishedAt:null,verifiedAt:null,collectedAt:null,effectiveFrom:null,effectiveTo:null,sourceBand:null,bandIndex:null,departureCountry:null};
+    if(month==='2026-12'){
+      var december=window.AeroDecemberNotices,decemberNotice=december&&december.getNotice(code);
+      if(!decemberNotice)return null;
+      var decemberIndex=noticeIndex(decemberNotice,route,matched,data);
+      var decemberRecord=december.record(code,decemberIndex,context.origin,context.destination);
+      if(!decemberRecord)return null;
+      return core.reconcile(Object.assign(record,decemberRecord,{basis:record.basis}));
+    }
     if(month==='2026-11' && notice){
       var ni=noticeIndex(notice,route,matched,data);
       if(ni<0 || !core.money(notice.november[ni]))return null;
@@ -143,6 +158,7 @@
     var context=bridge.contextFor(value.origin,value.destination);
     if(!context.route)return [];
     var months=['2026-10','2026-11'];
+    if(window.AeroDecemberNotices)months.push('2026-12');
     feedRecords.forEach(function(record){if(months.indexOf(record.month)<0)months.push(record.month);});
     Object.keys(window.MANUAL_OVERRIDES||{}).forEach(function(code){Object.keys(window.MANUAL_OVERRIDES[code]||{}).forEach(function(m){m=m.replace('.','-');if(core.month(m)&&months.indexOf(m)<0)months.push(m);});});
     return context.route.airlines.filter(function(code){return value.airline==='all'||code===value.airline;}).flatMap(function(code){return months.map(function(month){return recordFor(context,code,month);}).filter(Boolean);});
@@ -153,7 +169,8 @@
     var status=verified?t('공시 확인 완료','Notice confirmed'):t('확인 중','Checking');
     return '<span class="calculator-status">'+status+'</span><div class="calculator-source">'+(record.sourceUrl?'<a href="'+esc(record.sourceUrl)+'" target="_blank" rel="noopener noreferrer">'+t('공시 원문','Original notice')+'</a>':t('출처 확인 중','Checking source'))+
       '<span>'+t('발표일: ','Published: ')+esc(record.publishedAt||t('미기록','not recorded'))+'</span><span>'+t('확인일: ','Checked: ')+esc(verified&&record.verifiedAt||t('미기록','not recorded'))+'</span><span>'+t('수집일: ','Collected: ')+esc(record.collectedAt||t('미기록','not recorded'))+'</span>'+
-      (record.effectiveFrom?'<span>'+t('발권 적용: ','Ticketing: ')+esc(record.effectiveFrom)+' – '+esc(record.effectiveTo)+'</span>':'')+'</div>';
+      (record.effectiveFrom?'<span>'+t('발권 적용: ','Ticketing: ')+esc(record.effectiveFrom)+' – '+esc(record.effectiveTo)+'</span>':'')+
+      (record.airline==='OZ'&&record.month==='2026-12'?'<span>'+esc(decemberPeriodNote())+'</span>':'')+'</div>';
   }
   function nativeCell(record,multiplier){return record?'<strong>'+esc(amount(record.amount*multiplier,record.currency))+'</strong><span class="calculator-unit">'+t('1인 편도 ','Per person, one way ')+esc(amount(record.amount,record.currency))+'</span>'+info(record):info(null);}
   function delta(row,multiplier){
@@ -177,6 +194,7 @@
     sub.textContent=t('같은 항공사·구간·통화의 공시를 월별로 비교합니다.','Compare monthly notices for the same airline, band and currency.');
     badge.textContent=value.baseMonth+' → '+value.targetMonth;
     var note=document.querySelector('.saving-note');if(note)note.textContent=t('‘확인 중’은 사이트의 확인 상태이며 항공사의 미공시를 뜻하지 않습니다. 최종 금액은 예약 화면에서 확인하세요.','“Checking” refers to this site’s review, not whether the airline has published a notice. Confirm the final amount when booking.');
+    if(note&&(value.baseMonth==='2026-12'||value.targetMonth==='2026-12')&&(value.airline==='all'||value.airline==='OZ'))note.appendChild(document.createTextNode(' '+decemberPeriodNote()));
     document.querySelectorAll('.saving-metric-label')[1].textContent=t('통화별 최저액','Lowest by currency');
     var headers=el('savingTableWrap').querySelectorAll('thead th');
     [t('항공사 · 노선 · 부과 기준','Airline · route · charging basis'),value.baseMonth,value.targetMonth,t('월별 차액 · 변동률','Monthly difference · change')].forEach(function(label,i){if(headers[i])headers[i].textContent=label;});

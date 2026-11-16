@@ -242,7 +242,8 @@
           '<div class="route-summary-metric"><dt class="route-summary-label">'+text('차액 / 변동률','Difference / change')+'</dt><dd class="route-summary-value route-summary-change" data-comparable="'+String(selectedComparison.valid)+'">'+summaryChange+'<small>'+esc(summaryChangeNote)+'</small></dd></div>'+
         '</dl><p class="route-summary-source"><span class="source-verification-status">2026.11 · '+targetStatus+'</span>'+
           (selectedTarget&&selectedTarget.sourceUrl?'<a href="'+esc(selectedTarget.sourceUrl)+'" target="_blank" rel="noopener noreferrer">'+text('11월 공시 원문','November source notice')+'</a>':'')+'</p></section>';
-      return '<div class="official-section">'+selectedSummary+scopeNote+
+      var upcoming=window.AeroDecemberView?window.AeroDecemberView.routeSummary(al.code,selected,dep,arr):'';
+      return '<div class="official-section">'+selectedSummary+upcoming+scopeNote+
         '<details class="route-details"><summary>'+text('구간별 금액과 확인 근거','Amounts by band and verification details')+'</summary>'+
           '<div class="official-label">'+text('공시 금액 · 원통화','Notice amounts · original currency')+'</div>'+
           '<div class="route-table-wrap"><table class="route-table"><thead><tr><th>'+text('공시 부과 구간','Published charging band')+'</th><th>2026.10</th><th>2026.11</th><th>'+text('차액 / 변동률','Difference / change')+'</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+

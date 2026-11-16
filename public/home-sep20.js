@@ -1,6 +1,6 @@
 (function(){
   'use strict';
-  var stamp='2026-11-04T22:27:40+09:00';
+  var stamp='2026-11-16T22:22:25+09:00';
   var octoberLinks={
     KE:'https://www.koreanair.com/contents/footer/customer-support/notice/2026/2610-infuel?pageNum=1',
     OZ:'https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202609160002530627',
@@ -176,6 +176,8 @@
       // A calendar rollover must not relabel the existing forecast as a new one.
       c.quick2=(hasNextForecast?nextLabel+' ':'')+c.forecastLabel.replace(/^—\s*/, '');
       c.quick2d=hasNextForecast?c.quickForecastDesc:c.statusFallback;
+      var announced=window.AeroDecemberNotices;
+      if(state&&announced&&announced.month===state.nextMonth&&window.AeroSourceTrust&&window.AeroSourceTrust.summarize(announced.notices,announced.month).verifiedCount===2)c.quick2d=({ko:'KE·OZ 12월 공시 확인 · 발권 판단 보기',en:'KE/OZ December notices verified · booking guide',ja:'KE・OZの12月公示を確認・購入判断ガイド',zh:'KE、OZ 12月公告已核实·出票参考',fr:'Annonces KE/OZ de décembre vérifiées · guide de réservation',de:'KE/OZ-Dezembermitteilungen geprüft · Buchungsratgeber'})[lang];
       // Keep the relation available to renderers without rewriting stored data.
       c.noticeRelation=state&&state.relation||'archive';
     });

@@ -406,7 +406,7 @@
     }
     if(mainSummary){
       mainSummary.innerHTML = '<div class="summary-card-title">'+esc(p.newsTitle)+'</div>'
-        + '<div class="summary-updated">'+esc(updatedLabel)+': '+esc(latest.asOf)+' · '+esc(p.rows[0][1])+'</div>'
+        + '<div class="summary-updated">'+(release&&release.noticeCheckedAt?esc(p.updated):esc(updatedLabel)+': '+esc(latest.asOf)+' · '+esc(p.rows[0][1]))+'</div>'
         + '<ul>'+p.summary.map(function(s){ return '<li>'+esc(s)+'</li>'; }).join('')+'</ul>';
     }
     var marketBrief = document.querySelector('.market-brief-box');

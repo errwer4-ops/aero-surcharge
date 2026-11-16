@@ -1,0 +1,173 @@
+{
+  "checkedAt": "2026-11-16T13:25:42.169Z",
+  "gitHead": "87d7f93b343a4a60267f82fec9bbcf0f3256e678",
+  "scope": "Local notice update only. No commit, push or deployment.",
+  "fullGate": {
+    "startedAt": "2026-11-16T13:15:29.658Z",
+    "finishedAt": "2026-11-16T13:22:29.754Z",
+    "sourceDigest": "a33a84d5fcb5c0fa912d4118362fd1b1cdf26df58ea262ae033804ee22e36839",
+    "passed": true,
+    "sourceChangedDuringRun": false,
+    "checks": [
+      {
+        "name": "native",
+        "exitCode": 0
+      },
+      {
+        "name": "static",
+        "exitCode": 0
+      },
+      {
+        "name": "data",
+        "exitCode": 0
+      },
+      {
+        "name": "service-data",
+        "exitCode": 0
+      },
+      {
+        "name": "urls",
+        "exitCode": 0
+      },
+      {
+        "name": "myrealtrip",
+        "exitCode": 0
+      },
+      {
+        "name": "platform",
+        "exitCode": 0
+      },
+      {
+        "name": "home-period",
+        "exitCode": 0
+      },
+      {
+        "name": "home-interactions",
+        "exitCode": 0
+      },
+      {
+        "name": "news-loading",
+        "exitCode": 0
+      },
+      {
+        "name": "graph-notices",
+        "exitCode": 0
+      },
+      {
+        "name": "locale-period",
+        "exitCode": 0
+      },
+      {
+        "name": "planner",
+        "exitCode": 0
+      },
+      {
+        "name": "calculator",
+        "exitCode": 0
+      },
+      {
+        "name": "seo-snapshot",
+        "exitCode": 0
+      }
+    ]
+  },
+  "subsequentEdits": [
+    "Graph copy follows the original integrated-airline rule without naming a later tariff.",
+    "Home page text-edit/schema date updated, without changing source-verification dates.",
+    "Feed/common notice equality assertion added."
+  ],
+  "finalSourceDigest": "154251d71cb827b1ae93197064becd611097026e7225d675bc75f5563bc34164",
+  "finalChecks": {
+    "native": "125/125 PASS",
+    "sourceProvenance": "15/15 PASS",
+    "static": "82 JavaScript sources and 7 JSON-LD PASS",
+    "graph": "PASS six languages/nine currencies/mobile/all bands/12s stability",
+    "home": "PASS six languages/currency/14s stability/KST boundaries/no-JS",
+    "integratedPages": {
+      "checkedAt": "2026-11-16T13:24:41.054Z",
+      "results": [
+        {
+          "page": "index",
+          "languages": 6,
+          "viewports": [
+            "1440x1000",
+            "390x844"
+          ],
+          "delayMs": 12000,
+          "archiveCards": null,
+          "marketCutoff": "2026-11-16T09:00:00+09:00",
+          "consoleErrors": [],
+          "status": "passed"
+        },
+        {
+          "page": "forecast",
+          "languages": 6,
+          "viewports": [
+            "1440x1000",
+            "390x844"
+          ],
+          "delayMs": 12000,
+          "archiveCards": 170,
+          "marketCutoff": "2026-11-16T09:00:00+09:00",
+          "consoleErrors": [],
+          "status": "passed"
+        },
+        {
+          "page": "news",
+          "languages": 6,
+          "viewports": [
+            "1440x1000",
+            "390x844"
+          ],
+          "delayMs": 12000,
+          "archiveCards": 170,
+          "marketCutoff": "2026-11-16T09:00:00+09:00",
+          "consoleErrors": [],
+          "status": "passed"
+        },
+        {
+          "page": "airlines",
+          "languages": 6,
+          "viewports": [
+            "1440x1000",
+            "390x844"
+          ],
+          "delayMs": 12000,
+          "archiveCards": null,
+          "marketCutoff": "2026-11-16T09:00:00+09:00",
+          "consoleErrors": [],
+          "status": "passed"
+        },
+        {
+          "page": "fuel-surcharge-korean-air",
+          "languages": 6,
+          "viewports": [
+            "1440x1000",
+            "390x844"
+          ],
+          "delayMs": 12000,
+          "archiveCards": null,
+          "marketCutoff": "2026-11-16T09:00:00+09:00",
+          "consoleErrors": [],
+          "status": "passed"
+        },
+        {
+          "page": "fuel-surcharge-asiana",
+          "languages": 6,
+          "viewports": [
+            "1440x1000",
+            "390x844"
+          ],
+          "delayMs": 12000,
+          "archiveCards": null,
+          "marketCutoff": "2026-11-16T09:00:00+09:00",
+          "consoleErrors": [],
+          "status": "passed"
+        }
+      ]
+    },
+    "seoSnapshots": "index and fuel-surcharge-graph in sync after final copy edits; all pages passed in full gate",
+    "diff": "PASS"
+  },
+  "operationalSettingsUnchanged": true
+}

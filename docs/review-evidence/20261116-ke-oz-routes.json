@@ -1,0 +1,98 @@
+{
+  "id": "KE-OZ-route-additions-20261116",
+  "reviewedAt": "2026-11-16T13:11:53.521Z",
+  "scope": "Five missing lookup routes, explicitly named with the same charging bands in both November and December 2026 original notices. This is a surcharge lookup review, not a flight schedule or seat availability check.",
+  "routes": [
+    {
+      "airline": "KE",
+      "origin": "PUS",
+      "destination": "FUK",
+      "sourceName": "부산-후쿠오카",
+      "range": "0-499",
+      "bandIndex": 0
+    },
+    {
+      "airline": "KE",
+      "origin": "PUS",
+      "destination": "PVG",
+      "sourceName": "부산-상하이 푸동",
+      "range": "0-499",
+      "bandIndex": 0
+    },
+    {
+      "airline": "KE",
+      "origin": "PUS",
+      "destination": "TPE",
+      "sourceName": "부산-타이베이",
+      "range": "500-999",
+      "bandIndex": 1
+    },
+    {
+      "airline": "OZ",
+      "origin": "ICN",
+      "destination": "YNZ",
+      "sourceName": "서울 출발 옌청",
+      "range": "0-499",
+      "bandIndex": 0
+    },
+    {
+      "airline": "OZ",
+      "origin": "ICN",
+      "destination": "UKB",
+      "sourceName": "서울 출발 고베",
+      "range": "500-999",
+      "bandIndex": 1
+    }
+  ],
+  "sourceUrls": {
+    "KE": {
+      "november": "https://www.koreanair.com/contents/footer/customer-support/notice/2026/2611-infuel",
+      "novemberData": "https://www.koreanair.com/content/koreanair/global/ko/footer/customer-support/notice/2026/2611-infuel.model.json",
+      "december": "https://www.koreanair.com/contents/footer/customer-support/notice/2026/2612-infuel"
+    },
+    "OZ": {
+      "november": "https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202610160002530868",
+      "december": "https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202611160002531020"
+    }
+  },
+  "airportCodeSources": [
+    {
+      "airport": "YNZ",
+      "name": "옌청 / Yancheng",
+      "url": "https://m.flyasiana.com/C/KR/KO/booking/route?airportCd=YNZ",
+      "observation": "Official Asiana route page identifies Yancheng (YNZ) and Seoul/Incheon (ICN). It states schedule changes may not be reflected in real time."
+    },
+    {
+      "airport": "UKB",
+      "name": "고베 / Kobe",
+      "url": "https://vinci-airports.com/en/our-airports/japan/kobe-airport/",
+      "observation": "Airport operator page identifies Kobe Airport and IATA Code UKB."
+    }
+  ],
+  "rawEvidence": [
+    {
+      "file": "ke-november-route-recheck.txt",
+      "sha256": "fb26b40ada1e49d4c61afa44166fa60e403fb45b3268d27641aa661a4f21c90a"
+    },
+    {
+      "file": "oz-november-route-recheck.txt",
+      "sha256": "063f5fa4f4719686037649322a9e4786ea5875a8de0ef58d80ccb6f97d4b73d7"
+    },
+    {
+      "file": "ke-official-model.json",
+      "sha256": "6a806ad10d91d0ff81a4ee9a524ed1e50f03e22db1b5eb06bc24dd4daeffb425"
+    },
+    {
+      "file": "oz-official-notice-api.json",
+      "sha256": "b3d069ec8d6b774fff838d41df830f94be4d613b71653f1d6400d58009266562"
+    }
+  ],
+  "existingMapReview": {
+    "result": "No charging-band conflict found for matching named KE/OZ routes already present in OFFICIAL_ROUTE_MAP. Five omitted routes added.",
+    "limitations": [
+      "Official tables list major routes, not an exhaustive operating schedule; old routes absent from December examples were not deleted.",
+      "ULN/UBN and CTU/TFU city-to-airport aliases were not reclassified by this narrow review.",
+      "No unverified numeric mileage was added for UKB or YNZ. Official route bands determine the lookup."
+    ]
+  }
+}

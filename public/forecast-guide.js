@@ -99,9 +99,12 @@
       var datedMonth=new Intl.DateTimeFormat(l,{year:'numeric',month:'long',timeZone:'UTC'}).format(new Date(Date.UTC(+target[1],+target[2]-1,1)));
       result.meta=copy[l].meta.replace(/\{month\}/g,datedMonth);
     }
+    var update=window.AeroDecemberView, notices=window.AeroDecemberNotices;
+    if(update&&notices&&update.isVerified()&&n.forecastTargetMonth===notices.month){var released=update.copy[l];result.lead=released.summary;result.noticeStatus=released.ke+" · "+released.oz;result.flexibleBody=released.guide;result.noticeSub=released.checked+": "+update.stamp()+" · "+released.market+": "+n.asOf;}
     return result;
   }
   function currentBrief(p,n,c) {
+    if(window.AeroDecemberNotices&&n.forecastTargetMonth===window.AeroDecemberNotices.month&&p.forecastOverview&&p.forecastOverview.noticeCheckedAt)return c.noticeStatus||p.forecastOverview.expectation;
     // This concise assessment belongs only to the reviewed November 16 snapshot.
     // Future releases fall back to their own outlook instead of inheriting it.
     if(n.informationCutoff==='2026-11-16T09:00:00+09:00' && n.forecastTargetMonth==='2026-12' &&
@@ -110,7 +113,7 @@
   }
   window.AERO_FORECAST_GUIDE = {
     view:function(p,n) {
-      var c=text(n), sub=c.cutoff+': '+n.asOf;
+      var c=text(n), sub=c.noticeSub||c.cutoff+': '+n.asOf;
       return Object.assign({},p,{title:c.title,meta:c.meta,desc:c.lead+' '+c.reason,sub:sub,
         surface:Object.assign({},p.surface,{'fore.h1':c.title,'fore.pageTitle':c.title,'fore.pageSub':sub})});
     },
