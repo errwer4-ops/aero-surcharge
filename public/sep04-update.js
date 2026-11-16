@@ -54,11 +54,12 @@
     return o && o.informationCutoff===latest.informationCutoff ? o : null;
   }
   function forecastView(p){
-    var o=currentForecastOverview(p); if(!o)return p;
+    var o=currentForecastOverview(p);
+    if(!o)return window.AERO_FORECAST_GUIDE ? window.AERO_FORECAST_GUIDE.view(p,latest) : p;
     var sub=latest.asOf+' · '+o.confidence;
     var intro=o.basis+' '+o.risk;
     var answer=o.expectation+'. '+o.confidence+'. '+intro+' '+o.note;
-    return Object.assign({},p,{
+    var view = Object.assign({},p,{
       rows:o.rows,th:o.columns,rowTones:o.rowTones,sub:sub,intro:intro,
       verdict1:o.expectation+' · '+o.confidence,verdict2:o.basis,verdictLong:o.risk+' '+o.note,
       faq:p.faq.map(function(item,i){return i===1?{q:o.question || item.q,a:answer}:item;}),
@@ -68,6 +69,7 @@
         'fore.verdict.line2':o.basis,'fore.verdict.long':o.risk+' '+o.note
       })
     });
+    return window.AERO_FORECAST_GUIDE ? window.AERO_FORECAST_GUIDE.view(view,latest) : view;
   }
   function pageModified(kind){
     var modified=release && release.modified;
@@ -90,6 +92,9 @@
           if(entity['@graph'])entity['@graph'].forEach(update);
           if(!/^(FAQPage|WebPage|CollectionPage|Article)$/.test(entity['@type']))return;
           if(entity.dateModified!==modified){entity.dateModified=modified;changed=true;}
+          if(entity.headline!==p.title){entity.headline=p.title;changed=true;}
+          if(entity.description!==p.desc){entity.description=p.desc;changed=true;}
+          if(entity.inLanguage!==lang()){entity.inLanguage=lang();changed=true;}
           if(entity['@type']==='FAQPage' && JSON.stringify(entity.mainEntity)!==JSON.stringify(questions)){
             entity.mainEntity=questions;changed=true;
           }
@@ -115,7 +120,10 @@
         if(el.textContent!==p.surface[key]) el.textContent=p.surface[key];
       });
     });
-    if(pathIs('forecast'))syncForecastSchema(p);
+    if(pathIs('forecast')){
+      syncForecastSchema(p);
+      if(window.AERO_FORECAST_GUIDE)window.AERO_FORECAST_GUIDE.render(p,latest);
+    }
   }
   function setHtml(key, val){ document.querySelectorAll('[data-i18n="'+key+'"]').forEach(function(el){ el.innerHTML = val; }); }
   function pathIs(name){ return new RegExp('/'+name+'(?:\\.html)?(?:$|[?#])').test(location.pathname + location.search); }

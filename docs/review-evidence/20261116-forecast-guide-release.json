@@ -1,0 +1,329 @@
+{
+  "startedAt": "2026-11-16T02:36:58.523Z",
+  "scope": "local automated verification; external services are not asserted",
+  "runtime": {
+    "node": "v24.14.0",
+    "platform": "win32",
+    "playwright": "1.59.1"
+  },
+  "sourceDigest": "3d74b879fae7a3aa10e0c1ed62a3f8a86d502880fc32bb19071e067453595a91",
+  "passed": true,
+  "checks": [
+    {
+      "name": "native",
+      "command": [
+        "node",
+        "--test",
+        "tests/ads-loader.test.cjs",
+        "tests/calculator.test.cjs",
+        "tests/data-validation.test.cjs",
+        "tests/log-redaction.test.cjs",
+        "tests/market-source-provenance.test.cjs",
+        "tests/myrealtrip-security.test.cjs",
+        "tests/parser-input-gate.test.cjs",
+        "tests/pipeline-safety.test.cjs",
+        "tests/release-readiness.test.cjs",
+        "tests/renderer-source-copy.test.cjs",
+        "tests/source-provenance.test.cjs",
+        "tests/travel-planner.test.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 3468,
+      "log": "native.log"
+    },
+    {
+      "name": "static",
+      "command": [
+        "node",
+        "scripts/verify_static_sources.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 234,
+      "log": "static.log"
+    },
+    {
+      "name": "data",
+      "command": [
+        "node",
+        "scripts/validate_data.js"
+      ],
+      "exitCode": 0,
+      "durationMs": 91,
+      "log": "data.log"
+    },
+    {
+      "name": "service-data",
+      "command": [
+        "node",
+        "scripts/validate_service_data.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 122,
+      "log": "service-data.log"
+    },
+    {
+      "name": "urls",
+      "command": [
+        "node",
+        "scripts/audit_seo_urls.cjs",
+        "--browser",
+        "--pages=news,forecast,fuel-surcharge-calculator",
+        "--report=C:\\Users\\jiwoo\\OneDrive\\Desktop\\사이드\\aero-v37-fixed\\aero-v36\\artifacts\\review-verification\\2026-11-16T02-36-58-521Z\\url-runtime.json"
+      ],
+      "exitCode": 0,
+      "durationMs": 20118,
+      "log": "urls.log"
+    },
+    {
+      "name": "myrealtrip",
+      "command": [
+        "node",
+        "scripts/verify_myrealtrip_integration.js"
+      ],
+      "exitCode": 0,
+      "durationMs": 122,
+      "log": "myrealtrip.log"
+    },
+    {
+      "name": "platform",
+      "command": [
+        "node",
+        "scripts/verify_platform.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 42459,
+      "log": "platform.log"
+    },
+    {
+      "name": "home-period",
+      "command": [
+        "node",
+        "scripts/verify_home_period.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 59508,
+      "log": "home-period.log"
+    },
+    {
+      "name": "home-interactions",
+      "command": [
+        "node",
+        "scripts/verify_home_interactions.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 10723,
+      "log": "home-interactions.log"
+    },
+    {
+      "name": "news-loading",
+      "command": [
+        "node",
+        "scripts/verify_news_loading.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 68124,
+      "log": "news-loading.log"
+    },
+    {
+      "name": "graph-notices",
+      "command": [
+        "node",
+        "scripts/verify_graph_notices.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 24875,
+      "log": "graph-notices.log"
+    },
+    {
+      "name": "locale-period",
+      "command": [
+        "node",
+        "scripts/verify_locale_period.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 77215,
+      "log": "locale-period.log"
+    },
+    {
+      "name": "planner",
+      "command": [
+        "node",
+        "scripts/verify_planner.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 3891,
+      "log": "planner.log"
+    },
+    {
+      "name": "calculator",
+      "command": [
+        "node",
+        "scripts/verify_calculator_platform.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 12882,
+      "log": "calculator.log"
+    },
+    {
+      "name": "seo-snapshot",
+      "command": [
+        "node",
+        "scripts/sync_static_snapshots.cjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "durationMs": 68987,
+      "log": "seo-snapshot.log"
+    }
+  ],
+  "gitHead": "db261c73be7b22884115d5546d601adcb9e4a94c",
+  "workingTree": [
+    "M UPDATE_20261116_MARKET.md",
+    " M docs/platform-analytics.md",
+    " M public/forecast.html",
+    " M public/sep04-update.js",
+    " M scripts/verify_main_improvements.cjs",
+    " M scripts/verify_nov16.cjs",
+    "?? public/forecast-guide.css",
+    "?? public/forecast-guide.js",
+    "?? scripts/verify_forecast_guide.cjs"
+  ],
+  "deploymentReview": {
+    "passed": true,
+    "errors": [],
+    "warnings": [
+      "광고는 비활성 상태입니다. 광고 운영 검토는 pending으로 유지하며 활성화 승인으로 취급하지 않습니다."
+    ],
+    "sourceDigest": "3d74b879fae7a3aa10e0c1ed62a3f8a86d502880fc32bb19071e067453595a91",
+    "operationalDigest": "be4a8ac9816841d37faaa86f2c8e78fc7b9c66416f0ab50be4e91a4f469ad3c4",
+    "baselineMatches": false,
+    "operationsReviewed": true,
+    "adsEnabled": false,
+    "clarityConfigured": false,
+    "baselineChecks": {
+      "digestMatches": false,
+      "recordedAtValid": true,
+      "recordedAtNotFuture": true,
+      "reasonValid": true
+    },
+    "expectedOperationalDigest": "ba0606be8078bab44071f3afe73960ff8ea7d983f36967feadd9295676598c88",
+    "actualOperationalDigest": "be4a8ac9816841d37faaa86f2c8e78fc7b9c66416f0ab50be4e91a4f469ad3c4"
+  },
+  "finishedSourceDigest": "3d74b879fae7a3aa10e0c1ed62a3f8a86d502880fc32bb19071e067453595a91",
+  "browserEvidence": "browser-verification.json",
+  "finishedAt": "2026-11-16T02:43:31.973Z",
+  "independentReview": {
+    "reviewedAt": "2026-11-16T02:38:22.290Z",
+    "scope": "Forecast guide pre-deployment independent read-only review",
+    "agent": "forecast_deploy_review",
+    "blockingFindings": [],
+    "findings": [
+      "Six languages and source-object immutability checked",
+      "Reviewed 09:00 cutoff and later-release fallback preserved",
+      "Shared data, market module, feed and analytics loader unchanged from HEAD",
+      "Existing affiliate parameters, sponsored, canonical and native disclosures retained",
+      "Title, description and JSON-LD use the existing renderer"
+    ]
+  },
+  "guideVerification": {
+    "checkedAt": "2026-11-16T02:20:16.193Z",
+    "results": [
+      {
+        "lang": "ko",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "lang": "ko",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "lang": "ko",
+        "width": 320,
+        "passed": true
+      },
+      {
+        "lang": "en",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "lang": "en",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "lang": "en",
+        "width": 320,
+        "passed": true
+      },
+      {
+        "lang": "ja",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "lang": "ja",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "lang": "ja",
+        "width": 320,
+        "passed": true
+      },
+      {
+        "lang": "zh",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "lang": "zh",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "lang": "zh",
+        "width": 320,
+        "passed": true
+      },
+      {
+        "lang": "fr",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "lang": "fr",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "lang": "fr",
+        "width": 320,
+        "passed": true
+      },
+      {
+        "lang": "de",
+        "width": 1440,
+        "passed": true
+      },
+      {
+        "lang": "de",
+        "width": 390,
+        "passed": true
+      },
+      {
+        "lang": "de",
+        "width": 320,
+        "passed": true
+      }
+    ],
+    "errors": [],
+    "consoleErrors": [],
+    "delayedStabilitySeconds": 15,
+    "noJavaScript": true,
+    "nextReleaseFallback": true
+  },
+  "deploymentScope": "Authorized commit, main push, canonical Vercel production deployment; remote results are recorded separately after push."
+}

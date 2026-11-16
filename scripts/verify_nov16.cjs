@@ -452,13 +452,18 @@ async function state(page) {
         }
         let publicationBeforeRefresh;
         if(name==='forecast') {
+          for(const id of ['forecastEvidence','forecastSources']) {
+            const guide=page.locator('#'+id);
+            if(!await guide.evaluate(el=>el.open)) await guide.locator(':scope > summary').click();
+          }
+          await page.evaluate(()=>scrollTo(0,0));
           publicationBeforeRefresh=await page.evaluate(()=>{
             const faq=[...document.querySelectorAll('script[type="application/ld+json"]')].map(el=>JSON.parse(el.textContent)).find(s=>s['@type']==='FAQPage');
             const published=faq?.datePublished; window.syncForecastStructuredData(); return published;
           });
           await page.waitForTimeout(100);
         }
-        const x=await state(page), p=x.r.packs[lang];
+        const x=await state(page), p=name==='forecast' ? await page.evaluate(l=>AERO_FORECAST_GUIDE.view(AERO_MARKET_RELEASE.packs[l],AERO_MARKET_NUMBERS_LATEST),lang) : x.r.packs[lang];
         checkNumbers(x.n);
         assert.equal(x.canonical,'https://aero-surcharge.com/'+name);
         assert.equal(x.title,name==='news' ? p.newsMeta : p.meta);
@@ -471,7 +476,7 @@ async function state(page) {
           const guideTitles=await page.locator('#newsContextGuide .summary-card-title').allTextContents();
           assert.equal(guideTitles.filter(title=>title===p.newsTitle).length,1,lang+' original detailed news heading retained once in context');
           assert(p.newsTitle.includes(stageCarrier),lang+' context heading scopes current stage to Korean Air');
-        } else assert(x.h1.includes(stageCarrier),lang+' current stage is scoped to Korean Air');
+        } else assert(x.faq.includes(stageCarrier),lang+' current stage remains scoped to Korean Air in the source FAQ');
         assert.equal(x.overflow,false,name+' '+lang+' desktop overflow');
         assert.doesNotMatch(x.body,/undefined|\?\?\?\?|AERO_MARKET_NUMBERS|\ufffd/);
         assert.match(x.body,/09:00/,name+' cutoff visible');
@@ -481,12 +486,12 @@ async function state(page) {
         for(const schema of x.schemas.filter(s=>/^(WebPage|CollectionPage|FAQPage)$/.test(s['@type']))) assert.equal(schema.dateModified,modified,name+' '+lang+' schema modification');
         if(name==='forecast') {
           assert(o,lang+' current forecast overview');
-          assert.equal(normalize(await page.locator('[data-i18n="fareCompare.button"]').innerText()),normalize(await page.evaluate(()=>I18N[getCurrentLang()]['fareCompare.button'])),lang+' current localized total-airfare CTA');
-          assert.equal(await page.locator('[data-i18n="fore.cta.may"]').getAttribute('href'),'fuel-surcharge-calculator.html');
+          assert.equal(await page.locator('a[data-fare-compare]').getAttribute('data-analytics-placement'),'forecast_decision',lang+' total-airfare CTA in the decision guide');
+          assert.equal(await page.locator('#relatedLinks a').first().getAttribute('href'),'fuel-surcharge-calculator.html');
           for(const key of ['expectation','confidence','basis','risk','note']) assert(normalize(x.overview).includes(normalize(o[key])),lang+' visible overview '+key);
           assert.deepEqual(x.rows.map(row=>row.map(normalize)),o.rows.map(row=>row.map(normalize)),lang+' visible current rows');
           assert.deepEqual(x.rowTones,o.rowTones.map(tone=>'impact-'+tone),lang+' rendered direction classes');
-          assert(x.overviewBounds && x.overviewBounds.top<x.overviewBounds.viewportHeight && x.overviewBounds.width>0,lang+' first-viewport outlook');
+          assert(await page.locator('#forecastDecisionTitle').evaluate(el=>el.getBoundingClientRect().bottom<innerHeight),lang+' first-viewport decision; full evidence available below');
           const faq=x.schemas.find(s=>s['@type']==='FAQPage'); assert(faq);
           assert.equal(faq['@id'],x.canonical+'#faq'); assert.equal(faq.headline,x.h1); assert.equal(faq.description,p.desc);
           assert.equal(faq.inLanguage,lang); assert.equal(faq.datePublished,publicationBeforeRefresh);
@@ -516,7 +521,7 @@ async function state(page) {
         assert.equal(mobile.overflow,false,name+' '+lang+' mobile overflow'); assert.equal(mobile.title,x.title);
         if(name==='forecast') {
           assert.deepEqual(mobile.rows,x.rows,lang+' mobile indicators');
-          assert(mobile.overviewBounds && mobile.overviewBounds.top<mobile.overviewBounds.viewportHeight && mobile.overviewBounds.width>0,lang+' mobile first-viewport outlook');
+          assert(await page.locator('#forecastDecisionTitle').evaluate(el=>el.getBoundingClientRect().bottom<innerHeight),lang+' mobile first-viewport decision');
         } else assert.deepEqual(mobile.newsBriefRows,x.newsBriefRows,lang+' mobile brief');
         await page.setViewportSize({width:1440,height:1000});
       }

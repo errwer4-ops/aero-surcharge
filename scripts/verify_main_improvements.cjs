@@ -169,7 +169,7 @@ async function clickAffiliate(page, link, expectedFare, expectedAffiliate, label
     assert(!JSON.stringify(event.params).includes('qa_cta'),label+' no URL query in event');
     if(event.name==='cta_fare_compare'){
       assert.equal(event.params.affiliate,'myrealtrip',label+' correct provider');
-      assert.equal(event.params.placement,route?'route_result':'forecast_bottom',label+' explicit CTA placement');
+      assert.equal(event.params.placement,route?'route_result':'forecast_decision',label+' explicit CTA placement');
       if(route){
         assert.equal(event.params.origin,route.dep,label+' submitted origin');
         assert.equal(event.params.destination,route.arr,label+' submitted destination');
@@ -217,7 +217,7 @@ async function verifyFareCta(browser, pageName) {
     assert.match(await cta.getAttribute('rel'),/\bsponsored\b/,pageName+' affiliate relationship');
     let route=home?await searchHome(page):null;
     if(home)assert.equal(await cta.evaluate(el => !!el.closest('#resultsSection') && !!(document.getElementById('cardsGrid').compareDocumentPosition(el)&Node.DOCUMENT_POSITION_FOLLOWING)),true,'home CTA follows rendered route results');
-    else assert.equal(await cta.evaluate(el => el.closest('.fore-myrealtrip-box')===document.querySelector('main').lastElementChild),true,'forecast CTA is the last main content section');
+    else assert.equal(await cta.evaluate(el => el.closest('.forecast-decision')===document.querySelector('main').firstElementChild),true,'forecast CTA is in the leading decision guide');
     const market=await page.evaluate(() => JSON.stringify({numbers:window.AERO_MARKET_NUMBERS_LATEST,snapshots:window.AERO_MARKET_SNAPSHOTS,release:window.AERO_MARKET_RELEASE}));
 
     await clickAffiliate(page,cta,0,0,pageName+' no choice',route);
@@ -248,7 +248,8 @@ async function verifyFareCta(browser, pageName) {
       await page.selectOption('#navCurr','KRW');
       await page.waitForTimeout(400);
       assert.deepEqual(await affiliateEvents(page),beforeLanguage,pageName+' '+lang+' language/currency rerender does not emit clicks');
-      assert.equal(norm(await cta.innerText()),fareButtonCopy[lang],pageName+' '+lang+' explicit surcharge-inclusive total airfare label');
+      const guideButton={ko:'현재 항공권 총액 비교',en:'Compare current total fares',ja:'現在の航空券総額を比較',zh:'比较当前机票总价',fr:'Comparer les prix totaux actuels',de:'Aktuelle Gesamtflugpreise vergleichen'};
+      assert.equal(norm(await cta.innerText()),home?fareButtonCopy[lang]:guideButton[lang],pageName+' '+lang+' localized total airfare label');
       assert.equal(await page.evaluate(() => t('fareCompare.button')),fareButtonCopy[lang],pageName+' '+lang+' registered I18N key');
       assert.equal(await cta.getAttribute('href'),href,pageName+' '+lang+' unchanged href after rerender');
       for(const width of [1366,320,375]){
@@ -257,27 +258,7 @@ async function verifyFareCta(browser, pageName) {
         const box=await cta.boundingBox();
         assert(box && box.x>=0 && box.x+box.width<=width+1 && box.height>=48,pageName+' '+lang+' '+width+'px visible button with adequate height');
         assert.equal(await cta.evaluate(el => el.scrollWidth<=el.clientWidth+1),true,pageName+' '+lang+' '+width+'px complete button text');
-        if(!home && lang==='de' && width===320){
-          // Existing, unrelated heading overflow: keep CTA bounds strict and
-          // identify the exact legacy text instead of concealing other overflow.
-          const overflow=await page.evaluate(() => {
-            const walker=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),text=[];
-            let node;
-            while((node=walker.nextNode())){
-              if(!node.textContent.trim())continue;
-              const range=document.createRange();range.selectNodeContents(node);
-              const rect=range.getBoundingClientRect();
-              if(rect.width && rect.right>innerWidth+1)text.push(node.parentElement.id);
-            }
-            return {width:document.documentElement.scrollWidth,text,elements:[...document.querySelectorAll('body *')].filter(el => {const rect=el.getBoundingClientRect();return rect.width && rect.right>innerWidth+1;}).map(el => el.id||el.tagName)};
-          });
-          assert(overflow.width<=325,'known German 320px heading overflow must not grow');
-          assert.deepEqual(overflow.text,['forecastMarketTitle'],'only the existing German market heading text overflows');
-          assert.deepEqual(overflow.elements,[],'no element boxes overflow at the known heading exception');
-          console.log('KNOWN out of scope: forecast de 320px market heading creates '+(overflow.width-width)+'px page overflow; CTA fits');
-        }else{
-          assert.equal(await page.evaluate(() => document.documentElement.scrollWidth<=innerWidth),true,pageName+' '+lang+' '+width+'px no page overflow');
-        }
+        assert.equal(await page.evaluate(() => document.documentElement.scrollWidth<=innerWidth),true,pageName+' '+lang+' '+width+'px no page overflow');
         const style=await cta.evaluate(el => ({background:getComputedStyle(el).backgroundColor,color:getComputedStyle(el).color}));
         assert.notEqual(style.background,'rgba(0, 0, 0, 0)',pageName+' '+lang+' filled CTA');
         assert.notEqual(style.background,style.color,pageName+' '+lang+' contrasting label');
@@ -293,7 +274,7 @@ async function verifyFareCta(browser, pageName) {
       }
     }else{
       await clickAffiliate(page,page.locator('.hotelcombine-btn'),0,1,'forecast hotel remains generic affiliate only');
-      assert.equal(await cta.evaluate(el => el.closest('.fore-myrealtrip-box')===document.querySelector('main').lastElementChild),true,'forecast rerenders keep CTA at main bottom');
+      assert.equal(await cta.evaluate(el => el.closest('.forecast-decision')===document.querySelector('main').firstElementChild),true,'forecast rerenders keep CTA in leading decision guide');
     }
     assert.equal(await page.evaluate(() => JSON.stringify({numbers:window.AERO_MARKET_NUMBERS_LATEST,snapshots:window.AERO_MARKET_SNAPSHOTS,release:window.AERO_MARKET_RELEASE})),market,pageName+' CTA interactions preserve loaded market data');
     assert.deepEqual(errors,[],pageName+' no runtime errors');
