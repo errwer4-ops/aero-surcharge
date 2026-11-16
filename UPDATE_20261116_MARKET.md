@@ -101,3 +101,9 @@ Reuters 재배포 페이지의 초기 게시시각과 JSON-LD 수정시각은 �
 - 보호 파일 변경은 `public/_analytics.js` 한 개다. 코드와 현재 로컬 동의·제휴 이벤트 검사를 독립 검토하고 `docs/review-evidence/20261116-operational-review.json`에 근거를 남겼다. `config/deployment-review.json`의 operations 기록만 현재 범위로 갱신했고 runtimeBaseline과 광고 비활성·광고/CMP pending은 유지했다.
 - 전체 배포 검사 **15/15 PASS**, 기본 Node **121/121 PASS**. 실행 중 소스 변경 없음. 검사 시작 2026-11-16T01:01:40.991Z, 종료 2026-11-16T01:08:16.991Z, 소스 digest `4bdcd5bc494a70a2d6c0c39495f07a7afe7c7af4322529a83b8bb84542741468`. 커밋에 포함한 요약은 `docs/review-evidence/20261116-release-verification.json`이다.
 - 이 기록은 커밋 전 준비 완료 시점이다. push 후 Vercel 결과·커밋과 운영 파일 해시·실제 운영 화면 검증은 ignored `artifacts/review-verification/deploy-nov16/`에 별도 기록하고 대화에서 최종 보고한다. 광고 활성화·외부 분석 수신·실제 제휴 정산을 검증했다는 의미는 아니다.
+
+## 실행 3 — 원격 CI 환경 호환성 복구
+
+- 첫 배포 커밋 `562ac43`은 요청 메시지로 생성·푸시됐다. GitHub의 데이터 검증은 통과했지만 `ubuntu-latest`가 Ubuntu26.04 이미지로 전환되어 고정 Playwright1.59.1의 브라우저 설치가 실패했다. 실제 실패는 [원격 job 로그](https://github.com/errwer4-ops/aero-surcharge/actions/runs/43784497222/job/133028977421)로 확인했다.
+- `.github/workflows/data-validation.yml`의 실행 환경만 `ubuntu-24.04`로 고정했다. 라이브러리를 업그레이드하거나 브라우저·기존 검사를 생략하지 않았다. 해당 버전의 로컬/버전 고정 원문 지원표를 대조했고 `docs/review-evidence/20261116-ci-runner-review.json` 및 현재 운영 범위 검토를 기록했다.
+- 서비스 코드와 데이터는 첫 커밋 그대로다. 이 수정의 full-source digest는 `8b310d5da7cdc8fcef29f9981745e8af77d93773b4a44f8ba2de0a3544d7ebff`이며 로컬15/15 기록은 이전 전체 digest의 검사다. 최종 커밋에서는 원격 전체 검사를 새로 실행해 확인한다. 이미 푸시한 이력을 강제로 고치지 않고 같은 요청 메시지의 후속 커밋으로 반영한다.

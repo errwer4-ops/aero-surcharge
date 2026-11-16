@@ -1,0 +1,40 @@
+{
+  "reviewedAt": "2026-11-16T01:11:16.451Z",
+  "authorization": "Follow-through on the user-authorized commit/push/production deployment; keep the exact requested commit message.",
+  "baseCommit": "562ac438191faa52d8d793b61bb16035f8f58077",
+  "scope": "CI runner compatibility repair only; no application, dependency-version or assertion changes",
+  "operationalDigest": "be4a8ac9816841d37faaa86f2c8e78fc7b9c66416f0ab50be4e91a4f469ad3c4",
+  "changedProtectedFiles": [
+    {
+      "file": ".github/workflows/data-validation.yml",
+      "sha256": "647c2b8992892c05c107301256378586f61ca6e821d788aa12a2ffad24ff898b"
+    }
+  ],
+  "failure": {
+    "runId": 43784497222,
+    "jobId": 133028977421,
+    "jobUrl": "https://github.com/errwer4-ops/aero-surcharge/actions/runs/43784497222/job/133028977421",
+    "observedRunner": "ubuntu-26.04, image 20261111.196.1",
+    "step": "Install existing Playwright browser",
+    "error": "Playwright does not support chromium on ubuntu26.04-x64",
+    "priorDataValidation": "passed"
+  },
+  "findings": [
+    "ubuntu-latest selected Ubuntu 26.04 on the failed run. Locked Playwright 1.59.1 has no supported Ubuntu 26.04 Chromium/dependency mapping.",
+    "The installed 1.59.1 hostPlatform.js, registry/index.js and registry/nativeDeps.js contain the supported Ubuntu 24.04 x64 mapping and required browser dependencies.",
+    "Pin runs-on to ubuntu-24.04; retain install --with-deps chromium, the existing Node/package versions and all validation steps. This does not bypass browser installation or checks.",
+    "Application/public/API/library/test sources are unchanged from the previously locally validated and pushed commit."
+  ],
+  "references": [
+    "https://github.com/actions/runner-images/issues/14748",
+    "https://github.com/microsoft/playwright/blob/v1.59.1/packages/playwright-core/src/server/utils/hostPlatform.ts",
+    "https://github.com/microsoft/playwright/blob/v1.59.1/packages/playwright-core/src/server/registry/nativeDeps.ts"
+  ],
+  "priorOperationalReview": "docs/review-evidence/20261116-operational-review.json",
+  "priorLocalRelease": "docs/review-evidence/20261116-release-verification.json",
+  "validation": {
+    "localFullSuite": "Previously passed 15/15 on unchanged application sources; no claim of rerunning the full suite after this runner-only edit",
+    "remoteFullSuite": "pending on the new commit"
+  },
+  "externalScope": "Ads remain disabled and separate advertising/CMP review remains pending; no external analytics receipt or affiliate settlement approval."
+}
