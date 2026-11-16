@@ -45,7 +45,7 @@ async function main(){
         assert.equal(states.filter(s=>s==='11월 공시 완료').length,9);
         assert.equal(states.filter(s=>s==='11월 공시 미완료').length,0);
         assert.equal(await cards.locator('.mini-trend-label').count(),9);
-        assert.equal(await page.locator('#miniGrid [data-airline="KE"] .mini-trend-label').innerText(),'전월 대비 최소 8.0% 상승');
+        assert.equal(await page.locator('#miniGrid [data-airline="KE"] .mini-trend-label').innerText(),'▲ 8.0%');
         assert.equal(await page.locator('#miniGrid [data-airline="YP"] a').getAttribute('href'),'https://www.airpremia.com/a/ko/customer/notice/803','YP links to its verified November notice');
         assert.equal(new Set(await page.locator('#introSection .intro-card-body').allTextContents()).size,3,'three distinct service explanations');
         const summary=await page.locator('#decisionList li').first().innerText();
@@ -56,14 +56,14 @@ async function main(){
         await guideToggle.focus();await guideToggle.press('Enter');
         assert(await page.locator('#introSection .intro-card-body').first().isVisible(),'guide is keyboard accessible');
         await guideToggle.press('Enter');
-        const detail=page.locator('#miniGrid [data-airline="OZ"] details'),toggle=detail.locator('summary');
-        await toggle.focus();await toggle.press('Enter');assert.notEqual(await detail.getAttribute('open'),null);
-        assert((await detail.innerText()).includes('10월 보관 기록을 포함한 참고 비율'));
+        const detail=page.locator('#miniGrid [data-airline="OZ"] .mini-trend-tooltip'),toggle=page.locator('#miniGrid [data-airline="OZ"] .mini-trend-info');
+        await toggle.focus();assert.equal(await detail.isVisible(),true);
+        assert((await detail.innerText()).includes('보관 기록 포함: 있음'));
         await page.locator('#aeroConsentDeny').click();
-        await toggle.press('Enter');assert.equal(await detail.getAttribute('open'),null);
+        await toggle.focus();await toggle.press('Escape');assert.equal(await detail.isVisible(),false);
       }
       if(!audit)assert.doesNotMatch(await page.locator('body').innerText(), /원문 금액·구간 대조 완료|일부 구간 대조 완료|원문 (?:대조 완료|검증 대기|재검증 대기)|금액·통화·구간을 공식/, name+' concise public status copy');
-      if(name==='index'){await page.locator('#miniGrid summary').first().blur();await page.locator('#miniGrid').screenshot({path:path.join(out,'index-cards-desktop.png')});}
+      if(name==='index'){await page.locator('#miniGrid .mini-trend-info').first().blur();await page.locator('#miniGrid').screenshot({path:path.join(out,'index-cards-desktop.png')});}
       await page.setViewportSize({width:390,height:844});await page.waitForTimeout(200);
       report.mobileOverflow=await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth);
       if(!audit)assert.equal(report.mobileOverflow,false,name+' mobile overflow');

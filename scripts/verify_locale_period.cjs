@@ -25,8 +25,8 @@ async function main(){
     assert.equal(await page.locator('html').getAttribute('lang'),lang,name+' language');
     if(name==='index'){
      const labels=await page.locator('.mini-trend-label').allTextContents();assert.equal(labels.length,9);
-     assert(labels.every(s=>lang==='en'?/At least/.test(s):!/At least|higher than|Retained records/.test(s)),lang+' home comparisons translated');
-     const summary=await page.locator('.mini-trend-details summary').first().getAttribute('title');
+     assert(labels.every(s=>/^▲ \d+\.\d%$/.test(s)),lang+' home comparisons share a compact numeric format');
+     const summary=await page.locator('.mini-trend-tooltip').first().textContent();
      if(!['ko','en'].includes(lang))assert.doesNotMatch(summary,/pairs in the same currency|indicative rate/);
      if(lang!=='ko')assert.doesNotMatch(await page.locator('.myrealtrip-cta .cta-kicker').first().innerText(),/[가-힣]/);
     }else if(name==='fuel-surcharge-korea'){

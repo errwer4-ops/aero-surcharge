@@ -14,8 +14,8 @@
   },
   "operations": {
     "status": "reviewed",
-    "reviewedAt": "2026-11-09T02:57:30.385Z",
-    "scopeDigest": "e29099dd8dd93e3999e8abe7f8c246f8d54b65481adedf6840e272399acb85aa",
-    "evidence": "docs/review-evidence/20261109-operational-review.json: 사용자 배포 승인 후 변경 보호 파일 4개(검사 2개 추가·정책 화면 폰트 CSS) diff 및 동일 소스 15/15 기술검사 검토 완료. 광고 비활성·광고 pending·기존 runtimeBaseline 유지. GA4·광고/CMP·제휴 정산·외부 수신 검증을 수행했다는 의미가 아님."
+    "reviewedAt": "2026-11-16T01:01:40.434Z",
+    "scopeDigest": "9b5b105580172e1bc46390054c2c03236f96e1723174bdc815a14f10bb069315",
+    "evidence": "docs/review-evidence/20261116-operational-review.json: 사용자 배포 승인 후 보호 파일 public/_analytics.js의 동의 배너·명시 CTA 변경과 현재 코드의 로컬 동의/제휴 회귀를 검토. 광고 비활성·광고/CMP pending·기존 runtimeBaseline 유지. 외부 분석 수신·제휴 정산·법적 적합성 검증이 아님."
   }
 }

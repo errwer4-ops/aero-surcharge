@@ -1,0 +1,41 @@
+{
+  "reviewedAt": "2026-11-16T01:01:40.434Z",
+  "authorization": "User explicitly requested commit and production deployment; exact commit message: add 2026.11.16 news and forecast",
+  "baseCommit": "f4ddb458ce69ba6ce62c80635a5e3fff25291ecb",
+  "scope": "Repository operational-code review, not external account or advertising activation approval",
+  "operationalDigest": "9b5b105580172e1bc46390054c2c03236f96e1723174bdc815a14f10bb069315",
+  "changedProtectedFiles": [
+    {
+      "file": "public/_analytics.js",
+      "sha256": "1327df44c87af8995478d23a0c51d6ab40917d45204021994084b713f9a358b1"
+    }
+  ],
+  "findings": [
+    "The protected-file change is the six-language compact consent bar/native dialog and explicitly marked cta_fare_compare event handling in public/_analytics.js.",
+    "Analytics consent gating, validated event fields, removal of destination query strings, and per-event click deduplication are retained. Advertising-only consent does not authorize fare-comparison analytics.",
+    "The configuration, advertising loader, APIs, collectors, package lockfile and Vercel build configuration are unchanged. Ads remain disabled, Clarity remains unconfigured and the independent advertising/CMP review remains pending.",
+    "Revocation gates new custom events and deletes supported GA cookies; an automatic reload or immediate complete shutdown of already loaded third-party libraries is not claimed."
+  ],
+  "technicalEvidence": {
+    "morningSourceDigest": "64ef62d30a3d115e66f43b15479b34f21af7a86db1c5919e1bd8a0012a0c8af7",
+    "morningEvidence": "artifacts/review-verification/market-nov16/final-evidence.json",
+    "native": "121/121 passed",
+    "privacy": "artifacts/review-verification/market-nov16/analytics.log: six locales, pre-consent requests zero, repeated saves do not duplicate loaders; synthetic providers and blocked external requests",
+    "fareCta": "artifacts/review-verification/market-nov16/main-improvements.log: six locales, three widths, original href/data, consent gating and once-per-click behavior passed",
+    "releaseGate": {
+      "evidence": "docs/review-evidence/20261116-release-verification.json",
+      "sourceDigest": "4bdcd5bc494a70a2d6c0c39495f07a7afe7c7af4322529a83b8bb84542741468",
+      "passed": true,
+      "checks": 15,
+      "finishedAt": "2026-11-16T01:08:16.991Z"
+    }
+  },
+  "externalVerification": {
+    "ga4Reception": "not_verified",
+    "clarityAccount": "not_verified_not_configured",
+    "advertisingAndCMP": "not_verified_ads_disabled",
+    "affiliateConversionAndSettlement": "not_verified",
+    "legalCompliance": "not_asserted",
+    "productionDeployment": "pending_after_push"
+  }
+}

@@ -1,0 +1,134 @@
+/* Monthly graph: the compact AERO surface, with the chart first. */
+.graph-page {
+  --blue:#2453a6; --blue-dk:#173b7b; --blue-lt:#edf3fc;
+  --bg:#f7f8fa; --line:#e0e4e9; --text:#172332; --text2:#4e5c6c; --muted:#687585;
+  --font-body:.9375rem; --font-small:.8125rem; --font-caption:.75rem;
+  --font-ui:.875rem; --font-lead:1rem; --font-section:1.125rem;
+  --font-title:clamp(1.625rem,2.6vw,2rem); --font-amount:1.125rem;
+  background:#fff;font-size:var(--font-body);line-height:1.6;
+}
+.graph-page a { text-underline-offset:3px; }
+.graph-page :is(button,a,input,select,summary,[tabindex]):focus-visible { outline:2px solid var(--blue);outline-offset:4px; }
+.graph-page .site-nav {
+  display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center;
+  padding:16px max(24px,calc((100vw - 1092px)/2));min-height:72px;height:auto;
+  background:#fff;border-bottom:1px solid var(--line);box-shadow:none;backdrop-filter:none;
+}
+.graph-page .site-brand { display:inline-flex;align-items:center;gap:5px;color:var(--text);font-size:23px;font-weight:800;letter-spacing:.08em;text-decoration:none;line-height:1; }
+.graph-page .brand-mark { width:5px;height:5px;background:var(--blue);align-self:flex-end;margin-bottom:3px; }
+.graph-page .nav-links { gap:6px; }
+.graph-page .nav-link { font-size:var(--font-ui);font-weight:500;border-radius:3px;padding:6px 9px;color:var(--text2); }
+.graph-page .nav-link.active { background:none;color:var(--text);font-weight:700; }
+.graph-page .nav-link:hover { background:var(--bg);color:var(--blue); }
+.graph-page .nav-controls { gap:7px; }
+.graph-page .nav-divider { display:none; }
+.graph-page .nav-select { font-size:var(--font-small);font-weight:500;border-color:var(--line);border-radius:4px;padding:6px 23px 6px 8px;max-width:125px; }
+
+.graph-page .seo-main { width:calc(100% - 48px);max-width:1092px;margin:0 auto;padding:36px 0 56px; }
+.graph-page .graph-header { margin-bottom:26px; }
+.graph-page .graph-header h1 { font-size:var(--font-title);font-weight:700;letter-spacing:-.035em;line-height:1.35;margin:0 0 10px; }
+.graph-page .graph-intro { font-size:var(--font-body);line-height:1.7;color:var(--text2);margin:0 0 10px; }
+.graph-page .graph-period { font-size:var(--font-caption);line-height:1.65;color:var(--muted); }
+.graph-page .graph-filter-bar { display:grid;grid-template-columns:minmax(0,1.4fr) repeat(2,minmax(0,1fr));align-items:end;gap:14px 20px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:18px 20px;margin:0 0 22px; }
+.graph-page .graph-filter-field { min-width:0;display:flex;flex-direction:column;gap:7px; }
+.graph-page .graph-filter-field label { font-size:var(--font-caption);font-weight:600;color:var(--text2);line-height:1.5;white-space:normal; }
+.graph-page .graph-filter-field select { width:100%;max-width:100%;min-width:0;min-height:44px;background:#fff;border:1px solid #ccd4de;border-radius:4px;padding:9px 10px;color:var(--text);font:400 16px/1.4 var(--sans); }
+.graph-page .graph-filter-field select:focus { border-color:var(--blue); }
+.graph-page .graph-filter-hint { grid-column:1/-1;font-size:var(--font-caption);line-height:1.6;color:var(--muted); }
+
+/* Keep 16px horizontal canvas padding in every viewport. */
+.graph-page .chart-wrap { min-width:0;position:relative;background:#fff;border:1px solid var(--line);border-radius:4px;padding:20px 16px 12px;margin:0 0 14px;box-shadow:none; }
+.graph-page .chart-legend { gap:6px 18px;margin-top:14px;padding:0; }
+.graph-page .legend-item { min-width:0;max-width:100%;padding:3px 0;border-radius:0;font-size:var(--font-caption);line-height:1.6; }
+.graph-page .legend-item:hover { background:none; }
+.graph-page .legend-dot { width:8px;height:8px; }
+.graph-page .legend-tag { border:1px solid var(--line);border-radius:3px;background:var(--bg);color:var(--text2);font-size:var(--font-caption);white-space:nowrap; }
+.graph-page .graph-notice { margin:12px 0 24px;color:var(--muted);font-size:var(--font-caption);line-height:1.75;overflow-wrap:anywhere; }
+.graph-page #graphTooltip { max-width:calc(100vw - 16px);background:rgba(23,35,50,.97);border:1px solid #3b4859;border-radius:4px;box-shadow:none;padding:10px 12px;font-size:var(--font-small);line-height:1.6; }
+.graph-page #graphTooltip .tt-head { font-size:var(--font-ui);font-weight:600; }
+.graph-page #graphTooltip .tt-usd { font-size:var(--font-caption);color:#c3d8ef; }
+
+.graph-page .graph-details { min-width:0;border-top:1px solid var(--line);padding:0;margin:0;scroll-margin-top:96px; }
+.graph-page .graph-details > summary { display:list-item;cursor:pointer;padding:19px 0;margin:0;font-size:var(--font-ui);font-weight:600;line-height:1.6;color:var(--text); }
+.graph-page .graph-details > summary::marker { color:var(--muted); }
+.graph-page .graph-details[open] { padding-bottom:20px; }
+.graph-page .graph-data-table { min-width:0;max-width:100%;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch;margin:0 0 16px; }
+.graph-page .graph-data-table table { width:100%;min-width:680px;border-collapse:collapse;font-size:var(--font-small);line-height:1.6;font-variant-numeric:tabular-nums; }
+.graph-page .graph-data-table th { padding:11px 12px;background:var(--bg);border-top:1px solid var(--line);border-bottom:1px solid #cbd2dc;font-size:var(--font-caption);font-weight:500;color:var(--muted);white-space:nowrap; }
+.graph-page .graph-data-table td { padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top;white-space:nowrap; }
+.graph-page .graph-data-table td strong { font-weight:600;color:var(--text); }
+.graph-page .graph-data-table tr:hover td { background:#fafbfc; }
+.graph-page .usd-badge { background:var(--bg);color:var(--text2);border:1px solid var(--line);font-size:var(--font-caption);font-weight:500;border-radius:3px; }
+.graph-page :is(.change-note,.null-cell) { font-size:var(--font-caption);line-height:1.6; }
+.graph-page :is(.change-up,.change-down) { font-weight:600; }
+.graph-page #graphDataDetails .graph-notice { margin-bottom:0; }
+
+.graph-page .official-link-box { border:0;border-top:1px solid var(--line);border-radius:0;background:none;padding:22px 0;margin:0; }
+.graph-page .official-link-title { font-size:var(--font-ui);font-weight:600;color:var(--text);margin:0 0 10px; }
+.graph-page .official-link-list { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 24px; }
+.graph-page .official-link-item { display:block;min-width:0;padding:10px 0;border-bottom:1px solid var(--line);font-size:var(--font-small);line-height:1.8;color:var(--text2);overflow-wrap:anywhere; }
+.graph-page .official-link-item a { color:var(--blue);font-weight:500;white-space:normal; }
+.graph-page .graph-details :is(.seo-lang-notice,.seo-intro,.graph-answer,.summary-card) { background:none;border:0;border-radius:0;box-shadow:none;padding:12px 0;margin:0;color:var(--text2); }
+.graph-page .graph-details .seo-lang-notice { font-size:var(--font-small);line-height:1.75; }
+.graph-page .graph-details .seo-lang-notice strong { color:var(--text);font-weight:600; }
+.graph-page .graph-details .seo-intro { font-size:var(--font-small);line-height:1.75; }
+.graph-page .graph-answer-title { font-size:var(--font-ui);font-weight:600;line-height:1.6;margin-bottom:6px; }
+.graph-page .graph-answer-body { font-size:var(--font-small);line-height:1.75; }
+.graph-page .summary-cards { grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:0; }
+.graph-page .summary-card-title { font-size:var(--font-ui);font-weight:600;line-height:1.6; }
+.graph-page .summary-card-body { font-size:var(--font-small);line-height:1.75; }
+.graph-page .graph-faq { gap:0;margin:0; }
+.graph-page .graph-faq-item { background:none;border:0;border-bottom:1px solid var(--line);border-radius:0;padding:16px 0; }
+.graph-page .graph-faq-item:last-child { border-bottom:0; }
+.graph-page .graph-faq-q { font-size:var(--font-ui);font-weight:600;line-height:1.6;margin-bottom:6px; }
+.graph-page .graph-faq-a { font-size:var(--font-small);line-height:1.75; }
+.graph-page .related-links { padding:22px 0 0;margin:0;border:0;border-top:1px solid var(--line);border-radius:0;background:none; }
+.graph-page .related-title { font-size:var(--font-ui);font-weight:600; }
+.graph-page .related-grid { gap:0 24px; }
+.graph-page .related-item { padding:10px 0;border:0;border-bottom:1px solid var(--line);border-radius:0;background:none;font-size:var(--font-small);font-weight:500;color:var(--text2); }
+.graph-page .related-item:hover { background:none;color:var(--blue); }
+.graph-page .graph-footer { display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:20px;padding:26px max(24px,calc((100vw - 1092px)/2));margin:0;border-top:1px solid var(--line);background:var(--bg); }
+.graph-page .graph-footer p { max-width:680px;font-size:var(--font-caption);color:var(--muted);line-height:1.7; }
+.graph-page .footer-links { display:flex;gap:12px 20px;flex-wrap:wrap; }
+.graph-page .footer-links a { font-size:var(--font-caption);color:var(--muted);text-decoration:none; }
+
+@media(max-width:1050px) {
+  .graph-page .site-nav { gap:18px; }
+  .graph-page .nav-link { padding:6px; }
+}
+@media(max-width:800px) {
+  .graph-page .site-nav { grid-template-columns:1fr auto;gap:12px;padding:14px 20px 0; }
+  .graph-page .nav-controls { grid-column:2;grid-row:1;border:0;padding:0; }
+  .graph-page .nav-links { grid-row:2;grid-column:1/-1;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;padding-bottom:10px;gap:12px; }
+  .graph-page .nav-link { padding:4px 0;font-size:13px; }
+  .graph-page .seo-main { width:calc(100% - 40px);padding:28px 0 44px; }
+  .graph-page .graph-filter-bar { gap:14px;padding:16px; }
+  .graph-page .official-link-list { grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px; }
+  .graph-page .summary-cards { grid-template-columns:1fr;gap:0; }
+  .graph-page .graph-footer { padding:24px 20px; }
+}
+@media(max-width:640px) {
+  .graph-page .graph-filter-bar { grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 12px; }
+  .graph-page .graph-filter-field:first-child { grid-column:1/-1; }
+  .graph-page .chart-wrap { padding:16px 16px 12px; }
+  .graph-page .chart-legend { gap:5px 12px; }
+  .graph-page .official-link-list { grid-template-columns:1fr; }
+  .graph-page .graph-details { scroll-margin-top:124px; }
+}
+@media(max-width:420px) {
+  .graph-page .site-brand { font-size:21px; }
+  .graph-page .site-nav { padding-left:16px;padding-right:16px; }
+  .graph-page .nav-select { font-size:12px;max-width:104px; }
+  .graph-page .nav-links { gap:14px; }
+  .graph-page .seo-main { width:calc(100% - 32px);padding-top:26px; }
+  .graph-page .graph-header { margin-bottom:22px; }
+  .graph-page .graph-filter-bar { padding:14px; }
+  .graph-page .graph-filter-field select { padding-left:8px;padding-right:6px; }
+  .graph-page .related-grid { gap:0 16px; }
+  .graph-page .graph-footer { padding:24px 16px; }
+  /* Narrow native selects cannot wrap their selected option in every browser. */
+  .graph-page:lang(fr) .graph-filter-bar,.graph-page:lang(de) .graph-filter-bar { grid-template-columns:minmax(0,1fr); }
+}
+@media(max-width:360px) {
+  .graph-page .graph-filter-bar { grid-template-columns:minmax(0,1fr); }
+}

@@ -131,12 +131,32 @@
     var index=['increase','decrease','unchanged','rise_and_unchanged','fall_and_unchanged','mixed'].indexOf(comparison.kind);
     return comparisonText(index<0?5:index,comparison);
   }
+  var comparisonHelp={
+    ko:['구간별 변동률 = (11월 − 10월) ÷ 10월 × 100. ‘최소’는 변동폭이 가장 작은 비교 구간을 뜻하며 평균이 아닙니다.','보관 기록 포함: 있음 ({count}개 금액쌍).','보관 기록 포함: 없음. 모든 비교 금액쌍이 원문 검증을 통과했습니다.'],
+    en:['Change per band = (November − October) ÷ October × 100. “At least” is the smallest change magnitude among comparable bands, not an average.','Retained records included: yes ({count} pairs).','Retained records included: no. All compared pairs passed source verification.'],
+    ja:['区分ごとの変化率 = (11月 − 10月) ÷ 10月 × 100。「最低」は比較可能な区分の最小変動幅であり、平均ではありません。','保管記録を含む：はい（{count}組）。','保管記録を含む：いいえ。比較した全金額組が原文検証を通過しています。'],
+    zh:['各区间变化率 = (11月 − 10月) ÷ 10月 × 100。“至少”指可比较区间的最小变化幅度，并非平均值。','包含留存记录：是（{count}组金额）。','包含留存记录：否。所有比较金额均通过原文核验。'],
+    fr:['Variation par tranche = (novembre − octobre) ÷ octobre × 100. « Au moins » indique la plus faible amplitude parmi les tranches comparables, pas une moyenne.','Archives conservées incluses : oui ({count} paires).','Archives conservées incluses : non. Toutes les paires comparées ont passé la vérification des sources.'],
+    de:['Änderung je Tarifgruppe = (November − Oktober) ÷ Oktober × 100. „Mindestens“ bezeichnet die kleinste Änderung vergleichbarer Gruppen, keinen Durchschnitt.','Gespeicherte Aufzeichnungen enthalten: ja ({count} Betragspaare).','Gespeicherte Aufzeichnungen enthalten: nein. Alle verglichenen Betragspaare wurden anhand der Originalquellen geprüft.']
+  };
+  function compactComparisonLabel(comparison){
+    if(comparison.kind==='increase')return '▲ '+comparison.minimum.toFixed(1)+'%';
+    if(comparison.kind==='decrease')return '▼ '+Math.abs(comparison.maximum).toFixed(1)+'%';
+    if(comparison.kind==='unchanged')return '— 0.0%';
+    return (comparison.minimum<0?'▼ '+Math.abs(comparison.minimum).toFixed(1):'0.0')+'% ~ '+(comparison.maximum>0?'▲ '+comparison.maximum.toFixed(1):'0.0')+'%';
+  }
   function landingComparisonHtml(code){
     var comparison=landingComparison(code);if(!comparison)return '';
-    var ko=language(),label=comparisonLabel(comparison),pending=comparison.pairs.filter(function(pair){return !pair.sourceVerified;});
-    var explanation=comparisonText(6,comparison);
-    if(pending.length)explanation+=' '+comparisonText(7,comparison);
-    return '<details class="mini-trend-details" style="font-size:var(--font-caption);line-height:1.6"><summary title="'+esc(explanation)+'" aria-label="'+esc(code+' · '+label+(comparison.archived?' · '+(text('보관 기록 기준','Retained records')):'')+' · '+(text('계산 근거 보기','Calculation details')))+'" style="cursor:pointer;color:#075985"><span class="mini-trend-label">'+esc(label)+'</span>'+(comparison.archived?' <small class="mini-archive-mark" style="color:var(--muted)">'+(text('보관 기록 기준','Retained records'))+'</small>':'')+'</summary><div style="margin-top:5px;color:var(--muted);overflow-wrap:anywhere">'+esc(explanation)+'<ul style="padding-left:16px;margin:5px 0">'+comparison.pairs.map(function(pair){return '<li>'+esc(pair.band+' · '+pair.currency+' '+pair.base.toLocaleString('en-US')+' → '+pair.target.toLocaleString('en-US')+' · '+(pair.percent>0?'+':'')+pair.percent.toFixed(1)+'%')+(!pair.sourceVerified?' · '+(text('10월 보관 기록','October retained record')):'')+'</li>';}).join('')+'</ul></div></details>';
+    var label=comparisonLabel(comparison),pending=comparison.pairs.filter(function(pair){return !pair.sourceVerified;});
+    var help=comparisonHelp[locale()]||comparisonHelp.en;
+    var archive=help[pending.length?1:2].replace('{count}',String(pending.length));
+    var tooltipId='mini-trend-tooltip-'+code;
+    return '<div class="mini-trend-details" data-comparison-kind="'+comparison.kind+'" data-archived="'+comparison.archived+'">'
+      +'<span class="mini-trend-label">'+esc(compactComparisonLabel(comparison))+'</span>'
+      +'<button type="button" class="mini-trend-info" aria-label="'+esc(code+' · '+text('계산 근거 보기','Calculation details'))+'" aria-describedby="'+tooltipId+'">ⓘ</button>'
+      +'<div class="mini-trend-tooltip" role="tooltip" id="'+tooltipId+'"><strong>'+esc(label)+'</strong>'
+      +'<p>'+esc(comparisonText(6,comparison))+'</p><p>'+esc(help[0])+'</p><p>'+esc(archive)+'</p>'
+      +'<ul>'+comparison.pairs.map(function(pair){return '<li>'+esc(pair.band+' · '+pair.currency+' '+pair.base.toLocaleString('en-US')+' → '+pair.target.toLocaleString('en-US')+' · '+(pair.percent>0?'+':'')+pair.percent.toFixed(1)+'%')+(!pair.sourceVerified?' · '+text('10월 보관 기록','October retained record'):'')+'</li>';}).join('')+'</ul></div></div>';
   }
   function landingLabel(state){
     var ko=language();

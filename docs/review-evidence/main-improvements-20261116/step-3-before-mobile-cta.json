@@ -1,0 +1,11 @@
+{
+  "route": {
+    "origin": "ICN",
+    "destination": "NRT",
+    "href": "https://lase.kr/click.php?m=myrealtrip&a=A100704170&l=0000"
+  },
+  "forecast": {
+    "href": "https://linkmoa.kr/click.php?m=myrealtrip&a=A100704170&l=0000"
+  },
+  "forecastOverflow": false
+}

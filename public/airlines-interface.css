@@ -1,0 +1,170 @@
+/* Airline disclosures: compact rows with their source and status always visible. */
+.airlines-page {
+  --blue:#2453a6; --blue-dk:#173b7b; --blue-lt:#edf3fc;
+  --bg:#f7f8fa; --line:#e0e4e9; --text:#172332; --text2:#4e5c6c; --muted:#687585;
+  --font-body:.9375rem; --font-small:.8125rem; --font-caption:.75rem;
+  --font-ui:.875rem; --font-lead:1rem; --font-section:1.125rem;
+  --font-title:clamp(1.625rem,2.6vw,2rem); --font-amount:1.125rem;
+  background:#fff;font-size:var(--font-body);line-height:1.6;
+}
+.airlines-page a { text-underline-offset:3px; }
+.airlines-page :is(button,a,input,select,summary,[tabindex]):focus-visible { outline:2px solid var(--blue);outline-offset:4px; }
+.airlines-page .site-nav {
+  display:grid;grid-template-columns:auto 1fr auto;gap:36px;align-items:center;
+  padding:16px max(24px,calc((100vw - 1092px)/2));min-height:72px;height:auto;
+  background:#fff;border-bottom:1px solid var(--line);box-shadow:none;backdrop-filter:none;
+}
+.airlines-page .site-brand { display:inline-flex;align-items:center;gap:5px;color:var(--text);font-size:23px;font-weight:800;letter-spacing:.08em;text-decoration:none;line-height:1; }
+.airlines-page .brand-mark { width:5px;height:5px;background:var(--blue);align-self:flex-end;margin-bottom:3px; }
+.airlines-page .nav-links { gap:6px; }
+.airlines-page .nav-link { font-size:var(--font-ui);font-weight:500;border-radius:3px;padding:6px 9px;color:var(--text2); }
+.airlines-page .nav-link.active { background:none;color:var(--text);font-weight:700; }
+.airlines-page .nav-link:hover { background:var(--bg);color:var(--blue); }
+.airlines-page .nav-controls { gap:7px; }
+.airlines-page .nav-divider { display:none; }
+.airlines-page .nav-select { font-size:var(--font-small);font-weight:500;border-color:var(--line);border-radius:4px;padding:6px 23px 6px 8px;max-width:125px; }
+
+.airlines-page .main { width:calc(100% - 48px);max-width:1092px;margin:0 auto;padding:36px 0 56px; }
+.airlines-page .airlines-header { background:none;padding:0;margin:0 0 26px; }
+.airlines-page .airlines-header::before { content:none; }
+.airlines-page .airlines-header h1 { font-size:var(--font-title);font-weight:700;color:var(--text);letter-spacing:-.035em;line-height:1.35;margin:0 0 10px; }
+.airlines-page .airlines-intro { font-size:var(--font-body);line-height:1.7;color:var(--text2);margin:10px 0; }
+.airlines-page .airlines-header .page-sub { font-size:var(--font-caption);line-height:1.65;color:var(--muted);margin:0; }
+.airlines-page .toolbar { display:flex;align-items:flex-end;gap:16px 24px;flex-wrap:wrap;margin:0 0 16px; }
+.airlines-page .airlines-search-field { flex:0 1 280px;min-width:0;display:flex;flex-direction:column;gap:7px; }
+.airlines-page .airlines-search-field label { font-size:var(--font-caption);font-weight:600;line-height:1.5;color:var(--text2); }
+.airlines-page .search-input { width:100%;min-width:0;min-height:44px;background:#fff;border:1px solid #ccd4de;border-radius:4px;padding:9px 11px;color:var(--text);font:400 16px/1.4 var(--sans); }
+.airlines-page .search-input:focus { border-color:var(--blue); }
+.airlines-page .filter-tabs { display:flex;gap:0 18px;flex-wrap:wrap;min-width:0;border-bottom:1px solid var(--line); }
+.airlines-page .ftab { min-height:44px;padding:9px 0;border:0;border-bottom:2px solid transparent;border-radius:0;background:none;color:var(--muted);font-size:var(--font-small);font-weight:500;line-height:1.65; }
+.airlines-page .ftab:hover { background:none;color:var(--blue);border-color:transparent; }
+.airlines-page .ftab.active { background:none;color:var(--text);font-weight:700;border-color:var(--text); }
+.airlines-page .count-label { margin-left:auto;padding-bottom:12px;white-space:nowrap;font-size:var(--font-caption);font-variant-numeric:tabular-nums; }
+.airlines-page .airlines-list-note { margin:0 0 14px;font-size:var(--font-caption);line-height:1.7;color:var(--muted); }
+
+.airlines-page .table-wrap { min-width:0;background:#fff;border:1px solid var(--line);border-radius:4px;overflow:visible;box-shadow:none; }
+.airlines-page :is(.table-head,.row-main) { display:grid;grid-template-columns:42px minmax(150px,1.5fr) minmax(125px,1.15fr) minmax(78px,.7fr) minmax(100px,1fr) minmax(130px,1.2fr);gap:14px; }
+.airlines-page .table-head { padding:12px 18px;background:var(--bg);border-bottom:1px solid var(--line);border-radius:3px 3px 0 0; }
+.airlines-page .table-head .th { font-size:var(--font-caption);font-weight:500;line-height:1.6;letter-spacing:0;text-transform:none;overflow-wrap:anywhere; }
+.airlines-page .airline-row { padding:20px 18px;border-top:1px solid var(--line);background:#fff;user-select:text; }
+.airlines-page .airline-row:first-child { border-top:0; }
+.airlines-page .airline-row:hover,.airlines-page .airline-row.is-open { background:#fafbfc; }
+.airlines-page .row-main { align-items:start; }
+.airlines-page .row-main > * { min-width:0;overflow-wrap:anywhere; }
+.airlines-page .cell-code { display:inline-block;width:36px;padding:4px 0;background:var(--bg);border:1px solid var(--line);border-radius:3px;font-size:var(--font-caption);font-weight:600;line-height:1.5; }
+.airlines-page .al-name-cell .al-name { font-size:var(--font-body);font-weight:600;line-height:1.6; }
+.airlines-page .expand-hint { display:inline-flex;align-items:baseline;gap:5px;max-width:100%;padding:2px 0;margin-top:7px;border:0;border-radius:0;background:none;font-family:var(--sans);font-size:var(--font-caption);font-weight:500;line-height:1.6;color:var(--text2);text-align:left;text-decoration:underline;text-underline-offset:3px;white-space:normal; }
+.airlines-page .expand-hint:hover { color:var(--blue); }
+.airlines-page .expand-hint .arr { flex:none;text-decoration:none; }
+.airlines-page .airline-row.is-open .expand-hint .arr { transform:none; }
+.airlines-page .cell-amount { font-variant-numeric:tabular-nums; }
+.airlines-page .cell-amount > span:first-child { font-size:var(--font-amount);line-height:1.45;white-space:nowrap; }
+.airlines-page .cell-amount > div { line-height:1.6; }
+.airlines-page .cell-amount .orig-badge { white-space:nowrap; }
+.airlines-page .cell-period { font-size:var(--font-caption);font-family:var(--sans);line-height:1.7;color:var(--text2);font-variant-numeric:tabular-nums; }
+.airlines-page .cell-status { color:var(--text2);font-size:var(--font-caption);line-height:1.75; }
+.airlines-page .status-badge { max-width:100%;border-radius:3px;font-size:var(--font-caption);font-weight:500;letter-spacing:0;white-space:normal; }
+.airlines-page .cell-source { font-size:var(--font-caption);line-height:1.7;color:var(--muted); }
+.airlines-page .cell-src-link { font-size:var(--font-small);font-weight:500;line-height:1.7; }
+.airlines-page .cell-note { font-size:var(--font-caption);line-height:1.6; }
+
+.airlines-page .detail-row { min-width:0;padding:20px 18px 24px;border-top:1px solid var(--line);background:var(--bg);scroll-margin-top:96px; }
+.airlines-page .detail-header { gap:12px 20px;margin-bottom:14px; }
+.airlines-page .detail-title { color:var(--text);font-size:var(--font-ui);font-weight:600;line-height:1.7;letter-spacing:0;overflow-wrap:anywhere; }
+.airlines-page .detail-src-links { gap:8px 16px; }
+.airlines-page .detail-src-link { padding:2px 0;background:none;border:0;border-radius:0;font-size:var(--font-caption);font-weight:500;color:var(--blue);text-decoration:underline; }
+.airlines-page .compare-scroll { width:100%;max-width:100%;min-width:0;overflow-x:auto;overscroll-behavior-x:contain;-webkit-overflow-scrolling:touch; }
+.airlines-page table.cmp-tbl { width:100%;min-width:640px;background:#fff;border-collapse:collapse;font-size:var(--font-small);line-height:1.6;font-variant-numeric:tabular-nums; }
+.airlines-page table.cmp-tbl th { padding:11px 12px;background:#eef1f5;color:var(--text2);font-size:var(--font-caption);font-weight:500;letter-spacing:0;border-top:1px solid var(--line);border-bottom:1px solid #cbd2dc; }
+.airlines-page table.cmp-tbl td { padding:12px;font-size:var(--font-small);border-bottom:1px solid var(--line); }
+.airlines-page table.cmp-tbl :is(th,td):nth-child(2) { display:table-cell; }
+.airlines-page table.cmp-tbl td:nth-child(2) { min-width:180px;max-width:260px;font-size:var(--font-caption);line-height:1.7; }
+.airlines-page table.cmp-tbl tr:hover td { background:#fafbfc; }
+.airlines-page .cmp-band { font-size:var(--font-small);font-weight:600; }
+.airlines-page .cmp-routes { min-width:160px;max-width:260px;font-size:var(--font-caption);line-height:1.7; }
+.airlines-page :is(.diff-up,.diff-dn) { font-weight:600; }
+.airlines-page .detail-note { margin-top:12px;padding-top:12px;font-size:var(--font-caption);line-height:1.75;overflow-wrap:anywhere; }
+.airlines-page .orig-badge { font-size:var(--font-caption);font-family:var(--sans);line-height:1.7; }
+
+.airlines-page .airlines-guide { min-width:0;margin:28px 0 0;padding:0;border-top:1px solid var(--line);scroll-margin-top:96px; }
+.airlines-page .airlines-guide > summary { display:list-item;cursor:pointer;padding:19px 0;margin:0;font-size:var(--font-ui);font-weight:600;line-height:1.6;color:var(--text); }
+.airlines-page .airlines-guide > summary::marker { color:var(--muted); }
+.airlines-page .airlines-guide[open] { padding-bottom:20px; }
+.airlines-page .airlines-guide :is(.airlines-guide-intro,.surcharge-summary,.surcharge-analysis,.kr-only-note,.beta-banner) { background:none;border:0;border-radius:0;box-shadow:none;padding:12px 0;margin:0;max-width:none; }
+.airlines-page .airlines-guide :is(h2,h3,#introTitle) { font-size:var(--font-ui);font-weight:600;color:var(--text);line-height:1.6;margin-bottom:6px; }
+.airlines-page .airlines-guide :is(p,li,#introBody,.kr-only-note) { font-size:var(--font-small);color:var(--text2);line-height:1.75; }
+.airlines-page .airlines-guide .surcharge-intro { padding:12px 0;margin:0;font-size:var(--font-small); }
+.airlines-page .airlines-guide .beta-banner-inner { padding:0;gap:10px;background:none;border:0;border-radius:0; }
+.airlines-page .airlines-guide .beta-banner-title { font-size:var(--font-ui);font-weight:600;color:var(--text); }
+.airlines-page .airlines-guide .beta-badge { padding:1px 5px;border:1px solid var(--line);border-radius:3px;background:var(--bg);color:var(--text2);font-size:var(--font-caption);font-weight:600;letter-spacing:0; }
+.airlines-page .airlines-guide .beta-banner-desc { font-size:var(--font-small);color:var(--text2); }
+.airlines-page .airlines-guide .beta-banner-note { border-top:0;padding-top:0;font-size:var(--font-caption);color:var(--muted); }
+.airlines-page .airlines-guide .status-strip { padding:12px 0;margin:0;background:none;border:0;border-radius:0;font-size:var(--font-caption);line-height:1.7; }
+.airlines-page .airlines-related { margin:0;padding:22px 0 0;border:0;border-top:1px solid var(--line);background:none; }
+.airlines-page .airlines-related h2 { margin:0 0 10px;font-size:var(--font-ui);font-weight:600;line-height:1.6; }
+.airlines-page .airlines-related > div { display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0 24px; }
+.airlines-page .airlines-related > div + div { margin-top:16px; }
+.airlines-page .airlines-related a { min-width:0;display:block;padding:10px 0;border:0;border-bottom:1px solid var(--line);border-radius:0;background:none;font-size:var(--font-small);font-weight:500;line-height:1.7;color:var(--text2);text-decoration:none;overflow-wrap:anywhere; }
+.airlines-page .airlines-related a:hover { color:var(--blue); }
+.airlines-page .airlines-footer { display:flex;flex-wrap:wrap;align-items:flex-start;justify-content:space-between;gap:20px;padding:26px max(24px,calc((100vw - 1092px)/2));margin:0;border-top:1px solid var(--line);background:var(--bg); }
+.airlines-page .airlines-footer p { max-width:680px;margin:0;font-size:var(--font-caption);color:var(--muted);line-height:1.7; }
+.airlines-page .footer-links { display:flex;gap:12px 20px;flex-wrap:wrap; }
+.airlines-page .footer-links a { font-size:var(--font-caption);color:var(--muted);text-decoration:none; }
+
+@media(max-width:1050px) {
+  .airlines-page .site-nav { gap:18px; }
+  .airlines-page .nav-link { padding:6px; }
+}
+@media(max-width:980px) {
+  .airlines-page .table-head { grid-template-columns:36px minmax(0,1fr) minmax(110px,.5fr);gap:12px; }
+  .airlines-page .table-head .th:nth-child(n+4) { display:none; }
+  .airlines-page .row-main { grid-template-columns:36px minmax(0,1fr) minmax(110px,.5fr);gap:8px 12px; }
+  /* The old compact layout hid month, verification status and original sources. */
+  .airlines-page .row-main > :nth-child(n+4) { display:block; }
+  .airlines-page .cell-month { grid-column:2;grid-row:2;margin-top:4px; }
+  .airlines-page .cell-status { grid-column:3;grid-row:2;margin-top:4px; }
+  .airlines-page .cell-source { grid-column:2/-1;grid-row:3;padding-top:2px; }
+  .airlines-page .cell-amount { text-align:right; }
+  .airlines-page .table-head .th:nth-child(3) { text-align:right; }
+  .airlines-page .cell-status { text-align:right; }
+}
+@media(max-width:800px) {
+  .airlines-page .site-nav { grid-template-columns:1fr auto;gap:12px;padding:14px 20px 0; }
+  .airlines-page .nav-controls { grid-column:2;grid-row:1;border:0;padding:0; }
+  .airlines-page .nav-links { grid-row:2;grid-column:1/-1;flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;padding-bottom:10px;gap:12px; }
+  .airlines-page .nav-link { padding:4px 0;font-size:13px; }
+  .airlines-page .main { width:calc(100% - 40px);padding:28px 0 44px; }
+  .airlines-page .airlines-search-field { flex-basis:100%; }
+  .airlines-page .filter-tabs { flex:1 1 auto; }
+  .airlines-page .toolbar { gap:12px 20px; }
+  .airlines-page .airlines-related > div { grid-template-columns:repeat(2,minmax(0,1fr));gap:0 20px; }
+  .airlines-page .airlines-footer { padding:24px 20px; }
+}
+@media(max-width:640px) {
+  .airlines-page .table-head,.airlines-page .airline-row { padding:14px 12px; }
+  .airlines-page :is(.table-head,.row-main) { grid-template-columns:30px minmax(0,1fr) auto;column-gap:10px; }
+  .airlines-page .cell-code { width:30px;font-size:11px;padding:3px 0; }
+  .airlines-page .cell-amount { max-width:140px; }
+  .airlines-page .cell-amount > span:first-child { font-size:var(--font-lead); }
+  .airlines-page .al-name-cell .al-name { font-size:var(--font-ui); }
+  .airlines-page .cell-month { grid-column:1/3; }
+  .airlines-page .cell-source { grid-column:1/-1; }
+  .airlines-page .detail-row { padding:18px 12px 20px;scroll-margin-top:124px; }
+  .airlines-page .detail-header { align-items:flex-start;flex-direction:column; }
+  .airlines-page .airlines-guide { scroll-margin-top:124px; }
+  .airlines-page .filter-tabs { gap:0 14px; }
+  .airlines-page .count-label { padding-bottom:0; }
+}
+@media(max-width:420px) {
+  .airlines-page .site-brand { font-size:21px; }
+  .airlines-page .site-nav { padding-left:16px;padding-right:16px; }
+  .airlines-page .nav-select { font-size:12px;max-width:104px; }
+  .airlines-page .nav-links { gap:14px; }
+  .airlines-page .main { width:calc(100% - 32px);padding-top:26px; }
+  .airlines-page .airlines-header { margin-bottom:22px; }
+  .airlines-page .filter-tabs { flex-basis:100%;gap:0 14px; }
+  .airlines-page .count-label { margin-top:-4px; }
+  .airlines-page .cell-amount { max-width:120px; }
+  .airlines-page .airlines-related > div { grid-template-columns:minmax(0,1fr); }
+  .airlines-page .airlines-footer { padding:24px 16px; }
+}

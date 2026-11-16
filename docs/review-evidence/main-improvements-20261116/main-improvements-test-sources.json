@@ -1,0 +1,31 @@
+{
+  "recordedAt": "2026-11-15T23:50:38.958Z",
+  "phase": "Final stage 3 CTA implementation, after stage 2 consent UI",
+  "commands": [
+    {
+      "command": "node scripts/verify_main_improvements.cjs --cta-only",
+      "exitCode": 0,
+      "log": "main-improvements-test.log"
+    },
+    {
+      "command": "node scripts/verify_analytics_privacy.cjs",
+      "exitCode": 0,
+      "log": "analytics-privacy-final-test.log"
+    }
+  ],
+  "stage1": {
+    "log": "main-improvements-stage1-test.log",
+    "note": "Successful stage 1 lines retained from the preceding full run. Stage 1 source and assertions did not change during the final CTA-only rerun."
+  },
+  "scope": "Local browser regression. External, affiliate, analytics and API requests blocked. No production GA4 receipt or affiliate booking claim.",
+  "knownIssue": "Pre-existing German forecastMarketTitle text extends the 320px page to 324px. No source fix was retained; CTA boxes and text fit at all tested widths.",
+  "sha256": {
+    "public/index.html": "47b01293210b2e590272753aaec9a81726c39df69dceeee727a22ddbef7f0233",
+    "public/home.css": "9fb2ce017b62fd124df7da9e95ca1c695c34d4f919e53715783dfeb76c9ab7c1",
+    "public/forecast.html": "0668e597db3731e1b5ba8dba9674a276b45467b087efe3cbf67791577df86bed",
+    "public/fare-compare-copy.js": "719f05984ed2620e2c7dbe670b9fe5c094eb8a0a7243f121a7f58a14073c9a50",
+    "public/_analytics.js": "1327df44c87af8995478d23a0c51d6ab40917d45204021994084b713f9a358b1",
+    "scripts/verify_main_improvements.cjs": "72c9aba3d82917f68942b0542724b9f0727afac4e6afd673d4d63eb76a7922eb",
+    "scripts/verify_analytics_privacy.cjs": "3339c895f65d6d02cfbf225d96e7eeeb09c9ed8c7935b58db3621886195914c9"
+  }
+}

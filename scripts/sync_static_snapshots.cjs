@@ -23,7 +23,9 @@ function candidates(html){
       const node=stack[i];stack.length=i;
       if(!node.selector)continue;
       const content=html.slice(node.start,m.index);
-      if(/<(?:script|style|input|select|button|form|canvas)\b|\bonclick\s*=/i.test(content))continue;
+      // The overview's info buttons contain no user state; retain its public notice snapshot.
+      const checkedContent=node.selector==='[id="miniGrid"]'?content.replace(/<button\b[^>]*class="mini-trend-info"[^>]*>[\s\S]*?<\/button>/g,''):content;
+      if(/<(?:script|style|input|select|button|form|canvas)\b|\bonclick\s*=/i.test(checkedContent))continue;
       found.push({...node,end:m.index,content});
     }else if(!/^(?:area|base|br|col|embed|hr|img|input|link|meta|param|source|track|wbr)$/.test(tag)&&!m[0].endsWith('/>')){
       const id=attr(m[0],'id'),key=attr(m[0],'data-i18n')||attr(m[0],'data-i18n-html');
@@ -51,7 +53,7 @@ async function main(){
       await page.goto(origin+'/'+name+'.html',{waitUntil:'domcontentloaded'});await page.waitForTimeout(4600);
       if(errors.length)throw new Error(name+': '+errors.join('; '));
       const live=await page.evaluate(selectors=>({title:document.title,description:document.querySelector('meta[name="description"]')?.content,
-        nodes:selectors.map(s=>{const el=document.querySelector(s);if(!el||el.closest('#aeroPrivacy,[data-personalized]')||el.querySelector('input,select,button,form,canvas,script,style,[onclick]'))return null;return el.innerHTML;}),
+        nodes:selectors.map(s=>{const el=document.querySelector(s);if(!el||el.closest('#aeroPrivacy,[data-personalized]')||el.querySelector(el.id==='miniGrid'?'input,select,button:not(.mini-trend-info),form,canvas,script,style,[onclick]':'input,select,button,form,canvas,script,style,[onclick]'))return null;return el.innerHTML;}),
         schemas:[...document.querySelectorAll('head script[type="application/ld+json"]')].map(e=>({id:e.id,json:JSON.parse(e.textContent)}))
       }),nodes.map(n=>n.selector));
       const changes=nodes.map((n,i)=>({...n,value:live.nodes[i]})).filter(n=>n.value!==null&&n.value!==n.content).sort((a,b)=>a.start-b.start||b.end-a.end);

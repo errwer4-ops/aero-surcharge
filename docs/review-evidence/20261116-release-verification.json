@@ -1,0 +1,183 @@
+{
+  "startedAt": "2026-11-16T01:01:40.991Z",
+  "finishedAt": "2026-11-16T01:08:16.991Z",
+  "runtime": {
+    "node": "v24.14.0",
+    "platform": "win32",
+    "playwright": "1.59.1"
+  },
+  "baseCommit": "f4ddb458ce69ba6ce62c80635a5e3fff25291ecb",
+  "sourceDigest": "4bdcd5bc494a70a2d6c0c39495f07a7afe7c7af4322529a83b8bb84542741468",
+  "finishedSourceDigest": "4bdcd5bc494a70a2d6c0c39495f07a7afe7c7af4322529a83b8bb84542741468",
+  "sourceUnchanged": true,
+  "passed": true,
+  "checks": [
+    {
+      "name": "native",
+      "command": [
+        "node",
+        "--test",
+        "tests/ads-loader.test.cjs",
+        "tests/calculator.test.cjs",
+        "tests/data-validation.test.cjs",
+        "tests/log-redaction.test.cjs",
+        "tests/market-source-provenance.test.cjs",
+        "tests/myrealtrip-security.test.cjs",
+        "tests/parser-input-gate.test.cjs",
+        "tests/pipeline-safety.test.cjs",
+        "tests/release-readiness.test.cjs",
+        "tests/renderer-source-copy.test.cjs",
+        "tests/source-provenance.test.cjs",
+        "tests/travel-planner.test.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 3435,
+      "log": "native.log"
+    },
+    {
+      "name": "static",
+      "command": [
+        "node",
+        "scripts/verify_static_sources.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 267,
+      "log": "static.log"
+    },
+    {
+      "name": "data",
+      "command": [
+        "node",
+        "scripts/validate_data.js"
+      ],
+      "exitCode": 0,
+      "durationMs": 92,
+      "log": "data.log"
+    },
+    {
+      "name": "service-data",
+      "command": [
+        "node",
+        "scripts/validate_service_data.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 112,
+      "log": "service-data.log"
+    },
+    {
+      "name": "urls",
+      "command": [
+        "node",
+        "scripts/audit_seo_urls.cjs",
+        "--browser",
+        "--pages=news,forecast,fuel-surcharge-calculator",
+        "--report=C:\\Users\\jiwoo\\OneDrive\\Desktop\\사이드\\aero-v37-fixed\\aero-v36\\artifacts\\review-verification\\2026-11-16T01-01-40-989Z\\url-runtime.json"
+      ],
+      "exitCode": 0,
+      "durationMs": 19414,
+      "log": "urls.log"
+    },
+    {
+      "name": "myrealtrip",
+      "command": [
+        "node",
+        "scripts/verify_myrealtrip_integration.js"
+      ],
+      "exitCode": 0,
+      "durationMs": 124,
+      "log": "myrealtrip.log"
+    },
+    {
+      "name": "platform",
+      "command": [
+        "node",
+        "scripts/verify_platform.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 44455,
+      "log": "platform.log"
+    },
+    {
+      "name": "home-period",
+      "command": [
+        "node",
+        "scripts/verify_home_period.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 59880,
+      "log": "home-period.log"
+    },
+    {
+      "name": "home-interactions",
+      "command": [
+        "node",
+        "scripts/verify_home_interactions.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 10060,
+      "log": "home-interactions.log"
+    },
+    {
+      "name": "news-loading",
+      "command": [
+        "node",
+        "scripts/verify_news_loading.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 68287,
+      "log": "news-loading.log"
+    },
+    {
+      "name": "graph-notices",
+      "command": [
+        "node",
+        "scripts/verify_graph_notices.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 25075,
+      "log": "graph-notices.log"
+    },
+    {
+      "name": "locale-period",
+      "command": [
+        "node",
+        "scripts/verify_locale_period.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 77259,
+      "log": "locale-period.log"
+    },
+    {
+      "name": "planner",
+      "command": [
+        "node",
+        "scripts/verify_planner.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 3810,
+      "log": "planner.log"
+    },
+    {
+      "name": "calculator",
+      "command": [
+        "node",
+        "scripts/verify_calculator_platform.cjs"
+      ],
+      "exitCode": 0,
+      "durationMs": 13629,
+      "log": "calculator.log"
+    },
+    {
+      "name": "seo-snapshot",
+      "command": [
+        "node",
+        "scripts/sync_static_snapshots.cjs",
+        "--check"
+      ],
+      "exitCode": 0,
+      "durationMs": 69474,
+      "log": "seo-snapshot.log"
+    }
+  ],
+  "scope": "Local full release gate. External account reception, advertising/CMP and affiliate settlement are not verified."
+}

@@ -37,7 +37,7 @@
   if(release) latest = Object.assign({}, latest, release.numbers);
   window.AERO_MARKET_NUMBERS_LATEST = latest;
   window.AERO_MARKET_SNAPSHOTS = Object.assign({}, window.AERO_MARKET_SNAPSHOTS || {}, {'2026-09-04': window.AERO_MARKET_NUMBERS_20260904});
-  if(release) window.AERO_MARKET_SNAPSHOTS['2026-09-07'] = latest;
+  if(release && !window.AERO_MARKET_SNAPSHOTS['2026-09-07'] && window.AERO_MARKET_NUMBERS_20260907) window.AERO_MARKET_SNAPSHOTS['2026-09-07'] = window.AERO_MARKET_NUMBERS_20260907;
 
   function normalizeLang(value){
     var v = String(value || localStorage.getItem('aero_lang') || document.documentElement.lang || 'ko').toLowerCase();
@@ -384,9 +384,18 @@
 
   function renderNewsStaticSections(p){
     var updatedLabel = ({ko:'최종 업데이트', en:'Last updated', ja:'最終更新', zh:'最后更新', fr:'Dernière mise à jour', de:'Zuletzt aktualisiert'}[lang()] || 'Last updated');
-    var mainSummary = Array.prototype.filter.call(document.querySelectorAll('.summary-card'), function(el){
+    var mainSummary = document.getElementById('newsMarketSummary') || Array.prototype.filter.call(document.querySelectorAll('.summary-card'), function(el){
       return el.id !== 'sep04NewsBrief' && !el.classList.contains('sep04-news-brief') && !el.closest('.official-summary-box');
     })[0];
+    // Earlier updates can remove a summary containing their retired copy.
+    // The current renderer owns the summary inside the news context guide.
+    var contextGuide = document.querySelector('#newsContextGuide .news-guide-content');
+    if(!mainSummary && contextGuide){
+      mainSummary = document.createElement('div');
+      mainSummary.id = 'newsMarketSummary';
+      mainSummary.className = 'summary-card';
+      contextGuide.insertBefore(mainSummary, contextGuide.firstChild);
+    }
     if(mainSummary){
       mainSummary.innerHTML = '<div class="summary-card-title">'+esc(p.newsTitle)+'</div>'
         + '<div class="summary-updated">'+esc(updatedLabel)+': '+esc(latest.asOf)+' · '+esc(p.rows[0][1])+'</div>'
@@ -601,7 +610,7 @@
       var related=document.getElementById('newsRelatedLinksBox');
       if(related){
         related.firstElementChild.textContent=p.ui[1];
-        related.querySelectorAll('a').forEach(function(a,i){a.textContent=[p.title,p.ui[6],p.ui[2],p.ui[7],p.ui[4],p.ui[3]][i];if(i===2)a.href='fuel-surcharge-graph.html';});
+        related.querySelectorAll('a').forEach(function(a,i){a.textContent=[p.title,p.ui[6],p.ui[2],window.t('nav.calc'),p.ui[4],p.ui[3]][i];if(i===2)a.href='fuel-surcharge-graph.html';});
       }
     }
     syncSurface();

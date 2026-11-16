@@ -1,0 +1,103 @@
+# 2026-11-16 시장·뉴스·전망 업데이트
+
+## 실행 1 — 정기 아침 작업
+
+- 자료 기준은 **2026-11-16 09:00 KST**다. 자동 실행 신호는09:04:00, 첫 실제 시계 확인은09:04:12였으며 오늘 열람을09시 이전 열람으로 표시하지 않는다. 게시일·수정시각·HTTP Last-Modified·이전 실제 관측 근거를 구분해 cutoff 가용성을 판정했다.
+- 시작 HEAD는 `f4ddb458ce69ba6ce62c80635a5e3fff25291ecb` (`add 20261112 news and forecast`)다. 기존 **20개 수정 파일·10개 미추적 항목(디렉터리 포함)**의 홈 비교 툴팁, 동의 배너, 항공권 CTA, 항공사·그래프·뉴스 디자인과 검사 변경을 보존한다. 전체451개 파일의 시작 해시와 텍스트 원본,161개 뉴스·53개 런타임 스냅샷을 ignored `artifacts/review-verification/market-nov16/`에 보관했다.
+- 상위/저장소 AGENTS.md 없음. 최신 UPDATE, 월별 작업 절차, PIPELINE_README, 원문 검증·운영 검토 문서와 사용자의11/16 화면 개선 검토 자료를 읽었다. 과거 문서의 RATES 갱신 예시보다 이번 요청의 가격 성격 구분을 우선해, 시장 종가로 기존 비교 환율·항공사 공시액을 재계산하지 않는다.
+- 11/13은 일부 조사 파일만 저장된 중단 실행이며 완료 보고서·서비스 반영은 없다. 당시 실제 저장 자료 및 대화 도구기록을 오늘 다시 대조한 경우에만 명시적 과거 관측 근거로 사용했다. 과거 작업이 완료됐다고 소급 기록하지 않는다.
+- 이번 실행은 **로컬 수정·검증만**이다. commit·push·운영 배포·제3자 메시지, ExchangeRate-API 호출, mock 수집값의 공식 게시를 하지 않는다.
+
+## 시장 자료와 가격 성격
+
+| 항목 | 반영한 관측값 | 원문·공개 근거 |
+|---|---|---|
+| USD/KRW | **1,336.7 KRW/USD, +6.0원**,11/13 **15:30 서울 주간 종가** | [아시아경제](https://view.asiae.co.kr/article/2026111315345800319),11/13 15:34:58 KST 게시·수정. [뉴시스](https://www.newsis.com/view/NISX20261113_0003867424),15:33:59 게시 교차 확인 |
+| Brent | **95.84 USD/bbl, +0.02(+0.02%)**,2027년1월물,11/13 **선물 정산** | [연합인포맥스](https://news.einfomax.co.kr/news/articleView.html?idxno=4444752),11/14 07:07:23 KST 게시,수정07:08(분 정밀도). 직접HTTP200 본문으로 가격·월물 확인 |
+| WTI | **88.56 USD/bbl, -0.18(-0.20%)**,2026년12월물,11/13 **선물 정산** | 같은 인포맥스 원문 및 [Reuters/MarketScreener](https://www.marketscreener.com/news/oil-prices-set-for-second-weekly-decline-as-trump-sticks-with-iran-blockade-ce785ed9db81f121) 값 대조 |
+
+환율 +6.0은11/12 대비 일변화다. 사이트의 직전11/11 참고값과 차이를 하루 변동으로 쓰지 않는다. 원유는 금요일 일별 **혼조**이며 이전 사이트 값보다 높다는 이유로 두 종목 모두 당일 상승이라고 하지 않는다. 거래소 정산표 직접 검증과 보도 원문 검증도 구분한다.
+
+Reuters 재배포 페이지의 초기 게시시각과 JSON-LD 수정시각은 같으나 화면 수정시각은 더 늦다. 이를 정산값의 최초 공개시각으로 쓰지 않고 별도 인포맥스 원문으로 cutoff 이전 가용성을 입증했다. [이데일리의 야간·NDF 기사](https://www3.edaily.co.kr/News/Read?mediaCodeNo=257&newsId=01338246645646376)는 HTML +09와 JSON-LD +08의 시간대가 충돌해 야간1337.60/NDF1335.90을 이번 지표로 채택하지 않았다.
+
+### 항공유·MOPS의 보류와 과거 참고
+
+- [CommodityScope 상세](https://commodityscope.com/prices/singapore-jet-kerosene)·[분류표](https://commodityscope.com/prices/jet-fuel) 현재11/13 평가 **151.15 USD/bbl**은 오늘 재확인했지만 최초 열람이09시 이후이고 게시시각/Last-Modified가 없어 **이번 cutoff 최신값은 null**이다. 평가일이나 상대 검색 게시일만으로 최신 공개시각을 확정하지 않는다. 직접HTTP403도 기록했다.
+- 같은 과거 표의 **11/11 147.37(+1.39,+1.0%,11/10 대비)**를 재대조해 **과거 민간 FOB 참고값**으로만 표시한다. 이는11/13 중단 실행의08:57:05~08:57:15 실제 시계 사이 web 검색에서 반환된 값이다. 이어08:57:15~18 원문 web-open이 있었지만 당시 성공 HTTP HTML을 저장한 것은 아니다. 오늘 작성한 `jet-nov13-prior-observation.json`은 이전 도구기록의 전사이며 새 사전 관측을 만들어낸 파일이 아니다. Platts MOPS·현재 가격·매매 가능한 호가가 아니다.
+- [IATA/Platts 주간표](https://www.iata.org/en/publications/economics/fuel-monitor/)와 [원본 이미지](https://www.iata.org/contentassets/9036deaf9c984009a3515fd6aa1c5e24/fuel_price_analysis.jpg)는 여전히 **11/6 종료 주간 세계178.95(-6.6%), 아시아·오세아니아163.26(-6.0%) USD/bbl**다. 직접HTTP200·이미지 시각 확인, Last-Modified11/9 02:24:57Z, 이전과 동일 SHA256을 기록했다.11/13 종료 주간값으로 날짜를 바꾸지 않는다.
+- [10/16 뉴시스 대한항공 발표 보도](https://mobile.newsis.com/view_amp.html?ar_id=NISX20261016_0003828757)의11월27단계,9/16~10/15 MOPS173.89 USD/bbl·414.03 cents/gal을 다시 확인했다. 대한항공 기준의 보도 원문 검토이며 모든 항공사의 공통 단계나12월 공식 평균이 아니다.
+
+## 해상·공급·항공유 뉴스
+
+1. **EIA 미국 항공유 재고:** [11/12 공식 보관 CSV](https://www.eia.gov/petroleum/supply/weekly/archive/2026/2026_11_12/download/table6.csv)와 [현재 CSV](https://ir.eia.gov/wpsr/table6.csv)는11/6 종료 주간 **41.979 million barrels**,전주10/30 **41.782**,차이 **+0.197**이다.11/13 실제 저장본과 오늘 보관/현재 파일 SHA256도 같다. 예정 발표11/12 12:00 Eastern을 실제 최초 게시시각으로 쓰지 않는다. 재고 stock이며 생산·수율·싱가포르 평가가 아니다.
+2. **Windward 통항:** [11/14판](https://insights.windward.ai/)은 본문에 명시된 **11/12 18:00~11/13 18:00 UTC,24시간** 동안9회(진입5·출항4),AIS관측0·미관측 분류9회,그중 위성만으로 탐지2회를 제시했다.2회를9회에 더하지 않는다. HTTP Last-Modified11/13 21:41:58Z는 cutoff 이전이며 최초 게시시각은null이다. 업체 관측이며 전수 통항·원유 b/d·안전 정상화가 아니다. AIS 미관측의 의도를 추정하지 않는다.
+3. **IEA 11월 OMR:** [공식 공개 요약](https://www.iea.org/reports/oil-market-report-november-2026),발행일11/13(시각 미제공).10월 세계 원유를 포함한 전체 석유공급 **105.4 million b/d(+2.3)**,오만 제외 걸프 전체 석유수출 **18.4 million b/d**,그중 원유 **15 million b/d**다. 각각 전쟁 전보다26% 낮은 전체수출·전쟁 전82% 수준의 원유수출이며 서로 다른 기준이다. 월간 생산·수출 회복을 현재 호르무즈 유량·선박안전 회복·항공유 단독 공급으로 바꾸지 않는다.4분기 공급초과는 기관 전망이며 제품 부족과 공격 위험도 함께 명시했다.
+4. **UKMTO 공식 주간 보고서:** [11/13 제작 공개 PDF](https://www.ukmto.org/-/media/ukmto/products/20261113-ukmto_vra_overview_u.pdf?rev=f163325bceb8457fa7f891c6c48dafa5),사건 관측11/5~11/11 **8건(공격7·권고1)**,지역별호르무즈5·오만만1·아라비아만2. 제작일과 최초 게시시각은 구분한다. 검색의 이전 날짜 가용성 및 공식 계정 배포11/13 17:13UTC의 [원글](https://x.com/UK_MTO/status/2121290471292977619)을 연결한 미러 열람으로 사전 공개 근거를 보강했다. 정확 최초 게시시각은null이며 원글을 직접 읽었다고 주장하지 않는다. 직접HTTP403,웹 도구로9쪽 원문을 읽었고 유효한 로컬PDF는 없다. 주간 통항139출항/169진입은 AIS와 미국NCAGS 주장 혼합이며 일부를 UKMTO가 독립 검증하지 못해 확정 지표로 쓰지 않았다.
+5. **이란 해군의 기뢰 피격 주장:** [Reuters/AOL](https://www.aol.com/articles/irans-navy-says-three-tankers-103107000.html),11/14 10:31:07Z 게시·22:54:12Z 수정. 이란 측은11/14 유조선3척이 기뢰에 피격됐다고 주장했으나 Reuters는 즉시 독립 확인하지 못했다. 실제 사건일은null,주장된 사건일11/14를 따로 기록한다. 선박명·사상자·화물량·공급 손실을 추정하지 않고 IMO/UKMTO 건수에 더하지 않는다.
+
+**IMO:** 오늘 [공식 목록](https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx)은 동일한 as-at11/11 표기에서136건·25명으로 바뀌어 있었으나 첫 관측09:05:06.730이고 공개/수정시각이 없어 **cutoff 최신누계는null**이다.11/13 08:57:37.228에 실제 저장한134건·25명(as-at11/11)은 **과거 저장 참고**로만 표시한다. 변경된 목록의 사건일을 갱신 시각으로 사용하지 않는다.
+
+[OPEC11/1 결정](https://www.opec.org/pr-detail/620-1-november-2026.html)의12월 목표 유지·다음 회의11/29와 [11월 MOMR](https://publications.opec.org/momr)의10월DoC 생산41.23(+2.04) million b/d를 재확인했다. 새 정책·새 기사로 재발행하지 않는다. [EIA11월 STEO](https://www.eia.gov/outlooks/steo/)도11/10 발표·11/5 입력 완료의 기존 조건부 현물 전망이며 최신 선물 정산과 구분한다. EIA 최신RSS11/13 항목은 수력발전으로 항공유 뉴스에 넣지 않았다.
+
+## 항공사 공시와12월 전망
+
+- 9개사11월 현재·12월 차기 한국발 국제선 여객 공지를 재검색했다. KE/OZ/YP/BX/TW는 기존11월 본문·기간·원통화·편도·노선 조건을 다시 대조했다. YP 닝보11/6 적용,결제월과 발권일 환율 조건도 유지한다.
+- 7C는 공식 상세 제목/색인표 범위이며 LJ/ZE/RS는 상세 원문 접근 제한이다. 오늘 확인에 성공하지 않은 출처의 검증일·공시액을 바꾸지 않는다. 접근 실패를 미공시로 단정하지 않는다.
+- 12월 한국발 국제선 여객 확정 원문은 미확보다. [YP 화물 notice132](https://cargo.airpremia.com/ko/support/notice/132)의MOPS174.72·28단계·kg 요율은 여객12월 근거로 제외했다. 국내선·외국발·과거 공시도 대체하지 않았다. 상세 조건·확인 범위는 `airlines-research.md`·`airlines-facts.json`에 있다.
+- 10/16~11/15 산정기간은 달력상 **종료**됐다. 정성 전망은 **방향 혼재·확정 공시 확인 대기,신뢰도 낮음**으로 반영한다. 공식 MOPS 산정평균·기간 평균환율·단계·금액은null이며 확률·절감액을 만들지 않는다.
+
+공식 공시 열람 범위는 아래와 같다. 오늘 웹 열람은09:05:03~09:06:53 KST, 직접 HTTP는09:05:54.369~09:05:55.352 KST다. 적용 조건은 한국발 국제선 여객 **편도**이며 왕복 금액으로 바꾸지 않았다.
+
+| 항공사·공식 링크 | 게시일 / 이번 확인 수준 | 적용 조건 |
+|---|---|---|
+| [KE](https://www.koreanair.com/contents/footer/customer-support/notice/2026/2611-infuel) | 게시일 미표시 / 웹 본문, 직접HTTP는 셸 | 11/1~30 발권, KRW, 출발공항별9구간 |
+| [OZ](https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202610160002530868) | 10/16 / 직접 상세본문 | 11/1~30 발권, KRW,9구간 |
+| [YP](https://www.airpremia.com/a/ko/customer/notice/803) | 10/27 09:18:18 KST / 웹 본문, 직접403 | 11/1~30 결제, USD, KRW환산은 발권일 환율; ICN-NGB11/6부터 |
+| [BX](https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4420) | 게시일 미표시 / 웹 본문, 직접403 | 11/1~30 발권, USD·KRW 병기, 출발공항별4구간 |
+| [TW](https://www.trinityairways.com/app/customerCenter/notice/retrieve/12722) | 10/19 09:33 KST / 웹·직접본문 | 11/1~30 발권, KRW,6군 부재는null 유지 |
+| [7C](https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000814) | 10/16 / 공식 색인표만, 직접본문 공백 | 11월 발권, USD,6구간; 상세 날짜줄 생성 안 함 |
+| [LJ](https://www.jinair.com/company/announce/announceView?anceSeq=28906) | 이번 상세403 | 기존 저장 조건·검토일 유지 |
+| [ZE](https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=680&lang=KR) | 직접200은 일반 템플릿, 상세 미확보 | 기존 저장 조건·검토일 유지 |
+| [RS](https://flyairseoul.com/CW/ko/noticeContent.do?seq=11208&pageNo=1) | PC·모바일403, 현재 색인표 미확보 | 기존 저장 조건·검토일 유지 |
+
+## 구현·보존 범위
+
+- `_shared.js` 끝에11/16 별도 스냅샷을 추가하고 `forecast_feed.json`의 현재 입력·전망·latest를 동기화했다. 이전 공유 코드 전체 접두부와 날짜별 스냅샷은 유지한다.
+- 독립 검토에서 최신 객체에 상속된9·10월 적용월 별칭,옛 방향/산정중 상태,날짜 없는 generic MOPS와 호르무즈 유량이 발견됐다. **새 스냅샷에서만** 현재월/상태를 맞추고 미확인 generic값을null 처리했다.11월 명시 평균173.89/414.03과 과거 날짜별 자료는 보존한다.
+- `market-nov16.js`는 새7기사와6언어 지표·전망·FAQ·SEO 설명을 추가한다. 기존161개 카드의 내용·날짜·URL을 보존한다.
+- `index.html`, `forecast.html`, `news.html`, `fuel-surcharge-graph.html`, `fuel-surcharge-calculator.html`의 shared 연결 버전,전망/뉴스의 새 모듈 연결과 필요한 정적 스냅샷을 갱신한다. 사용자 디자인·접힌 안내·비교 툴팁·동의 배너·제휴CTA·canonical을 보존한다.
+- 보존 검사에서 기존 화면 코드가 최신 값을7/31·9/7 과거 스냅샷에 덮어쓰는 문제가 발견됐다. `forecast.html`의1곳·`news.html`의2곳에 기존7/31 객체 보존 조건을 추가하고, `sep04-update.js`의1곳을9/7 날짜 객체만 사용하는 조건으로 고쳤다. 이미 섞여 있던11월 값을 과거 기록으로 고정하지 않고 **공유 파일에 저장된 원래 날짜별 객체**를 복원한다. 그 외 실행형 인라인 코드는 유지한다.
+- 신규 `scripts/verify_nov16.cjs`에서 오늘 근거와 과거 객체 보존,6언어·모바일·지연 안정성을 검사한다. 기존 사용자가 수정한 검사 파일은 변경하지 않는다.
+
+공통 데이터 실제 최종 수정시각은 **09:16:55.572 KST**,새 뉴스 모듈은 **09:16:26.424 KST**다.09시 자료 기준과 실제 편집시각을 구분한다.
+
+## 검증 기록
+
+- 편집 전 기본 Node 회귀121/121 PASS. 편집 후 기본121/121,JavaScript79개·JSON-LD7개 구문,기존 데이터/서비스 공시 검증 PASS.319개 과거 수동자료 메타데이터 경고를 날짜 추정·가짜 출처로 채우지 않았다.
+- 독립 사실 검토에서 핵심28필드와 feed 공통키 불일치0. 별도 모듈VM 검사에서 총168개·기존161개 기사 객체 전필드 동일,새7기사 및6언어 문구의 관측/발표/주장 구분을 대조했다.
+- 첫 일일 검사에서는 공유 파일 로딩 직후의 이전 스냅샷48개를 페이지 완성 후53개로 기대한 테스트 전제 오류가 발생했다. 공유 직후48개와 기존 모듈 실행 후53개를 각각 별도 보존 비교하도록 검사만 수정했다. 실패 로그를 보존하며 서비스 오류를 숨기기 위한 기대값 변경이 아니다.
+- 이어 실제 과거 객체 덮어쓰기 결함을 발견해 위4곳을 수정했다. 9/7의 별도 전역 객체와 registry 객체가 원래 다른 구조인 점도 확인해, 별도 전역은 기존 전역과 비교하고 registry만 원본 복구 대상으로 검사한다. 실패 로그와 원인 구분을 보존했다.
+- **원본 기준 독립 검사 PASS:** `start-files`의 수정 전 HTML·공유 파일·9월 스크립트를 그대로 응답하는 별도 브라우저를 대조했다. 공유 파일 기존48개 원본 객체는 모두 동일하고, 기존 런타임53개 중51개는 전필드 동일,2개는 날짜별 원본으로 복구됐다. 기존161개 뉴스는 전필드 동일하며12초 후에도 유지됐다. 오늘 스냅샷 키2개만 추가했다. `original-runtime-verification.json`에 기록했다. 최초 시도는4234 포트 충돌로 서비스 검사 전에 종료되어4238에서 재실행했고 타 프로세스를 중단하지 않았다.
+- **화면·공시 검사 PASS:** 전망/뉴스6언어, 데스크톱·모바일, 지표·FAQ·JSON-LD·feed 정합성, 기존161기사+신규7기사,12초 지연 후 유지. 그래프는9개사 모든 공시 구간·YP11월·null 공백,6언어·9통화, 표/그림/툴팁·키보드·필터·320px 분리·12초 유지까지 기존 검사 통과. 차단한 외부 요청 외 예외 콘솔 오류0.
+- **계산기·홈 검사 PASS:** 공식 금액·월 계산·미확인/부재 구간·저장소 오류·feed 대조 및 모바일, 홈6언어·통화·14초 유지·한국시간 월초 경계3종과 열린 탭 자정 전환. 현재11월과 차기12월을 유지하고 미래 공시를 생성하지 않는다.
+- **사용자 UI·제휴 회귀 PASS:** 홈9개 비교 툴팁의 모든 원값·링크·6언어·1366/320/375px·키보드/포커스/스크롤, 홈/전망 제휴 CTA의 원래 href·문구·동의 조건·클릭당1회 이벤트·파트너 제외 조건을 대조했다. 동의 배너6언어·데스크톱/375px, 동의 전 분석/광고 요청0, 반복 저장 중복 로더0, 제휴 외부 요청0. 실제 광고·제휴 거래/정산 성공 검사는 아니다.
+- **최종 정적 검사 PASS:** Node121/121, JavaScript79개·JSON-LD7개 구문,5개 연결 화면 SEO 정적 스냅샷 in sync, `git diff --check` 오류0. LF→CRLF 경고는 Git의 줄바꿈 안내이며 검사 실패가 아니다. 배포를 요청하지 않은 이번 실행에서 운영 설정 승인이나 전체 배포 게이트를 통과시켰다고 주장하지 않는다.
+- **파일 보존:** 시작451개 중443개는 바이트 단위 동일, 변경8개는 위 공통 데이터2개·연결 HTML5개·sep04 스크립트1개뿐이며 삭제0이다. 신규3개는 이 보고서·`public/market-nov16.js`·`scripts/verify_nov16.cjs`다. 사용자의 기존 UI·운영 문서·테스트 변경은 유지했고, shared 이전 코드 접두부·HTML 스타일/canonical도 보존했다. 인라인JS 차이는 명시한7/31 guard3곳뿐이다.
+- 최종 일일 검사 완료 **09:33:13.767 KST**. 검증 스크립트 SHA256은 `4d7c79667f391bcd91f3a0253c6f92d035fc4086102dcd48806302f6f5000536`, 최종 서비스/검사 소스 digest는 `64ef62d30a3d115e66f43b15479b34f21af7a86db1c5919e1bd8a0012a0c8af7`이다. `final-verifier-evidence.json`·`final-evidence.json`에 스크립트/수정 파일/12개 로그 해시를 기록했다. 이전 `final-check-start.json`은 아카이브 결함 수정 전 반복의 증거로 보존하며 최종 소스와 같다고 주장하지 않는다. HEAD는 시작 커밋 그대로이고 staged 파일0이다.
+
+## 미반영·검증 한계
+
+이번 cutoff의 최신 Jet151.15·IMO136,메타데이터가 충돌한 야간/NDF,12월 여객 확정 공시·공식 평균·단계·금액은 보류했다. 최신 JMIC114는 공식 검색 본문까지만 확인하고 전체PDF 확보 실패로 새 카드에 넣지 않았다. S&P 항공유 정제 여력 기사도 검색 결과만 확보해 단정적으로 요약하지 않았다.
+
+브라우저 검증의 외부 요청은 차단한다. 실제 제휴 거래·정산·광고 활성화·분석 수신 검증을 의미하지 않는다. 기존 광고 비활성/검토pending과 환율API사용중단을 유지하며 운영 설정 검토 기록을 임의 승인하지 않는다.
+
+사용자의 기존 UI 검사에 남아 있던 **독일어 전망320px 제목4px 가로 넘침**은 수정 전 원본과 현재를 별도로 비교해 동일함을 확인했다. 원인은 `#forecastMarketTitle`의 긴 단어이며 CTA는 양쪽 모두 정상, 페이지 예외0이다. 이번 시장 업데이트에서 새로 발생한 문제가 아니므로 사용자 스타일을 추가 변경하지 않았다. 원본161기사/현재168기사 상태, JSON·화면을 `forecast-de320-original-comparison.json`과 관련 PNG에 보관했다.390px 모바일 일일 검사와 그래프320px 검사는 별도로 통과했다.
+
+원문·HTTP/메타·실패/최종 로그·화면은 ignored `artifacts/review-verification/market-nov16/`에 보관한다. 주요 근거는 `market-research.md`, `news-research.md`, `airlines-research.md`,각 facts JSON,`start.json`,`baseline.json`,`numbers-patch.json`이다. **commit·push·운영 배포·제3자 메시지 발송 없음.**
+
+## 실행 2 — 사용자 승인에 따른 커밋·운영 배포
+
+- 아침 로컬 작업 완료 후 사용자가 커밋·푸시·운영 배포를 명시적으로 요청했다. 커밋 메시지는 **`add 2026.11.16 news and forecast`**다. 기존 검증된 홈/동의 배너/항공사/그래프/뉴스/제휴 CTA 개선을 포함한 현재 변경을 함께 배포한다.
+- 보호 파일 변경은 `public/_analytics.js` 한 개다. 코드와 현재 로컬 동의·제휴 이벤트 검사를 독립 검토하고 `docs/review-evidence/20261116-operational-review.json`에 근거를 남겼다. `config/deployment-review.json`의 operations 기록만 현재 범위로 갱신했고 runtimeBaseline과 광고 비활성·광고/CMP pending은 유지했다.
+- 전체 배포 검사 **15/15 PASS**, 기본 Node **121/121 PASS**. 실행 중 소스 변경 없음. 검사 시작 2026-11-16T01:01:40.991Z, 종료 2026-11-16T01:08:16.991Z, 소스 digest `4bdcd5bc494a70a2d6c0c39495f07a7afe7c7af4322529a83b8bb84542741468`. 커밋에 포함한 요약은 `docs/review-evidence/20261116-release-verification.json`이다.
+- 이 기록은 커밋 전 준비 완료 시점이다. push 후 Vercel 결과·커밋과 운영 파일 해시·실제 운영 화면 검증은 ignored `artifacts/review-verification/deploy-nov16/`에 별도 기록하고 대화에서 최종 보고한다. 광고 활성화·외부 분석 수신·실제 제휴 정산을 검증했다는 의미는 아니다.

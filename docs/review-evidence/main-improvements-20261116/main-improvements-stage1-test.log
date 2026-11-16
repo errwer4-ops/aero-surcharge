@@ -1,0 +1,6 @@
+PASS stage 1: ko / nine rows / 1366, 320, 375px / focus, hover, click, keyboard scroll / original data and links
+PASS stage 1: en / nine rows / 1366, 320, 375px / focus, hover, click, keyboard scroll / original data and links
+PASS stage 1: ja / nine rows / 1366, 320, 375px / focus, hover, click, keyboard scroll / original data and links
+PASS stage 1: zh / nine rows / 1366, 320, 375px / focus, hover, click, keyboard scroll / original data and links
+PASS stage 1: fr / nine rows / 1366, 320, 375px / focus, hover, click, keyboard scroll / original data and links
+PASS stage 1: de / nine rows / 1366, 320, 375px / focus, hover, click, keyboard scroll / original data and links

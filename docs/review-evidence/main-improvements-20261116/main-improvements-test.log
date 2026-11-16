@@ -1,0 +1,3 @@
+PASS stage 3: index / six locales / three widths / original href and data / consent, once-per-click, route context and partner exclusions
+KNOWN out of scope: forecast de 320px market heading creates 4px page overflow; CTA fits
+PASS stage 3: forecast / six locales / three widths / original href and data / consent, once-per-click, route context and partner exclusions

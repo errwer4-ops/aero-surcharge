@@ -1,0 +1,121 @@
+{
+  "generatedAt": "2026-11-15T23:44:22.443Z",
+  "method": "Executed verifyAnalyticsPrivacy with isolated Playwright contexts and synthetic .invalid origins. Request attempts were observed in context.route; every external request was aborted before reaching any external service.",
+  "productionSettingsChanged": false,
+  "externalTransmissionsAllowed": false,
+  "testOrigins": [
+    "https://www.aero-consent.invalid",
+    "https://www.aero-network.invalid"
+  ],
+  "networkTestConfig": {
+    "ga4Id": "G-TEST123",
+    "clarityId": "test1234",
+    "adsEnabled": true,
+    "adsClient": "ca-pub-1234567890",
+    "scope": "Injected in isolated network-test contexts only; never written to production configuration."
+  },
+  "sourceSha256": {
+    "public/_analytics.js": "1327df44c87af8995478d23a0c51d6ab40917d45204021994084b713f9a358b1",
+    "public/_ads.js": "5983941a30cefb1fdb3c39ce94ed8706768a19b7e1feee9d6ebd9a4e7ed05d37",
+    "public/_analytics-config.js": "5b61a7a4730d30ab03e20eddfc5cefc6a7fad8a0d825b9df97be980e1e16907f",
+    "scripts/verify_analytics_privacy.cjs": "3339c895f65d6d02cfbf225d96e7eeeb09c9ed8c7935b58db3621886195914c9"
+  },
+  "result": {
+    "passed": true,
+    "barLayouts": [
+      {
+        "lang": "ko",
+        "width": 1366,
+        "height": 53
+      },
+      {
+        "lang": "en",
+        "width": 1366,
+        "height": 53
+      },
+      {
+        "lang": "ja",
+        "width": 1366,
+        "height": 53
+      },
+      {
+        "lang": "zh",
+        "width": 1366,
+        "height": 53
+      },
+      {
+        "lang": "fr",
+        "width": 1366,
+        "height": 53
+      },
+      {
+        "lang": "de",
+        "width": 1366,
+        "height": 53
+      },
+      {
+        "lang": "ko",
+        "width": 375,
+        "height": 53
+      },
+      {
+        "lang": "en",
+        "width": 375,
+        "height": 53
+      },
+      {
+        "lang": "ja",
+        "width": 375,
+        "height": 53
+      },
+      {
+        "lang": "zh",
+        "width": 375,
+        "height": 53
+      },
+      {
+        "lang": "fr",
+        "width": 375,
+        "height": 53
+      },
+      {
+        "lang": "de",
+        "width": 375,
+        "height": 53
+      }
+    ],
+    "network": [
+      {
+        "choice": "analytics",
+        "beforeConsentRequests": 0,
+        "requests": [
+          "https://www.googletagmanager.com/gtag/js?id=G-TEST123",
+          "https://www.clarity.ms/tag/test1234"
+        ],
+        "duplicateRequests": 0
+      },
+      {
+        "choice": "advertising",
+        "beforeConsentRequests": 0,
+        "requests": [
+          "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890"
+        ],
+        "duplicateRequests": 0
+      },
+      {
+        "choice": "both",
+        "beforeConsentRequests": 0,
+        "requests": [
+          "https://www.googletagmanager.com/gtag/js?id=G-TEST123",
+          "https://www.clarity.ms/tag/test1234",
+          "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890"
+        ],
+        "duplicateRequests": 0
+      }
+    ],
+    "externalRequestsBlocked": [
+      "www.googletagmanager.com"
+    ],
+    "affiliateRequestsSent": 0
+  }
+}

@@ -15,6 +15,34 @@
     keys.forEach(function(key,index){window.I18N[lang][key]=copy[lang][index];});
   });
   function setup(){
+    var activeTrend=null,trendLeaveTimer=null;
+    function cancelTrendLeave(){window.clearTimeout(trendLeaveTimer);trendLeaveTimer=null;}
+    function hideTrend(){cancelTrendLeave();if(activeTrend)activeTrend.classList.remove('is-tooltip-open');activeTrend=null;}
+    function showTrend(button){
+      var row=button.closest('.mini-trend-details'),tip=row.querySelector('.mini-trend-tooltip');
+      hideTrend();activeTrend=row;row.classList.add('is-tooltip-open');
+      var anchor=button.getBoundingClientRect(),box=tip.getBoundingClientRect();
+      tip.style.left=Math.max(16,Math.min(anchor.left,window.innerWidth-box.width-16))+'px';
+      tip.style.top=Math.max(8,anchor.bottom+box.height+8<window.innerHeight?anchor.bottom+8:anchor.top-box.height-8)+'px';
+    }
+    document.addEventListener('focusin',function(event){var button=event.target.closest('.mini-trend-info');if(button)showTrend(button);});
+    document.addEventListener('focusout',function(event){if(activeTrend&&!activeTrend.contains(event.relatedTarget))hideTrend();});
+    document.addEventListener('mouseover',function(event){if(activeTrend&&activeTrend.contains(event.target))cancelTrendLeave();var button=event.target.closest('.mini-trend-info');if(button)showTrend(button);});
+    document.addEventListener('mouseout',function(event){if(activeTrend&&activeTrend.contains(event.target)&&!activeTrend.contains(event.relatedTarget)&&!activeTrend.contains(document.activeElement)){cancelTrendLeave();trendLeaveTimer=window.setTimeout(hideTrend,250);}});
+    document.addEventListener('click',function(event){var button=event.target.closest('.mini-trend-info');if(button)showTrend(button);else if(activeTrend&&!activeTrend.contains(event.target))hideTrend();});
+    document.addEventListener('keydown',function(event){
+      if(!activeTrend)return;
+      if(event.key==='Escape'){hideTrend();event.preventDefault();}
+      else if(event.target.matches('.mini-trend-info')&&['ArrowDown','ArrowUp','PageDown','PageUp'].includes(event.key)){
+        activeTrend.querySelector('.mini-trend-tooltip').scrollBy(0,(event.key==='ArrowUp'||event.key==='PageUp'?-1:1)*(event.key.startsWith('Page')?180:40));event.preventDefault();
+      }
+    });
+    window.addEventListener('resize',hideTrend);
+    window.addEventListener('scroll',function(event){
+      if(!activeTrend||activeTrend.contains(event.target))return;
+      var button=activeTrend.querySelector('.mini-trend-info'),rect=button.getBoundingClientRect();
+      if(rect.bottom<0||rect.top>window.innerHeight)hideTrend();else showTrend(button);
+    },true);
     var back=document.getElementById('backToOverview');
     if(back)back.addEventListener('click',function(){
       window._searchCtx=null;

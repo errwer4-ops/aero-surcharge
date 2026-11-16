@@ -255,7 +255,7 @@ async function newPage(browser,baseline=false) {
   page._blockedUrls=new Set();
   await page.route('**/*',route=>{
     const url=new URL(route.request().url());
-    if(url.origin!==origin) {page._blockedUrls.add(url.origin+url.pathname);return route.abort();}
+    if(url.origin!==origin||url.pathname==='/api'||url.pathname.startsWith('/api/')) {page._blockedUrls.add(url.origin+url.pathname);return route.abort();}
     if(baseline && url.pathname==='/market-nov12.js') return route.fulfill({contentType:'application/javascript',body:'/* Pre-Nov12 baseline. */'});
     if(baseline && url.pathname==='/_shared.js') return route.fulfill({contentType:'application/javascript',body:previousShared});
     return route.continue();
@@ -347,6 +347,15 @@ async function state(page) {
       checkFeed(feed,initial.n);
       for(const lang of langs) {
         await page.selectOption('#navLang',lang); await page.waitForTimeout(650);
+        if(name==='news') {
+          // Long context remains available in native disclosures after the list.
+          // Keep all original content/value checks below on the expanded guide.
+          for(const id of ['newsContextGuide','newsMethodGuide']) {
+            const guide=page.locator('#'+id);
+            if(!await guide.evaluate(el=>el.open)) await guide.locator(':scope > summary').click();
+            assert.equal(await guide.evaluate(el=>el.open),true,id+' content available for source checks');
+          }
+        }
         let publicationBeforeRefresh;
         if(name==='forecast') {
           publicationBeforeRefresh=await page.evaluate(()=>{
@@ -359,11 +368,16 @@ async function state(page) {
         checkNumbers(x.n);
         assert.equal(x.canonical,'https://aero-surcharge.com/'+name);
         assert.equal(x.title,name==='news' ? p.newsMeta : p.meta);
-        assert.equal(x.h1,name==='news' ? p.newsTitle : p.title);
+        assert.equal(x.h1,name==='news' ? await page.evaluate(()=>t('news.interface.title')) : p.title);
         assert.equal(x.metaDescription,p.desc,lang+' current metadata');
         assert.equal(x.openGraphTitle,x.title,lang+' Open Graph title');
         const stageCarrier={ko:'대한항공',en:'Korean Air',ja:'大韓航空',zh:'大韩航空',fr:'Korean Air',de:'Korean Air'}[lang];
-        assert(x.h1.includes(stageCarrier),lang+' current stage is scoped to Korean Air');
+        if(name==='news') {
+          assert(x.title.includes(stageCarrier),lang+' news metadata scopes current stage to Korean Air');
+          const guideTitles=await page.locator('#newsContextGuide .summary-card-title').allTextContents();
+          assert.equal(guideTitles.filter(title=>title===p.newsTitle).length,1,lang+' original detailed news heading retained once in context');
+          assert(p.newsTitle.includes(stageCarrier),lang+' context heading scopes current stage to Korean Air');
+        } else assert(x.h1.includes(stageCarrier),lang+' current stage is scoped to Korean Air');
         assert.equal(x.overflow,false,name+' '+lang+' desktop overflow');
         assert.doesNotMatch(x.body,/undefined|\?\?\?\?|AERO_MARKET_NUMBERS|\ufffd/);
         assert.match(x.body,/09:00/,name+' cutoff visible');
@@ -373,7 +387,7 @@ async function state(page) {
         for(const schema of x.schemas.filter(s=>/^(WebPage|CollectionPage|FAQPage)$/.test(s['@type']))) assert.equal(schema.dateModified,modified,name+' '+lang+' schema modification');
         if(name==='forecast') {
           assert(o,lang+' current forecast overview');
-          assert.equal(normalize(await page.locator('[data-i18n="fore.myrealtrip.btn"]').innerText()),normalize(p.surface['fore.myrealtrip.btn']));
+          assert.equal(normalize(await page.locator('[data-i18n="fareCompare.button"]').innerText()),normalize(await page.evaluate(()=>I18N[getCurrentLang()]['fareCompare.button'])),lang+' current localized total-airfare CTA');
           assert.equal(await page.locator('[data-i18n="fore.cta.may"]').getAttribute('href'),'fuel-surcharge-calculator.html');
           for(const key of ['expectation','confidence','basis','risk','note']) assert(normalize(x.overview).includes(normalize(o[key])),lang+' visible overview '+key);
           assert.deepEqual(x.rows.map(row=>row.map(normalize)),o.rows.map(row=>row.map(normalize)),lang+' visible current rows');

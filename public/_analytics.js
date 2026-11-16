@@ -5,11 +5,12 @@
   var storageKey = 'aero_privacy_v1';
   var consent = { analytics: false, advertising: false };
   var chosen = false, started = false, startScheduled = false, sequence = 0;
+  var privacyUi = null;
   var sent = new Set();
   var routeViewed = false;
   var local = /^(localhost|127\.0\.0\.1|\[::1\])$/.test(w.location.hostname);
   var allowed = !local || config.allowLocal === true;
-  var eventNames = new Set(['route_search','route_result_view','route_no_result','airline_compare','month_compare','forecast_view','archive_view','affiliate_click']);
+  var eventNames = new Set(['route_search','route_result_view','route_no_result','airline_compare','month_compare','forecast_view','archive_view','affiliate_click','cta_fare_compare']);
   var fields = {
     origin:/^[A-Z]{3}$/, destination:/^[A-Z]{3}$/, airline:/^[A-Z0-9]{2,3}$/,
     base_month:/^20\d{2}-\d{2}$/, compare_month:/^20\d{2}-\d{2}$/, month:/^20\d{2}-\d{2}$/,
@@ -75,7 +76,7 @@
     consent = {analytics:analytics===true,advertising:advertising===true}; chosen=true;
     try { w.localStorage.setItem(storageKey,JSON.stringify({version:1,at:Date.now(),analytics:consent.analytics,advertising:consent.advertising})); } catch (_) {}
     updateConsent();
-    var panel=d.getElementById('aeroPrivacy'); if(panel) panel.hidden=true;
+    if (privacyUi) privacyUi.saved();
     if (!consent.analytics) clearAnalyticsCookies();
   }
   function clearAnalyticsCookies() {
@@ -100,9 +101,7 @@
     if (previous.analytics!==consent.analytics || previous.advertising!==consent.advertising || wasChosen!==chosen) {
       updateConsent();
       if (!consent.analytics) clearAnalyticsCookies();
-      var panel=d.getElementById('aeroPrivacy');if(panel)panel.hidden=chosen;
-      var analytics=d.getElementById('aeroConsentAnalytics'),ads=d.getElementById('aeroConsentAds');
-      if(analytics)analytics.checked=consent.analytics;if(ads)ads.checked=consent.advertising;
+      if (privacyUi) privacyUi.sync();
     }
   }
   function track(name, params, key) {
@@ -138,7 +137,20 @@
   }
   function ui() {
     var style=d.createElement('style');
-    style.textContent='#aeroPrivacy{position:fixed;bottom:12px;left:12px;right:12px;max-width:580px;z-index:10000;padding:16px;border:1px solid #bae6fd;border-radius:10px;background:#fff;box-shadow:0 3px 20px #0002;color:#334155;font:13px/1.7 sans-serif}#aeroPrivacy[hidden]{display:none}#aeroPrivacy p{margin:0 0 10px}#aeroPrivacy button,.aero-privacy-open{font:inherit;cursor:pointer;border:1px solid #94a3b8;background:#fff;color:#075985;border-radius:6px;padding:7px 12px;margin:3px}#aeroPrivacy label{display:block}';
+    style.textContent=[
+      '#aeroPrivacyBar,#aeroPrivacy,#aeroPrivacyBar *,#aeroPrivacy *{box-sizing:border-box}',
+      '#aeroPrivacyBar{position:fixed;bottom:0;left:0;right:0;z-index:10000;display:flex;align-items:center;gap:8px;min-height:53px;padding:4px max(12px,calc((100vw - 1092px)/2));border-top:1px solid #e0e4e9;background:#fff;color:#4e5c6c;font:12px/1.4 var(--sans,system-ui,sans-serif)}',
+      '#aeroPrivacyBar[hidden]{display:none}#aeroPrivacyBar p{flex:1;min-width:0;margin:0;overflow-wrap:anywhere}#aeroPrivacyBar .aero-privacy-actions{display:flex;flex:none;gap:8px}',
+      '#aeroPrivacyBar button,#aeroPrivacy button,.aero-privacy-open{font:inherit;cursor:pointer;min-height:44px;border:1px solid #ccd4de;background:#fff;color:#2453a6;border-radius:4px;padding:8px 10px;margin:0;line-height:1.4}',
+      '#aeroPrivacyBar button{white-space:nowrap;border-color:transparent}#aeroPrivacyBar button:hover{background:#f7f8fa}',
+      '#aeroPrivacy{position:fixed;inset:0;margin:auto;width:calc(100% - 32px);max-width:460px;max-height:calc(100vh - 32px);max-height:calc(100dvh - 32px);overflow:auto;padding:20px;border:1px solid #ccd4de;border-radius:6px;background:#fff;color:#172332;font:13px/1.7 var(--sans,system-ui,sans-serif)}',
+      '#aeroPrivacy::backdrop{background:rgba(23,35,50,.22)}#aeroPrivacy .aero-privacy-heading{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}',
+      '#aeroPrivacy h2{margin:0;font-size:16px;font-weight:600;line-height:1.5}#aeroPrivacy p{margin:0 0 14px;color:#4e5c6c}#aeroPrivacy a{color:#2453a6;text-underline-offset:3px}',
+      '#aeroPrivacy label{display:flex;align-items:center;gap:9px;min-height:44px;margin:0;color:#4e5c6c}#aeroPrivacy input{flex:none;width:16px;height:16px;margin:0;accent-color:#2453a6}',
+      '#aeroPrivacy .aero-privacy-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}#aeroPrivacy #aeroConsentClose{flex:none;min-width:44px;font-size:20px;border:0;padding:4px}',
+      '#aeroPrivacyBar :is(button,a):focus-visible,#aeroPrivacy :is(button,a,input):focus-visible,.aero-privacy-open:focus-visible{outline:2px solid #2453a6;outline-offset:3px}',
+      '.aero-privacy-open{font:12px/1.4 var(--sans,system-ui,sans-serif)}'
+    ].join('');
     d.head.appendChild(style);
     var copies={
       ko:{intro:'선택한 노선 코드 등 이용 통계를 분석하려면 동의해 주세요. 거부해도 조회·관심 노선 저장을 사용할 수 있습니다.',policy:'개인정보 안내',analytics:'이용 통계 (GA4·설정된 경우 Clarity)',ads:'광고 쿠키 (광고 기능이 활성화된 경우)',save:'선택 저장',deny:'모두 거부',open:'분석·광고 설정'},
@@ -148,21 +160,53 @@
       fr:{intro:'Autorisez les statistiques sur les codes de trajet et les interactions. La recherche et les trajets enregistrés restent disponibles sans consentement.',policy:'Politique de confidentialité',analytics:'Statistiques (GA4 et Clarity si configuré)',ads:'Cookies publicitaires (si les annonces sont activées)',save:'Enregistrer mes choix',deny:'Tout refuser',open:'Paramètres de confidentialité'},
       de:{intro:'Erlauben Sie Nutzungsstatistiken zu Streckencodes und Interaktionen. Suche und gespeicherte Strecken bleiben auch ohne Einwilligung verfügbar.',policy:'Datenschutzerklärung',analytics:'Nutzungsstatistiken (GA4 und eingerichtetes Clarity)',ads:'Werbe-Cookies (bei aktivierter Werbung)',save:'Auswahl speichern',deny:'Alle ablehnen',open:'Datenschutzeinstellungen'}
     };
-    var panel=d.createElement('section');panel.id='aeroPrivacy';panel.hidden=chosen;
-    panel.innerHTML='<p><span id="aeroConsentIntro"></span> <a href="privacy.html" id="aeroConsentPolicy"></a></p><label><input id="aeroConsentAnalytics" type="checkbox"> <span id="aeroConsentAnalyticsLabel"></span></label><label><input id="aeroConsentAds" type="checkbox"> <span id="aeroConsentAdsLabel"></span></label><button type="button" id="aeroConsentSave"></button><button type="button" id="aeroConsentDeny"></button>';
+    var compactCopy={
+      ko:['선택 쿠키는 동의 후 사용합니다.','설정','닫기'],
+      en:['Optional analytics and ad cookies','Settings','Close'],
+      ja:['分析・広告Cookieは任意です。','設定','閉じる'],
+      zh:['统计与广告 Cookie 可自由选择。','设置','关闭'],
+      fr:['Cookies facultatifs','Paramètres','Fermer'],
+      de:['Optionale Cookies','Einstellungen','Schließen']
+    };
+    var bar=d.createElement('section');bar.id='aeroPrivacyBar';bar.hidden=chosen;
+    bar.innerHTML='<p id="aeroConsentBarIntro"></p><div class="aero-privacy-actions"><button type="button" id="aeroConsentSettings" aria-controls="aeroPrivacy" aria-haspopup="dialog"></button><button type="button" id="aeroConsentDeny"></button></div>';
+    d.body.appendChild(bar);
+    var panel=d.createElement('dialog');panel.id='aeroPrivacy';panel.setAttribute('aria-labelledby','aeroConsentTitle');panel.setAttribute('aria-describedby','aeroConsentIntro');
+    panel.innerHTML='<div class="aero-privacy-heading"><h2 id="aeroConsentTitle"></h2><button type="button" id="aeroConsentClose">×</button></div><p><span id="aeroConsentIntro"></span> <a href="privacy.html" id="aeroConsentPolicy"></a></p><label><input id="aeroConsentAnalytics" type="checkbox"> <span id="aeroConsentAnalyticsLabel"></span></label><label><input id="aeroConsentAds" type="checkbox"> <span id="aeroConsentAdsLabel"></span></label><div class="aero-privacy-actions"><button type="button" id="aeroConsentSave"></button><button type="button" id="aeroConsentDenyDialog"></button></div>';
     d.body.appendChild(panel);
+    var returnFocus=null;
     function reflect(){d.getElementById('aeroConsentAnalytics').checked=consent.analytics;d.getElementById('aeroConsentAds').checked=consent.advertising;}
+    function closeSettings(){if(panel.open)panel.close();}
+    function showSettings(){
+      if(panel.open)return;
+      returnFocus=d.activeElement;reflect();panel.showModal();d.getElementById('aeroConsentAnalytics').focus();
+    }
+    panel.addEventListener('close',function(){
+      var target=returnFocus;returnFocus=null;
+      if(!target||!target.isConnected||!target.getClientRects().length)target=open;
+      if(target&&target.focus)target.focus({preventScroll:true});
+    });
+    privacyUi={
+      open:showSettings,
+      saved:function(){bar.hidden=true;closeSettings();},
+      sync:function(){bar.hidden=chosen;reflect();if(chosen)closeSettings();}
+    };
     reflect();
     d.getElementById('aeroConsentSave').onclick=function(){saveChoice(d.getElementById('aeroConsentAnalytics').checked,d.getElementById('aeroConsentAds').checked);};
     d.getElementById('aeroConsentDeny').onclick=function(){saveChoice(false,false);};
+    d.getElementById('aeroConsentDenyDialog').onclick=function(){saveChoice(false,false);};
+    d.getElementById('aeroConsentSettings').onclick=showSettings;
+    d.getElementById('aeroConsentClose').onclick=closeSettings;
     var open=d.createElement('button');open.type='button';open.className='aero-privacy-open';
-    open.onclick=function(){reflect();panel.hidden=false;d.getElementById('aeroConsentAnalytics').focus();};
+    open.setAttribute('aria-controls','aeroPrivacy');open.setAttribute('aria-haspopup','dialog');open.onclick=showSettings;
     (d.querySelector('footer')||d.body).appendChild(open);
     function translate(){
       var lang=(d.documentElement.lang||'ko').toLowerCase().split('-')[0],copy=copies[lang]||copies.en;
-      var labels={aeroConsentIntro:'intro',aeroConsentPolicy:'policy',aeroConsentAnalyticsLabel:'analytics',aeroConsentAdsLabel:'ads',aeroConsentSave:'save',aeroConsentDeny:'deny'};
+      var labels={aeroConsentIntro:'intro',aeroConsentPolicy:'policy',aeroConsentAnalyticsLabel:'analytics',aeroConsentAdsLabel:'ads',aeroConsentSave:'save',aeroConsentDeny:'deny',aeroConsentDenyDialog:'deny',aeroConsentTitle:'open'};
       Object.keys(labels).forEach(function(id){d.getElementById(id).textContent=copy[labels[id]];});
-      open.textContent=copy.open;panel.setAttribute('aria-label',copy.open);
+      var compact=compactCopy[lang]||compactCopy.en;
+      d.getElementById('aeroConsentBarIntro').textContent=compact[0];d.getElementById('aeroConsentSettings').textContent=compact[1];d.getElementById('aeroConsentClose').setAttribute('aria-label',compact[2]);
+      open.textContent=copy.open;panel.setAttribute('aria-label',copy.open);bar.setAttribute('aria-label',copy.open);
     }
     translate();
     new MutationObserver(translate).observe(d.documentElement,{attributes:true,attributeFilter:['lang']});
@@ -171,7 +215,17 @@
       var partner=provider(link);if(!partner)return;
       link.rel=Array.from(new Set((link.rel+' noopener noreferrer sponsored').split(/\s+/).filter(Boolean))).join(' ');
       var placement=link.dataset.analyticsPlacement||(link.closest('#resultsSection')?'route_result':link.closest('#savingAffiliate')?'calculator_result':link.closest('footer')?'footer':'content');
-      track('affiliate_click',{affiliate:partner,placement:placement},'click-'+(++sequence));
+      var action='click-'+(++sequence);
+      track('affiliate_click',{affiliate:partner,placement:placement},action);
+      if(partner==='myrealtrip'&&link.dataset.fareCompare==='true'){
+        var params={affiliate:partner,placement:placement};
+        // Record the route that produced these results, never unsubmitted input.
+        if(link.closest('#resultsSection')&&w._searchCtx){
+          params.origin=w._searchCtx.dep;params.destination=w._searchCtx.arr;
+          params.trip_type=w._searchCtx.isRT?'round_trip_estimate':'one_way';
+        }
+        track('cta_fare_compare',params,action);
+      }
     });
     // A view means substantive content is visible, not merely a navigation click.
     var path=w.location.pathname, name=/\/forecast(?:\.html)?$/.test(path)?'forecast_view':/\/fuel-surcharge-(graph|2026-05)(?:\.html)?$/.test(path)?'archive_view':null;
@@ -187,7 +241,7 @@
       }
     }
   }
-  w.AeroAnalytics={track:track,consent:function(){return Object.assign({},consent);},setConsent:saveChoice,nextAction:function(){return ++sequence;}};
+  w.AeroAnalytics={track:track,consent:function(){return Object.assign({},consent);},setConsent:saveChoice,showPrivacy:function(){if(privacyUi)privacyUi.open();},nextAction:function(){return ++sequence;}};
   readChoice();updateConsent();
   w.addEventListener('storage',function(e){if(e.key===storageKey||e.key===null)syncChoice();});
   w.addEventListener('focus',syncChoice);

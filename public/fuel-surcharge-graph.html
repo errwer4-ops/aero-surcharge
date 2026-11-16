@@ -96,6 +96,7 @@
       .chart-wrap{padding:12px 6px 8px;}
     }
   </style>
+  <link rel="stylesheet" href="graph-interface.css?v=20261115-design"/>
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -158,12 +159,14 @@
 }
 </script>
 </head>
-<body>
-<nav>
+<body class="graph-page">
+<nav class="site-nav" aria-label="AERO">
+  <a class="site-brand" href="index.html" aria-label="AERO">AERO<span class="brand-mark" aria-hidden="true"></span></a>
   <div class="nav-links">
     <a href="index.html"    class="nav-link" data-i18n="nav.routes">노선별 조회</a>
     <a href="fuel-surcharge-calculator.html" class="nav-link" data-i18n="nav.calc">계산기</a>
     <a href="airlines.html" class="nav-link" data-i18n="nav.airlines">항공사 인덱스</a>
+    <a href="fuel-surcharge-graph.html" class="nav-link active" aria-current="page" data-i18n="graph.interface.nav">월별 추이</a>
     <a href="news.html"     class="nav-link" data-i18n="nav.news">참고 소식</a>
   </div>
   <div class="nav-controls">
@@ -189,27 +192,45 @@
     </select>
   </div>
 </nav>
-
-<div class="page-header">
-  <div class="page-title" data-i18n="graph.pageTitle">유류할증료 데이터 아카이브</div>
-  <div class="page-sub"   data-i18n="graph.pageSub">2026년 11월 발권분 현재 적용</div>
+<main class="seo-main" id="graphMain">
+  <header class="graph-header">
+    <h1 id="graphPageTitle" data-i18n="graph.interface.title">월별 유류할증료 추이</h1>
+    <p class="graph-intro" data-i18n="graph.interface.intro">항공사와 월을 선택해 공시 금액과 변동률을 비교하세요.</p>
+    <p class="graph-period" data-i18n="graph.pageSub">2026년 11월 발권분 현재 적용</p>
+  </header>
+  <div class="graph-filter-bar">
+<div class="graph-filter-field"><label for="filterAirline" data-i18n="graph.filter.airline">항공사</label><select id="filterAirline"></select></div>
+<div class="graph-filter-field"><label for="filterMonth" data-i18n="graph.filter.month">월</label><select id="filterMonth"></select></div>
+<div class="graph-filter-field"><label for="filterView" data-i18n="graph.filter.view">표시 기준</label><select id="filterView"></select></div>
+<span class="graph-filter-hint" data-i18n="graph.filter.currHint">통화: 상단 통화 선택 기준</span>
 </div>
-
-<main class="seo-main">
-  <h1 style="font-size:var(--font-title);font-weight:700;line-height:1.3;color:var(--text);margin-bottom:16px;" data-i18n="graph.h1">2026년 4~11월 국제선 유류할증료 데이터 아카이브</h1>
-
-  <div class="seo-lang-notice">
+  <div class="chart-wrap">
+    <canvas id="graphCanvas" height="380" role="img" aria-labelledby="graphPageTitle" aria-describedby="graphDataTitle"></canvas>
+    <div class="chart-legend" id="chartLegend"><div class="legend-item" style="cursor: default;"><span class="legend-dot" style="background:#7c3aed"></span>2026년 8월</div><div class="legend-item" style="cursor: default;"><span class="legend-dot" style="background:#ef4444"></span>2026년 9월</div><div class="legend-item" style="cursor: default;"><span class="legend-dot" style="background:#0891b2"></span>2026년 10월</div><div class="legend-item" style="cursor: default;"><span class="legend-dot" style="background:#be185d"></span>2026년 11월</div><div class="legend-item" style="cursor: default;"><span class="legend-tag">USD 공시</span><span style="color:var(--muted);font-size:var(--font-caption)">전체 보기: 항공사별 평균 금액</span></div></div>
+  </div>
+  <p class="graph-notice" data-i18n-html="graph.chartNote">최근 4개월은 8월·9월·10월·11월입니다. 전체를 선택하면 4월부터 표시합니다. 원화 환산 표시는 사이트의 비교용 환율이며 항공사 월간 산정환율·실제 결제액이 아닙니다. 사이트 비교용 참고환율: 1 USD = 1,340.88 KRW. 실시간 시장환율·항공사 산정평균·실제 결제환율이 아닙니다.</p>
+  <details class="graph-details" id="graphDataDetails">
+    <summary><span id="graphDataTitle" data-i18n="graph.tableTitle">항공사별 유류할증료 상세 데이터</span></summary>
+    <div class="graph-data-table" tabindex="0" role="region" aria-labelledby="graphDataTitle">
+    <table><thead id="dataTableHead"><tr><th>항공사</th><th>공시 통화</th><th>구간</th><th>8월</th><th>9월</th><th>10월</th><th>11월</th><th>10월 대비</th></tr></thead><tbody id="dataTableBody"><tr><td rowspan="9"><strong>대한항공 (KE)</strong></td><td rowspan="9">KRW</td><td>~499</td><td>₩35,200</td><td>₩48,000</td><td>₩49,000</td><td>₩55,600</td><td><span class="change-up">+13%</span></td></tr><tr><td>500~999</td><td>₩49,600</td><td>₩66,000</td><td>₩65,800</td><td>₩76,000</td><td><span class="change-up">+16%</span></td></tr><tr><td>1000~1499</td><td>₩64,000</td><td>₩91,500</td><td>₩98,000</td><td>₩105,800</td><td><span class="change-up">+8%</span></td></tr><tr><td>1500~1999</td><td>₩80,000</td><td>₩109,500</td><td>₩116,200</td><td>₩132,900</td><td><span class="change-up">+14%</span></td></tr><tr><td>2000~2999</td><td>₩99,200</td><td>₩153,000</td><td>₩162,400</td><td>₩185,800</td><td><span class="change-up">+14%</span></td></tr><tr><td>3000~3999</td><td>₩100,800</td><td>₩156,000</td><td>₩168,000</td><td>₩189,800</td><td><span class="change-up">+13%</span></td></tr><tr><td>4000~4999</td><td>₩160,000</td><td>₩216,000</td><td>₩226,800</td><td>₩254,900</td><td><span class="change-up">+12%</span></td></tr><tr><td>5000~6499</td><td>₩225,600</td><td>₩325,500</td><td>₩322,000</td><td>₩370,100</td><td><span class="change-up">+15%</span></td></tr><tr><td>6500~9999</td><td>₩259,200</td><td>₩354,000</td><td>₩362,600</td><td>₩408,100</td><td><span class="change-up">+13%</span></td></tr><tr><td rowspan="9"><strong>아시아나항공 (OZ)</strong></td><td rowspan="9">KRW</td><td>1</td><td>₩36,600</td><td>₩52,000</td><td>₩53,400</td><td>₩62,400</td><td><span class="change-up">+17%</span></td></tr><tr><td>2</td><td>₩53,400</td><td>₩76,500</td><td>₩79,400</td><td>₩92,200</td><td><span class="change-up">+16%</span></td></tr><tr><td>3</td><td>₩70,200</td><td>₩99,600</td><td>₩104,000</td><td>₩120,600</td><td><span class="change-up">+16%</span></td></tr><tr><td>4</td><td>₩86,900</td><td>₩124,100</td><td>₩128,700</td><td>₩149,100</td><td><span class="change-up">+16%</span></td></tr><tr><td>5</td><td>₩103,700</td><td>₩147,200</td><td>₩153,300</td><td>₩178,900</td><td><span class="change-up">+17%</span></td></tr><tr><td>6</td><td>₩120,500</td><td>₩171,800</td><td>₩178,000</td><td>₩207,400</td><td><span class="change-up">+17%</span></td></tr><tr><td>7</td><td>₩137,300</td><td>₩194,900</td><td>₩202,600</td><td>₩235,900</td><td><span class="change-up">+16%</span></td></tr><tr><td>8</td><td>₩170,800</td><td>₩242,500</td><td>₩251,900</td><td>₩294,200</td><td><span class="change-up">+17%</span></td></tr><tr><td>9</td><td>₩202,900</td><td>₩290,100</td><td>₩301,200</td><td>₩351,100</td><td><span class="change-up">+17%</span></td></tr><tr><td rowspan="7"><strong>에어프레미아 (YP)</strong></td><td rowspan="7">USD<span class="usd-badge">USD 공시</span></td><td>~999</td><td>₩33,522<span class="change-note"> ($25)</span></td><td>₩49,613<span class="change-note"> ($37)</span></td><td>₩54,976<span class="change-note"> ($41)</span></td><td>₩64,362<span class="change-note"> ($48)</span></td><td><span class="change-up">+17%</span></td></tr><tr><td>1000~1499</td><td>₩42,908<span class="change-note"> ($32)</span></td><td>₩65,703<span class="change-note"> ($49)</span></td><td>₩72,408<span class="change-note"> ($54)</span></td><td>₩85,816<span class="change-note"> ($64)</span></td><td><span class="change-up">+19%</span></td></tr><tr><td>1500~1999</td><td><span class="null-cell">공시 구간 없음</span></td><td><span class="null-cell">공시 구간 없음</span></td><td><span class="null-cell">공시 구간 없음</span></td><td><span class="null-cell">공시 구간 없음</span></td><td><span class="null-cell">공시 구간 없음</span></td></tr><tr><td>2000~2499</td><td>₩72,408<span class="change-note"> ($54)</span></td><td>₩111,293<span class="change-note"> ($83)</span></td><td>₩122,020<span class="change-note"> ($91)</span></td><td>₩143,474<span class="change-note"> ($107)</span></td><td><span class="change-up">+18%</span></td></tr><tr><td>4000~4999</td><td>₩127,384<span class="change-note"> ($95)</span></td><td>₩193,087<span class="change-note"> ($144)</span></td><td>₩213,200<span class="change-note"> ($159)</span></td><td>₩250,745<span class="change-note"> ($187)</span></td><td><span class="change-up">+18%</span></td></tr><tr><td>5000~6499</td><td>₩158,224<span class="change-note"> ($118)</span></td><td>₩244,040<span class="change-note"> ($182)</span></td><td>₩268,176<span class="change-note"> ($200)</span></td><td>₩316,448<span class="change-note"> ($236)</span></td><td><span class="change-up">+18%</span></td></tr><tr><td>6500+</td><td>₩198,450<span class="change-note"> ($148)</span></td><td>₩305,721<span class="change-note"> ($228)</span></td><td>₩336,561<span class="change-note"> ($251)</span></td><td>₩396,900<span class="change-note"> ($296)</span></td><td><span class="change-up">+18%</span></td></tr><tr><td rowspan="6"><strong>제주항공 (7C)</strong></td><td rowspan="6">USD<span class="usd-badge">USD 공시</span></td><td>1</td><td>₩29,499<span class="change-note"> ($22)</span></td><td>₩44,249<span class="change-note"> ($33)</span></td><td>₩49,613<span class="change-note"> ($37)</span></td><td>₩57,658<span class="change-note"> ($43)</span></td><td><span class="change-up">+16%</span></td></tr><tr><td>2</td><td>₩37,545<span class="change-note"> ($28)</span></td><td>₩56,317<span class="change-note"> ($42)</span></td><td>₩63,021<span class="change-note"> ($47)</span></td><td>₩72,408<span class="change-note"> ($54)</span></td><td><span class="change-up">+15%</span></td></tr><tr><td>3</td><td>₩45,590<span class="change-note"> ($34)</span></td><td>₩67,044<span class="change-note"> ($50)</span></td><td>₩76,430<span class="change-note"> ($57)</span></td><td>₩88,498<span class="change-note"> ($66)</span></td><td><span class="change-up">+16%</span></td></tr><tr><td>4</td><td>₩53,635<span class="change-note"> ($40)</span></td><td>₩80,453<span class="change-note"> ($60)</span></td><td>₩91,180<span class="change-note"> ($68)</span></td><td>₩105,930<span class="change-note"> ($79)</span></td><td><span class="change-up">+16%</span></td></tr><tr><td>5</td><td>₩60,340<span class="change-note"> ($45)</span></td><td>₩91,180<span class="change-note"> ($68)</span></td><td>₩101,907<span class="change-note"> ($76)</span></td><td>₩119,338<span class="change-note"> ($89)</span></td><td><span class="change-up">+17%</span></td></tr><tr><td>6</td><td>₩69,726<span class="change-note"> ($52)</span></td><td>₩105,930<span class="change-note"> ($79)</span></td><td>₩116,657<span class="change-note"> ($87)</span></td><td>₩138,111<span class="change-note"> ($103)</span></td><td><span class="change-up">+18%</span></td></tr><tr><td rowspan="5"><strong>진에어 (LJ)</strong></td><td rowspan="5">USD<span class="usd-badge">USD 공시</span></td><td>1~599</td><td>₩26,818<span class="change-note"> ($20)</span></td><td>₩38,886<span class="change-note"> ($29)</span></td><td>₩42,908<span class="change-note"> ($32)</span></td><td>₩48,272<span class="change-note"> ($36)</span></td><td><span class="change-up">+13%</span></td></tr><tr><td>600~1199</td><td>₩36,204<span class="change-note"> ($27)</span></td><td>₩54,976<span class="change-note"> ($41)</span></td><td>₩61,680<span class="change-note"> ($46)</span></td><td>₩72,408<span class="change-note"> ($54)</span></td><td><span class="change-up">+17%</span></td></tr><tr><td>1200~1799</td><td>₩58,999<span class="change-note"> ($44)</span></td><td>₩89,839<span class="change-note"> ($67)</span></td><td>₩99,225<span class="change-note"> ($74)</span></td><td>₩116,657<span class="change-note"> ($87)</span></td><td><span class="change-up">+18%</span></td></tr><tr><td>1800~2399</td><td>₩65,703<span class="change-note"> ($49)</span></td><td>₩99,225<span class="change-note"> ($74)</span></td><td>₩108,611<span class="change-note"> ($81)</span></td><td>₩128,724<span class="change-note"> ($96)</span></td><td><span class="change-up">+19%</span></td></tr><tr><td>2400~3599</td><td>₩79,112<span class="change-note"> ($59)</span></td><td>₩119,338<span class="change-note"> ($89)</span></td><td>₩130,065<span class="change-note"> ($97)</span></td><td>₩154,201<span class="change-note"> ($115)</span></td><td><span class="change-up">+19%</span></td></tr><tr><td rowspan="6"><strong>이스타항공 (ZE)</strong></td><td rowspan="6">USD<span class="usd-badge">USD 공시</span></td><td>1</td><td>₩29,499<span class="change-note"> ($22)</span></td><td>₩44,249<span class="change-note"> ($33)</span></td><td>₩49,613<span class="change-note"> ($37)</span></td><td>₩57,658<span class="change-note"> ($43)</span></td><td><span class="change-up">+16%</span></td></tr><tr><td>2</td><td>₩37,545<span class="change-note"> ($28)</span></td><td>₩56,317<span class="change-note"> ($42)</span></td><td>₩63,021<span class="change-note"> ($47)</span></td><td>₩72,408<span class="change-note"> ($54)</span></td><td><span class="change-up">+15%</span></td></tr><tr><td>3</td><td>₩45,590<span class="change-note"> ($34)</span></td><td>₩67,044<span class="change-note"> ($50)</span></td><td>₩76,430<span class="change-note"> ($57)</span></td><td>₩88,498<span class="change-note"> ($66)</span></td><td><span class="change-up">+16%</span></td></tr><tr><td>4</td><td>₩53,635<span class="change-note"> ($40)</span></td><td>₩80,453<span class="change-note"> ($60)</span></td><td>₩91,180<span class="change-note"> ($68)</span></td><td>₩105,930<span class="change-note"> ($79)</span></td><td><span class="change-up">+16%</span></td></tr><tr><td>5</td><td>₩60,340<span class="change-note"> ($45)</span></td><td>₩91,180<span class="change-note"> ($68)</span></td><td>₩101,907<span class="change-note"> ($76)</span></td><td>₩119,338<span class="change-note"> ($89)</span></td><td><span class="change-up">+17%</span></td></tr><tr><td>6</td><td>₩69,726<span class="change-note"> ($52)</span></td><td>₩105,930<span class="change-note"> ($79)</span></td><td>₩116,657<span class="change-note"> ($87)</span></td><td>₩138,111<span class="change-note"> ($103)</span></td><td><span class="change-up">+18%</span></td></tr><tr><td rowspan="7"><strong>티웨이항공 (TW)</strong></td><td rowspan="7">KRW</td><td>1</td><td>₩24,400</td><td>₩36,200</td><td>₩37,000</td><td>₩43,400</td><td><span class="change-up">+17%</span></td></tr><tr><td>2</td><td>₩44,300</td><td>₩62,200</td><td>₩65,900</td><td>₩76,000</td><td><span class="change-up">+15%</span></td></tr><tr><td>3</td><td>₩55,000</td><td>₩78,200</td><td>₩82,300</td><td>₩95,000</td><td><span class="change-up">+15%</span></td></tr><tr><td>4</td><td>₩70,200</td><td>₩101,300</td><td>₩105,700</td><td>₩123,500</td><td><span class="change-up">+17%</span></td></tr><tr><td>5</td><td>₩76,300</td><td>₩110,000</td><td>₩113,900</td><td>₩133,000</td><td><span class="change-up">+17%</span></td></tr><tr><td>6</td><td><span class="null-cell">금액 없음</span></td><td><span class="null-cell">금액 없음</span></td><td><span class="null-cell">금액 없음</span></td><td><span class="null-cell">금액 없음</span></td><td><span class="null-cell">금액 없음</span></td></tr><tr><td>7</td><td>₩171,000</td><td>₩247,500</td><td>₩256,600</td><td>₩299,800</td><td><span class="change-up">+17%</span></td></tr><tr><td rowspan="5"><strong>에어서울 (RS)</strong></td><td rowspan="5">KRW</td><td>1</td><td>₩39,700</td><td>₩57,700</td><td>₩60,300</td><td>₩69,100</td><td><span class="change-up">+15%</span></td></tr><tr><td>2</td><td>₩47,300</td><td>₩66,400</td><td>₩69,900</td><td>₩80,000</td><td><span class="change-up">+14%</span></td></tr><tr><td>3</td><td>₩58,000</td><td>₩86,600</td><td>₩87,800</td><td>₩100,300</td><td><span class="change-up">+14%</span></td></tr><tr><td>4</td><td>₩67,100</td><td>₩95,300</td><td>₩98,700</td><td>₩115,200</td><td><span class="change-up">+17%</span></td></tr><tr><td>5</td><td>₩71,700</td><td>₩99,600</td><td>₩108,300</td><td>₩122,000</td><td><span class="change-up">+13%</span></td></tr><tr><td rowspan="4"><strong>에어부산 (BX)</strong></td><td rowspan="4">USD<span class="usd-badge">USD 공시</span></td><td>단거리</td><td>₩29,499<span class="change-note"> ($22)</span></td><td>₩45,590<span class="change-note"> ($34)</span></td><td>₩49,613<span class="change-note"> ($37)</span></td><td>₩57,658<span class="change-note"> ($43)</span></td><td><span class="change-up">+16%</span></td></tr><tr><td>중거리1</td><td>₩53,635<span class="change-note"> ($40)</span></td><td>₩80,453<span class="change-note"> ($60)</span></td><td>₩88,498<span class="change-note"> ($66)</span></td><td>₩103,248<span class="change-note"> ($77)</span></td><td><span class="change-up">+17%</span></td></tr><tr><td>중거리2</td><td>₩63,021<span class="change-note"> ($47)</span></td><td>₩95,202<span class="change-note"> ($71)</span></td><td>₩104,589<span class="change-note"> ($78)</span></td><td>₩120,679<span class="change-note"> ($90)</span></td><td><span class="change-up">+15%</span></td></tr><tr><td>장거리</td><td>₩72,408<span class="change-note"> ($54)</span></td><td>₩109,952<span class="change-note"> ($82)</span></td><td>₩120,679<span class="change-note"> ($90)</span></td><td>₩142,133<span class="change-note"> ($106)</span></td><td><span class="change-up">+18%</span></td></tr></tbody></table>
+  </div>
+    <p class="graph-notice" data-i18n-html="graph.tableNote">한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다. 11월 증감률은 같은 항공사·같은 거리 구간의 10월 공식 금액과 비교합니다. 미공시 값은 0원이나 이전 달 금액으로 채우지 않습니다.</p>
+  </details>
+  <div class="official-link-box">
+    <div class="official-link-title" data-i18n="graph.official.title">항공사 공식 유류할증료 공지 바로가기</div>
+    <div class="official-link-list" id="officialLinks"><div class="official-link-item">대한항공 (KE): <a href="https://www.koreanair.com/contents/footer/customer-support/notice/2026/2611-infuel" target="_blank" rel="noopener">11월 공식 공지</a></div><div class="official-link-item">아시아나항공 (OZ): <a href="https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202610160002530868&amp;dispCt=all&amp;page=1&amp;searchOption=0&amp;searchText=" target="_blank" rel="noopener">11월 공식 공지</a></div><div class="official-link-item">에어프레미아 (YP): <a href="https://www.airpremia.com/a/ko/customer/notice/803" target="_blank" rel="noopener">11월 공식 공지</a></div><div class="official-link-item">제주항공 (7C): <a href="https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000814" target="_blank" rel="noopener">11월 공식 공지</a></div><div class="official-link-item">진에어 (LJ): <a href="https://www.jinair.com/company/announce/announceView?anceSeq=28906&amp;searchWord=&amp;searchKey=titlCtn&amp;page=1" target="_blank" rel="noopener">11월 공식 공지</a></div><div class="official-link-item">이스타항공 (ZE): <a href="https://www.eastarjet.com/newstar/PGWCA00002?cId=11&amp;iId=0&amp;bId=680&amp;lang=KR" target="_blank" rel="noopener">11월 공식 공지</a></div><div class="official-link-item">티웨이항공 (TW): <a href="https://www.trinityairways.com/app/customerCenter/notice/retrieve/12722" target="_blank" rel="noopener">11월 공식 공지</a></div><div class="official-link-item">에어서울 (RS): <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=11208&amp;pageNo=1" target="_blank" rel="noopener">11월 공식 공지</a></div><div class="official-link-item">에어부산 (BX): <a href="https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4420" target="_blank" rel="noopener">11월 공식 공지</a></div></div>
+  </div>
+  <details class="graph-details" id="graphGuide">
+    <summary data-i18n="graph.interface.guide">표시 기준과 데이터 안내</summary>
+    <div class="graph-guide-content"><div class="seo-lang-notice">
     ⚠️&nbsp;<span data-i18n-html="graph.notice">2026년 11월 발권분 현재 적용. 2026년 11월 공시 완료 9개사: KE · OZ · 7C · LJ · RS · BX · TW · ZE · YP.</span>
   </div>
-
-  <div class="seo-intro" data-i18n="graph.intro">한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다.</div>
-
-  <section class="graph-answer" aria-label="유류할증료 그래프 핵심 답변">
+<div class="seo-intro" data-i18n="graph.intro">한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다.</div>
+<section class="graph-answer" aria-label="유류할증료 그래프 핵심 답변">
     <div class="graph-answer-title" data-i18n="graph.answer.title">10월 → 11월 공식 공시 비교</div>
     <div class="graph-answer-body" data-i18n="graph.answer.body">11월 증감률은 같은 항공사·같은 거리 구간의 10월 공식 금액과 비교합니다. 미공시 값은 0원이나 이전 달 금액으로 채우지 않습니다.</div>
   </section>
-
-  <div class="summary-cards">
+<div class="summary-cards">
     <div class="summary-card">
       <div class="summary-card-icon">📈</div>
       <div class="summary-card-title" data-i18n="graph.card1.title">2026년 4~11월 국제선 유류할증료 데이터 아카이브</div>
@@ -225,36 +246,12 @@
       <div class="summary-card-title" data-i18n="graph.card3.title">통화 환산 주의</div>
       <div class="summary-card-body"  data-i18n="graph.card3.body">USD 공시 항공사는 선택 통화로 환산되지만, 공식 원문 기준 금액은 USD입니다.</div>
     </div>
-  </div>
-
-  <!-- Filter -->
-  <div class="graph-filter-bar">
-    <label data-i18n="graph.filter.airline">항공사</label>
-    <select id="filterAirline"></select>
-    <label data-i18n="graph.filter.month">월</label>
-    <select id="filterMonth"></select>
-    <label data-i18n="graph.filter.view">표시 기준</label>
-    <select id="filterView"></select>
-    <div class="graph-filter-sep"></div>
-    <span style="font-size:var(--font-caption);color:var(--muted);" data-i18n="graph.filter.currHint">통화: 상단 통화 선택 기준</span>
-  </div>
-
-  <!-- Chart -->
-  <div class="chart-wrap">
-    <canvas id="graphCanvas" height="380"></canvas>
-    <div class="chart-legend" id="chartLegend"><div class="legend-item" style="cursor: default;"><span class="legend-dot" style="background:#7c3aed"></span>2026년 8월</div><div class="legend-item" style="cursor: default;"><span class="legend-dot" style="background:#ef4444"></span>2026년 9월</div><div class="legend-item" style="cursor: default;"><span class="legend-dot" style="background:#0891b2"></span>2026년 10월</div><div class="legend-item" style="cursor: default;"><span class="legend-dot" style="background:#be185d"></span>2026년 11월</div><div class="legend-item" style="cursor: default;"><span class="legend-tag">USD 공시</span><span style="color:var(--muted);font-size:var(--font-caption)">전체 보기: 항공사별 평균 금액</span></div></div>
-  </div>
-  <p class="graph-notice" data-i18n-html="graph.chartNote">최근 4개월은 8월·9월·10월·11월입니다. 전체를 선택하면 4월부터 표시합니다. 원화 환산 표시는 사이트의 비교용 환율이며 항공사 월간 산정환율·실제 결제액이 아닙니다. 사이트 비교용 참고환율: 1 USD = 1,340.88 KRW. 실시간 시장환율·항공사 산정평균·실제 결제환율이 아닙니다.</p>
-
-  <!-- Table -->
-  <div class="seo-section-title" data-i18n="graph.tableTitle">항공사별 유류할증료 상세 데이터</div>
-  <div class="graph-data-table">
-    <table><thead id="dataTableHead"><tr><th>항공사</th><th>공시 통화</th><th>구간</th><th>8월</th><th>9월</th><th>10월</th><th>11월</th><th>10월 대비</th></tr></thead><tbody id="dataTableBody"><tr><td rowspan="9"><strong>대한항공 (KE)</strong></td><td rowspan="9">KRW</td><td>~499</td><td>₩35,200</td><td>₩48,000</td><td>₩49,000</td><td>₩55,600</td><td><span class="change-up">+13%</span></td></tr><tr><td>500~999</td><td>₩49,600</td><td>₩66,000</td><td>₩65,800</td><td>₩76,000</td><td><span class="change-up">+16%</span></td></tr><tr><td>1000~1499</td><td>₩64,000</td><td>₩91,500</td><td>₩98,000</td><td>₩105,800</td><td><span class="change-up">+8%</span></td></tr><tr><td>1500~1999</td><td>₩80,000</td><td>₩109,500</td><td>₩116,200</td><td>₩132,900</td><td><span class="change-up">+14%</span></td></tr><tr><td>2000~2999</td><td>₩99,200</td><td>₩153,000</td><td>₩162,400</td><td>₩185,800</td><td><span class="change-up">+14%</span></td></tr><tr><td>3000~3999</td><td>₩100,800</td><td>₩156,000</td><td>₩168,000</td><td>₩189,800</td><td><span class="change-up">+13%</span></td></tr><tr><td>4000~4999</td><td>₩160,000</td><td>₩216,000</td><td>₩226,800</td><td>₩254,900</td><td><span class="change-up">+12%</span></td></tr><tr><td>5000~6499</td><td>₩225,600</td><td>₩325,500</td><td>₩322,000</td><td>₩370,100</td><td><span class="change-up">+15%</span></td></tr><tr><td>6500~9999</td><td>₩259,200</td><td>₩354,000</td><td>₩362,600</td><td>₩408,100</td><td><span class="change-up">+13%</span></td></tr><tr><td rowspan="9"><strong>아시아나항공 (OZ)</strong></td><td rowspan="9">KRW</td><td>1</td><td>₩36,600</td><td>₩52,000</td><td>₩53,400</td><td>₩62,400</td><td><span class="change-up">+17%</span></td></tr><tr><td>2</td><td>₩53,400</td><td>₩76,500</td><td>₩79,400</td><td>₩92,200</td><td><span class="change-up">+16%</span></td></tr><tr><td>3</td><td>₩70,200</td><td>₩99,600</td><td>₩104,000</td><td>₩120,600</td><td><span class="change-up">+16%</span></td></tr><tr><td>4</td><td>₩86,900</td><td>₩124,100</td><td>₩128,700</td><td>₩149,100</td><td><span class="change-up">+16%</span></td></tr><tr><td>5</td><td>₩103,700</td><td>₩147,200</td><td>₩153,300</td><td>₩178,900</td><td><span class="change-up">+17%</span></td></tr><tr><td>6</td><td>₩120,500</td><td>₩171,800</td><td>₩178,000</td><td>₩207,400</td><td><span class="change-up">+17%</span></td></tr><tr><td>7</td><td>₩137,300</td><td>₩194,900</td><td>₩202,600</td><td>₩235,900</td><td><span class="change-up">+16%</span></td></tr><tr><td>8</td><td>₩170,800</td><td>₩242,500</td><td>₩251,900</td><td>₩294,200</td><td><span class="change-up">+17%</span></td></tr><tr><td>9</td><td>₩202,900</td><td>₩290,100</td><td>₩301,200</td><td>₩351,100</td><td><span class="change-up">+17%</span></td></tr><tr><td rowspan="7"><strong>에어프레미아 (YP)</strong></td><td rowspan="7">USD<span class="usd-badge">USD 공시</span></td><td>~999</td><td>₩33,522<span class="change-note"> ($25)</span></td><td>₩49,613<span class="change-note"> ($37)</span></td><td>₩54,976<span class="change-note"> ($41)</span></td><td>₩64,362<span class="change-note"> ($48)</span></td><td><span class="change-up">+17%</span></td></tr><tr><td>1000~1499</td><td>₩42,908<span class="change-note"> ($32)</span></td><td>₩65,703<span class="change-note"> ($49)</span></td><td>₩72,408<span class="change-note"> ($54)</span></td><td>₩85,816<span class="change-note"> ($64)</span></td><td><span class="change-up">+19%</span></td></tr><tr><td>1500~1999</td><td><span class="null-cell">공시 구간 없음</span></td><td><span class="null-cell">공시 구간 없음</span></td><td><span class="null-cell">공시 구간 없음</span></td><td><span class="null-cell">공시 구간 없음</span></td><td><span class="null-cell">공시 구간 없음</span></td></tr><tr><td>2000~2499</td><td>₩72,408<span class="change-note"> ($54)</span></td><td>₩111,293<span class="change-note"> ($83)</span></td><td>₩122,020<span class="change-note"> ($91)</span></td><td>₩143,474<span class="change-note"> ($107)</span></td><td><span class="change-up">+18%</span></td></tr><tr><td>4000~4999</td><td>₩127,384<span class="change-note"> ($95)</span></td><td>₩193,087<span class="change-note"> ($144)</span></td><td>₩213,200<span class="change-note"> ($159)</span></td><td>₩250,745<span class="change-note"> ($187)</span></td><td><span class="change-up">+18%</span></td></tr><tr><td>5000~6499</td><td>₩158,224<span class="change-note"> ($118)</span></td><td>₩244,040<span class="change-note"> ($182)</span></td><td>₩268,176<span class="change-note"> ($200)</span></td><td>₩316,448<span class="change-note"> ($236)</span></td><td><span class="change-up">+18%</span></td></tr><tr><td>6500+</td><td>₩198,450<span class="change-note"> ($148)</span></td><td>₩305,721<span class="change-note"> ($228)</span></td><td>₩336,561<span class="change-note"> ($251)</span></td><td>₩396,900<span class="change-note"> ($296)</span></td><td><span class="change-up">+18%</span></td></tr><tr><td rowspan="6"><strong>제주항공 (7C)</strong></td><td rowspan="6">USD<span class="usd-badge">USD 공시</span></td><td>1</td><td>₩29,499<span class="change-note"> ($22)</span></td><td>₩44,249<span class="change-note"> ($33)</span></td><td>₩49,613<span class="change-note"> ($37)</span></td><td>₩57,658<span class="change-note"> ($43)</span></td><td><span class="change-up">+16%</span></td></tr><tr><td>2</td><td>₩37,545<span class="change-note"> ($28)</span></td><td>₩56,317<span class="change-note"> ($42)</span></td><td>₩63,021<span class="change-note"> ($47)</span></td><td>₩72,408<span class="change-note"> ($54)</span></td><td><span class="change-up">+15%</span></td></tr><tr><td>3</td><td>₩45,590<span class="change-note"> ($34)</span></td><td>₩67,044<span class="change-note"> ($50)</span></td><td>₩76,430<span class="change-note"> ($57)</span></td><td>₩88,498<span class="change-note"> ($66)</span></td><td><span class="change-up">+16%</span></td></tr><tr><td>4</td><td>₩53,635<span class="change-note"> ($40)</span></td><td>₩80,453<span class="change-note"> ($60)</span></td><td>₩91,180<span class="change-note"> ($68)</span></td><td>₩105,930<span class="change-note"> ($79)</span></td><td><span class="change-up">+16%</span></td></tr><tr><td>5</td><td>₩60,340<span class="change-note"> ($45)</span></td><td>₩91,180<span class="change-note"> ($68)</span></td><td>₩101,907<span class="change-note"> ($76)</span></td><td>₩119,338<span class="change-note"> ($89)</span></td><td><span class="change-up">+17%</span></td></tr><tr><td>6</td><td>₩69,726<span class="change-note"> ($52)</span></td><td>₩105,930<span class="change-note"> ($79)</span></td><td>₩116,657<span class="change-note"> ($87)</span></td><td>₩138,111<span class="change-note"> ($103)</span></td><td><span class="change-up">+18%</span></td></tr><tr><td rowspan="5"><strong>진에어 (LJ)</strong></td><td rowspan="5">USD<span class="usd-badge">USD 공시</span></td><td>1~599</td><td>₩26,818<span class="change-note"> ($20)</span></td><td>₩38,886<span class="change-note"> ($29)</span></td><td>₩42,908<span class="change-note"> ($32)</span></td><td>₩48,272<span class="change-note"> ($36)</span></td><td><span class="change-up">+13%</span></td></tr><tr><td>600~1199</td><td>₩36,204<span class="change-note"> ($27)</span></td><td>₩54,976<span class="change-note"> ($41)</span></td><td>₩61,680<span class="change-note"> ($46)</span></td><td>₩72,408<span class="change-note"> ($54)</span></td><td><span class="change-up">+17%</span></td></tr><tr><td>1200~1799</td><td>₩58,999<span class="change-note"> ($44)</span></td><td>₩89,839<span class="change-note"> ($67)</span></td><td>₩99,225<span class="change-note"> ($74)</span></td><td>₩116,657<span class="change-note"> ($87)</span></td><td><span class="change-up">+18%</span></td></tr><tr><td>1800~2399</td><td>₩65,703<span class="change-note"> ($49)</span></td><td>₩99,225<span class="change-note"> ($74)</span></td><td>₩108,611<span class="change-note"> ($81)</span></td><td>₩128,724<span class="change-note"> ($96)</span></td><td><span class="change-up">+19%</span></td></tr><tr><td>2400~3599</td><td>₩79,112<span class="change-note"> ($59)</span></td><td>₩119,338<span class="change-note"> ($89)</span></td><td>₩130,065<span class="change-note"> ($97)</span></td><td>₩154,201<span class="change-note"> ($115)</span></td><td><span class="change-up">+19%</span></td></tr><tr><td rowspan="6"><strong>이스타항공 (ZE)</strong></td><td rowspan="6">USD<span class="usd-badge">USD 공시</span></td><td>1</td><td>₩29,499<span class="change-note"> ($22)</span></td><td>₩44,249<span class="change-note"> ($33)</span></td><td>₩49,613<span class="change-note"> ($37)</span></td><td>₩57,658<span class="change-note"> ($43)</span></td><td><span class="change-up">+16%</span></td></tr><tr><td>2</td><td>₩37,545<span class="change-note"> ($28)</span></td><td>₩56,317<span class="change-note"> ($42)</span></td><td>₩63,021<span class="change-note"> ($47)</span></td><td>₩72,408<span class="change-note"> ($54)</span></td><td><span class="change-up">+15%</span></td></tr><tr><td>3</td><td>₩45,590<span class="change-note"> ($34)</span></td><td>₩67,044<span class="change-note"> ($50)</span></td><td>₩76,430<span class="change-note"> ($57)</span></td><td>₩88,498<span class="change-note"> ($66)</span></td><td><span class="change-up">+16%</span></td></tr><tr><td>4</td><td>₩53,635<span class="change-note"> ($40)</span></td><td>₩80,453<span class="change-note"> ($60)</span></td><td>₩91,180<span class="change-note"> ($68)</span></td><td>₩105,930<span class="change-note"> ($79)</span></td><td><span class="change-up">+16%</span></td></tr><tr><td>5</td><td>₩60,340<span class="change-note"> ($45)</span></td><td>₩91,180<span class="change-note"> ($68)</span></td><td>₩101,907<span class="change-note"> ($76)</span></td><td>₩119,338<span class="change-note"> ($89)</span></td><td><span class="change-up">+17%</span></td></tr><tr><td>6</td><td>₩69,726<span class="change-note"> ($52)</span></td><td>₩105,930<span class="change-note"> ($79)</span></td><td>₩116,657<span class="change-note"> ($87)</span></td><td>₩138,111<span class="change-note"> ($103)</span></td><td><span class="change-up">+18%</span></td></tr><tr><td rowspan="7"><strong>티웨이항공 (TW)</strong></td><td rowspan="7">KRW</td><td>1</td><td>₩24,400</td><td>₩36,200</td><td>₩37,000</td><td>₩43,400</td><td><span class="change-up">+17%</span></td></tr><tr><td>2</td><td>₩44,300</td><td>₩62,200</td><td>₩65,900</td><td>₩76,000</td><td><span class="change-up">+15%</span></td></tr><tr><td>3</td><td>₩55,000</td><td>₩78,200</td><td>₩82,300</td><td>₩95,000</td><td><span class="change-up">+15%</span></td></tr><tr><td>4</td><td>₩70,200</td><td>₩101,300</td><td>₩105,700</td><td>₩123,500</td><td><span class="change-up">+17%</span></td></tr><tr><td>5</td><td>₩76,300</td><td>₩110,000</td><td>₩113,900</td><td>₩133,000</td><td><span class="change-up">+17%</span></td></tr><tr><td>6</td><td><span class="null-cell">금액 없음</span></td><td><span class="null-cell">금액 없음</span></td><td><span class="null-cell">금액 없음</span></td><td><span class="null-cell">금액 없음</span></td><td><span class="null-cell">금액 없음</span></td></tr><tr><td>7</td><td>₩171,000</td><td>₩247,500</td><td>₩256,600</td><td>₩299,800</td><td><span class="change-up">+17%</span></td></tr><tr><td rowspan="5"><strong>에어서울 (RS)</strong></td><td rowspan="5">KRW</td><td>1</td><td>₩39,700</td><td>₩57,700</td><td>₩60,300</td><td>₩69,100</td><td><span class="change-up">+15%</span></td></tr><tr><td>2</td><td>₩47,300</td><td>₩66,400</td><td>₩69,900</td><td>₩80,000</td><td><span class="change-up">+14%</span></td></tr><tr><td>3</td><td>₩58,000</td><td>₩86,600</td><td>₩87,800</td><td>₩100,300</td><td><span class="change-up">+14%</span></td></tr><tr><td>4</td><td>₩67,100</td><td>₩95,300</td><td>₩98,700</td><td>₩115,200</td><td><span class="change-up">+17%</span></td></tr><tr><td>5</td><td>₩71,700</td><td>₩99,600</td><td>₩108,300</td><td>₩122,000</td><td><span class="change-up">+13%</span></td></tr><tr><td rowspan="4"><strong>에어부산 (BX)</strong></td><td rowspan="4">USD<span class="usd-badge">USD 공시</span></td><td>단거리</td><td>₩29,499<span class="change-note"> ($22)</span></td><td>₩45,590<span class="change-note"> ($34)</span></td><td>₩49,613<span class="change-note"> ($37)</span></td><td>₩57,658<span class="change-note"> ($43)</span></td><td><span class="change-up">+16%</span></td></tr><tr><td>중거리1</td><td>₩53,635<span class="change-note"> ($40)</span></td><td>₩80,453<span class="change-note"> ($60)</span></td><td>₩88,498<span class="change-note"> ($66)</span></td><td>₩103,248<span class="change-note"> ($77)</span></td><td><span class="change-up">+17%</span></td></tr><tr><td>중거리2</td><td>₩63,021<span class="change-note"> ($47)</span></td><td>₩95,202<span class="change-note"> ($71)</span></td><td>₩104,589<span class="change-note"> ($78)</span></td><td>₩120,679<span class="change-note"> ($90)</span></td><td><span class="change-up">+15%</span></td></tr><tr><td>장거리</td><td>₩72,408<span class="change-note"> ($54)</span></td><td>₩109,952<span class="change-note"> ($82)</span></td><td>₩120,679<span class="change-note"> ($90)</span></td><td>₩142,133<span class="change-note"> ($106)</span></td><td><span class="change-up">+18%</span></td></tr></tbody></table>
-  </div>
-  <p class="graph-notice" data-i18n-html="graph.tableNote">한국 출발 국제선 편도, 2026년 11월 1~30일 발권 기준입니다. 공시 통화와 구간을 유지하며 대시는 금액 없음이지 0원이 아닙니다. 11월 증감률은 같은 항공사·같은 거리 구간의 10월 공식 금액과 비교합니다. 미공시 값은 0원이나 이전 달 금액으로 채우지 않습니다.</p>
-
+  </div></div>
+  </details>
+  <details class="graph-details" id="graphFaqDetails">
+    <summary data-i18n="graph.faq.title">유류할증료 그래프 FAQ</summary>
   <section aria-label="유류할증료 그래프 FAQ">
-    <div class="seo-section-title" data-i18n="graph.faq.title">유류할증료 그래프 FAQ</div>
+
     <div class="graph-faq">
       <div class="graph-faq-item">
         <div class="graph-faq-q" data-i18n="graph.faq.q1">그래프는 어떤 데이터를 비교하나요?</div>
@@ -266,14 +263,7 @@
       </div>
     </div>
   </section>
-
-  <!-- Official links -->
-  <div class="official-link-box">
-    <div class="official-link-title" data-i18n="graph.official.title">항공사 공식 유류할증료 공지 바로가기</div>
-    <div class="official-link-list" id="officialLinks"><div class="official-link-item">✈️ 대한항공 (KE): <a href="https://www.koreanair.com/contents/footer/customer-support/notice/2026/2611-infuel" target="_blank" rel="noopener">11월 공식 공지</a></div><div class="official-link-item">✈️ 아시아나항공 (OZ): <a href="https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202610160002530868&amp;dispCt=all&amp;page=1&amp;searchOption=0&amp;searchText=" target="_blank" rel="noopener">11월 공식 공지</a></div><div class="official-link-item">✈️ 에어프레미아 (YP): <a href="https://www.airpremia.com/a/ko/customer/notice/803" target="_blank" rel="noopener">11월 공식 공지</a></div><div class="official-link-item">✈️ 제주항공 (7C): <a href="https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000814" target="_blank" rel="noopener">11월 공식 공지</a></div><div class="official-link-item">✈️ 진에어 (LJ): <a href="https://www.jinair.com/company/announce/announceView?anceSeq=28906&amp;searchWord=&amp;searchKey=titlCtn&amp;page=1" target="_blank" rel="noopener">11월 공식 공지</a></div><div class="official-link-item">✈️ 이스타항공 (ZE): <a href="https://www.eastarjet.com/newstar/PGWCA00002?cId=11&amp;iId=0&amp;bId=680&amp;lang=KR" target="_blank" rel="noopener">11월 공식 공지</a></div><div class="official-link-item">✈️ 티웨이항공 (TW): <a href="https://www.trinityairways.com/app/customerCenter/notice/retrieve/12722" target="_blank" rel="noopener">11월 공식 공지</a></div><div class="official-link-item">✈️ 에어서울 (RS): <a href="https://flyairseoul.com/CW/ko/noticeContent.do?seq=11208&amp;pageNo=1" target="_blank" rel="noopener">11월 공식 공지</a></div><div class="official-link-item">✈️ 에어부산 (BX): <a href="https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4420" target="_blank" rel="noopener">11월 공식 공지</a></div></div>
-  </div>
-
-  <!-- Related -->
+  </details>
   <div class="related-links">
     <div class="related-title" data-i18n="graph.relatedTitle">관련 페이지</div>
     <div class="related-grid">
@@ -288,21 +278,22 @@
     </div>
   </div>
 </main>
-
-<footer style="background:var(--white);border-top:1px solid var(--line);padding:20px 40px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-top:20px;">
+<footer class="graph-footer">
   <p style="font-size:var(--font-small);color:var(--muted);max-width:600px;line-height:1.6;margin:0;" data-i18n-html="graph.footnote">표시된 유류할증료는 항공사 공식 공시 기반 참고 정보입니다. 최종 금액은 항공사 공식 사이트 또는 발권처에서 반드시 확인하세요.<br>문의: <a href="mailto:jiwoo7475@gmail.com" style="color:var(--blue);text-decoration:none;">jiwoo7475@gmail.com</a></p>
-  <nav style="display:flex;gap:16px;flex-wrap:wrap;">
+  <div class="footer-links">
     <a href="about.html"   style="font-size:var(--font-small);color:var(--muted);text-decoration:none;">About</a>
     <a href="methodology.html" style="font-size:var(--font-small);color:var(--muted);text-decoration:none;">Data Methodology</a>
     <a href="privacy.html" style="font-size:var(--font-small);color:var(--muted);text-decoration:none;">Privacy Policy</a>
     <a href="terms.html"   style="font-size:var(--font-small);color:var(--muted);text-decoration:none;">Terms of Service</a>
-  </nav>
+  </div>
 </footer>
+
 
 <div id="graphTooltip"></div>
 
 <script src="source-provenance.js?v=20261029-market"></script>
-<script src="_shared.js?v=20261112-0900"></script>
+<script src="_shared.js?v=20261116-0900"></script>
+<script src="graph-interface.js?v=20261115-design"></script>
 <script>
 /* ═══════════════════════════════════════
    PAGE i18n
@@ -735,7 +726,7 @@ function buildOfficialLinks() {
   var suf = tg('graph.official.suffix');
   el.innerHTML = AIRLINES.map(function(a) {
     var next=!!a.novemberNoticeUrl;
-    return '<div class="official-link-item">✈️ '+airlineName(a.code)+': <a href="'+(next?a.novemberNoticeUrl:a.url)+'" target="_blank" rel="noopener">'+tg(next?'graph.notice.nov':'graph.notice.oct')+'</a>'+(next?'':' · '+tg('graph.pending.nov'))+'</div>';
+    return '<div class="official-link-item">'+airlineName(a.code)+': <a href="'+(next?a.novemberNoticeUrl:a.url)+'" target="_blank" rel="noopener">'+tg(next?'graph.notice.nov':'graph.notice.oct')+'</a>'+(next?'':' · '+tg('graph.pending.nov'))+'</div>';
   }).join('');
 }
 
@@ -754,7 +745,8 @@ function drawChart() {
   var graphType = getComputedStyle(document.body);
   var labelSize = parseFloat(getComputedStyle(document.documentElement).fontSize) * 0.8125;
   var labelFont = '500 ' + labelSize + 'px ' + graphType.fontFamily;
-  var W = Math.max(canvas.parentElement.clientWidth - 32, 200);
+  // Match the drawing coordinates to the actual responsive canvas width.
+  var W = Math.max(Math.round(canvas.getBoundingClientRect().width), 200);
   var H = 380;
   canvas.width = W * dpr; canvas.height = H * dpr;
   canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
@@ -906,9 +898,12 @@ function drawChart() {
 
   if (!groups.length) return;
   var groupW = gW / groups.length;
+  var staggerLabels = filterState.airline === 'all' && groups.some(function(g){
+    return ctx.measureText(g.shortLabel).width + 4 > groupW;
+  });
   var barKeys = isChange ? ['change'] : monthOrder;
-  var gap = Math.max(6, Math.min(14, groupW * 0.18));
-  var barW = Math.max(3, Math.min(28, (groupW - gap * 2) / Math.max(barKeys.length, 1)));
+  var gap = Math.min(14, groupW * 0.18);
+  var barW = Math.max(0.5, Math.min(28, (groupW - gap * 2) / Math.max(barKeys.length, 1)));
   groups.forEach(function(g, idx) {
     var center = PAD.left + idx * groupW + groupW / 2;
     var baseY = toY(0);
@@ -939,12 +934,12 @@ function drawChart() {
     ctx.font=labelFont;
     ctx.textAlign='center';
     var label = filterState.airline === 'all' ? g.shortLabel : String(idx + 1);
-    ctx.fillText(label, center, H - PAD.bottom + 18);
+    ctx.fillText(label, center, H - PAD.bottom + 18 + (staggerLabels && idx % 2 ? 15 : 0));
   });
   ctx.fillStyle='#64748b';
   ctx.font=labelFont;
   ctx.textAlign='center';
-  ctx.fillText(filterState.airline === 'all' ? tg('graph.th.airline') : tg('graph.th.band'), PAD.left+gW/2, H-PAD.bottom+36);
+  ctx.fillText(filterState.airline === 'all' ? tg('graph.th.airline') : tg('graph.th.band'), PAD.left+gW/2, H-PAD.bottom+(staggerLabels?52:36));
 }
 
 /* tooltip */
@@ -952,7 +947,9 @@ function handleMouseMove(e) {
   var canvas = document.getElementById('graphCanvas');
   if (!canvas) return;
   var rect = canvas.getBoundingClientRect();
-  var mx = e.clientX - rect.left, my = e.clientY - rect.top;
+  var dpr = window.devicePixelRatio || 1;
+  var mx = (e.clientX - rect.left) * canvas.width / dpr / rect.width;
+  var my = (e.clientY - rect.top) * canvas.height / dpr / rect.height;
   var hit=null, best=Infinity;
   _hitAreas.forEach(function(h) {
     var inside = h.w != null

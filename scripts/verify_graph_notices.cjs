@@ -45,10 +45,11 @@ async function capture(page) {
         return {month,text:cell?.textContent||'',nullCell:!!cell?.querySelector('.null-cell'),number:number?Number(number):null};
       }),change:cells.at(-1)?.textContent};
     })}));
-    const canvas=document.getElementById('graphCanvas'), ctx=canvas.getContext('2d'),dpr=window.devicePixelRatio||1;
+    const canvas=document.getElementById('graphCanvas'), ctx=canvas.getContext('2d'),dpr=window.devicePixelRatio||1,rect=canvas.getBoundingClientRect();
     return {airlines:AIRLINES.map(a=>({code:a.code,currency:a.currency,bands:a.bands,nov:a.nov,oct:a.oct,url:a.novemberNoticeUrl,archive:Object.fromEntries(['apr','may','june','july','aug','sep','oct'].map(m=>[m,a[m]]))})),
       points:_hitAreas.map(p=>({code:p.airline.code,month:p.month,band:p.bandIdx,original:p.origVal,value:p.displayVal,x:p.x,y:p.y,w:p.w,h:p.h,pixel:[...ctx.getImageData(Math.floor((p.x+p.w/2)*dpr),Math.floor((p.y+p.h/2)*dpr),1,1).data]})),
       table,monthKeys,filters:{...filterState},currency:SHARED_STATE.curr,rates:{...window.RATES},decimals:{...window.CURR_DEC},
+      canvas:{internalWidth:canvas.width/dpr,internalHeight:canvas.height/dpr,displayWidth:rect.width,displayHeight:rect.height},
       novemberLabel:tg('graph.filter.nov'),noBand:tg('graph.noBand'),links:[...document.querySelectorAll('#officialLinks a')].map(a=>a.href),
       overflow:document.documentElement.scrollWidth>innerWidth,canonical:document.querySelector('link[rel="canonical"]')?.href};
   });
@@ -95,6 +96,8 @@ function verifyNovember(x, label) {
     points.forEach(p=>{assert.equal(p.original,n.values[p.band],label+' source chart point');near(p.value,p.original/x.rates[n.currency]*x.rates[x.currency],label+' chart conversion');});
   }
   points.forEach(p=>{assert(p.w>0&&p.h>0,label+' bar size');assert(p.pixel[3]>0&&p.pixel.slice(0,3).some(v=>v<200),label+' actual bar pixels');});
+  near(x.canvas.displayWidth,x.canvas.internalWidth,label+' canvas display and drawing widths agree',0.500001);
+  near(x.canvas.displayHeight,x.canvas.internalHeight,label+' canvas display and drawing heights agree',0.500001);
   assert.equal(x.overflow,false,label+' page overflow');
 }
 
@@ -102,7 +105,8 @@ async function verifyTooltip(page,x,label,last=false){
   const hits=x.points.filter(p=>p.month==='nov'),hit=last?hits.at(-1):hits[0];assert(hit,label+' tooltip target');
   await page.locator('#graphCanvas').scrollIntoViewIfNeeded();
   const box=await page.locator('#graphCanvas').boundingBox();
-  await page.mouse.move(box.x+hit.x+hit.w/2,box.y+hit.y+hit.h/2);
+  // Aim at the displayed bar, not an unscaled internal hit-test coordinate.
+  await page.mouse.move(box.x+(hit.x+hit.w/2)*box.width/x.canvas.internalWidth,box.y+(hit.y+hit.h/2)*box.height/x.canvas.internalHeight);
   const text=norm(await page.locator('#graphTooltip').innerText());
   assert(text.includes(norm(x.novemberLabel)),label+' tooltip identifies November: '+text);
   const decimals=x.decimals[x.currency]??0;
@@ -127,10 +131,14 @@ async function chooseCurrency(page,currency){
     browser=await chromium.launch();
     const page=await browser.newPage({viewport:{width:1440,height:1000}}),errors=[];
     page.on('pageerror',e=>errors.push(e.message));
-    await page.route('**/*',route=>new URL(route.request().url()).origin===origin?route.continue():route.abort());
+    await page.route('**/*',route=>{
+      const url=new URL(route.request().url());
+      return url.origin===origin&&!url.pathname.startsWith('/api/')?route.continue():route.abort();
+    });
     await page.goto(origin+'/fuel-surcharge-graph.html');await page.waitForTimeout(1400);
     const deny=page.locator('#aeroConsentDeny');if(await deny.isVisible())await deny.click();
     const initial=await capture(page);assert.equal(initial.canonical,'https://aero-surcharge.com/fuel-surcharge-graph');
+    assert.equal(await page.locator('#graphDataDetails').getAttribute('open'),null,'detailed data starts collapsed');
     report.currencySelectorOptions=await page.locator('#navCurr option').evaluateAll(options=>options.map(option=>option.value));
     assert.deepEqual([...report.currencySelectorOptions].sort(),[...currencies].sort(),'nine real currency options');
     assert.deepEqual(initial.monthKeys,['aug','sep','oct','nov']);verifyNovember(initial,'initial recent four');
@@ -180,6 +188,10 @@ async function chooseCurrency(page,currency){
     await page.selectOption('#navLang','ko');
     await page.mouse.move(0,0);await page.locator('#graphCanvas').screenshot({path:path.join(out,'yp-november-mobile.png')});
     await page.selectOption('#filterMonth','nov');await page.selectOption('#navCurr','USD');
+    const dataToggle=page.locator('#graphDataDetails > summary');
+    await dataToggle.focus();await dataToggle.press('Enter');
+    assert.notEqual(await page.locator('#graphDataDetails').getAttribute('open'),null,'detailed data opens by keyboard');
+    assert(await page.locator('.graph-data-table').isVisible(),'expanded data table is visible');
     await page.locator('.graph-data-table').screenshot({path:path.join(out,'yp-november-table-mobile.png')});
     await page.selectOption('#navCurr','KRW');
     // A missing conversion rate cannot erase original USD notices or invent a
@@ -190,8 +202,31 @@ async function chooseCurrency(page,currency){
     await page.selectOption('#navCurr','USD');
     const native=await capture(page);assert.deepEqual(native.points.filter(p=>p.month==='nov').map(p=>p.value),[48,64,107,187,236,296],'native USD needs no FX rate');
     await page.evaluate(rate=>{RATES.USD=rate;drawChart();buildTable();},rate);verifyNovember(await capture(page),'restored conversion rate');
+    await page.setViewportSize({width:320,height:844});
+    await page.selectOption('#navCurr','KRW');await page.selectOption('#filterAirline','all');await page.selectOption('#filterMonth','all');
+    const narrow=await capture(page);verifyNovember(narrow,'320px all airlines/all months');
+    assert.deepEqual(narrow.monthKeys,['apr','may','june','july','aug','sep','oct','nov'],'narrow chart keeps all eight months');
+    const ordered=narrow.points.slice().sort((a,b)=>a.x-b.x);
+    ordered.forEach((point,i)=>{
+      assert(point.x>=0&&point.x+point.w<=narrow.canvas.internalWidth,'narrow bar stays within the canvas');
+      if(i)assert(ordered[i-1].x+ordered[i-1].w<=point.x+1e-7,'320px adjacent month/airline bars do not overlap');
+    });
+    const narrowLabels=await page.evaluate(()=>{
+      const ctx=document.getElementById('graphCanvas').getContext('2d'),original=ctx.fillText,labels=[];
+      ctx.fillText=function(text,x,y){
+        if(AIRLINES.some(airline=>airline.code===text))labels.push({text,x,y,width:this.measureText(text).width});
+        return original.apply(this,arguments);
+      };
+      try{drawChart();}finally{ctx.fillText=original;}
+      return labels;
+    });
+    assert.equal(narrowLabels.length,9,'320px axis labels retain every airline');
+    narrowLabels.forEach((label,i)=>narrowLabels.slice(i+1).forEach(other=>{
+      if(Math.abs(label.y-other.y)<13)assert(Math.abs(label.x-other.x)>=(label.width+other.width)/2,'320px airline labels do not overlap');
+    }));
+    report.narrowChart={width:320,months:narrow.monthKeys.length,airlines:narrow.airlines.length,bars:ordered.length,canvas:narrow.canvas};
     assert.deepEqual(errors,[],'page JavaScript errors');report.pageErrors=errors;report.delayedSeconds=12;
     fs.writeFileSync(path.join(out,'verification.json'),JSON.stringify(report,null,2));
-    console.log('PASS graph November: nine source notices, every band and null gap, six languages/nine currencies, table and drawn values, tooltip, filters, mobile, 12-second stability. '+out);
+    console.log('PASS graph November: nine source notices, every band and null gap, six languages/nine currencies, table and drawn values, scaled tooltip, keyboard details, filters, mobile and 320px bar separation, 12-second stability. '+out);
   }finally{if(browser)await browser.close();if(server)server.kill();}
 })().catch(error=>{console.error(error);process.exitCode=1;});
