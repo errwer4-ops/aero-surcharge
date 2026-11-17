@@ -1,0 +1,73 @@
+{
+  "reviewedAt": "2026-11-17T00:00:36Z",
+  "scope": "2026-11-17 09:00 KST morning update; source availability before cutoff and later detailed verification are distinct",
+  "method": "Official full search extraction recorded before cutoff, independently compared with successful official page web-open and November official page. Direct HTTP and browser blocked; no normal screenshot was obtained.",
+  "publicationPrecision": "Unknown: official page does not state publication date or time; kept null.",
+  "sources": [
+    {
+      "airline": "BX",
+      "url": "https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4431",
+      "bands": [
+        "FUK / MYJ / KIX / NRT (PUS) / NGS / TAO / TAK / FSZ",
+        "NRT (ICN) / CTS / XIY / YNJ / DYG / HKG / MFM / TPE / KHH",
+        "SYX / UBN / CEB / KLO / DAD / CXR / VTE / BKI (PUS) / HAN / TAG / GUM / CNX (ICN)",
+        "BKK / DPS"
+      ],
+      "amounts": [
+        40,
+        71,
+        84,
+        98
+      ],
+      "november": [
+        43,
+        77,
+        90,
+        106
+      ],
+      "majorRoutesKo": [
+        "후쿠오카, 마쓰야마, 오사카(간사이), 나리타(부산 출발), 나가사키, 칭다오, 다카마쓰, 시즈오카",
+        "나리타(인천 출발), 삿포로, 시안, 옌지, 장자제, 홍콩, 마카오, 타이베이, 가오슝",
+        "싼야, 울란바토르, 세부, 칼리보, 다낭, 나트랑, 비엔티안, 코타키나발루(부산 출발), 하노이, 보홀, 괌, 치앙마이(인천 출발)",
+        "방콕, 발리"
+      ],
+      "currency": "USD",
+      "direction": "one_way",
+      "departureCountry": "KR",
+      "publishedDate": null,
+      "ticketingStart": "2026-12-01",
+      "ticketingEnd": "2026-12-31",
+      "collectedAt": "2026-11-16T23:59:39Z",
+      "sourceVerifiedAt": "2026-11-17T00:00:36Z",
+      "rawFiles": [
+        {
+          "file": "artifacts/review-verification/market-nov17/airlines/BX-search-before-cutoff.json",
+          "sha256": "82f7fb41d717f3e34642d8dfcf6134c9fc9deb33c8144f08a4e095bcd6d58bb8"
+        },
+        {
+          "file": "artifacts/review-verification/market-nov17/airlines/opened-official-pages.json",
+          "sha256": "72b15378db7efbf21123a25def90117d785e77bb868899e13f7c2049af781fb6"
+        }
+      ],
+      "conditions": "Korea-origin international passenger one-way, issued December 1–31. Infants under two without a seat exempt. Origin distinguishes Narita (PUS vs ICN), Kota Kinabalu (PUS only), Chiang Mai (ICN only). No December KRW amount supplied.",
+      "officialStage": null
+    }
+  ],
+  "availability": {
+    "firstSearchObservedWindow": [
+      "2026-11-16T23:58:50Z",
+      "2026-11-16T23:58:59Z"
+    ],
+    "savedSearchObservedWindow": [
+      "2026-11-16T23:59:28Z",
+      "2026-11-16T23:59:39Z"
+    ],
+    "laterWebOpenVerifiedAt": "2026-11-17T00:00:36Z",
+    "unknownPublicationDate": true
+  },
+  "limitations": [
+    "Direct HTTP and normal browser returned403; failed screenshot is not original notice evidence",
+    "No official stage, MOPS average or period FX supplied",
+    "The shared reference FX is not an airline payment conversion rate"
+  ]
+}

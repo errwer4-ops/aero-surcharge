@@ -153,6 +153,59 @@ var notices=[
     "officialStage": null,
     "postPeriodRateConfirmed": false,
     "postPeriodRule": "2026년 12월 17일 이후 통합항공사의 유류할증료가 적용됩니다."
+  },
+  {
+    "code": "BX",
+    "month": "2026-12",
+    "bands": [
+      "FUK / MYJ / KIX / NRT (PUS) / NGS / TAO / TAK / FSZ",
+      "NRT (ICN) / CTS / XIY / YNJ / DYG / HKG / MFM / TPE / KHH",
+      "SYX / UBN / CEB / KLO / DAD / CXR / VTE / BKI (PUS) / HAN / TAG / GUM / CNX (ICN)",
+      "BKK / DPS"
+    ],
+    "amounts": [
+      40,
+      71,
+      84,
+      98
+    ],
+    "december": [
+      40,
+      71,
+      84,
+      98
+    ],
+    "november": [
+      43,
+      77,
+      90,
+      106
+    ],
+    "majorRoutesKo": [
+      "후쿠오카, 마쓰야마, 오사카(간사이), 나리타(부산 출발), 나가사키, 칭다오, 다카마쓰, 시즈오카",
+      "나리타(인천 출발), 삿포로, 시안, 옌지, 장자제, 홍콩, 마카오, 타이베이, 가오슝",
+      "싼야, 울란바토르, 세부, 칼리보, 다낭, 나트랑, 비엔티안, 코타키나발루(부산 출발), 하노이, 보홀, 괌, 치앙마이(인천 출발)",
+      "방콕, 발리"
+    ],
+    "currency": "USD",
+    "direction": "one_way",
+    "departureCountry": "KR",
+    "url": "https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4431",
+    "ticketingStart": "2026-12-01",
+    "ticketingEnd": "2026-12-31",
+    "noticeDate": null,
+    "noticePublishedAt": null,
+    "publicationTimePrecision": "unknown",
+    "collectedAt": "2026-11-16T23:59:39Z",
+    "verifiedAt": "2026-11-17T00:00:36Z",
+    "availableBeforeCutoff": true,
+    "availabilityEvidence": "Official search extraction captured between 08:59:28 and 08:59:39 KST; later official page extraction agrees.",
+    "status": "official_notice_verified_against_web",
+    "dataStatus": "confirmed",
+    "officialStage": null,
+    "postPeriodRateConfirmed": null,
+    "postPeriodRule": null,
+    "infantExemption": "under_2_without_seat"
   }
 ];
 function freeze(value){if(value&&typeof value==='object'){Object.keys(value).forEach(function(k){freeze(value[k]);});Object.freeze(value);}return value;}
@@ -162,5 +215,5 @@ function record(code,index,origin,destination){
  var value={airline:code,month:'2026-12',origin:origin,destination:destination,currency:n.currency,direction:n.direction,departureCountry:n.departureCountry,basis:n.bands[index],band:n.bands[index],sourceBand:n.bands[index],bandIndex:index,amount:n.amounts[index],status:'unconfirmed',validationStatus:'passed',sourceUrl:n.url,publishedAt:n.noticeDate,collectedAt:n.collectedAt,effectiveFrom:n.ticketingStart,effectiveTo:n.ticketingEnd};
  var core=root.AeroCalculatorCore;if(!core&&typeof module==='object'&&module.exports)core=require('./calculator-platform-core.js');return core?core.reconcile(value):value;
 }
-return freeze({month:'2026-12',checkedAt:"2026-11-16T13:02:58.634Z",notices:notices,unverifiedAirlines:['7C','LJ','BX','RS','TW','ZE','YP'],getNotice:getNotice,record:record});
+return freeze({month:'2026-12',checkedAt:"2026-11-17T00:00:36Z",notices:notices,unverifiedAirlines:['7C','LJ','RS','TW','ZE','YP'],getNotice:getNotice,record:record});
 });

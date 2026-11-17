@@ -1,0 +1,475 @@
+{
+  "informationCutoff": "2026-11-17T09:00:00+09:00",
+  "assembledAt": "2026-11-17T00:21:55.508Z",
+  "scope": "Research evidence; publication, observation, access, units and unavailable official calculation fields remain distinct.",
+  "sources": [
+    {
+      "file": "energy-fx-facts.json",
+      "sha256": "439412c1d83c2a61d43734b41b784379a998decd944ba41c1e914cda165dfdb5",
+      "facts": {
+        "informationCutoff": "2026-11-17T09:00:00+09:00",
+        "researchStartedAt": "2026-11-16T23:58:58Z",
+        "verifiedBeforeCutoff": true,
+        "evidenceDirectory": "energy-originals/",
+        "fx": {
+          "pair": "USD/KRW",
+          "value": 1335.7,
+          "unit": "KRW/USD",
+          "change": -1,
+          "changeVsObservationDate": "2026-11-13",
+          "observationDate": "2026-11-16",
+          "observedMarketTime": "15:30",
+          "timezone": "Asia/Seoul",
+          "priceType": "Seoul daytime closing spot rate; not overnight, NDF, live FX or calculation-period mean",
+          "primarySource": "fx-newsis",
+          "crossChecks": [
+            "fx-news1",
+            "fx-newspim"
+          ],
+          "applyToDisplayConversionRates": false
+        },
+        "oil": {
+          "brent": {
+            "value": 92.44,
+            "change": -3.4,
+            "changePct": -3.55,
+            "unit": "USD/bbl",
+            "contractMonth": "2027-01",
+            "observationDate": "2026-11-16",
+            "priceType": "futures settlement reported by original news sources; exchange settlement table not directly checked",
+            "primarySource": "oil-infomax",
+            "crossChecks": [
+              "oil-newsis",
+              "oil-rigzone"
+            ],
+            "exchange": "ICE"
+          },
+          "wti": {
+            "value": 85.72,
+            "change": -2.84,
+            "changePct": -3.21,
+            "unit": "USD/bbl",
+            "contractMonth": "2026-12",
+            "observationDate": "2026-11-16",
+            "priceType": "futures settlement reported by original news sources; exchange settlement table not directly checked",
+            "primarySource": "oil-infomax",
+            "crossChecks": [
+              "oil-newsis",
+              "oil-rigzone"
+            ],
+            "exchange": "NYMEX"
+          }
+        },
+        "singaporeJet": {
+          "value": 151.15,
+          "change": 1.19,
+          "changePct": 0.8,
+          "previousValue": 149.96,
+          "previousAssessmentDate": "2026-11-12",
+          "assessmentDate": "2026-11-13",
+          "unit": "USD/bbl",
+          "basis": "FOB Singapore",
+          "priceType": "CommodityScope daily indicative assessment; not Platts MOPS, official calculation-period mean, executable quote, or airport price",
+          "confidence": "low (provider label)",
+          "assessmentRange": {
+            "low": 149.72,
+            "high": 153.13,
+            "meaning": "uncertainty interval, not bid/ask or daily high/low"
+          },
+          "source": "jet-web",
+          "publishedAt": null,
+          "cutoffAvailability": "Original-page web-open returned this content between 2026-11-16T23:58:58Z and 23:59:03Z; direct HTTP attempt returned403.",
+          "latestAssessmentDateNotChangedToRetrievalDate": true
+        },
+        "iata": {
+          "weekEnding": "2026-11-13",
+          "unit": "USD/bbl",
+          "priceType": "IATA/Platts refinery weekly average; not daily Singapore FOB or airline calculation-period MOPS",
+          "global": {
+            "value": 169.82,
+            "weekChangePct": -5.1,
+            "centsPerGallon": 404.35
+          },
+          "asiaOceania": {
+            "value": 152.8,
+            "weekChangePct": -6.4,
+            "centsPerGallon": 363.81
+          },
+          "source": "iata-image",
+          "pageSource": "iata-page",
+          "publishedAt": null,
+          "lastModified": "2026-11-16T08:28:39Z",
+          "retrievedAt": "2026-11-16T23:59:21.428Z",
+          "cutoffAvailability": "Actual HTTP200 image captured and visually reviewed before09:00KST; Last-Modified is not asserted as initial publication timestamp."
+        },
+        "reportedDecemberMops": {
+          "periodStart": "2026-10-16",
+          "periodEnd": "2026-11-15",
+          "applicationMonth": "2026-12",
+          "valueUsdPerBarrel": 165.66,
+          "valueCentsPerGallon": 394.44,
+          "reportedStage": 25,
+          "reportedPreviousStage": 27,
+          "periodChangePct": -4.7,
+          "sourceType": "news reporting, with NEWSIS attributing stage/mean to Korean Air; NOT independently found in airline official fare notice",
+          "sources": [
+            "mops-newsis",
+            "mops-fnnews",
+            "mops-mt"
+          ],
+          "recommendation": "May be separately labelled reported reference. Do not populate official average/stage fields or treat all airlines as one common stage.",
+          "officialMeanVerified": false,
+          "officialStageVerified": false
+        },
+        "unverified": {
+          "officialDecemberMopsAverage": null,
+          "officialDecemberStage": null,
+          "calculationPeriodAverageUsdKrw": null,
+          "reason": "No official passenger-notice source provided these numeric calculation fields in research; newspaper attribution is a different evidence class."
+        },
+        "sourceRegistry": {
+          "fx-newsis": {
+            "url": "https://www.newsis.com/view/NISX20261116_0003870079",
+            "publishedAt": "2026-11-16T15:46:17+09:00",
+            "modifiedAt": "2026-11-16T16:40:24+09:00",
+            "receivedAt": "2026-11-16T23:59:21.358Z",
+            "httpStatus": 200,
+            "localFile": "energy-originals/fx-newsis.html",
+            "metadataNote": "HTML visible publication/modification and JSON-LD agree. og article:published_time contains modified time; do not use that as initial publication."
+          },
+          "fx-news1": {
+            "url": "https://www.news1.kr/finance/market-exr/6355567",
+            "publishedAt": "2026-11-16T15:32:13+09:00",
+            "receivedAt": "2026-11-17T00:00:42.220Z",
+            "httpStatus": 200,
+            "localFile": "energy-originals/fx-news1.html",
+            "cutoffEvidence": "Original headline specifies15:30 and JSON-LD publication is previous day; first direct retrieval after cutoff."
+          },
+          "fx-newspim": {
+            "url": "https://www.newspim.com/news/view/20261116001164",
+            "publishedAt": "2026-11-16T16:15:00+09:00",
+            "modifiedAt": "2026-11-16T16:15:00+09:00",
+            "receivedAt": "2026-11-17T00:00:42.378Z",
+            "httpStatus": 200,
+            "localFile": "energy-originals/fx-newspim.html",
+            "cutoffEvidence": "Search before09:00 returned same closing figure; full direct body captured after cutoff with original previous-day timestamps."
+          },
+          "oil-infomax": {
+            "url": "https://news.einfomax.co.kr/news/articleView.html?idxno=4445052",
+            "publishedAt": "2026-11-17T07:02:19+09:00",
+            "modifiedAt": "2026-11-17T07:03+09:00",
+            "modifiedPrecision": "minute",
+            "receivedAt": "2026-11-16T23:59:53.617Z",
+            "httpStatus": 200,
+            "localFile": "energy-originals/oil-infomax.html"
+          },
+          "oil-newsis": {
+            "url": "https://www.newsis.com/view/NISX20261117_0003870633",
+            "publishedAt": "2026-11-17T06:36:25+09:00",
+            "modifiedAt": "2026-11-17T06:39:48+09:00",
+            "receivedAt": "2026-11-16T23:59:53.698Z",
+            "httpStatus": 200,
+            "localFile": "energy-originals/oil-newsis.html"
+          },
+          "oil-rigzone": {
+            "url": "https://www.rigzone.com/news/wire/oil_retreats_as_traders_weigh_supply_glut-16-nov-2026-185096-article/",
+            "publisher": "Bloomberg republished by Rigzone",
+            "publishedAt": "2026-11-16T20:41:50Z",
+            "modifiedAt": "2026-11-16T20:41:50Z",
+            "receivedAt": "2026-11-16T23:59:22.350Z",
+            "httpStatus": 200,
+            "localFile": "energy-originals/oil-rigzone.html",
+            "note": "Percentages are rounded to one decimal in this story (-3.6/-3.2); primary Korean originals provide -3.55/-3.21. HTTP Last-Modified at06:00Z conflicts with body publication; do not use Last-Modified as initial publication."
+          },
+          "jet-web": {
+            "url": "https://commodityscope.com/prices/singapore-jet-kerosene",
+            "access": "web original-page open succeeded; directHTTP403",
+            "observedBetween": [
+              "2026-11-16T23:58:58Z",
+              "2026-11-16T23:59:03Z"
+            ],
+            "repeatWebOpenAtOrAfter": "2026-11-16T23:59:26Z",
+            "localEvidence": "energy-originals/jet-web-receipt.json",
+            "failedDirectFile": "energy-originals/jet.html"
+          },
+          "iata-image": {
+            "url": "https://www.iata.org/contentassets/9036deaf9c984009a3515fd6aa1c5e24/fuel_price_analysis.jpg",
+            "lastModified": "2026-11-16T08:28:39Z",
+            "receivedAt": "2026-11-16T23:59:21.428Z",
+            "httpStatus": 200,
+            "localFile": "energy-originals/iata-image.jpg",
+            "sha256": "d3b8177d8c660c256483860f10cc8ab01716b35a4f7e32092c12644f4df7262d",
+            "visuallyReviewedAt": "2026-11-16T23:59:26Z"
+          },
+          "iata-page": {
+            "url": "https://www.iata.org/en/publications/economics/fuel-monitor/",
+            "receivedAt": "2026-11-16T23:59:22.463Z",
+            "httpStatus": 200,
+            "localFile": "energy-originals/iata-page.html"
+          },
+          "mops-newsis": {
+            "url": "https://www.newsis.com/view/NISX20261116_0003869952",
+            "publishedAt": "2026-11-16T15:14:32+09:00",
+            "receivedAt": "2026-11-16T23:59:53.703Z",
+            "httpStatus": 200,
+            "localFile": "energy-originals/mops-newsis.html"
+          },
+          "mops-fnnews": {
+            "url": "https://www.fnnews.com/news/202611161506121925",
+            "publisher": "News1 republished by Financial News",
+            "publishedAt": "2026-11-16T15:05:47+09:00",
+            "modifiedAt": "2026-11-17T00:18:53+09:00",
+            "receivedAt": "2026-11-16T23:59:53.690Z",
+            "httpStatus": 200,
+            "localFile": "energy-originals/mops-fnnews.html"
+          },
+          "mops-mt": {
+            "url": "https://www.mt.co.kr/index.php/industry/2026/11/16/2026111615451527605",
+            "publishedAt": "2026-11-16T18:10:00+09:00",
+            "modifiedAt": "2026-11-16T18:19:50+09:00",
+            "receivedAt": "2026-11-16T23:59:53.920Z",
+            "httpStatus": 200,
+            "localFile": "energy-originals/mops-mt.html"
+          },
+          "mops-november-newsis": {
+            "url": "https://mobile.newsis.com/view_amp.html?ar_id=NISX20261016_0003828757",
+            "publishedAt": "2026-10-16T11:15:10+09:00",
+            "modifiedAt": "2026-10-16T11:52:24+09:00",
+            "receivedAt": "2026-11-17T00:02:01.656Z",
+            "httpStatus": 200,
+            "localFile": "energy-originals/mops-november-newsis.html",
+            "sha256": "2ad5d2f5928165ed979f89708173fd440ac5097b07845ffb37d31206ecabe088",
+            "cutoffEvidence": "Original publication and modification dated Oct16, original report freshly read via web and HTTP in this run. Raw JSON-LD uses YYYY/MM/DD, normalized fields shown here."
+          }
+        },
+        "exclusions": [
+          "BOK Nov16 release search refers to Nov13 close1336.7; not Nov16 observation.",
+          "FT historical page search showed Nov16 88.69 intraday/last price; not the verified85.72 futures settlement.",
+          "Other pages' current ticker values not used as Nov16 settlement.",
+          "CommodityScope monthly mean155.61 and October174.72 not officialMOPS period averages.",
+          "Cargo kg surcharge and foreign-origin passenger basis excluded.",
+          "No ExchangeRate-API use, no mock pipeline, no source service edits."
+        ],
+        "reportedNovemberMops": {
+          "periodStart": "2026-09-16",
+          "periodEnd": "2026-10-15",
+          "applicationMonth": "2026-11",
+          "valueUsdPerBarrel": 173.89,
+          "valueCentsPerGallon": 414.03,
+          "reportedStage": 27,
+          "sourceType": "NEWSIS original report of Korean Air announcement; re-read in this run, not reusing prior report as evidence",
+          "source": "mops-november-newsis",
+          "readAt": "2026-11-17T00:02:01.656Z",
+          "applicability": "Korean Air November reference only; not December or universal airline stage"
+        }
+      }
+    },
+    {
+      "file": "maritime-facts.json",
+      "sha256": "71aeff0d1d1f03c61bb8974f8a710bfe699a0d4a77d082d5c7d467090c8f0b87",
+      "facts": {
+        "cutoff": "2026-11-17T09:00:00+09:00",
+        "researchStartedAt": "2026-11-16T23:59:09Z",
+        "assembledAt": "2026-11-17 00:03:24 UTC",
+        "mode": "read-only research; no service edits",
+        "imo": {
+          "sourceUrl": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+          "asAt": "2026-11-16",
+          "confirmedIncidents": 137,
+          "confirmedSeafarerFatalities": 25,
+          "publicationTime": null,
+          "observedAt": "2026-11-16T23:59:23.522Z",
+          "availableBeforeCutoff": true,
+          "availabilityBasis": "Direct HTTP 200 body saved before cutoff",
+          "sha256": "7cc1a05058ba3e0a542c97e2a5f16410900aa4b061fb507f5c41a200b8719fee",
+          "newestListedEvent": {
+            "date": "2026-11-13",
+            "vessel": "DAR SALWA",
+            "imo": 9534779,
+            "location": "Strait of Hormuz",
+            "status": "damaged; no pollution"
+          },
+          "caveat": "Cumulative confirmed highlighted incidents for Strait of Hormuz and Middle East; not daily incidents, vessels sunk, oil volumes, or a safe-transit assessment. Do not add UKMTO reports to this count."
+        },
+        "ukmto": {
+          "reports": [
+            {
+              "id": "207-26",
+              "eventAt": "2026-11-16T05:58:00Z",
+              "sourceType": "Company Security Officer",
+              "sourceUrl": "https://www.ukmto.org/-/media/ukmto/products/20261116-ukmto_warning_207-26.pdf?rev=b7a05cc809114a4c9bb82eb10734d893",
+              "event": "Outbound tanker in Strait of Hormuz reported struck by unknown projectile; engine-room fire; no casualties reported; all crew accounted for; damage assessment and environmental impact unknown.",
+              "vesselName": null,
+              "attacker": null,
+              "distributionAt": "2026-11-16T07:19:00Z",
+              "officialPostUrl": "https://x.com/UK_MTO/status/2122228069440323988",
+              "distributionEvidenceUrl": "https://www.nitter.cf/UK_MTO/status/2122228069440323988"
+            },
+            {
+              "id": "208-26",
+              "eventAt": "2026-11-16T19:00:00Z",
+              "sourceType": "Third Party",
+              "sourceUrl": "https://www.ukmto.org/-/media/ukmto/products/20261116-ukmto_warning_208-26.pdf?rev=29246f8ab7714c10a7668e09cddcac15",
+              "event": "A third party reported an attacked tanker 7 NM north of Khasab, Oman, disabled with engine-room fire; crew reported safe; damage assessment and environmental impact unknown.",
+              "vesselName": null,
+              "attacker": null,
+              "distributionAt": "2026-11-16T21:33:00Z",
+              "officialPostUrl": "https://x.com/UK_MTO/status/2122442974655037710",
+              "distributionEvidenceUrl": "https://www.nitter.cf/UK_MTO/status/2122442974655037710"
+            }
+          ],
+          "availableBeforeCutoff": true,
+          "readMethod": "Web tool read official PDFs; direct HTTP 403 saved as error HTML, no valid local PDF. Screenshot commands returned reference metadata only, so no successful visual screenshot inspection is claimed.",
+          "distributionCaveat": "Official X post timestamps read via third-party mirror, not directly from X. Exact initial publication times of PDFs unknown. Reports are not independently confirmed distinct attacks and are not merged into IMO totals."
+        },
+        "jmic": {
+          "edition": 114,
+          "issueDate": "2026-11-15",
+          "informationCutoff": "2026-11-15T13:00:00Z",
+          "sourceUrl": "https://www.ukmto.org/-/media/ukmto/products/update-114_jmic_advisory_15-nov.pdf?rev=be65cfbd755a41c4816feba6cef4401c",
+          "straitOfHormuzThreat": "SEVERE",
+          "arabianGulfThreat": "SUBSTANTIAL",
+          "gulfOfOmanThreat": "MODERATE",
+          "totalIncidentsSinceMarch1": 183,
+          "incidentCoverage": "March 1–November 15 across covered maritime regions; differs from IMO scope",
+          "distributionAt": "2026-11-15T15:30:00Z",
+          "distributionEvidenceUrl": "https://www.nitter.cf/UK_MTO/status/2121989166883914086",
+          "officialPostUrl": "https://x.com/UK_MTO/status/2121989166883914086",
+          "webSearchObservedBefore": "2026-11-16T23:59:55Z",
+          "fullPdfOpenWindow": [
+            "2026-11-16T23:59:55Z",
+            "2026-11-17T00:00:02Z"
+          ],
+          "availableBeforeCutoff": true,
+          "primaryPdfSections": [
+            "Page 1: edition/ICOD, UKMTO205-26 report",
+            "Page 4: regional threat table",
+            "Page 5: scope and traffic methodology"
+          ],
+          "trafficExcludedFromCurrentIndicator": "US NCAGS assisted-transit counts and independent tracking cover different samples; no summation or inference of complete traffic.",
+          "caveat": "Assessment valid for its stated 11/15 information cutoff; not a new 11/17 risk rating. No confirmed new attacks in that report's Strait of Hormuz 72-hour window does not negate 11/16 UKMTO reports."
+        },
+        "windward": {
+          "sourceUrl": "https://insights.windward.ai/",
+          "editionDate": "2026-11-14",
+          "observedDay": "2026-11-13",
+          "windowStart": "2026-11-12T18:00:00Z",
+          "windowEnd": "2026-11-13T18:00:00Z",
+          "totalCrossings": 9,
+          "inbound": 5,
+          "outbound": 4,
+          "aisVisible": 0,
+          "dark": 9,
+          "satelliteOnlySubset": 2,
+          "lastModified": "2026-11-13T21:41:58Z",
+          "observedAt": "2026-11-16T23:59:23.268Z",
+          "availableBeforeCutoff": true,
+          "status": "unchanged; retain observation date",
+          "caveat": "Commercial-provider observed cargo/tanker crossings, not oil b/d or complete crossings. Satellite-only two is a subset of nine."
+        },
+        "eiaJetStocks": {
+          "sourceUrl": "https://ir.eia.gov/wpsr/table6.csv",
+          "archiveUrl": "https://www.eia.gov/petroleum/supply/weekly/archive/2026/2026_11_12/download/table6.csv",
+          "releaseDate": "2026-11-12",
+          "weekEnding": "2026-11-06",
+          "unit": "million barrels",
+          "value": 41.979,
+          "previousWeekEnding": "2026-10-30",
+          "previousValue": 41.782,
+          "change": 0.197,
+          "sha256": "711606624844ca55f923e9a6d0607acb0f8cb95b80546fd7da9579af93a37919",
+          "observedAt": "2026-11-16T23:59:23.538Z",
+          "status": "unchanged; no re-dating",
+          "availableBeforeCutoff": true
+        },
+        "eiaHormuzQuarterly": {
+          "sourceUrl": "https://www.eia.gov/outlooks/steo/report/energysecurity/article.php",
+          "sourceTable": 4,
+          "releaseDate": "2026-11-16",
+          "initialPublicationTime": null,
+          "period": "2026-Q3",
+          "unit": "million barrels per day",
+          "totalOil": 9.1,
+          "crudeAndCondensate": 7.3,
+          "petroleumProducts": 1.8,
+          "previousQuarter": {
+            "period": "2026-Q2",
+            "totalOil": 5.1,
+            "crudeAndCondensate": 3.8,
+            "petroleumProducts": 1.2
+          },
+          "yearEarlier": {
+            "period": "2025-Q3",
+            "totalOil": 21.4
+          },
+          "availableBeforeCutoff": true,
+          "availabilityBasis": [
+            "Official EIA RSS dates release 11/16 (midnight EST placeholder, not exact initial publication)",
+            "PRNewswire article reproduces the same figures at 2026-11-16T22:05:00Z and modified22:07:25Z, both before cutoff"
+          ],
+          "rssUrl": "https://www.eia.gov/about/new/WNtest3.php",
+          "cutoffCorroborationUrl": "https://www.prnewswire.com/news-releases/on-monday-in-oil-and-gas-federal-hormuz-data-lands-as-two-acquisitions-are-announced-302941088.html",
+          "observedAt": "2026-11-17T00:01:53.196Z",
+          "sha256": "af7cf7dbdae1280a2fa52265c325741b0e4bc43feb4a199156169d9551c84394",
+          "caveat": "Quarterly historical estimate, not current/day-of oil flow. EIA/Vortexa estimates supplemented because AIS became unreliable since late February; 2026 estimates frequently revised. Values rounded, so components may not add exactly. PR news only supports pre-cutoff public availability; quantitative source is EIA."
+        },
+        "opecCapacity": {
+          "eventDate": "2026-11-16",
+          "source": "Reuters republished by BOE Report",
+          "sourceUrl": "https://boereport.com/2026/11/16/opec-officials-meet-to-discuss-oil-production-capacity-review/amp/",
+          "originalUrl": "https://www.reuters.com/business/energy/opec-officials-meet-discuss-oil-production-capacity-review-2026-11-16/",
+          "publishedAt": "2026-11-16T17:11:25Z",
+          "modifiedAt": "2026-11-16T18:36:09Z",
+          "crossCheckUrl": "https://www.devdiscourse.com/article/international/4007715-opec-officials-meet-to-discuss-oil-production-capacity-review",
+          "availableBeforeCutoff": true,
+          "summary": "OPEC held an online meeting to discuss maximum sustainable production capacity review, relevant to 2027 and later quota baselines. Report cites OPEC's X statement. Next ministerial meetings November 29.",
+          "caveat": "Capacity-review discussion is not an announced December output increase, actual supplied barrels, or final 2027 quotas. Reuters direct page inaccessible; licensed republication body read."
+        },
+        "opecPolicy": {
+          "sourceUrl": "https://www.opec.org/pr-detail/620-1-november-2026.html",
+          "decisionDate": "2026-11-01",
+          "decemberDecision": "Maintain September 2026 required production for December",
+          "nextMeeting": "2026-11-29",
+          "status": "rechecked unchanged",
+          "lastModified": "2026-11-05T09:14:34Z"
+        },
+        "ieaNovember": {
+          "sourceUrl": "https://www.iea.org/reports/oil-market-report-november-2026",
+          "publishedDate": "2026-11-13",
+          "period": "2026-10",
+          "globalOilSupplyMbpd": 105.4,
+          "gulfOilExportsExcludingOmanMbpd": 18.4,
+          "gulfCrudeExportsMbpd": 15,
+          "status": "web primary text rechecked unchanged; direct HTTP403",
+          "caveat": "Monthly all-oil supply versus total petroleum exports versus crude exports are distinct. Not current Hormuz transit flow or safety."
+        },
+        "eiaSteo": {
+          "sourceUrl": "https://www.eia.gov/outlooks/steo/",
+          "releaseDate": "2026-11-10",
+          "inputsFinalized": "2026-11-05",
+          "status": "direct HTTP200 rechecked unchanged"
+        },
+        "optionalClaim": {
+          "sourceUrl": "https://www.arabnews.pk/middle-east/iran-says-supertanker-with-2-million-barrels-of-oil-sank-in-gulf-3007105",
+          "source": "Reuters",
+          "publishedAt": "2026-11-15T13:17:28.808Z",
+          "modifiedAt": "2026-11-15T15:11:52.990Z",
+          "claimDate": "2026-11-15",
+          "actualEventDate": null,
+          "summary": "IRGC claimed an unnamed tanker carrying over 2 million barrels sank after a mine strike; Reuters reported no independent confirmation. Separate UKMTO report's relation to the claim unknown.",
+          "doNotInfer": "No confirmed sinking, cargo loss, identity, pollution volume, or increment to official incident totals."
+        },
+        "excluded": [
+          {
+            "sourceUrl": "https://www.gulf-times.com/article/731298/shopping/shipping-slows-through-strait-of-hormuz-after-tanker-attacks/amp",
+            "reason": "Search/header displays November16/17 but saved HTML publication2026-08-17T18:45:58+03:00, modified08-18 and byline footer08-17. Five/Sundayzero vessel data cannot be dated to November reliably. Do not publish as new."
+          },
+          {
+            "sourceUrl": "https://enterpriseam.com/infrastructure/2026/11/16/gulf-airports-are-adding-fuel-storage-and-pipelines-but-a-refinery-outage-could-still-force-airlines-to-cut-flights-analysts-say/",
+            "reason": "Search snippet only; analyst contingency discussion not verified current airport fuel outage."
+          }
+        ]
+      }
+    }
+  ]
+}

@@ -5,11 +5,11 @@ const {spawn}=require('node:child_process');
 const {chromium}=require('playwright');
 const root=path.resolve(__dirname,'..');
 const port=Number(process.env.DECEMBER_TEST_PORT||4224),base=`http://127.0.0.1:${port}`;
-const out=path.join(root,'artifacts','review-verification','december-notices-nov16','integrated-pages');
+const out=path.join(root,'artifacts','review-verification','market-nov17','december-integrated-pages');
 const languages=['ko','en','ja','zh','fr','de'];
 const pages=['index','forecast','news','airlines','fuel-surcharge-korean-air','fuel-surcharge-asiana'];
 const norm=value=>String(value||'').replace(/\s+/g,' ').trim();
-const amounts={KE:[50800,69500,97500,120200,169600,172200,231000,336400,377800],OZ:[57500,84300,111000,137800,164600,190000,216700,270300,322400]};
+const amounts={KE:[50800,69500,97500,120200,169600,172200,231000,336400,377800],OZ:[57500,84300,111000,137800,164600,190000,216700,270300,322400],BX:[40,71,84,98]};
 const captureBaseline=`;(()=>{const clone=v=>v==null?null:JSON.parse(JSON.stringify(v)),r=window.AERO_MARKET_RELEASE;window.__DECEMBER_QA_BASELINE={numbers:clone(r&&r.numbers),latest:clone(window.AERO_MARKET_NUMBERS_LATEST),snapshots:clone(window.AERO_MARKET_SNAPSHOTS),newsCards:clone(r&&r.newsCards),november:clone(window.NOVEMBER_2026_OFFICIAL_NOTICES)};})();\n`;
 
 async function snapshot(page){return page.evaluate(()=>{
@@ -42,13 +42,14 @@ function preserved(state,label){
   // Compare the original tariff/source facts; that pre-existing display patch is not a new tariff.
   const tariffFacts=notices=>notices?notices.map(({period,...notice})=>notice):null;
   assert.deepEqual(tariffFacts(state.november),tariffFacts(b.november),label+' current November tariff/source facts unchanged');
-  if(b.numbers){assert.deepEqual(state.numbers,b.numbers,label+' release market numbers unchanged');assert.equal(state.numbers.informationCutoff,'2026-11-16T09:00:00+09:00');}
+  if(b.numbers){assert.deepEqual(state.numbers,b.numbers,label+' release market numbers unchanged');assert.match(state.numbers.informationCutoff,/^2026-11-\d{2}T09:00:00\+09:00$/);}
   if(b.newsCards){
-    assert.equal(b.newsCards.length,168,label+' morning archive has 168 cards');
-    assert.equal(state.cards.length,170,label+' evening adds exactly two cards');
-    assert.deepEqual(state.cards.filter(c=>!/^notice-202612-(ke|oz)-20261116$/.test(c.id)),b.newsCards,label+' all 168 existing articles preserved byte-for-field');
-    assert.equal(new Set(state.cards.map(c=>c.id)).size,170,label+' no duplicated card ids');
-    assert.equal(state.noticeChecked,'2026-11-16T13:02:58.634Z',label+' evening notice check has its own timestamp');
+    assert(b.newsCards.length>=168,label+' original archive retained before notices');
+    const added=state.notices.map(n=>'notice-202612-'+n.code.toLowerCase()+'-'+(n.code==='BX'?'20261117':'20261116')).filter(id=>!b.newsCards.some(c=>c.id===id));
+    assert.equal(state.cards.length,b.newsCards.length+added.length,label+' only reviewed notice articles added');
+    assert.deepEqual(state.cards.filter(c=>!added.includes(c.id)),b.newsCards,label+' every pre-notice article preserved byte-for-field');
+    assert.equal(new Set(state.cards.map(c=>c.id)).size,state.cards.length,label+' no duplicated card ids');
+    assert.equal(state.noticeChecked,'2026-11-17T00:00:36Z',label+' latest notice verification keeps its actual timestamp');
     assert(Date.parse(state.releaseModified)>=Date.parse(state.noticeChecked),label+' site update follows the distinct notice check');
     assert.notEqual(state.releaseModified,state.numbers.informationCutoff,label+' evening site update is not the morning market cutoff');
   }
@@ -57,20 +58,20 @@ function preserved(state,label){
 function verify(state,name,lang,canonical){
   const label=name+' '+lang,c=state.copy,only=name==='fuel-surcharge-korean-air'?'KE':name==='fuel-surcharge-asiana'?'OZ':null;
   assert.equal(state.lang,lang,label+' document language');assert.equal(state.canonical,canonical,label+' canonical preserved');assert.equal(state.overflow,false,label+' no horizontal overflow');
-  assert.equal(state.review.verifiedCount,2,label+' two independently verified December notices');
-  assert.deepEqual(state.notices.map(n=>n.code).sort(),['KE','OZ']);
-  for(const n of state.notices){assert.deepEqual(n.amounts,amounts[n.code]);assert.equal(n.currency,'KRW');assert.equal(n.direction,'one_way');assert.equal(n.ticketingStart,'2026-12-01');assert.equal(n.ticketingEnd,n.code==='OZ'?'2026-12-16':'2026-12-31');}
+  assert.equal(state.review.verifiedCount,3,label+' three independently verified December notices');
+  assert.deepEqual(state.notices.map(n=>n.code).sort(),['BX','KE','OZ']);
+  for(const n of state.notices){assert.deepEqual(n.amounts,amounts[n.code]);assert.equal(n.currency,n.code==='BX'?'USD':'KRW');assert.equal(n.direction,'one_way');assert.equal(n.ticketingStart,'2026-12-01');assert.equal(n.ticketingEnd,n.code==='OZ'?'2026-12-16':'2026-12-31');}
   assert(norm(state.panel).includes(norm(c.title)),label+' localized notice heading');if(name!=='forecast')assert(norm(state.panel).includes(norm(c.summary)),label+' localized partial notice summary');
   assert(norm(state.panel).includes(norm(c.sourceNote)),label+' evening check distinct from morning market cutoff');
-  assert.equal(state.panelRows.length,only?1:2,label+' expected airline panels');
-  (only?[only]:['KE','OZ']).forEach((code,index)=>{
-    const row=state.panelRows[index];assert.equal(norm(row.title),norm(code==='KE'?c.ke:c.oz));
-    assert.equal(row.rows.length,9,label+' all nine '+code+' bands');
+  assert.equal(state.panelRows.length,only?1:3,label+' expected airline panels');
+  (only?[only]:['KE','OZ','BX']).forEach((code,index)=>{
+    const row=state.panelRows[index];assert.equal(norm(row.title),norm(c[code.toLowerCase()]));
+    assert.equal(row.rows.length,amounts[code].length,label+' all published '+code+' groups');
     assert.deepEqual(row.rows.map(r=>Number(r[2].replace(/,/g,''))),amounts[code]);
     assert(row.links.includes(state.notices.find(n=>n.code===code).url),label+' original '+code+' notice URL');
   });
   if(only!=='KE')assert(norm(state.panel).includes(norm(c.later)),label+' December 17 onward separately qualified');
-  if(!only){assert(norm(state.panel).includes(norm(c.pending)),label+' other seven remain unverified');for(const code of ['7C','LJ','BX','RS','TW','ZE','YP'])assert(state.panel.includes(code));}
+  if(!only){assert(norm(state.panel).includes(norm(c.pending)),label+' other six remain unverified');for(const code of ['7C','LJ','RS','TW','ZE','YP'])assert(state.panel.includes(code));}
   if(name==='forecast'){
     assert.equal(norm(state.lead),norm(c.summary),label+' first forecast conclusion reflects KE/OZ notices');
     const faqs=state.schemas.filter(s=>s['@type']==='FAQPage');assert(faqs.length,label+' FAQ schema exists');
@@ -78,8 +79,8 @@ function verify(state,name,lang,canonical){
     assert(norm(december.acceptedAnswer.text).includes(norm(c.later)),label+' FAQ preserves short Asiana period');
     for(const q of questions){assert(norm(state.faq).includes(norm(q.name)),label+' schema question matches visible FAQ');assert(norm(state.faq).includes(norm(q.acceptedAnswer.text)),label+' schema answer matches visible FAQ');}
   }
-  if(name==='news')for(const code of ['KE','OZ']){
-    const id='notice-202612-'+code.toLowerCase()+'-20261116',card=state.cards.find(c=>c.id===id),localized=card.i18n[lang],visible=state.visibleNews.find(c=>c.id===id);
+  if(name==='news')for(const code of ['KE','OZ','BX']){
+    const id='notice-202612-'+code.toLowerCase()+'-'+(code==='BX'?'20261117':'20261116'),card=state.cards.find(c=>c.id===id),localized=card.i18n[lang],visible=state.visibleNews.find(c=>c.id===id);
     assert(visible,label+' new '+code+' article visible');assert.equal(norm(visible.title),norm(localized.title));assert.equal(norm(visible.summary),norm(localized.summary));
     const schema=state.schemas.find(s=>s['@type']==='NewsArticle'&&s.url?.endsWith('#'+id));assert(schema,label+' new article schema');assert.equal(schema.headline,localized.title);assert.equal(schema.articleBody,localized.summary+' '+localized.impact);assert.equal(schema.dateModified,card.updatedAt);assert.deepEqual(schema.citation,card.citationUrls);
   }

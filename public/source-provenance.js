@@ -692,6 +692,39 @@
     "pages": null
   }
 }
+,
+{
+  "airline": "BX",
+  "month": "2026.12",
+  "status": "source_reconciled",
+  "sourceUrl": "https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4431",
+  "currency": "USD",
+  "direction": "one_way",
+  "departureCountry": "KR",
+  "publishedAt": null,
+  "effectiveFrom": "2026-12-01",
+  "effectiveTo": "2026-12-31",
+  "sourceVerifiedAt": "2026-11-17T00:00:36Z",
+  "bands": [
+    "FUK / MYJ / KIX / NRT (PUS) / NGS / TAO / TAK / FSZ",
+    "NRT (ICN) / CTS / XIY / YNJ / DYG / HKG / MFM / TPE / KHH",
+    "SYX / UBN / CEB / KLO / DAD / CXR / VTE / BKI (PUS) / HAN / TAG / GUM / CNX (ICN)",
+    "BKK / DPS"
+  ],
+  "amounts": [
+    40,
+    71,
+    84,
+    98
+  ],
+  "evidence": {
+    "id": "BX-2026-12-20261117",
+    "method": "official_notice_search_then_web_open_independent_review",
+    "sha256": "582249d6a37df6ef8840010a4f5d26b52f2d5eb44777c4670176baa565a329c5",
+    "file": "docs/review-evidence/20261117-bx-december.json",
+    "pages": null
+  }
+}
 ]; // REVIEWED_MANIFEST
   function freeze(value) { if (value && typeof value === 'object') { Object.keys(value).forEach(function (key) { freeze(value[key]); }); Object.freeze(value); } return value; }
   freeze(manifest);

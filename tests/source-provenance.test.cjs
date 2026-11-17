@@ -126,7 +126,7 @@ test('reviewed manifest is immutable and independent receipts agree', () => {
   });
   assert.deepEqual(monthlyManifest, receipt.notices);
   const december = JSON.parse(fs.readFileSync('docs/review-evidence/20261116-december-notices.json', 'utf8'));
-  const decemberEntries = trust.manifest.filter(entry => entry.month === '2026.12');
+  const decemberEntries = trust.manifest.filter(entry => entry.month === '2026.12' && entry.airline !== 'BX');
   assert.equal(decemberEntries.length, 2);
   assert.equal(december.sources.length, 2);
   for (const entry of decemberEntries) {

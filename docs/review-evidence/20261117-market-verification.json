@@ -1,0 +1,151 @@
+{
+  "completedAt": "2026-11-17T00:29:25.228Z",
+  "informationCutoff": "2026-11-17T09:00:00+09:00",
+  "head": "f21c2f10ebf9c4c29fb30abd5eda9975cff29c29",
+  "sourceDigest": "6921a6f7becdf71c350cc9bf7956db7d2bb40ced27de0dbbf7cad9d938a851d8",
+  "operationalDigest": "be4a8ac9816841d37faaa86f2c8e78fc7b9c66416f0ab50be4e91a4f469ad3c4",
+  "commitCreated": false,
+  "pushed": false,
+  "deployed": false,
+  "stagedFiles": [],
+  "release": {
+    "passed": true,
+    "checks": [
+      {
+        "name": "native",
+        "exitCode": 0,
+        "durationMs": 3463
+      },
+      {
+        "name": "static",
+        "exitCode": 0,
+        "durationMs": 239
+      },
+      {
+        "name": "data",
+        "exitCode": 0,
+        "durationMs": 83
+      },
+      {
+        "name": "service-data",
+        "exitCode": 0,
+        "durationMs": 112
+      },
+      {
+        "name": "urls",
+        "exitCode": 0,
+        "durationMs": 19919
+      },
+      {
+        "name": "myrealtrip",
+        "exitCode": 0,
+        "durationMs": 129
+      },
+      {
+        "name": "platform",
+        "exitCode": 0,
+        "durationMs": 42515
+      },
+      {
+        "name": "home-period",
+        "exitCode": 0,
+        "durationMs": 59709
+      },
+      {
+        "name": "home-interactions",
+        "exitCode": 0,
+        "durationMs": 10959
+      },
+      {
+        "name": "news-loading",
+        "exitCode": 0,
+        "durationMs": 71143
+      },
+      {
+        "name": "graph-notices",
+        "exitCode": 0,
+        "durationMs": 41560
+      },
+      {
+        "name": "locale-period",
+        "exitCode": 0,
+        "durationMs": 76446
+      },
+      {
+        "name": "planner",
+        "exitCode": 0,
+        "durationMs": 3877
+      },
+      {
+        "name": "calculator",
+        "exitCode": 0,
+        "durationMs": 17364
+      },
+      {
+        "name": "seo-snapshot",
+        "exitCode": 0,
+        "durationMs": 69178
+      }
+    ],
+    "nativeTests": 127,
+    "nativePassed": 127,
+    "nativeFailed": 0,
+    "startedAt": "2026-11-17T00:21:45.327Z",
+    "finishedAt": "2026-11-17T00:28:42.631Z",
+    "sourceChangedDuringRun": false,
+    "summary": "artifacts/review-verification/2026-11-17T00-21-45-325Z/summary.json"
+  },
+  "daily": {
+    "status": "PASS",
+    "pages": [
+      "forecast",
+      "news",
+      "index",
+      "fuel-surcharge-graph",
+      "fuel-surcharge-calculator"
+    ],
+    "languageViewportCombinations": 60,
+    "scriptSha256": "5b5272fb29a3da86f629c3f5517dcd9d1c5e33982a417bd284209848eb7f1c0f",
+    "startedAt": "2026-11-17T00:17:27.945Z",
+    "finishedAt": "2026-11-17T00:19:42.313Z",
+    "evidence": "artifacts/review-verification/market-nov17/verification/verification.json",
+    "preservedOldNews": 170,
+    "newNews": 10,
+    "totalNews": 180,
+    "preservedOriginalSnapshots": 50,
+    "preservedRuntimeSnapshots": 55,
+    "delaySeconds": 12
+  },
+  "graphFollowup": {
+    "status": "PASS",
+    "languageViewportCombinations": 12,
+    "scriptSha256": "fc8b80afae000785f2eff0d86e7759c5221c5532960114e189f425d02bb7b3b7",
+    "startedAt": "2026-11-17T00:21:20.129Z",
+    "finishedAt": "2026-11-17T00:21:52.775Z",
+    "evidence": "artifacts/review-verification/market-nov17/verification-fuel-surcharge-graph/verification.json",
+    "change": "Six localized graph introductions now explicitly include Air Busan"
+  },
+  "mobileBx": {
+    "status": "passed",
+    "checkedAt": "2026-11-17T00:17:13.032Z",
+    "evidence": "artifacts/review-verification/market-nov17/airlines/bx-visual/verification.json",
+    "visuallyReviewed": true,
+    "change": "BX airport groups wrap so November, December and difference columns remain visible"
+  },
+  "sourceEvidence": [
+    "docs/review-evidence/20261117-bx-december.json",
+    "docs/review-evidence/20261117-market-sources.json"
+  ],
+  "limitations": [
+    "Official December averages/stage/period FX remain unverified; separate reported references are not promoted.",
+    "Six December airline notices and Asiana December17 onward amounts remain unverified.",
+    "Official BX screenshot/PDF blocked by403; original text and before-cutoff search evidence preserved.",
+    "External ads/analytics/affiliate/API requests blocked during QA; no transaction, settlement or production verification."
+  ],
+  "files": {
+    "marketModuleSha256": "8f768431a0305aee6487ef7af2d7cae7d2e7be17de62ceeca98d88468a0a4f22",
+    "sharedSha256": "27cf87d7cd05c472826a23c0873258954b92d02d5983e60973fa288297471269",
+    "feedSha256": "02df7f90b8289e0ec8857826d36da8a73b5d7c2e4bf66f4d992398d2b7266ae2",
+    "verificationScriptSha256": "fc8b80afae000785f2eff0d86e7759c5221c5532960114e189f425d02bb7b3b7"
+  }
+}

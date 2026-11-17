@@ -102,7 +102,7 @@
       var decemberIndex=noticeIndex(decemberNotice,route,matched,data);
       var decemberRecord=december.record(code,decemberIndex,context.origin,context.destination);
       if(!decemberRecord)return null;
-      return core.reconcile(Object.assign(record,decemberRecord,{basis:record.basis}));
+      return core.reconcile(Object.assign(record,decemberRecord,{basis:(code==='BX'||code==='ZE')?'route-group-'+(decemberIndex+1):record.basis}));
     }
     if(month==='2026-11' && notice){
       var ni=noticeIndex(notice,route,matched,data);

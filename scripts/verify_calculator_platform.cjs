@@ -22,13 +22,14 @@ async function main(){
       const context=AeroCalculatorBridge.contextFor('ICN','NRT');
       return AeroCalculatorPlatform.getRows(context,{airline:'all',baseMonth:'2026-11',targetMonth:'2026-12'}).map(r=>({code:r.code,base:r.base,target:r.target,comparison:r.comparison}));
     });
-    assert.deepEqual(december.filter(r=>r.target).map(r=>r.code).sort(),['KE','OZ'],'only the two verified December notices enter the calculator');
+    assert.deepEqual(december.filter(r=>r.target).map(r=>r.code).sort(),['BX','KE','OZ'],'only the three verified December notices enter the calculator');
+    const decemberBX=december.find(r=>r.code==='BX');assert.equal(decemberBX.target.currency,'USD');assert.equal(decemberBX.base.amount,77);assert.equal(decemberBX.target.amount,71);assert.equal(decemberBX.comparison.valid,true);assert.equal(decemberBX.comparison.difference,-6);assert.equal(decemberBX.target.effectiveTo,'2026-12-31');
     const decemberKE=december.find(r=>r.code==='KE'),decemberOZ=december.find(r=>r.code==='OZ');
     assert.equal(decemberKE.base.amount,76000);assert.equal(decemberKE.target.amount,69500);assert.equal(decemberKE.comparison.difference,-6500);assert.equal(decemberKE.comparison.valid,true);
     assert.equal(decemberOZ.base.amount,92200);assert.equal(decemberOZ.target.amount,84300);assert.equal(decemberOZ.comparison.difference,-7900);assert.equal(decemberOZ.comparison.valid,true);
     assert.equal(decemberKE.target.effectiveTo,'2026-12-31');assert.equal(decemberOZ.target.effectiveFrom,'2026-12-01');assert.equal(decemberOZ.target.effectiveTo,'2026-12-16','Asiana is never expanded to a whole-month rate');
-    for(const result of december.filter(r=>!['KE','OZ'].includes(r.code))){assert.equal(result.target,null);assert.equal(result.comparison.valid,false);}
-    assert.equal(await page.locator('#savingBestJune').innerText(),'KRW 69,500','December minimum includes verified amounts only');
+    for(const result of december.filter(r=>!['BX','KE','OZ'].includes(r.code))){assert.equal(result.target,null);assert.equal(result.comparison.valid,false);}
+    assert.equal(await page.locator('#savingBestJune').innerText(),'KRW 69,500 / USD 71','December minima stay separate by original currency');
     for(const language of ['ko','en','ja','zh','fr','de']){
       await page.evaluate(language=>{setCurrentLang(language);applyLanguage();AeroCalculatorBridge.update();},language);
       assert.equal(await page.locator('#savingBaseMonth').inputValue(),'2026-11');assert.equal(await page.locator('#savingTargetMonth').inputValue(),'2026-12');
