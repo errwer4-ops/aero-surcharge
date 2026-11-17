@@ -125,8 +125,9 @@
   // Keep every historical array and unpublished December band unchanged/null.
   AIRLINES.forEach(function(a){
     var source=window.AeroDecemberNotices,n=source&&source.getNotice(a.code);
-    var valid=n&&window.AeroSourceTrust&&window.AeroSourceTrust.summarize([n],source.month).verifiedCount===1&&n.currency===a.currency&&Array.isArray(n.amounts)&&n.amounts.length===a.bands.length;
-    a.dec=valid?n.amounts.map(function(value){return typeof value==='number'&&Number.isFinite(value)?value:null;}):a.bands.map(function(){return null;});
+    var indices=n&&(n.displayBandIndices||n.amounts.map(function(_,i){return i;}));
+    var valid=n&&window.AeroSourceTrust&&window.AeroSourceTrust.summarize([n],source.month).verifiedCount===1&&n.currency===a.currency&&Array.isArray(n.amounts)&&indices.length===a.bands.length;
+    a.dec=valid?indices.map(function(i){var value=i===null?null:n.amounts[i];return typeof value==='number'&&Number.isFinite(value)?value:null;}):a.bands.map(function(){return null;});
     a.decemberNoticeUrl=valid?n.url:null;
     a.decemberTicketingStart=valid?n.ticketingStart:null;
     a.decemberTicketingEnd=valid?n.ticketingEnd:null;
@@ -135,10 +136,10 @@
   "ko": {
     "title": "유류할증료 데이터 아카이브 | 2026년 4월~12월 항공사별 비교",
     "h1": "2026년 4~12월 국제선 유류할증료 데이터 아카이브",
-    "summary": "11월 금액은 11월 1~30일 발권 기준입니다. 12월은 대한항공·아시아나·에어부산 공식 공시를 반영했으며, 다른 6개사는 공시 미확인입니다.",
-    "period": "12월 발권 기준: 대한항공·에어부산 12월 1~31일, 아시아나 12월 1~16일. 12월 17일 이후 아시아나 운항편 발권은 통합 항공사의 금액을 별도로 확인하세요. 금액은 한국 출발 국제선 편도 기준이며 에어부산 원문은 USD입니다.",
+    "summary": "11월은 11월 1~30일 발권 금액입니다. 12월은 대한항공·아시아나·에어부산·진에어·이스타항공 공시를 반영했으며, 나머지 4개사는 미확인입니다.",
+    "period": "대한항공·에어부산·진에어·이스타항공은 12월 1~31일, 아시아나는 1~16일 발권 기준입니다. 한국 출발 편도이며 BX·LJ·ZE 원문은 USD입니다. 아시아나 17일 이후 금액은 별도 확인이 필요합니다.",
     "answerTitle": "12월 공시 금액은 11월보다 어떻게 달라지나요?",
-    "answerBody": "확인된 대한항공·아시아나·에어부산 12월 금액은 11월보다 낮습니다. 같은 항공사·구간·공시 통화끼리 비교하며, 다른 6개사의 12월 금액은 확인 전까지 빈값으로 둡니다.",
+    "answerBody": "확인된 5개사 12월 금액은 11월보다 낮습니다. 같은 항공사·노선군·원통화끼리 비교합니다. 진에어는 4개 구간만 공시되어 전체 평균 증감률을 표시하지 않습니다.",
     "note": "최근 4개월은 9월·10월·11월·12월입니다. 전체를 선택하면 4월부터 표시합니다. 과거 월을 선택하면 해당 월과 직전 월을 비교합니다. 환산액은 사이트 비교용 환율 기준입니다.",
     "pending": "12월 공시 미확인",
     "dec": "2026년 12월",
@@ -147,15 +148,17 @@
     "compare": "{previous} 대비 {current}",
     "kePeriod": "발권 2026.12.01~12.31 · 한국 출발 편도",
     "ozPeriod": "발권 2026.12.01~12.16 · 한국 출발 편도. 12.17 이후 통합 항공사 금액 별도 확인",
-    "bxPeriod": "발권 2026.12.01~12.31 · 한국 출발 편도 · 공시 USD"
+    "bxPeriod": "발권 2026.12.01~12.31 · 한국 출발 편도 · 공시 USD",
+    "ljPeriod": "발권 2026.12.01~12.31 · 한국 출발 편도 · USD · 항공사 GDS 공지",
+    "zePeriod": "발권 2026.12.01~12.31 · 한국 출발 편도 · USD · 항공사 GDS 공지"
   },
   "en": {
     "title": "Fuel Surcharge Archive | April–December 2026 by Airline",
     "h1": "April–December 2026 International Fuel Surcharge Archive",
-    "summary": "November amounts apply to ticketing November 1–30. December reflects official Korean Air, Asiana and Air Busan notices; the other six airlines remain unverified.",
-    "period": "December ticketing: Korean Air and Air Busan December 1–31; Asiana December 1–16. For Asiana-operated flights ticketed from December 17, check the integrated airline’s rates separately. Amounts are one-way from Korea; Air Busan is published in USD.",
+    "summary": "November amounts apply to ticketing November 1–30. December includes Korean Air, Asiana, Air Busan, Jin Air and Eastar Jet; four airlines remain unverified.",
+    "period": "Korean Air, Air Busan, Jin Air and Eastar Jet: tickets issued December 1–31; Asiana: December 1–16. One-way from Korea; BX/LJ/ZE publish in USD. Check Asiana rates from December 17 separately.",
     "answerTitle": "How do December notices compare with November?",
-    "answerBody": "Verified December amounts for Korean Air, Asiana and Air Busan are lower than November. Compare the same airline, group and original currency; the other six airlines remain blank until verified.",
+    "answerBody": "Verified December amounts for five airlines are lower than November. Compare matching airline, route group and original currency. Jin Air publishes only four bands, so its overall average change is not shown.",
     "note": "Latest four months: September, October, November and December. All shows April onward. Selecting a past month compares it with its preceding month. Conversions use site comparison rates.",
     "pending": "December notice unverified",
     "dec": "December 2026",
@@ -164,15 +167,17 @@
     "compare": "{current} vs {previous}",
     "kePeriod": "Ticketing Dec 1–31, 2026 · one-way from Korea",
     "ozPeriod": "Ticketing Dec 1–16, 2026 · one-way from Korea. From Dec 17, check the integrated airline’s rates separately",
-    "bxPeriod": "Ticketing Dec 1–31, 2026 · one-way from Korea · published USD"
+    "bxPeriod": "Ticketing Dec 1–31, 2026 · one-way from Korea · published USD",
+    "ljPeriod": "Ticketing Dec 1–31, 2026 · one-way from Korea · USD · airline GDS notice",
+    "zePeriod": "Ticketing Dec 1–31, 2026 · one-way from Korea · USD · airline GDS notice"
   },
   "ja": {
     "title": "燃油サーチャージアーカイブ | 2026年4月～12月",
     "h1": "2026年4月～12月 国際線燃油サーチャージアーカイブ",
-    "summary": "11月額は11月1～30日発券分。12月は大韓航空・アシアナ航空・エアプサンの公示を反映し、他6社は未確認です。",
-    "period": "12月発券：大韓航空・エアプサンは1～31日、アシアナ航空は1～16日。17日以降のアシアナ運航便の発券は統合航空会社の金額を別途確認してください。韓国発片道、エアプサンの公示通貨はUSDです。",
+    "summary": "11月額は11月1～30日発券分。12月は大韓航空・アシアナ航空・エアプサン・ジンエアー・イースター航空を反映。他4社は未確認です。",
+    "period": "大韓航空・エアプサン・ジンエアー・イースター航空は12月1～31日、アシアナ航空は1～16日発券分。韓国発片道でBX・LJ・ZEはUSD。アシアナの17日以降は別途確認が必要です。",
     "answerTitle": "12月の公示金額は11月よりどう変わりますか？",
-    "answerBody": "確認済みの大韓航空・アシアナ航空・エアプサンは12月額が11月より低下。同じ会社・区分・公示通貨で比較し、他6社は確認まで空欄にします。",
+    "answerBody": "確認済み5社の12月額は11月より低下。同じ航空会社・路線区分・公示通貨で比較します。ジンエアーは4区分のみ公示のため全体平均の増減率は表示しません。",
     "note": "直近4か月は9・10・11・12月。全てで4月から表示。過去の月を選ぶと直前月と比較します。換算額はサイト比較用レートです。",
     "pending": "12月公示未確認",
     "dec": "2026年12月",
@@ -181,15 +186,17 @@
     "compare": "{current}（{previous}比）",
     "kePeriod": "発券2026年12月1～31日・韓国発片道",
     "ozPeriod": "発券2026年12月1～16日・韓国発片道。12月17日以降は統合航空会社の金額を別途確認",
-    "bxPeriod": "2026年12月1～31日発券・韓国発片道・公示USD"
+    "bxPeriod": "2026年12月1～31日発券・韓国発片道・公示USD",
+    "ljPeriod": "2026年12月1～31日発券・韓国発片道・USD・航空会社GDS公示",
+    "zePeriod": "2026年12月1～31日発券・韓国発片道・USD・航空会社GDS公示"
   },
   "zh": {
     "title": "燃油附加费档案 | 2026年4月至12月",
     "h1": "2026年4月至12月国际线燃油附加费档案",
-    "summary": "11月金额适用于11月1日至30日出票。12月已反映大韩、韩亚和釜山航空官方公告，其余6家尚未核实。",
-    "period": "12月出票：大韩、釜山航空为1日至31日，韩亚为1日至16日。17日起韩亚承运航班出票须另查整合航司金额。金额为韩国出发单程，釜山航空公告币种为USD。",
+    "summary": "11月金额适用于11月1日至30日出票。12月已核实大韩、韩亚、釜山、真航空及易斯达航空，其余4家尚未核实。",
+    "period": "大韩、釜山、真航空及易斯达为12月1日至31日出票，韩亚为1日至16日。均为韩国出发单程；BX、LJ、ZE以USD公告。韩亚17日起金额须另行核实。",
     "answerTitle": "12月公告金额比11月如何变化？",
-    "answerBody": "已核实的大韩、韩亚和釜山航空12月金额低于11月。按相同航司、区间和公告币种比较；其余6家在核实前保持空白。",
+    "answerBody": "已核实5家航司12月金额低于11月。按相同航司、航线组及原币种比较。真航空仅公布4个区间，因此不显示整体平均变化率。",
     "note": "最近4个月为9、10、11、12月；全部显示4月起档案。选择历史月份时与其上月比较。换算金额使用网站比较汇率。",
     "pending": "12月公告尚未核实",
     "dec": "2026年12月",
@@ -198,15 +205,17 @@
     "compare": "{current}较{previous}",
     "kePeriod": "出票2026年12月1日至31日 · 韩国出发单程",
     "ozPeriod": "出票2026年12月1日至16日 · 韩国出发单程。12月17日起查阅合并后航空公司的金额（须另行确认）",
-    "bxPeriod": "2026年12月1日至31日出票·韩国出发单程·公告USD"
+    "bxPeriod": "2026年12月1日至31日出票·韩国出发单程·公告USD",
+    "ljPeriod": "2026年12月1日至31日出票·韩国出发单程·USD·航司GDS公告",
+    "zePeriod": "2026年12月1日至31日出票·韩国出发单程·USD·航司GDS公告"
   },
   "fr": {
     "title": "Archives des surtaxes | avril–décembre 2026",
     "h1": "Archives des surtaxes internationales avril–décembre 2026",
-    "summary": "Les montants de novembre valent pour une émission du 1er au 30. Décembre intègre Korean Air, Asiana et Air Busan ; les six autres restent non vérifiées.",
-    "period": "Émission en décembre : Korean Air et Air Busan du 1er au 31 ; Asiana du 1er au 16. Dès le 17, vérifier séparément les montants de la compagnie intégrée pour les vols opérés par Asiana. Aller simple depuis la Corée ; Air Busan publie en USD.",
+    "summary": "Les montants de novembre concernent une émission du 1er au 30. Décembre couvre Korean Air, Asiana, Air Busan, Jin Air et Eastar Jet ; quatre compagnies restent non vérifiées.",
+    "period": "Émission du 1er au 31 décembre pour Korean Air, Air Busan, Jin Air et Eastar Jet ; du 1er au 16 pour Asiana. Aller simple depuis la Corée ; BX/LJ/ZE publient en USD. Vérifier séparément Asiana dès le 17.",
     "answerTitle": "Comment décembre évolue-t-il par rapport à novembre ?",
-    "answerBody": "Les montants vérifiés de Korean Air, Asiana et Air Busan baissent en décembre. Comparer la même compagnie, tranche et devise d’origine ; les six autres restent vides avant vérification.",
+    "answerBody": "Les montants vérifiés des cinq compagnies baissent en décembre. Comparer la même compagnie, le même groupe de lignes et la devise d’origine. Jin Air ne publie que quatre tranches : la variation moyenne globale reste non affichée.",
     "note": "Quatre derniers mois : septembre, octobre, novembre, décembre. Tout affiche depuis avril. Un mois historique est comparé au précédent. Les conversions utilisent les taux comparatifs du site.",
     "pending": "Avis de décembre non vérifié",
     "dec": "Décembre 2026",
@@ -215,15 +224,17 @@
     "compare": "{current} vs {previous}",
     "kePeriod": "Émission du 1er au 31 déc. 2026 · aller simple depuis la Corée",
     "ozPeriod": "Émission du 1er au 16 déc. 2026 · aller simple depuis la Corée. Dès le 17 déc., vérifier séparément les montants de la compagnie intégrée",
-    "bxPeriod": "Émission du 1er au 31 déc. 2026 · aller simple depuis la Corée · publication en USD"
+    "bxPeriod": "Émission du 1er au 31 déc. 2026 · aller simple depuis la Corée · publication en USD",
+    "ljPeriod": "Émission du 1er au 31 déc. 2026 · aller simple depuis la Corée · USD · avis GDS de la compagnie",
+    "zePeriod": "Émission du 1er au 31 déc. 2026 · aller simple depuis la Corée · USD · avis GDS de la compagnie"
   },
   "de": {
     "title": "Kerosinzuschlag-Archiv | April–Dezember 2026",
     "h1": "Internationales Kerosinzuschlag-Archiv April–Dezember 2026",
-    "summary": "November-Beträge gelten für Ausstellung vom 1.–30. November. Dezember enthält Korean Air, Asiana und Air Busan; die sechs anderen Airlines sind ungeprüft.",
-    "period": "Dezember-Ausstellung: Korean Air und Air Busan 1.–31., Asiana 1.–16. Für ab 17. Dezember ausgestellte Tickets auf Asiana-Flügen die Beträge der integrierten Airline gesondert prüfen. Einfach ab Korea; Air Busan veröffentlicht in USD.",
+    "summary": "November gilt für Ausstellungen vom 1.–30. November. Für Dezember sind Korean Air, Asiana, Air Busan, Jin Air und Eastar Jet geprüft; vier Airlines bleiben ungeprüft.",
+    "period": "Ausstellung vom 1.–31. Dezember bei Korean Air, Air Busan, Jin Air und Eastar Jet; vom 1.–16. bei Asiana. Einfacher Flug ab Korea; BX/LJ/ZE veröffentlichen in USD. Asiana ab dem 17. separat prüfen.",
     "answerTitle": "Wie verändert sich Dezember gegenüber November?",
-    "answerBody": "Die bestätigten Dezember-Beträge von Korean Air, Asiana und Air Busan sind niedriger als im November. Dieselbe Airline, Gruppe und Originalwährung vergleichen; die sechs anderen bleiben bis zur Prüfung leer.",
+    "answerBody": "Die geprüften Dezemberbeträge der fünf Airlines sind niedriger als im November. Gleiche Airline, Streckengruppe und Originalwährung vergleichen. Jin Air veröffentlicht nur vier Gruppen; eine Änderung des Gesamtdurchschnitts wird deshalb nicht angezeigt.",
     "note": "Letzte vier Monate: September, Oktober, November, Dezember. Alle zeigt ab April. Historische Monate werden mit dem jeweiligen Vormonat verglichen. Umrechnungen nutzen Vergleichskurse der Website.",
     "pending": "Dezember-Mitteilung ungeprüft",
     "dec": "Dezember 2026",
@@ -232,7 +243,9 @@
     "compare": "{current} ggü. {previous}",
     "kePeriod": "Ausstellung 1.–31.12.2026 · einfach ab Korea",
     "ozPeriod": "Ausstellung 1.–16.12.2026 · einfach ab Korea. Ab 17.12. Beträge der integrierten Airline gesondert prüfen",
-    "bxPeriod": "Ausstellung 1.–31.12.2026 · einfach ab Korea · veröffentlicht in USD"
+    "bxPeriod": "Ausstellung 1.–31.12.2026 · einfach ab Korea · veröffentlicht in USD",
+    "ljPeriod": "Ausstellung 1.–31. Dez. 2026 · einfacher Flug ab Korea · USD · GDS-Mitteilung der Airline",
+    "zePeriod": "Ausstellung 1.–31. Dez. 2026 · einfacher Flug ab Korea · USD · GDS-Mitteilung der Airline"
   }
 };
   var graphLabels={
@@ -251,7 +264,7 @@
     'graph.filter.nov':p.nov,'graph.th.nov':p.thNov,'graph.pending.nov':p.pending,'graph.notice.oct':p.octNotice,'graph.notice.nov':p.novNotice,
     'graph.filter.dec':decemberCopy[lang].dec,'graph.th.dec':decemberCopy[lang].thDec,'graph.pending.dec':decemberCopy[lang].pending,
     'graph.notice.dec':decemberCopy[lang].decNotice,'graph.change.template':decemberCopy[lang].compare,
-    'graph.period.dec.KE':decemberCopy[lang].kePeriod,'graph.period.dec.OZ':decemberCopy[lang].ozPeriod,'graph.period.dec.BX':decemberCopy[lang].bxPeriod,
+    'graph.period.dec.KE':decemberCopy[lang].kePeriod,'graph.period.dec.OZ':decemberCopy[lang].ozPeriod,'graph.period.dec.BX':decemberCopy[lang].bxPeriod,'graph.period.dec.LJ':decemberCopy[lang].ljPeriod,'graph.period.dec.ZE':decemberCopy[lang].zePeriod,
     'graph.noBand':graphLabels[lang][0],'graph.rateUnavailable':graphLabels[lang][1],'graph.noData':graphLabels[lang][2],
     'graph.related.june':graphLabels[lang][3]
   };if(lang==='zh')values['airline.YP']='Air Premia (YP)';

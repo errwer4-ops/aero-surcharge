@@ -725,6 +725,194 @@
     "pages": null
   }
 }
+,
+{
+  "airline": "LJ",
+  "month": "2026.12",
+  "status": "source_reconciled",
+  "sourceUrl": "https://www.hanjinsabre.com/Airlinegroup/BoardView/?CDA=LJ&TAB=3&BID=90147",
+  "currency": "USD",
+  "direction": "one_way",
+  "departureCountry": "KR",
+  "publishedAt": "2026-11-16",
+  "effectiveFrom": "2026-12-01",
+  "effectiveTo": "2026-12-31",
+  "sourceVerifiedAt": "2026-11-17T11:27:08.139Z",
+  "sourceKind": "airline_authored_gds_notice",
+  "bands": [
+    "1~599 mi",
+    "600~1,199 mi",
+    "1,200~1,799 mi",
+    "1,800~2,399 mi"
+  ],
+  "amounts": [
+    34,
+    50,
+    81,
+    88
+  ],
+  "routesByGroup": [
+    [
+      "CJU-PVG",
+      "ICN-FUK",
+      "PUS-FUK",
+      "ICN-KKJ",
+      "ICN-KIX",
+      "PUS-KIX",
+      "ICN-TAK",
+      "PUS-NGO",
+      "ICN-TAO",
+      "ICN-YNT",
+      "ICN-UKB"
+    ],
+    [
+      "ICN-OKA",
+      "PUS-OKA",
+      "ICN-NRT",
+      "PUS-NRT",
+      "ICN-NGO",
+      "ICN-SHI",
+      "PUS-SHI",
+      "ICN-ISG",
+      "ICN-CTS",
+      "PUS-CTS",
+      "ICN-TPE",
+      "PUS-TPE",
+      "CJU-TPE",
+      "ICN-RMQ",
+      "PUS-RMQ",
+      "CJU-HKG",
+      "ICN-YIH"
+    ],
+    [
+      "ICN-CRK",
+      "PUS-CRK",
+      "PUS-CEB",
+      "PUS-GUM",
+      "PUS-UBN",
+      "ICN-KWL"
+    ],
+    [
+      "ICN-DAD",
+      "PUS-DAD",
+      "ICN-CEB",
+      "ICN-TAG",
+      "ICN-GUM",
+      "ICN-BKI",
+      "ICN-BKK",
+      "PUS-BKK",
+      "ICN-CNX",
+      "ICN-CXR",
+      "PUS-CXR",
+      "ICN-PQC",
+      "PUS-PQC",
+      "ICN-SGN"
+    ]
+  ],
+  "evidence": {
+    "id": "LJ-2026-12-20261117",
+    "method": "airline_authored_gds_table_and_conditions_independent_review",
+    "sha256": "d4dd55331a691d88040d870234639959cf3ad1f967bb9fc93ba5e779a7155d47",
+    "hashEncoding": "utf8_lf",
+    "file": "docs/review-evidence/20261117-lj-ze-december.json",
+    "pages": null
+  }
+},
+{
+  "airline": "ZE",
+  "month": "2026.12",
+  "status": "source_reconciled",
+  "sourceUrl": "https://www.hanjinsabre.com/Airlinemain/BoardView/?CDA=ZE&TAB=3&BID=90153",
+  "currency": "USD",
+  "direction": "one_way",
+  "departureCountry": "KR",
+  "publishedAt": "2026-11-17",
+  "effectiveFrom": "2026-12-01",
+  "effectiveTo": "2026-12-31",
+  "sourceVerifiedAt": "2026-11-17T11:28:06.718Z",
+  "sourceKind": "airline_authored_gds_notice",
+  "bands": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6"
+  ],
+  "amounts": [
+    40,
+    51,
+    61,
+    73,
+    82,
+    95
+  ],
+  "routesByGroup": [
+    [
+      "ICN-FUK",
+      "PUS-FUK",
+      "PUS-KIX",
+      "PUS-KMJ",
+      "CJU-PVG",
+      "CJJ-YNJ",
+      "ICN-YNT",
+      "ICN-KOJ"
+    ],
+    [
+      "ICN-NRT",
+      "ICN-KIX",
+      "ICN-CTS",
+      "PUS-CTS",
+      "ICN-OKA",
+      "PUS-OKA",
+      "ICN-TKS",
+      "GMP-TSA",
+      "ICN-TPE",
+      "CJJ-TPE",
+      "CJU-TPE",
+      "PUS-TPE",
+      "ICN-PVG",
+      "CJJ-PVG",
+      "PUS-YNJ",
+      "ICN-CGO",
+      "ICN-HET",
+      "PUS-XMN",
+      "PUS-HGH"
+    ],
+    [
+      "ICN-HKG",
+      "CJJ-DYG",
+      "ICN-XMN",
+      "CJJ-XMN",
+      "TAE-DYG",
+      "PUS-HKG"
+    ],
+    [
+      "ICN-DAD"
+    ],
+    [
+      "ICN-BKK",
+      "ICN-CNX",
+      "PUS-CNX",
+      "ICN-CXR",
+      "ICN-PQC",
+      "PUS-PQC",
+      "ICN-MDC"
+    ],
+    [
+      "ICN-ALA",
+      "PUS-ALA"
+    ]
+  ],
+  "evidence": {
+    "id": "ZE-2026-12-20261117",
+    "method": "airline_authored_gds_table_and_conditions_independent_review",
+    "sha256": "d4dd55331a691d88040d870234639959cf3ad1f967bb9fc93ba5e779a7155d47",
+    "hashEncoding": "utf8_lf",
+    "file": "docs/review-evidence/20261117-lj-ze-december.json",
+    "pages": null
+  }
+}
 ]; // REVIEWED_MANIFEST
   function freeze(value) { if (value && typeof value === 'object') { Object.keys(value).forEach(function (key) { freeze(value[key]); }); Object.freeze(value); } return value; }
   freeze(manifest);

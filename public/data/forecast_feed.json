@@ -89,7 +89,7 @@
       "eiaJetInventoryKind": "US_kerosene_type_jet_fuel_stocks_week_ending_not_Singapore_price_or_MOPS",
       "eiaJetInventorySourceUrl": "https://www.eia.gov/petroleum/supply/weekly/archive/2026/2026_11_12/download/table6.csv",
       "decemberMopsVerificationStatus": "official_calculation_average_not_directly_obtained_press_reported_mean_and_stage_separate",
-      "decemberNoticeVerificationStatus": "KE_OZ_BX_official_December_passenger_notices_confirmed_six_others_unverified_not_claim_of_nonpublication",
+      "decemberNoticeVerificationStatus": "KE_OZ_BX_consumer_originals_and_LJ_ZE_airline_GDS_December_passenger_notices_confirmed_four_others_unverified_not_claim_of_nonpublication",
       "novemberMopsVerificationDate": "2026-11-17",
       "fxDaytimeCloseCorroboratingSourceUrl": "https://www.news1.kr/finance/market-exr/6355567",
       "fxDaytimeCloseCorroboratingPublishedAt": "2026-11-16T15:32:13+09:00",
@@ -264,6 +264,151 @@
           "ticketingStart": "2026-12-01",
           "ticketingEnd": "2026-12-31",
           "sourceUrl": "https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4431"
+        },
+        "LJ": {
+          "amounts": [
+            34,
+            50,
+            81,
+            88
+          ],
+          "currency": "USD",
+          "direction": "one_way",
+          "ticketingStart": "2026-12-01",
+          "ticketingEnd": "2026-12-31",
+          "sourceUrl": "https://www.hanjinsabre.com/Airlinegroup/BoardView/?CDA=LJ&TAB=3&BID=90147",
+          "sourceKind": "airline_authored_gds_notice",
+          "routesByGroup": [
+            [
+              "CJU-PVG",
+              "ICN-FUK",
+              "PUS-FUK",
+              "ICN-KKJ",
+              "ICN-KIX",
+              "PUS-KIX",
+              "ICN-TAK",
+              "PUS-NGO",
+              "ICN-TAO",
+              "ICN-YNT",
+              "ICN-UKB"
+            ],
+            [
+              "ICN-OKA",
+              "PUS-OKA",
+              "ICN-NRT",
+              "PUS-NRT",
+              "ICN-NGO",
+              "ICN-SHI",
+              "PUS-SHI",
+              "ICN-ISG",
+              "ICN-CTS",
+              "PUS-CTS",
+              "ICN-TPE",
+              "PUS-TPE",
+              "CJU-TPE",
+              "ICN-RMQ",
+              "PUS-RMQ",
+              "CJU-HKG",
+              "ICN-YIH"
+            ],
+            [
+              "ICN-CRK",
+              "PUS-CRK",
+              "PUS-CEB",
+              "PUS-GUM",
+              "PUS-UBN",
+              "ICN-KWL"
+            ],
+            [
+              "ICN-DAD",
+              "PUS-DAD",
+              "ICN-CEB",
+              "ICN-TAG",
+              "ICN-GUM",
+              "ICN-BKI",
+              "ICN-BKK",
+              "PUS-BKK",
+              "ICN-CNX",
+              "ICN-CXR",
+              "PUS-CXR",
+              "ICN-PQC",
+              "PUS-PQC",
+              "ICN-SGN"
+            ]
+          ]
+        },
+        "ZE": {
+          "amounts": [
+            40,
+            51,
+            61,
+            73,
+            82,
+            95
+          ],
+          "currency": "USD",
+          "direction": "one_way",
+          "ticketingStart": "2026-12-01",
+          "ticketingEnd": "2026-12-31",
+          "sourceUrl": "https://www.hanjinsabre.com/Airlinemain/BoardView/?CDA=ZE&TAB=3&BID=90153",
+          "sourceKind": "airline_authored_gds_notice",
+          "routesByGroup": [
+            [
+              "ICN-FUK",
+              "PUS-FUK",
+              "PUS-KIX",
+              "PUS-KMJ",
+              "CJU-PVG",
+              "CJJ-YNJ",
+              "ICN-YNT",
+              "ICN-KOJ"
+            ],
+            [
+              "ICN-NRT",
+              "ICN-KIX",
+              "ICN-CTS",
+              "PUS-CTS",
+              "ICN-OKA",
+              "PUS-OKA",
+              "ICN-TKS",
+              "GMP-TSA",
+              "ICN-TPE",
+              "CJJ-TPE",
+              "CJU-TPE",
+              "PUS-TPE",
+              "ICN-PVG",
+              "CJJ-PVG",
+              "PUS-YNJ",
+              "ICN-CGO",
+              "ICN-HET",
+              "PUS-XMN",
+              "PUS-HGH"
+            ],
+            [
+              "ICN-HKG",
+              "CJJ-DYG",
+              "ICN-XMN",
+              "CJJ-XMN",
+              "TAE-DYG",
+              "PUS-HKG"
+            ],
+            [
+              "ICN-DAD"
+            ],
+            [
+              "ICN-BKK",
+              "ICN-CNX",
+              "PUS-CNX",
+              "ICN-CXR",
+              "ICN-PQC",
+              "PUS-PQC",
+              "ICN-MDC"
+            ],
+            [
+              "ICN-ALA",
+              "PUS-ALA"
+            ]
+          ]
         }
       },
       "inheritedHistoricalFieldsStatus": "older_dated_context_not_reverified_or_current_unless_explicitly_marked",
@@ -446,21 +591,21 @@
       "decemberConfirmedAirlines": [
         "KE",
         "OZ",
-        "BX"
+        "BX",
+        "LJ",
+        "ZE"
       ],
       "decemberPendingAirlines": [
         "7C",
-        "LJ",
         "RS",
         "TW",
-        "ZE",
         "YP"
       ],
       "decemberDirection": "announced_reductions_for_confirmed_carriers",
       "decemberDirectionConfidence": "partial_official_confirmation",
       "decemberStageConfidence": "official_stage_unverified",
       "decemberDirectionDrivers": [
-        "KE_OZ_BX_December_official_reductions_carrier_period_currency_conditions_apply",
+        "KE_OZ_BX_LJ_ZE_December_airline_notices_confirmed_with_original_currency_period_and_route_conditions",
         "December_MOPS_165_66_and_stage25_are_news_references_official_mean_stage_unverified",
         "November16_USD_KRW_1335_7_down1_daytime_close_not_conversion_rate",
         "November16_Brent92_44_WTI85_72_futures_settlements_down_not_MOPS",
@@ -471,7 +616,7 @@
         "EIA_Q3_Hormuz9_1_million_bpd_historical_quarter_not_current_flow",
         "OPEC_capacity_review_does_not_change_December_target"
       ],
-      "decemberDirectionLabelKo": "12월 KE·OZ·BX 인하 공시 확인 · 나머지 6개사 미확인",
+      "decemberDirectionLabelKo": "12월 KE·OZ·BX·LJ·ZE 인하 공시 확인 · 나머지 4개사 미확인",
       "fxDaytimeCloseAdditionalSourceUrl": "https://www.newspim.com/news/view/20261116001164",
       "fxDaytimeCloseAdditionalPublishedAt": "2026-11-16T16:15:00+09:00",
       "singaporeJetAssessmentRangeLow": 149.72,
@@ -559,7 +704,7 @@
       "opecCapacityReviewStatus": "discussion_of_sustainable_capacity_for_2027_and_later_baselines_not_December_supply_increase_or_final_quotas",
       "decemberOfficialStage": null,
       "decemberOfficialAmountsScope": "carrier_specific_one_way_original_currency_not_universal_amount",
-      "decemberNoticesCheckedAt": "2026-11-17T00:00:36Z",
+      "decemberNoticesCheckedAt": "2026-11-17T11:28:06.718Z",
       "reportedDecemberMopsUsdPerBbl": 165.66,
       "reportedDecemberMopsCentsPerGal": 394.44,
       "reportedDecemberStage": 25,
@@ -582,10 +727,12 @@
       "eiaLatestTodayInEnergyObservationFreshness": "historical_latest_at_previous_November16_check_not_reverified_this_run",
       "singaporeJetFobReferenceKind": "dated_private_FOB_assessment_not_live_quote_or_official_MOPS"
     },
-    "disclaimer": "12월 KE·OZ·BX 공식 공시를 확인했습니다. 나머지6개사는 미확인입니다. 공식 산정 MOPS 평균·단계·기간 평균환율은 미확인이고 보도 참고값과 구분합니다. 항공사별 원통화·편도·발권기간을 따릅니다.",
+    "disclaimer": "12월 KE·OZ·BX·LJ·ZE 공식 공시를 확인했습니다. 나머지4개사는 미확인입니다. 공식 산정 MOPS 평균·단계·기간 평균환율은 미확인이고 보도 참고값과 구분합니다. 항공사별 원통화·편도·발권기간을 따릅니다.",
     "runKind": "scheduled_0900",
     "scheduledReferenceTime": "2026-11-17T09:00:00+09:00",
-    "scheduledReferenceTimeUsed": true
+    "scheduledReferenceTimeUsed": true,
+    "noticeCheckedAt": "2026-11-17T11:28:06.718Z",
+    "noticeUpdateScope": "Evening airline notice addition; morning market cutoff and dated observations unchanged"
   },
   "forecasts": [
     {
@@ -604,7 +751,7 @@
       "confidence": "partial_official_confirmation",
       "volatility": "high",
       "drivers": [
-        "KE_OZ_BX_December_official_reductions_carrier_period_currency_conditions_apply",
+        "KE_OZ_BX_LJ_ZE_December_airline_notices_confirmed_with_original_currency_period_and_route_conditions",
         "December_MOPS_165_66_and_stage25_are_news_references_official_mean_stage_unverified",
         "November16_USD_KRW_1335_7_down1_daytime_close_not_conversion_rate",
         "November16_Brent92_44_WTI85_72_futures_settlements_down_not_MOPS",
@@ -615,24 +762,25 @@
         "EIA_Q3_Hormuz9_1_million_bpd_historical_quarter_not_current_flow",
         "OPEC_capacity_review_does_not_change_December_target"
       ],
-      "disclaimer": "12월 KE·OZ·BX 공식 공시를 확인했습니다. 나머지6개사는 미확인입니다. 공식 산정 MOPS 평균·단계·기간 평균환율은 미확인이고 보도 참고값과 구분합니다. 항공사별 원통화·편도·발권기간을 따릅니다.",
-      "summary": "12월 대한항공·아시아나·에어부산 인하 공시를 확인했습니다. 나머지6개사는 미확인이며 아시아나는12/1~16발권만 확정입니다. 11/16서울15:30종가는1335.7원(-1.0),Brent2027년1월물92.44(-3.55%)/WTI12월물85.72(-3.21%)USD/bbl정산입니다. IATA11/13종료주간 세계169.82/아시아·오세아니아152.80USD/bbl은하락했으나 CommodityScope11/13FOB민간일일평가151.15는상승했습니다. 이 지표들은 공식 산정평균이 아닙니다. 12월MOPS165.66USD/bbl·394.44cents/gal·25단계는별도보도참고이며 공식평균·단계·기간환율미확인상태를유지합니다. IMO11/16기준누계137건·25명,UKMTO11/16보고2건,JMIC11/15위험평가는서로합산하지않습니다. EIA2026Q3호르무즈전체석유9.1백만b/d는분기과거추정이며현재유량과안전회복의근거가아닙니다.",
+      "disclaimer": "12월 KE·OZ·BX·LJ·ZE 공식 공시를 확인했습니다. 나머지4개사는 미확인입니다. 공식 산정 MOPS 평균·단계·기간 평균환율은 미확인이고 보도 참고값과 구분합니다. 항공사별 원통화·편도·발권기간을 따릅니다.",
+      "summary": "12월 대한항공·아시아나·에어부산·진에어·이스타항공 인하 공시를 확인했습니다. 나머지4개사는 미확인이며 아시아나는12/1~16발권만 확정입니다. 11/16서울15:30종가는1335.7원(-1.0),Brent2027년1월물92.44(-3.55%)/WTI12월물85.72(-3.21%)USD/bbl정산입니다. IATA11/13종료주간 세계169.82/아시아·오세아니아152.80USD/bbl은하락했으나 CommodityScope11/13FOB민간일일평가151.15는상승했습니다. 이 지표들은 공식 산정평균이 아닙니다. 12월MOPS165.66USD/bbl·394.44cents/gal·25단계는별도보도참고이며 공식평균·단계·기간환율미확인상태를유지합니다. IMO11/16기준누계137건·25명,UKMTO11/16보고2건,JMIC11/15위험평가는서로합산하지않습니다. EIA2026Q3호르무즈전체석유9.1백만b/d는분기과거추정이며현재유량과안전회복의근거가아닙니다.",
       "currentStageScope": "Korean_Air_November_reported_reference_not_common_to_all_airlines",
       "calculationStatus": "period_ended_official_notices_partially_confirmed_average_unverified",
-      "officialAmountsScope": "no_universal_ALL_amount_see_announcedNotices_for_KE_OZ_BX_original_currency_and_period",
+      "officialAmountsScope": "no_universal_ALL_amount_see_announcedNotices_for_KE_OZ_BX_LJ_ZE_original_currency_period_and_route",
       "confirmedAirlines": [
         "KE",
         "OZ",
-        "BX"
+        "BX",
+        "LJ",
+        "ZE"
       ],
       "unverifiedAirlines": [
         "7C",
-        "LJ",
         "RS",
         "TW",
-        "ZE",
         "YP"
-      ]
+      ],
+      "noticeCheckedAt": "2026-11-17T11:28:06.718Z"
     }
   ],
   "latest": {
@@ -640,28 +788,29 @@
     "currentMonthNotice": "2026-11",
     "forecastTargetMonth": "2026-12",
     "status": "period_ended_official_notices_partially_confirmed_average_unverified",
-    "summary": "12월 대한항공·아시아나·에어부산 인하 공시를 확인했습니다. 나머지6개사는 미확인이며 아시아나는12/1~16발권만 확정입니다. 11/16서울15:30종가는1335.7원(-1.0),Brent2027년1월물92.44(-3.55%)/WTI12월물85.72(-3.21%)USD/bbl정산입니다. IATA11/13종료주간 세계169.82/아시아·오세아니아152.80USD/bbl은하락했으나 CommodityScope11/13FOB민간일일평가151.15는상승했습니다. 이 지표들은 공식 산정평균이 아닙니다. 12월MOPS165.66USD/bbl·394.44cents/gal·25단계는별도보도참고이며 공식평균·단계·기간환율미확인상태를유지합니다. IMO11/16기준누계137건·25명,UKMTO11/16보고2건,JMIC11/15위험평가는서로합산하지않습니다. EIA2026Q3호르무즈전체석유9.1백만b/d는분기과거추정이며현재유량과안전회복의근거가아닙니다.",
+    "summary": "12월 대한항공·아시아나·에어부산·진에어·이스타항공 인하 공시를 확인했습니다. 나머지4개사는 미확인이며 아시아나는12/1~16발권만 확정입니다. 11/16서울15:30종가는1335.7원(-1.0),Brent2027년1월물92.44(-3.55%)/WTI12월물85.72(-3.21%)USD/bbl정산입니다. IATA11/13종료주간 세계169.82/아시아·오세아니아152.80USD/bbl은하락했으나 CommodityScope11/13FOB민간일일평가151.15는상승했습니다. 이 지표들은 공식 산정평균이 아닙니다. 12월MOPS165.66USD/bbl·394.44cents/gal·25단계는별도보도참고이며 공식평균·단계·기간환율미확인상태를유지합니다. IMO11/16기준누계137건·25명,UKMTO11/16보고2건,JMIC11/15위험평가는서로합산하지않습니다. EIA2026Q3호르무즈전체석유9.1백만b/d는분기과거추정이며현재유량과안전회복의근거가아닙니다.",
     "runKind": "scheduled_0900",
     "informationCutoff": "2026-11-17T09:00:00+09:00",
     "lastUpdated": "2026-11-17T00:07:24.676Z",
     "confirmedAirlines": [
       "KE",
       "OZ",
-      "BX"
+      "BX",
+      "LJ",
+      "ZE"
     ],
     "unverifiedAirlines": [
       "7C",
-      "LJ",
       "RS",
       "TW",
-      "ZE",
       "YP"
-    ]
+    ],
+    "noticeCheckedAt": "2026-11-17T11:28:06.718Z"
   },
   "announcedNotices": {
     "month": "2026-12",
-    "checkedAt": "2026-11-17T00:00:36Z",
-    "scope": "December passenger notices individually verified; BX observed before the09:00cutoff and checked again after it. KE/OZ prior original objects and verification times preserved.",
+    "checkedAt": "2026-11-17T11:28:06.718Z",
+    "scope": "Korea-origin international passenger notices; airline GDS originals for LJ/ZE; ticketing period, route and source currency apply. Separate from morning market cutoff.",
     "notices": [
       {
         "code": "KE",
@@ -867,14 +1016,255 @@
         "postPeriodRateConfirmed": null,
         "postPeriodRule": null,
         "infantExemption": "under_2_without_seat"
+      },
+      {
+        "code": "LJ",
+        "month": "2026-12",
+        "displayBandIndices": [
+          0,
+          1,
+          2,
+          3,
+          null
+        ],
+        "bands": [
+          "1~599 mi",
+          "600~1,199 mi",
+          "1,200~1,799 mi",
+          "1,800~2,399 mi"
+        ],
+        "amounts": [
+          34,
+          50,
+          81,
+          88
+        ],
+        "december": [
+          34,
+          50,
+          81,
+          88
+        ],
+        "november": [
+          36,
+          54,
+          87,
+          96
+        ],
+        "majorRoutesKo": [
+          "제주-상하이/푸동; 인천/부산-후쿠오카; 인천-기타큐슈; 인천/부산-오사카/간사이; 인천-다카마쓰; 부산-나고야; 인천-칭다오; 인천-옌타이; 인천-고베",
+          "인천/부산-오키나와; 인천/부산-도쿄/나리타; 인천-나고야; 인천/부산-미야코지마/시모지시마; 인천-이시가키지마; 인천/부산-삿포로; 인천/부산/제주-타이베이/타오위안; 인천/부산-타이중; 제주-홍콩; 인천-이창",
+          "인천/부산-클락; 부산-세부; 부산-괌; 부산-울란바토르; 인천-구이린",
+          "인천/부산-다낭; 인천-세부; 인천-보홀; 인천-괌; 인천-코타키나발루; 인천/부산-방콕; 인천-치앙마이; 인천/부산-나트랑; 인천/부산-푸꾸옥; 인천-호찌민"
+        ],
+        "routesByGroup": [
+          [
+            "CJU-PVG",
+            "ICN-FUK",
+            "PUS-FUK",
+            "ICN-KKJ",
+            "ICN-KIX",
+            "PUS-KIX",
+            "ICN-TAK",
+            "PUS-NGO",
+            "ICN-TAO",
+            "ICN-YNT",
+            "ICN-UKB"
+          ],
+          [
+            "ICN-OKA",
+            "PUS-OKA",
+            "ICN-NRT",
+            "PUS-NRT",
+            "ICN-NGO",
+            "ICN-SHI",
+            "PUS-SHI",
+            "ICN-ISG",
+            "ICN-CTS",
+            "PUS-CTS",
+            "ICN-TPE",
+            "PUS-TPE",
+            "CJU-TPE",
+            "ICN-RMQ",
+            "PUS-RMQ",
+            "CJU-HKG",
+            "ICN-YIH"
+          ],
+          [
+            "ICN-CRK",
+            "PUS-CRK",
+            "PUS-CEB",
+            "PUS-GUM",
+            "PUS-UBN",
+            "ICN-KWL"
+          ],
+          [
+            "ICN-DAD",
+            "PUS-DAD",
+            "ICN-CEB",
+            "ICN-TAG",
+            "ICN-GUM",
+            "ICN-BKI",
+            "ICN-BKK",
+            "PUS-BKK",
+            "ICN-CNX",
+            "ICN-CXR",
+            "PUS-CXR",
+            "ICN-PQC",
+            "PUS-PQC",
+            "ICN-SGN"
+          ]
+        ],
+        "currency": "USD",
+        "direction": "one_way",
+        "departureCountry": "KR",
+        "url": "https://www.hanjinsabre.com/Airlinegroup/BoardView/?CDA=LJ&TAB=3&BID=90147",
+        "corroboratingUrl": "https://www.travelport.co.kr/airline/AirInfo_View.aspx?Idx=64366&Ref=65722&Res=0&Rev=0&Pg=1&Ctgr=LJ&SType=&Keyword=",
+        "ticketingStart": "2026-12-01",
+        "ticketingEnd": "2026-12-31",
+        "noticeDate": "2026-11-16",
+        "noticePublishedAt": "2026-11-16",
+        "publicationTimePrecision": "date",
+        "publishedAtDisplay": "2026-11-16 오후 2:39:46",
+        "publicationTimezoneExplicit": false,
+        "collectedAt": "2026-11-17T11:26:08.662Z",
+        "verifiedAt": "2026-11-17T11:27:08.139Z",
+        "status": "official_notice_verified_against_airline_gds",
+        "sourceKind": "airline_authored_gds_notice",
+        "dataStatus": "confirmed",
+        "officialStage": null,
+        "postPeriodRateConfirmed": null,
+        "postPeriodRule": null,
+        "infantExemption": "under_2_without_seat"
+      },
+      {
+        "code": "ZE",
+        "month": "2026-12",
+        "bands": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "amounts": [
+          40,
+          51,
+          61,
+          73,
+          82,
+          95
+        ],
+        "december": [
+          40,
+          51,
+          61,
+          73,
+          82,
+          95
+        ],
+        "november": [
+          43,
+          54,
+          66,
+          79,
+          89,
+          103
+        ],
+        "majorRoutesKo": [
+          "인천-후쿠오카; 부산-후쿠오카; 부산-오사카; 부산-구마모토; 제주-상하이; 청주-연길; 인천-옌타이; 인천-가고시마",
+          "인천-나리타; 인천-오사카; 인천-치토세; 부산-치토세; 인천-오키나와; 부산-오키나와; 인천-도쿠시마; 김포-송산; 인천-타이베이; 청주-타이베이; 제주-타이베이; 부산-타이베이; 인천-상하이; 청주-상하이; 부산-연길; 인천-정저우; 인천-후허하오터; 부산-샤먼; 부산-항저우",
+          "인천-홍콩; 청주-장가계; 인천-샤먼; 청주-샤먼; 대구-장가계; 부산-홍콩",
+          "인천-다낭",
+          "인천-방콕; 인천-치앙마이; 부산-치앙마이; 인천-나트랑; 인천-푸꾸옥; 부산-푸꾸옥; 인천-마나도",
+          "인천-알마티; 부산-알마티"
+        ],
+        "routesByGroup": [
+          [
+            "ICN-FUK",
+            "PUS-FUK",
+            "PUS-KIX",
+            "PUS-KMJ",
+            "CJU-PVG",
+            "CJJ-YNJ",
+            "ICN-YNT",
+            "ICN-KOJ"
+          ],
+          [
+            "ICN-NRT",
+            "ICN-KIX",
+            "ICN-CTS",
+            "PUS-CTS",
+            "ICN-OKA",
+            "PUS-OKA",
+            "ICN-TKS",
+            "GMP-TSA",
+            "ICN-TPE",
+            "CJJ-TPE",
+            "CJU-TPE",
+            "PUS-TPE",
+            "ICN-PVG",
+            "CJJ-PVG",
+            "PUS-YNJ",
+            "ICN-CGO",
+            "ICN-HET",
+            "PUS-XMN",
+            "PUS-HGH"
+          ],
+          [
+            "ICN-HKG",
+            "CJJ-DYG",
+            "ICN-XMN",
+            "CJJ-XMN",
+            "TAE-DYG",
+            "PUS-HKG"
+          ],
+          [
+            "ICN-DAD"
+          ],
+          [
+            "ICN-BKK",
+            "ICN-CNX",
+            "PUS-CNX",
+            "ICN-CXR",
+            "ICN-PQC",
+            "PUS-PQC",
+            "ICN-MDC"
+          ],
+          [
+            "ICN-ALA",
+            "PUS-ALA"
+          ]
+        ],
+        "groupType": "route_group",
+        "currency": "USD",
+        "direction": "one_way",
+        "departureCountry": "KR",
+        "url": "https://www.hanjinsabre.com/Airlinemain/BoardView/?CDA=ZE&TAB=3&BID=90153",
+        "tableSourceUrl": "https://cdn.topasweb.com/topas-attach/board/editor/202611/202611171247168542590.png",
+        "ticketingStart": "2026-12-01",
+        "ticketingEnd": "2026-12-31",
+        "noticeDate": "2026-11-17",
+        "noticePublishedAt": "2026-11-17",
+        "publicationTimePrecision": "date",
+        "publishedAtDisplay": "2026-11-17 오후 12:50:10",
+        "publicationTimezoneExplicit": false,
+        "collectedAt": "2026-11-17T11:28:04.831Z",
+        "verifiedAt": "2026-11-17T11:28:06.718Z",
+        "status": "official_notice_verified_against_airline_gds",
+        "sourceKind": "airline_authored_gds_notice",
+        "dataStatus": "confirmed",
+        "officialStage": null,
+        "postPeriodRateConfirmed": null,
+        "postPeriodRule": null,
+        "infantExemption": "under_2_without_seat"
       }
     ],
     "unverifiedAirlines": [
       "7C",
-      "LJ",
       "RS",
       "TW",
-      "ZE",
       "YP"
     ]
   }

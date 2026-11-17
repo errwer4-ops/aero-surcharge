@@ -84,7 +84,7 @@
   }
   function noticeIndex(notice,route,matched,data){
     if (!route || !matched || !data) return -1;
-    if (notice.code === 'ZE' || notice.code === 'BX') return core.officialRouteGroupIndex(notice,route.split('-')[0],route.split('-')[1]);
+    if (Array.isArray(notice.routesByGroup) || notice.code === 'BX') return core.officialRouteGroupIndex(notice,route.split('-')[0],route.split('-')[1]);
     var index=data.rows.indexOf(matched.row);
     return notice.displayBandIndices?(notice.displayBandIndices[index]===null?-1:notice.displayBandIndices[index]):index;
   }

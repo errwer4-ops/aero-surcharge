@@ -1,7 +1,7 @@
 /* Independently checked December notices; preserve market timestamps and archived articles. */
 (function(){
   'use strict';
-  var api=window.AeroDecemberNotices, editedAt='2026-11-17T00:04:09.746Z';
+  var api=window.AeroDecemberNotices, editedAt='2026-11-17T11:44:43Z';
   if(!api)return;
   var legacyCopy={
   "ko": {
@@ -68,11 +68,11 @@
   var copy={
   "ko": {
     "title": "12월 공시 확인",
-    "summary": "대한항공·아시아나·에어부산은 12월 유류할증료 인하를 공시했습니다.",
+    "summary": "대한항공·아시아나·에어부산·진에어·이스타항공은 12월 유류할증료 인하를 공시했습니다.",
     "ke": "대한항공: 12월 1~31일 발권",
     "oz": "아시아나: 12월 1~16일 발권",
     "later": "아시아나는 12월 17일부터 통합 항공사 기준이 적용됩니다. 이후 금액은 별도 확인이 필요합니다.",
-    "pending": "나머지 6개사(7C·LJ·RS·TW·ZE·YP)의 12월 국제선 여객 금액은 이번 확인에서 검증하지 못했습니다.",
+    "pending": "나머지 4개사(7C·RS·TW·YP)의 12월 국제선 여객 금액은 이번 확인에서 검증하지 못했습니다.",
     "scope": "한국 출발 · 1인 편도 · {currency}",
     "basis": "탑승일이 아닌 발권일 기준입니다. 해외 출발 금액은 다를 수 있어 왕복 총액을 단순 확정할 수 없습니다.",
     "checked": "공시 확인",
@@ -83,8 +83,8 @@
     "change": "차액",
     "guide": "기다릴 수 있다면 이용 항공사의 적용 발권일과 항공권 총액을 함께 비교하세요.",
     "question": "12월 유류할증료는 확정됐나요?",
-    "count": "9개사 중 3개사 공시 확인",
-    "sourceNote": "KE·OZ는 11월 16일 저녁, BX는 11월 17일 아침 공시를 확인했습니다. 시장 자료 기준시각과 구분합니다.",
+    "count": "9개사 중 5개사 공시 확인",
+    "sourceNote": "KE·OZ는 11월 16일 저녁, BX는 11월 17일 아침, LJ·ZE는 11월 17일 저녁 항공사 배포 원문을 확인했습니다. 시장 자료 기준시각과 구분합니다.",
     "officialAverage": "공시 금액은 확인했지만 공식 MOPS 산정평균·기간 평균환율·단계는 이 공시에서 확인하지 못했습니다.",
     "nov": "11월",
     "dec": "12월",
@@ -94,15 +94,23 @@
     "ozBody": "한국 출발 편도 9개 거리 구간은 57,500~322,400원입니다. 12월 1~16일 발권분에 적용되며, 17일부터 통합 항공사 기준으로 바뀝니다.",
     "bx": "에어부산: 12월 1~31일 발권",
     "bxNews": "에어부산, 12월 국제선 유류할증료 인하 공시",
-    "bxBody": "한국 출발 편도 4개 노선군은 USD 40·71·84·98입니다. 12월 1~31일 발권분에 적용되며, 나리타·코타키나발루·치앙마이는 출발공항 조건을 확인해야 합니다."
+    "bxBody": "한국 출발 편도 4개 노선군은 USD 40·71·84·98입니다. 12월 1~31일 발권분에 적용되며, 나리타·코타키나발루·치앙마이는 출발공항 조건을 확인해야 합니다.",
+    "sourceGds": "항공사 배포 공시 원문",
+    "lj": "진에어: 12월 1~31일 발권",
+    "ze": "이스타항공: 12월 1~31일 발권",
+    "ljNews": "진에어, 12월 국제선 유류할증료 인하 공시 확인",
+    "zeNews": "이스타항공, 12월 국제선 유류할증료 인하 공시",
+    "ljBody": "한국 출발 편도 4개 거리 구간은 USD 34·50·81·88입니다. 12월 1~31일 발권분에 적용됩니다. 11월 16일 항공사 배포 공시를 추가 확인했습니다.",
+    "zeBody": "한국 출발 편도 6개 노선군은 USD 40·51·61·73·82·95입니다. 12월 1~31일 발권분에 적용되며, 같은 도착지도 출발공항에 따라 노선군이 다를 수 있습니다.",
+    "ljLimit": "공시에 실린 4개 거리 구간만 확인했습니다. 2,400마일 이상 구간은 별도 확인이 필요합니다."
   },
   "en": {
     "title": "December notices verified",
-    "summary": "Korean Air, Asiana and Air Busan have announced lower December fuel surcharges.",
+    "summary": "Korean Air, Asiana, Air Busan, Jin Air and Eastar Jet have announced lower December fuel surcharges.",
     "ke": "Korean Air: tickets issued December 1–31",
     "oz": "Asiana: tickets issued December 1–16",
     "later": "From December 17, Asiana applies the integrated airline’s surcharge. Check the subsequent amounts separately.",
-    "pending": "December international passenger amounts for the other six airlines (7C, LJ, RS, TW, ZE, YP) were not verified in this check.",
+    "pending": "December international passenger amounts for the other four airlines (7C, RS, TW, YP) were not verified in this check.",
     "scope": "Departing Korea · one person, one way · {currency}",
     "basis": "Ticketing date, not travel date, determines the charge. Overseas-origin charges may differ; a round-trip total cannot simply be assumed.",
     "checked": "Notices checked",
@@ -113,8 +121,8 @@
     "change": "Difference",
     "guide": "If you can wait, compare your airline’s applicable ticketing dates and total ticket prices together.",
     "question": "Are December surcharges confirmed?",
-    "count": "Notices verified for 3 of 9 airlines",
-    "sourceNote": "KE/OZ notices were checked on November 16 in the evening; BX on November 17 in the morning. These checks are separate from the market cutoff.",
+    "count": "Notices verified for 5 of 9 airlines",
+    "sourceNote": "KE/OZ were checked on November 16 in the evening, BX on November 17 in the morning, and airline-distributed LJ/ZE originals on November 17 in the evening. These checks are separate from the market cutoff.",
     "officialAverage": "Published amounts are verified. These notices did not establish the official MOPS calculation average, period-average FX or a surcharge stage.",
     "nov": "November",
     "dec": "December",
@@ -124,15 +132,23 @@
     "ozBody": "Nine Korea-origin one-way distance bands range from KRW 57,500 to 322,400, for tickets issued December 1–16. Integrated-airline rules apply from December 17.",
     "bx": "Air Busan: tickets issued December 1–31",
     "bxNews": "Air Busan announces lower December international surcharges",
-    "bxBody": "Four Korea-origin one-way route groups are USD 40, 71, 84 and 98 for tickets issued December 1–31. Check origin-airport restrictions for Narita, Kota Kinabalu and Chiang Mai."
+    "bxBody": "Four Korea-origin one-way route groups are USD 40, 71, 84 and 98 for tickets issued December 1–31. Check origin-airport restrictions for Narita, Kota Kinabalu and Chiang Mai.",
+    "sourceGds": "Airline-distributed original notice",
+    "lj": "Jin Air: tickets issued December 1–31",
+    "ze": "Eastar Jet: tickets issued December 1–31",
+    "ljNews": "Jin Air’s lower December international surcharges verified",
+    "zeNews": "Eastar Jet announces lower December international surcharges",
+    "ljBody": "Four Korea-origin one-way distance bands are USD 34, 50, 81 and 88 for tickets issued December 1–31. The airline-distributed November 16 notice was additionally verified.",
+    "zeBody": "Six Korea-origin one-way route groups are USD 40, 51, 61, 73, 82 and 95 for tickets issued December 1–31. The group for a destination can depend on the origin airport.",
+    "ljLimit": "Only the four published distance bands were verified. Bands from 2,400 miles require separate confirmation."
   },
   "ja": {
     "title": "12月の公示を確認",
-    "summary": "大韓航空・アシアナ航空・エアプサンが12月の燃油サーチャージ引き下げを公示しました。",
+    "summary": "大韓航空・アシアナ航空・エアプサン・ジンエアー・イースター航空が12月の燃油サーチャージ引き下げを公示しました。",
     "ke": "大韓航空：12月1～31日の発券",
     "oz": "アシアナ航空：12月1～16日の発券",
     "later": "アシアナ航空は12月17日から統合航空会社の基準を適用します。それ以降の金額は別途確認が必要です。",
-    "pending": "他の6社（7C・LJ・RS・TW・ZE・YP）の12月国際線旅客追加料金は、今回の確認では検証できませんでした。",
+    "pending": "他の4社（7C・RS・TW・YP）の12月国際線旅客追加料金は、今回の確認では検証できませんでした。",
     "scope": "韓国発・1人片道・{currency}",
     "basis": "搭乗日ではなく発券日が基準です。海外発の金額は異なる場合があり、往復総額を単純に確定できません。",
     "checked": "公示確認",
@@ -143,8 +159,8 @@
     "change": "差額",
     "guide": "購入を待てる場合は、利用する航空会社の適用発券日と航空券総額を合わせて比較しましょう。",
     "question": "12月の燃油サーチャージは確定しましたか？",
-    "count": "9社中3社の公示を確認",
-    "sourceNote": "KE・OZは11月16日夜、BXは11月17日朝に公示を確認。市場資料の基準時刻とは区別しています。",
+    "count": "9社中5社の公示を確認",
+    "sourceNote": "KE・OZは11月16日夜、BXは11月17日朝、LJ・ZEは11月17日夜に航空会社配信の原文を確認。市場資料の基準時刻とは区別しています。",
     "officialAverage": "公示金額は確認済みですが、公式MOPS算定平均・期間平均為替・段階はこの公示から確認できませんでした。",
     "nov": "11月",
     "dec": "12月",
@@ -154,15 +170,23 @@
     "ozBody": "韓国発片道9区分は57,500～322,400ウォン。12月1～16日の発券に適用され、17日から統合航空会社の基準になります。",
     "bx": "エアプサン：12月1～31日の発券",
     "bxNews": "エアプサン、12月国際線燃油サーチャージ引き下げを公示",
-    "bxBody": "韓国発片道4路線区分はUSD 40・71・84・98。12月1～31日の発券に適用されます。成田・コタキナバル・チェンマイは出発空港の条件をご確認ください。"
+    "bxBody": "韓国発片道4路線区分はUSD 40・71・84・98。12月1～31日の発券に適用されます。成田・コタキナバル・チェンマイは出発空港の条件をご確認ください。",
+    "sourceGds": "航空会社配信の公示原文",
+    "lj": "ジンエアー：12月1～31日の発券",
+    "ze": "イースター航空：12月1～31日の発券",
+    "ljNews": "ジンエアーの12月国際線燃油サーチャージ引き下げを確認",
+    "zeNews": "イースター航空、12月国際線燃油サーチャージ引き下げを公示",
+    "ljBody": "韓国発片道4距離区分はUSD 34・50・81・88。12月1～31日の発券に適用されます。11月16日に航空会社が配信した公示を追加確認しました。",
+    "zeBody": "韓国発片道6路線区分はUSD 40・51・61・73・82・95。12月1～31日の発券に適用され、同じ到着地でも出発空港によって区分が異なる場合があります。",
+    "ljLimit": "公示された4距離区分のみ確認済みです。2,400マイル以上の区分は別途確認が必要です。"
   },
   "zh": {
     "title": "12月公告已核实",
-    "summary": "大韩航空、韩亚航空和釜山航空已公告下调12月燃油附加费。",
+    "summary": "大韩航空、韩亚航空、釜山航空、真航空和易斯达航空已公告下调12月燃油附加费。",
     "ke": "大韩航空：12月1日至31日出票",
     "oz": "韩亚航空：12月1日至16日出票",
     "later": "韩亚航空自12月17日起适用整合后航空公司的标准。之后的金额须另行确认。",
-    "pending": "其余6家航司（7C、LJ、RS、TW、ZE、YP）的12月国际客运金额，本次未能核实。",
+    "pending": "其余4家航司（7C、RS、TW、YP）的12月国际客运金额，本次未能核实。",
     "scope": "韩国出发·每人单程·{currency}",
     "basis": "以出票日而非乘机日为准。海外出发金额可能不同，不能直接认定往返总额。",
     "checked": "公告核实",
@@ -173,8 +197,8 @@
     "change": "差额",
     "guide": "如果可以等待，请结合所选航司的适用出票日期与机票总价进行比较。",
     "question": "12月燃油附加费确定了吗？",
-    "count": "已核实9家中的3家公告",
-    "sourceNote": "KE、OZ于11月16日晚核实，BX于11月17日早间核实，与市场资料截至时间分开记录。",
+    "count": "已核实9家中的5家公告",
+    "sourceNote": "KE、OZ于11月16日晚核实，BX于11月17日早间核实，LJ、ZE的航司发布原文于11月17日晚核实，与市场资料截至时间分开记录。",
     "officialAverage": "公告金额已核实，但这些公告未确认官方MOPS计算均价、期间平均汇率或档位。",
     "nov": "11月",
     "dec": "12月",
@@ -184,15 +208,23 @@
     "ozBody": "韩国出发单程9个距离区间为57,500至322,400韩元，适用于12月1日至16日出票。17日起适用整合后航司标准。",
     "bx": "釜山航空：12月1日至31日出票",
     "bxNews": "釜山航空公告下调12月国际线燃油附加费",
-    "bxBody": "韩国出发单程4组航线为USD 40、71、84、98，适用于12月1日至31日出票。成田、亚庇和清迈须核对出发机场条件。"
+    "bxBody": "韩国出发单程4组航线为USD 40、71、84、98，适用于12月1日至31日出票。成田、亚庇和清迈须核对出发机场条件。",
+    "sourceGds": "航司发布的公告原文",
+    "lj": "真航空：12月1日至31日出票",
+    "ze": "易斯达航空：12月1日至31日出票",
+    "ljNews": "已核实真航空12月国际线燃油附加费下调公告",
+    "zeNews": "易斯达航空公告下调12月国际线燃油附加费",
+    "ljBody": "韩国出发单程4个距离区间为USD 34、50、81、88，适用于12月1日至31日出票。本次补充核实了航司于11月16日发布的公告。",
+    "zeBody": "韩国出发单程6组航线为USD 40、51、61、73、82、95，适用于12月1日至31日出票。同一目的地可能因出发机场不同而属于不同组别。",
+    "ljLimit": "仅核实公告列出的4个距离区间。2,400英里及以上区间须另行确认。"
   },
   "fr": {
     "title": "Annonces de décembre vérifiées",
-    "summary": "Korean Air, Asiana et Air Busan ont annoncé une baisse des surcharges de décembre.",
+    "summary": "Korean Air, Asiana, Air Busan, Jin Air et Eastar Jet ont annoncé une baisse des surcharges de décembre.",
     "ke": "Korean Air : billets émis du 1er au 31 décembre",
     "oz": "Asiana : billets émis du 1er au 16 décembre",
     "later": "À partir du 17 décembre, Asiana applique les règles de la compagnie intégrée. Les montants ultérieurs restent à vérifier.",
-    "pending": "Les montants internationaux passagers de décembre des six autres compagnies (7C, LJ, RS, TW, ZE, YP) n’ont pas été vérifiés lors de ce contrôle.",
+    "pending": "Les montants internationaux passagers de décembre des quatre autres compagnies (7C, RS, TW, YP) n’ont pas été vérifiés lors de ce contrôle.",
     "scope": "Départ de Corée · une personne, aller simple · {currency}",
     "basis": "La date d’émission compte, pas celle du vol. Les départs de l’étranger peuvent être tarifés différemment ; le total aller-retour ne peut être présumé.",
     "checked": "Annonces vérifiées",
@@ -203,8 +235,8 @@
     "change": "Écart",
     "guide": "Si vous pouvez attendre, comparez les dates d’émission applicables et les prix totaux des billets.",
     "question": "Les surcharges de décembre sont-elles confirmées ?",
-    "count": "Annonces vérifiées pour 3 compagnies sur 9",
-    "sourceNote": "KE/OZ ont été vérifiées le 16 novembre au soir ; BX le 17 novembre au matin. Ces contrôles sont distincts de la date limite des données de marché.",
+    "count": "Annonces vérifiées pour 5 compagnies sur 9",
+    "sourceNote": "KE/OZ ont été vérifiées le 16 novembre au soir, BX le 17 au matin et les originaux diffusés par LJ/ZE le 17 au soir. Ces contrôles sont distincts de la date limite des données de marché.",
     "officialAverage": "Les montants publiés sont vérifiés. Ces annonces ne confirment ni la moyenne officielle MOPS, ni le change moyen de la période, ni un palier.",
     "nov": "Novembre",
     "dec": "Décembre",
@@ -214,15 +246,23 @@
     "ozBody": "Les neuf tranches au départ de Corée vont de 57 500 à 322 400 KRW par aller simple, pour une émission du 1er au 16 décembre. Les règles de la compagnie intégrée s’appliquent dès le 17.",
     "bx": "Air Busan : billets émis du 1er au 31 décembre",
     "bxNews": "Air Busan annonce une baisse des surcharges internationales de décembre",
-    "bxBody": "Quatre groupes de lignes au départ de Corée sont à 40, 71, 84 et 98 USD par aller simple, pour une émission du 1er au 31 décembre. Vérifier l’aéroport de départ pour Narita, Kota Kinabalu et Chiang Mai."
+    "bxBody": "Quatre groupes de lignes au départ de Corée sont à 40, 71, 84 et 98 USD par aller simple, pour une émission du 1er au 31 décembre. Vérifier l’aéroport de départ pour Narita, Kota Kinabalu et Chiang Mai.",
+    "sourceGds": "Annonce originale diffusée par la compagnie",
+    "lj": "Jin Air : billets émis du 1er au 31 décembre",
+    "ze": "Eastar Jet : billets émis du 1er au 31 décembre",
+    "ljNews": "Baisse des surcharges internationales de décembre de Jin Air vérifiée",
+    "zeNews": "Eastar Jet annonce une baisse des surcharges internationales de décembre",
+    "ljBody": "Les quatre tranches de distance au départ de Corée sont à 34, 50, 81 et 88 USD par aller simple, pour une émission du 1er au 31 décembre. L’annonce diffusée par la compagnie le 16 novembre a été vérifiée lors de ce contrôle complémentaire.",
+    "zeBody": "Six groupes de lignes au départ de Corée sont à 40, 51, 61, 73, 82 et 95 USD par aller simple, pour une émission du 1er au 31 décembre. Le groupe peut varier selon l’aéroport de départ pour une même destination.",
+    "ljLimit": "Seules les quatre tranches publiées sont vérifiées. Les tranches à partir de 2 400 miles restent à confirmer séparément."
   },
   "de": {
     "title": "Dezember-Mitteilungen geprüft",
-    "summary": "Korean Air, Asiana und Air Busan haben niedrigere Kerosinzuschläge für Dezember angekündigt.",
+    "summary": "Korean Air, Asiana, Air Busan, Jin Air und Eastar Jet haben niedrigere Kerosinzuschläge für Dezember angekündigt.",
     "ke": "Korean Air: Ticketausstellung vom 1. bis 31. Dezember",
     "oz": "Asiana: Ticketausstellung vom 1. bis 16. Dezember",
     "later": "Ab dem 17. Dezember gelten bei Asiana die Regeln der integrierten Fluggesellschaft. Die späteren Beträge sind gesondert zu prüfen.",
-    "pending": "Die internationalen Passagierzuschläge für Dezember der anderen sechs Airlines (7C, LJ, RS, TW, ZE, YP) konnten bei dieser Prüfung nicht bestätigt werden.",
+    "pending": "Die internationalen Passagierzuschläge für Dezember der anderen vier Airlines (7C, RS, TW, YP) konnten bei dieser Prüfung nicht bestätigt werden.",
     "scope": "Ab Korea · eine Person, einfacher Flug · {currency}",
     "basis": "Maßgeblich ist das Ausstellungsdatum, nicht der Reisetag. Zuschläge ab dem Ausland können abweichen; Hin- und Rückflug dürfen nicht einfach gleichgesetzt werden.",
     "checked": "Mitteilungen geprüft",
@@ -233,8 +273,8 @@
     "change": "Differenz",
     "guide": "Wenn Sie warten können, vergleichen Sie die geltenden Ausstellungsdaten und die Gesamtpreise der Tickets.",
     "question": "Sind die Dezember-Zuschläge bestätigt?",
-    "count": "Mitteilungen von 3 der 9 Airlines geprüft",
-    "sourceNote": "KE/OZ wurden am Abend des 16. November geprüft, BX am Morgen des 17. November. Diese Prüfungen sind vom Marktstichtag getrennt.",
+    "count": "Mitteilungen von 5 der 9 Airlines geprüft",
+    "sourceNote": "KE/OZ wurden am Abend des 16. November geprüft, BX am Morgen des 17. und die von LJ/ZE veröffentlichten Originale am Abend des 17. November. Diese Prüfungen sind vom Marktstichtag getrennt.",
     "officialAverage": "Die veröffentlichten Beträge sind geprüft. Diese Mitteilungen belegen weder den offiziellen MOPS-Mittelwert noch den mittleren Wechselkurs des Zeitraums oder eine Stufe.",
     "nov": "November",
     "dec": "Dezember",
@@ -244,7 +284,15 @@
     "ozBody": "Die neun Entfernungsgruppen ab Korea reichen von 57.500 bis 322.400 KRW pro einfachem Flug, gültig bei Ausstellung vom 1. bis 16. Dezember. Ab dem 17. gelten die Regeln der integrierten Airline.",
     "bx": "Air Busan: Ticketausstellung vom 1. bis 31. Dezember",
     "bxNews": "Air Busan kündigt niedrigere internationale Dezember-Zuschläge an",
-    "bxBody": "Vier Streckengruppen ab Korea kosten je einfachem Flug 40, 71, 84 und 98 USD, gültig bei Ausstellung vom 1.–31. Dezember. Für Narita, Kota Kinabalu und Chiang Mai gelten Bedingungen zum Abflughafen."
+    "bxBody": "Vier Streckengruppen ab Korea kosten je einfachem Flug 40, 71, 84 und 98 USD, gültig bei Ausstellung vom 1.–31. Dezember. Für Narita, Kota Kinabalu und Chiang Mai gelten Bedingungen zum Abflughafen.",
+    "sourceGds": "Von der Airline verbreitete Originalmitteilung",
+    "lj": "Jin Air: Ticketausstellung vom 1. bis 31. Dezember",
+    "ze": "Eastar Jet: Ticketausstellung vom 1. bis 31. Dezember",
+    "ljNews": "Niedrigere internationale Dezember-Zuschläge von Jin Air bestätigt",
+    "zeNews": "Eastar Jet kündigt niedrigere internationale Dezember-Zuschläge an",
+    "ljBody": "Vier Entfernungsgruppen ab Korea kosten je einfachem Flug 34, 50, 81 und 88 USD bei Ticketausstellung vom 1.–31. Dezember. Die von der Airline am 16. November verbreitete Mitteilung wurde zusätzlich geprüft.",
+    "zeBody": "Sechs Streckengruppen ab Korea kosten je einfachem Flug 40, 51, 61, 73, 82 und 95 USD bei Ausstellung vom 1.–31. Dezember. Die Gruppe kann für dasselbe Ziel je nach Abflughafen abweichen.",
+    "ljLimit": "Nur die vier veröffentlichten Entfernungsgruppen sind bestätigt. Gruppen ab 2.400 Meilen müssen gesondert geprüft werden."
   }
 };
   function language(){var l=window.getCurrentLang?window.getCurrentLang():localStorage.getItem('aero_lang')||'ko';return copy[l]?l:'en';}
@@ -254,46 +302,55 @@
   function stamp(value){return new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Seoul',year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(new Date(value||api.checkedAt))+' KST';}
   function scope(c,n){return c.scope.replace('{currency}',n.currency);}
   function title(c,n){return c[n.code.toLowerCase()];}
+  function airlinePeriods(c){return api.notices.map(function(n){return title(c,n);}).join(' · ');}
+  function sourceLabel(c,n){return n.code==='LJ'||n.code==='ZE'?c.sourceGds:c.source;}
   function panel(){
     var box=document.getElementById('decemberNoticePanel');if(!box)return;
     var c=copy[language()],only=box.getAttribute('data-airline');
     var html='<h2>'+esc(c.title)+'</h2>'+(!document.getElementById('forecastDecisionTitle')?'<p>'+esc(c.summary)+'</p>':'')+'<div class="december-notice-cards">'+api.notices.filter(function(n){return verified(n)&&(!only||n.code===only);}).map(function(n){
-      return '<article data-airline="'+esc(n.code)+'"><h3>'+esc(title(c,n))+'</h3><p class="december-notice-range">'+esc(n.currency)+' '+numbers(Math.min.apply(null,n.amounts))+'–'+numbers(Math.max.apply(null,n.amounts))+'</p><p>'+esc(scope(c,n))+'</p>'+(n.code==='OZ'?'<p>'+esc(c.later)+'</p>':'')+'<a href="'+esc(n.url)+'" target="_blank" rel="noopener noreferrer">'+esc(c.source)+' ↗</a><details><summary>'+esc(c.details)+'</summary><div class="december-notice-table"><table><thead><tr><th>'+esc(c.band)+'</th><th>'+esc(c.nov)+'</th><th>'+esc(c.dec)+'</th><th>'+esc(c.change)+'</th></tr></thead><tbody>'+n.bands.map(function(b,i){return '<tr><th scope="row">'+esc(b)+'</th><td>'+numbers(n.november[i])+'</td><td>'+numbers(n.amounts[i])+'</td><td>−'+numbers(n.november[i]-n.amounts[i])+'</td></tr>';}).join('')+'</tbody></table></div></details><small>'+esc(c.checked)+': '+stamp(n.verifiedAt)+'</small></article>';
+      return '<article data-airline="'+esc(n.code)+'"><h3>'+esc(title(c,n))+'</h3><p class="december-notice-range">'+esc(n.currency)+' '+numbers(Math.min.apply(null,n.amounts))+'–'+numbers(Math.max.apply(null,n.amounts))+'</p><p>'+esc(scope(c,n))+'</p>'+(n.code==='OZ'?'<p>'+esc(c.later)+'</p>':'')+'<a href="'+esc(n.url)+'" target="_blank" rel="noopener noreferrer">'+esc(sourceLabel(c,n))+' ↗</a><details><summary>'+esc(c.details)+'</summary><div class="december-notice-table"><table><thead><tr><th>'+esc(c.band)+'</th><th>'+esc(c.nov)+'</th><th>'+esc(c.dec)+'</th><th>'+esc(c.change)+'</th></tr></thead><tbody>'+n.bands.map(function(b,i){return '<tr><th scope="row">'+esc(b)+'</th><td>'+numbers(n.november[i])+'</td><td>'+numbers(n.amounts[i])+'</td><td>−'+numbers(n.november[i]-n.amounts[i])+'</td></tr>';}).join('')+'</tbody></table></div>'+(n.code==='LJ'?'<p>'+esc(c.ljLimit)+'</p>':'')+'</details><small>'+esc(c.checked)+': '+stamp(n.verifiedAt)+'</small></article>';
     }).join('')+'</div><p>'+esc(c.basis)+'</p>'+(!only?'<p>'+esc(c.pending)+'</p>':'')+'<small>'+esc(c.checked)+': '+stamp()+' · '+esc(c.sourceNote)+'</small>';
     if(box.hasAttribute('data-compact'))html='<details class="december-notice-fold"><summary>'+esc(c.summary)+' · '+esc(c.title)+'</summary>'+html+'</details>';
     if(box.innerHTML!==html){var open=Array.from(box.querySelectorAll('details')).map(function(d){return d.open;});box.innerHTML=html;box.querySelectorAll('details').forEach(function(d,i){d.open=!!open[i];});}
   }
   function routeSummary(code,index,origin,destination){
-    var n=api.getNotice(code),c=copy[language()];if(!n||!verified(n)||!n.bands[index])return '';
+    var n=api.getNotice(code),c=copy[language()];if(!n||!verified(n))return '';
+    if(n.routesByGroup&&window.AeroCalculatorCore)index=window.AeroCalculatorCore.officialRouteGroupIndex(n,origin,destination);
+    if(!n.bands[index])return '';
     var record=api.record(code,index,origin,destination);if(!record||record.status!=='confirmed')return '';
-    return '<section class="december-route-summary"><strong>'+esc(title(c,n))+'</strong><p>'+esc(origin+' → '+destination)+' · '+esc(n.bands[index])+' · '+esc(scope(c,n))+'</p><p>'+esc(c.nov)+' '+esc(n.currency)+' '+numbers(n.november[index])+' → '+esc(c.dec)+' <strong>'+esc(n.currency)+' '+numbers(n.amounts[index])+'</strong> (−'+numbers(n.november[index]-n.amounts[index])+')</p>'+(code==='OZ'?'<p>'+esc(c.later)+'</p>':'')+'<a href="'+esc(n.url)+'" target="_blank" rel="noopener noreferrer">'+esc(c.source)+' ↗</a></section>';
+    return '<section class="december-route-summary"><strong>'+esc(title(c,n))+'</strong><p>'+esc(origin+' → '+destination)+' · '+esc(n.bands[index])+' · '+esc(scope(c,n))+'</p><p>'+esc(c.nov)+' '+esc(n.currency)+' '+numbers(n.november[index])+' → '+esc(c.dec)+' <strong>'+esc(n.currency)+' '+numbers(n.amounts[index])+'</strong> (−'+numbers(n.november[index]-n.amounts[index])+')</p>'+(code==='OZ'?'<p>'+esc(c.later)+'</p>':'')+'<a href="'+esc(n.url)+'" target="_blank" rel="noopener noreferrer">'+esc(sourceLabel(c,n))+' ↗</a></section>';
   }
-  window.AeroDecemberView={isVerified:function(){return api.notices.length===3&&api.notices.every(verified);},copy:copy,render:panel,routeSummary:routeSummary,stamp:stamp};
+  window.AeroDecemberView={isVerified:function(){return api.notices.length===5&&api.notices.every(verified);},copy:copy,render:panel,routeSummary:routeSummary,stamp:stamp};
   var r=window.AERO_MARKET_RELEASE;
   if(r&&api.notices.every(verified)){
+    r.numbers=Object.assign({},r.numbers,window.AERO_DECEMBER_NOTICE_UPDATE_20261117||{decemberConfirmedAirlines:api.notices.map(function(n){return n.code;}),decemberPendingAirlines:api.unverifiedAirlines.slice(),decemberNoticesCheckedAt:api.checkedAt});
+    window.AERO_MARKET_NUMBERS_LATEST=r.numbers;
     r.noticeCheckedAt=api.checkedAt;r.modified=Date.parse(r.modified)>Date.parse(editedAt)?r.modified:editedAt;
     Object.keys(copy).forEach(function(l){
       var p=r.packs[l],c=copy[l];if(!p)return;
       p.ui[2]=({ko:'발권월별 공식 공시 금액 비교',en:'Compare notice amounts by ticketing month',ja:'発券月別の公示金額を比較',zh:'按出票月份比较公告金额',fr:'Comparer les montants par mois d’émission',de:'Veröffentlichte Beträge je Ausstellungsmonat vergleichen'})[l];
-      var answer=c.summary+' '+c.ke+'. '+c.oz+'. '+c.bx+'. '+c.later+' '+c.pending;
+      var periods=airlinePeriods(c),answer=c.summary+' '+periods+'. '+c.later+' '+c.pending;
       var sub=c.checked+': '+stamp()+' · '+c.market+': '+r.numbers.asOf;
-      p.desc=c.summary+' '+c.ke+'. '+c.oz+'. '+c.bx+'. '+c.later;p.sub=sub;p.newsSub=sub;p.updated=sub;
+      p.status=c.count;p.summary[0]=p.status;p.keyVars[0]=c.summary;p.officialNotice=sub+' · '+p.status;
+      p.surface=Object.assign({},p.surface,{'news.officialNotice':p.officialNotice});
+      p.desc=c.summary+' '+periods+'. '+c.later;p.sub=sub;p.newsSub=sub;p.updated=sub;
       p.intro=c.summary;p.note=answer;p.verdict1=c.summary;p.verdictLong=c.later;p.summary[1]=answer;
-      p.rows[0]=[c.title,c.summary,c.ke+'. '+c.oz+'. '+c.bx+'. '+c.later];r.rows[l]=p.rows;
+      p.rows[0]=[c.title,c.summary,periods+'. '+c.later];r.rows[l]=p.rows;
       p.faq[1]={q:c.question,a:answer+' '+c.officialAverage};
-      p.forecastOverview=Object.assign({},p.forecastOverview,{modifiedAt:r.modified,noticeCheckedAt:api.checkedAt,expectation:c.summary,confidence:c.count,basis:c.ke+'. '+c.oz+'. '+c.bx,risk:c.later,note:c.officialAverage,question:c.question});
-      p.forecastOverview.rows[0]=[c.title,c.summary,c.ke+'. '+c.oz+'. '+c.bx+'. '+c.later];
+      p.forecastOverview=Object.assign({},p.forecastOverview,{modifiedAt:r.modified,noticeCheckedAt:api.checkedAt,expectation:c.summary,confidence:c.count,basis:periods,risk:c.later,note:c.officialAverage,question:c.question});
+      p.forecastOverview.rows[0]=[c.title,c.summary,periods+'. '+c.later];
       p.forecastOverview.rowTones[0]='down';
       p.surface=Object.assign({},p.surface,{'fore.pageSub':sub,'fore.summary.updated':sub,'fore.intro':c.summary,'fore.aiNotice':answer,'news.pageSub':sub,'news.note':answer,'news.surchargeNote':answer,'news.dataRef':sub,'news.decisionShort':c.summary,'news.decisionLine1':c.summary,'news.forecastCta.desc':c.guide,'news.summary.updated':sub});
     });
     var cards=api.notices.map(function(n){
-      var fresh=n.code==='BX',id='notice-202612-'+n.code.toLowerCase()+'-'+(fresh?'20261117':'20261116');
+      var added=n.code==='LJ'||n.code==='ZE',bx=n.code==='BX',id='notice-202612-'+n.code.toLowerCase()+'-'+(added||bx?'20261117':'20261116');
       var existing=r.newsCards.find(function(card){return card.id===id;});if(existing)return existing;
-      var date=fresh?'2026-11-17':'2026-11-16',edit=fresh?editedAt:'2026-11-16T22:10:24+09:00',checked=fresh?n.verifiedAt:'2026-11-16T13:02:58.634Z';
-      var card={id:id,category:'airline',priority:1,date:date,dateKind:'site_update',publishedAt:edit,updatedAt:edit,informationCutoff:fresh?'2026-11-17T09:00:00+09:00':checked,reportedDate:n.noticeDate,sourcePublishedAt:n.noticePublishedAt,sourcePublicationPrecision:n.publicationTimePrecision,sourceUpdatedAt:null,eventDate:n.ticketingStart,sourceVerifiedAt:checked,sourceUrl:n.url,citationUrls:[n.url],sourceVerificationStatus:'official_notice_table_and_conditions_verified',badge:'NEW',aiSummary:true,relevanceScore:1,i18n:{}};
-      Object.keys(copy).forEach(function(l){var c=fresh?copy[l]:legacyCopy[l],key=n.code.toLowerCase();card.i18n[l]={title:c[key+'News'],summary:c[key+'Body'],aiBrief:fresh?scope(c,n):c.scope,impact:n.code==='OZ'?c.later:c.basis,sourceName:({KE:'Korean Air',OZ:'Asiana Airlines',BX:'Air Busan'})[n.code],tag:c.title};});return card;});
+      var date=added||bx?'2026-11-17':'2026-11-16',edit=added?editedAt:bx?'2026-11-17T00:04:09.746Z':'2026-11-16T22:10:24+09:00',checked=added||bx?n.verifiedAt:'2026-11-16T13:02:58.634Z';
+      var card={id:id,category:'airline',priority:1,date:date,dateKind:'site_update',publishedAt:edit,updatedAt:edit,informationCutoff:bx?'2026-11-17T09:00:00+09:00':checked,reportedDate:n.noticeDate,sourcePublishedAt:n.noticePublishedAt,sourcePublicationPrecision:n.publicationTimePrecision,sourceUpdatedAt:null,eventDate:n.ticketingStart,sourceVerifiedAt:checked,sourceUrl:n.url,citationUrls:[n.url],sourceVerificationStatus:added?'airline_distributed_notice_table_and_conditions_verified':'official_notice_table_and_conditions_verified',badge:'NEW',aiSummary:true,relevanceScore:1,i18n:{}};
+      if(added)card.citationUrls=[n.url,n.corroboratingUrl,n.tableSourceUrl].filter(function(url,index,urls){return url&&urls.indexOf(url)===index;});
+      Object.keys(copy).forEach(function(l){var c=added||bx?copy[l]:legacyCopy[l],key=n.code.toLowerCase();card.i18n[l]={title:c[key+'News'],summary:c[key+'Body'],aiBrief:added||bx?scope(c,n):c.scope,impact:n.code==='OZ'?c.later:c.basis,sourceName:({KE:'Korean Air',OZ:'Asiana Airlines',BX:'Air Busan',LJ:'Jin Air · Hanjin Sabre',ZE:'Eastar Jet · Hanjin Sabre'})[n.code],tag:c.title};});return card;});
     var cardIds=cards.map(function(card){return card.id;});r.newsCards=cards.concat(r.newsCards.filter(function(card){return cardIds.indexOf(card.id)<0;}));
-    r.sources.push(['Korean Air · December1–31 ticketing',api.getNotice('KE').url],['Asiana · December1–16 ticketing only',api.getNotice('OZ').url],['Air Busan · December1–31 ticketing · USD',api.getNotice('BX').url]);
+    r.sources.push(['Korean Air · December1–31 ticketing',api.getNotice('KE').url],['Asiana · December1–16 ticketing only',api.getNotice('OZ').url],['Air Busan · December1–31 ticketing · USD',api.getNotice('BX').url],['Jin Air · December1–31 ticketing · airline-distributed original · USD',api.getNotice('LJ').url],['Eastar Jet · December1–31 ticketing · airline-distributed original · USD',api.getNotice('ZE').url]);
   }
   var prior=window.applyLanguage;
   if(typeof prior==='function')window.applyLanguage=function(){var result=prior.apply(this,arguments);panel();return result;};

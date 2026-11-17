@@ -87,6 +87,24 @@ test('explicit direction and original verification provenance remain distinct fr
   assert.equal(record.sourceVerificationStatus, 'official_verified'); assert.equal(record.sourceVerifiedAt, '2026-10-21');
   assert.equal(record.validationStatus, 'unverified'); assert.equal(record.validatedAt, null);
 });
+
+test('GDS URL admission is limited to independently reviewed airline notice identities', () => {
+  const trust = require('../public/source-provenance.js');
+  for (const code of ['LJ', 'ZE']) {
+    const original = trust.getNotice(code, '2026.12').sourceUrl;
+    assert.deepEqual(validateSourceUrl(original, code), []);
+    const reordered = new URL(original); reordered.searchParams.sort();
+    assert.deepEqual(validateSourceUrl(reordered.href, code), []);
+    for (const value of [
+      original.replace(/BID=\d+/, 'BID=99999'), original.replace('CDA=' + code, 'CDA=KE'),
+      original.replace('TAB=3', 'TAB=2'), original + '&BID=99999',
+      original.replace('www.hanjinsabre.com', 'www.hanjinsabre.com.evil.test'),
+      original.replace('https:', 'http:'), original.replace('https://', 'https://x:y@'),
+      'https://www.hanjinsabre.com/', 'https://www.travelport.co.kr/airline/unknown'
+    ]) assert.ok(validateSourceUrl(value, code).length, value);
+    assert.ok(validateSourceUrl(original, code === 'LJ' ? 'ZE' : 'LJ').length);
+  }
+});
 test('current shared official notices and manual overrides pass structural audit', () => {
   const service = require('../scripts/validate_service_data.cjs');
   const fs = require('node:fs'), path = require('node:path');

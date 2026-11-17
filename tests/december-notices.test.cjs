@@ -7,6 +7,64 @@ const { loadNotices, validateDecemberNotices } = require('../scripts/validate_se
 const november = loadNotices(fs.readFileSync('public/_shared.js', 'utf8'));
 const clone = () => JSON.parse(JSON.stringify(api));
 
+test('LJ and ZE December notices preserve GDS identity, exact origin groups and unpublished gaps', () => {
+  const core = require('../public/calculator-platform-core.js');
+  const lj = api.getNotice('LJ'), ze = api.getNotice('ZE');
+  assert.deepEqual(lj.amounts, [34, 50, 81, 88]);
+  assert.deepEqual(ze.amounts, [40, 51, 61, 73, 82, 95]);
+  assert.deepEqual(lj.displayBandIndices, [0, 1, 2, 3, null]);
+  assert.equal(api.record('LJ', 4, 'ICN', 'DPS'), null);
+  assert.equal(lj.noticeDate, '2026-11-16'); assert.equal(ze.noticeDate, '2026-11-17');
+  for (const n of [lj, ze]) {
+    assert.equal(n.currency, 'USD'); assert.equal(n.officialStage, null);
+    assert.equal(n.sourceKind, 'airline_authored_gds_notice');
+    assert.equal(n.publicationTimePrecision, 'date'); assert.equal(n.publicationTimezoneExplicit, false);
+    assert.equal(n.ticketingStart, '2026-12-01'); assert.equal(n.ticketingEnd, '2026-12-31');
+    n.routesByGroup.forEach((group, index) => group.forEach(route => {
+      const [origin, destination] = route.split('-');
+      assert.equal(core.officialRouteGroupIndex(n, origin, destination), index, route);
+      assert.equal(api.record(n.code, index, origin, destination).status, 'confirmed', route);
+      assert.equal(api.record(n.code, index, destination, origin).status, 'unconfirmed', route + ' reverse');
+      const wrong = (index + 1) % n.bands.length;
+      assert.equal(api.record(n.code, wrong, origin, destination).status, 'unconfirmed', route + ' wrong group');
+    }));
+  }
+  for (const [code, origin, destination, index, amount] of [
+    ['LJ', 'ICN', 'NRT', 1, 50], ['LJ', 'PUS', 'CEB', 2, 81], ['LJ', 'ICN', 'CEB', 3, 88],
+    ['LJ', 'PUS', 'NGO', 0, 34], ['LJ', 'ICN', 'NGO', 1, 50],
+    ['ZE', 'PUS', 'KIX', 0, 40], ['ZE', 'ICN', 'KIX', 1, 51],
+    ['ZE', 'ICN', 'CXR', 4, 82], ['ZE', 'ICN', 'ALA', 5, 95]
+  ]) assert.equal(api.record(code, index, origin, destination).amount, amount);
+  for (const [code, origin, destination] of [['LJ','ICN','DPS'],['LJ','ICN','HKG'],['ZE','PUS','DAD'],['ZE','ICN','KMJ']]) {
+    const n = api.getNotice(code);
+    assert.equal(core.officialRouteGroupIndex(n, origin, destination), -1);
+    for (let i = 0; i < n.bands.length; i++) assert.equal(api.record(code, i, origin, destination).status, 'unconfirmed');
+  }
+  for (const mutate of [
+    n => { n.routesByGroup[0].push('ICN-DPS'); }, n => { n.currency = 'KRW'; },
+    n => { n.sourceKind = 'consumer_official_site'; }, n => { n.publicationTimezoneExplicit = true; },
+    n => { n.displayBandIndices[4] = 3; }, n => { n.url = n.url.replace('90147','90148'); }
+  ]) { const c = clone(); mutate(c.notices.find(n => n.code === 'LJ')); assert.equal(validateDecemberNotices(c, november).passed, false); }
+});
+
+test('LJ and ZE independent source receipts bind amounts, dates, routes and original evidence', () => {
+  const receipt = JSON.parse(fs.readFileSync('docs/review-evidence/20261117-lj-ze-december.json', 'utf8'));
+  assert.equal(receipt.reviewedAt, '2026-11-17T11:28:06.718Z');
+  assert.deepEqual(receipt.sources.map(s => s.airline), ['LJ','ZE']);
+  for (const s of receipt.sources) {
+    const n = api.getNotice(s.airline), entry = trust.getNotice(s.airline, '2026.12');
+    for (const field of ['bands','amounts','routesByGroup']) {
+      assert.deepEqual(n[field], s[field]); assert.deepEqual(entry[field], s[field]);
+    }
+    assert.deepEqual(n.november, s.november); assert.equal(n.url, s.url);
+    assert.equal(n.verifiedAt, s.sourceVerifiedAt); assert.equal(entry.sourceVerifiedAt, s.sourceVerifiedAt);
+    assert.equal(n.noticePublishedAt, s.publishedDate); assert.equal(n.publishedAtDisplay, s.publishedAtDisplay);
+    assert.equal(s.publicationTimezoneExplicit, false); assert.equal(n.publicationTimezoneExplicit, false);
+    assert(s.rawFiles.length >= 3); for (const file of s.rawFiles) assert.match(file.sha256, /^[a-f0-9]{64}$/);
+    assert.equal(n.ticketingStart, s.ticketingStart); assert.equal(n.ticketingEnd, s.ticketingEnd);
+  }
+});
+
 test('Air Busan December retains USD, unknown publication date and origin-specific route groups', () => {
   const bx = api.getNotice('BX');
   assert.deepEqual(bx.amounts, [40, 71, 84, 98]);
@@ -46,7 +104,7 @@ test('Air Busan independent receipt separates pre-cutoff availability from later
 });
 
 
-test('December confirms 22 independently reviewed KE/OZ/BX amounts and preserves November', () => {
+test('December confirms 32 independently reviewed KE/OZ/BX/LJ/ZE amounts and preserves November', () => {
   const feed = JSON.parse(fs.readFileSync('public/data/forecast_feed.json', 'utf8'));
   assert.match(feed.meta.informationCutoff, /^2026-11-\d{2}T09:00:00\+09:00$/);
   assert.equal(feed.announcedNotices.checkedAt, api.checkedAt);
@@ -55,9 +113,9 @@ test('December confirms 22 independently reviewed KE/OZ/BX amounts and preserves
   const before = JSON.stringify(november);
   const result = validateDecemberNotices(api, november);
   assert.equal(result.passed, true, result.errors.join('; '));
-  assert.equal(result.amountCount, 22);
-  assert.equal(result.airlineCount, 3);
-  assert.equal(result.sourceReconciliation.verifiedCount, 3);
+  assert.equal(result.amountCount, 32);
+  assert.equal(result.airlineCount, 5);
+  assert.equal(result.sourceReconciliation.verifiedCount, 5);
   assert.equal(trust.summarize(november, '2026.11').verifiedCount, 9);
   assert.equal(api.getNotice('KE').ticketingEnd, '2026-12-31');
   assert.equal(api.getNotice('OZ').ticketingEnd, '2026-12-16');
@@ -66,7 +124,7 @@ test('December confirms 22 independently reviewed KE/OZ/BX amounts and preserves
 });
 
 test('unverified December airlines and the OZ post-merger period never receive invented rates', () => {
-  assert.equal(api.unverifiedAirlines.length, 6);
+  assert.equal(api.unverifiedAirlines.length, 4);
   for (const code of api.unverifiedAirlines) {
     assert.equal(api.getNotice(code), null);
     assert.equal(api.record(code, 0, 'ICN', 'NRT'), null);

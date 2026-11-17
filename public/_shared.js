@@ -18156,3 +18156,234 @@ window.NOVEMBER_2026_NOTICE_COPY={};
  window.AERO_MARKET_NUMBERS_20261117=n;window.AERO_MARKET_NUMBERS_LATEST=n;
  window.AERO_MARKET_SNAPSHOTS=Object.assign({},window.AERO_MARKET_SNAPSHOTS,{"2026-11-17":n,"2026-11-17T09:00:00+09:00":n});
 })();
+
+/* November 17 evening airline notices; preserve all dated market snapshots. */
+(function(){
+ window.AERO_DECEMBER_NOTICE_UPDATE_20261117={
+  "decemberNoticeVerificationStatus": "KE_OZ_BX_consumer_originals_and_LJ_ZE_airline_GDS_December_passenger_notices_confirmed_four_others_unverified_not_claim_of_nonpublication",
+  "decemberOfficialAmounts": {
+    "KE": {
+      "amounts": [
+        50800,
+        69500,
+        97500,
+        120200,
+        169600,
+        172200,
+        231000,
+        336400,
+        377800
+      ],
+      "currency": "KRW",
+      "direction": "one_way",
+      "ticketingStart": "2026-12-01",
+      "ticketingEnd": "2026-12-31",
+      "sourceUrl": "https://www.koreanair.com/contents/footer/customer-support/notice/2026/2612-infuel"
+    },
+    "OZ": {
+      "amounts": [
+        57500,
+        84300,
+        111000,
+        137800,
+        164600,
+        190000,
+        216700,
+        270300,
+        322400
+      ],
+      "currency": "KRW",
+      "direction": "one_way",
+      "ticketingStart": "2026-12-01",
+      "ticketingEnd": "2026-12-16",
+      "sourceUrl": "https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202611160002531020"
+    },
+    "BX": {
+      "amounts": [
+        40,
+        71,
+        84,
+        98
+      ],
+      "currency": "USD",
+      "direction": "one_way",
+      "ticketingStart": "2026-12-01",
+      "ticketingEnd": "2026-12-31",
+      "sourceUrl": "https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4431"
+    },
+    "LJ": {
+      "amounts": [
+        34,
+        50,
+        81,
+        88
+      ],
+      "currency": "USD",
+      "direction": "one_way",
+      "ticketingStart": "2026-12-01",
+      "ticketingEnd": "2026-12-31",
+      "sourceUrl": "https://www.hanjinsabre.com/Airlinegroup/BoardView/?CDA=LJ&TAB=3&BID=90147",
+      "sourceKind": "airline_authored_gds_notice",
+      "routesByGroup": [
+        [
+          "CJU-PVG",
+          "ICN-FUK",
+          "PUS-FUK",
+          "ICN-KKJ",
+          "ICN-KIX",
+          "PUS-KIX",
+          "ICN-TAK",
+          "PUS-NGO",
+          "ICN-TAO",
+          "ICN-YNT",
+          "ICN-UKB"
+        ],
+        [
+          "ICN-OKA",
+          "PUS-OKA",
+          "ICN-NRT",
+          "PUS-NRT",
+          "ICN-NGO",
+          "ICN-SHI",
+          "PUS-SHI",
+          "ICN-ISG",
+          "ICN-CTS",
+          "PUS-CTS",
+          "ICN-TPE",
+          "PUS-TPE",
+          "CJU-TPE",
+          "ICN-RMQ",
+          "PUS-RMQ",
+          "CJU-HKG",
+          "ICN-YIH"
+        ],
+        [
+          "ICN-CRK",
+          "PUS-CRK",
+          "PUS-CEB",
+          "PUS-GUM",
+          "PUS-UBN",
+          "ICN-KWL"
+        ],
+        [
+          "ICN-DAD",
+          "PUS-DAD",
+          "ICN-CEB",
+          "ICN-TAG",
+          "ICN-GUM",
+          "ICN-BKI",
+          "ICN-BKK",
+          "PUS-BKK",
+          "ICN-CNX",
+          "ICN-CXR",
+          "PUS-CXR",
+          "ICN-PQC",
+          "PUS-PQC",
+          "ICN-SGN"
+        ]
+      ]
+    },
+    "ZE": {
+      "amounts": [
+        40,
+        51,
+        61,
+        73,
+        82,
+        95
+      ],
+      "currency": "USD",
+      "direction": "one_way",
+      "ticketingStart": "2026-12-01",
+      "ticketingEnd": "2026-12-31",
+      "sourceUrl": "https://www.hanjinsabre.com/Airlinemain/BoardView/?CDA=ZE&TAB=3&BID=90153",
+      "sourceKind": "airline_authored_gds_notice",
+      "routesByGroup": [
+        [
+          "ICN-FUK",
+          "PUS-FUK",
+          "PUS-KIX",
+          "PUS-KMJ",
+          "CJU-PVG",
+          "CJJ-YNJ",
+          "ICN-YNT",
+          "ICN-KOJ"
+        ],
+        [
+          "ICN-NRT",
+          "ICN-KIX",
+          "ICN-CTS",
+          "PUS-CTS",
+          "ICN-OKA",
+          "PUS-OKA",
+          "ICN-TKS",
+          "GMP-TSA",
+          "ICN-TPE",
+          "CJJ-TPE",
+          "CJU-TPE",
+          "PUS-TPE",
+          "ICN-PVG",
+          "CJJ-PVG",
+          "PUS-YNJ",
+          "ICN-CGO",
+          "ICN-HET",
+          "PUS-XMN",
+          "PUS-HGH"
+        ],
+        [
+          "ICN-HKG",
+          "CJJ-DYG",
+          "ICN-XMN",
+          "CJJ-XMN",
+          "TAE-DYG",
+          "PUS-HKG"
+        ],
+        [
+          "ICN-DAD"
+        ],
+        [
+          "ICN-BKK",
+          "ICN-CNX",
+          "PUS-CNX",
+          "ICN-CXR",
+          "ICN-PQC",
+          "PUS-PQC",
+          "ICN-MDC"
+        ],
+        [
+          "ICN-ALA",
+          "PUS-ALA"
+        ]
+      ]
+    }
+  },
+  "decemberConfirmedAirlines": [
+    "KE",
+    "OZ",
+    "BX",
+    "LJ",
+    "ZE"
+  ],
+  "decemberPendingAirlines": [
+    "7C",
+    "RS",
+    "TW",
+    "YP"
+  ],
+  "decemberDirectionDrivers": [
+    "KE_OZ_BX_LJ_ZE_December_airline_notices_confirmed_with_original_currency_period_and_route_conditions",
+    "December_MOPS_165_66_and_stage25_are_news_references_official_mean_stage_unverified",
+    "November16_USD_KRW_1335_7_down1_daytime_close_not_conversion_rate",
+    "November16_Brent92_44_WTI85_72_futures_settlements_down_not_MOPS",
+    "CommodityScope_November13_151_15_up1_19_private_daily_assessment",
+    "IATA_November13_week_global169_82_Asia152_80_down_weekly",
+    "IMO137_as_at_November16_and_UKMTO207_208_reports_not_summed",
+    "JMIC114_Hormuz_SEVERE_as_of_November15_not_new_November17_rating",
+    "EIA_Q3_Hormuz9_1_million_bpd_historical_quarter_not_current_flow",
+    "OPEC_capacity_review_does_not_change_December_target"
+  ],
+  "decemberDirectionLabelKo": "12월 KE·OZ·BX·LJ·ZE 인하 공시 확인 · 나머지 4개사 미확인",
+  "decemberNoticesCheckedAt": "2026-11-17T11:28:06.718Z"
+};
+ window.AERO_MARKET_NUMBERS_LATEST=Object.assign({},window.AERO_MARKET_NUMBERS_LATEST,window.AERO_DECEMBER_NOTICE_UPDATE_20261117);
+})();

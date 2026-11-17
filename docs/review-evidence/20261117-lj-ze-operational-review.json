@@ -1,0 +1,126 @@
+{
+  "reviewedAt": "2026-11-17T11:47:54.639Z",
+  "reviewType": "self_review_by_implementing_agent; independent parent review pending",
+  "baseCommit": "bbd070fefad53822970612c69924dc01d379939f",
+  "scope": "Exact reviewed airline-authored GDS source URL admission in lib/validation/records.js only within operational paths",
+  "operationalDigest": "58fe3f43f77319c5970c8cded41e3d9ef55705e08d59d2e06c3b007507f8de5b",
+  "previousOperationalDigest": "be4a8ac9816841d37faaa86f2c8e78fc7b9c66416f0ab50be4e91a4f469ad3c4",
+  "operationalFileCount": 43,
+  "changedProtectedFiles": [
+    {
+      "file": "lib/validation/records.js",
+      "beforeSha256": "9423704b3be6108ae89d6534401087b7e7cb61e9ded74e603608703dd3289f7e",
+      "afterSha256": "5f39fbbd464983a77d3942e488e2198986864fcd48e28a9301ea730a7d35f97c"
+    }
+  ],
+  "unchangedProtectedFileCount": 42,
+  "findings": [
+    "Official airline host validation remains unchanged. Non-airline-host URLs are allowed only when they exactly match an independently reviewed immutable source-provenance entry with the same airline, source_reconciled status and airline_authored_gds_notice sourceKind.",
+    "The identity comparison preserves scheme, host, path and every query parameter/value; query order is normalized and a fragment is ignored. No general HanjinSabre or Travelport host exception is added.",
+    "HTTPS, absent credentials and default HTTPS port checks run before both admission paths. Wrong airline/category/boardID, duplicate injected boardID, lookalike hosts, HTTP and credentialed URLs are rejected by regression tests.",
+    "URL admission remains structural validation only. Existing source provenance reconciliation still independently binds month, amount, currency, original band, applicability dates and allowed route pairs.",
+    "The existing optional link checker validates each redirected URL through the same source validator; arbitrary GDS redirects are not trusted.",
+    "No API handlers, collectors, CI workflow, dependency manifests, Vercel configuration, advertising/analytics/consent files or protected affiliate integrations changed. Protected file hashes were compared with bbd070f.",
+    "MyRealTrip URLs in currently changed tracked public JS/HTML/JSON files were also compared with the base commit and are unchanged."
+  ],
+  "validation": {
+    "commands": [
+      {
+        "command": "node --test tests/december-notices.test.cjs tests/source-provenance.test.cjs tests/data-validation.test.cjs",
+        "status": "passed",
+        "tests": 63,
+        "failures": 0,
+        "execution": "Actually executed in this agent turn after the parent synchronized announcedNotices; output observed directly. This review does not claim a full release gate run."
+      },
+      {
+        "command": "node scripts/validate_service_data.cjs --base-ref HEAD",
+        "status": "passed",
+        "decemberAirlines": 5,
+        "decemberAmounts": 32
+      },
+      {
+        "command": "git diff --check -- owned changed files",
+        "status": "passed"
+      }
+    ],
+    "securityTest": "GDS URL admission is limited to independently reviewed airline notice identities"
+  },
+  "affiliateUrlChecks": [
+    {
+      "file": "public/_shared.js",
+      "unchanged": true,
+      "urlCount": 0
+    },
+    {
+      "file": "public/calculator-platform.js",
+      "unchanged": true,
+      "urlCount": 0
+    },
+    {
+      "file": "public/data/forecast_feed.json",
+      "unchanged": true,
+      "urlCount": 0
+    },
+    {
+      "file": "public/december-notices.js",
+      "unchanged": true,
+      "urlCount": 0
+    },
+    {
+      "file": "public/december-update.js",
+      "unchanged": true,
+      "urlCount": 0
+    },
+    {
+      "file": "public/forecast-guide.js",
+      "unchanged": true,
+      "urlCount": 0
+    },
+    {
+      "file": "public/fuel-surcharge-graph.html",
+      "unchanged": true,
+      "urlCount": 0
+    },
+    {
+      "file": "public/graph-interface.js",
+      "unchanged": true,
+      "urlCount": 0
+    },
+    {
+      "file": "public/graph-oct20.js",
+      "unchanged": true,
+      "urlCount": 0
+    },
+    {
+      "file": "public/home-sep20.js",
+      "unchanged": true,
+      "urlCount": 0
+    },
+    {
+      "file": "public/source-provenance.js",
+      "unchanged": true,
+      "urlCount": 0
+    }
+  ],
+  "ads": {
+    "enabled": false,
+    "decision": "pending",
+    "consentReview": "pending",
+    "changed": false
+  },
+  "configurationMutation": false,
+  "limitations": [
+    "Self-review, not an independent audit. Parent must separately inspect and decide whether to record the operational review.",
+    "This does not verify external collection, GA4/Clarity receipt, Vercel account settings, affiliate click attribution, booking, payment or settlement.",
+    "Advertising/CMP review remains pending and advertising stays disabled. No advertising enablement authorization is implied.",
+    "Final complete source digest and full release/production checks belong to the integrating parent after all concurrent changes finish."
+  ],
+  "parentIndependentReview": {
+    "reviewedAt": "2026-11-17T11:48:30.330Z",
+    "reviewer": "root",
+    "status": "passed",
+    "scope": "Read actual records.js and tests diff; GDS admission binds frozen reviewed manifest airline+exact HTTPS path/query after sorting, rejects alternate posts/airlines/host spoofing/credentials/extra keys. Existing per-amount/source/route validation remains required.",
+    "validation": "Parent npm test:130/130 PASS; child 63/63 targeted and service-data PASS",
+    "limitations": "No external account, analytics receipt, booking, payment or settlement approval. Ads stay disabled; ads and consent review remain pending."
+  }
+}

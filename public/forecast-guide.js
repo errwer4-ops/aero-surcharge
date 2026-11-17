@@ -100,7 +100,7 @@
       result.meta=copy[l].meta.replace(/\{month\}/g,datedMonth);
     }
     var update=window.AeroDecemberView, notices=window.AeroDecemberNotices;
-    if(update&&notices&&update.isVerified()&&n.forecastTargetMonth===notices.month){var released=update.copy[l];result.lead=released.summary;result.noticeStatus=released.ke+" · "+released.oz+" · "+released.bx;result.flexibleBody=released.guide;result.noticeSub=released.checked+": "+update.stamp()+" · "+released.market+": "+n.asOf;}
+    if(update&&notices&&update.isVerified()&&n.forecastTargetMonth===notices.month){var released=update.copy[l];result.lead=released.summary;result.noticeStatus=notices.notices.map(function(notice){return released[notice.code.toLowerCase()];}).join(" · ");result.flexibleBody=released.guide;result.noticeSub=released.checked+": "+update.stamp()+" · "+released.market+": "+n.asOf;}
     return result;
   }
   function currentBrief(p,n,c) {

@@ -126,7 +126,7 @@ test('reviewed manifest is immutable and independent receipts agree', () => {
   });
   assert.deepEqual(monthlyManifest, receipt.notices);
   const december = JSON.parse(fs.readFileSync('docs/review-evidence/20261116-december-notices.json', 'utf8'));
-  const decemberEntries = trust.manifest.filter(entry => entry.month === '2026.12' && entry.airline !== 'BX');
+  const decemberEntries = trust.manifest.filter(entry => entry.month === '2026.12' && ['KE','OZ'].includes(entry.airline));
   assert.equal(decemberEntries.length, 2);
   assert.equal(december.sources.length, 2);
   for (const entry of decemberEntries) {
@@ -144,7 +144,8 @@ test('reviewed manifest is immutable and independent receipts agree', () => {
     for (const file of original.rawFiles) assert.match(file.sha256, /^[a-f0-9]{64}$/);
   }
   for (const entry of trust.manifest.filter(n => n.evidence.file?.startsWith('docs/'))) {
-    const hash = crypto.createHash('sha256').update(fs.readFileSync(entry.evidence.file)).digest('hex');
+    const raw = fs.readFileSync(entry.evidence.file);
+    const hash = crypto.createHash('sha256').update(entry.evidence.hashEncoding === 'utf8_lf' ? raw.toString('utf8').replace(/\r\n/g, '\n') : raw).digest('hex');
     assert.equal(entry.evidence.sha256, hash);
   }
 });

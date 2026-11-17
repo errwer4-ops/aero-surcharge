@@ -177,7 +177,8 @@
       c.quick2=(hasNextForecast?nextLabel+' ':'')+c.forecastLabel.replace(/^—\s*/, '');
       c.quick2d=hasNextForecast?c.quickForecastDesc:c.statusFallback;
       var announced=window.AeroDecemberNotices;
-      if(state&&announced&&announced.month===state.nextMonth&&window.AeroSourceTrust&&window.AeroSourceTrust.summarize(announced.notices,announced.month).verifiedCount===2)c.quick2d=({ko:'KE·OZ 12월 공시 확인 · 발권 판단 보기',en:'KE/OZ December notices verified · booking guide',ja:'KE・OZの12月公示を確認・購入判断ガイド',zh:'KE、OZ 12月公告已核实·出票参考',fr:'Annonces KE/OZ de décembre vérifiées · guide de réservation',de:'KE/OZ-Dezembermitteilungen geprüft · Buchungsratgeber'})[lang];
+      var confirmedCount=announced&&window.AeroSourceTrust?window.AeroSourceTrust.summarize(announced.notices,announced.month).verifiedCount:0;
+      if(state&&announced&&announced.month===state.nextMonth&&confirmedCount>0)c.quick2d=({"ko":"{count}개사 12월 공시 확인 · 발권 판단 보기","en":"December notices verified for {count} airlines · booking guide","ja":"{count}社の12月公示を確認・購入判断ガイド","zh":"已核实{count}家航司12月公告·出票参考","fr":"Avis de décembre vérifiés pour {count} compagnies · guide de réservation","de":"Dezembermitteilungen von {count} Airlines geprüft · Buchungsratgeber"})[lang].replace('{count}',confirmedCount);
       // Keep the relation available to renderers without rewriting stored data.
       c.noticeRelation=state&&state.relation||'archive';
     });

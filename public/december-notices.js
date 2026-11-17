@@ -207,6 +207,244 @@ var notices=[
     "postPeriodRule": null,
     "infantExemption": "under_2_without_seat"
   }
+,
+{
+  "code": "LJ",
+  "month": "2026-12",
+  "displayBandIndices": [0, 1, 2, 3, null],
+  "bands": [
+    "1~599 mi",
+    "600~1,199 mi",
+    "1,200~1,799 mi",
+    "1,800~2,399 mi"
+  ],
+  "amounts": [
+    34,
+    50,
+    81,
+    88
+  ],
+  "december": [
+    34,
+    50,
+    81,
+    88
+  ],
+  "november": [
+    36,
+    54,
+    87,
+    96
+  ],
+  "majorRoutesKo": [
+    "제주-상하이/푸동; 인천/부산-후쿠오카; 인천-기타큐슈; 인천/부산-오사카/간사이; 인천-다카마쓰; 부산-나고야; 인천-칭다오; 인천-옌타이; 인천-고베",
+    "인천/부산-오키나와; 인천/부산-도쿄/나리타; 인천-나고야; 인천/부산-미야코지마/시모지시마; 인천-이시가키지마; 인천/부산-삿포로; 인천/부산/제주-타이베이/타오위안; 인천/부산-타이중; 제주-홍콩; 인천-이창",
+    "인천/부산-클락; 부산-세부; 부산-괌; 부산-울란바토르; 인천-구이린",
+    "인천/부산-다낭; 인천-세부; 인천-보홀; 인천-괌; 인천-코타키나발루; 인천/부산-방콕; 인천-치앙마이; 인천/부산-나트랑; 인천/부산-푸꾸옥; 인천-호찌민"
+  ],
+  "routesByGroup": [
+    [
+      "CJU-PVG",
+      "ICN-FUK",
+      "PUS-FUK",
+      "ICN-KKJ",
+      "ICN-KIX",
+      "PUS-KIX",
+      "ICN-TAK",
+      "PUS-NGO",
+      "ICN-TAO",
+      "ICN-YNT",
+      "ICN-UKB"
+    ],
+    [
+      "ICN-OKA",
+      "PUS-OKA",
+      "ICN-NRT",
+      "PUS-NRT",
+      "ICN-NGO",
+      "ICN-SHI",
+      "PUS-SHI",
+      "ICN-ISG",
+      "ICN-CTS",
+      "PUS-CTS",
+      "ICN-TPE",
+      "PUS-TPE",
+      "CJU-TPE",
+      "ICN-RMQ",
+      "PUS-RMQ",
+      "CJU-HKG",
+      "ICN-YIH"
+    ],
+    [
+      "ICN-CRK",
+      "PUS-CRK",
+      "PUS-CEB",
+      "PUS-GUM",
+      "PUS-UBN",
+      "ICN-KWL"
+    ],
+    [
+      "ICN-DAD",
+      "PUS-DAD",
+      "ICN-CEB",
+      "ICN-TAG",
+      "ICN-GUM",
+      "ICN-BKI",
+      "ICN-BKK",
+      "PUS-BKK",
+      "ICN-CNX",
+      "ICN-CXR",
+      "PUS-CXR",
+      "ICN-PQC",
+      "PUS-PQC",
+      "ICN-SGN"
+    ]
+  ],
+  "currency": "USD",
+  "direction": "one_way",
+  "departureCountry": "KR",
+  "url": "https://www.hanjinsabre.com/Airlinegroup/BoardView/?CDA=LJ&TAB=3&BID=90147",
+  "corroboratingUrl": "https://www.travelport.co.kr/airline/AirInfo_View.aspx?Idx=64366&Ref=65722&Res=0&Rev=0&Pg=1&Ctgr=LJ&SType=&Keyword=",
+  "ticketingStart": "2026-12-01",
+  "ticketingEnd": "2026-12-31",
+  "noticeDate": "2026-11-16",
+  "noticePublishedAt": "2026-11-16",
+  "publicationTimePrecision": "date",
+  "publishedAtDisplay": "2026-11-16 오후 2:39:46",
+  "publicationTimezoneExplicit": false,
+  "collectedAt": "2026-11-17T11:26:08.662Z",
+  "verifiedAt": "2026-11-17T11:27:08.139Z",
+  "status": "official_notice_verified_against_airline_gds",
+  "sourceKind": "airline_authored_gds_notice",
+  "dataStatus": "confirmed",
+  "officialStage": null,
+  "postPeriodRateConfirmed": null,
+  "postPeriodRule": null,
+  "infantExemption": "under_2_without_seat"
+},
+{
+  "code": "ZE",
+  "month": "2026-12",
+  "bands": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6"
+  ],
+  "amounts": [
+    40,
+    51,
+    61,
+    73,
+    82,
+    95
+  ],
+  "december": [
+    40,
+    51,
+    61,
+    73,
+    82,
+    95
+  ],
+  "november": [
+    43,
+    54,
+    66,
+    79,
+    89,
+    103
+  ],
+  "majorRoutesKo": [
+    "인천-후쿠오카; 부산-후쿠오카; 부산-오사카; 부산-구마모토; 제주-상하이; 청주-연길; 인천-옌타이; 인천-가고시마",
+    "인천-나리타; 인천-오사카; 인천-치토세; 부산-치토세; 인천-오키나와; 부산-오키나와; 인천-도쿠시마; 김포-송산; 인천-타이베이; 청주-타이베이; 제주-타이베이; 부산-타이베이; 인천-상하이; 청주-상하이; 부산-연길; 인천-정저우; 인천-후허하오터; 부산-샤먼; 부산-항저우",
+    "인천-홍콩; 청주-장가계; 인천-샤먼; 청주-샤먼; 대구-장가계; 부산-홍콩",
+    "인천-다낭",
+    "인천-방콕; 인천-치앙마이; 부산-치앙마이; 인천-나트랑; 인천-푸꾸옥; 부산-푸꾸옥; 인천-마나도",
+    "인천-알마티; 부산-알마티"
+  ],
+  "routesByGroup": [
+    [
+      "ICN-FUK",
+      "PUS-FUK",
+      "PUS-KIX",
+      "PUS-KMJ",
+      "CJU-PVG",
+      "CJJ-YNJ",
+      "ICN-YNT",
+      "ICN-KOJ"
+    ],
+    [
+      "ICN-NRT",
+      "ICN-KIX",
+      "ICN-CTS",
+      "PUS-CTS",
+      "ICN-OKA",
+      "PUS-OKA",
+      "ICN-TKS",
+      "GMP-TSA",
+      "ICN-TPE",
+      "CJJ-TPE",
+      "CJU-TPE",
+      "PUS-TPE",
+      "ICN-PVG",
+      "CJJ-PVG",
+      "PUS-YNJ",
+      "ICN-CGO",
+      "ICN-HET",
+      "PUS-XMN",
+      "PUS-HGH"
+    ],
+    [
+      "ICN-HKG",
+      "CJJ-DYG",
+      "ICN-XMN",
+      "CJJ-XMN",
+      "TAE-DYG",
+      "PUS-HKG"
+    ],
+    [
+      "ICN-DAD"
+    ],
+    [
+      "ICN-BKK",
+      "ICN-CNX",
+      "PUS-CNX",
+      "ICN-CXR",
+      "ICN-PQC",
+      "PUS-PQC",
+      "ICN-MDC"
+    ],
+    [
+      "ICN-ALA",
+      "PUS-ALA"
+    ]
+  ],
+  "groupType": "route_group",
+  "currency": "USD",
+  "direction": "one_way",
+  "departureCountry": "KR",
+  "url": "https://www.hanjinsabre.com/Airlinemain/BoardView/?CDA=ZE&TAB=3&BID=90153",
+  "tableSourceUrl": "https://cdn.topasweb.com/topas-attach/board/editor/202611/202611171247168542590.png",
+  "ticketingStart": "2026-12-01",
+  "ticketingEnd": "2026-12-31",
+  "noticeDate": "2026-11-17",
+  "noticePublishedAt": "2026-11-17",
+  "publicationTimePrecision": "date",
+  "publishedAtDisplay": "2026-11-17 오후 12:50:10",
+  "publicationTimezoneExplicit": false,
+  "collectedAt": "2026-11-17T11:28:04.831Z",
+  "verifiedAt": "2026-11-17T11:28:06.718Z",
+  "status": "official_notice_verified_against_airline_gds",
+  "sourceKind": "airline_authored_gds_notice",
+  "dataStatus": "confirmed",
+  "officialStage": null,
+  "postPeriodRateConfirmed": null,
+  "postPeriodRule": null,
+  "infantExemption": "under_2_without_seat"
+}
 ];
 function freeze(value){if(value&&typeof value==='object'){Object.keys(value).forEach(function(k){freeze(value[k]);});Object.freeze(value);}return value;}
 function getNotice(code){return notices.find(function(n){return n.code===code;})||null;}
@@ -215,5 +453,5 @@ function record(code,index,origin,destination){
  var value={airline:code,month:'2026-12',origin:origin,destination:destination,currency:n.currency,direction:n.direction,departureCountry:n.departureCountry,basis:n.bands[index],band:n.bands[index],sourceBand:n.bands[index],bandIndex:index,amount:n.amounts[index],status:'unconfirmed',validationStatus:'passed',sourceUrl:n.url,publishedAt:n.noticeDate,collectedAt:n.collectedAt,effectiveFrom:n.ticketingStart,effectiveTo:n.ticketingEnd};
  var core=root.AeroCalculatorCore;if(!core&&typeof module==='object'&&module.exports)core=require('./calculator-platform-core.js');return core?core.reconcile(value):value;
 }
-return freeze({month:'2026-12',checkedAt:"2026-11-17T00:00:36Z",notices:notices,unverifiedAirlines:['7C','LJ','RS','TW','ZE','YP'],getNotice:getNotice,record:record});
+return freeze({month:'2026-12',checkedAt:"2026-11-17T11:28:06.718Z",notices:notices,unverifiedAirlines:['7C','RS','TW','YP'],getNotice:getNotice,record:record});
 });

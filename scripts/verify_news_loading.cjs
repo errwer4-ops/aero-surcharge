@@ -133,6 +133,23 @@ async function verifyPagination(page,r,lang) {
   assert.deepEqual((await capture(page)).cards,before.cards,'previous restores original articles');
 }
 
+async function verifyLatestArticles(page,r,lang,latestIds) {
+  const seen=new Set();
+  // A day can have more notices and market articles than one visible page.
+  // Follow the real pagination and verify every latest article remains reachable.
+  for(let visited=0;visited<=r.newsCards.length;visited++){
+    const current=await capture(page);verifySurface(current,r,lang,lang+' latest article page '+current.currentPage);
+    current.cards.forEach(card=>seen.add(card.id));
+    if(latestIds.every(id=>seen.has(id)))break;
+    const next=page.locator('#pagination .pg-btn').last();
+    if(!await next.count()||await next.isDisabled())break;
+    await next.click();await page.waitForFunction(previous=>currentPage===previous+1,current.currentPage);
+    await waitForCurrentNews(page,lang);
+  }
+  for(const id of latestIds)assert(seen.has(id),id+' latest article retained across pages');
+  await selectFilter(page,'all',lang);
+}
+
 async function verifyGuides(page,lang) {
   for(const id of guideIds){const guide=page.locator('#'+id),summary=guide.locator(':scope > summary');
     assert.equal(await guide.evaluate(el=>el.tagName),'DETAILS',id+' native details');assert.equal(await guide.getAttribute('open'),null,id+' starts collapsed');
@@ -200,7 +217,7 @@ async function main() {
     for(const lang of languages){
       await page.locator('#navLang').selectOption(lang);await waitForCurrentNews(page,lang);await selectFilter(page,'all',lang);
       const first=await capture(page);verifySurface(first,release,lang,lang+' initial');
-      for(const id of latestIds)assert(first.cards.some(c=>c.id===id),id+' latest article retained');
+      await verifyLatestArticles(page,release,lang,latestIds);
       for(const category of ['all','airline','institution','market']){
         // Select a different category from page two to verify its page reset.
         const next=page.locator('#pagination .pg-btn').last();

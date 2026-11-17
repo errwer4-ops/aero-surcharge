@@ -2,13 +2,91 @@
   'use strict';
   var surfaceModifiedAt='2026-11-04T22:24:08+09:00';
   var decemberSurface={
-    ko:{title:'유류할증료 계산기 | 2026년 11월·12월 공시 비교',summary:'11월 현재 금액과 확인된 12월 공시를 비교하세요. 12월은 대한항공·아시아나를 반영했고 다른 항공사는 확인 중입니다.',short:'11월 현재 금액 · 12월 KE·OZ 공시 반영',intro:'노선과 발권월을 선택하면 확인된 공시 금액과 차액을 볼 수 있습니다.',period:'대한항공은 12월 1~31일, 아시아나는 12월 1~16일 발권분입니다. 아시아나 공지상 12월 17일 이후 통합항공사 요율은 별도 확인이 필요합니다. 아시아나 금액을 12월 전체에 적용하지 않습니다.',link:'12월 공시와 발권 판단 보기 →',faqTitle:'12월 공시는 어디까지 계산에 반영됐나요?',baseLabel:'11월 공시',targetLabel:'12월 공시',pending:'12월 확인 중',lowest:'확인된 12월 최저 유류할증료'},
-    en:{title:'Fuel Surcharge Calculator | November–December 2026 Notices',summary:'Compare current November charges with verified December notices. December is included for Korean Air and Asiana; other airlines are being checked.',short:'November current · December KE/OZ notices included',intro:'Choose a route and ticketing months to compare verified amounts and differences.',period:'Korean Air applies to tickets issued December 1–31; Asiana covers December 1–16 only. The integrated airline’s rates from December 17 require separate confirmation. Do not apply the Asiana amount to the whole month.',link:'View December notices and booking guidance →',faqTitle:'Which December notices are included?',baseLabel:'November notice',targetLabel:'December notice',pending:'December checking',lowest:'Lowest verified December surcharge'},
-    ja:{title:'燃油サーチャージ計算機 | 2026年11月・12月公示比較',summary:'現在の11月額と確認済みの12月公示を比較できます。12月は大韓航空・アシアナを反映し、他社は確認中です。',short:'11月適用額・12月KE/OZ公示反映',intro:'路線と発券月を選ぶと、確認済みの金額と差額を比較できます。',period:'大韓航空は12月1～31日、アシアナは12月1～16日発券分です。12月17日以降の統合航空会社の料金は別途確認が必要です。アシアナの金額を12月全期間には適用しません。',link:'12月公示と購入判断を見る →',faqTitle:'12月公示はどこまで計算に反映されていますか？',baseLabel:'11月公示',targetLabel:'12月公示',pending:'12月確認中',lowest:'確認済み12月最安サーチャージ'},
-    zh:{title:'燃油附加费计算器 | 2026年11月与12月公告比较',summary:'比较11月现行金额和已核实的12月公告。12月已纳入大韩航空和韩亚航空，其他航司仍在核实。',short:'11月现行金额·已纳入12月KE/OZ公告',intro:'选择航线和出票月份，即可比较已核实金额及差额。',period:'大韩航空适用于12月1日至31日出票，韩亚仅适用于12月1日至16日。12月17日起合并航司的费率须另行确认。韩亚金额不适用于整个12月。',link:'查看12月公告与购票建议 →',faqTitle:'计算器纳入了哪些12月公告？',baseLabel:'11月公告',targetLabel:'12月公告',pending:'12月核实中',lowest:'已核实的12月最低附加费'},
-    fr:{title:'Calculateur de surtaxe | avis novembre–décembre 2026',summary:'Comparez novembre en vigueur aux avis vérifiés de décembre. Korean Air et Asiana sont inclus pour décembre ; les autres compagnies restent en cours de vérification.',short:'Novembre en vigueur · avis KE/OZ de décembre intégrés',intro:'Choisissez une ligne et les mois d’émission pour comparer les montants vérifiés et les écarts.',period:'Korean Air couvre les billets émis du 1er au 31 décembre ; Asiana uniquement du 1er au 16 décembre. Les tarifs de la compagnie intégrée à partir du 17 décembre restent à confirmer séparément. Le montant Asiana ne couvre pas tout le mois.',link:'Avis de décembre et aide à la réservation →',faqTitle:'Quels avis de décembre sont inclus ?',baseLabel:'Avis novembre',targetLabel:'Avis décembre',pending:'Décembre en cours de vérification',lowest:'Surtaxe de décembre vérifiée la plus basse'},
-    de:{title:'Kerosinzuschlag-Rechner | Mitteilungen November–Dezember 2026',summary:'Vergleichen Sie die aktuellen November-Beträge mit geprüften Dezember-Mitteilungen. Für Dezember sind Korean Air und Asiana enthalten; weitere Airlines werden geprüft.',short:'November aktuell · Dezember-Mitteilungen KE/OZ enthalten',intro:'Wählen Sie Strecke und Ausstellungsmonate für den Vergleich geprüfter Beträge und Differenzen.',period:'Korean Air gilt für Ticketausstellungen vom 1.–31. Dezember, Asiana nur vom 1.–16. Dezember. Die Tarife der integrierten Airline ab 17. Dezember müssen separat bestätigt werden. Der Asiana-Betrag gilt nicht für den gesamten Monat.',link:'Dezember-Mitteilungen und Buchungshilfe ansehen →',faqTitle:'Welche Dezember-Mitteilungen sind enthalten?',baseLabel:'November-Mitteilung',targetLabel:'Dezember-Mitteilung',pending:'Dezember wird geprüft',lowest:'Niedrigster geprüfter Dezember-Zuschlag'}
-  };
+  "ko": {
+    "title": "유류할증료 계산기 | 2026년 11월·12월 공시 비교",
+    "summary": "11월 현재 금액과 확인된 12월 공시를 비교하세요. 12월은 대한항공·아시아나·에어부산·진에어·이스타항공을 반영했고 나머지 4개사는 확인 중입니다.",
+    "short": "11월 현재 금액 · 12월 5개사 공시 반영",
+    "intro": "노선과 발권월을 선택하면 확인된 공시 금액과 차액을 볼 수 있습니다.",
+    "period": "대한항공·에어부산·진에어·이스타항공은 12월 1~31일, 아시아나는 12월 1~16일 발권분입니다. 아시아나의 17일 이후 금액과 진에어의 공시에 없는 거리 구간은 별도 확인이 필요합니다. USD와 KRW 원통화 금액을 구분해 비교합니다.",
+    "link": "12월 공시와 발권 판단 보기 →",
+    "faqTitle": "12월 공시는 어디까지 계산에 반영됐나요?",
+    "baseLabel": "11월 공시",
+    "targetLabel": "12월 공시",
+    "pending": "12월 확인 중",
+    "lowest": "확인된 12월 최저 유류할증료",
+    "sourceGds": "항공사 배포 원문"
+  },
+  "en": {
+    "title": "Fuel Surcharge Calculator | November–December 2026 Notices",
+    "summary": "Compare current November charges with verified December notices for Korean Air, Asiana, Air Busan, Jin Air and Eastar Jet. The other four airlines remain under review.",
+    "short": "November current · December notices for 5 airlines",
+    "intro": "Choose a route and ticketing months to compare verified amounts and differences.",
+    "period": "Korean Air, Air Busan, Jin Air and Eastar Jet cover tickets issued December 1–31; Asiana covers December 1–16 only. Asiana amounts from the 17th and distance bands absent from Jin Air’s notice require separate confirmation. Original USD and KRW amounts are compared separately.",
+    "link": "View December notices and booking guidance →",
+    "faqTitle": "Which December notices are included?",
+    "baseLabel": "November notice",
+    "targetLabel": "December notice",
+    "pending": "December checking",
+    "lowest": "Lowest verified December surcharge",
+    "sourceGds": "Airline-distributed original"
+  },
+  "ja": {
+    "title": "燃油サーチャージ計算機 | 2026年11月・12月公示比較",
+    "summary": "現在の11月額と確認済みの12月公示を比較できます。12月は大韓航空・アシアナ・エアプサン・ジンエアー・イースター航空を反映し、他の4社は確認中です。",
+    "short": "11月適用額・12月5社の公示を反映",
+    "intro": "路線と発券月を選ぶと、確認済みの金額と差額を比較できます。",
+    "period": "大韓航空・エアプサン・ジンエアー・イースター航空は12月1～31日、アシアナは12月1～16日の発券が対象です。アシアナの17日以降の料金と、ジンエアーの公示にない距離区分は別途確認が必要です。原通貨USDとKRWを区別して比較します。",
+    "link": "12月公示と購入判断を見る →",
+    "faqTitle": "12月公示はどこまで計算に反映されていますか？",
+    "baseLabel": "11月公示",
+    "targetLabel": "12月公示",
+    "pending": "12月確認中",
+    "lowest": "確認済み12月最安サーチャージ",
+    "sourceGds": "航空会社配信の原文"
+  },
+  "zh": {
+    "title": "燃油附加费计算器 | 2026年11月与12月公告比较",
+    "summary": "比较11月现行金额与已核实的大韩航空、韩亚航空、釜山航空、真航空和易斯达航空12月公告。其余4家航司仍在核实。",
+    "short": "11月现行金额·已纳入12月5家航司公告",
+    "intro": "选择航线和出票月份，即可比较已核实金额及差额。",
+    "period": "大韩航空、釜山航空、真航空和易斯达航空适用于12月1日至31日出票，韩亚仅适用于12月1日至16日。韩亚17日以后的金额及真航空公告未列出的距离区间须另行确认。原始USD与KRW金额分开比较。",
+    "link": "查看12月公告与购票建议 →",
+    "faqTitle": "计算器纳入了哪些12月公告？",
+    "baseLabel": "11月公告",
+    "targetLabel": "12月公告",
+    "pending": "12月核实中",
+    "lowest": "已核实的12月最低附加费",
+    "sourceGds": "航司发布原文"
+  },
+  "fr": {
+    "title": "Calculateur de surtaxe | avis novembre–décembre 2026",
+    "summary": "Comparez novembre en vigueur aux avis de décembre vérifiés de Korean Air, Asiana, Air Busan, Jin Air et Eastar Jet. Les quatre autres compagnies restent en cours de vérification.",
+    "short": "Novembre en vigueur · avis de décembre de 5 compagnies",
+    "intro": "Choisissez une ligne et les mois d’émission pour comparer les montants vérifiés et les écarts.",
+    "period": "Korean Air, Air Busan, Jin Air et Eastar Jet couvrent les billets émis du 1er au 31 décembre ; Asiana uniquement du 1er au 16. Les montants Asiana à partir du 17 et les tranches absentes de l’avis Jin Air restent à confirmer séparément. Les montants d’origine en USD et KRW sont comparés séparément.",
+    "link": "Avis de décembre et aide à la réservation →",
+    "faqTitle": "Quels avis de décembre sont inclus ?",
+    "baseLabel": "Avis novembre",
+    "targetLabel": "Avis décembre",
+    "pending": "Décembre en cours de vérification",
+    "lowest": "Surtaxe de décembre vérifiée la plus basse",
+    "sourceGds": "Original diffusé par la compagnie"
+  },
+  "de": {
+    "title": "Kerosinzuschlag-Rechner | Mitteilungen November–Dezember 2026",
+    "summary": "Vergleichen Sie die aktuellen November-Beträge mit geprüften Dezember-Mitteilungen von Korean Air, Asiana, Air Busan, Jin Air und Eastar Jet. Die anderen vier Airlines werden noch geprüft.",
+    "short": "November aktuell · Dezember-Mitteilungen von 5 Airlines",
+    "intro": "Wählen Sie Strecke und Ausstellungsmonate für den Vergleich geprüfter Beträge und Differenzen.",
+    "period": "Korean Air, Air Busan, Jin Air und Eastar Jet gelten für Ticketausstellungen vom 1.–31. Dezember, Asiana nur vom 1.–16. Dezember. Asiana-Beträge ab dem 17. und nicht veröffentlichte Jin-Air-Entfernungsgruppen müssen gesondert geprüft werden. Originalbeträge in USD und KRW werden getrennt verglichen.",
+    "link": "Dezember-Mitteilungen und Buchungshilfe ansehen →",
+    "faqTitle": "Welche Dezember-Mitteilungen sind enthalten?",
+    "baseLabel": "November-Mitteilung",
+    "targetLabel": "Dezember-Mitteilung",
+    "pending": "Dezember wird geprüft",
+    "lowest": "Niedrigster geprüfter Dezember-Zuschlag",
+    "sourceGds": "Von der Airline verbreitetes Original"
+  }
+};
 
   var september={
     KE:[48000,66000,91500,109500,153000,156000,216000,325500,354000],
@@ -144,7 +222,7 @@
       if(!copy)return;
       Object.assign(p,{desc:copy.summary+' '+reviewCopy[l][1],sub:copy.short,notice:copy.summary,intro:reviewCopy[l][1],answerTitle:copy.short,answerBody:reviewCopy[l][5],readyTitle:copy.short,readyBadge:copy.short,readyBody:copy.period,faqBody:copy.summary+' '+reviewCopy[l][5]});
       if(december){
-        surfaceModifiedAt='2026-11-16T22:03:00+09:00';
+        surfaceModifiedAt='2026-11-17T11:44:43Z';
         Object.assign(p,{title:copy.title,h1:copy.title,desc:copy.summary+' '+copy.period,intro:copy.intro,answerBody:copy.period,readyLink:copy.link,faqTitle:copy.faqTitle,faqBody:copy.summary+' '+copy.period});
         ui[l].thMay=copy.baseLabel;ui[l].thJune=copy.targetLabel;ui[l].julyPending=copy.pending;
         ui[l].affiliateSave=copy.intro;ui[l].affiliateNeutral=copy.intro;
@@ -155,7 +233,7 @@
       staticText[l][2]=copy.short;staticText[l][5]=copy.period;
       var values={'calc.metaTitle':p.title,'calc.h1':p.h1,'calc.metaDesc':p.desc,'calc.pageSub':p.sub,'calc.notice':p.notice,'calc.intro':p.intro,'calc.answer.title':p.answerTitle,'calc.answer.body':p.answerBody,'calc.card3.body':p.answerBody,'calc.readiness.title':p.readyTitle,'calc.readiness.badge':p.readyBadge,'calc.readiness.body':p.readyBody,'calc.readiness.link':p.readyLink,'calc.related.june':p.readyLink,'calc.related.may':p.readyLink,'calc.faq.july.title':p.faqTitle,'calc.faq.july.body':p.faqBody};
       if(december)Object.keys(noticeLinks).forEach(function(code){
-        var notice=window.AeroDecemberNotices.getNotice(code.toUpperCase()),url=notice?notice.url:noticeLinks[code],label=notice?copy.targetLabel:reviewCopy[l][4];
+        var notice=window.AeroDecemberNotices.getNotice(code.toUpperCase()),url=notice?notice.url:noticeLinks[code],label=notice?copy.targetLabel+((code==='lj'||code==='ze')?' · '+copy.sourceGds:''):reviewCopy[l][4];
         values['calc.official.item.'+code]='<a href="'+url+'" target="_blank" rel="noopener noreferrer">'+code.toUpperCase()+' · '+label+'</a>'+(notice?'':' · '+copy.pending);
       });
       Object.assign(window.I18N[l],values);if(window.PAGE_I18N&&PAGE_I18N[l])Object.assign(PAGE_I18N[l],values);

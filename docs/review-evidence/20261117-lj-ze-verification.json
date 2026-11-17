@@ -1,0 +1,517 @@
+{
+  "completedAt": "2026-11-17T12:10:36.478Z",
+  "baseline": "bbd070fefad53822970612c69924dc01d379939f",
+  "noticeCheckedAt": "2026-11-17T11:28:06.718Z",
+  "marketCutoff": "2026-11-17T09:00:00+09:00",
+  "sourceDigest": "e80a900f6d88be967ea779af4cb642a7185f82b3a10dd94566e64a60d1cebbc8",
+  "operationalDigest": "58fe3f43f77319c5970c8cded41e3d9ef55705e08d59d2e06c3b007507f8de5b",
+  "release": {
+    "passed": true,
+    "startedAt": "2026-11-17T12:03:18.849Z",
+    "finishedAt": "2026-11-17T12:10:28.989Z",
+    "checks": [
+      {
+        "name": "native",
+        "exitCode": 0,
+        "durationMs": 3881
+      },
+      {
+        "name": "static",
+        "exitCode": 0,
+        "durationMs": 236
+      },
+      {
+        "name": "data",
+        "exitCode": 0,
+        "durationMs": 88
+      },
+      {
+        "name": "service-data",
+        "exitCode": 0,
+        "durationMs": 132
+      },
+      {
+        "name": "urls",
+        "exitCode": 0,
+        "durationMs": 20595
+      },
+      {
+        "name": "myrealtrip",
+        "exitCode": 0,
+        "durationMs": 167
+      },
+      {
+        "name": "platform",
+        "exitCode": 0,
+        "durationMs": 43303
+      },
+      {
+        "name": "home-period",
+        "exitCode": 0,
+        "durationMs": 60150
+      },
+      {
+        "name": "home-interactions",
+        "exitCode": 0,
+        "durationMs": 10956
+      },
+      {
+        "name": "news-loading",
+        "exitCode": 0,
+        "durationMs": 80577
+      },
+      {
+        "name": "graph-notices",
+        "exitCode": 0,
+        "durationMs": 41939
+      },
+      {
+        "name": "locale-period",
+        "exitCode": 0,
+        "durationMs": 76706
+      },
+      {
+        "name": "planner",
+        "exitCode": 0,
+        "durationMs": 3918
+      },
+      {
+        "name": "calculator",
+        "exitCode": 0,
+        "durationMs": 17332
+      },
+      {
+        "name": "seo-snapshot",
+        "exitCode": 0,
+        "durationMs": 69460
+      }
+    ],
+    "sourceUnchanged": true,
+    "nativeTests": 130
+  },
+  "independentUi": {
+    "status": "PASS",
+    "startedAt": "2026-11-17T12:02:51.951Z",
+    "finishedAt": "2026-11-17T12:05:17.970Z",
+    "scriptSha256": "eb34a3f6f412622ca06bc12382e1715608bdaffbbb9fb1ebc4aa615f3c2399b8",
+    "reports": [
+      {
+        "page": "forecast",
+        "languages": [
+          "ko",
+          "en",
+          "ja",
+          "zh",
+          "fr",
+          "de"
+        ],
+        "widths": [
+          1440,
+          390
+        ],
+        "delayedStabilitySeconds": 12,
+        "errors": [],
+        "unexpectedConsole": [],
+        "blockedExternalRequests": 0
+      },
+      {
+        "page": "news",
+        "languages": [
+          "ko",
+          "en",
+          "ja",
+          "zh",
+          "fr",
+          "de"
+        ],
+        "widths": [
+          1440,
+          390
+        ],
+        "delayedStabilitySeconds": 12,
+        "errors": [],
+        "unexpectedConsole": [],
+        "blockedExternalRequests": 0
+      },
+      {
+        "page": "index",
+        "languages": [
+          "ko",
+          "en",
+          "ja",
+          "zh",
+          "fr",
+          "de"
+        ],
+        "widths": [
+          1440,
+          390
+        ],
+        "delayedStabilitySeconds": 12,
+        "errors": [],
+        "unexpectedConsole": [],
+        "blockedExternalRequests": 0
+      },
+      {
+        "page": "fuel-surcharge-graph",
+        "languages": [
+          "ko",
+          "en",
+          "ja",
+          "zh",
+          "fr",
+          "de"
+        ],
+        "widths": [
+          1440,
+          390
+        ],
+        "delayedStabilitySeconds": 12,
+        "errors": [],
+        "unexpectedConsole": [],
+        "blockedExternalRequests": 0
+      },
+      {
+        "page": "fuel-surcharge-calculator",
+        "languages": [
+          "ko",
+          "en",
+          "ja",
+          "zh",
+          "fr",
+          "de"
+        ],
+        "widths": [
+          1440,
+          390
+        ],
+        "delayedStabilitySeconds": 12,
+        "errors": [],
+        "unexpectedConsole": [],
+        "blockedExternalRequests": 0
+      }
+    ],
+    "originalArticleCount": 180,
+    "resultArticleCount": 182,
+    "amountCount": 32,
+    "confirmedAirlines": [
+      "KE",
+      "OZ",
+      "BX",
+      "LJ",
+      "ZE"
+    ],
+    "unverifiedAirlines": [
+      "7C",
+      "RS",
+      "TW",
+      "YP"
+    ],
+    "sourceUrls": {
+      "KE": "https://www.koreanair.com/contents/footer/customer-support/notice/2026/2612-infuel",
+      "OZ": "https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202611160002531020",
+      "BX": "https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4431",
+      "LJ": "https://www.hanjinsabre.com/Airlinegroup/BoardView/?CDA=LJ&TAB=3&BID=90147",
+      "ZE": "https://www.hanjinsabre.com/Airlinemain/BoardView/?CDA=ZE&TAB=3&BID=90153"
+    },
+    "routeCases": [
+      [
+        "LJ",
+        "ICN",
+        "FUK",
+        34
+      ],
+      [
+        "LJ",
+        "ICN",
+        "NRT",
+        50
+      ],
+      [
+        "LJ",
+        "PUS",
+        "CEB",
+        81
+      ],
+      [
+        "LJ",
+        "ICN",
+        "CEB",
+        88
+      ],
+      [
+        "ZE",
+        "PUS",
+        "KIX",
+        40
+      ],
+      [
+        "ZE",
+        "ICN",
+        "KIX",
+        51
+      ],
+      [
+        "ZE",
+        "ICN",
+        "HKG",
+        61
+      ],
+      [
+        "ZE",
+        "ICN",
+        "DAD",
+        73
+      ],
+      [
+        "ZE",
+        "ICN",
+        "CXR",
+        82
+      ],
+      [
+        "ZE",
+        "ICN",
+        "ALA",
+        95
+      ],
+      [
+        "BX",
+        "PUS",
+        "NRT",
+        40
+      ],
+      [
+        "BX",
+        "ICN",
+        "NRT",
+        71
+      ],
+      [
+        "KE",
+        "ICN",
+        "NRT",
+        69500
+      ],
+      [
+        "OZ",
+        "ICN",
+        "NRT",
+        84300
+      ]
+    ]
+  },
+  "earlierIntegratedUi": {
+    "checkedAt": "2026-11-17T11:50:26.191Z",
+    "results": [
+      {
+        "page": "index",
+        "languages": 6,
+        "viewports": [
+          "1440x1000",
+          "390x844"
+        ],
+        "delayMs": 12000,
+        "archiveCards": null,
+        "marketCutoff": "2026-11-17T09:00:00+09:00",
+        "consoleErrors": [],
+        "status": "passed"
+      },
+      {
+        "page": "forecast",
+        "languages": 6,
+        "viewports": [
+          "1440x1000",
+          "390x844"
+        ],
+        "delayMs": 12000,
+        "archiveCards": 182,
+        "marketCutoff": "2026-11-17T09:00:00+09:00",
+        "consoleErrors": [],
+        "status": "passed"
+      },
+      {
+        "page": "news",
+        "languages": 6,
+        "viewports": [
+          "1440x1000",
+          "390x844"
+        ],
+        "delayMs": 12000,
+        "archiveCards": 182,
+        "marketCutoff": "2026-11-17T09:00:00+09:00",
+        "consoleErrors": [],
+        "status": "passed"
+      },
+      {
+        "page": "airlines",
+        "languages": 6,
+        "viewports": [
+          "1440x1000",
+          "390x844"
+        ],
+        "delayMs": 12000,
+        "archiveCards": null,
+        "marketCutoff": "2026-11-17T09:00:00+09:00",
+        "consoleErrors": [],
+        "status": "passed"
+      },
+      {
+        "page": "fuel-surcharge-korean-air",
+        "languages": 6,
+        "viewports": [
+          "1440x1000",
+          "390x844"
+        ],
+        "delayMs": 12000,
+        "archiveCards": null,
+        "marketCutoff": "2026-11-17T09:00:00+09:00",
+        "consoleErrors": [],
+        "status": "passed"
+      },
+      {
+        "page": "fuel-surcharge-asiana",
+        "languages": 6,
+        "viewports": [
+          "1440x1000",
+          "390x844"
+        ],
+        "delayMs": 12000,
+        "archiveCards": null,
+        "marketCutoff": "2026-11-17T09:00:00+09:00",
+        "consoleErrors": [],
+        "status": "passed"
+      },
+      {
+        "page": "fuel-surcharge-jinair",
+        "languages": 6,
+        "viewports": [
+          "1440x1000",
+          "390x844"
+        ],
+        "delayMs": 12000,
+        "archiveCards": null,
+        "marketCutoff": "2026-11-17T09:00:00+09:00",
+        "consoleErrors": [],
+        "status": "passed"
+      }
+    ],
+    "note": "Seven page integration check before final status-copy and checker-only corrections; final frozen-source five-page/UI and release checks are recorded above."
+  },
+  "archive": [
+    {
+      "code": "LJ",
+      "name": "진에어",
+      "url": "https://www.hanjinsabre.com/Airlinegroup/BoardView/?CDA=LJ&TAB=3&BID=90147",
+      "amounts": [
+        34,
+        50,
+        81,
+        88
+      ],
+      "observedAt": "2026-11-17T11:43:12.170Z",
+      "status": 200,
+      "title": "항공사홈",
+      "png": "C:\\Users\\jiwoo\\OneDrive\\Desktop\\사이드\\유류할증료\\2026.12\\원본 캡처\\LJ_202612_notice_GDS_original.png",
+      "pdf": "C:\\Users\\jiwoo\\OneDrive\\Desktop\\사이드\\유류할증료\\2026.12\\진에어 12월 유류할증료_GDS원문.pdf",
+      "pngSha256": "8db2bbea1ffb46453016dc78fbc4f28b40e229f7a1fe3e69c3c34f2d8a653a01",
+      "pdfSha256": "148e14a3a9252b3f040fd32ea161c4c206bc5bb0605eefb7f7f69cfa168607c2",
+      "bodyHeight": 3335,
+      "sourceKind": "airline-authored GDS original browser response, not consumer-domain original",
+      "pdfMethod": "Playwright screen-media print of unchanged source DOM to a single long page; no content transcription"
+    },
+    {
+      "code": "ZE",
+      "name": "이스타항공",
+      "url": "https://www.hanjinsabre.com/Airlinemain/BoardView/?CDA=ZE&TAB=3&BID=90153",
+      "amounts": [
+        40,
+        51,
+        61,
+        73,
+        82,
+        95
+      ],
+      "observedAt": "2026-11-17T11:43:14.919Z",
+      "status": 200,
+      "title": "항공사홈",
+      "png": "C:\\Users\\jiwoo\\OneDrive\\Desktop\\사이드\\유류할증료\\2026.12\\원본 캡처\\ZE_202612_notice_GDS_original.png",
+      "pdf": "C:\\Users\\jiwoo\\OneDrive\\Desktop\\사이드\\유류할증료\\2026.12\\이스타항공 12월 유류할증료_GDS원문.pdf",
+      "pngSha256": "72591661eccc91d684aac3dd5ba83e04311be4d83324db60d4177d8a16fd4767",
+      "pdfSha256": "f8d81a02e9759a5f40d46d58bf638c30900965bc868d2fe8522bd2ec88928539",
+      "bodyHeight": 2451,
+      "sourceKind": "airline-authored GDS original browser response, not consumer-domain original",
+      "pdfMethod": "Playwright screen-media print of unchanged source DOM to a single long page; no content transcription"
+    }
+  ],
+  "preservation": {
+    "checkedAt": "2026-11-17T12:10:36.476Z",
+    "baseline": "bbd070fefad53822970612c69924dc01d379939f",
+    "trackedBefore": 475,
+    "identical": 439,
+    "changed": [
+      "UPDATE_20261117_MARKET.md",
+      "config/deployment-review.json",
+      "lib/validation/records.js",
+      "public/_shared.js",
+      "public/airlines.html",
+      "public/calculator-oct20.js",
+      "public/calculator-platform.js",
+      "public/data/forecast_feed.json",
+      "public/december-notices.css",
+      "public/december-notices.js",
+      "public/december-update.js",
+      "public/forecast-guide.js",
+      "public/forecast.html",
+      "public/fuel-surcharge-2026-05.html",
+      "public/fuel-surcharge-asiana.html",
+      "public/fuel-surcharge-calculator.html",
+      "public/fuel-surcharge-graph.html",
+      "public/fuel-surcharge-jejuair.html",
+      "public/fuel-surcharge-jinair.html",
+      "public/fuel-surcharge-korea.html",
+      "public/fuel-surcharge-korean-air.html",
+      "public/fuel-surcharge-tway.html",
+      "public/graph-interface.js",
+      "public/graph-oct20.js",
+      "public/home-sep20.js",
+      "public/index.html",
+      "public/news.html",
+      "public/source-provenance.js",
+      "scripts/validate_service_data.cjs",
+      "scripts/verify_calculator_platform.cjs",
+      "scripts/verify_december_notices.cjs",
+      "scripts/verify_graph_notices.cjs",
+      "scripts/verify_news_loading.cjs",
+      "tests/data-validation.test.cjs",
+      "tests/december-notices.test.cjs",
+      "tests/source-provenance.test.cjs"
+    ],
+    "missing": [],
+    "oldSharedPrefixPreserved": true,
+    "marketModuleUnchanged": true,
+    "preservedOperationalFiles": true,
+    "newFiles": [
+      "docs/review-evidence/20261117-lj-ze-december.json",
+      "docs/review-evidence/20261117-lj-ze-operational-review.json",
+      "scripts/verify_december_lj_ze.cjs"
+    ],
+    "pathEnumerationCorrection": "Git NUL-separated names used for three Korean filenames; default quoted names were not real missing files.",
+    "correctedArchivePaths": [
+      "artifacts/sep17/2026.10-아시아나-유류할증료.png",
+      "artifacts/sep17/2026.10-에어부산-유류할증료.png",
+      "artifacts/sep17/2026.10-진에어-유류할증료.png"
+    ]
+  },
+  "independentReview": {
+    "status": "passed",
+    "agent": "/root/ljze_final_diff_review",
+    "resolved": "Remaining morning 3-carrier runtime and folded news summary changed to 5. Pagination verifier checks latest articles across real pages."
+  },
+  "limits": [
+    "External ads, analytics, APIs and affiliate destinations blocked during UI tests; no settlement or account approval claim.",
+    "No verified December notices for 7C/RS/TW/YP in this update.",
+    "OZ December 17 onward, official MOPS stage/average and period FX average remain unverified.",
+    "Deployment is authorized but this receipt records pre-push validation; remote evidence is stored separately."
+  ]
+}
