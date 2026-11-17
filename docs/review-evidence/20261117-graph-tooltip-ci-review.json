@@ -1,0 +1,194 @@
+{
+  "reviewedAt": "2026-11-17T12:21:22.454Z",
+  "originalCommit": "9b81f3fc078e9d90c453825f455a2156925e649e",
+  "ci": {
+    "runId": 44080771139,
+    "jobId": 134030450050,
+    "url": "https://github.com/errwer4-ops/aero-surcharge/actions/runs/44080771139",
+    "passedChecks": 14,
+    "totalChecks": 15,
+    "nativeTests": 130,
+    "failedCheck": "graph-notices",
+    "error": "French mobile tooltip boundingBox was null after viewport resize; old innerText remained available."
+  },
+  "cause": "The graph redraw hides the tooltip on resize and font completion. Test read pre-layout hit coordinates and then stale hidden tooltip text before reading its bounds.",
+  "change": "Wait for fonts and two animation frames plus canvas size agreement, recapture actual hit coordinates, move real pointer outside then hover, require visible tooltip, and read text and bounds atomically. Amount, period, visibility and viewport assertions retained.",
+  "productionCodeChanged": false,
+  "sourceDigest": "3bd0ec869632bfef8f818e37644e4d8f2e3816a7abb820003559de63150184c2",
+  "verifierSha256": "ee71490b1fb00f33745895db27b4765d5deeb4aef9c1555ecfee1eb3e42400af",
+  "targetedGraph": {
+    "status": "PASS",
+    "report": {
+      "reviewedMonth": "2026-11",
+      "airlines": [
+        "KE",
+        "OZ",
+        "7C",
+        "LJ",
+        "RS",
+        "BX",
+        "TW",
+        "ZE",
+        "YP"
+      ],
+      "sourceAmounts": 56,
+      "runs": [
+        {
+          "lang": "ko",
+          "currencies": [
+            "KRW",
+            "USD",
+            "JPY",
+            "EUR",
+            "GBP",
+            "CNY",
+            "AUD",
+            "SGD",
+            "HKD"
+          ],
+          "airlines": 9
+        },
+        {
+          "lang": "en",
+          "currencies": [
+            "KRW",
+            "USD",
+            "JPY",
+            "EUR",
+            "GBP",
+            "CNY",
+            "AUD",
+            "SGD",
+            "HKD"
+          ],
+          "airlines": 9
+        },
+        {
+          "lang": "ja",
+          "currencies": [
+            "KRW",
+            "USD",
+            "JPY",
+            "EUR",
+            "GBP",
+            "CNY",
+            "AUD",
+            "SGD",
+            "HKD"
+          ],
+          "airlines": 9
+        },
+        {
+          "lang": "zh",
+          "currencies": [
+            "KRW",
+            "USD",
+            "JPY",
+            "EUR",
+            "GBP",
+            "CNY",
+            "AUD",
+            "SGD",
+            "HKD"
+          ],
+          "airlines": 9
+        },
+        {
+          "lang": "fr",
+          "currencies": [
+            "KRW",
+            "USD",
+            "JPY",
+            "EUR",
+            "GBP",
+            "CNY",
+            "AUD",
+            "SGD",
+            "HKD"
+          ],
+          "airlines": 9
+        },
+        {
+          "lang": "de",
+          "currencies": [
+            "KRW",
+            "USD",
+            "JPY",
+            "EUR",
+            "GBP",
+            "CNY",
+            "AUD",
+            "SGD",
+            "HKD"
+          ],
+          "airlines": 9
+        }
+      ],
+      "currencySelectorOptions": [
+        "KRW",
+        "USD",
+        "JPY",
+        "EUR",
+        "GBP",
+        "CNY",
+        "AUD",
+        "SGD",
+        "HKD"
+      ],
+      "narrowChart": {
+        "width": 320,
+        "months": 9,
+        "airlines": 9,
+        "bars": 77,
+        "canvas": {
+          "internalWidth": 254,
+          "internalHeight": 380,
+          "displayWidth": 254,
+          "displayHeight": 380
+        }
+      },
+      "december": {
+        "reviewed": [
+          "BX",
+          "KE",
+          "LJ",
+          "OZ",
+          "ZE"
+        ],
+        "sourceAmounts": 32,
+        "unverifiedAirlines": 4,
+        "absentJinAirFifthBand": true,
+        "asianaTicketingEnd": "2026-12-16",
+        "languages": [
+          "ko",
+          "en",
+          "ja",
+          "zh",
+          "fr",
+          "de"
+        ],
+        "currencies": [
+          "KRW",
+          "USD",
+          "JPY",
+          "EUR",
+          "GBP",
+          "CNY",
+          "AUD",
+          "SGD",
+          "HKD"
+        ],
+        "delayedSeconds": 12
+      },
+      "pageErrors": [],
+      "delayedSeconds": 12
+    },
+    "scope": "Six languages, nine currencies, original amounts, chart/table/tooltip, 390/320px and 12-second state stability."
+  },
+  "originalDeployment": {
+    "primaryVercel": "success",
+    "productionPublicFilesMatched": 31,
+    "evidence": "artifacts/review-verification/deploy-lj-ze-nov17/production-files.json"
+  },
+  "scope": "Followup changes only the verification script and its evidence/report. Full local release PASS for original feature commit is retained; final followup commit must pass remote CI and Vercel."
+}

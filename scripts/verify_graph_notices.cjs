@@ -165,15 +165,34 @@ function verifyDecember(x,label){
 }
 
 async function verifyDecemberTooltip(page,x,label){
+  const canvas=page.locator('#graphCanvas'),tooltip=page.locator('#graphTooltip');
+  await canvas.scrollIntoViewIfNeeded();
+  // Resize and font completion redraw the canvas and hide any previous tooltip.
+  // Wait for that layout before reading hit coordinates or hovering a bar.
+  await page.evaluate(async()=>{
+    if(document.fonts)await document.fonts.ready;
+    await new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)));
+  });
+  await page.waitForFunction(()=>{
+    const canvas=document.getElementById('graphCanvas'),dpr=window.devicePixelRatio||1;
+    return Math.abs(canvas.width/dpr-canvas.getBoundingClientRect().width)<=1;
+  });
+  await page.mouse.move(0,0);
+  x=await capture(page);
   const hit=x.points.find(p=>p.month==='dec'&&p.code==='OZ');assert(hit,label+' Asiana December tooltip target');
-  await page.locator('#graphCanvas').scrollIntoViewIfNeeded();const box=await page.locator('#graphCanvas').boundingBox();
+  const box=await canvas.boundingBox();assert(box,label+' chart visible');
   await page.mouse.move(box.x+(hit.x+hit.w/2)*box.width/x.canvas.internalWidth,box.y+(hit.y+hit.h/2)*box.height/x.canvas.internalHeight);
-  const text=norm(await page.locator('#graphTooltip').innerText());
+  await tooltip.waitFor({state:'visible'});
+  const shown=await tooltip.evaluate(el=>{
+    const rect=el.getBoundingClientRect();
+    return {visible:getComputedStyle(el).display!=='none'&&rect.width>0&&rect.height>0,text:el.innerText,x:rect.x,width:rect.width};
+  });
+  assert(shown.visible,label+' actual tooltip visible after hover');
+  const text=norm(shown.text);
   assert(text.includes(norm(x.decemberLabel)),label+' tooltip identifies December');
   assert(text.includes(norm(x.periods.OZ)),label+' tooltip shows December 16 limit and integration condition');
   assert(text.includes(hit.value.toLocaleString('en-US',{minimumFractionDigits:x.decimals[x.currency]??0,maximumFractionDigits:x.decimals[x.currency]??0})),label+' tooltip amount');
-  const bounds=await page.locator('#graphTooltip').boundingBox(),size=page.viewportSize();
-  assert(bounds.x>=0&&bounds.x+bounds.width<=size.width,label+' tooltip fits viewport');
+  assert(shown.x>=0&&shown.x+shown.width<=page.viewportSize().width,label+' tooltip fits viewport');
 }
 
 (async()=>{
