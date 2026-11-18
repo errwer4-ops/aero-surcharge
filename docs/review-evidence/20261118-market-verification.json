@@ -1,0 +1,337 @@
+{
+  "runDate": "2026-11-18",
+  "informationCutoff": "2026-11-18T09:00:00+09:00",
+  "recordedAt": "2026-11-18T00:24:34.922Z",
+  "status": "PASS",
+  "sourceDigest": "4282bc0a27157f7adedd0ee2f46b00c9ee98b30ac694074af7164cef50e58475",
+  "localOnly": true,
+  "release": {
+    "path": "artifacts/review-verification/2026-11-18T00-17-14-009Z/summary.json",
+    "sha256": "027cbcc4b6b79b4e02beb789c17de6fd31490e66c662c44cdb724c947f139c08",
+    "startedAt": "2026-11-18T00:17:14.011Z",
+    "finishedAt": "2026-11-18T00:24:18.132Z",
+    "checks": [
+      {
+        "name": "native",
+        "command": [
+          "node",
+          "--test",
+          "tests/ads-loader.test.cjs",
+          "tests/calculator.test.cjs",
+          "tests/data-validation.test.cjs",
+          "tests/december-notices.test.cjs",
+          "tests/log-redaction.test.cjs",
+          "tests/market-source-provenance.test.cjs",
+          "tests/myrealtrip-security.test.cjs",
+          "tests/parser-input-gate.test.cjs",
+          "tests/pipeline-safety.test.cjs",
+          "tests/release-readiness.test.cjs",
+          "tests/renderer-source-copy.test.cjs",
+          "tests/source-provenance.test.cjs",
+          "tests/travel-planner.test.cjs"
+        ],
+        "exitCode": 0,
+        "durationMs": 4571,
+        "log": "native.log"
+      },
+      {
+        "name": "static",
+        "command": [
+          "node",
+          "scripts/verify_static_sources.cjs"
+        ],
+        "exitCode": 0,
+        "durationMs": 249,
+        "log": "static.log"
+      },
+      {
+        "name": "data",
+        "command": [
+          "node",
+          "scripts/validate_data.js"
+        ],
+        "exitCode": 0,
+        "durationMs": 87,
+        "log": "data.log"
+      },
+      {
+        "name": "service-data",
+        "command": [
+          "node",
+          "scripts/validate_service_data.cjs"
+        ],
+        "exitCode": 0,
+        "durationMs": 122,
+        "log": "service-data.log"
+      },
+      {
+        "name": "urls",
+        "command": [
+          "node",
+          "scripts/audit_seo_urls.cjs",
+          "--browser",
+          "--pages=news,forecast,fuel-surcharge-calculator",
+          "--report=C:\\Users\\jiwoo\\OneDrive\\Desktop\\사이드\\aero-v37-fixed\\aero-v36\\artifacts\\review-verification\\2026-11-18T00-17-14-009Z\\url-runtime.json"
+        ],
+        "exitCode": 0,
+        "durationMs": 21199,
+        "log": "urls.log"
+      },
+      {
+        "name": "myrealtrip",
+        "command": [
+          "node",
+          "scripts/verify_myrealtrip_integration.js"
+        ],
+        "exitCode": 0,
+        "durationMs": 130,
+        "log": "myrealtrip.log"
+      },
+      {
+        "name": "platform",
+        "command": [
+          "node",
+          "scripts/verify_platform.cjs"
+        ],
+        "exitCode": 0,
+        "durationMs": 44010,
+        "log": "platform.log"
+      },
+      {
+        "name": "home-period",
+        "command": [
+          "node",
+          "scripts/verify_home_period.cjs"
+        ],
+        "exitCode": 0,
+        "durationMs": 60063,
+        "log": "home-period.log"
+      },
+      {
+        "name": "home-interactions",
+        "command": [
+          "node",
+          "scripts/verify_home_interactions.cjs"
+        ],
+        "exitCode": 0,
+        "durationMs": 11026,
+        "log": "home-interactions.log"
+      },
+      {
+        "name": "news-loading",
+        "command": [
+          "node",
+          "scripts/verify_news_loading.cjs"
+        ],
+        "exitCode": 0,
+        "durationMs": 71917,
+        "log": "news-loading.log"
+      },
+      {
+        "name": "graph-notices",
+        "command": [
+          "node",
+          "scripts/verify_graph_notices.cjs"
+        ],
+        "exitCode": 0,
+        "durationMs": 42276,
+        "log": "graph-notices.log"
+      },
+      {
+        "name": "locale-period",
+        "command": [
+          "node",
+          "scripts/verify_locale_period.cjs"
+        ],
+        "exitCode": 0,
+        "durationMs": 76678,
+        "log": "locale-period.log"
+      },
+      {
+        "name": "planner",
+        "command": [
+          "node",
+          "scripts/verify_planner.cjs"
+        ],
+        "exitCode": 0,
+        "durationMs": 3995,
+        "log": "planner.log"
+      },
+      {
+        "name": "calculator",
+        "command": [
+          "node",
+          "scripts/verify_calculator_platform.cjs"
+        ],
+        "exitCode": 0,
+        "durationMs": 17444,
+        "log": "calculator.log"
+      },
+      {
+        "name": "seo-snapshot",
+        "command": [
+          "node",
+          "scripts/sync_static_snapshots.cjs",
+          "--check"
+        ],
+        "exitCode": 0,
+        "durationMs": 69326,
+        "log": "seo-snapshot.log"
+      }
+    ],
+    "nativeTests": {
+      "total": 130,
+      "passed": 130,
+      "failed": 0
+    },
+    "operationalDigest": "58fe3f43f77319c5970c8cded41e3d9ef55705e08d59d2e06c3b007507f8de5b"
+  },
+  "independentUi": {
+    "path": "artifacts/review-verification/market-nov18/verification/verification.json",
+    "sha256": "2dc1ea74c3b609a6f1b425f6e4a73bd5a9f7bffd303c2e4f6634be52b64fd797",
+    "startedAt": "2026-11-18T00:17:16.454Z",
+    "finishedAt": "2026-11-18T00:19:35.892Z",
+    "scriptSha256": "d3d4480bf0cd91d2bd802b56eee4521f9d6af8f77ee82561fdb396c911b5bb56",
+    "baseline": {
+      "commit": "ee98230513d84852749c50ac719cfedccfc06c4c",
+      "source": "git show immutable tracked public blobs; no generated or ignored baseline fixture",
+      "publicFiles": 119
+    },
+    "reports": [
+      {
+        "page": "forecast",
+        "languages": [
+          "ko",
+          "en",
+          "ja",
+          "zh",
+          "fr",
+          "de"
+        ],
+        "widths": [
+          1440,
+          390
+        ],
+        "delayedStabilitySeconds": 12,
+        "errors": [],
+        "unexpectedConsole": [],
+        "blockedExternalRequests": 0,
+        "archiveCards": 182,
+        "newMarketCards": 10,
+        "newNoticeCards": 0,
+        "totalCards": 192,
+        "rawPreservedSnapshots": 52,
+        "runtimePreservedSnapshots": 57
+      },
+      {
+        "page": "news",
+        "languages": [
+          "ko",
+          "en",
+          "ja",
+          "zh",
+          "fr",
+          "de"
+        ],
+        "widths": [
+          1440,
+          390
+        ],
+        "delayedStabilitySeconds": 12,
+        "errors": [],
+        "unexpectedConsole": [],
+        "blockedExternalRequests": 0,
+        "archiveCards": 182,
+        "newMarketCards": 10,
+        "newNoticeCards": 0,
+        "totalCards": 192,
+        "rawPreservedSnapshots": 52,
+        "runtimePreservedSnapshots": 57
+      },
+      {
+        "page": "index",
+        "languages": [
+          "ko",
+          "en",
+          "ja",
+          "zh",
+          "fr",
+          "de"
+        ],
+        "widths": [
+          1440,
+          390
+        ],
+        "delayedStabilitySeconds": 12,
+        "errors": [],
+        "unexpectedConsole": [],
+        "blockedExternalRequests": 0
+      },
+      {
+        "page": "fuel-surcharge-graph",
+        "languages": [
+          "ko",
+          "en",
+          "ja",
+          "zh",
+          "fr",
+          "de"
+        ],
+        "widths": [
+          1440,
+          390
+        ],
+        "delayedStabilitySeconds": 12,
+        "errors": [],
+        "unexpectedConsole": [],
+        "blockedExternalRequests": 0
+      },
+      {
+        "page": "fuel-surcharge-calculator",
+        "languages": [
+          "ko",
+          "en",
+          "ja",
+          "zh",
+          "fr",
+          "de"
+        ],
+        "widths": [
+          1440,
+          390
+        ],
+        "delayedStabilitySeconds": 12,
+        "errors": [],
+        "unexpectedConsole": [],
+        "blockedExternalRequests": 0
+      }
+    ],
+    "screenCombinations": 60,
+    "delayedStabilitySeconds": 12
+  },
+  "sourceEvidence": {
+    "path": "docs/review-evidence/20261118-market-sources.json",
+    "sha256": "108c62c21749fa409d71cd62730b4b379d140be97e61950469cb375937316a93"
+  },
+  "visualReview": {
+    "path": "artifacts/review-verification/market-nov18/visual-review.json",
+    "inspectedBy": "primary agent",
+    "checked": [
+      "Korean mobile forecast decision and expanded evidence",
+      "French desktop market overview",
+      "Korean mobile UKMTO208 initial-strike label",
+      "German desktop Windward numeric zero card"
+    ],
+    "errors": []
+  },
+  "priorAttempts": {
+    "first": "German word null was removed by old news placeholder filter; new copy uses numeric zero. Failure retained.",
+    "second": "OPIS publication date removed from observed-date field and Korean oil unit made explicit while UI run was ending; final source-digest mismatch recorded, not counted as final PASS.",
+    "releaseRuns": "First two full release runs interrupted before final success; final third run uses frozen source."
+  },
+  "limitations": [
+    "No production deployment, commit or push.",
+    "External API, advertising, analytics and affiliate transactions blocked in local UI tests.",
+    "Previously verified 52 shared snapshots, 182 articles, RATES and December notice original checks preserved; the current market cutoff is not a blanket new verification date for airline data."
+  ]
+}

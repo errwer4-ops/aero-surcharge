@@ -10,8 +10,10 @@
     fr:['Évolution mensuelle','DÉPARTS INTERNATIONAUX DE CORÉE · AVIS DES COMPAGNIES','Surtaxe carburant uniquement. Vérifiez le prix total et la disponibilité des vols auprès du vendeur.','Base de lecture','Avis des compagnies','Toutes les compagnies →','Compagnie','État de l’avis','Variation mensuelle','Source','Lire les données et leurs limites','← Avis des compagnies','Aller au contenu','Inverser départ et arrivée','Comparer','A/R estimé','Ville ou code aéroport','Ville ou code aéroport','Qu’est-ce que la surtaxe carburant ?','En savoir plus'],
     de:['Monatsverlauf','INTERNATIONAL AB KOREA · AIRLINE-MITTEILUNGEN','Nur Kerosinzuschläge. Gesamtpreis und Flugverfügbarkeit beim Ticketanbieter prüfen.','Abfragebasis','Mitteilungen der Airlines','Alle Airlines →','Airline','Mitteilungsstatus','Monatsänderung','Quelle','Daten und Vergleichsgrundlagen','← Mitteilungen der Airlines','Zum Inhalt','Abflug und Ziel tauschen','Vergleichen','Hin/Rück gesch.','Stadt oder Flughafencode','Stadt oder Flughafencode','Was ist ein Kerosinzuschlag?','Weitere Informationen']
   };
+  var forecastNav={ko:'전망',en:'Outlook',ja:'見通し',zh:'展望',fr:'Prévisions',de:'Ausblick'};
   Object.keys(copy).forEach(function(lang){
     window.I18N[lang]=window.I18N[lang]||{};
+    window.I18N[lang]['home.nav.forecast']=forecastNav[lang];
     keys.forEach(function(key,index){window.I18N[lang][key]=copy[lang][index];});
   });
   function setup(){

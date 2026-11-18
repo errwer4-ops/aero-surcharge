@@ -1,0 +1,2183 @@
+{
+  "schemaVersion": 1,
+  "runDate": "2026-11-18",
+  "informationCutoff": "2026-11-18T09:00:00+09:00",
+  "createdAt": "2026-11-18T00:11:07.745Z",
+  "baselineCommit": "ee98230513d84852749c50ac719cfedccfc06c4c",
+  "scope": "Fresh original-source research and local implementation only. No commit, push, production deployment or third-party message.",
+  "airlines": {
+    "cutoff": "2026-11-18T09:00:00+09:00",
+    "completedAt": "2026-11-18T00:02:20.954Z",
+    "purpose": "Fresh research evidence only; does not revise previously verified publication/observation dates in public data.",
+    "cutoffPolicy": "Sources captured before 09:00 KST demonstrate cutoff availability. After-cutoff retrievals of already dated October/November notices are corroboration; undated new information observed only after cutoff is not admitted.",
+    "result": {
+      "newDecemberPassengerNoticesVerified": [],
+      "unchangedDecemberConfirmed": [
+        "KE",
+        "OZ",
+        "BX",
+        "LJ",
+        "ZE"
+      ],
+      "decemberUnverified": [
+        "7C",
+        "RS",
+        "TW",
+        "YP"
+      ],
+      "confirmedDecemberAmountCount": 32,
+      "publicAmountChangeRecommended": false
+    },
+    "commonLimits": {
+      "officialPassengerMopsAssessmentAverage": null,
+      "officialDecemberStage": null,
+      "officialAssessmentExchangeRateAverage": null,
+      "reason": "None of the reviewed passenger notices provides a verified numeric assessment average/stage. Cargo, retail FX and crude data are not substituted."
+    },
+    "carriers": [
+      {
+        "code": "KE",
+        "currency": "KRW",
+        "basis": "Korea-origin international passenger surcharge, one person, one way; ticketing date, not flight date",
+        "groups": [
+          "~499",
+          "500–999",
+          "1000–1499",
+          "1500–1999",
+          "2000–2999",
+          "3000–3999",
+          "4000–4999",
+          "5000–6499",
+          "6500–9999"
+        ],
+        "november": {
+          "amounts": [
+            55600,
+            76000,
+            105800,
+            132900,
+            185800,
+            189800,
+            254900,
+            370100,
+            408100
+          ],
+          "ticketing": [
+            "2026-11-01",
+            "2026-11-30"
+          ],
+          "publishedDate": "2026-10-16",
+          "verification": "full original airline AEM body freshly retrieved",
+          "sourceId": "KE-nov-model"
+        },
+        "december": {
+          "amounts": [
+            50800,
+            69500,
+            97500,
+            120200,
+            169600,
+            172200,
+            231000,
+            336400,
+            377800
+          ],
+          "ticketing": [
+            "2026-12-01",
+            "2026-12-31"
+          ],
+          "publishedDate": "2026-11-16",
+          "verification": "full original airline AEM body freshly retrieved before cutoff; website web-open corroborates",
+          "sourceId": "KE-dec"
+        },
+        "sourceURL": "https://www.koreanair.com/contents/footer/customer-support/notice/2026/2612-infuel",
+        "routes": "Actual origin-dependent routes retained in raw table. Example ICN-FUK first group; ICN-NRT second. Existing product route mapping must not infer group from destination alone.",
+        "exception": "Under-two infant without own seat exempt.",
+        "sourceQualityNote": "Official AEM table caption and metaTitle have stale month strings; displayed headline, table columns and ticketing paragraph independently identify November/December 2026. No change inferred from stale caption."
+      },
+      {
+        "code": "OZ",
+        "currency": "KRW",
+        "basis": "Korea-origin international passenger surcharge, one person, one way; ticketing date, not flight date",
+        "groups": [
+          "~499",
+          "500–999",
+          "1000–1499",
+          "1500–1999",
+          "2000–2499",
+          "2500–2999",
+          "3000–3999",
+          "4000–4999",
+          "5000+"
+        ],
+        "november": {
+          "amounts": [
+            62400,
+            92200,
+            120600,
+            149100,
+            178900,
+            207400,
+            235900,
+            294200,
+            351100
+          ],
+          "ticketing": [
+            "2026-11-01",
+            "2026-11-30"
+          ],
+          "verification": "full official original freshly retrieved",
+          "sourceId": "OZ-nov"
+        },
+        "december": {
+          "amounts": [
+            57500,
+            84300,
+            111000,
+            137800,
+            164600,
+            190000,
+            216700,
+            270300,
+            322400
+          ],
+          "ticketing": [
+            "2026-12-01",
+            "2026-12-16"
+          ],
+          "publishedDate": "2026-11-16",
+          "verification": "full official original freshly retrieved before cutoff with full query string",
+          "sourceId": "OZ-dec-full-query"
+        },
+        "sourceURL": "https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202611160002531020&dispCt=all&page=1&searchOption=0&searchText=",
+        "postDecember16": "Official notice says integrated-airline surcharge applies from December 17; no exact post-16 table was freshly verified. Do not extend these nine OZ prices through December 31.",
+        "exception": "All paid/unpaid and mileage tickets; under-two infant without own seat exempt.",
+        "accessNote": "Bare id-only request returned an HTTP 200 error shell; only the full-query successful original is evidence."
+      },
+      {
+        "code": "BX",
+        "currency": "USD",
+        "basis": "Korea-origin international passenger surcharge, one person, one way; ticketing date, not flight date",
+        "groups": [
+          "FUK/MYJ/KIX/NRT(PUS)/NGS/TAO/TAK/FSZ",
+          "NRT(ICN)/CTS/XIY/YNJ/DYG/HKG/MFM/TPE/KHH",
+          "SYX/UBN/CEB/KLO/DAD/CXR/VTE/BKI(PUS)/HAN/TAG/GUM/CNX(ICN)",
+          "BKK/DPS"
+        ],
+        "november": {
+          "amounts": [
+            43,
+            77,
+            90,
+            106
+          ],
+          "officialKRWParenthetical": [
+            57800,
+            103400,
+            120900,
+            142300
+          ],
+          "ticketing": [
+            "2026-11-01",
+            "2026-11-30"
+          ],
+          "verification": "fresh official page web extraction; direct HTTP blocked",
+          "sourceURL": "https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4420"
+        },
+        "december": {
+          "amounts": [
+            40,
+            71,
+            84,
+            98
+          ],
+          "ticketing": [
+            "2026-12-01",
+            "2026-12-31"
+          ],
+          "publishedDate": null,
+          "verification": "fresh official page web extraction before cutoff, table and ticketing paragraph complete; direct HTTP blocked",
+          "sourceURL": "https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4431"
+        },
+        "accessNote": "HTTP fetches both 403; successful web-open original text is recorded separately from those blocked raw responses. No December KRW table supplied.",
+        "exception": "Under-two infant without own seat exempt."
+      },
+      {
+        "code": "LJ",
+        "currency": "USD",
+        "basis": "Korea-origin international passenger surcharge, one person, one way; ticketing date, not flight date",
+        "groups": [
+          "1–599 mi",
+          "600–1199 mi",
+          "1200–1799 mi",
+          "1800–2399 mi"
+        ],
+        "november": {
+          "amounts": [
+            36,
+            54,
+            87,
+            96
+          ],
+          "ticketing": [
+            "2026-11-01",
+            "2026-11-30"
+          ],
+          "verification": "four values freshly corroborated in December original comparison columns; consumer November source blocked",
+          "sourceId": "LJ-dec",
+          "additionalStoredGroup": {
+            "group": "2400–3599 mi",
+            "reverifiedToday": false,
+            "action": "Preserve previous verified value/date; do not claim five-band fresh verification."
+          }
+        },
+        "december": {
+          "amounts": [
+            34,
+            50,
+            81,
+            88
+          ],
+          "ticketing": [
+            "2026-12-01",
+            "2026-12-31"
+          ],
+          "publishedDate": "2026-11-16",
+          "publishedDisplayTime": "2026-11-16 오후 2:39:46 (site does not label timezone)",
+          "verification": "airline-authored GDS original, full text freshly retrieved before cutoff",
+          "sourceId": "LJ-dec"
+        },
+        "sourceURL": "https://www.hanjinsabre.com/Airlinegroup/BoardView/?CDA=LJ&TAB=3&BID=90147",
+        "missingDecemberGroup": "No December 2400–3599 mi amount published in retrieved original; leave null.",
+        "exception": "All paid/unpaid tickets; under-two infant without own seat exempt.",
+        "routes": "Only routes explicitly listed in original included; e.g. ICN/PUS-NRT group2, ICN-CEB/GUM/BKI group4 but PUS-CEB/GUM group3."
+      },
+      {
+        "code": "ZE",
+        "currency": "USD",
+        "basis": "Korea-origin international passenger surcharge, one person, one way; ticketing date, not flight date",
+        "groups": [
+          "1",
+          "2",
+          "3",
+          "4",
+          "5",
+          "6"
+        ],
+        "november": {
+          "amounts": [
+            43,
+            54,
+            66,
+            79,
+            89,
+            103
+          ],
+          "ticketing": [
+            "2026-11-01",
+            "2026-11-30"
+          ],
+          "verification": "all six amounts freshly visually verified in December original comparison image; November consumer fetch gives JS shell",
+          "sourceId": "ZE-dec-image"
+        },
+        "december": {
+          "amounts": [
+            40,
+            51,
+            61,
+            73,
+            82,
+            95
+          ],
+          "ticketing": [
+            "2026-12-01",
+            "2026-12-31"
+          ],
+          "publishedDate": "2026-11-17",
+          "publishedDisplayTime": "2026-11-17 오후 12:50:10 (site does not label timezone)",
+          "verification": "airline-authored GDS original and original table PNG fetched before cutoff; all six amounts visually verified",
+          "sourceId": "ZE-dec"
+        },
+        "sourceURL": "https://www.hanjinsabre.com/Airlinemain/BoardView/?CDA=ZE&TAB=3&BID=90153",
+        "imageURL": "https://cdn.topasweb.com/topas-attach/board/editor/202611/202611171247168542590.png",
+        "routes": {
+          "group1": [
+            "ICN-FUK",
+            "PUS-FUK",
+            "PUS-KIX",
+            "PUS-KMQ",
+            "CJU-PVG",
+            "CJJ-YNJ",
+            "ICN-TSA",
+            "ICN-KOJ"
+          ],
+          "group2": [
+            "ICN-NRT",
+            "ICN-KIX",
+            "ICN-CTS",
+            "PUS-CTS",
+            "ICN-OKA",
+            "PUS-OKA",
+            "ICN-TKS",
+            "GMP-TSA",
+            "ICN-TPE",
+            "CJJ-TPE",
+            "CJU-TPE",
+            "PUS-TPE",
+            "ICN-PVG",
+            "CJJ-PVG",
+            "PUS-YNJ",
+            "ICN-CGO",
+            "ICN-HET",
+            "PUS-PVG",
+            "부산-창저우 (original route label; airport code not inferred)"
+          ],
+          "group3": [
+            "ICN-HKG",
+            "CJJ-DYG",
+            "ICN-XMN",
+            "CJJ-XMN",
+            "TAE-DYG",
+            "PUS-HKG"
+          ],
+          "group4": [
+            "ICN-DAD"
+          ],
+          "group5": [
+            "ICN-BKK",
+            "ICN-CNX",
+            "PUS-CNX",
+            "ICN-CXR",
+            "ICN-PQC",
+            "PUS-PQC",
+            "ICN-MDC"
+          ],
+          "group6": [
+            "ICN-ALA",
+            "PUS-ALA"
+          ]
+        },
+        "exception": "Under-two infant without own seat exempt."
+      },
+      {
+        "code": "7C",
+        "currency": "USD",
+        "basis": "Korea-origin international passenger surcharge, one person, one way; ticketing date, not flight date",
+        "groups": [
+          "1–<500 mi",
+          "500–<1000 mi",
+          "1000–<1500 mi",
+          "1500–<2000 mi",
+          "2000–<2500 mi",
+          "2500+ mi"
+        ],
+        "november": {
+          "amounts": [
+            43,
+            54,
+            66,
+            79,
+            89,
+            103
+          ],
+          "ticketing": [
+            "2026-11-01",
+            "2026-11-30"
+          ],
+          "publishedDate": "2026-10-16",
+          "verification": "fresh search extraction of official notice corroborates six amounts; direct HTTP/web detail shows title/date but body template, weaker than successful direct table retrieval",
+          "sourceId": "7C-nov",
+          "sourceURL": "https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000814&pageNum=1"
+        },
+        "december": {
+          "amounts": null,
+          "verification": "unverified within checked sources; not a claim of global non-publication",
+          "sourceId": "7C-list",
+          "latestListedPassengerNotice": "November international; December domestic is excluded"
+        },
+        "sourceURL": "https://www.jejuair.net/ko/customerServiceCenter/notice.do?limit=25&pageNum=1",
+        "searchCoverage": "Fresh consumer list before cutoff and again09:00:47; same latest eligible international November item. GDS board appears archival2019, cannot establish current completeness."
+      },
+      {
+        "code": "RS",
+        "currency": "KRW",
+        "basis": "Korea-origin international passenger surcharge, one person, one way; ticketing date, not flight date",
+        "groups": [
+          "TAK/YGJ/FUK/KIX",
+          "NRT",
+          "DYG",
+          "DAD",
+          "CXR/GUM"
+        ],
+        "november": {
+          "amounts": [
+            69100,
+            80000,
+            100300,
+            115200,
+            122000
+          ],
+          "ticketing": [
+            "2026-11-01",
+            "2026-11-30"
+          ],
+          "publishedDate": "2026-10-19",
+          "publishedDisplayTime": "2026-10-19 오전 8:21:18 (site does not label timezone)",
+          "verification": "fresh airline-authored GDS text and original table PNG; fetched09:00:47 and09:01:14 after cutoff, but published and modified October19, linked from list captured08:58:34",
+          "sourceId": "RS-nov-gds",
+          "imageSourceId": "RS-nov-image"
+        },
+        "december": {
+          "amounts": null,
+          "verification": "unverified within checked sources; consumer list blocked, GDS current list latest November passenger notice",
+          "sourceId": "RS-gds-list"
+        },
+        "sourceURL": "https://www.hanjinsabre.com/Airlinemain/BoardView/?CDA=RS&TAB=3&BID=89808",
+        "consumerAccess": "403 for current consumer detail/list; no non-publication inference."
+      },
+      {
+        "code": "TW",
+        "currency": "KRW",
+        "basis": "Korea-origin international passenger surcharge, one person, one way; ticketing date, not flight date",
+        "groups": [
+          "<600 mi",
+          "600–<1200 mi",
+          "1200–<1800 mi",
+          "1800–<2400 mi",
+          "2400–<4000 mi",
+          "4000–<5000 mi",
+          "5000+ mi"
+        ],
+        "november": {
+          "amounts": [
+            43400,
+            76000,
+            95000,
+            123500,
+            133000,
+            null,
+            299800
+          ],
+          "ticketing": [
+            "2026-11-01",
+            "2026-11-30"
+          ],
+          "publishedDate": "2026-10-19",
+          "publishedDisplayTime": "2026-10-19 09:33 (site does not label timezone)",
+          "verification": "full consumer original freshly retrieved before cutoff; six numeric bands and one blank band",
+          "sourceId": "TW-nov"
+        },
+        "december": {
+          "amounts": null,
+          "verification": "unverified within checked sources; consumer list and dedicated fuel list show November international/December domestic only",
+          "sourceId": "TW-list"
+        },
+        "sourceURL": "https://www.trinityairways.com/app/customerCenter/notice/retrieve/12722",
+        "searchCoverage": "Official current list before cutoff, dedicated fuel list09:00:47, airline GDS list. Domestic December and December promotional base fares excluded."
+      },
+      {
+        "code": "YP",
+        "currency": "USD",
+        "basis": "Korea-origin international passenger surcharge, one person, one way; ticketing date, not flight date",
+        "groups": null,
+        "november": {
+          "amounts": null,
+          "verification": "fresh original revalidation prevented by official maintenance redirect/403. Preserve previously verified November values and original timestamp; no old value relabeled fresh.",
+          "sourceId": "YP-nov",
+          "sourceURL": "https://www.airpremia.com/a/ko/customer/notice/803"
+        },
+        "december": {
+          "amounts": null,
+          "verification": "unverified due to consumer maintenance; GDS board does not provide current monthly passenger notice",
+          "sourceId": "YP-list"
+        },
+        "maintenance": {
+          "sourceURL": "https://www.airpremia.com/a/ko/customer/notice/811",
+          "koreanSourceURL": "https://www.airpremia.com/a/en/customer/notice/812",
+          "publishedAt": "2026-11-04T08:44:00+09:00",
+          "scheduledStart": "2026-11-17T22:00:00+09:00",
+          "scheduledEnd": "2026-11-18T10:00:00+09:00",
+          "verification": "fresh official search extraction (post-cutoff lookup of Nov4 publication); direct URL redirects to comingsoon.airpremia.com and403. Scheduled end may change."
+        },
+        "excludedCargoURL": "https://cargo.airpremia.com/ko/support/notice/132",
+        "cargoExclusionReason": "Nov16–Dec15 cargo notice, KRW/kg and freight MOPS; not passenger December evidence."
+      }
+    ],
+    "rawDirectory": "artifacts/review-verification/market-nov18/airlines/",
+    "receiptFiles": [
+      "http-receipts.json",
+      "extra-http-receipts.json",
+      "cutoff-followup-http-receipts.json",
+      "november-supplement-receipts.json"
+    ],
+    "sourceReceipts": [
+      {
+        "id": "KE-nov",
+        "url": "https://www.koreanair.com/contents/footer/customer-support/notice/2026/2611-infuel",
+        "requestedAt": "2026-11-17T23:57:42.517Z",
+        "checkedAt": "2026-11-17T23:57:42.710Z",
+        "status": 200,
+        "contentType": "text/html",
+        "lastModified": "Wed, 21 Oct 2026 06:12:47 GMT",
+        "file": "KE-nov.html",
+        "sha256": "52ba8561fd117df0995973dac1cd2365f34bec1e8a1241e7500263ba3247f456",
+        "bytes": 3510,
+        "hasDecember": false,
+        "hasNovember": false
+      },
+      {
+        "id": "OZ-nov",
+        "url": "https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202610160002530868&dispCt=all&page=1&searchOption=0&searchText=",
+        "requestedAt": "2026-11-17T23:57:42.575Z",
+        "checkedAt": "2026-11-17T23:57:44.005Z",
+        "status": 200,
+        "contentType": "text/html;charset=UTF-8",
+        "lastModified": null,
+        "file": "OZ-nov.html",
+        "sha256": "6acb21384631dcb02bbce2c34025a51b064204a0ae6b7d481cd4e391d9bde18f",
+        "bytes": 137785,
+        "title": "2026년 11월 한국 출발 국제선 유류할증료│아시아나항공",
+        "hasDecember": true,
+        "hasNovember": true
+      },
+      {
+        "id": "7C-nov",
+        "url": "https://www.jejuair.net/ko/customerServiceCenter/noticeDetail.do?billboardNo=0000000814",
+        "requestedAt": "2026-11-17T23:57:42.577Z",
+        "checkedAt": "2026-11-17T23:57:42.756Z",
+        "status": 200,
+        "contentType": "text/html;charset=utf-8",
+        "lastModified": null,
+        "file": "7C-nov.html",
+        "sha256": "b9d5615adb1f070722e550e9a7e2c85c8118018d1e07040cc9df272a7016b599",
+        "bytes": 305024,
+        "title": "제주항공",
+        "hasDecember": false,
+        "hasNovember": true
+      },
+      {
+        "id": "LJ-nov",
+        "url": "https://www.jinair.com/company/announce/announceView?anceSeq=28906&searchWord=&searchKey=titlCtn&page=1",
+        "requestedAt": "2026-11-17T23:57:42.578Z",
+        "checkedAt": "2026-11-17T23:57:42.714Z",
+        "status": 403,
+        "contentType": "text/html; charset=UTF-8",
+        "lastModified": null,
+        "file": "LJ-nov.html",
+        "sha256": "598eaa9298003b0196c11dc9431f750b9b43682af822ca8489822fe14e8a6f61",
+        "bytes": 5662,
+        "title": "Attention Required! | Cloudflare",
+        "hasDecember": false,
+        "hasNovember": false
+      },
+      {
+        "id": "RS-nov",
+        "url": "https://flyairseoul.com/CW/ko/noticeContent.do?seq=11208&pageNo=1",
+        "requestedAt": "2026-11-17T23:57:42.579Z",
+        "checkedAt": "2026-11-17T23:57:42.705Z",
+        "status": 403,
+        "contentType": "text/html; charset=UTF-8",
+        "lastModified": null,
+        "file": "RS-nov.html",
+        "sha256": "0f41b9b70d78579d55c28acbde736ebd53892a09b8425c3439115dc85ea75488",
+        "bytes": 5590,
+        "title": "Just a moment...",
+        "hasDecember": false,
+        "hasNovember": false
+      },
+      {
+        "id": "BX-nov",
+        "url": "https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4420",
+        "requestedAt": "2026-11-17T23:57:42.580Z",
+        "checkedAt": "2026-11-17T23:57:42.716Z",
+        "status": 403,
+        "contentType": "text/html; charset=UTF-8",
+        "lastModified": null,
+        "file": "BX-nov.html",
+        "sha256": "f96051f63a158e65fc1f46467dfcc46a48aa88da56335407f5b98252c64e741a",
+        "bytes": 5646,
+        "title": "Just a moment...",
+        "hasDecember": false,
+        "hasNovember": false
+      },
+      {
+        "id": "TW-nov",
+        "url": "https://www.trinityairways.com/app/customerCenter/notice/retrieve/12722",
+        "requestedAt": "2026-11-17T23:57:42.581Z",
+        "checkedAt": "2026-11-17T23:57:42.797Z",
+        "status": 200,
+        "contentType": "text/html;charset=UTF-8",
+        "lastModified": null,
+        "file": "TW-nov.html",
+        "sha256": "04e2f5f5f7e173133ad628fb5f2e44962c39219b354244be1b98f8424479761f",
+        "bytes": 90053,
+        "title": "공지사항 | 고객센터 | 트리니티항공",
+        "hasDecember": false,
+        "hasNovember": true
+      },
+      {
+        "id": "ZE-nov",
+        "url": "https://www.eastarjet.com/newstar/PGWCA00002?cId=11&iId=0&bId=680&lang=KR",
+        "requestedAt": "2026-11-17T23:57:42.582Z",
+        "checkedAt": "2026-11-17T23:57:43.474Z",
+        "status": 200,
+        "contentType": "text/html;charset=UTF-8",
+        "lastModified": null,
+        "file": "ZE-nov.html",
+        "sha256": "4109efd825914f0a91ee2295bfabbad10b7766a5c0e531fa90d53f24666aa9f3",
+        "bytes": 360506,
+        "title": "&lt;!&ndash;[M,eastar.title.home.main ]&ndash;&gt;",
+        "hasDecember": false,
+        "hasNovember": false
+      },
+      {
+        "id": "YP-nov",
+        "url": "https://comingsoon.airpremia.com/",
+        "requestedAt": "2026-11-17T23:57:42.583Z",
+        "checkedAt": "2026-11-17T23:57:42.748Z",
+        "status": 403,
+        "contentType": "text/html; charset=UTF-8",
+        "lastModified": null,
+        "file": "YP-nov.html",
+        "sha256": "9fdd5777290b6556a637573d789d3273d91e2b565a42d48be374ef5a1a66c6b0",
+        "bytes": 5489,
+        "title": "Just a moment...",
+        "hasDecember": false,
+        "hasNovember": false
+      },
+      {
+        "id": "KE-dec",
+        "url": "https://www.koreanair.com/content/koreanair/global/ko/footer/customer-support/notice/2026/2612-infuel.model.json",
+        "requestedAt": "2026-11-17T23:57:42.585Z",
+        "checkedAt": "2026-11-17T23:57:42.743Z",
+        "status": 200,
+        "contentType": "application/json;charset=utf-8",
+        "lastModified": "Tue, 17 Nov 2026 23:55:28 GMT",
+        "file": "KE-dec.html",
+        "sha256": "739c4b683cc05db4666c27b31e3d8dcd0baa9df1a249b77919909b9fcc4efef4",
+        "bytes": 11257,
+        "hasDecember": true,
+        "hasNovember": true
+      },
+      {
+        "id": "OZ-dec",
+        "url": "https://flyasiana.com/error/error.html",
+        "requestedAt": "2026-11-17T23:57:42.586Z",
+        "checkedAt": "2026-11-17T23:57:42.814Z",
+        "status": 200,
+        "contentType": "text/html",
+        "lastModified": "Thu, 01 Nov 2018 04:32:24 GMT",
+        "file": "OZ-dec.html",
+        "sha256": "93b6a4db9102aa5ce5e44a8a03c7854b35bc86c5ec823f72cc85a8e2493d0ead",
+        "bytes": 7590,
+        "title": "에러 및 차단",
+        "hasDecember": false,
+        "hasNovember": false
+      },
+      {
+        "id": "BX-dec",
+        "url": "https://www.airbusan.com/content/common/customercenter/noticeDetail?id=4431",
+        "requestedAt": "2026-11-17T23:57:42.587Z",
+        "checkedAt": "2026-11-17T23:57:42.722Z",
+        "status": 403,
+        "contentType": "text/html; charset=UTF-8",
+        "lastModified": null,
+        "file": "BX-dec.html",
+        "sha256": "cefb42a1dc91c21cc428b64c5d5ca31f2f18d476b722858a4baa568b624cd077",
+        "bytes": 5625,
+        "title": "Just a moment...",
+        "hasDecember": false,
+        "hasNovember": false
+      },
+      {
+        "id": "LJ-dec",
+        "url": "https://www.hanjinsabre.com/Airlinegroup/BoardView/?CDA=LJ&TAB=3&BID=90147",
+        "requestedAt": "2026-11-17T23:57:42.587Z",
+        "checkedAt": "2026-11-17T23:57:46.068Z",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "lastModified": null,
+        "file": "LJ-dec.html",
+        "sha256": "39901370c4974465e14f5f2263787b09df757e29debf1a7776d31685d0922431",
+        "bytes": 94625,
+        "title": "항공사홈",
+        "hasDecember": true,
+        "hasNovember": true
+      },
+      {
+        "id": "ZE-dec",
+        "url": "https://www.hanjinsabre.com/Airlinemain/BoardView/?CDA=ZE&TAB=3&BID=90153",
+        "requestedAt": "2026-11-17T23:57:42.588Z",
+        "checkedAt": "2026-11-17T23:57:42.735Z",
+        "status": 200,
+        "contentType": "text/html; charset=utf-8",
+        "lastModified": null,
+        "file": "ZE-dec.html",
+        "sha256": "acb96cdcfcfedb10905165f64ffb0d5a39e1b7346291c3c5a477776d662b24bb",
+        "bytes": 46816,
+        "title": "항공사홈",
+        "hasDecember": true,
+        "hasNovember": true
+      },
+      {
+        "id": "KE-nov-model",
+        "url": "https://www.koreanair.com/content/koreanair/global/ko/footer/customer-support/notice/2026/2611-infuel.model.json",
+        "requestedAt": "2026-11-17T23:57:42.589Z",
+        "checkedAt": "2026-11-17T23:57:42.802Z",
+        "status": 200,
+        "contentType": "application/json;charset=utf-8",
+        "lastModified": "Tue, 17 Nov 2026 15:01:02 GMT",
+        "file": "KE-nov-model.html",
+        "sha256": "27e08eef6436dde2a15f6ebb34b3690149bc7e61b73d0628c1a3efd8237f069b",
+        "bytes": 11257,
+        "hasDecember": false,
+        "hasNovember": true
+      },
+      {
+        "id": "7C-list",
+        "url": "https://www.jejuair.net/ko/customerServiceCenter/notice.do?limit=25&pageNum=1",
+        "requestedAt": "2026-11-17T23:57:42.589Z",
+        "checkedAt": "2026-11-17T23:57:42.826Z",
+        "status": 200,
+        "contentType": "text/html;charset=utf-8",
+        "lastModified": null,
+        "file": "7C-list.html",
+        "sha256": "50353f2e8e5b4a666b54efc33622d63dd15fbed6d5dc63b0124a2984bc05c395",
+        "bytes": 307172,
+        "title": "제주항공",
+        "hasDecember": true,
+        "hasNovember": true
+      },
+      {
+        "id": "TW-list",
+        "url": "https://www.trinityairways.com/app/customerCenter/notice",
+        "requestedAt": "2026-11-17T23:57:42.590Z",
+        "checkedAt": "2026-11-17T23:57:42.838Z",
+        "status": 200,
+        "contentType": "text/html;charset=UTF-8",
+        "lastModified": null,
+        "file": "TW-list.html",
+        "sha256": "3ca16aff78aca238cabed90c6c6234c91c49942e1d55cd23616d26b6e0a949a6",
+        "bytes": 81104,
+        "title": "공지사항 | 고객센터 | 트리니티항공",
+        "hasDecember": true,
+        "hasNovember": true
+      },
+      {
+        "id": "RS-list",
+        "url": "https://flyairseoul.com/CW/ko/noticeList.do",
+        "requestedAt": "2026-11-17T23:57:42.590Z",
+        "checkedAt": "2026-11-17T23:57:42.724Z",
+        "status": 403,
+        "contentType": "text/html; charset=UTF-8",
+        "lastModified": null,
+        "file": "RS-list.html",
+        "sha256": "7b4e3df822b1299e035d620eabd1bec87e127c07d57133e8a4e110ae4fcca439",
+        "bytes": 5473,
+        "title": "Just a moment...",
+        "hasDecember": false,
+        "hasNovember": false
+      },
+      {
+        "id": "YP-list",
+        "url": "https://comingsoon.airpremia.com/",
+        "requestedAt": "2026-11-17T23:57:42.592Z",
+        "checkedAt": "2026-11-17T23:57:42.745Z",
+        "status": 403,
+        "contentType": "text/html; charset=UTF-8",
+        "lastModified": null,
+        "file": "YP-list.html",
+        "sha256": "9c24e671694a8b6bfad1359cb5eef0b6d5c679dbca87290e259cc97abdc13aa7",
+        "bytes": 5489,
+        "title": "Just a moment...",
+        "hasDecember": false,
+        "hasNovember": false
+      },
+      {
+        "id": "ZE-dec-image",
+        "url": "https://cdn.topasweb.com/topas-attach/board/editor/202611/202611171247168542590.png",
+        "requestedAt": "2026-11-17T23:57:42.593Z",
+        "checkedAt": "2026-11-17T23:57:42.720Z",
+        "status": 200,
+        "contentType": "image/png",
+        "lastModified": "Tue, 17 Nov 2026 03:47:17 GMT",
+        "file": "ZE-dec-image.png",
+        "sha256": "cc8692602dd609c256aa48f63ed75184be23b437b41aed3ccb3f7e1cd6a8bd56",
+        "bytes": 26977
+      },
+      {
+        "id": "7C-gds-list",
+        "url": "https://www.hanjinsabre.com/Airlinemain/Board/?CDA=7C&TAB=3",
+        "status": 200,
+        "checkedAt": "2026-11-17T23:58:34.758Z",
+        "sha256": "a00bba8ba79304cdf4ba4358846082c95b64400fabc006966b21dd56e49ba843",
+        "title": "항공사홈"
+      },
+      {
+        "id": "RS-gds-list",
+        "url": "https://www.hanjinsabre.com/Airlinemain/Board/?CDA=RS&TAB=3",
+        "status": 200,
+        "checkedAt": "2026-11-17T23:58:34.809Z",
+        "sha256": "9044043dc34e6e8b466d2863baaa04e70eea463f2821c77fb92b913ffc7694fd",
+        "title": "항공사홈"
+      },
+      {
+        "id": "TW-gds-list",
+        "url": "https://www.hanjinsabre.com/Airlinemain/Board/?CDA=TW&TAB=3",
+        "status": 200,
+        "checkedAt": "2026-11-17T23:58:34.794Z",
+        "sha256": "0639c5495b998680f44fb835ad57d4485af505911f034040955554c464766dd7",
+        "title": "항공사홈"
+      },
+      {
+        "id": "YP-gds-list",
+        "url": "https://www.hanjinsabre.com/Airlinemain/Board/?CDA=YP&TAB=3",
+        "status": 200,
+        "checkedAt": "2026-11-17T23:58:34.766Z",
+        "sha256": "43f9d70de7b5f09f2292d908d63f0924cea65976f1717434b5bff0eb82385d68",
+        "title": "항공사홈"
+      },
+      {
+        "id": "OZ-dec-full-query",
+        "url": "https://flyasiana.com/C/KR/KO/customer/notice/detail?id=CM202611160002531020&dispCt=all&page=1&searchOption=0&searchText=",
+        "status": 200,
+        "checkedAt": "2026-11-17T23:58:35.251Z",
+        "sha256": "115201d7f067b5e1248b8498b3ff0829cbf67c9278a2898bf1dedf1b6c0dfcf1",
+        "title": "2026년 12월 한국 출발 국제선 유류할증료│아시아나항공"
+      },
+      {
+        "id": "RS-nov-gds",
+        "url": "https://www.hanjinsabre.com/Airlinemain/BoardView/?CDA=RS&TAB=3&BID=89808",
+        "finalURL": "https://www.hanjinsabre.com/Airlinemain/BoardView/?CDA=RS&TAB=3&BID=89808",
+        "status": 200,
+        "requestedAt": "2026-11-18T00:00:47.487Z",
+        "checkedAt": "2026-11-18T00:00:47.649Z",
+        "sha256": "eec477b01b5fcba75217fd9180a8cc9e3ee0e4abda78130d6cd9730f283636fc"
+      },
+      {
+        "id": "LJ-gds-list",
+        "url": "https://www.hanjinsabre.com/Airlinegroup/Board/?CDA=LJ&TAB=3",
+        "finalURL": "https://www.hanjinsabre.com/Airlinegroup/Board/?CDA=LJ&TAB=3",
+        "status": 200,
+        "requestedAt": "2026-11-18T00:00:47.539Z",
+        "checkedAt": "2026-11-18T00:00:47.781Z",
+        "sha256": "c4d1bb67c42e0accd7c91c8b5009b3fa9a260ead0da4188aafc4b61dee9f21a1",
+        "links": []
+      },
+      {
+        "id": "7C-list-cutoff",
+        "url": "https://www.jejuair.net/ko/customerServiceCenter/notice.do?limit=25&pageNum=1",
+        "finalURL": "https://www.jejuair.net/ko/customerServiceCenter/notice.do?limit=25&pageNum=1",
+        "status": 200,
+        "requestedAt": "2026-11-18T00:00:47.540Z",
+        "checkedAt": "2026-11-18T00:00:47.741Z",
+        "sha256": "d546742e7f28709222355545222c92e98a3df1bc180f5c94de9bfe5aa40d3eca"
+      },
+      {
+        "id": "TW-list-cutoff",
+        "url": "https://www.trinityairways.com/app/customerCenter/notice?noticeDiv=FUEL",
+        "finalURL": "https://www.trinityairways.com/app/customerCenter/notice?noticeDiv=FUEL",
+        "status": 200,
+        "requestedAt": "2026-11-18T00:00:47.541Z",
+        "checkedAt": "2026-11-18T00:00:47.912Z",
+        "sha256": "1e44e9e0e0453c2826e8b34baf1bfe41b5fabba9a2a35e1e6e88e6bba4e54679"
+      },
+      {
+        "id": "RS-list-cutoff",
+        "url": "https://www.hanjinsabre.com/Airlinemain/Board/?CDA=RS&TAB=3",
+        "finalURL": "https://www.hanjinsabre.com/Airlinemain/Board/?CDA=RS&TAB=3",
+        "status": 200,
+        "requestedAt": "2026-11-18T00:00:47.543Z",
+        "checkedAt": "2026-11-18T00:00:47.692Z",
+        "sha256": "df6d1e8b9e46c296f55223d1884115334c46a0c5fce020b30efd077069a21cd8"
+      },
+      {
+        "id": "YP-maintenance",
+        "url": "https://www.airpremia.com/a/ko/customer/notice/811",
+        "finalURL": "https://comingsoon.airpremia.com/",
+        "status": 403,
+        "requestedAt": "2026-11-18T00:00:47.543Z",
+        "checkedAt": "2026-11-18T00:00:47.663Z",
+        "sha256": "96d380c4013593b2ea9d9b22591695280dfb5ed47a762ab82bace261cdebb6c3"
+      },
+      {
+        "id": "RS-nov-image",
+        "url": "https://www.hanjinsabre.com/dext5editordata/2026/10/20261019_082112861_82591.png",
+        "requestedAt": "2026-11-18T00:01:14.873Z",
+        "checkedAt": "2026-11-18T00:01:14.971Z",
+        "status": 200,
+        "sha256": "9f5802ee6f1a36efd06db609034d9f67c841d2447d23aa51bbb6b0446b251937"
+      },
+      {
+        "id": "LJ-gds-main-list",
+        "url": "https://www.hanjinsabre.com/Airlinemain/Board/?CDA=LJ&TAB=3",
+        "requestedAt": "2026-11-18T00:01:14.926Z",
+        "checkedAt": "2026-11-18T00:01:16.076Z",
+        "status": 200,
+        "sha256": "b983adc87780bbac12d169a41af6084be4f7bc6a3c0f534934765a3d702b59f3",
+        "links": []
+      }
+    ],
+    "newMonthlyArchiveScreenshots": [],
+    "screenshotReason": "No newly verified December passenger notice this run. Existing monthly screenshots preserved. ZE/RS original table PNGs downloaded only as audit evidence.",
+    "mutationScope": "Only ignored research evidence written. No core/public files, source verification timestamps, git commits, pushes or deployments changed."
+  },
+  "energy": {
+    "schemaVersion": 1,
+    "runDate": "2026-11-18",
+    "cutoffAt": "2026-11-18T09:00:00+09:00",
+    "cutoffUtc": "2026-11-18T00:00:00Z",
+    "scope": "Fresh source verification for energy and FX; no official MOPS inference from crude, private assessments or exchange rates.",
+    "originalEvidenceDirectory": "artifacts/review-verification/market-nov18/energy-originals",
+    "receiptFiles": [
+      "receipts.json",
+      "more-receipts.json",
+      "jet-and-transat-before-cutoff.json",
+      "web-before-cutoff.json"
+    ],
+    "fx": {
+      "status": "new_observation",
+      "value": 1338.2,
+      "change": 2.5,
+      "unit": "KRW/USD",
+      "observedAt": "2026-11-17T15:30:00+09:00",
+      "priceKind": "Seoul daytime onshore USD/KRW spot closing quote reported by original news sources",
+      "not": [
+        "overnight close",
+        "intraday live quote",
+        "airline calculation-period average",
+        "display-currency conversion rate"
+      ],
+      "sources": [
+        {
+          "url": "https://www.newsis.com/view/NISX20261117_0003871797",
+          "publishedAt": "2026-11-17T15:44:17+09:00",
+          "modifiedAt": "2026-11-17T16:30:24+09:00",
+          "receivedAt": "2026-11-17T23:57:25.674Z",
+          "status": 200,
+          "evidence": "fxNewsis.html",
+          "note": "JSON-LD datePublished and visible initial time; article:published_time incorrectly repeats the modified time."
+        },
+        {
+          "url": "https://www.news1.kr/finance/market-exr/6356903",
+          "publishedAt": "2026-11-17T15:32:29+09:00",
+          "receivedAt": "2026-11-17T23:57:24.883Z",
+          "status": 200,
+          "evidence": "fxNews1.html",
+          "note": "Title explicitly specifies 15:30."
+        }
+      ],
+      "availableBeforeCutoff": true
+    },
+    "oil": {
+      "status": "new_observation",
+      "observedDate": "2026-11-17",
+      "priceKind": "futures settlement as reported by original financial news; exchange settlement tables not independently opened",
+      "unit": "USD/bbl",
+      "wti": {
+        "value": 86.01,
+        "change": 0.29,
+        "changePct": 0.34,
+        "contract": "2026-12",
+        "exchange": "NYMEX"
+      },
+      "brent": {
+        "value": 93.14,
+        "change": 0.7,
+        "changePct": 0.76,
+        "contract": "2027-01",
+        "exchange": "ICE"
+      },
+      "sources": [
+        {
+          "url": "https://news.einfomax.co.kr/news/articleView.html?idxno=4445238",
+          "publishedAt": "2026-11-18T07:07:08+09:00",
+          "modifiedAtDisplay": "2026-11-18 07:08 KST",
+          "modifiedTimePrecision": "minute",
+          "receivedAt": "2026-11-17T23:57:24.777Z",
+          "status": 200,
+          "evidence": "oilInfomax.html"
+        },
+        {
+          "url": "https://www.rigzone.com/news/wire/oil_prices_swing_as_gulf_attacks_continue-17-nov-2026-185107-article/",
+          "publisher": "Rigzone / Bloomberg",
+          "publishedAt": "2026-11-17T20:53:14Z",
+          "modifiedAt": "2026-11-17T20:53:14Z",
+          "receivedAt": "2026-11-17T23:57:25.751Z",
+          "status": 200,
+          "evidence": "oilRigzone.html",
+          "note": "JSON-LD time used; conflicting Last-Modified header not publication evidence.",
+          "reportedChangePctPrecision": {
+            "wti": 0.3,
+            "brent": 0.8,
+            "precision": "one decimal; primary Infomax reports0.34/0.76 percent"
+          }
+        }
+      ],
+      "availableBeforeCutoff": true,
+      "limits": [
+        "Crude futures are not jet-fuel assessments or official MOPS.",
+        "Geopolitical military statements in reports remain attributed claims; no independent incident verification in this energy evidence."
+      ]
+    },
+    "singaporeJet": {
+      "status": "new_observation",
+      "provider": "CommodityScope",
+      "series": "CS-SIN-JET",
+      "value": 151.72,
+      "change": 0.57,
+      "changePct": 0.4,
+      "unit": "USD/bbl",
+      "observedDate": "2026-11-16",
+      "priorObservedDate": "2026-11-13",
+      "priorValue": 151.15,
+      "priceKind": "private daily indicative estimated assessment",
+      "basis": "FOB Singapore",
+      "confidence": "low",
+      "assessmentUncertaintyRange": [
+        151.02,
+        153.36
+      ],
+      "sourceUrl": "https://commodityscope.com/prices/singapore-jet-kerosene",
+      "publishedAt": null,
+      "publicationTimePrecision": "unknown",
+      "availableBeforeCutoff": true,
+      "availabilityEvidence": {
+        "retrievalStartedAt": "2026-11-17T23:58:35Z",
+        "retrievalEndedAt": "2026-11-17T23:58:36Z",
+        "file": "jet-and-transat-before-cutoff.json",
+        "method": "official provider webpage returned by web open and saved with UTC clock bounds"
+      },
+      "access": {
+        "webExtraction": "success",
+        "directHttp": 403,
+        "failedDirectFile": "jet-HTTP403.html"
+      },
+      "limits": [
+        "Not Platts MOPS or airline calculation-period mean.",
+        "Range is assessment uncertainty, not bid/ask or daily high/low.",
+        "No standard jet grade, parcel tonnage or loading window is specified.",
+        "Monthly statistics and non-executable indicative assessment must not be promoted to official averages."
+      ]
+    },
+    "iata": {
+      "status": "unchanged_reverified",
+      "weekEnding": "2026-11-13",
+      "globalUsdBbl": 169.82,
+      "globalCentsGal": 404.35,
+      "globalWeekChangePct": -5.1,
+      "asiaOceaniaUsdBbl": 152.8,
+      "asiaOceaniaCentsGal": 363.81,
+      "asiaOceaniaWeekChangePct": -6.4,
+      "priceKind": "IATA / Platts weekly refinery jet fuel average by reported region",
+      "publishedAt": null,
+      "sourceUrl": "https://www.iata.org/en/publications/economics/fuel-monitor/",
+      "imageUrl": "https://www.iata.org/contentassets/9036deaf9c984009a3515fd6aa1c5e24/fuel_price_analysis.jpg",
+      "receivedAt": "2026-11-17T23:57:25.147Z",
+      "lastModifiedHeader": "2026-11-16T08:28:39Z",
+      "lastModifiedIsInitialPublication": false,
+      "evidence": "iataImage.jpg",
+      "sha256": "d3b8177d8c660c256483860f10cc8ab01716b35a4f7e32092c12644f4df7262d",
+      "verification": "Actual freshly downloaded source image visually inspected.",
+      "availableBeforeCutoff": true,
+      "limits": [
+        "Global and Asia/Oceania are distinct regional weekly averages.",
+        "Not Singapore daily assessment or airline MOPS calculation-period mean.",
+        "Retain week-ending date; do not republish as a new Nov18 observation."
+      ]
+    },
+    "eiaJetStocks": {
+      "status": "unchanged_reverified",
+      "series": "Kerosene-Type Jet Fuel",
+      "weekEnding": "2026-11-06",
+      "value": 41.979,
+      "previousWeekEnding": "2026-10-30",
+      "previousValue": 41.782,
+      "change": 0.197,
+      "unit": "million barrels",
+      "priceKind": "US weekly stock volume, not price",
+      "sourceUrl": "https://ir.eia.gov/wpsr/table6.csv",
+      "receivedAt": "2026-11-17T23:57:25.651Z",
+      "lastModifiedHeader": "2026-11-12T16:05:37Z",
+      "evidence": "eiaJetStocks.csv",
+      "availableBeforeCutoff": true,
+      "limits": [
+        "Do not label Nov13 stocks.",
+        "New weekly release not yet verified; retain old observed week."
+      ]
+    },
+    "opec": {
+      "status": "unchanged_reverified",
+      "decisionDate": "2026-11-01",
+      "period": "2026-12",
+      "decision": "Seven countries maintain September 2026 required production levels for December 2026.",
+      "members": [
+        "Saudi Arabia",
+        "Russia",
+        "Iraq",
+        "Kuwait",
+        "Kazakhstan",
+        "Algeria",
+        "Oman"
+      ],
+      "nextMeetingDate": "2026-11-29",
+      "sourceUrl": "https://www.opec.org/pr-detail/620-1-november-2026.html",
+      "receivedAt": "2026-11-17T23:57:25.851Z",
+      "evidence": "opec.html",
+      "availableBeforeCutoff": true,
+      "limits": [
+        "Required output target is not measured actual production.",
+        "Capacity-review talks do not constitute new December quotas or confirmed 2027 quotas."
+      ]
+    },
+    "iea": {
+      "status": "unchanged_reverified",
+      "report": "Oil Market Report November 2026",
+      "reportDate": "2026-11-13",
+      "observedPeriod": "2026-10",
+      "worldOilSupply": 105.4,
+      "worldOilSupplyMonthlyChange": 2.3,
+      "gulfOilExportsExcludingOman": 18.4,
+      "gulfCrudeExportsIncludedInTotal": 15,
+      "unit": "million barrels/day",
+      "sourceUrl": "https://www.iea.org/reports/oil-market-report-november-2026",
+      "publishedAt": null,
+      "access": {
+        "webExtraction": "success",
+        "directHttp": 403,
+        "failedDirectFile": "iea-HTTP403.html"
+      },
+      "availableBeforeCutoff": true,
+      "limits": [
+        "October supply and exports are not live flow measurements.",
+        "Supply/export recovery does not establish vessel safety."
+      ],
+      "additionalRecheck": {
+        "windowStart": "2026-11-18T00:05:06Z",
+        "windowEnd": "2026-11-18T00:05:07Z",
+        "evidence": "iea-web-recheck.json",
+        "result": "Official webpage still states Published13November2026 and same October105.4/18.4/15 millionbpd observations; no new observation or article"
+      }
+    },
+    "decemberReportedMops": {
+      "status": "unchanged_reverified_reported_reference_only",
+      "airlineAttribution": "Korean Air according to Newsis; supporting original financial press reports",
+      "applicationMonth": "2026-12",
+      "periodStart": "2026-10-16",
+      "periodEnd": "2026-11-15",
+      "reportedUsdBbl": 165.66,
+      "reportedCentsGal": 394.44,
+      "reportedStage": 25,
+      "comparisonNovemberUsdBbl": 173.89,
+      "comparisonNovemberCentsGal": 414.03,
+      "comparisonNovemberStage": 27,
+      "officialMopsAverageUsdBbl": null,
+      "officialMopsAverageCentsGal": null,
+      "officialStage": null,
+      "officialPeriodAverageUsdKrw": null,
+      "sources": [
+        {
+          "url": "https://www.newsis.com/view/NISX20261116_0003869952",
+          "publishedAt": "2026-11-16T15:14:32+09:00",
+          "receivedAt": "2026-11-17T23:58:32.078Z",
+          "evidence": "mopsNewsis.html"
+        },
+        {
+          "url": "https://www.fnnews.com/news/202611161506121925",
+          "publishedAt": "2026-11-16T15:05:47+09:00",
+          "modifiedAt": "2026-11-17T00:18:53+09:00",
+          "receivedAt": "2026-11-17T23:58:32.062Z",
+          "evidence": "mopsFn.html"
+        },
+        {
+          "url": "https://www.mt.co.kr/index.php/industry/2026/11/16/2026111615451527605",
+          "publishedAt": "2026-11-16T18:10:00+09:00",
+          "modifiedAt": "2026-11-16T18:19:50+09:00",
+          "receivedAt": "2026-11-17T23:58:31.964Z",
+          "evidence": "mopsMt.html"
+        }
+      ],
+      "availableBeforeCutoff": true,
+      "limits": [
+        "Media-reported MOPS and stage are not directly verified airline/Platts official fields.",
+        "Do not apply Korean Air reported stage universally to all carriers.",
+        "Official notice monetary amounts are a separate dataset."
+      ]
+    },
+    "novemberReportedMops": {
+      "status": "unchanged_reverified_reported_reference",
+      "applicationMonth": "2026-11",
+      "periodStart": "2026-09-16",
+      "periodEnd": "2026-10-15",
+      "reportedUsdBbl": 173.89,
+      "reportedCentsGal": 414.03,
+      "reportedStage": 27,
+      "sourceUrl": "https://mobile.newsis.com/view_amp.html?ar_id=NISX20261016_0003828757",
+      "publishedAt": "2026-10-16T11:15:10+09:00",
+      "modifiedAt": "2026-10-16T11:52:24+09:00",
+      "receivedAt": "2026-11-17T23:58:31.970Z",
+      "evidence": "novMopsNewsis.html",
+      "availableBeforeCutoff": true
+    },
+    "additionalJetNews": [
+      {
+        "status": "new_article_original_verified",
+        "id": "opis-airline-hedging-20261117",
+        "sourceUrl": "https://www.opis.com/resources/energy-market-news-from-opis/european-airlines-reduce-fuel-hedging-gambling-on-oil-price-drops/",
+        "publishedAt": "2026-11-17T09:02:00Z",
+        "modifiedAt": "2026-11-17T16:19:13Z",
+        "receivedAt": "2026-11-17T23:58:32.254Z",
+        "availableBeforeCutoff": true,
+        "evidence": "opisHedging.html",
+        "facts": "OPIS reports that several European airlines are entering 2027 with less fuel-price hedging than one year earlier, citing their financial executives. Rising fuel costs and different hedging positions make airline cost effects uneven.",
+        "limits": [
+          "Company/executive forward-looking plans as reported by OPIS, not independently verified future actual fuel cost.",
+          "Northwest Europe USD/metric ton figures are not Singapore USD/bbl or Korean surcharge calculations.",
+          "No claim that Korean total ticket prices must fall or rise."
+        ]
+      },
+      {
+        "status": "optional_new_company_release",
+        "id": "transat-fuel-cost-20261117",
+        "sourceUrl": "https://transat.mediaroom.com/2026-11-17-Transat-Provides-Update-on-Impact-of-Higher-Jet-Fuel-Prices",
+        "publishedDate": "2026-11-17",
+        "publishedAt": null,
+        "availabilityEvidence": "Company release index with November17 article captured at 2026-11-17T23:58:34.909Z before cutoff; full original release HTTP200 read after cutoff.",
+        "evidence": "transatList.html and transatRelease.html",
+        "facts": "Transat says higher jet fuel costs affected its quarter and fiscal year ended October31; management says it is reviewing funding and other options.",
+        "limits": [
+          "Company estimates and forward-looking statements, not audited final fiscal results.",
+          "Dollar currency not explicit in extracted release; exclude dollar amounts until currency verified.",
+          "No inference of insolvency or flight cancellation."
+        ]
+      }
+    ],
+    "excluded": [
+      "No inferred official MOPS or official stage from crude, Jet, IATA or FX.",
+      "No refresh of display-currency RATES.",
+      "No new article for unchanged IATA/EIA/OPEC/IEA observed periods.",
+      "Search-only self-referential Aero Surcharge and automated aggregators excluded as evidence."
+    ],
+    "newArticleRecommendation": [
+      "fx",
+      "oil",
+      "singaporeJet",
+      "opis-airline-hedging-20261117"
+    ]
+  },
+  "maritime": {
+    "checkedFor": "Aero Surcharge 2026-11-18 morning maritime/supply update",
+    "cutoff": "2026-11-18T09:00:00+09:00",
+    "cutoffUtc": "2026-11-18T00:00:00Z",
+    "createdAt": "2026-11-18T00:03:34.845644+00:00",
+    "scope": "Research evidence only. Parent integrates public content. All admitted new evidence was fetched before cutoff; post-cutoff recheck of IMO and Windward returned identical SHA256.",
+    "evidenceDirectory": "artifacts/review-verification/market-nov18/maritime",
+    "current": {
+      "imo": {
+        "key": "imo",
+        "changed": true,
+        "sourceType": "Official IMO confirmed-incident list",
+        "url": "https://www.imo.org/en/mediacentre/hottopics/pages/middle-east-highlighted-incidents.aspx",
+        "asAt": "2026-11-17",
+        "firstPublishedAt": null,
+        "firstPublicBeforeCutoffEvidence": "Direct HTTP200 saved at 2026-11-17T23:57:09.143Z, before 00:00Z cutoff. The source states as at 17 November 2026; exact publication time not supplied.",
+        "observedAt": "2026-11-17T23:57:09.143Z",
+        "afterCutoffRecheckedAt": "2026-11-18T00:00:37.140022Z",
+        "beforeAndAfterSha256": "76b77bed4084cfb6263907c8278a510f93914d0179dfeecc783437ffdec007d9",
+        "confirmedIncidents": 138,
+        "confirmedSeafarerFatalities": 25,
+        "comparison": {
+          "previousAsAt": "2026-11-16",
+          "previousConfirmedIncidents": 137,
+          "previousConfirmedSeafarerFatalities": 25,
+          "reason": "Comparison against previous report only; current values independently read from source."
+        },
+        "latestListedIncident": {
+          "eventDate": "2026-11-15",
+          "vessel": "AL DHANNAH",
+          "imoNumber": "9783734",
+          "location": "Arabian Gulf",
+          "outcome": "Damaged; no pollution reported by IMO."
+        },
+        "limitations": [
+          "Cumulative confirmed incidents in Strait of Hormuz and Middle East, not today's new attacks, unique ships or oil losses.",
+          "Do not sum with UKMTO or JMIC counters.",
+          "IMO's dated row does not independently establish identity equivalence with anonymous UKMTO reports."
+        ],
+        "quote": "Number of confirmed incidents as at 17 November 2026: 138",
+        "savedBody": "maritime/imo.html"
+      },
+      "traffic": {
+        "key": "traffic",
+        "changed": true,
+        "provider": "Windward",
+        "sourceType": "Commercial maritime tracking/dashboard",
+        "url": "https://insights.windward.ai/",
+        "editionDate": "2026-11-18",
+        "observationDate": "2026-11-17",
+        "observationWindowStart": null,
+        "observationWindowEnd": null,
+        "firstPublishedAt": null,
+        "httpLastModified": "2026-11-17T23:24:25Z",
+        "observedAt": "2026-11-17T23:57:08.844Z",
+        "afterCutoffRecheckedAt": "2026-11-18T00:00:37.787065Z",
+        "beforeAndAfterSha256": "a64aeb2a03239fa09fec83c36b0772015ecf1b932294961639e0681cec7dd955",
+        "firstPublicBeforeCutoffEvidence": "Direct HTTP200 body containing November18 edition/data as of November17 was saved at23:57:08.844Z before cutoff; identical after-cutoff body. Last-Modified is supporting server metadata, not asserted first publication time.",
+        "scope": "Provider-recorded cargo/tanker Strait of Hormuz transits",
+        "total": 4,
+        "inbound": 4,
+        "outbound": 0,
+        "aisVisible": 0,
+        "dark": 4,
+        "satelliteOnly": null,
+        "classes": {
+          "tankers": 2,
+          "bulkCarriers": 1,
+          "cargoShips": 1
+        },
+        "comparison": {
+          "previousEditionDate": "2026-11-14",
+          "previousObservationWindowStart": "2026-11-12T18:00:00Z",
+          "previousObservationWindowEnd": "2026-11-13T18:00:00Z",
+          "previousTotal": 9,
+          "previousInbound": 5,
+          "previousOutbound": 4,
+          "source": "Existing Nov17 report independently reread for comparison only. New edition observation window not verified; do not calculate like-for-like percentage change."
+        },
+        "limitations": [
+          "No exact UTC start/end window found in new edition; do not carry forward prior 18:00Z cutoff.",
+          "Zero outbound is no outbound crossing recorded by this provider, not proof no ship crossed.",
+          "Dark does not automatically mean independently confirmed satellite-only detection; current satellite-only figure not published.",
+          "Not barrels/day, cargo tonnage, complete universe of all vessels or evidence of safe navigation.",
+          "Avoid corridor breakout because visible subcategories do not reconcile to four total."
+        ],
+        "quote": "Data as of 17 November 2026",
+        "savedBody": "maritime/windward.html"
+      },
+      "ukmto208update": {
+        "key": "ukmto208update",
+        "changed": true,
+        "sourceType": "UKMTO official warning image distributed by @UK_MTO",
+        "warning": "208-26",
+        "update": "001",
+        "url": "https://x.com/UK_MTO/status/2122620224801501653",
+        "originalImageUrl": "https://pbs.twimg.com/media/HXUPjzFXwAAqxPk.png?name=orig",
+        "discoveryMirrorUrl": "https://www.teapawt.org/UK_MTO/status/2122620224801501653",
+        "incidentDate": "2026-11-16",
+        "initialIncidentTimeUtc": "19:00:00",
+        "initialIncidentAt": "2026-11-16T19:00:00Z",
+        "secondStrikeEventAt": null,
+        "bulletinUpdateReference": "170745Z",
+        "bulletinUpdatedAt": "2026-11-17T07:45:00Z",
+        "bulletinPublishedAt": "2026-11-17T09:17:00Z",
+        "publicationTimestampSource": "Official X post timestamp displayed by public mirror; direct X403. Bulletin's internal update time independently visible on original image.",
+        "observedAt": "2026-11-17T23:58:25.944Z",
+        "firstPublicBeforeCutoffEvidence": "Official XCDN original image fetched HTTP200 at23:58:25.944Z before cutoff. Mirror fetched23:58:10.911Z with Nov17 publication timestamp.",
+        "sha256": "2542be78b40a7e2d41b3bf5c9e2d747e5b95ae00c83a46c80b766e770507e98c",
+        "location": "7 nautical miles north of Khasab, Oman",
+        "sourceClassification": {
+          "initial": "Third Party",
+          "update": "Reports from a maritime security agency"
+        },
+        "facts": [
+          "Initial warning described a disabled tanker following an engine-room fire, with crew initially safe.",
+          "Update001 reports a second strike and fire, with crew unaccounted for at that update and damage extent unknown."
+        ],
+        "laterCrewReport": {
+          "url": "https://gcaptain.com/second-strike-on-lpg-tanker-in-strait-of-hormuz-leaves-one-missing-two-injured/",
+          "publishedAt": "2026-11-17T15:00:21Z",
+          "modifiedAt": "2026-11-17T17:07:54Z",
+          "observedAt": "2026-11-17T23:58:10.313Z",
+          "source": "gCaptain reporting Indian Ministry of External Affairs statement and Shipping Minister statement; direct MEA statement page not found.",
+          "vessel": "TARA GAS",
+          "vesselType": "LPG tanker",
+          "flag": "Panama",
+          "indianCrew": 24,
+          "indianCrewEvacuatedAshore": 21,
+          "indianCrewHospitalized": 2,
+          "indianCrewMissing": 1,
+          "totalCrew": 25,
+          "totalCrewAccountedFor": 24,
+          "totalCrewMissing": 1,
+          "limitation": "Different denominators:21+2+1=24Indian crew; later minister report24of25totalcrewaccounted. One missing does not mean confirmed dead. UKMTO image does not itself name vessel.",
+          "sha256": "90e077229eda63821d5e8bd7f25eb56ec39b5289f2c637064e3848924609184d"
+        },
+        "limitations": [
+          "07:45Z is bulletin/update reference time, not verified time of second impact.",
+          "UKMTO image does not name vessel or attacker.",
+          "An update to208, not a separately deduplicated confirmed incident to add to cumulative counters.",
+          "Attack responsibility, precise second strike time, damage and environmental effects not independently established.",
+          "Avoid using gCaptain's expressly unverified/enhanced imagery as independent confirmation."
+        ],
+        "savedImage": "maritime/ukmto208update.png"
+      },
+      "ukmto209": {
+        "key": "ukmto209",
+        "changed": true,
+        "sourceType": "UKMTO official warning image distributed by @UK_MTO",
+        "warning": "209-26",
+        "url": "https://x.com/UK_MTO/status/2122649948298850600",
+        "officialPdfUrl": "https://www.ukmto.org/-/media/ukmto/products/20261117-ukmto_warning_209-26.pdf?rev=43df51d8af3749a794f54f2e5f01842a",
+        "officialPdfAccess": "Direct403 and web open inaccessible; official indexed text and original XCDN image checked instead.",
+        "originalImageUrl": "https://pbs.twimg.com/media/HXUpA92WIAAy9Xt.png?name=orig",
+        "discoveryMirrorUrl": "https://www.teapawt.org/UK_MTO/status/2122649948298850600",
+        "incidentDate": "2026-11-13",
+        "incidentTimeUtc": null,
+        "incidentTimeStatus": "TBC",
+        "bulletinPublishedAt": "2026-11-17T11:15:00Z",
+        "publicationTimestampSource": "Official X post timestamp displayed by public mirror; direct X403.",
+        "observedAt": "2026-11-17T23:58:25.978Z",
+        "sha256": "f4192e3b00f06ee337ff307e0615f2dfe73b604532f0f5f5386a9682613847eb",
+        "firstPublicBeforeCutoffEvidence": "Original official XCDN warning image fetchedHTTP200 at23:58:25.978Z before cutoff; mirror fetched23:58:10.667Z.",
+        "sourceClassification": "Verified",
+        "location": "Arabian Gulf; tanker eastbound prior to entering Strait of Hormuz",
+        "facts": [
+          "Time-late report of tanker struck by unknown projectile on November13.",
+          "Crew safe and accounted for; damage assessment and environmental impact unknown."
+        ],
+        "limitations": [
+          "November17 is reporting/publication date, not event date.",
+          "Vessel/attacker not identified in warning; do not independently equate to IMO row.",
+          "Do not add to138 IMO or183 JMIC totals."
+        ],
+        "savedImage": "maritime/ukmto209.png"
+      },
+      "ukmto210": {
+        "key": "ukmto210",
+        "changed": true,
+        "sourceType": "UKMTO official warning image distributed by @UK_MTO",
+        "warning": "210-26",
+        "url": "https://x.com/UK_MTO/status/2122703877438861624",
+        "originalImageUrl": "https://pbs.twimg.com/media/HXVbbjNWkAA5Fbq.png?name=orig",
+        "discoveryMirrorUrl": "https://www.teapawt.org/UK_MTO/status/2122703877438861624",
+        "incidentDate": "2026-11-17",
+        "incidentTimeUtc": "12:50:00",
+        "incidentAt": "2026-11-17T12:50:00Z",
+        "bulletinPublishedAt": "2026-11-17T14:50:00Z",
+        "publicationTimestampSource": "Official X post timestamp displayed by public mirror; direct X403. Event time1250UTC on original image.",
+        "observedAt": "2026-11-17T23:58:25.936Z",
+        "sha256": "8455478a6f896ea67dc467749b67e0fc63c1bc01d39e01641b0e06c3986a3762",
+        "firstPublicBeforeCutoffEvidence": "Official XCDN original warning image fetchedHTTP200 at23:58:25.936Z before cutoff; mirror fetched23:58:10.810Z.",
+        "sourceClassification": "Local Authorities",
+        "location": "50 nautical miles southwest of Al Mukalla, Yemen; Gulf of Aden",
+        "facts": [
+          "Small skiff with weapons and ladders approached a cargo ship; unauthorized personnel attempted boarding.",
+          "Armed security team's warning shot caused skiff to withdraw toward a mother ship."
+        ],
+        "limitations": [
+          "Gulf of Aden event, not Strait of Hormuz.",
+          "No explicit injury count on original warning; do not invent zero injuries.",
+          "No attribution to Iran and no inference route closed.",
+          "Do not sum with IMO/JMIC counts."
+        ],
+        "savedImage": "maritime/ukmto210.png"
+      },
+      "tankerCapacity": {
+        "key": "tankerCapacity",
+        "changed": true,
+        "sourceType": "Bloomberg original reporting by Alaric Nightingale carried by gCaptain; tracking-provider assessment",
+        "url": "https://gcaptain.com/gulf-oil-flow-at-risk-from-lack-of-empty-tankers-tracker-says/",
+        "publishedAt": "2026-11-17T18:24:56Z",
+        "modifiedAt": "2026-11-17T18:25:01Z",
+        "observedAt": "2026-11-17T23:58:10.334Z",
+        "firstPublicBeforeCutoffEvidence": "Article JSONLD publication/modification timestamps precede cutoff and directHTTP200 body was saved23:58:10.334Z.",
+        "sha256": "2d1302ba5a85c1778bed144c97fc85b366b3e8a5687c2d3b6f4ee8bbb0b7822c",
+        "provider": "TankerTrackers.com",
+        "metric": "Combined carrying capacity of empty VLCC and Suezmax tankers heading toward the Gulf",
+        "changePercentApproximately": -40,
+        "comparisonStart": "2026-08 end",
+        "comparisonEnd": "Not precisely stated; report published2026-11-17",
+        "facts": [
+          "Tracker reports empty VLCC/Suezmax capacity heading to the region about40% below endAugust.",
+          "Some ships load through Gulf of Oman ship-to-ship transfers instead of entering Hormuz."
+        ],
+        "limitations": [
+          "Not a40% decline in actual oil exports, production, current tanker transits, or jet fuel.",
+          "Exact observation date/window and absolute capacity not supplied.",
+          "Actual recent oil-flow decline extent, cause, and duration remain uncertain; transfers can sustain deliveries.",
+          "Provider assessment reported by Bloomberg, not independently measured by this site."
+        ],
+        "savedBody": "maritime/gcaptain-supply.html"
+      },
+      "jmic": {
+        "changed": false,
+        "sourceType": "Official JMIC advisory hosted by UKMTO",
+        "edition": 114,
+        "url": "https://www.ukmto.org/-/media/ukmto/products/update-114_jmic_advisory_15-nov.pdf?rev=be65cfbd755a41c4816feba6cef4401c",
+        "reportDate": "2026-11-15",
+        "informationCutoff": "2026-11-15T13:00:00Z",
+        "checkedAt": "2026-11-17T23:59:56Z",
+        "access": "Fresh web tool read of official12-pagePDF; direct HTTP403. No newer accessible edition verified in searches, not proof none exists.",
+        "ratings": {
+          "straitOfHormuz": "SEVERE",
+          "arabianGulf": "SUBSTANTIAL",
+          "gulfOfOman": "MODERATE",
+          "gulfOfAden": "SUBSTANTIAL"
+        },
+        "cumulativeIncidents": 183,
+        "cumulativeSince": "2026-03-01",
+        "limitations": [
+          "Keep November15 date; do not present recheck as a freshNovember18 risk assessment.",
+          "Regional cumulative counter has different scope/confirmation rules from IMO; do not compare or add.",
+          "USNCAGS facilitated transit count and commercial tracker counts have different universes and cannot be summed."
+        ],
+        "newArticleRecommended": false
+      },
+      "eiaHormuz": {
+        "changed": false,
+        "url": "https://www.eia.gov/outlooks/steo/report/energysecurity/article.php",
+        "sourceType": "EIA analysis of Vortexa quarterly tanker tracking",
+        "edition": "November2026 STEO",
+        "observationPeriod": "2026-Q3",
+        "observedAt": "2026-11-17T23:57:08.290Z",
+        "sha256": "af7cf7dbdae1280a2fa52265c325741b0e4bc43feb4a199156169d9551c84394",
+        "unit": "million barrels/day",
+        "totalOil": 9.1,
+        "crudeAndCondensate": 7.3,
+        "petroleumProducts": 1.8,
+        "previousQuarterTotal": 5.1,
+        "yearEarlierQuarterTotal": 21.4,
+        "limitations": [
+          "Quarterly historical estimate, not dailyNovember17/18 actual oil flow.",
+          "Oil cargo flow does not establish safe shipping or airport jet fuel availability."
+        ],
+        "newArticleRecommended": false,
+        "savedBody": "maritime/eia-hormuz.html"
+      }
+    },
+    "publicationRecommendations": {
+      "newArticleKeys": [
+        "imo",
+        "traffic",
+        "ukmto208update",
+        "ukmto209",
+        "ukmto210",
+        "tankerCapacity"
+      ],
+      "doNotPublishAsFresh": [
+        "JMIC114 remains datedNovember15",
+        "EIAQ3 oil flow remains historical"
+      ],
+      "excluded": [
+        "GulfTimes shipping-slowdown result has conflicting historical article-date evidence; do not treat as newNovember17 reporting.",
+        "Iranian mine/strike claims lack independent confirmation; not counted as confirmed incidents.",
+        "Windward November17 satellite-only count and exactUTCwindow not verified; null rather than carryforward."
+      ],
+      "bookingImplication": "Maritime disruption remains an upstream risk. It does not by itself determine a published December airline surcharge or prove that waiting or purchasing now saves money."
+    }
+  },
+  "audit": {
+    "sourceBodies": "Ignored local artifacts/review-verification/market-nov18. Hash receipts do not imply every fetch succeeded. Each factual source records actual access and cutoff evidence.",
+    "receipts": [
+      {
+        "path": "artifacts/review-verification/market-nov18/airline-facts.json",
+        "bytes": 42400,
+        "sha256": "a911b9643616c77aa68b0f9e1fd1c21ef9cbb5c3ee0e5c3ce81db440cd832ada"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/7C-gds-list.html",
+        "bytes": 45235,
+        "sha256": "a00bba8ba79304cdf4ba4358846082c95b64400fabc006966b21dd56e49ba843"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/7C-gds-list.txt",
+        "bytes": 10204,
+        "sha256": "899fa294ae77c298afa2b9d6a0d332999bf65534618bb067712227a23a191261"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/7C-list-cutoff.html",
+        "bytes": 307149,
+        "sha256": "d546742e7f28709222355545222c92e98a3df1bc180f5c94de9bfe5aa40d3eca"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/7C-list-cutoff.txt",
+        "bytes": 7950,
+        "sha256": "78f4543a1d682a275630e0530388543985e3314ddf35427d364a00f45dd04875"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/7C-list.html",
+        "bytes": 307172,
+        "sha256": "50353f2e8e5b4a666b54efc33622d63dd15fbed6d5dc63b0124a2984bc05c395"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/7C-list.txt",
+        "bytes": 7950,
+        "sha256": "78f4543a1d682a275630e0530388543985e3314ddf35427d364a00f45dd04875"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/7C-nov.html",
+        "bytes": 305024,
+        "sha256": "b9d5615adb1f070722e550e9a7e2c85c8118018d1e07040cc9df272a7016b599"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/7C-nov.txt",
+        "bytes": 6147,
+        "sha256": "cc5257395226f6c3fd53480d4293a8c3fa2a818d23039f8505618ab11823f070"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/airlineNov18Initial0.json",
+        "bytes": 23244,
+        "sha256": "3351528eeb47014ae9689107df41ffb7f2eb54bbfd13ee8d0190175ba17499b1"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/airlinesSearch3.json",
+        "bytes": 13317,
+        "sha256": "23c25471c0bae2893d340f3f76a455473d73ed9ec5db6a242b3a653e49529b26"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/BX-dec.html",
+        "bytes": 5625,
+        "sha256": "cefb42a1dc91c21cc428b64c5d5ca31f2f18d476b722858a4baa568b624cd077"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/BX-dec.txt",
+        "bytes": 58,
+        "sha256": "ae0b26c68939e8214056c2517af3b5091f1c674c8aef5f1e1fbab7804a78829b"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/BX-nov.html",
+        "bytes": 5646,
+        "sha256": "f96051f63a158e65fc1f46467dfcc46a48aa88da56335407f5b98252c64e741a"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/BX-nov.txt",
+        "bytes": 58,
+        "sha256": "ae0b26c68939e8214056c2517af3b5091f1c674c8aef5f1e1fbab7804a78829b"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/cutoff-followup-http-receipts.json",
+        "bytes": 7509,
+        "sha256": "d0e01a422c094b23fb5921a9555e3adab2db6163e65a112c2bf0a2813dc51b51"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/extra-http-receipts.json",
+        "bytes": 5595,
+        "sha256": "13354c02ec3f381963146349c91912722bd12993d61ff47c4196939f4943d646"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/http-receipts.json",
+        "bytes": 10389,
+        "sha256": "bc56374d5a86d3ae669a1884da5cac10eaca358d4a2cc7b15c310d5dd420867e"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/KE-dec.html",
+        "bytes": 11257,
+        "sha256": "739c4b683cc05db4666c27b31e3d8dcd0baa9df1a249b77919909b9fcc4efef4"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/KE-dec.txt",
+        "bytes": 8384,
+        "sha256": "f36d090513280d061aacb79ed83244abde66bac0a200411e32ca959c2fd0d770"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/KE-nov-model.html",
+        "bytes": 11257,
+        "sha256": "27e08eef6436dde2a15f6ebb34b3690149bc7e61b73d0628c1a3efd8237f069b"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/KE-nov-model.txt",
+        "bytes": 8384,
+        "sha256": "91dfc142d676576587fd271d20f81e8cc97e9fc13040e9399bbc8e544f6772db"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/KE-nov.html",
+        "bytes": 3510,
+        "sha256": "52ba8561fd117df0995973dac1cd2365f34bec1e8a1241e7500263ba3247f456"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/KE-nov.txt",
+        "bytes": 0,
+        "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/LJ-dec.html",
+        "bytes": 94625,
+        "sha256": "39901370c4974465e14f5f2263787b09df757e29debf1a7776d31685d0922431"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/LJ-dec.txt",
+        "bytes": 10771,
+        "sha256": "91593434f0aa328de0fbaa7bd16c18825dc151f5c075ef4932cde08cfa99f85d"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/LJ-gds-list.html",
+        "bytes": 50378,
+        "sha256": "c4d1bb67c42e0accd7c91c8b5009b3fa9a260ead0da4188aafc4b61dee9f21a1"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/LJ-gds-list.txt",
+        "bytes": 11120,
+        "sha256": "1959b060ca071bfda47bb69e20d67b12ee4328a13014516325019f9456e27f77"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/LJ-gds-main-list.html",
+        "bytes": 43994,
+        "sha256": "b983adc87780bbac12d169a41af6084be4f7bc6a3c0f534934765a3d702b59f3"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/LJ-nov.html",
+        "bytes": 5662,
+        "sha256": "598eaa9298003b0196c11dc9431f750b9b43682af822ca8489822fe14e8a6f61"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/LJ-nov.txt",
+        "bytes": 770,
+        "sha256": "9a75b10bba6dbad18b4e05a723d02646238290530fe9866b8df4946a62533711"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/new4Search2.json",
+        "bytes": 24452,
+        "sha256": "fed86d5674976fc185052b31c1c710694108a8bfda79af34f40339c7a4943d54"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/november-supplement-receipts.json",
+        "bytes": 646,
+        "sha256": "a26fd8e11b61bc1f674f6f434bec9d37d7e9740def77feeb0834712fa3aeacb2"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/OZ-dec-full-query.html",
+        "bytes": 137865,
+        "sha256": "115201d7f067b5e1248b8498b3ff0829cbf67c9278a2898bf1dedf1b6c0dfcf1"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/OZ-dec-full-query.txt",
+        "bytes": 7209,
+        "sha256": "24f7679722509962d568d3ab9b088a5410507ac7ab8cacb1f19c67de4b61d333"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/OZ-dec.html",
+        "bytes": 7590,
+        "sha256": "93b6a4db9102aa5ce5e44a8a03c7854b35bc86c5ec823f72cc85a8e2493d0ead"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/OZ-dec.txt",
+        "bytes": 1677,
+        "sha256": "d772c30471e3ca0398cb011374e521098240170c507fe45f5a90c727ed3c5d64"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/OZ-nov.html",
+        "bytes": 137785,
+        "sha256": "6acb21384631dcb02bbce2c34025a51b064204a0ae6b7d481cd4e391d9bde18f"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/OZ-nov.txt",
+        "bytes": 7158,
+        "sha256": "dc2f479476a0717288891a9c9f2e5a3f900740cd8a27675da0334eff8d8bdd42"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/RS-gds-list.html",
+        "bytes": 47829,
+        "sha256": "9044043dc34e6e8b466d2863baaa04e70eea463f2821c77fb92b913ffc7694fd"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/RS-gds-list.txt",
+        "bytes": 11298,
+        "sha256": "403dc8b223ae3c797997474352b0226734ff6a27bd89b21949ddbd448cd79436"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/RS-list-cutoff.html",
+        "bytes": 47829,
+        "sha256": "df6d1e8b9e46c296f55223d1884115334c46a0c5fce020b30efd077069a21cd8"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/RS-list-cutoff.txt",
+        "bytes": 11298,
+        "sha256": "ea59a9a5ab221f84cb99b1325ef05279669ac556e3865d1559120ae1eef8a1a9"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/RS-list.html",
+        "bytes": 5473,
+        "sha256": "7b4e3df822b1299e035d620eabd1bec87e127c07d57133e8a4e110ae4fcca439"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/RS-list.txt",
+        "bytes": 58,
+        "sha256": "ae0b26c68939e8214056c2517af3b5091f1c674c8aef5f1e1fbab7804a78829b"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/RS-nov-gds.html",
+        "bytes": 39276,
+        "sha256": "eec477b01b5fcba75217fd9180a8cc9e3ee0e4abda78130d6cd9730f283636fc"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/RS-nov-gds.txt",
+        "bytes": 9398,
+        "sha256": "76dc6618c72270149da7d5590473af58b8032805d370deaf18e918eaf9814380"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/RS-nov-image.png",
+        "bytes": 9830,
+        "sha256": "9f5802ee6f1a36efd06db609034d9f67c841d2447d23aa51bbb6b0446b251937"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/RS-nov.html",
+        "bytes": 5590,
+        "sha256": "0f41b9b70d78579d55c28acbde736ebd53892a09b8425c3439115dc85ea75488"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/RS-nov.txt",
+        "bytes": 58,
+        "sha256": "ae0b26c68939e8214056c2517af3b5091f1c674c8aef5f1e1fbab7804a78829b"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/TW-gds-list.html",
+        "bytes": 43976,
+        "sha256": "0639c5495b998680f44fb835ad57d4485af505911f034040955554c464766dd7"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/TW-gds-list.txt",
+        "bytes": 9891,
+        "sha256": "19cb2d2d181e22f1db4b8c91b067b9c5731a949d5cb13a0b882791dd3b240176"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/TW-list-cutoff.html",
+        "bytes": 78949,
+        "sha256": "1e44e9e0e0453c2826e8b34baf1bfe41b5fabba9a2a35e1e6e88e6bba4e54679"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/TW-list-cutoff.txt",
+        "bytes": 3038,
+        "sha256": "9df4839b240c5ff1da0e89d06945e95558c90658c8154c5a8eff832c7183a9ef"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/TW-list.html",
+        "bytes": 81104,
+        "sha256": "3ca16aff78aca238cabed90c6c6234c91c49942e1d55cd23616d26b6e0a949a6"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/TW-list.txt",
+        "bytes": 3401,
+        "sha256": "8e3a869f42eb5d841f4d9daab6069c6fc05e82f410768f61e5e5b69815c2278e"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/TW-nov.html",
+        "bytes": 90053,
+        "sha256": "04e2f5f5f7e173133ad628fb5f2e44962c39219b354244be1b98f8424479761f"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/TW-nov.txt",
+        "bytes": 5533,
+        "sha256": "bb16b51ed653bf828f9552dae294c0a7736f927e563627ecbcabc7f274dce5c3"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/YP-gds-list.html",
+        "bytes": 44153,
+        "sha256": "43f9d70de7b5f09f2292d908d63f0924cea65976f1717434b5bff0eb82385d68"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/YP-gds-list.txt",
+        "bytes": 10104,
+        "sha256": "29f84a3f48d15fbc05bbdd78d0399389c9c0c9774b6d6b4fba7c02eb84ae8eac"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/YP-list.html",
+        "bytes": 5489,
+        "sha256": "9c24e671694a8b6bfad1359cb5eef0b6d5c679dbca87290e259cc97abdc13aa7"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/YP-list.txt",
+        "bytes": 58,
+        "sha256": "ae0b26c68939e8214056c2517af3b5091f1c674c8aef5f1e1fbab7804a78829b"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/YP-maintenance.html",
+        "bytes": 5446,
+        "sha256": "96d380c4013593b2ea9d9b22591695280dfb5ed47a762ab82bace261cdebb6c3"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/YP-maintenance.txt",
+        "bytes": 58,
+        "sha256": "ae0b26c68939e8214056c2517af3b5091f1c674c8aef5f1e1fbab7804a78829b"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/YP-nov.html",
+        "bytes": 5489,
+        "sha256": "9fdd5777290b6556a637573d789d3273d91e2b565a42d48be374ef5a1a66c6b0"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/YP-nov.txt",
+        "bytes": 58,
+        "sha256": "ae0b26c68939e8214056c2517af3b5091f1c674c8aef5f1e1fbab7804a78829b"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/ZE-dec-image.png",
+        "bytes": 26977,
+        "sha256": "cc8692602dd609c256aa48f63ed75184be23b437b41aed3ccb3f7e1cd6a8bd56"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/ZE-dec.html",
+        "bytes": 46816,
+        "sha256": "acb96cdcfcfedb10905165f64ffb0d5a39e1b7346291c3c5a477776d662b24bb"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/ZE-dec.txt",
+        "bytes": 9686,
+        "sha256": "2f36c15719fc3a4e5de8a4106b846c66d6db2f5bca07e5564ba2b9488beb36ac"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/ZE-nov.html",
+        "bytes": 360506,
+        "sha256": "4109efd825914f0a91ee2295bfabbad10b7766a5c0e531fa90d53f24666aa9f3"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/airlines/ZE-nov.txt",
+        "bytes": 127301,
+        "sha256": "d37a0d0fb80e1f9297a9bbdf0dd67a818143dbb151762b731fce5bee12c6ce8c"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-fx-facts.json",
+        "bytes": 13577,
+        "sha256": "0077ff7022b06f5fb0d722eafea38f0f99a8453d0f9ec0a99b45040233ddacf9"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-originals/eiaJetStocks.csv",
+        "bytes": 5908,
+        "sha256": "711606624844ca55f923e9a6d0607acb0f8cb95b80546fd7da9579af93a37919"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-originals/fxNews1.html",
+        "bytes": 95676,
+        "sha256": "d7b9b471d1602335b99a44c61947bbd1b06b4ed754a1351316c4a53674dc604c"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-originals/fxNewsis.html",
+        "bytes": 158349,
+        "sha256": "b05ed47ee393e9f3a869ee7e721f451f0a703722399654dfd8b2b15785185a82"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-originals/iataImage.jpg",
+        "bytes": 147252,
+        "sha256": "d3b8177d8c660c256483860f10cc8ab01716b35a4f7e32092c12644f4df7262d"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-originals/iataPage.html",
+        "bytes": 107154,
+        "sha256": "5b1f2f9194acfb31087591fe55feb89192a4eb4d269d7264b1127856eb8e1831"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-originals/iea-HTTP403.html",
+        "bytes": 5551,
+        "sha256": "d9dcbe4563b8c9f8254e07fd42709f7daa6dfb531acd27d79126680b36652bae"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-originals/iea-web-recheck.json",
+        "bytes": 14282,
+        "sha256": "d718635179e345c1c0bfce35eba6bd0a84178e20399424a2cf0b3b9587bcc2b3"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-originals/jet-and-transat-before-cutoff.json",
+        "bytes": 22119,
+        "sha256": "e477acf24302e81e20c35c1e8d0b49d322c931ec434d6c825435e46e0438bffe"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-originals/jet-HTTP403.html",
+        "bytes": 5527,
+        "sha256": "79af797981ab5a067c3b73cafd588531c17479462e2eb0a1bf58432e79da2eb4"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-originals/mopsFn.html",
+        "bytes": 71777,
+        "sha256": "e00dc0ea893c17a96a441b25f6ae4347b986a29cbc17f014d864a898a6a6f767"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-originals/mopsMt.html",
+        "bytes": 84328,
+        "sha256": "3b97fc331f3e21dca1740fec51f113b0e124bd3dd9f379d80ab4c7fc40b0ed05"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-originals/mopsNewsis.html",
+        "bytes": 159310,
+        "sha256": "0c78afa6c787b8cf3e1403bd77f53948718485ae72f238b663407cbec4336f0a"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-originals/more-receipts.json",
+        "bytes": 2009,
+        "sha256": "23200742a3d16d373b1a99d010a9e0db6a453ae6d6b53d35e019f4d929660049"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-originals/novMopsNewsis.html",
+        "bytes": 50705,
+        "sha256": "2411ea861ab20e6710249a89053bd507441a4800c0b3329655dc86bce3c987c6"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-originals/oilInfomax.html",
+        "bytes": 132047,
+        "sha256": "183ad79821e7e545d9874ed930b230ab7c7b502bb923e89fe31e901af977dfaa"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-originals/oilRigzone.html",
+        "bytes": 122196,
+        "sha256": "db6465c55a9e9055e11456ca09bd7801da4f07aa83415f8c20b72c30d7783d0f"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-originals/opec.html",
+        "bytes": 232629,
+        "sha256": "6906eda5e00d6911c98daaf58d6d5cd0db992442b600ea644717e2363cc4cd5a"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-originals/opisHedging.html",
+        "bytes": 189586,
+        "sha256": "deb413b467c9efe2aab51e6d5414b2fa4667d8074393c6a2b26d6cb99365f9f6"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-originals/receipts.json",
+        "bytes": 4091,
+        "sha256": "60941827645bbfb0e29bb8c324811e6b27441d42f76c11def52621a88911d707"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-originals/transat-receipt.json",
+        "bytes": 219,
+        "sha256": "a11ba80bfeb5ae6ae08b97ce3dc04effdbefe5be37af0858a84030b5b9181902"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-originals/transatList.html",
+        "bytes": 52152,
+        "sha256": "0af716dd110517692670c7f978f430697f57fabfcc2190c66eefea75d78b935b"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-originals/transatRelease.html",
+        "bytes": 19824,
+        "sha256": "3fbad57e937cc1ae0f04682843e868aad6a82487b61ccf8a01608f476f58b57f"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/energy-originals/web-before-cutoff.json",
+        "bytes": 32218,
+        "sha256": "a682c55ac932fc64c79701f134fe9e5c5e926c9c8b42d7ab2cdb88b42bc391a6"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/maritime/additional-receipt.json",
+        "bytes": 3321,
+        "sha256": "1ee3494d1495cf978f92fef726ed83207fb1c75f5dae5eeaed7c232e824e9039"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/maritime/after-cutoff-receipt.json",
+        "bytes": 1189,
+        "sha256": "7f034baeba7dbd35c47b8de022c8e8d11df9ba03ea87e424e888ec8bba11d10f"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/maritime/eia-hormuz.html",
+        "bytes": 79114,
+        "sha256": "af7cf7dbdae1280a2fa52265c325741b0e4bc43feb4a199156169d9551c84394"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/maritime/gcaptain-crew.html",
+        "bytes": 251463,
+        "sha256": "90e077229eda63821d5e8bd7f25eb56ec39b5289f2c637064e3848924609184d"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/maritime/gcaptain-supply.html",
+        "bytes": 250321,
+        "sha256": "2d1302ba5a85c1778bed144c97fc85b366b3e8a5687c2d3b6f4ee8bbb0b7822c"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/maritime/image-receipt.json",
+        "bytes": 921,
+        "sha256": "2b43b5ca9aa0f9f19bae124244a8aef6393023bebf9c20468a5adac4029f5317"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/maritime/imo-after-cutoff.html",
+        "bytes": 101903,
+        "sha256": "76b77bed4084cfb6263907c8278a510f93914d0179dfeecc783437ffdec007d9"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/maritime/imo.html",
+        "bytes": 101903,
+        "sha256": "76b77bed4084cfb6263907c8278a510f93914d0179dfeecc783437ffdec007d9"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/maritime/receipt.json",
+        "bytes": 1193,
+        "sha256": "bc94ea1966897f0887cef00915541bdfc4c5dfcc5c5b391628d09f7ad82c8377"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/maritime/ukmto.html",
+        "bytes": 4543,
+        "sha256": "18e0bb978869d2de974901d77032a074685eb0f5b99f10c44c1ad5c105597603"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/maritime/ukmto208update-mirror.html",
+        "bytes": 8027,
+        "sha256": "4cbbae9c7a2802e9b13686d44a55792ce2ebb346d07407abe1d12e9accf01166"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/maritime/ukmto208update.png",
+        "bytes": 275697,
+        "sha256": "2542be78b40a7e2d41b3bf5c9e2d747e5b95ae00c83a46c80b766e770507e98c"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/maritime/ukmto209-mirror.html",
+        "bytes": 7954,
+        "sha256": "261f8fd930467e177d6466ab1a50049da95ba7d1745edc126d6b447968ef920e"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/maritime/ukmto209.png",
+        "bytes": 273754,
+        "sha256": "f4192e3b00f06ee337ff307e0615f2dfe73b604532f0f5f5386a9682613847eb"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/maritime/ukmto210-mirror.html",
+        "bytes": 7951,
+        "sha256": "2da1e64f02c3a828a03300384fa1f63f67a8b550755aabec94d05fb5ef5e1668"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/maritime/ukmto210.png",
+        "bytes": 258030,
+        "sha256": "8455478a6f896ea67dc467749b67e0fc63c1bc01d39e01641b0e06c3986a3762"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/maritime/windward-after-cutoff.html",
+        "bytes": 6089651,
+        "sha256": "a64aeb2a03239fa09fec83c36b0772015ecf1b932294961639e0681cec7dd955"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/maritime/windward.html",
+        "bytes": 6089651,
+        "sha256": "a64aeb2a03239fa09fec83c36b0772015ecf1b932294961639e0681cec7dd955"
+      },
+      {
+        "path": "artifacts/review-verification/market-nov18/maritime-facts.json",
+        "bytes": 16430,
+        "sha256": "5e999cd899da10026177495a77ca9d6223ee92e6de2f4644cf9bfc1364a946b5"
+      }
+    ]
+  },
+  "publication": {
+    "newArticleKeys": [
+      "fx",
+      "oil",
+      "jet",
+      "hedging",
+      "imo",
+      "traffic",
+      "ukmto208update",
+      "ukmto209",
+      "ukmto210",
+      "tankerCapacity"
+    ],
+    "preservedArticles": 182,
+    "expectedTotalArticles": 192,
+    "confirmedDecemberAirlines": [
+      "KE",
+      "OZ",
+      "BX",
+      "LJ",
+      "ZE"
+    ],
+    "unverifiedDecemberAirlines": [
+      "7C",
+      "RS",
+      "TW",
+      "YP"
+    ],
+    "newDecemberAmounts": 0,
+    "limitations": [
+      "Official December MOPS mean/stage/period-average FX remain null. Reported KE165.66/394.44/25 is attributed media context only.",
+      "YP planned maintenance limits access at the cutoff; no assertion of global non-publication.",
+      "LJ November fifth band not freshly reverified; old amount and original verification retained.",
+      "Exact Windward UTC window and satellite-only subset unknown; no fabricated percentages vs previous edition.",
+      "UKMTO original images accessed before cutoff; post times from public mirrors, direct X/PDF access blocked.",
+      "No new monthly archive capture for unchanged airline notices.",
+      "No external advertising, analytics, affiliate transactions or production verification in this morning task."
+    ]
+  }
+}
